@@ -61,7 +61,7 @@
       {{ with $checked }}<span class="badge bg-ink-50 text-ink-500">prices checked {{ (time .).Format "Jan 2, 2006" }}</span>{{ end }}
     </div>
     <h1 class="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ .Title }}</h1>
-    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">The same ruler, fifty times. For every destination we track, this index takes the cheapest per-gigabyte rate across all providers and ranks the countries against each other — the cheapest places to buy eSIM data, and the most expensive.</p>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">The same ruler, {{ len hugo.Data.countries }} times. For every destination we track, this index takes the cheapest per-gigabyte rate across all providers and ranks the countries against each other — the cheapest places to buy eSIM data, and the most expensive.</p>
     <div class="mt-6 flex flex-wrap gap-3">
       {{ with $medianRow.minPerGB }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" . }}</span><span class="stat-label">median best $/GB</span></div>{{ end }}
       {{ with $cheapest.name }}<div class="stat-tile"><span class="stat-num text-lg">{{ $cheapest.name }}</span><span class="stat-label">cheapest at ${{ printf "%.2f" $cheapest.minPerGB }}/GB</span></div>{{ end }}
@@ -236,7 +236,7 @@
       <a href="/research/unlimited-esim/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Unlimited eSIM daily rates</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Where unlimited data is cheapest per day, and when it beats a metered bucket.</p></a>
       <a href="/research/fair-use-audit/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Fair-use audit</p><p class="mt-2 text-xs leading-relaxed text-ink-500">What every “unlimited” plan's small print actually throttles, provider by provider.</p></a>
       <a href="/compare/matchups/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Provider matchups</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Airalo vs Holafly and every other head-to-head, computed country by country.</p></a>
-      <a href="/esim-providers/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Provider reviews</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Where each provider is cheapest and priciest, computed across all 50 countries.</p></a>
+      <a href="/esim-providers/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Provider reviews</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Where each provider is cheapest and priciest, computed across all {{ len hugo.Data.countries }} countries.</p></a>
     </div>
   </section>
 

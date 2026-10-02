@@ -274,7 +274,7 @@
     </div>
 
     <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-      <a href="/compare/matchups/" class="card card-hover p-4"><p class="font-display text-sm font-bold text-ink-950">All 28 provider matchups</p><p class="mt-1 text-xs text-ink-500">Every head-to-head, computed country by country.</p></a>
+      <a href="/compare/matchups/" class="card card-hover p-4"><p class="font-display text-sm font-bold text-ink-950">All {{ div (mul (len hugo.Data.providers) (sub (len hugo.Data.providers) 1)) 2 }} provider matchups</p><p class="mt-1 text-xs text-ink-500">Every head-to-head, computed country by country.</p></a>
       <a href="/research/esim-price-index/" class="card card-hover p-4"><p class="font-display text-sm font-bold text-ink-950">eSIM price index</p><p class="mt-1 text-xs text-ink-500">The 50-country $/GB league table.</p></a>
       <a href="/research/unlimited-esim/" class="card card-hover p-4"><p class="font-display text-sm font-bold text-ink-950">Unlimited vs metered</p><p class="mt-1 text-xs text-ink-500">When unlimited plans are actually cheaper.</p></a>
       <a href="/tools/" class="card card-hover p-4"><p class="font-display text-sm font-bold text-ink-950">Data calculator</p><p class="mt-1 text-xs text-ink-500">Size the plan before you pay for it.</p></a>

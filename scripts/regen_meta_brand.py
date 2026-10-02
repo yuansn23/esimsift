@@ -241,12 +241,12 @@ MAP: dict[str, dict[str, str]] = {
         "description": "Original research from the eSIM Sift price database — price-per-GB league tables, fair-use audits, and unlimited-data analysis.",
     },
     "research/esim-price-index.md": {
-        "title": "eSIM Price Index 2026: 50 Countries by Data Cost",
-        "description": "eSIM prices by country, ranked by best $/GB across all 50 destinations in the eSIM Sift database — regional averages and league table.",
+        "title": "eSIM Price Index 2026: Every Country Ranked by Cost",
+        "description": "eSIM prices by country, ranked by best $/GB across every destination in the eSIM Sift database — regional averages and league table.",
     },
     "research/fair-use-audit.md": {
         "title": "eSIM Fair Use Audit 2026: What Unlimited Really Means",
-        "description": "What unlimited eSIM plans really throttle: eSIM Sift audits the fair-use policies of all 8 providers, plan by plan, quoted verbatim.",
+        "description": "What unlimited eSIM plans really throttle: eSIM Sift audits the fair-use policy of every provider we track, plan by plan, verbatim.",
     },
     "research/unlimited-esim.md": {
         "title": "Best Unlimited eSIM Plans 2026: Daily Rates Compared",
@@ -255,18 +255,18 @@ MAP: dict[str, dict[str, str]] = {
     # hubs / tools / deals / static
     "compare/_index.md": {
         "title": "Compare eSIM Plans by Country: Best Prices and $/GB",
-        "description": "Every prepaid travel eSIM plan in one eSIM Sift index — filter by country, sort by price per GB, and compare all 8 providers.",
+        "description": "Every prepaid travel eSIM plan in one eSIM Sift index — filter by country, sort by price per GB, and compare every provider.",
     },
     "methodology.md": {
         "title": "Our Methodology: How We Collect and Verify eSIM Prices",
     },
     "compare/matchups.md": {
-        "title": "All 28 eSIM Provider Matchups Compared on Real Prices",
+        "title": "Every eSIM Provider Matchup Compared on Real Prices",
         "description": "Every eSIM provider matchup in one eSIM Sift index — Airalo vs Holafly, Roami vs Roamic and every other pair, computed country by country.",
     },
     "tools/_index.md": {
         "title": "eSIM Tools: Trip Cost Calculator and Data Estimator",
-        "description": "Estimate how much travel data you need app by app, then get the cheapest matching eSIM — eSIM Sift computes it live from 8 providers.",
+        "description": "Estimate how much travel data you need app by app, then get the cheapest matching eSIM — eSIM Sift computes it live from every provider.",
     },
     "esim-deals/_index.md": {
         "title": "eSIM Deals 2026: Verified Promo Codes and Real Savings",
@@ -274,7 +274,7 @@ MAP: dict[str, dict[str, str]] = {
     },
     "about.md": {
         "title": "About Us: Why We Built an Independent eSIM Database",
-        "description": "Who we are, why eSIM Sift tracks an independent price database of 8 providers and 50 countries, and how the site makes money.",
+        "description": "Who we are, why eSIM Sift tracks an independent price database covering every major provider and destination, and how we make money.",
     },
     "contact.md": {
         "title": "Contact Us: Price Corrections and Provider Requests",

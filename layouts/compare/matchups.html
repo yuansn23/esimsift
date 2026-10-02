@@ -79,8 +79,8 @@
     <p class="eyebrow">Keep reading</p>
     <h2 id="related" class="mt-2 text-2xl font-bold md:text-3xl">Related research &amp; comparisons</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <a href="/compare/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Compare by country</p><p class="mt-2 text-xs leading-relaxed text-ink-500">All 50 destination pages — every provider in one table.</p></a>
-      <a href="/research/esim-price-index/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">eSIM price index</p><p class="mt-2 text-xs leading-relaxed text-ink-500">50 countries ranked by best $/GB, with regional averages.</p></a>
+      <a href="/compare/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Compare by country</p><p class="mt-2 text-xs leading-relaxed text-ink-500">All {{ len hugo.Data.countries }} destination pages — every provider in one table.</p></a>
+      <a href="/research/esim-price-index/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">eSIM price index</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ len hugo.Data.countries }} countries ranked by best $/GB, with regional averages.</p></a>
       <a href="/research/unlimited-esim/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Unlimited daily rates</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Where unlimited data is cheapest per day, and when it wins.</p></a>
       <a href="/research/fair-use-audit/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Fair-use audit</p><p class="mt-2 text-xs leading-relaxed text-ink-500">What every “unlimited” plan's small print really throttles.</p></a>
     </div>

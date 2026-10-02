@@ -94,9 +94,9 @@
     background-color: #e9eef4;
     box-shadow: inset 3px 0 0 #4ab89e;
   }
-  /* 斑马纹：实色 ink-50，无需任何交互即可见 */
+  /* 斑马纹：中性浅灰（非绿），略深于 ink-50 以增强行间分隔与可读性 */
   .table-pro tbody tr:nth-child(even) {
-    background-color: #f5f7fa;
+    background-color: #eef2f7;
   }
   .table-pro tbody tr:nth-child(even):hover {
     background-color: #e9eef4;

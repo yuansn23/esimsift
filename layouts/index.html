@@ -25,7 +25,7 @@
         abroad.
       </h1>
       <p class="mt-5 max-w-xl text-lg leading-relaxed text-ink-600">
-        Real prepaid plans from 8 providers in 50 countries, ranked with the same honest formulas: $/GB, $/day, fair-use limits decoded. No marketing spin.
+        Real prepaid plans from {{ len hugo.Data.providers }} providers in {{ len hugo.Data.countries }} countries, ranked with the same honest formulas: $/GB, $/day, fair-use limits decoded. No marketing spin.
       </p>
       <div class="mt-7 flex flex-wrap gap-3">
         <a href="/compare/" class="btn-primary px-6 py-3 text-base">Browse {{ $countries | len }} countries</a>

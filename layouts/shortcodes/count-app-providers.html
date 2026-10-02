@@ -1,0 +1,2 @@
+{{- /* providers.toml type=app 的品牌数（安装需自家 app） */ -}}
+{{- $n := 0 -}}{{- range hugo.Data.providers }}{{- if eq .type "app" }}{{- $n = add $n 1 }}{{- end }}{{- end -}}{{- $n -}}

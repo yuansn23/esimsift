@@ -1,6 +1,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+{{/* ── favicon：SVG 优先（现代浏览器）+ ICO 兜底（旧浏览器）+ apple-touch；漏斗=Sift ── */}}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1A7E6B">
+
 {{- /* ── Title/Description：compare hub 由数据层推导，其余页用 front matter ── */ -}}
 {{- $title := .Title -}}
 {{- $desc := .Site.Params.description -}}
@@ -10,6 +16,7 @@
   {{- with .description }}{{ $desc = . }}{{ end -}}
 {{- end -}}
 {{- $ogimage := "img/site/og-default.webp" -}}
+{{- with .Params.hero }}{{ $ogimage = printf "img/esim/%s" . }}{{ end -}}
 {{- if .Params.iso -}}
   {{- $c := index hugo.Data.countries .Params.iso -}}
   {{- $stats := partial "country-stats.html" .Params.iso -}}

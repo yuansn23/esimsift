@@ -1,6 +1,6 @@
 ---
 title: "About Us: Why We Built an Independent eSIM Database"
-description: "Who we are, why eSIM Sift tracks an independent price database of 8 providers and 50 countries, and how the site makes money."
+description: "Who we are, why eSIM Sift tracks an independent price database covering every major provider and destination, and how we make money."
 ---
 
 ## Why eSIM Sift exists

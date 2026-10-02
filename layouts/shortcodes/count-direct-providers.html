@@ -1,0 +1,2 @@
+{{- /* providers.toml type!=app 的品牌数（QR/网页直装） */ -}}
+{{- $n := 0 -}}{{- range hugo.Data.providers }}{{- if ne .type "app" }}{{- $n = add $n 1 }}{{- end }}{{- end -}}{{- $n -}}

@@ -1,7 +1,7 @@
 # eSIM Sift 项目文档（交接手册）
 
 > **用途**：隔几天回来接着干时，看这一份就能接上。写了什么、还缺什么、每个文件干嘛的、常见操作怎么做。
-> **最后更新**：2026-10-01 批次D（披露页去同司声明 / VS 勾选选择器 / research 首屏解挤 / guides 五卡内链 / 351 机型兼容库 / 45 国 Opensignal·Ookla 独立数据引用）
+> **最后更新**：2026-10-02 批次G（guides 5 篇深度重写 + 首屏配图 / compat 设备库 UX / research 枢纽区域联赛+问答路由 / 全站去写死三层架构 + 双守卫脚本）
 > **配套文件**：`STATUS.md`（按时间顺序的施工日志，看"当时为什么这么做"）、`docs/keyword-map.md`（关键词→URL 唯一映射表，上新页型前必查）。
 
 ---
@@ -46,7 +46,7 @@ esimsift/
 ├── static/img/            # flags / countries / site / esim
 ├── scripts/               # 抓取/生成/校验脚本（见 §5.2）
 │   └── scrape/raw/        # ★ 原始抓取 JSON（证据留存，勿删）
-└── public/                # 构建产物（hugo 不清理旧页，见 §13）
+└── public/                # 构建产物（hugo 不清理旧页，见 §14）
 ```
 
 ---
@@ -68,8 +68,8 @@ esimsift/
 - ✅ **品牌对决页** `/compare/{a}-vs-{b}/`（28 页 = C(8,2)，verdict-first + 逐国判胜表 + 数据驱动 FAQ + sibling 互链）+ **对决枢纽页** `/compare/matchups/`（28 卡全量索引 + closest rivalry/most lopsided 计算瓦片；header/footer/llms.txt 入口）+ vs 页 "Other eSIM comparisons" 勾选选择器（8 logo 卡最多勾 2 个，第 3 个挤掉最早勾选，字母序实时拼 `/compare/{a}-vs-{b}/`）
 - ✅ **品牌详情页** `/esim-providers/<key>/`（8 页，计算式结论"cheapest in N of M"、竞争力评分、**价格胜负区（全计算：逐国 {B}最低价 vs 全场次优价，赢省%/输溢价% Top5 双卡带链接；>200% 用 ×倍数展示；unlimited-only 品牌带口径脚注；0 胜/0 负空态兜底）**、按区域覆盖清单；公司概况卡含总部/法人 + 官网/双商店链接 chips；客服&退款专区（渠道/邮箱/响应承诺 + 退款摘要）；覆盖区"50 国追踪≠品牌全部目的地"备注；FAQ 含 "{brand} support"/"{brand} refund" 长尾问答；schema 含 Organization(sameAs)；**无数据品牌自动降级为简壳页**）
 - ✅ `/tools/` 行程计算器 **+ 用量估算器（对标 mybestsim data-usage-calculator 并反超：竞品止步于"你需要 X GB"，我们闭环到真实套餐）**：8 活动小时步进 → GB/天 → 行程总 GB（20% 余量开关，读取天数滑杆）→ 一键回填 chip 重选套餐；码率参考表（$acts 模板单一来源，11 行含 1GB 折算）；底部 12 热门国家卡 + 8 品牌卡（全计算生成）+ FAQ×3+schema；`/esim-deals/` 折扣码页（对标 mybestsim 并超越：实码卡（核验日期+条款+折扣后实际价实时计算）→ "折扣码翻盘分析"表（折后价 vs 全场最低价，N/50 翻盘数）→ 无码品牌计算式替代价值 → 5 步使用教程 → 4 条无码省钱路径（全内链）→ FAQ×5+schema → 底部 8 品牌入口 + 4 相关页）
-- ✅ `/research/` 3 页（price-index 50 国 $/GB 联赛表 / unlimited-esim 日费率榜 + **盈亏平衡分析** / fair-use-audit 逐品牌 FUP 审计）——全部从数据实时推导；**每行/每卡可钻取**（Winning plan 列链品牌×国家子页、区域卡列出全部国家 chips、unlimited 表品牌/套餐双链）；每页含计算洞察区 + 数据驱动 FAQ ×3-4 + FAQPage schema + Related research ×4 互联卡；unlimited-esim 首屏指标已解挤（全宽三卡条 + 品牌覆盖 chips）
-- ✅ `/guides/` 5 篇（what-is / how-to-install / vs-physical-sim / dual-sim / compatibility-check）：1300–1550 词，长尾问句 H2；专用 `layouts/guides/single.html` 注入逐篇计算数据盒（$/GB 榜/入门价榜/unlimited 日费率榜/安装方式表，指标互不重复）+ front-matter `faqs` 渲染 FAQ + FAQPage schema + 相关阅读闭环；compatibility-check 篇专属注入 devices.toml 交互设备库（搜索 + 15 tab + 351 chips + 变体警示 + 不支持表，与正文 EID 终审原则互指）
+- ✅ `/research/` 3 页（price-index 50 国 $/GB 联赛表 / unlimited-esim 日费率榜 + **盈亏平衡分析** / fair-use-audit 逐品牌 FUP 审计）——全部从数据实时推导；**每行/每卡可钻取**（Winning plan 列链品牌×国家子页、区域卡列出全部国家 chips、unlimited 表品牌/套餐双链）；每页含计算洞察区 + 数据驱动 FAQ ×3-4 + FAQPage schema + Related research ×4 互联卡；unlimited-esim 首屏指标已解挤（全宽三卡条 + 品牌覆盖 chips）；**枢纽页 2026-10-02 升级**：首屏两栏配图（hero front matter 同 guides）+ **区域价格联赛**（region 聚合各国最优 $/GB 均值，5 卡排序）+ 最贵/最便宜价差叙事（计算倍数）+ **问答路由卡 ×6**（搜索意图→对应页）+ FAQ×6 schema + 正文 3 段立场声明
+- ✅ `/guides/` 5 篇（what-is / how-to-install / vs-physical-sim / dual-sim / compatibility-check）：**2026-10-02 深度重写至 1677-1955 词**（对位竞品博客的信息增量段：SM-DP+ 手动录入、双线来电路由、区域变体机制、验机清单等；FAQ 7-8 条；内链 9-14 条/篇短锚轮换）；**每篇首屏配图**（front matter `hero`+`hero_alt`，imageConfig 宽高 + eager + fetchpriority=high + og:image 联动）；专用 `layouts/guides/single.html` 注入逐篇计算数据盒（$/GB 榜/入门价榜/unlimited 日费率榜/安装方式表，指标互不重复）+ front-matter `faqs` 渲染 FAQ + FAQPage schema + 相关阅读闭环；compatibility-check 篇专属注入 devices.toml 交互设备库（**品牌分组卡片**：搜索 + 品牌 tab + 351 chips + 变体内联警示 + 不支持表，与正文 EID 终审原则互指）
 - ✅ 静态页：about / methodology / disclosure / privacy / terms / contact（disclosure 2026-10-01 已去除同司声明，改为佣金模式 + 诚实规则，勿再加回）
 
 ### 2.3 SEO / 基建
@@ -101,7 +101,7 @@ esimsift/
 - [ ] privacy/terms/disclosure 法律审校（文中已标 Todo）
 - [ ] GA4 ID 替换 + 与 roamiapp.com 跨域衡量（`layouts/partials/head.html` 占位注释处）
 - [ ] OG 图片（每国一张，含最低价数字）
-- [ ] 部署（建议 Cloudflare Pages；见 §15）
+- [ ] 部署（建议 Cloudflare Pages；见 §16）
 
 ### P-2 蓝图 Phase 2（上线后，槽位已留在 docs/keyword-map.md）
 - [ ] 区域枢纽页 ×5（/compare/asia/ 等）
@@ -264,12 +264,14 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `compare/{a}-vs-{b}.md` ×28 | 手写（front matter 即可） | `providers: [a,b]` 字母序 + `layout: vs-single`；标题/描述自拟防同质化 |
 | `compare/matchups.md` ×1 | 手写（front matter 即可） | 对决枢纽页：`layout: matchups` + **`nolist: true`**（不进国家网格/catalog/llms 国家清单——全站过滤器第三层）；卡片按 providers.toml 键枚举，**新增品牌自动出现** |
 | `esim-providers/<key>.md` ×8 | 手写（front matter 即可） | 品牌详情页正文全部由模板聚合推导 |
-| `research/` ×3 + `_index` | 手写 front matter | 正文由专属模板从数据推导 |
-| `guides/` ×5 | 手写正文 | 1300–1550 词；front matter 带 `date` + `faq_heading` + `faqs`（模板渲染 FAQ + FAQPage schema）；内链：国家页/品牌页/research/tools 按意图分布（不再限"恰好 3 个国家页"）；数据盒由 guides/single.html 按文件名注入 |
+| `guides/` ×5 | 手写正文 | **1677-1955 词**（2026-10-02 深度重写，备份 `_guides_backup_20261002/` 在项目根）；front matter 带 `date` + `faq_heading` + `faqs`（7-8 条）+ `hero` + `hero_alt`（首屏图，模板渲染 figure + og:image）；内链 9-14 条/篇（短锚文本全轮换）；正文计数一律 shortcode；数据盒由 guides/single.html 按文件名注入 |
+| `research/` ×3 + `_index` | 手写 front matter | 正文由专属模板从数据推导；_index 枢纽 front matter 同 guides 带 `hero`/`faqs`（2026-10-02） |
 | `tools/` `esim-deals/` `_index/about/methodology/disclosure/privacy/terms/contact` | 手写 | privacy/terms 有法律审校 Todo 标注 |
 
 ### 4.8 `static/img/`
 `flags/<iso小写>.svg`（countries.toml flag 引用）、`countries/<slug>-01..04.webp`（每国 4 张：页面 3 张 + og:image）、`site/`（home-hero/og-default）、`esim/`、`providers/`（品牌真 logo：`<key>.png` 或 `.webp`，prov-logo 自动探测）。**logo 现状**：**8/8 全量接入**（.png ×6 + .webp ×2）。原始素材备份在 `static/img/logo/`（其中旧的 `logo.png` 是早期素材，已由 `roami.png` 取代）。
+
+**favicon（2026-10-02，在 `static/` 根而非 img/）**：漏斗 = "Sift" 品牌标 —— `favicon.svg`（SVG 主，现代浏览器）+ `favicon.ico`（16/32/48 兜底）+ `favicon.png`/`favicon-16x16.png`/`favicon-32x32.png` + `apple-touch-icon.png`(180)。品牌色 `brand.600 #1A7E6B`。`head.html` 已接 4 个标签（icon×2 + apple-touch + theme-color）。**改图标**：直接覆盖 `static/favicon.*` 同名文件（零配置），想换形状就改 `favicon.svg` 的 `<path>`。
 
 ---
 
@@ -306,6 +308,8 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `audit_meta.py` | `python -X utf8 scripts/audit_meta.py [--limit N]` 扫 public/ 渲染产物（2026-10-02 规范 v3）：标题 48-54 内页禁品牌（首页唯一豁免）/ 描述 120-140 必含品牌 / 重复 / 分页型统计（改 meta 后必跑） | 只读 |
 | `regen_meta_fixes.py` | 2026-10-01 批次E 一次性修复脚本（已被批次F regen_meta_brand.py 取代，勿重跑） | ⚠ 一次性 |
 | `regen_meta_brand.py` | 2026-10-02 批次F meta 品牌规范脚本（幂等可重跑，--dry-run 先行）：50 国 desc 品牌版 / 28 VS 标题+desc（3 家族轮换）/ 29 手写页 map | 可重跑 |
+| `check_hardcoded.py` | `python -X utf8 scripts/check_hardcoded.py` 硬编码总量守卫：扫 content/en + layouts + hugo.toml，命中"50 countries / 8 providers / 28 matchups"等写死总量即失败（国家页 seo.description 豁免——脚本再生的）。**新增国家/品牌或改模板后必跑** | 只读 |
+| `check_headings.py` | `python -X utf8 scripts/check_headings.py` 渲染产物 h2/h3 标点守卫（`,` `;` `:` `—` `–` 全站 0 豁免；改模板/加内容后跑，需先 build） | 只读 |
 | `append_carrier_info.py` | 追加 [ISO.info]（幂等，**已执行过，勿再跑**——再跑也只是提示跳过） | 幂等 |
 | `gen_sample_data.py` | ☠☠☠ **永远禁止整跑** —— 会用 SAMPLE 数据覆盖全部真实抓取结果 | 禁令 |
 | `scrape/verify_airalo.py` `probe_*.py` `discover_slugs.py` | 一次性验证/探测工具（airalo 官网对照校验已通过：JP/IT/US 全档一致） | 存档 |
@@ -330,6 +334,23 @@ npm run build                                   # ③
 **Windows 注意**：python 一律带 `-X utf8`；文件编辑用 Edit/Write 工具，**绝不用 PowerShell Get-Content/Set-Content 批量改文件**（PS 5.1 会把无 BOM UTF-8 按 GBK 读写，中文/箭头变乱码还会吞 `<`）；bash 的 `cd` 不跨命令保持，每条命令里自己 cd。
 
 ---
+
+## 6.5 操作指南索引（想做什么 → 走哪 + 命名规则）
+
+| 我想…… | 走 | 一句话 |
+|---|---|---|
+| 新增一个品牌 | §7 | 抓数据 → 转 TOML → providers.toml → hugo.toml → 品牌页 → vs 页 → 生成子页 → 验证 |
+| 给现有品牌加某国套餐 | §8 情况 A | 小操作（重抓或手补 `[XX]` 块） |
+| 新增一个国家 | §8 情况 B | 大操作（6 处数据 + 生成器 + 双守卫） |
+| 刷新价格 | §9 | 三连：重抓 → 转换 → 生成+验证+构建 |
+| 新增一篇指南/博客文章 | §11 | 查 keyword-map → 建 md → 导航 → 验证 |
+| 优化已有内容/标题/描述/FAQ/模板 | §12 | 改 → build → 三守卫 → 记录 |
+| 小改动（折扣码/logo/导流/公司信息） | §10 | 一张表指路 |
+
+**命名规则（新增国家/品牌/文章前先看，写错要回改）**：
+- **国家**：`data/countries.toml` 键 `[XX]` = 大写 2 字母 ISO；`slug` = 小写连字符（`united-arab-emirates`）；`region` 必须精确匹配五个枚举（Asia / Europe / Americas / Africa & Middle East / Oceania）；flag = `img/flags/<iso小写>.svg`；`content/en/compare/<slug>.md` 文件名必须 = slug。
+- **品牌**：`data/providers.toml` 键 `[key]` = 小写单词（`airalo`/`roamic`/`alosim`）；logo = `static/img/providers/<key>.png|.webp`（自动探测）；vs 页文件名 = `{a}-vs-{b}` **严格字母序**；品牌页 = `esim-providers/<key>.md`。
+- **指南/博客文章**：`content/en/guides/<slug>.md`，slug = 小写连字符查询式（`how-to-install-esim`）；标题禁品牌、48-54 字符；描述 120-140 必含 "eSIM Sift"。
 
 ## 7. 操作手册 A：新增一个品牌（完整 10 步）
 
@@ -373,12 +394,18 @@ npm run build                                   # ③
 ### 情况 B：新增第 51 个国家 —— 大操作（动 6 个地方）
 1. `data/countries.toml` 加 `[XX]` 全字段块（region 必须精确匹配五个筛选值；slug 唯一）。
 2. `data/faqs/<xx>.toml` 新建（6 条对比角度 FAQ）。
-3. `content/en/compare/<slug>.md` 新建（front matter `iso = "XX"` + seo.description + 3 段分析；参考 japan.md 样板）。
+3. `content/en/compare/<slug>.md` 新建（front matter `iso = "XX"` + seo.description 占位 + 3 段分析；参考 japan.md 样板）。
 4. 图片：`static/img/countries/<slug>-01..04.webp` ×4 + `static/img/flags/<xx>.svg`（路径与 countries.toml 对齐）。
 5. `data/carriers.toml` 加 `[XX]` + `[[XX.profiles]]`（+ 可选 `[XX.info]`）。
 6. 每品牌补 `[XX]` 套餐（抓取或手补，同情况 A）。
-7. `gen_provider_pages.py` → `validate.py` → `npm run build`。
-8. 自动纳入：首页区域网格、header 大菜单、sitemap、catalog.json、llms.txt —— 全部无需手工。
+7. `gen_provider_pages.py` → `validate.py` → **`regen_meta_brand.py --dry-run` 确认后真跑**（新国家的 seo.description 由它按实时数据重写，含品牌词与字符数校验）→ `npm run build` → `audit_meta.py` + `check_hardcoded.py` 双守卫。
+8. 自动纳入：首页区域网格、header 大菜单、sitemap、catalog.json、llms.txt、guides/research 页数据盒、对决页判胜表、matchups 枢纽 —— 全部无需手工。
+
+**为什么第 8 步敢说"全部无需手工"（2026-10-02 去写死架构）**：全站总量数字分三层实时推导，没有一处写死"50 国/8 家/28 组"：
+- **模板层**：`{{ len hugo.Data.countries }}` / `{{ len hugo.Data.providers }}` / 对决数 `{{ div (mul ...) 2 }}`（首页 hero、matchups、research、guides 相关卡等 7 处已改造）。
+- **正文层**：4 个计数 shortcode —— `{{< count-countries >}}` / `{{< count-providers >}}` / `{{< count-app-providers >}}` / `{{< count-direct-providers >}}`（guides 正文、子页安装区用它们）。
+- **front matter 层**：front matter 跑不了 shortcode → 一律**无数字措辞**（"every major travel eSIM provider" 而非 "8 providers"）；国家页 seo.description 是唯一例外（脚本从实时数据再生）。
+- 守卫：`check_hardcoded.py` 会抓回归；新写内容时记住"数字要么从 data 推导，要么不出现"。
 
 ---
 
@@ -417,14 +444,47 @@ npm run build
 | 换默认导流目标 | `hugo.toml` `[params.outbound] active` 一行 | 全站 cta-out |
 | 改某品牌出站 URL/UTM | `hugo.toml` `[params.outbound.targets.<key>]` | 该品牌全部出站 |
 | 放真 logo | `static/img/providers/<key>.png` 或 `.webp`（**8/8 已齐**；换新图直接覆盖同名文件） | 全站徽标自动切换 |
+| 改 favicon/站点图标 | `static/favicon.svg` 改 `<path>` + 重新生成 `favicon.*`（见 §4.8） | 全站标签页图标 |
 | 改国家页"怎么选/人群"推荐 | 不用改 —— 全是排序字面位置，改 plans 数据自动变 | — |
 | 改 FAQ | `data/faqs/<iso>.toml`（页面 + schema 同步） | 对应国家页 |
 | 改品牌优劣势/口号 | `providers.toml` strengths/weaknesses/tagline | 品牌页/国家页口碑区 |
-| 加 guide/research 文章 | `content/en/guides|research/` 新 md（research 需配专属模板，现有 3 个 layout 参数分发） | 枢纽页自动列出 |
+| 加 guide/博客文章 | 走 §11 完整步骤（`content/en/guides/` 新 md；research 另配专属模板，现有 3 个 layout 参数分发） | 枢纽页自动列出 |
 
 ---
 
-## 11. 蓝图对照（还差什么）
+## 11. 操作手册 E：新增一篇指南/博客文章
+
+> "博客文章"在本站 = `/guides/` 下的教程/概念解释长文（现 5 篇）。这是唯一的编辑型长文载体；research 是数据研究页（正文模板推导，不属于"写文章"），别混淆。
+
+1. **查 `docs/keyword-map.md`** —— 确认目标关键词没被现有页占用（防蚕食）。guides 定位"教程/how-to/概念解释"长尾，**不抢** `/compare/{country}/` 的价格型关键词。
+2. **建 `content/en/guides/<slug>.md`**，front matter 照抄现有 5 篇（六键 + faqs）：
+   - `title`：48-54 字符，查询式或陈述式，**不带品牌词**，无冒号尾缀
+   - `description`：120-140 字符，**必含 "eSIM Sift"**
+   - `date`：当天 `YYYY-MM-DD`
+   - `hero` + `hero_alt`：首屏图，从 `static/img/esim/` 133 张挑一张**与现有 6 张主题不撞车**（现用：071 旅行者/SIM 芯片、058 称重对比、007 清单、012 放大镜、018 登机双卡、142 图表研究）
+   - `faq_heading` + `faqs`：6-8 条，`- q:`/`a:` 单行、**避免冒号**，走 FAQPage schema 同源
+3. **正文 HARD RULE**（违反 = 打回）：h2/h3 禁 `, : — – ;`（用户意图问句/名词短语）；总量数字一律 shortcode（`{{< count-countries >}}` 等，**禁写死"50 国/8 家"**）；不编价格/套餐数字；内链 8-14 条/篇、1-3 词短锚全轮换、只链允许路径；"eSIM Sift" ≤1 次；美式英语；1500-1900 词。
+4. **数据盒（可选）**：想要 "Live from our database" 计算盒，就在 `layouts/guides/single.html` 加一个 `else if eq $base "<slug>"` 分支（参考现有 3 个 $/GB 榜/入门价榜/unlimited 榜）。
+5. **导航（手动，唯一一处不自动）**：`layouts/partials/header.html` 第 85-89 行 mega menu 加一行（6 篇后会挤，届时改"前 5 + All guides"）。
+6. **验证**：`npm run build` → `audit_meta.py`（新页标题/描述合规）→ `check_headings.py` → `check_hardcoded.py`。
+7. **自动纳入（无需手工）**：`/guides/` 枢纽列表、llms.txt、sitemap、其它 guide 的"相关阅读"卡。
+
+## 12. 操作手册 F：未来优化标准动作（改内容的完整闭环）
+
+任何"优化"（改标题/描述/正文/FAQ/模板）都走同一闭环，做完才离开：
+
+1. **改前**：记下要动什么；批量改先备份到**项目根**（⚠ 禁止放 `content/` 下，会渲染成正式页面）。
+2. **改**：只用 Edit/Write 工具或 `python -X utf8`（禁 PowerShell Get/Set-Content，GBK 乱码）；front matter 数字措辞、正文 shortcode。
+3. **验**：`npm run build`（~37s，0 error 才算）+ **三守卫**：
+   - `audit_meta.py`（标题 48-54 / 描述 120-140 含品牌 / 无重复）
+   - `check_headings.py`（h2/h3 标点）
+   - `check_hardcoded.py`（无写死总量）
+   - 另加 `grep -rc "%!f" public/ --include="*.html" | grep -v ":0"`（验渲染无 nil）
+4. **看**：抽 2-3 个受影响页的渲染 HTML（价格数字/图表/schema 是否真的出来了）。
+5. **记**：结论 + 踩坑写进 `STATUS.md`（时间序日志）；结构/红线写进 `PROJECT.md`（红线只进 §14，别散落）。
+6. **不要**：跑 ~10 分钟全量 hugo 单独验证（npm run build 已含）；永远不整跑 `gen_sample_data.py`。
+
+## 13. 蓝图对照（还差什么）
 
 蓝图 = 竞品对比报告（esim-comparison）+ `docs/keyword-map.md`。侧翼页型原本 0/6，现状态：
 
@@ -446,7 +506,7 @@ npm run build
 
 ---
 
-## 12. 红线与坑（每条都真踩过）
+## 14. 红线与坑（每条都真踩过）
 
 1. **☠ `gen_sample_data.py` 永远禁止整跑** —— 会用 SAMPLE 覆盖 8776 条真实数据。`gen_provider_pages.py` 才是日常用的生成器（它绝不碰 plans）。
 2. **price 必须两位小数 float**（`price = 13.50` 不是 `13`）—— int64 会让 Hugo `printf "%.2f"` 渲染成 `$%!f(int64=13)`（airalo 品牌页真实事故）。生成器已修，**手补数据时是唯一风险点**。修完可用 `grep -rc "%!f" public/` 验证。
@@ -463,10 +523,12 @@ npm run build
 13. **`data/*.toml` 文件名禁止连字符** —— `network-reports.toml` 的数据键是带 `-` 的 `"network-reports"`，点号 `hugo.Data.networkReports` 取不到，模板静默渲染空卡且**构建不报错**（真实事故：45 国引用卡全部空白才发现）。已改名 `networkreports.toml`；新数据文件一律无连字符命名。
 14. Go html/template 会把 href 里的 `(` `)` 编码成 `%28%29`（`| safeURL` 也拦不住；HK/Macao 的 Global Index 链接即如此）—— HTTP 等价，接受即可，别再花时间"修"。
 15. `{{ with .field }}` 内 dot 被替换成字段值，再链 `.key` 会报 `can't evaluate field key in type string` —— 需要外层键时用 `range $b := $xs` 显式循环变量。
+16. **`content/` 下 `_` 前缀目录不会被 Hugo 隐藏**（`_` 只对 static/data/partials 生效）——放进去的备份会渲染成正式页面（真实事故：guides 备份多渲染 6 个重复内容页）。**备份一律放项目根**（如 `_guides_backup_20261002/`）。
+17. **改聚合 dict 键名要全链路改**：list.html 曾把条目键 `minPerGB` 改成 `v` 但下游没跟上 → `$%!f(<nil>)` 静默渲染且**构建 0 报错**。改完 grep `"%!f" public/` 验一遍（与红线 2 同源）。
 
 ---
 
-## 13. 等用户决策/提供的事项（代码侧做不了的）
+## 15. 等用户决策/提供的事项（代码侧做不了的）
 
 | 事项 | 影响 |
 |---|---|
@@ -478,7 +540,7 @@ npm run build
 
 ---
 
-## 14. 上线步骤（到时候照着做）
+## 16. 上线步骤（到时候照着做）
 
 1. P-A 清零（折扣码/深链/legal 审校/GA4/OG 图）。
 2. `npm run build` 确认 0 error + `python -X utf8 scripts/validate.py` 0 warning。
@@ -489,7 +551,7 @@ npm run build
 
 ---
 
-## 15. 回来接手时的 5 分钟热身清单
+## 17. 回来接手时的 5 分钟热身清单
 
 1. 读本文件 §0 状态快照 + `STATUS.md` 最后一节（最近一轮做了什么）。
 2. `cd` 到项目目录，跑 `python -X utf8 scripts/validate.py` 确认数据没坏。

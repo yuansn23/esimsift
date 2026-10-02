@@ -29,9 +29,19 @@
 <article class="mx-auto max-w-3xl px-4 py-8 sm:px-6">
   {{ partial "breadcrumbs.html" . }}
   <h1 class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">{{ .Title }}</h1>
+
+  {{/* ── 首屏配图（front matter: hero + hero_alt）：eager + fetchpriority=high 抢 LCP；显式宽高防 CLS；alt 必填走 SEO ── */}}
+  {{ with .Params.hero }}
+  <figure class="mt-6 overflow-hidden rounded-2xl border border-ink-100 bg-ink-50 shadow-sm">
+    {{ $ic := imageConfig (printf "static/img/esim/%s" .) }}
+    <img src="/img/esim/{{ . }}" alt="{{ $.Params.hero_alt }}" width="{{ $ic.Width }}" height="{{ $ic.Height }}"
+         class="w-full h-auto" loading="eager" fetchpriority="high" decoding="async">
+  </figure>
+  {{ end }}
+
   <div class="prose prose-slate mt-6 max-w-none">{{ .Content }}</div>
 
-  {{/* ── 兼容设备全表（仅 esim-compatibility-check）：搜索 + 品牌tab + 机型chips + 不支持表 ── */}}
+  {{/* ── 兼容设备全表（仅 esim-compatibility-check）：搜索 + 品牌tab + 品牌分组卡片 + 变体内联警示 + 不支持表 ── */}}
   {{ if eq $base "esim-compatibility-check" }}
   {{ $brands := hugo.Data.devices.brand }}
   {{ $total := 0 }}{{ range $brands }}{{ $total = add $total (len .models) }}{{ end }}
@@ -39,7 +49,7 @@
     <div class="card p-6">
       <p class="eyebrow">Live device database</p>
       <h2 id="devlist" class="mt-2 text-2xl font-bold">Which phones and tablets support eSIM?</h2>
-      <p class="mt-3 text-sm leading-relaxed text-ink-600">Every model we could verify — <span class="tnum font-semibold text-ink-800">{{ $total }}</span> phones and tablets across {{ len $brands }} brand groups, last reviewed {{ index (split hugo.Data.devices.updated "-") 0 }}. Variant warnings appear under each brand tab. A phone missing from this list is not a verdict: the <span class="font-semibold">*#06#</span> EID test in the guide above is always the final word.</p>
+      <p class="mt-3 text-sm leading-relaxed text-ink-600">Every model we could verify — <span class="tnum font-semibold text-ink-800">{{ $total }}</span> phones and tablets across {{ len $brands }} brand groups, last reviewed {{ index (split hugo.Data.devices.updated "-") 0 }}. Amber notes flag the variant traps within each brand. A phone missing from this list is not a verdict: the <span class="font-semibold">*#06#</span> EID test in the guide above is always the final word.</p>
 
       <div class="mt-5">
         <label for="devSearch" class="sr-only">Search devices</label>
@@ -53,16 +63,24 @@
         {{ end }}
       </div>
 
-      {{ range $b := $brands }}{{ with $b.note }}
-      <p data-note="{{ $b.key }}" hidden class="mt-3 rounded-xl bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-900"><span class="font-semibold">Watch the variant:</span> {{ . }}</p>
-      {{ end }}{{ end }}
-
       <p id="devCount" class="mt-4 text-xs text-ink-400" aria-live="polite">Showing {{ $total }} models</p>
-      <div id="devGrid" class="mt-2 flex flex-wrap gap-2">
+      <div id="devSections" class="mt-2 space-y-4">
         {{ range $b := $brands }}
-          {{ range $b.models }}
-          <span class="rounded-lg border border-ink-100 bg-ink-50/60 px-2.5 py-1.5 text-xs font-medium text-ink-700" data-b="{{ $b.key }}" data-s="{{ lower (printf "%s %s" $b.name .) }}">{{ . }}</span>
-          {{ end }}
+        <section data-sec="{{ $b.key }}" class="rounded-2xl border border-ink-100 bg-white p-5 transition-colors hover:border-ink-200">
+          <header class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <div>
+              <h3 class="font-display text-base font-bold text-ink-900">{{ $b.name }}</h3>
+              <p class="mt-0.5 text-xs text-ink-500">{{ $b.family }} &middot; supported since {{ $b.since }}</p>
+            </div>
+            <span class="badge tnum bg-brand-50 text-brand-700">{{ len $b.models }} models</span>
+          </header>
+          {{ with $b.note }}<p class="mt-3 rounded-xl bg-amber-50 px-3.5 py-2.5 text-xs leading-relaxed text-amber-900"><span class="font-semibold">Variant watch:</span> {{ . }}</p>{{ end }}
+          <ul class="mt-4 flex flex-wrap gap-2">
+            {{ range $b.models }}
+            <li data-b="{{ $b.key }}" data-s="{{ lower (printf "%s %s" $b.name .) }}" class="rounded-lg border border-ink-100 bg-ink-50/50 px-3 py-1.5 text-[13px] font-medium text-ink-700 transition-colors hover:border-brand-300 hover:bg-brand-50/40 hover:text-brand-800">{{ . }}</li>
+            {{ end }}
+          </ul>
+        </section>
         {{ end }}
       </div>
       <p id="devEmpty" hidden class="mt-3 text-sm leading-relaxed text-ink-600">No models match that search. A miss here is not a verdict — plenty of regional variants never make any published list. Dial <span class="font-semibold">*#06#</span> on the phone itself: an EID number on screen means the eSIM chip exists.</p>
@@ -93,9 +111,9 @@
 
   <script>
     (function(){
-      var chips=document.querySelectorAll('#devGrid [data-b]');
+      var chips=document.querySelectorAll('#devSections [data-b]');
+      var secs=document.querySelectorAll('[data-sec]');
       var tabs=document.querySelectorAll('[data-tab]');
-      var notes=document.querySelectorAll('[data-note]');
       var q=document.getElementById('devSearch');
       var cnt=document.getElementById('devCount');
       var empty=document.getElementById('devEmpty');
@@ -110,14 +128,19 @@
           ON.forEach(function(c){ b.classList.toggle(c,on); });
           OFF.forEach(function(c){ b.classList.toggle(c,!on); });
         });
-        notes.forEach(function(n){ n.hidden=n.getAttribute('data-note')!==t; });
         refresh();
       }
       function refresh(){
         var s=(q.value||'').trim().toLowerCase(), n=0;
+        var per={};
         chips.forEach(function(c){
           var ok=(active==='all'||c.getAttribute('data-b')===active)&&(!s||c.getAttribute('data-s').indexOf(s)>-1);
-          c.hidden=!ok; if(ok){n++;}
+          c.hidden=!ok;
+          if(ok){ n++; per[c.getAttribute('data-b')]=(per[c.getAttribute('data-b')]||0)+1; }
+        });
+        secs.forEach(function(sec){
+          var k=sec.getAttribute('data-sec');
+          sec.hidden=(active!=='all'&&active!==k)||!(per[k]>0);
         });
         cnt.textContent='Showing '+n+' model'+(n===1?'':'s');
         empty.hidden=n>0;
@@ -176,7 +199,7 @@
       <div class="p-6">
         <p class="eyebrow">Live from our database</p>
         <h2 id="install" class="mt-2 text-2xl font-bold">How each provider installs its eSIM</h2>
-        <p class="mt-3 text-sm leading-relaxed text-ink-600">Two flows exist across the eight providers we track: install straight from a QR code or the provider's website, or install from inside the provider's own app. The app route adds a step — and an account — before you can travel.</p>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">Two flows exist across the {{ len hugo.Data.providers }} providers we track: install straight from a QR code or the provider's website, or install from inside the provider's own app. The app route adds a step — and an account — before you can travel.</p>
       </div>
       <div class="overflow-x-auto">
         <table class="table-pro">

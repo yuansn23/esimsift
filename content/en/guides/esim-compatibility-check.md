@@ -1,6 +1,8 @@
 ---
 title: "Is Your Phone eSIM Compatible? The 30-Second Check"
 description: "Check eSIM compatibility in 30 seconds: the *#06# EID test, supported iPhones and Androids, and eSIM Sift's searchable phone list."
+hero: "travel-esim-illustration-012.webp"
+hero_alt: "A magnifying glass over a smartphone checking whether the device supports eSIM"
 date: 2026-10-01
 faq_heading: "Will your phone work with a travel eSIM"
 faqs:
@@ -14,43 +16,88 @@ faqs:
     a: "For travel eSIMs, no — the profile comes from the travel provider and registers on foreign partner networks, so your home carrier's opinion doesn't matter. What matters is hardware support and an unlocked device. Your home carrier only enters the picture if you convert your main line itself onto an eSIM, which is a different process."
   - q: "My phone is not on the compatibility list. What now?"
     a: "Don't treat the miss as a verdict. Published lists — ours included — lag behind new releases and miss regional variants. Dial *#06# on the phone itself: if an EID number appears next to the IMEI, the eSIM chip is present and a travel profile will install. No EID means no chip, and the physical SIM route is your fallback."
+  - q: "Do Hong Kong Pixel phones support eSIM?"
+    a: "No. Every Hong Kong Pixel ships without the eSIM chip, across all model years — the exception is not hidden in a specific generation, it is the whole market. If a Pixel was bought in Hong Kong, plan on the physical SIM route or a different handset."
+  - q: "Can an older phone get eSIM added later?"
+    a: "No. The eSIM chip is physical hardware fixed at manufacture — no software update, carrier visit, or repair adds it to a phone that left the factory without one. If *#06# shows no EID, that unit will never take an eSIM profile."
+  - q: "Do cellular iPads work with travel eSIMs?"
+    a: "Often yes — cellular iPads follow the same profile flow as iPhones (buy, scan, install), and many travelers use them as data-only devices abroad. Two cautions — only Wi-Fi + Cellular models have a modem at all, and some travel providers scope plans to phones only, so check the provider's supported-devices page before buying."
 ---
 
-Thirty seconds decides whether any of this site's comparisons apply to you: either your phone has eSIM hardware or it doesn't, and either it's carrier-unlocked or it isn't. Both checks happen on the device itself — no specs hunting required.
+Thirty seconds decides whether any of this site's comparisons apply to you: either your phone has eSIM hardware or it doesn't, and either it's carrier-unlocked or it isn't. Both checks happen on the device itself — no spec-sheet hunting required. But two more traps hide behind that dialer test, and they sink more trips than missing hardware ever does: regional variants (the same model name sold with different internals per market) and provider install routes that quietly add their own requirements. This guide covers all four, and the searchable list of verified models eSIM Sift maintains below the article settles the rest.
 
 ## How to check if your phone supports eSIM
 
-Dial `*#06#` on the phone you'll travel with. The phone displays its IMEI — and on eSIM-capable devices, an **EID** number appears alongside it. EID present means the embedded SIM chip exists. That's the whole hardware test.
+Dial `*#06#` on the phone you'll travel with. The phone displays its IMEI — and on eSIM-capable devices, an **EID** number appears alongside it. EID present means the embedded SIM chip exists. That's the whole hardware test, and it beats any published list for one reason: the dialer reads *your exact unit*, not the model family. Spec pages and store listings describe a model line; the variant that reached your pocket may differ.
 
 The software confirmation, in case you want a second signal:
 
 - **iPhone:** *Settings → Cellular* — if you see **Add eSIM** (or *Add Cellular Plan*), the feature is live.
 - **Android:** *Settings → Network & internet → SIMs* (Samsung: *Connections → SIM manager*) — look for **Add eSIM** or **Download a SIM**.
 
+A few Android skins omit the EID from the `*#06#` screen while still supporting eSIM. If the dialer shows only an IMEI, fall back to the SIM manager screen above — the presence of an "Add eSIM" control there is equivalent proof. For what actually happens after that tap, the [what an eSIM actually is](/guides/what-is-an-esim/) explainer covers profiles in plain terms.
+
 ## Which iPhones support eSIM
 
-Every iPhone from the **XR and XS (2018) onward** has eSIM hardware — that covers the iPhone 11 through 18 families, both SE generations, and the new iPhone Air line. Three caveats worth money: US models from the iPhone 14 onward are eSIM-only (no physical SIM slot at all), mainland-China models have no eSIM (dual physical SIMs instead — the eSIM-only iPhone Air being the exception that works there), and any iPhone still locked to its original carrier will refuse travel profiles until unlocked. Once the hardware qualifies, the [install walkthrough](/guides/how-to-install-esim/) takes about five minutes.
+Every iPhone from the **XR and XS (2018) onward** has eSIM hardware — that covers the iPhone 11 through 18 families, both SE generations, and the new iPhone Air line. Three caveats worth money: US models from the iPhone 14 onward are eSIM-only (no physical SIM slot at all), mainland-China models have no eSIM (dual physical SIMs instead — the eSIM-only iPhone Air being the exception that works there), and any iPhone still locked to its original carrier will refuse travel profiles until unlocked. An iPhone X or older fails the test outright — that generation simply has no chip. Once the hardware qualifies, the [install walkthrough](/guides/how-to-install-esim/) takes about five minutes.
 
 ## Which Android phones support eSIM
 
-Support is patchier on Android and variant-dependent — the same model can differ by country. The safe general rules:
+Support is patchier on Android and variant-dependent — the same model can differ by country of purchase. The safe general rules:
 
-- **Google Pixel:** every model from the **Pixel 3** (2018) onward — except all Hong Kong units.
+- **Google Pixel:** every model from the **Pixel 3** (2018) onward — except all Hong Kong units, plus a few early regional carve-outs on the Pixel 3 and 3a that the variant table below spells out.
 - **Samsung Galaxy:** **S20 series and later** flagships (S/Flip/Fold families) — but the variant decides: US-bought S20 and S21, the S20 FE, Hong Kong Samsungs and Korean-bought S20–S22/Fold/Flip models lack eSIM.
-- **Others:** Motorola, Xiaomi, Oppo, Honor and Nothing flagships from roughly 2020 onward commonly include it; mid-rangers often don't.
+- **Others:** Motorola, Xiaomi, Oppo, Honor and Nothing flagships from roughly 2020 onward commonly include it; mid-rangers often don't. Huawei support exists (P40 onward) but Huawei ships without Google services, which blocks the app-based install route several providers rely on.
 
-The full searchable table below this article lists every model we verified — several hundred phones and tablets across 14 brand groups, with the variant traps called out per brand. The `*#06#` EID test still settles your exact unit in seconds, which is why it's the recommended check rather than any model list.
+Japan's domestic Sharp and Rakuten handsets appear in the table too — relevant if you're buying a [Japan eSIM](/compare/japan/) and shopping for a phone locally.
+
+The full searchable table below this article lists every model we verified — several hundred phones and tablets across brand groups, with the variant traps called out per brand. The `*#06#` EID test still settles your exact unit in seconds, which is why it's the recommended check rather than any model list.
 
 ## What is an EID number and why it matters
 
-The EID (Embedded Identity Document) is the factory identifier of the eSIM chip itself — think IMEI, but for the embedded SIM. Providers use it to bind a purchased profile to your specific device, which is also why a travel eSIM can't be rescanned on a different phone: the profile matches the EID it was issued for. No EID in the `*#06#` screen means no chip, no eSIM, and the [physical SIM route](/guides/esim-vs-physical-sim/) is your fallback.
+The EID (Embedded Identity Document) is the factory identifier of the eSIM chip itself — think IMEI, but for the embedded SIM. Providers use it to bind a purchased profile to your specific device, which is also why a travel eSIM can't be rescanned on a different phone: the profile matches the EID it was issued for. No EID in the `*#06#` screen means no chip, no eSIM, and the [physical SIM route](/guides/esim-vs-physical-sim/) is your fallback. One practical aside — when an install fails and you contact the provider, the EID is the first thing support asks for. Screenshot the `*#06#` screen before you travel; it makes troubleshooting from abroad dramatically faster.
+
+## Why the same phone model can differ by country
+
+Manufacturers build regional hardware variants of a single model. Radio bands, SIM tray layouts — and the eSIM chip itself — follow the market a unit was built for, not the name printed on the box. A Galaxy S21 assembled for the US market and one assembled for Europe share a name, a screen and a camera system, and differ on eSIM. That's not an oversight; it reflects carrier deals, local regulations and dual-SIM conventions in each region.
+
+For travelers the rule that follows is simple: **where the phone was bought matters more than what it's called.** The trap clusters are stable and knowable — US variants of certain Samsung generations, mainland-China iPhones, Hong Kong units across brands, Korean-bought Samsung flagships. The blocked-variant table below this article lists the specific combinations travelers actually hit, and each brand section in the device database flags its own variant watch in amber.
+
+Secondhand marketplaces make this worse, not better: export variants cross borders quietly, and a listing rarely mentions which market the phone was originally sold in. If you didn't buy the phone new yourself, assume nothing and run the EID test — it reads the hardware, which is the only witness that never lies.
+
+## Do tablets and laptops support eSIM
+
+Sometimes, and it's worth knowing where the line sits. **Cellular iPads** (Wi-Fi + Cellular models) carry an eSIM and follow the same install flow as iPhones — scan, activate, done. Wi-Fi-only iPads have no cellular modem at all, so no plan of any kind applies. **Windows laptops** with cellular modems have shipped with eSIM support for years; the check is *Settings → Network & internet → Cellular* — an entry there means a modem exists, and a "Connect to a mobile network" or embedded-SIM option means it's eSIM-capable.
+
+The honest caveat: travel eSIM providers design and price their plans for phones. Most installs on a cellular tablet work identically, but some providers scope plans to phone devices only or exclude tablets from support. Check the provider's supported-devices page before buying a tablet-only plan — the [provider reviews](/esim-providers/) here link each one's official channels.
 
 ## Does a carrier-locked phone block eSIMs
 
-Yes — completely. A phone locked to its original carrier accepts profiles only from that carrier; every travel eSIM install will fail, usually with a vague "cannot activate" error rather than a clear lock message. On iOS 14+, check *Settings → General → About → Carrier Lock*: it must read **No SIM restrictions**. Paid off your device? The unlock is normally a free carrier request — do it a week before departure, not at the gate.
+Yes — completely. A phone locked to its original carrier accepts profiles only from that carrier; every travel eSIM install will fail, usually with a vague "cannot activate" error rather than a clear lock message. On iOS 14+, check *Settings → General → About → Carrier Lock*: it must read **No SIM restrictions**. Paid off your device? The unlock is normally a free carrier request — do it a week before departure, not at the gate. And note the cruel detail: a locked phone *passes* the EID dialer test, because the chip exists. Lock is a software gate on top of hardware, which is why the two checks are separate steps.
 
 ## Half of compatibility is the provider's install route
 
-Hardware is one half of compatibility; the other half is how the provider installs its profiles. Five of the eight providers we track deliver through their own app — which quietly adds an operating-system-version requirement and an account signup on top of the eSIM hardware check. The other three install from a plain QR code or website, no app at all. The provider table on this page shows which is which, because "my phone supports eSIM" can still collide with "this provider needs an app my phone can't run."
+Hardware is one half of compatibility; the other half is how the provider installs its profiles. {{< count-app-providers >}} of the {{< count-providers >}} providers we track deliver through their own app — which quietly adds an operating-system-version requirement and an account signup on top of the eSIM hardware check. The other {{< count-direct-providers >}} install from a plain QR code or website, no app at all. The provider table on this page shows which is which, because "my phone supports eSIM" can still collide with "this provider needs an app my phone can't run."
 
-Confirmed compatible? You're one comparison away from a plan: [all country pages](/compare/), the [provider reviews](/esim-providers/), or the [trip cost calculator](/tools/) that matches a plan to your dates — and if you run two lines at once, the [dual SIM guide](/guides/dual-sim-and-esim/) covers the settings.
+## Why a passing check can still fail at install time
+
+A clean EID screen is necessary but not sufficient. Three failures surface only at install time, and all three are cheaper to discover at home:
+
+- **The lock you hadn't noticed.** Phones bought secondhand, inherited from family, or finished on a contract last year are routinely still locked. The install fails with an activation error that never says "locked."
+- **The app that outgrew your phone.** App-route providers raise their minimum OS version over time; an otherwise-capable phone two major versions behind can be locked out of the install app entirely.
+- **The app store region.** Some provider apps aren't published in every country's store. Travelers with a home-store account abroad sometimes can't download the installer at all.
+
+The fix for all three is the same habit: **install before you fly**, on home Wi-Fi, with days to spare. If anything fails you still have time to unlock the phone, update the OS, or pick a QR-code provider instead — and the [dual SIM guide](/guides/dual-sim-and-esim/) shows how to keep your home line untouched while the eSIM takes over data.
+
+## What to check before buying a used phone for travel
+
+Secondhand phones are the single biggest source of variant surprises, so run the same checks a buyer should demand in writing:
+
+1. **EID via `*#06#`** — on the physical phone, before money changes hands. No EID, no deal, whatever the listing claims.
+2. **Carrier Lock status** — on iOS it must say No SIM restrictions; on Android, confirm with the seller's carrier if the menu doesn't show it.
+3. **The market it was sold in** — ask where the phone was bought new. The model code under *Settings → About phone* identifies the exact variant, and searching that code settles whether its region kept the eSIM chip.
+4. **The OS version** — if you'll use an app-route provider, check the phone can update to a current OS release.
+
+Ten minutes of checking beats discovering a dead profile at the departure gate — and once the phone passes, what data will cost matters more than the handset itself.
+
+Confirmed compatible? You're one comparison away from a plan: [all country pages](/compare/), the [trip cost calculator](/tools/) that matches a plan to your dates, or the [price index](/research/esim-price-index/) ranking every destination we track by real data cost.

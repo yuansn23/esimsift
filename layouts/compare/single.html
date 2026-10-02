@@ -268,13 +268,21 @@
             apply();
           });
         });
+        function refreshProvChips() {
+          provChips.forEach(function (x) { x.classList.toggle('chip-active', activeProv(x.dataset.prov)); });
+        }
         provChips.forEach(function (c) {
           c.addEventListener('click', function () {
             var k = c.dataset.prov;
-            if (provsOff[k]) delete provsOff[k]; else provsOff[k] = 1;
-            // 全关 = 视为全开，避免空表
-            if (provChips.every(function (x) { return provsOff[x.dataset.prov]; })) provsOff = {};
-            c.classList.toggle('chip-active', activeProv(k));
+            if (!anyProvOff()) {
+              // 未过滤时点某个品牌 = 只看它（其余全部关掉），贴合「点 airalo 就看 airalo」的心智
+              provChips.forEach(function (x) { if (x.dataset.prov !== k) provsOff[x.dataset.prov] = 1; });
+            } else {
+              if (provsOff[k]) delete provsOff[k]; else provsOff[k] = 1;
+              // 全关 = 视为全开，避免空表
+              if (provChips.every(function (x) { return provsOff[x.dataset.prov]; })) provsOff = {};
+            }
+            refreshProvChips();
             apply();
           });
         });

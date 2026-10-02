@@ -232,6 +232,20 @@ layouts/partials/country-stats.html  ← 全站唯一聚合入口
 - ✅ 验证：509/509 页合规（标题 48-54×408 + 首页 54 含品牌 + 法务页带 eSIM 词但免检 / 描述全 120-140 且含品牌 / 0 重复标题 0 重复描述）；h2/h3 扫描 0 违规；构建 520 页 0 error 0 warning；regen_meta_brand.py 重跑幂等（0 changed）
 - ⚠ 坑：Hugo `replaceRE "^(.+?): "` 只删匹配段不删尾部——要删到行尾须 `":.*$"`；重跑脚本需识别自己上一轮产出的新家族形态（"Which One Is Cheaper"/"Prices, Data and Verdict"），检测条件按子串宽匹配保幂等
 
+## 已完成（批次G：guides 深度重写 + 设备库 UX + 全站首屏图 + /research/ 枢纽升级 + 全站去写死，2026-10-02）
+
+用户四点诉求：① compat 设备列表排版美化 ② Basics & how-to 每篇首屏配图（SEO 合规）③ guides 内容信息增量不足以赢竞品排名 ④ 新增国家时不得回改写死的 "50 国/8 家"。
+
+- ✅ **guides 5 篇全部深度重写**（~800 词 → 1677-1955 词；2 并行 agent + compat 手写——agent 跑 API 内容过滤 400 挂了一次，改手写；备份 `_guides_backup_20261002/` 在**项目根**）：每篇新增竞品没有的深度段（what-is：eUICC/profile 之辨+安装≠激活≠生效+安全节；vs-physical：7 行对照表+LTE 上限诚实说明+多国行程；install：SM-DP+ 手动录入+落地激活流程+转机规则+dual-sim：双线来电/iMessage/WhatsApp 走数据线+Wi-Fi Calling 陷阱+3 个账单惊吓场景逐一对应开关；compat：区域变体机制+平板笔电+验机清单）；FAQ 4-5 → 7-8 条；内链 9-14 条/篇（短锚文本、全轮换）；front matter 六键逐字节保留（diff 验证）
+- ✅ **首屏配图**：5 guides + research hub 各一张（flat-vector webp 2848×1470，从 static/img/esim 133 张里按主题挑，避开重复意象）；`hero`+`hero_alt` 进 front matter；guides/single.html 与 research/list.html 渲染 `<figure>`：imageConfig 显式宽高（CLS）+ eager + fetchpriority=high（LCP）+ 描述性 alt；head.html `og:image` 按页取 hero
+- ✅ **compat 设备库 UX**：14 品牌从平铺 chips 改**品牌分组卡片**（header 品牌名+家族+年代+计数徽章、amber 变体警示内联、chips 悬停态）；搜索框 + 品牌 tab（aria-pressed 态切换）+ 空段隐藏 + aria-live 计数
+- ✅ **/research/ 枢纽升级**：首屏两栏（左文字+统计瓦片，右 hero 图）；新增**区域价格联赛**（countries.toml region 聚合各国最优 $/GB 的均值——欧洲 $0.44 最便宜 / 非洲中东 $1.44 最贵这类结论没有竞品算过）；最贵 vs 最便宜**价差叙事**（6× more in Kenya than in France，全计算）；**问答路由卡 ×6**（搜索意图 → 对应研究/工具页）；FAQ ×6 + FAQPage schema；正文 3 段（computed-not-written 立场）
+- ✅ **全站去写死三层架构**（新增国家零回改）：模板层 `{{ len hugo.Data.* }}`（7 处布局改造）+ 正文层 4 个计数 shortcode（count-countries/providers/app-providers/direct-providers）+ front matter 层无数字措辞（9 处重写；国家页 seo.description 例外——regen 脚本再生）；**新守卫 `check_hardcoded.py`**（553 文件 0 违规）
+- ✅ **新守卫 `check_headings.py`**：h2/h3 标点扫描固化成脚本（以前是临时 python -c）
+- ⚠ 坑：**`content/` 下 `_` 前缀目录不会被 Hugo 隐藏**——备份目录曾放 content/en/ 下导致渲染出 6 个重复内容页（520→527）；备份必须放项目根或其他 Hugo 不挂载的位置。另一坑：重构 list.html 时聚合键 `v`/`minPerGB` 改名不彻底 → `$%!f(<nil>)` 静默渲染（构建不报错），grep `%!f` 验记入红线
+- ✅ 修复：esim-price-index 标题 56>54 → "eSIM Price Index 2026: Every Country Ranked by Cost"(51)，md+regen MAP 双处同步
+- ✅ 验证：520 页 0 error 0 warning；audit_meta 509 页 0 违规 0 重复；h2/h3 0 违规；check_hardcoded OK；sitemap 508 URL 无备份泄漏；research hub 5 区域卡/6 问答卡/6 FAQ/价差行全部渲染
+
 ## 待办（按优先级）
 
 ### P-2 蓝图 Phase 2（等 P-A 真实数据后；见 docs/keyword-map.md 预留槽位）
@@ -240,8 +254,8 @@ layouts/partials/country-stats.html  ← 全站唯一聚合入口
 - [ ] /networks/{carrier}/ 运营商页、/devices/{device}/ 设备页
 - [ ] tools 再加 2 个、sitemap 分片（>1000 URL 时）、国家页 authority 外链
 
-### P-A 数据采集（最大决策点 — 除 JP-Roami 外全部 ⚠ SAMPLE）
-- [ ] 抓取队列收尾：yesim / ubigi / roamic / alosim（esimdb，后台队列中）→ holafly（官网 PDP）→ roami 49 国（自家数据，roamiapp.com 或用户提供；airalo/saily 已完成 50/50 入库）
+### P-A 数据收尾（价格已全真 ✅，剩非价格项）
+- [x] ~~**抓取队列**~~ 已全量完成：8 品牌 × 50 国 = 400 raw JSON = 8776 条真实套餐（esimdb 七家 + holafly 官网 PDP + roami 本地提取）；`validate.py` 0 error 0 warning，无 SAMPLE
 - [ ] networks 逐品牌补真（esimdb 不展示网络名；airalo.com 国家页有 host networks 可抓，其余品牌官网同理）
 - [x] ~~**折扣码换真**~~（2026-10-01 完成，见上轮日志；遗留：3 家 promo_expires 占位 2027-12-31 需上线前复核）
 - [ ] 四家联盟深链规则补进 `[params.outbound.targets.*]` 的 `country_path` + `countries.toml slugs`（当前 `<slug>-esim` 是模式假设）

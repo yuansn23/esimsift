@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="eSIM Sift">
+  <rect width="32" height="32" rx="7.5" fill="#1A7E6B"/>
+  <path d="M8 8h16l-5.5 7v5h-5v-5L8 8z" fill="#FFFFFF"/>
+  <circle cx="11.5" cy="24.5" r="1.6" fill="#FFFFFF"/>
+  <circle cx="16" cy="24.5" r="1.6" fill="#FFFFFF"/>
+  <circle cx="20.5" cy="24.5" r="1.6" fill="#FFFFFF"/>
+</svg>
