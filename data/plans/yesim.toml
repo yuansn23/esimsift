@@ -4,7 +4,7 @@
 
 [AR]
 checked = "2026-09-30"
-networks = []
+networks = ["Personal", "Claro", "Movistar"]
 
 [[AR.plans]]
 name = "199MB / 1 Day"
@@ -260,7 +260,7 @@ price = 89.59
 
 [AU]
 checked = "2026-09-30"
-networks = []
+networks = ["Telstra", "Optus", "Vodafone"]
 
 [[AU.plans]]
 name = "399MB / 1 Day"
@@ -523,7 +523,7 @@ price = 64.64
 
 [AT]
 checked = "2026-09-30"
-networks = []
+networks = ["A1", "Magenta", "Drei"]
 
 [[AT.plans]]
 name = "500MB / 1 Day"
@@ -779,7 +779,7 @@ price = 64.64
 
 [BE]
 checked = "2026-09-30"
-networks = []
+networks = ["Proximus", "Orange", "Base"]
 
 [[BE.plans]]
 name = "500MB / 1 Day"
@@ -1035,7 +1035,7 @@ price = 64.64
 
 [BR]
 checked = "2026-09-30"
-networks = []
+networks = ["Vivo", "Claro", "TIM"]
 
 [[BR.plans]]
 name = "199MB / 1 Day"
@@ -1291,7 +1291,7 @@ price = 89.59
 
 [CA]
 checked = "2026-09-30"
-networks = []
+networks = ["Bell", "Rogers", "Telus"]
 
 [[CA.plans]]
 name = "199MB / 1 Day"
@@ -1547,7 +1547,7 @@ price = 81.65
 
 [CN]
 checked = "2026-09-30"
-networks = []
+networks = ["China Mobile", "China Unicom", "China Telecom"]
 
 [[CN.plans]]
 name = "100MB / 1 Day"
@@ -1810,7 +1810,7 @@ price = 71.45
 
 [CO]
 checked = "2026-09-30"
-networks = []
+networks = ["Claro", "Movistar", "Tigo"]
 
 [[CO.plans]]
 name = "1GB / 30 Days"
@@ -2059,7 +2059,7 @@ price = 136.09
 
 [CR]
 checked = "2026-09-30"
-networks = []
+networks = ["Kolbi", "Claro", "Movistar"]
 
 [[CR.plans]]
 name = "1GB / 30 Days"
@@ -2308,7 +2308,7 @@ price = 89.59
 
 [HR]
 checked = "2026-09-30"
-networks = []
+networks = ["Hrvatski Telekom", "A1 Hrvatska"]
 
 [[HR.plans]]
 name = "500MB / 1 Day"
@@ -2564,7 +2564,7 @@ price = 64.64
 
 [CZ]
 checked = "2026-09-30"
-networks = []
+networks = ["O2", "T-Mobile", "Vodafone"]
 
 [[CZ.plans]]
 name = "Czech Republic"
@@ -2820,7 +2820,7 @@ price = 64.64
 
 [EG]
 checked = "2026-09-30"
-networks = []
+networks = ["Vodafone Egypt", "Orange Egypt", "Etisalat Misr"]
 
 [[EG.plans]]
 name = "399MB / 1 Day"
@@ -3090,7 +3090,7 @@ price = 78.25
 
 [FJ]
 checked = "2026-09-30"
-networks = []
+networks = ["Vodafone Fiji", "Digicel Fiji"]
 
 [[FJ.plans]]
 name = "Unlimited / 1 Day"
@@ -3157,7 +3157,7 @@ price = 62.37
 
 [FR]
 checked = "2026-09-30"
-networks = []
+networks = ["Orange", "SFR", "Bouygues"]
 
 [[FR.plans]]
 name = "500MB / 1 Day"
@@ -3413,7 +3413,7 @@ price = 64.64
 
 [GE]
 checked = "2026-09-30"
-networks = []
+networks = ["Magti", "Silknet", "Beeline"]
 
 [[GE.plans]]
 name = "300MB / 1 Day"
@@ -3676,7 +3676,7 @@ price = 64.64
 
 [DE]
 checked = "2026-09-30"
-networks = []
+networks = ["Telekom", "Vodafone", "O2"]
 
 [[DE.plans]]
 name = "500MB / 1 Day"
@@ -3932,7 +3932,7 @@ price = 64.64
 
 [GR]
 checked = "2026-09-30"
-networks = []
+networks = ["Cosmote", "Vodafone", "Wind"]
 
 [[GR.plans]]
 name = "500MB / 1 Day"
@@ -4188,7 +4188,7 @@ price = 64.64
 
 [HK]
 checked = "2026-09-30"
-networks = []
+networks = ["CSL", "3HK", "SmarTone"]
 
 [[HK.plans]]
 name = "Hong Kong (HK)"
@@ -4444,7 +4444,7 @@ price = 64.64
 
 [IS]
 checked = "2026-09-30"
-networks = []
+networks = ["Siminn", "Vodafone", "Noa"]
 
 [[IS.plans]]
 name = "500MB / 1 Day"
@@ -4518,7 +4518,7 @@ price = 48.76
 
 [IN]
 checked = "2026-09-30"
-networks = []
+networks = ["Jio", "Airtel"]
 
 [[IN.plans]]
 name = "300MB / 1 Day"
@@ -4781,7 +4781,7 @@ price = 82.22
 
 [ID]
 checked = "2026-09-30"
-networks = []
+networks = ["Telkomsel", "Indosat", "XL Axiata"]
 
 [[ID.plans]]
 name = "500MB / 1 Day"
@@ -5044,7 +5044,7 @@ price = 64.64
 
 [IE]
 checked = "2026-09-30"
-networks = []
+networks = ["Vodafone", "Three", "Eir"]
 
 [[IE.plans]]
 name = "500MB / 1 Day"
@@ -5300,7 +5300,7 @@ price = 64.64
 
 [IL]
 checked = "2026-09-30"
-networks = []
+networks = ["Cellcom", "Partner", "Pelephone"]
 
 [[IL.plans]]
 name = "500MB / 1 Day"
@@ -5556,7 +5556,7 @@ price = 62.37
 
 [IT]
 checked = "2026-09-30"
-networks = []
+networks = ["TIM", "Vodafone", "WindTre"]
 
 [[IT.plans]]
 name = "500MB / 1 Day"
@@ -5812,7 +5812,7 @@ price = 64.64
 
 [JP]
 checked = "2026-09-30"
-networks = []
+networks = ["NTT Docomo", "SoftBank", "KDDI"]
 
 [[JP.plans]]
 name = "Unlimited / 1 Day"
@@ -6061,7 +6061,7 @@ price = 62.37
 
 [KE]
 checked = "2026-09-30"
-networks = []
+networks = ["Safaricom", "Airtel Kenya", "Telkom Kenya"]
 
 [[KE.plans]]
 name = "1GB / 30 Days"
@@ -6310,7 +6310,7 @@ price = 136.09
 
 [MO]
 checked = "2026-09-30"
-networks = []
+networks = ["CTM", "3 Macau", "China Telecom"]
 
 [[MO.plans]]
 name = "Macau"
@@ -6377,7 +6377,7 @@ price = 100.93
 
 [MY]
 checked = "2026-09-30"
-networks = []
+networks = ["Maxis", "Celcom", "DiGi"]
 
 [[MY.plans]]
 name = "500MB / 1 Day"
@@ -6633,7 +6633,7 @@ price = 64.64
 
 [MX]
 checked = "2026-09-30"
-networks = []
+networks = ["Telcel", "AT&T Mexico", "Movistar"]
 
 [[MX.plans]]
 name = "1GB / 30 Days"
@@ -6882,7 +6882,7 @@ price = 89.59
 
 [MA]
 checked = "2026-09-30"
-networks = []
+networks = ["Maroc Telecom", "Orange Maroc", "Inwi"]
 
 [[MA.plans]]
 name = "104MB / 1 Day"
@@ -7145,7 +7145,7 @@ price = 106.60
 
 [NL]
 checked = "2026-09-30"
-networks = []
+networks = ["KPN", "Vodafone", "Odido"]
 
 [[NL.plans]]
 name = "500MB / 1 Day"
@@ -7401,7 +7401,7 @@ price = 64.64
 
 [NZ]
 checked = "2026-09-30"
-networks = []
+networks = ["Spark", "One NZ", "2degrees"]
 
 [[NZ.plans]]
 name = "500MB / 1 Day"
@@ -7657,7 +7657,7 @@ price = 64.64
 
 [PE]
 checked = "2026-09-30"
-networks = []
+networks = ["Claro", "Movistar", "Entel"]
 
 [[PE.plans]]
 name = "1GB / 30 Days"
@@ -7724,7 +7724,7 @@ price = 100.93
 
 [PH]
 checked = "2026-09-30"
-networks = []
+networks = ["Globe", "Smart"]
 
 [[PH.plans]]
 name = "500MB / 1 Day"
@@ -7987,7 +7987,7 @@ price = 61.81
 
 [PL]
 checked = "2026-09-30"
-networks = []
+networks = ["Orange", "Play", "Plus", "T-Mobile"]
 
 [[PL.plans]]
 name = "500MB / 1 Day"
@@ -8243,7 +8243,7 @@ price = 64.64
 
 [PT]
 checked = "2026-09-30"
-networks = []
+networks = ["MEO", "NOS", "Vodafone"]
 
 [[PT.plans]]
 name = "500MB / 1 Day"
@@ -8499,7 +8499,7 @@ price = 64.64
 
 [QA]
 checked = "2026-09-30"
-networks = []
+networks = ["Ooredoo", "Vodafone Qatar"]
 
 [[QA.plans]]
 name = "500MB / 1 Day"
@@ -8762,7 +8762,7 @@ price = 94.13
 
 [SA]
 checked = "2026-09-30"
-networks = []
+networks = ["STC", "Mobily", "Zain"]
 
 [[SA.plans]]
 name = "199MB / 1 Day"
@@ -9025,7 +9025,7 @@ price = 100.93
 
 [SG]
 checked = "2026-09-30"
-networks = []
+networks = ["Singtel", "StarHub", "M1"]
 
 [[SG.plans]]
 name = "500MB / 1 Day"
@@ -9281,7 +9281,7 @@ price = 64.64
 
 [ZA]
 checked = "2026-09-30"
-networks = []
+networks = ["Vodacom", "MTN", "Telkom"]
 
 [[ZA.plans]]
 name = "199MB / 1 Day"
@@ -9348,7 +9348,7 @@ price = 61.24
 
 [KR]
 checked = "2026-09-30"
-networks = []
+networks = ["SK Telecom", "KT", "LG U+"]
 
 [[KR.plans]]
 name = "1GB / 30 Days"
@@ -9590,7 +9590,7 @@ price = 64.64
 
 [ES]
 checked = "2026-09-30"
-networks = []
+networks = ["Movistar", "Vodafone", "Orange", "Yoigo"]
 
 [[ES.plans]]
 name = "500MB / 1 Day"
@@ -9846,7 +9846,7 @@ price = 64.64
 
 [CH]
 checked = "2026-09-30"
-networks = []
+networks = ["Swisscom", "Sunrise", "Salt"]
 
 [[CH.plans]]
 name = "500MB / 1 Day"
@@ -10102,7 +10102,7 @@ price = 64.64
 
 [TW]
 checked = "2026-09-30"
-networks = []
+networks = ["Chunghwa Telecom", "Taiwan Mobile", "FarEasTone"]
 
 [[TW.plans]]
 name = "500MB / 1 Day"
@@ -10183,7 +10183,7 @@ price = 44.23
 
 [TH]
 checked = "2026-09-30"
-networks = []
+networks = ["AIS", "True Move", "DTAC"]
 
 [[TH.plans]]
 name = "500MB / 1 Day"
@@ -10446,7 +10446,7 @@ price = 47.63
 
 [TR]
 checked = "2026-09-30"
-networks = []
+networks = ["Turkcell", "Vodafone", "Turk Telekom"]
 
 [[TR.plans]]
 name = "North Cyprus"
@@ -10730,7 +10730,7 @@ price = 64.64
 
 [AE]
 checked = "2026-09-30"
-networks = []
+networks = ["Etisalat", "du"]
 
 [[AE.plans]]
 name = "United Arab Emirates (UAE)"
@@ -10993,7 +10993,7 @@ price = 112.27
 
 [GB]
 checked = "2026-09-30"
-networks = []
+networks = ["EE", "Vodafone", "O2", "Three"]
 
 [[GB.plans]]
 name = "United Kingdom (UK)"
@@ -11249,7 +11249,7 @@ price = 64.64
 
 [US]
 checked = "2026-09-30"
-networks = []
+networks = ["T-Mobile", "AT&T", "Verizon"]
 
 [[US.plans]]
 name = "500MB / 1 Day"
@@ -11505,7 +11505,7 @@ price = 51.03
 
 [VN]
 checked = "2026-09-30"
-networks = []
+networks = ["Viettel", "Vinaphone", "Mobifone"]
 
 [[VN.plans]]
 name = "300MB / 1 Day"

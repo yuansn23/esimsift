@@ -1,0 +1,499 @@
+[
+ {
+  "iso": "JP",
+  "name": "Japan",
+  "slug": "japan",
+  "carriers": [
+   "NTT Docomo",
+   "SoftBank",
+   "KDDI"
+  ]
+ },
+ {
+  "iso": "US",
+  "name": "United States",
+  "slug": "united-states",
+  "carriers": [
+   "T-Mobile",
+   "AT&T",
+   "Verizon"
+  ]
+ },
+ {
+  "iso": "GB",
+  "name": "United Kingdom",
+  "slug": "united-kingdom",
+  "carriers": [
+   "EE",
+   "Vodafone",
+   "O2",
+   "Three"
+  ]
+ },
+ {
+  "iso": "FR",
+  "name": "France",
+  "slug": "france",
+  "carriers": [
+   "Orange",
+   "SFR",
+   "Bouygues"
+  ]
+ },
+ {
+  "iso": "IT",
+  "name": "Italy",
+  "slug": "italy",
+  "carriers": [
+   "TIM",
+   "Vodafone",
+   "WindTre"
+  ]
+ },
+ {
+  "iso": "TH",
+  "name": "Thailand",
+  "slug": "thailand",
+  "carriers": [
+   "AIS",
+   "True Move",
+   "DTAC"
+  ]
+ },
+ {
+  "iso": "KR",
+  "name": "South Korea",
+  "slug": "south-korea",
+  "carriers": [
+   "SK Telecom",
+   "KT",
+   "LG U+"
+  ]
+ },
+ {
+  "iso": "SG",
+  "name": "Singapore",
+  "slug": "singapore",
+  "carriers": [
+   "Singtel",
+   "StarHub",
+   "M1"
+  ]
+ },
+ {
+  "iso": "ES",
+  "name": "Spain",
+  "slug": "spain",
+  "carriers": [
+   "Movistar",
+   "Vodafone",
+   "Orange",
+   "Yoigo"
+  ]
+ },
+ {
+  "iso": "DE",
+  "name": "Germany",
+  "slug": "germany",
+  "carriers": [
+   "Telekom",
+   "Vodafone",
+   "O2"
+  ]
+ },
+ {
+  "iso": "AU",
+  "name": "Australia",
+  "slug": "australia",
+  "carriers": [
+   "Telstra",
+   "Optus",
+   "Vodafone"
+  ]
+ },
+ {
+  "iso": "TW",
+  "name": "Taiwan",
+  "slug": "taiwan",
+  "carriers": [
+   "Chunghwa Telecom",
+   "Taiwan Mobile",
+   "FarEasTone"
+  ]
+ },
+ {
+  "iso": "HK",
+  "name": "Hong Kong",
+  "slug": "hong-kong",
+  "carriers": [
+   "CSL",
+   "3HK",
+   "SmarTone"
+  ]
+ },
+ {
+  "iso": "MO",
+  "name": "Macao",
+  "slug": "macao",
+  "carriers": [
+   "CTM",
+   "3 Macau",
+   "China Telecom"
+  ]
+ },
+ {
+  "iso": "MY",
+  "name": "Malaysia",
+  "slug": "malaysia",
+  "carriers": [
+   "Maxis",
+   "Celcom",
+   "DiGi"
+  ]
+ },
+ {
+  "iso": "VN",
+  "name": "Vietnam",
+  "slug": "vietnam",
+  "carriers": [
+   "Viettel",
+   "Vinaphone",
+   "Mobifone"
+  ]
+ },
+ {
+  "iso": "ID",
+  "name": "Indonesia",
+  "slug": "indonesia",
+  "carriers": [
+   "Telkomsel",
+   "Indosat",
+   "XL Axiata"
+  ]
+ },
+ {
+  "iso": "PH",
+  "name": "Philippines",
+  "slug": "philippines",
+  "carriers": [
+   "Globe",
+   "Smart"
+  ]
+ },
+ {
+  "iso": "IN",
+  "name": "India",
+  "slug": "india",
+  "carriers": [
+   "Jio",
+   "Airtel"
+  ]
+ },
+ {
+  "iso": "CN",
+  "name": "China",
+  "slug": "china",
+  "carriers": [
+   "China Mobile",
+   "China Unicom",
+   "China Telecom"
+  ]
+ },
+ {
+  "iso": "PT",
+  "name": "Portugal",
+  "slug": "portugal",
+  "carriers": [
+   "MEO",
+   "NOS",
+   "Vodafone"
+  ]
+ },
+ {
+  "iso": "NL",
+  "name": "Netherlands",
+  "slug": "netherlands",
+  "carriers": [
+   "KPN",
+   "Vodafone",
+   "Odido"
+  ]
+ },
+ {
+  "iso": "BE",
+  "name": "Belgium",
+  "slug": "belgium",
+  "carriers": [
+   "Proximus",
+   "Orange",
+   "Base"
+  ]
+ },
+ {
+  "iso": "CH",
+  "name": "Switzerland",
+  "slug": "switzerland",
+  "carriers": [
+   "Swisscom",
+   "Sunrise",
+   "Salt"
+  ]
+ },
+ {
+  "iso": "AT",
+  "name": "Austria",
+  "slug": "austria",
+  "carriers": [
+   "A1",
+   "Magenta",
+   "Drei"
+  ]
+ },
+ {
+  "iso": "GR",
+  "name": "Greece",
+  "slug": "greece",
+  "carriers": [
+   "Cosmote",
+   "Vodafone",
+   "Wind"
+  ]
+ },
+ {
+  "iso": "TR",
+  "name": "Turkiye",
+  "slug": "turkiye",
+  "carriers": [
+   "Turkcell",
+   "Vodafone",
+   "Turk Telekom"
+  ]
+ },
+ {
+  "iso": "IE",
+  "name": "Ireland",
+  "slug": "ireland",
+  "carriers": [
+   "Vodafone",
+   "Three",
+   "Eir"
+  ]
+ },
+ {
+  "iso": "PL",
+  "name": "Poland",
+  "slug": "poland",
+  "carriers": [
+   "Orange",
+   "Play",
+   "Plus",
+   "T-Mobile"
+  ]
+ },
+ {
+  "iso": "CZ",
+  "name": "Czechia",
+  "slug": "czechia",
+  "carriers": [
+   "O2",
+   "T-Mobile",
+   "Vodafone"
+  ]
+ },
+ {
+  "iso": "HR",
+  "name": "Croatia",
+  "slug": "croatia",
+  "carriers": [
+   "Hrvatski Telekom",
+   "A1 Hrvatska"
+  ]
+ },
+ {
+  "iso": "IS",
+  "name": "Iceland",
+  "slug": "iceland",
+  "carriers": [
+   "Siminn",
+   "Vodafone",
+   "Noa"
+  ]
+ },
+ {
+  "iso": "GE",
+  "name": "Georgia",
+  "slug": "georgia",
+  "carriers": [
+   "Magti",
+   "Silknet",
+   "Beeline"
+  ]
+ },
+ {
+  "iso": "CA",
+  "name": "Canada",
+  "slug": "canada",
+  "carriers": [
+   "Bell",
+   "Rogers",
+   "Telus"
+  ]
+ },
+ {
+  "iso": "MX",
+  "name": "Mexico",
+  "slug": "mexico",
+  "carriers": [
+   "Telcel",
+   "AT&T Mexico",
+   "Movistar"
+  ]
+ },
+ {
+  "iso": "BR",
+  "name": "Brazil",
+  "slug": "brazil",
+  "carriers": [
+   "Vivo",
+   "Claro",
+   "TIM"
+  ]
+ },
+ {
+  "iso": "AR",
+  "name": "Argentina",
+  "slug": "argentina",
+  "carriers": [
+   "Personal",
+   "Claro",
+   "Movistar"
+  ]
+ },
+ {
+  "iso": "CO",
+  "name": "Colombia",
+  "slug": "colombia",
+  "carriers": [
+   "Claro",
+   "Movistar",
+   "Tigo"
+  ]
+ },
+ {
+  "iso": "PE",
+  "name": "Peru",
+  "slug": "peru",
+  "carriers": [
+   "Claro",
+   "Movistar",
+   "Entel"
+  ]
+ },
+ {
+  "iso": "CR",
+  "name": "Costa Rica",
+  "slug": "costa-rica",
+  "carriers": [
+   "Kolbi",
+   "Claro",
+   "Movistar"
+  ]
+ },
+ {
+  "iso": "AE",
+  "name": "United Arab Emirates",
+  "slug": "united-arab-emirates",
+  "carriers": [
+   "Etisalat",
+   "du"
+  ]
+ },
+ {
+  "iso": "SA",
+  "name": "Saudi Arabia",
+  "slug": "saudi-arabia",
+  "carriers": [
+   "STC",
+   "Mobily",
+   "Zain"
+  ]
+ },
+ {
+  "iso": "QA",
+  "name": "Qatar",
+  "slug": "qatar",
+  "carriers": [
+   "Ooredoo",
+   "Vodafone Qatar"
+  ]
+ },
+ {
+  "iso": "IL",
+  "name": "Israel",
+  "slug": "israel",
+  "carriers": [
+   "Cellcom",
+   "Partner",
+   "Pelephone"
+  ]
+ },
+ {
+  "iso": "EG",
+  "name": "Egypt",
+  "slug": "egypt",
+  "carriers": [
+   "Vodafone Egypt",
+   "Orange Egypt",
+   "Etisalat Misr"
+  ]
+ },
+ {
+  "iso": "MA",
+  "name": "Morocco",
+  "slug": "morocco",
+  "carriers": [
+   "Maroc Telecom",
+   "Orange Maroc",
+   "Inwi"
+  ]
+ },
+ {
+  "iso": "ZA",
+  "name": "South Africa",
+  "slug": "south-africa",
+  "carriers": [
+   "Vodacom",
+   "MTN",
+   "Telkom"
+  ]
+ },
+ {
+  "iso": "KE",
+  "name": "Kenya",
+  "slug": "kenya",
+  "carriers": [
+   "Safaricom",
+   "Airtel Kenya",
+   "Telkom Kenya"
+  ]
+ },
+ {
+  "iso": "NZ",
+  "name": "New Zealand",
+  "slug": "new-zealand",
+  "carriers": [
+   "Spark",
+   "One NZ",
+   "2degrees"
+  ]
+ },
+ {
+  "iso": "FJ",
+  "name": "Fiji",
+  "slug": "fiji",
+  "carriers": [
+   "Vodafone Fiji",
+   "Digicel Fiji"
+  ]
+ }
+]

@@ -1,7 +1,7 @@
 # eSIM Sift 项目文档（交接手册）
 
 > **用途**：隔几天回来接着干时，看这一份就能接上。写了什么、还缺什么、每个文件干嘛的、常见操作怎么做。
-> **最后更新**：2026-10-02 批次G（guides 5 篇深度重写 + 首屏配图 / compat 设备库 UX / research 枢纽区域联赛+问答路由 / 全站去写死三层架构 + 双守卫脚本）
+> **最后更新**：2026-10-02 批次G（guides 5 篇深度重写 + 首屏配图 / compat 设备库 UX / research 枢纽区域联赛+问答路由 / 全站去写死三层架构 + 双守卫脚本）+ **P0 host-networks 补真**（8 品牌 × 50 国 `networks` 全量 = 各国运营商，`backfill_networks_uniform.py`，见 §4.3）
 > **配套文件**：`STATUS.md`（按时间顺序的施工日志，看"当时为什么这么做"）、`docs/keyword-map.md`（关键词→URL 唯一映射表，上新页型前必查）。
 
 ---
@@ -17,10 +17,10 @@
 | 品牌 | 8 家（airalo / holafly / saily / yesim / ubigi / roamic / alosim + 自家 roami；**roami ≠ roamic，两个不同品牌**；nomad 已全量退场） |
 | 国家 | 50 国（`data/countries.toml` 锁定） |
 | 套餐总数 | **8776 条真实数据**：airalo 985 / holafly 298（官网 PDP 直抓）/ saily 471 / yesim 1652 / ubigi 483（含 80 条订阅）/ roamic 1791 / alosim 915 / roami 1181 |
-| 构建 | **520 页，0 error**；sitemap 508 URL |
+| 构建 | **525 页，0 error**；sitemap 508 URL |
 | 页面构成 | 50 国家页 + 400 品牌×国家子页 + 28 品牌对决页 + **1 对决枢纽页 /compare/matchups/** + 8 品牌详情页 + tools/esim-deals/research×3/guides×5/about 等静态页 |
 | 数据验证 | `scripts/validate.py` 8 组检查，0 error 0 warning |
-| 增信数据 | `data/devices.toml`（14 品牌 351 机型 + 12 不支持条目，2026-10 核对）+ `data/networkreports.toml`（45 国 Opensignal/Ookla 引用 + 50 国 Global Index 深链） |
+| 增信数据 | `data/devices.toml`（14 品牌 351 机型 + 12 不支持条目，2026-10 核对）+ `data/networkreports.toml`（44 国 Opensignal + 50 国 Global Index 深链）+ **`networks` 补真**（8 品牌 × 50 国 = 各国运营商，2026-10-02） |
 | 上线状态 | **未部署**。折扣码已换真（roami web20 / saily VEEPEE25 / ubigi WELCOME10，其余 5 家官方无公开码）、联盟深链是模式假设、GA4 是占位、logo 8/8 全量接入 |
 
 ---
@@ -39,7 +39,7 @@ esimsift/
 │   ├── plans/<brand>.toml # 每品牌×国家套餐（8 个文件）
 │   ├── carriers.toml      # 50 国运营商画像 + 城市明细
 │   ├── devices.toml       # eSIM 兼容设备库（14 品牌 351 机型 + 12 不支持条目）
-│   ├── networkreports.toml# 45 国 Opensignal/Ookla 独立引用（⚠ 文件名禁连字符）
+│   ├── networkreports.toml# 44 国 Opensignal 独立引用（⚠ 文件名禁连字符）
 │   └── faqs/<iso>.toml    # 50 国 FAQ（49 个 + jp 样板）
 ├── content/en/            # 页面正文（哪些手写哪些生成，见 §4.7）
 ├── layouts/               # 模板（数字全部实时推导）
@@ -59,11 +59,12 @@ esimsift/
 - ✅ 套餐建模规则（`toml_write.py`，详见 §4.3）：固定量 / 日额型 / unlimited（限速徽章识别）/ Ubigi Monthly·Yearly 订阅 / holafly FUP 透传 / 通用名重写
 - ✅ `carriers.toml`：50 国 ~154 条运营商画像（速度区间/制式/覆盖特性）+ 50 国 `[ISO.info].cities` 主要城市 + 18 个关键市场 54 条逐运营商 strong/weak
 - ✅ `devices.toml`（2026-10-01）：eSIM 兼容设备库 —— 14 品牌组 351 机型 + 9 组变体警告 + 12 条明确不支持；compatibility 指南页交互块（搜索/tab/chips）live 计数，增删机型无需改模板
-- ✅ `networkreports.toml`（2026-10-01）：45 国独立网络数据引用 —— Opensignal 获奖≤3 事实卡 + Ookla 新闻式归属卡（页脚禁商业转载其数据）+ Global Index 深链卡 50 国兜底；HK/MO/TR slug 覆盖，IS/GE/KE/MO/CN 无报告自动降级 index-only
+- ✅ `networkreports.toml`（2026-10-01）：44 国 Opensignal 独立引用 —— 获奖≤3 事实卡 + Ookla 新闻式归属卡（页脚禁商业转载其数据）+ Global Index 深链卡 50 国兜底；HK/MO/TR slug 覆盖，IS/GE/KE/MO/CN/FJ 无报告自动降级 index-only
+- ✅ **`plans/*.toml` `networks` 补真（P0，2026-10-02）**：8 品牌 × 50 国 = 400 条 host-network 全量填充。规则 = **运营商是国家属性、与品牌无关**（同国同运营商），故直接取自 `countries.toml.carriers`（已验证与 `carriers.toml` profiles.name 逐条一致，0 mismatch），`scripts/backfill_networks_uniform.py` 一键幂等填充
 - ✅ `validate.py` 8 组数据检查挂入 `npm run build`（坏数据进不了构建）
 
 ### 2.2 页面型
-- ✅ **国家页** `/compare/<country>/`（50 页，全站核心）：TL;DR 三卡（按预算/性价比/长停留推荐，CTA 进站内子页）→ 13 模块：全套餐对比表（排序 + 有效期 chips + **品牌多选 chips + Unlimited only 开关**，纯客户端 data-* 过滤）、怎么选（按用量分档）、按人群×按时长 8 卡推荐矩阵、品牌口碑区（logo+名可点进品牌页）、运营商覆盖区（速度档位 + 主要城市 + 逐运营商优劣势）、**独立网络数据区**（Opensignal 事实卡 + Ookla 归属卡 + Global Index 深链卡，45 国核实 + 无报告国降级 index-only）、FAQ、出站表格、**「First time using an eSIM?」guides 五卡条**（锚文本按 `mod (len slug) 3` 三档轮换防同质化）
+- ✅ **国家页** `/compare/<country>/`（50 页，全站核心）：TL;DR 三卡（按预算/性价比/长停留推荐，CTA 进站内子页）→ 13 模块：全套餐对比表（排序 + 有效期 chips + **品牌多选 chips + Unlimited only 开关**，纯客户端 data-* 过滤）、怎么选（按用量分档）、按人群×按时长 8 卡推荐矩阵、品牌口碑区（logo+名可点进品牌页）、运营商覆盖区（速度档位 + 主要城市 + 逐运营商优劣势）、**独立网络数据区**（Opensignal 事实卡 + Ookla 归属卡 + Global Index 深链卡，44 国核实 + 无报告国降级 index-only）、FAQ、出站表格、**「First time using an eSIM?」guides 五卡条**（锚文本按 `mod (len slug) 3` 三档轮换防同质化）
 - ✅ **品牌×国家子页** `/compare/<country>/<brand>/`（400 页，`gen_provider_pages.py` 生成，描述数字直读数据）
 - ✅ **品牌对决页** `/compare/{a}-vs-{b}/`（28 页 = C(8,2)，verdict-first + 逐国判胜表 + 数据驱动 FAQ + sibling 互链）+ **对决枢纽页** `/compare/matchups/`（28 卡全量索引 + closest rivalry/most lopsided 计算瓦片；header/footer/llms.txt 入口）+ vs 页 "Other eSIM comparisons" 勾选选择器（8 logo 卡最多勾 2 个，第 3 个挤掉最早勾选，字母序实时拼 `/compare/{a}-vs-{b}/`）
 - ✅ **品牌详情页** `/esim-providers/<key>/`（8 页，计算式结论"cheapest in N of M"、竞争力评分、**价格胜负区（全计算：逐国 {B}最低价 vs 全场次优价，赢省%/输溢价% Top5 双卡带链接；>200% 用 ×倍数展示；unlimited-only 品牌带口径脚注；0 胜/0 负空态兜底）**、按区域覆盖清单；公司概况卡含总部/法人 + 官网/双商店链接 chips；客服&退款专区（渠道/邮箱/响应承诺 + 退款摘要）；覆盖区"50 国追踪≠品牌全部目的地"备注；FAQ 含 "{brand} support"/"{brand} refund" 长尾问答；schema 含 Organization(sameAs)；**无数据品牌自动降级为简壳页**）
@@ -99,7 +100,8 @@ esimsift/
 ### P-A 数据项（上线前必须）
 - [x] ~~折扣码换真~~ **2026-10-01 完成**：三路代理在 8 家官方页面逐项核验。有公开码：roami `web20`（官网公示·新用户 20%）/ saily `VEEPEE25`（官方合作页 25%）/ ubigi `WELCOME10`（官方 FAQ 首购 10%）；airalo/holafly/yesim/roamic/alosim 官方无公开码（仅有推荐返利计划）→ 无 promo 字段，模块自动隐藏。**遗留**：三家 promo_expires 均为占位 2027-12-31（官方没标过期日），上线前复核一次
 - [ ] **联盟深链规则核实**：`hugo.toml [params.outbound.targets.*]` 的 `country_path` 和 `data/countries.toml [ISO.slugs]` 目前是模式假设（roami 假设 `/{slug}/`，其他家没配逐国深链）→ 逐品牌确认联盟链接的国家级 URL 格式
-- [ ] **networks 补真**：所有 plans 的 `networks = []`（esimdb 卡片不展示网络名）→ 可从各品牌官网国家页抓（airalo.com 有 "T-Mobile +1 other"）；补上后国家页表格网络列 + ⑦b 区块自动增强
+- [x] ~~**networks 补真**~~ **2026-10-02 完成**：按"同国同运营商"规则，8 品牌 × 50 国 `networks` 全量 = `countries.toml.carriers`（`backfill_networks_uniform.py`）。国家页表格网络列 + ⑦b 区块已自动增强
+- [ ] **Opensignal 缺口（可暂缓）**：`networkreports.toml` 目前 44 国 Opensignal；剩 6 国只有 Global Index 深链兜底 —— CN/IS/GE/KE（用户 2026-10-02 决定"这 4 国算了"）+ MO/FJ（Opensignal 无对应市场报告）。若日后要补，格式照抄现有条目，数据由用户人工提供（禁 web 抓取）
 - [ ] **carriers.toml 剩余 32 国 detail**：目前只有 18 个关键市场有逐运营商 strong/weak，其余国家只有 cities + 画像
 - [ ] carriers.toml 速度区间逐市场核实（现值是编辑常识典型值）
 - [ ] 逐国 quirks 人工复核（`countries.toml`，生成内容基于真实常识，上线前过一遍）
@@ -198,7 +200,7 @@ destinations = 200        # 品牌自己宣称的目的地数（int；覆盖区"
 ```toml
 [JP]
 checked = "2026-09-30"   # 数据核查日期（表格脚注/research 页引用）
-networks = []            # 该品牌在该国用的本地网络（P-A 补真）
+networks = ["NTT Docomo", "SoftBank", "KDDI"]   # 该国本地运营商（= countries.toml carriers；同国同运营商，见下方"networks 规则"）
 
 [[JP.plans]]
 name = "Japan - 10GB / 30 Days"
@@ -208,6 +210,8 @@ type = "data"            # "data" | "unlimited"
 price = 13.50            # ★ 必须两位小数 float！price = 13 是 int64，Hugo printf "%.2f" 会渲染成 $%!f(int64=13)
 fup_note = "…"           # 可选：限速说明/日额说明/订阅性质（fair-use-audit 页直接引用原文）
 ```
+
+**networks 规则（P0 已定，2026-10-02）**：运营商是**国家属性、不是品牌属性**——同一个国家里每家 eSIM 品牌骑的都是同一批本地网络。所以 `networks` 直接 = `countries.toml` 里该国的 `carriers` 列表，**不要逐品牌去查**。`toml_write.py` 生成时会先写 `networks = []`，随后跑 `python -X utf8 scripts/backfill_networks_uniform.py` 一键填满全部 8 家（幂等，重跑安全）。
 
 **type 判定规则**（抓取器的既定口径，人工补数据时保持一致）：
 - 卡面 `10GB` → `data, gb=10`
@@ -326,6 +330,7 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `check_hardcoded.py` | `python -X utf8 scripts/check_hardcoded.py` 硬编码总量守卫：扫 content/en + layouts + hugo.toml，命中"50 countries / 8 providers / 28 matchups"等写死总量即失败（国家页 seo.description 豁免——脚本再生的）。**新增国家/品牌或改模板后必跑** | 只读 |
 | `check_headings.py` | `python -X utf8 scripts/check_headings.py` 渲染产物 h2/h3 标点守卫（`,` `;` `:` `—` `–` 全站 0 豁免；改模板/加内容后跑，需先 build） | 只读 |
 | `append_carrier_info.py` | 追加 [ISO.info]（幂等，**已执行过，勿再跑**——再跑也只是提示跳过） | 幂等 |
+| `backfill_networks_uniform.py` | `python -X utf8 scripts/backfill_networks_uniform.py` 一键把 8 品牌每国 `networks` 填成该国运营商（同国同运营商，幂等）。**新增品牌转完 TOML 后必跑** | 安全 |
 | `gen_sample_data.py` | ☠☠☠ **永远禁止整跑** —— 会用 SAMPLE 数据覆盖全部真实抓取结果 | 禁令 |
 | `scrape/verify_airalo.py` `probe_*.py` `discover_slugs.py` | 一次性验证/探测工具（airalo 官网对照校验已通过：JP/IT/US 全档一致） | 存档 |
 
@@ -367,19 +372,33 @@ npm run build                                   # ③
 - **品牌**：`data/providers.toml` 键 `[key]` = 小写单词（`airalo`/`roamic`/`alosim`）；logo = `static/img/providers/<key>.png|.webp`（自动探测）；vs 页文件名 = `{a}-vs-{b}` **严格字母序**；品牌页 = `esim-providers/<key>.md`。
 - **指南/博客文章**：`content/en/guides/<slug>.md`，slug = 小写连字符查询式（`how-to-install-esim`）；标题禁品牌、48-54 字符；描述 120-140 必含 "eSIM Sift"。
 
-## 7. 操作手册 A：新增一个品牌（完整 10 步）
+## 7. 操作手册 A：新增一个品牌（完整 10 步，每步带检查点）
 
-以新增第 9 家品牌 `xyz` 为例：
+以新增第 9 家品牌 `xyz` 为例。**做完一步，先过"✅ 检查点"确认没错，再走下一步**——前一步错了后面全白搭。
 
-1. **抓数据**（三选一，产物都是 `scripts/scrape/raw/xyz/*.json`，50 国一文件）：
+1. **抓数据**（三选一，产物都是 `scripts/scrape/raw/xyz/*.json`，一国一文件）：
    - esimdb 有专页 → `python -X utf8 -u scripts/scrape/scrape_esimdb.py xyz`
    - 不在 esimdb（像 holafly）→ 参照 `scrape_holafly.py` 写官网 PDP 抓取器（注意 Yoast sitemap 通常不含 PDP，slug 用候选探测）
    - 自家/内部数据 → 参照 `extract_roami.py`
-2. **转 TOML**：先改 `toml_write.py` 顶部 `CHECKED` 为当天 → `python -X utf8 scripts/scrape/toml_write.py xyz --dry-run` 确认 0 problems → 去掉 --dry-run 真写。**抽查文件确认 price 全是两位小数**。
+   - **✅ 检查点**：`scripts/scrape/raw/xyz/` 下 json 数量 = 该品牌实际覆盖的国家数；`Read` 一个 json 看里面是真套餐（name/gb/days/price 都有值），不是空数组或反爬错误页。
+
+2. **转 TOML + 填 networks**：
+   - 改 `toml_write.py` 顶部 `CHECKED` 为当天 → `python -X utf8 scripts/scrape/toml_write.py xyz --dry-run` 确认 `0 problems` → 去掉 `--dry-run` 真写 → `python -X utf8 scripts/backfill_networks_uniform.py`
+   - **✅ 检查点**：
+     - dry-run 结尾是 `0 problems`（有 problems 就先把列出的坏数据修掉再真写）；
+     - 真写后 `data/plans/xyz.toml` 存在，且 `grep -n "price = [0-9]*$" data/plans/xyz.toml` 命中 **0 行**（= 没有整数价，全是两位小数 float）；
+     - backfill 输出 `xyz filled NN/50`，NN = 该国覆盖数；再 `grep -c "networks = \[\]" data/plans/xyz.toml` 得 **0**（= 全部填上了运营商）。
+
 3. **`data/providers.toml`** 加 `[xyz]` 块（字段见 §4.2；founded/公司事实要核实来源，别编）。
+   - **✅ 检查点**：`grep -n "\[xyz\]" data/providers.toml` 有且仅一处；`python -X utf8 scripts/validate.py` 不再报"未知品牌键"。
+
 4. **`hugo.toml`** 加 `[params.outbound.targets.xyz]`（base/label/rel="sponsored nofollow"/utm）。
+   - **✅ 检查点**：`grep -n "targets.xyz" hugo.toml` 命中；build 后随便开一个国家页，xyz 行的出站按钮文字 = 你配的 `label`。
+
 5. **品牌页**：新建 `content/en/esim-providers/xyz.md`，只写 front matter（title/description），正文由模板聚合。
-6. **对决页**：与每个现有品牌组合，新建 `content/en/compare/{a}-vs-{b}.md`（文件名严格字母序）×8 个（**枢纽页 /compare/matchups/ 的卡片按 providers.toml 枚举，新品牌自动出现，无需改它**）：
+   - **✅ 检查点**：build 后 `/esim-providers/xyz/` 能打开且出现聚合数字（"cheapest in N of M"、竞争力评分），**不是**"无数据简壳页"——若降级成简壳，说明 plans 没被读到，回头查第 2 步。
+
+6. **对决页**：与每个现有品牌组合，新建 `content/en/compare/{a}-vs-{b}.md`（文件名**严格字母序**）×8 个（**枢纽页 /compare/matchups/ 的卡片按 providers.toml 枚举，新品牌自动出现，无需改它**）：
    ```markdown
    ---
    title: "Xyz vs Airalo eSIM Compared: Prices & Verdict 2026"   # 自拟，别和现有 28 个撞框架
@@ -388,12 +407,21 @@ npm run build                                   # ③
    layout: vs-single
    ---
    ```
-7. **`python -X utf8 scripts/gen_provider_pages.py`** —— 生成 xyz × 50 国子页（同时会清掉不在 providers.toml 里的品牌的旧子页）。
-8. **`python -X utf8 scripts/validate.py && npm run build`** —— 0 error 才算完。
-9. **验证**：`/esim-providers/xyz/` 渲染正常、`/compare/#matchups` 出现新对决卡、sitemap/llms.txt 自动纳入（无需手工）、国家页表格出现新品牌 chip。
-10. **可选收尾**：footer "Popular matchups" 列是手挑 6 组（`layouts/partials/footer.html`，缺页会静默跳过所以不必须改）；真 logo 放 `static/img/providers/xyz.png`。
+   - **✅ 检查点**：`content/en/compare/` 下新增 8 个含 `xyz` 的文件，且每个文件名里两品牌是字母序（如 `airalo-vs-xyz`、`xyz-vs-yesim`，绝不能 `xyz-vs-airalo`）；validate 不报字母序错误。
 
-**删除品牌**（反向操作）：providers.toml 删块 → hugo.toml 删 target → 删品牌页 md + 相关 vs md → **删 `data/plans/xyz.toml`** → `gen_provider_pages.py`（清子页）→ 删 `raw/xyz/` → validate + build。参考 nomad 退场就是这么做的。
+7. **`python -X utf8 scripts/gen_provider_pages.py`** —— 生成 xyz × N 国子页（同时会清掉不在 providers.toml 里的品牌的旧子页）。
+   - **✅ 检查点**：脚本结尾 `OK: N provider×country sub-pages written`，N 比加品牌前多了约 50（= xyz 覆盖的国家数）；`content/en/compare/<slug>/xyz.md` 已经出现在各国家目录下。
+
+8. **`python -X utf8 scripts/validate.py && npm run build`** —— 0 error 才算完。
+   - **✅ 检查点**：validate 结尾 `0 error(s), 0 warning(s)`；build 正常结束（Hugo 打印 Pages/Total 汇总、无 `Error:` 行）；页面总数比加之前涨约 **59 页**（50 子页 + 1 品牌页 + 8 对决页，子页数按 xyz 实际覆盖国微调）。
+
+9. **渲染抽查**：`/esim-providers/xyz/`、`/compare/#matchups`（出现新对决卡）、`/compare/japan/xyz/`（子页）、国家页表格出现新品牌 chip、sitemap/llms.txt 自动纳入。
+   - **✅ 检查点**：这 5 个 URL 逐一打开、数字都出来了；兜底跑 `grep -rc "%!f" public/ --include="*.html" | grep -v ":0"` 应无输出（= 没有渲染成 nil 的价格）。
+
+10. **可选收尾**：footer "Popular matchups" 列是手挑 6 组（`layouts/partials/footer.html`，缺页会静默跳过所以不必须改）；真 logo 放 `static/img/providers/xyz.png`。
+    - **✅ 检查点**：放好 logo 后重新 build，品牌页/卡片从单色字母徽标（monogram）自动切成真 logo。
+
+**删除品牌**（反向操作）：providers.toml 删块 → hugo.toml 删 target → 删品牌页 md + 相关 vs md → **删 `data/plans/xyz.toml`** → `gen_provider_pages.py`（清子页）→ 删 `raw/xyz/` → validate + build。参考 nomad 退场就是这么做的。**✅ 检查点**：build 后 `/esim-providers/xyz/` 返回 404、`/compare/#matchups` 里 xyz 卡片消失、validate 0 error。
 
 ---
 
@@ -403,18 +431,29 @@ npm run build                                   # ③
 1. 数据二选一：
    - **重抓**（正规）：删 `scripts/scrape/raw/<brand>/<slug>.json` → `python -X utf8 -u scripts/scrape/scrape_esimdb.py <brand>`（只补缺的，其余跳过）→ 改 CHECKED → `toml_write.py <brand>`。holafly 用 `scrape_holafly.py`；roami 用 `extract_roami.py`。
    - **手补**（临时）：直接在 `data/plans/<brand>.toml` 加 `[VN]` 块（严格遵守 §4.3 字段规则，尤其 price 两位小数、type 口径）。注意下次重转会覆盖手补内容。
+   - **✅ 检查点**：`data/plans/<brand>.toml` 里出现 `[VN]` 块且有 `[[VN.plans]]` 内容、`price` 全两位小数；跑一遍 `python -X utf8 scripts/backfill_networks_uniform.py` 后 `[VN].networks` = 越南运营商（Viettel/Vinaphone/MobiFone），不是空 `[]`。
 2. `gen_provider_pages.py` → `validate.py` → `npm run build`。
+   - **✅ 检查点**：validate 结尾 `0 error(s), 0 warning(s)`；build 无 `Error` 行。
 3. 验证：国家页表格多出该品牌行、`/compare/vietnam/airalo/` 子页出现、对决页判胜数字变化（全部自动）。
+   - **✅ 检查点**：打开 `/compare/vietnam/` 看到 airalo 那一行和价格数字；`/compare/vietnam/airalo/` 能打开且有内容。
 
 ### 情况 B：新增第 51 个国家 —— 大操作（动 6 个地方）
 1. `data/countries.toml` 加 `[XX]` 全字段块（region 必须精确匹配五个筛选值；slug 唯一）。
+   - **✅ 检查点**：`grep -n "\[XX\]" data/countries.toml` 有且仅一处；`region` 一字不差等于五个枚举之一（Asia / Europe / Americas / Africa & Middle East / Oceania）；`slug` 与 `content/en/compare/<slug>.md` 文件名一致。
 2. `data/faqs/<xx>.toml` 新建（6 条对比角度 FAQ）。
+   - **✅ 检查点**：文件名小写 `xx.toml`；内容是顶层 `[[faq]]` 数组；build 后国家页 FAQ 区出现 6 条，页面 HTML 里能搜到 `"FAQPage"`。
 3. `content/en/compare/<slug>.md` 新建（front matter `iso = "XX"` + seo.description 占位 + 3 段分析；参考 japan.md 样板）。
+   - **✅ 检查点**：front matter 有 `iso: "XX"`；build 后 `/compare/<slug>/` 能打开，TL;DR 三卡 + 全套餐对比表都渲染出来。
 4. 图片：`static/img/countries/<slug>-01..04.webp` ×4 + `static/img/flags/<xx>.svg`（路径与 countries.toml 对齐）。
+   - **✅ 检查点**：4 张 webp + 1 张 svg 确实存在，文件名 = `countries.toml` 里 `flag`/`images` 写死的那几个路径（对不上就是坏链）。
 5. `data/carriers.toml` 加 `[XX]` + `[[XX.profiles]]`（+ 可选 `[XX.info]`）。
+   - **✅ 检查点**：profiles 里每个 `name` 都和 `countries.toml [XX].carriers` 逐字一致（validate 会查 join key，不一致就报错）；build 后国家页运营商区渲染出速度档位 + 城市。
 6. 每品牌补 `[XX]` 套餐（抓取或手补，同情况 A）。
+   - **✅ 检查点**：8 个 `data/plans/*.toml` 里都有 `[XX]` 块；跑一遍 `python -X utf8 scripts/backfill_networks_uniform.py` 把 8 家的 `[XX].networks` 都填成该国运营商。
 7. `gen_provider_pages.py` → `validate.py` → **`regen_meta_brand.py --dry-run` 确认后真跑**（新国家的 seo.description 由它按实时数据重写，含品牌词与字符数校验）→ `npm run build` → `audit_meta.py` + `check_hardcoded.py` 双守卫。
+   - **✅ 检查点**：validate 结尾 `0 error(s), 0 warning(s)`；regen_meta_brand dry-run 无意外改动；build 无 `Error`；`audit_meta.py` 标题 48-54 / 描述 120-140 合规、`check_hardcoded.py` 无写死总量（两个守卫脚本都 0 命中）。
 8. 自动纳入：首页区域网格、header 大菜单、sitemap、catalog.json、llms.txt、guides/research 页数据盒、对决页判胜表、matchups 枢纽 —— 全部无需手工。
+   - **✅ 检查点**：首页区域网格出现新国旗卡；`public/sitemap.xml` 里多出该国的 URL；`/compare/<slug>/` 可访问。
 
 **为什么第 8 步敢说"全部无需手工"（2026-10-02 去写死架构）**：全站总量数字分三层实时推导，没有一处写死"50 国/8 家/28 组"：
 - **模板层**：`{{ len hugo.Data.countries }}` / `{{ len hugo.Data.providers }}` / 对决数 `{{ div (mul ...) 2 }}`（首页 hero、matchups、research、guides 相关卡等 7 处已改造）。
@@ -510,7 +549,7 @@ npm run build
 | research 数据研究页 | ✅ 3 页（price-index / unlimited / fair-use） |
 | guides 指南页 | ✅ 5 篇 + 枢纽 |
 | 区域枢纽页 ×5（/compare/asia/ 等） | ⬜ Phase 2 |
-| /networks/{carrier}/ 运营商页 | ⬜ Phase 2（数据先补 networks） |
+| /networks/{carrier}/ 运营商页 | ⬜ Phase 2（数据已就绪：networks 2026-10-02 已补真） |
 | /devices/{device}/ 设备兼容页 | ⬜ Phase 2（数据源 devices.toml 已备） |
 | tools 第 2/3 个工具 | ⬜ Phase 2（已有行程计算器） |
 | sitemap 分片（>1000 URL） | ⬜ 现在 507，暂不需要 |
@@ -551,7 +590,7 @@ npm run build
 | ~~8 张品牌 logo~~ | ✅ 2026-10-01 全量接入（providers/ 下 6 png + 2 webp） |
 | **联盟深链格式确认**（每家国家级 URL 规则） | hugo.toml country_path + countries.toml slugs；影响转化归因 |
 | **Roami 定价决策** | ⚠ 业务发现：数据算出 **Roamic 在 35/50 国比自家 Roami 便宜**（Roami 只赢 15 国）—— roami-vs-roamic 对决页如实展示了这个结论；要么调价要么接受 |
-| networks 逐品牌官方数据来源确认 | 表格网络列 + ⑦b 增强 |
+| ~~networks 逐品牌官方数据来源确认~~ | ✅ 2026-10-02 按"同国同运营商"规则用 `countries.toml.carriers` 补全，无需逐品牌查（见 §4.3） |
 
 ---
 

@@ -1,0 +1,258 @@
+{
+ "brand": "roami",
+ "source_url": "https://roamiapp.com country pages (country_meta.operators)",
+ "networks": {
+  "AR": [
+   "Movistar",
+   "Claro",
+   "Personal"
+  ],
+  "AU": [
+   "Telstra",
+   "Optus"
+  ],
+  "AT": [
+   "A1",
+   "Magenta",
+   "Drei"
+  ],
+  "BE": [
+   "Proximus",
+   "Orange",
+   "Base"
+  ],
+  "BR": [
+   "Claro",
+   "Vivo",
+   "TIM"
+  ],
+  "CA": [
+   "Rogers",
+   "Bell",
+   "Telus"
+  ],
+  "CN": [
+   "China Mobile",
+   "China Unicom",
+   "China Telecom"
+  ],
+  "CO": [
+   "Claro",
+   "Movistar",
+   "Tigo"
+  ],
+  "CR": [
+   "Movistar",
+   "Claro",
+   "Kolbi"
+  ],
+  "HR": [
+   "Hrvatski Telekom",
+   "A1 Hrvatska"
+  ],
+  "CZ": [
+   "O2",
+   "T-Mobile",
+   "Vodafone"
+  ],
+  "EG": [
+   "Orange Egypt",
+   "Vodafone Egypt",
+   "Etisalat Misr"
+  ],
+  "FJ": [
+   "Vodafone Fiji",
+   "Digicel Fiji"
+  ],
+  "FR": [
+   "Orange",
+   "SFR",
+   "Bouygues"
+  ],
+  "GE": [
+   "Magti",
+   "Silknet",
+   "Beeline"
+  ],
+  "DE": [
+   "Telekom",
+   "Vodafone",
+   "O2"
+  ],
+  "GR": [
+   "Vodafone",
+   "Cosmote",
+   "Wind"
+  ],
+  "HK": [
+   "CSL",
+   "SmarTone"
+  ],
+  "IS": [
+   "Siminn",
+   "Vodafone"
+  ],
+  "IN": [
+   "Airtel",
+   "Jio"
+  ],
+  "ID": [
+   "Telkomsel",
+   "Indosat",
+   "XL Axiata"
+  ],
+  "IE": [
+   "Vodafone",
+   "Three",
+   "Eir"
+  ],
+  "IL": [
+   "Cellcom",
+   "Pelephone",
+   "Partner"
+  ],
+  "IT": [
+   "TIM",
+   "Vodafone",
+   "WindTre"
+  ],
+  "JP": [
+   "NTT Docomo",
+   "SoftBank",
+   "KDDI"
+  ],
+  "KE": [
+   "Safaricom",
+   "Airtel Kenya",
+   "Telkom Kenya"
+  ],
+  "MO": [
+   "CTM",
+   "3 Macau"
+  ],
+  "MY": [
+   "Maxis",
+   "Celcom",
+   "DiGi"
+  ],
+  "MX": [
+   "Telcel",
+   "AT&T Mexico",
+   "Movistar"
+  ],
+  "MA": [
+   "Orange Maroc",
+   "Maroc Telecom",
+   "Inwi"
+  ],
+  "NL": [
+   "KPN",
+   "Vodafone"
+  ],
+  "NZ": [
+   "Spark",
+   "2degrees"
+  ],
+  "PE": [
+   "Claro",
+   "Movistar",
+   "Entel"
+  ],
+  "PH": [
+   "Globe",
+   "Smart"
+  ],
+  "PL": [
+   "Play",
+   "Orange",
+   "T-Mobile"
+  ],
+  "PT": [
+   "MEO",
+   "NOS"
+  ],
+  "QA": [
+   "Ooredoo",
+   "Vodafone Qatar"
+  ],
+  "SA": [
+   "STC",
+   "Mobily",
+   "Zain"
+  ],
+  "SG": [
+   "Singtel",
+   "StarHub",
+   "M1"
+  ],
+  "ZA": [
+   "Vodacom",
+   "MTN"
+  ],
+  "KR": [
+   "SK Telecom",
+   "KT",
+   "LG U+"
+  ],
+  "ES": [
+   "Movistar",
+   "Orange",
+   "Vodafone"
+  ],
+  "CH": [
+   "Swisscom",
+   "Sunrise",
+   "Salt"
+  ],
+  "TW": [
+   "Chunghwa Telecom",
+   "FarEasTone",
+   "Taiwan Mobile"
+  ],
+  "TH": [
+   "AIS",
+   "True Move",
+   "DTAC"
+  ],
+  "TR": [
+   "Turkcell",
+   "Vodafone"
+  ],
+  "AE": [
+   "Etisalat",
+   "du"
+  ],
+  "GB": [
+   "Vodafone",
+   "EE",
+   "O2"
+  ],
+  "US": [
+   "T-Mobile",
+   "AT&T",
+   "Verizon"
+  ],
+  "VN": [
+   "Viettel",
+   "Mobifone",
+   "Vinaphone"
+  ]
+ },
+ "notes": {
+  "AU": "unmatched: 'TPG Telecom' ",
+  "HR": "unmatched: 'Tele2' ",
+  "FJ": "unmatched: 'Telecom Fiji' ",
+  "HK": "unmatched: 'China Mobile Hong Kong' ",
+  "IS": "unmatched: 'Telenor' ",
+  "IN": "unmatched: 'Vi' ",
+  "MO": "unmatched: 'SmarTone' ",
+  "NL": "unmatched: 'T-Mobile' ",
+  "NZ": "unmatched: 'Vodafone NZ' ",
+  "PH": "unmatched: 'DITO' ",
+  "PT": "unmatched: 'Vodafone Portugal' ",
+  "QA": "unmatched: 'Orange Qatar' ",
+  "ZA": "unmatched: 'Cell C' ",
+  "TR": "unmatched: 'Türk Telekom' ",
+  "AE": "unmatched: 'Virgin Mobile' "
+ }
+}

@@ -88,6 +88,14 @@
             {{ with site.GetPage "/guides/dual-sim-and-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>Dual SIM and eSIM</span></a>{{ end }}
             {{ with site.GetPage "/guides/esim-compatibility-check" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>eSIM compatibility check</span></a>{{ end }}
           </div>
+          <p class="mt-3 px-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-400">Regional guides</p>
+          <div class="mega-region mt-1.5 space-y-0.5">
+            {{ with site.GetPage "/guides/best-europe-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>Best Europe eSIM</span></a>{{ end }}
+            {{ with site.GetPage "/guides/best-asia-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>Best Asia eSIM</span></a>{{ end }}
+            {{ with site.GetPage "/guides/best-americas-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>Best Americas eSIM</span></a>{{ end }}
+            {{ with site.GetPage "/guides/best-africa-middle-east-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>Best Africa &amp; Middle East eSIM</span></a>{{ end }}
+            {{ with site.GetPage "/guides/best-oceania-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>Best Oceania eSIM</span></a>{{ end }}
+          </div>
           <p class="mt-3 px-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-400">Data &amp; research</p>
           <div class="mega-region mt-1.5 space-y-0.5">
             {{ with site.GetPage "/research/esim-price-index" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>eSIM price index</span></a>{{ end }}

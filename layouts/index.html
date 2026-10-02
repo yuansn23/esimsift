@@ -3,11 +3,24 @@
 {{ $countries := where (where (where $compareSection.Pages "Params.provider" nil) "Params.providers" nil) "Params.nolist" nil }}
 {{ $totalPlans := 0 }}
 {{ $minGlobal := 0.0 }}
+{{ $regionCheapest := dict }}
+{{ $regions := slice "Asia" "Europe" "Americas" "Africa & Middle East" "Oceania" }}
+{{ $checkedLatest := "" }}
 {{ range $countries }}
   {{ with .Params.iso }}
+    {{ $c := index hugo.Data.countries . }}
     {{ $s := partial "country-stats.html" . }}
     {{ $totalPlans = add $totalPlans $s.planCount }}
     {{ if and (gt $s.minPrice 0) (or (eq $minGlobal 0.0) (lt $s.minPrice $minGlobal)) }}{{ $minGlobal = $s.minPrice }}{{ end }}
+    {{ if gt $s.minPrice 0 }}
+      {{ $cur := index $regionCheapest $c.region }}
+      {{ if or (eq $cur nil) (lt $s.minPrice $cur.price) }}
+        {{ $cheapestProv := "" }}
+        {{ with index (sort $s.rows "price" "asc") 0 }}{{ $cheapestProv = .provider }}{{ end }}
+        {{ $regionCheapest = merge $regionCheapest (dict $c.region (dict "name" $c.name "slug" $c.slug "flag" ($c.flag | relURL) "price" $s.minPrice "provider" $cheapestProv)) }}
+      {{ end }}
+    {{ end }}
+    {{ if and $s.checked (or (eq $checkedLatest "") (gt $s.checked $checkedLatest)) }}{{ $checkedLatest = $s.checked }}{{ end }}
   {{ end }}
 {{ end }}
 
@@ -16,7 +29,7 @@
   <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-14 pt-12 sm:px-6 lg:grid-cols-[1.15fr_1fr] lg:pb-20 lg:pt-16">
     <div class="animate-fade-up">
       <p class="eyebrow">Independent eSIM price database</p>
-      <h1 class="mt-3 text-4xl font-extrabold leading-[1.08] tracking-tight md:text-[3.4rem]">
+      <h1 class="mt-3 text-3xl font-extrabold leading-[1.08] tracking-tight md:text-5xl">
         Compare every travel eSIM.<br>
         <span class="relative whitespace-nowrap">
           <span class="relative z-10">Pay less</span>
@@ -65,8 +78,14 @@
       <p class="eyebrow">Country comparisons</p>
       <h2 class="mt-2 text-2xl font-bold md:text-3xl">Find your destination</h2>
     </div>
-    <input id="country-filter" type="search" placeholder="Search country…" class="input-search w-full sm:w-64" aria-label="Search countries">
+    <form id="country-search" role="search" class="relative w-full sm:w-80">
+      <label for="country-filter" class="sr-only">Search destinations</label>
+      <svg class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-300" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21l-4.35-4.35M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <input id="country-filter" type="search" placeholder="Search 50 countries…" autocomplete="off" spellcheck="false" class="input-search w-full pl-9" aria-label="Search destinations" aria-controls="country-suggest" aria-expanded="false" aria-autocomplete="list" role="combobox">
+      <div id="country-suggest" class="absolute left-0 right-0 top-full z-30 mt-2 hidden overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-pop" role="listbox"></div>
+    </form>
   </div>
+  <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink-600">Pick a destination to see every provider that covers it side by side — real $/GB and $/day figures, fair-use limits decoded, and the cheapest option flagged. From Japan and the USA to Turkey, Thailand, and across Europe, each country page ranks {{ len hugo.Data.providers }} providers with the same honest formulas.</p>
   <div id="region-chips" class="nav-scroll mt-5 flex gap-2 overflow-x-auto pb-1">
     <button class="chip chip-active" data-region="all" type="button">All</button>
     <button class="chip" data-region="Asia" type="button">Asia</button>
@@ -79,6 +98,34 @@
     {{ range $countries }}{{ partial "country-card.html" . }}{{ end }}
   </div>
   <p id="no-results" class="mt-6 hidden text-center text-sm text-ink-400">No country matches that search.</p>
+</section>
+
+{{/* ── 最便宜地板（按区域）── */}}
+<section class="mt-16" aria-labelledby="price-floor">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="eyebrow">Live price floor</p>
+      <h2 id="price-floor" class="mt-2 text-2xl font-bold md:text-3xl">The cheapest eSIM in each region</h2>
+    </div>
+    {{ if $checkedLatest }}<p class="text-xs font-medium text-ink-400">Prices checked {{ (time $checkedLatest).Format "Jan 2, 2006" }}</p>{{ end }}
+  </div>
+  <div class="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+    {{ $regionGuides := dict "Asia" "asia" "Europe" "europe" "Americas" "americas" "Africa & Middle East" "africa-middle-east" "Oceania" "oceania" }}
+    {{ range $regions }}
+      {{ $region := . }}
+      {{ with index $regionCheapest $region }}
+      <a href="/guides/best-{{ index $regionGuides $region }}-esim/" class="card card-hover group p-4">
+        <p class="text-[11px] font-bold uppercase tracking-wide text-ink-400">{{ $region }}</p>
+        <div class="mt-3 flex items-center gap-2.5">
+          <img src="{{ .flag }}" alt="{{ .name }} flag" class="h-7 w-10 rounded-md object-cover ring-1 ring-ink-100" loading="lazy">
+          <span class="truncate font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ .name }}</span>
+        </div>
+        <p class="mt-2 text-xs text-ink-400">from <strong class="tnum text-accent-600">${{ printf "%.2f" .price }}</strong>{{ with .provider }} · {{ . }}{{ end }}</p>
+        <p class="mt-3 border-t border-ink-50 pt-2 text-xs font-semibold text-brand-700">See the full region →</p>
+      </a>
+      {{ end }}
+    {{ end }}
+  </div>
 </section>
 
 {{/* ── 工作方式三步 ── */}}
@@ -146,6 +193,33 @@
   </div>
 </section>
 
+{{/* ── FAQ（静态问题 + FAQPage schema）── */}}
+{{ $faqList := slice }}
+{{ $faqList = $faqList | append (dict "q" "What is the cheapest eSIM right now?" "a" (printf "Across all %d countries we track, the cheapest plan in the database is $%.2f, but that is a small, short-duration plan for one destination. Your real floor price depends on where you are going. <a href=\"/compare/\">Pick your destination</a> to see every provider's cheapest plan, not one sponsor's headline." (len hugo.Data.countries) $minGlobal)) }}
+{{ $faqList = $faqList | append (dict "q" "Do eSIMs work in my phone?" "a" "Most phones made since 2019 support eSIM, including every iPhone XS or later and recent Pixel and Samsung Galaxy models. If your phone is carrier-locked or much older, it may not. Each provider's own compatibility checker is the final word before you buy.") }}
+{{ $faqList = $faqList | append (dict "q" "How much data do I need for a week abroad?" "a" "Roughly 1 to 2 GB per week covers maps, messaging and light browsing, while streaming video or hotspotting a laptop can burn that in a day. Every country page lists the $/GB and $/day for each plan, so you can size the data to your trip instead of buying the headline bundle.") }}
+{{ $faqList = $faqList | append (dict "q" "Which eSIM is best for Europe?" "a" "There is no single winner. The cheapest provider changes from country to country, and some plans bundle 30+ European countries while others are single-country. See our <a href=\"/guides/best-europe-esim/\">Europe eSIM comparison</a> and read the fair-use fine print before trusting a best-for-Europe claim.") }}
+{{ $faqList = $faqList | append (dict "q" "Do travel eSIMs expire?" "a" "Yes. Most plans activate when you land and run for 7, 15 or 30 days, then expire even if data is left over. A few providers sell longer or top-up plans. The validity column on every country page lists the exact window for each plan.") }}
+{{ $faqList = $faqList | append (dict "q" "What does $/GB versus $/day mean?" "a" "Both are honest ways to compare value. $/GB is what you pay per gigabyte, best if you know your usage. $/day spreads the plan cost over its validity, best for short trips. We compute both with the same formula for every provider, so nobody can game the comparison.") }}
+{{ $faqEntities := slice }}
+{{ range $faqList }}{{ $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) }}{{ end }}
+<script type="application/ld+json">
+{{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $faqEntities) | safeJS }}
+</script>
+
+<section class="mt-20" aria-labelledby="faq">
+  <p class="eyebrow">FAQ</p>
+  <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">Which travel eSIM should you buy</h2>
+  <div class="mt-5 space-y-3">
+    {{ range $faqList }}
+    <details class="faq-item">
+      <summary>{{ .q }}<span class="faq-icon" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></summary>
+      <p class="faq-body">{{ .a | safeHTML }}</p>
+    </details>
+    {{ end }}
+  </div>
+</section>
+
 {{/* ── CTA 横幅 ── */}}
 <section class="mt-20">
   <div class="relative overflow-hidden rounded-4xl bg-ink-gradient px-6 py-12 text-center shadow-pop md:py-16">
@@ -160,13 +234,86 @@
 </section>
 </div>
 
+{{- /* 目的地搜索索引：服务端把 50 国（名称/slug/区域/旗/底价/供应商数）序列化为 JSON，前端做 typeahead */ -}}
+{{- $searchData := slice -}}
+{{- range $countries -}}
+  {{- $c := index hugo.Data.countries .Params.iso -}}
+  {{- $s := partial "country-stats.html" .Params.iso -}}
+  {{- $searchData = $searchData | append (dict "name" $c.name "slug" $c.slug "region" $c.region "flag" ($c.flag | relURL) "price" $s.minPrice "providers" $s.providerCount "plans" $s.planCount) -}}
+{{- end -}}
+<script id="country-index" type="application/json">{{ $searchData | jsonify | safeJS }}</script>
+
 <script>
   (function () {
     var input = document.getElementById('country-filter');
+    var form = document.getElementById('country-search');
     var grid = document.getElementById('country-grid');
     var chips = document.querySelectorAll('#region-chips .chip');
     var empty = document.getElementById('no-results');
+    var suggest = document.getElementById('country-suggest');
     var region = 'all';
+    var active = -1;
+    var index = [];
+    try { index = JSON.parse(document.getElementById('country-index').textContent); } catch (e) { index = []; }
+
+    // 常见别名：让 "usa" / "uk" / "uae" 也能命中全称
+    var aliases = { us: 'united states', usa: 'united states', uk: 'united kingdom', uae: 'united arab emirates' };
+
+    function norm(s) {
+      return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+
+    function matches(q) {
+      var qn = norm(q);
+      if (aliases[qn]) qn = aliases[qn];
+      var tokens = qn.split(' ');
+      return index.filter(function (c) {
+        var h = norm(c.name) + ' ' + norm(c.region);
+        return tokens.every(function (t) { return h.indexOf(t) !== -1; });
+      });
+    }
+
+    function highlight(items) {
+      items.forEach(function (it, i) {
+        it.classList.toggle('is-active', i === active);
+        if (i === active) it.setAttribute('aria-selected', 'true'); else it.removeAttribute('aria-selected');
+      });
+    }
+
+    function renderSuggest(list) {
+      if (!suggest) return;
+      if (!list.length) {
+        suggest.innerHTML = '<div class="px-3 py-2.5 text-sm text-ink-400">No match — try “Japan” or pick a region below.</div>';
+        suggest.classList.remove('hidden');
+        input.setAttribute('aria-expanded', 'true');
+        return;
+      }
+      var html = '';
+      list.slice(0, 8).forEach(function (c, i) {
+        var price = c.price > 0 ? Number(c.price).toFixed(2) : '';
+        html += '<a href="/compare/' + c.slug + '/" class="suggest-item" role="option" data-i="' + i + '">'
+          + '<img src="' + c.flag + '" alt="" loading="lazy">'
+          + '<span class="min-w-0 flex-1">'
+          + '<span class="suggest-name">' + c.name + '</span>'
+          + '<span class="suggest-meta">' + c.region + ' · ' + c.providers + ' providers</span>'
+          + '</span>'
+          + (price ? '<span class="suggest-price">from $' + price + '</span>' : '')
+          + '</a>';
+      });
+      suggest.innerHTML = html;
+      suggest.classList.remove('hidden');
+      input.setAttribute('aria-expanded', 'true');
+      highlight(suggest.querySelectorAll('.suggest-item'));
+    }
+
+    function hideSuggest() {
+      if (!suggest) return;
+      suggest.classList.add('hidden');
+      active = -1;
+      input.setAttribute('aria-expanded', 'false');
+    }
+
     function apply() {
       var q = (input && input.value || '').trim().toLowerCase();
       var visible = 0;
@@ -178,8 +325,44 @@
         if (show) visible++;
       });
       if (empty) empty.classList.toggle('hidden', visible > 0);
+      active = -1;
+      if (q) renderSuggest(matches(q)); else hideSuggest();
     }
-    if (input) input.addEventListener('input', apply);
+
+    if (input) {
+      input.addEventListener('input', apply);
+      input.addEventListener('focus', function () { if (input.value.trim()) apply(); });
+      input.addEventListener('keydown', function (e) {
+        var items = suggest ? suggest.querySelectorAll('.suggest-item') : [];
+        if (e.key === 'ArrowDown' && items.length) {
+          e.preventDefault();
+          active = (active + 1) % items.length;
+          highlight(items);
+        } else if (e.key === 'ArrowUp' && items.length) {
+          e.preventDefault();
+          active = (active - 1 + items.length) % items.length;
+          highlight(items);
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (items.length) {
+            window.location.href = items[active >= 0 ? active : 0].getAttribute('href');
+          } else if (grid) {
+            var vis = grid.querySelectorAll('a[data-name]');
+            for (var i = 0; i < vis.length; i++) {
+              if (vis[i].style.display !== 'none') { vis[i].click(); break; }
+            }
+          }
+        } else if (e.key === 'Escape') {
+          hideSuggest();
+        }
+      });
+    }
+    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); });
+
+    document.addEventListener('click', function (e) {
+      if (form && !form.contains(e.target)) hideSuggest();
+    });
+
     chips.forEach(function (c) {
       c.addEventListener('click', function () {
         chips.forEach(function (x) { x.classList.remove('chip-active'); });

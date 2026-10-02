@@ -4,7 +4,7 @@
 
 [AR]
 checked = "2026-09-30"
-networks = []
+networks = ["Personal", "Claro", "Movistar"]
 
 [[AR.plans]]
 name = "Unlimited / 3 Days"
@@ -56,7 +56,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [AU]
 checked = "2026-09-30"
-networks = []
+networks = ["Telstra", "Optus", "Vodafone"]
 
 [[AU.plans]]
 name = "Unlimited / 3 Days"
@@ -108,7 +108,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [AT]
 checked = "2026-09-30"
-networks = []
+networks = ["A1", "Magenta", "Drei"]
 
 [[AT.plans]]
 name = "Unlimited / 3 Days"
@@ -160,7 +160,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [BE]
 checked = "2026-09-30"
-networks = []
+networks = ["Proximus", "Orange", "Base"]
 
 [[BE.plans]]
 name = "Unlimited / 3 Days"
@@ -212,7 +212,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [BR]
 checked = "2026-09-30"
-networks = []
+networks = ["Vivo", "Claro", "TIM"]
 
 [[BR.plans]]
 name = "Unlimited / 3 Days"
@@ -264,7 +264,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [CA]
 checked = "2026-09-30"
-networks = []
+networks = ["Bell", "Rogers", "Telus"]
 
 [[CA.plans]]
 name = "Unlimited / 3 Days"
@@ -316,7 +316,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [CN]
 checked = "2026-09-30"
-networks = []
+networks = ["China Mobile", "China Unicom", "China Telecom"]
 
 [[CN.plans]]
 name = "Unlimited / 3 Days"
@@ -368,7 +368,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [CO]
 checked = "2026-09-30"
-networks = []
+networks = ["Claro", "Movistar", "Tigo"]
 
 [[CO.plans]]
 name = "Unlimited / 3 Days"
@@ -420,7 +420,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [CR]
 checked = "2026-09-30"
-networks = []
+networks = ["Kolbi", "Claro", "Movistar"]
 
 [[CR.plans]]
 name = "Unlimited / 3 Days"
@@ -472,7 +472,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [HR]
 checked = "2026-09-30"
-networks = []
+networks = ["Hrvatski Telekom", "A1 Hrvatska"]
 
 [[HR.plans]]
 name = "Unlimited / 3 Days"
@@ -524,7 +524,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [CZ]
 checked = "2026-09-30"
-networks = []
+networks = ["O2", "T-Mobile", "Vodafone"]
 
 [[CZ.plans]]
 name = "Unlimited / 3 Days"
@@ -576,7 +576,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [EG]
 checked = "2026-09-30"
-networks = []
+networks = ["Vodafone Egypt", "Orange Egypt", "Etisalat Misr"]
 
 [[EG.plans]]
 name = "Unlimited / 3 Days"
@@ -628,7 +628,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [FJ]
 checked = "2026-09-30"
-networks = []
+networks = ["Vodafone Fiji", "Digicel Fiji"]
 
 [[FJ.plans]]
 name = "Unlimited / 3 Days"
@@ -672,7 +672,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [FR]
 checked = "2026-09-30"
-networks = []
+networks = ["Orange", "SFR", "Bouygues"]
 
 [[FR.plans]]
 name = "Unlimited / 3 Days"
@@ -724,7 +724,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [GE]
 checked = "2026-09-30"
-networks = []
+networks = ["Magti", "Silknet", "Beeline"]
 
 [[GE.plans]]
 name = "Unlimited / 3 Days"
@@ -776,7 +776,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [DE]
 checked = "2026-09-30"
-networks = []
+networks = ["Telekom", "Vodafone", "O2"]
 
 [[DE.plans]]
 name = "Unlimited / 3 Days"
@@ -828,7 +828,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [GR]
 checked = "2026-09-30"
-networks = []
+networks = ["Cosmote", "Vodafone", "Wind"]
 
 [[GR.plans]]
 name = "Unlimited / 3 Days"
@@ -880,7 +880,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [HK]
 checked = "2026-09-30"
-networks = []
+networks = ["CSL", "3HK", "SmarTone"]
 
 [[HK.plans]]
 name = "Unlimited / 3 Days"
@@ -932,7 +932,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [IS]
 checked = "2026-09-30"
-networks = []
+networks = ["Siminn", "Vodafone", "Noa"]
 
 [[IS.plans]]
 name = "Unlimited / 3 Days"
@@ -984,7 +984,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [IN]
 checked = "2026-09-30"
-networks = []
+networks = ["Jio", "Airtel"]
 
 [[IN.plans]]
 name = "Unlimited / 3 Days"
@@ -1036,7 +1036,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [ID]
 checked = "2026-09-30"
-networks = []
+networks = ["Telkomsel", "Indosat", "XL Axiata"]
 
 [[ID.plans]]
 name = "Unlimited / 3 Days"
@@ -1088,7 +1088,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [IE]
 checked = "2026-09-30"
-networks = []
+networks = ["Vodafone", "Three", "Eir"]
 
 [[IE.plans]]
 name = "Unlimited / 3 Days"
@@ -1140,7 +1140,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [IL]
 checked = "2026-09-30"
-networks = []
+networks = ["Cellcom", "Partner", "Pelephone"]
 
 [[IL.plans]]
 name = "Unlimited / 3 Days"
@@ -1192,7 +1192,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [IT]
 checked = "2026-09-30"
-networks = []
+networks = ["TIM", "Vodafone", "WindTre"]
 
 [[IT.plans]]
 name = "Unlimited / 3 Days"
@@ -1244,7 +1244,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [JP]
 checked = "2026-09-30"
-networks = []
+networks = ["NTT Docomo", "SoftBank", "KDDI"]
 
 [[JP.plans]]
 name = "Unlimited / 3 Days"
@@ -1296,7 +1296,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [KE]
 checked = "2026-09-30"
-networks = []
+networks = ["Safaricom", "Airtel Kenya", "Telkom Kenya"]
 
 [[KE.plans]]
 name = "Unlimited / 3 Days"
@@ -1348,7 +1348,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [MO]
 checked = "2026-09-30"
-networks = []
+networks = ["CTM", "3 Macau", "China Telecom"]
 
 [[MO.plans]]
 name = "Unlimited / 3 Days"
@@ -1400,7 +1400,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [MY]
 checked = "2026-09-30"
-networks = []
+networks = ["Maxis", "Celcom", "DiGi"]
 
 [[MY.plans]]
 name = "Unlimited / 3 Days"
@@ -1452,7 +1452,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [MX]
 checked = "2026-09-30"
-networks = []
+networks = ["Telcel", "AT&T Mexico", "Movistar"]
 
 [[MX.plans]]
 name = "Unlimited / 3 Days"
@@ -1504,7 +1504,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [MA]
 checked = "2026-09-30"
-networks = []
+networks = ["Maroc Telecom", "Orange Maroc", "Inwi"]
 
 [[MA.plans]]
 name = "Unlimited / 3 Days"
@@ -1556,7 +1556,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [NL]
 checked = "2026-09-30"
-networks = []
+networks = ["KPN", "Vodafone", "Odido"]
 
 [[NL.plans]]
 name = "Unlimited / 3 Days"
@@ -1608,7 +1608,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [NZ]
 checked = "2026-09-30"
-networks = []
+networks = ["Spark", "One NZ", "2degrees"]
 
 [[NZ.plans]]
 name = "Unlimited / 3 Days"
@@ -1660,7 +1660,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [PE]
 checked = "2026-09-30"
-networks = []
+networks = ["Claro", "Movistar", "Entel"]
 
 [[PE.plans]]
 name = "Unlimited / 3 Days"
@@ -1712,7 +1712,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [PH]
 checked = "2026-09-30"
-networks = []
+networks = ["Globe", "Smart"]
 
 [[PH.plans]]
 name = "Unlimited / 3 Days"
@@ -1764,7 +1764,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [PL]
 checked = "2026-09-30"
-networks = []
+networks = ["Orange", "Play", "Plus", "T-Mobile"]
 
 [[PL.plans]]
 name = "Unlimited / 3 Days"
@@ -1816,7 +1816,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [PT]
 checked = "2026-09-30"
-networks = []
+networks = ["MEO", "NOS", "Vodafone"]
 
 [[PT.plans]]
 name = "Unlimited / 3 Days"
@@ -1868,7 +1868,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [QA]
 checked = "2026-09-30"
-networks = []
+networks = ["Ooredoo", "Vodafone Qatar"]
 
 [[QA.plans]]
 name = "Unlimited / 3 Days"
@@ -1920,7 +1920,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [SA]
 checked = "2026-09-30"
-networks = []
+networks = ["STC", "Mobily", "Zain"]
 
 [[SA.plans]]
 name = "Unlimited / 3 Days"
@@ -1972,7 +1972,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [SG]
 checked = "2026-09-30"
-networks = []
+networks = ["Singtel", "StarHub", "M1"]
 
 [[SG.plans]]
 name = "Unlimited / 3 Days"
@@ -2024,7 +2024,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [ZA]
 checked = "2026-09-30"
-networks = []
+networks = ["Vodacom", "MTN", "Telkom"]
 
 [[ZA.plans]]
 name = "Unlimited / 3 Days"
@@ -2076,7 +2076,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [KR]
 checked = "2026-09-30"
-networks = []
+networks = ["SK Telecom", "KT", "LG U+"]
 
 [[KR.plans]]
 name = "Unlimited / 3 Days"
@@ -2128,7 +2128,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [ES]
 checked = "2026-09-30"
-networks = []
+networks = ["Movistar", "Vodafone", "Orange", "Yoigo"]
 
 [[ES.plans]]
 name = "Unlimited / 3 Days"
@@ -2180,7 +2180,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [CH]
 checked = "2026-09-30"
-networks = []
+networks = ["Swisscom", "Sunrise", "Salt"]
 
 [[CH.plans]]
 name = "Unlimited / 3 Days"
@@ -2232,7 +2232,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [TW]
 checked = "2026-09-30"
-networks = []
+networks = ["Chunghwa Telecom", "Taiwan Mobile", "FarEasTone"]
 
 [[TW.plans]]
 name = "Unlimited / 3 Days"
@@ -2284,7 +2284,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [TH]
 checked = "2026-09-30"
-networks = []
+networks = ["AIS", "True Move", "DTAC"]
 
 [[TH.plans]]
 name = "Unlimited / 3 Days"
@@ -2336,7 +2336,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [TR]
 checked = "2026-09-30"
-networks = []
+networks = ["Turkcell", "Vodafone", "Turk Telekom"]
 
 [[TR.plans]]
 name = "Unlimited / 3 Days"
@@ -2388,7 +2388,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [AE]
 checked = "2026-09-30"
-networks = []
+networks = ["Etisalat", "du"]
 
 [[AE.plans]]
 name = "Unlimited / 3 Days"
@@ -2432,7 +2432,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [GB]
 checked = "2026-09-30"
-networks = []
+networks = ["EE", "Vodafone", "O2", "Three"]
 
 [[GB.plans]]
 name = "Unlimited / 3 Days"
@@ -2484,7 +2484,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [US]
 checked = "2026-09-30"
-networks = []
+networks = ["T-Mobile", "AT&T", "Verizon"]
 
 [[US.plans]]
 name = "Unlimited / 3 Days"
@@ -2536,7 +2536,7 @@ fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no 
 
 [VN]
 checked = "2026-09-30"
-networks = []
+networks = ["Viettel", "Vinaphone", "Mobifone"]
 
 [[VN.plans]]
 name = "Unlimited / 3 Days"
