@@ -6,8 +6,8 @@ seo:
   description: "eSIM Sift compares every Greece eSIM: 172 real plans from 8 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
 ---
 
-Prices for Greece cluster into two distinct camps. Metered plans — Roami down to $2.99 for 1GB — charge for a data bucket, while Holafly sells a single shape: unlimited data billed at roughly $3.80/day. On pure $/GB, Roami wins outright: 50GB / 30 Days works out to $0.74/GB, the best rate of the 51 plans we track.
+eSIM prices in Greece are less flat than the headline number suggests. Nothing undercuts yesim's 500MB / 1 Day at $0.51. Small buckets cost roughly 2.9 times the rate of the big ones here. The best rate here is roamic's 50GB / 30 Days plan at $0.36/GB. Across {{< count-providers >}} providers the board runs to 172 plans for Greece, 88 sold as unlimited.
 
-The crossover point decides it. At $3.80/day, two weeks of Holafly runs $38+, while a 20GB bucket from the same table covers a heavy two-week trip for less. Light users — maps, messaging, the odd lookup — can stop at a 3-5GB bucket and stay in single digits. Rule of thumb for Greece: under a week and Wi-Fi at the hotel, buy the smallest bucket; remote work or hotspot sharing pushes every metered plan toward the unlimited tier.
+Daily-rate unlimited is cheapest with roamic, at $1.00 a day. Against $0.36/GB for metered data, unlimited only wins past about 2.8GB a day. Anyone working remotely from Athens should price the daily unlimited tier before committing. There is no registration barrier in Greece, so price and setup speed are what separate an eSIM from a local SIM.
 
-Network-wise, Greece runs on Cosmote, Vodafone, Wind — coverage differences between them matter more than price differences between providers. Cosmote owns the islands; Vodafone-based budget eSIMs lose signal hopping between the Cyclades. Check the fair-use column before buying any 'unlimited' label, and re-check this page before your trip: prices move.
+The national networks are Cosmote, Vodafone and Wind, all 5G. Throughput in Greece sits in a 15-300 Mbps band, network permitting. Cosmote covers the widest ground, so it is the default for anything beyond Athens. The trade-off is Vodafone, which holds up in town and less so in between. Trips that continue into Turkiye need a separate plan, because coverage stops at the border.

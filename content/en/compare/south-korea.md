@@ -6,8 +6,8 @@ seo:
   description: "eSIM Sift compares every South Korea eSIM: 151 real plans from 8 providers, cheapest Roamic from $1.00, ranked by $/GB and $/day."
 ---
 
-Prices for South Korea cluster into two distinct camps. Metered plans — Roami down to $2.99 for 1GB — charge for a data bucket, while Holafly sells a single shape: unlimited data billed at roughly $3.92/day. On pure $/GB, Roami wins outright: 50GB / 30 Days works out to $0.78/GB, the best rate of the 51 plans we track.
+Data in South Korea is affordable. Picking the wrong shape of it costs you. The floor in South Korea is roamic's 1GB / 7 Days, at $1.00. Small plans in South Korea cost 1.8 times more per gigabyte than its best plan. roami wins on rate, at $0.55/GB for a 20GB / 7-day bucket. Across {{< count-providers >}} providers the board runs to 151 plans for South Korea, 88 sold as unlimited.
 
-The crossover point decides it. At $3.92/day, two weeks of Holafly runs $40+, while a 20GB bucket from the same table covers a heavy two-week trip for less. Light users — maps, messaging, the odd lookup — can stop at a 3-5GB bucket and stay in single digits. Rule of thumb for South Korea: under a week and Wi-Fi at the hotel, buy the smallest bucket; remote work or hotspot sharing pushes every metered plan toward the unlimited tier.
+On a daily basis, unlimited is cheapest with roamic at $1.37. Against $0.55/GB for metered data, unlimited only wins past about 2.5GB a day. A week split between Seoul and Busan is where the small-bucket advice stops holding. There is no registration barrier in South Korea, so price and setup speed are what separate an eSIM from a local SIM.
 
-Network-wise, South Korea runs on SK Telecom, KT, LG U+ — coverage differences between them matter more than price differences between providers. Korean carrier apps often demand a local ARS verification. Check the fair-use column before buying any 'unlimited' label, and re-check this page before your trip: prices move.
+The national networks are SK Telecom, KT and LG U+, all 5G. Throughput in South Korea sits in a 20-350 Mbps band, network permitting. SK Telecom covers the widest ground, so it is the default for anything beyond Seoul. The trade-off is LG U+, which holds up in town and less so in between. Trips that continue into Japan need a separate plan, because coverage stops at the border.

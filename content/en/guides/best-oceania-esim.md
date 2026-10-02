@@ -4,6 +4,9 @@ date: 2026-10-02
 description: "Australia, New Zealand and Fiji ranked by cheapest eSIM $/GB and plan, plus which provider wins the region on price. Prices checked."
 layout: region
 region: "Oceania"
+hero: "travel-esim-illustration-019.webp"
+hero_alt: "Traveler comparing eSIM plans by a resort pool in Oceania"
+weight: 5
 faqs:
   - q: "Which eSIM is cheapest for Oceania?"
     a: "There is no single cheapest provider for all of Oceania. The cheapest plan changes by country — use the league table above to see the cheapest $/GB and cheapest entry plan in each of the 3 destinations, and the verdict table for which provider is cheapest in the most countries this month."

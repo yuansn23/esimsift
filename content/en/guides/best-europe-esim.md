@@ -4,6 +4,9 @@ date: 2026-10-02
 description: "Every Europe destination ranked by cheapest eSIM $/GB and cheapest plan, plus which provider wins the region on price. Prices checked."
 layout: region
 region: "Europe"
+hero: "travel-esim-illustration-015.webp"
+hero_alt: "Traveler comparing eSIM data plans on a phone in a historic European square"
+weight: 1
 faqs:
   - q: "Which eSIM is cheapest for Europe?"
     a: "There is no single cheapest provider for all of Europe. The cheapest plan changes by country — use the league table above to see the cheapest $/GB and cheapest entry plan in each of the 18 destinations, and the verdict table for which provider is cheapest in the most countries this month."

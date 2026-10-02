@@ -6,8 +6,8 @@ seo:
   description: "eSIM Sift compares every Thailand eSIM: 158 real plans from 8 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
-Prices for Thailand cluster into two distinct camps. Metered plans — Roami down to $2.99 for 1GB — charge for a data bucket, while Holafly sells a single shape: unlimited data billed at roughly $3.43/day. On pure $/GB, Roami wins outright: 50GB / 30 Days works out to $0.62/GB, the best rate of the 51 plans we track.
+Cheap entry prices in Thailand hide a wide spread once you normalise for data. Cheapest of the lot is yesim 500MB / 1 Day at $0.51. In Thailand, the same $0.51 reaches about 950MB at the $0.55/GB rate. By rate, airalo sets the floor at $0.55/GB for 50GB over 30 days. {{< count-providers >}} providers list 158 plans for Thailand here, 90 of them unlimited.
 
-The crossover point decides it. At $3.43/day, two weeks of Holafly runs $32+, while a 20GB bucket from the same table covers a heavy two-week trip for less. Light users — maps, messaging, the odd lookup — can stop at a 3-5GB bucket and stay in single digits. Rule of thumb for Thailand: under a week and Wi-Fi at the hotel, buy the smallest bucket; remote work or hotspot sharing pushes every metered plan toward the unlimited tier.
+Unlimited by the day in Thailand starts at $1.20 via ubigi. The crossover in Thailand is roughly 2.2GB a day, where unlimited catches the $0.55/GB buckets. Travelling between Bangkok and Chiang Mai keeps daily usage moderate, so metered data stays the cheaper shape. Local prepaid SIMs are easy to buy in Thailand, so the eSIM case rests on price and on being online the moment you land.
 
-Network-wise, Thailand runs on AIS, True Move, DTAC — coverage differences between them matter more than price differences between providers. Airport SIM counters at Suvarnabhumi run 24/7 with aggressive tourist pricing. Check the fair-use column before buying any 'unlimited' label, and re-check this page before your trip: prices move.
+Thailand is served by AIS, True Move and DTAC, all 5G. Expect between 15 and 300 Mbps in Thailand, with the top of that range only on AIS. AIS covers the widest ground, so it is the default for anything beyond Bangkok. The trade-off is DTAC, which holds up in town and less so in between. Trips that continue into Malaysia need a separate plan, because coverage stops at the border.

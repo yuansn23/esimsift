@@ -23,6 +23,7 @@
 | `dual SIM eSIM` / `can I use two eSIMs` | `/guides/dual-sim-and-esim/` | 指南 | — |
 | `eSIM compatible phones` / `is my phone eSIM ready` | `/guides/esim-compatibility-check/` | 指南 | Phase 2 工具页上线后承接交互意图，指南保信息意图 |
 | `eSIM Sift` / 品牌词 | `/` | 首页 | — |
+| `best {region} eSIM` / `cheapest eSIM in {region}` / `{region} eSIM prices`（{region} ∈ Europe / Asia / Americas / Africa & Middle East / Oceania） | `/guides/best-{region}-esim/` ×5（layout region） | 区域指南页 | 不得争单国词（`{country} eSIM` → 国家页）、不得争全局 how-to（→guides 单篇）、不得争 `{A} vs {B}`（→对决页） |
 
 ## 2. 国家语境 vs 全局语境的判定规则
 
@@ -38,9 +39,11 @@
 
 | 关键词模式 | 预留 URL | 条件 |
 |---|---|---|
-| `best eSIM for Europe` / `{region} eSIM` | `/compare/{region}/` ×5 | 区域套餐数据落地后 |
 | `{carrier} eSIM` / `which eSIM uses {carrier}` | `/networks/{carrier}/` | 网络名真实核对后 |
 | `eSIM for {device}` / `{device} eSIM compatible` | `/devices/{device}/` | 机型库数据线立项后 |
+
+> 注：原预留的 `best eSIM for Europe / {region} eSIM → /compare/{region}/ ×5` 已上线，
+> 实际落地为 `/guides/best-{region}-esim/`（layout region），见主映射表；`/compare/{region}/` 槽位废弃。
 
 ## 4. 新页面检查清单（进 validate.py）
 

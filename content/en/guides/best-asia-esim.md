@@ -4,6 +4,9 @@ date: 2026-10-02
 description: "Every Asia destination ranked by cheapest eSIM $/GB and cheapest plan, plus which provider wins the region on price. Prices checked."
 layout: region
 region: "Asia"
+hero: "travel-esim-illustration-022.webp"
+hero_alt: "Phone showing an eSIM data plan against a dense Asian city skyline"
+weight: 2
 faqs:
   - q: "Which eSIM is cheapest for Asia?"
     a: "There is no single cheapest provider for all of Asia. The cheapest plan changes by country — use the league table above to see the cheapest $/GB and cheapest entry plan in each of the 13 destinations, and the verdict table for which provider is cheapest in the most countries this month."

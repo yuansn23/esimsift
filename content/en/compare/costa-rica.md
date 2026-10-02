@@ -6,8 +6,8 @@ seo:
   description: "eSIM Sift compares every Costa Rica eSIM: 149 real plans from 8 providers, cheapest Roamic from $3.00, ranked by $/GB and $/day."
 ---
 
-Scan the Costa Rica table and two pricing philosophies emerge. Metered plans — Roami down to $2.99 for 1GB — charge for a data bucket, while Holafly sells a single shape: unlimited data billed at roughly $3.80/day. On pure $/GB, Roami wins outright: 50GB / 30 Days works out to $0.74/GB, the best rate of the 51 plans we track.
+Data in Costa Rica is affordable. Buying the wrong shape of it is not. roamic holds the entry price with 1GB / 7 Days at $3.00. That gap is the story in Costa Rica in one line: 2.8 times the rate for the smallest bucket. On cost per gigabyte roamic leads with a 50GB / 30-day plan at $1.06/GB. Across {{< count-providers >}} providers the board runs to 149 plans for Costa Rica, 80 sold as unlimited.
 
-The crossover point decides it. At $3.80/day, two weeks of Holafly runs $38+, while a 20GB bucket from the same table covers a heavy two-week trip for less. Light users — maps, messaging, the odd lookup — can stop at a 3-5GB bucket and stay in single digits. Rule of thumb for Costa Rica: under a week and Wi-Fi at the hotel, buy the smallest bucket; remote work or hotspot sharing pushes every metered plan toward the unlimited tier.
+Priced per day, unlimited bottoms out at $2.97 with airalo. The crossover in Costa Rica is roughly 2.8GB a day, where unlimited catches the $1.06/GB buckets. A city break built around San Jose rarely clears a few gigabytes, so a small bucket is usually enough. Local prepaid SIMs are easy to buy in Costa Rica, so the eSIM case rests on price and on being online the moment you land.
 
-Network-wise, Costa Rica runs on Kolbi, Claro, Movistar — coverage differences between them matter more than price differences between providers. State-run Kolbi covers the jungles; Claro-based tourist eSIMs lose Osa Peninsula signal. Check the fair-use column before buying any 'unlimited' label, and re-check this page before your trip: prices move.
+Costa Rica is served by Kolbi, Claro and Movistar, all 5G. Real-world throughput lands between 10 and 150 Mbps depending on which network you land on. Kolbi covers the widest ground, so it is the default for anything beyond San Jose. Claro is the softer option, which matters only once you leave the main cities.

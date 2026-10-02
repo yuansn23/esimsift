@@ -60,7 +60,10 @@
       </div>
     </header>
     <figure class="figure">
-      <img src="/img/esim/travel-esim-illustration-001.webp" alt="Phone comparing eSIM data prices across {{ .Params.region }}" width="2848" height="1470">
+      {{ $hero := "travel-esim-illustration-001.webp" }}
+      {{ with .Params.hero }}{{ $hero = . }}{{ end }}
+      {{ $ic := imageConfig (printf "static/img/esim/%s" $hero) }}
+      <img src="/img/esim/{{ $hero }}" alt="{{ with .Params.hero_alt }}{{ . }}{{ else }}Phone comparing eSIM data prices across {{ $.Params.region }}{{ end }}" width="{{ $ic.Width }}" height="{{ $ic.Height }}">
       <figcaption>{{ .Params.region }} eSIM prices — every $/GB rate computed from the same dated snapshot.</figcaption>
     </figure>
   </div>
@@ -141,6 +144,28 @@
       {{ end }}
     </div>
   </section>
+
+  {{/* ── 其它区域指南互链（区域 → 区域闭环，weight 定序） ── */}}
+  {{ $sibs := where (where site.RegularPages "Section" "guides") "Params.layout" "region" }}
+  {{ if gt (len $sibs) 1 }}
+  <section class="mt-10" aria-labelledby="other-regions">
+    <p class="eyebrow">Keep exploring</p>
+    <h2 id="other-regions" class="text-2xl font-bold">eSIM price guides for other regions</h2>
+    <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {{ range sort $sibs "Weight" "asc" }}
+      {{ if ne .RelPermalink $.RelPermalink }}
+      {{ $rc := .Params.region }}
+      {{ $cnt := 0 }}
+      {{ range $iso, $c := hugo.Data.countries }}{{ if eq $c.region $rc }}{{ $cnt = add $cnt 1 }}{{ end }}{{ end }}
+      <a href="{{ .RelPermalink }}" class="card card-hover group flex items-center gap-3 p-4">
+        <span class="flex-1 text-sm font-semibold text-ink-900 group-hover:text-brand-700">Best {{ $rc }} eSIM</span>
+        <span class="tnum text-xs font-bold text-accent-600">{{ $cnt }} countries</span>
+      </a>
+      {{ end }}
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
 
   {{/* ── FAQ（front matter faqs，正文与 FAQPage schema 同源） ── */}}
   {{ with .Params.faqs }}

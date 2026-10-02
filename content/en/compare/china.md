@@ -6,8 +6,8 @@ seo:
   description: "eSIM Sift compares every China eSIM: 169 real plans from 8 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
 ---
 
-Prices for China cluster into two distinct camps. Metered plans — Roami down to $2.99 for 1GB — charge for a data bucket, while Holafly sells a single shape: unlimited data billed at roughly $3.55/day. On pure $/GB, Roami wins outright: 50GB / 30 Days works out to $0.66/GB, the best rate of the 51 plans we track.
+Two pricing models compete in China, and they suit different trips. In China, yesim 100MB / 1 Day is as cheap as it gets at $0.51. Entry plans in China run about 10.9 times the best per-gigabyte rate. The best rate here is roamic's 50GB / 30 Days plan at $0.48/GB. The tracked catalogue holds 169 plans for China from {{< count-providers >}} providers, 87 of them unlimited.
 
-The crossover point decides it. At $3.55/day, two weeks of Holafly runs $34+, while a 20GB bucket from the same table covers a heavy two-week trip for less. Light users — maps, messaging, the odd lookup — can stop at a 3-5GB bucket and stay in single digits. Rule of thumb for China: under a week and Wi-Fi at the hotel, buy the smallest bucket; remote work or hotspot sharing pushes every metered plan toward the unlimited tier.
+For China, the daily unlimited floor is $1.70 with roamic. Below about 3.5GB a day, buckets in China at $0.48/GB stay ahead of any daily plan. Anyone working remotely from Beijing should price the daily unlimited tier before committing. Buying a SIM in person in China means ID paperwork, which a travel eSIM skips entirely.
 
-Network-wise, China runs on China Mobile, China Unicom, China Telecom — coverage differences between them matter more than price differences between providers. Travel eSIMs for China route through Hong Kong gateways. Check the fair-use column before buying any 'unlimited' label, and re-check this page before your trip: prices move.
+China runs on China Mobile, China Unicom and China Telecom, all 5G. Practical speeds span 20 to 300 Mbps across the networks. Away from Beijing, China Mobile is the network to prefer. China Unicom sits at the other end, fine in the cities of China but the first to thin out outside them. Coverage in China will not follow you into Hong Kong, so budget for a second plan or a regional eSIM.

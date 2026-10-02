@@ -4,6 +4,9 @@ date: 2026-10-02
 description: "Every Americas destination ranked by cheapest eSIM $/GB and cheapest plan, plus which provider wins the region on price. Prices checked."
 layout: region
 region: "Americas"
+hero: "travel-esim-illustration-017.webp"
+hero_alt: "Hiker checking an eSIM data plan on a phone in the American mountains"
+weight: 3
 faqs:
   - q: "Which eSIM is cheapest for the Americas?"
     a: "There is no single cheapest provider for all of the Americas. The cheapest plan changes by country — use the league table above to see the cheapest $/GB and cheapest entry plan in each of the 8 destinations, and the verdict table for which provider is cheapest in the most countries this month."

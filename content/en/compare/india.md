@@ -6,8 +6,8 @@ seo:
   description: "eSIM Sift compares every India eSIM: 154 real plans from 8 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
 ---
 
-Prices for India cluster into two distinct camps. Metered plans — Roami down to $1.99 for 1GB — charge for a data bucket, while Holafly sells a single shape: unlimited data billed at roughly $3.22/day. On pure $/GB, Roami wins outright: 50GB / 30 Days works out to $0.56/GB, the best rate of the 51 plans we track.
+Ranking eSIMs for India by entry price gets the order wrong. The cheapest plan in India is yesim 300MB / 1 Day at $0.51. That gap is the story in India in one line: 3.1 times the rate for the smallest bucket. Per-gigabyte pricing is set by ubigi at $0.57 for 60GB over 365 days. Counting everything, {{< count-providers >}} providers list 154 plans for India, of which 89 are unlimited.
 
-The crossover point decides it. At $3.22/day, two weeks of Holafly runs $30+, while a 20GB bucket from the same table covers a heavy two-week trip for less. Light users — maps, messaging, the odd lookup — can stop at a 3-5GB bucket and stay in single digits. Rule of thumb for India: under a week and Wi-Fi at the hotel, buy the smallest bucket; remote work or hotspot sharing pushes every metered plan toward the unlimited tier.
+The cheapest unlimited plan in India comes from ubigi at $1.60 a day. Measured against $0.57/GB, the break-even sits near 2.8GB a day. Hotel Wi-Fi in Mumbai does most of the heavy lifting, which keeps metered plans cheap. ID rules apply to prepaid SIMs in India but not to travel eSIMs, which activate without paperwork.
 
-Network-wise, India runs on Jio, Airtel — coverage differences between them matter more than price differences between providers. Indian rules require passport-linked registration even for travel eSIMs. Check the fair-use column before buying any 'unlimited' label, and re-check this page before your trip: prices move.
+Behind every eSIM for India sit Jio and Airtel, all 5G. Expect between 25 and 300 Mbps in India, with the top of that range only on Jio. Anything that leaves Mumbai is better off on Jio, which holds the widest measured range. Airtel is the softer option, which matters only once you leave the main cities. Thailand is often on the same route, so price a second plan or a regional eSIM to cover both.
