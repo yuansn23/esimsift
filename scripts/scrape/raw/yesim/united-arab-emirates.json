@@ -1,0 +1,386 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n37"
+ },
+ "plans": [
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "105MB",
+   "validity": "1 Day",
+   "price": "$0.51",
+   "badges": [
+    "20% OFF",
+    "New Users Only"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "1GB",
+   "validity": "30 Days",
+   "price": "$3.52",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "1 Day",
+   "price": "$4.54",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$7.94",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "2 Days",
+   "price": "$9.07",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$12.47",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "3 Days",
+   "price": "$13.61",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "4 Days",
+   "price": "$18.14",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$21.55",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "5 Days",
+   "price": "$22.68",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "6 Days",
+   "price": "$27.22",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "7 Days",
+   "price": "$31.75",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "8 Days",
+   "price": "$34.02",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$36.18",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "9 Days",
+   "price": "$36.29",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "10 Days",
+   "price": "$38.56",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "11 Days",
+   "price": "$40.83",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "12 Days",
+   "price": "$43.09",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "30GB",
+   "validity": "30 Days",
+   "price": "$44.91",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "13 Days",
+   "price": "$45.36",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "14 Days",
+   "price": "$47.63",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "15 Days",
+   "price": "$49.90",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "16 Days",
+   "price": "$54.06",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "17 Days",
+   "price": "$58.21",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "18 Days",
+   "price": "$62.37",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "19 Days",
+   "price": "$66.54",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "20 Days",
+   "price": "$70.69",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "21 Days",
+   "price": "$74.85",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "22 Days",
+   "price": "$79.01",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "23 Days",
+   "price": "$83.16",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "24 Days",
+   "price": "$87.32",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "25 Days",
+   "price": "$91.48",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "26 Days",
+   "price": "$95.63",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "27 Days",
+   "price": "$99.80",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "28 Days",
+   "price": "$103.96",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "29 Days",
+   "price": "$108.11",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United Arab Emirates (UAE)",
+   "data": "Unlimited",
+   "validity": "30 Days",
+   "price": "$112.27",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Yesim Travel eSIM for United Arab Emirates | Data Plans & Reviews",
+  "h1": "Yesim eSIM Data Plans for United Arab Emirates",
+  "chips": [
+   "All plans\n60",
+   "Single-country\n37",
+   "Multiple-country\n23"
+  ],
+  "official_site": null,
+  "body_head": "Single\nMulti\nWrite a review\nBack to United Arab Emirates eSIM Plans\nYesim\n\nYesim is a mobile internet solution that provides eSIM Mobile Data Plans for Tourism and Business in 200+ destinations. With one global eSIM, you don't need to install multiple profiles when traveling to different countries. Yesim is easy to use and accepts various payment options, making it a convenient mobile data solution for anyone traveling.\n\nVerified\nWeb checkout\nCrypto payment\nApple Pay\nGoogle Pay\nOfficial Website\n\nPROMO CODE\n\nGET 20% OFF\nFor new user\nESIMDB20\nCopy\nTerms apply.\nYesim eSIM Data Plans for United Arab Emirates\nAll plans\n60\nSingle-country\n37\nMultiple-country\n23\nSort:\nCheapest\nBest Price/GB\nMost Data\nValidity\nApply Promo Codes\nPLAN NAME\nDATA\nVALIDITY\nPRICE/GB\nPRICE\nUnited Arab Emirates (UAE)\n105MB\n1 Day\n$0.51\n€0.45\n$4.86/GB\n20% OFF\nNew Users Only\n5G\nView Details\nUnited Arab Emirates (UAE)\n1GB\n30"
+ },
+ "slug": "united-arab-emirates",
+ "url": "https://esimdb.com/uae/yesim",
+ "status": 200
+}

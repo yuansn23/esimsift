@@ -1,0 +1,92 @@
+{{- /*
+VS 配对聚合 —— 单一数据入口。传入 dict (a, b)：两个品牌 key（slug 字母序，a < b）。
+对两国均有套餐的每个国家计算各自最低价 / 最优 $/GB / 是否有 unlimited，
+逐国判定 entry-price 胜者与 $/GB 胜者，并汇总 win 计数。
+被 vs/single.html / vs/list.html / 品牌页 vs 模块复用。返回：
+  countries rows(name/slug/flag/iso/aMin/bMin/aPerGB/bPerGB/aUnlim/bUnlim/pW/vW)
+  aWinsPrice bWinsPrice aWinsValue bWinsValue aTies
+  aUnlimCountries bUnlimCountries aGlobalMin bGlobalMin aUnlimitedOnly bUnlimitedOnly
+  checkedDate
+*/ -}}
+{{- $a := .a -}}
+{{- $b := .b -}}
+{{- $plans := hugo.Data.plans -}}
+{{- $rows := slice -}}
+{{- $aWinsPrice := 0 -}}{{- $bWinsPrice := 0 -}}{{- $ties := 0 -}}
+{{- $aWinsValue := 0 -}}{{- $bWinsValue := 0 -}}
+{{- $aUnlimCountries := 0 -}}{{- $bUnlimCountries := 0 -}}
+{{- $aGlobalMin := 0.0 -}}{{- $bGlobalMin := 0.0 -}}
+{{- $aMetered := false -}}{{- $bMetered := false -}}
+{{- $checkedDates := slice -}}
+{{- range $iso, $c := hugo.Data.countries -}}
+  {{- /* 每品牌在该国的 minPrice / minPerGB / hasUnlimited */ -}}
+  {{- $minA := 0.0 -}}{{- $pgA := 0.0 -}}{{- $unA := false -}}
+  {{- $minB := 0.0 -}}{{- $pgB := 0.0 -}}{{- $unB := false -}}
+  {{- with index (index $plans $a) $iso -}}
+    {{- $checkedDates = $checkedDates | append .checked -}}
+    {{- range .plans -}}
+      {{- if or (eq $minA 0.0) (lt (float .price) $minA) }}{{- $minA = float .price -}}{{- end -}}
+      {{- if gt (int .gb) 0 -}}
+        {{- $g := div (float .price) (float (int .gb)) -}}
+        {{- if or (eq $pgA 0.0) (lt $g $pgA) }}{{- $pgA = $g -}}{{- end -}}
+        {{- $aMetered = true -}}
+      {{- else -}}{{- $unA = true -}}{{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- with index (index $plans $b) $iso -}}
+    {{- $checkedDates = $checkedDates | append .checked -}}
+    {{- range .plans -}}
+      {{- if or (eq $minB 0.0) (lt (float .price) $minB) }}{{- $minB = float .price -}}{{- end -}}
+      {{- if gt (int .gb) 0 -}}
+        {{- $g := div (float .price) (float (int .gb)) -}}
+        {{- if or (eq $pgB 0.0) (lt $g $pgB) }}{{- $pgB = $g -}}{{- end -}}
+        {{- $bMetered = true -}}
+      {{- else -}}{{- $unB = true -}}{{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- /* 只统计两国都卖的国家；胜者按价格字面比较，并列计 tie */ -}}
+  {{- if and (gt $minA 0.0) (gt $minB 0.0) -}}
+    {{- $pW := "tie" -}}
+    {{- if lt $minA $minB }}{{- $pW = $a -}}{{- $aWinsPrice = add $aWinsPrice 1 -}}
+    {{- else if lt $minB $minA }}{{- $pW = $b -}}{{- $bWinsPrice = add $bWinsPrice 1 -}}
+    {{- else }}{{- $ties = add $ties 1 -}}{{- end -}}
+    {{- $vW := "" -}}
+    {{- if and (gt $pgA 0.0) (gt $pgB 0.0) -}}
+      {{- if lt $pgA $pgB }}{{- $vW = $a -}}{{- $aWinsValue = add $aWinsValue 1 -}}
+      {{- else if lt $pgB $pgA }}{{- $vW = $b -}}{{- $bWinsValue = add $bWinsValue 1 -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if $unA }}{{- $aUnlimCountries = add $aUnlimCountries 1 -}}{{- end -}}
+    {{- if $unB }}{{- $bUnlimCountries = add $bUnlimCountries 1 -}}{{- end -}}
+    {{- if or (eq $aGlobalMin 0.0) (lt $minA $aGlobalMin) }}{{- $aGlobalMin = $minA -}}{{- end -}}
+    {{- if or (eq $bGlobalMin 0.0) (lt $minB $bGlobalMin) }}{{- $bGlobalMin = $minB -}}{{- end -}}
+    {{- $rows = $rows | append (dict
+      "iso" $iso "name" $c.name "slug" $c.slug "flag" $c.flag
+      "aMin" $minA "bMin" $minB "aPerGB" $pgA "bPerGB" $pgB
+      "aUnlim" $unA "bUnlim" $unB "pW" $pW "vW" $vW
+    ) -}}
+  {{- end -}}
+{{- end -}}
+{{- $checked := "" -}}
+{{- if gt (len $checkedDates) 0 -}}
+  {{- $checked = index (sort $checkedDates) (sub (len $checkedDates) 1) -}}
+{{- end -}}
+{{- $checkedDate := "" -}}
+{{- if $checked }}{{- $checkedDate = (time $checked).Format "Jan 2, 2006" -}}{{- end -}}
+{{- $rows = sort $rows "name" "asc" -}}
+{{- return dict
+  "rows" $rows
+  "countries" (len $rows)
+  "aWinsPrice" $aWinsPrice
+  "bWinsPrice" $bWinsPrice
+  "ties" $ties
+  "aWinsValue" $aWinsValue
+  "bWinsValue" $bWinsValue
+  "aUnlimCountries" $aUnlimCountries
+  "bUnlimCountries" $bUnlimCountries
+  "aGlobalMin" $aGlobalMin
+  "bGlobalMin" $bGlobalMin
+  "aUnlimitedOnly" (not $aMetered)
+  "bUnlimitedOnly" (not $bMetered)
+  "checkedDate" $checkedDate
+-}}

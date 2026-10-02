@@ -1,0 +1,310 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n30"
+ },
+ "plans": [
+  {
+   "name": "Canada Mobile- - 1 GB",
+   "data": "1GB",
+   "validity": "3 Days",
+   "price": "$7.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile- - 3 GB",
+   "data": "3GB",
+   "validity": "3 Days",
+   "price": "$8.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile Plus - 1 GB",
+   "data": "1GB",
+   "validity": "3 Days",
+   "price": "$8.50",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Canada Mobile- - 3 GB",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$9.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile Plus - 3 GB",
+   "data": "3GB",
+   "validity": "3 Days",
+   "price": "$13.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Canada Mobile- - 5 GB",
+   "data": "5GB",
+   "validity": "7 Days",
+   "price": "$14.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile Plus - 3 GB",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$14.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Canada Mobile- - 5 GB",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$15.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile- - 10 GB",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$18.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile- - 5 GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$18.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile - Unlimited",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$19.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile- - 10 GB",
+   "data": "10GB",
+   "validity": "15 Days",
+   "price": "$20.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile Plus - 5 GB",
+   "data": "5GB",
+   "validity": "7 Days",
+   "price": "$20.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Canada Mobile Plus - 5 GB",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$22.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Canada Mobile- - 10 GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$23.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile Plus - 5 GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$24.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Canada Mobile Plus - 10 GB",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$26.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Canada Mobile - Unlimited",
+   "data": "3GB/day",
+   "validity": "5 Days",
+   "price": "$27.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile Plus - 10 GB",
+   "data": "10GB",
+   "validity": "15 Days",
+   "price": "$28.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Canada Mobile Plus - 10 GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$31.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Canada Mobile - Unlimited",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$32.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile- - 20 GB",
+   "data": "20GB",
+   "validity": "15 Days",
+   "price": "$34.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile - Unlimited",
+   "data": "3GB/day",
+   "validity": "10 Days",
+   "price": "$35.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile- - 20 GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$37.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile - Unlimited",
+   "data": "3GB/day",
+   "validity": "15 Days",
+   "price": "$45.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile Plus - 20 GB",
+   "data": "20GB",
+   "validity": "15 Days",
+   "price": "$48.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Canada Mobile Plus - 20 GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$48.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Canada Mobile- - 50 GB",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$84.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile - Unlimited",
+   "data": "3GB/day",
+   "validity": "30 Days",
+   "price": "$86.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Canada Mobile Plus - 50 GB",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$96.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Airalo Travel eSIM for Canada | Data Plans & Reviews",
+  "h1": "Airalo eSIM Data Plans for Canada",
+  "chips": [
+   "All plans\n66",
+   "Single-country\n30",
+   "Multiple-country\n36"
+  ],
+  "official_site": null,
+  "body_head": "Single\nMulti\nWrite a review\nBack to Canada eSIM Plans\nAiralo\n3 reviews for Canada\n\nSay 'Alo!' to simple & affordable mobile data freedom during your travels. Airalo provides data in 190+ countries & regions.\n\nVerified\nWeb checkout\nApple Pay\nGoogle Pay\nOfficial Website\n\nPROMO CODE\n\nGET 10% OFF\nUnlimited\nESIMDB10\nCopy\nTerms apply.\n\nPROMO CODE\n\nGET 15% OFF\nFor new user\nESIMDB15\nCopy\nTerms apply.\nAiralo eSIM Data Plans for Canada\nAll plans\n66\nSingle-country\n30\nMultiple-country\n36\nSort:\nCheapest\nBest Price/GB\nMost Data\nValidity\nApply Promo Codes\nPLAN NAME\nDATA\nVALIDITY\nPRICE/GB\nPRICE\nCanada Mobile- - 1 GB\n1GB\n3 Days\n$7.00\n$7.00/GB\n15% OFF\nView Details\nCanada Mobile- - 3 GB\n3GB\n3 Days\n$8.00\n$2.67/GB\n15% OFF\nView Details\nCanada Mobile Plus - 1 GB\n1GB\n3 Days\n$8.50\n$8.50/GB\n15% OFF\nCall/SMS\n(+1)\nView Details\nCanada Mobile- - 3 GB\n3GB\n7 Days\n$9.00\n$3.00/GB\n15% OFF\nView Details\nCanada Mobile Plus -"
+ },
+ "slug": "canada",
+ "url": "https://esimdb.com/canada/airalo",
+ "status": 200
+}

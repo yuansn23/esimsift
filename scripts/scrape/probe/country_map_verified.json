@@ -1,0 +1,29 @@
+{
+ "map": {
+  "united-states": "usa",
+  "united-kingdom": "uk",
+  "singapore": "singapore",
+  "macao": "macau",
+  "indonesia": "indonesia",
+  "philippines": "philippines",
+  "india": "india",
+  "netherlands": "netherlands",
+  "belgium": "belgium",
+  "switzerland": "switzerland",
+  "turkiye": "turkey",
+  "ireland": "ireland",
+  "czechia": "czechia",
+  "croatia": "croatia",
+  "iceland": "iceland",
+  "georgia": "georgia",
+  "united-arab-emirates": "uae",
+  "qatar": "qatar",
+  "israel": "israel",
+  "kenya": "kenya"
+ },
+ "holafly_usa": {
+  "status": 404,
+  "title": "eSIMDB",
+  "h1": ""
+ }
+}

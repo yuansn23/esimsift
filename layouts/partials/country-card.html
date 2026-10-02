@@ -1,0 +1,19 @@
+{{- /* 国家卡片：传入 compare section 的 page。data-region 供前端过滤 */ -}}
+{{- $p := . -}}
+{{- $c := index hugo.Data.countries $p.Params.iso -}}
+{{- $s := partial "country-stats.html" $p.Params.iso -}}
+<a href="{{ $p.RelPermalink }}" data-name="{{ lower $c.name }}" data-region="{{ $c.region }}" class="card card-hover group flex items-center gap-4 p-4">
+  <img src="{{ $c.flag | relURL }}" alt="{{ $c.name }} flag" class="h-10 w-[3.75rem] rounded-lg object-cover shadow-sm ring-1 ring-ink-100" loading="lazy">
+  <div class="min-w-0 flex-1">
+    <div class="flex items-center gap-2">
+      <span class="truncate font-display text-[15px] font-bold text-ink-950 group-hover:text-brand-700">{{ $c.name }}</span>
+      <span class="badge bg-ink-50 text-ink-400">{{ $c.region }}</span>
+    </div>
+    <div class="mt-1 text-xs text-ink-400">
+      <strong class="font-semibold text-ink-700 tnum">{{ $s.providerCount }}</strong> providers ·
+      <strong class="font-semibold text-ink-700 tnum">{{ $s.planCount }}</strong> plans ·
+      from <strong class="font-semibold text-accent-600 tnum">${{ printf "%.2f" $s.minPrice }}</strong>
+    </div>
+  </div>
+  <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-ink-50 text-ink-300 transition-all duration-300 group-hover:bg-brand-600 group-hover:text-white" aria-hidden="true">→</span>
+</a>

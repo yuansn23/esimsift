@@ -1,0 +1,168 @@
+{
+ "slug": "egypt",
+ "url": "D:\\HUGO test\\29.1_windows-amd64\\hugo_0.159.1_windows-amd64\\esim\\content\\en\\Egypt-eSIM.md",
+ "status": 200,
+ "tab": {
+  "clicked": false,
+  "label": "local:plans_data"
+ },
+ "plans": [
+  {
+   "name": "1GB / 3 Days",
+   "data": "1GB",
+   "validity": "3 Days",
+   "price": "$2.99",
+   "badges": []
+  },
+  {
+   "name": "3GB / 3 Days",
+   "data": "3GB",
+   "validity": "3 Days",
+   "price": "$7.99",
+   "badges": []
+  },
+  {
+   "name": "5GB / 3 Days",
+   "data": "5GB",
+   "validity": "3 Days",
+   "price": "$9.99",
+   "badges": []
+  },
+  {
+   "name": "10GB / 3 Days",
+   "data": "10GB",
+   "validity": "3 Days",
+   "price": "$18.99",
+   "badges": []
+  },
+  {
+   "name": "Unlimited / 3 Days",
+   "data": "Unlimited",
+   "validity": "3 Days",
+   "price": "$18.99",
+   "badges": []
+  },
+  {
+   "name": "1GB / 7 Days",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$4.99",
+   "badges": []
+  },
+  {
+   "name": "3GB / 7 Days",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$11.99",
+   "badges": []
+  },
+  {
+   "name": "5GB / 7 Days",
+   "data": "5GB",
+   "validity": "7 Days",
+   "price": "$18.99",
+   "badges": []
+  },
+  {
+   "name": "10GB / 7 Days",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$26.99",
+   "badges": []
+  },
+  {
+   "name": "20GB / 7 Days",
+   "data": "20GB",
+   "validity": "7 Days",
+   "price": "$38.99",
+   "badges": []
+  },
+  {
+   "name": "Unlimited / 7 Days",
+   "data": "Unlimited",
+   "validity": "7 Days",
+   "price": "$39.99",
+   "badges": []
+  },
+  {
+   "name": "3GB / 15 Days",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$7.99",
+   "badges": []
+  },
+  {
+   "name": "5GB / 15 Days",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$15.99",
+   "badges": []
+  },
+  {
+   "name": "10GB / 15 Days",
+   "data": "10GB",
+   "validity": "15 Days",
+   "price": "$23.99",
+   "badges": []
+  },
+  {
+   "name": "20GB / 15 Days",
+   "data": "20GB",
+   "validity": "15 Days",
+   "price": "$40.99",
+   "badges": []
+  },
+  {
+   "name": "30GB / 15 Days",
+   "data": "30GB",
+   "validity": "15 Days",
+   "price": "$58.99",
+   "badges": []
+  },
+  {
+   "name": "Unlimited / 15 Days",
+   "data": "Unlimited",
+   "validity": "15 Days",
+   "price": "$94.99",
+   "badges": []
+  },
+  {
+   "name": "3GB / 30 Days",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$10.99",
+   "badges": []
+  },
+  {
+   "name": "5GB / 30 Days",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$19.99",
+   "badges": []
+  },
+  {
+   "name": "10GB / 30 Days",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$30.99",
+   "badges": []
+  },
+  {
+   "name": "20GB / 30 Days",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$42.99",
+   "badges": []
+  },
+  {
+   "name": "30GB / 30 Days",
+   "data": "30GB",
+   "validity": "30 Days",
+   "price": "$61.99",
+   "badges": []
+  }
+ ],
+ "meta": {
+  "title": "Egypt-eSIM.md"
+ }
+}

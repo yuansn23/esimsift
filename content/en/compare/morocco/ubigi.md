@@ -1,0 +1,8 @@
+---
+title: "Ubigi Morocco eSIM Plans & Prices"
+iso: MA
+provider: ubigi
+layout: provider
+seo:
+  description: "eSIM Sift compares Ubigi eSIM plans for Morocco: 8 plans from $6.00, best $1.00/GB (#2 of 8) — ranked against 137 Morocco plans."
+---

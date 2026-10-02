@@ -1,0 +1,11767 @@
+# Scraped from esimdb.com/yesim (Single-country plans, USD list prices) on 2026-09-30.
+# Raw capture: scripts/scrape/raw/ (per-country JSON incl. badges & page meta).
+# networks: not exposed on plan cards - left empty until verified per brand page.
+
+[AR]
+checked = "2026-09-30"
+networks = []
+
+[[AR.plans]]
+name = "199MB / 1 Day"
+gb = 0.1953
+days = 1
+type = "data"
+price = 0.51
+
+[[AR.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 5.44
+
+[[AR.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 5.67
+
+[[AR.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 11.34
+
+[[AR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 14.63
+
+[[AR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 17.01
+
+[[AR.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 22.68
+
+[[AR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 27.22
+
+[[AR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.35
+
+[[AR.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 34.02
+
+[[AR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 39.69
+
+[[AR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 40.83
+
+[[AR.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 42.53
+
+[[AR.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 45.36
+
+[[AR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 48.20
+
+[[AR.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 51.03
+
+[[AR.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 51.71
+
+[[AR.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 53.87
+
+[[AR.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 56.70
+
+[[AR.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 59.54
+
+[[AR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 62.37
+
+[[AR.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 64.19
+
+[[AR.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 66.00
+
+[[AR.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 67.82
+
+[[AR.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 69.63
+
+[[AR.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 71.45
+
+[[AR.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 73.26
+
+[[AR.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 75.07
+
+[[AR.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 76.89
+
+[[AR.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 78.70
+
+[[AR.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 80.52
+
+[[AR.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 82.33
+
+[[AR.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 84.15
+
+[[AR.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 85.96
+
+[[AR.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 87.78
+
+[[AR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 89.59
+
+[AU]
+checked = "2026-09-30"
+networks = []
+
+[[AU.plans]]
+name = "399MB / 1 Day"
+gb = 0.3906
+days = 1
+type = "data"
+price = 0.51
+
+[[AU.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[AU.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[AU.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.48
+
+[[AU.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[AU.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[AU.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[AU.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[AU.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[AU.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[AU.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[AU.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[AU.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[AU.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[AU.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[AU.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[AU.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[AU.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[AU.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[AU.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[AU.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[AU.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[AU.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[AU.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[AU.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[AU.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[AU.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[AU.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[AU.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[AU.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[AU.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[AU.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[AU.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[AU.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[AU.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[AU.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[AU.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[AT]
+checked = "2026-09-30"
+networks = []
+
+[[AT.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[AT.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[AT.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[AT.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[AT.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[AT.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[AT.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[AT.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[AT.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[AT.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[AT.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[AT.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[AT.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[AT.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[AT.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[AT.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[AT.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[AT.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[AT.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[AT.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[AT.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[AT.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[AT.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[AT.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[AT.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[AT.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[AT.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[AT.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[AT.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[AT.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[AT.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[AT.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[AT.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[AT.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[AT.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[AT.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[BE]
+checked = "2026-09-30"
+networks = []
+
+[[BE.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[BE.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[BE.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[BE.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[BE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[BE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[BE.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[BE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[BE.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[BE.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[BE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[BE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[BE.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[BE.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[BE.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[BE.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[BE.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[BE.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[BE.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[BE.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[BE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[BE.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[BE.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[BE.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[BE.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[BE.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[BE.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[BE.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[BE.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[BE.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[BE.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[BE.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[BE.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[BE.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[BE.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[BE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[BR]
+checked = "2026-09-30"
+networks = []
+
+[[BR.plans]]
+name = "199MB / 1 Day"
+gb = 0.1953
+days = 1
+type = "data"
+price = 0.51
+
+[[BR.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 5.44
+
+[[BR.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 5.67
+
+[[BR.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 11.23
+
+[[BR.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 11.34
+
+[[BR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 15.88
+
+[[BR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 17.01
+
+[[BR.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 22.68
+
+[[BR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 27.22
+
+[[BR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.35
+
+[[BR.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 34.02
+
+[[BR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 39.69
+
+[[BR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 40.83
+
+[[BR.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 42.53
+
+[[BR.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 45.36
+
+[[BR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 48.20
+
+[[BR.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 51.03
+
+[[BR.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 53.87
+
+[[BR.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 56.70
+
+[[BR.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 59.54
+
+[[BR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 62.37
+
+[[BR.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 64.19
+
+[[BR.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 66.00
+
+[[BR.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 67.82
+
+[[BR.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 69.63
+
+[[BR.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 71.45
+
+[[BR.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 73.26
+
+[[BR.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 75.07
+
+[[BR.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 76.89
+
+[[BR.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 78.70
+
+[[BR.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 80.52
+
+[[BR.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 82.33
+
+[[BR.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 84.15
+
+[[BR.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 85.96
+
+[[BR.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 87.78
+
+[[BR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 89.59
+
+[CA]
+checked = "2026-09-30"
+networks = []
+
+[[CA.plans]]
+name = "199MB / 1 Day"
+gb = 0.1953
+days = 1
+type = "data"
+price = 0.51
+
+[[CA.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 4.88
+
+[[CA.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 5.10
+
+[[CA.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 9.75
+
+[[CA.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 10.21
+
+[[CA.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 14.18
+
+[[CA.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 14.63
+
+[[CA.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 19.51
+
+[[CA.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 24.38
+
+[[CA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 24.95
+
+[[CA.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 29.26
+
+[[CA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 34.14
+
+[[CA.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 35.82
+
+[[CA.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 37.42
+
+[[CA.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 37.51
+
+[[CA.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 39.19
+
+[[CA.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 40.88
+
+[[CA.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 42.57
+
+[[CA.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 44.26
+
+[[CA.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 45.94
+
+[[CA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 47.63
+
+[[CA.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 49.90
+
+[[CA.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 52.17
+
+[[CA.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 54.43
+
+[[CA.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 56.70
+
+[[CA.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 58.97
+
+[[CA.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 61.24
+
+[[CA.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 63.51
+
+[[CA.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 65.78
+
+[[CA.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 68.04
+
+[[CA.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 70.31
+
+[[CA.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 72.58
+
+[[CA.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 74.85
+
+[[CA.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 77.12
+
+[[CA.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 79.38
+
+[[CA.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 81.65
+
+[CN]
+checked = "2026-09-30"
+networks = []
+
+[[CN.plans]]
+name = "100MB / 1 Day"
+gb = 0.0977
+days = 1
+type = "data"
+price = 0.51
+
+[[CN.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 3.18
+
+[[CN.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 4.08
+
+[[CN.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.94
+
+[[CN.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 8.17
+
+[[CN.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.25
+
+[[CN.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 12.47
+
+[[CN.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 16.33
+
+[[CN.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.41
+
+[[CN.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 21.09
+
+[[CN.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 24.50
+
+[[CN.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 28.58
+
+[[CN.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 30.82
+
+[[CN.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 33.06
+
+[[CN.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 33.79
+
+[[CN.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 35.30
+
+[[CN.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 37.54
+
+[[CN.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 39.78
+
+[[CN.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 42.02
+
+[[CN.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 43.09
+
+[[CN.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 44.26
+
+[[CN.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 46.50
+
+[[CN.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 48.16
+
+[[CN.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 49.82
+
+[[CN.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 51.49
+
+[[CN.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 53.15
+
+[[CN.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 54.81
+
+[[CN.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 56.48
+
+[[CN.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 58.14
+
+[[CN.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 59.80
+
+[[CN.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 61.47
+
+[[CN.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 63.13
+
+[[CN.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 64.79
+
+[[CN.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 66.46
+
+[[CN.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 68.12
+
+[[CN.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 69.78
+
+[[CN.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.45
+
+[CO]
+checked = "2026-09-30"
+networks = []
+
+[[CO.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 6.80
+
+[[CO.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 7.94
+
+[[CO.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 13.61
+
+[[CO.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 15.88
+
+[[CO.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 19.28
+
+[[CO.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 23.82
+
+[[CO.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 28.12
+
+[[CO.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 31.75
+
+[[CO.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 39.69
+
+[[CO.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 45.02
+
+[[CO.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 47.63
+
+[[CO.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 55.57
+
+[[CO.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 59.97
+
+[[CO.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 64.36
+
+[[CO.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 68.76
+
+[[CO.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 73.15
+
+[[CO.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 77.55
+
+[[CO.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 81.94
+
+[[CO.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 86.34
+
+[[CO.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 90.72
+
+[[CO.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 93.75
+
+[[CO.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 96.77
+
+[[CO.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 99.80
+
+[[CO.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 102.82
+
+[[CO.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 105.84
+
+[[CO.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 108.87
+
+[[CO.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 111.90
+
+[[CO.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 114.91
+
+[[CO.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 117.94
+
+[[CO.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 120.97
+
+[[CO.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 123.99
+
+[[CO.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 127.01
+
+[[CO.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 130.04
+
+[[CO.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 133.06
+
+[[CO.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 136.09
+
+[CR]
+checked = "2026-09-30"
+networks = []
+
+[[CR.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 4.88
+
+[[CR.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 5.67
+
+[[CR.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 8.85
+
+[[CR.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 11.34
+
+[[CR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 14.74
+
+[[CR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 17.01
+
+[[CR.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 22.68
+
+[[CR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 23.82
+
+[[CR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.35
+
+[[CR.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 34.02
+
+[[CR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 35.72
+
+[[CR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 39.69
+
+[[CR.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 41.68
+
+[[CR.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 43.66
+
+[[CR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 45.65
+
+[[CR.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 47.63
+
+[[CR.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 49.61
+
+[[CR.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 51.60
+
+[[CR.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 53.58
+
+[[CR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 55.57
+
+[[CR.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 57.84
+
+[[CR.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 60.10
+
+[[CR.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 62.37
+
+[[CR.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 64.64
+
+[[CR.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 66.91
+
+[[CR.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 69.18
+
+[[CR.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 71.45
+
+[[CR.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 73.71
+
+[[CR.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 75.98
+
+[[CR.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 78.25
+
+[[CR.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 80.52
+
+[[CR.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 82.79
+
+[[CR.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 85.05
+
+[[CR.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 87.32
+
+[[CR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 89.59
+
+[HR]
+checked = "2026-09-30"
+networks = []
+
+[[HR.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[HR.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[HR.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[HR.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[HR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[HR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[HR.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[HR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[HR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[HR.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[HR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[HR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[HR.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[HR.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[HR.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[HR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[HR.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[HR.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[HR.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[HR.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[HR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[HR.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[HR.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[HR.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[HR.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[HR.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[HR.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[HR.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[HR.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[HR.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[HR.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[HR.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[HR.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[HR.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[HR.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[HR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[CZ]
+checked = "2026-09-30"
+networks = []
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[EG]
+checked = "2026-09-30"
+networks = []
+
+[[EG.plans]]
+name = "399MB / 1 Day"
+gb = 0.3906
+days = 1
+type = "data"
+price = 0.51
+
+[[EG.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 3.29
+
+[[EG.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[EG.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[EG.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.94
+
+[[EG.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[EG.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 12.47
+
+[[EG.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[EG.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 17.01
+
+[[EG.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[EG.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[EG.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 25.52
+
+[[EG.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[EG.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[EG.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[EG.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 32.32
+
+[[EG.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[EG.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[EG.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[EG.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[EG.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[EG.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[EG.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 44.23
+
+[[EG.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 46.50
+
+[[EG.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 48.76
+
+[[EG.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 51.03
+
+[[EG.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 53.30
+
+[[EG.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 55.57
+
+[[EG.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 57.84
+
+[[EG.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 60.10
+
+[[EG.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 62.37
+
+[[EG.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 64.64
+
+[[EG.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 66.91
+
+[[EG.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 69.18
+
+[[EG.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 71.45
+
+[[EG.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 73.71
+
+[[EG.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 75.98
+
+[[EG.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 78.25
+
+[FJ]
+checked = "2026-09-30"
+networks = []
+
+[[FJ.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 5.67
+
+[[FJ.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 6.69
+
+[[FJ.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.21
+
+[[FJ.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[FJ.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 24.95
+
+[[FJ.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 28.35
+
+[[FJ.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 35.16
+
+[[FJ.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 39.69
+
+[[FJ.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 62.37
+
+[FR]
+checked = "2026-09-30"
+networks = []
+
+[[FR.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[FR.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[FR.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[FR.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[FR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[FR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[FR.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[FR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[FR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[FR.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[FR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[FR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[FR.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[FR.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[FR.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[FR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[FR.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[FR.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[FR.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[FR.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[FR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[FR.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[FR.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[FR.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[FR.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[FR.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[FR.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[FR.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[FR.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[FR.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[FR.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[FR.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[FR.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[FR.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[FR.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[FR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[GE]
+checked = "2026-09-30"
+networks = []
+
+[[GE.plans]]
+name = "300MB / 1 Day"
+gb = 0.293
+days = 1
+type = "data"
+price = 0.51
+
+[[GE.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[GE.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[GE.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.37
+
+[[GE.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[GE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[GE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[GE.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[GE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[GE.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[GE.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[GE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[GE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[GE.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[GE.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[GE.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[GE.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[GE.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[GE.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[GE.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[GE.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[GE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[GE.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[GE.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[GE.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[GE.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[GE.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[GE.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[GE.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[GE.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[GE.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[GE.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[GE.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[GE.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[GE.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[GE.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[GE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[DE]
+checked = "2026-09-30"
+networks = []
+
+[[DE.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[DE.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[DE.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[DE.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[DE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[DE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[DE.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[DE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[DE.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[DE.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[DE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[DE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[DE.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[DE.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[DE.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[DE.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[DE.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[DE.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[DE.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[DE.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[DE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[DE.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[DE.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[DE.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[DE.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[DE.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[DE.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[DE.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[DE.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[DE.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[DE.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[DE.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[DE.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[DE.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[DE.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[DE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[GR]
+checked = "2026-09-30"
+networks = []
+
+[[GR.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[GR.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[GR.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[GR.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[GR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[GR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[GR.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[GR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[GR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[GR.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[GR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[GR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[GR.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[GR.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[GR.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[GR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[GR.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[GR.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[GR.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[GR.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[GR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[GR.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[GR.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[GR.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[GR.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[GR.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[GR.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[GR.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[GR.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[GR.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[GR.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[GR.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[GR.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[GR.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[GR.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[GR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[HK]
+checked = "2026-09-30"
+networks = []
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.57
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[HK.plans]]
+name = "Hong Kong (HK)"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[IS]
+checked = "2026-09-30"
+networks = []
+
+[[IS.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[IS.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.61
+
+[[IS.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 7.94
+
+[[IS.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.21
+
+[[IS.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[IS.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 22.68
+
+[[IS.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.22
+
+[[IS.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 28.35
+
+[[IS.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 39.69
+
+[[IS.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 48.76
+
+[IN]
+checked = "2026-09-30"
+networks = []
+
+[[IN.plans]]
+name = "300MB / 1 Day"
+gb = 0.293
+days = 1
+type = "data"
+price = 0.51
+
+[[IN.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 3.52
+
+[[IN.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 4.54
+
+[[IN.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.48
+
+[[IN.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 9.07
+
+[[IN.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 12.47
+
+[[IN.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 13.61
+
+[[IN.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 18.14
+
+[[IN.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 20.41
+
+[[IN.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 22.68
+
+[[IN.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 27.22
+
+[[IN.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 31.75
+
+[[IN.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 34.80
+
+[[IN.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 34.93
+
+[[IN.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 37.85
+
+[[IN.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 40.89
+
+[[IN.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 43.66
+
+[[IN.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 43.94
+
+[[IN.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 47.00
+
+[[IN.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 50.05
+
+[[IN.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 53.09
+
+[[IN.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 56.14
+
+[[IN.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 57.87
+
+[[IN.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 59.62
+
+[[IN.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 61.35
+
+[[IN.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 63.09
+
+[[IN.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 64.83
+
+[[IN.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 66.57
+
+[[IN.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 68.30
+
+[[IN.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 70.05
+
+[[IN.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 71.79
+
+[[IN.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 73.52
+
+[[IN.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 75.27
+
+[[IN.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 77.00
+
+[[IN.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 78.74
+
+[[IN.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 80.48
+
+[[IN.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 82.22
+
+[ID]
+checked = "2026-09-30"
+networks = []
+
+[[ID.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[ID.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[ID.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[ID.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[ID.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.94
+
+[[ID.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[ID.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[ID.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[ID.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[ID.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[ID.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[ID.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[ID.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[ID.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[ID.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[ID.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[ID.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[ID.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[ID.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[ID.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[ID.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[ID.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[ID.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[ID.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[ID.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[ID.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[ID.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[ID.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[ID.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[ID.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[ID.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[ID.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[ID.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[ID.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[ID.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[ID.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[ID.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[IE]
+checked = "2026-09-30"
+networks = []
+
+[[IE.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[IE.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[IE.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[IE.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[IE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[IE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[IE.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[IE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[IE.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[IE.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[IE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[IE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[IE.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[IE.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[IE.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[IE.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[IE.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[IE.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[IE.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[IE.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[IE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[IE.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[IE.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[IE.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[IE.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[IE.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[IE.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[IE.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[IE.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[IE.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[IE.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[IE.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[IE.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[IE.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[IE.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[IE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[IL]
+checked = "2026-09-30"
+networks = []
+
+[[IL.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.57
+
+[[IL.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.52
+
+[[IL.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 3.86
+
+[[IL.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.03
+
+[[IL.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.21
+
+[[IL.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 10.55
+
+[[IL.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 14.06
+
+[[IL.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 17.01
+
+[[IL.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 17.58
+
+[[IL.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 21.09
+
+[[IL.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 24.61
+
+[[IL.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 26.20
+
+[[IL.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 26.49
+
+[[IL.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 28.39
+
+[[IL.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 30.27
+
+[[IL.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 32.15
+
+[[IL.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 33.68
+
+[[IL.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 34.03
+
+[[IL.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 35.93
+
+[[IL.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 37.81
+
+[[IL.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 39.69
+
+[[IL.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 41.20
+
+[[IL.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 42.72
+
+[[IL.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 44.23
+
+[[IL.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 45.74
+
+[[IL.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 47.26
+
+[[IL.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 48.76
+
+[[IL.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 50.27
+
+[[IL.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 51.79
+
+[[IL.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 53.30
+
+[[IL.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 54.81
+
+[[IL.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 56.33
+
+[[IL.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 57.84
+
+[[IL.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 59.35
+
+[[IL.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 60.86
+
+[[IL.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 62.37
+
+[IT]
+checked = "2026-09-30"
+networks = []
+
+[[IT.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[IT.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[IT.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[IT.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[IT.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[IT.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[IT.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[IT.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[IT.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[IT.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[IT.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[IT.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[IT.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[IT.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[IT.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[IT.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[IT.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[IT.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[IT.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[IT.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[IT.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[IT.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[IT.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[IT.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[IT.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[IT.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[IT.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[IT.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[IT.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[IT.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[IT.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[IT.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[IT.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[IT.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[IT.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[IT.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[JP]
+checked = "2026-09-30"
+networks = []
+
+[[JP.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[JP.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 4.20
+
+[[JP.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[JP.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 9.98
+
+[[JP.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[JP.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[JP.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[JP.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[JP.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[JP.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[JP.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 28.12
+
+[[JP.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.42
+
+[[JP.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.05
+
+[[JP.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 32.67
+
+[[JP.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 34.31
+
+[[JP.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 35.94
+
+[[JP.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 37.42
+
+[[JP.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 37.57
+
+[[JP.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 39.19
+
+[[JP.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 40.83
+
+[[JP.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 42.27
+
+[[JP.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 43.70
+
+[[JP.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 45.14
+
+[[JP.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 46.58
+
+[[JP.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 48.00
+
+[[JP.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 49.44
+
+[[JP.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 50.89
+
+[[JP.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 52.31
+
+[[JP.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 53.75
+
+[[JP.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 55.19
+
+[[JP.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 56.62
+
+[[JP.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 58.06
+
+[[JP.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 59.50
+
+[[JP.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 60.93
+
+[[JP.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 62.37
+
+[KE]
+checked = "2026-09-30"
+networks = []
+
+[[KE.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 6.80
+
+[[KE.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 7.94
+
+[[KE.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 14.74
+
+[[KE.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 15.88
+
+[[KE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 21.55
+
+[[KE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 23.82
+
+[[KE.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 31.75
+
+[[KE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 32.89
+
+[[KE.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 39.69
+
+[[KE.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 47.63
+
+[[KE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 49.33
+
+[[KE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 55.57
+
+[[KE.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 59.97
+
+[[KE.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 64.36
+
+[[KE.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 68.76
+
+[[KE.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 73.15
+
+[[KE.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 77.55
+
+[[KE.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 81.94
+
+[[KE.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 86.34
+
+[[KE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 90.72
+
+[[KE.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 93.75
+
+[[KE.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 96.77
+
+[[KE.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 99.80
+
+[[KE.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 102.82
+
+[[KE.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 105.84
+
+[[KE.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 108.87
+
+[[KE.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 111.90
+
+[[KE.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 114.91
+
+[[KE.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 117.94
+
+[[KE.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 120.97
+
+[[KE.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 123.99
+
+[[KE.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 127.01
+
+[[KE.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 130.04
+
+[[KE.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 133.06
+
+[[KE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 136.09
+
+[MO]
+checked = "2026-09-30"
+networks = []
+
+[[MO.plans]]
+name = "Macau"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[MO.plans]]
+name = "Macau"
+gb = 1
+days = 30
+type = "data"
+price = 3.29
+
+[[MO.plans]]
+name = "Macau"
+gb = 0
+days = 1
+type = "unlimited"
+price = 11.34
+
+[[MO.plans]]
+name = "Macau"
+gb = 3
+days = 30
+type = "data"
+price = 17.01
+
+[[MO.plans]]
+name = "Macau"
+gb = 5
+days = 30
+type = "data"
+price = 26.08
+
+[[MO.plans]]
+name = "Macau"
+gb = 0
+days = 7
+type = "unlimited"
+price = 45.36
+
+[[MO.plans]]
+name = "Macau"
+gb = 10
+days = 30
+type = "data"
+price = 51.03
+
+[[MO.plans]]
+name = "Macau"
+gb = 0
+days = 15
+type = "unlimited"
+price = 73.71
+
+[[MO.plans]]
+name = "Macau"
+gb = 0
+days = 30
+type = "unlimited"
+price = 100.93
+
+[MY]
+checked = "2026-09-30"
+networks = []
+
+[[MY.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[MY.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[MY.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[MY.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[MY.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[MY.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[MY.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[MY.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[MY.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[MY.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[MY.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[MY.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[MY.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[MY.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[MY.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[MY.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[MY.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[MY.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[MY.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[MY.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[MY.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[MY.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[MY.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[MY.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[MY.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[MY.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[MY.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[MY.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[MY.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[MY.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[MY.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[MY.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[MY.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[MY.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[MY.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[MY.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[MX]
+checked = "2026-09-30"
+networks = []
+
+[[MX.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 5.44
+
+[[MX.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 5.67
+
+[[MX.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 11.23
+
+[[MX.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 11.34
+
+[[MX.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 15.88
+
+[[MX.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 17.01
+
+[[MX.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 22.68
+
+[[MX.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 27.22
+
+[[MX.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.35
+
+[[MX.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 34.02
+
+[[MX.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 39.69
+
+[[MX.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 40.83
+
+[[MX.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 42.53
+
+[[MX.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 45.36
+
+[[MX.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 48.20
+
+[[MX.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 51.03
+
+[[MX.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 53.87
+
+[[MX.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 56.70
+
+[[MX.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 59.54
+
+[[MX.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 62.37
+
+[[MX.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 64.19
+
+[[MX.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 66.00
+
+[[MX.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 67.82
+
+[[MX.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 69.63
+
+[[MX.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 71.45
+
+[[MX.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 73.26
+
+[[MX.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 75.07
+
+[[MX.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 76.89
+
+[[MX.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 78.70
+
+[[MX.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 80.52
+
+[[MX.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 82.33
+
+[[MX.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 84.15
+
+[[MX.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 85.96
+
+[[MX.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 87.78
+
+[[MX.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 89.59
+
+[MA]
+checked = "2026-09-30"
+networks = []
+
+[[MA.plans]]
+name = "104MB / 1 Day"
+gb = 0.1025
+days = 1
+type = "data"
+price = 0.51
+
+[[MA.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 3.40
+
+[[MA.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 5.10
+
+[[MA.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 8.51
+
+[[MA.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 10.21
+
+[[MA.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 11.34
+
+[[MA.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 15.31
+
+[[MA.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 20.41
+
+[[MA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 20.41
+
+[[MA.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 25.52
+
+[[MA.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 30.62
+
+[[MA.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 30.62
+
+[[MA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 35.72
+
+[[MA.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 37.92
+
+[[MA.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 40.12
+
+[[MA.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 42.31
+
+[[MA.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 44.23
+
+[[MA.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 44.51
+
+[[MA.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 46.71
+
+[[MA.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 48.91
+
+[[MA.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 51.10
+
+[[MA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 53.30
+
+[[MA.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 56.85
+
+[[MA.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 60.41
+
+[[MA.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 63.96
+
+[[MA.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 67.51
+
+[[MA.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 71.07
+
+[[MA.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 74.62
+
+[[MA.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 78.17
+
+[[MA.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 81.73
+
+[[MA.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 85.28
+
+[[MA.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 88.83
+
+[[MA.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 92.39
+
+[[MA.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 95.94
+
+[[MA.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 99.49
+
+[[MA.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 103.05
+
+[[MA.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 106.60
+
+[NL]
+checked = "2026-09-30"
+networks = []
+
+[[NL.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[NL.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[NL.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[NL.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[NL.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[NL.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[NL.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[NL.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[NL.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[NL.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[NL.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[NL.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[NL.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[NL.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[NL.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[NL.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[NL.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[NL.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[NL.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[NL.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[NL.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[NL.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[NL.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[NL.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[NL.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[NL.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[NL.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[NL.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[NL.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[NL.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[NL.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[NL.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[NL.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[NL.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[NL.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[NL.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[NZ]
+checked = "2026-09-30"
+networks = []
+
+[[NZ.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[NZ.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[NZ.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[NZ.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[NZ.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[NZ.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[NZ.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[NZ.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[NZ.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[NZ.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[NZ.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[NZ.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[NZ.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[NZ.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[NZ.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[NZ.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[NZ.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[NZ.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[NZ.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[NZ.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[NZ.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[NZ.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[NZ.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[NZ.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[NZ.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[NZ.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[NZ.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[NZ.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[NZ.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[NZ.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[NZ.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[NZ.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[NZ.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[NZ.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[NZ.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[NZ.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[PE]
+checked = "2026-09-30"
+networks = []
+
+[[PE.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 6.12
+
+[[PE.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 12.25
+
+[[PE.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 14.29
+
+[[PE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 20.41
+
+[[PE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 28.35
+
+[[PE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 50.47
+
+[[PE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 61.24
+
+[[PE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 73.71
+
+[[PE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 100.93
+
+[PH]
+checked = "2026-09-30"
+networks = []
+
+[[PH.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[PH.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.86
+
+[[PH.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 4.31
+
+[[PH.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.48
+
+[[PH.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.71
+
+[[PH.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.57
+
+[[PH.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 12.47
+
+[[PH.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.42
+
+[[PH.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 17.01
+
+[[PH.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.28
+
+[[PH.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.13
+
+[[PH.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 26.99
+
+[[PH.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 27.44
+
+[[PH.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 28.86
+
+[[PH.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 30.73
+
+[[PH.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 32.60
+
+[[PH.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 34.48
+
+[[PH.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 36.18
+
+[[PH.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 36.35
+
+[[PH.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 38.22
+
+[[PH.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 40.09
+
+[[PH.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 41.96
+
+[[PH.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 43.29
+
+[[PH.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 44.60
+
+[[PH.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 45.93
+
+[[PH.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 47.26
+
+[[PH.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 48.57
+
+[[PH.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 49.90
+
+[[PH.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 51.23
+
+[[PH.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 52.54
+
+[[PH.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 53.87
+
+[[PH.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 55.19
+
+[[PH.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 56.51
+
+[[PH.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 57.84
+
+[[PH.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 59.16
+
+[[PH.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 60.48
+
+[[PH.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 61.81
+
+[PL]
+checked = "2026-09-30"
+networks = []
+
+[[PL.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[PL.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[PL.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[PL.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[PL.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[PL.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[PL.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[PL.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[PL.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[PL.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[PL.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[PL.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[PL.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[PL.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[PL.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[PL.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[PL.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[PL.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[PL.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[PL.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[PL.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[PL.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[PL.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[PL.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[PL.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[PL.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[PL.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[PL.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[PL.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[PL.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[PL.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[PL.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[PL.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[PL.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[PL.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[PL.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[PT]
+checked = "2026-09-30"
+networks = []
+
+[[PT.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[PT.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[PT.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[PT.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[PT.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[PT.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[PT.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[PT.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[PT.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[PT.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[PT.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[PT.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[PT.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[PT.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[PT.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[PT.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[PT.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[PT.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[PT.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[PT.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[PT.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[PT.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[PT.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[PT.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[PT.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[PT.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[PT.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[PT.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[PT.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[PT.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[PT.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[PT.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[PT.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[PT.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[PT.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[PT.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[QA]
+checked = "2026-09-30"
+networks = []
+
+[[QA.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.57
+
+[[QA.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 4.54
+
+[[QA.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 6.69
+
+[[QA.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.94
+
+[[QA.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 9.07
+
+[[QA.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 12.47
+
+[[QA.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 13.61
+
+[[QA.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 18.14
+
+[[QA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 21.55
+
+[[QA.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 22.68
+
+[[QA.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 27.22
+
+[[QA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 31.75
+
+[[QA.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 32.32
+
+[[QA.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 34.74
+
+[[QA.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 37.71
+
+[[QA.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 40.69
+
+[[QA.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 43.66
+
+[[QA.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 44.23
+
+[[QA.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 46.64
+
+[[QA.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 49.61
+
+[[QA.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 52.60
+
+[[QA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 55.57
+
+[[QA.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 58.14
+
+[[QA.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 60.71
+
+[[QA.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 63.28
+
+[[QA.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 65.85
+
+[[QA.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 68.42
+
+[[QA.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 70.99
+
+[[QA.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 73.57
+
+[[QA.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 76.13
+
+[[QA.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 78.70
+
+[[QA.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 81.28
+
+[[QA.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 83.84
+
+[[QA.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 86.42
+
+[[QA.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 88.99
+
+[[QA.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 91.55
+
+[[QA.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 94.13
+
+[SA]
+checked = "2026-09-30"
+networks = []
+
+[[SA.plans]]
+name = "199MB / 1 Day"
+gb = 0.1953
+days = 1
+type = "data"
+price = 0.51
+
+[[SA.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 5.33
+
+[[SA.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 5.67
+
+[[SA.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 10.21
+
+[[SA.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 11.34
+
+[[SA.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 17.01
+
+[[SA.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 17.01
+
+[[SA.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 22.68
+
+[[SA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 24.95
+
+[[SA.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.35
+
+[[SA.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 34.02
+
+[[SA.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 37.42
+
+[[SA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 39.69
+
+[[SA.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 41.68
+
+[[SA.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 43.66
+
+[[SA.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 45.65
+
+[[SA.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 47.63
+
+[[SA.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 49.61
+
+[[SA.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 51.60
+
+[[SA.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 52.39
+
+[[SA.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 53.58
+
+[[SA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 55.57
+
+[[SA.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 58.60
+
+[[SA.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 61.61
+
+[[SA.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 64.64
+
+[[SA.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 67.67
+
+[[SA.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 70.69
+
+[[SA.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 73.71
+
+[[SA.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 76.74
+
+[[SA.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 79.76
+
+[[SA.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 82.79
+
+[[SA.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 85.81
+
+[[SA.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 88.83
+
+[[SA.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 91.86
+
+[[SA.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 94.89
+
+[[SA.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 97.90
+
+[[SA.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 100.93
+
+[SG]
+checked = "2026-09-30"
+networks = []
+
+[[SG.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[SG.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[SG.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[SG.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[SG.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[SG.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[SG.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[SG.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[SG.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[SG.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[SG.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[SG.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[SG.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[SG.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[SG.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[SG.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[SG.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[SG.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[SG.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[SG.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[SG.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[SG.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[SG.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[SG.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[SG.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[SG.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[SG.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[SG.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[SG.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[SG.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[SG.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[SG.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[SG.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[SG.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[SG.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[SG.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[ZA]
+checked = "2026-09-30"
+networks = []
+
+[[ZA.plans]]
+name = "199MB / 1 Day"
+gb = 0.1953
+days = 1
+type = "data"
+price = 0.51
+
+[[ZA.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 3.74
+
+[[ZA.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 9.07
+
+[[ZA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 22.68
+
+[[ZA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 28.35
+
+[[ZA.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 32.89
+
+[[ZA.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 40.83
+
+[[ZA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[ZA.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 61.24
+
+[KR]
+checked = "2026-09-30"
+networks = []
+
+[[KR.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[KR.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[KR.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[KR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[KR.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[KR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[KR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[KR.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[KR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 26.42
+
+[[KR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[KR.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[KR.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[KR.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 33.11
+
+[[KR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[KR.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[KR.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[KR.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[KR.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[KR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[KR.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[KR.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[KR.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[KR.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[KR.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[KR.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[KR.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[KR.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[KR.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[KR.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[KR.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[KR.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[KR.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[KR.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[KR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[ES]
+checked = "2026-09-30"
+networks = []
+
+[[ES.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[ES.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[ES.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[ES.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[ES.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[ES.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[ES.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[ES.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[ES.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[ES.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[ES.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[ES.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[ES.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[ES.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[ES.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[ES.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[ES.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[ES.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[ES.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[ES.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[ES.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[ES.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[ES.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[ES.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[ES.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[ES.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[ES.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[ES.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[ES.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[ES.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[ES.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[ES.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[ES.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[ES.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[ES.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[ES.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[CH]
+checked = "2026-09-30"
+networks = []
+
+[[CH.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[CH.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[CH.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[CH.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[CH.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[CH.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[CH.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[CH.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[CH.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[CH.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[CH.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[CH.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[CH.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[CH.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[CH.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[CH.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[CH.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[CH.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[CH.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[CH.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[CH.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[CH.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[CH.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[CH.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[CH.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[CH.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[CH.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[CH.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[CH.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[CH.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[CH.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[CH.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[CH.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[CH.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[CH.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[CH.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[TW]
+checked = "2026-09-30"
+networks = []
+
+[[TW.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.57
+
+[[TW.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[TW.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 5.67
+
+[[TW.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 5.67
+
+[[TW.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.21
+
+[[TW.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 13.61
+
+[[TW.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 18.14
+
+[[TW.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 21.55
+
+[[TW.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 22.68
+
+[[TW.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 32.89
+
+[[TW.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 44.23
+
+[TH]
+checked = "2026-09-30"
+networks = []
+
+[[TH.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[TH.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.95
+
+[[TH.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.63
+
+[[TH.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.26
+
+[[TH.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 7.94
+
+[[TH.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 10.89
+
+[[TH.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.47
+
+[[TH.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 14.52
+
+[[TH.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.14
+
+[[TH.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 19.28
+
+[[TH.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 21.77
+
+[[TH.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 25.40
+
+[[TH.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 26.08
+
+[[TH.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 26.65
+
+[[TH.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 27.90
+
+[[TH.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 29.03
+
+[[TH.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 30.28
+
+[[TH.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 31.53
+
+[[TH.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 32.77
+
+[[TH.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 33.91
+
+[[TH.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 35.16
+
+[[TH.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 35.95
+
+[[TH.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 36.86
+
+[[TH.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 37.65
+
+[[TH.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 38.44
+
+[[TH.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 38.56
+
+[[TH.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 39.35
+
+[[TH.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 40.15
+
+[[TH.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 40.94
+
+[[TH.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 41.85
+
+[[TH.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 42.64
+
+[[TH.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 43.43
+
+[[TH.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 44.34
+
+[[TH.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 45.14
+
+[[TH.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 45.93
+
+[[TH.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 46.84
+
+[[TH.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 47.63
+
+[TR]
+checked = "2026-09-30"
+networks = []
+
+[[TR.plans]]
+name = "North Cyprus"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.57
+
+[[TR.plans]]
+name = "North Cyprus"
+gb = 1
+days = 30
+type = "data"
+price = 2.27
+
+[[TR.plans]]
+name = "North Cyprus"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.74
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.48
+
+[[TR.plans]]
+name = "North Cyprus"
+gb = 5
+days = 30
+type = "data"
+price = 10.21
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.23
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 4
+type = "unlimited"
+price = 14.97
+
+[[TR.plans]]
+name = "North Cyprus"
+gb = 10
+days = 30
+type = "data"
+price = 15.88
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.71
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 6
+type = "unlimited"
+price = 22.45
+
+[[TR.plans]]
+name = "Turkey"
+gb = 20
+days = 30
+type = "data"
+price = 23.82
+
+[[TR.plans]]
+name = "North Cyprus"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[TR.plans]]
+name = "North Cyprus"
+gb = 0
+days = 7
+type = "unlimited"
+price = 26.20
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 8
+type = "unlimited"
+price = 28.17
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 9
+type = "unlimited"
+price = 30.14
+
+[[TR.plans]]
+name = "Turkey"
+gb = 30
+days = 30
+type = "data"
+price = 30.17
+
+[[TR.plans]]
+name = "North Cyprus"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 10
+type = "unlimited"
+price = 32.11
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 11
+type = "unlimited"
+price = 34.08
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 12
+type = "unlimited"
+price = 36.05
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 13
+type = "unlimited"
+price = 38.02
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 14
+type = "unlimited"
+price = 39.99
+
+[[TR.plans]]
+name = "Turkey"
+gb = 50
+days = 30
+type = "data"
+price = 40.83
+
+[[TR.plans]]
+name = "North Cyprus"
+gb = 0
+days = 15
+type = "unlimited"
+price = 41.96
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 16
+type = "unlimited"
+price = 43.47
+
+[[TR.plans]]
+name = "North Cyprus"
+gb = 50
+days = 30
+type = "data"
+price = 44.23
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 17
+type = "unlimited"
+price = 44.99
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 18
+type = "unlimited"
+price = 46.50
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 19
+type = "unlimited"
+price = 48.00
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 20
+type = "unlimited"
+price = 49.52
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 21
+type = "unlimited"
+price = 51.03
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 22
+type = "unlimited"
+price = 52.54
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 23
+type = "unlimited"
+price = 54.06
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 24
+type = "unlimited"
+price = 55.57
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.08
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 26
+type = "unlimited"
+price = 58.60
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.10
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.61
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.13
+
+[[TR.plans]]
+name = "North Cyprus"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[AE]
+checked = "2026-09-30"
+networks = []
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0.1025
+days = 1
+type = "data"
+price = 0.51
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 1
+days = 30
+type = "data"
+price = 3.52
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 1
+type = "unlimited"
+price = 4.54
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 3
+days = 30
+type = "data"
+price = 7.94
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 2
+type = "unlimited"
+price = 9.07
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 5
+days = 30
+type = "data"
+price = 12.47
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 3
+type = "unlimited"
+price = 13.61
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 4
+type = "unlimited"
+price = 18.14
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 10
+days = 30
+type = "data"
+price = 21.55
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 5
+type = "unlimited"
+price = 22.68
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 6
+type = "unlimited"
+price = 27.22
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 7
+type = "unlimited"
+price = 31.75
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 8
+type = "unlimited"
+price = 34.02
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 20
+days = 30
+type = "data"
+price = 36.18
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 9
+type = "unlimited"
+price = 36.29
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 10
+type = "unlimited"
+price = 38.56
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 11
+type = "unlimited"
+price = 40.83
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 12
+type = "unlimited"
+price = 43.09
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 30
+days = 30
+type = "data"
+price = 44.91
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 13
+type = "unlimited"
+price = 45.36
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 14
+type = "unlimited"
+price = 47.63
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 15
+type = "unlimited"
+price = 49.90
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 16
+type = "unlimited"
+price = 54.06
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 17
+type = "unlimited"
+price = 58.21
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 18
+type = "unlimited"
+price = 62.37
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 19
+type = "unlimited"
+price = 66.54
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 20
+type = "unlimited"
+price = 70.69
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 21
+type = "unlimited"
+price = 74.85
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 22
+type = "unlimited"
+price = 79.01
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 23
+type = "unlimited"
+price = 83.16
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 24
+type = "unlimited"
+price = 87.32
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 25
+type = "unlimited"
+price = 91.48
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 26
+type = "unlimited"
+price = 95.63
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 27
+type = "unlimited"
+price = 99.80
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 28
+type = "unlimited"
+price = 103.96
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 29
+type = "unlimited"
+price = 108.11
+
+[[AE.plans]]
+name = "United Arab Emirates (UAE)"
+gb = 0
+days = 30
+type = "unlimited"
+price = 112.27
+
+[GB]
+checked = "2026-09-30"
+networks = []
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[GB.plans]]
+name = "United Kingdom (UK)"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64
+
+[US]
+checked = "2026-09-30"
+networks = []
+
+[[US.plans]]
+name = "500MB / 1 Day"
+gb = 0.4883
+days = 1
+type = "data"
+price = 0.51
+
+[[US.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.29
+
+[[US.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 3.52
+
+[[US.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 6.58
+
+[[US.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.87
+
+[[US.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.21
+
+[[US.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 13.16
+
+[[US.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 15.88
+
+[[US.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 16.44
+
+[[US.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 19.73
+
+[[US.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 23.02
+
+[[US.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 23.82
+
+[[US.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 24.26
+
+[[US.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 25.49
+
+[[US.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 26.72
+
+[[US.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 27.95
+
+[[US.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 29.19
+
+[[US.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 30.17
+
+[[US.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 30.43
+
+[[US.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 31.65
+
+[[US.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 32.89
+
+[[US.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 34.10
+
+[[US.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 35.30
+
+[[US.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 36.52
+
+[[US.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 37.73
+
+[[US.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 38.93
+
+[[US.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 40.15
+
+[[US.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 41.36
+
+[[US.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 42.56
+
+[[US.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 43.77
+
+[[US.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 44.99
+
+[[US.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 46.19
+
+[[US.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 47.40
+
+[[US.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 48.62
+
+[[US.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 49.82
+
+[[US.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 51.03
+
+[VN]
+checked = "2026-09-30"
+networks = []
+
+[[VN.plans]]
+name = "300MB / 1 Day"
+gb = 0.293
+days = 1
+type = "data"
+price = 0.51
+
+[[VN.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 2.84
+
+[[VN.plans]]
+name = "Unlimited / 1 Day"
+gb = 0
+days = 1
+type = "unlimited"
+price = 3.97
+
+[[VN.plans]]
+name = "Unlimited / 2 Days"
+gb = 0
+days = 2
+type = "unlimited"
+price = 7.94
+
+[[VN.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.94
+
+[[VN.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 10.89
+
+[[VN.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.91
+
+[[VN.plans]]
+name = "Unlimited / 4 Days"
+gb = 0
+days = 4
+type = "unlimited"
+price = 15.88
+
+[[VN.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 18.14
+
+[[VN.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.85
+
+[[VN.plans]]
+name = "Unlimited / 6 Days"
+gb = 0
+days = 6
+type = "unlimited"
+price = 23.82
+
+[[VN.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 24.95
+
+[[VN.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.78
+
+[[VN.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.84
+
+[[VN.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.75
+
+[[VN.plans]]
+name = "Unlimited / 9 Days"
+gb = 0
+days = 9
+type = "unlimited"
+price = 31.90
+
+[[VN.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.95
+
+[[VN.plans]]
+name = "Unlimited / 11 Days"
+gb = 0
+days = 11
+type = "unlimited"
+price = 36.01
+
+[[VN.plans]]
+name = "Unlimited / 12 Days"
+gb = 0
+days = 12
+type = "unlimited"
+price = 38.06
+
+[[VN.plans]]
+name = "Unlimited / 13 Days"
+gb = 0
+days = 13
+type = "unlimited"
+price = 40.12
+
+[[VN.plans]]
+name = "Unlimited / 14 Days"
+gb = 0
+days = 14
+type = "unlimited"
+price = 42.18
+
+[[VN.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.23
+
+[[VN.plans]]
+name = "Unlimited / 16 Days"
+gb = 0
+days = 16
+type = "unlimited"
+price = 45.59
+
+[[VN.plans]]
+name = "Unlimited / 17 Days"
+gb = 0
+days = 17
+type = "unlimited"
+price = 46.95
+
+[[VN.plans]]
+name = "Unlimited / 18 Days"
+gb = 0
+days = 18
+type = "unlimited"
+price = 48.31
+
+[[VN.plans]]
+name = "Unlimited / 19 Days"
+gb = 0
+days = 19
+type = "unlimited"
+price = 49.67
+
+[[VN.plans]]
+name = "Unlimited / 20 Days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 51.03
+
+[[VN.plans]]
+name = "Unlimited / 21 Days"
+gb = 0
+days = 21
+type = "unlimited"
+price = 52.39
+
+[[VN.plans]]
+name = "Unlimited / 22 Days"
+gb = 0
+days = 22
+type = "unlimited"
+price = 53.75
+
+[[VN.plans]]
+name = "Unlimited / 23 Days"
+gb = 0
+days = 23
+type = "unlimited"
+price = 55.12
+
+[[VN.plans]]
+name = "Unlimited / 24 Days"
+gb = 0
+days = 24
+type = "unlimited"
+price = 56.48
+
+[[VN.plans]]
+name = "Unlimited / 25 Days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 57.84
+
+[[VN.plans]]
+name = "Unlimited / 26 Days"
+gb = 0
+days = 26
+type = "unlimited"
+price = 59.20
+
+[[VN.plans]]
+name = "Unlimited / 27 Days"
+gb = 0
+days = 27
+type = "unlimited"
+price = 60.56
+
+[[VN.plans]]
+name = "Unlimited / 28 Days"
+gb = 0
+days = 28
+type = "unlimited"
+price = 61.92
+
+[[VN.plans]]
+name = "Unlimited / 29 Days"
+gb = 0
+days = 29
+type = "unlimited"
+price = 63.28
+
+[[VN.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.64

@@ -1,0 +1,157 @@
+{{ define "main" }}
+{{/* 研究页 · Fair Use Audit —— 逐品牌审计 unlimited 套餐的公平使用条款
+   口径：只统计我们实际跟踪到的套餐；fup_note 逐字记录，非转述。
+   交叉链接：unlimited 榜 / 国家页（每国 fup 在套餐行内原样展示）。 */}}
+{{ $audit := dict }}
+{{ range $pk, $pdata := hugo.Data.plans }}
+  {{ $unlim := 0 }}{{ $withNote := 0 }}{{ $notes := slice }}
+  {{ range $iso, $pc := $pdata }}
+    {{ range $pc.plans }}
+      {{ if eq (int .gb) 0 }}
+        {{ $unlim = add $unlim 1 }}
+        {{ with .fup_note }}
+          {{ $withNote = add $withNote 1 }}
+          {{ if not (in $notes .) }}{{ $notes = $notes | append . }}{{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $audit = merge $audit (dict $pk (dict "unlimited" $unlim "withNote" $withNote "notes" $notes)) }}
+{{ end }}
+{{ $totalUnlimited := 0 }}{{ $totalNoted := 0 }}
+{{ range $audit }}{{ $totalUnlimited = add $totalUnlimited .unlimited }}{{ $totalNoted = add $totalNoted .withNote }}{{ end }}
+{{ $pct := 0 }}
+{{ if gt $totalUnlimited 0 }}{{ $pct = math.Round (mul (div (float $totalNoted) (float $totalUnlimited)) 100.0) }}{{ end }}
+
+{{/* 逐档品牌名单（FAQ 答案用，全部计算生成） */}}
+{{ $transparentNames := slice }}{{ $partialNames := slice }}{{ $unstatedNames := slice }}
+{{ range $pk, $a := $audit }}
+  {{ if gt $a.unlimited 0 }}
+    {{ if eq $a.withNote $a.unlimited }}{{ $transparentNames = $transparentNames | append (index hugo.Data.providers $pk).name }}
+    {{ else if gt $a.withNote 0 }}{{ $partialNames = $partialNames | append (index hugo.Data.providers $pk).name }}
+    {{ else }}{{ $unstatedNames = $unstatedNames | append (index hugo.Data.providers $pk).name }}{{ end }}
+  {{ end }}
+{{ end }}
+
+<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+  {{ partial "breadcrumbs.html" . }}
+
+  <div class="mt-4 grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+  <header>
+    <div class="flex flex-wrap items-center gap-3">
+      <span class="badge bg-brand-50 text-brand-700">original research</span>
+      <span class="badge bg-ink-50 text-ink-500 tnum">{{ $totalUnlimited }} unlimited plans audited</span>
+    </div>
+    <h1 class="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ .Title }}</h1>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">“Unlimited” on an eSIM listing never means unthrottled. We audit the fair-use policy of every unlimited plan in our database — recorded verbatim at check time — and publish what each provider's small print actually does.</p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <div class="stat-tile"><span class="stat-num tnum">{{ $totalUnlimited }}</span><span class="stat-label">unlimited plans tracked</span></div>
+      <div class="stat-tile"><span class="stat-num tnum text-brand-700">{{ $pct }}%</span><span class="stat-label">carry an explicit FUP note</span></div>
+      <div class="stat-tile"><span class="stat-num tnum">{{ sub $totalUnlimited $totalNoted }}</span><span class="stat-label">say nothing on the listing</span></div>
+    </div>
+  </header>
+  <figure class="figure">
+    <img src="/img/esim/travel-esim-illustration-003.webp" alt="Traveler reading the fair use policy of an unlimited eSIM plan" width="2848" height="1470">
+    <figcaption>Every "unlimited" eSIM carries a fair-use policy — we quote each one verbatim.</figcaption>
+  </figure>
+  </div>
+
+  {{ .Content }}
+
+  {{/* ── 审计表（逐品牌） ── */}}
+  <section class="mt-12" aria-labelledby="audit">
+    <p class="eyebrow">The audit</p>
+    <h2 id="audit" class="mt-2 text-2xl font-bold md:text-3xl">What each provider's unlimited really means</h2>
+    <div class="card mt-6 overflow-hidden p-0">
+      <div class="overflow-x-auto">
+        <table class="table-pro">
+          <thead>
+            <tr><th>Provider</th><th>Unlimited plans tracked</th><th>With explicit FUP note</th><th>What the note says</th><th>Verdict</th></tr>
+          </thead>
+          <tbody>
+            {{ range $pk, $a := $audit }}
+              {{ $p := index hugo.Data.providers $pk }}
+            <tr>
+              <td><a href="/esim-providers/{{ $pk }}/" class="font-medium text-ink-800 transition-colors hover:text-brand-700">{{ $p.name }}</a></td>
+              <td class="tnum">{{ if gt .unlimited 0 }}{{ .unlimited }}{{ else }}—{{ end }}</td>
+              <td class="tnum">{{ if gt .unlimited 0 }}{{ .withNote }}/{{ .unlimited }}{{ else }}—{{ end }}</td>
+              <td class="max-w-sm text-xs text-ink-600">
+                {{ if .notes }}{{ range first 2 .notes }}<p class="mb-1">“{{ . | truncate 110 }}”</p>{{ end }}{{ if gt (len .notes) 2 }}<p class="text-ink-400">+{{ sub (len .notes) 2 }} more variants</p>{{ end }}{{ else if gt .unlimited 0 }}<span class="text-ink-300">no note on any tracked listing</span>{{ else }}<span class="text-ink-300">sells no unlimited plans</span>{{ end }}
+              </td>
+              <td>
+                {{ if eq .unlimited 0 }}<span class="badge bg-ink-50 text-ink-500">not applicable</span>
+                {{ else if eq .withNote .unlimited }}<span class="badge bg-brand-50 text-brand-700">transparent</span>
+                {{ else if gt .withNote 0 }}<span class="badge bg-accent-50 text-accent-700">partial</span>
+                {{ else }}<span class="badge bg-accent-100 text-accent-800">unstated</span>{{ end }}
+              </td>
+            </tr>
+            {{ end }}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="mt-3 text-xs text-ink-400">“Verdict” reflects only what a provider's own listing states at check time: <em>transparent</em> = every tracked unlimited plan carries an explicit note; <em>partial</em> = some do; <em>unstated</em> = none do. We do not paraphrase or interpret policies — notes are quoted verbatim.</p>
+  </section>
+
+  {{/* ── 买前四查 ── */}}
+  <section class="mt-12" aria-labelledby="beforebuy">
+    <p class="eyebrow">Before you buy</p>
+    <h2 id="beforebuy" class="mt-2 text-2xl font-bold md:text-3xl">Four things to check on any unlimited plan</h2>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2">
+      <div class="card p-6"><h3 class="font-display text-base font-bold text-ink-950">1 · The daily rate rather than the sticker price</h3><p class="mt-3 text-sm leading-relaxed text-ink-600">Divide the price by the days. The <a href="/research/unlimited-esim/" class="font-semibold text-brand-700 hover:underline">unlimited league table</a> does this for every country we track.</p></div>
+      <div class="card p-6"><h3 class="font-display text-base font-bold text-ink-950">2 · Whether a fair-use note exists at all</h3><p class="mt-3 text-sm leading-relaxed text-ink-600">A listing with no FUP note isn't a promise of unthrottled data — it just means the seller didn't state one. Treat “unstated” as “unknown”, not “none”.</p></div>
+      <div class="card p-6"><h3 class="font-display text-base font-bold text-ink-950">3 · Hotspot sharing rules</h3><p class="mt-3 text-sm leading-relaxed text-ink-600">Tethering is where fair-use policies bite hardest. Some plans allow it, some throttle it, some drop it after a threshold — it's in the per-plan notes on each country page.</p></div>
+      <div class="card p-6"><h3 class="font-display text-base font-bold text-ink-950">4 · Whether a big metered bucket is cheaper</h3><p class="mt-3 text-sm leading-relaxed text-ink-600">If your usage is predictable, a 20GB metered plan often beats unlimited on price. Check both tables on your <a href="/compare/" class="font-semibold text-brand-700 hover:underline">destination's page</a> before committing.</p></div>
+    </div>
+  </section>
+
+  {{/* ── 数据驱动 FAQ（正文 + FAQPage schema 同源） ── */}}
+  {{ $faqList := slice }}
+  {{ $faqList = $faqList | append (dict "q" "What does fair use mean on an unlimited eSIM?" "a" (printf "Fair use is the provider's right to slow down or manage your connection — a daily full-speed allowance, a monthly threshold, or a congestion heuristic. It is how 'unlimited data' plans stay profitable. Of the %d unlimited plans we track, %d%% carry an explicit note on the listing; the rest simply do not say, which we grade as unstated rather than unlimited." $totalUnlimited $pct)) }}
+  {{ if or $transparentNames $partialNames }}
+    {{ $faqList = $faqList | append (dict "q" "Which eSIM providers state their fair-use limits?" "a" (printf "%s state an explicit note on every unlimited plan we track from them; %s state one on only some listings. The audit table above quotes each provider's actual wording — we never paraphrase a policy into something friendlier than it is." (cond $transparentNames (delimit $transparentNames ", " " and ") "None") (cond $partialNames (delimit $partialNames ", " " and ") "none"))) }}
+  {{ end }}
+  {{ $faqList = $faqList | append (dict "q" "Can I be throttled even with unlimited data?" "a" (printf "Yes — that is exactly what fair use allows. A plan can carry unlimited gigabytes and still slow you down after a threshold, on congested towers, or for tethering. Before a heavy trip, check two things on the country page: the verbatim note on each plan row, and whether a big metered bucket is simply cheaper for your usage.")) }}
+
+  {{ if gt (len $faqList) 0 }}
+  <section class="mt-12" aria-labelledby="faq">
+    <p class="eyebrow">FAQ</p>
+    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">How do you spot a fair-use catch before you buy</h2>
+    <div class="mt-6 max-w-3xl space-y-3">
+      {{ range $faqList }}
+      <details class="card group p-0">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-ink-900">{{ .q }}<span class="shrink-0 text-lg font-light text-ink-300 transition-transform group-open:rotate-45" aria-hidden="true">+</span></summary>
+        <p class="px-5 pb-5 text-sm leading-relaxed text-ink-600">{{ .a }}</p>
+      </details>
+      {{ end }}
+    </div>
+  </section>
+  {{ $faqEntities := slice }}
+  {{ range $faqList }}{{ $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) }}{{ end }}
+  <script type="application/ld+json">
+    {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $faqEntities) | safeJS }}
+  </script>
+  {{ end }}
+
+  {{/* ── 相关阅读（研究互联） ── */}}
+  <section class="mt-12" aria-labelledby="related">
+    <p class="eyebrow">Keep reading</p>
+    <h2 id="related" class="mt-2 text-2xl font-bold md:text-3xl">Related research &amp; comparisons</h2>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <a href="/research/unlimited-esim/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Unlimited eSIM daily rates</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Every country's cheapest unlimited rate, and when it beats metered data.</p></a>
+      <a href="/research/esim-price-index/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">eSIM price index</p><p class="mt-2 text-xs leading-relaxed text-ink-500">All 50 countries ranked by best $/GB, with regional averages.</p></a>
+      <a href="/compare/matchups/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Provider matchups</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Every provider head-to-head, computed country by country.</p></a>
+      <a href="/esim-providers/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Provider reviews</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Each provider's plans, pricing behavior and coverage, reviewed.</p></a>
+    </div>
+  </section>
+
+  {{/* ── Trust 尾 ── */}}
+  <section class="mt-12">
+    <div class="relative overflow-hidden rounded-3xl bg-ink-gradient px-7 py-8 text-ink-300 md:px-10">
+      <div class="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
+      <p class="font-display text-lg font-bold text-white">The small print, in large print.</p>
+      <p class="mt-2 max-w-2xl text-sm leading-relaxed">Fair-use notes are captured verbatim from each provider's listing at check time and re-verified on our regular schedule — see the <a href="/methodology/" class="font-semibold text-brand-300 hover:underline">methodology</a>. Every unlimited plan's note is also shown on its own row in each <a href="/compare/" class="font-semibold text-brand-300 hover:underline">country price table</a>.</p>
+    </div>
+  </section>
+</div>
+{{ end }}

@@ -1,0 +1,245 @@
+# ============================================================
+# 品牌档案 —— 单一事实源（结构化事实）
+# 长评测/品牌页正文放 content/en/providers/<name>.md，不放这里
+# sponsored: true  → 出站链接带 rel="sponsored nofollow"
+# sponsored: false → 自家品牌，follow
+# color / initials → 模板层品牌单色徽标（prov-avatar），非 logo 商标
+# promo_* → 折扣码模块（deals 页 / 国家页 / 品牌子页共用）
+#   2026-10-01 全部换真：roami web20（官网公示·新用户 20%）/ saily VEEPEE25
+#   （官方合作页 25%）/ ubigi WELCOME10（官方 FAQ 首购 10%）；
+#   airalo/holafly/yesim/roamic/alosim 官方无公开码 → 无 promo_* 字段（模块自动隐藏）。
+#   promo_pct 供 deals 页"折扣后实际价/翻盘分析"计算；promo_expires 官方均未标
+#   过期日，统一占位 2027-12-31，上线前逐个复核。
+# [brand.info] → 公司档案（HQ/法人/官网/双商店/客服/退款/目的地数），
+#   2026-10-01 三路代理逐品牌在官方页面核验，来源见各品牌块内注释。
+# logo：static/img/providers/<key>.png 或 .webp（prov-logo 自动探测），
+#   alosim/roami 暂无 logo 文件 → monogram 占位。
+# logo 占位符方案：monogram 徽标即占位符；想换真 logo 只需把
+#   static/img/providers/<key>.png 放进去，prov-logo partial 自动切换，无需改本文件
+#
+# 品牌集（2026-09-30 用户定稿 8 家）：airalo / holafly / saily / yesim /
+#   ubigi / roamic / alosim + 自家 roami。roami ≠ roamic（两个不同品牌）。
+# 套餐数据来源：esimdb.com（holafly 不在 esimdb，单独从官网抓）；
+#   founded 事实来源：Yesim 官方新闻(2019 瑞士) / Transatel 官网(Ubigi 品牌
+#   2017，NTT 2019 收购) / Roamic=Byte Travel(西班牙, 2021) /
+#   aloSIM=AffinityClick(渥太华, 2021)
+# ============================================================
+
+[roami]
+name = "Roami"
+founded = 2024
+tagline = "App-first travel eSIM with 24/7 activation"
+type = "app"
+color = "#1A7E6B"
+initials = "Ro"
+strengths = ["Aggressive pricing across Asia", "No ID verification for travel plans", "24/7 activation and human support", "Auto-switching across all three Japanese networks"]
+weaknesses = ["Younger brand with fewer third-party reviews", "Deepest discounts concentrate on 3-30 day plans"]
+sponsored = false
+# 折扣码：web20（roamiapp.com 首页公开横幅，新用户专享 20% off）
+promo_code = "web20"
+promo_label = "20% off your first order (new users)"
+promo_pct = 20
+promo_expires = "2027-12-31"   # ⚠ 官网未标过期日，占位；请与用户确认
+promo_verified = "2026-10-01"
+promo_terms = "New users only — apply at checkout for 20% off your first order. Bonus on the official site: 100MB of free data when you download the Roami app."
+
+# 公司档案（官方页面核验 2026-10-01：terms/privacy/contact/首页/App Store）
+[roami.info]
+hq = "Hong Kong"
+legal = "Hong Kong LinZe Co., Limited"
+website = "https://roamiapp.com"
+app_android = ""   # 官网有 Play 徽章但无实际链接，Play 商店搜不到 App（截至核验日）
+app_ios = "https://apps.apple.com/us/app/roami-esim-global-work-travel/id6747127122"
+support = "24/7 human support (online assistance 365 days) and email"
+support_email = "roamiesim@roamiapp.com"
+response_time = ""   # 官方仅承诺 24/7/365 在线，无时限承诺
+refund = "Roami's worry-free refund policy promises a full refund if the plan doesn't work or remains unused. The same 24/7 team handles activation, refunds and travel questions."
+destinations = 200
+
+[airalo]
+name = "Airalo"
+founded = 2019
+tagline = "The original eSIM marketplace"
+type = "marketplace"
+color = "#3B6FF5"
+initials = "Ai"
+strengths = ["Widest country coverage in the industry", "Established trust and brand recognition", "Regional plans (Asia, Europe) for multi-country trips"]
+weaknesses = ["No longer the cheapest in most single countries", "Smaller data allowances at entry price points"]
+sponsored = true
+# 2026-10-01 官方核验：无公开折扣码（官网/商店页仅有推荐返利计划，非公开码）
+
+# 公司档案（官方页面核验 2026-10-01：Terms/Contact/商店页）
+[airalo.info]
+hq = "Singapore"
+legal = "AIRGSM Pte. Ltd."
+website = "https://www.airalo.com"
+app_android = "https://play.google.com/store/apps/details?id=com.mobillium.airalo"
+app_ios = "https://apps.apple.com/us/app/airalo-esim-for-travel-data/id1475911720"
+support = "24/7 live chat (website and in-app) and email"
+support_email = "support@airalo.com"
+response_time = ""   # 官方只承诺 24/7 在线，未公布响应时限
+refund = "Airalo lets you withdraw within 14 days of purchase, but the right expires once the eSIM is activated or used. If an activated eSIM fails because of an Airalo error and cannot be restored, you can claim a replacement or refund within 30 days of the issue. Refunds arrive as Airmoney credit or to the original payment method (up to 30 business days)."
+destinations = 200
+
+[holafly]
+name = "Holafly"
+founded = 2018
+tagline = "Unlimited data, pay by the day"
+type = "marketplace"
+color = "#31B44A"
+initials = "Ho"
+strengths = ["Unlimited-data plans in 190+ destinations", "One-plan-per-country simplicity", "Hotspot sharing included"]
+weaknesses = ["Flat daily pricing gets expensive on long trips", "No budget tier - one plan shape only", "Fair-use throttling applies despite the unlimited label"]
+sponsored = true
+# 2026-10-01 官方核验：无公开折扣码（首页横幅为邀请返利活动，非公开码）
+
+# 公司档案（官方页面核验 2026-10-01：T&C/refund policy/contact/商店页）
+[holafly.info]
+hq = "Dublin, Ireland"
+legal = "Holafly Limited"
+website = "https://esim.holafly.com"
+app_android = "https://play.google.com/store/apps/details?id=com.holafly.holafly"
+app_ios = "https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786"
+support = "24/7 live chat in multiple languages, WhatsApp (+1 661 384 8482) and email"
+support_email = "help@holafly.com"
+response_time = ""   # 官方只承诺 24/7 在线，未公布响应时限
+refund = "Holafly gives you up to 6 months from purchase to request a refund. A full change-of-mind refund requires buying direct from Holafly (not a reseller) and never activating the eSIM; device-incompatibility refunds need an unscanned QR code and a screenshot as proof. Connection issues during a trip qualify for full or partial refunds (partial ones may carry a $3.50 administrative fee), paid back to the original payment method within 5-10 business days."
+destinations = 200
+
+[saily]
+name = "Saily"
+founded = 2024
+tagline = "The no-logs eSIM from the NordVPN team"
+type = "app"
+color = "#6B4EF5"
+initials = "Sa"
+strengths = ["Competitive per-GB pricing", "Built by the Nord Security team", "Flexible in-app top-ups"]
+weaknesses = ["Newer service with a shorter track record", "Destination list still growing"]
+sponsored = true
+# 折扣码：VEEPEE25（官方合作页 saily.com/veepee/ 公示，25% off）
+promo_code = "VEEPEE25"
+promo_label = "25% off Saily eSIMs"
+promo_pct = 25
+promo_expires = "2027-12-31"   # ⚠ 官方页未标过期日，占位；上线前复核
+promo_verified = "2026-10-01"
+promo_terms = "Partner promotion published on Saily's official site. Enter the code in the Saily app's checkout; if it's rejected the promo may have ended — Saily also maintains an official coupon page (saily.com/coupon/)."
+
+# 公司档案（官方页面核验 2026-10-01：terms/support 文章/refund center）
+[saily.info]
+hq = "Amsterdam, Netherlands"
+legal = "NordSec B.V."
+website = "https://saily.com"
+app_android = "https://play.google.com/store/apps/details?id=com.saily.android"
+app_ios = "https://apps.apple.com/us/app/saily-esim-data-for-travel/id6475045151"
+support = "24/7 live chat in the Saily app, web support tickets and email (no phone support)"
+support_email = "support@saily.com"
+response_time = ""   # 官方仅承诺 24/7 在线，无时限承诺
+refund = "Refunds can be requested within 30 days of activation and while the data package is still valid. Unused packages are refunded in full and barely-used ones (under about 1% of data consumed) partially, all via Saily's self-service refund center; if you can't install the eSIM within 30 days you can also get a refund."
+destinations = 200
+
+[yesim]
+name = "Yesim"
+founded = 2019
+tagline = "Swiss-based eSIM with pay-as-you-go data"
+type = "app"
+color = "#273A8D"
+initials = "Ye"
+strengths = ["Founded 2019 in Switzerland", "Pay-per-use international eSIM across 140+ countries", "Self-service business platform for teams", "Unlimited and fixed plans in most destinations"]
+weaknesses = ["Smaller brand recognition outside Europe", "Pay-per-MB international plan takes reading to compare"]
+sponsored = true
+# 2026-10-01 官方核验：无公开折扣码（官网仅推"推荐/忠诚度折扣"，无公示码）
+
+# 公司档案（官方页面核验 2026-10-01：terms/refund policy/contacts/help center）
+[yesim.info]
+hq = "Zug, Switzerland"
+legal = "GENESIS GROUP AG"
+website = "https://yesim.app"
+app_android = "https://play.google.com/store/apps/details?id=com.yesimmobile"
+app_ios = "https://apps.apple.com/us/app/yesim-esim-virtual-2nd-line/id1458505230"
+support = "24/7 live chat in the Yesim app, contact form and email"
+support_email = "support@yesim.app"
+response_time = "Average response time: 5 minutes (stated on the official contacts page)"
+refund = "Yesim refunds only completely unused and unactivated services, requested within 30 days of purchase. Technical-issue refunds must be reported within 1 hour of the failure and can take up to 15 business days to review. Amounts of €10 or less may be paid in Ycoins loyalty credit instead of cash."
+destinations = 200   # 官方全球套餐页 "200+ destinations"（Play 商店页仍写 140+）
+
+[ubigi]
+name = "Ubigi"
+founded = 2017
+tagline = "Global 4G/5G eSIM from Transatel, an NTT company"
+type = "app"
+color = "#0090D4"
+initials = "Ub"
+strengths = ["Operated by Transatel (NTT Group) since the 2017 eSIM launch", "Coverage in 200+ destinations", "Connectivity heritage across cars and laptops", "5G where host networks offer it"]
+weaknesses = ["Account setup required before buying", "Entry prices above the budget brands"]
+sponsored = true
+# 折扣码：WELCOME10（官方帮助中心 FAQ 公示，首购 10% off）
+promo_code = "WELCOME10"
+promo_label = "10% off your first Ubigi data plan"
+promo_pct = 10
+promo_expires = "2027-12-31"   # ⚠ 官方 FAQ 未标过期日，占位；上线前复核
+promo_verified = "2026-10-01"
+promo_terms = "Official welcome code from Ubigi's help center: 10% off your first data-plan purchase in any destination (monthly plans typically excluded). Enter it in the promo field during checkout."
+
+# 公司档案（官方页面核验 2026-10-01：帮助中心/退款 FAQ/联系页/隐私声明）
+[ubigi.info]
+hq = "Paris La Défense (Courbevoie), France"
+legal = "Transatel (NTT Group)"
+website = "https://www.ubigi.com"
+app_android = "https://play.google.com/store/apps/details?id=com.transatel.selfcare.ubigi"
+app_ios = "https://apps.apple.com/us/app/ubigi-travel-esim-mobile-data/id1375857674"
+support = "Chat (24/7 virtual assistant) and a web contact form; no published support email or phone"
+support_email = ""
+response_time = ""   # 官方仅承诺 24/7 在线，无时限承诺
+refund = "Ubigi data plans are non-refundable once use has started — even partially used. Any refund must be requested within 15 days of payment and only applies to completely unused plans. Monthly plans carry a 3-month minimum commitment before cancellation."
+destinations = 200
+
+[roamic]
+name = "Roamic"
+founded = 2021
+tagline = "European eSIM brand with unlimited options"
+type = "marketplace"
+color = "#E8630A"
+initials = "Rm"
+strengths = ["Backed by Spain's Byte Travel since 2021", "170+ countries and regions", "Unlimited-data options in many destinations", "Wholesale/API reseller platform behind the consumer brand"]
+weaknesses = ["Younger brand with a thinner review track record", "Unlimited plans carry fair-use limits"]
+sponsored = true
+# 2026-10-01 官方核验：无公开折扣码（站内有 Bixgrow 联盟/推荐系统，非公开码）
+# type 修正：app → marketplace（两家商店均无 Roamic App，官网无任何商店链接，购买走网页）
+
+# 公司档案（官方页面核验 2026-10-01：legal notice/contact/refund/FAQ）
+[roamic.info]
+hq = "Sant Cugat del Vallès (Barcelona), Spain"
+legal = "Bytetravel S.A."
+website = "https://roamic.com"
+app_android = ""   # 无 App（Play/App Store 均搜不到）
+app_ios = ""       # 无 App
+support = "24/7 live chat and email; phone +34 91 791 94 91"
+support_email = "info@roamic.com"
+response_time = ""   # 官方仅称"尽快解决"，无时限承诺
+refund = "Roamic's homepage promises a no-questions-asked refund if your eSIM goes unused within 6 months. The formal policy notes eSIMs are digital products that can't be returned once purchased, and sends buyers with problems to the support team (chat or email), who handle refunds without hassle when a plan must be changed."
+destinations = 190
+
+[alosim]
+name = "aloSIM"
+founded = 2021
+tagline = "Budget eSIM app from Canada's AffinityClick"
+type = "app"
+color = "#B83280"
+initials = "AL"
+strengths = ["Built by AffinityClick, an Ottawa telecom company", "Cheap country packs across 175+ countries", "Free eSIM app with flexible top-ups"]
+weaknesses = ["Fewer unlimited options than rivals", "Support is self-serve first"]
+sponsored = true
+# 2026-10-01 官方核验：无公开折扣码（仅有 $3 推荐-返利计划）
+
+# 公司档案（官方页面核验 2026-10-01：about/contact/refund policy/商店页）
+[alosim.info]
+hq = "Ottawa, Ontario, Canada"
+legal = "AffinityClick Inc."
+website = "https://alosim.com"
+app_android = "https://play.google.com/store/apps/details?id=com.affinityclick.alosim"
+app_ios = "https://apps.apple.com/us/app/alosim-5g-prepaid-travel-esim/id1535815057"
+support = "Live chat (website and in-app) and email, available 24 hours a day, 365 days a year; phone +1 877-278-3625"
+support_email = "support@alosim.com"
+response_time = ""   # 官方仅承诺 24/7/365 在线，无时限承诺
+refund = "aloSIM offers a 30-day money-back guarantee: a full refund if you can't install the eSIM or hit connectivity issues, including discovering your device isn't eSIM-compatible. You need your original receipt, and the team may ask why you're requesting the refund."
+destinations = 200

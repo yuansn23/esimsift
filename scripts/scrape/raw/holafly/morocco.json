@@ -1,0 +1,55 @@
+{
+ "plans": [
+  {
+   "name": "Unlimited / 3 Days",
+   "data": "Unlimited",
+   "validity": "3 Days",
+   "price": "$14.50",
+   "badges": []
+  },
+  {
+   "name": "Unlimited / 5 Days",
+   "data": "Unlimited",
+   "validity": "5 Days",
+   "price": "$23.50",
+   "badges": []
+  },
+  {
+   "name": "Unlimited / 7 Days",
+   "data": "Unlimited",
+   "validity": "7 Days",
+   "price": "$31.50",
+   "badges": []
+  },
+  {
+   "name": "Unlimited / 10 Days",
+   "data": "Unlimited",
+   "validity": "10 Days",
+   "price": "$41.90",
+   "badges": []
+  },
+  {
+   "name": "Unlimited / 15 Days",
+   "data": "Unlimited",
+   "validity": "15 Days",
+   "price": "$57.90",
+   "badges": []
+  },
+  {
+   "name": "Unlimited / 30 Days",
+   "data": "Unlimited",
+   "validity": "30 Days",
+   "price": "$84.90",
+   "badges": []
+  }
+ ],
+ "fup": "Always On backup plan: 1GB of data monthly to keep you connected no matter what.",
+ "title": "eSIM Morocco | Best eSIM with Unlimited Data Plans",
+ "slug": "morocco",
+ "url": "https://esim.holafly.com/esim-morocco/",
+ "status": 200,
+ "tab": {
+  "clicked": false,
+  "label": "pdp-table"
+ }
+}

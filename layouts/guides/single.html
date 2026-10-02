@@ -1,0 +1,254 @@
+{{ define "main" }}
+{{/* 指南模板：正文 + 逐篇计算数据盒（信息增益来自数据库）+ front-matter FAQ（正文与 FAQPage schema 同源）+ 相关阅读内链闭环。
+   数据盒按文章文件名注入，指标各不相同（防同质化）：$/GB 榜 / 入门价榜 / 安装方式表 / unlimited 日费率榜 / app 要求表。 */}}
+{{ $base := .File.BaseFileName }}
+
+{{/* ── 全站计算素材（country-stats 复用缓存） ── */}}
+{{ $gbList := slice }}{{ $priceList := slice }}{{ $unlimList := slice }}{{ $checkedDates := slice }}
+{{ range $iso, $c := hugo.Data.countries }}
+  {{ $s := partialCached "country-stats.html" $iso $iso }}
+  {{ with $s.checked }}{{ $checkedDates = $checkedDates | append . }}{{ end }}
+  {{ if lt $s.minPerGB 999999.0 }}{{ $gbList = $gbList | append (dict "name" $c.name "slug" $c.slug "flag" $c.flag "v" $s.minPerGB "unit" "/GB") }}{{ end }}
+  {{ $priceList = $priceList | append (dict "name" $c.name "slug" $c.slug "flag" $c.flag "v" $s.minPrice "unit" "") }}
+  {{ $urows := where $s.rows "gb" 0 }}
+  {{ if gt (len $urows) 0 }}{{ $u := index (sort $urows "perDay" "asc") 0 }}{{ $unlimList = $unlimList | append (dict "name" $c.name "slug" $c.slug "flag" $c.flag "v" $u.perDay "unit" "/day") }}{{ end }}
+{{ end }}
+{{ $gbRanked := sort $gbList "v" "asc" }}
+{{ $priceRanked := sort $priceList "v" "asc" }}
+{{ $unlimRanked := sort $unlimList "v" "asc" }}
+{{ $checked := "" }}{{ if gt (len $checkedDates) 0 }}{{ $checked = index (sort $checkedDates) (sub (len $checkedDates) 1) }}{{ end }}
+
+{{/* ── 品牌安装方式（providers.toml type 单一来源） ── */}}
+{{ $appRows := slice }}{{ $directRows := slice }}
+{{ range $k, $v := hugo.Data.providers }}
+  {{ $e := dict "key" $k "name" $v.name }}
+  {{ if eq $v.type "app" }}{{ $appRows = $appRows | append $e }}{{ else }}{{ $directRows = $directRows | append $e }}{{ end }}
+{{ end }}
+{{ $appRows = sort $appRows "name" "asc" }}{{ $directRows = sort $directRows "name" "asc" }}
+
+<article class="mx-auto max-w-3xl px-4 py-8 sm:px-6">
+  {{ partial "breadcrumbs.html" . }}
+  <h1 class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">{{ .Title }}</h1>
+  <div class="prose prose-slate mt-6 max-w-none">{{ .Content }}</div>
+
+  {{/* ── 兼容设备全表（仅 esim-compatibility-check）：搜索 + 品牌tab + 机型chips + 不支持表 ── */}}
+  {{ if eq $base "esim-compatibility-check" }}
+  {{ $brands := hugo.Data.devices.brand }}
+  {{ $total := 0 }}{{ range $brands }}{{ $total = add $total (len .models) }}{{ end }}
+  <section class="mt-10 not-prose" aria-labelledby="devlist">
+    <div class="card p-6">
+      <p class="eyebrow">Live device database</p>
+      <h2 id="devlist" class="mt-2 text-2xl font-bold">Which phones and tablets support eSIM?</h2>
+      <p class="mt-3 text-sm leading-relaxed text-ink-600">Every model we could verify — <span class="tnum font-semibold text-ink-800">{{ $total }}</span> phones and tablets across {{ len $brands }} brand groups, last reviewed {{ index (split hugo.Data.devices.updated "-") 0 }}. Variant warnings appear under each brand tab. A phone missing from this list is not a verdict: the <span class="font-semibold">*#06#</span> EID test in the guide above is always the final word.</p>
+
+      <div class="mt-5">
+        <label for="devSearch" class="sr-only">Search devices</label>
+        <input id="devSearch" type="search" autocomplete="off" placeholder="Search a model — try iPhone 15, S24 or Pixel" class="w-full rounded-xl border border-ink-200 bg-white px-4 py-2.5 text-sm text-ink-800 shadow-sm outline-none transition-colors placeholder:text-ink-300 focus:border-brand-400 focus:ring-2 focus:ring-brand-100">
+      </div>
+
+      <div class="mt-3 flex flex-wrap gap-2">
+        <button type="button" data-tab="all" aria-pressed="true" class="rounded-full border border-ink-900 bg-ink-900 px-3.5 py-1.5 text-xs font-semibold text-white transition-colors">All <span class="tnum opacity-70">{{ $total }}</span></button>
+        {{ range $brands }}
+        <button type="button" data-tab="{{ .key }}" aria-pressed="false" class="rounded-full border border-ink-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-ink-600 transition-colors hover:border-ink-400">{{ .name }} <span class="tnum opacity-60">{{ len .models }}</span></button>
+        {{ end }}
+      </div>
+
+      {{ range $b := $brands }}{{ with $b.note }}
+      <p data-note="{{ $b.key }}" hidden class="mt-3 rounded-xl bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-900"><span class="font-semibold">Watch the variant:</span> {{ . }}</p>
+      {{ end }}{{ end }}
+
+      <p id="devCount" class="mt-4 text-xs text-ink-400" aria-live="polite">Showing {{ $total }} models</p>
+      <div id="devGrid" class="mt-2 flex flex-wrap gap-2">
+        {{ range $b := $brands }}
+          {{ range $b.models }}
+          <span class="rounded-lg border border-ink-100 bg-ink-50/60 px-2.5 py-1.5 text-xs font-medium text-ink-700" data-b="{{ $b.key }}" data-s="{{ lower (printf "%s %s" $b.name .) }}">{{ . }}</span>
+          {{ end }}
+        {{ end }}
+      </div>
+      <p id="devEmpty" hidden class="mt-3 text-sm leading-relaxed text-ink-600">No models match that search. A miss here is not a verdict — plenty of regional variants never make any published list. Dial <span class="font-semibold">*#06#</span> on the phone itself: an EID number on screen means the eSIM chip exists.</p>
+    </div>
+  </section>
+
+  <section class="mt-10 not-prose" aria-labelledby="notsup">
+    <h2 id="notsup" class="text-2xl font-bold">Which popular phones do not support eSIM?</h2>
+    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">The traps travelers actually hit. Most of these phones look compatible on paper — same name, same year — but the specific variant sold in that market drops the eSIM chip. When a seller and a spec sheet disagree, the EID test settles it.</p>
+    <div class="card mt-5 overflow-hidden p-0">
+      <div class="overflow-x-auto">
+        <table class="table-pro">
+          <thead><tr><th>Brand</th><th>Model or variant</th><th>Why it fails</th></tr></thead>
+          <tbody>
+            {{ range hugo.Data.devices.blocked }}
+            <tr>
+              <td class="font-medium text-ink-800">{{ .brand }}</td>
+              <td>{{ .model }}</td>
+              <td class="text-sm text-ink-600">{{ .why }}</td>
+            </tr>
+            {{ end }}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="mt-3 text-xs text-ink-400">{{ hugo.Data.devices.source_note }}</p>
+  </section>
+
+  <script>
+    (function(){
+      var chips=document.querySelectorAll('#devGrid [data-b]');
+      var tabs=document.querySelectorAll('[data-tab]');
+      var notes=document.querySelectorAll('[data-note]');
+      var q=document.getElementById('devSearch');
+      var cnt=document.getElementById('devCount');
+      var empty=document.getElementById('devEmpty');
+      var active='all';
+      var ON=['border-ink-900','bg-ink-900','text-white'];
+      var OFF=['border-ink-200','bg-white','text-ink-600'];
+      function setTab(t){
+        active=t;
+        tabs.forEach(function(b){
+          var on=b.getAttribute('data-tab')===t;
+          b.setAttribute('aria-pressed',on?'true':'false');
+          ON.forEach(function(c){ b.classList.toggle(c,on); });
+          OFF.forEach(function(c){ b.classList.toggle(c,!on); });
+        });
+        notes.forEach(function(n){ n.hidden=n.getAttribute('data-note')!==t; });
+        refresh();
+      }
+      function refresh(){
+        var s=(q.value||'').trim().toLowerCase(), n=0;
+        chips.forEach(function(c){
+          var ok=(active==='all'||c.getAttribute('data-b')===active)&&(!s||c.getAttribute('data-s').indexOf(s)>-1);
+          c.hidden=!ok; if(ok){n++;}
+        });
+        cnt.textContent='Showing '+n+' model'+(n===1?'':'s');
+        empty.hidden=n>0;
+      }
+      tabs.forEach(function(b){ b.addEventListener('click',function(){ setTab(b.getAttribute('data-tab')); }); });
+      q.addEventListener('input',refresh);
+    })();
+  </script>
+  {{ end }}
+
+  {{/* ── 逐篇计算数据盒 ── */}}
+  {{ $box := "" }}{{ $boxTitle := "" }}{{ $boxIntro := "" }}{{ $boxFoot := "" }}
+  {{ if eq $base "what-is-an-esim" }}
+    {{ $box = first 5 $gbRanked }}
+    {{ $boxTitle = "What eSIM data actually costs right now" }}
+    {{ $boxIntro = "The five cheapest destinations in our index, by the best per-gigabyte rate any provider posts there — proof that destination, not technology, sets the price." }}
+    {{ $boxFoot = "destination" }}
+  {{ else if eq $base "esim-vs-physical-sim" }}
+    {{ $box = first 5 $priceRanked }}
+    {{ $boxTitle = "Where an eSIM undercuts the airport kiosk" }}
+    {{ $boxIntro = "The five cheapest entry plans we track — one tap from bought to installed, no shop visit, no negotiation. This is the floor a physical SIM counter has to beat." }}
+    {{ $boxFoot = "entry plan" }}
+  {{ else if eq $base "dual-sim-and-esim" }}
+    {{ $box = first 5 $unlimRanked }}
+    {{ $boxTitle = "Where unlimited eSIM data is cheapest per day" }}
+    {{ $boxIntro = "Keep your home number in the physical slot and let an eSIM carry the data — these five destinations have the lowest unlimited daily rates we track, ideal for the two-lines-at-once setup this guide describes." }}
+    {{ $boxFoot = "daily rate" }}
+  {{ end }}
+  {{ with $boxTitle }}
+  <section class="mt-10 not-prose" aria-labelledby="databox">
+    <div class="card p-6">
+      <p class="eyebrow">Live from our database</p>
+      <h2 id="databox" class="mt-2 text-2xl font-bold">{{ . }}</h2>
+      <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ $boxIntro }}</p>
+      <ol class="mt-5 space-y-2">
+        {{ range $box }}
+        <li>
+          <a href="/compare/{{ .slug }}/" class="group flex items-center gap-2.5 rounded-lg px-2 py-1.5 -mx-2 transition-colors hover:bg-brand-50/60">
+            <img src="{{ .flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">
+            <span class="flex-1 text-sm font-medium text-ink-800 group-hover:text-brand-800">{{ .name }}</span>
+            <span class="font-display text-sm font-bold text-brand-700 tnum">${{ printf "%.2f" .v }}{{ .unit }}</span>
+          </a>
+        </li>
+        {{ end }}
+      </ol>
+      {{ with $checked }}<p class="mt-4 text-xs text-ink-400">Every number is sorted from the same dated snapshot — prices checked {{ (time .).Format "Jan 2, 2006" }}. Full rankings in the <a href="/research/esim-price-index/" class="font-semibold text-brand-700 hover:underline">eSIM price index</a>.</p>{{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── 安装方式表（how-to-install 全表 / compatibility 仅 app 要求） ── */}}
+  {{ if or (eq $base "how-to-install-esim") (eq $base "esim-compatibility-check") }}
+  <section class="mt-10 not-prose" aria-labelledby="install">
+    <div class="card overflow-hidden p-0">
+      {{ if eq $base "how-to-install-esim" }}
+      <div class="p-6">
+        <p class="eyebrow">Live from our database</p>
+        <h2 id="install" class="mt-2 text-2xl font-bold">How each provider installs its eSIM</h2>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">Two flows exist across the eight providers we track: install straight from a QR code or the provider's website, or install from inside the provider's own app. The app route adds a step — and an account — before you can travel.</p>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="table-pro">
+          <thead><tr><th>Provider</th><th>Install method</th><th>What it means at install time</th></tr></thead>
+          <tbody>
+            {{ range $directRows }}
+            <tr>
+              <td><a href="/esim-providers/{{ .key }}/" class="font-medium text-ink-800 transition-colors hover:text-brand-700">{{ .name }}</a></td>
+              <td><span class="badge bg-brand-50 text-brand-700">direct install</span></td>
+              <td class="text-sm text-ink-600">Buy on the website, scan the QR code (or approve the web install) — no extra app or account needed.</td>
+            </tr>
+            {{ end }}
+            {{ range $appRows }}
+            <tr>
+              <td><a href="/esim-providers/{{ .key }}/" class="font-medium text-ink-800 transition-colors hover:text-brand-700">{{ .name }}</a></td>
+              <td><span class="badge bg-ink-50 text-ink-500">provider app</span></td>
+              <td class="text-sm text-ink-600">The app handles purchase and install in one place — install it on home Wi-Fi before you fly.</td>
+            </tr>
+            {{ end }}
+          </tbody>
+        </table>
+      </div>
+      {{ else }}
+      <div class="p-6">
+        <p class="eyebrow">Live from our database</p>
+        <h2 id="install" class="mt-2 text-2xl font-bold">Which eSIM providers require their app</h2>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">Device support is only half of compatibility — the provider's install route is the other half. {{ len $appRows }} of the {{ add (len $appRows) (len $directRows) }} providers we track install through their own app, which adds an OS-version and account requirement on top of eSIM hardware support.</p>
+        <ul class="mt-4 space-y-2">
+          {{ range $appRows }}<li class="flex items-center gap-2 text-sm text-ink-700"><a href="/esim-providers/{{ .key }}/" class="font-medium text-brand-700 hover:underline">{{ .name }}</a><span class="text-xs text-ink-400">app required</span></li>{{ end }}
+        </ul>
+        <p class="mt-4 text-sm text-ink-600">The rest — {{ range $i, $r := $directRows }}{{ if $i }}, {{ end }}<a href="/esim-providers/{{ .key }}/" class="font-medium text-brand-700 hover:underline">{{ .name }}</a>{{ end }} — install from a QR code or plain website with no app at all, which also makes them the safest bets for borrowed or secondary devices.</p>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── FAQ：front matter faqs（正文与 FAQPage schema 同源） ── */}}
+  {{ with .Params.faqs }}
+  {{ $faqHeading := $.Params.faq_heading | default "What should you know before you buy" }}
+  <section class="mt-10 not-prose" aria-labelledby="faq">
+    <p class="eyebrow">FAQ</p>
+    <h2 id="faq" class="mt-2 text-2xl font-bold">{{ $faqHeading }}</h2>
+    <div class="mt-6 space-y-3">
+      {{ range . }}
+      <details class="card group p-0">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-ink-900">{{ .q }}<span class="shrink-0 text-lg font-light text-ink-300 transition-transform group-open:rotate-45" aria-hidden="true">+</span></summary>
+        <p class="px-5 pb-5 text-sm leading-relaxed text-ink-600">{{ .a }}</p>
+      </details>
+      {{ end }}
+    </div>
+  </section>
+  {{ $faqEntities := slice }}
+  {{ range . }}{{ $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) }}{{ end }}
+  <script type="application/ld+json">
+    {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $faqEntities) | safeJS }}
+  </script>
+  {{ end }}
+
+  {{/* ── 相关阅读：其余指南 + 工具 + 比较入口（内链闭环） ── */}}
+  <section class="mt-10 not-prose" aria-labelledby="more">
+    <p class="eyebrow">Keep reading</p>
+    <h2 id="more" class="mt-2 text-2xl font-bold">More eSIM help before you fly</h2>
+    <div class="mt-5 grid gap-3 sm:grid-cols-2">
+      {{ range where site.RegularPages "Section" "guides" }}
+      {{ if ne .File.BaseFileName $.File.BaseFileName }}
+      <a href="{{ .RelPermalink }}" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ .Title }}</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">{{ .Description }}</p></a>
+      {{ end }}
+      {{ end }}
+      <a href="/tools/" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">eSIM trip cost calculator</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">Estimate your data by app, then get the cheapest real plan for your dates.</p></a>
+      <a href="/compare/" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Compare eSIMs by country</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">Every provider, every plan, for all {{ hugo.Data.countries | len }} destinations side by side.</p></a>
+    </div>
+  </section>
+</article>
+{{ end }}

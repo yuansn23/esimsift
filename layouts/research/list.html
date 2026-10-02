@@ -1,0 +1,99 @@
+{{ define "main" }}
+{{/* 研究枢纽页 —— 信息增益全部计算生成：全站统计瓦片 + 每篇研究的实时数据钩子 + 当前最便宜国家榜。
+   复用 country-stats（partialCached），改数据自动刷新；卡片钩子按 RelPermalink 精确挂接。 */}}
+{{ $rowsAll := slice }}
+{{ $checkedDates := slice }}
+{{ $totalPlans := 0 }}
+{{ $totalUnlimited := 0 }}
+{{ $unlimList := slice }}
+{{ range $iso, $c := hugo.Data.countries }}
+  {{ $s := partialCached "country-stats.html" $iso $iso }}
+  {{ with $s.checked }}{{ $checkedDates = $checkedDates | append . }}{{ end }}
+  {{ $totalPlans = add $totalPlans $s.planCount }}
+  {{ $totalUnlimited = add $totalUnlimited $s.unlimitedCount }}
+  {{ if lt $s.minPerGB 999999.0 }}
+    {{ $rowsAll = $rowsAll | append (dict "name" $c.name "slug" $c.slug "flag" $c.flag "minPerGB" $s.minPerGB) }}
+  {{ end }}
+  {{ $urows := where $s.rows "gb" 0 }}
+  {{ if gt (len $urows) 0 }}
+    {{ $u := index (sort $urows "perDay" "asc") 0 }}
+    {{ $unlimList = $unlimList | append (dict "name" $c.name "slug" $c.slug "bestDaily" $u.perDay) }}
+  {{ end }}
+{{ end }}
+{{ $gbRanked := sort $rowsAll "minPerGB" "asc" }}
+{{ $gbN := len $gbRanked }}
+{{ $medianRow := dict }}{{ if gt $gbN 0 }}{{ $medianRow = index $gbRanked (div (sub $gbN 1) 2) }}{{ end }}
+{{ $cheapest := dict }}{{ if gt $gbN 0 }}{{ $cheapest = index $gbRanked 0 }}{{ end }}
+{{ $dearest := dict }}{{ if gt $gbN 0 }}{{ $dearest = index $gbRanked (sub $gbN 1) }}{{ end }}
+{{ $unlimRanked := sort $unlimList "bestDaily" "asc" }}
+{{ $unlimBest := dict }}{{ if gt (len $unlimRanked) 0 }}{{ $unlimBest = index $unlimRanked 0 }}{{ end }}
+{{ $checked := "" }}
+{{ if gt (len $checkedDates) 0 }}{{ $checked = index (sort $checkedDates) (sub (len $checkedDates) 1) }}{{ end }}
+
+{{/* 每篇研究的实时数据钩子（按最终 URL 挂接） */}}
+{{ $hooks := dict }}
+{{ if $medianRow.minPerGB }}{{ $hooks = merge $hooks (dict "/research/esim-price-index/" (printf "median $%.2f/GB · cheapest %s at $%.2f · %d countries ranked" $medianRow.minPerGB $cheapest.name $cheapest.minPerGB $gbN)) }}{{ end }}
+{{ if $unlimBest.name }}{{ $hooks = merge $hooks (dict "/research/unlimited-esim/" (printf "%d countries with unlimited · cheapest $%.2f/day in %s" (len $unlimRanked) $unlimBest.bestDaily $unlimBest.name)) }}{{ end }}
+{{ $hooks = merge $hooks (dict "/research/fair-use-audit/" (printf "%d unlimited plans audited · every fair-use note quoted verbatim" $totalUnlimited)) }}
+
+<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+  {{ partial "breadcrumbs.html" . }}
+  <header class="mt-4">
+    <div class="flex flex-wrap items-center gap-3">
+      <span class="badge bg-brand-50 text-brand-700">original research</span>
+      <span class="badge bg-ink-50 text-ink-500">computed, not editorial</span>
+      {{ with $checked }}<span class="badge bg-ink-50 text-ink-500">prices checked {{ (time .).Format "Jan 2, 2006" }}</span>{{ end }}
+    </div>
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">eSIM data &amp; research</h1>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">League tables and audits computed straight from our price database — the same dated snapshot that powers every comparison on this site. The headline numbers as of the latest check:</p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <div class="stat-tile"><span class="stat-num tnum">{{ $totalPlans }}</span><span class="stat-label">real plans tracked</span></div>
+      <div class="stat-tile"><span class="stat-num tnum">{{ hugo.Data.countries | len }}</span><span class="stat-label">countries</span></div>
+      <div class="stat-tile"><span class="stat-num tnum">{{ hugo.Data.providers | len }}</span><span class="stat-label">providers</span></div>
+      {{ with $medianRow.minPerGB }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" . }}</span><span class="stat-label">median best $/GB</span></div>{{ end }}
+      {{ with $unlimBest.name }}<div class="stat-tile"><span class="stat-num text-lg">{{ $unlimBest.name }}</span><span class="stat-label">cheapest unlimited, ${{ printf "%.2f" $unlimBest.bestDaily }}/day</span></div>{{ end }}
+    </div>
+  </header>
+  {{ with .Content }}<div class="prose prose-slate mt-4 max-w-none">{{ . }}</div>{{ end }}
+
+  {{/* ── 当前最便宜国家（实时榜：价格发现型查询的即时答案） ── */}}
+  {{ if gt $gbN 4 }}
+  <section class="mt-10" aria-labelledby="nowcheap">
+    <p class="eyebrow">Right now</p>
+    <h2 id="nowcheap" class="mt-2 text-2xl font-bold md:text-3xl">The cheapest eSIM data in the world right now</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">A live top five by best $/GB — the same sort that powers the price index, recomputed on every price check. Click through for each winner's full country table.</p>
+    <div class="card mt-6 p-5">
+      <div class="flex flex-wrap gap-2">
+        {{ range first 5 $gbRanked }}
+        <a href="/compare/{{ .slug }}/" class="group flex items-center gap-2 rounded-full bg-ink-50 px-3 py-1.5 transition-colors hover:bg-brand-50">
+          <img src="{{ .flag | relURL }}" alt="" class="h-3.5 w-5 rounded-sm object-cover" loading="lazy" width="20" height="14">
+          <span class="text-sm font-medium text-ink-700 group-hover:text-brand-700">{{ .name }}</span>
+          <span class="font-display text-sm font-bold text-brand-700 tnum">${{ printf "%.2f" .minPerGB }}/GB</span>
+        </a>
+        {{ end }}
+        {{ with $dearest.name }}<span class="flex items-center gap-2 rounded-full bg-accent-50 px-3 py-1.5"><span class="text-sm font-medium text-ink-700">vs priciest {{ $dearest.name }}</span><span class="font-display text-sm font-bold text-accent-700 tnum">${{ printf "%.2f" $dearest.minPerGB }}/GB</span></span>{{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── 研究卡片（每张挂实时数据钩子） ── */}}
+  <section class="mt-12" aria-labelledby="research">
+    <p class="eyebrow">The research</p>
+    <h2 id="research" class="mt-2 text-2xl font-bold md:text-3xl">eSIM research recomputed with every price check</h2>
+    <div class="mt-6 grid gap-4 md:grid-cols-3">
+      {{ range .Pages.ByTitle }}
+      <a href="{{ .RelPermalink }}" class="card card-hover group flex flex-col p-6">
+        <p class="eyebrow">Research</p>
+        <h3 class="mt-2 font-display text-lg font-bold leading-snug text-ink-950 group-hover:text-brand-700">{{ .Title | replaceRE "^(.+?):.*$" "$1" }}</h3>
+        {{ with index $hooks .RelPermalink }}<p class="mt-3 rounded-lg bg-brand-50/70 px-3 py-2 text-xs font-semibold text-brand-700 tnum">{{ . }}</p>{{ end }}
+        <p class="mt-3 flex-1 text-sm leading-relaxed text-ink-600">{{ .Description }}</p>
+        <p class="mt-4 text-sm font-semibold text-brand-700">Read the research →</p>
+      </a>
+      {{ end }}
+    </div>
+  </section>
+
+  <p class="mt-6 text-sm text-ink-500">Want the raw numbers? The full price database is published as machine-readable <a href="{{ "catalog.json" | absURL }}" class="font-semibold text-brand-700 hover:underline">JSON</a>; collection rules are in the <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>. Prefer tools to tables? The <a href="/tools/" class="font-semibold text-brand-700 hover:underline">trip cost calculator</a> turns these same prices into a single recommendation for your trip.</p>
+</div>
+{{ end }}

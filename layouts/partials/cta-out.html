@@ -1,0 +1,28 @@
+{{- /*
+出站 CTA —— 全站唯一出口。所有导流按钮/表格 View 列都调这个 partial。
+读取 hugo.toml [params.outbound]：
+  - target   覆盖默认 active（表格行 = 品牌自己的 key）
+  - slugMap  data/countries.toml 的 [ISO.slugs]，用于深链；缺失回退 base 并 warnf
+context: dict (target, slugMap, label, class, campaign, page)
+*/ -}}
+{{- $targetKey := .target | default site.Params.outbound.active -}}
+{{- $t := index site.Params.outbound.targets $targetKey -}}
+{{- $href := $t.base -}}
+{{- $slug := "" -}}
+{{- with .slugMap }}{{ $slug = index . $targetKey | default "" }}{{ end -}}
+{{- if and $t.country_path $slug -}}
+  {{- $href = printf "%s%s" $t.base (replace $t.country_path "{slug}" $slug) -}}
+{{- else if and $t.country_path (not $slug) .slugMap -}}
+  {{- /* 只在调用方传了 slugMap（国家语境）但缺 slug 时才报警；deals/providers 等无国家页面走 base 链接是预期行为 */ -}}
+  {{- warnf "cta-out: target %q has country_path but slug missing in slugMap (page: %s)" $targetKey (.page | default "?") -}}
+{{- end -}}
+{{- with $t.utm -}}
+  {{- $camp := $.campaign | default .campaign | default "compare" -}}
+  {{- $q := printf "utm_source=%s&utm_medium=%s&utm_campaign=%s" .source .medium $camp -}}
+  {{- if strings.Contains $href "?" -}}
+    {{- $href = printf "%s&%s" $href $q -}}
+  {{- else -}}
+    {{- $href = printf "%s?%s" $href $q -}}
+  {{- end -}}
+{{- end -}}
+<a href="{{ $href }}"{{ with $t.rel }} rel="{{ . }}"{{ end }} target="_blank" class="{{ .class | default "btn-out" }}">{{ .label | default $t.label | default "View deal" }}</a>

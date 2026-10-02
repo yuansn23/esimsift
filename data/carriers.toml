@@ -1,0 +1,1464 @@
+# ── Host-network profiles per country (all 50 markets) ─────────────────────
+# Join key: `name` must match the strings in countries.toml carriers[]
+# and plans/<provider>.toml [ISO].networks — the country page renders the
+# profile inside the matching network card.
+# speed_min / speed_top = typical real-world download Mbps (floor includes
+# 4G fallback areas, top reached on good 5G). The "good for" line is
+# DERIVED from speed_min in the template — never hand-write it.
+# tech: "5G" = live 5G in major cities, "4G" = LTE only.
+# Speeds and coverage notes are editorial typicals from public knowledge —
+# verify per market during P-A before launch.
+
+[[AE.profiles]]
+name = "Etisalat"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "The UAE's strongest network — fast 5G across Dubai and Abu Dhabi and the safest pick everywhere, including malls and metro."
+
+[[AE.profiles]]
+name = "du"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Excellent in the cities; a small step behind Etisalat indoors and in newer districts."
+
+[[AR.profiles]]
+name = "Personal"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Strong in Buenos Aires and major cities; thinner once you reach Patagonia."
+
+[[AR.profiles]]
+name = "Claro"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "The widest national footprint of the three — the safer pick for road trips between provinces."
+
+[[AR.profiles]]
+name = "Movistar"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Solid urban coverage; rural reach a step behind Claro."
+
+[[AT.profiles]]
+name = "A1"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Austria's benchmark — the best alpine and rural coverage plus fast city 5G."
+
+[[AT.profiles]]
+name = "Magenta"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong in cities and valleys; a close second nationally."
+
+[[AT.profiles]]
+name = "Drei"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "The cheapest plans and improving fast; patchier in the high mountains."
+
+[[AU.profiles]]
+name = "Telstra"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "The outback winner — by far the best coverage outside the cities. For road trips and national parks, prefer Telstra-based plans."
+
+[[AU.profiles]]
+name = "Optus"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong metro and regional coverage, usually at lower prices than Telstra."
+
+[[AU.profiles]]
+name = "Vodafone"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "City-focused; the weakest of the three once you leave urban Australia."
+
+[[BE.profiles]]
+name = "Proximus"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Belgium's best all-round network — consistently fast everywhere, including the coast."
+
+[[BE.profiles]]
+name = "Orange"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Solid national coverage; particularly strong in Brussels and Wallonia."
+
+[[BE.profiles]]
+name = "Base"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "The budget option — dependable in cities, weaker in the rural Ardennes."
+
+[[BR.profiles]]
+name = "Vivo"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Brazil's largest network — the safest pick once you leave the state capitals."
+
+[[BR.profiles]]
+name = "Claro"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "A close second nationally and often the fastest in city centers."
+
+[[BR.profiles]]
+name = "TIM"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Strong in the Northeast and big cities; thinner across the Amazon region."
+
+[[CA.profiles]]
+name = "Bell"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Canada's widest coverage, sharing masts with Telus — the pick for rural areas and the Rockies."
+
+[[CA.profiles]]
+name = "Rogers"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong in the East and downtown cores; the best Toronto subway coverage."
+
+[[CA.profiles]]
+name = "Telus"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "The best network in the West; shares infrastructure with Bell, so coverage is near-identical."
+
+[[CH.profiles]]
+name = "Swisscom"
+tech = "5G"
+speed_min = 25
+speed_top = 350
+note = "The alpine gold standard — fast even in mountain villages and cable cars."
+
+[[CH.profiles]]
+name = "Sunrise"
+tech = "5G"
+speed_min = 20
+speed_top = 300
+note = "Excellent 5G in cities and valleys; often the fastest in Zurich."
+
+[[CH.profiles]]
+name = "Salt"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Budget-friendly and strong in cities; weaker in remote alpine areas."
+
+[[CN.profiles]]
+name = "China Mobile"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "The coverage giant — works in subway tunnels, small towns and on most tourist trails."
+
+[[CN.profiles]]
+name = "China Unicom"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Fast in the cities and historically the traveler-friendly pick; rural reach a step behind Mobile."
+
+[[CN.profiles]]
+name = "China Telecom"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong in the south and all major cities; a solid second choice everywhere."
+
+[[CO.profiles]]
+name = "Claro"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Colombia's widest network — the safest pick outside Bogotá."
+
+[[CO.profiles]]
+name = "Movistar"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Strong in the cities and across the Andean region."
+
+[[CO.profiles]]
+name = "Tigo"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "The budget pick — dependable in cities, thinner on rural roads."
+
+[[CR.profiles]]
+name = "Kolbi"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "The state carrier with the widest reach — the pick for beaches and rainforest lodges."
+
+[[CR.profiles]]
+name = "Claro"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "Fast in San José and the main tourist towns."
+
+[[CR.profiles]]
+name = "Movistar"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "Solid urban coverage; weaker along the Nicoya coast."
+
+[[CZ.profiles]]
+name = "O2"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Czechia's largest network — the best coverage in Bohemia and small towns."
+
+[[CZ.profiles]]
+name = "T-Mobile"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong nationwide and often the fastest in Prague."
+
+[[CZ.profiles]]
+name = "Vodafone"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Solid in cities; budget plans ride the same masts."
+
+[[DE.profiles]]
+name = "Telekom"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Germany's benchmark — the best rural and autobahn coverage; the safe pick for road trips."
+
+[[DE.profiles]]
+name = "Vodafone"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong in cities and the west; the countryside sits behind Telekom."
+
+[[DE.profiles]]
+name = "O2"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "The cheapest and much improved, but still the weakest in remote areas."
+
+[[EG.profiles]]
+name = "Vodafone Egypt"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Egypt's strongest network — the pick for Nile cruises and Red Sea resorts."
+
+[[EG.profiles]]
+name = "Orange Egypt"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "Good in Cairo and Alexandria; thinner in the south."
+
+[[EG.profiles]]
+name = "Etisalat Misr"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "City-strong and budget-friendly; rural coverage behind Vodafone."
+
+[[ES.profiles]]
+name = "Movistar"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Spain's widest coverage — the safest pick for villages and island hopping."
+
+[[ES.profiles]]
+name = "Vodafone"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong in cities and along the coast."
+
+[[ES.profiles]]
+name = "Orange"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "A close third nationally and often the best value."
+
+[[ES.profiles]]
+name = "Yoigo"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Small but fast in cities; roams onto the big networks' masts outside towns."
+
+[[FJ.profiles]]
+name = "Vodafone Fiji"
+tech = "4G"
+speed_min = 8
+speed_top = 80
+note = "The most reliable network on the main islands — works on most resort islands too."
+
+[[FJ.profiles]]
+name = "Digicel Fiji"
+tech = "4G"
+speed_min = 8
+speed_top = 80
+note = "Good in cities and tourist areas; patchier on the outer islands."
+
+[[FR.profiles]]
+name = "Orange"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "France's benchmark — the best rural coverage; the pick for the countryside and small towns."
+
+[[FR.profiles]]
+name = "SFR"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong in cities and the west; usually the cheaper plans."
+
+[[FR.profiles]]
+name = "Bouygues"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Excellent city 5G; rural reach just behind Orange."
+
+[[GB.profiles]]
+name = "EE"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "The UK's fastest and widest network — the default pick, especially outside cities."
+
+[[GB.profiles]]
+name = "Vodafone"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong nationwide with good city 5G."
+
+[[GB.profiles]]
+name = "O2"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Solid in towns and cities; weaker in remote highlands."
+
+[[GB.profiles]]
+name = "Three"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Cheap with fast city 5G; the weakest rural coverage of the four."
+
+[[GE.profiles]]
+name = "Magti"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "Georgia's best network — the pick for Kazbegi and mountain roads."
+
+[[GE.profiles]]
+name = "Silknet"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "Strong in Tbilisi and the major cities; improving nationally."
+
+[[GE.profiles]]
+name = "Beeline"
+tech = "4G"
+speed_min = 8
+speed_top = 80
+note = "The budget option — fine in cities, thin in the mountains."
+
+[[GR.profiles]]
+name = "Cosmote"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Greece's clear leader — the best island and mountain coverage; the pick for island hopping."
+
+[[GR.profiles]]
+name = "Vodafone"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Good in Athens and the major islands."
+
+[[GR.profiles]]
+name = "Wind"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "City-strong; the weakest on the small islands."
+
+[[HK.profiles]]
+name = "CSL"
+tech = "5G"
+speed_min = 25
+speed_top = 400
+note = "Hong Kong's fastest — dense small-cell 5G everywhere, including the MTR."
+
+[[HK.profiles]]
+name = "3HK"
+tech = "5G"
+speed_min = 20
+speed_top = 300
+note = "Strong citywide coverage at lower prices."
+
+[[HK.profiles]]
+name = "SmarTone"
+tech = "5G"
+speed_min = 20
+speed_top = 300
+note = "A reliable city network with good indoor coverage in malls and towers."
+
+[[HR.profiles]]
+name = "Hrvatski Telekom"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Croatia's best coverage — the pick for the coast and islands in summer."
+
+[[HR.profiles]]
+name = "A1 Hrvatska"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Strong in Zagreb and the coastal cities."
+
+[[ID.profiles]]
+name = "Telkomsel"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "Indonesia's most reliable — the only network that works consistently across the islands."
+
+[[ID.profiles]]
+name = "Indosat"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "Fast in Jakarta and Bali; thinner beyond Java."
+
+[[ID.profiles]]
+name = "XL Axiata"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "Good city coverage; patchy on the smaller islands."
+
+[[IE.profiles]]
+name = "Vodafone"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Ireland's strongest network — the best coverage beyond Dublin and along the west coast."
+
+[[IE.profiles]]
+name = "Three"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Good in cities and towns, with 5G in Dublin."
+
+[[IE.profiles]]
+name = "Eir"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Solid nationally and often the cheapest."
+
+[[IL.profiles]]
+name = "Cellcom"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Israel's widest coverage plus fast city 5G."
+
+[[IL.profiles]]
+name = "Partner"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Flagship speeds in the cities; a close second nationally."
+
+[[IL.profiles]]
+name = "Pelephone"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Reliable nationwide, with particular strength in the remote southern regions."
+
+[[IN.profiles]]
+name = "Jio"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "India's largest 5G network — the default pick, fast even in tier-2 cities."
+
+[[IN.profiles]]
+name = "Airtel"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "A close second with arguably the best network quality in the metros."
+
+[[IS.profiles]]
+name = "Siminn"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Iceland's leader — the only network you can trust on the Ring Road and in the highlands."
+
+[[IS.profiles]]
+name = "Vodafone"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "Good coverage on the south coast and in the main towns."
+
+[[IS.profiles]]
+name = "Noa"
+tech = "4G"
+speed_min = 8
+speed_top = 80
+note = "The budget city option — not one for the highlands."
+
+[[IT.profiles]]
+name = "TIM"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Italy's widest coverage — the safe pick for small towns, the Dolomites and the deep south. City 5G is quick, and even on its 4G you will stream without buffering."
+
+[[IT.profiles]]
+name = "Vodafone"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong in cities, on highways and along the coast. A solid all-rounder — a step behind TIM in remote mountain valleys."
+
+[[IT.profiles]]
+name = "WindTre"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Italy's fastest-growing 5G grid and usually the cheapest plans. Dependable in cities and on the coast; patchier in rural inland areas."
+
+[[JP.profiles]]
+name = "NTT Docomo"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Japan's gold standard for coverage — mountain passes, rural islands, basement floors. If your route leaves the cities, prefer a Docomo-based plan."
+
+[[JP.profiles]]
+name = "SoftBank"
+tech = "5G"
+speed_min = 15
+speed_top = 250
+note = "Excellent in cities and on major tourist corridors, with 5G around big stations. Rural reach is good but a step behind Docomo."
+
+[[JP.profiles]]
+name = "KDDI"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong nationwide, with a particularly good grip on western Japan and coastal routes. City speeds rival Docomo."
+
+[[KE.profiles]]
+name = "Safaricom"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Kenya's dominant network — by far the best beyond Nairobi and on safari routes."
+
+[[KE.profiles]]
+name = "Airtel Kenya"
+tech = "4G"
+speed_min = 10
+speed_top = 100
+note = "Cheaper and fine in the cities; thinner in rural areas."
+
+[[KE.profiles]]
+name = "Telkom Kenya"
+tech = "4G"
+speed_min = 8
+speed_top = 80
+note = "The budget pick — city coverage mainly."
+
+[[KR.profiles]]
+name = "SK Telecom"
+tech = "5G"
+speed_min = 25
+speed_top = 350
+note = "Korea's largest and fastest — mid-band 5G basically everywhere, including the subway."
+
+[[KR.profiles]]
+name = "KT"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "A close second with excellent Seoul metro coverage."
+
+[[KR.profiles]]
+name = "LG U+"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "The smallest but still fast nationwide, and often the cheapest."
+
+[[MA.profiles]]
+name = "Maroc Telecom"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Morocco's widest network — the pick for the Atlas mountains and desert routes."
+
+[[MA.profiles]]
+name = "Orange Maroc"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "Strong in Casablanca and Rabat, with good value plans."
+
+[[MA.profiles]]
+name = "Inwi"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "City-focused; weaker in the south."
+
+[[MO.profiles]]
+name = "CTM"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Macao's best network — blanket coverage across this compact city."
+
+[[MO.profiles]]
+name = "3 Macau"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Fast and cheap citywide."
+
+[[MO.profiles]]
+name = "China Telecom"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Solid local coverage; handy if you continue into mainland China."
+
+[[MX.profiles]]
+name = "Telcel"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Mexico's dominant network — the only safe pick beyond the major cities and resorts."
+
+[[MX.profiles]]
+name = "AT&T Mexico"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Good in cities and border towns; improving nationally."
+
+[[MX.profiles]]
+name = "Movistar"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "The cheapest; mainly city coverage."
+
+[[MY.profiles]]
+name = "Maxis"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Malaysia's premium network — fast 5G in KL and good highway coverage."
+
+[[MY.profiles]]
+name = "Celcom"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong nationwide, including East Malaysia (Borneo)."
+
+[[MY.profiles]]
+name = "DiGi"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Good value; solid in the cities and along the west coast."
+
+[[NL.profiles]]
+name = "KPN"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "The Dutch benchmark — blanket fast coverage with the best rural reach."
+
+[[NL.profiles]]
+name = "Vodafone"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong in the Randstad cities."
+
+[[NL.profiles]]
+name = "Odido"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "A fast budget option — often the best value."
+
+[[NZ.profiles]]
+name = "Spark"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "New Zealand's widest coverage — the pick for South Island road trips."
+
+[[NZ.profiles]]
+name = "One NZ"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong nationwide; shares some rural coverage with Spark."
+
+[[NZ.profiles]]
+name = "2degrees"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "The cheapest; good in cities, thinner in remote areas."
+
+[[PE.profiles]]
+name = "Claro"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "Peru's largest network — the best option beyond Lima and into the Sacred Valley."
+
+[[PE.profiles]]
+name = "Movistar"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "Good in Lima and Arequipa; thinner in the mountains."
+
+[[PE.profiles]]
+name = "Entel"
+tech = "5G"
+speed_min = 10
+speed_top = 150
+note = "Strong in the south and the Altiplano; improving in the cities."
+
+[[PH.profiles]]
+name = "Globe"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "The more consistent of the two in Metro Manila and the main tourist areas."
+
+[[PH.profiles]]
+name = "Smart"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "The fastest 5G in the cities, with strength in Cebu and Davao."
+
+[[PL.profiles]]
+name = "Orange"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Poland's benchmark — the best coverage in small towns and the east."
+
+[[PL.profiles]]
+name = "Play"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Fast in the cities and excellent value."
+
+[[PL.profiles]]
+name = "Plus"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong nationwide with good rural coverage."
+
+[[PL.profiles]]
+name = "T-Mobile"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Solid national coverage, strongest in the cities."
+
+[[PT.profiles]]
+name = "MEO"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Portugal's leader — the best coverage in the Algarve and the interior."
+
+[[PT.profiles]]
+name = "NOS"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong in Porto and the coastal cities, with fast 5G."
+
+[[PT.profiles]]
+name = "Vodafone"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "A close third nationally, often with the best-value plans."
+
+[[QA.profiles]]
+name = "Ooredoo"
+tech = "5G"
+speed_min = 25
+speed_top = 350
+note = "Qatar's fastest — blanket 5G across this compact country."
+
+[[QA.profiles]]
+name = "Vodafone Qatar"
+tech = "5G"
+speed_min = 20
+speed_top = 300
+note = "A close second with competitive pricing."
+
+[[SA.profiles]]
+name = "STC"
+tech = "5G"
+speed_min = 25
+speed_top = 350
+note = "The kingdom's largest network — fast 5G in Riyadh, Jeddah and on the highways."
+
+[[SA.profiles]]
+name = "Mobily"
+tech = "5G"
+speed_min = 20
+speed_top = 300
+note = "Strong in the cities with good-value bundles."
+
+[[SA.profiles]]
+name = "Zain"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Smaller but fast in the cities; pick STC for desert routes."
+
+[[SG.profiles]]
+name = "Singtel"
+tech = "5G"
+speed_min = 25
+speed_top = 400
+note = "Singapore's fastest — dense 5G island-wide, including the MRT."
+
+[[SG.profiles]]
+name = "StarHub"
+tech = "5G"
+speed_min = 25
+speed_top = 350
+note = "A close second with blanket coverage."
+
+[[SG.profiles]]
+name = "M1"
+tech = "5G"
+speed_min = 20
+speed_top = 300
+note = "The cheapest of the three — on this small island, coverage is nearly identical."
+
+[[TH.profiles]]
+name = "AIS"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Thailand's strongest — the best coverage on the islands and in the north; the safe pick."
+
+[[TH.profiles]]
+name = "True Move"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Good Bangkok coverage with a fast 5G roll-out."
+
+[[TH.profiles]]
+name = "DTAC"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "The budget option — fine in the cities, weaker on the islands."
+
+[[TR.profiles]]
+name = "Turkcell"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Türkiye's leader — the best coverage beyond Istanbul and along the coast."
+
+[[TR.profiles]]
+name = "Vodafone"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong in the cities and the west, with good tourist bundles."
+
+[[TR.profiles]]
+name = "Turk Telekom"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Improving fast, with the cheapest plans."
+
+[[TW.profiles]]
+name = "Chunghwa Telecom"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Taiwan's largest — the best coverage in the mountains and on the east coast."
+
+[[TW.profiles]]
+name = "Taiwan Mobile"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Strong in the cities with good value plans."
+
+[[TW.profiles]]
+name = "FarEasTone"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Fast city 5G and solid nationwide coverage."
+
+[[US.profiles]]
+name = "T-Mobile"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "The traveler default — the best mid-band 5G in cities plus the widest fast coverage in rural areas."
+
+[[US.profiles]]
+name = "AT&T"
+tech = "5G"
+speed_min = 25
+speed_top = 300
+note = "Strong nationwide — the pick for national parks and secondary towns."
+
+[[US.profiles]]
+name = "Verizon"
+tech = "5G"
+speed_min = 25
+speed_top = 350
+note = "The best raw coverage in remote areas, with ultra-fast mmWave in city centers."
+
+[[VN.profiles]]
+name = "Viettel"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "Vietnam's largest — the best coverage beyond Hanoi and Ho Chi Minh City, including Ha Long Bay."
+
+[[VN.profiles]]
+name = "Vinaphone"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Strong in the cities with good value."
+
+[[VN.profiles]]
+name = "Mobifone"
+tech = "5G"
+speed_min = 15
+speed_top = 200
+note = "Solid national coverage at budget prices."
+
+[[ZA.profiles]]
+name = "Vodacom"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "South Africa's leader — the pick for the safari regions and the Garden Route."
+
+[[ZA.profiles]]
+name = "MTN"
+tech = "5G"
+speed_min = 20
+speed_top = 250
+note = "A close second — fast in Joburg and Cape Town."
+
+[[ZA.profiles]]
+name = "Telkom"
+tech = "4G"
+speed_min = 10
+speed_top = 100
+note = "The budget option; mainly city coverage."
+
+# --- [ISO.info] major cities + per-carrier detail (added 2026-09-30) ---
+# cities = top metros every national network covers at full speed;
+# detail[].carrier must match the profile name; strong/weak are editorial
+# typicals (hedge wording), to be verified per market during P-A.
+
+[AE.info]
+cities = ["Dubai", "Abu Dhabi", "Sharjah"]
+
+[[AE.info.detail]]
+carrier = "Etisalat"
+strong = "The strongest network in the UAE - best indoor coverage in malls, towers and the metro."
+weak = "Nothing major."
+
+[[AE.info.detail]]
+carrier = "du"
+strong = "Excellent city coverage, often keener prices."
+weak = "A small step behind Etisalat indoors."
+
+[AR.info]
+cities = ["Buenos Aires", "Cordoba", "Rosario"]
+
+[AT.info]
+cities = ["Vienna", "Graz", "Salzburg"]
+
+[AU.info]
+cities = ["Sydney", "Melbourne", "Brisbane", "Perth"]
+
+[[AU.info.detail]]
+carrier = "Telstra"
+strong = "The coverage benchmark - the only real option for the Outback and long rural drives."
+weak = "Pricier than rivals."
+
+[[AU.info.detail]]
+carrier = "Optus"
+strong = "Strong metros and good regional coverage, often cheaper."
+weak = "The remote interior favors Telstra."
+
+[[AU.info.detail]]
+carrier = "Vodafone"
+strong = "Cheap city plans with decent metro 5G."
+weak = "The weakest regional coverage - avoid for road trips."
+
+[BE.info]
+cities = ["Brussels", "Antwerp", "Ghent"]
+
+[BR.info]
+cities = ["Sao Paulo", "Rio de Janeiro", "Brasilia"]
+
+[CA.info]
+cities = ["Toronto", "Vancouver", "Montreal", "Calgary"]
+
+[[CA.info.detail]]
+carrier = "Bell"
+strong = "Co-leading coverage with Telus - strong in the East and on remote routes."
+weak = "Plans are premium-priced."
+
+[[CA.info.detail]]
+carrier = "Rogers"
+strong = "Best urban density and strong around Toronto and the West."
+weak = "The far North and long rural highways favor Bell/Telus."
+
+[[CA.info.detail]]
+carrier = "Telus"
+strong = "Co-leader in the West with Bell, fast 5G in Vancouver and Calgary."
+weak = "Eastern coverage rides on the Bell network."
+
+[CH.info]
+cities = ["Zurich", "Geneva", "Basel"]
+
+[[CH.info.detail]]
+carrier = "Swisscom"
+strong = "The benchmark - the best Alpine and rural coverage, fastest everywhere."
+weak = "The priciest."
+
+[[CH.info.detail]]
+carrier = "Sunrise"
+strong = "Strong 5G and good mountain coverage."
+weak = "High valleys favor Swisscom."
+
+[[CH.info.detail]]
+carrier = "Salt"
+strong = "The cheapest plans, fine in cities."
+weak = "The smallest coverage footprint."
+
+[CN.info]
+cities = ["Beijing", "Shanghai", "Guangzhou", "Shenzhen"]
+
+[CO.info]
+cities = ["Bogota", "Medellin", "Cartagena"]
+
+[CR.info]
+cities = ["San Jose", "Liberia", "Limon"]
+
+[CZ.info]
+cities = ["Prague", "Brno", "Ostrava"]
+
+[DE.info]
+cities = ["Berlin", "Munich", "Hamburg", "Frankfurt"]
+
+[[DE.info.detail]]
+carrier = "Telekom"
+strong = "The benchmark network - best rural reach and the most consistent speeds."
+weak = "Plans tend to cost a little more."
+
+[[DE.info.detail]]
+carrier = "Vodafone"
+strong = "Strong city 5G and improving rural LTE."
+weak = "Villages in central Germany still favor Telekom."
+
+[[DE.info.detail]]
+carrier = "O2"
+strong = "Aggressive pricing and solid urban coverage."
+weak = "Rural coverage and indoor depth trail the big two."
+
+[EG.info]
+cities = ["Cairo", "Alexandria", "Sharm El Sheikh"]
+
+[ES.info]
+cities = ["Madrid", "Barcelona", "Valencia", "Seville"]
+
+[[ES.info.detail]]
+carrier = "Movistar"
+strong = "The widest and fastest network in Spain - the safe pick everywhere including rural areas."
+weak = "Usually the most expensive."
+
+[[ES.info.detail]]
+carrier = "Vodafone"
+strong = "Strong city 5G and good motorway coverage."
+weak = "Small villages favor Movistar."
+
+[[ES.info.detail]]
+carrier = "Orange"
+strong = "Solid urban and coastal coverage."
+weak = "The rural interior trails Movistar."
+
+[[ES.info.detail]]
+carrier = "Yoigo"
+strong = "Cheapest tariffs with fast city 5G."
+weak = "The smallest footprint - weakest rural coverage."
+
+[FJ.info]
+cities = ["Suva", "Nadi", "Lautoka"]
+
+[FR.info]
+cities = ["Paris", "Marseille", "Lyon", "Nice"]
+
+[[FR.info.detail]]
+carrier = "Orange"
+strong = "The best network in France - the coverage leader in rural areas and on motorways."
+weak = "Typically the priciest consumer tariffs."
+
+[[FR.info.detail]]
+carrier = "SFR"
+strong = "Good urban speeds and solid bundles."
+weak = "Rural coverage trails Orange in the southwest and mountains."
+
+[[FR.info.detail]]
+carrier = "Bouygues"
+strong = "Reliable city coverage with improving 5G."
+weak = "A step behind Orange outside towns."
+
+[GB.info]
+cities = ["London", "Manchester", "Birmingham", "Edinburgh"]
+
+[[GB.info.detail]]
+carrier = "EE"
+strong = "The coverage and speed leader - best rural reach and the fastest 5G."
+weak = "Usually slightly pricier on consumer tariffs."
+
+[[GB.info.detail]]
+carrier = "Vodafone"
+strong = "Solid nationwide reach with strong indoor 5G in cities."
+weak = "A few notched spots in the Highlands and rural Wales."
+
+[[GB.info.detail]]
+carrier = "O2"
+strong = "Reliable urban coverage, strong in London."
+weak = "Rural and motorway speeds trail EE."
+
+[[GB.info.detail]]
+carrier = "Three"
+strong = "Generous unlimited tariffs and improving city 5G."
+weak = "Weakest rural coverage of the four - check before countryside trips."
+
+[GE.info]
+cities = ["Tbilisi", "Batumi", "Kutaisi"]
+
+[GR.info]
+cities = ["Athens", "Thessaloniki", "Heraklion"]
+
+[HK.info]
+cities = ["Central", "Kowloon", "Sha Tin"]
+
+[HR.info]
+cities = ["Zagreb", "Split", "Dubrovnik"]
+
+[ID.info]
+cities = ["Jakarta", "Surabaya", "Denpasar (Bali)"]
+
+[IE.info]
+cities = ["Dublin", "Cork", "Galway"]
+
+[IL.info]
+cities = ["Tel Aviv", "Jerusalem", "Haifa"]
+
+[IN.info]
+cities = ["Mumbai", "Delhi", "Bangalore", "Chennai"]
+
+[[IN.info.detail]]
+carrier = "Jio"
+strong = "The largest 5G network in India - the best coverage and generous unlimited offers."
+weak = "Peak-time congestion in dense areas."
+
+[[IN.info.detail]]
+carrier = "Airtel"
+strong = "Strong network quality and fast city 5G."
+weak = "Rural reach trails Jio slightly."
+
+[IS.info]
+cities = ["Reykjavik", "Akureyri", "Keflavik"]
+
+[IT.info]
+cities = ["Rome", "Milan", "Naples", "Florence"]
+
+[[IT.info.detail]]
+carrier = "TIM"
+strong = "The coverage leader - safest for rural Italy, the Alps and small towns."
+weak = "Urban peak speeds can trail Vodafone."
+
+[[IT.info.detail]]
+carrier = "Vodafone"
+strong = "Fast city 5G, strong in Milan and the north."
+weak = "The rural south and mountains favor TIM."
+
+[[IT.info.detail]]
+carrier = "WindTre"
+strong = "Best-value tariffs with good urban coverage."
+weak = "The thinnest rural coverage of the three."
+
+[JP.info]
+cities = ["Tokyo", "Osaka", "Kyoto", "Fukuoka"]
+
+[[JP.info.detail]]
+carrier = "NTT Docomo"
+strong = "The widest coverage in Japan - the safest network for rural areas, mountains and islands."
+weak = "Congestion can slow it at peak times in Tokyo."
+
+[[JP.info.detail]]
+carrier = "KDDI"
+strong = "Nationwide reach close to Docomo with fast city service."
+weak = "Slightly thinner in a few remote island areas."
+
+[[JP.info.detail]]
+carrier = "SoftBank"
+strong = "Fast urban 5G and solid metro coverage."
+weak = "Rural and mountain coverage trails Docomo."
+
+[KE.info]
+cities = ["Nairobi", "Mombasa", "Kisumu"]
+
+[KR.info]
+cities = ["Seoul", "Busan", "Incheon"]
+
+[[KR.info.detail]]
+carrier = "SK Telecom"
+strong = "The largest network in Korea - fastest 5G and the best coverage."
+weak = "Nothing major."
+
+[[KR.info.detail]]
+carrier = "KT"
+strong = "A close second with excellent Seoul and metro coverage."
+weak = "Marginally thinner in remote areas."
+
+[[KR.info.detail]]
+carrier = "LG U+"
+strong = "Good value and fast urban 5G."
+weak = "A slightly smaller footprint."
+
+[MA.info]
+cities = ["Casablanca", "Marrakesh", "Rabat"]
+
+[MO.info]
+cities = ["Macau Peninsula", "Cotai", "Taipa"]
+
+[MX.info]
+cities = ["Mexico City", "Cancun", "Guadalajara", "Monterrey"]
+
+[[MX.info.detail]]
+carrier = "Telcel"
+strong = "The national leader - by far the best coverage outside the big cities."
+weak = "Nothing major."
+
+[[MX.info.detail]]
+carrier = "AT&T Mexico"
+strong = "Fast 4G/5G in cities and tourist zones."
+weak = "Rural coverage trails Telcel by a wide margin."
+
+[[MX.info.detail]]
+carrier = "Movistar"
+strong = "Cheap tariffs, fine in big cities."
+weak = "The smallest network - avoid for road trips."
+
+[MY.info]
+cities = ["Kuala Lumpur", "George Town", "Johor Bahru"]
+
+[NL.info]
+cities = ["Amsterdam", "Rotterdam", "The Hague"]
+
+[[NL.info.detail]]
+carrier = "KPN"
+strong = "The quality leader - the best coverage including rural provinces."
+weak = "Slightly pricier."
+
+[[NL.info.detail]]
+carrier = "Vodafone"
+strong = "Strong urban 5G with good bundles."
+weak = "Marginally behind KPN outside cities."
+
+[[NL.info.detail]]
+carrier = "Odido"
+strong = "Aggressive pricing with solid city coverage."
+weak = "Indoor and rural depth trails KPN."
+
+[NZ.info]
+cities = ["Auckland", "Wellington", "Christchurch", "Queenstown"]
+
+[PE.info]
+cities = ["Lima", "Cusco", "Arequipa"]
+
+[PH.info]
+cities = ["Manila", "Cebu City", "Davao City"]
+
+[PL.info]
+cities = ["Warsaw", "Krakow", "Gdansk"]
+
+[PT.info]
+cities = ["Lisbon", "Porto", "Faro (Algarve)"]
+
+[QA.info]
+cities = ["Doha", "Al Rayyan", "Al Wakrah"]
+
+[SA.info]
+cities = ["Riyadh", "Jeddah", "Dammam"]
+
+[SG.info]
+cities = ["Orchard Road", "Marina Bay", "Changi"]
+
+[[SG.info.detail]]
+carrier = "Singtel"
+strong = "The strongest and fastest network with full MRT coverage."
+weak = "Nothing major."
+
+[[SG.info.detail]]
+carrier = "StarHub"
+strong = "Close to Singtel in speed and coverage."
+weak = "Marginally behind indoors in some towers."
+
+[[SG.info.detail]]
+carrier = "M1"
+strong = "Good value with solid coverage."
+weak = "A slight step behind in deep-indoor spots."
+
+[TH.info]
+cities = ["Bangkok", "Chiang Mai", "Phuket", "Pattaya"]
+
+[[TH.info.detail]]
+carrier = "AIS"
+strong = "The biggest network in Thailand - the best coverage including islands and the north."
+weak = "Slightly pricier."
+
+[[TH.info.detail]]
+carrier = "True Move"
+strong = "Fast 5G in Bangkok and strong urban coverage."
+weak = "Rural and island coverage trails AIS."
+
+[[TH.info.detail]]
+carrier = "DTAC"
+strong = "Good value with solid city coverage."
+weak = "The thinnest rural reach of the three."
+
+[TR.info]
+cities = ["Istanbul", "Ankara", "Izmir", "Antalya"]
+
+[[TR.info.detail]]
+carrier = "Turkcell"
+strong = "The coverage and speed leader nationwide."
+weak = "Nothing major."
+
+[[TR.info.detail]]
+carrier = "Vodafone"
+strong = "Good urban coverage in Istanbul and along the coast."
+weak = "Rural Anatolia favors Turkcell."
+
+[[TR.info.detail]]
+carrier = "Turk Telekom"
+strong = "Improving fast and strong value in cities."
+weak = "Coverage still trails Turkcell outside metros."
+
+[TW.info]
+cities = ["Taipei", "Kaohsiung", "Taichung"]
+
+[US.info]
+cities = ["New York", "Los Angeles", "Chicago", "Miami"]
+
+[[US.info.detail]]
+carrier = "Verizon"
+strong = "The widest rural footprint - the safest pick for road trips, national parks and interstate driving."
+weak = "Mid-city and indoor speeds can trail T-Mobile in dense downtowns."
+
+[[US.info.detail]]
+carrier = "AT&T"
+strong = "Consistent middle ground - strong in the South and Midwest, solid at stadiums and venues."
+weak = "The rural West still trails Verizon outside towns."
+
+[[US.info.detail]]
+carrier = "T-Mobile"
+strong = "Fastest 5G in city centers and excellent indoor coverage in metros."
+weak = "Rural stretches between cities can drop to slower layers."
+
+[VN.info]
+cities = ["Hanoi", "Ho Chi Minh City", "Da Nang"]
+
+[ZA.info]
+cities = ["Johannesburg", "Cape Town", "Durban"]

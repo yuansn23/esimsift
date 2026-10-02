@@ -1,0 +1,309 @@
+{{ define "main" }}
+{{/* eSIM 折扣码页 —— 单一事实源：promo_* 字段（providers.toml）+ plans 价格库
+      增益设计（对标 mybestsim.com/en/esim-discount-codes 并超越）：
+      ① 实码卡：核验日期 + 条款 + 折扣后实际价（从价格库实时算）
+      ② 无码品牌：计算式替代价值（cheapest 命中/入口价），不是空白
+      ③ 翻盘分析：折扣码能把谁变成"最便宜"——竞品没有价格库，做不到
+      ④ 使用教程 ⑤ 无码省钱技巧（全内链） ⑥ 数据驱动 FAQ + schema
+      ⑦ 底部品牌入口（对标竞品）+ 相关页 */}}
+{{ $agg := partial "provider-agg.html" . }}
+
+{{/* 每国全局最低价（翻盘分析用） */}}
+{{ $gmin := dict }}
+{{ range $iso, $c := hugo.Data.countries }}
+  {{ $gm := 0.0 }}
+  {{ range $pk, $pd := hugo.Data.plans }}
+    {{ with index $pd $iso }}
+      {{ range .plans }}{{ if or (eq $gm 0.0) (lt .price $gm) }}{{ $gm = .price }}{{ end }}{{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $gmin = merge $gmin (dict $iso $gm) }}
+{{ end }}
+
+{{/* 分桶：有码 / 无码；最新核验日期 */}}
+{{ $withCode := slice }}{{ $noCode := slice }}{{ $lastVerified := "" }}
+{{ range $key, $p := hugo.Data.providers }}
+  {{ if $p.promo_code }}
+    {{ $withCode = $withCode | append $key }}
+    {{ with $p.promo_verified }}{{ if gt . $lastVerified }}{{ $lastVerified = . }}{{ end }}{{ end }}
+  {{ else }}
+    {{ $noCode = $noCode | append $key }}
+  {{ end }}
+{{ end }}
+
+{{/* 无码性价比冠军（FAQ/导语用）：cheapest 命中数最高者 */}}
+{{ $ncKey := "" }}{{ $ncCount := -1 }}
+{{ range $noCode }}
+  {{ $v := index $agg . }}{{ if gt $v.cheapest $ncCount }}{{ $ncKey = . }}{{ $ncCount = $v.cheapest }}{{ end }}
+{{ end }}
+
+<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+  {{ partial "breadcrumbs.html" . }}
+
+  <header class="mt-6 max-w-3xl">
+    <p class="eyebrow">Deals</p>
+    <h1 class="mt-2 text-3xl font-extrabold tracking-tight md:text-4xl">eSIM promo codes & deals {{ now.Year }}</h1>
+    <p class="mt-4 text-lg leading-relaxed text-ink-600">
+      {{ if $withCode }}{{ len $withCode }} verified code{{ if gt (len $withCode) 1 }}s{{ end }} across the {{ len hugo.Data.providers }} providers we track{{ with $lastVerified }}, last re-checked {{ time.Format "Jan 2, 2006" . }}{{ end }}{{ end }} — each with the expiry, the terms, and what it <em>actually</em> saves on a real plan. And because we run a full price database, we also show when a discount code still loses to a cheaper provider with no code at all.
+    </p>
+  </header>
+
+  {{/* ── ① 实码卡 ── */}}
+  {{ if $withCode }}
+  <section class="mt-10" aria-labelledby="live-codes">
+    <h2 id="live-codes" class="text-2xl font-bold">Live codes verified against real prices</h2>
+    <div class="mt-5 grid gap-4 md:grid-cols-2">
+      {{ range $withCode }}
+        {{ $key := . }}{{ $p := index hugo.Data.providers $key }}{{ $a := index $agg $key }}
+
+        {{/* 品牌全库最便宜套餐（折扣后实际价的锚点） */}}
+        {{ $bestName := "" }}{{ $bestPrice := 0.0 }}{{ $bestISO := "" }}
+        {{ range $iso, $blk := index hugo.Data.plans $key }}
+          {{ range $blk.plans }}
+            {{ if or (eq $bestPrice 0.0) (lt .price $bestPrice) }}{{ $bestPrice = .price }}{{ $bestName = .name }}{{ $bestISO = $iso }}{{ end }}
+          {{ end }}
+        {{ end }}
+        {{ $bestSlug := "" }}{{ with index hugo.Data.countries $bestISO }}{{ $bestSlug = .slug }}{{ end }}
+        {{ $pct := $p.promo_pct | default 0 }}
+        {{ $effPrice := mul $bestPrice (div (sub 100.0 $pct) 100.0) }}
+        {{ $save := mul $bestPrice (div $pct 100.0) }}
+
+        <div class="card card-hover p-6" id="{{ $key }}">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div class="flex items-center gap-3.5">
+              {{ partial "prov-logo.html" (dict "p" $p "key" $key "class" "h-11 w-11" "text" "text-base") }}
+              <div>
+                <h3 class="font-display text-lg font-bold"><a href="/esim-providers/{{ $key }}/" class="hover:text-brand-700">{{ $p.name }}</a></h3>
+                <p class="text-xs text-ink-400">{{ $p.tagline }}</p>
+              </div>
+            </div>
+            {{ with $p.promo_expires }}<span class="badge bg-accent-50 text-accent-700">Expires {{ time.Format "Jan 2, 2006" . }}</span>{{ end }}
+          </div>
+
+          <p class="mt-5 text-2xl font-extrabold tracking-tight text-ink-950">{{ $p.promo_label }}</p>
+          <div class="mt-3 flex flex-wrap items-center gap-3">
+            <button type="button" class="copy-code group flex items-center gap-3 rounded-xl border-2 border-dashed border-brand-300 bg-brand-50/60 px-4 py-2.5 transition-colors hover:border-brand-500"
+              data-code="{{ $p.promo_code }}" aria-label="Copy promo code {{ $p.promo_code }}">
+              <code class="font-mono text-base font-bold tracking-widest text-brand-800">{{ $p.promo_code }}</code>
+              <span class="text-xs font-semibold text-brand-600 group-hover:text-brand-800">Copy</span>
+            </button>
+            {{ partial "cta-out.html" (dict "target" $key "label" (printf "Get %s" $p.name) "class" "btn-primary text-xs" "campaign" "esim-deals" "page" "deals") }}
+          </div>
+
+          {{ with $p.promo_terms }}<p class="mt-3 text-sm leading-relaxed text-ink-600">{{ . }}</p>{{ end }}
+
+          {{ if and (gt $bestPrice 0.0) (gt $pct 0) }}
+          <p class="mt-4 rounded-xl bg-ink-50 px-4 py-3 text-sm leading-relaxed text-ink-600">
+            <strong class="font-semibold text-ink-800">What it saves on a real plan:</strong>
+            the cheapest tracked {{ $p.name }} plan{{ with index hugo.Data.countries $bestISO }} ({{ .name }}){{ end }} drops from
+            <span class="tnum">${{ printf "%.2f" $bestPrice }}</span> to <strong class="tnum text-ink-950">${{ printf "%.2f" $effPrice }}</strong>
+            — <span class="tnum">${{ printf "%.2f" $save }}</span> off.{{ if $bestSlug }} <a href="/compare/{{ $bestSlug }}/{{ $key }}/" class="font-semibold text-brand-700 hover:underline">See all {{ $p.name }} plans there →</a>{{ end }}
+          </p>
+          {{ end }}
+
+          <p class="mt-3 text-xs text-ink-400">
+            Verified{{ with $p.promo_verified }} {{ time.Format "Jan 2, 2006" . }}{{ end }} · cheapest in {{ $a.cheapest }} of {{ $a.countries }} tracked countries · <a href="/esim-providers/{{ $key }}/" class="font-medium text-brand-700 hover:underline">{{ $p.name }} review</a>
+          </p>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── ② 翻盘分析：折扣码 vs 更便宜的无码品牌 ── */}}
+  {{ if $withCode }}
+  <section class="mt-12" aria-labelledby="flip">
+    <p class="eyebrow">Code math</p>
+    <h2 id="flip" class="mt-2 text-2xl font-bold md:text-3xl">When a discount code still loses</h2>
+    <p class="mt-3 max-w-3xl text-ink-600">A code changes what <em>you</em> pay — but the ranking in our tables is always the pre-code baseline. Here's the honest follow-up question: after applying each code to the provider's cheapest plan in every country, in how many of our {{ len hugo.Data.countries }} tracked countries would that provider actually become #1? Sometimes the answer is "all of them". Sometimes it's "still none — just buy the other brand."</p>
+    <div class="mt-6 overflow-x-auto">
+      <table class="table-pro w-full min-w-[720px]">
+        <thead>
+          <tr>
+            <th class="text-left">Provider</th>
+            <th class="text-left">Code</th>
+            <th class="text-right">Cheapest plan (list)</th>
+            <th class="text-right">After code</th>
+            <th class="text-right">Cheapest in (no code)</th>
+            <th class="text-right">Cheapest in (with code)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range $withCode }}
+            {{ $key := . }}{{ $p := index hugo.Data.providers $key }}{{ $a := index $agg $key }}
+            {{ $pct := $p.promo_pct | default 0 }}
+            {{ $effEntry := mul $a.minPrice (div (sub 100.0 $pct) 100.0) }}
+            {{/* 翻盘数：非 cheapest 国里，折后最低价 < 该国全局最低价 */}}
+            {{ $flips := 0 }}
+            {{ range $a.coverage }}
+              {{ if not .cheapest }}
+                {{ $gm := index $gmin .iso }}
+                {{ if lt (mul .min (div (sub 100.0 $pct) 100.0)) (sub $gm 0.005) }}{{ $flips = add $flips 1 }}{{ end }}
+              {{ end }}
+            {{ end }}
+            <tr>
+              <td class="font-medium">
+                <a href="/esim-providers/{{ $key }}/" class="flex items-center gap-2.5 hover:text-brand-700">
+                  {{ partial "prov-logo.html" (dict "p" $p "key" $key "class" "h-7 w-7" "text" "text-xs") }}
+                  {{ $p.name }}
+                </a>
+              </td>
+              <td><code class="rounded bg-ink-50 px-1.5 py-0.5 font-mono text-xs font-bold tracking-wider text-brand-800">{{ $p.promo_code }}</code></td>
+              <td class="text-right tnum">${{ printf "%.2f" $a.minPrice }}</td>
+              <td class="text-right tnum font-semibold text-brand-700">${{ printf "%.2f" $effEntry }}</td>
+              <td class="text-right tnum">{{ $a.cheapest }} / {{ $a.countries }}</td>
+              <td class="text-right tnum">{{ add $a.cheapest $flips }} / {{ $a.countries }}</td>
+            </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3 text-xs leading-relaxed text-ink-400">Method: for every country, the provider's cheapest plan price × (1 − discount) is compared against the cheapest plan from any provider in that country. Ties count as staying #1 only if the provider was already #1 at list price. Full formulas on the <a href="/methodology/" class="underline underline-offset-2 hover:text-ink-600">methodology</a> page.</p>
+  </section>
+  {{ end }}
+
+  {{/* ── ③ 无码品牌：计算式替代价值 ── */}}
+  {{ if $noCode }}
+  <section class="mt-12" aria-labelledby="no-code">
+    <p class="eyebrow">No code needed</p>
+    <h2 id="no-code" class="mt-2 text-2xl font-bold md:text-3xl">Which providers have no discount code</h2>
+    <p class="mt-3 max-w-3xl text-ink-600">These providers had no verifiable public promo code when we last checked. Rather than paste a random coupon from a forum, start with the numbers: here's where each one is <em>already</em> cheapest at list price. If a code appears, it lands on this page the day we can verify it.</p>
+    <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {{ range $noCode }}
+        {{ $key := . }}{{ $p := index hugo.Data.providers $key }}{{ $a := index $agg $key }}
+        <div class="card card-hover p-5" id="{{ $key }}">
+          <a href="/esim-providers/{{ $key }}/" class="group flex items-center gap-3">
+            {{ partial "prov-logo.html" (dict "p" $p "key" $key "class" "h-10 w-10" "text" "text-sm") }}
+            <div>
+              <p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ $p.name }}</p>
+              <p class="text-xs text-ink-400">from <span class="tnum">${{ printf "%.2f" $a.minPrice }}</span>{{ if gt $a.minPerGB 0.0 }} · best <span class="tnum">${{ printf "%.2f" $a.minPerGB }}/GB</span>{{ end }}</p>
+            </div>
+          </a>
+          <p class="mt-3 text-xs leading-relaxed text-ink-500">Cheapest provider in <strong class="text-ink-700 tnum">{{ $a.cheapest }}</strong> of {{ $a.countries }} tracked countries — no coupon required.</p>
+          <a href="/esim-providers/{{ $key }}/" class="mt-3 inline-block text-xs font-semibold text-brand-700 hover:underline">{{ $p.name }} review →</a>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── ④ 怎么用折扣码 ── */}}
+  <section class="mt-12" aria-labelledby="redeem">
+    <p class="eyebrow">How to redeem</p>
+    <h2 id="redeem" class="mt-2 text-2xl font-bold md:text-3xl">How to use an eSIM promo code</h2>
+    <ol class="mt-6 grid gap-4 md:grid-cols-5">
+      <li class="card p-5"><span class="font-display text-sm font-bold text-brand-600">Step 1</span><p class="mt-2 text-sm font-semibold text-ink-950">Compare first</p><p class="mt-1.5 text-xs leading-relaxed text-ink-600">Open the <a href="/compare/" class="font-medium text-brand-700 hover:underline">country comparison</a> and find the plan you actually want — a code on the wrong plan is still overpaying.</p></li>
+      <li class="card p-5"><span class="font-display text-sm font-bold text-brand-600">Step 2</span><p class="mt-2 text-sm font-semibold text-ink-950">Buy through the provider</p><p class="mt-1.5 text-xs leading-relaxed text-ink-600">Buy with the "Get" button beside the code, so the code's country and eligibility match your order.</p></li>
+      <li class="card p-5"><span class="font-display text-sm font-bold text-brand-600">Step 3</span><p class="mt-2 text-sm font-semibold text-ink-950">Paste before paying</p><p class="mt-1.5 text-xs leading-relaxed text-ink-600">Look for the "Promo code" or "Discount code" field at checkout (web) or in the payment sheet (app) — copy it from the card above.</p></li>
+      <li class="card p-5"><span class="font-display text-sm font-bold text-brand-600">Step 4</span><p class="mt-2 text-sm font-semibold text-ink-950">Check the new total</p><p class="mt-1.5 text-xs leading-relaxed text-ink-600">The line total must drop before you pay. If it doesn't, the code is dead or your plan isn't eligible — don't retry with random codes.</p></li>
+      <li class="card p-5"><span class="font-display text-sm font-bold text-brand-600">Step 5</span><p class="mt-2 text-sm font-semibold text-ink-950">Install and go</p><p class="mt-1.5 text-xs leading-relaxed text-ink-600">Install the eSIM per our <a href="/guides/how-to-install-an-esim/" class="font-medium text-brand-700 hover:underline">step-by-step guide</a> — codes never change how activation works.</p></li>
+    </ol>
+  </section>
+
+  {{/* ── ⑤ 不靠码省钱的 4 条路（全内链，数据支撑）── */}}
+  <section class="mt-12" aria-labelledby="save-more">
+    <p class="eyebrow">Beyond codes</p>
+    <h2 id="save-more" class="mt-2 text-2xl font-bold md:text-3xl">Four ways to save that beat most coupon boxes</h2>
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">Right provider beats 20% off the wrong one</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">Across our tracked countries, the gap between the cheapest and most expensive provider on the same destination regularly runs wider than any code's discount. The <a href="/research/esim-price-index/" class="font-medium text-brand-700 hover:underline">price index</a> shows the spread country by country — start there, not at a coupon site.</p>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">Unlimited isn't automatically expensive</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">Unlimited plans win on price once your usage passes a break-even point (around 1.1 GB/day in the median country we track). Check <a href="/research/unlimited-esim/" class="font-medium text-brand-700 hover:underline">when unlimited is cheaper</a> before paying for data you won't use.</p>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">Match the plan to the trip instead of the headline</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">A 30-day bundle on a 5-day trip is money in the bin. Our <a href="/tools/" class="font-medium text-brand-700 hover:underline">data calculator</a> and each country page's "how to choose" section size the plan to your days and habits.</p>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">Do seasonal sales beat the everyday price</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">Black Friday and summer sales can hit 30-50% at some providers. Our tables always show the list price, so you can tell a real discount from an inflated "was" price. Bookmarked <a href="/esim-deals/" class="font-medium text-brand-700 hover:underline">this page</a> is the fastest way back.</p>
+      </div>
+    </div>
+  </section>
+
+  {{/* ── ⑥ FAQ（数据驱动 + schema）── */}}
+  {{ $faqList := slice }}
+  {{ $faqList = $faqList | append (dict "q" "Do eSIM promo codes stack with other discounts?" "a" "Usually not. Every provider we've tested allows one code per order, and codes generally don't combine with in-app sales or referral credits. The terms line on each card above says who the code is for (for example new customers only).") }}
+  {{ $faqList = $faqList | append (dict "q" "Why don't your comparison tables show discounted prices?" "a" (printf "Rankings on this site are always computed from list prices, the same day we check them. A code changes what you personally pay, but not the fair baseline for ranking providers — otherwise a sponsor could buy a better position. Apply any code on top of the prices you see in our comparisons. Full rules on the <a href=\"/methodology/\">methodology</a> page.") ) }}
+  {{ $faqList = $faqList | append (dict "q" "The promo code didn't work at checkout. Now what?" "a" "Three checks, in order: the expiry date on the card above (expired codes come down the same day), the terms line (some codes are new-customer-only or plan-specific), and typos — copy the code instead of typing it. If all three pass and it still fails, tell us via <a href=\"/contact/\">contact</a>; we re-verify within 24 hours.") }}
+  {{ if and $ncKey $ncCount }}
+    {{ $nc := index hugo.Data.providers $ncKey }}{{ $ncA := index $agg $ncKey }}
+    {{ $faqList = $faqList | append (dict "q" "Which eSIM provider is cheapest without any code?" "a" (printf "In our database, %s is the no-code cheapest provider in %d of the %d countries it covers, with plans from $%.2f. Don't take a coupon's word for it — <a href=\"/esim-providers/%s/\">check where it wins</a> against the field." $nc.name $ncCount $ncA.countries $ncA.minPrice $ncKey) ) }}
+  {{ end }}
+  {{ $faqList = $faqList | append (dict "q" "Are these affiliate codes?" "a" "Where a provider is a sponsored partner of eSIM Sift, using its code may earn us a commission at no extra cost to you — see the <a href=\"/disclosure/\">disclosure</a> page. Our own brand's code is simply our list discount. Either way, comparison rankings are computed from list prices only.") }}
+  {{ $faqEntities := slice }}
+  {{ range $faqList }}{{ $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) }}{{ end }}
+  <script type="application/ld+json">
+    {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $faqEntities) | safeJS }}
+  </script>
+
+  <section class="mt-12" aria-labelledby="faq">
+    <p class="eyebrow">FAQ</p>
+    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">eSIM promo code questions</h2>
+    <div class="mt-5 space-y-3">
+      {{ range $faqList }}
+      <details class="faq-item">
+        <summary>{{ .q }}<span class="faq-icon" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></summary>
+        <p class="faq-body">{{ .a | safeHTML }}</p>
+      </details>
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* ── ⑦ 底部品牌入口（对标竞品）+ 相关页 ── */}}
+  <section class="mt-12" aria-labelledby="all-providers">
+    <p class="eyebrow">All providers</p>
+    <h2 id="all-providers" class="mt-2 text-2xl font-bold md:text-3xl">Compare every provider we track</h2>
+    <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      {{ range $key, $p := hugo.Data.providers }}
+        {{ $a := index $agg $key }}
+        <a href="/esim-providers/{{ $key }}/" class="card card-hover group p-4">
+          <div class="flex items-center gap-3">
+            {{ partial "prov-logo.html" (dict "p" $p "key" $key "class" "h-9 w-9" "text" "text-sm") }}
+            <div class="min-w-0">
+              <p class="truncate font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ $p.name }}</p>
+              <p class="text-xs text-ink-400 tnum">{{ if $p.promo_code }}Code {{ $p.promo_code }}{{ else }}from ${{ printf "%.2f" $a.minPrice }}{{ end }}</p>
+            </div>
+          </div>
+          <p class="mt-2.5 text-xs leading-relaxed text-ink-500">Cheapest in {{ $a.cheapest }} of {{ $a.countries }} countries{{ if $p.promo_code }} · live code{{ end }}</p>
+        </a>
+      {{ end }}
+    </div>
+
+    <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <a href="/compare/matchups/" class="card card-hover p-4"><p class="font-display text-sm font-bold text-ink-950">All 28 provider matchups</p><p class="mt-1 text-xs text-ink-500">Every head-to-head, computed country by country.</p></a>
+      <a href="/research/esim-price-index/" class="card card-hover p-4"><p class="font-display text-sm font-bold text-ink-950">eSIM price index</p><p class="mt-1 text-xs text-ink-500">The 50-country $/GB league table.</p></a>
+      <a href="/research/unlimited-esim/" class="card card-hover p-4"><p class="font-display text-sm font-bold text-ink-950">Unlimited vs metered</p><p class="mt-1 text-xs text-ink-500">When unlimited plans are actually cheaper.</p></a>
+      <a href="/tools/" class="card card-hover p-4"><p class="font-display text-sm font-bold text-ink-950">Data calculator</p><p class="mt-1 text-xs text-ink-500">Size the plan before you pay for it.</p></a>
+    </div>
+  </section>
+
+  <p class="mt-8 text-xs leading-relaxed text-ink-400">
+    Disclosure: codes above are affiliate partner codes where the provider is a sponsored partner — using them may earn eSIM Sift a commission at no extra cost to you. This never changes plan order in our comparisons (see <a href="/methodology/" class="underline underline-offset-2 hover:text-ink-600">methodology</a> and <a href="/disclosure/" class="underline underline-offset-2 hover:text-ink-600">disclosure</a>). Savings examples are computed from the plan prices in our database at check time.
+  </p>
+
+  {{/* 复制到剪贴板（含老浏览器回退） */}}
+  <script>
+    document.querySelectorAll('.copy-code').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var code = btn.dataset.code;
+        function done() {
+          btn.querySelector('span').textContent = 'Copied ✓';
+          setTimeout(function () { btn.querySelector('span').textContent = 'Copy'; }, 2000);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(code).then(done);
+        } else {
+          var ta = document.createElement('textarea');
+          ta.value = code; document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); done(); } catch (e) {}
+          document.body.removeChild(ta);
+        }
+      });
+    });
+  </script>
+</div>
+{{ end }}

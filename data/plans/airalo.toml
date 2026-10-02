@@ -1,0 +1,7375 @@
+# Scraped from esimdb.com/airalo (Single-country plans, USD list prices) on 2026-09-30.
+# Raw capture: scripts/scrape/raw/ (per-country JSON incl. badges & page meta).
+# networks: not exposed on plan cards - left empty until verified per brand page.
+
+[AR]
+checked = "2026-09-30"
+networks = []
+
+[[AR.plans]]
+name = "Abrazo! - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 5.00
+
+[[AR.plans]]
+name = "Abrazo! - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 9.50
+
+[[AR.plans]]
+name = "Abrazo! - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 10.00
+
+[[AR.plans]]
+name = "Abrazo! - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 16.00
+
+[[AR.plans]]
+name = "Abrazo! - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 16.50
+
+[[AR.plans]]
+name = "Abrazo! - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 17.00
+
+[[AR.plans]]
+name = "Abrazo! - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AR.plans]]
+name = "Abrazo! - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 27.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AR.plans]]
+name = "Abrazo! - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 28.00
+
+[[AR.plans]]
+name = "Abrazo! - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 29.00
+
+[[AR.plans]]
+name = "Abrazo! - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 30.00
+
+[[AR.plans]]
+name = "Abrazo! - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 34.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AR.plans]]
+name = "Abrazo! - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 38.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AR.plans]]
+name = "Abrazo! - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 46.00
+
+[[AR.plans]]
+name = "Abrazo! - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 47.00
+
+[AU]
+checked = "2026-09-30"
+networks = []
+
+[[AU.plans]]
+name = "Yes! Go! - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[AU.plans]]
+name = "Yes! Go! - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.50
+
+[[AU.plans]]
+name = "Yes! Go! - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 8.00
+
+[[AU.plans]]
+name = "Yes! Go! - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 10.00
+
+[[AU.plans]]
+name = "Yes! Go! - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 10.50
+
+[[AU.plans]]
+name = "Yes! Go! - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 11.00
+
+[[AU.plans]]
+name = "Yes! Go! - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AU.plans]]
+name = "Yes! Go! - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 16.50
+
+[[AU.plans]]
+name = "Yes! Go! - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 17.50
+
+[[AU.plans]]
+name = "Yes! Go! - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 18.00
+
+[[AU.plans]]
+name = "Yes! Go! - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AU.plans]]
+name = "Yes! Go! - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 26.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AU.plans]]
+name = "Yes! Go! - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 29.00
+
+[[AU.plans]]
+name = "Yes! Go! - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 30.00
+
+[[AU.plans]]
+name = "Yes! Go! - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 32.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AU.plans]]
+name = "Yes! Go! - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 45.00
+
+[[AU.plans]]
+name = "Yes! Go! - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 45.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AU.plans]]
+name = "Yes! Go! - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 66.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[AT]
+checked = "2026-09-30"
+networks = []
+
+[[AT.plans]]
+name = "Servus Austria - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[AT.plans]]
+name = "Servus Austria - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 5.50
+
+[[AT.plans]]
+name = "Servus Austria+ - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 5.50
+
+[[AT.plans]]
+name = "Servus Austria - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 6.00
+
+[[AT.plans]]
+name = "Servus Austria - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 7.00
+
+[[AT.plans]]
+name = "Servus Austria - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 7.50
+
+[[AT.plans]]
+name = "Servus Austria+ - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.50
+
+[[AT.plans]]
+name = "Servus Austria - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 8.00
+
+[[AT.plans]]
+name = "Servus Austria+ - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 8.00
+
+[[AT.plans]]
+name = "Servus Austria+ - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 9.00
+
+[[AT.plans]]
+name = "Servus Austria - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 10.00
+
+[[AT.plans]]
+name = "Servus Austria+ - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 10.00
+
+[[AT.plans]]
+name = "Servus Austria - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 10.50
+
+[[AT.plans]]
+name = "Servus Austria - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 11.00
+
+[[AT.plans]]
+name = "Servus Austria+ - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 11.00
+
+[[AT.plans]]
+name = "Servus Austria+ - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 12.50
+
+[[AT.plans]]
+name = "Servus Austria+ - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 13.50
+
+[[AT.plans]]
+name = "Servus Austria - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 14.50
+
+[[AT.plans]]
+name = "Servus Austria+ - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 14.50
+
+[[AT.plans]]
+name = "Servus Austria+ - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 15.50
+
+[[AT.plans]]
+name = "Servus Austria - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 16.00
+
+[[AT.plans]]
+name = "Servus Austria+ - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 16.50
+
+[[AT.plans]]
+name = "Servus Austria - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 29.00
+
+[[AT.plans]]
+name = "Servus Austria+ - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 36.50
+
+[BE]
+checked = "2026-09-30"
+networks = []
+
+[[BE.plans]]
+name = "Belganet - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[BE.plans]]
+name = "Belganet - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 5.50
+
+[[BE.plans]]
+name = "Belganet+ - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 5.50
+
+[[BE.plans]]
+name = "Belganet - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 6.00
+
+[[BE.plans]]
+name = "Belganet - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 7.50
+
+[[BE.plans]]
+name = "Belganet - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 8.00
+
+[[BE.plans]]
+name = "Belganet - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 8.50
+
+[[BE.plans]]
+name = "Belganet+ - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 8.50
+
+[[BE.plans]]
+name = "Belganet+ - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 9.00
+
+[[BE.plans]]
+name = "Belganet - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BE.plans]]
+name = "Belganet - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 11.00
+
+[[BE.plans]]
+name = "Belganet+ - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 11.50
+
+[[BE.plans]]
+name = "Belganet - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 12.00
+
+[[BE.plans]]
+name = "Belganet+ - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 12.00
+
+[[BE.plans]]
+name = "Belganet+ - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 12.50
+
+[[BE.plans]]
+name = "Belganet - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 13.00
+
+[[BE.plans]]
+name = "Belganet - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 15.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BE.plans]]
+name = "Belganet+ - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 18.00
+
+[[BE.plans]]
+name = "Belganet - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 18.50
+
+[[BE.plans]]
+name = "Belganet+ - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 19.00
+
+[[BE.plans]]
+name = "Belganet+ - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 19.50
+
+[[BE.plans]]
+name = "Belganet - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 20.00
+
+[[BE.plans]]
+name = "Belganet - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 21.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BE.plans]]
+name = "Belganet+ - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 28.00
+
+[[BE.plans]]
+name = "Belganet+ - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 28.50
+
+[[BE.plans]]
+name = "Belganet - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 29.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BE.plans]]
+name = "Belganet - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 32.50
+
+[[BE.plans]]
+name = "Belganet+ - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 42.00
+
+[[BE.plans]]
+name = "Belganet - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 42.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BE.plans]]
+name = "Belganet - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[BR]
+checked = "2026-09-30"
+networks = []
+
+[[BR.plans]]
+name = "Maneiro - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[BR.plans]]
+name = "Maneiro - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 9.00
+
+[[BR.plans]]
+name = "Maneiro - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 9.50
+
+[[BR.plans]]
+name = "Maneiro - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BR.plans]]
+name = "Maneiro - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 12.00
+
+[[BR.plans]]
+name = "Maneiro - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 12.50
+
+[[BR.plans]]
+name = "Maneiro - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 13.00
+
+[[BR.plans]]
+name = "Maneiro - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BR.plans]]
+name = "Maneiro - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 20.00
+
+[[BR.plans]]
+name = "Maneiro - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 21.00
+
+[[BR.plans]]
+name = "Maneiro - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 23.00
+
+[[BR.plans]]
+name = "Maneiro - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 25.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BR.plans]]
+name = "Maneiro - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BR.plans]]
+name = "Maneiro - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 35.00
+
+[[BR.plans]]
+name = "Maneiro - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 36.00
+
+[[BR.plans]]
+name = "Maneiro - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 46.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BR.plans]]
+name = "Maneiro - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 85.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[CA]
+checked = "2026-09-30"
+networks = []
+
+[[CA.plans]]
+name = "Canada Mobile- - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 7.00
+
+[[CA.plans]]
+name = "Canada Mobile- - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 8.00
+
+[[CA.plans]]
+name = "Canada Mobile Plus - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 8.50
+
+[[CA.plans]]
+name = "Canada Mobile- - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 9.00
+
+[[CA.plans]]
+name = "Canada Mobile Plus - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 13.00
+
+[[CA.plans]]
+name = "Canada Mobile- - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 14.00
+
+[[CA.plans]]
+name = "Canada Mobile Plus - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 14.00
+
+[[CA.plans]]
+name = "Canada Mobile- - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 15.00
+
+[[CA.plans]]
+name = "Canada Mobile- - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 18.00
+
+[[CA.plans]]
+name = "Canada Mobile- - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 18.00
+
+[[CA.plans]]
+name = "Canada Mobile - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CA.plans]]
+name = "Canada Mobile- - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 20.00
+
+[[CA.plans]]
+name = "Canada Mobile Plus - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 20.00
+
+[[CA.plans]]
+name = "Canada Mobile Plus - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 22.00
+
+[[CA.plans]]
+name = "Canada Mobile- - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 23.00
+
+[[CA.plans]]
+name = "Canada Mobile Plus - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 24.00
+
+[[CA.plans]]
+name = "Canada Mobile Plus - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 26.00
+
+[[CA.plans]]
+name = "Canada Mobile - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CA.plans]]
+name = "Canada Mobile Plus - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 28.00
+
+[[CA.plans]]
+name = "Canada Mobile Plus - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 31.00
+
+[[CA.plans]]
+name = "Canada Mobile - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 32.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CA.plans]]
+name = "Canada Mobile- - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 34.00
+
+[[CA.plans]]
+name = "Canada Mobile - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 35.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CA.plans]]
+name = "Canada Mobile- - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 37.00
+
+[[CA.plans]]
+name = "Canada Mobile - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 45.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CA.plans]]
+name = "Canada Mobile Plus - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 48.00
+
+[[CA.plans]]
+name = "Canada Mobile Plus - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 48.00
+
+[[CA.plans]]
+name = "Canada Mobile- - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 84.00
+
+[[CA.plans]]
+name = "Canada Mobile - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 86.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CA.plans]]
+name = "Canada Mobile Plus - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 96.00
+
+[CN]
+checked = "2026-09-30"
+networks = []
+
+[[CN.plans]]
+name = "Chinacom - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[CN.plans]]
+name = "Chinacom - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 9.50
+
+[[CN.plans]]
+name = "Chinacom - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 10.50
+
+[[CN.plans]]
+name = "Chinacom - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CN.plans]]
+name = "Chinacom - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 14.50
+
+[[CN.plans]]
+name = "Chinacom - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 15.00
+
+[[CN.plans]]
+name = "Chinacom - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 15.50
+
+[[CN.plans]]
+name = "Chinacom - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CN.plans]]
+name = "Chinacom - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 24.50
+
+[[CN.plans]]
+name = "Chinacom - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 25.50
+
+[[CN.plans]]
+name = "Chinacom - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 26.50
+
+[[CN.plans]]
+name = "Chinacom - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CN.plans]]
+name = "Chinacom - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 35.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CN.plans]]
+name = "Chinacom - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 39.00
+
+[[CN.plans]]
+name = "Chinacom - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 40.00
+
+[[CN.plans]]
+name = "Chinacom - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 49.00
+
+[[CN.plans]]
+name = "Chinacom - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 49.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CN.plans]]
+name = "Chinacom - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[CO]
+checked = "2026-09-30"
+networks = []
+
+[[CO.plans]]
+name = "Chimba+ - 1 GB"
+gb = 1
+days = 7
+type = "data"
+price = 4.50
+
+[[CO.plans]]
+name = "Chimba - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.50
+
+[[CO.plans]]
+name = "Chimba+ - 2 GB"
+gb = 2
+days = 15
+type = "data"
+price = 8.00
+
+[[CO.plans]]
+name = "Chimba - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 9.50
+
+[[CO.plans]]
+name = "Chimba+ - 3 GB"
+gb = 3
+days = 30
+type = "data"
+price = 10.50
+
+[[CO.plans]]
+name = "Chimba - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 10.50
+
+[[CO.plans]]
+name = "Chimba - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CO.plans]]
+name = "Chimba - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 15.00
+
+[[CO.plans]]
+name = "Chimba - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 15.50
+
+[[CO.plans]]
+name = "Chimba - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 16.00
+
+[[CO.plans]]
+name = "Chimba - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CO.plans]]
+name = "Chimba - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 26.00
+
+[[CO.plans]]
+name = "Chimba - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 27.00
+
+[[CO.plans]]
+name = "Chimba - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CO.plans]]
+name = "Chimba - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 28.00
+
+[[CO.plans]]
+name = "Chimba - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CO.plans]]
+name = "Chimba - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 38.00
+
+[[CO.plans]]
+name = "Chimba - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 39.00
+
+[[CO.plans]]
+name = "Chimba+ - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 41.00
+
+[[CO.plans]]
+name = "Chimba - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CO.plans]]
+name = "Chimba - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 49.00
+
+[[CO.plans]]
+name = "Chimba - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 92.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[CR]
+checked = "2026-09-30"
+networks = []
+
+[[CR.plans]]
+name = "Hot Telecom - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 7.50
+
+[[CR.plans]]
+name = "Hot Telecom+ - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 8.50
+
+[[CR.plans]]
+name = "Hot Telecom - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 17.00
+
+[[CR.plans]]
+name = "Hot Telecom+ - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 18.00
+
+[[CR.plans]]
+name = "Hot Telecom - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 19.00
+
+[[CR.plans]]
+name = "Hot Telecom - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CR.plans]]
+name = "Hot Telecom+ - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 20.50
+
+[[CR.plans]]
+name = "Hot Telecom - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 25.50
+
+[[CR.plans]]
+name = "Hot Telecom - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 26.00
+
+[[CR.plans]]
+name = "Hot Telecom - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 26.50
+
+[[CR.plans]]
+name = "Hot Telecom+ - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 27.00
+
+[[CR.plans]]
+name = "Hot Telecom+ - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 27.50
+
+[[CR.plans]]
+name = "Hot Telecom - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CR.plans]]
+name = "Hot Telecom+ - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 28.50
+
+[[CR.plans]]
+name = "Hot Telecom - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 32.00
+
+[[CR.plans]]
+name = "Hot Telecom - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 32.50
+
+[[CR.plans]]
+name = "Hot Telecom+ - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 34.00
+
+[[CR.plans]]
+name = "Hot Telecom - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 34.00
+
+[[CR.plans]]
+name = "Hot Telecom+ - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 34.50
+
+[[CR.plans]]
+name = "Hot Telecom - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 36.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CR.plans]]
+name = "Hot Telecom+ - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 36.50
+
+[[CR.plans]]
+name = "Hot Telecom - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 38.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CR.plans]]
+name = "Hot Telecom - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 38.50
+
+[[CR.plans]]
+name = "Hot Telecom - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 40.50
+
+[[CR.plans]]
+name = "Hot Telecom+ - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 41.50
+
+[[CR.plans]]
+name = "Hot Telecom+ - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 44.00
+
+[[CR.plans]]
+name = "Hot Telecom - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 49.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CR.plans]]
+name = "Hot Telecom - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 89.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[HR]
+checked = "2026-09-30"
+networks = []
+
+[[HR.plans]]
+name = "Cronet - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[HR.plans]]
+name = "Cronet - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.00
+
+[[HR.plans]]
+name = "Cronet - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 7.50
+
+[[HR.plans]]
+name = "Cronet - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HR.plans]]
+name = "Cronet - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 9.50
+
+[[HR.plans]]
+name = "Cronet - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 10.00
+
+[[HR.plans]]
+name = "Cronet - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 10.50
+
+[[HR.plans]]
+name = "Cronet - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 15.50
+
+[[HR.plans]]
+name = "Cronet - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 16.00
+
+[[HR.plans]]
+name = "Cronet - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 17.00
+
+[[HR.plans]]
+name = "Cronet - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HR.plans]]
+name = "Cronet - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 24.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HR.plans]]
+name = "Cronet - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 24.50
+
+[[HR.plans]]
+name = "Cronet - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 25.50
+
+[[HR.plans]]
+name = "Cronet - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 28.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HR.plans]]
+name = "Cronet - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 35.00
+
+[[HR.plans]]
+name = "Cronet - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 38.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HR.plans]]
+name = "Cronet - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 58.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[CZ]
+checked = "2026-09-30"
+networks = []
+
+[[CZ.plans]]
+name = "Prosím - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[CZ.plans]]
+name = "Prosím - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 4.50
+
+[[CZ.plans]]
+name = "Prosím - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 5.00
+
+[[CZ.plans]]
+name = "Prosím - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 7.00
+
+[[CZ.plans]]
+name = "Prosím - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 7.50
+
+[[CZ.plans]]
+name = "Prosím - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 8.00
+
+[[CZ.plans]]
+name = "Prosím - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CZ.plans]]
+name = "Prosím - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 14.00
+
+[[CZ.plans]]
+name = "Prosím - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 14.50
+
+[[CZ.plans]]
+name = "Prosím - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 15.00
+
+[[CZ.plans]]
+name = "Prosím - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CZ.plans]]
+name = "Prosím - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 23.00
+
+[[CZ.plans]]
+name = "Prosím - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 24.00
+
+[[CZ.plans]]
+name = "Prosím - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 26.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CZ.plans]]
+name = "Prosím - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CZ.plans]]
+name = "Prosím - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 36.00
+
+[[CZ.plans]]
+name = "Prosím - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CZ.plans]]
+name = "Prosím - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[EG]
+checked = "2026-09-30"
+networks = []
+
+[[EG.plans]]
+name = "Giza Mobile - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 5.50
+
+[[EG.plans]]
+name = "Giza Mobile - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 12.00
+
+[[EG.plans]]
+name = "Giza Mobile - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 14.50
+
+[[EG.plans]]
+name = "Giza Mobile - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 19.00
+
+[[EG.plans]]
+name = "Giza Mobile - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[EG.plans]]
+name = "Giza Mobile - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 19.50
+
+[[EG.plans]]
+name = "Giza Mobile - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 20.00
+
+[[EG.plans]]
+name = "Giza Mobile - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[EG.plans]]
+name = "Giza Mobile - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 31.00
+
+[[EG.plans]]
+name = "Giza Mobile - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 32.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[EG.plans]]
+name = "Giza Mobile - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 32.00
+
+[[EG.plans]]
+name = "Giza Mobile - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 33.00
+
+[[EG.plans]]
+name = "Giza Mobile - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 35.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[EG.plans]]
+name = "Giza Mobile - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 41.00
+
+[[EG.plans]]
+name = "Giza Mobile - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 42.00
+
+[[EG.plans]]
+name = "Giza Mobile - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 49.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[EG.plans]]
+name = "Giza Mobile - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 90.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[FJ]
+checked = "2026-09-30"
+networks = []
+
+[[FJ.plans]]
+name = "Vinaka Fiji - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 7.50
+
+[[FJ.plans]]
+name = "Vinaka Fiji - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 18.00
+
+[[FJ.plans]]
+name = "Vinaka Fiji - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 19.00
+
+[[FJ.plans]]
+name = "Vinaka Fiji - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 27.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[FJ.plans]]
+name = "Vinaka Fiji - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 28.00
+
+[[FJ.plans]]
+name = "Vinaka Fiji - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 29.00
+
+[[FJ.plans]]
+name = "Vinaka Fiji - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 30.00
+
+[[FJ.plans]]
+name = "Vinaka Fiji - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 41.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[FJ.plans]]
+name = "Vinaka Fiji - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 47.00
+
+[[FJ.plans]]
+name = "Vinaka Fiji - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 48.00
+
+[[FJ.plans]]
+name = "Vinaka Fiji - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 49.00
+
+[[FJ.plans]]
+name = "Vinaka Fiji - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 53.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[FJ.plans]]
+name = "Vinaka Fiji - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[FJ.plans]]
+name = "Vinaka Fiji - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 95.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[FR]
+checked = "2026-09-30"
+networks = []
+
+[[FR.plans]]
+name = "Élan - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[FR.plans]]
+name = "Élan - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.00
+
+[[FR.plans]]
+name = "Élan - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 7.50
+
+[[FR.plans]]
+name = "Élan - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 10.00
+
+[[FR.plans]]
+name = "Élan - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 10.50
+
+[[FR.plans]]
+name = "Élan - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[FR.plans]]
+name = "Élan - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 11.00
+
+[[FR.plans]]
+name = "Élan - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 16.00
+
+[[FR.plans]]
+name = "Élan - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 16.50
+
+[[FR.plans]]
+name = "Élan - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 17.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[FR.plans]]
+name = "Élan - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 17.00
+
+[[FR.plans]]
+name = "Élan - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 22.50
+
+[[FR.plans]]
+name = "Élan - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 23.00
+
+[[FR.plans]]
+name = "Élan - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 23.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[FR.plans]]
+name = "Élan - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 29.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[FR.plans]]
+name = "Élan - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 35.00
+
+[[FR.plans]]
+name = "Élan - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 42.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[FR.plans]]
+name = "Élan - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 59.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[GE]
+checked = "2026-09-30"
+networks = []
+
+[[GE.plans]]
+name = "Gaumarjos!+ - 1 GB"
+gb = 1
+days = 7
+type = "data"
+price = 4.50
+
+[[GE.plans]]
+name = "Gaumarjos! - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.50
+
+[[GE.plans]]
+name = "Gaumarjos! - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 10.00
+
+[[GE.plans]]
+name = "Gaumarjos! - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 11.00
+
+[[GE.plans]]
+name = "Gaumarjos! - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 15.00
+
+[[GE.plans]]
+name = "Gaumarjos! - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 16.00
+
+[[GE.plans]]
+name = "Gaumarjos! - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 17.00
+
+[[GE.plans]]
+name = "Gaumarjos! - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 27.00
+
+[[GE.plans]]
+name = "Gaumarjos! - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 27.50
+
+[[GE.plans]]
+name = "Gaumarjos! - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 28.50
+
+[[GE.plans]]
+name = "Gaumarjos! - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 36.50
+
+[[GE.plans]]
+name = "Gaumarjos! - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 38.00
+
+[[GE.plans]]
+name = "Gaumarjos! - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 49.00
+
+[DE]
+checked = "2026-09-30"
+networks = []
+
+[[DE.plans]]
+name = "Hallo! Mobil - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[DE.plans]]
+name = "Hallo! Mobil - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.50
+
+[[DE.plans]]
+name = "Hallo! Mobil - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 8.00
+
+[[DE.plans]]
+name = "Hallo! Mobil - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 10.00
+
+[[DE.plans]]
+name = "Hallo! Mobil - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 10.50
+
+[[DE.plans]]
+name = "Hallo! Mobil - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[DE.plans]]
+name = "Hallo! Mobil - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 11.00
+
+[[DE.plans]]
+name = "Hallo! Mobil - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 15.00
+
+[[DE.plans]]
+name = "Hallo! Mobil - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 15.50
+
+[[DE.plans]]
+name = "Hallo! Mobil - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 16.00
+
+[[DE.plans]]
+name = "Hallo! Mobil - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[DE.plans]]
+name = "Hallo! Mobil - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 22.50
+
+[[DE.plans]]
+name = "Hallo! Mobil - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 23.00
+
+[[DE.plans]]
+name = "Hallo! Mobil - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 24.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[DE.plans]]
+name = "Hallo! Mobil - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 30.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[DE.plans]]
+name = "Hallo! Mobil - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 36.00
+
+[[DE.plans]]
+name = "Hallo! Mobil - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 42.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[DE.plans]]
+name = "Hallo! Mobil - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 59.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[GR]
+checked = "2026-09-30"
+networks = []
+
+[[GR.plans]]
+name = "Meraki Mobile - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[GR.plans]]
+name = "Meraki Mobile - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 8.50
+
+[[GR.plans]]
+name = "Meraki Mobile - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 9.00
+
+[[GR.plans]]
+name = "Meraki Mobile - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 11.00
+
+[[GR.plans]]
+name = "Meraki Mobile - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GR.plans]]
+name = "Meraki Mobile - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 11.50
+
+[[GR.plans]]
+name = "Meraki Mobile - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 12.00
+
+[[GR.plans]]
+name = "Meraki Mobile - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GR.plans]]
+name = "Meraki Mobile - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 19.00
+
+[[GR.plans]]
+name = "Meraki Mobile - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 19.50
+
+[[GR.plans]]
+name = "Meraki Mobile - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 20.00
+
+[[GR.plans]]
+name = "Meraki Mobile - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GR.plans]]
+name = "Meraki Mobile - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GR.plans]]
+name = "Meraki Mobile - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 35.00
+
+[[GR.plans]]
+name = "Meraki Mobile - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 35.50
+
+[[GR.plans]]
+name = "Meraki Mobile - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 42.00
+
+[[GR.plans]]
+name = "Meraki Mobile - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GR.plans]]
+name = "Meraki Mobile - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[HK]
+checked = "2026-09-30"
+networks = []
+
+[[HK.plans]]
+name = "Hkmobile - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[HK.plans]]
+name = "Hkmobile - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 8.00
+
+[[HK.plans]]
+name = "Hkmobile - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 8.50
+
+[[HK.plans]]
+name = "Hkmobile - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 11.00
+
+[[HK.plans]]
+name = "Hkmobile - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 11.50
+
+[[HK.plans]]
+name = "Hkmobile - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 12.00
+
+[[HK.plans]]
+name = "Hkmobile - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HK.plans]]
+name = "Hkmobile - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 17.00
+
+[[HK.plans]]
+name = "Hkmobile - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 17.50
+
+[[HK.plans]]
+name = "Hkmobile - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 18.00
+
+[[HK.plans]]
+name = "Hkmobile - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HK.plans]]
+name = "Hkmobile - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 26.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HK.plans]]
+name = "Hkmobile - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 28.00
+
+[[HK.plans]]
+name = "Hkmobile - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 29.00
+
+[[HK.plans]]
+name = "Hkmobile - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 35.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HK.plans]]
+name = "Hkmobile - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 49.00
+
+[[HK.plans]]
+name = "Hkmobile - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 49.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HK.plans]]
+name = "Hkmobile - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[IS]
+checked = "2026-09-30"
+networks = []
+
+[[IS.plans]]
+name = "Nenna Mobile - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[IS.plans]]
+name = "Nenna Mobile - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.00
+
+[[IS.plans]]
+name = "Nenna Mobile - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 8.00
+
+[[IS.plans]]
+name = "Nenna Mobile - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IS.plans]]
+name = "Nenna Mobile - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 11.00
+
+[[IS.plans]]
+name = "Nenna Mobile - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 11.50
+
+[[IS.plans]]
+name = "Nenna Mobile - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 12.00
+
+[[IS.plans]]
+name = "Nenna Mobile - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IS.plans]]
+name = "Nenna Mobile - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 18.50
+
+[[IS.plans]]
+name = "Nenna Mobile - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 18.50
+
+[[IS.plans]]
+name = "Nenna Mobile - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 19.50
+
+[[IS.plans]]
+name = "Nenna Mobile - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 26.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IS.plans]]
+name = "Nenna Mobile - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 29.50
+
+[[IS.plans]]
+name = "Nenna Mobile - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 30.50
+
+[[IS.plans]]
+name = "Nenna Mobile - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IS.plans]]
+name = "Nenna Mobile - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IS.plans]]
+name = "Nenna Mobile - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 49.00
+
+[[IS.plans]]
+name = "Nenna Mobile - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[IN]
+checked = "2026-09-30"
+networks = []
+
+[[IN.plans]]
+name = "Indicomm - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[IN.plans]]
+name = "Indicomm - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 8.50
+
+[[IN.plans]]
+name = "Indicomm - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 9.50
+
+[[IN.plans]]
+name = "Indicomm - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 13.00
+
+[[IN.plans]]
+name = "Indicomm - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 13.50
+
+[[IN.plans]]
+name = "Indicomm - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 14.00
+
+[[IN.plans]]
+name = "Indicomm - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 20.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IN.plans]]
+name = "Indicomm - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 22.50
+
+[[IN.plans]]
+name = "Indicomm - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 23.00
+
+[[IN.plans]]
+name = "Indicomm - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 24.00
+
+[[IN.plans]]
+name = "Indicomm - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 31.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IN.plans]]
+name = "Indicomm - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 36.50
+
+[[IN.plans]]
+name = "Indicomm - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 38.00
+
+[[IN.plans]]
+name = "Indicomm - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 39.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IN.plans]]
+name = "Indicomm - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 46.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IN.plans]]
+name = "Indicomm - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 62.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IN.plans]]
+name = "Indicomm - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 99.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[ID]
+checked = "2026-09-30"
+networks = []
+
+[[ID.plans]]
+name = "Indotel - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.50
+
+[[ID.plans]]
+name = "Indotel - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 8.00
+
+[[ID.plans]]
+name = "Indotel - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 8.50
+
+[[ID.plans]]
+name = "Indotel - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ID.plans]]
+name = "Indotel - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 12.00
+
+[[ID.plans]]
+name = "Indotel - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 13.00
+
+[[ID.plans]]
+name = "Indotel - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 13.50
+
+[[ID.plans]]
+name = "Indotel - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ID.plans]]
+name = "Indotel - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 19.00
+
+[[ID.plans]]
+name = "Indotel - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 20.00
+
+[[ID.plans]]
+name = "Indotel - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 21.00
+
+[[ID.plans]]
+name = "Indotel - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ID.plans]]
+name = "Indotel - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ID.plans]]
+name = "Indotel - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 34.00
+
+[[ID.plans]]
+name = "Indotel - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 35.00
+
+[[ID.plans]]
+name = "Indotel - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ID.plans]]
+name = "Indotel - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 49.00
+
+[[ID.plans]]
+name = "Indotel - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[IE]
+checked = "2026-09-30"
+networks = []
+
+[[IE.plans]]
+name = "Fáilte - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[IE.plans]]
+name = "Fáilte - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.00
+
+[[IE.plans]]
+name = "Fáilte - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 7.50
+
+[[IE.plans]]
+name = "Fáilte - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 10.00
+
+[[IE.plans]]
+name = "Fáilte - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 10.50
+
+[[IE.plans]]
+name = "Fáilte - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 11.00
+
+[[IE.plans]]
+name = "Fáilte - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IE.plans]]
+name = "Fáilte - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 15.00
+
+[[IE.plans]]
+name = "Fáilte - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 15.00
+
+[[IE.plans]]
+name = "Fáilte - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 17.00
+
+[[IE.plans]]
+name = "Fáilte - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IE.plans]]
+name = "Fáilte - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 25.00
+
+[[IE.plans]]
+name = "Fáilte - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 25.50
+
+[[IE.plans]]
+name = "Fáilte - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IE.plans]]
+name = "Fáilte - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IE.plans]]
+name = "Fáilte - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 42.00
+
+[[IE.plans]]
+name = "Fáilte - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IE.plans]]
+name = "Fáilte - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[IL]
+checked = "2026-09-30"
+networks = []
+
+[[IL.plans]]
+name = "Annatel - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[IL.plans]]
+name = "Annatel - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 5.50
+
+[[IL.plans]]
+name = "Annatel+ - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 5.50
+
+[[IL.plans]]
+name = "Annatel - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 6.00
+
+[[IL.plans]]
+name = "Annatel - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 7.00
+
+[[IL.plans]]
+name = "Annatel+ - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.00
+
+[[IL.plans]]
+name = "Annatel - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 7.50
+
+[[IL.plans]]
+name = "Annatel - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 8.00
+
+[[IL.plans]]
+name = "Annatel+ - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 8.00
+
+[[IL.plans]]
+name = "Annatel+ - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 9.00
+
+[[IL.plans]]
+name = "Annatel+ - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 10.00
+
+[[IL.plans]]
+name = "Annatel - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 10.50
+
+[[IL.plans]]
+name = "Annatel - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 11.00
+
+[[IL.plans]]
+name = "Annatel - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 11.50
+
+[[IL.plans]]
+name = "Annatel - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IL.plans]]
+name = "Annatel+ - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 13.00
+
+[[IL.plans]]
+name = "Annatel+ - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 13.50
+
+[[IL.plans]]
+name = "Annatel+ - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 14.00
+
+[[IL.plans]]
+name = "Annatel - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 16.00
+
+[[IL.plans]]
+name = "Annatel - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 16.50
+
+[[IL.plans]]
+name = "Annatel - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IL.plans]]
+name = "Annatel+ - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 20.00
+
+[[IL.plans]]
+name = "Annatel+ - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 22.00
+
+[[IL.plans]]
+name = "Annatel - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 26.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IL.plans]]
+name = "Annatel - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IL.plans]]
+name = "Annatel+ - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 34.00
+
+[[IL.plans]]
+name = "Annatel - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 39.00
+
+[[IL.plans]]
+name = "Annatel+ - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 47.00
+
+[[IL.plans]]
+name = "Annatel - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IL.plans]]
+name = "Annatel - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[IT]
+checked = "2026-09-30"
+networks = []
+
+[[IT.plans]]
+name = "Mamma Mia - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[IT.plans]]
+name = "Mamma Mia - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.00
+
+[[IT.plans]]
+name = "Mamma Mia - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 7.50
+
+[[IT.plans]]
+name = "Mamma Mia - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 10.00
+
+[[IT.plans]]
+name = "Mamma Mia - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IT.plans]]
+name = "Mamma Mia - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 11.00
+
+[[IT.plans]]
+name = "Mamma Mia - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 12.00
+
+[[IT.plans]]
+name = "Mamma Mia - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 17.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IT.plans]]
+name = "Mamma Mia - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 17.00
+
+[[IT.plans]]
+name = "Mamma Mia - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 18.00
+
+[[IT.plans]]
+name = "Mamma Mia - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 19.00
+
+[[IT.plans]]
+name = "Mamma Mia - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 23.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IT.plans]]
+name = "Mamma Mia - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 25.00
+
+[[IT.plans]]
+name = "Mamma Mia - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 26.00
+
+[[IT.plans]]
+name = "Mamma Mia - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 32.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IT.plans]]
+name = "Mamma Mia - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 35.00
+
+[[IT.plans]]
+name = "Mamma Mia - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IT.plans]]
+name = "Mamma Mia - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[JP]
+checked = "2026-09-30"
+networks = []
+
+[[JP.plans]]
+name = "Moshi Moshi - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[JP.plans]]
+name = "Moshi Moshi - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.50
+
+[[JP.plans]]
+name = "Moshi Moshi - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 8.00
+
+[[JP.plans]]
+name = "Moshi Moshi - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 10.00
+
+[[JP.plans]]
+name = "Moshi Moshi - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 10.50
+
+[[JP.plans]]
+name = "Moshi Moshi - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 11.00
+
+[[JP.plans]]
+name = "Moshi Moshi - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[JP.plans]]
+name = "Moshi Moshi - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 17.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[JP.plans]]
+name = "Moshi Moshi - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 17.00
+
+[[JP.plans]]
+name = "Moshi Moshi - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 17.50
+
+[[JP.plans]]
+name = "Moshi Moshi - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 18.00
+
+[[JP.plans]]
+name = "Moshi Moshi - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 24.00
+
+[[JP.plans]]
+name = "Moshi Moshi - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 25.00
+
+[[JP.plans]]
+name = "Moshi Moshi - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 26.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[JP.plans]]
+name = "Moshi Moshi - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[JP.plans]]
+name = "Moshi Moshi - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[JP.plans]]
+name = "Moshi Moshi - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[KE]
+checked = "2026-09-30"
+networks = []
+
+[[KE.plans]]
+name = "Nakuru Mobile - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 8.00
+
+[[KE.plans]]
+name = "Nakuru Mobile - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 19.00
+
+[[KE.plans]]
+name = "Nakuru Mobile - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 19.50
+
+[[KE.plans]]
+name = "Nakuru Mobile - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 30.50
+
+[[KE.plans]]
+name = "Nakuru Mobile - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 31.50
+
+[[KE.plans]]
+name = "Nakuru Mobile - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 32.00
+
+[[KE.plans]]
+name = "Nakuru Mobile - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 46.00
+
+[[KE.plans]]
+name = "Nakuru Mobile - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 47.00
+
+[[KE.plans]]
+name = "Nakuru Mobile - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 48.00
+
+[MO]
+checked = "2026-09-30"
+networks = []
+
+[[MO.plans]]
+name = "Macao Mobile - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[MO.plans]]
+name = "Macao Mobile - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 6.50
+
+[[MO.plans]]
+name = "Macao Mobile - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 7.00
+
+[[MO.plans]]
+name = "Macao Mobile - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 9.00
+
+[[MO.plans]]
+name = "Macao Mobile - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 9.50
+
+[[MO.plans]]
+name = "Macao Mobile - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 10.00
+
+[[MO.plans]]
+name = "Macao Mobile - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MO.plans]]
+name = "Macao Mobile - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 15.00
+
+[[MO.plans]]
+name = "Macao Mobile - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 15.50
+
+[[MO.plans]]
+name = "Macao Mobile - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 16.00
+
+[[MO.plans]]
+name = "Macao Mobile - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MO.plans]]
+name = "Macao Mobile - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 22.50
+
+[[MO.plans]]
+name = "Macao Mobile - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 23.00
+
+[[MO.plans]]
+name = "Macao Mobile - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MO.plans]]
+name = "Macao Mobile - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 35.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MO.plans]]
+name = "Macao Mobile - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 49.00
+
+[[MO.plans]]
+name = "Macao Mobile - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 49.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MO.plans]]
+name = "Macao Mobile - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 72.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[MY]
+checked = "2026-09-30"
+networks = []
+
+[[MY.plans]]
+name = "Sambungkan - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[MY.plans]]
+name = "Sambungkan - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.50
+
+[[MY.plans]]
+name = "Sambungkan - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 8.00
+
+[[MY.plans]]
+name = "Sambungkan - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 11.00
+
+[[MY.plans]]
+name = "Sambungkan - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MY.plans]]
+name = "Sambungkan - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 11.50
+
+[[MY.plans]]
+name = "Sambungkan - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 12.00
+
+[[MY.plans]]
+name = "Sambungkan - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MY.plans]]
+name = "Sambungkan - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 19.00
+
+[[MY.plans]]
+name = "Sambungkan - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 19.50
+
+[[MY.plans]]
+name = "Sambungkan - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 20.00
+
+[[MY.plans]]
+name = "Sambungkan - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MY.plans]]
+name = "Sambungkan - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 31.00
+
+[[MY.plans]]
+name = "Sambungkan - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 32.00
+
+[[MY.plans]]
+name = "Sambungkan - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MY.plans]]
+name = "Sambungkan - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MY.plans]]
+name = "Sambungkan - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 49.00
+
+[[MY.plans]]
+name = "Sambungkan - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[MX]
+checked = "2026-09-30"
+networks = []
+
+[[MX.plans]]
+name = "Chido - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[MX.plans]]
+name = "Chido - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 5.50
+
+[[MX.plans]]
+name = "Chido - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.50
+
+[[MX.plans]]
+name = "Chido - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 8.50
+
+[[MX.plans]]
+name = "Chido - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 10.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MX.plans]]
+name = "Chido - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 11.00
+
+[[MX.plans]]
+name = "Chido - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 12.00
+
+[[MX.plans]]
+name = "Chido - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 12.50
+
+[[MX.plans]]
+name = "Chido - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 12.50
+
+[[MX.plans]]
+name = "Chido - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 13.00
+
+[[MX.plans]]
+name = "Chido - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 17.00
+
+[[MX.plans]]
+name = "Chido - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 17.00
+
+[[MX.plans]]
+name = "Chido - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 17.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MX.plans]]
+name = "Chido - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 17.50
+
+[[MX.plans]]
+name = "Chido - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 17.50
+
+[[MX.plans]]
+name = "Chido - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 18.50
+
+[[MX.plans]]
+name = "Chido - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 18.50
+
+[[MX.plans]]
+name = "Chido - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 23.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MX.plans]]
+name = "Chido - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 23.50
+
+[[MX.plans]]
+name = "Chido - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 24.50
+
+[[MX.plans]]
+name = "Chido - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 26.00
+
+[[MX.plans]]
+name = "Chido - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 29.50
+
+[[MX.plans]]
+name = "Chido - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 31.00
+
+[[MX.plans]]
+name = "Chido - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 31.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MX.plans]]
+name = "Chido - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 40.00
+
+[[MX.plans]]
+name = "Chido - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 42.50
+
+[[MX.plans]]
+name = "Chido - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 43.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MX.plans]]
+name = "Chido - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 45.00
+
+[[MX.plans]]
+name = "Chido - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 54.00
+
+[[MX.plans]]
+name = "Chido - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 62.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[MA]
+checked = "2026-09-30"
+networks = []
+
+[[MA.plans]]
+name = "Choukran - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 6.00
+
+[[MA.plans]]
+name = "Choukran - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 15.00
+
+[[MA.plans]]
+name = "Choukran - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 16.00
+
+[[MA.plans]]
+name = "Choukran - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 17.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MA.plans]]
+name = "Choukran - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 20.00
+
+[[MA.plans]]
+name = "Choukran - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 21.00
+
+[[MA.plans]]
+name = "Choukran - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 22.00
+
+[[MA.plans]]
+name = "Choukran - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 29.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MA.plans]]
+name = "Choukran - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 32.00
+
+[[MA.plans]]
+name = "Choukran - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 33.00
+
+[[MA.plans]]
+name = "Choukran - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 34.00
+
+[[MA.plans]]
+name = "Choukran - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 35.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MA.plans]]
+name = "Choukran - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 42.00
+
+[[MA.plans]]
+name = "Choukran - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 43.00
+
+[[MA.plans]]
+name = "Choukran - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 45.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[NL]
+checked = "2026-09-30"
+networks = []
+
+[[NL.plans]]
+name = "Hé Hé - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[NL.plans]]
+name = "Hè Hè+ - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 6.50
+
+[[NL.plans]]
+name = "Hé Hé - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.00
+
+[[NL.plans]]
+name = "Hé Hé - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 7.50
+
+[[NL.plans]]
+name = "Hé Hé - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 9.00
+
+[[NL.plans]]
+name = "Hé Hé - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 9.50
+
+[[NL.plans]]
+name = "Hè Hè+ - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 9.50
+
+[[NL.plans]]
+name = "Hé Hé - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 10.00
+
+[[NL.plans]]
+name = "Hè Hè+ - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 10.50
+
+[[NL.plans]]
+name = "Hé Hé - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NL.plans]]
+name = "Hè Hè+ - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 12.00
+
+[[NL.plans]]
+name = "Hè Hè+ - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 13.00
+
+[[NL.plans]]
+name = "Hè Hè+ - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 14.00
+
+[[NL.plans]]
+name = "Hé Hé - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 16.50
+
+[[NL.plans]]
+name = "Hé Hé - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 17.50
+
+[[NL.plans]]
+name = "Hé Hé - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 18.00
+
+[[NL.plans]]
+name = "Hé Hé - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NL.plans]]
+name = "Hè Hè+ - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 20.50
+
+[[NL.plans]]
+name = "Hè Hè+ - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 21.50
+
+[[NL.plans]]
+name = "Hè Hè+ - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 23.00
+
+[[NL.plans]]
+name = "Hé Hé - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 26.00
+
+[[NL.plans]]
+name = "Hé Hé - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NL.plans]]
+name = "Hé Hé - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 27.00
+
+[[NL.plans]]
+name = "Hè Hè+ - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 31.50
+
+[[NL.plans]]
+name = "Hè Hè+ - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 33.00
+
+[[NL.plans]]
+name = "Hé Hé - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NL.plans]]
+name = "Hé Hé - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 36.00
+
+[[NL.plans]]
+name = "Hè Hè+ - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 44.50
+
+[[NL.plans]]
+name = "Hé Hé - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NL.plans]]
+name = "Hé Hé - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[NZ]
+checked = "2026-09-30"
+networks = []
+
+[[NZ.plans]]
+name = "Nzcom - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[NZ.plans]]
+name = "Nzcom - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 9.00
+
+[[NZ.plans]]
+name = "Nzcom - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 10.00
+
+[[NZ.plans]]
+name = "Nzcom - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NZ.plans]]
+name = "Nzcom - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 13.00
+
+[[NZ.plans]]
+name = "Nzcom - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 13.50
+
+[[NZ.plans]]
+name = "Nzcom - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 14.00
+
+[[NZ.plans]]
+name = "Nzcom - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NZ.plans]]
+name = "Nzcom - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 23.00
+
+[[NZ.plans]]
+name = "Nzcom - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 23.50
+
+[[NZ.plans]]
+name = "Nzcom - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 24.00
+
+[[NZ.plans]]
+name = "Nzcom - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NZ.plans]]
+name = "Nzcom - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NZ.plans]]
+name = "Nzcom - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 37.00
+
+[[NZ.plans]]
+name = "Nzcom - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 38.00
+
+[[NZ.plans]]
+name = "Nzcom - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NZ.plans]]
+name = "Nzcom - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 49.00
+
+[[NZ.plans]]
+name = "Nzcom - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[PE]
+checked = "2026-09-30"
+networks = []
+
+[[PE.plans]]
+name = "Habla Telefon - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.50
+
+[[PE.plans]]
+name = "Habla Telefon - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 10.00
+
+[[PE.plans]]
+name = "Habla Telefon - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 11.00
+
+[[PE.plans]]
+name = "Habla Telefon - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 15.50
+
+[[PE.plans]]
+name = "Habla Telefon - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 16.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PE.plans]]
+name = "Habla Telefon - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 16.50
+
+[[PE.plans]]
+name = "Habla Telefon - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 17.00
+
+[[PE.plans]]
+name = "Habla Telefon - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PE.plans]]
+name = "Habla Telefon - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 25.00
+
+[[PE.plans]]
+name = "Habla Telefon - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 25.50
+
+[[PE.plans]]
+name = "Habla Telefon - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 26.00
+
+[[PE.plans]]
+name = "Habla Telefon - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PE.plans]]
+name = "Habla Telefon - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 33.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PE.plans]]
+name = "Habla Telefon - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 40.00
+
+[[PE.plans]]
+name = "Habla Telefon - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 41.00
+
+[[PE.plans]]
+name = "Habla Telefon - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PE.plans]]
+name = "Habla Telefon - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 79.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[PH]
+checked = "2026-09-30"
+networks = []
+
+[[PH.plans]]
+name = "Alpas Mobile - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[PH.plans]]
+name = "Alpas Mobile - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.50
+
+[[PH.plans]]
+name = "Alpas Mobile - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 8.00
+
+[[PH.plans]]
+name = "Alpas Mobile - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 11.00
+
+[[PH.plans]]
+name = "Alpas Mobile - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PH.plans]]
+name = "Alpas Mobile - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 11.50
+
+[[PH.plans]]
+name = "Alpas Mobile - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 12.00
+
+[[PH.plans]]
+name = "Alpas Mobile - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 18.00
+
+[[PH.plans]]
+name = "Alpas Mobile - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PH.plans]]
+name = "Alpas Mobile - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 18.50
+
+[[PH.plans]]
+name = "Alpas Mobile - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 19.00
+
+[[PH.plans]]
+name = "Alpas Mobile - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PH.plans]]
+name = "Alpas Mobile - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 28.50
+
+[[PH.plans]]
+name = "Alpas Mobile - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 30.00
+
+[[PH.plans]]
+name = "Alpas Mobile - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PH.plans]]
+name = "Alpas Mobile - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 48.00
+
+[[PH.plans]]
+name = "Alpas Mobile - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PH.plans]]
+name = "Alpas Mobile - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[PL]
+checked = "2026-09-30"
+networks = []
+
+[[PL.plans]]
+name = "Lekko - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[PL.plans]]
+name = "Lekko - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 5.00
+
+[[PL.plans]]
+name = "Lekko - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 6.00
+
+[[PL.plans]]
+name = "Lekko - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 7.50
+
+[[PL.plans]]
+name = "Lekko - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 8.00
+
+[[PL.plans]]
+name = "Lekko - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 8.50
+
+[[PL.plans]]
+name = "Lekko - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 11.00
+
+[[PL.plans]]
+name = "Lekko - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 11.50
+
+[[PL.plans]]
+name = "Lekko - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PL.plans]]
+name = "Lekko - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 12.00
+
+[[PL.plans]]
+name = "Lekko - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 18.00
+
+[[PL.plans]]
+name = "Lekko - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PL.plans]]
+name = "Lekko - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 19.00
+
+[[PL.plans]]
+name = "Lekko - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PL.plans]]
+name = "Lekko - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PL.plans]]
+name = "Lekko - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 35.00
+
+[[PL.plans]]
+name = "Lekko - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PL.plans]]
+name = "Lekko - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[PT]
+checked = "2026-09-30"
+networks = []
+
+[[PT.plans]]
+name = "Fofo Mobil - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[PT.plans]]
+name = "Fofo Mobil - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 6.00
+
+[[PT.plans]]
+name = "Fofo Mobil - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 6.50
+
+[[PT.plans]]
+name = "Fofo Mobil - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 7.50
+
+[[PT.plans]]
+name = "Fofo Mobil - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 8.00
+
+[[PT.plans]]
+name = "Fofo Mobil - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 9.00
+
+[[PT.plans]]
+name = "Fofo Mobil - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 10.00
+
+[[PT.plans]]
+name = "Fofo Mobil - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 10.50
+
+[[PT.plans]]
+name = "Fofo Mobil - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 11.00
+
+[[PT.plans]]
+name = "Fofo Mobil - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PT.plans]]
+name = "Fofo Mobil - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 18.50
+
+[[PT.plans]]
+name = "Fofo Mobil - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 19.00
+
+[[PT.plans]]
+name = "Fofo Mobil - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PT.plans]]
+name = "Fofo Mobil - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PT.plans]]
+name = "Fofo Mobil - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PT.plans]]
+name = "Fofo Mobil - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 35.00
+
+[[PT.plans]]
+name = "Fofo Mobil - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PT.plans]]
+name = "Fofo Mobil - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[QA]
+checked = "2026-09-30"
+networks = []
+
+[[QA.plans]]
+name = "Pearl Mobile - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.50
+
+[[QA.plans]]
+name = "Pearl Mobile - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 9.50
+
+[[QA.plans]]
+name = "Pearl Mobile - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 10.00
+
+[[QA.plans]]
+name = "Pearl Mobile - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 15.00
+
+[[QA.plans]]
+name = "Pearl Mobile - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 16.00
+
+[[QA.plans]]
+name = "Pearl Mobile - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 17.00
+
+[[QA.plans]]
+name = "Pearl Mobile - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[QA.plans]]
+name = "Pearl Mobile - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 26.00
+
+[[QA.plans]]
+name = "Pearl Mobile - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 28.00
+
+[[QA.plans]]
+name = "Pearl Mobile - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[QA.plans]]
+name = "Pearl Mobile - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 29.00
+
+[[QA.plans]]
+name = "Pearl Mobile - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 36.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[QA.plans]]
+name = "Pearl Mobile - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 38.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[QA.plans]]
+name = "Pearl Mobile - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 43.00
+
+[[QA.plans]]
+name = "Pearl Mobile - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 45.00
+
+[[QA.plans]]
+name = "Pearl Mobile - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 49.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[QA.plans]]
+name = "Pearl Mobile - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 99.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[SA]
+checked = "2026-09-30"
+networks = []
+
+[[SA.plans]]
+name = "Red Sand - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.50
+
+[[SA.plans]]
+name = "Red Sand - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 9.50
+
+[[SA.plans]]
+name = "Red Sand - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 10.00
+
+[[SA.plans]]
+name = "Red Sand - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SA.plans]]
+name = "Red Sand - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 14.00
+
+[[SA.plans]]
+name = "Red Sand - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 14.50
+
+[[SA.plans]]
+name = "Red Sand - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 15.00
+
+[[SA.plans]]
+name = "Red Sand - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SA.plans]]
+name = "Red Sand - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 24.00
+
+[[SA.plans]]
+name = "Red Sand - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 24.50
+
+[[SA.plans]]
+name = "Red Sand - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 25.50
+
+[[SA.plans]]
+name = "Red Sand - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SA.plans]]
+name = "Red Sand - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SA.plans]]
+name = "Red Sand - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 40.00
+
+[[SA.plans]]
+name = "Red Sand - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 42.00
+
+[[SA.plans]]
+name = "Red Sand - 25 GB"
+gb = 25
+days = 45
+type = "data"
+price = 49.00
+
+[[SA.plans]]
+name = "Red Sand - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 54.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SA.plans]]
+name = "Red Sand - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 97.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[SG]
+checked = "2026-09-30"
+networks = []
+
+[[SG.plans]]
+name = "Connect Lah! - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[SG.plans]]
+name = "Connect Lah! - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 6.50
+
+[[SG.plans]]
+name = "Connect Lah! - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 7.00
+
+[[SG.plans]]
+name = "Connect Lah! - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 9.00
+
+[[SG.plans]]
+name = "Connect Lah! - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 9.50
+
+[[SG.plans]]
+name = "Connect Lah! - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 10.00
+
+[[SG.plans]]
+name = "Connect Lah! - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SG.plans]]
+name = "Connect Lah! - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 15.00
+
+[[SG.plans]]
+name = "Connect Lah! - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 15.50
+
+[[SG.plans]]
+name = "Connect Lah! - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 16.00
+
+[[SG.plans]]
+name = "Connect Lah! - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SG.plans]]
+name = "Connect Lah! - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 22.00
+
+[[SG.plans]]
+name = "Connect Lah! - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 23.00
+
+[[SG.plans]]
+name = "Connect Lah! - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SG.plans]]
+name = "Connect Lah! - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SG.plans]]
+name = "Connect Lah! - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 48.00
+
+[[SG.plans]]
+name = "Connect Lah! - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SG.plans]]
+name = "Connect Lah! - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[ZA]
+checked = "2026-09-30"
+networks = []
+
+[[ZA.plans]]
+name = "CellSA - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[ZA.plans]]
+name = "CellSA - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.50
+
+[[ZA.plans]]
+name = "CellSA - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 8.00
+
+[[ZA.plans]]
+name = "CellSA - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 9.00
+
+[[ZA.plans]]
+name = "CellSA - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 9.00
+
+[[ZA.plans]]
+name = "CellSA - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 10.00
+
+[[ZA.plans]]
+name = "CellSA - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 11.50
+
+[[ZA.plans]]
+name = "CellSA - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 12.00
+
+[[ZA.plans]]
+name = "CellSA - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 12.50
+
+[[ZA.plans]]
+name = "CellSA - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 12.50
+
+[[ZA.plans]]
+name = "CellSA - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 13.00
+
+[[ZA.plans]]
+name = "CellSA - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 13.50
+
+[[ZA.plans]]
+name = "CellSA - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 19.00
+
+[[ZA.plans]]
+name = "CellSA - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ZA.plans]]
+name = "CellSA - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 20.00
+
+[[ZA.plans]]
+name = "CellSA - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 20.50
+
+[[ZA.plans]]
+name = "CellSA - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 22.00
+
+[[ZA.plans]]
+name = "CellSA - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 22.00
+
+[[ZA.plans]]
+name = "CellSA - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 24.00
+
+[[ZA.plans]]
+name = "CellSA - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ZA.plans]]
+name = "CellSA - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 35.00
+
+[[ZA.plans]]
+name = "CellSA - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 36.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ZA.plans]]
+name = "CellSA - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 37.00
+
+[[ZA.plans]]
+name = "CellSA - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 38.00
+
+[[ZA.plans]]
+name = "CellSA - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 40.00
+
+[[ZA.plans]]
+name = "CellSA - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 45.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ZA.plans]]
+name = "CellSA - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 49.00
+
+[[ZA.plans]]
+name = "CellSA - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 51.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ZA.plans]]
+name = "CellSA - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 55.00
+
+[[ZA.plans]]
+name = "CellSA - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 99.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[KR]
+checked = "2026-09-30"
+networks = []
+
+[[KR.plans]]
+name = "'짱 Jjang - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[KR.plans]]
+name = "'짱 Jjang - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 8.00
+
+[[KR.plans]]
+name = "'짱 Jjang - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 9.00
+
+[[KR.plans]]
+name = "'짱 Jjang - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 10.00
+
+[[KR.plans]]
+name = "'짱 Jjang - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 10.50
+
+[[KR.plans]]
+name = "'짱 Jjang - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 11.00
+
+[[KR.plans]]
+name = "'짱 Jjang - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[KR.plans]]
+name = "'짱 Jjang - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 18.00
+
+[[KR.plans]]
+name = "'짱 Jjang - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 18.50
+
+[[KR.plans]]
+name = "'짱 Jjang - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 19.00
+
+[[KR.plans]]
+name = "'짱 Jjang - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[KR.plans]]
+name = "'짱 Jjang - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 29.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[KR.plans]]
+name = "'짱 Jjang - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 29.00
+
+[[KR.plans]]
+name = "'짱 Jjang - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 30.00
+
+[[KR.plans]]
+name = "'짱 Jjang - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 35.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[KR.plans]]
+name = "'짱 Jjang - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 49.00
+
+[[KR.plans]]
+name = "'짱 Jjang - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 49.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[KR.plans]]
+name = "'짱 Jjang - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[ES]
+checked = "2026-09-30"
+networks = []
+
+[[ES.plans]]
+name = "Guay Mobile - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[ES.plans]]
+name = "Guay Mobile - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 5.50
+
+[[ES.plans]]
+name = "Guay Mobile - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 6.00
+
+[[ES.plans]]
+name = "Guay Mobile - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 8.00
+
+[[ES.plans]]
+name = "Guay Mobile - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 8.50
+
+[[ES.plans]]
+name = "Guay Mobile - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 9.00
+
+[[ES.plans]]
+name = "Guay Mobile - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ES.plans]]
+name = "Guay Mobile - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 13.00
+
+[[ES.plans]]
+name = "Guay Mobile - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 13.50
+
+[[ES.plans]]
+name = "Guay Mobile - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 14.00
+
+[[ES.plans]]
+name = "Guay Mobile - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 17.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ES.plans]]
+name = "Guay Mobile - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 19.00
+
+[[ES.plans]]
+name = "Guay Mobile - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 20.00
+
+[[ES.plans]]
+name = "Guay Mobile - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 23.50
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ES.plans]]
+name = "Guay Mobile - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 32.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ES.plans]]
+name = "Guay Mobile - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 39.00
+
+[[ES.plans]]
+name = "Guay Mobile - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 43.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ES.plans]]
+name = "Guay Mobile - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 63.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[CH]
+checked = "2026-09-30"
+networks = []
+
+[[CH.plans]]
+name = "Pilatus Mobile - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[CH.plans]]
+name = "Pilatus Mobile - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 8.50
+
+[[CH.plans]]
+name = "Pilatus Mobile - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 9.00
+
+[[CH.plans]]
+name = "Pilatus Mobile - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CH.plans]]
+name = "Pilatus Mobile - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 13.00
+
+[[CH.plans]]
+name = "Pilatus Mobile - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 13.50
+
+[[CH.plans]]
+name = "Pilatus Mobile - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 14.00
+
+[[CH.plans]]
+name = "Pilatus Mobile - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CH.plans]]
+name = "Pilatus Mobile - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 21.50
+
+[[CH.plans]]
+name = "Pilatus Mobile - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 22.00
+
+[[CH.plans]]
+name = "Pilatus Mobile - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 23.00
+
+[[CH.plans]]
+name = "Pilatus Mobile - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 25.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CH.plans]]
+name = "Pilatus Mobile - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CH.plans]]
+name = "Pilatus Mobile - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 34.50
+
+[[CH.plans]]
+name = "Pilatus Mobile - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 36.00
+
+[[CH.plans]]
+name = "Pilatus Mobile - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 45.00
+
+[[CH.plans]]
+name = "Pilatus Mobile - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 46.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CH.plans]]
+name = "Pilatus Mobile - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 68.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[TW]
+checked = "2026-09-30"
+networks = []
+
+[[TW.plans]]
+name = "Xie Xie - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[TW.plans]]
+name = "Xie Xie - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 8.50
+
+[[TW.plans]]
+name = "Xie Xie - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 9.00
+
+[[TW.plans]]
+name = "Xie Xie - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 11.00
+
+[[TW.plans]]
+name = "Xie Xie - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 11.50
+
+[[TW.plans]]
+name = "Xie Xie - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 12.00
+
+[[TW.plans]]
+name = "Xie Xie - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TW.plans]]
+name = "Xie Xie - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 17.50
+
+[[TW.plans]]
+name = "Xie Xie - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 18.00
+
+[[TW.plans]]
+name = "Xie Xie - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TW.plans]]
+name = "Xie Xie - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 19.00
+
+[[TW.plans]]
+name = "Xie Xie - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TW.plans]]
+name = "Xie Xie - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 28.00
+
+[[TW.plans]]
+name = "Xie Xie - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 29.00
+
+[[TW.plans]]
+name = "Xie Xie - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 35.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TW.plans]]
+name = "Xie Xie - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 49.00
+
+[[TW.plans]]
+name = "Xie Xie - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 49.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TW.plans]]
+name = "Xie Xie - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[TH]
+checked = "2026-09-30"
+networks = []
+
+[[TH.plans]]
+name = "Maew - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[TH.plans]]
+name = "Maew - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 5.50
+
+[[TH.plans]]
+name = "Maew - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 6.00
+
+[[TH.plans]]
+name = "Maew - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 7.00
+
+[[TH.plans]]
+name = "Maew - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 7.50
+
+[[TH.plans]]
+name = "Maew - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 8.00
+
+[[TH.plans]]
+name = "Maew - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.50
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TH.plans]]
+name = "Maew - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 10.00
+
+[[TH.plans]]
+name = "Maew - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 10.50
+
+[[TH.plans]]
+name = "Maew - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 11.00
+
+[[TH.plans]]
+name = "Maew - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 15.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TH.plans]]
+name = "Maew - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 17.50
+
+[[TH.plans]]
+name = "Maew - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 18.00
+
+[[TH.plans]]
+name = "Maew - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 21.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TH.plans]]
+name = "Maew - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 27.50
+
+[[TH.plans]]
+name = "Maew - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 31.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TH.plans]]
+name = "Maew - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 39.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TH.plans]]
+name = "Maew - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[TR]
+checked = "2026-09-30"
+networks = []
+
+[[TR.plans]]
+name = "Merhaba - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[TR.plans]]
+name = "Merhaba - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 6.00
+
+[[TR.plans]]
+name = "Merhaba - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 6.50
+
+[[TR.plans]]
+name = "Merhaba - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 9.00
+
+[[TR.plans]]
+name = "Merhaba - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 9.50
+
+[[TR.plans]]
+name = "Merhaba - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 10.00
+
+[[TR.plans]]
+name = "Merhaba - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TR.plans]]
+name = "Merhaba - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 14.50
+
+[[TR.plans]]
+name = "Merhaba - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 15.00
+
+[[TR.plans]]
+name = "Merhaba - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 15.50
+
+[[TR.plans]]
+name = "Merhaba - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TR.plans]]
+name = "Merhaba - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 22.00
+
+[[TR.plans]]
+name = "Merhaba - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 22.50
+
+[[TR.plans]]
+name = "Merhaba - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 24.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TR.plans]]
+name = "Merhaba - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 34.50
+
+[[TR.plans]]
+name = "Merhaba - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TR.plans]]
+name = "Merhaba - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 39.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TR.plans]]
+name = "Merhaba - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[AE]
+checked = "2026-09-30"
+networks = []
+
+[[AE.plans]]
+name = "Burj Mobile - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[AE.plans]]
+name = "Burj Mobile - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 8.50
+
+[[AE.plans]]
+name = "Burj Mobile - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 9.00
+
+[[AE.plans]]
+name = "Burj Mobile - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 11.00
+
+[[AE.plans]]
+name = "Burj Mobile - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 11.50
+
+[[AE.plans]]
+name = "Burj Mobile - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 12.00
+
+[[AE.plans]]
+name = "Burj Mobile - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AE.plans]]
+name = "Burj Mobile - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 18.50
+
+[[AE.plans]]
+name = "Burj Mobile - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AE.plans]]
+name = "Burj Mobile - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 19.00
+
+[[AE.plans]]
+name = "Burj Mobile - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 20.00
+
+[[AE.plans]]
+name = "Burj Mobile - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AE.plans]]
+name = "Burj Mobile - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 33.00
+
+[[AE.plans]]
+name = "Burj Mobile - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 34.00
+
+[[AE.plans]]
+name = "Burj Mobile - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 35.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AE.plans]]
+name = "Burj Mobile - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 49.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AE.plans]]
+name = "Burj Mobile - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 72.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[GB]
+checked = "2026-09-30"
+networks = []
+
+[[GB.plans]]
+name = "Uki Mobile - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[GB.plans]]
+name = "Uki Mobile+ - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 5.00
+
+[[GB.plans]]
+name = "Uki Mobile - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 8.50
+
+[[GB.plans]]
+name = "Uki Mobile - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 9.00
+
+[[GB.plans]]
+name = "Uki Mobile+ - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 10.00
+
+[[GB.plans]]
+name = "Uki Mobile - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GB.plans]]
+name = "Uki Mobile - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 12.00
+
+[[GB.plans]]
+name = "Uki Mobile+ - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 12.00
+
+[[GB.plans]]
+name = "Uki Mobile - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 12.50
+
+[[GB.plans]]
+name = "Uki Mobile - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 13.00
+
+[[GB.plans]]
+name = "Uki Mobile+ - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 14.00
+
+[[GB.plans]]
+name = "Uki Mobile+ - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 15.00
+
+[[GB.plans]]
+name = "Uki Mobile+ - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 15.50
+
+[[GB.plans]]
+name = "Uki Mobile - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 18.00
+
+[[GB.plans]]
+name = "Uki Mobile - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GB.plans]]
+name = "Uki Mobile - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 18.50
+
+[[GB.plans]]
+name = "Uki Mobile - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 19.00
+
+[[GB.plans]]
+name = "Uki Mobile+ - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 21.50
+
+[[GB.plans]]
+name = "Uki Mobile+ - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 22.50
+
+[[GB.plans]]
+name = "Uki Mobile+ - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 23.50
+
+[[GB.plans]]
+name = "Uki Mobile - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GB.plans]]
+name = "Uki Mobile - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 30.00
+
+[[GB.plans]]
+name = "Uki Mobile - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 31.00
+
+[[GB.plans]]
+name = "Uki Mobile - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GB.plans]]
+name = "Uki Mobile+ - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 36.50
+
+[[GB.plans]]
+name = "Uki Mobile+ - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 38.50
+
+[[GB.plans]]
+name = "Uki Mobile - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 39.00
+
+[[GB.plans]]
+name = "Uki Mobile - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GB.plans]]
+name = "Uki Mobile+ - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 54.00
+
+[[GB.plans]]
+name = "Uki Mobile - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[US]
+checked = "2026-09-30"
+networks = []
+
+[[US.plans]]
+name = "Change - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[US.plans]]
+name = "Change+ - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 6.00
+
+[[US.plans]]
+name = "Change - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 8.50
+
+[[US.plans]]
+name = "Change - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 9.00
+
+[[US.plans]]
+name = "Change+ - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 11.00
+
+[[US.plans]]
+name = "Change - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[US.plans]]
+name = "Change+ - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 12.00
+
+[[US.plans]]
+name = "Change - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 12.50
+
+[[US.plans]]
+name = "Change - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 13.00
+
+[[US.plans]]
+name = "Change - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 13.50
+
+[[US.plans]]
+name = "Change+ - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 17.00
+
+[[US.plans]]
+name = "Change+ - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 18.00
+
+[[US.plans]]
+name = "Change - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.50
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[US.plans]]
+name = "Change+ - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 19.00
+
+[[US.plans]]
+name = "Change - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 21.50
+
+[[US.plans]]
+name = "Change - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 22.00
+
+[[US.plans]]
+name = "Change - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 22.50
+
+[[US.plans]]
+name = "Change - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 25.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[US.plans]]
+name = "Change+ - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 28.00
+
+[[US.plans]]
+name = "Change+ - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 29.00
+
+[[US.plans]]
+name = "Change+ - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 30.00
+
+[[US.plans]]
+name = "Change - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[US.plans]]
+name = "Change - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 36.00
+
+[[US.plans]]
+name = "Change - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 36.50
+
+[[US.plans]]
+name = "Change - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 42.00
+
+[[US.plans]]
+name = "Change+ - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 45.00
+
+[[US.plans]]
+name = "Change - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 46.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[US.plans]]
+name = "Change+ - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 47.00
+
+[[US.plans]]
+name = "Change+ - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 59.00
+
+[[US.plans]]
+name = "Change - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 68.00
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[VN]
+checked = "2026-09-30"
+networks = []
+
+[[VN.plans]]
+name = "Xin Chao - 1 GB"
+gb = 1
+days = 3
+type = "data"
+price = 4.00
+
+[[VN.plans]]
+name = "Xin Chao - 3 GB"
+gb = 3
+days = 3
+type = "data"
+price = 7.50
+
+[[VN.plans]]
+name = "Xin Chao - 3 GB"
+gb = 3
+days = 7
+type = "data"
+price = 8.00
+
+[[VN.plans]]
+name = "Xin Chao - 5 GB"
+gb = 5
+days = 7
+type = "data"
+price = 10.00
+
+[[VN.plans]]
+name = "Xin Chao - 5 GB"
+gb = 5
+days = 15
+type = "data"
+price = 10.50
+
+[[VN.plans]]
+name = "Xin Chao - 5 GB"
+gb = 5
+days = 30
+type = "data"
+price = 11.00
+
+[[VN.plans]]
+name = "Xin Chao - Unlimited"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[VN.plans]]
+name = "Xin Chao - 10 GB"
+gb = 10
+days = 7
+type = "data"
+price = 17.00
+
+[[VN.plans]]
+name = "Xin Chao - 10 GB"
+gb = 10
+days = 15
+type = "data"
+price = 17.50
+
+[[VN.plans]]
+name = "Xin Chao - 10 GB"
+gb = 10
+days = 30
+type = "data"
+price = 18.00
+
+[[VN.plans]]
+name = "Xin Chao - Unlimited"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[VN.plans]]
+name = "Xin Chao - Unlimited"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[VN.plans]]
+name = "Xin Chao - 20 GB"
+gb = 20
+days = 15
+type = "data"
+price = 28.00
+
+[[VN.plans]]
+name = "Xin Chao - 20 GB"
+gb = 20
+days = 30
+type = "data"
+price = 29.00
+
+[[VN.plans]]
+name = "Xin Chao - Unlimited"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.50
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[VN.plans]]
+name = "Xin Chao - Unlimited"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[VN.plans]]
+name = "Xin Chao - 50 GB"
+gb = 50
+days = 30
+type = "data"
+price = 49.00
+
+[[VN.plans]]
+name = "Xin Chao - Unlimited"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"

@@ -1,0 +1,3687 @@
+# Scraped from esimdb.com/ubigi (Single-country plans, USD list prices) on 2026-09-30.
+# Raw capture: scripts/scrape/raw/ (per-country JSON incl. badges & page meta).
+# networks: not exposed on plan cards - left empty until verified per brand page.
+
+[AR]
+checked = "2026-09-30"
+networks = []
+
+[[AR.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 6.00
+
+[[AR.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 12.00
+
+[[AR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 21.00
+
+[[AR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 23.00
+
+[[AR.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 35.00
+
+[[AR.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 44.00
+
+[[AR.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 78.00
+
+[AU]
+checked = "2026-09-30"
+networks = []
+
+[[AU.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 4.00
+
+[[AU.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 8.00
+
+[[AU.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 14.00
+
+[[AU.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 16.00
+
+[[AU.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 22.00
+
+[[AU.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 32.00
+
+[[AU.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 42.00
+
+[[AU.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 55.00
+
+[[AU.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 65.00
+
+[AT]
+checked = "2026-09-30"
+networks = []
+
+[[AT.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.00
+
+[[AT.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 9.00
+
+[[AT.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 11.00
+
+[[AT.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 19.00
+
+[[AT.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 22.00
+
+[[AT.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 36.00
+
+[[AT.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 44.00
+
+[BE]
+checked = "2026-09-30"
+networks = []
+
+[[BE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 5.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[BE.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 5.00
+
+[[BE.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 10.00
+
+[[BE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.00
+
+[[BE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 16.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[BE.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 19.00
+
+[[BE.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 21.00
+
+[[BE.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 34.00
+
+[[BE.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.00
+
+[[BE.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 55.00
+
+[BR]
+checked = "2026-09-30"
+networks = []
+
+[[BR.plans]]
+name = "500MB / 2 Days"
+gb = 0.4883
+days = 2
+type = "data"
+price = 4.00
+
+[[BR.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 5.00
+
+[[BR.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 9.00
+
+[[BR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 17.00
+
+[[BR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 19.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[BR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 19.00
+
+[[BR.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[BR.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 45.00
+
+[[BR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 46.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[BR.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 55.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[[BR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[CA]
+checked = "2026-09-30"
+networks = []
+
+[[CA.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 5.00
+
+[[CA.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 7.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[CA.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 9.00
+
+[[CA.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 15.00
+
+[[CA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 19.00
+
+[[CA.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 21.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[CA.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 29.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[CA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 39.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[CA.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 39.00
+
+[[CA.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 59.00
+
+[[CA.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[CA.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 70.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[CN]
+checked = "2026-09-30"
+networks = []
+
+[[CN.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 4.00
+
+[[CN.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.00
+
+[[CN.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 14.00
+
+[[CN.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 16.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[CN.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 17.00
+
+[[CN.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 24.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[CN.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 33.00
+
+[[CN.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[CN.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[CO]
+checked = "2026-09-30"
+networks = []
+
+[[CO.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 6.00
+
+[[CO.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 12.00
+
+[[CO.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 23.00
+
+[[CO.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 25.00
+
+[[CO.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 29.00
+
+[[CO.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 59.00
+
+[CR]
+checked = "2026-09-30"
+networks = []
+
+[[CR.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 4.00
+
+[[CR.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 8.00
+
+[[CR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 17.00
+
+[[CR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 19.00
+
+[[CR.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 26.00
+
+[[CR.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 29.00
+
+[[CR.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 45.00
+
+[[CR.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 69.00
+
+[HR]
+checked = "2026-09-30"
+networks = []
+
+[[HR.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 6.00
+
+[[HR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 10.00
+
+[[HR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.00
+
+[[HR.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 20.00
+
+[[HR.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 24.00
+
+[[HR.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 49.00
+
+[CZ]
+checked = "2026-09-30"
+networks = []
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 3
+days = 15
+type = "data"
+price = 6.00
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 10
+days = 7
+type = "data"
+price = 12.00
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 10
+days = 30
+type = "data"
+price = 14.00
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 20
+days = 7
+type = "data"
+price = 24.00
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 25
+days = 30
+type = "data"
+price = 26.00
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 50
+days = 30
+type = "data"
+price = 36.00
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 30
+days = 15
+type = "data"
+price = 36.00
+
+[EG]
+checked = "2026-09-30"
+networks = []
+
+[[EG.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 5.00
+
+[[EG.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 9.00
+
+[[EG.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 17.00
+
+[[EG.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 19.00
+
+[[EG.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 27.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[EG.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 39.00
+
+[[EG.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[EG.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[FJ]
+checked = "2026-09-30"
+networks = []
+
+[[FJ.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 18.00
+
+[[FJ.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 34.00
+
+[FR]
+checked = "2026-09-30"
+networks = []
+
+[[FR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 4.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[FR.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 4.00
+
+[[FR.plans]]
+name = "7GB / 1 Day"
+gb = 7
+days = 1
+type = "data"
+price = 6.00
+
+[[FR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 8.00
+
+[[FR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 9.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[FR.plans]]
+name = "24GB / 365 Days"
+gb = 24
+days = 365
+type = "data"
+price = 9.00
+fup_note = "2 GB per month for 12 months (annual subscription)"
+
+[[FR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 10.00
+
+[[FR.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 19.00
+
+[[FR.plans]]
+name = "25GB / 7 Days"
+gb = 25
+days = 7
+type = "data"
+price = 20.00
+
+[[FR.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 22.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[[FR.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 25.00
+
+[[FR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 26.00
+fup_note = "60 GB per month at full speed, then ∞ at 2Mbps (auto-renewing monthly subscription)"
+
+[[FR.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 29.00
+
+[[FR.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 39.00
+
+[[FR.plans]]
+name = "240GB / 365 Days"
+gb = 240
+days = 365
+type = "data"
+price = 72.00
+fup_note = "20 GB per month for 12 months (annual subscription)"
+
+[GE]
+checked = "2026-09-30"
+networks = []
+
+[[GE.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 6.00
+
+[[GE.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 9.00
+
+[[GE.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 17.00
+
+[[GE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 19.00
+
+[[GE.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 29.00
+
+[[GE.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 49.00
+
+[[GE.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 49.00
+
+[DE]
+checked = "2026-09-30"
+networks = []
+
+[[DE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 6.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[DE.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 7.00
+
+[[DE.plans]]
+name = "7GB / 1 Day"
+gb = 7
+days = 1
+type = "data"
+price = 8.00
+
+[[DE.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 10.00
+
+[[DE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.50
+
+[[DE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 14.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[DE.plans]]
+name = "24GB / 365 Days"
+gb = 24
+days = 365
+type = "data"
+price = 19.00
+fup_note = "2 GB per month for 12 months (annual subscription)"
+
+[[DE.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 24.00
+
+[[DE.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 25.00
+
+[[DE.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 39.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[[DE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 44.00
+fup_note = "60 GB per month at full speed, then ∞ at 2Mbps (auto-renewing monthly subscription)"
+
+[[DE.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 44.00
+
+[[DE.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 45.00
+
+[[DE.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 58.00
+
+[GR]
+checked = "2026-09-30"
+networks = []
+
+[[GR.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.00
+
+[[GR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 10.00
+
+[[GR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.00
+
+[[GR.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 22.00
+
+[[GR.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 22.00
+
+[[GR.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 32.00
+
+[[GR.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 36.00
+
+[[GR.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 55.00
+
+[HK]
+checked = "2026-09-30"
+networks = []
+
+[[HK.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 7.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[HK.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 7.00
+
+[[HK.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 12.00
+
+[[HK.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 14.00
+
+[[HK.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 22.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[HK.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 23.00
+
+[[HK.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 26.00
+
+[[HK.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 39.00
+
+[[HK.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 55.00
+
+[[HK.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 79.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[IS]
+checked = "2026-09-30"
+networks = []
+
+[[IS.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 6.00
+
+[[IS.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 11.00
+
+[[IS.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.00
+
+[[IS.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 19.00
+
+[[IS.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.00
+
+[IN]
+checked = "2026-09-30"
+networks = []
+
+[[IN.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.50
+
+[[IN.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.00
+
+[[IN.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 12.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[IN.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 13.00
+
+[[IN.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 15.00
+
+[[IN.plans]]
+name = "25GB / 7 Days"
+gb = 25
+days = 7
+type = "data"
+price = 24.00
+
+[[IN.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 25.00
+
+[[IN.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 34.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[[IN.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 46.00
+
+[[IN.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 48.00
+fup_note = "60 GB per month at full speed, then ∞ at 2Mbps (auto-renewing monthly subscription)"
+
+[[IN.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 49.00
+
+[[IN.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 68.00
+
+[ID]
+checked = "2026-09-30"
+networks = []
+
+[[ID.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 4.00
+
+[[ID.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 7.00
+
+[[ID.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 14.00
+
+[[ID.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 16.00
+
+[[ID.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 24.00
+
+[[ID.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 28.00
+
+[[ID.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 40.00
+
+[[ID.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 59.00
+
+[IE]
+checked = "2026-09-30"
+networks = []
+
+[[IE.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 7.00
+
+[[IE.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 9.00
+
+[[IE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.00
+
+[[IE.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 19.00
+
+[[IE.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 29.00
+
+[[IE.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.00
+
+[[IE.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 49.00
+
+[IL]
+checked = "2026-09-30"
+networks = []
+
+[[IL.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.00
+
+[[IL.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 10.00
+
+[[IL.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.00
+
+[[IL.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 19.00
+
+[[IL.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 34.00
+
+[[IL.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.00
+
+[[IL.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 49.00
+
+[IT]
+checked = "2026-09-30"
+networks = []
+
+[[IT.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 4.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[IT.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 5.00
+
+[[IT.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 9.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[IT.plans]]
+name = "10GB / 8 Days"
+gb = 10
+days = 8
+type = "data"
+price = 9.00
+
+[[IT.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.00
+
+[[IT.plans]]
+name = "24GB / 365 Days"
+gb = 24
+days = 365
+type = "data"
+price = 12.00
+fup_note = "2 GB per month for 12 months (annual subscription)"
+
+[[IT.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 19.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[IT.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 19.00
+
+[[IT.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 25.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[IT.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 29.00
+
+[[IT.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 33.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[[IT.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 39.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[IT.plans]]
+name = "240GB / 365 Days"
+gb = 240
+days = 365
+type = "data"
+price = 77.00
+fup_note = "20 GB per month for 12 months (annual subscription)"
+
+[JP]
+checked = "2026-09-30"
+networks = []
+
+[[JP.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 3.50
+
+[[JP.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 4.00
+
+[[JP.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 7.50
+
+[[JP.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 8.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[JP.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 10.00
+
+[[JP.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 14.00
+
+[[JP.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 16.50
+
+[[JP.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 18.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[JP.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 25.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[JP.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 32.00
+
+[[JP.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 39.00
+
+[[JP.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 45.00
+fup_note = "60 GB per month at full speed, then ∞ at 2Mbps (auto-renewing monthly subscription)"
+
+[[JP.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 55.00
+
+[[JP.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 55.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[[JP.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 65.00
+
+[KE]
+checked = "2026-09-30"
+networks = []
+
+[[KE.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 9.00
+
+[[KE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 17.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[KE.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 19.00
+
+[[KE.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 39.00
+
+[[KE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 42.00
+
+[[KE.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 59.00
+
+[[KE.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 88.00
+
+[[KE.plans]]
+name = "24GB / 365 Days"
+gb = 24
+days = 365
+type = "data"
+price = 88.00
+fup_note = "2 GB per month for 12 months (annual subscription)"
+
+[[KE.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 99.00
+
+[MO]
+checked = "2026-09-30"
+networks = []
+
+[[MO.plans]]
+name = "Macau"
+gb = 3
+days = 15
+type = "data"
+price = 8.00
+
+[[MO.plans]]
+name = "Macau"
+gb = 10
+days = 7
+type = "data"
+price = 14.00
+
+[[MO.plans]]
+name = "Macau"
+gb = 10
+days = 30
+type = "data"
+price = 16.00
+
+[[MO.plans]]
+name = "Macau"
+gb = 20
+days = 7
+type = "data"
+price = 26.00
+
+[[MO.plans]]
+name = "Macau"
+gb = 25
+days = 30
+type = "data"
+price = 29.00
+
+[[MO.plans]]
+name = "Macau"
+gb = 30
+days = 15
+type = "data"
+price = 49.00
+
+[MY]
+checked = "2026-09-30"
+networks = []
+
+[[MY.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 6.00
+
+[[MY.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 11.00
+
+[[MY.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.00
+
+[[MY.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 19.00
+
+[[MY.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 22.00
+
+[[MY.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 29.00
+
+[[MY.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 49.00
+
+[MX]
+checked = "2026-09-30"
+networks = []
+
+[[MX.plans]]
+name = "500MB / 2 Days"
+gb = 0.4883
+days = 2
+type = "data"
+price = 3.00
+
+[[MX.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 5.00
+
+[[MX.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 9.00
+
+[[MX.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 24.00
+
+[[MX.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 26.00
+
+[[MX.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 39.00
+
+[MA]
+checked = "2026-09-30"
+networks = []
+
+[[MA.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 6.00
+
+[[MA.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 14.00
+
+[[MA.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 19.00
+
+[[MA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 23.00
+
+[[MA.plans]]
+name = "25GB / 7 Days"
+gb = 25
+days = 7
+type = "data"
+price = 25.00
+
+[[MA.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 45.00
+
+[[MA.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 45.00
+
+[[MA.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 69.00
+
+[NL]
+checked = "2026-09-30"
+networks = []
+
+[[NL.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 6.00
+
+[[NL.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 9.00
+
+[[NL.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 11.00
+
+[[NL.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 19.00
+
+[[NL.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 19.00
+
+[[NL.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 29.00
+
+[[NL.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 33.00
+
+[[NL.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 44.00
+
+[NZ]
+checked = "2026-09-30"
+networks = []
+
+[[NZ.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.00
+
+[[NZ.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 14.00
+
+[[NZ.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 16.00
+
+[[NZ.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 29.00
+
+[[NZ.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 35.00
+
+[[NZ.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 44.00
+
+[[NZ.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 65.00
+
+[PE]
+checked = "2026-09-30"
+networks = []
+
+[[PE.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 6.00
+
+[[PE.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 12.00
+
+[[PE.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 22.00
+
+[[PE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 24.00
+
+[[PE.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 35.00
+
+[[PE.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 42.00
+
+[[PE.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 79.00
+
+[PH]
+checked = "2026-09-30"
+networks = []
+
+[[PH.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.50
+
+[[PH.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 7.00
+
+[[PH.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 14.00
+
+[[PH.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 16.00
+
+[[PH.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 23.00
+
+[[PH.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 29.00
+
+[[PH.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 40.00
+
+[[PH.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 48.00
+
+[[PH.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 59.00
+
+[PL]
+checked = "2026-09-30"
+networks = []
+
+[[PL.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 5.00
+
+[[PL.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 8.00
+
+[[PL.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 9.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[PL.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 9.00
+
+[[PL.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 15.00
+
+[[PL.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 19.00
+
+[[PL.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 29.00
+
+[[PL.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 33.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[[PL.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 49.00
+
+[PT]
+checked = "2026-09-30"
+networks = []
+
+[[PT.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 5.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[PT.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.00
+
+[[PT.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 9.00
+
+[[PT.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 11.00
+
+[[PT.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 14.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[PT.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 19.00
+
+[[PT.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 28.00
+
+[[PT.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 34.00
+
+[[PT.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 35.00
+
+[[PT.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 48.00
+
+[QA]
+checked = "2026-09-30"
+networks = []
+
+[[QA.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 8.00
+
+[[QA.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 16.00
+
+[[QA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 19.00
+
+[[QA.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 32.00
+
+[SA]
+checked = "2026-09-30"
+networks = []
+
+[[SA.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 7.00
+
+[[SA.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 12.00
+
+[[SA.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 25.00
+
+[[SA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 27.00
+
+[SG]
+checked = "2026-09-30"
+networks = []
+
+[[SG.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.00
+
+[[SG.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 6.00
+
+[[SG.plans]]
+name = "10GB / 2 Days"
+gb = 10
+days = 2
+type = "data"
+price = 9.00
+
+[[SG.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 11.00
+
+[[SG.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 13.00
+
+[[SG.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 16.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[SG.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 19.00
+
+[[SG.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 22.00
+
+[[SG.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 33.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[[SG.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 35.00
+
+[[SG.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 49.00
+
+[ZA]
+checked = "2026-09-30"
+networks = []
+
+[[ZA.plans]]
+name = "1GB / 30 Days"
+gb = 1
+days = 30
+type = "data"
+price = 5.00
+
+[[ZA.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 9.00
+
+[[ZA.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 18.00
+
+[[ZA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 20.00
+
+[[ZA.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 35.00
+
+[[ZA.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 39.00
+
+[[ZA.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 49.00
+
+[[ZA.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 55.00
+
+[[ZA.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 79.00
+
+[KR]
+checked = "2026-09-30"
+networks = []
+
+[[KR.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.00
+
+[[KR.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 7.00
+
+[[KR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 12.00
+
+[[KR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 14.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[KR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 14.00
+
+[[KR.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 25.00
+
+[[KR.plans]]
+name = "25GB / 7 Days"
+gb = 25
+days = 7
+type = "data"
+price = 25.00
+
+[[KR.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 34.00
+
+[[KR.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 49.00
+
+[[KR.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 49.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[ES]
+checked = "2026-09-30"
+networks = []
+
+[[ES.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 4.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[ES.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 5.00
+
+[[ES.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 9.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[ES.plans]]
+name = "10GB / 8 Days"
+gb = 10
+days = 8
+type = "data"
+price = 9.00
+
+[[ES.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.00
+
+[[ES.plans]]
+name = "Unlimited / 8 Days"
+gb = 0
+days = 8
+type = "unlimited"
+price = 18.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[ES.plans]]
+name = "24GB / 365 Days"
+gb = 24
+days = 365
+type = "data"
+price = 18.00
+fup_note = "2 GB per month for 12 months (annual subscription)"
+
+[[ES.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 19.00
+
+[[ES.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 32.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[[ES.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 34.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[ES.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 34.00
+
+[[ES.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 44.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[CH]
+checked = "2026-09-30"
+networks = []
+
+[[CH.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 5.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[CH.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.50
+
+[[CH.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 9.00
+
+[[CH.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 11.00
+
+[[CH.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 14.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[CH.plans]]
+name = "24GB / 365 Days"
+gb = 24
+days = 365
+type = "data"
+price = 14.00
+fup_note = "2 GB per month for 12 months (annual subscription)"
+
+[[CH.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 24.00
+
+[[CH.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 24.00
+
+[[CH.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 34.00
+
+[[CH.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 34.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[[CH.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 39.00
+fup_note = "60 GB per month at full speed, then ∞ at 2Mbps (auto-renewing monthly subscription)"
+
+[[CH.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 39.00
+
+[[CH.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 59.00
+
+[TW]
+checked = "2026-09-30"
+networks = []
+
+[[TW.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.00
+
+[[TW.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 6.00
+
+[[TW.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 12.00
+
+[[TW.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 14.00
+
+[[TW.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 16.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[TW.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 22.00
+
+[[TW.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 28.00
+
+[[TW.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 39.00
+
+[[TW.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 49.00
+
+[[TW.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 59.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[TH]
+checked = "2026-09-30"
+networks = []
+
+[[TH.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.00
+
+[[TH.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.00
+
+[[TH.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 6.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[TH.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 9.00
+
+[[TH.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 11.00
+
+[[TH.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 12.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[TH.plans]]
+name = "25GB / 7 Days"
+gb = 25
+days = 7
+type = "data"
+price = 22.00
+
+[[TH.plans]]
+name = "24GB / 365 Days"
+gb = 24
+days = 365
+type = "data"
+price = 22.00
+fup_note = "2 GB per month for 12 months (annual subscription)"
+
+[[TH.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 24.90
+
+[[TH.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 35.00
+
+[[TH.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 36.00
+fup_note = "60 GB per month at full speed, then ∞ at 2Mbps (auto-renewing monthly subscription)"
+
+[[TH.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 44.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[[TH.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 49.00
+
+[TR]
+checked = "2026-09-30"
+networks = []
+
+[[TR.plans]]
+name = "Turkey"
+gb = 1
+days = 7
+type = "data"
+price = 3.00
+
+[[TR.plans]]
+name = "Turkey"
+gb = 5
+days = 1
+type = "data"
+price = 5.00
+
+[[TR.plans]]
+name = "Turkey"
+gb = 3
+days = 30
+type = "data"
+price = 6.00
+
+[[TR.plans]]
+name = "Turkey"
+gb = 10
+days = 7
+type = "data"
+price = 11.00
+
+[[TR.plans]]
+name = "Turkey"
+gb = 10
+days = 30
+type = "data"
+price = 13.00
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 8
+type = "unlimited"
+price = 22.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[TR.plans]]
+name = "Turkey"
+gb = 25
+days = 30
+type = "data"
+price = 25.00
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 15
+type = "unlimited"
+price = 37.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[TR.plans]]
+name = "Turkey"
+gb = 50
+days = 30
+type = "data"
+price = 44.00
+
+[[TR.plans]]
+name = "Turkey"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[AE]
+checked = "2026-09-30"
+networks = []
+
+[[AE.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 5.00
+
+[[AE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 9.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[AE.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 10.00
+
+[[AE.plans]]
+name = "7GB / 1 Day"
+gb = 7
+days = 1
+type = "data"
+price = 12.00
+
+[[AE.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 19.00
+
+[[AE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 21.00
+
+[[AE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 34.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[AE.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 36.00
+
+[[AE.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 49.00
+
+[[AE.plans]]
+name = "24GB / 365 Days"
+gb = 24
+days = 365
+type = "data"
+price = 49.00
+fup_note = "2 GB per month for 12 months (annual subscription)"
+
+[[AE.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 88.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[GB]
+checked = "2026-09-30"
+networks = []
+
+[[GB.plans]]
+name = "7GB / 1 Day"
+gb = 7
+days = 1
+type = "data"
+price = 5.00
+
+[[GB.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 5.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[GB.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 5.00
+
+[[GB.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 9.00
+
+[[GB.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 11.00
+
+[[GB.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 12.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[GB.plans]]
+name = "24GB / 365 Days"
+gb = 24
+days = 365
+type = "data"
+price = 19.00
+fup_note = "2 GB per month for 12 months (annual subscription)"
+
+[[GB.plans]]
+name = "25GB / 7 Days"
+gb = 25
+days = 7
+type = "data"
+price = 21.00
+
+[[GB.plans]]
+name = "25GB / 30 Days"
+gb = 25
+days = 30
+type = "data"
+price = 22.00
+
+[[GB.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 26.00
+fup_note = "60 GB per month at full speed, then ∞ at 2Mbps (auto-renewing monthly subscription)"
+
+[[GB.plans]]
+name = "60GB / 365 Days"
+gb = 60
+days = 365
+type = "data"
+price = 29.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[[GB.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 32.00
+
+[[GB.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 32.00
+
+[[GB.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 44.00
+
+[US]
+checked = "2026-09-30"
+networks = []
+
+[[US.plans]]
+name = "USA"
+gb = 0.4883
+days = 1
+type = "data"
+price = 2.90
+
+[[US.plans]]
+name = "USA"
+gb = 1
+days = 7
+type = "data"
+price = 4.00
+
+[[US.plans]]
+name = "BEST WORLD"
+gb = 0.4883
+days = 30
+type = "data"
+price = 5.00
+
+[[US.plans]]
+name = "USA"
+gb = 5
+days = 30
+type = "data"
+price = 6.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[US.plans]]
+name = "USA"
+gb = 3
+days = 15
+type = "data"
+price = 7.00
+
+[[US.plans]]
+name = "WORLD"
+gb = 0.4883
+days = 30
+type = "data"
+price = 7.00
+
+[[US.plans]]
+name = "USA"
+gb = 7
+days = 1
+type = "data"
+price = 9.00
+
+[[US.plans]]
+name = "BEST WORLD"
+gb = 1
+days = 30
+type = "data"
+price = 9.00
+
+[[US.plans]]
+name = "USA"
+gb = 10
+days = 7
+type = "data"
+price = 12.00
+
+[[US.plans]]
+name = "AMERICAS"
+gb = 1
+days = 30
+type = "data"
+price = 12.00
+
+[[US.plans]]
+name = "USA"
+gb = 10
+days = 30
+type = "data"
+price = 14.00
+
+[[US.plans]]
+name = "WORLD"
+gb = 1
+days = 30
+type = "data"
+price = 14.00
+
+[[US.plans]]
+name = "USA"
+gb = 20
+days = 30
+type = "data"
+price = 15.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[US.plans]]
+name = "NORTH AMERICA"
+gb = 10
+days = 7
+type = "data"
+price = 16.00
+
+[[US.plans]]
+name = "WORLD"
+gb = 5
+days = 30
+type = "data"
+price = 17.00
+fup_note = "5 GB per month (auto-renewing subscription)"
+
+[[US.plans]]
+name = "BEST WORLD"
+gb = 3
+days = 30
+type = "data"
+price = 19.00
+
+[[US.plans]]
+name = "USA"
+gb = 24
+days = 365
+type = "data"
+price = 22.00
+fup_note = "2 GB per month for 12 months (annual subscription)"
+
+[[US.plans]]
+name = "AMERICAS"
+gb = 3
+days = 15
+type = "data"
+price = 24.00
+
+[[US.plans]]
+name = "USA"
+gb = 25
+days = 7
+type = "data"
+price = 25.00
+
+[[US.plans]]
+name = "WORLD"
+gb = 3
+days = 30
+type = "data"
+price = 26.00
+
+[[US.plans]]
+name = "NORTH AMERICA"
+gb = 0
+days = 8
+type = "unlimited"
+price = 30.00
+fup_note = "5 GB per day at full speed, then ∞ at 2Mbps"
+
+[[US.plans]]
+name = "USA"
+gb = 25
+days = 30
+type = "data"
+price = 32.00
+
+[[US.plans]]
+name = "USA"
+gb = 30
+days = 15
+type = "data"
+price = 39.00
+
+[[US.plans]]
+name = "BEST WORLD"
+gb = 10
+days = 30
+type = "data"
+price = 39.00
+
+[[US.plans]]
+name = "USA"
+gb = 50
+days = 30
+type = "data"
+price = 40.00
+
+[[US.plans]]
+name = "WORLD"
+gb = 20
+days = 30
+type = "data"
+price = 44.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[US.plans]]
+name = "USA"
+gb = 60
+days = 365
+type = "data"
+price = 44.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[[US.plans]]
+name = "AMERICAS"
+gb = 10
+days = 30
+type = "data"
+price = 48.00
+
+[[US.plans]]
+name = "BEST WORLD"
+gb = 25
+days = 8
+type = "data"
+price = 49.00
+
+[[US.plans]]
+name = "BEST WORLD"
+gb = 25
+days = 90
+type = "data"
+price = 59.00
+
+[[US.plans]]
+name = "WORLD"
+gb = 10
+days = 30
+type = "data"
+price = 59.00
+
+[[US.plans]]
+name = "USA"
+gb = 60
+days = 30
+type = "data"
+price = 65.00
+
+[[US.plans]]
+name = "BEST WORLD"
+gb = 30
+days = 15
+type = "data"
+price = 77.00
+
+[[US.plans]]
+name = "BEST WORLD"
+gb = 50
+days = 180
+type = "data"
+price = 99.00
+
+[[US.plans]]
+name = "WORLD"
+gb = 25
+days = 90
+type = "data"
+price = 99.00
+
+[[US.plans]]
+name = "BEST WORLD"
+gb = 60
+days = 30
+type = "data"
+price = 108.00
+
+[[US.plans]]
+name = "WORLD"
+gb = 0
+days = 30
+type = "unlimited"
+price = 120.00
+fup_note = "60 GB per month at full speed, then ∞ at 2Mbps (auto-renewing monthly subscription)"
+
+[[US.plans]]
+name = "WORLD"
+gb = 60
+days = 365
+type = "data"
+price = 180.00
+fup_note = "5 GB per month for 12 months (annual subscription)"
+
+[[US.plans]]
+name = "WORLD"
+gb = 50
+days = 180
+type = "data"
+price = 188.00
+
+[[US.plans]]
+name = "BEST WORLD"
+gb = 100
+days = 360
+type = "data"
+price = 190.00
+
+[[US.plans]]
+name = "BEST WORLD"
+gb = 200
+days = 360
+type = "data"
+price = 290.00
+
+[[US.plans]]
+name = "WORLD"
+gb = 100
+days = 360
+type = "data"
+price = 290.00
+
+[[US.plans]]
+name = "WORLD"
+gb = 240
+days = 365
+type = "data"
+price = 360.00
+fup_note = "20 GB per month for 12 months (annual subscription)"
+
+[[US.plans]]
+name = "WORLD"
+gb = 200
+days = 360
+type = "data"
+price = 390.00
+
+[VN]
+checked = "2026-09-30"
+networks = []
+
+[[VN.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 6.90
+
+[[VN.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 10.90
+
+[[VN.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.90
+
+[[VN.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 16.00
+fup_note = "20 GB per month (auto-renewing subscription)"
+
+[[VN.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 24.00
+
+[[VN.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 36.90
+
+[[VN.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 39.90
+
+[[VN.plans]]
+name = "60GB / 30 Days"
+gb = 60
+days = 30
+type = "data"
+price = 54.90
+
+[[VN.plans]]
+name = "240GB / 365 Days"
+gb = 240
+days = 365
+type = "data"
+price = 180.00
+fup_note = "20 GB per month for 12 months (annual subscription)"

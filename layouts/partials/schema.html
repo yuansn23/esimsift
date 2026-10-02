@@ -1,0 +1,30 @@
+{{- /* BreadcrumbList JSON-LD —— 模板层输出（md 正文禁止内联 JSON-LD，防 minify 事故）
+  品牌×国家子页（.Params.provider）手动拼 4 级：Home / Compare / Country / Provider；
+  其余页沿用 .Ancestors + 当前页。 */ -}}
+{{- $items := slice -}}
+{{- $pos := 1 -}}
+{{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" "Home" "item" (.Site.BaseURL | strings.TrimSuffix "/")) -}}
+{{- if .Params.provider -}}
+  {{- $c := index hugo.Data.countries .Params.iso -}}
+  {{- $p := index hugo.Data.providers .Params.provider -}}
+  {{- $pos = add $pos 1 -}}
+  {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" "Compare countries" "item" (printf "%scompare/" .Site.BaseURL)) -}}
+  {{- $pos = add $pos 1 -}}
+  {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" (printf "%s eSIM" $c.name) "item" (printf "%scompare/%s/" .Site.BaseURL $c.slug)) -}}
+  {{- $pos = add $pos 1 -}}
+  {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" $p.name) -}}
+{{- else -}}
+  {{- range .Ancestors.Reverse -}}
+    {{- if not .IsHome -}}
+      {{- $pos = add $pos 1 -}}
+      {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" .LinkTitle "item" .Permalink) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $pos = add $pos 1 -}}
+  {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" .LinkTitle "item" .Permalink) -}}
+{{- end -}}
+{{- if gt (len $items) 1 -}}
+<script type="application/ld+json">
+{{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $items) | safeJS }}
+</script>
+{{- end -}}

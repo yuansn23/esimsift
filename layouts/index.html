@@ -1,0 +1,193 @@
+{{ define "main" }}
+{{ $compareSection := site.GetPage "/compare" }}
+{{ $countries := where (where (where $compareSection.Pages "Params.provider" nil) "Params.providers" nil) "Params.nolist" nil }}
+{{ $totalPlans := 0 }}
+{{ $minGlobal := 0.0 }}
+{{ range $countries }}
+  {{ with .Params.iso }}
+    {{ $s := partial "country-stats.html" . }}
+    {{ $totalPlans = add $totalPlans $s.planCount }}
+    {{ if and (gt $s.minPrice 0) (or (eq $minGlobal 0.0) (lt $s.minPrice $minGlobal)) }}{{ $minGlobal = $s.minPrice }}{{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* ── Hero ── */}}
+<section class="relative overflow-hidden bg-hero-mesh">
+  <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-14 pt-12 sm:px-6 lg:grid-cols-[1.15fr_1fr] lg:pb-20 lg:pt-16">
+    <div class="animate-fade-up">
+      <p class="eyebrow">Independent eSIM price database</p>
+      <h1 class="mt-3 text-4xl font-extrabold leading-[1.08] tracking-tight md:text-[3.4rem]">
+        Compare every travel eSIM.<br>
+        <span class="relative whitespace-nowrap">
+          <span class="relative z-10">Pay less</span>
+          <span class="absolute inset-x-0 bottom-1.5 z-0 h-3.5 bg-accent-200/70" aria-hidden="true"></span>
+        </span>
+        abroad.
+      </h1>
+      <p class="mt-5 max-w-xl text-lg leading-relaxed text-ink-600">
+        Real prepaid plans from 8 providers in 50 countries, ranked with the same honest formulas: $/GB, $/day, fair-use limits decoded. No marketing spin.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href="/compare/" class="btn-primary px-6 py-3 text-base">Browse {{ $countries | len }} countries</a>
+        <a href="/methodology/" class="btn-out px-6 py-3 text-base">How we compare</a>
+      </div>
+      <div class="mt-9 grid max-w-lg grid-cols-3 gap-3">
+        <div class="stat-tile"><span class="stat-num tnum">{{ $countries | len }}</span><span class="stat-label">Countries</span></div>
+        <div class="stat-tile"><span class="stat-num tnum">{{ $totalPlans }}</span><span class="stat-label">Plans tracked</span></div>
+        <div class="stat-tile"><span class="stat-num tnum">${{ printf "%.0f" $minGlobal }}<span class="text-sm font-semibold text-ink-400">+</span></span><span class="stat-label">Entry price</span></div>
+      </div>
+    </div>
+
+    {{/* Hero 插图卡 + 悬浮价格签 */}}
+    <div class="relative mx-auto w-full max-w-md lg:max-w-none">
+      <figure class="figure shadow-pop">
+        <img src="/img/site/home-hero.webp" alt="Traveler comparing eSIM data plans on a phone before an international trip" width="2848" height="1470" fetchpriority="high">
+      </figure>
+      <div class="absolute -bottom-4 -left-3 flex items-center gap-3 rounded-2xl border border-ink-100 bg-white px-4 py-3 shadow-pop sm:-left-6">
+        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-100 text-brand-700" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5 14 4.5v3c0 3.5-2.5 6-6 7-3.5-1-6-3.5-6-7v-3l6-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <p class="text-[11px] font-semibold uppercase tracking-wide text-ink-400">Best value right now</p>
+          <p class="font-display text-sm font-bold text-ink-950 tnum">from ${{ printf "%.2f" $minGlobal }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mx-auto max-w-7xl px-4 sm:px-6">
+
+{{/* ── 国家网格 ── */}}
+<section class="mt-16" id="countries">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="eyebrow">Country comparisons</p>
+      <h2 class="mt-2 text-2xl font-bold md:text-3xl">Find your destination</h2>
+    </div>
+    <input id="country-filter" type="search" placeholder="Search country…" class="input-search w-full sm:w-64" aria-label="Search countries">
+  </div>
+  <div id="region-chips" class="nav-scroll mt-5 flex gap-2 overflow-x-auto pb-1">
+    <button class="chip chip-active" data-region="all" type="button">All</button>
+    <button class="chip" data-region="Asia" type="button">Asia</button>
+    <button class="chip" data-region="Europe" type="button">Europe</button>
+    <button class="chip" data-region="Americas" type="button">Americas</button>
+    <button class="chip" data-region="Africa &amp; Middle East" type="button">Africa &amp; Middle East</button>
+    <button class="chip" data-region="Oceania" type="button">Oceania</button>
+  </div>
+  <div id="country-grid" class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {{ range $countries }}{{ partial "country-card.html" . }}{{ end }}
+  </div>
+  <p id="no-results" class="mt-6 hidden text-center text-sm text-ink-400">No country matches that search.</p>
+</section>
+
+{{/* ── 工作方式三步 ── */}}
+<section class="mt-20">
+  <p class="eyebrow">How Sift works</p>
+  <h2 class="mt-2 text-2xl font-bold md:text-3xl">Three steps with zero spin</h2>
+  <div class="mt-6 grid gap-4 md:grid-cols-3">
+    <div class="card card-hover p-6">
+      <span class="font-display text-4xl font-extrabold text-brand-200">01</span>
+      <h3 class="mt-3 text-lg font-bold">Pick a country</h3>
+      <p class="mt-2 text-sm leading-relaxed text-ink-600">Every provider that sells a plan there, in one table — including the fine print others bury.</p>
+    </div>
+    <div class="card card-hover p-6">
+      <span class="font-display text-4xl font-extrabold text-brand-200">02</span>
+      <h3 class="mt-3 text-lg font-bold">Read the real metrics</h3>
+      <p class="mt-2 text-sm leading-relaxed text-ink-600">$/GB and $/day computed with identical formulas for every provider. Badges are literal sort positions.</p>
+    </div>
+    <div class="card card-hover p-6">
+      <span class="font-display text-4xl font-extrabold text-brand-200">03</span>
+      <h3 class="mt-3 text-lg font-bold">Buy where you like</h3>
+      <p class="mt-2 text-sm leading-relaxed text-ink-600">One click out to the provider. We mark sponsored links openly — rankings never follow the money.</p>
+    </div>
+  </div>
+</section>
+
+{{/* ── 信任 ── */}}
+<section class="mt-20">
+  <p class="eyebrow">Why trust eSIM Sift</p>
+  <h2 class="mt-2 text-2xl font-bold md:text-3xl">A database rather than an ad network</h2>
+  <div class="mt-6 grid gap-4 md:grid-cols-3">
+    <div class="card p-6">
+      <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-100 text-accent-600" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 2v8m0 0 3-3m-3 3L7 7m-5 3a8 8 0 1 0 16 0 8 8 0 0 0-16 0Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <h3 class="mt-4 font-bold">Real prices with check dates</h3>
+      <p class="mt-2 text-sm leading-relaxed text-ink-600">Every plan is a listed, purchasable plan at check time, with the verification date shown on the page. Full sweeps monthly.</p>
+    </div>
+    <div class="card p-6">
+      <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M4 10l3 3m-3-3 3-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 3H9m7 14H9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </span>
+      <h3 class="mt-4 font-bold">Same ruler for everyone</h3>
+      <p class="mt-2 text-sm leading-relaxed text-ink-600">$/GB, $/day and every badge are computed from one database with identical formulas. No provider can buy a sort position.</p>
+    </div>
+    <div class="card p-6">
+      <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-100 text-ink-700" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3 3 6l7 3 7-3-7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3 6v8l7 3 7-3V6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <h3 class="mt-4 font-bold">Radically transparent</h3>
+      <p class="mt-2 text-sm leading-relaxed text-ink-600">We publish our <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a> and our <a href="/disclosure/" class="font-semibold text-brand-700 hover:underline">disclosure</a> — including who owns us.</p>
+    </div>
+  </div>
+</section>
+
+{{/* ── 品牌带 ── */}}
+<section class="mt-20">
+  <div class="card flex flex-wrap items-center justify-center gap-x-8 gap-y-4 px-6 py-7">
+    <p class="text-xs font-bold uppercase tracking-[0.18em] text-ink-400">Providers we track</p>
+    {{ range $key, $p := hugo.Data.providers }}
+      <span class="flex items-center gap-2.5">
+        {{ partial "prov-logo.html" (dict "p" $p "key" $key "class" "h-7 w-7 rounded-lg" "text" "text-xs") }}
+        <span class="font-display text-sm font-bold text-ink-800">{{ $p.name }}</span>
+      </span>
+    {{ end }}
+  </div>
+</section>
+
+{{/* ── CTA 横幅 ── */}}
+<section class="mt-20">
+  <div class="relative overflow-hidden rounded-4xl bg-ink-gradient px-6 py-12 text-center shadow-pop md:py-16">
+    <div class="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-accent-500/15 blur-3xl" aria-hidden="true"></div>
+    <h2 class="text-2xl font-bold text-white md:text-3xl">Stop overpaying for roaming.</h2>
+    <p class="mx-auto mt-3 max-w-md text-ink-300">Check your destination once — buy the plan that actually fits the trip.</p>
+    <div class="mt-7">
+      <a href="/compare/" class="btn-primary px-7 py-3 text-base">Compare eSIMs now</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<script>
+  (function () {
+    var input = document.getElementById('country-filter');
+    var grid = document.getElementById('country-grid');
+    var chips = document.querySelectorAll('#region-chips .chip');
+    var empty = document.getElementById('no-results');
+    var region = 'all';
+    function apply() {
+      var q = (input && input.value || '').trim().toLowerCase();
+      var visible = 0;
+      (grid ? grid.querySelectorAll('a[data-name]') : []).forEach(function (a) {
+        var okName = !q || (a.dataset.name || '').indexOf(q) > -1;
+        var okRegion = region === 'all' || a.dataset.region === region;
+        var show = okName && okRegion;
+        a.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      if (empty) empty.classList.toggle('hidden', visible > 0);
+    }
+    if (input) input.addEventListener('input', apply);
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        chips.forEach(function (x) { x.classList.remove('chip-active'); });
+        c.classList.add('chip-active');
+        region = c.dataset.region;
+        apply();
+      });
+    });
+  })();
+</script>
+{{ end }}

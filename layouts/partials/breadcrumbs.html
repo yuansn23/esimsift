@@ -1,0 +1,13 @@
+<nav aria-label="Breadcrumb" class="text-sm text-ink-400">
+  <ol class="flex flex-wrap items-center gap-1.5">
+    <li><a href="{{ .Site.BaseURL }}" class="transition-colors hover:text-ink-700">Home</a></li>
+    {{ range .Ancestors.Reverse }}
+      {{ if not .IsHome }}
+        <li aria-hidden="true">/</li>
+        <li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-ink-700">{{ .LinkTitle }}</a></li>
+      {{ end }}
+    {{ end }}
+    <li aria-hidden="true">/</li>
+    <li class="font-medium text-ink-700">{{ .LinkTitle }}</li>
+  </ol>
+</nav>

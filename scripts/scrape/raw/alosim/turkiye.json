@@ -1,0 +1,317 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n32"
+ },
+ "plans": [
+  {
+   "name": "turkey",
+   "data": "1GB",
+   "validity": "1 Day",
+   "price": "$3.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$4.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "1GB",
+   "validity": "3 Days",
+   "price": "$4.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "1GB",
+   "validity": "5 Days",
+   "price": "$4.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$5.00",
+   "badges": [
+    "+ ∞ at 1kbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "5GB",
+   "validity": "3 Days",
+   "price": "$5.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "2GB",
+   "validity": "15 Days",
+   "price": "$6.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "5GB",
+   "validity": "5 Days",
+   "price": "$6.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$6.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "5GB",
+   "validity": "7 Days",
+   "price": "$9.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "5GB",
+   "validity": "10 Days",
+   "price": "$9.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$9.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$10.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "10GB",
+   "validity": "5 Days",
+   "price": "$10.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$12.50",
+   "badges": [
+    "+ ∞ at 1kbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$14.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "10GB",
+   "validity": "10 Days",
+   "price": "$15.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "10GB",
+   "validity": "15 Days",
+   "price": "$15.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$16.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "20GB",
+   "validity": "7 Days",
+   "price": "$20.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "3GB/day",
+   "validity": "5 Days",
+   "price": "$20.50",
+   "badges": [
+    "+ ∞ at 1kbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "20GB",
+   "validity": "10 Days",
+   "price": "$21.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "20GB",
+   "validity": "15 Days",
+   "price": "$22.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$22.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "50GB",
+   "validity": "15 Days",
+   "price": "$25.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$29.50",
+   "badges": [
+    "+ ∞ at 1kbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "50GB",
+   "validity": "10 Days",
+   "price": "$30.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$34.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "3GB/day",
+   "validity": "10 Days",
+   "price": "$35.00",
+   "badges": [
+    "+ ∞ at 1kbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "3GB/day",
+   "validity": "15 Days",
+   "price": "$49.00",
+   "badges": [
+    "+ ∞ at 1kbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "turkey",
+   "data": "3GB/day",
+   "validity": "30 Days",
+   "price": "$72.50",
+   "badges": [
+    "+ ∞ at 1kbps",
+    "15% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "aloSIM Travel eSIM for Turkey | Data Plans & Reviews",
+  "h1": "aloSIM eSIM Data Plans for Turkey",
+  "chips": [
+   "All plans\n51",
+   "Single-country\n32",
+   "Multiple-country\n19"
+  ],
+  "official_site": "https://alosim.com/?_ef_transaction_id=&oid=31&affid=1147",
+  "body_head": "Single\nMulti\nWrite a review\nBack to Turkey eSIM Plans\naloSIM\n\naloSIM makes it easy to stay connected worldwide with affordable eSIM data plans! No physical SIM, no roaming fees, just instant coverage in 200+ destinations.\n\nVerified\nOfficial Website\n\nPROMO CODE\n\nGET 15% OFF\nFor new user\nESIMDB15\nCopy\naloSIM eSIM Data Plans for Turkey\nAll plans\n51\nSingle-country\n32\nMultiple-country\n19\nSort:\nCheapest\nBest Price/GB\nMost Data\nValidity\nApply Promo Codes\nPLAN NAME\nDATA\nVALIDITY\nPRICE/GB\nPRICE\nturkey\n1GB\n1 Day\n$3.50\n$3.50/GB\n15% OFF\n5G\nView Details\nturkey\n3GB\n1 Day\n$4.00\n$1.33/GB\n15% OFF\n5G\nView Details\nturkey\n1GB\n3 Days\n$4.00\n$4.00/GB\n15% OFF\n5G\nView Details\nturkey\n1GB\n5 Days\n$4.50\n$4.50/GB\n15% OFF\n5G\nView Details\nturkey\n3GB\n+ ∞ at 1kbps\n1 Day\n$5.00\n$1.67/GB\n15% OFF\n5G\nView Details\nturkey\n1GB\n7 Days\n$5.00\n$5.00/GB\n15% OFF\n5G\nView Details\nturkey\n5GB\n3 Days\n$5.50\n$1.10/GB\n15% OFF\n5G\nView Details\n"
+ },
+ "slug": "turkiye",
+ "url": "https://esimdb.com/turkey/alosim",
+ "status": 200
+}

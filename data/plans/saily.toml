@@ -1,0 +1,3727 @@
+# Scraped from esimdb.com/saily (Single-country plans, USD list prices) on 2026-09-30.
+# Raw capture: scripts/scrape/raw/ (per-country JSON incl. badges & page meta).
+# networks: not exposed on plan cards - left empty until verified per brand page.
+
+[AR]
+checked = "2026-09-30"
+networks = []
+
+[[AR.plans]]
+name = "Argentina 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 5.29
+
+[[AR.plans]]
+name = "Argentina 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 9.99
+
+[[AR.plans]]
+name = "Argentina 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 16.99
+
+[[AR.plans]]
+name = "Argentina 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 29.99
+
+[[AR.plans]]
+name = "Argentina 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 46.99
+
+[AU]
+checked = "2026-09-30"
+networks = []
+
+[[AU.plans]]
+name = "Australia 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[AU.plans]]
+name = "Australia 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 7.99
+
+[[AU.plans]]
+name = "Australia 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 10.99
+
+[[AU.plans]]
+name = "Australia 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 17.99
+
+[[AU.plans]]
+name = "Australia UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[AU.plans]]
+name = "Australia 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 29.99
+
+[[AU.plans]]
+name = "Australia UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AU.plans]]
+name = "Australia UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AU.plans]]
+name = "Australia UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AU.plans]]
+name = "Australia UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AU.plans]]
+name = "Australia UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[AT]
+checked = "2026-09-30"
+networks = []
+
+[[AT.plans]]
+name = "Austria 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[AT.plans]]
+name = "Austria 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 5.99
+
+[[AT.plans]]
+name = "Austria 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 7.99
+
+[[AT.plans]]
+name = "Austria 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 10.99
+
+[[AT.plans]]
+name = "Austria 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 15.99
+
+[[AT.plans]]
+name = "Austria UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AT.plans]]
+name = "Austria UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AT.plans]]
+name = "Austria UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AT.plans]]
+name = "Austria UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AT.plans]]
+name = "Austria UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[BE]
+checked = "2026-09-30"
+networks = []
+
+[[BE.plans]]
+name = "Belgium 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[BE.plans]]
+name = "Belgium 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 7.99
+
+[[BE.plans]]
+name = "Belgium 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 10.99
+
+[[BE.plans]]
+name = "Belgium 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 16.99
+
+[[BE.plans]]
+name = "Belgium 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 25.99
+
+[[BE.plans]]
+name = "Belgium UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BE.plans]]
+name = "Belgium UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BE.plans]]
+name = "Belgium UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BE.plans]]
+name = "Belgium UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BE.plans]]
+name = "Belgium UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[BR]
+checked = "2026-09-30"
+networks = []
+
+[[BR.plans]]
+name = "Brazil 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[BR.plans]]
+name = "Brazil 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 9.99
+
+[[BR.plans]]
+name = "Brazil 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 13.99
+
+[[BR.plans]]
+name = "Brazil UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BR.plans]]
+name = "Brazil 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 24.99
+
+[[BR.plans]]
+name = "Brazil UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BR.plans]]
+name = "Brazil 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 39.99
+
+[[BR.plans]]
+name = "Brazil UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BR.plans]]
+name = "Brazil UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BR.plans]]
+name = "Brazil UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 74.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[BR.plans]]
+name = "Brazil UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 89.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[CA]
+checked = "2026-09-30"
+networks = []
+
+[[CA.plans]]
+name = "Canada 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 5.29
+
+[[CA.plans]]
+name = "Canada 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 12.99
+
+[[CA.plans]]
+name = "Canada 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 17.99
+
+[[CA.plans]]
+name = "Canada UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 19.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CA.plans]]
+name = "Canada 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 30.99
+
+[[CA.plans]]
+name = "Canada UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CA.plans]]
+name = "Canada 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 43.99
+
+[[CA.plans]]
+name = "Canada UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CA.plans]]
+name = "Canada UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CA.plans]]
+name = "Canada UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 74.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CA.plans]]
+name = "Canada UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 89.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[CN]
+checked = "2026-09-30"
+networks = []
+
+[[CN.plans]]
+name = "China 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 4.49
+
+[[CN.plans]]
+name = "China 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 10.99
+
+[[CN.plans]]
+name = "China 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 15.99
+
+[[CN.plans]]
+name = "China UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[CN.plans]]
+name = "China 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 26.99
+
+[[CN.plans]]
+name = "China UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[CN.plans]]
+name = "China 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 45.99
+
+[[CN.plans]]
+name = "China UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[CN.plans]]
+name = "China UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[CN.plans]]
+name = "China UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[CN.plans]]
+name = "China UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[CO]
+checked = "2026-09-30"
+networks = []
+
+[[CO.plans]]
+name = "Colombia 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 4.99
+
+[[CO.plans]]
+name = "Colombia 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 12.99
+
+[[CO.plans]]
+name = "Colombia 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 16.99
+
+[[CO.plans]]
+name = "Colombia 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 29.99
+
+[[CO.plans]]
+name = "Colombia 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 40.99
+
+[CR]
+checked = "2026-09-30"
+networks = []
+
+[[CR.plans]]
+name = "Costa Rica 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 7.99
+
+[[CR.plans]]
+name = "Costa Rica 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 18.99
+
+[[CR.plans]]
+name = "Costa Rica 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 26.99
+
+[[CR.plans]]
+name = "Costa Rica 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 36.99
+
+[[CR.plans]]
+name = "Costa Rica 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 47.99
+
+[HR]
+checked = "2026-09-30"
+networks = []
+
+[[HR.plans]]
+name = "Croatia 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[HR.plans]]
+name = "Croatia 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 7.99
+
+[[HR.plans]]
+name = "Croatia 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 10.99
+
+[[HR.plans]]
+name = "Croatia 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 17.99
+
+[[HR.plans]]
+name = "Croatia 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 27.99
+
+[[HR.plans]]
+name = "Croatia UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HR.plans]]
+name = "Croatia UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HR.plans]]
+name = "Croatia UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HR.plans]]
+name = "Croatia UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HR.plans]]
+name = "Croatia UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[CZ]
+checked = "2026-09-30"
+networks = []
+
+[[CZ.plans]]
+name = "Czech Republic 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[CZ.plans]]
+name = "Czech Republic 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 4.99
+
+[[CZ.plans]]
+name = "Czech Republic 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 7.99
+
+[[CZ.plans]]
+name = "Czech Republic 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 14.99
+
+[[CZ.plans]]
+name = "Czech Republic 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 23.99
+
+[[CZ.plans]]
+name = "Czech Republic UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CZ.plans]]
+name = "Czech Republic UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CZ.plans]]
+name = "Czech Republic UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CZ.plans]]
+name = "Czech Republic UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CZ.plans]]
+name = "Czech Republic UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[EG]
+checked = "2026-09-30"
+networks = []
+
+[[EG.plans]]
+name = "Egypt 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 5.99
+
+[[EG.plans]]
+name = "Egypt 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 14.99
+
+[[EG.plans]]
+name = "Egypt 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 22.99
+
+[[EG.plans]]
+name = "Egypt 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 38.99
+
+[FJ]
+checked = "2026-09-30"
+networks = []
+
+[[FJ.plans]]
+name = "Fiji 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 7.99
+
+[[FJ.plans]]
+name = "Fiji 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 19.99
+
+[FR]
+checked = "2026-09-30"
+networks = []
+
+[[FR.plans]]
+name = "France 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[FR.plans]]
+name = "France 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[FR.plans]]
+name = "France 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 11.99
+
+[[FR.plans]]
+name = "France 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 19.99
+
+[[FR.plans]]
+name = "France 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 31.99
+
+[[FR.plans]]
+name = "France UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[FR.plans]]
+name = "France UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[FR.plans]]
+name = "France UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[FR.plans]]
+name = "France UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[FR.plans]]
+name = "France UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[GE]
+checked = "2026-09-30"
+networks = []
+
+[[GE.plans]]
+name = "Georgia 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 4.79
+
+[[GE.plans]]
+name = "Georgia 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 11.99
+
+[[GE.plans]]
+name = "Georgia 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 17.99
+
+[[GE.plans]]
+name = "Georgia 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 30.99
+
+[[GE.plans]]
+name = "Georgia 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 48.99
+
+[DE]
+checked = "2026-09-30"
+networks = []
+
+[[DE.plans]]
+name = "Germany 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 4.49
+
+[[DE.plans]]
+name = "Germany 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[DE.plans]]
+name = "Germany 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 12.99
+
+[[DE.plans]]
+name = "Germany 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 19.99
+
+[[DE.plans]]
+name = "Germany 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 25.99
+
+[[DE.plans]]
+name = "Germany UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[DE.plans]]
+name = "Germany UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[DE.plans]]
+name = "Germany UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[DE.plans]]
+name = "Germany UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[DE.plans]]
+name = "Germany UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[GR]
+checked = "2026-09-30"
+networks = []
+
+[[GR.plans]]
+name = "Greece 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 4.49
+
+[[GR.plans]]
+name = "Greece 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 9.99
+
+[[GR.plans]]
+name = "Greece 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 13.99
+
+[[GR.plans]]
+name = "Greece UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[GR.plans]]
+name = "Greece 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 21.99
+
+[[GR.plans]]
+name = "Greece UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GR.plans]]
+name = "Greece 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 37.99
+
+[[GR.plans]]
+name = "Greece UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GR.plans]]
+name = "Greece UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GR.plans]]
+name = "Greece UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GR.plans]]
+name = "Greece UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[HK]
+checked = "2026-09-30"
+networks = []
+
+[[HK.plans]]
+name = "Hong Kong 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[HK.plans]]
+name = "Hong Kong 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[HK.plans]]
+name = "Hong Kong 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 11.99
+
+[[HK.plans]]
+name = "Hong Kong UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HK.plans]]
+name = "Hong Kong 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 19.99
+
+[[HK.plans]]
+name = "Hong Kong UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HK.plans]]
+name = "Hong Kong 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 36.99
+
+[[HK.plans]]
+name = "Hong Kong UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HK.plans]]
+name = "Hong Kong UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HK.plans]]
+name = "Hong Kong UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[HK.plans]]
+name = "Hong Kong UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[IS]
+checked = "2026-09-30"
+networks = []
+
+[[IS.plans]]
+name = "Iceland 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[IS.plans]]
+name = "Iceland 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[IS.plans]]
+name = "Iceland 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 11.99
+
+[[IS.plans]]
+name = "Iceland UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[IS.plans]]
+name = "Iceland 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 19.99
+
+[[IS.plans]]
+name = "Iceland 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 31.99
+
+[[IS.plans]]
+name = "Iceland UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IS.plans]]
+name = "Iceland UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IS.plans]]
+name = "Iceland UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IS.plans]]
+name = "Iceland UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IS.plans]]
+name = "Iceland UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[IN]
+checked = "2026-09-30"
+networks = []
+
+[[IN.plans]]
+name = "India 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[IN.plans]]
+name = "India 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 9.99
+
+[[IN.plans]]
+name = "India 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 13.99
+
+[[IN.plans]]
+name = "India 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 23.99
+
+[[IN.plans]]
+name = "India UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 27.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IN.plans]]
+name = "India 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 38.99
+
+[[IN.plans]]
+name = "India UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 44.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IN.plans]]
+name = "India UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 59.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IN.plans]]
+name = "India UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 76.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IN.plans]]
+name = "India UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 86.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IN.plans]]
+name = "India UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 98.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[ID]
+checked = "2026-09-30"
+networks = []
+
+[[ID.plans]]
+name = "Indonesia 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 4.79
+
+[[ID.plans]]
+name = "Indonesia 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[ID.plans]]
+name = "Indonesia 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 13.99
+
+[[ID.plans]]
+name = "Indonesia UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[ID.plans]]
+name = "Indonesia 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 21.99
+
+[[ID.plans]]
+name = "Indonesia UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ID.plans]]
+name = "Indonesia 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 35.99
+
+[[ID.plans]]
+name = "Indonesia UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ID.plans]]
+name = "Indonesia UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ID.plans]]
+name = "Indonesia UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ID.plans]]
+name = "Indonesia UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[IE]
+checked = "2026-09-30"
+networks = []
+
+[[IE.plans]]
+name = "Ireland 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[IE.plans]]
+name = "Ireland 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 7.99
+
+[[IE.plans]]
+name = "Ireland 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 10.99
+
+[[IE.plans]]
+name = "Ireland 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 17.99
+
+[[IE.plans]]
+name = "Ireland 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 25.99
+
+[[IE.plans]]
+name = "Ireland UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IE.plans]]
+name = "Ireland UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IE.plans]]
+name = "Ireland UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IE.plans]]
+name = "Ireland UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IE.plans]]
+name = "Ireland UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[IL]
+checked = "2026-09-30"
+networks = []
+
+[[IL.plans]]
+name = "Israel 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[IL.plans]]
+name = "Israel 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 5.99
+
+[[IL.plans]]
+name = "Israel 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 7.99
+
+[[IL.plans]]
+name = "Israel 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 11.99
+
+[[IL.plans]]
+name = "Israel 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 16.99
+
+[[IL.plans]]
+name = "Israel UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IL.plans]]
+name = "Israel UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IL.plans]]
+name = "Israel UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IL.plans]]
+name = "Israel UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IL.plans]]
+name = "Israel UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IL.plans]]
+name = "Israel UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[IT]
+checked = "2026-09-30"
+networks = []
+
+[[IT.plans]]
+name = "Italy 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[IT.plans]]
+name = "Italy 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[IT.plans]]
+name = "Italy 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 12.99
+
+[[IT.plans]]
+name = "Italy UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[IT.plans]]
+name = "Italy 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 20.99
+
+[[IT.plans]]
+name = "Italy 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 28.99
+
+[[IT.plans]]
+name = "Italy UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IT.plans]]
+name = "Italy UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IT.plans]]
+name = "Italy UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IT.plans]]
+name = "Italy UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[IT.plans]]
+name = "Italy UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[JP]
+checked = "2026-09-30"
+networks = []
+
+[[JP.plans]]
+name = "Japan 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[JP.plans]]
+name = "Japan 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 7.99
+
+[[JP.plans]]
+name = "Japan 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 10.99
+
+[[JP.plans]]
+name = "Japan 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 17.99
+
+[[JP.plans]]
+name = "Japan UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[JP.plans]]
+name = "Japan 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 24.99
+
+[[JP.plans]]
+name = "Japan UNLIMITED 7 days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 28.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[JP.plans]]
+name = "Japan UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[JP.plans]]
+name = "Japan UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[JP.plans]]
+name = "Japan UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[JP.plans]]
+name = "Japan UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[JP.plans]]
+name = "Japan UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[KE]
+checked = "2026-09-30"
+networks = []
+
+[[KE.plans]]
+name = "Kenya 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 7.99
+
+[[KE.plans]]
+name = "Kenya 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 19.99
+
+[[KE.plans]]
+name = "Kenya 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 31.99
+
+[[KE.plans]]
+name = "Kenya 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 47.99
+
+[MO]
+checked = "2026-09-30"
+networks = []
+
+[[MO.plans]]
+name = "Macao 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[MO.plans]]
+name = "Macao 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[MO.plans]]
+name = "Macao 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[MO.plans]]
+name = "Macao 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 15.99
+
+[[MO.plans]]
+name = "Macao 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 22.99
+
+[MY]
+checked = "2026-09-30"
+networks = []
+
+[[MY.plans]]
+name = "Malaysia 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[MY.plans]]
+name = "Malaysia 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[MY.plans]]
+name = "Malaysia 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 12.99
+
+[[MY.plans]]
+name = "Malaysia UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MY.plans]]
+name = "Malaysia 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 21.99
+
+[[MY.plans]]
+name = "Malaysia UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MY.plans]]
+name = "Malaysia 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 35.99
+
+[[MY.plans]]
+name = "Malaysia UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MY.plans]]
+name = "Malaysia UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MY.plans]]
+name = "Malaysia UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[MY.plans]]
+name = "Malaysia UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[MX]
+checked = "2026-09-30"
+networks = []
+
+[[MX.plans]]
+name = "Mexico 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 4.99
+
+[[MX.plans]]
+name = "Mexico 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 11.99
+
+[[MX.plans]]
+name = "Mexico 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 16.99
+
+[[MX.plans]]
+name = "Mexico UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
+
+[[MX.plans]]
+name = "Mexico 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 24.99
+
+[[MX.plans]]
+name = "Mexico UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
+
+[[MX.plans]]
+name = "Mexico 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 45.99
+
+[[MX.plans]]
+name = "Mexico UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
+
+[[MX.plans]]
+name = "Mexico UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
+
+[[MX.plans]]
+name = "Mexico UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
+
+[[MX.plans]]
+name = "Mexico UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
+
+[MA]
+checked = "2026-09-30"
+networks = []
+
+[[MA.plans]]
+name = "Morocco 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 6.99
+
+[[MA.plans]]
+name = "Morocco 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 17.99
+
+[[MA.plans]]
+name = "Morocco 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 27.99
+
+[[MA.plans]]
+name = "Morocco 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 44.99
+
+[NL]
+checked = "2026-09-30"
+networks = []
+
+[[NL.plans]]
+name = "Netherlands 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[NL.plans]]
+name = "Netherlands 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 7.99
+
+[[NL.plans]]
+name = "Netherlands 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[NL.plans]]
+name = "Netherlands 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 17.99
+
+[[NL.plans]]
+name = "Netherlands UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[NL.plans]]
+name = "Netherlands 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 26.99
+
+[[NL.plans]]
+name = "Netherlands UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NL.plans]]
+name = "Netherlands UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NL.plans]]
+name = "Netherlands UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NL.plans]]
+name = "Netherlands UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NL.plans]]
+name = "Netherlands UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[NZ]
+checked = "2026-09-30"
+networks = []
+
+[[NZ.plans]]
+name = "New Zealand 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[NZ.plans]]
+name = "New Zealand 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 9.99
+
+[[NZ.plans]]
+name = "New Zealand 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 13.99
+
+[[NZ.plans]]
+name = "New Zealand UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NZ.plans]]
+name = "New Zealand 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 23.99
+
+[[NZ.plans]]
+name = "New Zealand UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NZ.plans]]
+name = "New Zealand 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 37.99
+
+[[NZ.plans]]
+name = "New Zealand UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NZ.plans]]
+name = "New Zealand UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NZ.plans]]
+name = "New Zealand UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[NZ.plans]]
+name = "New Zealand UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[PE]
+checked = "2026-09-30"
+networks = []
+
+[[PE.plans]]
+name = "Peru 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 4.99
+
+[[PE.plans]]
+name = "Peru 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 10.99
+
+[[PE.plans]]
+name = "Peru 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 17.99
+
+[[PE.plans]]
+name = "Peru 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 29.99
+
+[[PE.plans]]
+name = "Peru 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 40.99
+
+[PH]
+checked = "2026-09-30"
+networks = []
+
+[[PH.plans]]
+name = "Philippines 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[PH.plans]]
+name = "Philippines 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 7.99
+
+[[PH.plans]]
+name = "Philippines 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 11.99
+
+[[PH.plans]]
+name = "Philippines UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PH.plans]]
+name = "Philippines 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 18.99
+
+[[PH.plans]]
+name = "Philippines 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 29.99
+
+[[PH.plans]]
+name = "Philippines UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PH.plans]]
+name = "Philippines UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PH.plans]]
+name = "Philippines UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PH.plans]]
+name = "Philippines UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PH.plans]]
+name = "Philippines UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[PL]
+checked = "2026-09-30"
+networks = []
+
+[[PL.plans]]
+name = "Poland 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 4.49
+
+[[PL.plans]]
+name = "Poland 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 5.99
+
+[[PL.plans]]
+name = "Poland 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 8.99
+
+[[PL.plans]]
+name = "Poland 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 12.99
+
+[[PL.plans]]
+name = "Poland UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[PL.plans]]
+name = "Poland 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 20.99
+
+[[PL.plans]]
+name = "Poland UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PL.plans]]
+name = "Poland UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PL.plans]]
+name = "Poland UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PL.plans]]
+name = "Poland UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PL.plans]]
+name = "Poland UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[PT]
+checked = "2026-09-30"
+networks = []
+
+[[PT.plans]]
+name = "Portugal 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[PT.plans]]
+name = "Portugal 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 7.99
+
+[[PT.plans]]
+name = "Portugal 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[PT.plans]]
+name = "Portugal 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 16.99
+
+[[PT.plans]]
+name = "Portugal 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 27.99
+
+[[PT.plans]]
+name = "Portugal UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PT.plans]]
+name = "Portugal UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PT.plans]]
+name = "Portugal UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PT.plans]]
+name = "Portugal UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[PT.plans]]
+name = "Portugal UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[QA]
+checked = "2026-09-30"
+networks = []
+
+[[QA.plans]]
+name = "Qatar 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 4.99
+
+[[QA.plans]]
+name = "Qatar 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 11.99
+
+[[QA.plans]]
+name = "Qatar 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 16.99
+
+[[QA.plans]]
+name = "Qatar 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 29.99
+
+[[QA.plans]]
+name = "Qatar 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 48.99
+
+[SA]
+checked = "2026-09-30"
+networks = []
+
+[[SA.plans]]
+name = "Saudi Arabia 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 4.49
+
+[[SA.plans]]
+name = "Saudi Arabia 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 9.99
+
+[[SA.plans]]
+name = "Saudi Arabia 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 15.99
+
+[[SA.plans]]
+name = "Saudi Arabia UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SA.plans]]
+name = "Saudi Arabia 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 26.99
+
+[[SA.plans]]
+name = "Saudi Arabia UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SA.plans]]
+name = "Saudi Arabia 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 42.99
+
+[[SA.plans]]
+name = "Saudi Arabia UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 54.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SA.plans]]
+name = "Saudi Arabia UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 69.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SA.plans]]
+name = "Saudi Arabia UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 86.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SA.plans]]
+name = "Saudi Arabia UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 98.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[SG]
+checked = "2026-09-30"
+networks = []
+
+[[SG.plans]]
+name = "Singapore 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[SG.plans]]
+name = "Singapore 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[SG.plans]]
+name = "Singapore 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[SG.plans]]
+name = "Singapore 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 15.99
+
+[[SG.plans]]
+name = "Singapore UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SG.plans]]
+name = "Singapore 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 22.99
+
+[[SG.plans]]
+name = "Singapore UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SG.plans]]
+name = "Singapore UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SG.plans]]
+name = "Singapore UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SG.plans]]
+name = "Singapore UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[SG.plans]]
+name = "Singapore UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[ZA]
+checked = "2026-09-30"
+networks = []
+
+[[ZA.plans]]
+name = "South Africa 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[ZA.plans]]
+name = "South Africa 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 9.99
+
+[[ZA.plans]]
+name = "South Africa 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 12.99
+
+[[ZA.plans]]
+name = "South Africa 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 22.99
+
+[[ZA.plans]]
+name = "South Africa UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 27.99
+fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
+
+[[ZA.plans]]
+name = "South Africa 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 36.99
+
+[[ZA.plans]]
+name = "South Africa UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 44.99
+fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
+
+[[ZA.plans]]
+name = "South Africa UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 59.99
+fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
+
+[[ZA.plans]]
+name = "South Africa UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 76.99
+fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
+
+[[ZA.plans]]
+name = "South Africa UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 94.99
+fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
+
+[[ZA.plans]]
+name = "South Africa UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 109.99
+fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
+
+[KR]
+checked = "2026-09-30"
+networks = []
+
+[[KR.plans]]
+name = "South Korea 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[KR.plans]]
+name = "South Korea 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[KR.plans]]
+name = "South Korea 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 10.99
+
+[[KR.plans]]
+name = "South Korea UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[KR.plans]]
+name = "South Korea 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 18.99
+
+[[KR.plans]]
+name = "South Korea 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 29.99
+
+[[KR.plans]]
+name = "South Korea UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[KR.plans]]
+name = "South Korea UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[KR.plans]]
+name = "South Korea UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[KR.plans]]
+name = "South Korea UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[KR.plans]]
+name = "South Korea UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[ES]
+checked = "2026-09-30"
+networks = []
+
+[[ES.plans]]
+name = "Spain 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[ES.plans]]
+name = "Spain 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[ES.plans]]
+name = "Spain 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[ES.plans]]
+name = "Spain 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 15.99
+
+[[ES.plans]]
+name = "Spain 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 22.99
+
+[[ES.plans]]
+name = "Spain UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ES.plans]]
+name = "Spain UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ES.plans]]
+name = "Spain UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ES.plans]]
+name = "Spain UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[ES.plans]]
+name = "Spain UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[CH]
+checked = "2026-09-30"
+networks = []
+
+[[CH.plans]]
+name = "Switzerland 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[CH.plans]]
+name = "Switzerland 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 9.99
+
+[[CH.plans]]
+name = "Switzerland 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 13.99
+
+[[CH.plans]]
+name = "Switzerland 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 22.99
+
+[[CH.plans]]
+name = "Switzerland UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CH.plans]]
+name = "Switzerland 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 36.99
+
+[[CH.plans]]
+name = "Switzerland UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CH.plans]]
+name = "Switzerland UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CH.plans]]
+name = "Switzerland UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[CH.plans]]
+name = "Switzerland UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[TW]
+checked = "2026-09-30"
+networks = []
+
+[[TW.plans]]
+name = "Taiwan 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[TW.plans]]
+name = "Taiwan 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[TW.plans]]
+name = "Taiwan 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 11.99
+
+[[TW.plans]]
+name = "Taiwan UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TW.plans]]
+name = "Taiwan 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 19.99
+
+[[TW.plans]]
+name = "Taiwan 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 30.99
+
+[[TW.plans]]
+name = "Taiwan UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TW.plans]]
+name = "Taiwan UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TW.plans]]
+name = "Taiwan UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TW.plans]]
+name = "Taiwan UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TW.plans]]
+name = "Taiwan UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[TH]
+checked = "2026-09-30"
+networks = []
+
+[[TH.plans]]
+name = "Thailand 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[TH.plans]]
+name = "Thailand 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 5.99
+
+[[TH.plans]]
+name = "Thailand 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 7.99
+
+[[TH.plans]]
+name = "Thailand 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 10.99
+
+[[TH.plans]]
+name = "Thailand UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[TH.plans]]
+name = "Thailand 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 19.99
+
+[[TH.plans]]
+name = "Thailand UNLIMITED 7 days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 28.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TH.plans]]
+name = "Thailand UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TH.plans]]
+name = "Thailand UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TH.plans]]
+name = "Thailand UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TH.plans]]
+name = "Thailand UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TH.plans]]
+name = "Thailand UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[TR]
+checked = "2026-09-30"
+networks = []
+
+[[TR.plans]]
+name = "Turkey 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[TR.plans]]
+name = "Turkey 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[TR.plans]]
+name = "Turkey 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[TR.plans]]
+name = "Turkey 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 15.99
+
+[[TR.plans]]
+name = "Turkey UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[TR.plans]]
+name = "Turkey 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 22.99
+
+[[TR.plans]]
+name = "Turkey UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TR.plans]]
+name = "Turkey UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TR.plans]]
+name = "Turkey UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TR.plans]]
+name = "Turkey UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[TR.plans]]
+name = "Turkey UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[AE]
+checked = "2026-09-30"
+networks = []
+
+[[AE.plans]]
+name = "United Arab Emirates 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[AE.plans]]
+name = "United Arab Emirates 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[AE.plans]]
+name = "United Arab Emirates 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 11.99
+
+[[AE.plans]]
+name = "United Arab Emirates UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AE.plans]]
+name = "United Arab Emirates 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 19.99
+
+[[AE.plans]]
+name = "United Arab Emirates 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 33.99
+
+[[AE.plans]]
+name = "United Arab Emirates UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AE.plans]]
+name = "United Arab Emirates UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AE.plans]]
+name = "United Arab Emirates UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AE.plans]]
+name = "United Arab Emirates UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[[AE.plans]]
+name = "United Arab Emirates UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
+
+[GB]
+checked = "2026-09-30"
+networks = []
+
+[[GB.plans]]
+name = "United Kingdom 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 4.49
+
+[[GB.plans]]
+name = "United Kingdom 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[GB.plans]]
+name = "United Kingdom 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 12.99
+
+[[GB.plans]]
+name = "United Kingdom 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 18.99
+
+[[GB.plans]]
+name = "United Kingdom UNLIMITED 7 days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 28.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GB.plans]]
+name = "United Kingdom 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 30.99
+
+[[GB.plans]]
+name = "United Kingdom UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GB.plans]]
+name = "United Kingdom UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GB.plans]]
+name = "United Kingdom UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GB.plans]]
+name = "United Kingdom UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[GB.plans]]
+name = "United Kingdom UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[US]
+checked = "2026-09-30"
+networks = []
+
+[[US.plans]]
+name = "United States 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[US.plans]]
+name = "United States 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[US.plans]]
+name = "United States 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 13.99
+
+[[US.plans]]
+name = "United States UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[US.plans]]
+name = "United States 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 22.99
+
+[[US.plans]]
+name = "United States UNLIMITED 7 days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 28.99
+fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
+
+[[US.plans]]
+name = "United States UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[US.plans]]
+name = "United States 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 36.99
+
+[[US.plans]]
+name = "United States UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[US.plans]]
+name = "United States UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[US.plans]]
+name = "United States UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[US.plans]]
+name = "United States UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[VN]
+checked = "2026-09-30"
+networks = []
+
+[[VN.plans]]
+name = "Vietnam 1GB 7 days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[VN.plans]]
+name = "Vietnam 3GB 30 days"
+gb = 3
+days = 30
+type = "data"
+price = 7.99
+
+[[VN.plans]]
+name = "Vietnam 5GB 30 days"
+gb = 5
+days = 30
+type = "data"
+price = 10.99
+
+[[VN.plans]]
+name = "Vietnam 10GB 30 days"
+gb = 10
+days = 30
+type = "data"
+price = 17.99
+
+[[VN.plans]]
+name = "Vietnam UNLIMITED 5 days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 18.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[VN.plans]]
+name = "Vietnam 20GB 30 days"
+gb = 20
+days = 30
+type = "data"
+price = 28.99
+
+[[VN.plans]]
+name = "Vietnam UNLIMITED 10 days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 34.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[VN.plans]]
+name = "Vietnam UNLIMITED 15 days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 48.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[VN.plans]]
+name = "Vietnam UNLIMITED 20 days"
+gb = 0
+days = 20
+type = "unlimited"
+price = 59.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[VN.plans]]
+name = "Vietnam UNLIMITED 25 days"
+gb = 0
+days = 25
+type = "unlimited"
+price = 65.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
+
+[[VN.plans]]
+name = "Vietnam UNLIMITED 30 days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+fup_note = "5 GB per day at full speed, then ∞ at 1kbps"

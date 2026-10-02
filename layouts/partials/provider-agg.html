@@ -1,0 +1,55 @@
+{{- /* provider-agg.html —— 每品牌跨国家聚合（单一数据源推导，零手工维护）
+      返回 dict: key -> { countries, minPrice, minPerGB, cheapest, bestValue,
+                         coverage: [ {iso,name,region,flag,min,cheapest,url} ] }
+      cheapest  = 该国最低价命中数（并列都算）；bestValue = 该国最佳 $/GB 命中数。
+      供 esim-providers 列表页 / 品牌详情页共用。 */ -}}
+{{- $countries := hugo.Data.countries -}}
+
+{{- /* ① 先算每国全局 min / best $/GB（跨全部品牌） */ -}}
+{{- $g := dict -}}
+{{- range $iso, $c := $countries -}}
+  {{- $gMin := 0.0 -}}{{- $gBest := 0.0 -}}
+  {{- range $pk, $pd := hugo.Data.plans -}}
+    {{- with index $pd $iso -}}
+      {{- range .plans -}}
+        {{- if or (eq $gMin 0.0) (lt .price $gMin) }}{{ $gMin = .price }}{{ end -}}
+        {{- if gt (int .gb) 0 -}}
+          {{- $pgb := div (float .price) (float .gb) -}}
+          {{- if or (eq $gBest 0.0) (lt $pgb $gBest) }}{{ $gBest = $pgb }}{{ end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $g = merge $g (dict $iso (dict "min" $gMin "best" $gBest)) -}}
+{{- end -}}
+
+{{- /* ② 每品牌聚合 */ -}}
+{{- $agg := dict -}}
+{{- range $pk, $pdata := hugo.Data.plans -}}
+  {{- $n := 0 -}}{{- $minPrice := 0.0 -}}{{- $maxPrice := 0.0 -}}{{- $minPerGB := 0.0 -}}{{- $cheapest := 0 -}}{{- $bestValue := 0 -}}
+  {{- $cov := slice -}}
+  {{- range $iso, $pc := $pdata -}}
+    {{- $n = add $n 1 -}}
+    {{- $cc := index $countries $iso -}}
+    {{- $myMin := 0.0 -}}{{- $myBest := 0.0 -}}
+    {{- range $pc.plans -}}
+      {{- if or (eq $myMin 0.0) (lt .price $myMin) }}{{ $myMin = .price }}{{ end -}}
+      {{- if gt (int .gb) 0 -}}
+        {{- $pgb := div (float .price) (float .gb) -}}
+        {{- if or (eq $myBest 0.0) (lt $pgb $myBest) }}{{ $myBest = $pgb }}{{ end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $gg := index $g $iso -}}
+    {{- $isCheapest := and (gt $myMin 0.0) (eq $myMin $gg.min) -}}
+    {{- $isBest := and (gt $myBest 0.0) (eq $myBest $gg.best) -}}
+    {{- if $isCheapest }}{{ $cheapest = add $cheapest 1 }}{{ end -}}
+    {{- if $isBest }}{{ $bestValue = add $bestValue 1 }}{{ end -}}
+    {{- if or (eq $minPrice 0.0) (lt $myMin $minPrice) }}{{ $minPrice = $myMin }}{{ end -}}
+    {{- if gt $myMin $maxPrice }}{{ $maxPrice = $myMin }}{{ end -}}
+    {{- if and (gt $myBest 0.0) (or (eq $minPerGB 0.0) (lt $myBest $minPerGB)) }}{{ $minPerGB = $myBest }}{{ end -}}
+    {{- $url := "" -}}{{- with site.GetPage (printf "/compare/%s" $cc.slug) }}{{ $url = .RelPermalink }}{{ end -}}
+    {{- $cov = $cov | append (dict "iso" $iso "name" $cc.name "region" $cc.region "flag" $cc.flag "min" $myMin "cheapest" $isCheapest "url" $url) -}}
+  {{- end -}}
+  {{- $agg = merge $agg (dict $pk (dict "countries" $n "minPrice" $minPrice "maxPrice" $maxPrice "minPerGB" $minPerGB "cheapest" $cheapest "bestValue" $bestValue "coverage" $cov)) -}}
+{{- end -}}
+{{- return $agg -}}

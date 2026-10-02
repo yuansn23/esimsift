@@ -1,0 +1,123 @@
+baseURL = "https://www.esimsift.com/"
+languageCode = "en-us"
+title = "eSIM Sift"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+# ==========================================
+# SEO/GEO 基础设施：llms.txt（AI 检索可引用）+ catalog.json（机器可读价格库）+ sitemap
+# ==========================================
+[outputs]
+home = ["html", "rss", "llms", "catalog"]
+
+[outputFormats.llms]
+mediaType = "text/plain"
+baseName = "llms"
+isHTML = false
+
+[outputFormats.catalog]
+mediaType = "application/json"
+baseName = "catalog"
+isHTML = false
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[params]
+  brand = "eSIM Sift"
+  tagline = "Sift through every eSIM. Buy the right one."
+  description = "eSIM Sift is an independent eSIM price comparison: real plans from 8 providers in 50 countries, ranked by $/GB and $/day."
+
+  # ==========================================
+  # 出站流量配置（单一控制点）
+  # - 换导流目标：只改 active
+  # - rel = "" → follow（自家站，如 Roami）
+  # - rel = "sponsored nofollow" → 第三方联盟
+  # - country_path 中的 {slug} 取自 data/countries.toml 的 [ISO.slugs.<target>]
+  # ==========================================
+  [params.outbound]
+    active = "roami"
+
+    [params.outbound.targets.roami]
+      base = "https://www.roamiapp.com"
+      country_path = "/{slug}/"
+      label = "View plans on Roami"
+      rel = ""
+      [params.outbound.targets.roami.utm]
+        source = "esimsift"
+        medium = "referral"
+        campaign = "compare"
+
+    [params.outbound.targets.airalo]
+      base = "https://www.airalo.com"
+      label = "Check on Airalo"
+      rel = "sponsored nofollow"
+      [params.outbound.targets.airalo.utm]
+        source = "esimsift"
+        medium = "referral"
+        campaign = "partner"
+
+    [params.outbound.targets.holafly]
+      base = "https://esim.holafly.com"
+      label = "Check on Holafly"
+      rel = "sponsored nofollow"
+      [params.outbound.targets.holafly.utm]
+        source = "esimsift"
+        medium = "referral"
+        campaign = "partner"
+
+    [params.outbound.targets.saily]
+      base = "https://saily.com"
+      label = "Check on Saily"
+      rel = "sponsored nofollow"
+      [params.outbound.targets.saily.utm]
+        source = "esimsift"
+        medium = "referral"
+        campaign = "partner"
+
+    [params.outbound.targets.yesim]
+      base = "https://yesim.app"
+      label = "Check on Yesim"
+      rel = "sponsored nofollow"
+      [params.outbound.targets.yesim.utm]
+        source = "esimsift"
+        medium = "referral"
+        campaign = "partner"
+
+    [params.outbound.targets.ubigi]
+      base = "https://www.ubigi.com"
+      label = "Check on Ubigi"
+      rel = "sponsored nofollow"
+      [params.outbound.targets.ubigi.utm]
+        source = "esimsift"
+        medium = "referral"
+        campaign = "partner"
+
+    [params.outbound.targets.roamic]
+      base = "https://roamic.com"
+      label = "Check on Roamic"
+      rel = "sponsored nofollow"
+      [params.outbound.targets.roamic.utm]
+        source = "esimsift"
+        medium = "referral"
+        campaign = "partner"
+
+    [params.outbound.targets.alosim]
+      base = "https://www.alosim.com"
+      label = "Check on aloSIM"
+      rel = "sponsored nofollow"
+      [params.outbound.targets.alosim.utm]
+        source = "esimsift"
+        medium = "referral"
+        campaign = "partner"
+
+# ==========================================
+# 语言：P0 仅英文，目录结构为多语言预留
+# ==========================================
+[languages.en]
+  languageName = "English"
+  contentDir = "content/en"
+  weight = 1

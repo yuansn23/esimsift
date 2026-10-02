@@ -1,0 +1,367 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n35"
+ },
+ "plans": [
+  {
+   "name": "Costa Rica",
+   "data": "1GB",
+   "validity": "30 Days",
+   "price": "$4.88",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "1 Day",
+   "price": "$5.67",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$8.85",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "2 Days",
+   "price": "$11.34",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$14.74",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "3 Days",
+   "price": "$17.01",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "4 Days",
+   "price": "$22.68",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$23.82",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "5 Days",
+   "price": "$28.35",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "6 Days",
+   "price": "$34.02",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$35.72",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "7 Days",
+   "price": "$39.69",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "8 Days",
+   "price": "$41.68",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "9 Days",
+   "price": "$43.66",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "10 Days",
+   "price": "$45.65",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "11 Days",
+   "price": "$47.63",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "12 Days",
+   "price": "$49.61",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "13 Days",
+   "price": "$51.60",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "14 Days",
+   "price": "$53.58",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "15 Days",
+   "price": "$55.57",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "16 Days",
+   "price": "$57.84",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "17 Days",
+   "price": "$60.10",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "18 Days",
+   "price": "$62.37",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "19 Days",
+   "price": "$64.64",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "20 Days",
+   "price": "$66.91",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "21 Days",
+   "price": "$69.18",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "22 Days",
+   "price": "$71.45",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "23 Days",
+   "price": "$73.71",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "24 Days",
+   "price": "$75.98",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "25 Days",
+   "price": "$78.25",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "26 Days",
+   "price": "$80.52",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "27 Days",
+   "price": "$82.79",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "28 Days",
+   "price": "$85.05",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "29 Days",
+   "price": "$87.32",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Costa Rica",
+   "data": "Unlimited",
+   "validity": "30 Days",
+   "price": "$89.59",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Yesim Travel eSIM for Costa Rica | Data Plans & Reviews",
+  "h1": "Yesim eSIM Data Plans for Costa Rica",
+  "chips": [
+   "All plans\n48",
+   "Single-country\n35",
+   "Multiple-country\n13"
+  ],
+  "official_site": null,
+  "body_head": "Single\nMulti\nWrite a review\nBack to Costa Rica eSIM Plans\nYesim\n\nYesim is a mobile internet solution that provides eSIM Mobile Data Plans for Tourism and Business in 200+ destinations. With one global eSIM, you don't need to install multiple profiles when traveling to different countries. Yesim is easy to use and accepts various payment options, making it a convenient mobile data solution for anyone traveling.\n\nVerified\nWeb checkout\nCrypto payment\nApple Pay\nGoogle Pay\nOfficial Website\n\nPROMO CODE\n\nGET 20% OFF\nFor new user\nESIMDB20\nCopy\nTerms apply.\nYesim eSIM Data Plans for Costa Rica\nAll plans\n48\nSingle-country\n35\nMultiple-country\n13\nSort:\nCheapest\nBest Price/GB\nMost Data\nValidity\nApply Promo Codes\nPLAN NAME\nDATA\nVALIDITY\nPRICE/GB\nPRICE\nCosta Rica\n1GB\n30 Days\n$4.88\n€4.30\n$4.88/GB\n20% OFF\nView Details\nCosta Rica\nUnlimited\n1 Day\n$5.67\n€5.00\n20% OFF\nFair Usage\nView Details\nCosta Rica\n3GB\n3"
+ },
+ "slug": "costa-rica",
+ "url": "https://esimdb.com/costa-rica/yesim",
+ "status": 200
+}

@@ -1,0 +1,286 @@
+# eSIM 兼容设备总表（单一数据源：/guides/esim-compatibility-check/ 页面 + 模板 live 计算）
+# 来源：厂商规格页交叉核对 Airalo / Holafly 公开的兼容列表，核对时间 2026-10。
+# 注意：未列出的机型不代表一定不支持 —— EID 检测才是最终判据（文章正文有步骤）。
+# 字段：key=模板过滤用 / name=品牌面板标题 / family=面板副标 / since=支持起点 / models=机型chips / note=变体警告（可为空）
+
+updated = "2026-10"
+source_note = "Compiled from manufacturer spec sheets, cross-checked against the compatibility lists published by major eSIM providers. Last reviewed October 2026."
+
+[[brand]]
+key = "apple"
+name = "Apple iPhone"
+family = "iPhone"
+since = "iPhone XR and XS (2018)"
+models = [
+  "iPhone XR", "iPhone XS", "iPhone XS Max", "iPhone SE 2 (2020)",
+  "iPhone 11", "iPhone 11 Pro", "iPhone 11 Pro Max", "iPhone SE 3 (2022)",
+  "iPhone 12", "iPhone 12 mini", "iPhone 12 Pro", "iPhone 12 Pro Max",
+  "iPhone 13", "iPhone 13 mini", "iPhone 13 Pro", "iPhone 13 Pro Max",
+  "iPhone 14", "iPhone 14 Plus", "iPhone 14 Pro", "iPhone 14 Pro Max",
+  "iPhone 15", "iPhone 15 Plus", "iPhone 15 Pro", "iPhone 15 Pro Max",
+  "iPhone 16", "iPhone 16 Plus", "iPhone 16 Pro", "iPhone 16 Pro Max", "iPhone 16e",
+  "iPhone 17", "iPhone 17 Air", "iPhone 17 Pro", "iPhone 17 Pro Max",
+  "iPhone 18", "iPhone 18 Duo", "iPhone 18 Pro", "iPhone 18 Pro Max",
+  "iPhone Air (2026)", "iPhone Air Pro"
+]
+note = "Chinese-mainland iPhones ship without eSIM. iPhone 14 and 15 bought in the US are eSIM-only (no physical SIM slot); the iPhone Air is eSIM-only worldwide and is the first iPhone that works with eSIM even in mainland China."
+
+[[brand]]
+key = "ipad"
+name = "Apple iPad"
+family = "iPad (cellular models)"
+since = "cellular iPads"
+models = [
+  "iPad 10th generation", "iPad 11th generation", "iPad Air (5th generation)",
+  "iPad Air 11-inch (M2)", "iPad Air 13-inch (M2)",
+  "iPad Pro 11-inch (M4)", "iPad Pro 13-inch (M4)", "iPad mini (7th generation)"
+]
+note = "Only cellular (Wi-Fi + Cellular) iPads carry an eSIM — Wi-Fi-only models do not."
+
+[[brand]]
+key = "samsung"
+name = "Samsung Galaxy"
+family = "Galaxy"
+since = "Galaxy S20 / Z Flip (2020)"
+models = [
+  "S20", "S20+", "S20+ 5G", "S20 Ultra", "S20 Ultra 5G",
+  "S21", "S21+ 5G", "S21 Ultra 5G",
+  "S22", "S22+", "S22 Ultra",
+  "S23", "S23+", "S23 Ultra", "S23 FE",
+  "S24", "S24+", "S24 Ultra", "S24 FE",
+  "S25", "S25+", "S25 Ultra", "S25 Edge", "S25 FE",
+  "S26", "S26+", "S26 Ultra", "S26 FE",
+  "Note 20", "Note 20 Ultra 5G", "Galaxy Fold",
+  "Z Fold2 5G", "Z Fold3 5G", "Z Fold4", "Z Fold5 5G", "Z Fold6 5G", "Z Fold7", "Z Fold8", "Z Fold8 Ultra",
+  "Z Flip", "Z Flip3 5G", "Z Flip4", "Z Flip5 5G", "Z Flip6 5G", "Z Flip7", "Z Flip7 FE", "Z Flip8",
+  "A54", "A55 5G", "A35", "A56", "A36", "A27",
+  "XCover7", "XCover7 Pro", "Z TriFold"
+]
+note = "The variant matters. US-bought S20 and S21 and the S20 FE have no eSIM; Hong Kong Samsungs do not either (Z Flip SM-F700F is the one exception); Korean-bought S20 to S22, Fold and Flip models lack eSIM. An international or European unit is the safe bet."
+
+[[brand]]
+key = "google"
+name = "Google Pixel"
+family = "Pixel"
+since = "Pixel 3 (2018)"
+models = [
+  "Pixel 2", "Pixel 2 XL",
+  "Pixel 3", "Pixel 3 XL", "Pixel 3a", "Pixel 3a XL",
+  "Pixel 4", "Pixel 4a", "Pixel 4 XL",
+  "Pixel 5", "Pixel 5a",
+  "Pixel 6", "Pixel 6a", "Pixel 6 Pro",
+  "Pixel 7", "Pixel 7a", "Pixel 7 Pro",
+  "Pixel 8", "Pixel 8a", "Pixel 8 Pro",
+  "Pixel 9", "Pixel 9 Pro", "Pixel 9 Pro XL", "Pixel 9 Pro Fold",
+  "Pixel 10", "Pixel 10a", "Pixel 10 Pro", "Pixel 10 Pro XL", "Pixel 10 Pro Fold",
+  "Pixel 11", "Pixel 11 Pro", "Pixel 11 Pro XL", "Pixel 11 Pro Fold",
+  "Pixel Fold"
+]
+note = "All Hong Kong Pixels lack eSIM. Pixel 3 units sold in Australia, Taiwan and Japan and Pixel 3a units from South-East Asia, Japan and Verizon are also excluded; Pixel 2 only on Google Fi."
+
+[[brand]]
+key = "huawei"
+name = "Huawei"
+family = "P / Mate series"
+since = "P40 (2020)"
+models = ["P40", "P40 Pro", "Mate 40 Pro", "P50 Pocket", "Mate 50 Pro", "P60 Pro", "Mate 60 Pro", "Mate 70 Pro"]
+note = "Only these models carry eSIM — the P40 Pro+ and P50 Pro do not. Huawei phones also ship without Google services, which blocks most travel-eSIM apps at setup."
+
+[[brand]]
+key = "oppo"
+name = "Oppo"
+family = "Find / Reno"
+since = "Find X3 Pro (2021)"
+models = [
+  "Find X3", "Find X3 Pro", "Find X5", "Find X5 Pro",
+  "Find N2 Flip", "Find N3", "Find N3 Flip",
+  "Find X8", "Find X8 Pro", "Find X9", "Find X9 Pro", "Find X9 Ultra",
+  "Find X10", "Find X10 Pro Max",
+  "Reno 5A", "Reno 6 Pro 5G", "Reno 9A", "A55s 5G",
+  "Reno14", "Reno14 Pro", "Reno14 F", "Reno14 FS",
+  "Reno15", "Reno15 Pro", "Reno15 Pro Max",
+  "Reno16", "Reno16 Pro", "Reno16 F"
+]
+note = "Support is limited to international and Japanese variants — carrier-locked models often drop eSIM."
+
+[[brand]]
+key = "sony"
+name = "Sony Xperia"
+family = "Xperia"
+since = "Xperia 10 III (2021)"
+models = [
+  "Xperia 10 III Lite", "Xperia 10 IV", "Xperia 10 V", "Xperia 10 VI", "Xperia 10 VII",
+  "Xperia 1 IV", "Xperia 1 V", "Xperia 1 VI", "Xperia 1 VII", "Xperia 1 VIII",
+  "Xperia 5 IV", "Xperia 5 V", "Xperia Ace III"
+]
+note = ""
+
+[[brand]]
+key = "xiaomi"
+name = "Xiaomi"
+family = "Xiaomi / Redmi / Poco"
+since = "Xiaomi 12T Pro (2022)"
+models = [
+  "Xiaomi 12T Pro",
+  "Xiaomi 13", "Xiaomi 13 Lite", "Xiaomi 13 Pro", "Xiaomi 13T", "Xiaomi 13T Pro",
+  "Xiaomi 14", "Xiaomi 14 Pro", "Xiaomi 14T", "Xiaomi 14T Pro",
+  "Xiaomi 15", "Xiaomi 15 Ultra", "Xiaomi 15T", "Xiaomi 15T Pro",
+  "Xiaomi 17", "Xiaomi 17 Ultra", "Xiaomi 17T", "Xiaomi 17T Pro",
+  "Redmi Note 13 Pro+", "Redmi Note 14 Pro", "Redmi Note 14 Pro+",
+  "Redmi Note 15 Pro", "Redmi Note 15 Pro+", "Redmi Note 17 Pro", "Redmi Note 17 Pro Max",
+  "Poco X7", "Poco X8 Pro Max"
+]
+note = ""
+
+[[brand]]
+key = "motorola"
+name = "Motorola"
+family = "Razr / Edge / Moto G"
+since = "Razr (2019)"
+models = [
+  "Razr 2019", "Razr 5G", "Razr 2022", "Razr 2024",
+  "Razr 40", "Razr 40 Ultra", "Razr+", "Razr+ 2024",
+  "Razr 60", "Razr 60 Ultra", "Razr 70", "Razr 70+", "Razr 70 Ultra",
+  "Edge 2022", "Edge 2023", "Edge 2024", "Edge+ (2023)",
+  "Edge 40", "Edge 40 Pro", "Edge 40 Neo",
+  "Edge 50 Pro", "Edge 50 Ultra", "Edge 50 Fusion",
+  "Edge 60", "Edge 60 Pro", "Edge 60 Fusion", "Edge 60 Stylus",
+  "Edge 70", "Edge 70 Ultra", "Edge 70 Fusion", "Edge 70 Fusion+", "Edge 70 Pro", "Edge 70 Max",
+  "Moto G Power 5G (2024)", "Moto G Stylus 5G (2024)",
+  "Moto G35", "Moto G53", "Moto G54",
+  "G52J 5G", "G52J 5G II", "G53J 5G", "G84", "G85", "G34"
+]
+note = ""
+
+[[brand]]
+key = "sharp"
+name = "Sharp AQUOS"
+family = "AQUOS"
+since = "AQUOS sense4 lite (2020)"
+models = [
+  "AQUOS sense4 lite", "AQUOS sense6s", "AQUOS sense7", "AQUOS sense7 plus", "AQUOS sense8",
+  "AQUOS wish", "AQUOS wish2 SHG08", "AQUOS wish3",
+  "AQUOS zero6", "AQUOS R7", "AQUOS R8", "AQUOS R8 Pro",
+  "Simple Sumaho 6"
+]
+note = "Japanese domestic models — most relevant for eSIMs that list Japan coverage."
+
+[[brand]]
+key = "rakuten"
+name = "Rakuten"
+family = "Hand / Big / Mini"
+since = "Rakuten Hand (2020)"
+models = ["Rakuten Hand", "Rakuten Hand 5G", "Rakuten Mini", "Rakuten Big", "Rakuten Big s"]
+note = "Japanese-market phones sold by Rakuten Mobile."
+
+[[brand]]
+key = "honor"
+name = "Honor"
+family = "Magic / numbered"
+since = "Magic 4 Pro (2022)"
+models = [
+  "Magic 4 Pro", "Magic 5 Pro", "Magic 6 Pro", "Magic 7 Pro", "Magic 7 Lite", "Magic 8 Pro", "Magic 8 Lite",
+  "Magic V2", "Magic V3", "Magic V5", "Magic V6",
+  "Honor 90", "Honor X8", "Honor 200", "Honor 200 Pro", "Honor 400 Lite"
+]
+note = ""
+
+[[brand]]
+key = "vivo"
+name = "vivo"
+family = "X / V series"
+since = "X80 Pro (2022)"
+models = [
+  "X80 Pro", "X90 Pro", "X100 Pro",
+  "V29", "V29 Lite", "V29 Lite 5G (Europe only)",
+  "V40", "V40 Lite", "V40 SE",
+  "X200", "X200s", "X200 Pro", "X200 FE",
+  "X300", "X300 Pro", "X300 FE",
+  "X500", "X500 Pro", "X500 Pro Max"
+]
+note = "The V29 Lite 5G supports eSIM in Europe only."
+
+[[brand]]
+key = "other"
+name = "Other brands"
+family = "OnePlus, Nokia, Nothing and more"
+since = "misc. 2022+ models"
+models = [
+  "OnePlus Open", "OnePlus 11", "OnePlus 12", "OnePlus 13", "OnePlus 13R", "OnePlus 13T", "OnePlus 15",
+  "Nokia XR21", "Nokia X30", "Nokia G60 5G",
+  "Nothing Phone 3", "Nothing Phone 3a Pro", "Nothing Phone 4a Pro",
+  "Fairphone 4", "Fairphone 5",
+  "Asus ROG Phone 9", "Asus ROG Phone 9 Pro", "Asus Zenfone 12 Ultra",
+  "Microsoft Surface Duo",
+  "Realme 14 Pro+", "Realme GT 7", "Realme GT 8 Pro",
+  "TCL 50 5G", "TCL 50 Pro NxtPaper", "TCL 60 XE NxtPaper", "TCL NxtPaper 60 Ultra", "TCL NxtPaper 70 Pro",
+  "Tecno Camon 50 Ultra",
+  "Infinix Note 60 Pro", "Infinix Note 60 Ultra",
+  "HMD Skyline", "Nuu X5", "ZTE Nubia Flip",
+  "OUKITEL WP30 Pro", "OUKITEL WP33 Pro",
+  "DOOGEE V30", "HAMMER Blade 3", "HAMMER Blade 5G", "HAMMER Explorer PRO",
+  "myPhone NOW eSIM", "Gemini PDA"
+]
+note = ""
+
+# ── 明确不支持的常见机型（用户最常踩的坑） ──
+
+[[blocked]]
+brand = "Apple"
+model = "iPhone X and older"
+why = "No eSIM chip — the first eSIM iPhones are the XR and XS (2018)."
+
+[[blocked]]
+brand = "Apple"
+model = "Chinese-mainland iPhones"
+why = "Ship without eSIM (iPhone Air excepted)."
+
+[[blocked]]
+brand = "Samsung"
+model = "Galaxy S10 and older"
+why = "eSIM arrived with the S20 generation."
+
+[[blocked]]
+brand = "Samsung"
+model = "Galaxy S20 FE"
+why = "No eSIM in any market."
+
+[[blocked]]
+brand = "Samsung"
+model = "US-bought Galaxy S20 and S21"
+why = "US variants dropped the eSIM."
+
+[[blocked]]
+brand = "Samsung"
+model = "Hong Kong Samsung models"
+why = "No eSIM — the Z Flip SM-F700F is the one exception."
+
+[[blocked]]
+brand = "Samsung"
+model = "Korean-bought S20 to S22, Fold and Flip"
+why = "Korean variants lack eSIM."
+
+[[blocked]]
+brand = "Google"
+model = "Hong Kong Pixels"
+why = "Hong Kong units ship without eSIM."
+
+[[blocked]]
+brand = "Google"
+model = "Pixel 3 from Australia, Taiwan or Japan"
+why = "These variants lack eSIM."
+
+[[blocked]]
+brand = "Google"
+model = "Pixel 3a from South-East Asia, Japan or Verizon"
+why = "These variants lack eSIM."
+
+[[blocked]]
+brand = "Huawei"
+model = "P40 Pro+ and P50 Pro"
+why = "Listed without eSIM support."
+
+[[blocked]]
+brand = "Xiaomi"
+model = "Xiaomi 12T (non-Pro)"
+why = "Only the 12T Pro carries eSIM."

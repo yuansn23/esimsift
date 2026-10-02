@@ -1,0 +1,55 @@
+{
+ "plans": [
+  {
+   "name": "Unlimited / 3 Days",
+   "data": "Unlimited",
+   "validity": "3 Days",
+   "price": "$11.90",
+   "badges": []
+  },
+  {
+   "name": "Unlimited / 5 Days",
+   "data": "Unlimited",
+   "validity": "5 Days",
+   "price": "$17.50",
+   "badges": []
+  },
+  {
+   "name": "Unlimited / 7 Days",
+   "data": "Unlimited",
+   "validity": "7 Days",
+   "price": "$23.90",
+   "badges": []
+  },
+  {
+   "name": "Unlimited / 10 Days",
+   "data": "Unlimited",
+   "validity": "10 Days",
+   "price": "$32.90",
+   "badges": []
+  },
+  {
+   "name": "Unlimited / 15 Days",
+   "data": "Unlimited",
+   "validity": "15 Days",
+   "price": "$44.50",
+   "badges": []
+  },
+  {
+   "name": "Unlimited / 30 Days",
+   "data": "Unlimited",
+   "validity": "30 Days",
+   "price": "$64.50",
+   "badges": []
+  }
+ ],
+ "fup": "Always On backup plan: 1GB of data monthly to keep you connected no matter what.",
+ "title": "eSIM Spain | Best eSIM with Unlimited Data Plans",
+ "slug": "spain",
+ "url": "https://esim.holafly.com/esim-spain/",
+ "status": 200,
+ "tab": {
+  "clicked": false,
+  "label": "pdp-table"
+ }
+}

@@ -1,0 +1,101 @@
+<footer class="mt-20 bg-ink-950 text-ink-300">
+  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4 lg:grid-cols-7">
+    <div class="md:col-span-2">
+      <a href="{{ .Site.BaseURL }}" class="flex items-center gap-2" aria-label="eSIM Sift home">
+        <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 text-white">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 3h12L9.5 8v4.5L6.5 14V8L2 3Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="font-display text-lg font-extrabold tracking-tight text-white">eSIM<span class="text-brand-400">Sift</span></span>
+      </a>
+      <p class="mt-4 max-w-sm text-sm leading-relaxed text-ink-400">{{ .Site.Params.tagline }} An independent price database — every plan, every provider, one ruler.</p>
+      <div class="mt-5 flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-wider">
+        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-ink-300">Dated prices</span>
+        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-ink-300">No pay-to-rank</span>
+        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-ink-300">Open methodology</span>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">Popular comparisons</h3>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        {{ range first 6 (where (where (where (site.GetPage "/compare").Pages "Params.provider" nil) "Params.providers" nil) "Params.nolist" nil) }}
+          {{ $p := . }}
+          {{ with $p.Params.iso }}
+            {{ $c := index hugo.Data.countries . }}
+            <li><a href="{{ $p.RelPermalink }}" class="transition-colors hover:text-white">{{ $c.name }} eSIM</a></li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">Popular matchups</h3>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        {{/* 编辑挑选的 6 组对打；slug 约定按字母序，page 缺失则静默跳过（validate.py 兜底） */}}
+        {{ $matchups := slice
+            (slice "airalo" "roami")
+            (slice "airalo" "holafly")
+            (slice "holafly" "roami")
+            (slice "airalo" "saily")
+            (slice "airalo" "yesim")
+            (slice "roami" "roamic")
+        }}
+        {{ range $matchups }}
+          {{ $mp := sort . }}
+          {{ with site.GetPage (printf "/compare/%s-vs-%s" (index $mp 0) (index $mp 1)) }}
+            <li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">{{ (index hugo.Data.providers (index $mp 0)).name }} vs {{ (index hugo.Data.providers (index $mp 1)).name }}</a></li>
+          {{ end }}
+        {{ end }}
+        <li><a href="/compare/matchups/" class="font-semibold text-brand-300 transition-colors hover:text-white">All matchups →</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">Data &amp; research</h3>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        {{ with site.GetPage "/research/esim-price-index" }}
+          <li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">eSIM price index</a></li>
+        {{ end }}
+        {{ with site.GetPage "/research/unlimited-esim" }}
+          <li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">Unlimited eSIM rates</a></li>
+        {{ end }}
+        {{ with site.GetPage "/research/fair-use-audit" }}
+          <li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">Fair use audit</a></li>
+        {{ end }}
+        <li><a href="/research/" class="font-semibold text-brand-300 transition-colors hover:text-white">All research →</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">eSIM providers</h3>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        {{ range $key, $p := hugo.Data.providers }}
+          <li><a href="/esim-providers/{{ $key }}/" class="transition-colors hover:text-white">{{ $p.name }}</a></li>
+        {{ end }}
+        <li><a href="/esim-providers/" class="font-semibold text-brand-300 transition-colors hover:text-white">All providers →</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">Company</h3>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        <li><a href="/esim-deals/" class="font-semibold text-accent-400 transition-colors hover:text-white">eSIM deals & promo codes</a></li>
+        <li><a href="/about/" class="transition-colors hover:text-white">About</a></li>
+        <li><a href="/methodology/" class="transition-colors hover:text-white">Methodology</a></li>
+        <li><a href="/disclosure/" class="transition-colors hover:text-white">Disclosure</a></li>
+        <li><a href="/contact/" class="transition-colors hover:text-white">Contact</a></li>
+        <li><a href="/privacy/" class="transition-colors hover:text-white">Privacy Policy</a></li>
+        <li><a href="/terms/" class="transition-colors hover:text-white">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-ink-500 sm:flex-row sm:px-6">
+      <p>© 2026 eSIM Sift. Some outbound links are sponsored — see our <a href="/disclosure/" class="underline decoration-ink-600 underline-offset-2 transition-colors hover:text-white">disclosure</a>.</p>
+      <p>Prices verified on the dates shown on each page.</p>
+    </div>
+  </div>
+</footer>

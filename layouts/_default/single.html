@@ -1,0 +1,7 @@
+{{ define "main" }}
+<article class="mx-auto max-w-3xl">
+  {{ partial "breadcrumbs.html" . }}
+  <h1 class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">{{ .Title }}</h1>
+  <div class="prose prose-slate mt-6 max-w-none">{{ .Content }}</div>
+</article>
+{{ end }}

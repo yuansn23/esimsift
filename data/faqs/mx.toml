@@ -1,0 +1,25 @@
+# Mexico FAQ - generated (review before launch)
+
+[[faq]]
+q = "What is the cheapest eSIM for Mexico?"
+a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+
+[[faq]]
+q = "Is unlimited eSIM data in Mexico actually unlimited?"
+a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Roami at $17.99 ($2.57/day), carries: Soft cap 2GB/day at full speed, then throttled. Treat them as big-but-capped plans and compare the caps."
+
+[[faq]]
+q = "Airalo or Holafly for Mexico?"
+a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($3.68/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+
+[[faq]]
+q = "Do I need ID verification for a Mexico eSIM?"
+a = "Yes. Local law requires passport-linked registration even for travel eSIMs, but the big providers verify in-app in a couple of minutes."
+
+[[faq]]
+q = "Which networks do Mexico eSIMs use?"
+a = "Plans on this page run on Telcel, AT&T Mexico, Movistar. Differences matter mostly outside the big cities - the network column in the main table shows which carrier each plan rides."
+
+[[faq]]
+q = "Can one eSIM cover Mexico and United States?"
+a = "Regional Asia/continental plans from Airalo and Nomad bundle Mexico with neighbors - usually worse $/GB than single-country plans, but cheaper than two separate eSIMs. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."

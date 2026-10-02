@@ -1,0 +1,26 @@
+# 日本 FAQ —— 只做对比角度（激活/安装类问题归 Roami 站，防 SERP 重叠）
+# 文件名 = 小写 ISO 码，模板按 index site.Data.faqs (lower iso) 取
+
+[[faq]]
+q = "Which is the cheapest eSIM for Japan?"
+a = "Among major providers, Roami currently has the lowest entry price for Japan at $1.99 for 1GB over 7 days, and its 3GB/7-day plan at $3.99 undercuts every competitor's budget tier. Saily is the closest challenger at $3.99 for 1GB. If you only need maps and messaging, either plan covers a short city break - but on a per-GB basis Roami's larger bundles are the strongest value in the market."
+
+[[faq]]
+q = "Is unlimited data eSIM in Japan really unlimited?"
+a = "It depends on the provider's fair-use policy. Holafly markets unlimited data but applies fair-use throttling for heavy users, and its flat daily pricing (around $3.90 per day) makes 30 days cost $117. Roami's Japan unlimited plans list no documented fair-use cap for travel plans and cost less at every duration - $18.99 for 7 days versus Holafly's roughly $27 for the same window. Read each plan's fair-use terms before buying if you plan to stream heavily."
+
+[[faq]]
+q = "Is Airalo or Holafly better for Japan?"
+a = "For short trips with light usage, Airalo: its 1GB/7-day plan at $4.50 beats Holafly's cheapest option, and fixed data buckets avoid fair-use ambiguity. For heavy streamers who hate topping up, Holafly's unlimited daily plan is simpler - expect around $3.90 per day. Neither is the cheapest overall: on our Japan comparison table both are undercut by Roami and Saily for the same data."
+
+[[faq]]
+q = "Do I need a passport or ID to use an eSIM in Japan?"
+a = "No - not with travel eSIMs. Japanese law requires passport verification for local prepaid SIM cards from SoftBank, NTT Docomo and KDDI, but international travel eSIMs (Airalo, Holafly, Saily, Nomad, Roami) bypass this registration entirely. Buy, scan the QR code, and connect - no document upload at any step."
+
+[[faq]]
+q = "Which Japanese network does each provider use?"
+a = "It varies, and it affects coverage. Roami and Nomad auto-switch across all three national networks (NTT Docomo, SoftBank, KDDI), which gives you fallback signal in rural areas. Airalo and Saily typically connect to Docomo or SoftBank. Docomo has the widest rural coverage - including Shinkansen corridors and onsen towns - so single-network plans locked to it are safe, but multi-network plans are more resilient."
+
+[[faq]]
+q = "Can one eSIM cover Japan and South Korea on the same trip?"
+a = "Yes - several providers sell Asia regional plans that bundle Japan with Korea, Taiwan and Hong Kong. If you are visiting two or more countries, a regional plan usually beats buying separate country eSIMs. Check our regional comparison before buying two single-country plans."

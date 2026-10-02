@@ -1,0 +1,363 @@
+{{ define "main" }}
+{{/* VS 对决页 —— /compare/{a}-vs-{b}/
+   一切结论由 vs-agg 聚合推导（两国都卖的国家上逐国比较），零手工维护。
+   关键词→URL 边界见 docs/keyword-map.md：本页只承接全局 "{A} vs {B}"，
+   "{A} vs {B} for {country}" 由国家页承接（逐国表格行只做导流）。 */}}
+{{ $pair := .Params.providers }}
+{{ if ne (len $pair) 2 }}{{ errorf "compare/vs-single: %q needs exactly 2 providers" .File.Path }}{{ end }}
+{{ $a := index $pair 0 }}
+{{ $b := index $pair 1 }}
+{{ if not (index hugo.Data.providers $a) }}{{ errorf "compare/vs-single: unknown provider %q in %q" $a .File.Path }}{{ end }}
+{{ if not (index hugo.Data.providers $b) }}{{ errorf "compare/vs-single: unknown provider %q in %q" $b .File.Path }}{{ end }}
+{{ if not (lt $a $b) }}{{ warnf "compare/vs-single: %s providers not alphabetical (slug convention)" .File.Path }}{{ end }}
+
+{{ $pa := index hugo.Data.providers $a }}
+{{ $pb := index hugo.Data.providers $b }}
+{{ $agg := partial "vs-agg.html" (dict "a" $a "b" $b) }}
+{{ $rows := $agg.rows }}
+{{ $n := $agg.countries }}
+
+{{/* 名字与胜者（win 计数严格大于才算赢） */}}
+{{ $na := $pa.name }}{{ $nb := $pb.name }}
+{{ $priceWinnerName := "Neither" }}
+{{ if gt $agg.aWinsPrice $agg.bWinsPrice }}{{ $priceWinnerName = $na }}{{ else if gt $agg.bWinsPrice $agg.aWinsPrice }}{{ $priceWinnerName = $nb }}{{ end }}
+{{ $valueWinnerName := "" }}
+{{ if gt $agg.aWinsValue $agg.bWinsValue }}{{ $valueWinnerName = $na }}{{ else if gt $agg.bWinsValue $agg.aWinsValue }}{{ $valueWinnerName = $nb }}{{ end }}
+
+{{/* 首个价格胜国（FAQ/verdict 举例用，空字典为 falsy 的守卫） */}}
+{{ $exampleA := dict }}{{ $exampleB := dict }}
+{{ range $rows }}
+  {{ if and (not $exampleA) (eq .pW $a) }}{{ $exampleA = . }}{{ end }}
+  {{ if and (not $exampleB) (eq .pW $b) }}{{ $exampleB = . }}{{ end }}
+{{ end }}
+
+{{/* 首行国家的网络对比（FAQ 举例） */}}
+{{ $r0 := dict }}
+{{ if gt (len $rows) 0 }}{{ $r0 = index $rows 0 }}{{ end }}
+{{ $netA := "" }}{{ $netB := "" }}
+{{ with $r0.iso }}
+  {{ with index (index hugo.Data.plans $a) . }}{{ $netA = delimit .networks ", " }}{{ end }}
+  {{ with index (index hugo.Data.plans $b) . }}{{ $netB = delimit .networks ", " }}{{ end }}
+{{ end }}
+
+<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+  <nav aria-label="Breadcrumb" class="text-sm text-ink-400">
+    <ol class="flex flex-wrap items-center gap-1.5">
+      <li><a href="{{ .Site.BaseURL }}" class="transition-colors hover:text-ink-700">Home</a></li>
+      <li aria-hidden="true">/</li>
+      <li><a href="/compare/" class="transition-colors hover:text-ink-700">Compare</a></li>
+      <li aria-hidden="true">/</li>
+      <li class="font-medium text-ink-700">{{ $na }} vs {{ $nb }}</li>
+    </ol>
+  </nav>
+
+  {{/* ── ① Hero：verdict-first ── */}}
+  <header class="mt-6 grid items-start gap-8 lg:grid-cols-[1.25fr_1fr]">
+    <div>
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="badge bg-brand-50 text-brand-700">{{ $n }} countries compared</span>
+        {{ with $agg.checkedDate }}<span class="badge bg-ink-50 text-ink-500">prices checked {{ . }}</span>{{ end }}
+        <span class="badge bg-ink-50 text-ink-500">no pay-to-rank</span>
+      </div>
+      <div class="mt-4 flex items-center gap-4">
+        {{ partial "prov-logo.html" (dict "p" $pa "key" $a "class" "h-14 w-14" "text" "text-lg") }}
+        <span class="font-display text-2xl font-extrabold text-ink-300">vs</span>
+        {{ partial "prov-logo.html" (dict "p" $pb "key" $b "class" "h-14 w-14" "text" "text-lg") }}
+      </div>
+      <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ $na }} vs {{ $nb }} eSIM: which is cheaper in {{ now.Year }}?</h1>
+      <p class="mt-4 max-w-xl text-lg leading-relaxed text-ink-600">Choosing between {{ $na }} and {{ $nb }} comes down to where you're going. We compared their cheapest plan in every one of the {{ $n }} countries both cover — every verdict on this page is a literal sort of our dated price database.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <div class="stat-tile"><span class="stat-num tnum text-brand-700">{{ $agg.aWinsPrice }}</span><span class="stat-label">{{ $na }} cheaper entry</span></div>
+        <div class="stat-tile"><span class="stat-num tnum text-brand-700">{{ $agg.bWinsPrice }}</span><span class="stat-label">{{ $nb }} cheaper entry</span></div>
+        {{ if gt $agg.ties 0 }}<div class="stat-tile"><span class="stat-num tnum">{{ $agg.ties }}</span><span class="stat-label">identical prices</span></div>{{ end }}
+        {{ if gt $agg.aUnlimCountries 0 }}<div class="stat-tile"><span class="stat-num tnum">{{ $agg.aUnlimCountries }}</span><span class="stat-label">{{ $na }} unlimited</span></div>{{ end }}
+        {{ if gt $agg.bUnlimCountries 0 }}<div class="stat-tile"><span class="stat-num tnum">{{ $agg.bUnlimCountries }}</span><span class="stat-label">{{ $nb }} unlimited</span></div>{{ end }}
+      </div>
+      <div class="mt-7 flex flex-wrap gap-3">
+        {{ partial "cta-out.html" (dict "target" $a "label" (printf "View %s plans" $na) "class" "btn-primary" "campaign" (printf "vs-%s-%s" $a $b) "page" $.RelPermalink) }}
+        {{ partial "cta-out.html" (dict "target" $b "label" (printf "View %s plans" $nb) "class" "btn-out" "campaign" (printf "vs-%s-%s" $a $b) "page" $.RelPermalink) }}
+      </div>
+    </div>
+
+    <div class="card p-6">
+      <p class="eyebrow">The verdict, computed</p>
+      <p class="mt-2 font-display text-2xl font-bold leading-tight text-ink-950">
+        {{ if eq $priceWinnerName "Neither" }}Dead heat: {{ $na }} and {{ $nb }} split the {{ $n }} countries almost evenly.
+        {{ else }}{{ $priceWinnerName }} has the cheaper entry plan in {{ if eq $priceWinnerName $na }}{{ $agg.aWinsPrice }}{{ else }}{{ $agg.bWinsPrice }}{{ end }} of {{ $n }} countries.
+        {{ end }}
+      </p>
+      {{ if gt $agg.ties 0 }}<p class="mt-2 text-sm text-ink-500">In {{ $agg.ties }} of those countries both post the identical entry price — the winner is decided elsewhere.</p>{{ end }}
+      <ul class="mt-4 space-y-2.5 text-sm leading-relaxed text-ink-700">
+        {{ if eq $priceWinnerName $na }}
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>Pick <strong>{{ $na }}</strong> for the lowest entry price — it undercuts {{ $nb }} in {{ $agg.aWinsPrice }} of {{ $n }} countries{{ with $exampleA }}, starting with <a class="font-semibold text-brand-700 hover:underline" href="/compare/{{ .slug }}/{{ $a }}/">{{ .name }} from ${{ printf "%.2f" .aMin }}</a>{{ end }}.</li>
+        {{ else if gt $agg.aWinsPrice 0 }}
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>Pick <strong>{{ $na }}</strong> if your destination is one of the {{ $agg.aWinsPrice }} countries where it starts cheaper than {{ $nb }}.</li>
+        {{ end }}
+        {{ if eq $priceWinnerName $nb }}
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>Pick <strong>{{ $nb }}</strong> for the lowest entry price — it undercuts {{ $na }} in {{ $agg.bWinsPrice }} of {{ $n }} countries{{ with $exampleB }}, starting with <a class="font-semibold text-brand-700 hover:underline" href="/compare/{{ .slug }}/{{ $b }}/">{{ .name }} from ${{ printf "%.2f" .bMin }}</a>{{ end }}.</li>
+        {{ else if gt $agg.bWinsPrice 0 }}
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>Pick <strong>{{ $nb }}</strong> if your destination is one of the {{ $agg.bWinsPrice }} countries where it starts cheaper than {{ $na }}.</li>
+        {{ end }}
+        {{ if and $agg.aUnlimitedOnly (not $agg.bUnlimitedOnly) }}
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>Pick <strong>{{ $na }}</strong> if you refuse to count gigabytes — it sells unlimited plans in {{ $agg.aUnlimCountries }} of its countries, while {{ $nb }} sells fixed buckets.</li>
+        {{ else if and $agg.bUnlimitedOnly (not $agg.aUnlimitedOnly) }}
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>Pick <strong>{{ $nb }}</strong> if you refuse to count gigabytes — it sells unlimited plans in {{ $agg.bUnlimCountries }} of its countries, while {{ $na }} sells fixed buckets.</li>
+        {{ else if gt $agg.aUnlimCountries $agg.bUnlimCountries }}
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>Pick <strong>{{ $na }}</strong> for unlimited data — available in {{ $agg.aUnlimCountries }} countries vs {{ $agg.bUnlimCountries }} for {{ $nb }}.</li>
+        {{ else if gt $agg.bUnlimCountries $agg.aUnlimCountries }}
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>Pick <strong>{{ $nb }}</strong> for unlimited data — available in {{ $agg.bUnlimCountries }} countries vs {{ $agg.aUnlimCountries }} for {{ $na }}.</li>
+        {{ end }}
+        {{ if $valueWinnerName }}
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>Pick <strong>{{ $valueWinnerName }}</strong> for big data buckets — better $/GB in {{ if eq $valueWinnerName $na }}{{ $agg.aWinsValue }}{{ else }}{{ $agg.bWinsValue }}{{ end }} of the countries where both sell metered plans.</li>
+        {{ end }}
+      </ul>
+      <p class="mt-4 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">Entry price = each provider's cheapest plan in that country, from the same dated snapshot. Full method in our <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.</p>
+    </div>
+  </header>
+
+  {{/* ── ② 逐国价格表（导流到国家页/子页，不承接国家语境词） ── */}}
+  <section class="mt-12" aria-labelledby="bycountry">
+    <p class="eyebrow">Country by country</p>
+    <h2 id="bycountry" class="mt-2 text-2xl font-bold md:text-3xl">{{ $na }} vs {{ $nb }} eSIM prices in {{ $n }} countries</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">Each cell is the provider's cheapest plan in that country. The country name opens the full comparison; prices open that provider's plans there.</p>
+    <div class="card mt-6 overflow-hidden p-0">
+      <div class="overflow-x-auto">
+        <table class="table-pro">
+          <thead>
+            <tr>
+              <th>Country</th>
+              <th>{{ $na }} from</th>
+              <th>{{ $nb }} from</th>
+              <th>Cheaper entry</th>
+              <th>Best $/GB</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ range $rows }}
+              <tr>
+                <td>
+                  <a href="/compare/{{ .slug }}/" class="flex items-center gap-2 font-medium text-ink-800 transition-colors hover:text-brand-700">
+                    <img src="{{ .flag | relURL }}" alt="" class="h-3.5 w-5 shrink-0 rounded-sm object-cover" loading="lazy" width="20" height="14">
+                    {{ .name }} eSIM
+                  </a>
+                </td>
+                <td><a href="/compare/{{ .slug }}/{{ $a }}/" class="font-semibold text-ink-700 transition-colors hover:text-brand-700 tnum">${{ printf "%.2f" .aMin }}</a></td>
+                <td><a href="/compare/{{ .slug }}/{{ $b }}/" class="font-semibold text-ink-700 transition-colors hover:text-brand-700 tnum">${{ printf "%.2f" .bMin }}</a></td>
+                <td>
+                  {{ if eq .pW "tie" }}<span class="badge bg-ink-50 text-ink-500">tie</span>
+                  {{ else if eq .pW $a }}<span class="badge bg-brand-50 text-brand-700">{{ $na }}</span>
+                  {{ else }}<span class="badge bg-brand-50 text-brand-700">{{ $nb }}</span>{{ end }}
+                </td>
+                <td>
+                  {{ if .vW }}
+                    {{ if eq .vW $a }}{{ $na }} <span class="text-ink-400 tnum">${{ printf "%.2f" .aPerGB }}/GB</span>{{ else }}{{ $nb }} <span class="text-ink-400 tnum">${{ printf "%.2f" .bPerGB }}/GB</span>{{ end }}
+                  {{ else }}<span class="text-ink-300">unlimited only</span>{{ end }}
+                </td>
+              </tr>
+            {{ end }}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="mt-3 text-xs text-ink-400">“Best $/GB” compares each provider's cheapest per-gigabyte rate in that country; unlimited-only line-ups have no $/GB. Prices dated {{ $agg.checkedDate }} — always confirm on the country page before buying.</p>
+  </section>
+
+  {{/* ── ③ 结构差异（品牌档案 + 入口） ── */}}
+  <section class="mt-12" aria-labelledby="differ">
+    <p class="eyebrow">Beyond price</p>
+    <h2 id="differ" class="mt-2 text-2xl font-bold md:text-3xl">How {{ $na }} and {{ $nb }} differ</h2>
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      <div class="card p-6">
+        <div class="flex items-center gap-3">
+          {{ partial "prov-logo.html" (dict "p" $pa "key" $a "class" "h-10 w-10" "text" "text-sm") }}
+          <div>
+            <p class="font-display text-base font-bold text-ink-950">{{ $na }}</p>
+            <p class="text-xs text-ink-400">since {{ $pa.founded }} · {{ if eq $pa.type "app" }}App-based{{ else }}Marketplace{{ end }}</p>
+          </div>
+        </div>
+        <ul class="mt-4 space-y-2 text-sm text-ink-700">
+          {{ range first 2 $pa.strengths }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ . }}</li>{{ end }}
+          {{ range first 1 $pa.weaknesses }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ . }}</li>{{ end }}
+        </ul>
+        {{ with $pa.promo_code }}<p class="mt-4 text-xs text-ink-500">Promo code <code class="rounded border border-brand-400 bg-white px-1.5 py-0.5 font-mono tracking-wider text-brand-800">{{ . }}</code> — <a href="/esim-deals/" class="font-semibold text-brand-700 hover:underline">all eSIM deals</a></p>{{ end }}
+        <a href="/esim-providers/{{ $a }}/" class="mt-4 inline-block text-sm font-semibold text-brand-700 hover:underline">Read the {{ $na }} review →</a>
+      </div>
+      <div class="card p-6">
+        <div class="flex items-center gap-3">
+          {{ partial "prov-logo.html" (dict "p" $pb "key" $b "class" "h-10 w-10" "text" "text-sm") }}
+          <div>
+            <p class="font-display text-base font-bold text-ink-950">{{ $nb }}</p>
+            <p class="text-xs text-ink-400">since {{ $pb.founded }} · {{ if eq $pb.type "app" }}App-based{{ else }}Marketplace{{ end }}</p>
+          </div>
+        </div>
+        <ul class="mt-4 space-y-2 text-sm text-ink-700">
+          {{ range first 2 $pb.strengths }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ . }}</li>{{ end }}
+          {{ range first 1 $pb.weaknesses }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ . }}</li>{{ end }}
+        </ul>
+        {{ with $pb.promo_code }}<p class="mt-4 text-xs text-ink-500">Promo code <code class="rounded border border-brand-400 bg-white px-1.5 py-0.5 font-mono tracking-wider text-brand-800">{{ . }}</code> — <a href="/esim-deals/" class="font-semibold text-brand-700 hover:underline">all eSIM deals</a></p>{{ end }}
+        <a href="/esim-providers/{{ $b }}/" class="mt-4 inline-block text-sm font-semibold text-brand-700 hover:underline">Read the {{ $nb }} review →</a>
+      </div>
+    </div>
+  </section>
+
+  {{/* 数据驱动 FAQ（正文 + FAQPage schema 同源） */}}
+  {{- $faqList := slice -}}
+  {{- $faqList = $faqList | append (dict "q" (printf "Which is cheaper, %s or %s?" $na $nb) "a" (printf "By entry price, %s. Across the %d countries where both sell plans, %s has the cheaper cheapest-plan in %d countries and %s in %d (%d exact ties). The gap flips by destination, so check your country in the table above." (cond (eq $priceWinnerName "Neither") "it is close to a dead heat" (printf "%s wins" $priceWinnerName)) $n $na $agg.aWinsPrice $nb $agg.bWinsPrice $agg.ties)) -}}
+  {{- $faqList = $faqList | append (dict "q" (printf "Is %s vs %s different from this page?" $nb $na) "a" (printf "No. It is the same comparison read in the other direction — our table lists both providers in every country, so the %s vs %s verdict is identical. We keep one URL per matchup instead of two near-duplicate pages." $nb $na)) -}}
+  {{- if $valueWinnerName -}}
+    {{- $faqList = $faqList | append (dict "q" (printf "Which has the better price per GB, %s or %s?" $na $nb) "a" (printf "%s — it posts the better cheapest $/GB rate in %d of the countries where both sell metered plans (%s wins %d). Unlimited-only plans are excluded because they are priced per day, not per GB." $valueWinnerName (cond (eq $valueWinnerName $na) $agg.aWinsValue $agg.bWinsValue) (cond (eq $valueWinnerName $na) $nb $na) (cond (eq $valueWinnerName $na) $agg.bWinsValue $agg.aWinsValue))) -}}
+  {{- else -}}
+    {{- $faqList = $faqList | append (dict "q" (printf "Which has the better price per GB, %s or %s?" $na $nb) "a" (printf "They can't be compared per GB here: one of the two sells only unlimited, pay-by-the-day plans in the countries we track, so there is no $/GB rate to compare. Use the entry-price column instead." $na $nb)) -}}
+  {{- end -}}
+  {{- $faqList = $faqList | append (dict "q" (printf "Does %s or %s offer unlimited data plans?" $na $nb) "a" (printf "%s sells unlimited plans in %d of the %d shared countries and %s in %d. Unlimited always means fair-use throttling applies — the exact policy is shown on each plan's country page." (cond (gt $agg.aUnlimCountries $agg.bUnlimCountries) $na $nb) (cond (gt $agg.aUnlimCountries $agg.bUnlimCountries) $agg.aUnlimCountries $agg.bUnlimCountries) $n (cond (gt $agg.aUnlimCountries $agg.bUnlimCountries) $nb $na) (cond (gt $agg.aUnlimCountries $agg.bUnlimCountries) $agg.bUnlimCountries $agg.aUnlimCountries))) -}}
+  {{- if and $netA $netB -}}
+    {{- $faqList = $faqList | append (dict "q" (printf "Do %s and %s use the same networks?" $na $nb) "a" (printf "It varies by country. In %s, %s connects via %s and %s via %s — local carrier agreements differ even when the names overlap. Every country page lists the networks behind each provider's plans." $r0.name $na $netA $nb $netB)) -}}
+  {{- end -}}
+  {{- if or $pa.promo_code $pb.promo_code -}}
+    {{- $faqList = $faqList | append (dict "q" (printf "Are there %s or %s promo codes?" $na $nb) "a" (printf "Yes — current codes for both are on our deals page, alongside expiry dates. Promo discounts are never baked into the rankings on this page; every verdict uses list prices only." )) -}}
+  {{- end -}}
+  {{- $faqEntities := slice -}}
+  {{- range $faqList -}}{{- $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) -}}{{- end -}}
+
+  {{/* ── ④ FAQPage schema ── */}}
+  {{ with $faqEntities }}
+  <script type="application/ld+json">
+    {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" .) | safeJS }}
+  </script>
+  {{ end }}
+
+  {{/* ── ⑤ FAQ ── */}}
+  <section class="mt-12" aria-labelledby="faq">
+    <p class="eyebrow">FAQ</p>
+    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">Is {{ $na }} or {{ $nb }} cheaper for your trip</h2>
+    <div class="mt-5 space-y-3">
+      {{ range $faqList }}
+      <details class="faq-item">
+        <summary>{{ .q }}<span class="faq-icon" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></summary>
+        <p class="faq-body">{{ .a }}</p>
+      </details>
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* ── ⑥ 更多对决（勾选器：任意选两家 → 直达计算页；下方卡片带双 logo） ── */}}
+  {{ $keys := slice }}
+  {{ range $k, $v := hugo.Data.providers }}{{ $keys = $keys | append $k }}{{ end }}
+  {{ $keys = sort $keys }}
+  <section class="mt-12" aria-labelledby="more">
+    <p class="eyebrow">More matchups</p>
+    <h2 id="more" class="mt-2 text-2xl font-bold md:text-3xl">Other eSIM comparisons</h2>
+
+    <div class="card mt-6 p-5 sm:p-6" id="vsPicker">
+      <h3 class="font-display text-base font-bold text-ink-950">Build your own comparison</h3>
+      <p class="mt-1 text-xs leading-relaxed text-ink-500">Pick any two providers — every head-to-head on this site is computed from the same dated price snapshot. A third pick replaces your oldest choice.</p>
+      <div class="mt-4 flex flex-wrap gap-2.5">
+        {{ range $k, $v := hugo.Data.providers }}
+        {{ $kk := printf "k%s" $k }}
+        <label class="relative cursor-pointer select-none" for="{{ $kk }}">
+          <input type="checkbox" id="{{ $kk }}" class="peer sr-only" data-key="{{ $k }}" data-name="{{ $v.name }}"{{ if or (eq $k $a) (eq $k $b) }} checked{{ end }}>
+          <span class="pointer-events-none absolute right-1.5 top-1.5 z-10 flex h-4 w-4 items-center justify-center rounded-full bg-brand-600 text-white opacity-0 peer-checked:opacity-100" aria-hidden="true">
+            <svg viewBox="0 0 12 12" class="h-2.5 w-2.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5 4.8 9 10 3.2"/></svg>
+          </span>
+          <span class="flex items-center gap-2 rounded-xl border border-ink-100 bg-white px-3 py-2 transition-all hover:border-ink-300 peer-checked:border-brand-500 peer-checked:bg-brand-50 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-400">
+            {{ partial "prov-logo.html" (dict "p" $v "key" $k "class" "h-7 w-7 shrink-0" "text" "text-[10px]") }}
+            <span class="text-sm font-semibold text-ink-800">{{ $v.name }}</span>
+          </span>
+        </label>
+        {{ end }}
+      </div>
+      <div class="mt-5 flex flex-wrap items-center gap-3">
+        <a id="vsGo" href="#more" class="btn-primary pointer-events-none opacity-50" aria-disabled="true">Pick two providers</a>
+        <p id="vsHint" class="text-xs text-ink-400">Tick exactly two — the button opens the computed head-to-head.</p>
+      </div>
+    </div>
+
+    <h3 class="mt-10 font-display text-lg font-bold text-ink-950">Every head-to-head we track</h3>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {{ range $i, $ka := $keys }}
+        {{ range $kb := after (add $i 1) $keys }}
+          {{ if not (and (eq $ka $a) (eq $kb $b)) }}
+            {{ with site.GetPage (printf "/compare/%s-vs-%s" $ka $kb) }}
+              {{ $agg2 := partial "vs-agg.html" (dict "a" $ka "b" $kb) }}
+              {{ $n2a := (index hugo.Data.providers $ka).name }}
+              {{ $n2b := (index hugo.Data.providers $kb).name }}
+              <a href="{{ .RelPermalink }}" class="card card-hover group p-5">
+                <div class="flex items-center gap-2">
+                  {{ partial "prov-logo.html" (dict "p" (index hugo.Data.providers $ka) "key" $ka "class" "h-8 w-8 shrink-0" "text" "text-xs") }}
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-ink-300">vs</span>
+                  {{ partial "prov-logo.html" (dict "p" (index hugo.Data.providers $kb) "key" $kb "class" "h-8 w-8 shrink-0" "text" "text-xs") }}
+                </div>
+                <p class="mt-3 font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ $n2a }} vs {{ $n2b }}</p>
+                <p class="mt-2 text-xs leading-relaxed text-ink-500">{{ if gt $agg2.aWinsPrice $agg2.bWinsPrice }}{{ $n2a }} starts cheaper in {{ $agg2.aWinsPrice }} of {{ $agg2.countries }} countries{{ else if gt $agg2.bWinsPrice $agg2.aWinsPrice }}{{ $n2b }} starts cheaper in {{ $agg2.bWinsPrice }} of {{ $agg2.countries }} countries{{ else }}Nearly even across {{ $agg2.countries }} countries{{ end }}{{ if gt $agg2.ties 0 }} (identical entry prices in {{ $agg2.ties }}){{ end }}.</p>
+                <p class="mt-3 text-xs font-semibold text-brand-700 opacity-0 transition-opacity group-hover:opacity-100">See the verdict →</p>
+              </a>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    var wrap = document.getElementById('vsPicker');
+    if (!wrap) return;
+    var boxes = Array.prototype.slice.call(wrap.querySelectorAll('input[data-key]'));
+    var go = document.getElementById('vsGo');
+    var hint = document.getElementById('vsHint');
+    if (!go || !hint || boxes.length === 0) return;
+    var order = [];
+    function nameOf(k) {
+      for (var i = 0; i < boxes.length; i++) {
+        if (boxes[i].getAttribute('data-key') === k) return boxes[i].getAttribute('data-name');
+      }
+      return k;
+    }
+    function refresh() {
+      if (order.length === 2) {
+        var s = order.slice().sort();
+        go.setAttribute('href', '/compare/' + s[0] + '-vs-' + s[1] + '/');
+        go.textContent = 'Compare ' + nameOf(s[0]) + ' vs ' + nameOf(s[1]) + ' →';
+        go.classList.remove('pointer-events-none', 'opacity-50');
+        go.setAttribute('aria-disabled', 'false');
+        hint.textContent = 'Opening the computed ' + nameOf(s[0]) + ' vs ' + nameOf(s[1]) + ' head-to-head.';
+      } else {
+        go.setAttribute('href', '#more');
+        go.textContent = 'Pick two providers';
+        go.classList.add('pointer-events-none', 'opacity-50');
+        go.setAttribute('aria-disabled', 'true');
+        hint.textContent = order.length === 0 ? 'Tick exactly two — the button opens the computed head-to-head.' : 'One more pick — a third tick replaces the oldest.';
+      }
+    }
+    boxes.forEach(function (b) {
+      if (b.checked) order.push(b.getAttribute('data-key'));
+      b.addEventListener('change', function () {
+        var k = b.getAttribute('data-key');
+        if (b.checked) {
+          order.push(k);
+          if (order.length > 2) {
+            var drop = order.shift();
+            boxes.forEach(function (o) {
+              if (o.getAttribute('data-key') === drop) o.checked = false;
+            });
+          }
+        } else {
+          order = order.filter(function (x) { return x !== k; });
+        }
+        refresh();
+      });
+    });
+    refresh();
+  })();
+  </script>
+
+  {{/* ── ⑦ Trust 尾 ── */}}
+  <section class="mt-12">
+    <div class="relative overflow-hidden rounded-3xl bg-ink-gradient px-7 py-8 text-ink-300 md:px-10">
+      <div class="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
+      <p class="font-display text-lg font-bold text-white">{{ $na }} vs {{ $nb }} — decided by data, not ad budgets.</p>
+      <p class="mt-2 max-w-2xl text-sm leading-relaxed">Every verdict on this page is a literal sort position from the same dated price snapshot — no editorial star ratings, no pay-to-rank. How we collect and check data is in our <a href="/methodology/" class="font-semibold text-brand-300 hover:underline">methodology</a>; how we make money in our <a href="/disclosure/" class="font-semibold text-brand-300 hover:underline">disclosure</a>.</p>
+    </div>
+  </section>
+</div>
+{{ end }}

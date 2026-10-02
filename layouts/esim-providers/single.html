@@ -1,0 +1,593 @@
+{{ define "main" }}
+{{/* 品牌详情页 —— /esim-providers/<key>/
+   全部数字由 provider-agg 聚合推导，正文文案数据驱动，零手工维护。 */}}
+{{ $key := .File.ContentBaseName }}
+{{ $p := index hugo.Data.providers $key }}
+{{ $agg := partial "provider-agg.html" . }}
+{{ $a := index $agg $key }}
+{{ if not $a }}{{/* 价格数据尚未入库（抓取队列中）：渲染降级壳页，只用 providers.toml 静态事实，绝不触碰空数据 */}}
+<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+  <nav aria-label="Breadcrumb" class="text-sm text-ink-400">
+    <ol class="flex flex-wrap items-center gap-1.5">
+      <li><a href="{{ .Site.BaseURL }}" class="transition-colors hover:text-ink-700">Home</a></li>
+      <li aria-hidden="true">/</li>
+      <li><a href="/esim-providers/" class="transition-colors hover:text-ink-700">eSIM providers</a></li>
+      <li aria-hidden="true">/</li>
+      <li class="font-medium text-ink-700">{{ $p.name }}</li>
+    </ol>
+  </nav>
+
+  <header class="mt-6 grid items-center gap-8 lg:grid-cols-[1.25fr_1fr]">
+    <div>
+      <div class="flex flex-wrap items-center gap-3">
+        {{ partial "prov-logo.html" (dict "p" $p "key" $key "class" "h-12 w-12" "text" "text-base") }}
+        <span class="badge bg-brand-50 text-brand-700">since {{ $p.founded }}</span>
+        <span class="badge bg-ink-50 text-ink-500">{{ if eq $p.type "app" }}App-based{{ else }}Marketplace{{ end }}</span>
+      </div>
+      <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ $p.name }} eSIM review {{ now.Year }}</h1>
+      <p class="mt-4 max-w-xl text-lg leading-relaxed text-ink-600">{{ $p.tagline }}. We're currently verifying {{ $p.name }} prices across the {{ len hugo.Data.countries }} destinations we track — the country-by-country comparison lands here as soon as the check completes.</p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        {{ partial "cta-out.html" (dict "target" $key "label" (printf "View %s plans" $p.name) "class" "btn-primary" "campaign" (printf "prov-%s" $key) "page" $.RelPermalink) }}
+      </div>
+    </div>
+    <div class="card p-6">
+      <p class="eyebrow">Company snapshot</p>
+      <dl class="mt-4 space-y-2.5 text-sm">
+        <div class="flex justify-between gap-3"><dt class="text-ink-400">Founded</dt><dd class="font-medium text-ink-800 tnum">{{ $p.founded }}</dd></div>
+        {{ with $p.info }}{{ with .hq }}<div class="flex justify-between gap-3"><dt class="text-ink-400">Headquarters</dt><dd class="text-right font-medium text-ink-800">{{ . }}</dd></div>{{ end }}{{ end }}
+        <div class="flex justify-between gap-3"><dt class="text-ink-400">Model</dt><dd class="font-medium text-ink-800">{{ if eq $p.type "app" }}App-based{{ else }}Marketplace{{ end }}</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ink-400">Relationship</dt><dd class="font-medium text-ink-800">{{ if $p.sponsored }}Sponsored partner{{ else }}Our own brand{{ end }}</dd></div>
+      </dl>
+      <p class="mt-4 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">Rankings and "cheapest" badges on this site are computed by price alone — see our <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.</p>
+    </div>
+  </header>
+
+  <section class="mt-12" aria-labelledby="tradeoffs-pending">
+    <p class="eyebrow">Honest trade-offs</p>
+    <h2 id="tradeoffs-pending" class="mt-2 text-2xl font-bold md:text-3xl">Where does {{ $p.name }} win on price and where does it lose</h2>
+    <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-brand-700">Strengths</h3>
+        <ul class="mt-4 space-y-2 text-sm text-ink-700">
+          {{ range $p.strengths }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ . }}</li>{{ end }}
+        </ul>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-accent-700">Watch out for</h3>
+        <ul class="mt-4 space-y-2 text-sm text-ink-600">
+          {{ range $p.weaknesses }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ . }}</li>{{ end }}
+        </ul>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-900">Price check in progress</h3>
+        <p class="mt-4 text-sm leading-relaxed text-ink-600">Our editors are pulling {{ $p.name }}'s full plan catalogue for the {{ len hugo.Data.countries }} destinations this site tracks. Until it's verified, compare the brands we've already checked on the <a href="/esim-providers/" class="font-semibold text-brand-700 hover:underline">provider overview</a> or browse <a href="/compare/" class="font-semibold text-brand-700 hover:underline">any country page</a>.</p>
+      </div>
+    </div>
+  </section>
+</div>
+{{ else }}
+{{ $cov := $a.coverage }}
+{{ $regionOrder := slice "Asia" "Europe" "Americas" "Africa & Middle East" "Oceania" }}
+
+{{/* 价格竞争力评分（0-10，透明口径 = cheapest 命中率×10） */}}
+{{ $score := 0.0 }}
+{{ if gt $a.countries 0 }}{{ $score = mul (div (float $a.cheapest) (float $a.countries)) 10.0 }}{{ end }}
+
+{{/* 头号对手：除自己外 cheapest 命中数最高者 */}}
+{{ $rivalKey := "" }}{{ $rivalCount := -1 }}
+{{ range $k, $v := $agg }}{{ if and (ne $k $key) (gt $v.cheapest $rivalCount) }}{{ $rivalKey = $k }}{{ $rivalCount = $v.cheapest }}{{ end }}{{ end }}
+{{ $rival := index hugo.Data.providers $rivalKey }}
+
+{{/* 套餐形态：metered / unlimited / 总数 */}}
+{{ $metered := 0 }}{{ $unlim := 0 }}{{ $totalPlans := 0 }}
+{{ range $iso, $pc := index hugo.Data.plans $key }}
+  {{ range $pc.plans }}{{ $totalPlans = add $totalPlans 1 }}{{ if eq (int .gb) 0 }}{{ $unlim = add $unlim 1 }}{{ else }}{{ $metered = add $metered 1 }}{{ end }}{{ end }}
+{{ end }}
+
+{{/* 最便宜命中国（首个） */}}
+{{ $cheapName := "" }}{{ $cheapMin := 0.0 }}{{ $cheapURL := "" }}
+{{ range $cov }}{{ if and .cheapest (eq $cheapName "") }}{{ $cheapName = .name }}{{ $cheapMin = .min }}{{ $cheapURL = .url }}{{ end }}{{ end }}
+
+{{ $pct := 0 }}
+{{ if gt $a.countries 0 }}{{ $pct = math.Round (mul (div (float $a.cheapest) (float $a.countries)) 100.0) }}{{ end }}
+
+<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+  <nav aria-label="Breadcrumb" class="text-sm text-ink-400">
+    <ol class="flex flex-wrap items-center gap-1.5">
+      <li><a href="{{ .Site.BaseURL }}" class="transition-colors hover:text-ink-700">Home</a></li>
+      <li aria-hidden="true">/</li>
+      <li><a href="/esim-providers/" class="transition-colors hover:text-ink-700">eSIM providers</a></li>
+      <li aria-hidden="true">/</li>
+      <li class="font-medium text-ink-700">{{ $p.name }}</li>
+    </ol>
+  </nav>
+
+  {{/* ── ① Hero ── */}}
+  <header class="mt-6 grid items-center gap-8 lg:grid-cols-[1.25fr_1fr]">
+    <div>
+      <div class="flex flex-wrap items-center gap-3">
+        {{ partial "prov-logo.html" (dict "p" $p "key" $key "class" "h-12 w-12" "text" "text-base") }}
+        <span class="badge bg-brand-50 text-brand-700">since {{ $p.founded }}</span>
+        <span class="badge bg-ink-50 text-ink-500">{{ if eq $p.type "app" }}App-based{{ else }}Marketplace{{ end }}</span>
+        <span class="badge bg-ink-50 text-ink-500">{{ $a.countries }} destinations</span>
+      </div>
+      <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ $p.name }} eSIM review {{ now.Year }}</h1>
+      <p class="mt-4 max-w-xl text-lg leading-relaxed text-ink-600">{{ $p.tagline }}. Every claim below is computed from our live price database — {{ $a.countries }} destinations, {{ $totalPlans }} plans, one formula.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <div class="stat-tile"><span class="stat-num tnum">{{ $a.countries }}</span><span class="stat-label">Countries</span></div>
+        <div class="stat-tile"><span class="stat-num tnum text-accent-600">${{ printf "%.2f" $a.minPrice }}</span><span class="stat-label">Cheapest plan</span></div>
+        {{ if gt $a.minPerGB 0.0 }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" $a.minPerGB }}</span><span class="stat-label">Best $/GB</span></div>{{ end }}
+        <div class="stat-tile"><span class="stat-num tnum">#{{ $a.cheapest }}</span><span class="stat-label">Cheapest in</span></div>
+      </div>
+      <div class="mt-7 flex flex-wrap gap-3">
+        {{ partial "cta-out.html" (dict "target" $key "label" (printf "View %s plans" $p.name) "class" "btn-primary" "campaign" (printf "prov-%s" $key) "page" $.RelPermalink) }}
+      </div>
+    </div>
+
+    <div class="card p-6">
+      <p class="eyebrow">The computed verdict</p>
+      <p class="mt-2 font-display text-2xl font-bold leading-tight text-ink-950">{{ $p.name }} is the cheapest provider in {{ $a.cheapest }} of {{ $a.countries }} countries we track — {{ $pct }}% of its coverage.</p>
+      <p class="mt-3 text-sm leading-relaxed text-ink-600">Best $/GB in <strong class="text-ink-950 tnum">{{ $a.bestValue }}</strong> countries; entry price from <strong class="text-ink-950 tnum">${{ printf "%.2f" $a.minPrice }}</strong>. No editorial star-rating — just the numbers, computed the same way for every brand.</p>
+      <div class="mt-5 border-t border-ink-100 pt-4">
+        <p class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Price competitiveness</p>
+        <div class="mt-2 flex items-center gap-3">
+          <span class="font-display text-3xl font-extrabold text-brand-700 tnum">{{ printf "%.1f" $score }}</span>
+          <span class="text-sm text-ink-500">/ 10 (share of destinations where it's cheapest)</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{/* 数据驱动 FAQ（正文 + FAQPage schema 共用同一数据源）
+     反同质化三件套：①问句措辞按品牌轮换（mod len key）②题目集合按数据条件组合
+     （type=app/marketplace、有无折扣码、info 子表逐字段）③答案面向搜索意图给可执行方案。 */}}
+  {{- $v := mod (len $key) 3 -}}
+  {{- $faqList := slice -}}
+
+  {{- /* Q1 覆盖 */ -}}
+  {{- $q1 := printf "How many countries does %s cover?" $p.name -}}
+  {{- if eq $v 1 -}}{{- $q1 = printf "Where can I use a %s eSIM?" $p.name -}}
+  {{- else if eq $v 2 -}}{{- $q1 = printf "Which countries does the %s eSIM work in?" $p.name -}}{{- end -}}
+  {{- $a1 := printf "%s sells eSIMs for %d of the %d destinations this site tracks, all priced from the same dated snapshot." $p.name $a.countries (len hugo.Data.countries) -}}
+  {{- with $p.info -}}{{- with .destinations -}}{{- $a1 = printf "%s Its own catalogue lists %d+ destinations in total — we track the %d where demand is highest." $a1 . (len hugo.Data.countries) -}}{{- end -}}{{- end -}}
+  {{- $a1 = printf "%s For a specific trip, open that destination's page in the <a href=\"/compare/\">country comparison</a> and every %s plan sorts against the field." $a1 $p.name -}}
+  {{- $faqList = $faqList | append (dict "q" $q1 "a" $a1) -}}
+
+  {{- /* Q2 价格竞争力（含最便宜命中国内链） */ -}}
+  {{- $q2 := printf "Is %s the cheapest eSIM provider?" $p.name -}}
+  {{- if eq $v 1 -}}{{- $q2 = printf "When is %s actually the cheapest option?" $p.name -}}
+  {{- else if eq $v 2 -}}{{- $q2 = printf "How competitive is %s on price?" $p.name -}}{{- end -}}
+  {{- $a2 := printf "No provider wins everywhere — it depends on the destination. %s is the cheapest provider in %d of the %d countries where we track its plans (%d%% of its coverage)." $p.name $a.cheapest $a.countries $pct -}}
+  {{- if gt $cheapMin 0.0 -}}{{- $a2 = printf "%s For example, in <a href=\"%s\">%s</a> its plans start at $%.2f." $a2 $cheapURL $cheapName $cheapMin -}}{{- end -}}
+  {{- $faqList = $faqList | append (dict "q" $q2 "a" $a2) -}}
+
+  {{- /* Q3 unlimited（两分支都给去向内链） */ -}}
+  {{- $q3 := printf "Does %s have unlimited data plans?" $p.name -}}
+  {{- if eq $v 1 -}}{{- $q3 = printf "Can I get unlimited data with %s?" $p.name -}}
+  {{- else if eq $v 2 -}}{{- $q3 = printf "Is there an unlimited %s eSIM?" $p.name -}}{{- end -}}
+  {{- if $unlim -}}
+    {{- $faqList = $faqList | append (dict "q" $q3 "a" (printf "Yes — %d of the %d plans we track from %s are unlimited. Every one carries a fair-use policy that can throttle speed after a threshold, so read the verbatim notes in our <a href=\"/research/fair-use-audit/\">fair-use audit</a> before a streaming-heavy trip." $unlim $totalPlans $p.name)) -}}
+  {{- else -}}
+    {{- $faqList = $faqList | append (dict "q" $q3 "a" (printf "Not in the %d plans we track from %s — they are metered buckets with a fixed GB allowance. If you would rather not count gigabytes, the <a href=\"/research/unlimited-esim/\">unlimited eSIM league</a> shows which brands sell unlimited where, and at what daily rate." $totalPlans $p.name)) -}}
+  {{- end -}}
+
+  {{- /* Q4 购买方式（type 驱动：app 与 marketplace 各出一题，天然差异化） */ -}}
+  {{- if eq $p.type "app" -}}
+    {{- $stores := "the App Store and Google Play" -}}
+    {{- with $p.info -}}
+      {{- if and .app_ios (not .app_android) -}}{{- $stores = "the App Store" -}}
+      {{- else if and .app_android (not .app_ios) -}}{{- $stores = "Google Play" -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $faqList = $faqList | append (dict "q" (printf "Do I need the %s app to use its eSIMs?" $p.name) "a" (printf "Yes — %s is app-first: you browse, buy and install plans inside the app (available on %s), and the eSIM sits alongside your physical SIM rather than replacing it. Buy and install before you fly; on landing, enable data roaming for the eSIM line and it connects by itself." $p.name $stores)) -}}
+  {{- else -}}
+    {{- $faqList = $faqList | append (dict "q" (printf "Can I buy a %s eSIM without installing an app?" $p.name) "a" (printf "Yes — %s is a web marketplace: pick your destination, check out on the website, and the eSIM QR code arrives by email within minutes. No app is required. Install the profile at home on Wi-Fi before departure so you land connected." $p.name)) -}}
+  {{- end -}}
+
+  {{- /* Q5 折扣码（仅官方有公开码的品牌出现此题） */ -}}
+  {{- with $p.promo_code -}}
+    {{- $terms := "" -}}{{- with $p.promo_terms -}}{{- $terms = printf ", %s" . -}}{{- end -}}
+    {{- $faqList = $faqList | append (dict "q" (printf "Is there a %s discount code?" $p.name) "a" (printf "Yes — code <strong>%s</strong> gives %s (%d%% off%s). Copy it on our <a href=\"/esim-deals/\">eSIM deals page</a>, which also calculates whether the discounted price still loses to a cheaper rival in each country." . $p.promo_label $p.promo_pct $terms)) -}}
+  {{- end -}}
+
+  {{- /* Q6 入门价 */ -}}
+  {{- $q6 := printf "What is %s's cheapest eSIM plan?" $p.name -}}
+  {{- if eq $v 1 -}}{{- $q6 = printf "How much does a %s eSIM cost?" $p.name -}}
+  {{- else if eq $v 2 -}}{{- $q6 = printf "What is the entry price for %s?" $p.name -}}{{- end -}}
+  {{- $faqList = $faqList | append (dict "q" $q6 "a" (printf "The entry price in our database is <strong>$%.2f</strong> — the smallest bucket in the cheapest destination, not necessarily the right plan for your trip. Sort by $/GB on your <a href=\"/compare/\">destination's page</a> before choosing; prices exclude promo codes and taxes." $a.minPrice)) -}}
+
+  {{- /* Q7 背景与可信度（info 子表增强：法人/总部） */ -}}
+  {{- $q7 := printf "Is %s a legit eSIM provider?" $p.name -}}
+  {{- if eq $v 1 -}}{{- $q7 = printf "Who is behind %s?" $p.name -}}
+  {{- else if eq $v 2 -}}{{- $q7 = printf "Can %s be trusted for travel data?" $p.name -}}{{- end -}}
+  {{- $a7 := printf "%s launched in %d and sells %s plans across %d destinations." $p.name $p.founded (cond (eq $p.type "app") "app-first" "marketplace") $a.countries -}}
+  {{- with $p.info -}}
+    {{- with .legal -}}
+      {{- $a7 = printf "%s It is operated by %s" $a7 . -}}
+      {{- with $p.info.hq -}}{{- $a7 = printf "%s, headquartered in %s" $a7 . -}}{{- end -}}
+      {{- $a7 = printf "%s." $a7 -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $a7 = printf "%s %s" $a7 (cond $p.sponsored "It is a sponsored partner of this site — rankings here are still computed by price alone (see our <a href=\"/methodology/\">methodology</a>)." "It is this site's own brand, reviewed with the same formulas as every other provider.") -}}
+  {{- $faqList = $faqList | append (dict "q" $q7 "a" $a7) -}}
+
+  {{- /* Q8 客服（info.support 存在时；带自查方案） */ -}}
+  {{- with $p.info -}}
+    {{- with .support -}}
+      {{- $q8 := printf "How do I contact %s support?" $p.name -}}
+      {{- if eq $v 1 -}}{{- $q8 = printf "What if my %s eSIM doesn't connect?" $p.name -}}
+      {{- else if eq $v 2 -}}{{- $q8 = printf "Where do I get help with a %s eSIM?" $p.name -}}{{- end -}}
+      {{- $a8 := printf "%s offers %s." $p.name . -}}
+      {{- with $p.info.support_email -}}{{- $a8 = printf "%s Email: <a href=\"mailto:%s\">%s</a>." $a8 . . -}}{{- end -}}
+      {{- with $p.info.response_time -}}{{- $a8 = printf "%s %s." $a8 . -}}{{- end -}}
+      {{- $a8 = printf "%s Before writing in, test once on Wi-Fi and check that data roaming is on for the eSIM line — most \"no connection\" reports turn out to be a roaming toggle, not a broken eSIM." $a8 -}}
+      {{- $faqList = $faqList | append (dict "q" $q8 "a" $a8) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* Q9 退款（info.refund 存在时，含行动建议） */ -}}
+  {{- with $p.info -}}
+    {{- with .refund -}}
+      {{- $q9 := printf "Can I get a refund on a %s eSIM?" $p.name -}}
+      {{- if eq $v 1 -}}{{- $q9 = printf "What is %s's refund policy?" $p.name -}}
+      {{- else if eq $v 2 -}}{{- $q9 = printf "Does %s give money back if the eSIM fails?" $p.name -}}{{- end -}}
+      {{- $faqList = $faqList | append (dict "q" $q9 "a" (printf "%s Practical tip: buy a day or two before departure and install at home — if anything fails you still have time to claim. (Summarised from %s's published policy; always check their own terms before buying.)" . $p.name)) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* Q10 对手对比（关键词治理："{A} vs {B}" 精确查询让权对决页） */ -}}
+  {{- $vsPair2 := sort (slice $key $rivalKey) -}}
+  {{- $vsURL2 := printf "/compare/%s-vs-%s/" (index $vsPair2 0) (index $vsPair2 1) -}}
+  {{- $q10 := printf "How does %s compare with %s?" $p.name $rival.name -}}
+  {{- if eq $v 1 -}}{{- $q10 = printf "How does %s stack up against %s?" $p.name $rival.name -}}{{- end -}}
+  {{- $faqList = $faqList | append (dict "q" $q10 "a" (printf "Across the destinations we track, %s is the cheapest provider in %d countries vs %s in %d. The full country-by-country table is our <a href=\"%s\">%s vs %s comparison</a>." $p.name $a.cheapest $rival.name $rivalCount $vsURL2 $p.name $rival.name)) -}}
+  {{- $faqEntities := slice -}}
+  {{- range $faqList -}}{{- $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) -}}{{- end -}}
+
+  {{/* ── ② Review + Product + FAQ 结构化数据 ── */}}
+  {{- /* Organization 节点（sameAs=官网/商店）仅当 info 子表存在时加入 */ -}}
+  {{- $graph := slice
+        (dict "@type" "Product" "name" (printf "%s eSIM" $p.name) "description" (printf "%s eSIM plans in %d destinations from $%.2f." $p.name $a.countries $a.minPrice) "brand" (dict "@type" "Brand" "name" $p.name) "offers" (dict "@type" "AggregateOffer" "priceCurrency" "USD" "lowPrice" (printf "%.2f" $a.minPrice) "highPrice" (printf "%.2f" $a.maxPrice) "offerCount" $totalPlans))
+        (dict "@type" "Review" "itemReviewed" (dict "@type" "Organization" "name" $p.name) "reviewRating" (dict "@type" "Rating" "ratingValue" (printf "%.1f" $score) "bestRating" "10") "author" (dict "@type" "Organization" "name" "eSIM Sift") "reviewBody" (printf "Computed from our live price database: %s is the cheapest provider in %d of %d destinations and best value in %d." $p.name $a.cheapest $a.countries $a.bestValue))
+  -}}
+  {{- with $p.info -}}
+    {{- $same := slice -}}
+    {{- with .website }}{{- $same = $same | append . -}}{{- end -}}
+    {{- with .app_android }}{{- $same = $same | append . -}}{{- end -}}
+    {{- with .app_ios }}{{- $same = $same | append . -}}{{- end -}}
+    {{- $org := dict "@type" "Organization" "name" $p.name -}}
+    {{- with .website }}{{- $org = merge $org (dict "url" .) -}}{{- end -}}
+    {{- if gt (len $same) 0 }}{{- $org = merge $org (dict "sameAs" $same) -}}{{- end -}}
+    {{- $graph = $graph | append $org -}}
+  {{- end -}}
+  {{- $graph = $graph | append (dict "@type" "FAQPage" "mainEntity" $faqEntities) -}}
+  <script type="application/ld+json">
+    {{ jsonify (dict "indent" "  ") (dict
+      "@context" "https://schema.org"
+      "@graph" $graph
+    ) | safeJS }}
+  </script>
+
+  {{/* ── ③ 折扣码 ── */}}
+  {{ with $p.promo_code }}
+  <section class="mt-10">
+    <div class="relative overflow-hidden rounded-2xl border-2 border-dashed border-brand-300 bg-brand-50/60 px-6 py-5 md:px-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <p class="eyebrow">{{ $p.name }} promo code</p>
+          <p class="mt-1.5 text-lg font-bold text-ink-950">{{ $p.promo_label }} — code
+            <code class="ml-1 rounded-lg border border-brand-400 bg-white px-2.5 py-1 font-mono text-base tracking-widest text-brand-800">{{ . }}</code>
+          </p>
+          <p class="mt-1.5 text-xs text-ink-400">Expires {{ time.Format "Jan 2, 2006" $p.promo_expires }}. See all <a href="/esim-deals/" class="font-semibold text-brand-700 hover:underline">eSIM deals</a>.</p>
+        </div>
+        {{ partial "cta-out.html" (dict "target" $key "label" (printf "Use code at %s" $p.name) "class" "btn-primary text-xs" "campaign" (printf "prov-%s" $key) "page" $.RelPermalink) }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── ③b 运作方式 + 公司档案（对标竞品站品牌页的信息增量）── */}}
+  <section class="mt-12" aria-labelledby="howworks">
+    <p class="eyebrow">The mechanics</p>
+    <h2 id="howworks" class="mt-2 text-2xl font-bold md:text-3xl">How {{ $p.name }} works</h2>
+    <div class="mt-6 grid items-start gap-4 lg:grid-cols-[1.5fr_1fr]">
+      <div class="card p-6">
+        {{ if eq $p.type "app" }}
+        <ol class="space-y-4">
+          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">1</span><div><p class="font-semibold text-ink-950">Install the app and buy in-app</p><p class="mt-1 text-sm leading-relaxed text-ink-600">Pick your destination and plan inside the app — checkout, eSIM and top-ups all live in one place, no email vouchers.</p></div></li>
+          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">2</span><div><p class="font-semibold text-ink-950">One tap installs the eSIM</p><p class="mt-1 text-sm leading-relaxed text-ink-600">The app writes the eSIM profile directly — no QR-code juggling, and it can switch host networks automatically where {{ $p.name }} holds multiple agreements.</p></div></li>
+          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">3</span><div><p class="font-semibold text-ink-950">Data starts when you land</p><p class="mt-1 text-sm leading-relaxed text-ink-600">The plan activates per its validity window; if you run low, buy a top-up in the app and keep the same eSIM.</p></div></li>
+        </ol>
+        {{ else }}
+        <ol class="space-y-4">
+          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">1</span><div><p class="font-semibold text-ink-950">Buy on the website</p><p class="mt-1 text-sm leading-relaxed text-ink-600">Choose the country package and pay online — the eSIM arrives by email within minutes, before you travel.</p></div></li>
+          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">2</span><div><p class="font-semibold text-ink-950">Scan the QR code</p><p class="mt-1 text-sm leading-relaxed text-ink-600">Settings → Cellular → Add eSIM (iOS) or the equivalent on Android — the profile downloads and sits dormant until the validity window starts.</p></div></li>
+          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">3</span><div><p class="font-semibold text-ink-950">It activates on arrival</p><p class="mt-1 text-sm leading-relaxed text-ink-600">The line registers on the local partner network when you land. Need more data later? Buy a new package and install it the same way.</p></div></li>
+        </ol>
+        {{ end }}
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">Company snapshot</h3>
+        <dl class="mt-4 space-y-2.5 text-sm">
+          <div class="flex justify-between gap-3"><dt class="text-ink-400">Founded</dt><dd class="font-medium text-ink-800 tnum">{{ $p.founded }}</dd></div>
+          {{ with $p.info }}
+          {{ $info := . }}
+          {{ with .hq }}<div class="flex justify-between gap-3"><dt class="text-ink-400">Headquarters</dt><dd class="text-right font-medium text-ink-800">{{ . }}{{ with $info.legal }} <span class="block text-xs text-ink-400">{{ . }}</span>{{ end }}</dd></div>{{ end }}
+          {{ end }}
+          <div class="flex justify-between gap-3"><dt class="text-ink-400">Model</dt><dd class="font-medium text-ink-800">{{ if eq $p.type "app" }}App-based{{ else }}Marketplace{{ end }}</dd></div>
+          <div class="flex justify-between gap-3"><dt class="text-ink-400">Destinations tracked</dt><dd class="font-medium text-ink-800 tnum">{{ $a.countries }}</dd></div>
+          <div class="flex justify-between gap-3"><dt class="text-ink-400">Plans tracked</dt><dd class="font-medium text-ink-800 tnum">{{ $totalPlans }}</dd></div>
+          <div class="flex justify-between gap-3"><dt class="text-ink-400">Price range</dt><dd class="font-medium text-ink-800 tnum">${{ printf "%.2f" $a.minPrice }} – ${{ printf "%.2f" $a.maxPrice }}</dd></div>
+          <div class="flex justify-between gap-3"><dt class="text-ink-400">Relationship</dt><dd class="font-medium text-ink-800">{{ if $p.sponsored }}Sponsored partner{{ else }}Our own brand{{ end }}</dd></div>
+        </dl>
+        {{ with $p.info }}
+        {{ if or .app_android .app_ios .website }}
+        <div class="mt-4 flex flex-wrap gap-2 border-t border-ink-100 pt-3">
+          {{ with .website }}<a href="{{ . }}" target="_blank" rel="{{ if $p.sponsored }}sponsored nofollow {{ end }}noopener" class="badge bg-ink-50 text-ink-600 transition-colors hover:bg-ink-100 hover:text-ink-800">Official site ↗</a>{{ end }}
+          {{ with .app_android }}<a href="{{ . }}" target="_blank" rel="noopener" class="badge bg-ink-50 text-ink-600 transition-colors hover:bg-ink-100 hover:text-ink-800">Google Play ↗</a>{{ end }}
+          {{ with .app_ios }}<a href="{{ . }}" target="_blank" rel="noopener" class="badge bg-ink-50 text-ink-600 transition-colors hover:bg-ink-100 hover:text-ink-800">App Store ↗</a>{{ end }}
+        </div>
+        {{ end }}
+        {{ end }}
+        <p class="mt-4 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">Rankings and "cheapest" badges on this site are computed by price alone — see our <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  {{/* ── ③c 客服 & 退款（info 子表驱动；缺失则整块隐藏）── */}}
+  {{ with $p.info }}
+  <section class="mt-12" aria-labelledby="support">
+    <p class="eyebrow">Support & refunds</p>
+    <h2 id="support" class="mt-2 text-2xl font-bold md:text-3xl">Getting help from {{ $p.name }}</h2>
+    <div class="mt-6 grid items-start gap-4 lg:grid-cols-2">
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">Customer support</h3>
+        <dl class="mt-4 space-y-2.5 text-sm">
+          {{ with .support }}<div class="flex justify-between gap-3"><dt class="shrink-0 text-ink-400">Channels</dt><dd class="text-right font-medium text-ink-800">{{ . }}</dd></div>{{ end }}
+          {{ with .support_email }}<div class="flex justify-between gap-3"><dt class="shrink-0 text-ink-400">Email</dt><dd class="text-right"><a href="mailto:{{ . }}" class="font-medium text-brand-700 hover:underline break-all">{{ . }}</a></dd></div>{{ end }}
+          {{ with .response_time }}<div class="flex justify-between gap-3"><dt class="shrink-0 text-ink-400">Response time</dt><dd class="text-right font-medium text-ink-800">{{ . }}</dd></div>{{ end }}
+        </dl>
+        <p class="mt-4 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">As published on {{ $p.name }}'s official site — channels and response times can change; the app is usually the fastest route.</p>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">The refund policy in short</h3>
+        {{ with .refund }}<p class="mt-4 text-sm leading-relaxed text-ink-700">{{ . }}</p>{{ end }}
+        <p class="mt-3 text-xs leading-relaxed text-ink-400">Summarised from {{ $p.name }}'s published refund terms. Full conditions live on the provider's own policy page — read them before relying on a refund.</p>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── ④ 价格胜负（全计算）：逐国 {B}最低价 vs 全场次优价 —— 赢=省%、输=溢价%，各取 Top5 ── */}}
+  {{ $winsL := slice }}{{ $lossL := slice }}
+  {{ range $cov }}
+    {{ $ciso := .iso }}
+    {{ $s := partialCached "country-stats.html" $ciso $ciso }}
+    {{ $fieldMin := 999999.0 }}
+    {{ range $s.rows }}{{ if and (ne .key $key) (lt (float .price) $fieldMin) }}{{ $fieldMin = float .price }}{{ end }}{{ end }}
+    {{ if and (gt .min 0.0) (lt $fieldMin 999999.0) }}
+      {{ if lt (float .min) $fieldMin }}
+        {{ $savePct := mul 100.0 (div (sub $fieldMin (float .min)) $fieldMin) }}
+        {{ $winsL = $winsL | append (dict "name" .name "url" .url "flag" .flag "mine" .min "next" $fieldMin "pct" $savePct "rank" (printf "%06.2f|%s" $savePct .name)) }}
+      {{ else if gt (float .min) $fieldMin }}
+        {{ $premPct := mul 100.0 (div (sub (float .min) $fieldMin) $fieldMin) }}
+        {{ $lossL = $lossL | append (dict "name" .name "url" .url "flag" .flag "mine" .min "best" $fieldMin "pct" $premPct "rank" (printf "%06.2f|%s" $premPct .name)) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $winsTop := sort $winsL "rank" "desc" }}
+  {{ $lossTop := sort $lossL "rank" "desc" }}
+  {{ $sumW := 0.0 }}{{ range $winsL }}{{ $sumW = add $sumW .pct }}{{ end }}
+  {{ $sumL := 0.0 }}{{ range $lossL }}{{ $sumL = add $sumL .pct }}{{ end }}
+  {{ $avgW := 0.0 }}{{ if gt (len $winsL) 0 }}{{ $avgW = div $sumW (float (len $winsL)) }}{{ end }}
+  {{ $medL := 0.0 }}{{ if gt (len $lossL) 0 }}{{ $medL = (index (sort $lossL "pct" "asc") (div (len $lossL) 2)).pct }}{{ end }}
+  {{ $minsSorted := sort $cov "min" "asc" }}
+  {{ $medEntry := dict }}{{ if gt (len $minsSorted) 0 }}{{ $medEntry = index $minsSorted (div (sub (len $minsSorted) 1) 2) }}{{ end }}
+
+  <section class="mt-12" aria-labelledby="tradeoffs">
+    <p class="eyebrow">Price record</p>
+    <h2 id="tradeoffs" class="mt-2 text-2xl font-bold md:text-3xl">Where does {{ $p.name }} win on price and where does it lose</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">We re-priced {{ $p.name }} against every other provider in each of its {{ $a.countries }} countries. It is the strictly cheapest option in {{ len $winsL }} of them{{ if gt (len $winsL) 0 }} — undercutting the next-best brand by {{ printf "%.0f" $avgW }}% on average where it wins{{ end }}. In the typical country where it loses{{ if gt $medL 200.0 }}, its entry plan costs about {{ printf "%.0f" (add (div $medL 100.0) 1.0) }}&times; that country's cheapest entry{{ else }}, its entry plan costs {{ printf "%.0f" $medL }}% more than that country's best offer{{ end }}. Every row below links to the full country table.</p>
+    <div class="mt-6 grid gap-4 lg:grid-cols-2">
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-brand-700">Where {{ $p.name }} is the cheapest you can buy</h3>
+        {{ if gt (len $winsTop) 0 }}
+        <ol class="mt-4 space-y-2">
+          {{ range first 5 $winsTop }}
+          <li>
+            <a href="{{ .url }}" class="group flex items-center gap-2.5 rounded-lg px-2 py-1.5 -mx-2 transition-colors hover:bg-brand-50/60">
+              <img src="{{ .flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">
+              <span class="flex-1 text-sm font-medium text-ink-800 group-hover:text-brand-800">{{ .name }}</span>
+              <span class="text-xs text-ink-400 tnum">${{ printf "%.2f" .mine }} vs ${{ printf "%.2f" .next }}</span>
+              <span class="badge bg-emerald-50 text-emerald-600 tnum">&minus;{{ printf "%.0f" .pct }}%</span>
+            </a>
+          </li>
+          {{ end }}
+        </ol>
+        <p class="mt-4 text-xs text-ink-400">Entry-plan price vs the next-cheapest provider in the same country. Every winner above also carries a <em>cheapest</em> badge in the coverage list below.</p>
+        {{ else }}
+        <p class="mt-4 text-sm leading-relaxed text-ink-600">{{ $p.name }} is not the strictly cheapest provider in any of the {{ $a.countries }} countries we track — it competes on plan design instead of entry price. Compare it brand-by-brand in the <a href="/compare/matchups/" class="font-semibold text-brand-700 hover:underline">provider matchups</a> before buying.</p>
+        {{ end }}
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-accent-700">Where another brand beats {{ $p.name }} on price</h3>
+        {{ if gt (len $lossTop) 0 }}
+        <ol class="mt-4 space-y-2">
+          {{ range first 5 $lossTop }}
+          <li>
+            <a href="{{ .url }}" class="group flex items-center gap-2.5 rounded-lg px-2 py-1.5 -mx-2 transition-colors hover:bg-brand-50/60">
+              <img src="{{ .flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">
+              <span class="flex-1 text-sm font-medium text-ink-800 group-hover:text-brand-800">{{ .name }}</span>
+              <span class="text-xs text-ink-400 tnum">${{ printf "%.2f" .mine }} vs ${{ printf "%.2f" .best }}</span>
+              {{ if gt .pct 200.0 }}<span class="badge bg-accent-50 text-accent-700 tnum">{{ printf "%.0f" (add (div .pct 100.0) 1.0) }}&times;</span>{{ else }}<span class="badge bg-accent-50 text-accent-700 tnum">+{{ printf "%.0f" .pct }}%</span>{{ end }}
+            </a>
+          </li>
+          {{ end }}
+        </ol>
+        <p class="mt-4 text-xs text-ink-400">{{ $p.name }}'s entry price vs the cheapest provider in that country. {{ if gt (len $lossL) 5 }}It pays to compare in all {{ len $lossL }} of these markets{{ else }}It pays to compare in these markets{{ end }} — open the country table and check who wins before you buy.</p>
+        {{ if eq $metered 0 }}<p class="mt-2 text-xs text-ink-400">Fair-comparison note: {{ $p.name }} sells unlimited day-passes only, so its "entry price" is a full day of data while the rival floors above are small metered buckets.</p>{{ end }}
+        {{ else }}
+        <p class="mt-4 text-sm leading-relaxed text-ink-600">{{ $p.name }} is never the most expensive provider in the countries we track — a remarkably consistent price floor across its whole catalogue.</p>
+        {{ end }}
+      </div>
+    </div>
+    <div class="mt-4 grid gap-4 md:grid-cols-3">
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-900">Plan shape</h3>
+        <p class="mt-4 text-sm leading-relaxed text-ink-600">
+          {{ if and (gt $metered 0) (gt $unlim 0) }}Sells both metered buckets ({{ $metered }} plans) and unlimited plans ({{ $unlim }}){{ else if $unlim }}Unlimited-only: {{ $unlim }} pay-by-the-day plans, no budget tier{{ else }}Metered only: {{ $metered }} fixed-GB plans{{ end }} across {{ $a.countries }} destinations.
+        </p>
+        {{ with $medEntry.min }}<p class="mt-3 text-sm text-ink-600">Typical entry price across its markets: <strong class="text-ink-950 tnum">${{ printf "%.2f" . }}</strong>.</p>{{ end }}
+        {{ if gt $a.minPerGB 0.0 }}<p class="mt-1 text-sm text-ink-600">Best value anywhere: <strong class="text-ink-950 tnum">${{ printf "%.2f" $a.minPerGB }}/GB</strong>.</p>{{ end }}
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-brand-700">Strengths</h3>
+        <ul class="mt-4 space-y-2 text-sm text-ink-700">
+          {{ range $p.strengths }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ . }}</li>{{ end }}
+        </ul>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-accent-700">Watch out for</h3>
+        <ul class="mt-4 space-y-2 text-sm text-ink-600">
+          {{ range $p.weaknesses }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ . }}</li>{{ end }}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {{/* ── ⑤ 覆盖（按区域分组，替代“国家超链接堆砌”）── */}}
+  <section class="mt-12" aria-labelledby="coverage">
+    <p class="eyebrow">Destinations & coverage</p>
+    <h2 id="coverage" class="mt-2 text-2xl font-bold md:text-3xl">Where you can buy {{ $p.name }} eSIMs</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">Grouped by region, with each country's cheapest {{ $p.name }} plan. Countries marked <span class="badge bg-emerald-50 text-emerald-600">cheapest</span> are where {{ $p.name }} is the lowest-price provider we track.</p>
+    {{ with $p.info }}{{ if and .destinations (gt (int .destinations) $a.countries) }}
+    <p class="mt-3 max-w-2xl rounded-xl bg-ink-50 px-4 py-3 text-sm leading-relaxed text-ink-500">
+      <strong class="font-semibold text-ink-700">A note on coverage:</strong> we verify and rank {{ $p.name }} in the {{ $a.countries }} destinations listed below. {{ $p.name }} itself sells eSIMs for roughly {{ (int .destinations) }}+ destinations — the list here is our tracked scope, not the limit of what {{ $p.name }} offers.
+    </p>
+    {{ end }}{{ end }}
+    <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {{ range $regionOrder }}
+        {{ $region := . }}
+        {{ $rc := where $cov "region" $region }}
+        {{ if gt (len $rc) 0 }}
+        <div class="card p-5">
+          <h3 class="flex items-center justify-between font-display text-base font-bold text-ink-950">
+            {{ $region }}
+            <span class="badge bg-ink-50 text-ink-500 tnum">{{ len $rc }}</span>
+          </h3>
+          <ul class="mt-3 space-y-1">
+            {{ range $rc }}
+            <li>
+              <a href="{{ .url }}" class="group flex items-center gap-2 rounded-lg px-2 py-1.5 -mx-2 transition-colors hover:bg-brand-50/60">
+                <img src="{{ .flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">
+                <span class="flex-1 text-sm font-medium text-ink-800 group-hover:text-brand-800">{{ .name }}</span>
+                {{ if gt .min 0.0 }}<span class="text-xs text-ink-400 tnum">from ${{ printf "%.2f" .min }}</span>{{ end }}
+                {{ if .cheapest }}<span class="badge bg-emerald-50 text-emerald-600">cheapest</span>{{ end }}
+              </a>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* ── ⑤b 哪里最便宜 / 最贵（入口价排序，选购增益）── */}}
+  {{ $byCheap := sort $cov "min" "asc" }}
+  {{ $byDear := sort $cov "min" "desc" }}
+  {{ if gt (len $byCheap) 3 }}
+  <section class="mt-8" aria-labelledby="spread">
+    <h2 id="spread" class="text-2xl font-bold">Where {{ $p.name }} plans cost the least and the most</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">Same provider, very different entry prices by country. If your destination sits in the right-hand column, compare against the full table before buying.</p>
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-brand-700">Lowest entry prices</h3>
+        <ul class="mt-4 space-y-2">
+          {{ range first 3 $byCheap }}
+          <li>
+            <a href="{{ .url }}" class="group flex items-center gap-2.5 rounded-lg px-2 py-1.5 -mx-2 transition-colors hover:bg-brand-50/60">
+              <img src="{{ .flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">
+              <span class="flex-1 text-sm font-medium text-ink-800 group-hover:text-brand-800">{{ .name }}</span>
+              <span class="font-display text-sm font-bold text-brand-700 tnum">from ${{ printf "%.2f" .min }}</span>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-accent-700">Highest entry prices</h3>
+        <ul class="mt-4 space-y-2">
+          {{ range first 3 $byDear }}
+          <li>
+            <a href="{{ .url }}" class="group flex items-center gap-2.5 rounded-lg px-2 py-1.5 -mx-2 transition-colors hover:bg-brand-50/60">
+              <img src="{{ .flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">
+              <span class="flex-1 text-sm font-medium text-ink-800 group-hover:text-brand-800">{{ .name }}</span>
+              <span class="font-display text-sm font-bold text-accent-700 tnum">from ${{ printf "%.2f" .min }}</span>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── ⑥ 对比对手（Alternatives）── */}}
+  <section class="mt-12" aria-labelledby="alternatives">
+    <p class="eyebrow">Alternatives</p>
+    <h2 id="alternatives" class="mt-2 text-2xl font-bold md:text-3xl">{{ $p.name }} vs the field</h2>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {{ range $k, $v := $agg }}
+        {{ if ne $k $key }}
+          {{ $op := index hugo.Data.providers $k }}
+          {{ $vsPair := sort (slice $key $k) }}
+          <div class="card card-hover p-5">
+            <a href="{{ printf "/esim-providers/%s/" $k }}" class="group flex items-center gap-3">
+              {{ partial "prov-logo.html" (dict "p" $op "key" $k "class" "h-10 w-10" "text" "text-sm") }}
+              <div>
+                <p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ $op.name }}</p>
+                {{ if gt $v.minPrice 0.0 }}<p class="text-xs text-ink-400 tnum">from ${{ printf "%.2f" $v.minPrice }}</p>{{ end }}
+              </div>
+            </a>
+            <p class="mt-3 text-xs leading-relaxed text-ink-500">Cheapest in <strong class="text-ink-700 tnum">{{ $v.cheapest }}</strong> of {{ $v.countries }} countries.</p>
+            <div class="mt-3 flex items-center justify-between gap-2">
+              <a href="{{ printf "/compare/%s-vs-%s/" (index $vsPair 0) (index $vsPair 1) }}" class="text-xs font-semibold text-brand-700 hover:underline">{{ $p.name }} vs {{ $op.name }} →</a>
+              <a href="{{ printf "/esim-providers/%s/" $k }}" class="text-xs font-medium text-ink-400 transition-colors hover:text-ink-700">{{ $op.name }} review</a>
+            </div>
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* ── ⑦ FAQ ── */}}
+  <section class="mt-12" aria-labelledby="faq">
+    <p class="eyebrow">FAQ</p>
+    {{- $faqH2 := printf "Is %s the right eSIM for your trip" $p.name -}}
+    {{- if eq $v 1 -}}{{- $faqH2 = printf "What should you know before buying a %s eSIM" $p.name -}}
+    {{- else if eq $v 2 -}}{{- $faqH2 = printf "What do travelers ask about the %s eSIM" $p.name -}}{{- end -}}
+    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">{{ $faqH2 }}</h2>
+    <div class="mt-5 space-y-3">
+      {{ range $faqList }}
+      <details class="faq-item">
+        <summary>{{ .q }}<span class="faq-icon" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></summary>
+        <p class="faq-body">{{ .a | safeHTML }}</p>
+      </details>
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* ── ⑧ Trust 尾 ── */}}
+  <section class="mt-12">
+    <div class="relative overflow-hidden rounded-3xl bg-ink-gradient px-7 py-8 text-ink-300 md:px-10">
+      <div class="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
+      <p class="font-display text-lg font-bold text-white">{{ $p.name }} vs {{ $rival.name }}? We computed the numbers.</p>
+      <p class="mt-2 max-w-2xl text-sm leading-relaxed">
+        Every price, badge and ranking on this page is a literal sort position from our price database — no editorial pay-to-rank. How we collect and check data is in our <a href="/methodology/" class="font-semibold text-brand-300 hover:underline">methodology</a>; how we make money in our <a href="/disclosure/" class="font-semibold text-brand-300 hover:underline">disclosure</a>.
+      </p>
+    </div>
+  </section>
+</div>
+{{ end }}{{/* /价格数据守卫 */}}
+{{ end }}

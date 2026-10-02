@@ -1,0 +1,13 @@
+---
+title: "Singapore eSIM"
+iso: SG
+weight: 8
+seo:
+  description: "eSIM Sift compares every Singapore eSIM: 154 real plans from 8 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+---
+
+Prices for Singapore cluster into two distinct camps. Metered plans — Roami down to $2.99 for 1GB — charge for a data bucket, while Holafly sells a single shape: unlimited data billed at roughly $4.03/day. On pure $/GB, Roami wins outright: 50GB / 30 Days works out to $0.82/GB, the best rate of the 51 plans we track.
+
+The crossover point decides it. At $4.03/day, two weeks of Holafly runs $42+, while a 20GB bucket from the same table covers a heavy two-week trip for less. Light users — maps, messaging, the odd lookup — can stop at a 3-5GB bucket and stay in single digits. Rule of thumb for Singapore: under a week and Wi-Fi at the hotel, buy the smallest bucket; remote work or hotspot sharing pushes every metered plan toward the unlimited tier.
+
+Network-wise, Singapore runs on Singtel, StarHub, M1 — coverage differences between them matter more than price differences between providers. Tourist SIMs are strong value but physical-only at Changi counters; eSIMs win on convenience for 1 AM arrivals. Check the fair-use column before buying any 'unlimited' label, and re-check this page before your trip: prices move.

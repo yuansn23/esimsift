@@ -1,0 +1,310 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n30"
+ },
+ "plans": [
+  {
+   "name": "Change - 1 GB",
+   "data": "1GB",
+   "validity": "3 Days",
+   "price": "$4.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change+ - 1 GB",
+   "data": "1GB",
+   "validity": "3 Days",
+   "price": "$6.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Change - 3 GB",
+   "data": "3GB",
+   "validity": "3 Days",
+   "price": "$8.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change - 3 GB",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$9.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change+ - 3 GB",
+   "data": "3GB",
+   "validity": "3 Days",
+   "price": "$11.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Change - Unlimited",
+   "data": "5GB/day",
+   "validity": "3 Days",
+   "price": "$11.50",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change+ - 3 GB",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$12.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Change - 5 GB",
+   "data": "5GB",
+   "validity": "7 Days",
+   "price": "$12.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change - 5 GB",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$13.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change - 5 GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$13.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change+ - 5 GB",
+   "data": "5GB",
+   "validity": "7 Days",
+   "price": "$17.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Change+ - 5 GB",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$18.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Change - Unlimited",
+   "data": "5GB/day",
+   "validity": "5 Days",
+   "price": "$18.50",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change+ - 5 GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$19.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Change - 10 GB",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$21.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change - 10 GB",
+   "data": "10GB",
+   "validity": "15 Days",
+   "price": "$22.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change - 10 GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$22.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change - Unlimited",
+   "data": "5GB/day",
+   "validity": "7 Days",
+   "price": "$25.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change+ - 10 GB",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$28.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Change+ - 10 GB",
+   "data": "10GB",
+   "validity": "15 Days",
+   "price": "$29.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Change+ - 10 GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$30.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Change - Unlimited",
+   "data": "5GB/day",
+   "validity": "10 Days",
+   "price": "$34.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change - 20 GB",
+   "data": "20GB",
+   "validity": "15 Days",
+   "price": "$36.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change - 20 GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$36.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change - 50 GB",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$42.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change+ - 20 GB",
+   "data": "20GB",
+   "validity": "15 Days",
+   "price": "$45.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Change - Unlimited",
+   "data": "5GB/day",
+   "validity": "15 Days",
+   "price": "$46.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Change+ - 20 GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$47.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Change+ - 50 GB",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$59.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+1)"
+   ]
+  },
+  {
+   "name": "Change - Unlimited",
+   "data": "5GB/day",
+   "validity": "30 Days",
+   "price": "$68.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Airalo Travel eSIM for USA | Data Plans & Reviews",
+  "h1": "Airalo eSIM Data Plans for United States of America",
+  "chips": [
+   "All plans\n66",
+   "Single-country\n30",
+   "Multiple-country\n36"
+  ],
+  "official_site": null,
+  "body_head": "Single\nMulti\nWrite a review\nBack to United States of America eSIM Plans\nAiralo\n9 reviews for United States of America\n\nSay 'Alo!' to simple & affordable mobile data freedom during your travels. Airalo provides data in 190+ countries & regions.\n\nVerified\nWeb checkout\nApple Pay\nGoogle Pay\nOfficial Website\n\nPROMO CODE\n\nGET 10% OFF\nUnlimited\nESIMDB10\nCopy\nTerms apply.\n\nPROMO CODE\n\nGET 15% OFF\nFor new user\nESIMDB15\nCopy\nTerms apply.\nAiralo eSIM Data Plans for United States of America\nAll plans\n66\nSingle-country\n30\nMultiple-country\n36\nSort:\nCheapest\nBest Price/GB\nMost Data\nValidity\nApply Promo Codes\nPLAN NAME\nDATA\nVALIDITY\nPRICE/GB\nPRICE\nChange - 1 GB\n1GB\n3 Days\n$4.00\n$4.00/GB\n15% OFF\n5G\nView Details\nChange+ - 1 GB\n1GB\n3 Days\n$6.00\n$6.00/GB\n15% OFF\n5G\nCall/SMS\n(+1)\nView Details\nChange - 3 GB\n3GB\n3 Days\n$8.50\n$2.83/GB\n15% OFF\n5G\nView Details\nChange - 3 GB\n3GB\n7 Days\n$9.00\n$3.00/GB\n15% OFF\n5G\nVi"
+ },
+ "slug": "united-states",
+ "url": "https://esimdb.com/usa/airalo",
+ "status": 200
+}

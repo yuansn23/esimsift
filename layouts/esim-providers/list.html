@@ -1,0 +1,73 @@
+{{ define "main" }}
+{{/* 品牌总览 —— 数据驱动：覆盖/最低价/最便宜命中数由 provider-agg 聚合，零手工维护 */}}
+{{ $agg := partial "provider-agg.html" . }}
+<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+  {{ partial "breadcrumbs.html" . }}
+
+  <header class="mt-6 max-w-3xl">
+    <p class="eyebrow">Providers</p>
+    <h1 class="mt-2 text-3xl font-extrabold tracking-tight md:text-4xl">eSIM providers we track</h1>
+    <p class="mt-4 text-lg leading-relaxed text-ink-600">
+      The same ruler for everyone: coverage, entry price and honest trade-offs for every provider in our database. Tap any brand for its full computed review — prices re-checked on a fixed schedule.
+    </p>
+  </header>
+
+  <div class="mt-10 grid gap-4 md:grid-cols-2">
+    {{ range $key, $p := hugo.Data.providers }}
+      {{ $a := index $agg $key }}
+      <div class="card card-hover scroll-mt-24 p-6" id="{{ $key }}">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3.5">
+            {{ partial "prov-logo.html" (dict "p" $p "key" $key "class" "h-11 w-11" "text" "text-base") }}
+            <div>
+              <h2 class="font-display text-lg font-bold"><a href="{{ printf "/esim-providers/%s/" $key }}" class="transition-colors hover:text-brand-700">{{ $p.name }}</a></h2>
+              <p class="text-xs text-ink-400">{{ $p.tagline }}</p>
+            </div>
+          </div>
+          {{ if $a }}
+            <span class="badge bg-ink-50 text-ink-600 tnum">{{ $a.countries }} {{ if eq $a.countries 1 }}country{{ else }}countries{{ end }} · from ${{ printf "%.2f" $a.minPrice }}</span>
+          {{ end }}
+        </div>
+        {{ with $p.promo_code }}
+          <div class="mt-4 flex flex-wrap items-center gap-2 rounded-xl border border-dashed border-brand-300 bg-brand-50/50 px-3.5 py-2.5">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Code</span>
+            <code class="font-mono text-sm font-bold tracking-wider text-brand-800">{{ . }}</code>
+            <span class="text-xs text-ink-500">{{ $p.promo_label }}</span>
+            <a href="/esim-deals/" class="ml-auto text-xs font-semibold text-brand-700 hover:underline">All deals →</a>
+          </div>
+        {{ end }}
+        {{ if $a }}{{ if gt $a.minPerGB 0.0 }}
+          <p class="mt-4 text-sm text-ink-600">Best $/GB in our database: <strong class="text-ink-950 tnum">${{ printf "%.2f" $a.minPerGB }}/GB</strong></p>
+        {{ end }}{{ end }}
+        <ul class="mt-4 space-y-1.5 text-sm text-ink-700">
+          {{ range first 3 $p.strengths }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ . }}</li>{{ end }}
+        </ul>
+        <ul class="mt-2.5 space-y-1.5 text-sm text-ink-500">
+          {{ range first 2 $p.weaknesses }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ . }}</li>{{ end }}
+        </ul>
+        {{ if $a }}
+          <div class="mt-5 rounded-xl bg-ink-50/60 p-4">
+            <p class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Coverage at a glance</p>
+            <p class="mt-1.5 text-sm leading-relaxed text-ink-600">
+              Cheapest in <strong class="text-ink-950 tnum">{{ $a.cheapest }}</strong> of {{ $a.countries }} countries · best $/GB in <strong class="text-ink-950 tnum">{{ $a.bestValue }}</strong>.
+            </p>
+            <a href="{{ printf "/esim-providers/%s/" $key }}" class="mt-2.5 inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:underline">
+              Read the full {{ $p.name }} review <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+
+  <section class="mt-12">
+    <div class="relative overflow-hidden rounded-3xl bg-ink-gradient px-7 py-8 text-ink-300 md:px-10">
+      <div class="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
+      <p class="font-display text-lg font-bold text-white">No pay-to-win.</p>
+      <p class="mt-2 max-w-2xl text-sm leading-relaxed">
+        Provider order on this page follows our database key order, not ad spend. Rankings inside country pages are literal sort positions — see the <a href="/methodology/" class="font-semibold text-brand-300 hover:underline">methodology</a>.
+      </p>
+    </div>
+  </section>
+</div>
+{{ end }}

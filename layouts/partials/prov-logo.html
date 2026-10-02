@@ -1,0 +1,21 @@
+{{/*
+  品牌徽标 —— 占位符方案
+  static/img/providers/<key>.png 存在 → 渲染真 logo（.prov-logo）
+  不存在 → monogram 徽标（.prov-avatar，providers.toml color/initials 驱动）
+  用法：{{ partial "prov-logo.html" (dict "p" $p "key" $key "class" "h-9 w-9" "text" "text-sm") }}
+  class 默认 h-9 w-9；text 默认 text-sm（字号随尺寸调整）
+*/}}
+{{ $class := .class | default "h-9 w-9" }}
+{{ $text := .text | default "text-sm" }}
+{{/* 扩展名探测：先 .png 后 .webp，都没有才退 monogram */}}
+{{ $ext := "" }}
+{{ if fileExists (printf "static/img/providers/%s.png" .key) }}{{ $ext = "png" }}
+{{ else if fileExists (printf "static/img/providers/%s.webp" .key) }}{{ $ext = "webp" }}
+{{ end }}
+{{ if $ext }}
+  <span class="prov-logo {{ $class }}">
+    <img src="{{ printf "/img/providers/%s.%s" .key $ext }}" alt="{{ .p.name }} logo" width="128" height="128" loading="lazy" decoding="async">
+  </span>
+{{ else }}
+  <span class="prov-avatar {{ $class }} {{ $text }}" style="background: {{ .p.color }}" aria-hidden="true">{{ .p.initials }}</span>
+{{ end }}

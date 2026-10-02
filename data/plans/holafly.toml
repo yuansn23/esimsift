@@ -1,0 +1,2587 @@
+# Scraped from holafly.com official PDP (esim.holafly.com/esim-{country}/, USD price table) on 2026-09-30.
+# Raw capture: scripts/scrape/raw/ (per-country JSON incl. badges & page meta).
+# networks: not exposed on plan cards - left empty until verified per brand page.
+
+[AR]
+checked = "2026-09-30"
+networks = []
+
+[[AR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 35.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 39.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 89.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[AU]
+checked = "2026-09-30"
+networks = []
+
+[[AU.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AU.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AU.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AU.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AU.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AU.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[AT]
+checked = "2026-09-30"
+networks = []
+
+[[AT.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AT.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AT.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AT.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AT.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AT.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[BE]
+checked = "2026-09-30"
+networks = []
+
+[[BE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[BE.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[BE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[BE.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[BE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[BE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[BR]
+checked = "2026-09-30"
+networks = []
+
+[[BR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[BR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[BR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[BR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[BR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[BR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 95.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[CA]
+checked = "2026-09-30"
+networks = []
+
+[[CA.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CA.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CA.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 39.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CA.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 95.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[CN]
+checked = "2026-09-30"
+networks = []
+
+[[CN.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CN.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CN.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CN.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CN.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CN.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[CO]
+checked = "2026-09-30"
+networks = []
+
+[[CO.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CO.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CO.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CO.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CO.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CO.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 95.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[CR]
+checked = "2026-09-30"
+networks = []
+
+[[CR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 39.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 95.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[HR]
+checked = "2026-09-30"
+networks = []
+
+[[HR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[HR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[HR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[HR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[HR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[HR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[CZ]
+checked = "2026-09-30"
+networks = []
+
+[[CZ.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CZ.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CZ.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CZ.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CZ.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CZ.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[EG]
+checked = "2026-09-30"
+networks = []
+
+[[EG.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[EG.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[EG.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[EG.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 39.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[EG.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[EG.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 95.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[FJ]
+checked = "2026-09-30"
+networks = []
+
+[[FJ.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 27.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[FJ.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 41.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[FJ.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 53.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[FJ.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 69.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[FJ.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 99.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[FR]
+checked = "2026-09-30"
+networks = []
+
+[[FR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[FR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[FR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[FR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[FR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[FR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[GE]
+checked = "2026-09-30"
+networks = []
+
+[[GE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GE.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GE.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[DE]
+checked = "2026-09-30"
+networks = []
+
+[[DE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[DE.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[DE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[DE.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[DE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[DE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[GR]
+checked = "2026-09-30"
+networks = []
+
+[[GR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[HK]
+checked = "2026-09-30"
+networks = []
+
+[[HK.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[HK.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[HK.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[HK.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[HK.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[HK.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[IS]
+checked = "2026-09-30"
+networks = []
+
+[[IS.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IS.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IS.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IS.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IS.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IS.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[IN]
+checked = "2026-09-30"
+networks = []
+
+[[IN.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IN.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 30.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IN.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 39.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IN.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 46.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IN.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 63.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IN.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 111.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[ID]
+checked = "2026-09-30"
+networks = []
+
+[[ID.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ID.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ID.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ID.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ID.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ID.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[IE]
+checked = "2026-09-30"
+networks = []
+
+[[IE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IE.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IE.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[IL]
+checked = "2026-09-30"
+networks = []
+
+[[IL.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IL.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IL.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IL.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IL.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IL.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[IT]
+checked = "2026-09-30"
+networks = []
+
+[[IT.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IT.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 17.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IT.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 23.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IT.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 32.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IT.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[IT.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[JP]
+checked = "2026-09-30"
+networks = []
+
+[[JP.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[JP.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[JP.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[JP.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[JP.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[JP.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[KE]
+checked = "2026-09-30"
+networks = []
+
+[[KE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[KE.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[KE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[KE.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 39.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[KE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 64.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[KE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 125.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[MO]
+checked = "2026-09-30"
+networks = []
+
+[[MO.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MO.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MO.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MO.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MO.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MO.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[MY]
+checked = "2026-09-30"
+networks = []
+
+[[MY.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MY.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MY.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MY.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MY.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MY.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[MX]
+checked = "2026-09-30"
+networks = []
+
+[[MX.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 10.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MX.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 17.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MX.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 23.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MX.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 31.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MX.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 43.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MX.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[MA]
+checked = "2026-09-30"
+networks = []
+
+[[MA.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 14.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MA.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 23.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 31.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MA.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 41.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 57.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[MA.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 84.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[NL]
+checked = "2026-09-30"
+networks = []
+
+[[NL.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[NL.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[NL.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[NL.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[NL.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[NL.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[NZ]
+checked = "2026-09-30"
+networks = []
+
+[[NZ.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[NZ.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[NZ.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[NZ.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[NZ.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[NZ.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[PE]
+checked = "2026-09-30"
+networks = []
+
+[[PE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 16.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PE.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 25.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 32.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PE.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 35.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 79.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[PH]
+checked = "2026-09-30"
+networks = []
+
+[[PH.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PH.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PH.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PH.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PH.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PH.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[PL]
+checked = "2026-09-30"
+networks = []
+
+[[PL.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PL.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PL.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PL.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PL.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PL.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[PT]
+checked = "2026-09-30"
+networks = []
+
+[[PT.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PT.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PT.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PT.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PT.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[PT.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[QA]
+checked = "2026-09-30"
+networks = []
+
+[[QA.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[QA.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 28.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[QA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[QA.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 39.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[QA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 51.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[QA.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 111.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[SA]
+checked = "2026-09-30"
+networks = []
+
+[[SA.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[SA.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[SA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[SA.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[SA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 57.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[SA.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 107.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[SG]
+checked = "2026-09-30"
+networks = []
+
+[[SG.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[SG.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[SG.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[SG.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[SG.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[SG.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[ZA]
+checked = "2026-09-30"
+networks = []
+
+[[ZA.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ZA.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 30.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ZA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 39.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ZA.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 46.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ZA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 63.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ZA.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 111.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[KR]
+checked = "2026-09-30"
+networks = []
+
+[[KR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[KR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[KR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[KR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[KR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[KR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[ES]
+checked = "2026-09-30"
+networks = []
+
+[[ES.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ES.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 17.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ES.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 23.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ES.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 32.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ES.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 44.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[ES.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[CH]
+checked = "2026-09-30"
+networks = []
+
+[[CH.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CH.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CH.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CH.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CH.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[CH.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[TW]
+checked = "2026-09-30"
+networks = []
+
+[[TW.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TW.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TW.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TW.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TW.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TW.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[TH]
+checked = "2026-09-30"
+networks = []
+
+[[TH.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TH.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TH.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TH.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TH.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TH.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[TR]
+checked = "2026-09-30"
+networks = []
+
+[[TR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TR.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TR.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[TR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[AE]
+checked = "2026-09-30"
+networks = []
+
+[[AE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AE.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AE.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[AE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[GB]
+checked = "2026-09-30"
+networks = []
+
+[[GB.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GB.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GB.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GB.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GB.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[GB.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[US]
+checked = "2026-09-30"
+networks = []
+
+[[US.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[US.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[US.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[US.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[US.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[US.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[VN]
+checked = "2026-09-30"
+networks = []
+
+[[VN.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 11.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[VN.plans]]
+name = "Unlimited / 5 Days"
+gb = 0
+days = 5
+type = "unlimited"
+price = 20.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[VN.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 27.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[VN.plans]]
+name = "Unlimited / 10 Days"
+gb = 0
+days = 10
+type = "unlimited"
+price = 36.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[VN.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 50.50
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."
+
+[[VN.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 73.90
+fup_note = "Always On backup plan: 1GB of data monthly to keep you connected no matter what."

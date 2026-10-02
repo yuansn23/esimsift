@@ -1,0 +1,386 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n37"
+ },
+ "plans": [
+  {
+   "name": "Morocco",
+   "data": "105MB",
+   "validity": "1 Day",
+   "price": "$0.51",
+   "badges": [
+    "20% OFF",
+    "New Users Only"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "1GB",
+   "validity": "30 Days",
+   "price": "$3.40",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "1 Day",
+   "price": "$5.10",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$8.51",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "2 Days",
+   "price": "$10.21",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$11.34",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "3 Days",
+   "price": "$15.31",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "4 Days",
+   "price": "$20.41",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$20.41",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "5 Days",
+   "price": "$25.52",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "6 Days",
+   "price": "$30.62",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$30.62",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "7 Days",
+   "price": "$35.72",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "8 Days",
+   "price": "$37.92",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "9 Days",
+   "price": "$40.12",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "10 Days",
+   "price": "$42.31",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "30GB",
+   "validity": "30 Days",
+   "price": "$44.23",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "11 Days",
+   "price": "$44.51",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "12 Days",
+   "price": "$46.71",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "13 Days",
+   "price": "$48.91",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "14 Days",
+   "price": "$51.10",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "15 Days",
+   "price": "$53.30",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "16 Days",
+   "price": "$56.85",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "17 Days",
+   "price": "$60.41",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "18 Days",
+   "price": "$63.96",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "19 Days",
+   "price": "$67.51",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "20 Days",
+   "price": "$71.07",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "21 Days",
+   "price": "$74.62",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "22 Days",
+   "price": "$78.17",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "23 Days",
+   "price": "$81.73",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "24 Days",
+   "price": "$85.28",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "25 Days",
+   "price": "$88.83",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "26 Days",
+   "price": "$92.39",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "27 Days",
+   "price": "$95.94",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "28 Days",
+   "price": "$99.49",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "29 Days",
+   "price": "$103.05",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "Unlimited",
+   "validity": "30 Days",
+   "price": "$106.60",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Yesim Travel eSIM for Morocco | Data Plans & Reviews",
+  "h1": "Yesim eSIM Data Plans for Morocco",
+  "chips": [
+   "All plans\n49",
+   "Single-country\n37",
+   "Multiple-country\n12"
+  ],
+  "official_site": null,
+  "body_head": "Single\nMulti\nWrite a review\nBack to Morocco eSIM Plans\nYesim\n\nYesim is a mobile internet solution that provides eSIM Mobile Data Plans for Tourism and Business in 200+ destinations. With one global eSIM, you don't need to install multiple profiles when traveling to different countries. Yesim is easy to use and accepts various payment options, making it a convenient mobile data solution for anyone traveling.\n\nVerified\nWeb checkout\nCrypto payment\nApple Pay\nGoogle Pay\nOfficial Website\n\nPROMO CODE\n\nGET 20% OFF\nFor new user\nESIMDB20\nCopy\nTerms apply.\nYesim eSIM Data Plans for Morocco\nAll plans\n49\nSingle-country\n37\nMultiple-country\n12\nSort:\nCheapest\nBest Price/GB\nMost Data\nValidity\nApply Promo Codes\nPLAN NAME\nDATA\nVALIDITY\nPRICE/GB\nPRICE\nMorocco\n105MB\n1 Day\n$0.51\n€0.45\n$4.86/GB\n20% OFF\nNew Users Only\nView Details\nMorocco\n1GB\n30 Days\n$3.40\n€3.00\n$3.40/GB\n20% OFF\nView Details\nMorocco\nUnlimited\n1"
+ },
+ "slug": "morocco",
+ "url": "https://esimdb.com/morocco/yesim",
+ "status": 200
+}

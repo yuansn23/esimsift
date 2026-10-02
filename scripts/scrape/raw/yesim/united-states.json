@@ -1,0 +1,377 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n36"
+ },
+ "plans": [
+  {
+   "name": "United States",
+   "data": "500MB",
+   "validity": "1 Day",
+   "price": "$0.51",
+   "badges": [
+    "20% OFF",
+    "New Users Only"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "1 Day",
+   "price": "$3.29",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "1GB",
+   "validity": "30 Days",
+   "price": "$3.52",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "2 Days",
+   "price": "$6.58",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "3 Days",
+   "price": "$9.87",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$10.21",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "4 Days",
+   "price": "$13.16",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$15.88",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "5 Days",
+   "price": "$16.44",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "6 Days",
+   "price": "$19.73",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "7 Days",
+   "price": "$23.02",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$23.82",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "8 Days",
+   "price": "$24.26",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "9 Days",
+   "price": "$25.49",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "10 Days",
+   "price": "$26.72",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "11 Days",
+   "price": "$27.95",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "12 Days",
+   "price": "$29.19",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "30GB",
+   "validity": "30 Days",
+   "price": "$30.17",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "13 Days",
+   "price": "$30.43",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "14 Days",
+   "price": "$31.65",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "15 Days",
+   "price": "$32.89",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "16 Days",
+   "price": "$34.10",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "17 Days",
+   "price": "$35.30",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "18 Days",
+   "price": "$36.52",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "19 Days",
+   "price": "$37.73",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "20 Days",
+   "price": "$38.93",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "21 Days",
+   "price": "$40.15",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "22 Days",
+   "price": "$41.36",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "23 Days",
+   "price": "$42.56",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "24 Days",
+   "price": "$43.77",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "25 Days",
+   "price": "$44.99",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "26 Days",
+   "price": "$46.19",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "27 Days",
+   "price": "$47.40",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "28 Days",
+   "price": "$48.62",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "29 Days",
+   "price": "$49.82",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "Unlimited",
+   "validity": "30 Days",
+   "price": "$51.03",
+   "badges": [
+    "20% OFF",
+    "Fair Usage"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Yesim Travel eSIM for USA | Data Plans & Reviews",
+  "h1": "Yesim eSIM Data Plans for United States of America",
+  "chips": [
+   "All plans\n60",
+   "Single-country\n36",
+   "Multiple-country\n24"
+  ],
+  "official_site": null,
+  "body_head": "Single\nMulti\nWrite a review\nBack to United States of America eSIM Plans\nYesim\n5 reviews for United States of America\n\nYesim is a mobile internet solution that provides eSIM Mobile Data Plans for Tourism and Business in 200+ destinations. With one global eSIM, you don't need to install multiple profiles when traveling to different countries. Yesim is easy to use and accepts various payment options, making it a convenient mobile data solution for anyone traveling.\n\nVerified\nWeb checkout\nCrypto payment\nApple Pay\nGoogle Pay\nOfficial Website\n\nPROMO CODE\n\nGET 20% OFF\nFor new user\nESIMDB20\nCopy\nTerms apply.\nYesim eSIM Data Plans for United States of America\nAll plans\n60\nSingle-country\n36\nMultiple-country\n24\nSort:\nCheapest\nBest Price/GB\nMost Data\nValidity\nApply Promo Codes\nPLAN NAME\nDATA\nVALIDITY\nPRICE/GB\nPRICE\nUnited States\n500MB\n1 Day\n$0.51\n€0.45\n$1.02/GB\n20% OFF\nNew Users Only\n5G\nView Details"
+ },
+ "slug": "united-states",
+ "url": "https://esimdb.com/usa/yesim",
+ "status": 200
+}

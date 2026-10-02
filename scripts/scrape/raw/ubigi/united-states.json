@@ -1,0 +1,467 @@
+{
+ "tab": {
+  "clicked": false,
+  "label": null
+ },
+ "plans": [
+  {
+   "name": "USA",
+   "data": "500MB",
+   "validity": "1 Day",
+   "price": "$2.90",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$4.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "BEST WORLD",
+   "data": "500MB",
+   "validity": "30 Days",
+   "price": "$5.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA",
+   "data": "5GB/month",
+   "validity": "Monthly",
+   "price": "$6.00/mo",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$7.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "WORLD",
+   "data": "500MB",
+   "validity": "30 Days",
+   "price": "$7.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA",
+   "data": "7GB",
+   "validity": "1 Day",
+   "price": "$9.00",
+   "badges": [
+    "+ ∞ at 2Mbps",
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "BEST WORLD",
+   "data": "1GB",
+   "validity": "30 Days",
+   "price": "$9.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$12.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "AMERICAS",
+   "data": "1GB",
+   "validity": "30 Days",
+   "price": "$12.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$14.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "WORLD",
+   "data": "1GB",
+   "validity": "30 Days",
+   "price": "$14.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA",
+   "data": "20GB/month",
+   "validity": "Monthly",
+   "price": "$15.00/mo",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "NORTH AMERICA",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$16.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "WORLD",
+   "data": "5GB/month",
+   "validity": "Monthly",
+   "price": "$17.00/mo",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "BEST WORLD",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$19.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA",
+   "data": "2GB/month",
+   "validity": "Yearly",
+   "price": "$22.00/yr",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "AMERICAS",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$24.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA",
+   "data": "25GB",
+   "validity": "7 Days",
+   "price": "$25.00",
+   "badges": [
+    "+ ∞ at 2Mbps",
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "WORLD",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$26.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "NORTH AMERICA",
+   "data": "5GB/day",
+   "validity": "8 Days",
+   "price": "$30.00",
+   "badges": [
+    "+ ∞ at 2Mbps",
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA",
+   "data": "25GB",
+   "validity": "30 Days",
+   "price": "$32.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA",
+   "data": "30GB",
+   "validity": "15 Days",
+   "price": "$39.00",
+   "badges": [
+    "+ ∞ at 2Mbps",
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "BEST WORLD",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$39.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$40.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "WORLD",
+   "data": "20GB/month",
+   "validity": "Monthly",
+   "price": "$44.00/mo",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA",
+   "data": "5GB/month",
+   "validity": "Yearly",
+   "price": "$44.00/yr",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "AMERICAS",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$48.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "BEST WORLD",
+   "data": "25GB",
+   "validity": "8 Days",
+   "price": "$49.00",
+   "badges": [
+    "+ ∞ at 2Mbps",
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "BEST WORLD",
+   "data": "25GB",
+   "validity": "90 Days",
+   "price": "$59.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "WORLD",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$59.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA",
+   "data": "60GB",
+   "validity": "30 Days",
+   "price": "$65.00",
+   "badges": [
+    "+ ∞ at 2Mbps",
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "BEST WORLD",
+   "data": "30GB",
+   "validity": "15 Days",
+   "price": "$77.00",
+   "badges": [
+    "+ ∞ at 2Mbps",
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "BEST WORLD",
+   "data": "50GB",
+   "validity": "180 Days",
+   "price": "$99.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "WORLD",
+   "data": "25GB",
+   "validity": "90 Days",
+   "price": "$99.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "BEST WORLD",
+   "data": "60GB",
+   "validity": "30 Days",
+   "price": "$108.00",
+   "badges": [
+    "+ ∞ at 2Mbps",
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "WORLD",
+   "data": "60GB/month",
+   "validity": "Monthly",
+   "price": "$120.00/mo",
+   "badges": [
+    "+ ∞ at 2Mbps",
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "WORLD",
+   "data": "5GB/month",
+   "validity": "Yearly",
+   "price": "$180.00/yr",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "WORLD",
+   "data": "50GB",
+   "validity": "180 Days",
+   "price": "$188.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "BEST WORLD",
+   "data": "100GB",
+   "validity": "360 Days",
+   "price": "$190.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "BEST WORLD",
+   "data": "200GB",
+   "validity": "360 Days",
+   "price": "$290.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "WORLD",
+   "data": "100GB",
+   "validity": "360 Days",
+   "price": "$290.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "WORLD",
+   "data": "20GB/month",
+   "validity": "Yearly",
+   "price": "$360.00/yr",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "WORLD",
+   "data": "200GB",
+   "validity": "360 Days",
+   "price": "$390.00",
+   "badges": [
+    "10% OFF",
+    "Low latency"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Ubigi Travel eSIM for USA | Data Plans & Reviews",
+  "h1": "Ubigi eSIM Data Plans for United States of America",
+  "chips": [],
+  "official_site": null,
+  "body_head": "Single\nMulti\nWrite a review\nBack to United States of America eSIM Plans\nUbigi\n3 reviews for United States of America\n\nUbigi offers eSIM services for travelers, digital nomads and remote-working professionals, providing high-end global cellular connectivity in over 190+ destinations with a large range of affordable prepaid data plans.\n\nVerified\nWeb checkout\nApple Pay\nGoogle Pay\nOfficial Website\n\nPROMO CODE\n\nGET 10% OFF\nOne-time\nESIMDB10\nCopy\nTerms apply.\nUbigi eSIM Data Plans for United States of America\nSort:\nCheapest\nBest Price/GB\nMost Data\nValidity\nApply Promo Codes\nPLAN NAME\nDATA\nVALIDITY\nPRICE/GB\nPRICE\nUSA\n500MB\n1 Day\n$2.90\n$5.80/GB\n10% OFF\nLow latency\n5G\nView Details\nUSA\n1GB\n7 Days\n$4.00\n$4.00/GB\n10% OFF\nLow latency\n5G\nView Details\nBEST WORLD\n500MB\n30 Days\n$5.00\n$10.00/GB\n10% OFF\nLow latency\n5G\nView Details\nUSA\n5GB/month\nMonthly\n$6.00/mo\n$1.20/GB\n10% OFF\nLow latency\n5G\nView Details\n"
+ },
+ "slug": "united-states",
+ "url": "https://esimdb.com/usa/ubigi",
+ "status": 200
+}

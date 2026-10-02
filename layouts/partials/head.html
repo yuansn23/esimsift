@@ -1,0 +1,90 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{{- /* ── Title/Description：compare hub 由数据层推导，其余页用 front matter ── */ -}}
+{{- $title := .Title -}}
+{{- $desc := .Site.Params.description -}}
+{{- with .Params.description }}{{ $desc = . }}{{ end -}}
+{{- with .Params.seo -}}
+  {{- with .title }}{{ $title = . }}{{ end -}}
+  {{- with .description }}{{ $desc = . }}{{ end -}}
+{{- end -}}
+{{- $ogimage := "img/site/og-default.webp" -}}
+{{- if .Params.iso -}}
+  {{- $c := index hugo.Data.countries .Params.iso -}}
+  {{- $stats := partial "country-stats.html" .Params.iso -}}
+  {{- if .Params.provider -}}
+    {{- /* 品牌×国家子页：候选串从长到短取第一个 ≤54（目标 48-54，无品牌尾缀） */ -}}
+    {{- $p := index hugo.Data.providers .Params.provider -}}
+    {{- $my := where $stats.rows "key" .Params.provider -}}
+    {{- $myMin := 0.0 -}}
+    {{- range $my -}}{{- if or (eq $myMin 0.0) (lt .price $myMin) }}{{ $myMin = .price }}{{ end -}}{{- end -}}
+    {{- $met := where $my "gb" "gt" 0 -}}
+    {{- $cands := slice -}}
+    {{- if eq (len $met) 0 -}}
+      {{- $cands = slice
+        (printf "%s %s eSIM Unlimited Compared: %d Plans From $%.2f" $p.name $c.name (len $my) $myMin)
+        (printf "%s %s eSIM Unlimited: %d Plans From $%.2f" $p.name $c.name (len $my) $myMin)
+        (printf "%s %s eSIM Unlimited Plans From $%.2f" $p.name $c.name $myMin)
+        (printf "%s %s eSIM Unlimited From $%.2f" $p.name $c.name $myMin)
+        (printf "%s %s eSIM Plans From $%.2f" $p.name $c.name $myMin)
+        (printf "%s %s eSIM From $%.2f" $p.name $c.name $myMin)
+      -}}
+    {{- else -}}
+      {{- $cands = slice
+        (printf "%s %s eSIM Plans Compared: %d Plans From $%.2f" $p.name $c.name (len $my) $myMin)
+        (printf "%s %s eSIM Plans Compared: %d From $%.2f" $p.name $c.name (len $my) $myMin)
+        (printf "%s %s eSIM Plans: All %d From $%.2f" $p.name $c.name (len $my) $myMin)
+        (printf "%s %s eSIM Plans: %d From $%.2f" $p.name $c.name (len $my) $myMin)
+        (printf "%s %s eSIM Plans From $%.2f" $p.name $c.name $myMin)
+        (printf "%s %s eSIM From $%.2f" $p.name $c.name $myMin)
+      -}}
+    {{- end -}}
+    {{- $title = index $cands (sub (len $cands) 1) -}}
+    {{- range $cands -}}{{- if le (len .) 54 }}{{ $title = . }}{{ break }}{{ end -}}{{- end -}}
+  {{- else -}}
+    {{- /* 国家页：同上，覆盖最长国名 United Arab Emirates */ -}}
+    {{- $cands := slice
+      (printf "Best %s eSIM %d: %d Providers Compared From $%.2f" $c.name now.Year $stats.providerCount $stats.minPrice)
+      (printf "Best %s eSIM %d: All %d Providers From $%.2f" $c.name now.Year $stats.providerCount $stats.minPrice)
+      (printf "Best %s eSIM %d: %d Providers From $%.2f" $c.name now.Year $stats.providerCount $stats.minPrice)
+      (printf "Best %s eSIM %d: Compared From $%.2f" $c.name now.Year $stats.minPrice)
+      (printf "Best %s eSIM %d: Prices From $%.2f" $c.name now.Year $stats.minPrice)
+      (printf "Best %s eSIM %d: From $%.2f" $c.name now.Year $stats.minPrice)
+    -}}
+    {{- $title = index $cands (sub (len $cands) 1) -}}
+    {{- range $cands -}}{{- if le (len .) 54 }}{{ $title = . }}{{ break }}{{ end -}}{{- end -}}
+  {{- end -}}
+  {{- with $c.images -}}
+    {{- $ogimage = printf "img/countries/%s" (index . 0) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 标题规则（2026-10-01 用户定）：内页标题不含品牌词（省字符给关键词），仅首页标题带品牌；
+     品牌一致性由 description（每页必含品牌）+ og:site_name 承担。 */ -}}
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{/* ── 字体预连接（Sora + Inter）── */}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="/img/site/home-hero.webp">
+
+{{/* ── Open Graph ── */}}
+<meta property="og:site_name" content="{{ .Site.Params.brand }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ $ogimage | absURL }}">
+<meta name="twitter:card" content="summary_large_image">
+
+{{/* ── Styles（Tailwind 预编译产物，npm run build:css 生成）── */}}
+<link rel="stylesheet" href="/css/tailwind.css">
+
+{{/* GA4 占位：上线前替换为 esimsift 自己的 GA4 ID，并为 Roami 配跨域衡量
+{{ template "_internal/google_analytics.html" . }}
+*/}}
+
+{{ partial "schema.html" . }}

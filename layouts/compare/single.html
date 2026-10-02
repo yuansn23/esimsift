@@ -1,0 +1,810 @@
+{{ define "main" }}
+{{ $iso := .Params.iso }}
+{{ $country := index hugo.Data.countries $iso }}
+{{ $stats := partial "country-stats.html" $iso }}
+{{ $rows := $stats.rows }}
+{{ $sorted := sort $rows "perGB" "asc" }}
+{{ $faqs := slice }}
+{{ if hugo.Data.faqs }}{{ with index hugo.Data.faqs (lower $iso) }}{{ $faqs = .faq }}{{ end }}{{ end }}
+{{ $imgs := $country.images | default slice }}
+{{ $imgURL := printf "/img/countries/%s" }}
+
+{{/* ── 派生结论 ── */}}
+{{ $byPrice := sort $rows "price" "asc" }}
+{{ $budget := index $byPrice 0 }}
+{{ $value := index $sorted 0 }}
+{{ $rows30 := where $rows "days" ">=" 30 }}
+{{ $longPick := $budget }}
+{{ if gt (len $rows30) 0 }}{{ $longPick = index (sort $rows30 "perDay" "asc") 0 }}{{ end }}
+{{ $unlimited := sort (where $rows "gb" 0) "price" "asc" }}
+{{ $priceMax := 0.0 }}
+{{ if gt (len $byPrice) 0 }}{{ $priceMax = (index $byPrice (sub (len $byPrice) 1)).price }}{{ end }}
+
+{{/* 每品牌在该国的最低价（品牌卡用） */}}
+{{ $provMin := dict }}
+{{ range $rows }}
+  {{ $cur := index $provMin .key }}
+  {{ if or (not $cur) (lt .price $cur) }}{{ $provMin = merge $provMin (dict .key .price) }}{{ end }}
+{{ end }}
+{{ $campaign := printf "compare-%s" (lower $country.slug) }}
+
+<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+  {{ partial "breadcrumbs.html" . }}
+
+  {{/* ── ① Hero ── */}}
+  <header class="mt-6 grid items-center gap-8 lg:grid-cols-[1.25fr_1fr]">
+    <div>
+      <div class="flex flex-wrap items-center gap-3">
+        <img src="{{ $country.flag | relURL }}" alt="{{ $country.name }} flag" class="h-9 w-[3.25rem] rounded-lg object-cover shadow-sm ring-1 ring-ink-100">
+        <span class="badge bg-brand-50 text-brand-700">{{ $country.region }}</span>
+        {{ with $stats.checkedDate }}<span class="badge bg-ink-50 text-ink-500">✓ Prices checked {{ . }}</span>{{ end }}
+      </div>
+      <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">Best eSIM for {{ $country.name }} in {{ now.Year }}</h1>
+      <p class="mt-4 max-w-xl text-lg leading-relaxed text-ink-600">
+        Every prepaid eSIM plan for {{ $country.name }} from every major provider, ranked by the same formulas — $/GB, $/day and fair-use fine print decoded.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <div class="stat-tile"><span class="stat-num tnum">{{ $stats.providerCount }}</span><span class="stat-label">Providers</span></div>
+        <div class="stat-tile"><span class="stat-num tnum">{{ $stats.planCount }}</span><span class="stat-label">Plans</span></div>
+        <div class="stat-tile"><span class="stat-num tnum text-accent-600">${{ printf "%.2f" $stats.minPrice }}</span><span class="stat-label">Cheapest</span></div>
+        {{ if lt $stats.minPerGB 999999.0 }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" $stats.minPerGB }}</span><span class="stat-label">Best $/GB</span></div>{{ end }}
+      </div>
+      <div class="mt-7">
+        {{ partial "cta-out.html" (dict "target" site.Params.outbound.active "slugMap" $country.slugs "label" (printf "View %s plans on Roami" $country.name) "class" "btn-primary" "campaign" $campaign "page" $.RelPermalink) }}
+      </div>
+    </div>
+
+    {{ with $imgs }}
+    <figure class="figure shadow-pop">
+      <img src="{{ printf "/img/countries/%s" (index . 0) }}" alt="{{ $country.name }} travel eSIM data plans comparison illustration" width="2848" height="1470" loading="eager" fetchpriority="high">
+      <figcaption>{{ $country.name }} eSIM plans — {{ $stats.planCount }} options from {{ $stats.providerCount }} providers, updated {{ $stats.checkedDate | default "monthly" }}.</figcaption>
+    </figure>
+    {{ end }}
+  </header>
+
+  {{/* Product + AggregateOffer 结构化数据（富摘要 + AI 可见度） */}}
+  <script type="application/ld+json">
+    {{ jsonify (dict "indent" "  ") (dict
+      "@context" "https://schema.org"
+      "@type" "Product"
+      "name" (printf "%s eSIM plans" $country.name)
+      "description" (printf "%d prepaid eSIM plans for %s from %d providers, ranked by $/GB and $/day with fair-use limits decoded." $stats.planCount $country.name $stats.providerCount)
+      "category" "eSIM"
+      "offers" (dict
+        "@type" "AggregateOffer"
+        "priceCurrency" "USD"
+        "lowPrice" (printf "%.2f" $stats.minPrice)
+        "highPrice" (printf "%.2f" $priceMax)
+        "offerCount" $stats.planCount
+      )
+    ) | safeJS }}
+  </script>
+
+  {{/* ── ② TL;DR 快速结论 ── */}}
+  <section class="mt-14" aria-labelledby="verdict">
+    <p class="eyebrow">Quick verdict</p>
+    <h2 id="verdict" class="mt-2 text-2xl font-bold md:text-3xl">Which {{ $country.name }} eSIM is best for your trip?</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">The best {{ $country.name }} eSIM depends on how you travel. Three picks computed from all {{ $stats.planCount }} plans we track — prices checked {{ $stats.checkedDate }}.</p>
+    <div class="mt-6 grid gap-4 md:grid-cols-3">
+      <div class="card card-hover relative overflow-hidden p-6 pt-7">
+        <span class="absolute inset-x-0 top-0 h-1.5 bg-emerald-400" aria-hidden="true"></span>
+        <span class="badge bg-emerald-50 text-emerald-600">Tightest budget</span>
+        <div class="mt-3 flex items-center gap-2.5">
+          {{ with index hugo.Data.providers $budget.key }}{{ partial "prov-logo.html" (dict "p" . "key" $budget.key) }}{{ end }}
+          <span class="font-display text-lg font-bold">{{ $budget.provider }}</span>
+        </div>
+        <p class="mt-2 text-sm text-ink-600">{{ $budget.name }} — <strong class="text-ink-950 tnum">${{ printf "%.2f" $budget.price }}</strong> <span class="text-ink-400 tnum">(${{ printf "%.2f" $budget.perDay }}/day)</span></p>
+        {{/* 站内转化：先看品牌×国家子页（套餐表+出口 CTA 都在那），不直接跳出站 */}}
+        <div class="mt-4">
+          {{ with site.GetPage (printf "/compare/%s/%s" $country.slug $budget.key) }}
+          <a href="{{ .RelPermalink }}" class="btn-primary">{{ printf "View %s plans in %s" $budget.provider $country.name }}</a>
+          {{ end }}
+        </div>
+      </div>
+      <div class="card card-hover relative overflow-hidden p-6 pt-7">
+        <span class="absolute inset-x-0 top-0 h-1.5 bg-brand-500" aria-hidden="true"></span>
+        <span class="badge bg-brand-50 text-brand-700">Most data for the money</span>
+        <div class="mt-3 flex items-center gap-2.5">
+          {{ with index hugo.Data.providers $value.key }}{{ partial "prov-logo.html" (dict "p" . "key" $value.key) }}{{ end }}
+          <span class="font-display text-lg font-bold">{{ $value.provider }}</span>
+        </div>
+        <p class="mt-2 text-sm text-ink-600">{{ $value.name }} — <strong class="text-ink-950 tnum">${{ printf "%.2f" $value.price }}</strong> <span class="text-ink-400 tnum">(${{ printf "%.2f" $value.perGB }}/GB)</span></p>
+        <div class="mt-4">
+          {{ with site.GetPage (printf "/compare/%s/%s" $country.slug $value.key) }}
+          <a href="{{ .RelPermalink }}" class="btn-primary">{{ printf "View %s plans in %s" $value.provider $country.name }}</a>
+          {{ end }}
+        </div>
+      </div>
+      <div class="card card-hover relative overflow-hidden p-6 pt-7">
+        <span class="absolute inset-x-0 top-0 h-1.5 bg-accent-400" aria-hidden="true"></span>
+        <span class="badge bg-accent-50 text-accent-700">Long trips (30+ days)</span>
+        <div class="mt-3 flex items-center gap-2.5">
+          {{ with index hugo.Data.providers $longPick.key }}{{ partial "prov-logo.html" (dict "p" . "key" $longPick.key) }}{{ end }}
+          <span class="font-display text-lg font-bold">{{ $longPick.provider }}</span>
+        </div>
+        <p class="mt-2 text-sm text-ink-600">{{ $longPick.name }} — <strong class="text-ink-950 tnum">${{ printf "%.2f" $longPick.price }}</strong> <span class="text-ink-400 tnum">(${{ printf "%.2f" $longPick.perDay }}/day)</span></p>
+        <div class="mt-4">
+          {{ with site.GetPage (printf "/compare/%s/%s" $country.slug $longPick.key) }}
+          <a href="{{ .RelPermalink }}" class="btn-primary">{{ printf "View %s plans in %s" $longPick.provider $country.name }}</a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{/* ── ③ 主比较表 ── */}}
+  <section class="mt-14" aria-labelledby="table">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="eyebrow">The full database</p>
+        <h2 id="table" class="mt-2 text-2xl font-bold md:text-3xl">All {{ $country.name }} eSIM plans compared</h2>
+      </div>
+      <span class="text-xs text-ink-400">default sort: best $/GB · unlimited plans listed last</span>
+    </div>
+    {{/* 排序 + 有效期筛选（纯客户端，data-* 驱动，零依赖） */}}
+    <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+      <label class="flex items-center gap-2 text-xs font-semibold text-ink-500">
+        Sort by
+        <select id="plan-sort" class="rounded-lg border border-ink-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-ink-900 shadow-soft outline-none transition-colors focus:border-brand-400">
+          <option value="perGB" selected>Best $/GB</option>
+          <option value="price">Cheapest price</option>
+          <option value="gb">Most data</option>
+          <option value="days">Longest validity</option>
+        </select>
+      </label>
+      <div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="Filter by validity">
+        <span class="text-xs font-semibold text-ink-500">Validity</span>
+        <button type="button" class="chip chip-active" data-days="0">Any</button>
+        <button type="button" class="chip" data-days="7">7+ days</button>
+        <button type="button" class="chip" data-days="14">14+ days</button>
+        <button type="button" class="chip" data-days="30">30+ days</button>
+      </div>
+    </div>
+    {{/* 品牌多选 + 无限流量开关（与上面同一套 data-* 过滤管线） */}}
+    <div class="mt-3 flex flex-wrap items-center gap-1.5" role="group" aria-label="Filter by provider">
+      <span class="text-xs font-semibold text-ink-500">Provider</span>
+      {{ range $stats.providers }}
+        {{ $pFull := index hugo.Data.providers . }}
+        <button type="button" class="chip chip-active" data-prov="{{ . }}">{{ $pFull.name }}</button>
+      {{ end }}
+      <span class="mx-1 hidden h-4 w-px bg-ink-200 sm:inline-block" aria-hidden="true"></span>
+      <button type="button" class="chip" data-unlim="1">Unlimited only</button>
+      <span id="plan-filter-count" class="text-xs text-ink-400 tnum"></span>
+    </div>
+    <div class="card mt-5 overflow-x-auto">
+      <table class="table-pro min-w-[880px]">
+        <thead>
+          <tr>
+            <th class="min-w-[170px]">Provider</th>
+            <th>Plan</th>
+            <th>Data</th>
+            <th>Validity</th>
+            <th>Price</th>
+            <th>$/day</th>
+            <th>$/GB</th>
+            <th>Network</th>
+            <th><span class="sr-only">Link</span></th>
+          </tr>
+        </thead>
+        <tbody id="plan-rows">
+          {{ range $sorted }}
+          {{ $pk := .key }}{{ $pname := .provider }}
+          <tr data-price="{{ printf "%.4f" .price }}" data-gb="{{ .gb }}" data-days="{{ .days }}" data-pergb="{{ printf "%.4f" .perGB }}" data-prov="{{ .key }}">
+            <td class="min-w-[170px]">
+              <span class="flex items-center gap-2.5">
+                {{ with index hugo.Data.providers $pk }}{{ partial "prov-logo.html" (dict "p" . "key" $pk "class" "h-7 w-7 rounded-lg" "text" "text-[10px]") }}{{ end }}
+                <span class="flex flex-col">
+                  {{ with site.GetPage (printf "/compare/%s/%s" $country.slug $pk) }}
+                    <a href="{{ .RelPermalink }}" class="font-semibold text-ink-950 hover:text-brand-700 hover:underline">{{ $pname }}</a>
+                  {{ else }}
+                    <span class="font-semibold text-ink-950">{{ $pname }}</span>
+                  {{ end }}
+                  <span class="flex flex-wrap gap-1">
+                    {{ if eq .price $stats.minPrice }}<span class="badge bg-emerald-50 text-emerald-600">Cheapest</span>{{ end }}
+                    {{ if and (eq .perGB $stats.minPerGB) (gt .gb 0) }}<span class="badge bg-brand-50 text-brand-700">Best value</span>{{ end }}
+                    {{ if and (gt $stats.maxGB 0) (eq .gb $stats.maxGB) }}<span class="badge bg-accent-50 text-accent-700">Most data</span>{{ end }}
+                  </span>
+                </span>
+              </span>
+            </td>
+            <td class="text-ink-700">{{ .name }}</td>
+            <td>{{ if eq .gb 0 }}<strong class="text-brand-700">Unlimited</strong>{{ else }}<span class="font-semibold text-ink-950 tnum">{{ .gb }}GB</span>{{ end }}</td>
+            <td class="text-ink-600 tnum">{{ .days }} days</td>
+            <td class="font-bold text-ink-950 tnum">${{ printf "%.2f" .price }}</td>
+            <td class="text-ink-500 tnum">${{ printf "%.2f" .perDay }}</td>
+            <td class="text-ink-500 tnum">{{ if gt .gb 0 }}${{ printf "%.2f" .perGB }}{{ else }}—{{ end }}</td>
+            <td class="text-xs text-ink-400">{{ with .networks }}{{ . }}{{ else }}—{{ end }}</td>
+            <td class="text-right">{{ partial "cta-out.html" (dict "target" .key "slugMap" $country.slugs "label" "View plan" "campaign" $campaign "page" $.RelPermalink) }}</td>
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3 text-xs text-ink-400">
+      Prices in USD as listed by each provider, excluding promo codes and taxes. Badges are literal sort positions, not editorial picks — see our
+      <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.
+    </p>
+    <script>
+      (function () {
+        var tbody = document.getElementById('plan-rows');
+        if (!tbody) return;
+        var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+        var sortSel = document.getElementById('plan-sort');
+        var chips = Array.prototype.slice.call(document.querySelectorAll('[data-days]'));
+        var provChips = Array.prototype.slice.call(document.querySelectorAll('[data-prov]'));
+        var unlimChip = document.querySelector('[data-unlim]');
+        var count = document.getElementById('plan-filter-count');
+        var minDays = 0;
+        var unlimOnly = false;
+        var provsOff = {}; // active set = every provider NOT in this map; empty map = all on
+        function activeProv(k) { return !provsOff[k]; }
+        function anyProvOff() { return Object.keys(provsOff).length > 0; }
+        function apply() {
+          var key = sortSel.value;
+          var desc = key === 'gb' || key === 'days';
+          var visible = rows.filter(function (r) {
+            if (parseInt(r.dataset.days, 10) < minDays) return false;
+            if (unlimOnly && parseInt(r.dataset.gb, 10) !== 0) return false;
+            if (anyProvOff() && !activeProv(r.dataset.prov)) return false;
+            return true;
+          });
+          var metered = [], unlim = [];
+          visible.forEach(function (r) { (parseInt(r.dataset.gb, 10) === 0 ? unlim : metered).push(r); });
+          metered.sort(function (a, b) {
+            var d = parseFloat(a.dataset[key]) - parseFloat(b.dataset[key]);
+            return desc ? -d : d;
+          });
+          unlim.sort(function (a, b) { return parseFloat(a.dataset.price) - parseFloat(b.dataset.price); });
+          metered.concat(unlim).forEach(function (r) { tbody.appendChild(r); });
+          rows.forEach(function (r) { r.hidden = visible.indexOf(r) === -1; });
+          count.textContent = visible.length + ' / ' + rows.length + ' plans';
+        }
+        sortSel.addEventListener('change', apply);
+        chips.forEach(function (c) {
+          c.addEventListener('click', function () {
+            chips.forEach(function (x) { x.classList.remove('chip-active'); });
+            c.classList.add('chip-active');
+            minDays = parseInt(c.dataset.days, 10);
+            apply();
+          });
+        });
+        provChips.forEach(function (c) {
+          c.addEventListener('click', function () {
+            var k = c.dataset.prov;
+            if (provsOff[k]) delete provsOff[k]; else provsOff[k] = 1;
+            // 全关 = 视为全开，避免空表
+            if (provChips.every(function (x) { return provsOff[x.dataset.prov]; })) provsOff = {};
+            c.classList.toggle('chip-active', activeProv(k));
+            apply();
+          });
+        });
+        if (unlimChip) unlimChip.addEventListener('click', function () {
+          unlimOnly = !unlimOnly;
+          unlimChip.classList.toggle('chip-active', unlimOnly);
+          apply();
+        });
+        apply();
+      })();
+    </script>
+  </section>
+
+  {{/* ── ④ 独家分析（md 正文）── */}}
+  {{ with .Content }}
+  <section class="mt-14" aria-labelledby="analysis">
+    <p class="eyebrow">What the numbers mean</p>
+    <h2 id="analysis" class="mt-2 text-2xl font-bold md:text-3xl">What {{ $country.name }} eSIM prices reveal</h2>
+    <div class="prose mt-5 max-w-none">{{ . }}</div>
+  </section>
+  {{ end }}
+
+  {{/* ── ⑤ FUP 真相化（有 unlimited 套餐才渲染）── */}}
+  {{ with $unlimited }}
+  <section class="mt-14" aria-labelledby="fup">
+    <p class="eyebrow">Fine print decoded</p>
+    <h2 id="fup" class="mt-2 text-2xl font-bold md:text-3xl">Is unlimited eSIM data really unlimited in {{ $country.name }}?</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">Every "unlimited" plan on this page, with its fair-use policy decoded:</p>
+    <div class="card mt-5 overflow-x-auto">
+      <table class="table-pro min-w-[720px]">
+        <thead>
+          <tr>
+            <th class="min-w-[150px]">Provider</th>
+            <th>Plan</th>
+            <th>Price</th>
+            <th>$/day</th>
+            <th class="min-w-[260px]">Fair-use policy</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range . }}
+          {{ $pk := .key }}
+          <tr>
+            <td>
+              <span class="flex items-center gap-2.5">
+                {{ with index hugo.Data.providers $pk }}{{ partial "prov-logo.html" (dict "p" . "key" $pk "class" "h-7 w-7 rounded-lg" "text" "text-[10px]") }}{{ end }}
+                <span class="font-semibold text-ink-950">{{ .provider }}</span>
+              </span>
+            </td>
+            <td class="text-ink-700">{{ .name }}</td>
+            <td class="font-bold text-ink-950 tnum">${{ printf "%.2f" .price }}</td>
+            <td class="text-ink-500 tnum">${{ printf "%.2f" .perDay }}</td>
+            <td class="text-xs leading-relaxed text-ink-500">{{ .fup | default "No fair-use policy published — treat speed claims with caution" }}</td>
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── ⑤b 怎么选 + 怎么装（决策指南，数据挂钩）── */}}
+  {{ $rows5 := sort (where $rows "gb" ">=" 5) "price" "asc" }}
+  {{ $rows10 := sort (where $rows "gb" ">=" 10) "price" "asc" }}
+  <section class="mt-14" aria-labelledby="choose">
+    <p class="eyebrow">Decision guide</p>
+    <h2 id="choose" class="mt-2 text-2xl font-bold md:text-3xl">How to choose your {{ $country.name }} eSIM</h2>
+    <div class="mt-6 grid gap-4 lg:grid-cols-2">
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">How much eSIM data do you need in {{ $country.name }}?</h3>
+        <ul class="mt-4 space-y-3 text-sm text-ink-700">
+          <li class="flex gap-3"><span class="badge bg-ink-50 text-ink-600 shrink-0">1GB</span><span>Maps, messaging and email for a city break — {{ $budget.name }} starts at <strong class="text-ink-950 tnum">${{ printf "%.2f" $budget.price }}</strong>.</span></li>
+          {{ with $rows5 }}{{ with index . 0 }}<li class="flex gap-3"><span class="badge bg-ink-50 text-ink-600 shrink-0">5GB</span><span>A normal week of maps, mail and social — cheapest 5GB+ bucket: <strong class="text-ink-950">{{ .name }}</strong> at <strong class="text-ink-950 tnum">${{ printf "%.2f" .price }}</strong>.</span></li>{{ end }}{{ end }}
+          {{ with $rows10 }}{{ with index . 0 }}<li class="flex gap-3"><span class="badge bg-ink-50 text-ink-600 shrink-0">10GB+</span><span>Streaming, hotspot sharing or a working trip — cheapest 10GB+ bucket: <strong class="text-ink-950">{{ .name }}</strong> at <strong class="text-ink-950 tnum">${{ printf "%.2f" .price }}</strong>.</span></li>{{ end }}{{ end }}
+          {{ if gt $stats.unlimitedCount 0 }}<li class="flex gap-3"><span class="badge bg-brand-50 text-brand-700 shrink-0">∞</span><span>Don't want to count? {{ $stats.unlimitedCount }} unlimited plans cover {{ $country.name }} — read the fair-use caps above before picking one.</span></li>{{ end }}
+        </ul>
+        <p class="mt-4 text-xs text-ink-400">Want exact numbers for your trip? Try the <a href="/tools/" class="font-semibold text-brand-700 hover:underline">eSIM trip cost calculator</a>.</p>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">How to install your {{ $country.name }} eSIM</h3>
+        <ol class="mt-4 space-y-3 text-sm text-ink-700">
+          <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">1</span><span><strong class="text-ink-950">Buy before you fly.</strong> Plans are delivered instantly — by email (marketplace providers) or in-app (app-based providers like Roami and Saily).</span></li>
+          <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">2</span><span><strong class="text-ink-950">Install on Wi-Fi.</strong> Scan the QR code or tap the in-app install button; the eSIM profile downloads in seconds.</span></li>
+          <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">3</span><span><strong class="text-ink-950">Land and it just works.</strong> The eSIM connects to its host network in {{ $country.name }} automatically — keep data roaming ON for the eSIM line.</span></li>
+        </ol>
+        <p class="mt-4 text-xs text-ink-400">Works on eSIM-capable phones (iPhone XS and newer, most 2019+ Android flagships). Your physical SIM keeps working alongside it.</p>
+      </div>
+    </div>
+  </section>
+
+  {{/* ── ⑤c 按时长 + 按人群推荐（长尾意图切片，全部由 rows 排序推导）── */}}
+  {{/* 套餐须覆盖行程：days ≥ 时长档，gb ≥ 用量档（unlimited=0GB 视为满足任何用量） */}}
+  {{ $cShort := slice }}{{ range $rows }}{{ if and (ge .days 5) (or (eq (int .gb) 0) (ge (int .gb) 3)) }}{{ $cShort = $cShort | append . }}{{ end }}{{ end }}{{ $cShort = sort $cShort "price" "asc" }}
+  {{ $cWeek := slice }}{{ range $rows }}{{ if and (ge .days 10) (or (eq (int .gb) 0) (ge (int .gb) 5)) }}{{ $cWeek = $cWeek | append . }}{{ end }}{{ end }}{{ $cWeek = sort $cWeek "price" "asc" }}
+  {{ $cTwoW := slice }}{{ range $rows }}{{ if and (ge .days 15) (or (eq (int .gb) 0) (ge (int .gb) 10)) }}{{ $cTwoW = $cTwoW | append . }}{{ end }}{{ end }}{{ $cTwoW = sort $cTwoW "price" "asc" }}
+  {{ $cMonth := slice }}{{ range $rows }}{{ if and (ge .days 30) (or (eq (int .gb) 0) (ge (int .gb) 20)) }}{{ $cMonth = $cMonth | append . }}{{ end }}{{ end }}{{ $cMonth = sort $cMonth "perGB" "asc" }}
+  {{ $cLight := slice }}{{ range $rows }}{{ if and (ge (int .gb) 1) (le (int .gb) 5) }}{{ $cLight = $cLight | append . }}{{ end }}{{ end }}{{ $cLight = sort $cLight "price" "asc" }}
+  {{ $cStd := slice }}{{ range $rows }}{{ if ge (int .gb) 5 }}{{ $cStd = $cStd | append . }}{{ end }}{{ end }}{{ $cStd = sort $cStd "perGB" "asc" }}
+  {{ $cHeavy := sort (where $rows "gb" 0) "perDay" "asc" }}
+  {{ $cRemote := slice }}{{ range $rows }}{{ if and (ge .days 30) (or (eq (int .gb) 0) (ge (int .gb) 10)) }}{{ $cRemote = $cRemote | append . }}{{ end }}{{ end }}{{ $cRemote = sort $cRemote "perGB" "asc" }}
+
+  {{ $pShort := dict }}{{ if gt (len $cShort) 0 }}{{ $pShort = index $cShort 0 }}{{ end }}
+  {{ $pWeek := dict }}{{ if gt (len $cWeek) 0 }}{{ $pWeek = index $cWeek 0 }}{{ end }}
+  {{ $pTwoW := dict }}{{ if gt (len $cTwoW) 0 }}{{ $pTwoW = index $cTwoW 0 }}{{ end }}
+  {{ $pMonth := dict }}{{ if gt (len $cMonth) 0 }}{{ $pMonth = index $cMonth 0 }}{{ end }}
+  {{ $pLight := dict }}{{ if gt (len $cLight) 0 }}{{ $pLight = index $cLight 0 }}{{ end }}
+  {{ $pStd := dict }}{{ if gt (len $cStd) 0 }}{{ $pStd = index $cStd 0 }}{{ end }}
+  {{ $pHeavy := dict }}{{ if gt (len $cHeavy) 0 }}{{ $pHeavy = index $cHeavy 0 }}{{ else }}{{ $bigGb := sort $rows "gb" "desc" }}{{ if gt (len $bigGb) 0 }}{{ $pHeavy = index $bigGb 0 }}{{ end }}{{ end }}
+  {{ $pRemote := dict }}{{ if gt (len $cRemote) 0 }}{{ $pRemote = index $cRemote 0 }}{{ else }}{{ $pRemote = $pMonth }}{{ end }}
+
+  {{ $tiers := slice
+      (dict "label" "3–5 days" "hint" "long weekend or city break" "pick" $pShort "why" "cheapest plan with at least 3GB and 5-day validity")
+      (dict "label" "7–10 days" "hint" "the classic one-week trip" "pick" $pWeek "why" "cheapest 5GB+ bucket with validity ≥ 10 days")
+      (dict "label" "Two weeks" "hint" "longer tours and multi-city" "pick" $pTwoW "why" "cheapest 10GB+ bucket valid ≥ 15 days")
+      (dict "label" "30 days +" "hint" "long stays and slow travel" "pick" $pMonth "why" "best $/GB among 20GB+ plans valid ≥ 30 days") }}
+  {{ $personas := slice
+      (dict "label" "Light user" "hint" "maps, messaging, email" "pick" $pLight "why" "lowest-price small bucket (1–5GB)")
+      (dict "label" "Standard tourist" "hint" "navigation plus social and browsing" "pick" $pStd "why" "best $/GB in the 5GB+ class")
+      (dict "label" "Streamer & hotspot" "hint" "video, tethering, multiple devices" "pick" $pHeavy "why" "lowest cost per day without a GB counter" )
+      (dict "label" "Remote worker" "hint" "calls, cloud work, weeks on the road" "pick" $pRemote "why" "best $/GB among 30-day+ plans with 10GB or more") }}
+
+  <section class="mt-14" aria-labelledby="bytrip">
+    <p class="eyebrow">Matching plans to your trip</p>
+    <h2 id="bytrip" class="mt-2 text-2xl font-bold md:text-3xl">{{ $country.name }} eSIM plans by trip length</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">The same database, sliced by how long you stay and how you travel. Every pick below is a computed sort position — validity must cover the whole stay, and data must match the use case.</p>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {{ range $t := $tiers }}
+      {{ with $t.pick }}
+      <div class="card card-hover flex flex-col p-5">
+        <p class="text-[11px] font-bold uppercase tracking-wider text-brand-600">{{ $t.label }}</p>
+        <p class="mt-0.5 text-xs text-ink-400">{{ $t.hint }}</p>
+        <p class="mt-3 font-display text-sm font-bold leading-snug text-ink-950">{{ .name }}</p>
+        <p class="mt-0.5 text-xs text-ink-500">{{ .provider }} · {{ if eq (int .gb) 0 }}unlimited{{ else }}{{ .gb }}GB{{ end }} / {{ .days }} days</p>
+        <p class="mt-2 font-display text-lg font-bold text-accent-600 tnum">${{ printf "%.2f" .price }}</p>
+        <p class="mt-2 flex-1 text-xs leading-relaxed text-ink-400">{{ $t.why }}.</p>
+        <a href="{{ printf "/compare/%s/%s/" $country.slug .key }}" class="mt-3 text-xs font-semibold text-brand-700 hover:underline">See the {{ .provider }} plan →</a>
+      </div>
+      {{ end }}
+      {{ end }}
+    </div>
+
+    <h3 class="mt-10 font-display text-xl font-bold text-ink-950">Best {{ $country.name }} eSIM by traveller type</h3>
+    <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {{ range $t := $personas }}
+      {{ with $t.pick }}
+      <div class="card card-hover flex flex-col p-5">
+        <p class="text-[11px] font-bold uppercase tracking-wider text-brand-600">{{ $t.label }}</p>
+        <p class="mt-0.5 text-xs text-ink-400">{{ $t.hint }}</p>
+        <p class="mt-3 font-display text-sm font-bold leading-snug text-ink-950">{{ .name }}</p>
+        <p class="mt-0.5 text-xs text-ink-500">{{ .provider }} · {{ if eq (int .gb) 0 }}unlimited{{ else }}{{ .gb }}GB{{ end }} / {{ .days }} days</p>
+        <p class="mt-2 font-display text-lg font-bold text-accent-600 tnum">${{ printf "%.2f" .price }}</p>
+        <p class="mt-2 flex-1 text-xs leading-relaxed text-ink-400">{{ $t.why }}.</p>
+        <a href="{{ printf "/compare/%s/%s/" $country.slug .key }}" class="mt-3 text-xs font-semibold text-brand-700 hover:underline">See the {{ .provider }} plan →</a>
+      </div>
+      {{ end }}
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* ── ⑥ 品牌逐个点评 ── */}}
+  <section class="mt-14" aria-labelledby="providers">
+    <p class="eyebrow">The lineup</p>
+    <h2 id="providers" class="mt-2 text-2xl font-bold md:text-3xl">Which eSIM providers cover {{ $country.name }}</h2>
+    <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {{ range $stats.providers }}
+        {{ $pk := . }}
+        {{ $p := index hugo.Data.providers . }}
+        {{ $min := index $provMin . | default 0.0 }}
+        <div class="card card-hover scroll-mt-24 p-6" id="{{ $pk }}">
+          <div class="flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <a href="{{ printf "/esim-providers/%s/" $pk }}" class="shrink-0 transition-opacity hover:opacity-80" aria-label="{{ $p.name }} review">
+                {{ partial "prov-logo.html" (dict "p" $p "key" $pk) }}
+              </a>
+              <div>
+                <h3 class="font-display text-base font-bold"><a href="{{ printf "/esim-providers/%s/" $pk }}" class="text-ink-950 transition-colors hover:text-brand-700 hover:underline">{{ $p.name }}</a></h3>
+                <p class="text-xs text-ink-400">since {{ $p.founded }}</p>
+              </div>
+            </div>
+            {{ if gt $min 0.0 }}<span class="badge bg-ink-50 text-ink-600 tnum">from ${{ printf "%.2f" $min }}</span>{{ end }}
+          </div>
+          <p class="mt-3 text-sm text-ink-500">{{ $p.tagline }}</p>
+          {{ with $p.promo_code }}
+            <p class="mt-3 text-xs text-ink-500">Promo code <code class="rounded bg-brand-50 px-1.5 py-0.5 font-mono font-bold text-brand-700">{{ . }}</code> — {{ $p.promo_label }} · <a href="/esim-deals/" class="font-semibold text-brand-700 hover:underline">all deals</a></p>
+          {{ end }}
+          <ul class="mt-4 space-y-1.5 text-sm text-ink-700">
+            {{ range first 3 $p.strengths }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ . }}</li>{{ end }}
+          </ul>
+          <ul class="mt-2.5 space-y-1.5 text-sm text-ink-500">
+            {{ range first 2 $p.weaknesses }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ . }}</li>{{ end }}
+          </ul>
+          <div class="mt-4 flex flex-wrap items-center gap-3">
+            {{ with site.GetPage (printf "/compare/%s/%s" $country.slug $pk) }}
+              <a href="{{ .RelPermalink }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:underline">
+                All {{ $p.name }} plans in {{ $country.name }} <span aria-hidden="true">→</span>
+              </a>
+            {{ end }}
+            <a href="{{ printf "/esim-providers/%s/" $pk }}" class="inline-flex items-center gap-1 text-xs font-semibold text-ink-400 hover:text-brand-700">
+              {{ $p.name }} review <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* ── ⑦ 国家特定须知（反同质化护城河）── */}}
+  {{ with $country.quirks }}
+  <section class="mt-14" aria-labelledby="quirks">
+    <div class="grid items-start gap-8 lg:grid-cols-[1.4fr_1fr]">
+      <div class="card p-7">
+        <p class="eyebrow">Before you buy</p>
+        <h2 id="quirks" class="mt-2 text-2xl font-bold">Things to know before buying a {{ $country.name }} eSIM</h2>
+        <ol class="mt-5 space-y-4">
+          {{ range . }}
+          <li class="flex gap-3.5 text-ink-700">
+            <img src="{{ $country.flag | relURL }}" alt="" class="mt-1 h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">
+            <span class="leading-relaxed">{{ . }}</span>
+          </li>
+          {{ end }}
+        </ol>
+      </div>
+      {{ if gt (len $imgs) 1 }}
+      <figure class="figure lg:sticky lg:top-24">
+        <img src="{{ printf "/img/countries/%s" (index $imgs 1) }}" alt="{{ $country.name }} eSIM activation and coverage tips illustration" width="2848" height="1470" loading="lazy">
+        <figcaption>Buying an eSIM for {{ $country.name }}: networks, ID rules and quirks.</figcaption>
+      </figure>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── ⑦b 网络 × 运营商归属（逐国唯一，反同质化；信息增量=谁骑在哪个网上）── */}}
+  {{ $netMap := dict }}
+  {{ range $r := $stats.rows }}
+    {{ range split $r.networks ", " }}
+      {{ if ne . "" }}
+        {{ $cur := index $netMap . | default slice }}
+        {{ if not (in $cur $r.provider) }}{{ $netMap = merge $netMap (dict . ($cur | append $r.provider)) }}{{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $netKeys := slice }}
+  {{ range $n, $v := $netMap }}{{ $netKeys = $netKeys | append $n }}{{ end }}
+  {{/* 运营商画像（data/carriers.toml，可选）：profiles[].name 与 carriers[]/networks 连接；
+       info.cities = 主要城市清单；info.detail[] = 逐运营商 strong/weak（可选，缺省不渲染） */}}
+  {{ $profiles := dict }}
+  {{ $carrierInfo := dict }}
+  {{ with index hugo.Data.carriers .Params.iso }}
+    {{ range .profiles }}{{ $profiles = merge $profiles (dict .name .) }}{{ end }}
+    {{ with .info }}{{ $carrierInfo = . }}{{ end }}
+  {{ end }}
+  {{ $details := dict }}
+  {{ range $d := $carrierInfo.detail }}{{ $details = merge $details (dict $d.carrier $d) }}{{ end }}
+  {{ if or (gt (len $netKeys) 0) (gt (len $profiles) 0) }}
+  <section class="mt-14" aria-labelledby="networks">
+    <p class="eyebrow">Networks</p>
+    <h2 id="networks" class="mt-2 text-2xl font-bold md:text-3xl">Which networks do {{ $country.name }} eSIMs run on</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">Every eSIM connects to a local carrier network. Coverage, speed and rural reach follow that host network — so knowing whose mast your plan uses matters more than the brand on the voucher.</p>
+    <div class="mt-6 grid items-start gap-6 lg:grid-cols-[1.5fr_1fr]">
+      <div class="grid gap-3 sm:grid-cols-2">
+        {{ if gt (len $netKeys) 0 }}
+        {{ range sort $netKeys }}
+        {{ $prof := index $profiles . }}
+        {{ $det := index $details . }}
+        <div class="card p-4">
+          <div class="flex items-center justify-between gap-2">
+            <p class="font-display text-sm font-bold text-ink-950">{{ . }}</p>
+            {{ with $prof }}<span class="badge bg-brand-50 text-brand-700">{{ .tech }}</span>{{ end }}
+          </div>
+          <p class="mt-1.5 text-xs leading-relaxed text-ink-500">Plans from <strong class="text-ink-700">{{ delimit (sort (index $netMap .)) ", " }}</strong> connect to this network.</p>
+          {{ with $prof }}
+          {{/* "Good for" 由 speed_min 推导（25=4K 档，10=HD 档，5=基础档），单一事实源 */}}
+          {{ $gf := "email · messaging · maps" }}
+          {{ if ge .speed_min 25 }}{{ $gf = "4K streaming · video calls · hotspot work" }}{{ else if ge .speed_min 10 }}{{ $gf = "HD streaming · video calls · navigation" }}{{ else if ge .speed_min 5 }}{{ $gf = "HD streaming · music · maps" }}{{ end }}
+          <p class="mt-2 text-xs font-semibold text-ink-700">Typical {{ .speed_min }}–{{ .speed_top }} Mbps <span class="font-normal text-ink-500">— enough for {{ $gf }}</span></p>
+          <p class="mt-2 border-t border-ink-100 pt-2 text-xs leading-relaxed text-ink-400">{{ .note }}</p>
+          {{ with $det.strong }}<p class="mt-1.5 text-xs leading-relaxed text-ink-600"><strong class="text-brand-700">Where it wins:</strong> {{ . }}</p>{{ end }}
+          {{ with $det.weak }}<p class="mt-1 text-xs leading-relaxed text-ink-500"><strong class="text-accent-700">Where it lags:</strong> {{ . }}</p>{{ end }}
+          {{ end }}
+        </div>
+        {{ end }}
+        {{ else }}
+        {{/* networks 尚未入库（esimdb 不展示）：仍渲染全部本地运营商画像 */}}
+        {{ range $country.carriers }}
+        {{ $prof := index $profiles . }}
+        {{ $det := index $details . }}
+        <div class="card p-4">
+          <div class="flex items-center justify-between gap-2">
+            <p class="font-display text-sm font-bold text-ink-950">{{ . }}</p>
+            {{ with $prof }}<span class="badge bg-brand-50 text-brand-700">{{ .tech }}</span>{{ end }}
+          </div>
+          {{ with $prof }}
+          {{ $gf := "email · messaging · maps" }}
+          {{ if ge .speed_min 25 }}{{ $gf = "4K streaming · video calls · hotspot work" }}{{ else if ge .speed_min 10 }}{{ $gf = "HD streaming · video calls · navigation" }}{{ else if ge .speed_min 5 }}{{ $gf = "HD streaming · music · maps" }}{{ end }}
+          <p class="mt-2 text-xs font-semibold text-ink-700">Typical {{ .speed_min }}–{{ .speed_top }} Mbps <span class="font-normal text-ink-500">— enough for {{ $gf }}</span></p>
+          <p class="mt-2 border-t border-ink-100 pt-2 text-xs leading-relaxed text-ink-400">{{ .note }}</p>
+          {{ with $det.strong }}<p class="mt-1.5 text-xs leading-relaxed text-ink-600"><strong class="text-brand-700">Where it wins:</strong> {{ . }}</p>{{ end }}
+          {{ with $det.weak }}<p class="mt-1 text-xs leading-relaxed text-ink-500"><strong class="text-accent-700">Where it lags:</strong> {{ . }}</p>{{ end }}
+          {{ else }}
+          <p class="mt-2 text-xs text-ink-400">Profile being verified for this network.</p>
+          {{ end }}
+        </div>
+        {{ end }}
+        {{ end }}
+      </div>
+      {{ with $country.carriers }}
+      <div class="card p-5">
+        <h3 class="font-display text-base font-bold text-ink-950">{{ $country.name }}'s local carrier market</h3>
+        <ul class="mt-4 space-y-2.5">
+          {{ range . }}
+          <li class="flex items-center justify-between gap-2 text-sm">
+            <span class="font-medium text-ink-700">{{ . }}</span>
+            {{ if index $netMap . }}<span class="badge bg-brand-50 text-brand-700">eSIM-ready</span>{{ else if gt (len $netKeys) 0 }}<span class="badge bg-ink-50 text-ink-400">not on tracked eSIMs</span>{{ end }}
+          </li>
+          {{ end }}
+        </ul>
+        {{ if gt (len $netKeys) 0 }}
+        <p class="mt-4 text-xs leading-relaxed text-ink-400">Matched against the {{ $stats.planCount }} plans in the table above. Prefer plans on the carrier with the best coverage where you're going.</p>
+        {{ else }}
+        <p class="mt-4 text-xs leading-relaxed text-ink-400">We're mapping which eSIM brands ride which of these networks — until then, pick by coverage where you're going.</p>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{/* 主要城市覆盖条：全国性运营商在主要城市均达标，差异出现在城市之外 —— 城市名兼收长尾查询 */}}
+    {{ with $carrierInfo.cities }}
+    <div class="card mt-4 p-5">
+      <h3 class="font-display text-base font-bold text-ink-950">Which national networks cover {{ $country.name }}'s major cities</h3>
+      <div class="mt-3 flex flex-wrap gap-1.5">
+        {{ range . }}<span class="badge bg-ink-50 text-ink-600">{{ . }}</span>{{ end }}
+      </div>
+      <p class="mt-3 text-xs leading-relaxed text-ink-400">All the carriers above serve these metros with full speed; the differences between them show up outside them — rural roads, mountain areas, islands and deep-indoor spots like basements and metro platforms.</p>
+    </div>
+    {{ end }}
+    {{ if gt (len $profiles) 0 }}<p class="mt-3 text-xs leading-relaxed text-ink-400">Speeds are typical real-world downloads (4G floor to good 5G); actual speeds depend on device, plan and location. For context: Netflix 4K needs about 25 Mbps, HD about 5.</p>{{ end }}
+  </section>
+
+  {{/* ── ⑦b 独立网络数据（Opensignal / Ookla 归属引用，E-E-A-T 来源标注） ── */}}
+  {{ $nr := index hugo.Data.networkreports $iso }}
+  {{ $ooklaSlug := $country.slug }}{{ with $nr }}{{ with .ookla_slug }}{{ $ooklaSlug = . }}{{ end }}{{ end }}
+  {{ $ooklaMobile := true }}{{ with $nr }}{{ if eq .ookla_mobile false }}{{ $ooklaMobile = false }}{{ end }}{{ end }}
+  <section class="mt-14" aria-labelledby="netdata">
+    <p class="eyebrow">Independent measurements</p>
+    <h2 id="netdata" class="mt-2 text-2xl font-bold md:text-3xl">Independent network data for {{ $country.name }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">The network profiles above are ours. The findings below come from independent measurement firms — Opensignal crowdsources real-user readings, Ookla aggregates Speedtest samples — so you can cross-check whose masts actually perform before picking a plan that rides them.</p>
+    <div class="mt-6 grid items-start gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {{ with $nr }}
+      {{ with .opensignal_url }}
+      <div class="card p-5">
+        <p class="eyebrow">Opensignal · {{ $nr.opensignal_date }}</p>
+        <ul class="mt-3 space-y-2.5">
+          {{ range $nr.opensignal_facts }}
+          <li class="flex gap-2 text-sm leading-relaxed text-ink-600"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-400" aria-hidden="true"></span><span>{{ . }}</span></li>
+          {{ end }}
+        </ul>
+        <p class="mt-4 border-t border-ink-100 pt-3 text-xs text-ink-400">Source: <a href="{{ $nr.opensignal_url }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">{{ $nr.opensignal_title }}</a>, Opensignal.</p>
+      </div>
+      {{ end }}
+      {{ with .ookla_note }}
+      <div class="card p-5">
+        <p class="eyebrow">Ookla · award report</p>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ $nr.ookla_note }}</p>
+        <p class="mt-4 border-t border-ink-100 pt-3 text-xs text-ink-400">Source: <a href="{{ $nr.ookla_url }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">Ookla Speedtest report</a>, {{ $nr.ookla_date }}.</p>
+      </div>
+      {{ end }}
+      {{ end }}
+      <div class="card p-5">
+        <p class="eyebrow">Ookla Speedtest Global Index</p>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ if $ooklaMobile }}Ookla's index tracks {{ $country.name }}'s median mobile download, upload and latency month by month — the live picture of how the whole market's networks compare.{{ else }}Ookla's index currently carries no mobile ranking for {{ $country.name }}; its fixed-broadband index still tracks the market month by month.{{ end }}</p>
+        <a href="{{ printf "https://www.speedtest.net/global-index/%s" $ooklaSlug | safeURL }}" target="_blank" rel="noopener" class="btn-mini mt-4 inline-block">Open {{ $country.name }} on the Global Index →</a>
+      </div>
+    </div>
+    <p class="mt-3 text-xs leading-relaxed text-ink-400">Award findings are quoted from the named reports and link to the originals. Sources accessed {{ hugo.Data.networkreports.accessed }}; our own price and fair-use data follow the <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.</p>
+  </section>
+  {{ end }}
+
+  {{/* ── ⑧ FAQ（对比角度）── */}}
+  {{ with $faqs }}
+  <section class="mt-14" aria-labelledby="faq">
+    <div class="grid items-start gap-8 lg:grid-cols-[1.4fr_1fr]">
+      <div>
+        <p class="eyebrow">FAQ</p>
+        <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">What should I know before buying a {{ $country.name }} eSIM</h2>
+        <div class="mt-5 space-y-3">
+          {{ range . }}
+          <details class="faq-item">
+            <summary>
+              {{ .q }}
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <p class="faq-body">{{ .a }}</p>
+          </details>
+          {{ end }}
+        </div>
+      </div>
+      {{ if gt (len $imgs) 2 }}
+      <figure class="figure lg:sticky lg:top-24">
+        <img src="{{ printf "/img/countries/%s" (index $imgs 2) }}" alt="{{ $country.name }} eSIM frequently asked questions illustration" width="2848" height="1470" loading="lazy">
+        <figcaption>Common {{ $country.name }} eSIM questions — data, price and compatibility.</figcaption>
+      </figure>
+      {{ end }}
+    </div>
+    <script type="application/ld+json">
+      {{- $list := slice -}}
+      {{- range . -}}
+        {{- $list = $list | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) -}}
+      {{- end -}}
+      {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $list) | safeJS }}
+    </script>
+  </section>
+  {{ end }}
+
+  {{/* ── ⑨ 联动化：邻国 → 同区域 → 全局（品牌覆盖数降序），共 5 国；锚文本轮换防同质 ── */}}
+  {{ $sc := newScratch }}
+  {{ $sc.Set "links" slice }}
+  {{ $sc.Set "used" (slice $iso) }}
+  {{/* 排序键：品牌覆盖数降序 + 名字升序（拼接单键，保证构建确定性） */}}
+  {{ $rankOf := dict }}
+  {{ range $k, $v := hugo.Data.countries }}
+    {{ $rs := partialCached "country-stats.html" $k $k }}
+    {{ $rankOf = merge $rankOf (dict $k (printf "%03d|%s" (sub 100 (len $rs.providers)) $v.name)) }}
+  {{ end }}
+  {{ $regionList := slice }}{{ $globalList := slice }}
+  {{ range $k, $v := hugo.Data.countries }}
+    {{ $e := dict "iso" $k "rank" (index $rankOf $k) }}
+    {{ if eq $v.region $country.region }}{{ $regionList = $regionList | append $e }}{{ end }}
+    {{ $globalList = $globalList | append $e }}
+  {{ end }}
+  {{ $regionList = sort $regionList "rank" "asc" }}
+  {{ $globalList = sort $globalList "rank" "asc" }}
+  {{/* 三层依次填充，录满 5 即止 */}}
+  {{ range $cIso := $country.neighbors }}
+    {{ if lt (len ($sc.Get "links")) 5 }}
+      {{ if not (in ($sc.Get "used") $cIso) }}
+        {{ $nc := index hugo.Data.countries $cIso }}
+        {{ with site.GetPage (printf "/compare/%s" $nc.slug) }}
+          {{ $ns := partialCached "country-stats.html" $cIso $cIso }}
+          {{ $sc.Add "used" (slice $cIso) }}
+          {{ $sc.Add "links" (slice (dict "name" $nc.name "url" .RelPermalink "flag" $nc.flag "min" $ns.minPrice "count" (len $ns.providers))) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ range $regionList }}
+    {{ if lt (len ($sc.Get "links")) 5 }}
+      {{ $cIso := .iso }}
+      {{ if not (in ($sc.Get "used") $cIso) }}
+        {{ $nc := index hugo.Data.countries $cIso }}
+        {{ with site.GetPage (printf "/compare/%s" $nc.slug) }}
+          {{ $ns := partialCached "country-stats.html" $cIso $cIso }}
+          {{ $sc.Add "used" (slice $cIso) }}
+          {{ $sc.Add "links" (slice (dict "name" $nc.name "url" .RelPermalink "flag" $nc.flag "min" $ns.minPrice "count" (len $ns.providers))) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ range $globalList }}
+    {{ if lt (len ($sc.Get "links")) 5 }}
+      {{ $cIso := .iso }}
+      {{ if not (in ($sc.Get "used") $cIso) }}
+        {{ $nc := index hugo.Data.countries $cIso }}
+        {{ with site.GetPage (printf "/compare/%s" $nc.slug) }}
+          {{ $ns := partialCached "country-stats.html" $cIso $cIso }}
+          {{ $sc.Add "used" (slice $cIso) }}
+          {{ $sc.Add "links" (slice (dict "name" $nc.name "url" .RelPermalink "flag" $nc.flag "min" $ns.minPrice "count" (len $ns.providers))) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ with $sc.Get "links" }}
+  <section class="mt-14" aria-labelledby="next">
+    <p class="eyebrow">Keep traveling</p>
+    <h2 id="next" class="mt-2 text-2xl font-bold md:text-3xl">eSIM for your next destination</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">Travelers comparing {{ $country.name }} eSIMs often price these destinations next — each card opens a live plan table, checked the same day as the one above.</p>
+    <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      {{ range $i, $l := . }}
+      {{ $anchor := printf "%s eSIM" $l.name }}
+      {{ if eq (mod $i 3) 1 }}{{ $anchor = printf "eSIM for %s" $l.name }}{{ else if eq (mod $i 3) 2 }}{{ $anchor = printf "%s eSIM prices" $l.name }}{{ end }}
+      <a href="{{ $l.url }}" class="card card-hover group flex items-center gap-4 p-4">
+        <img src="{{ $l.flag | relURL }}" alt="" class="h-9 w-[3.25rem] rounded-lg object-cover ring-1 ring-ink-100" loading="lazy">
+        <span class="flex-1">
+          <span class="block font-semibold text-ink-900 group-hover:text-brand-700">{{ $anchor }}</span>
+          {{ if gt $l.min 0.0 }}<span class="mt-0.5 block text-xs text-ink-400 tnum">from ${{ printf "%.2f" $l.min }} · {{ $l.count }} brands</span>{{ end }}
+        </span>
+        <span class="text-ink-300 transition-colors group-hover:text-brand-600" aria-hidden="true">→</span>
+      </a>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── ⑨b 基础知识内链（guides 排名助推：50 国家页 × 5 指南，锚文本按 slug 长度轮换防同质化） ── */}}
+  {{ $guideCards := slice
+    (dict "path" "/guides/what-is-an-esim" "anchors" (slice "eSIM basics" "what is an eSIM" "eSIM explained") "blurb" "What the technology actually is, minus the marketing.")
+    (dict "path" "/guides/esim-vs-physical-sim" "anchors" (slice "eSIM vs physical SIM" "eSIM or SIM card" "SIM card alternative") "blurb" "Where eSIMs win and where a physical SIM still makes sense.")
+    (dict "path" "/guides/how-to-install-esim" "anchors" (slice "install an eSIM" "eSIM installation" "activating an eSIM") "blurb" "The install walkthrough for every provider we track.")
+    (dict "path" "/guides/esim-compatibility-check" "anchors" (slice "eSIM compatibility" "check your phone" "supported phones") "blurb" "The 30-second EID test plus every compatible phone we verified.")
+    (dict "path" "/guides/dual-sim-and-esim" "anchors" (slice "dual SIM setup" "dual SIM with eSIM" "dual SIM phones") "blurb" "Keep your home number while travel data runs on eSIM.")
+  }}
+  {{ $rot := mod (len $country.slug) 3 }}
+  <section class="mt-14" aria-labelledby="guides">
+    <p class="eyebrow">New to eSIMs</p>
+    <h2 id="guides" class="mt-2 text-2xl font-bold md:text-3xl">First time using an eSIM?</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">The plans above assume the basics. If this is your first eSIM, these five short reads take you from what an eSIM is to a working data connection before you board.</p>
+    <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      {{ range $g := $guideCards }}
+      {{ with site.GetPage .path }}
+      <a href="{{ .RelPermalink }}" class="card card-hover group p-4">
+        <p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ index $g.anchors $rot }}</p>
+        <p class="mt-1.5 text-xs leading-relaxed text-ink-500">{{ $g.blurb }}</p>
+      </a>
+      {{ end }}
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* ── ⑩ Trust 尾 ── */}}
+  <section class="mt-14">
+    <div class="relative overflow-hidden rounded-3xl bg-ink-gradient px-7 py-8 text-ink-300 md:px-10">
+      <div class="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
+      <p class="font-display text-lg font-bold text-white">Data you can check.</p>
+      <p class="mt-2 max-w-2xl text-sm leading-relaxed">
+        {{ with $stats.checkedDate }}Prices on this page were last verified {{ . }}.{{ end }}
+        Full collection rules in our <a href="/methodology/" class="font-semibold text-brand-300 hover:underline">methodology</a>;
+        how we make money in our <a href="/disclosure/" class="font-semibold text-brand-300 hover:underline">disclosure</a>.
+      </p>
+    </div>
+  </section>
+</div>
+{{ end }}

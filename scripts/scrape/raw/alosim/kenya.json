@@ -1,0 +1,58 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n4"
+ },
+ "plans": [
+  {
+   "name": "kenya",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$8.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "kenya",
+   "data": "2GB",
+   "validity": "15 Days",
+   "price": "$14.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "kenya",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$20.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "kenya",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$32.00",
+   "badges": [
+    "15% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "aloSIM Travel eSIM for Kenya | Data Plans & Reviews",
+  "h1": "aloSIM eSIM Data Plans for Kenya",
+  "chips": [
+   "All plans\n10",
+   "Single-country\n4",
+   "Multiple-country\n6"
+  ],
+  "official_site": "https://alosim.com/?_ef_transaction_id=&oid=31&affid=1147",
+  "body_head": "Single\nMulti\nWrite a review\nBack to Kenya eSIM Plans\naloSIM\n\naloSIM makes it easy to stay connected worldwide with affordable eSIM data plans! No physical SIM, no roaming fees, just instant coverage in 200+ destinations.\n\nVerified\nOfficial Website\n\nPROMO CODE\n\nGET 15% OFF\nFor new user\nESIMDB15\nCopy\naloSIM eSIM Data Plans for Kenya\nAll plans\n10\nSingle-country\n4\nMultiple-country\n6\nSort:\nCheapest\nBest Price/GB\nMost Data\nValidity\nApply Promo Codes\nPLAN NAME\nDATA\nVALIDITY\nPRICE/GB\nPRICE\nkenya\n1GB\n7 Days\n$8.00\n$8.00/GB\n15% OFF\n5G\nView Details\nkenya\n2GB\n15 Days\n$14.50\n$7.25/GB\n15% OFF\n5G\nView Details\nkenya\n3GB\n30 Days\n$20.00\n$6.67/GB\n15% OFF\n5G\nView Details\nkenya\n5GB\n30 Days\n$32.00\n$6.40/GB\n15% OFF\n5G\nView Details\n\nData plans for this provider are automatically updated. While we strive to keep the information accurate, we cannot guarantee its completeness or accuracy. Please confirm all details"
+ },
+ "slug": "kenya",
+ "url": "https://esimdb.com/kenya/alosim",
+ "status": 200
+}

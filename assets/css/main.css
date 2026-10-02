@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========== 基础 ========== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* 锚点定位避开 sticky header */
+    scroll-padding-top: 5.5rem;
+  }
+  body {
+    @apply font-sans text-ink-800 antialiased;
+  }
+  ::selection {
+    @apply bg-accent-100 text-accent-900;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-ink-950;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500/60 ring-offset-2 ring-offset-white;
+  }
+  /* 数字列一律等宽数字（价格表核心细节） */
+  .tnum, table td, table th {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ========== 组件 ========== */
+@layer components {
+  /* 按钮 */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent-600 px-5 py-2.5 text-sm font-semibold text-white shadow-cta transition-all duration-200 hover:bg-accent-700 hover:shadow-lift active:translate-y-px;
+  }
+  .btn-out {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-ink-200 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700 shadow-soft transition-all duration-200 hover:border-brand-400 hover:text-brand-700 active:translate-y-px;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3 py-1.5 text-sm font-semibold text-ink-600 transition-colors hover:bg-ink-50 hover:text-ink-900;
+  }
+  /* 表格行内小按钮（联赛表尾列显式 CTA） */
+  .btn-mini {
+    @apply inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-lg bg-accent-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-accent-700;
+  }
+
+  /* 卡片 */
+  .card {
+    @apply rounded-2xl border border-ink-100 bg-white shadow-soft;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lift;
+  }
+
+  /* 徽章 */
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide;
+  }
+
+  /* 眉题（区块小标签，成体系的设计语言） */
+  .eyebrow {
+    @apply text-[11px] font-bold uppercase tracking-[0.18em] text-brand-600;
+  }
+
+  /* 统计瓦片 */
+  .stat-tile {
+    @apply flex flex-col rounded-xl border border-ink-100 bg-white px-4 py-3 shadow-soft;
+  }
+  .stat-tile .stat-num {
+    @apply font-display text-2xl font-bold leading-none text-ink-950;
+  }
+  .stat-tile .stat-label {
+    @apply mt-1 text-[11px] font-medium uppercase tracking-wide text-ink-400;
+  }
+
+  /* 专业数据表 */
+  .table-pro {
+    @apply w-full border-collapse text-sm;
+  }
+  .table-pro thead th {
+    @apply sticky top-0 z-10 border-b border-ink-200 bg-ink-50/95 px-4 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-ink-500 backdrop-blur;
+  }
+  .table-pro tbody td {
+    @apply border-b border-ink-100 px-4 py-3.5 align-middle;
+  }
+  .table-pro tbody tr {
+    @apply transition-colors;
+  }
+  /* 悬停：中性高亮 + 品牌色左轨（清晰反馈且不糊文字；绿色底洗白已弃用） */
+  .table-pro tbody tr:hover {
+    background-color: #e9eef4;
+    box-shadow: inset 3px 0 0 #4ab89e;
+  }
+  /* 斑马纹：实色 ink-50，无需任何交互即可见 */
+  .table-pro tbody tr:nth-child(even) {
+    background-color: #f5f7fa;
+  }
+  .table-pro tbody tr:nth-child(even):hover {
+    background-color: #e9eef4;
+  }
+
+  /* 品牌首字母徽标（providers.toml color 驱动）—— 当前为 logo 占位符方案 */
+  .prov-avatar {
+    @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-xl font-display text-sm font-bold text-white;
+  }
+
+  /* 真 logo 容器（static/img/providers/<key>.png 存在时由 prov-logo partial 启用） */
+  .prov-logo {
+    @apply flex shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white ring-1 ring-ink-100;
+  }
+  .prov-logo img {
+    @apply h-full w-full object-contain;
+  }
+
+  /* 导航下拉 */
+  .nav-dropdown {
+    @apply invisible absolute left-0 top-full z-40 w-64 translate-y-1 rounded-2xl border border-ink-100 bg-white p-2 opacity-0 shadow-pop transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100;
+  }
+  /* 悬停桥：填补 translate-y-1 造成的 4px 死角（/deals/ 页点击失效的根因） */
+  .nav-dropdown::before,
+  .nav-mega::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -0.5rem;
+    height: 0.5rem;
+    width: 100%;
+  }
+
+  /* 国家大菜单（按区域分组，可扩展至 180+ 国） */
+  .nav-mega {
+    @apply invisible absolute left-0 top-full z-40 w-[46rem] translate-y-1 rounded-2xl border border-ink-100 bg-white p-5 opacity-0 shadow-pop transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100;
+  }
+  .mega-link {
+    @apply flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[13px] font-medium text-ink-600 transition-colors hover:bg-brand-50 hover:text-brand-800;
+  }
+  .mega-region {
+    @apply max-h-44 overflow-y-auto pr-1;
+    scrollbar-width: thin;
+  }
+
+  /* FAQ 折叠（原生 details，+ 旋转动画） */
+  .faq-item {
+    @apply card overflow-hidden p-0 transition-shadow hover:shadow-lift;
+  }
+  .faq-item summary {
+    @apply flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold text-ink-900;
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-item summary .faq-icon {
+    @apply flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-ink-50 text-ink-400 transition-transform duration-300;
+  }
+  .faq-item[open] summary .faq-icon {
+    @apply rotate-45 bg-brand-100 text-brand-700;
+  }
+  .faq-item .faq-body {
+    @apply border-t border-ink-100 px-5 py-4 text-sm leading-relaxed text-ink-600;
+  }
+
+  /* 搜索输入 */
+  .input-search {
+    @apply w-full rounded-xl border border-ink-200 bg-white px-4 py-2.5 text-sm text-ink-900 shadow-soft outline-none transition-all placeholder:text-ink-300 focus:border-brand-400 focus:ring-4 focus:ring-brand-500/10;
+  }
+
+  /* 区域过滤 chip */
+  .chip {
+    @apply cursor-pointer rounded-full border border-ink-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-ink-600 transition-all hover:border-brand-300 hover:text-brand-700;
+  }
+  .chip-active {
+    @apply border-brand-600 bg-brand-600 text-white hover:border-brand-700 hover:text-white;
+  }
+
+  /* 移动端横向导航 */
+  .nav-scroll {
+    scrollbar-width: none;
+  }
+  .nav-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 插图容器：统一圆角+比例+悬停微缩放 */
+  .figure {
+    @apply overflow-hidden rounded-2xl border border-ink-100 bg-ink-50 shadow-soft;
+  }
+  .figure img {
+    @apply aspect-[2/1] w-full object-cover transition-transform duration-500;
+  }
+  .figure:hover img {
+    @apply scale-[1.03];
+  }
+  .figure figcaption {
+    @apply px-4 py-2.5 text-xs text-ink-400;
+  }
+}
+
+/* ========== 动画 ========== */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up .5s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up { animation: none; }
+  html { scroll-behavior: auto; }
+}

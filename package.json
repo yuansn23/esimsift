@@ -1,0 +1,18 @@
+{
+  "name": "esimsift",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "validate": "python scripts/validate.py",
+    "build:css": "tailwindcss -i assets/css/main.css -o static/css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i assets/css/main.css -o static/css/tailwind.css --watch",
+    "build": "npm run validate && npm run build:css && hugo",
+    "dev": "npm run build:css && hugo server"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.14",
+    "tailwindcss": "^3.4.19"
+  }
+}

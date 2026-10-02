@@ -1,0 +1,310 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n30"
+ },
+ "plans": [
+  {
+   "name": "Annatel - 1 GB",
+   "data": "1GB",
+   "validity": "3 Days",
+   "price": "$4.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel - 3 GB",
+   "data": "3GB",
+   "validity": "3 Days",
+   "price": "$5.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel+ - 1 GB",
+   "data": "1GB",
+   "validity": "3 Days",
+   "price": "$5.50",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+972)"
+   ]
+  },
+  {
+   "name": "Annatel - 3 GB",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$6.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel - 5 GB",
+   "data": "5GB",
+   "validity": "7 Days",
+   "price": "$7.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel+ - 3 GB",
+   "data": "3GB",
+   "validity": "3 Days",
+   "price": "$7.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+972)"
+   ]
+  },
+  {
+   "name": "Annatel - 5 GB",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$7.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel - 5 GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$8.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel+ - 3 GB",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$8.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+972)"
+   ]
+  },
+  {
+   "name": "Annatel+ - 5 GB",
+   "data": "5GB",
+   "validity": "7 Days",
+   "price": "$9.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+972)"
+   ]
+  },
+  {
+   "name": "Annatel+ - 5 GB",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$10.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+972)"
+   ]
+  },
+  {
+   "name": "Annatel - 10 GB",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$10.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel - 10 GB",
+   "data": "10GB",
+   "validity": "15 Days",
+   "price": "$11.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel - 10 GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$11.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel - Unlimited",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$12.50",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel+ - 10 GB",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$13.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+972)"
+   ]
+  },
+  {
+   "name": "Annatel+ - 5 GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$13.50",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+972)"
+   ]
+  },
+  {
+   "name": "Annatel+ - 10 GB",
+   "data": "10GB",
+   "validity": "15 Days",
+   "price": "$14.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+972)"
+   ]
+  },
+  {
+   "name": "Annatel - 20 GB",
+   "data": "20GB",
+   "validity": "15 Days",
+   "price": "$16.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel - 20 GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$16.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel - Unlimited",
+   "data": "3GB/day",
+   "validity": "5 Days",
+   "price": "$18.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel+ - 20 GB",
+   "data": "20GB",
+   "validity": "15 Days",
+   "price": "$20.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+972)"
+   ]
+  },
+  {
+   "name": "Annatel+ - 10 GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$22.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+972)"
+   ]
+  },
+  {
+   "name": "Annatel - Unlimited",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$26.50",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel - Unlimited",
+   "data": "3GB/day",
+   "validity": "10 Days",
+   "price": "$34.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel+ - 20 GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$34.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+972)"
+   ]
+  },
+  {
+   "name": "Annatel - 50 GB",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$39.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel+ - 50 GB",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$47.00",
+   "badges": [
+    "15% OFF",
+    "Call/SMS (+972)"
+   ]
+  },
+  {
+   "name": "Annatel - Unlimited",
+   "data": "3GB/day",
+   "validity": "15 Days",
+   "price": "$48.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Annatel - Unlimited",
+   "data": "3GB/day",
+   "validity": "30 Days",
+   "price": "$69.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Airalo Travel eSIM for Israel | Data Plans & Reviews",
+  "h1": "Airalo eSIM Data Plans for Israel",
+  "chips": [
+   "All plans\n66",
+   "Single-country\n30",
+   "Multiple-country\n36"
+  ],
+  "official_site": null,
+  "body_head": "Single\nMulti\nWrite a review\nBack to Israel eSIM Plans\nAiralo\n\nSay 'Alo!' to simple & affordable mobile data freedom during your travels. Airalo provides data in 190+ countries & regions.\n\nVerified\nWeb checkout\nApple Pay\nGoogle Pay\nOfficial Website\n\nPROMO CODE\n\nGET 10% OFF\nUnlimited\nESIMDB10\nCopy\nTerms apply.\n\nPROMO CODE\n\nGET 15% OFF\nFor new user\nESIMDB15\nCopy\nTerms apply.\nAiralo eSIM Data Plans for Israel\nAll plans\n66\nSingle-country\n30\nMultiple-country\n36\nSort:\nCheapest\nBest Price/GB\nMost Data\nValidity\nApply Promo Codes\nPLAN NAME\nDATA\nVALIDITY\nPRICE/GB\nPRICE\nAnnatel - 1 GB\n1GB\n3 Days\n$4.00\n$4.00/GB\n15% OFF\n5G\nView Details\nAnnatel - 3 GB\n3GB\n3 Days\n$5.50\n$1.83/GB\n15% OFF\n5G\nView Details\nAnnatel+ - 1 GB\n1GB\n3 Days\n$5.50\n$5.50/GB\n15% OFF\n5G\nCall/SMS\n(+972)\nView Details\nAnnatel - 3 GB\n3GB\n7 Days\n$6.00\n$2.00/GB\n15% OFF\n5G\nView Details\nAnnatel - 5 GB\n5GB\n7 Days\n$7.00\n$1.40/GB\n15% OFF\n5G\nView D"
+ },
+ "slug": "israel",
+ "url": "https://esimdb.com/israel/airalo",
+ "status": 200
+}

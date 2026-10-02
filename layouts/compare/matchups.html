@@ -1,0 +1,89 @@
+{{ define "main" }}
+{{/* 对决枢纽页 /compare/matchups/ —— 28 组对决的可收录索引页（用户需求：对决页要有独立入口）
+   蓝图边界（docs/keyword-map.md）：本页只承接 "eSIM provider comparison / 对决列表" 导航词，
+   单对决头词归 /compare/{a}-vs-{b}/，不得在卡片文案里抢词。
+   全部统计实时计算（vs-agg）；nolist: true → 不进国家网格/catalog/llms 国家清单。 */}}
+{{ $keys := slice }}
+{{ range $k, $v := hugo.Data.providers }}{{ $keys = $keys | append $k }}{{ end }}
+{{ $keys = sort $keys }}
+
+{{ $cards := slice }}
+{{ range $i, $ka := $keys }}
+  {{ range $kb := after (add $i 1) $keys }}
+    {{ with site.GetPage (printf "/compare/%s-vs-%s" $ka $kb) }}
+      {{ $agg := partial "vs-agg.html" (dict "a" $ka "b" $kb) }}
+      {{ $cards = $cards | append (dict
+        "url" .RelPermalink "na" (index hugo.Data.providers $ka).name "nb" (index hugo.Data.providers $kb).name
+        "ka" $ka "kb" $kb
+        "aWins" $agg.aWinsPrice "bWins" $agg.bWinsPrice "ties" $agg.ties "n" $agg.countries
+        "gap" (math.Abs (sub $agg.aWinsPrice $agg.bWinsPrice))
+      ) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $total := len $cards }}
+{{ $closest := dict }}{{ if gt $total 0 }}{{ $closest = index (sort $cards "gap" "asc") 0 }}{{ end }}
+{{ $blowout := dict }}{{ if gt $total 0 }}{{ $blowout = index (sort $cards "gap" "desc") 0 }}{{ end }}
+
+<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+  {{ partial "breadcrumbs.html" . }}
+
+  <div class="mt-4 grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+  <header>
+    <div class="flex flex-wrap items-center gap-3">
+      <span class="badge bg-brand-50 text-brand-700">head-to-head index</span>
+      <span class="badge bg-ink-50 text-ink-500 tnum">{{ $total }} matchups</span>
+      <span class="badge bg-ink-50 text-ink-500 tnum">{{ hugo.Data.providers | len }} providers</span>
+    </div>
+    <h1 class="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ .Title }}</h1>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">Every provider pair we track, one page per matchup. Verdicts are not opinions: for each shared country we compare the cheapest plans head-to-head and count who wins — the same dated prices that power every table on this site.</p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      {{ with $closest.n }}<div class="stat-tile"><span class="stat-num text-lg">{{ $closest.na }} vs {{ $closest.nb }}</span><span class="stat-label">closest rivalry — decided in {{ $closest.n }} countries</span></div>{{ end }}
+      {{ with $blowout.n }}<div class="stat-tile"><span class="stat-num text-lg">{{ $blowout.na }} vs {{ $blowout.nb }}</span><span class="stat-label">most lopsided — one side wins nearly everywhere</span></div>{{ end }}
+      <a href="/esim-providers/" class="stat-tile transition-colors hover:bg-ink-50"><span class="stat-num text-base">Provider reviews →</span><span class="stat-label">each brand's pricing behavior in full</span></a>
+    </div>
+  </header>
+  <figure class="figure">
+    <img src="/img/esim/travel-esim-illustration-004.webp" alt="Two eSIM providers compared country by country" width="2848" height="1470">
+    <figcaption>Every matchup verdict is computed country by country from the same dated price snapshot.</figcaption>
+  </figure>
+  </div>
+
+  {{ .Content }}
+
+  <section class="mt-10" aria-labelledby="all">
+    <p class="eyebrow" id="all">All matchups</p>
+    <h2 class="mt-2 text-2xl font-bold md:text-3xl">How every provider compares head-to-head</h2>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {{ range $cards }}
+      <a href="{{ .url }}" class="card card-hover group p-5">
+        <div class="flex items-center gap-3">
+          {{ partial "prov-logo.html" (dict "p" (index hugo.Data.providers .ka) "key" .ka "class" "h-10 w-10") }}
+          <span class="font-display text-[11px] font-bold uppercase tracking-wider text-ink-300" aria-hidden="true">vs</span>
+          {{ partial "prov-logo.html" (dict "p" (index hugo.Data.providers .kb) "key" .kb "class" "h-10 w-10") }}
+          {{ if gt .aWins .bWins }}<span class="badge bg-brand-50 text-brand-700 ml-auto tnum">{{ .na }} {{ .aWins }}–{{ .bWins }}</span>
+          {{ else if gt .bWins .aWins }}<span class="badge bg-brand-50 text-brand-700 ml-auto tnum">{{ .nb }} {{ .bWins }}–{{ .aWins }}</span>
+          {{ else }}<span class="badge bg-ink-50 text-ink-500 ml-auto">even</span>{{ end }}
+        </div>
+        <p class="mt-3 font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ .na }} vs {{ .nb }}</p>
+        <p class="mt-2 text-xs leading-relaxed text-ink-500">{{ if gt .aWins .bWins }}{{ .na }} starts cheaper in {{ .aWins }} of {{ .n }} countries{{ else if gt .bWins .aWins }}{{ .nb }} starts cheaper in {{ .bWins }} of {{ .n }} countries{{ else }}Nearly even across {{ .n }} countries{{ end }}{{ if gt .ties 0 }} (identical entry prices in {{ .ties }}){{ end }}.</p>
+        <p class="mt-3 text-xs font-semibold text-brand-700 opacity-0 transition-opacity group-hover:opacity-100">See the verdict →</p>
+      </a>
+      {{ end }}
+    </div>
+    <p class="mt-3 text-xs text-ink-400">Each verdict counts the countries where both providers sell plans, comparing each one's cheapest plan (and separately its best $/GB) from the same dated snapshot. Reversed queries land on the same page — one URL per matchup, no near-duplicates.</p>
+  </section>
+
+  {{/* ── 相关阅读 ── */}}
+  <section class="mt-12" aria-labelledby="related">
+    <p class="eyebrow">Keep reading</p>
+    <h2 id="related" class="mt-2 text-2xl font-bold md:text-3xl">Related research &amp; comparisons</h2>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <a href="/compare/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Compare by country</p><p class="mt-2 text-xs leading-relaxed text-ink-500">All 50 destination pages — every provider in one table.</p></a>
+      <a href="/research/esim-price-index/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">eSIM price index</p><p class="mt-2 text-xs leading-relaxed text-ink-500">50 countries ranked by best $/GB, with regional averages.</p></a>
+      <a href="/research/unlimited-esim/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Unlimited daily rates</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Where unlimited data is cheapest per day, and when it wins.</p></a>
+      <a href="/research/fair-use-audit/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Fair-use audit</p><p class="mt-2 text-xs leading-relaxed text-ink-500">What every “unlimited” plan's small print really throttles.</p></a>
+    </div>
+  </section>
+</div>
+{{ end }}

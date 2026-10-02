@@ -1,0 +1,8470 @@
+# Scraped from esimdb.com/roami (Single-country plans, USD list prices) on 2026-09-30.
+# Raw capture: scripts/scrape/raw/ (per-country JSON incl. badges & page meta).
+# networks: not exposed on plan cards - left empty until verified per brand page.
+
+[AR]
+checked = "2026-09-30"
+networks = []
+
+[[AR.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 7.99
+
+[[AR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 22.99
+
+[[AR.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 13.99
+
+[[AR.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 11.99
+
+[[AR.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 50.99
+
+[[AR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 67.99
+
+[[AR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 55.99
+
+[[AR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 39.99
+
+[[AR.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 84.99
+
+[[AR.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 13.99
+
+[[AR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 19.99
+
+[[AR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 29.99
+
+[[AR.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 57.99
+
+[[AR.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 25.99
+
+[[AR.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 10.99
+
+[[AR.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 14.99
+
+[[AR.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 3.99
+
+[[AR.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 8.99
+
+[[AR.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 14.99
+
+[[AR.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 21.99
+
+[AU]
+checked = "2026-09-30"
+networks = []
+
+[[AU.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[AU.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[AU.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 4.99
+
+[[AU.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 9.99
+
+[[AU.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[AU.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 1.99
+
+[[AU.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[AU.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 6.99
+
+[[AU.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 11.99
+
+[[AU.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 18.99
+
+[[AU.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 23.99
+
+[[AU.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[AU.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 7.99
+
+[[AU.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 12.99
+
+[[AU.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 19.99
+
+[[AU.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 26.99
+
+[[AU.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 40.99
+
+[[AU.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[AU.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 8.99
+
+[[AU.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 13.99
+
+[[AU.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 21.99
+
+[[AU.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[AU.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 32.99
+
+[[AU.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+
+[AT]
+checked = "2026-09-30"
+networks = []
+
+[[AT.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 21.99
+
+[[AT.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.99
+
+[[AT.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[AT.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[AT.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 11.99
+
+[[AT.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 17.99
+
+[[AT.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[AT.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.99
+
+[[AT.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 7.99
+
+[[AT.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 17.99
+
+[[AT.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[AT.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[AT.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 5.99
+
+[[AT.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 8.99
+
+[[AT.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 14.99
+
+[[AT.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 37.99
+
+[[AT.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 4.99
+
+[[AT.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 5.99
+
+[[AT.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 7.99
+
+[[AT.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 14.99
+
+[[AT.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 27.99
+
+[[AT.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[AT.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 6.99
+
+[[AT.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[AT.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[AT.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 8.99
+
+[BE]
+checked = "2026-09-30"
+networks = []
+
+[[BE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 21.99
+
+[[BE.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.99
+
+[[BE.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[BE.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[BE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 18.99
+
+[[BE.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[BE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 7.99
+
+[[BE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.99
+
+[[BE.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 30.99
+
+[[BE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+
+[[BE.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[BE.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[BE.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 6.99
+
+[[BE.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 9.99
+
+[[BE.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 20.99
+
+[[BE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 18.99
+
+[[BE.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[[BE.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 21.99
+
+[[BE.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[BE.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 6.99
+
+[[BE.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 10.99
+
+[[BE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 38.99
+
+[[BE.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[BE.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[BE.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 6.99
+
+[[BE.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 11.99
+
+[[BE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 8.99
+
+[BR]
+checked = "2026-09-30"
+networks = []
+
+[[BR.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 4.99
+
+[[BR.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 8.99
+
+[[BR.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 15.99
+
+[[BR.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 24.99
+
+[[BR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 32.99
+
+[[BR.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 7.99
+
+[[BR.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 9.99
+
+[[BR.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 14.99
+
+[[BR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 22.99
+
+[[BR.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 50.99
+
+[[BR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 66.99
+
+[[BR.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 13.99
+
+[[BR.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 16.99
+
+[[BR.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 23.99
+
+[[BR.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 57.99
+
+[[BR.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 83.99
+
+[[BR.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 14.99
+
+[[BR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 19.99
+
+[[BR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 29.99
+
+[[BR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 30.99
+
+[[BR.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 86.99
+
+[CA]
+checked = "2026-09-30"
+networks = []
+
+[[CA.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[CA.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 19.99
+
+[[CA.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 32.99
+
+[[CA.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 7.99
+
+[[CA.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 11.99
+
+[[CA.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 15.99
+
+[[CA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 50.99
+
+[[CA.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 29.99
+
+[[CA.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 14.99
+
+[[CA.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 21.99
+
+[[CA.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 31.99
+
+[[CA.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 10.99
+
+[[CA.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 49.99
+
+[[CA.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 54.99
+
+[[CA.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.99
+
+[[CA.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 59.99
+
+[[CA.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 30.99
+
+[[CA.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 12.99
+
+[[CA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 19.99
+
+[[CA.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 32.99
+
+[[CA.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 15.99
+
+[[CA.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 3.99
+
+[[CA.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 6.99
+
+[[CA.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 11.99
+
+[[CA.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 22.99
+
+[CN]
+checked = "2026-09-30"
+networks = []
+
+[[CN.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 25.99
+
+[[CN.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.99
+
+[[CN.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[CN.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 8.99
+
+[[CN.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 15.99
+
+[[CN.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[CN.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[CN.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 6.99
+
+[[CN.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 11.99
+
+[[CN.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 1.99
+
+[[CN.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 15.99
+
+[[CN.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[CN.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[CN.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 5.99
+
+[[CN.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 7.99
+
+[[CN.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[CN.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 7.99
+
+[[CN.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 10.99
+
+[[CN.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 19.99
+
+[[CN.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[CO]
+checked = "2026-09-30"
+networks = []
+
+[[CO.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 6.99
+
+[[CO.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 10.99
+
+[[CO.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 16.99
+
+[[CO.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 24.99
+
+[[CO.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 51.99
+
+[[CO.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 19.99
+
+[[CO.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 29.99
+
+[[CO.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 49.99
+
+[[CO.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 30.99
+
+[[CO.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 61.99
+
+[[CO.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 86.99
+
+[[CO.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 52.99
+
+[[CO.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 4.99
+
+[[CO.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 9.99
+
+[[CO.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 14.99
+
+[[CO.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 21.99
+
+[[CO.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 17.99
+
+[[CO.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 11.99
+
+[[CO.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 27.99
+
+[[CO.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 58.99
+
+[[CO.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 80.99
+
+[CR]
+checked = "2026-09-30"
+networks = []
+
+[[CR.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 9.99
+
+[[CR.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 17.99
+
+[[CR.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 23.99
+
+[[CR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 84.99
+
+[[CR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 38.99
+
+[[CR.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 72.99
+
+[[CR.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 19.99
+
+[[CR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 25.99
+
+[[CR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 30.99
+
+[[CR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 42.99
+
+[[CR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 69.99
+
+[[CR.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 18.99
+
+[[CR.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 24.99
+
+[[CR.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 41.99
+
+[[CR.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 78.99
+
+[[CR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 38.99
+
+[[CR.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 13.99
+
+[[CR.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 20.99
+
+[[CR.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 34.99
+
+[HR]
+checked = "2026-09-30"
+networks = []
+
+[[HR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 21.99
+
+[[HR.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.99
+
+[[HR.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[HR.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[HR.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[HR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[HR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 14.99
+
+[[HR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 22.99
+
+[[HR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 76.99
+
+[[HR.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[[HR.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[HR.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 8.99
+
+[[HR.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 13.99
+
+[[HR.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 21.99
+
+[[HR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 42.99
+
+[[HR.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[HR.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[HR.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 7.99
+
+[[HR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 12.99
+
+[[HR.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 20.99
+
+[[HR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 20.99
+
+[[HR.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[HR.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[HR.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 6.99
+
+[[HR.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 11.99
+
+[[HR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[CZ]
+checked = "2026-09-30"
+networks = []
+
+[[CZ.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[CZ.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 12.99
+
+[[CZ.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 20.99
+
+[[CZ.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[CZ.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 7.99
+
+[[CZ.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 23.99
+
+[[CZ.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 21.99
+
+[[CZ.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.99
+
+[[CZ.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[CZ.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[CZ.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 22.99
+
+[[CZ.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[CZ.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[CZ.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 14.99
+
+[[CZ.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 78.99
+
+[[CZ.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[[CZ.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[CZ.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 8.99
+
+[[CZ.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 13.99
+
+[[CZ.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 21.99
+
+[[CZ.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 42.99
+
+[[CZ.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[CZ.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[CZ.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 6.99
+
+[[CZ.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 11.99
+
+[[CZ.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 14.99
+
+[EG]
+checked = "2026-09-30"
+networks = []
+
+[[EG.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 2.99
+
+[[EG.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 7.99
+
+[[EG.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 9.99
+
+[[EG.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 18.99
+
+[[EG.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 18.99
+
+[[EG.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 4.99
+
+[[EG.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 11.99
+
+[[EG.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 18.99
+
+[[EG.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 26.99
+
+[[EG.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 38.99
+
+[[EG.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 39.99
+
+[[EG.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 7.99
+
+[[EG.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 15.99
+
+[[EG.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 23.99
+
+[[EG.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 40.99
+
+[[EG.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 58.99
+
+[[EG.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 94.99
+
+[[EG.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 10.99
+
+[[EG.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 19.99
+
+[[EG.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 30.99
+
+[[EG.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 42.99
+
+[[EG.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 61.99
+
+[FJ]
+checked = "2026-09-30"
+networks = []
+
+[[FJ.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 6.99
+
+[[FJ.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 44.99
+
+[[FJ.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 8.99
+
+[[FJ.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 11.99
+
+[[FJ.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 21.99
+
+[[FJ.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 38.99
+
+[[FJ.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 21.99
+
+[[FJ.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 7.99
+
+[[FJ.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 10.99
+
+[[FJ.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 18.99
+
+[[FJ.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 94.99
+
+[[FJ.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 10.99
+
+[[FJ.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 14.99
+
+[[FJ.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 23.99
+
+[[FJ.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 41.99
+
+[[FJ.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 57.99
+
+[[FJ.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 24.99
+
+[[FJ.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 15.99
+
+[[FJ.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 10.99
+
+[[FJ.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 44.99
+
+[[FJ.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 61.99
+
+[FR]
+checked = "2026-09-30"
+networks = []
+
+[[FR.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[FR.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[FR.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 6.99
+
+[[FR.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 10.99
+
+[[FR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[FR.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[FR.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[FR.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 7.99
+
+[[FR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 11.99
+
+[[FR.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 20.99
+
+[[FR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[FR.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[FR.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 7.99
+
+[[FR.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 12.99
+
+[[FR.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 21.99
+
+[[FR.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[[FR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 36.99
+
+[[FR.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[FR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[FR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 14.99
+
+[[FR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 21.99
+
+[[FR.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[FR.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 31.99
+
+[[FR.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[FR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 70.99
+
+[GE]
+checked = "2026-09-30"
+networks = []
+
+[[GE.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 9.99
+
+[[GE.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 23.99
+
+[[GE.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[GE.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 14.99
+
+[[GE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 43.99
+
+[[GE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 66.99
+
+[[GE.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 16.99
+
+[[GE.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 25.99
+
+[[GE.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 10.99
+
+[[GE.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 40.99
+
+[[GE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 93.99
+
+[[GE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 27.99
+
+[[GE.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 11.99
+
+[[GE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 39.99
+
+[[GE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 30.99
+
+[[GE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 17.99
+
+[[GE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.99
+
+[[GE.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 6.99
+
+[[GE.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 10.99
+
+[[GE.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 17.99
+
+[[GE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 30.99
+
+[DE]
+checked = "2026-09-30"
+networks = []
+
+[[DE.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[DE.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[DE.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 5.99
+
+[[DE.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 9.99
+
+[[DE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[DE.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[DE.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[DE.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 6.99
+
+[[DE.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 9.99
+
+[[DE.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 17.99
+
+[[DE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 21.99
+
+[[DE.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[DE.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 7.99
+
+[[DE.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 12.99
+
+[[DE.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 18.99
+
+[[DE.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[[DE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 42.99
+
+[[DE.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[DE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 8.99
+
+[[DE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 13.99
+
+[[DE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 19.99
+
+[[DE.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 30.99
+
+[[DE.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.99
+
+[[DE.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[DE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 70.99
+
+[GR]
+checked = "2026-09-30"
+networks = []
+
+[[GR.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[GR.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[GR.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 6.99
+
+[[GR.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 7.99
+
+[[GR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[GR.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[GR.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[GR.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 7.99
+
+[[GR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 12.99
+
+[[GR.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 20.99
+
+[[GR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 22.99
+
+[[GR.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[GR.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 8.99
+
+[[GR.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 13.99
+
+[[GR.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 21.99
+
+[[GR.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[[GR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 42.99
+
+[[GR.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[GR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[GR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 14.99
+
+[[GR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 21.99
+
+[[GR.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[GR.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.99
+
+[[GR.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[GR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 77.99
+
+[HK]
+checked = "2026-09-30"
+networks = []
+
+[[HK.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[HK.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 2.99
+
+[[HK.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 4.99
+
+[[HK.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 9.99
+
+[[HK.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 7.99
+
+[[HK.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[HK.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 3.99
+
+[[HK.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 6.99
+
+[[HK.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 10.99
+
+[[HK.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 15.99
+
+[[HK.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 18.99
+
+[[HK.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 4.99
+
+[[HK.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 7.99
+
+[[HK.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 11.99
+
+[[HK.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 19.99
+
+[[HK.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 29.99
+
+[[HK.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 35.99
+
+[[HK.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 5.99
+
+[[HK.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 7.99
+
+[[HK.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.99
+
+[[HK.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 23.99
+
+[[HK.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.99
+
+[[HK.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.99
+
+[[HK.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 57.99
+
+[IS]
+checked = "2026-09-30"
+networks = []
+
+[[IS.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[IS.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[IS.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 6.99
+
+[[IS.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 11.99
+
+[[IS.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[IS.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[IS.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[IS.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 7.99
+
+[[IS.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 12.99
+
+[[IS.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 20.99
+
+[[IS.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 20.99
+
+[[IS.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[IS.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 8.99
+
+[[IS.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 13.99
+
+[[IS.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 21.99
+
+[[IS.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[[IS.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 42.99
+
+[[IS.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[IS.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[IS.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 14.99
+
+[[IS.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 21.99
+
+[[IS.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[IS.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.99
+
+[[IS.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[IS.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 77.99
+
+[IN]
+checked = "2026-09-30"
+networks = []
+
+[[IN.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 3.99
+
+[[IN.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 6.99
+
+[[IN.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 10.99
+
+[[IN.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 18.99
+
+[[IN.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 17.99
+
+[[IN.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 4.99
+
+[[IN.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 7.99
+
+[[IN.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 10.99
+
+[[IN.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 19.99
+
+[[IN.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 35.99
+
+[[IN.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 37.99
+
+[[IN.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 9.99
+
+[[IN.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 11.99
+
+[[IN.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 20.99
+
+[[IN.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 33.99
+
+[[IN.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 58.99
+
+[[IN.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 94.99
+
+[[IN.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 9.99
+
+[[IN.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 12.99
+
+[[IN.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 19.99
+
+[[IN.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 30.99
+
+[[IN.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 59.99
+
+[[IN.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 99.99
+
+[ID]
+checked = "2026-09-30"
+networks = []
+
+[[ID.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[ID.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[ID.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 5.99
+
+[[ID.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 8.99
+
+[[ID.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[ID.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[ID.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[ID.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 6.99
+
+[[ID.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 9.99
+
+[[ID.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 16.99
+
+[[ID.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 22.99
+
+[[ID.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[ID.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 7.99
+
+[[ID.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 9.99
+
+[[ID.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 19.99
+
+[[ID.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 26.99
+
+[[ID.plans]]
+name = "50GB / 15 Days"
+gb = 50
+days = 15
+type = "data"
+price = 37.99
+
+[[ID.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 37.99
+
+[[ID.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[ID.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 8.99
+
+[[ID.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 11.99
+
+[[ID.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 23.99
+
+[[ID.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 27.99
+
+[[ID.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 37.99
+
+[[ID.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 68.99
+
+[IE]
+checked = "2026-09-30"
+networks = []
+
+[[IE.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 18.99
+
+[[IE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[IE.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[IE.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 7.99
+
+[[IE.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 12.99
+
+[[IE.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[IE.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[IE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[IE.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 6.99
+
+[[IE.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 7.99
+
+[[IE.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[IE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 21.99
+
+[[IE.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.99
+
+[[IE.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[IE.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[IE.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[IE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[IE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 14.99
+
+[[IE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 22.99
+
+[[IE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 77.99
+
+[[IE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 39.99
+
+[[IE.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[[IE.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[IE.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 8.99
+
+[[IE.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 13.99
+
+[[IE.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 21.99
+
+[IL]
+checked = "2026-09-30"
+networks = []
+
+[[IL.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[IL.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 5.99
+
+[[IL.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 8.99
+
+[[IL.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[IL.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 3.99
+
+[[IL.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 13.99
+
+[[IL.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 29.99
+
+[[IL.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 4.99
+
+[[IL.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 5.99
+
+[[IL.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 10.99
+
+[[IL.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 15.99
+
+[[IL.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.99
+
+[[IL.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.99
+
+[[IL.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[IL.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 6.99
+
+[[IL.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 10.99
+
+[[IL.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 19.99
+
+[[IL.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 34.99
+
+[[IL.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 31.99
+
+[[IL.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 6.99
+
+[[IL.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 4.99
+
+[[IL.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 2.99
+
+[[IL.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 10.99
+
+[IT]
+checked = "2026-09-30"
+networks = []
+
+[[IT.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[IT.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[IT.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 6.99
+
+[[IT.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 11.99
+
+[[IT.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[IT.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[IT.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[IT.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 7.99
+
+[[IT.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 8.99
+
+[[IT.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 13.99
+
+[[IT.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[IT.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[IT.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 8.99
+
+[[IT.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 13.99
+
+[[IT.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 21.99
+
+[[IT.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[[IT.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 39.99
+
+[[IT.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 5.99
+
+[[IT.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 8.99
+
+[[IT.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.99
+
+[[IT.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 21.99
+
+[[IT.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[IT.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 33.99
+
+[[IT.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[IT.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.99
+
+[JP]
+checked = "2026-09-30"
+networks = []
+
+[[JP.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[JP.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 2.99
+
+[[JP.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 5.99
+
+[[JP.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 8.99
+
+[[JP.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[JP.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 1.99
+
+[[JP.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 3.99
+
+[[JP.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 5.99
+
+[[JP.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 9.99
+
+[[JP.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 16.99
+
+[[JP.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 18.99
+
+[[JP.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 4.99
+
+[[JP.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 6.99
+
+[[JP.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 10.99
+
+[[JP.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 17.99
+
+[[JP.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 25.99
+
+[[JP.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 42.99
+
+[[JP.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 5.99
+
+[[JP.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 7.99
+
+[[JP.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 11.99
+
+[[JP.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 20.99
+
+[[JP.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 25.99
+
+[[JP.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 37.99
+
+[[JP.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+
+[KE]
+checked = "2026-09-30"
+networks = []
+
+[[KE.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 10.99
+
+[[KE.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 35.99
+
+[[KE.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 22.99
+
+[[KE.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 15.99
+
+[[KE.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 64.99
+
+[[KE.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 25.99
+
+[[KE.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 37.99
+
+[[KE.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 64.99
+
+[[KE.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 69.99
+
+[[KE.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 94.99
+
+[[KE.plans]]
+name = "15GB / 30 Days"
+gb = 15
+days = 30
+type = "data"
+price = 30.99
+
+[[KE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 72.99
+
+[[KE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 39.99
+
+[[KE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 25.99
+
+[[KE.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 17.99
+
+[[KE.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 98.99
+
+[[KE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 52.99
+
+[[KE.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 7.99
+
+[[KE.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 13.99
+
+[[KE.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 21.99
+
+[[KE.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 32.99
+
+[MO]
+checked = "2026-09-30"
+networks = []
+
+[[MO.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 7.99
+
+[[MO.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 12.99
+
+[[MO.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 22.99
+
+[[MO.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 29.99
+
+[[MO.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[MO.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 39.99
+
+[[MO.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[MO.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 10.99
+
+[[MO.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 6.99
+
+[[MO.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 20.99
+
+[[MO.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[MO.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 15.99
+
+[[MO.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 64.99
+
+[[MO.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.99
+
+[[MO.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 45.99
+
+[[MO.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 5.99
+
+[[MO.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 7.99
+
+[[MO.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.99
+
+[[MO.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 23.99
+
+[[MO.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[MO.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 7.99
+
+[[MO.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[MO.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[MO.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 4.99
+
+[MY]
+checked = "2026-09-30"
+networks = []
+
+[[MY.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[MY.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[MY.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 2.99
+
+[[MY.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 4.99
+
+[[MY.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 7.99
+
+[[MY.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[MY.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 3.99
+
+[[MY.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[MY.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 5.99
+
+[[MY.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 8.99
+
+[[MY.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 16.99
+
+[[MY.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 4.99
+
+[[MY.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 26.99
+
+[[MY.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 35.99
+
+[[MY.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 6.99
+
+[[MY.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 10.99
+
+[[MY.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 16.99
+
+[[MY.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 5.99
+
+[[MY.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 29.99
+
+[[MY.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 7.99
+
+[[MY.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 65.99
+
+[[MY.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 33.99
+
+[[MY.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 11.99
+
+[[MY.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 18.99
+
+[[MY.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 27.99
+
+[MX]
+checked = "2026-09-30"
+networks = []
+
+[[MX.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 3.99
+
+[[MX.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 6.99
+
+[[MX.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 11.99
+
+[[MX.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 20.99
+
+[[MX.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 21.99
+
+[[MX.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[MX.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 8.99
+
+[[MX.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 13.99
+
+[[MX.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 23.99
+
+[[MX.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 41.99
+
+[[MX.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 54.99
+
+[[MX.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 9.99
+
+[[MX.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 14.99
+
+[[MX.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 21.99
+
+[[MX.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 41.99
+
+[[MX.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 63.99
+
+[[MX.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 9.99
+
+[[MX.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 13.99
+
+[[MX.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 25.99
+
+[[MX.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 29.99
+
+[[MX.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 68.99
+
+[[MX.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 54.99
+
+[MA]
+checked = "2026-09-30"
+networks = []
+
+[[MA.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[MA.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 7.99
+
+[[MA.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 12.99
+
+[[MA.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 20.99
+
+[[MA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 44.99
+
+[[MA.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 38.99
+
+[[MA.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 34.99
+
+[[MA.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 30.99
+
+[[MA.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 11.99
+
+[[MA.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 14.99
+
+[[MA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 21.99
+
+[[MA.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 61.99
+
+[[MA.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 8.99
+
+[[MA.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 13.99
+
+[[MA.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 21.99
+
+[[MA.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 40.99
+
+[[MA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 94.99
+
+[[MA.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 57.99
+
+[[MA.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 6.99
+
+[[MA.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 9.99
+
+[[MA.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 10.99
+
+[[MA.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.99
+
+[[MA.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 18.99
+
+[NL]
+checked = "2026-09-30"
+networks = []
+
+[[NL.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[NL.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[NL.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 5.99
+
+[[NL.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 10.99
+
+[[NL.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[NL.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[NL.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[NL.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 6.99
+
+[[NL.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 10.99
+
+[[NL.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 20.99
+
+[[NL.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 21.99
+
+[[NL.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[NL.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 7.99
+
+[[NL.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 13.99
+
+[[NL.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 21.99
+
+[[NL.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[[NL.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 37.99
+
+[[NL.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[NL.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 7.99
+
+[[NL.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 13.99
+
+[[NL.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 18.99
+
+[[NL.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[NL.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.99
+
+[[NL.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[NL.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.99
+
+[NZ]
+checked = "2026-09-30"
+networks = []
+
+[[NZ.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 3.99
+
+[[NZ.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 4.99
+
+[[NZ.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 5.99
+
+[[NZ.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 8.99
+
+[[NZ.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.99
+
+[[NZ.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[NZ.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[NZ.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 6.99
+
+[[NZ.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 10.99
+
+[[NZ.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 15.99
+
+[[NZ.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 26.99
+
+[[NZ.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 7.99
+
+[[NZ.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 9.99
+
+[[NZ.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 12.99
+
+[[NZ.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 21.99
+
+[[NZ.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 31.99
+
+[[NZ.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 49.99
+
+[[NZ.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.99
+
+[[NZ.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[NZ.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.99
+
+[[NZ.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 22.99
+
+[[NZ.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 32.99
+
+[[NZ.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 99.99
+
+[PE]
+checked = "2026-09-30"
+networks = []
+
+[[PE.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 7.99
+
+[[PE.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 9.99
+
+[[PE.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 14.99
+
+[[PE.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 22.99
+
+[[PE.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 51.99
+
+[[PE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 30.99
+
+[[PE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 17.99
+
+[[PE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 27.99
+
+[[PE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 60.99
+
+[[PE.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 13.99
+
+[[PE.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 85.99
+
+[[PE.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 8.99
+
+[[PE.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 13.99
+
+[[PE.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 20.99
+
+[[PE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 30.99
+
+[[PE.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 4.99
+
+[[PE.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 11.99
+
+[[PE.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 17.99
+
+[[PE.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 25.99
+
+[[PE.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 57.99
+
+[[PE.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 81.99
+
+[PH]
+checked = "2026-09-30"
+networks = []
+
+[[PH.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 2.99
+
+[[PH.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 5.99
+
+[[PH.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 6.99
+
+[[PH.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 7.99
+
+[[PH.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[PH.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[PH.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[PH.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 9.99
+
+[[PH.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 14.99
+
+[[PH.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 17.99
+
+[[PH.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 21.99
+
+[[PH.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 7.99
+
+[[PH.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 8.99
+
+[[PH.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 14.99
+
+[[PH.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 24.99
+
+[[PH.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 27.99
+
+[[PH.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 45.99
+
+[[PH.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[PH.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[PH.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 15.99
+
+[[PH.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 23.99
+
+[[PH.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[PH.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 44.99
+
+[[PH.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 70.99
+
+[PL]
+checked = "2026-09-30"
+networks = []
+
+[[PL.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[PL.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[PL.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 6.99
+
+[[PL.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 8.99
+
+[[PL.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[PL.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[PL.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[PL.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 5.99
+
+[[PL.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 9.99
+
+[[PL.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 20.99
+
+[[PL.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[PL.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 4.99
+
+[[PL.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 5.99
+
+[[PL.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 9.99
+
+[[PL.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 16.99
+
+[[PL.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[[PL.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 37.99
+
+[[PL.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 3.99
+
+[[PL.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 8.99
+
+[[PL.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.99
+
+[[PL.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 19.99
+
+[[PL.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[PL.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 32.99
+
+[[PL.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[PL.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.99
+
+[PT]
+checked = "2026-09-30"
+networks = []
+
+[[PT.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[PT.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[PT.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 6.99
+
+[[PT.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 11.99
+
+[[PT.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[PT.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[PT.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[PT.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 5.99
+
+[[PT.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 8.99
+
+[[PT.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 20.99
+
+[[PT.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 22.99
+
+[[PT.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[PT.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 6.99
+
+[[PT.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 8.99
+
+[[PT.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 16.99
+
+[[PT.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[[PT.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 37.99
+
+[[PT.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[PT.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 7.99
+
+[[PT.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 9.99
+
+[[PT.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 17.99
+
+[[PT.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[PT.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 32.99
+
+[[PT.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[PT.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 71.99
+
+[QA]
+checked = "2026-09-30"
+networks = []
+
+[[QA.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 6.99
+
+[[QA.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 7.99
+
+[[QA.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 10.99
+
+[[QA.plans]]
+name = "100MB / 7 Days"
+gb = 0.0977
+days = 7
+type = "data"
+price = 1.99
+
+[[QA.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 18.99
+
+[[QA.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 33.99
+
+[[QA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 44.99
+
+[[QA.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 10.99
+
+[[QA.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 12.99
+
+[[QA.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 19.99
+
+[[QA.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 36.99
+
+[[QA.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 50.99
+
+[[QA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 94.99
+
+[[QA.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 9.99
+
+[[QA.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 13.99
+
+[[QA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 22.99
+
+[[QA.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 38.99
+
+[[QA.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 49.99
+
+[[QA.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 6.99
+
+[[QA.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 9.99
+
+[[QA.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 17.99
+
+[[QA.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 18.99
+
+[SA]
+checked = "2026-09-30"
+networks = []
+
+[[SA.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 3.99
+
+[[SA.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 5.99
+
+[[SA.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 9.99
+
+[[SA.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 14.99
+
+[[SA.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 18.99
+
+[[SA.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[SA.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 6.99
+
+[[SA.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 10.99
+
+[[SA.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 17.99
+
+[[SA.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 34.99
+
+[[SA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 46.99
+
+[[SA.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 7.99
+
+[[SA.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 11.99
+
+[[SA.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 20.99
+
+[[SA.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 37.99
+
+[[SA.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 54.99
+
+[[SA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 96.99
+
+[[SA.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[SA.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 12.99
+
+[[SA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 21.99
+
+[[SA.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 38.99
+
+[[SA.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 56.99
+
+[SG]
+checked = "2026-09-30"
+networks = []
+
+[[SG.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[SG.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 2.99
+
+[[SG.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 4.99
+
+[[SG.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 8.99
+
+[[SG.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[SG.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 1.99
+
+[[SG.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 3.99
+
+[[SG.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 5.99
+
+[[SG.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 9.99
+
+[[SG.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 16.99
+
+[[SG.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 24.99
+
+[[SG.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 4.99
+
+[[SG.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 6.99
+
+[[SG.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 10.99
+
+[[SG.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 17.99
+
+[[SG.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 26.99
+
+[[SG.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 35.99
+
+[[SG.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 5.99
+
+[[SG.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 7.99
+
+[[SG.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 11.99
+
+[[SG.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 18.99
+
+[[SG.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 27.99
+
+[[SG.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.99
+
+[[SG.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 65.99
+
+[ZA]
+checked = "2026-09-30"
+networks = []
+
+[[ZA.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 30.99
+
+[[ZA.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 23.99
+
+[[ZA.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 15.99
+
+[[ZA.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 11.99
+
+[[ZA.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 42.99
+
+[[ZA.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 58.99
+
+[[ZA.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 12.99
+
+[[ZA.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 21.99
+
+[[ZA.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 41.99
+
+[[ZA.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 94.99
+
+[[ZA.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 10.99
+
+[[ZA.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 55.99
+
+[[ZA.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[ZA.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 7.99
+
+[[ZA.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 11.99
+
+[[ZA.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 18.99
+
+[[ZA.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 43.99
+
+[[ZA.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 36.99
+
+[[ZA.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 21.99
+
+[[ZA.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 4.99
+
+[[ZA.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 7.99
+
+[[ZA.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 10.99
+
+[[ZA.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 17.99
+
+[KR]
+checked = "2026-09-30"
+networks = []
+
+[[KR.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[KR.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 2.99
+
+[[KR.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 4.99
+
+[[KR.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 6.99
+
+[[KR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 8.99
+
+[[KR.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[KR.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 3.99
+
+[[KR.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 4.99
+
+[[KR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 6.99
+
+[[KR.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 10.99
+
+[[KR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 24.99
+
+[[KR.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[KR.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 5.99
+
+[[KR.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 7.99
+
+[[KR.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 13.99
+
+[[KR.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 19.99
+
+[[KR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 31.99
+
+[[KR.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[KR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 6.99
+
+[[KR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 10.99
+
+[[KR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 22.99
+
+[[KR.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 25.99
+
+[[KR.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 37.99
+
+[[KR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 61.99
+
+[ES]
+checked = "2026-09-30"
+networks = []
+
+[[ES.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[ES.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[ES.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 6.99
+
+[[ES.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 9.99
+
+[[ES.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[ES.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[ES.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[ES.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 6.99
+
+[[ES.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 10.99
+
+[[ES.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 17.99
+
+[[ES.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 21.99
+
+[[ES.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[ES.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 7.99
+
+[[ES.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 12.99
+
+[[ES.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 18.99
+
+[[ES.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[[ES.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 43.99
+
+[[ES.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[ES.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 8.99
+
+[[ES.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 13.99
+
+[[ES.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 19.99
+
+[[ES.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[ES.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 32.99
+
+[[ES.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[ES.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.99
+
+[CH]
+checked = "2026-09-30"
+networks = []
+
+[[CH.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[CH.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[CH.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 5.99
+
+[[CH.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 9.99
+
+[[CH.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 12.99
+
+[[CH.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[CH.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[CH.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 6.99
+
+[[CH.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 10.99
+
+[[CH.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 18.99
+
+[[CH.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 22.99
+
+[[CH.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[CH.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 7.99
+
+[[CH.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 12.99
+
+[[CH.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 19.99
+
+[[CH.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 28.99
+
+[[CH.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 38.99
+
+[[CH.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[CH.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 8.99
+
+[[CH.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 14.99
+
+[[CH.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 19.99
+
+[[CH.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[CH.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.99
+
+[[CH.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[CH.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 78.99
+
+[TW]
+checked = "2026-09-30"
+networks = []
+
+[[TW.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[TW.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[TW.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 5.99
+
+[[TW.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 8.99
+
+[[TW.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[TW.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 1.99
+
+[[TW.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 3.99
+
+[[TW.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 6.99
+
+[[TW.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 10.99
+
+[[TW.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 13.99
+
+[[TW.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 20.99
+
+[[TW.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 4.99
+
+[[TW.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 7.99
+
+[[TW.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 12.99
+
+[[TW.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 20.99
+
+[[TW.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 25.99
+
+[[TW.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 42.99
+
+[[TW.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 5.99
+
+[[TW.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 7.99
+
+[[TW.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.99
+
+[[TW.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 22.99
+
+[[TW.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 31.99
+
+[[TW.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 69.99
+
+[TH]
+checked = "2026-09-30"
+networks = []
+
+[[TH.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[TH.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 2.99
+
+[[TH.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 4.99
+
+[[TH.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 7.99
+
+[[TH.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 8.99
+
+[[TH.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[TH.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 3.99
+
+[[TH.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 5.99
+
+[[TH.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 8.99
+
+[[TH.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 17.99
+
+[[TH.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 18.99
+
+[[TH.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 4.99
+
+[[TH.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 6.99
+
+[[TH.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 9.99
+
+[[TH.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 16.99
+
+[[TH.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 24.99
+
+[[TH.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 29.99
+
+[[TH.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 5.99
+
+[[TH.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 6.99
+
+[[TH.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 11.99
+
+[[TH.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 19.99
+
+[[TH.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 26.99
+
+[[TH.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 36.99
+
+[[TH.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 42.99
+
+[TR]
+checked = "2026-09-30"
+networks = []
+
+[[TR.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 2.99
+
+[[TR.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[TR.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 4.99
+
+[[TR.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 7.99
+
+[[TR.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[TR.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 1.99
+
+[[TR.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[TR.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 7.99
+
+[[TR.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 11.99
+
+[[TR.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 14.99
+
+[[TR.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 22.99
+
+[[TR.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[TR.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 8.99
+
+[[TR.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 11.99
+
+[[TR.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 19.99
+
+[[TR.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 33.99
+
+[[TR.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 37.99
+
+[[TR.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[TR.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 8.99
+
+[[TR.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 11.99
+
+[[TR.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 17.99
+
+[[TR.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[TR.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 33.99
+
+[[TR.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 78.99
+
+[[TR.plans]]
+name = "50GB / 180 Days"
+gb = 50
+days = 180
+type = "data"
+price = 74.99
+
+[AE]
+checked = "2026-09-30"
+networks = []
+
+[[AE.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 3.99
+
+[[AE.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 5.99
+
+[[AE.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 10.99
+
+[[AE.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 16.99
+
+[[AE.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 19.99
+
+[[AE.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[AE.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 6.99
+
+[[AE.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 10.99
+
+[[AE.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 17.99
+
+[[AE.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 34.99
+
+[[AE.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 45.99
+
+[[AE.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 7.99
+
+[[AE.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 10.99
+
+[[AE.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 18.99
+
+[[AE.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 31.99
+
+[[AE.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 99.99
+
+[[AE.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 8.99
+
+[[AE.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 11.99
+
+[[AE.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 19.99
+
+[[AE.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 28.99
+
+[[AE.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 52.99
+
+[[AE.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 75.99
+
+[[AE.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[GB]
+checked = "2026-09-30"
+networks = []
+
+[[GB.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[GB.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[GB.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 5.99
+
+[[GB.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 7.99
+
+[[GB.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 8.99
+
+[[GB.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[GB.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[GB.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 6.99
+
+[[GB.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 9.99
+
+[[GB.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 15.99
+
+[[GB.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 18.99
+
+[[GB.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[GB.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 7.99
+
+[[GB.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 12.99
+
+[[GB.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 17.99
+
+[[GB.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 25.99
+
+[[GB.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 36.99
+
+[[GB.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[GB.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 9.99
+
+[[GB.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 14.99
+
+[[GB.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 18.99
+
+[[GB.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 29.99
+
+[[GB.plans]]
+name = "35GB / 30 Days"
+gb = 35
+days = 30
+type = "data"
+price = 44.99
+
+[[GB.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 37.99
+
+[[GB.plans]]
+name = "100GB / 30 Days"
+gb = 100
+days = 30
+type = "data"
+price = 54.99
+
+[[GB.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 41.99
+
+[US]
+checked = "2026-09-30"
+networks = []
+
+[[US.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 2.99
+
+[[US.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[US.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 5.99
+
+[[US.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 7.99
+
+[[US.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 8.99
+
+[[US.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 1.99
+
+[[US.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 4.99
+
+[[US.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 6.99
+
+[[US.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 10.99
+
+[[US.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 15.99
+
+[[US.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 21.99
+
+[[US.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[US.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 8.99
+
+[[US.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 14.99
+
+[[US.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 18.99
+
+[[US.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 23.99
+
+[[US.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 35.99
+
+[[US.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 6.99
+
+[[US.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 8.99
+
+[[US.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 12.99
+
+[[US.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 22.99
+
+[[US.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 24.99
+
+[[US.plans]]
+name = "50GB / 30 Days"
+gb = 50
+days = 30
+type = "data"
+price = 39.99
+
+[[US.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[VN]
+checked = "2026-09-30"
+networks = []
+
+[[VN.plans]]
+name = "3GB / 15 Days"
+gb = 3
+days = 15
+type = "data"
+price = 6.99
+
+[[VN.plans]]
+name = "5GB / 15 Days"
+gb = 5
+days = 15
+type = "data"
+price = 11.99
+
+[[VN.plans]]
+name = "10GB / 15 Days"
+gb = 10
+days = 15
+type = "data"
+price = 15.99
+
+[[VN.plans]]
+name = "20GB / 15 Days"
+gb = 20
+days = 15
+type = "data"
+price = 25.99
+
+[[VN.plans]]
+name = "30GB / 15 Days"
+gb = 30
+days = 15
+type = "data"
+price = 37.99
+
+[[VN.plans]]
+name = "Unlimited / 15 Days"
+gb = 0
+days = 15
+type = "unlimited"
+price = 40.99
+
+[[VN.plans]]
+name = "5GB / 30 Days"
+gb = 5
+days = 30
+type = "data"
+price = 12.99
+
+[[VN.plans]]
+name = "10GB / 30 Days"
+gb = 10
+days = 30
+type = "data"
+price = 15.99
+
+[[VN.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 26.99
+
+[[VN.plans]]
+name = "3GB / 30 Days"
+gb = 3
+days = 30
+type = "data"
+price = 7.99
+
+[[VN.plans]]
+name = "30GB / 30 Days"
+gb = 30
+days = 30
+type = "data"
+price = 39.99
+
+[[VN.plans]]
+name = "20GB / 30 Days"
+gb = 20
+days = 30
+type = "data"
+price = 31.99
+
+[[VN.plans]]
+name = "Unlimited / 30 Days"
+gb = 0
+days = 30
+type = "unlimited"
+price = 74.99
+
+[[VN.plans]]
+name = "10GB / 7 Days"
+gb = 10
+days = 7
+type = "data"
+price = 14.99
+
+[[VN.plans]]
+name = "20GB / 7 Days"
+gb = 20
+days = 7
+type = "data"
+price = 25.99
+
+[[VN.plans]]
+name = "5GB / 7 Days"
+gb = 5
+days = 7
+type = "data"
+price = 8.99
+
+[[VN.plans]]
+name = "1GB / 7 Days"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[VN.plans]]
+name = "3GB / 7 Days"
+gb = 3
+days = 7
+type = "data"
+price = 6.99
+
+[[VN.plans]]
+name = "Unlimited / 7 Days"
+gb = 0
+days = 7
+type = "unlimited"
+price = 22.99
+
+[[VN.plans]]
+name = "1GB / 3 Days"
+gb = 1
+days = 3
+type = "data"
+price = 1.99
+
+[[VN.plans]]
+name = "3GB / 3 Days"
+gb = 3
+days = 3
+type = "data"
+price = 3.99
+
+[[VN.plans]]
+name = "5GB / 3 Days"
+gb = 5
+days = 3
+type = "data"
+price = 5.99
+
+[[VN.plans]]
+name = "Unlimited / 3 Days"
+gb = 0
+days = 3
+type = "unlimited"
+price = 10.99
+
+[[VN.plans]]
+name = "10GB / 3 Days"
+gb = 10
+days = 3
+type = "data"
+price = 8.99

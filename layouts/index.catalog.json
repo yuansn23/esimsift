@@ -1,0 +1,46 @@
+{{- /* catalog.json —— 机器可读价格库（全站单一数据源的导出视图）*/ -}}
+{{- $countries := slice -}}
+{{- $compare := site.GetPage "/compare" -}}
+{{- range where (where (where $compare.Pages "Params.provider" nil) "Params.providers" nil) "Params.nolist" nil -}}
+{{- $p := . -}}
+{{- with $p.Params.iso -}}
+{{- $c := index hugo.Data.countries . -}}
+{{- $s := partial "country-stats.html" . -}}
+{{- $plans := slice -}}
+{{- range $s.rows -}}
+{{- $plans = $plans | append (dict
+  "provider" .provider
+  "plan" .name
+  "gb" .gb
+  "days" .days
+  "type" .type
+  "usd" .price
+  "perDay" (math.Round (mul .perDay 100))
+  "perGB" (cond (gt .gb 0) (math.Round (mul .perGB 100)) 0)
+  "networks" .networks
+  "fairUse" .fup
+) -}}
+{{- end -}}
+{{- $countries = $countries | append (dict
+  "iso" .
+  "name" $c.name
+  "url" $p.Permalink
+  "providerCount" $s.providerCount
+  "planCount" $s.planCount
+  "minPrice" $s.minPrice
+  "bestPerGB" $s.minPerGB
+  "maxGB" $s.maxGB
+  "unlimitedCount" $s.unlimitedCount
+  "pricesChecked" $s.checked
+  "plans" $plans
+) -}}
+{{- end -}}
+{{- end -}}
+{{- jsonify (dict "indent" "  ") (dict
+  "site" "esimsift"
+  "url" .Site.BaseURL
+  "generated" (now.Format "2006-01-02")
+  "currency" "USD"
+  "notes" "perDay/perGB are integer cents. gb=0 means unlimited (subject to fairUse). Prices as listed by each provider, excluding promos and taxes."
+  "countries" $countries
+) -}}

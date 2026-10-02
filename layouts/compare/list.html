@@ -1,0 +1,115 @@
+{{ define "main" }}
+{{ $countries := where (where (where .Pages "Params.provider" nil) "Params.providers" nil) "Params.nolist" nil }}
+{{ $isoCount := $countries | len }}
+{{ $totalPlans := 0 }}
+{{ range $countries }}
+  {{ with .Params.iso }}
+    {{ $s := partial "country-stats.html" . }}
+    {{ $totalPlans = add $totalPlans $s.planCount }}
+  {{ end }}
+{{ end }}
+<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+  {{ partial "breadcrumbs.html" . }}
+
+  <div class="mt-6 grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+  <header class="max-w-3xl">
+    <p class="eyebrow">eSIM comparisons</p>
+    <h1 class="mt-2 text-3xl font-extrabold tracking-tight md:text-4xl">{{ .Title }}</h1>
+    <p class="mt-4 text-lg leading-relaxed text-ink-600">Every major provider, one table per country, ranked by the same $/GB and $/day formulas. Prices re-checked on a monthly schedule.</p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <div class="stat-tile"><span class="stat-num tnum">{{ $isoCount }}</span><span class="stat-label">Countries</span></div>
+      <div class="stat-tile"><span class="stat-num tnum">{{ hugo.Data.providers | len }}</span><span class="stat-label">Providers</span></div>
+      <div class="stat-tile"><span class="stat-num tnum">{{ $totalPlans }}</span><span class="stat-label">Plans tracked</span></div>
+    </div>
+  </header>
+  <figure class="figure">
+    <img src="/img/esim/travel-esim-illustration-006.webp" alt="eSIM plans for every destination compared side by side" width="2848" height="1470">
+    <figcaption>{{ $totalPlans }} real plans across {{ $isoCount }} destinations — one table per country, every provider in it.</figcaption>
+  </figure>
+  </div>
+
+  <section class="mt-10">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div id="region-chips" class="nav-scroll flex gap-2 overflow-x-auto pb-1">
+        <button class="chip chip-active" data-region="all" type="button">All</button>
+        <button class="chip" data-region="Asia" type="button">Asia</button>
+        <button class="chip" data-region="Europe" type="button">Europe</button>
+        <button class="chip" data-region="Americas" type="button">Americas</button>
+        <button class="chip" data-region="Africa &amp; Middle East" type="button">Africa &amp; Middle East</button>
+        <button class="chip" data-region="Oceania" type="button">Oceania</button>
+      </div>
+      <input id="country-filter" type="search" placeholder="Search country…" class="input-search w-full sm:w-56" aria-label="Search countries">
+    </div>
+    <div id="country-grid" class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {{ range $countries }}{{ partial "country-card.html" . }}{{ end }}
+    </div>
+    <p id="no-results" class="mt-6 hidden text-center text-sm text-ink-400">No country matches that search.</p>
+  </section>
+
+  {{/* ── 对决预告：编辑精选 6 组，全量入口 /compare/matchups/（可收录枢纽页） ── */}}
+  {{ $featured := slice
+      (slice "airalo" "holafly")
+      (slice "airalo" "yesim")
+      (slice "airalo" "roami")
+      (slice "holafly" "saily")
+      (slice "roami" "roamic")
+      (slice "saily" "yesim")
+  }}
+  <section id="matchups" class="mt-14 scroll-mt-24">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="eyebrow">Provider vs provider</p>
+        <h2 class="mt-2 text-2xl font-bold md:text-3xl">Head-to-head eSIM matchups</h2>
+        <p class="mt-3 max-w-2xl text-ink-600">Every provider pair, one page per matchup — the cheaper brand computed country by country from the same dated prices.</p>
+      </div>
+      <a href="/compare/matchups/" class="btn-primary text-sm">All matchups →</a>
+    </div>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {{ range $featured }}
+        {{ $mp := sort . }}
+        {{ with site.GetPage (printf "/compare/%s-vs-%s" (index $mp 0) (index $mp 1)) }}
+          {{ $agg2 := partial "vs-agg.html" (dict "a" (index $mp 0) "b" (index $mp 1)) }}
+          {{ $n2a := (index hugo.Data.providers (index $mp 0)).name }}
+          {{ $n2b := (index hugo.Data.providers (index $mp 1)).name }}
+          <a href="{{ .RelPermalink }}" class="card card-hover group p-5">
+            <p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ $n2a }} vs {{ $n2b }}</p>
+            <p class="mt-2 text-xs leading-relaxed text-ink-500">{{ if gt $agg2.aWinsPrice $agg2.bWinsPrice }}{{ $n2a }} starts cheaper in {{ $agg2.aWinsPrice }} of {{ $agg2.countries }} countries{{ else if gt $agg2.bWinsPrice $agg2.aWinsPrice }}{{ $n2b }} starts cheaper in {{ $agg2.bWinsPrice }} of {{ $agg2.countries }} countries{{ else }}Nearly even across {{ $agg2.countries }} countries{{ end }}{{ if gt $agg2.ties 0 }} (identical entry prices in {{ $agg2.ties }}){{ end }}.</p>
+            <p class="mt-3 text-xs font-semibold text-brand-700 opacity-0 transition-opacity group-hover:opacity-100">See the verdict →</p>
+          </a>
+        {{ end }}
+      {{ end }}
+    </div>
+  </section>
+
+  {{ with .Content }}<div class="prose mt-12 max-w-none">{{ . }}</div>{{ end }}
+</div>
+
+<script>
+  (function () {
+    var input = document.getElementById('country-filter');
+    var grid = document.getElementById('country-grid');
+    var chips = document.querySelectorAll('#region-chips .chip');
+    var empty = document.getElementById('no-results');
+    var region = 'all';
+    function apply() {
+      var q = (input && input.value || '').trim().toLowerCase();
+      var visible = 0;
+      (grid ? grid.querySelectorAll('a[data-name]') : []).forEach(function (a) {
+        var show = (!q || (a.dataset.name || '').indexOf(q) > -1) && (region === 'all' || a.dataset.region === region);
+        a.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      if (empty) empty.classList.toggle('hidden', visible > 0);
+    }
+    if (input) input.addEventListener('input', apply);
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        chips.forEach(function (x) { x.classList.remove('chip-active'); });
+        c.classList.add('chip-active');
+        region = c.dataset.region;
+        apply();
+      });
+    });
+  })();
+</script>
+{{ end }}

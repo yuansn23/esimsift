@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eSIM 比价网站架构蓝图 — 对标 mybestsim.com</title>
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f7f8fa; --bg3:#eef0f4; --line:#e3e6ec; --line2:#cfd4dd;
+  --ink:#12161c; --ink2:#3d4653; --ink3:#6b7684; --ink4:#98a1ad;
+  --brand:#1a5cff; --brand-bg:#eef3ff; --brand-line:#c3d4ff;
+  --red:#d92d20; --red-bg:#fef2f1; --amber:#b45309; --amber-bg:#fffbeb;
+  --green:#067647; --green-bg:#ecfdf3; --violet:#6941c6; --violet-bg:#f6f3ff;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+.hero{border-bottom:1px solid var(--line);background:linear-gradient(170deg,#fbfcfe 0%,#f2f5fb 100%);padding:56px 0 40px}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);background:#fff;border:1px solid var(--brand-line);padding:5px 11px;border-radius:100px}
+h1{font-size:40px;line-height:1.22;margin:18px 0 12px;letter-spacing:-.02em;font-weight:760}
+.hero p.lede{font-size:17px;color:var(--ink2);max-width:820px;margin:0 0 26px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font-size:12.5px;color:var(--ink2);background:#fff;border:1px solid var(--line2);border-radius:6px;padding:5px 10px;font-family:var(--mono)}
+
+nav.toc{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
+nav.toc .wrap{padding:0 28px;display:flex;gap:2px}
+nav.toc a{display:inline-block;padding:14px 11px;font-size:13px;font-weight:560;color:var(--ink3);text-decoration:none;border-bottom:2px solid transparent}
+nav.toc a:hover{color:var(--brand);border-bottom-color:var(--brand)}
+
+section{padding:52px 0 8px;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+h2{font-size:26px;margin:0 0 6px;letter-spacing:-.015em;font-weight:720;display:flex;align-items:baseline;gap:12px}
+h2 .num{font-family:var(--mono);font-size:14px;color:var(--brand);font-weight:600;padding-top:4px}
+h3{font-size:17.5px;margin:34px 0 10px;font-weight:680;letter-spacing:-.01em}
+h4{font-size:15px;margin:22px 0 8px;font-weight:660;color:var(--ink2)}
+p{margin:0 0 13px;color:var(--ink2)}
+.sub{color:var(--ink3);font-size:14.5px;margin:0 0 26px;max-width:920px}
+ul,ol{margin:0 0 14px;padding-left:22px;color:var(--ink2)}
+li{margin:5px 0}
+strong{color:var(--ink);font-weight:680}
+code{font-family:var(--mono);font-size:12.5px;background:var(--bg3);padding:2px 6px;border-radius:4px;color:var(--ink)}
+a{color:var(--brand)}
+
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:26px 0}
+.metric{background:#fff;padding:18px 18px 16px}
+.metric .v{font-size:27px;font-weight:740;letter-spacing:-.02em;line-height:1.15}
+.metric .l{font-size:12.5px;color:var(--ink3);margin-top:3px}
+.metric .n{font-size:11.5px;color:var(--ink4);margin-top:5px;font-family:var(--mono)}
+.v.red{color:var(--red)}.v.green{color:var(--green)}.v.brand{color:var(--brand)}
+
+.tbl{width:100%;border-collapse:collapse;margin:16px 0 20px;font-size:13.5px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tbl th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:660;font-size:12.5px;color:var(--ink2);border-bottom:1px solid var(--line2);letter-spacing:.01em}
+.tbl td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2)}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tr:hover td{background:#fafbfd}
+.tbl .c{text-align:center}
+.tbl .r{text-align:right;font-family:var(--mono);font-size:12.5px}
+.tbl caption{caption-side:top;text-align:left;font-size:12.5px;color:var(--ink3);padding:0 0 8px}
+
+.b{display:inline-block;font-size:11.5px;font-weight:620;padding:2px 8px;border-radius:100px;white-space:nowrap;line-height:1.6}
+.b-red{background:var(--red-bg);color:var(--red)}
+.b-amber{background:var(--amber-bg);color:var(--amber)}
+.b-green{background:var(--green-bg);color:var(--green)}
+.b-brand{background:var(--brand-bg);color:var(--brand)}
+.b-grey{background:var(--bg3);color:var(--ink3)}
+.b-violet{background:var(--violet-bg);color:var(--violet)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:18px 0}
+@media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);border-radius:11px;padding:17px 18px;background:#fff}
+.card.accent{border-left:3px solid var(--brand)}
+.card.warn{border-left:3px solid var(--red);background:var(--red-bg)}
+.card h4{margin:0 0 7px;font-size:14.5px}
+.card p{font-size:13.5px;margin:0 0 8px}
+.card p:last-child{margin-bottom:0}
+
+.callout{border:1px solid var(--brand-line);background:var(--brand-bg);border-radius:11px;padding:16px 18px;margin:20px 0;font-size:14px}
+.callout.warn{border-color:#fbc9c4;background:var(--red-bg)}
+.callout.ok{border-color:#a9e5c3;background:var(--green-bg)}
+.callout .t{font-weight:700;color:var(--ink);display:block;margin-bottom:5px;font-size:14px}
+
+pre{background:#0f1419;color:#d9e2ec;border-radius:11px;padding:20px 22px;overflow-x:auto;font-family:var(--mono);font-size:12.5px;line-height:1.72;margin:16px 0}
+pre .c{color:#6b7f95}
+pre .k{color:#7dd3fc}
+pre .g{color:#86efac}
+pre .y{color:#fcd34d}
+
+.spec{border:1px solid var(--line);border-radius:12px;margin:20px 0;overflow:hidden;background:#fff}
+.spec-h{background:var(--bg2);padding:13px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.spec-h .id{font-family:var(--mono);font-size:11.5px;font-weight:700;color:#fff;background:var(--brand);padding:2.5px 8px;border-radius:5px}
+.spec-h .nm{font-weight:700;font-size:15.5px;letter-spacing:-.01em}
+.spec-b{padding:2px 18px 16px}
+.spec-b .tbl{margin:12px 0 10px;font-size:13px}
+
+.svgbox{border:1px solid var(--line);border-radius:12px;background:#fff;padding:8px;margin:18px 0;overflow-x:auto}
+.svgbox svg{display:block;min-width:840px;width:100%;height:auto}
+.ww{display:flex}
+footer{margin-top:60px;border-top:1px solid var(--line);background:var(--bg2);padding:34px 0 46px;font-size:13px;color:var(--ink3)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="kicker">架构蓝图 · 竞品拆解 · 长尾词战术</span>
+    <h1>eSIM 比价网站<br>信息架构与 SEO 作战蓝图</h1>
+    <p class="lede">以 mybestsim.com 为唯一对标基准。本方案基于对其英文站 <strong>957 条 URL 的全量抓取</strong>、国家页与提供商页模板逐模块剖析、枢纽页 HTTP 状态实测，反向推导出 <strong>7 个结构性漏洞</strong>，并据此设计一套「每页可量化超越」的四层枢纽-辐条架构。</p>
+    <div class="hero-meta">
+      <span class="chip">竞品英文页 957</span>
+      <span class="chip">竞品语种 24</span>
+      <span class="chip">竞品总页量 ≈ 23,000</span>
+      <span class="chip">本方案长尾词 10,614</span>
+      <span class="chip">页面类型 29</span>
+      <span class="chip">数据采集 2026-09-30</span>
+    </div>
+  </div>
+</div>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#s0">结论</a>
+    <a href="#s1">1 竞品拆解</a>
+    <a href="#s2">2 战略判断</a>
+    <a href="#s3">3 信息架构</a>
+    <a href="#s4">4 页面清单</a>
+    <a href="#s5">5 导航菜单</a>
+    <a href="#s6">6 模板规格</a>
+    <a href="#s7">7 内链体系</a>
+    <a href="#s8">8 长尾词战术</a>
+    <a href="#s9">9 技术SEO</a>
+    <a href="#s10">10 多语言</a>
+    <a href="#s11">11 路线图</a>
+    <a href="#s12">12 记分卡</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section id="s0">
+  <h2><span class="num">00</span>一句话结论</h2>
+  <p class="sub">先给判断，再给证据。如果只读一段，读这段。</p>
+
+  <div class="callout warn">
+    <span class="t">核心结论：不要和它比"国家页谁更多"，要在它<b>根本没有页面的地方</b>建阵地。</span>
+    mybestsim 的 957 条英文 URL 里，<strong>231 条国家页 + 486 条提供商页 = 75%</strong> 挤在两个类目。其余所有类目几乎为零：<strong>真实两两对比页仅 2 条、设备页 3 条、城市页 0 条、运营商网络页 0 条、使用场景页 0 条、法规页 0 条、原创数据页 0 条</strong>。同时它<strong>没有可抓取的目的地枢纽页和提供商枢纽页</strong>（<code>/en/destinations/</code> 与 <code>/en/providers/</code> 实测 404），全站靠首页一个 JS 挂件承载导航。
+    <br><br>
+    这意味着：<strong>它是一条只有两条腿的巨兽</strong>。你用同样的国家页硬碰硬，要烧掉 24 个语种 × 231 个国家的产能；但你在 VS / 设备 / 城市 / 运营商 / 场景 / 数据这六条线上，面对的是<b>几乎无人的战场</b>——而这几条线恰好是转化意图最高、外链获取能力最强的长尾。
+  </div>
+
+  <div class="metrics">
+    <div class="metric"><div class="v red">7</div><div class="l">竞品结构性漏洞</div><div class="n">全部实测确认</div></div>
+    <div class="metric"><div class="v brand">10,614</div><div class="l">可打长尾词</div><div class="n">29 类页面承载</div></div>
+    <div class="metric"><div class="v green">~3,400</div><div class="l">首年页面目标</div><div class="n">单语种</div></div>
+    <div class="metric"><div class="v">6</div><div class="l">零竞争攻击线</div><div class="n">VS/设备/城市/运营商/场景/数据</div></div>
+    <div class="metric"><div class="v">4</div><div class="l">层信息架构</div><div class="n">L1 枢纽 → L4 叶子</div></div>
+  </div>
+</section>
+
+<section id="s1">
+  <h2><span class="num">01</span>竞品实测拆解</h2>
+  <p class="sub">以下全部为 2026-09-30 实测数据，非估计。抓取链路：robots.txt → sitemap 索引 → sitemap_en.xml 全量解析 → 路径模式聚类 → 抽样页逐模块拆解 → 枢纽页 HTTP 状态探测。</p>
+
+  <h3>1.1 资产盘点</h3>
+  <table class="tbl">
+    <caption>mybestsim.com 英文站（sitemap_en.xml）URL 类型分布</caption>
+    <thead><tr><th>页面类型</th><th>URL 模式</th><th class="r">英文数量</th><th class="r">占比</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>国家比价页</td><td><code>/en/comparison-best-esim-card-{国}/</code></td><td class="r">231</td><td class="r">24.1%</td><td>核心资产，覆盖国家 + 大区</td></tr>
+      <tr><td>提供商评测页</td><td><code>/en/provider/review-{品牌}/</code></td><td class="r">343</td><td class="r">35.8%</td><td>含大量冷门品牌，长尾覆盖极广</td></tr>
+      <tr><td>促销码页</td><td><code>/en/provider/{品牌}-promo-code/</code></td><td class="r">139</td><td class="r">14.5%</td><td>交易型长尾，转化最高</td></tr>
+      <tr><td>折扣页</td><td><code>/en/provider/{品牌}-discount/</code></td><td class="r">4</td><td class="r">0.4%</td><td>命名不统一，与 promo-code 重复</td></tr>
+      <tr><td>博客/指南文章</td><td><code>/en/{slug}/</code></td><td class="r">240</td><td class="r">25.1%</td><td>平铺在根目录，无分类层级</td></tr>
+      <tr><td colspan="2" style="text-align:right;font-weight:700">英文站合计</td><td class="r" style="font-weight:700">957</td><td class="r" style="font-weight:700">100%</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <table class="tbl">
+    <thead><tr><th>维度</th><th>实测结果</th></tr></thead>
+    <tbody>
+      <tr><td>语种数</td><td><strong>24 个</strong> sitemap：<code>en fr de es it pt nl pl ru tr ja ko zh…</code>，全部使用 <code>/en/</code> 式语言前缀</td></tr>
+      <tr><td>总页量推算</td><td>957 × 24 ≈ <strong>23,000 页</strong></td></tr>
+      <tr><td>技术栈</td><td>WordPress + 自研比价挂件（首页 <code>#mbs-search</code> / <code>#mbs-all-dests</code> 为 JS 锚点）</td></tr>
+      <tr><td>数据护城河</td><td>自称 <strong>100,000+ 套餐 / 200 目的地</strong>，实时价格引擎 + 30 家联盟伙伴直连</td></tr>
+      <tr><td>URL 技术债</td><td><code>esim-compatible-phones-2</code>、<code>comparison-best-esim-card-mexico-2</code> —— 存在 <code>-2</code> 后缀重复页，典型改版遗留，蚕食隐患</td></tr>
+      <tr><td>索引控制</td><td>robots 已 Disallow <code>/affiliation/</code>、<code>/data-allowance/</code>、<code>/terms-of-use/</code>、<code>/feed/</code></td></tr>
+      <tr><td>品牌覆盖度</td><td>主流品牌全覆盖（Airalo/Holafly/Saily/Nomad/Ubigi/Yesim/GigSky/Maya/aloSIM/Jetpac…），但 <strong>vodafone / three / t-mobile 相关 URL 均为 0</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>1.2 国家页模板剖析（以 Azerbaijan 页为样本）</h3>
+  <p>其国家页约 <strong>2,000 词</strong>、13 个 H2 模块，顺序固定。逐模块评估如下：</p>
+  <table class="tbl">
+    <thead><tr><th class="c">#</th><th>模块</th><th>性质</th><th>评估</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td>H1 + 导语 + 比价挂件</td><td>功能</td><td>其护城河，实时价格</td></tr>
+      <tr><td class="c">2</td><td>How to Choose: How much data do you need?</td><td><span class="b b-red">模板化</span></td><td>231 页共用，零差异化</td></tr>
+      <tr><td class="c">3</td><td>How long is your stay?</td><td><span class="b b-red">模板化</span></td><td>231 页共用</td></tr>
+      <tr><td class="c">4</td><td>Do you need a local phone number?</td><td><span class="b b-red">模板化</span></td><td>231 页共用</td></tr>
+      <tr><td class="c">5</td><td>Best eSIM by Traveler Type（5 类人群卡）</td><td><span class="b b-amber">半模板</span></td><td>换地名，论点雷同</td></tr>
+      <tr><td class="c">6</td><td>Mobile Networks &amp; 4G/5G Coverage</td><td><span class="b b-green">有价值</span></td><td>运营商名 + 份额，但数据薄</td></tr>
+      <tr><td class="c">7</td><td>Tips for Using Your eSIM（机场/老城/郊外/交通/货币 5 卡）</td><td><span class="b b-green">最强项</span></td><td>真实本地化，是它唯一的差异化护城河</td></tr>
+      <tr><td class="c">8</td><td>Top eSIM Providers（前三名卡）</td><td>功能</td><td>联盟变现位</td></tr>
+      <tr><td class="c">9</td><td>How to Install and Activate（4 步）</td><td><span class="b b-red">模板化</span></td><td>全站同一套</td></tr>
+      <tr><td class="c">10</td><td>FAQ（8 问）</td><td><span class="b b-amber">半模板</span></td><td>问句雷同，答案换地名</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <span class="t">关键发现：它的国家页有 40–50% 是跨 231 页逐字复用。</span>
+    第 2/3/4/9 模块（数据需求、停留时长、本地号码、安装 4 步）在全部 231 页高度同质。这既是它的效率来源，也是它的<strong>最大软肋</strong>——在 Google 规模化内容滥用政策下，这类页面抗风险能力很弱。你要赢它，不是写更多页，而是<strong>让每一页都有它没有的东西</strong>。
+  </div>
+
+  <h3>1.3 七个结构性漏洞（含实测证据）</h3>
+
+  <div class="grid2">
+    <div class="card warn">
+      <h4>漏洞 1 · 没有可抓取的枢纽页</h4>
+      <p><strong>证据：</strong><code>/en/destinations/</code> → <strong>404</strong>；<code>/en/providers/</code> → <strong>404</strong>。</p>
+      <p>它的"全部目的地"是首页一个 JS 挂件（<code>#mbs-all-dests</code>），"全部提供商"是首页一段联盟链接列表。231 个国家页和 486 个提供商页<strong>缺少父级枢纽做权重汇聚</strong>，也不构成清晰的主题集群信号。</p>
+      <p><strong>打法：</strong>建 <code>/esim/</code> 与 <code>/providers/</code> 两个真枢纽页，作为全站权重分配器和抓取入口。</p>
+    </div>
+
+    <div class="card warn">
+      <h4>漏洞 2 · 两两对比页几乎空白</h4>
+      <p><strong>证据：</strong>957 条 URL 中含 "vs" 的仅 <strong>8 条</strong>；剔除泛概念页（4G vs 5G、SIM 卡尺寸、实体 SIM vs eSIM）后，<strong>真正的品牌 VS 页只有 2 条</strong>。</p>
+      <p>而 "Airalo vs Holafly"、"Saily vs Nomad" 这类词是 T2 决策层意图最锋利的词——用户已在两个品牌间犹豫，只差一个裁决者。SERP 实测显示这类词目前由综合评测博客把持，<strong>没有专职比价站占位</strong>。</p>
+      <p><strong>打法：</strong>Top 24 品牌 → <strong>276 组配对 × 3 个词变体 = 828 条长尾</strong>。</p>
+    </div>
+
+    <div class="card warn">
+      <h4>漏洞 3 · 设备兼容页基本为零</h4>
+      <p><strong>证据：</strong>957 条 URL 里与设备相关的仅 <strong>3 条</strong>（<code>xiaomi-14-ultra-esim</code>、<code>transfer-esim-galaxy-s26</code> 等）。</p>
+      <p>"iPhone 16 支持 eSIM 吗"、"Galaxy S24 eSIM 怎么装"是<strong>纯信息型高流量词</strong>，且几乎无联盟竞争。它把这块全部塞进一个 <code>esim-compatible-phones-2</code> 页面里了。</p>
+      <p><strong>打法：</strong>建 <code>/devices/{机型}/</code> —— iPhone 全系 + 三星全系 + Pixel + 小米 + 平板 + 笔记本 + 手表，<strong>单语种 150+ 页</strong>。</p>
+    </div>
+
+    <div class="card warn">
+      <h4>漏洞 4 · 城市页 0 条</h4>
+      <p><strong>证据：</strong>957 条 URL 中无任何城市级 URL。它的国家页里有"Tips for Using Your eSIM in {机场/老城}"卡片，<strong>但从未把城市拆成独立 URL</strong>。</p>
+      <p>"eSIM for Bali"、"eSIM for Cancun"、"eSIM for Baku" 这类词流量分散但总量巨大，且搜索者已进入行程规划末期——<strong>转化率远高于国家词</strong>。</p>
+      <p><strong>打法：</strong>Top 150 旅游城市 → <code>/esim/{国家}/city/{城市}/</code>。</p>
+    </div>
+
+    <div class="card warn">
+      <h4>漏洞 5 · 运营商网络页 0 条</h4>
+      <p><strong>证据：</strong>含 <code>vodafone</code> / <code>three</code> / <code>tmobile</code> 的 URL：<strong>0 条</strong>。</p>
+      <p>"Vodafone roaming charges"、"T-Mobile international roaming cost"、"how to avoid EE roaming fees" 是<strong>搜索量极大的省钱意图词</strong>，天然导向 eSIM 解决方案。它完全没做。</p>
+      <p><strong>打法：</strong><code>/networks/{运营商}/</code> × 50 家主流运营商。</p>
+    </div>
+
+    <div class="card warn">
+      <h4>漏洞 6 · 没有原创数据资产</h4>
+      <p><strong>证据：</strong>全站无价格指数、无速度指数、无行业报告、无数据下载页。</p>
+      <p>它只有"实时比价"，<strong>但没有可被引用、可被外链的静态数据页</strong>。原创数据页是 SEO 里唯一的"外链永动机"——媒体、论坛、Reddit 会自然引用"2026 全球 1GB 流量价格榜"。<strong>没有外链资产，就只能靠页数堆排名。</strong></p>
+      <p><strong>打法：</strong>建 <code>/data/</code> 指数体系（4 个），季度更新，配可嵌入图表与 CSV 下载。</p>
+    </div>
+
+    <div class="card warn">
+      <h4>漏洞 7 · 信息架构扁平、URL 语义弱</h4>
+      <p><strong>证据：</strong>240 篇博客<strong>全部平铺在 <code>/en/</code> 根目录</strong>，无分类层级；提供商评测与促销码页也全挤在 <code>/en/provider/</code> 一层。</p>
+      <p>URL 里 <code>comparison-best-esim-card-</code> 这串前缀占 30 个字符，<strong>对用户零信息价值，对搜索者也未强化任何关键词</strong>。同时存在 <code>-2</code> 后缀重复页。</p>
+      <p><strong>打法：</strong>用语义化目录结构替换，让每条 URL 自身携带关键词与层级信号。</p>
+    </div>
+
+    <div class="card accent">
+      <h4>必须承认它的三个真优势</h4>
+      <p><strong>① 实时价格引擎</strong>——10 万套餐动态比价，真正的产品壁垒，短期无法正面硬撼。</p>
+      <p><strong>② 联盟伙伴密度</strong>——30 家 provider 直连，促销码页 139 条，变现链路成熟。</p>
+      <p><strong>③ 本地化细节</strong>——机场名、交通 App、货币、街区，是它唯一"人味"的部分。</p>
+      <p>你的架构必须<b>绕开 ①</b>（不比实时价格绝对性，比决策质量），<b>追平 ②</b>（联盟覆盖要更广），<b>超越 ③</b>（把本地化做到城市与街区级）。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="num">02</span>战略判断：三条攻击线</h2>
+  <p class="sub">面对一个页量 23,000 的对手，正面堆量是下策。正确打法是"避其主力、断其补给、占其真空"。</p>
+
+  <h3><span class="b b-brand">A</span> 侧翼线：占领它的零页类目</h3>
+  <p>VS 对比、设备、城市、运营商、场景、数据六类，它合计不足 15 页。这六类承载 <strong>约 4,500 条长尾词</strong>，且意图集中在 T2（决策）与 T3（购买）——也就是<strong>离钱最近的位置</strong>。这是投入产出比最高的一战，应作为 <strong>Phase 1 主攻方向</strong>。</p>
+
+  <h3><span class="b b-brand">B</span> 正面线：国家页做"深度压制"，不做"数量对轰"</h3>
+  <p>它有 231 个国家页、24 个语种。你不要一上来做 231 个——<strong>先做 Top 60 个国家</strong>，但每一页的深度做到它的 2.5 倍：加入实测速度数据、真实套餐价格矩阵、本地实体 SIM 成本对比、实名登记法规原文、运营商级网络质量、城市子页导航、政策变更时效块。用 60 页压制它 231 页里的头部流量，比 231 页平均用力有效得多。</p>
+
+  <h3><span class="b b-brand">C</span> 底层线：建它没有的数据资产与工具</h3>
+  <p>原创数据页 + 交互工具是<strong>唯一能持续吸收外链</strong>的资产。它一个都没有。你建 4 个数据指数 + 6 个工具页，6 个月内可拿到它 4 年没拿到的自然外链。这条线见效慢（3–6 个月），但决定了你能否在 12 个月后<strong>反超而非仅仅持平</strong>。</p>
+
+  <div class="callout ok">
+    <span class="t">资源分配建议（首年）</span>
+    <strong>侧翼线 50%</strong>（零竞争、快见效）｜<strong>正面线 30%</strong>（守基本盘、吃头部流量）｜<strong>底层线 20%</strong>（长期资产、外链引擎）。<br><br>
+    <strong>忌：一上来就铺 24 语种。</strong>先用英文站验证模型，跑通后再复制语种——多语种是"放大器"，不是"启动器"，在没有验证的架构上乘以 24 只会把错误放大 24 倍。
+  </div>
+
+  <div class="callout warn">
+    <span class="t">⚠️ 必须警惕的合规红线</span>
+    Google 的<b>规模化内容滥用（Scaled Content Abuse）</b>政策专门针对"为排名而批量生成、无原创价值的页面"。竞品的 231 个国家页已有 40–50% 复用内容，抗风险能力弱——<strong>你如果只是换个模板刷 6,000 页，会死得比它更快</strong>。<br>
+    本方案在 §6 的每个模板里都设定了<b>「唯一性配额」</b>（每页必须有多少条不可复制的独有数据），并在 §9 给出构建时的自动化校验要求。<strong>这是本方案与"刷量站"的根本分界线。</strong>
+  </div>
+</section>
+
+<section id="s3">
+  <h2><span class="num">03</span>信息架构</h2>
+  <p class="sub">四层枢纽-辐条（Hub-Spoke）模型。核心原则：任何一个叶子页，距首页不超过 4 次点击；任何一个类目，都有唯一且可抓取的枢纽页承载权重。</p>
+
+  <h3>3.1 架构总图</h3>
+  <div class="svgbox">
+  <svg viewBox="0 0 1100 600" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">
+    <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#98a1ad"/></marker></defs>
+    <rect x="440" y="16" width="220" height="44" rx="9" fill="#1a5cff"/>
+    <text x="550" y="44" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">首页 /</text>
+
+    <rect x="14"  y="112" width="170" height="50" rx="9" fill="#eef3ff" stroke="#c3d4ff"/>
+    <text x="99"  y="133" text-anchor="middle" fill="#1a5cff" font-size="12.5" font-weight="700">/esim/</text>
+    <text x="99"  y="149" text-anchor="middle" fill="#3d4653" font-size="10.5">目的地总枢纽</text>
+
+    <rect x="196" y="112" width="170" height="50" rx="9" fill="#eef3ff" stroke="#c3d4ff"/>
+    <text x="281" y="133" text-anchor="middle" fill="#1a5cff" font-size="12.5" font-weight="700">/providers/</text>
+    <text x="281" y="149" text-anchor="middle" fill="#3d4653" font-size="10.5">提供商总枢纽</text>
+
+    <rect x="378" y="112" width="150" height="50" rx="9" fill="#eef3ff" stroke="#c3d4ff"/>
+    <text x="453" y="133" text-anchor="middle" fill="#1a5cff" font-size="12.5" font-weight="700">/compare/</text>
+    <text x="453" y="149" text-anchor="middle" fill="#3d4653" font-size="10.5">对比枢纽</text>
+
+    <rect x="540" y="112" width="150" height="50" rx="9" fill="#eef3ff" stroke="#c3d4ff"/>
+    <text x="615" y="133" text-anchor="middle" fill="#1a5cff" font-size="12.5" font-weight="700">/devices/</text>
+    <text x="615" y="149" text-anchor="middle" fill="#3d4653" font-size="10.5">设备兼容</text>
+
+    <rect x="702" y="112" width="150" height="50" rx="9" fill="#eef3ff" stroke="#c3d4ff"/>
+    <text x="777" y="133" text-anchor="middle" fill="#1a5cff" font-size="12.5" font-weight="700">/networks/</text>
+    <text x="777" y="149" text-anchor="middle" fill="#3d4653" font-size="10.5">运营商网络</text>
+
+    <rect x="864" y="112" width="106" height="50" rx="9" fill="#eef3ff" stroke="#c3d4ff"/>
+    <text x="917" y="133" text-anchor="middle" fill="#1a5cff" font-size="12.5" font-weight="700">/guides/</text>
+    <text x="917" y="149" text-anchor="middle" fill="#3d4653" font-size="10.5">知识库</text>
+
+    <rect x="982" y="112" width="104" height="50" rx="9" fill="#eef3ff" stroke="#c3d4ff"/>
+    <text x="1034" y="133" text-anchor="middle" fill="#1a5cff" font-size="12.5" font-weight="700">/tools/ /data/</text>
+    <text x="1034" y="149" text-anchor="middle" fill="#3d4653" font-size="10.5">工具与数据</text>
+
+    <path d="M550,60 L550,86 L99,86 L99,112" stroke="#98a1ad" stroke-width="1.3" fill="none" marker-end="url(#ar)"/>
+    <path d="M550,60 L550,86 L281,86 L281,112" stroke="#98a1ad" stroke-width="1.3" fill="none" marker-end="url(#ar)"/>
+    <path d="M550,60 L550,86 L453,86 L453,112" stroke="#98a1ad" stroke-width="1.3" fill="none" marker-end="url(#ar)"/>
+    <path d="M550,60 L550,112" stroke="#98a1ad" stroke-width="1.3" fill="none" marker-end="url(#ar)"/>
+    <path d="M550,60 L550,86 L777,86 L777,112" stroke="#98a1ad" stroke-width="1.3" fill="none" marker-end="url(#ar)"/>
+    <path d="M550,60 L550,86 L917,86 L917,112" stroke="#98a1ad" stroke-width="1.3" fill="none" marker-end="url(#ar)"/>
+    <path d="M550,60 L550,86 L1034,86 L1034,112" stroke="#98a1ad" stroke-width="1.3" fill="none" marker-end="url(#ar)"/>
+    <text x="550" y="80" text-anchor="middle" fill="#98a1ad" font-size="10">L0 → L1 一级枢纽（7 个入口，全部服务端渲染真链接）</text>
+
+    <text x="14" y="200" fill="#6b7684" font-size="11" font-weight="700">L2 大区枢纽</text>
+    <rect x="14" y="210" width="120" height="36" rx="7" fill="#fff" stroke="#e3e6ec"/><text x="74" y="233" text-anchor="middle" fill="#3d4653" font-size="10.5">region/europe/</text>
+    <rect x="142" y="210" width="120" height="36" rx="7" fill="#fff" stroke="#e3e6ec"/><text x="202" y="233" text-anchor="middle" fill="#3d4653" font-size="10.5">region/asia/</text>
+    <rect x="270" y="210" width="120" height="36" rx="7" fill="#fff" stroke="#e3e6ec"/><text x="330" y="233" text-anchor="middle" fill="#3d4653" font-size="10.5">… × 19 个大区</text>
+
+    <text x="14" y="282" fill="#6b7684" font-size="11" font-weight="700">L3 国家枢纽</text>
+    <rect x="14" y="292" width="130" height="36" rx="7" fill="#fff" stroke="#1a5cff" stroke-width="1.6"/><text x="79" y="315" text-anchor="middle" fill="#1a5cff" font-size="10.5" font-weight="700">esim/japan/</text>
+    <rect x="152" y="292" width="130" height="36" rx="7" fill="#fff" stroke="#e3e6ec"/><text x="217" y="315" text-anchor="middle" fill="#3d4653" font-size="10.5">esim/france/</text>
+    <rect x="290" y="292" width="130" height="36" rx="7" fill="#fff" stroke="#e3e6ec"/><text x="355" y="315" text-anchor="middle" fill="#3d4653" font-size="10.5">… × 231 国</text>
+
+    <text x="14" y="364" fill="#6b7684" font-size="11" font-weight="700">L4 国家页叶子</text>
+    <rect x="14"  y="374" width="128" height="32" rx="6" fill="#f7f8fa" stroke="#e3e6ec"/><text x="78"  y="395" text-anchor="middle" fill="#3d4653" font-size="10">…/plans/</text>
+    <rect x="148" y="374" width="128" height="32" rx="6" fill="#f7f8fa" stroke="#e3e6ec"/><text x="212" y="395" text-anchor="middle" fill="#3d4653" font-size="10">…/price/</text>
+    <rect x="282" y="374" width="138" height="32" rx="6" fill="#f7f8fa" stroke="#e3e6ec"/><text x="351" y="395" text-anchor="middle" fill="#3d4653" font-size="10">…/coverage/</text>
+    <rect x="14"  y="414" width="128" height="32" rx="6" fill="#f7f8fa" stroke="#e3e6ec"/><text x="78"  y="435" text-anchor="middle" fill="#3d4653" font-size="10">…/city/tokyo/</text>
+    <rect x="148" y="414" width="128" height="32" rx="6" fill="#f7f8fa" stroke="#e3e6ec"/><text x="212" y="435" text-anchor="middle" fill="#3d4653" font-size="10">…/vs-local-sim/</text>
+    <rect x="282" y="414" width="138" height="32" rx="6" fill="#f7f8fa" stroke="#e3e6ec"/><text x="351" y="435" text-anchor="middle" fill="#3d4653" font-size="10">…/regulations/</text>
+
+    <path d="M79,328 L79,370" stroke="#1a5cff" stroke-width="1.3" fill="none" marker-end="url(#ar)"/>
+
+    <text x="490" y="200" fill="#6b7684" font-size="11" font-weight="700">L2 提供商枢纽</text>
+    <rect x="490" y="210" width="150" height="36" rx="7" fill="#fff" stroke="#1a5cff" stroke-width="1.6"/><text x="565" y="233" text-anchor="middle" fill="#1a5cff" font-size="10.5" font-weight="700">providers/airalo/</text>
+    <rect x="648" y="210" width="150" height="36" rx="7" fill="#fff" stroke="#e3e6ec"/><text x="723" y="233" text-anchor="middle" fill="#3d4653" font-size="10.5">providers/holafly/</text>
+    <rect x="806" y="210" width="150" height="36" rx="7" fill="#fff" stroke="#e3e6ec"/><text x="881" y="233" text-anchor="middle" fill="#3d4653" font-size="10.5">… × 60 家品牌</text>
+
+    <text x="490" y="282" fill="#6b7684" font-size="11" font-weight="700">L3 提供商叶子</text>
+    <rect x="490" y="292" width="150" height="32" rx="6" fill="#f7f8fa" stroke="#e3e6ec"/><text x="565" y="313" text-anchor="middle" fill="#3d4653" font-size="10">…/review/</text>
+    <rect x="648" y="292" width="150" height="32" rx="6" fill="#f7f8fa" stroke="#e3e6ec"/><text x="723" y="313" text-anchor="middle" fill="#3d4653" font-size="10">…/promo-code/</text>
+    <rect x="806" y="292" width="150" height="32" rx="6" fill="#f7f8fa" stroke="#e3e6ec"/><text x="881" y="313" text-anchor="middle" fill="#3d4653" font-size="10">…/in/japan/</text>
+    <rect x="490" y="332" width="150" height="32" rx="6" fill="#f7f8fa" stroke="#e3e6ec"/><text x="565" y="353" text-anchor="middle" fill="#3d4653" font-size="10">…/coverage/</text>
+    <rect x="648" y="332" width="150" height="32" rx="6" fill="#f7f8fa" stroke="#e3e6ec"/><text x="723" y="353" text-anchor="middle" fill="#3d4653" font-size="10">…/alternatives/</text>
+
+    <path d="M565,246 L565,288" stroke="#1a5cff" stroke-width="1.3" fill="none" marker-end="url(#ar)"/>
+
+    <text x="490" y="404" fill="#6b7684" font-size="11" font-weight="700">L2 对比页</text>
+    <rect x="490" y="414" width="216" height="32" rx="6" fill="#fff" stroke="#1a5cff" stroke-width="1.6"/><text x="598" y="435" text-anchor="middle" fill="#1a5cff" font-size="10" font-weight="700">compare/airalo-vs-holafly/</text>
+    <rect x="714" y="414" width="216" height="32" rx="6" fill="#fff" stroke="#e3e6ec"/><text x="822" y="435" text-anchor="middle" fill="#3d4653" font-size="10">compare/saily-vs-nomad/</text>
+
+    <path d="M415,310 C450,310 470,285 488,240" stroke="#1a5cff" stroke-width="1.3" fill="none" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+    <path d="M490,240 C470,285 450,310 417,310" stroke="#1a5cff" stroke-width="1.3" fill="none" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+    <text x="452" y="300" text-anchor="middle" fill="#1a5cff" font-size="9.5" font-weight="600">双向</text>
+    <text x="452" y="313" text-anchor="middle" fill="#1a5cff" font-size="9.5" font-weight="600">交叉</text>
+
+    <rect x="14" y="474" width="1072" height="106" rx="9" fill="#f7f8fa" stroke="#e3e6ec"/>
+    <text x="34" y="498" fill="#12161c" font-size="12.5" font-weight="700">导航与页脚承担全站权重分配（竞品在此完全失效）</text>
+    <text x="34" y="520" fill="#3d4653" font-size="11.5">· 顶部 Mega Menu → 7 个 L1 枢纽 + Top 30 国家 + Top 12 提供商 + Top 8 城市</text>
+    <text x="34" y="539" fill="#3d4653" font-size="11.5">· 页脚「全站索引」→ 穷举 Top 60 国家 + Top 30 提供商 + Top 40 城市（≤130 条，防权重稀释）</text>
+    <text x="34" y="558" fill="#3d4653" font-size="11.5">· 面包屑 → 严格 4 级 + BreadcrumbList 结构化数据，向搜索引擎声明层级语义</text>
+    <text x="34" y="577" fill="#3d4653" font-size="11.5">· 长尾国家页（其余 171 国）→ 由 /esim/ 枢纽页的字母索引与分页触达，保证零孤儿页</text>
+  </svg>
+  </div>
+
+  <h3>3.2 URL 全量目录树</h3>
+  <p>设计原则：<strong>每一段路径都携带关键词；层级即语义；不含无意义前缀</strong>。对比竞品 <code>/en/comparison-best-esim-card-azerbaijan/</code>（30 字符无信息前缀），本方案 <code>/esim/azerbaijan/</code> 仅 17 字符，且 "esim azerbaijan" 天然内嵌。</p>
+
+<pre><span class="c"># 语言前缀统一为 /{lang}/，en 为默认语种；hreflang 全站配对</span>
+
+<span class="k">/</span>                              首页：搜索框 + Top 目的地 + 实时比价入口
+│
+├─ <span class="k">/esim/</span>                        <span class="g">【L1 枢纽】</span>全部目的地索引 · "eSIM plans by destination"
+│  ├─ /esim/region/{region}/       <span class="g">【L2】</span>大区枢纽 × 19（europe / asia / balkans / gulf…）
+│  ├─ /esim/{country}/             <span class="g">【L3】</span>国家枢纽 × 231 · "best eSIM for {country}"
+│  │  ├─ …/plans/                  <span class="g">【L4】</span>比价表（筛选器 + 套餐矩阵）
+│  │  ├─ …/price/                  <span class="g">【L4】</span>价格指数 · "{country} eSIM price"
+│  │  ├─ …/coverage/               <span class="g">【L4】</span>网络覆盖与速度 · "{country} network speed"
+│  │  ├─ …/providers/              <span class="g">【L4】</span>该国提供商排行
+│  │  ├─ …/vs-local-sim/           <span class="g">【L4】</span>成本对比 · "eSIM vs local SIM {country}"
+│  │  ├─ …/vs-roaming/             <span class="g">【L4】</span>漫游对比
+│  │  ├─ …/regulations/            <span class="g">【L4】</span>实名登记 / SIM 法规 · "{country} sim registration"
+│  │  ├─ …/city/{city}/            <span class="g">【L4】</span>城市页 × 150 · "eSIM for {city}"
+│  │  ├─ …/airport/{airport}/      <span class="g">【L4】</span>机场页（可选） · "{airport} SIM card"
+│  │  └─ …/faq/                    <span class="g">【L4】</span>国家 FAQ（FAQPage Schema）
+│  └─ /esim/best/{category}/       <span class="g">【L2】</span>榜单 · "best eSIM for {场景/人群}"
+│
+├─ <span class="k">/providers/</span>                   <span class="g">【L1 枢纽】</span>全部提供商 · "eSIM provider reviews"
+│  ├─ /providers/{brand}/          <span class="g">【L2】</span>品牌枢纽 × 60
+│  │  ├─ …/review/                 <span class="g">【L3】</span>评测 · "{brand} eSIM review"
+│  │  ├─ …/plans/                  <span class="g">【L3】</span>套餐与价格
+│  │  ├─ …/coverage/               <span class="g">【L3】</span>覆盖国家清单 + 网络伙伴
+│  │  ├─ …/promo-code/             <span class="g">【L3】</span>折扣码 · "{brand} promo code"
+│  │  ├─ …/in/{country}/           <span class="g">【L3】</span>品牌×国家 × 1,200 · "{brand} in {country}"
+│  │  └─ …/alternatives/           <span class="g">【L3】</span>替代品
+│  └─ /providers/best/{category}/  <span class="g">【L2】</span>分类榜 · "best eSIM for unlimited data"
+│
+├─ <span class="k">/compare/</span>                     <span class="g">【L1 枢纽】</span>对比索引 · "eSIM comparison"
+│  └─ /compare/{a}-vs-{b}/         <span class="g">【L2】</span>两两对比 × 276 组 · "{a} vs {b}"
+│
+├─ <span class="k">/devices/</span>                     <span class="g">【L1 枢纽】</span>设备兼容 · "eSIM compatible phones"
+│  ├─ /devices/{brand}/            <span class="g">【L2】</span>品牌页 × 12（apple / samsung / google / xiaomi…）
+│  └─ /devices/{model}/            <span class="g">【L2】</span>机型页 × 150 · "does {model} support eSIM"
+│
+├─ <span class="k">/networks/</span>                    <span class="g">【L1 枢纽】</span>运营商网络 · "mobile network operators"
+│  └─ /networks/{carrier}/         <span class="g">【L2】</span>运营商 × 50 · "{carrier} roaming charges"
+│     └─ …/roaming/                <span class="g">【L3】</span>漫游费明细与替代方案
+│
+├─ <span class="k">/use-cases/</span>                   <span class="g">【L1 枢纽】</span>场景 · "eSIM for {use case}"
+│  └─ /use-cases/{case}/           <span class="g">【L2】</span>场景页 × 26（digital-nomads / cruise / students…）
+│
+├─ <span class="k">/events/</span>                      <span class="g">【L1 枢纽】</span>赛事事件 · "eSIM for {event}"
+│  └─ /events/{event}/             <span class="g">【L2】</span>事件页 × 12（world-cup / olympics / hajj…）
+│
+├─ <span class="k">/guides/</span>                      <span class="g">【L1 枢纽】</span>知识库
+│  ├─ /guides/what-is-an-esim/     基础概念
+│  ├─ /guides/install/{device}/    安装 × 30 · "how to install eSIM on {device}"
+│  ├─ /guides/troubleshooting/{x}/ 排障 × 25 · "eSIM not working"
+│  ├─ /guides/apn/{carrier}/       APN 设置 × 40
+│  └─ /guides/{topic}/             通用指南 × 40
+│
+├─ <span class="k">/tools/</span>                       <span class="g">【L1】</span>工具 × 6
+│  ├─ /tools/compatibility-checker/    设备兼容检测
+│  ├─ /tools/data-calculator/          流量计算器
+│  ├─ /tools/roaming-cost-calculator/  漫游省钱计算器
+│  ├─ /tools/trip-planner/             多国行程 eSIM 规划
+│  └─ /tools/speed-index/              速度指数查询
+│
+├─ <span class="k">/data/</span>                        <span class="g">【L1】</span>原创数据（外链诱饵）
+│  ├─ /data/esim-price-index/          年度 eSIM 价格指数
+│  ├─ /data/roaming-cost-index/        全球漫游成本榜
+│  └─ /data/data-price-index/          1GB 流量国别价格榜
+│
+├─ <span class="k">/deals/</span>                       <span class="g">【L1】</span>折扣汇总 + /deals/{brand}-promo-code/
+│
+└─ <span class="k">/about/</span> /faq/ /contact/          信任页（含编辑独立性声明、测试方法论）</pre>
+
+  <h3>3.3 URL 设计铁律</h3>
+  <table class="tbl">
+    <thead><tr><th>规则</th><th>说明</th><th>竞品对比</th></tr></thead>
+    <tbody>
+      <tr><td>小写 + 连字符</td><td>全站统一，禁用下划线、大写、空格</td><td><span class="b b-green">一致</span></td></tr>
+      <tr><td>禁止无信息前缀</td><td>禁用 <code>comparison-best-esim-card-</code> 这类 30 字符模板前缀</td><td><span class="b b-red">竞品违反</span></td></tr>
+      <tr><td>末段必含核心关键词</td><td>国家页末段 = 国家名，URL 天然含 "esim {country}"</td><td><span class="b b-amber">部分</span></td></tr>
+      <tr><td>层级 ≤ 4 层</td><td>从域名到叶子最多 4 段路径</td><td><span class="b b-amber">4 段但扁平无层级</span></td></tr>
+      <tr><td>禁止 <code>-2</code> 后缀</td><td>改版禁止生成 <code>xxx-2</code>；冲突必须 301 到主 URL</td><td><span class="b b-red">竞品存在</span></td></tr>
+      <tr><td>筛选器不生成独立 URL</td><td>比价筛选（价格/天数/流量）用参数 + canonical 归并到主页面，防索引爆炸</td><td><span class="b b-grey">关键风险点</span></td></tr>
+      <tr><td>尾斜杠统一</td><td>全站带尾斜杠，非尾斜杠 301 过去</td><td><span class="b b-green">一致</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <span class="t">⚠️ 比价站的头号技术陷阱：筛选器索引爆炸</span>
+    一个有 8 个筛选维度的比价页，理论组合数是天文数字。若放任 <code>?price=&amp;days=&amp;data=</code> 生成可索引 URL，爬虫预算会被拖死，权重被稀释到几千个无价值页面。<br><br>
+    <strong>处理方案（三选一，推荐 A）：</strong><br>
+    <strong>A.</strong> 筛选参数全部 <code>rel=canonical</code> 指回无参主页面，且 robots.txt 内 Disallow 带参路径 —— 最干净<br>
+    <strong>B.</strong> 只对「有搜索量的固定组合」生成静态页（如 <code>/esim/japan/plans/7-days/</code>），其余参数不索引<br>
+    <strong>C.</strong> 参数页用 <code>noindex,follow</code>，保留内链权重传递但不收录
+  </div>
+</section>
+
+<section id="s4">
+  <h2><span class="num">04</span>页面类型清单与规模测算</h2>
+  <p class="sub">29 类页面承载 10,614 条长尾关键词。「竞品覆盖度」来自对 957 条竞品 URL 的逐一比对。完整清单见交付的 <code>keyword-matrix.csv</code> 与 <code>page-inventory.csv</code>。</p>
+
+  <table class="tbl">
+    <thead><tr><th>页面类型</th><th>优先级</th><th class="r">承载词数</th><th>竞品覆盖</th><th>建议规模（单语种）</th><th>阶段</th></tr></thead>
+    <tbody>
+      <tr><td><strong>国家枢纽页</strong></td><td><span class="b b-red">100</span></td><td class="r">1,784</td><td><span class="b b-amber">231 页</span></td><td>60 → 231</td><td>P1–P2</td></tr>
+      <tr><td><strong>两两对比页</strong></td><td><span class="b b-red">88</span></td><td class="r">828</td><td><span class="b b-red">仅 2 页</span></td><td>276</td><td><span class="b b-brand">P1</span></td></tr>
+      <tr><td><strong>提供商枢纽页</strong></td><td><span class="b b-red">94</span></td><td class="r">464</td><td><span class="b b-green">343 页</span></td><td>60</td><td><span class="b b-brand">P1</span></td></tr>
+      <tr><td><strong>运营商页</strong></td><td><span class="b b-red">87</span></td><td class="r">392</td><td><span class="b b-red">0 页</span></td><td>50</td><td><span class="b b-brand">P1</span></td></tr>
+      <tr><td><strong>设备页</strong></td><td><span class="b b-red">90</span></td><td class="r">336</td><td><span class="b b-red">3 页</span></td><td>150</td><td><span class="b b-brand">P1</span></td></tr>
+      <tr><td><strong>城市页</strong></td><td><span class="b b-red">86</span></td><td class="r">870</td><td><span class="b b-red">0 页</span></td><td>150</td><td>P2</td></tr>
+      <tr><td><strong>国家比价表页</strong></td><td><span class="b b-red">90</span></td><td class="r">616</td><td><span class="b b-green">已覆盖</span></td><td>60</td><td><span class="b b-brand">P1</span></td></tr>
+      <tr><td><strong>国家价格指数页</strong></td><td><span class="b b-amber">88</span></td><td class="r">669</td><td><span class="b b-amber">部分</span></td><td>60</td><td>P2</td></tr>
+      <tr><td><strong>国家对比页</strong>（vs 本地 SIM / 漫游）</td><td><span class="b b-amber">79</span></td><td class="r">669</td><td><span class="b b-amber">部分</span></td><td>60 × 2</td><td>P2</td></tr>
+      <tr><td><strong>国家覆盖页</strong></td><td><span class="b b-amber">76</span></td><td class="r">669</td><td><span class="b b-amber">部分</span></td><td>60</td><td>P2</td></tr>
+      <tr><td><strong>法规页</strong></td><td><span class="b b-amber">74</span></td><td class="r">240</td><td><span class="b b-red">0 页</span></td><td>40</td><td>P3</td></tr>
+      <tr><td><strong>提供商×国家页</strong></td><td><span class="b b-amber">76</span></td><td class="r">2,400</td><td><span class="b b-amber">部分</span></td><td>600</td><td>P3</td></tr>
+      <tr><td><strong>促销码页</strong></td><td><span class="b b-red">92</span></td><td class="r">174</td><td><span class="b b-green">139 页</span></td><td>60</td><td><span class="b b-brand">P1</span></td></tr>
+      <tr><td><strong>场景页</strong></td><td><span class="b b-red">85</span></td><td class="r">104</td><td><span class="b b-red">0 页</span></td><td>26</td><td><span class="b b-brand">P1</span></td></tr>
+      <tr><td><strong>大区枢纽页</strong></td><td><span class="b b-red">93</span></td><td class="r">76</td><td><span class="b b-amber">部分</span></td><td>19</td><td>P2</td></tr>
+      <tr><td><strong>排障页</strong></td><td><span class="b b-red">84</span></td><td class="r">100</td><td><span class="b b-red">极少</span></td><td>25</td><td>P2</td></tr>
+      <tr><td><strong>事件页</strong></td><td><span class="b b-amber">80</span></td><td class="r">36</td><td><span class="b b-red">0 页</span></td><td>12</td><td>P3</td></tr>
+      <tr><td><strong>工具页</strong></td><td><span class="b b-red">100</span></td><td class="r">5</td><td><span class="b b-amber">1 个</span></td><td>6</td><td><span class="b b-brand">P1</span></td></tr>
+      <tr><td><strong>原创数据页</strong></td><td><span class="b b-red">92</span></td><td class="r">4</td><td><span class="b b-red">0 页</span></td><td>4</td><td><span class="b b-brand">P1</span></td></tr>
+      <tr><td>通用指南页</td><td><span class="b b-red">96</span></td><td class="r">11</td><td><span class="b b-amber">部分</span></td><td>40</td><td>P2</td></tr>
+    </tbody>
+  </table>
+
+  <div class="metrics">
+    <div class="metric"><div class="v brand">~1,900</div><div class="l">Phase 1–2 页面（英文）</div><div class="n">6 个月目标</div></div>
+    <div class="metric"><div class="v">~3,400</div><div class="l">Phase 3 后（英文）</div><div class="n">12 个月目标</div></div>
+    <div class="metric"><div class="v green">6,000</div><div class="l">成熟期建议上限</div><div class="n">质量红线内</div></div>
+    <div class="metric"><div class="v red">10,614</div><div class="l">可打长尾词</div><div class="n">矩阵已覆盖</div></div>
+  </div>
+
+  <div class="callout">
+    <span class="t">为什么建议 6,000 页封顶，而不是直接铺到 10,000+？</span>
+    因为 <strong>6,000 页 × 每页 1,500+ 词原创内容 ≈ 900 万字</strong>，这已经需要一支内容团队干一年半。更重要的是：Google 对「规模化内容滥用」的判定看的是<strong>价值密度</strong>而非绝对页数。6,000 个每页都有独有数据点的页面，其排名能力和抗打击能力都强于 15,000 个模板页面。<strong>先做厚，再做宽。</strong>
+  </div>
+</section>
+
+<section id="s5">
+  <h2><span class="num">05</span>导航、菜单与页脚</h2>
+  <p class="sub">导航不只是给用户用的，它是全站权重分配的主干道。竞品把导航做成了首页 JS 挂件——等于放弃了最重要的一条内链通路。</p>
+
+  <h3>5.1 顶部主导航（桌面端 Mega Menu）</h3>
+  <table class="tbl">
+    <thead><tr><th>菜单项</th><th>点击目标</th><th>Mega 面板内容（分列）</th><th>设计理由</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>目的地</strong><br><span class="b b-grey">Destinations</span></td>
+        <td><code>/esim/</code></td>
+        <td>
+          <strong>列 1 · 热门国家（12）</strong><br>日本 / 泰国 / 美国 / 英国 / 法国 / 意大利 / 西班牙 / 土耳其 / 阿联酋 / 韩国 / 印尼 / 墨西哥<br><br>
+          <strong>列 2 · 按大区（8）</strong><br>欧洲 / 亚洲 / 东南亚 / 北美 / 南美 / 非洲 / 中东 / 大洋洲<br><br>
+          <strong>列 3 · 热门城市（8）</strong><br>东京 / 曼谷 / 巴厘岛 / 迪拜 / 巴黎 / 罗马 / 纽约 / 首尔<br><br>
+          <strong>底部条</strong><br>🔍 目的地搜索框 + 「查看全部 231 个目的地 →」
+        </td>
+        <td>把最高流量入口前置；搜索框让长尾国家也能 1 次点击到达</td>
+      </tr>
+      <tr>
+        <td><strong>提供商</strong><br><span class="b b-grey">Providers</span></td>
+        <td><code>/providers/</code></td>
+        <td>
+          <strong>列 1 · 编辑推荐（8）</strong> 按实测评分排序<br><br>
+          <strong>列 2 · 分类榜</strong> 最佳无限流量 / 最佳预算 / 最佳多国 / 最佳客服 / 最佳 5G<br><br>
+          <strong>列 3 · 促销中（6）</strong> 本月有效折扣码<br><br>
+          <strong>底部条</strong> 「全部 60 家提供商 →」+「最新折扣码 →」
+        </td>
+        <td>交易意图最强的入口；促销码位可直接变现</td>
+      </tr>
+      <tr>
+        <td><strong>对比</strong><br><span class="b b-grey">Compare</span></td>
+        <td><code>/compare/</code></td>
+        <td>
+          <strong>列 1 · 热门对决（8）</strong> Airalo vs Holafly / Saily vs Nomad …<br><br>
+          <strong>列 2 · 对比工具</strong> 选择任意两家品牌 → 生成对比<br><br>
+          <strong>列 3 · 概念对比</strong> eSIM vs 实体 SIM / eSIM vs 漫游 / eSIM vs WiFi 蛋<br><br>
+          <strong>底部条</strong> 「全部 276 组对比 →」
+        </td>
+        <td>竞品的最大真空区，导航必须给它一级入口</td>
+      </tr>
+      <tr>
+        <td><strong>设备</strong><br><span class="b b-grey">Devices</span></td>
+        <td><code>/devices/</code></td>
+        <td>
+          <strong>列 1 · 品牌</strong> iPhone / Samsung / Pixel / Xiaomi / OnePlus / Huawei / 平板 / 笔记本<br><br>
+          <strong>列 2 · 热门机型（8）</strong> iPhone 16 Pro / Galaxy S25 / Pixel 9 …<br><br>
+          <strong>列 3 · 工具</strong> 🔧 兼容性检测器<br><br>
+          <strong>底部条</strong> 「我的手机支持 eSIM 吗？ →」
+        </td>
+        <td>信息型高流量词的入口，也是工具导流位</td>
+      </tr>
+      <tr>
+        <td><strong>指南</strong><br><span class="b b-grey">Guides</span></td>
+        <td><code>/guides/</code></td>
+        <td>
+          <strong>列 1 · 入门</strong> 什么是 eSIM / 如何安装 / 如何激活<br><br>
+          <strong>列 2 · 排障</strong> 没有信号 / 激活失败 / 网速慢 / 热点不能用<br><br>
+          <strong>列 3 · 省钱</strong> 漫游费怎么算 / 需要多少流量 / 无限套餐真相<br><br>
+          <strong>底部条</strong> 「全部指南 →」
+        </td>
+        <td>承接信息型流量并向下漏斗导流</td>
+      </tr>
+      <tr><td><strong>工具</strong><br><span class="b b-grey">Tools</span></td><td><code>/tools/</code></td><td>6 个工具直连列表 + 每个工具一行说明 + 数据页入口</td><td>工具页停留时间长、被分享率高，是权重泵</td></tr>
+      <tr><td><strong>折扣</strong><br><span class="b b-grey">Deals</span></td><td><code>/deals/</code></td><td>本月有效优惠码表格（品牌 / 折扣 / 有效期 / 直达链接）</td><td>高转化，用醒目色区分</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <span class="t">导航层的两个硬性要求</span>
+    <strong>① Mega Menu 必须是服务端渲染的真链接（&lt;a href&gt;）</strong>，不能靠 JS 动态注入。竞品的 <code>#mbs-all-dests</code> 就是反面教材——蜘蛛抓不到，231 个国家页失去了来自首页的直达链接。<br>
+    <strong>② 顶部导航条目控制在 7 个以内</strong>，右侧固定「语言切换 + 搜索」。超过 7 个用户认知负担陡增，且挤压移动端空间。
+  </div>
+
+  <h3>5.2 移动端导航</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>抽屉式手风琴 + 底部快捷条</h4>
+      <p><strong>顶部：</strong>Logo + 搜索图标 + 汉堡菜单（点击展开手风琴，层级与桌面一致，大区/品牌分组折叠）</p>
+      <p><strong>底部固定条：</strong><code>🔍 搜目的地</code> ｜ <code>⚖️ 对比</code> ｜ <code>🎁 折扣</code> ｜ <code>🔧 兼容检测</code></p>
+      <p>移动端流量通常占旅游类站点 65–75%，且比价站用户在<b>路上</b>决策的比例极高。底部条把两个最高价值动作（搜索、对比）置于拇指热区。</p>
+    </div>
+    <div class="card warn">
+      <h4>关键：移动端不能简化内链</h4>
+      <p>很多站移动端会隐藏页脚全站索引——<strong>千万不要</strong>。Google 已统一使用移动端优先索引，若移动端隐藏了页脚的国家索引，等于那条通路从未存在。</p>
+      <p>正确做法：移动端页脚保持<strong>完整可展开的折叠分组</strong>（&lt;details&gt; 或 CSS 折叠均可，但链接必须真实存在于 DOM 中）。</p>
+    </div>
+  </div>
+
+  <h3>5.3 面包屑（Breadcrumb）</h3>
+  <p>全站统一 4 级，且必须输出 <code>BreadcrumbList</code> 结构化数据。</p>
+  <table class="tbl">
+    <thead><tr><th>页面</th><th>面包屑路径</th></tr></thead>
+    <tbody>
+      <tr><td>国家枢纽页</td><td>首页 › 目的地 › 亚洲 › 日本</td></tr>
+      <tr><td>国家比价页</td><td>首页 › 目的地 › 亚洲 › 日本 › 套餐与价格</td></tr>
+      <tr><td>城市页</td><td>首页 › 目的地 › 亚洲 › 日本 › 城市 › 东京</td></tr>
+      <tr><td>VS 对比页</td><td>首页 › 对比 › Airalo vs Holafly</td></tr>
+      <tr><td>品牌×国家页</td><td>首页 › 提供商 › Airalo › 日本</td></tr>
+      <tr><td>设备页</td><td>首页 › 设备 › Apple › iPhone 16 Pro</td></tr>
+      <tr><td>运营商页</td><td>首页 › 运营商网络 › Vodafone › 漫游费用</td></tr>
+    </tbody>
+  </table>
+  <p>面包屑的 SEO 价值不在用户可见的那行小字，而在于它<strong>向搜索引擎明确声明了层级关系</strong>——对 231 个国家页 + 150 个城市页的站点，这是权重分配的核心信号。竞品虽有面包屑（其页面结构中存在 <code>breadcrumb_items</code>），但因为没有枢纽页，面包屑的层级语义是<strong>残缺的</strong>。</p>
+
+  <h3>5.4 页脚：全站内链底仓</h3>
+  <p>页脚是本架构里<strong>最被低估的一环</strong>。它承担一个战术任务：<strong>确保每一个重要叶子页都至少有一条来自全站任意页面的入场链接</strong>，从根上消灭孤儿页。</p>
+  <table class="tbl">
+    <thead><tr><th>区域</th><th>列内容</th><th>规模</th></tr></thead>
+    <tbody>
+      <tr><td>第 1 区 · 目的地</td><td>按大区分组，列出 Top 60 国家（折叠展开）</td><td>60 条链接</td></tr>
+      <tr><td>第 2 区 · 提供商</td><td>Top 30 品牌按字母序</td><td>30 条链接</td></tr>
+      <tr><td>第 3 区 · 热门城市</td><td>Top 40 城市</td><td>40 条链接</td></tr>
+      <tr><td>第 4 区 · 指南与工具</td><td>知识库 + 工具 + 数据页</td><td>约 35 条</td></tr>
+      <tr><td>第 5 区 · 关于</td><td>关于我们 / 测试方法论 / 编辑独立性 / 联系方式 / 隐私 / 条款</td><td>6 条</td></tr>
+      <tr><td>信任条</td><td>「我们如何测试」「数据来源」「最后更新日期」「广告披露」</td><td>E-E-A-T 信号</td></tr>
+      <tr><td>语言切换</td><td>24 语种，带 hreflang 与 <code>x-default</code></td><td>i18n 入口</td></tr>
+    </tbody>
+  </table>
+  <div class="callout warn">
+    <span class="t">页脚链接数量必须平衡</span>
+    单页链接总数建议控制在 <strong>150–200 条以内</strong>。若页脚一次性输出 231 条国家链接 + 60 家提供商 + 60 城市 = 350+ 条，会严重稀释每页的链接权重（Link Equity Dilution）。<br><br>
+    <strong>解决方案：</strong>页脚只输出 <strong>Top 60 国家 + Top 30 提供商 + Top 40 城市</strong>（约 130 条），其余长尾国家页通过 <code>/esim/</code> 枢纽页（带字母索引与分页）触达，枢纽页再全域输出。<strong>既保证零孤儿页，又不稀释权重。</strong>
+  </div>
+</section>
+
+<section id="s6">
+  <h2><span class="num">06</span>页面模板详细规格</h2>
+  <p class="sub">本方案的核心。每个模板给出：模块清单、字数目标、<strong>唯一性配额</strong>（必须有多少条别的页面无法复制的内容）、结构化数据、内链位、以及「超越竞品」的量化判定线。</p>
+
+  <div class="callout warn">
+    <span class="t">「唯一性配额」是什么，为什么它是本方案的生命线</span>
+    这是对抗 Google 规模化内容滥用政策的核心机制。规则：<strong>每一页至少有 N 条只属于这一页的数据点</strong>（真实价格、实测速度、本地法规原文、独家截图等），且这些数据点必须来自一手采集，不得跨页复用。<br><br>
+    一个模板即便结构相同，只要唯一性配额达标，它就是「有独立价值的页面」；配额不达标，它就是「模板垃圾」。<strong>差别全在这里。</strong>
+  </div>
+
+  <div class="spec">
+    <div class="spec-h"><span class="id">T1</span><span class="nm">国家枢纽页</span><span class="b b-red">优先级 100</span><span class="b b-grey">/esim/{country}/</span><span class="b b-brand">国家核心簇 4,237 词</span></div>
+    <div class="spec-b">
+      <p><strong>目标关键词：</strong><code>best eSIM for {country}</code> · <code>{country} eSIM</code> · <code>eSIM {country}</code> · <code>does eSIM work in {country}</code></p>
+      <p><strong>对标竞品页：</strong><code>/en/comparison-best-esim-card-{country}/</code>（约 2,000 词、13 模块、40–50% 跨页复用）</p>
+      <table class="tbl">
+        <thead><tr><th>模块</th><th>内容要求</th><th>竞品</th><th>字数</th></tr></thead>
+        <tbody>
+          <tr><td><strong>H1 + 结论前置</strong></td><td>H1 含 "{country} eSIM"；首段 100 词内给出「谁最适合、大概多少钱、几天够用」的直接答案</td><td><span class="b b-amber">部分</span></td><td>150</td></tr>
+          <tr><td><strong>实时比价表</strong></td><td>Top 8–12 套餐：提供商 / 套餐 / 流量 / 有效天数 / 单价 / <strong>每 GB 价</strong> / 网络 / 热点 / 直达</td><td><span class="b b-green">有</span></td><td>表</td></tr>
+          <tr><td><strong>我们的推荐（Top 3）</strong></td><td>按人群给 3 个明确推荐，各配一段理由——必须是你实测/核价后得出，不是联盟默认排序</td><td><span class="b b-amber">部分</span></td><td>250</td></tr>
+          <tr><td><strong>数据需求计算器</strong></td><td><strong>嵌入交互式计算器</strong>（非静态文案）。竞品用的是固定表格</td><td><span class="b b-red">无（仅文案）</span></td><td>工具</td></tr>
+          <tr><td><strong>网络与速度</strong></td><td>运营商清单 + 市场份额 + 4G/5G 覆盖率 + <strong>Ookla 实测中位下载/上传/延迟</strong> + 全球排名</td><td><span class="b b-amber">有但数据薄</span></td><td>300</td></tr>
+          <tr><td><strong>覆盖分区域</strong></td><td>按地理分区（首都/沿海/内陆/山区/海岛）列信号质量与推荐运营商——<strong>须逐国不同</strong></td><td><span class="b b-amber">较薄</span></td><td>250</td></tr>
+          <tr><td><strong>价格基准</strong></td><td>eSIM 均价 / 本地实体 SIM 价格 / 本国运营商漫游日费 —— 三方成本对比表</td><td><span class="b b-red">无</span></td><td>220</td></tr>
+          <tr><td><strong>法规与限制</strong></td><td>实名登记要求、护照要求、IMEI 登记、网络封锁（如有）。<strong>须引监管机构原文链接</strong></td><td><span class="b b-red">无</span></td><td>200</td></tr>
+          <tr><td><strong>按行程长度推荐</strong></td><td>3 / 7 / 14 / 30 天分别推荐 + 数据量建议（本地化数字，非通用模板）</td><td><span class="b b-red">模板化</span></td><td>180</td></tr>
+          <tr><td><strong>城市页导航</strong></td><td>列出该国已建的城市页，链向 <code>…/city/{city}/</code></td><td><span class="b b-red">无</span></td><td>块</td></tr>
+          <tr><td><strong>激活与安装</strong></td><td>3–4 步概括 + <strong>深链到</strong> <code>/guides/install/{device}/</code> 与排障页</td><td><span class="b b-amber">全站同一套</span></td><td>150</td></tr>
+          <tr><td><strong>本地实用卡</strong></td><td>机场名 + 交通 App + 打车 App + 货币 + 应急号码 + WiFi 普及度 —— 竞品最强项，<strong>你要做得更细</strong></td><td><span class="b b-green">有（其护城河）</span></td><td>350</td></tr>
+          <tr><td><strong>FAQ（8–10 问）</strong></td><td>逐国定制问句，答案含本地数字。必须输出 <code>FAQPage</code> Schema</td><td><span class="b b-amber">半模板</span></td><td>400</td></tr>
+          <tr><td><strong>数据来源与方法</strong></td><td>5–7 个<strong>不同域名</strong>的权威外链（Ookla / 监管机构 / GSMA / DataReportal / Cable.co.uk）+ 最后核实日期</td><td><span class="b b-red">无</span></td><td>120</td></tr>
+        </tbody>
+      </table>
+      <p><strong>唯一性配额：≥8 条</strong>（该国 Ookla 实测中位速度、三大运营商市场份额、本地 1GB 均价、实体 SIM 价格、实名法规条款编号、机场名与交通 App、Ookla 全球排名、最近政策变更日期）</p>
+      <p><strong>字数目标：</strong>2,800–3,500 词（竞品 2,000）｜<strong>内链位：</strong>12–18 条｜<strong>Schema：</strong><code>Article</code> + <code>FAQPage</code> + <code>BreadcrumbList</code> + <code>ItemList</code> + <code>Product/Offer</code></p>
+      <p><strong>超越判定线：</strong>①模块数 ≥14（竞品 13）②唯一数据点 ≥8（竞品 ≤3）③字数 ≥ 竞品 ×1.4 ④含一个交互工具（竞品 0）⑤权威外链域名 ≥5（竞品 0）</p>
+    </div>
+  </div>
+
+  <div class="spec">
+    <div class="spec-h"><span class="id">T2</span><span class="nm">两两对比页（VS 页）</span><span class="b b-red">优先级 88</span><span class="b b-grey">/compare/{a}-vs-{b}/</span><span class="b b-red">竞品仅 2 页</span></div>
+    <div class="spec-b">
+      <p><strong>目标关键词：</strong><code>{A} vs {B}</code> · <code>{A} or {B} which is better</code> · <code>{A} vs {B} price</code></p>
+      <p><strong>这是整条侧翼线里性价比最高的页面类型</strong>：276 组配对 × 3 个词变体 = 828 条长尾词，竞品只有 2 页。转化率极高——用户已完成品牌筛选，只差最后的裁决。</p>
+      <table class="tbl">
+        <thead><tr><th>模块</th><th>内容要求</th><th>字数</th></tr></thead>
+        <tbody>
+          <tr><td><strong>H1 + 一句话裁决</strong></td><td>开门见山：「{A} 更适合 {场景 X}；{B} 更适合 {场景 Y}」——不写"各有千秋"的废话</td><td>120</td></tr>
+          <tr><td><strong>对比总表</strong></td><td>15–20 行指标：价格起点 / 每 GB 价 / 覆盖国家 / 是否含通话 / 热点政策 / 限速阈值 / 客服渠道 / 退款政策 / App 评分 / Trustpilot 分 / 支付方式 / 结算货币 / 促销力度</td><td>表</td></tr>
+          <tr><td><strong>逐维度拆解（8–10 节）</strong></td><td>价格 / 覆盖 / 速度 / 套餐结构 / 限速与公平使用 / 客服响应 / App 体验 / 退款与风险 / 支付与汇率 / 促销力度 —— <strong>每节必须有具体数字</strong>，禁止"两者都不错"</td><td>1,400</td></tr>
+          <tr><td><strong>场景化推荐</strong></td><td>轻度用户 / 重度用户 / 多国行程 / 单国长住 / 需本地号码 / 预算敏感 —— 6 个场景各给明确胜出方</td><td>350</td></tr>
+          <tr><td><strong>同口径价格实测表</strong></td><td>在相同国家、相同流量档位下的价格对比（如都是 10GB/30天，某国）</td><td>表</td></tr>
+          <tr><td><strong>第三方口碑对比</strong></td><td>Trustpilot / Reddit / App Store 评分并列表，注明采集日期与样本量</td><td>200</td></tr>
+          <tr><td><strong>反向链接</strong></td><td>链向 B vs A 反向配对页 + 双方品牌枢纽页 + 相关国家页</td><td>块</td></tr>
+          <tr><td><strong>FAQ（5–6 问）</strong></td><td>针对该配对的专属问题</td><td>300</td></tr>
+          <tr><td><strong>裁决结论</strong></td><td>明确胜负 + 适用前提 + 若两者都不合适，给第三选择</td><td>180</td></tr>
+        </tbody>
+      </table>
+      <p><strong>唯一性配额：≥5 条</strong>（同口径实测价格、限速条款原文、客服实测响应时长、退款条款、第三方评分快照）</p>
+      <p><strong>字数目标：</strong>2,200–2,800 词｜<strong>Schema：</strong><code>Article</code> + <code>FAQPage</code> + <code>ItemList</code> + <code>BreadcrumbList</code></p>
+      <p><strong>超越判定线：</strong>竞品仅 2 页且无双向配对 → <strong>建站即超越</strong>。关键在质量：每页必须给出可执行的裁决，而非罗列参数。</p>
+    </div>
+  </div>
+
+  <div class="spec">
+    <div class="spec-h"><span class="id">T3</span><span class="nm">城市页</span><span class="b b-red">优先级 86</span><span class="b b-grey">/esim/{country}/city/{city}/</span><span class="b b-red">竞品 0 页</span></div>
+    <div class="spec-b">
+      <p><strong>目标关键词：</strong><code>eSIM for {city}</code> · <code>best eSIM for {city}</code> · <code>{city} SIM card for tourists</code> · <code>internet in {city}</code></p>
+      <table class="tbl">
+        <thead><tr><th>模块</th><th>内容要求</th><th>字数</th></tr></thead>
+        <tbody>
+          <tr><td>H1 + 直接答案</td><td>{城市} 用什么 eSIM、多少钱、哪家信号最好</td><td>130</td></tr>
+          <tr><td>城市比价表</td><td>针对该城市最优的 5–8 个套餐（按城市网络特点调整推荐）</td><td>表</td></tr>
+          <tr><td><strong>城市网络实况</strong></td><td>该城主要由哪家运营商覆盖、5G 覆盖区域、地铁/地下/近郊信号表现</td><td>300</td></tr>
+          <tr><td><strong>分区信号地图（文字版）</strong></td><td>机场 / 市中心 / 老城 / 商务区 / 郊区 / 景点 —— 逐区说明信号质量</td><td>350</td></tr>
+          <tr><td><strong>本地实用信息</strong></td><td>打车 App、地铁 App、导航、免费 WiFi 分布、紧急电话</td><td>300</td></tr>
+          <tr><td><strong>到达与离开</strong></td><td>机场/车站名称，落地后多久能连网，是否需特别设置</td><td>200</td></tr>
+          <tr><td><strong>城市专属 FAQ</strong></td><td>4–6 问，含城市特有场景</td><td>280</td></tr>
+          <tr><td>导航与内链</td><td>链回国家枢纽、临近城市、该国比价页、相关指南</td><td>块</td></tr>
+        </tbody>
+      </table>
+      <p><strong>唯一性配额：≥5 条</strong>（该城市运营商分布、分区信号描述、机场名称、本地 App、地铁覆盖情况）</p>
+      <p><strong>字数目标：</strong>1,600–2,200 词｜<strong>Schema：</strong><code>Article</code> + <code>FAQPage</code> + <code>Place</code> + <code>BreadcrumbList</code></p>
+      <p><strong>超越判定线：</strong>竞品 0 页 → <strong>建站即超越，且几乎无竞争</strong>。风险在于避免城市页之间互相复制"分区信号"，每城必须独立核实。</p>
+    </div>
+  </div>
+
+  <div class="spec">
+    <div class="spec-h"><span class="id">T4</span><span class="nm">设备兼容页</span><span class="b b-red">优先级 90</span><span class="b b-grey">/devices/{model}/</span><span class="b b-red">竞品 3 页</span></div>
+    <div class="spec-b">
+      <p><strong>目标关键词：</strong><code>does {model} support eSIM</code> · <code>{model} eSIM</code> · <code>{model} eSIM compatibility</code> · <code>how to install eSIM on {model}</code></p>
+      <p><strong>纯信息型流量池</strong>——用户不是来比价的，是来确认自己的手机能不能用。竞争极弱、流量稳定，可通过工具与指引自然导向商业页。</p>
+      <table class="tbl">
+        <thead><tr><th>模块</th><th>内容要求</th><th>字数</th></tr></thead>
+        <tbody>
+          <tr><td>简短结论</td><td>是/否支持 eSIM + 支持的起始系统版本 / 地区差异</td><td>100</td></tr>
+          <tr><td><strong>3 秒自检步骤</strong></td><td>拨号 <code>*#06#</code> 查 EID / 设置路径 —— 配截图</td><td>200</td></tr>
+          <tr><td>完整规格表</td><td>eSIM 支持 / 双卡类型（双 eSIM 还是 eSIM+实体）/ 频段数 / 5G 频段 / 毫米波 / 最大 eSIM 数量</td><td>表</td></tr>
+          <tr><td><strong>分步安装教程</strong></td><td>该型号专属安装路径（不同品牌菜单差异大）—— 配截图或短视频</td><td>500</td></tr>
+          <tr><td><strong>该型号已知问题</strong></td><td>该机型 eSIM 常见故障与解法（如某代 iPhone 的运营商锁问题）</td><td>300</td></tr>
+          <tr><td>地区版本差异</td><td>中美欧版是否有差异（如中国大陆版 iPhone 的 eSIM 限制）</td><td>200</td></tr>
+          <tr><td>推荐套餐</td><td>该机型适配的套餐推荐（导流）</td><td>块</td></tr>
+          <tr><td>FAQ</td><td>3–5 问</td><td>250</td></tr>
+        </tbody>
+      </table>
+      <p><strong>唯一性配额：≥4 条</strong>（该型号 EID 支持情况、双卡类型、地区版本差异、专属截图）</p>
+      <p><strong>字数目标：</strong>1,400–1,900 词｜<strong>Schema：</strong><code>Article</code> + <code>FAQPage</code> + <code>Product</code> + <code>HowTo</code></p>
+    </div>
+  </div>
+
+  <div class="spec">
+    <div class="spec-h"><span class="id">T5</span><span class="nm">运营商网络页</span><span class="b b-red">优先级 87</span><span class="b b-grey">/networks/{carrier}/</span><span class="b b-red">竞品 0 页</span></div>
+    <div class="spec-b">
+      <p><strong>目标关键词：</strong><code>{carrier} roaming charges</code> · <code>{carrier} eSIM</code> · <code>how to avoid {carrier} roaming fees</code> · <code>{carrier} international roaming cost 2026</code></p>
+      <p><strong>这是"省钱焦虑"词</strong>——用户搜这个词时脑子里就是"我要被收漫游费了，怎么办"。而 eSIM 就是标准答案。这类词的商业价值远高于它的搜索量表现。</p>
+      <table class="tbl">
+        <thead><tr><th>模块</th><th>内容要求</th><th>字数</th></tr></thead>
+        <tbody>
+          <tr><td>H1 + 结论</td><td>该运营商漫游怎么收费、怎么避免</td><td>120</td></tr>
+          <tr><td><strong>漫游资费全表</strong></td><td>按目的地/区域列出：日费 / 按量计费 / 套餐包 —— <strong>必须核对官网原文并注明核实日期</strong></td><td>表</td></tr>
+          <tr><td>费用情景测算</td><td>3 个真实场景（7 天日本 / 14 天欧洲 / 30 天美国）走漫游 vs 走 eSIM 的总成本对比</td><td>350</td></tr>
+          <tr><td>该运营商 eSIM 支持</td><td>是否提供自有 eSIM、是否支持第三方 eSIM、是否支持 eSIM 转移</td><td>250</td></tr>
+          <tr><td><strong>省钱方案（导流核心）</strong></td><td>用 eSIM 替代漫游的具体做法 + 保留原号码接听短信的配置方法</td><td>400</td></tr>
+          <tr><td>eSIM 政策细节</td><td>是否锁机、解锁条件、是否允许双卡</td><td>200</td></tr>
+          <tr><td>FAQ</td><td>4–6 问</td><td>280</td></tr>
+        </tbody>
+      </table>
+      <p><strong>唯一性配额：≥5 条</strong>（官方资费页原文数据、核实日期、该运营商 eSIM 政策条款、解锁规定、真实场景测算）</p>
+      <p><strong>字数目标：</strong>1,800–2,400 词｜<strong>Schema：</strong><code>Article</code> + <code>FAQPage</code> + <code>BreadcrumbList</code></p>
+      <p><strong>超越判定线：</strong>竞品 0 页 → 建站即超越。<strong>唯一风险是数据准确性</strong>——漫游资费变动频繁，必须标注核实日期并季度复核。</p>
+    </div>
+  </div>
+
+  <div class="spec">
+    <div class="spec-h"><span class="id">T6</span><span class="nm">提供商评测页</span><span class="b b-brand">优先级 94</span><span class="b b-grey">/providers/{brand}/review/</span><span class="b b-green">竞品 343 页（其最强项）</span></div>
+    <div class="spec-b">
+      <p><strong>目标关键词：</strong><code>{brand} eSIM review</code> · <code>is {brand} legit</code> · <code>{brand} eSIM plans</code> · <code>{brand} promo code</code></p>
+      <p>这是竞品的<strong>最强板块</strong>，也是唯一你必须正面对抗的地方。其评测页结构：At a glance → 用户评价 → 优缺点 → 是什么 → 套餐表 → 覆盖区域展开 → 结论 → FAQ → 故障排障。</p>
+      <table class="tbl">
+        <thead><tr><th>模块</th><th>你的做法（差异化）</th><th>字数</th></tr></thead>
+        <tbody>
+          <tr><td>评分卡</td><td>不用单一 X/5 星 —— 拆成 <strong>7 个维度分项评分</strong>（价格 / 覆盖 / 速度 / 客服 / App / 退款 / 透明度）并给权重</td><td>表</td></tr>
+          <tr><td><strong>实测数据块</strong></td><td>亲自购买并测试：激活耗时、实测下载速度、客服首次响应时长、限速触发点 —— 竞品只有官网摘录，没有实测</td><td>400</td></tr>
+          <tr><td>优缺点</td><td>保留，但每条要能追溯到具体证据，禁止"安装简单、价格合理"这类空洞表述</td><td>300</td></tr>
+          <tr><td>套餐全景表</td><td>按区域/国家列出，<strong>并计算每 GB 单价</strong>（竞品只列绝对价，不折算，用户看不出性价比）</td><td>大表</td></tr>
+          <tr><td><strong>覆盖国家 + 网络伙伴</strong></td><td>每个国家接的是哪家本地运营商 —— 这是判断真实覆盖质量的关键，竞品只列国家名不列网络</td><td>大表</td></tr>
+          <tr><td><strong>横向对标</strong></td><td>与该品牌最直接的 3 个竞品做简表对比 + 链向完整 VS 页</td><td>250</td></tr>
+          <tr><td>退款与风险</td><td>退款政策原文摘录 + 已知投诉方向 + Trustpilot 数据</td><td>250</td></tr>
+          <tr><td>适用与不适用场景</td><td>明确说"什么情况下别买它" —— 这是建立可信度最快的方式</td><td>200</td></tr>
+          <tr><td>FAQ</td><td>6–8 问</td><td>350</td></tr>
+        </tbody>
+      </table>
+      <p><strong>唯一性配额：≥7 条</strong>（实测速度、客服响应时长、限速触发点、结算货币与汇率费、退款条款、网络伙伴清单、第三方评分快照）</p>
+      <p><strong>字数目标：</strong>3,000–4,000 词（竞品约 1,500）｜<strong>Schema：</strong><code>Review</code> + <code>AggregateRating</code> + <code>Product</code> + <code>FAQPage</code></p>
+      <p><strong>超越判定线：</strong>①分项评分 ≥7 维（竞品 1 个总分）②有实测数据（竞品 0）③每 GB 单价折算（竞品 0）④网络伙伴清单（竞品 0）⑤字数 ≥ 竞品 ×2</p>
+    </div>
+  </div>
+
+  <div class="spec">
+    <div class="spec-h"><span class="id">T7</span><span class="nm">原创数据页（外链引擎）</span><span class="b b-red">优先级 92</span><span class="b b-grey">/data/{index}/</span><span class="b b-red">竞品 0 页</span></div>
+    <div class="spec-b">
+      <p><strong>为什么必须有：</strong>这是全文里唯一能<strong>持续自动获取外链</strong>的页面类型。一个做得好"2026 全球 1GB 流量价格榜"会自然被论坛、Reddit、媒体、维基引用。外链是排名的基础，而堆页数堆不出外链。</p>
+      <table class="tbl">
+        <thead><tr><th>建议建立的 4 个指数</th><th>数据来源</th><th>外链潜力</th></tr></thead>
+        <tbody>
+          <tr><td><strong>eSIM 价格指数</strong>：60 家提供商 × 200 国的套餐价格与每 GB 单价排名</td><td>自采 + 联盟数据</td><td><span class="b b-red">极高</span></td></tr>
+          <tr><td><strong>全球漫游成本指数</strong>：50 家运营商 × 主要目的地的一日漫游费对比</td><td>运营商官网（标注核实日期）</td><td><span class="b b-red">极高</span></td></tr>
+          <tr><td><strong>1GB 流量国别价格榜</strong>：224 国移动数据均价排名</td><td>Cable.co.uk + 自采验证</td><td><span class="b b-amber">高</span></td></tr>
+          <tr><td><strong>eSIM 速度指数</strong>：按国家/城市的实测中位下载、上传、延迟</td><td>Ookla + 自采测速</td><td><span class="b b-amber">高</span></td></tr>
+        </tbody>
+      </table>
+      <p><strong>必备元素：</strong>①可排序可筛选的完整数据表 ②可嵌入的图表代码（&lt;iframe&gt; 或图片，方便他人引用）③CSV 下载 ④「如何引用本页数据」的引用格式说明 ⑤方法论与被排除项说明 ⑥季度更新 + 更新日志</p>
+      <p><strong>字数目标：</strong>1,000–1,500 词 + 大表｜<strong>Schema：</strong><code>Dataset</code> + <code>Article</code></p>
+      <p><strong>超越判定线：</strong>竞品 0 页 → 建站即超越。<strong>这是你唯一能建立"被引用权威"的地方。</strong></p>
+    </div>
+  </div>
+
+  <div class="spec">
+    <div class="spec-h"><span class="id">T8</span><span class="nm">工具页</span><span class="b b-red">优先级 100</span><span class="b b-grey">/tools/{tool}/</span><span class="b b-amber">竞品仅 1 个</span></div>
+    <div class="spec-b">
+      <p>竞品只有 1 个「流量计算器」。工具是比价站最被低估的资产——它带来<strong>长停留时间、高分享率、自然外链、重复访问</strong>，这些都不是靠写文章能拿到的。</p>
+      <table class="tbl">
+        <thead><tr><th>工具</th><th>URL</th><th>功能</th><th>流量关键词</th></tr></thead>
+        <tbody>
+          <tr><td><strong>兼容性检测器</strong></td><td><code>/tools/compatibility-checker/</code></td><td>输入手机型号/系统版本 → 判断是否支持 eSIM、支持几张、能否双待</td><td>does my phone support eSIM</td></tr>
+          <tr><td><strong>流量计算器</strong></td><td><code>/tools/data-calculator/</code></td><td>按行程行为（导航/视频/视频通话/社交/热点）估算所需 GB</td><td>how much data do I need</td></tr>
+          <tr><td><strong>漫游省钱计算器</strong></td><td><code>/tools/roaming-cost-calculator/</code></td><td>选运营商 + 目的地 + 天数 → 漫游费 vs eSIM，算出省多少钱</td><td>roaming cost calculator</td></tr>
+          <tr><td><strong>多国行程规划器</strong></td><td><code>/tools/trip-planner/</code></td><td>依次添加途经国家 → 判断买区域套餐划算还是各国单买划算</td><td>multi country eSIM</td></tr>
+          <tr><td><strong>覆盖查询</strong></td><td><code>/tools/coverage-lookup/</code></td><td>输入国家 + 城市 → 查运营商、频段、实测速度</td><td>{country} network coverage</td></tr>
+          <tr><td><strong>折扣码追踪</strong></td><td><code>/deals/</code></td><td>实时有效的优惠码清单 + 有效期倒计时</td><td>{brand} promo code</td></tr>
+        </tbody>
+      </table>
+      <p><strong>超越判定线：</strong>6 个工具 vs 竞品 1 个 → 数量直接超越 6 倍。关键在质量：工具必须真的能用、结果可信、移动端可操作。</p>
+    </div>
+  </div>
+
+  <h3>6.9 其余模板规格速查</h3>
+  <table class="tbl">
+    <thead><tr><th>ID</th><th>模板</th><th>核心模块</th><th>字数</th><th>唯一性配额</th><th>Schema</th></tr></thead>
+    <tbody>
+      <tr><td><b>T9</b></td><td>大区枢纽页<br><code>/esim/region/{r}/</code></td><td>区域概览 / 覆盖国家网格 / 区域套餐对比 / 跨境行程建议 / 各国速览表</td><td>2,200</td><td>≥6</td><td>Article + FAQ + ItemList</td></tr>
+      <tr><td><b>T10</b></td><td>国家价格指数页<br><code>…/price/</code></td><td>eSIM 均价 / 实体 SIM 价 / 漫游日费 / 每 GB 单价排名 / 成本曲线 / 三方案测算</td><td>1,800</td><td>≥6</td><td>Article + Dataset</td></tr>
+      <tr><td><b>T11</b></td><td>国家覆盖页<br><code>…/coverage/</code></td><td>运营商清单 / 频段表 / 分区域信号 / 实测速度 / 5G 覆盖 / 盲区提示</td><td>1,900</td><td>≥7</td><td>Article + FAQ</td></tr>
+      <tr><td><b>T12</b></td><td>国家对比页<br><code>…/vs-local-sim/</code></td><td>成本对比表 / 便利性对比 / 实名要求 / 适用场景 / 结论</td><td>1,600</td><td>≥5</td><td>Article + FAQ</td></tr>
+      <tr><td><b>T13</b></td><td>场景页<br><code>/use-cases/{x}/</code></td><td>场景痛点 / 需求分析 / 推荐套餐 / 注意事项 / 多国场景建议 / FAQ</td><td>1,800</td><td>≥5</td><td>Article + FAQ</td></tr>
+      <tr><td><b>T14</b></td><td>品牌×国家页<br><code>/providers/{b}/in/{c}/</code></td><td>该品牌在该国的网络伙伴 / 实测速度 / 套餐与价格 / 与竞品对比 / 是否推荐</td><td>1,200</td><td>≥5</td><td>Article + Review</td></tr>
+      <tr><td><b>T15</b></td><td>排障页<br><code>/guides/troubleshooting/{x}/</code></td><td>症状识别 / 按品牌分步解法 / 逐步诊断树 / 何时联系客服 / 预防方法</td><td>1,400</td><td>≥4</td><td>Article + HowTo + FAQ</td></tr>
+      <tr><td><b>T16</b></td><td>法规页<br><code>…/regulations/</code></td><td>法规原文摘录 / 对旅客的影响 / 需准备什么 / 违规后果 / 监管机构链接</td><td>1,200</td><td>≥5</td><td>Article + FAQ</td></tr>
+      <tr><td><b>T17</b></td><td>促销码页<br><code>/providers/{b}/promo-code/</code></td><td>当前有效码 / 折扣幅度 / 有效期 / 使用步骤 / 适用套餐 / 历史优惠趋势</td><td>900</td><td>≥4</td><td>Article + Offer</td></tr>
+      <tr><td><b>T18</b></td><td>事件页<br><code>/events/{e}/</code></td><td>事件时间地点 / 场馆网络情况 / 人流量与网速预期 / 推荐套餐 / 注意事项</td><td>1,200</td><td>≥4</td><td>Article + Event + FAQ</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="s7">
+  <h2><span class="num">07</span>内链体系</h2>
+  <p class="sub">内链是比价站最大的可控杠杆。竞品有 486 个提供商页和 231 个国家页，但没有枢纽页、博客平铺在根目录——它的内链网络是<strong>没有骨架的散点</strong>。</p>
+
+  <h3>7.1 三种链接类型的分工</h3>
+  <div class="grid3">
+    <div class="card accent">
+      <h4>① 全局链接 Global</h4>
+      <p><strong>位置：</strong>顶部导航 + 页脚 + 面包屑</p>
+      <p><strong>任务：</strong>保证全站连通性，消灭孤儿页，把权重从首页泵向枢纽页</p>
+      <p><strong>规则：</strong>只指向 L1 枢纽 + Top 60 国家 + Top 30 提供商 + Top 40 城市，总数控制在 130 条以内</p>
+    </div>
+    <div class="card accent">
+      <h4>② 层级链接 Hierarchical</h4>
+      <p><strong>位置：</strong>面包屑 + 侧边栏 + "相关内容"块</p>
+      <p><strong>任务：</strong>声明父子关系，向搜索引擎传递主题集群信号</p>
+      <p><strong>规则：</strong>叶子页必须链回父级枢纽；枢纽页必须链出全部子页</p>
+    </div>
+    <div class="card accent">
+      <h4>③ 上下文链接 Contextual</h4>
+      <p><strong>位置：</strong>正文段落内</p>
+      <p><strong>任务：</strong>带权重最高、最易被识别为"语义相关"的链接</p>
+      <p><strong>规则：</strong>每页 6–12 条，锚文本自然、多样、有语义</p>
+    </div>
+  </div>
+
+  <h3>7.2 强制内链规则表</h3>
+  <p>以下是<strong>每类页面必须包含的链接位</strong>。建议写成构建时自动校验脚本——缺链接就报错。</p>
+  <table class="tbl">
+    <thead><tr><th>页面类型</th><th>必须链向</th><th>数量</th><th>锚文本要求</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="5"><strong>国家枢纽页</strong></td><td>所属大区枢纽页</td><td>1</td><td>「{区域} eSIM」</td></tr>
+      <tr><td>邻国国家页</td><td>3–5</td><td>地理相关，如「Japan eSIM」「Korea eSIM」</td></tr>
+      <tr><td>国家叶子页（比价/价格/覆盖/法规/城市）</td><td>全部</td><td>描述性，如「{国} eSIM 价格一览」</td></tr>
+      <tr><td>Top 3 提供商品牌枢纽页</td><td>3</td><td>品牌名 + 上下文，如「Airalo 在{国}的表现」</td></tr>
+      <tr><td>通用指南页（安装/排障/兼容性）</td><td>2–3</td><td>按语境，如「如何在 iPhone 上安装 eSIM」</td></tr>
+      <tr><td rowspan="4"><strong>VS 对比页</strong></td><td>反向配对页（B vs A）</td><td>1</td><td>「{B} vs {A}」</td></tr>
+      <tr><td>双方品牌枢纽页</td><td>2</td><td>品牌全名</td></tr>
+      <tr><td>两个品牌各自的相关国家页</td><td>2–4</td><td>「{品牌} 在{国}」</td></tr>
+      <tr><td>同品牌的其它 VS 页（交叉网）</td><td>2–3</td><td>「{A} vs 其他品牌的对比」</td></tr>
+      <tr><td rowspan="3"><strong>城市页</strong></td><td>所属国家枢纽页</td><td>1</td><td>「{国} eSIM 完整指南」</td></tr>
+      <tr><td>同国其它城市页</td><td>3–6</td><td>城市名 + eSIM</td></tr>
+      <tr><td>邻国同类型城市页</td><td>2–3</td><td>跨市场导流</td></tr>
+      <tr><td rowspan="3"><strong>设备页</strong></td><td>同品牌其它机型页</td><td>4–8</td><td>机型名</td></tr>
+      <tr><td>兼容性检测工具</td><td>1</td><td>「检测我的设备」</td></tr>
+      <tr><td>安装指南 + 排障页</td><td>2</td><td>动作导向</td></tr>
+      <tr><td rowspan="2"><strong>运营商页</strong></td><td>该运营商所在国国家页</td><td>2–5</td><td>「{国} eSIM 方案」</td></tr>
+      <tr><td>漫游成本计算器 + 相关指南</td><td>2</td><td>工具名称</td></tr>
+      <tr><td rowspan="2"><strong>数据页</strong></td><td>被引用数据涉及的国家页</td><td>8–15</td><td>国家名 + 数据点</td></tr>
+      <tr><td>相关数据页互链</td><td>2–3</td><td>指数名称</td></tr>
+      <tr><td rowspan="3"><strong>提供商评测页</strong></td><td>该品牌的 3–5 个 VS 页</td><td>3–5</td><td>「{A} vs {B}」</td></tr>
+      <tr><td>品牌覆盖最强的 5–8 个国家页</td><td>5–8</td><td>「{品牌} 在{国}」</td></tr>
+      <tr><td>促销码页 + 替代品页</td><td>2</td><td>动作导向</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7.3 锚文本规范（防止过度优化）</h3>
+  <table class="tbl">
+    <thead><tr><th>锚文本类型</th><th>示例</th><th>建议占比</th></tr></thead>
+    <tbody>
+      <tr><td>精确匹配</td><td>「Japan eSIM」→ /esim/japan/</td><td><span class="b b-amber">15–20%（勿超）</span></td></tr>
+      <tr><td>部分匹配</td><td>「Japan eSIM 套餐与价格」</td><td><span class="b b-green">30–35%</span></td></tr>
+      <tr><td>自然语句</td><td>「查看日本可用的全部套餐」</td><td><span class="b b-green">25–30%</span></td></tr>
+      <tr><td>品牌名 / 泛词</td><td>「Airalo」「点击这里」「了解更多」</td><td><span class="b b-green">15–25%</span></td></tr>
+    </tbody>
+  </table>
+  <div class="callout warn">
+    <span class="t">反向规则：同一个目标页，站内不能有超过 30% 的内链使用完全相同的锚文本</span>
+    这既是过度优化防护，也能避免 Google 判定该锚文本为"人为操纵"。务必写脚本做全站锚文本分布审计——这是最容易被忽略、也最容易踩坑的一环。
+  </div>
+
+  <h3>7.4 关键词蚕食治理</h3>
+  <p>竞品已经踩了这个坑（<code>mexico</code> 与 <code>mexico-2</code>、<code>esim-compatible-phones</code> 与 <code>esim-compatible-phones-2</code>）。比价站页面多、主题密，蚕食是必然风险，必须在架构阶段就建立治理机制。</p>
+  <table class="tbl">
+    <thead><tr><th>规则</th><th>做法</th></tr></thead>
+    <tbody>
+      <tr><td><strong>一词一页</strong></td><td>建立全站「关键词 → 唯一目标 URL」映射表，构建时校验重复。任何主关键词只允许有一个主页面</td></tr>
+      <tr><td>同义页合并</td><td><code>/esim/japan/</code> 与 <code>/esim/best-esim-japan/</code> 绝不能同时存在；后者必须 301 到前者</td></tr>
+      <tr><td>长尾页受控</td><td>城市页、品牌×国家页必须<strong>明确回避国家主词的精确匹配</strong>，用 "for {city}"、"in {country}" 这类限定词区分</td></tr>
+      <tr><td>季度蚕食审计</td><td>每季度跑一次：找出"同一关键词有 2 个以上页面进入前 100"的情况，合并或差异化</td></tr>
+      <tr><td>参数页归并</td><td>筛选器参数一律 canonical 归并，绝不生成可索引的重复内容</td></tr>
+      <tr><td>改版防呆</td><td>CMS 禁止生成 <code>-2</code> 类后缀；URL 冲突必须走 301 流程</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="s8">
+  <h2><span class="num">08</span>长尾关键词战术</h2>
+  <p class="sub">完整 10,614 条关键词清单见交付的 <code>keyword-matrix.csv</code>（含每个词的簇、目标页面类型、URL 模板、意图、漏斗层级、优先级、竞品覆盖状态），页面聚合视图见 <code>page-inventory.csv</code>。</p>
+
+  <h3>8.1 关键词簇优先级矩阵</h3>
+  <table class="tbl">
+    <thead><tr><th>关键词簇</th><th class="r">词数</th><th>竞品覆盖</th><th>典型词</th><th>攻击策略</th></tr></thead>
+    <tbody>
+      <tr><td><strong>国家核心</strong></td><td class="r">4,237</td><td><span class="b b-amber">231 页</span></td><td>best esim for japan</td><td>正面压制：深度做到 2.5 倍</td></tr>
+      <tr><td><strong>提供商×国家</strong></td><td class="r">2,400</td><td><span class="b b-amber">部分</span></td><td>Airalo in Japan</td><td>长尾矩阵：Top 30 品牌 × Top 40 国</td></tr>
+      <tr><td><strong>城市</strong></td><td class="r">870</td><td><span class="b b-red">0</span></td><td>eSIM for Bali</td><td><span class="b b-brand">蓝海主攻</span></td></tr>
+      <tr><td><strong>两两对比</strong></td><td class="r">828</td><td><span class="b b-red">仅 2 页</span></td><td>Airalo vs Holafly</td><td><span class="b b-brand">蓝海主攻 · 高转化</span></td></tr>
+      <tr><td><strong>提供商</strong></td><td class="r">754</td><td><span class="b b-green">343 页</span></td><td>Saily promo code</td><td>正面竞争：实测数据差异化</td></tr>
+      <tr><td><strong>运营商网络</strong></td><td class="r">392</td><td><span class="b b-red">0</span></td><td>Vodafone roaming charges</td><td><span class="b b-brand">蓝海主攻 · 省钱意图</span></td></tr>
+      <tr><td><strong>设备兼容</strong></td><td class="r">336</td><td><span class="b b-red">3 页</span></td><td>does iPhone 16 support eSIM</td><td><span class="b b-brand">蓝海主攻 · 信息流量</span></td></tr>
+      <tr><td><strong>法规政策</strong></td><td class="r">240</td><td><span class="b b-red">0</span></td><td>Japan sim card registration law</td><td>差异化壁垒：需查法规原文</td></tr>
+      <tr><td><strong>时长流量</strong></td><td class="r">170</td><td><span class="b b-amber">部分</span></td><td>Japan eSIM 7 days</td><td>参数化长尾</td></tr>
+      <tr><td><strong>大区/路线</strong></td><td class="r">114</td><td><span class="b b-amber">部分</span></td><td>best eSIM for Europe</td><td>枢纽建设</td></tr>
+      <tr><td><strong>场景</strong></td><td class="r">104</td><td><span class="b b-red">0</span></td><td>eSIM for digital nomads</td><td><span class="b b-brand">蓝海主攻</span></td></tr>
+      <tr><td><strong>故障排障</strong></td><td class="r">100</td><td><span class="b b-red">极少</span></td><td>eSIM not working</td><td>流量池 + 品牌信任</td></tr>
+      <tr><td><strong>事件/赛事</strong></td><td class="r">36</td><td><span class="b b-red">0</span></td><td>eSIM for World Cup 2026</td><td>时效流量，提前 3 个月建站</td></tr>
+      <tr><td><strong>知识/工具/数据</strong></td><td class="r">33</td><td><span class="b b-red">1 个工具</span></td><td>eSIM compatibility checker</td><td>外链引擎 + 品牌资产</td></tr>
+    </tbody>
+  </table>
+
+  <h3>8.2 优先级算法（CSV 的「优先级」列即此算法输出）</h3>
+<pre><span class="c"># 优先级 = 簇权重×0.5 + 意图权重×0.3 + 覆盖缺口系数×0.2，再乘漏斗层级修正</span>
+
+<span class="k">簇权重</span>（业务价值）  国家核心 100 | 提供商 94 | 大区 93 | 工具 100 | 城市 86 | VS 88 | 运营商 87 | 设备 90
+<span class="k">意图权重</span>（转化价值）  交易 100 | 商业调查 92 | 信息 72
+<span class="k">覆盖缺口</span>（竞品空白）  无覆盖 100 | 极少 88 | 部分 62 | 已覆盖 40
+<span class="k">层级修正</span>             T1 认知 ×1.00 | T2 决策 ×0.97 | T3 购买 ×0.95
+
+<span class="g">例</span>  "eSIM for Bali"       → 城市86×0.5 + 商业调查92×0.3 + 无覆盖100×0.2 = 86.6 → T2 修正 → <span class="y">84.0</span>
+<span class="g">例</span>  "Airalo vs Holafly"   → VS88×0.5 + 商业调查92×0.3 + 极少88×0.2   = 88.8 → T2 修正 → <span class="y">86.1</span>
+<span class="g">例</span>  "best esim for japan" → 国家100×0.5 + 商业调查92×0.3 + 已覆盖40×0.2 = 85.6 → T2 修正 → <span class="y">83.0</span>
+</pre>
+  <p>注意：<strong>国家核心词的「覆盖缺口」得分最低（40）</strong>，因为竞品已有 231 页——但它仍拿到 83 分，因为承载的是全站最大的流量池。而「城市」「VS」「运营商」这些竞品零覆盖的簇拿到 84–88 分，意味着<strong>在同等投入下，这些页面的排名成功率远高于国家页</strong>。这是"侧翼优先"策略的量化依据。</p>
+
+  <h3>8.3 程序化 SEO 的三条质量红线</h3>
+  <div class="grid3">
+    <div class="card warn">
+      <h4>红线 1 · 唯一性配额</h4>
+      <p>每个模板在 §6 都规定了最低唯一数据点数。低于此线不得发布。</p>
+      <p>构建时用脚本校验：每个页面的 frontmatter 或数据库中必须有 <code>unique_data_points</code> 字段，少于阈值的页面<strong>直接阻断发布</strong>。</p>
+    </div>
+    <div class="card warn">
+      <h4>红线 2 · 跨页重复率</h4>
+      <p>任何两页之间的<strong>段落级重复不得超过 15%</strong>。</p>
+      <p>参考做法：把全部页面正文切分为句子级 n-gram，跑跨页相似度检测（8-gram 词袋 containment）。含有 ≥5 个页面共用的句子必须逐页改写。这一步必须自动化，人工审不出来。</p>
+    </div>
+    <div class="card warn">
+      <h4>红线 3 · 数据时效标注</h4>
+      <p>任何价格、速度、法规数据都必须带<strong>「核实日期」</strong>字段。</p>
+      <p>超过 90 天未核实的数据自动标记待复核。这既是 E-E-A-T 信号，也是防止"数据腐烂"导致用户信任崩塌的唯一手段——比价站一旦被发现价格是错的，整个站的可信度就没了。</p>
+    </div>
+  </div>
+
+  <h3>8.4 首批必做的 12 个页面（如果只能做 12 个）</h3>
+  <table class="tbl">
+    <thead><tr><th class="c">#</th><th>页面</th><th>URL</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td>目的地总枢纽</td><td><code>/esim/</code></td><td>全站权重分配器，竞品 404</td></tr>
+      <tr><td class="c">2</td><td>提供商总枢纽</td><td><code>/providers/</code></td><td>同上，竞品 404</td></tr>
+      <tr><td class="c">3</td><td>兼容性检测器</td><td><code>/tools/compatibility-checker/</code></td><td>工具流量入口，竞品 0</td></tr>
+      <tr><td class="c">4</td><td>eSIM 价格指数</td><td><code>/data/esim-price-index/</code></td><td>外链引擎，竞品 0</td></tr>
+      <tr><td class="c">5</td><td>Airalo vs Holafly</td><td><code>/compare/airalo-vs-holafly/</code></td><td>最高价值 VS 词，竞品无专属页</td></tr>
+      <tr><td class="c">6</td><td>日本国家页</td><td><code>/esim/japan/</code></td><td>最大单一市场，验证深度标准</td></tr>
+      <tr><td class="c">7</td><td>泰国国家页</td><td><code>/esim/thailand/</code></td><td>第二市场</td></tr>
+      <tr><td class="c">8</td><td>美国国家页</td><td><code>/esim/united-states/</code></td><td>最大英文市场</td></tr>
+      <tr><td class="c">9</td><td>Vodafone 漫游费</td><td><code>/networks/vodafone/</code></td><td>零竞争省钱意图词</td></tr>
+      <tr><td class="c">10</td><td>iPhone 16 eSIM</td><td><code>/devices/iphone-16/</code></td><td>设备信息流量，竞品 0</td></tr>
+      <tr><td class="c">11</td><td>Bali eSIM</td><td><code>/esim/indonesia/city/bali/</code></td><td>城市词验证样本</td></tr>
+      <tr><td class="c">12</td><td>漫游省钱计算器</td><td><code>/tools/roaming-cost-calculator/</code></td><td>最强转化工具，竞品 0</td></tr>
+    </tbody>
+  </table>
+  <p>这 12 个页面的选择标准：<strong>覆盖 6 条攻击线各至少一个样本，且都是竞品完全空白或明显薄弱的位点</strong>。做完这 12 页，你就有了量化评估"同样投入下哪条线回报最高"的实测数据，再决定后续资源投向。</p>
+</section>
+
+<section id="s9">
+  <h2><span class="num">09</span>技术 SEO 与结构化数据</h2>
+  <p class="sub">比价站是技术 SEO 的高难度场景：动态数据、海量页面、筛选维度多。这一节列出必须做对的技术项。</p>
+
+  <h3>9.1 渲染方式与性能</h3>
+  <table class="tbl">
+    <thead><tr><th>项目</th><th>要求</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td><strong>渲染方式</strong></td><td>SSG（静态生成）或 SSR（服务端渲染）。<strong>禁止纯客户端渲染（CSR）</strong></td><td>比价数据若靠 JS 注入，蜘蛛看到的可能是空页面。竞品的 <code>#mbs-all-dests</code> 就是这个问题</td></tr>
+      <tr><td><strong>价格数据更新</strong></td><td>用 ISR（增量静态再生）或定时重建，而非实时请求 API</td><td>平衡数据新鲜度与 Core Web Vitals</td></tr>
+      <tr><td>LCP</td><td>&lt; 2.0s</td><td>比价页通常图片/表格重，需优化首屏</td></tr>
+      <tr><td>INP</td><td>&lt; 200ms</td><td>筛选器交互频繁，INP 易超标</td></tr>
+      <tr><td>CLS</td><td>&lt; 0.1</td><td>价格异步加载易导致布局跳动，必须预留占位高度</td></tr>
+      <tr><td>图片</td><td>WebP/AVIF + 响应式 <code>srcset</code> + 懒加载（首屏除外）</td><td>国家页有大量国旗、运营商 Logo、截图</td></tr>
+      <tr><td>移动优先</td><td>移动端与桌面端<strong>内容完全一致</strong></td><td>Google 统一移动优先索引</td></tr>
+    </tbody>
+  </table>
+
+  <h3>9.2 结构化数据部署清单</h3>
+  <table class="tbl">
+    <thead><tr><th>Schema 类型</th><th>部署页面</th><th>关键字段</th></tr></thead>
+    <tbody>
+      <tr><td><strong>BreadcrumbList</strong></td><td>全站（除首页）</td><td>position / name / item</td></tr>
+      <tr><td><strong>FAQPage</strong></td><td>国家页、城市页、设备页、VS 页、排障页、运营商页</td><td>mainEntity → Question / acceptedAnswer</td></tr>
+      <tr><td><strong>Review + AggregateRating</strong></td><td>提供商评测页、VS 对比页</td><td>itemReviewed / ratingValue / reviewCount / bestRating</td></tr>
+      <tr><td><strong>Product + Offer</strong></td><td>国家比价页、促销码页</td><td>name / price / priceCurrency / availability</td></tr>
+      <tr><td><strong>ItemList</strong></td><td>枢纽页、榜单页、对比页</td><td>itemListElement → ListItem（position + url）</td></tr>
+      <tr><td><strong>HowTo</strong></td><td>安装指南、设备页、排障页</td><td>step → HowToStep（name + text + image）</td></tr>
+      <tr><td><strong>Dataset</strong></td><td>原创数据页</td><td>name / description / license / temporalCoverage</td></tr>
+      <tr><td><strong>Place</strong></td><td>城市页</td><td>name / address / geo</td></tr>
+      <tr><td><strong>Event</strong></td><td>事件页</td><td>name / startDate / location</td></tr>
+      <tr><td><strong>Organization + WebSite</strong></td><td>首页</td><td>含 <code>SearchAction</code>（站内搜索框）</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <span class="t">结构化数据的实战价值</span>
+    对一个有 231 个国家页 + 828 条 VS 词的站点，<strong>FAQ 富摘要</strong>能显著提升 SERP 占位面积——在同等排名下，带 FAQ 展开的搜索结果点击率通常高出 15–30%。而 <code>Review</code> + <code>AggregateRating</code> 能在提供商评测这类词上直接显示星级。<strong>竞品有 FAQ 内容，但没有部署 Schema</strong>——这是你能在一周内拿到的免费优势。
+  </div>
+
+  <h3>9.3 爬虫与索引管理</h3>
+  <table class="tbl">
+    <thead><tr><th>项目</th><th>做法</th></tr></thead>
+    <tbody>
+      <tr><td>Sitemap 分片</td><td>按类型拆分为 <code>sitemap-countries.xml</code> / <code>sitemap-providers.xml</code> / <code>sitemap-compare.xml</code> / <code>sitemap-devices.xml</code> / <code>sitemap-cities.xml</code> / <code>sitemap-guides.xml</code>，每个 ≤50,000 URL。便于在 Search Console 单独监控各类目的收录率</td></tr>
+      <tr><td>参数页控制</td><td>筛选参数 Disallow + canonical 归并（详见 §3.3）</td></tr>
+      <tr><td>分页处理</td><td>枢纽页分页使用独立可抓取 URL（<code>?page=2</code> 或 <code>/page/2/</code>），带 <code>rel=next/prev</code> 或独立收录，<strong>不可 index 掉</strong>——否则第 2 页之后的项目页失去入场链接</td></tr>
+      <tr><td>内部搜索结果页</td><td><code>noindex,follow</code>，禁止被收录</td></tr>
+      <tr><td>404 处理</td><td>定制 404 页面，包含站内搜索框 + Top 目的地链接，挽回流失流量</td></tr>
+      <tr><td>301 规范</td><td>改版前建立完整重定向映射表；上线后全量检测旧 URL</td></tr>
+      <tr><td>日志分析</td><td>每月分析服务器日志，看蜘蛛把预算花在哪里，砍掉低价值抓取路径（通常是参数页）</td></tr>
+    </tbody>
+  </table>
+
+  <h3>9.4 E-E-A-T 信号</h3>
+  <ul>
+    <li><strong>作者署名与资历：</strong>每篇文章标注作者 + 作者页（含真实背景、测试过的国家数）。竞品有 <code>Verified by Etienne Tillier</code> 这一条，值得学习但要做到更扎实。</li>
+    <li><strong>测试方法论页：</strong><code>/about/methodology/</code> —— 说明你如何选购、如何测速、如何比价、如何避免联盟偏见。这是金融/交易类内容最重要的信任资产。<strong>竞品没有这一页。</strong></li>
+    <li><strong>编辑独立性声明：</strong>明确说明收入来源（联盟佣金）以及如何保证排名不受佣金影响。<strong>竞品有简短声明，但没有独立页面。</strong></li>
+    <li><strong>最后更新日期：</strong>每页可见，且与 <code>dateModified</code> 一致。价格类页面建议月度更新。</li>
+    <li><strong>数据来源引用：</strong>国家页 5–7 个不同域名的权威外链（Ookla / GSMA / 监管机构 / Cable.co.uk / DataReportal）。<strong>竞品国家页没有外部数据来源引用。</strong></li>
+    <li><strong>联系方式与实体信息：</strong>真实的公司信息、联系邮箱、可选实体地址。</li>
+  </ul>
+</section>
+
+<section id="s10">
+  <h2><span class="num">10</span>多语言与国际化</h2>
+  <p class="sub">竞品有 24 个语种，这是它的规模优势。但也是你必须冷静评估的地方——多语种是放大器，不是启动器。</p>
+
+  <h3>10.1 语种优先级（不要一次上 24 个）</h3>
+  <table class="tbl">
+    <thead><tr><th>批次</th><th>语种</th><th>理由</th><th>启动时机</th></tr></thead>
+    <tbody>
+      <tr><td><span class="b b-brand">第 1 批</span></td><td>英语（en）</td><td>验证模型、跑通架构、建立数据管线</td><td>立即</td></tr>
+      <tr><td><span class="b b-brand">第 2 批</span></td><td>德语（de）、法语（fr）、西班牙语（es）、意大利语（it）</td><td>欧洲四大出境游市场，英文竞争之外的最大流量池，竞品在此最弱（其内容多为英法双语）</td><td>英文站排名稳定后（约第 6 个月）</td></tr>
+      <tr><td><span class="b b-brand">第 3 批</span></td><td>葡萄牙语（pt-BR）、日语（ja）、韩语（ko）、繁体中文（zh-TW）</td><td>横向旅游市场，中文/日韩市场 eSIM 认知度高、竞争相对低</td><td>第 9 个月</td></tr>
+      <tr><td><span class="b b-grey">第 4 批</span></td><td>荷兰语、波兰语、土耳其语、瑞典语、俄语等</td><td>补充长尾语种</td><td>第 12 个月后，按 ROI 决定</td></tr>
+    </tbody>
+  </table>
+  <div class="callout warn">
+    <span class="t">⚠️ 多语种最大的误区：机器翻译直出</span>
+    竞品有 24 个语种，但从其实测表现看，部分语种的页面质量参差。如果你用机翻直出 24 个语种 × 3,400 页 = 81,600 页，这已经不是"规模化内容滥用"的边缘，而是<strong>教科书级违规</strong>。<br><br>
+    <strong>正确做法：</strong>①每个语种必须有<strong>本地化改编</strong>（不只是翻译）——比如德语用户关注的漫游规则（EU Roam-like-at-home）与日本用户关注的实名登记完全不同；②价格必须按本地货币显示；③每个语种只做该市场最高价值的子集页面，不做全量复制。
+  </div>
+
+  <h3>10.2 hreflang 与 URL 结构</h3>
+  <table class="tbl">
+    <thead><tr><th>项目</th><th>要求</th></tr></thead>
+    <tbody>
+      <tr><td>URL 结构</td><td>子目录式 <code>example.com/de/esim/japan/</code>（推荐）。不用子域名（权重分散）也不用参数</td></tr>
+      <tr><td>hreflang</td><td>全站双向配对，每个页面列出自己 + 全部语种版本 + <code>x-default</code></td></tr>
+      <tr><td>区域变体</td><td>同一语言分区域时必须区分：<code>pt-BR</code> vs <code>pt-PT</code>、<code>zh-Hant</code> vs <code>zh-Hans</code>、<code>en-GB</code> vs <code>en-US</code></td></tr>
+      <tr><td>语言切换器</td><td>切换后停留在<strong>同一页面</strong>的对应语种版本，而不是跳回首页（竞品此处体验待改进）</td></tr>
+      <tr><td>默认语种</td><td>英文为主，<code>x-default</code> 指向英文版</td></tr>
+      <tr><td>内容本地化</td><td>货币、日期格式、计量单位（GB vs Go）、术语（carrier=opérateur / Betreiber / operador）</td></tr>
+      <tr><td>价格本地化</td><td>按用户所在地区显示本币估算价，同时保留原币价与折算说明</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="s11">
+  <h2><span class="num">11</span>实施路线图</h2>
+  <p class="sub">分四阶段，每阶段有明确的产出与验证标准。核心原则：先验证模型，再放大规模；先做厚，再做宽。</p>
+
+  <table class="tbl">
+    <thead><tr><th>阶段</th><th>时间</th><th>核心任务</th><th>页面产出</th><th>验证标准</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Phase 0<br>地基</strong></td>
+        <td>第 1–4 周</td>
+        <td>
+          ① 确定技术栈（SSG/SSR + CMS 或 Headless）<br>
+          ② 搭建 7 个 L1 枢纽页与导航/页脚架构<br>
+          ③ 建立数据管线（价格采集、速度数据、法规库）<br>
+          ④ 制定模板规范与唯一性配额校验脚本<br>
+          ⑤ 建测试方法论页与编辑独立性页
+        </td>
+        <td>骨架 + 12 个<br>种子页</td>
+        <td>架构验收：URL 规范、内链规则、Schema 全部通过自动校验脚本；12 个种子页全部达标</td>
+      </tr>
+      <tr>
+        <td><strong>Phase 1<br>侧翼突击</strong></td>
+        <td>第 5–14 周</td>
+        <td>
+          ① VS 对比页 Top 60 组（按优先级排序）<br>
+          ② 设备页 Top 60 机型<br>
+          ③ 运营商页 Top 30<br>
+          ④ 场景页全部 26 个<br>
+          ⑤ 4 个原创数据页 + 6 个工具页<br>
+          ⑥ 排障页 25 个
+        </td>
+        <td>约 210 页</td>
+        <td>这些页面在 8 周内进入前 50 的比例 ≥ 40%（原因：竞争极低）</td>
+      </tr>
+      <tr>
+        <td><strong>Phase 2<br>正面压制</strong></td>
+        <td>第 15–32 周</td>
+        <td>
+          ① 国家枢纽页 Top 60（含全部叶子页：plans / price / coverage / vs-local-sim / regulations / faq）<br>
+          ② 城市页 Top 60<br>
+          ③ 提供商评测页 Top 30 + 促销码页<br>
+          ④ 大区枢纽 19 个<br>
+          ⑤ 通用指南 40 个
+        </td>
+        <td>约 700 页</td>
+        <td>Top 20 国家页在目标词进入前 20；每页唯一性配额达标率 100%</td>
+      </tr>
+      <tr>
+        <td><strong>Phase 3<br>规模化</strong></td>
+        <td>第 33–52 周</td>
+        <td>
+          ① 剩余国家页补齐至 231<br>
+          ② 城市页扩至 150<br>
+          ③ 设备页扩至 150<br>
+          ④ 品牌×国家页 Top 600<br>
+          ⑤ 提供商评测补齐至 60 家<br>
+          ⑥ 法规页 40 个、事件页 12 个
+        </td>
+        <td>约 2,400 页</td>
+        <td>全站自然流量进入与竞品同一量级；外链域名数 ≥ 竞品</td>
+      </tr>
+      <tr>
+        <td><strong>Phase 4<br>多语种</strong></td>
+        <td>第 53 周起</td>
+        <td>
+          ① 按 §10.1 的批次顺序复制语种<br>
+          ② 每个语种只做高价值子集（先 300–500 页）<br>
+          ③ 本地化改编而非直译
+        </td>
+        <td>每语种<br>300–500 页</td>
+        <td>单语种 ROI 为正才推进下一语种</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout ok">
+    <span class="t">路线图的关键决策逻辑</span>
+    <strong>为什么 Phase 1 全是竞品空白的类目？</strong>因为你需要一个"低成本验证成功"的阶段。如果一上来就做国家页，你要花 20 周才能知道自己的内容标准能不能排上去——风险太大。先做 210 个几乎无竞争的页面，8 周内就能验证"你的模板 + 你的数据深度"是否有效。<strong>验证通过再放大。</strong><br><br>
+    <strong>为什么 Phase 2 才做国家页？</strong>因为那时你已经有了：①实测的数据管线 ②跑通的模板规范 ③Phase 1 页面带来的站内权重积累。这时候做国家页，成功率远高于冷启动。
+  </div>
+</section>
+
+<section id="s12">
+  <h2><span class="num">12</span>「每页超越竞品」验收记分卡</h2>
+  <p class="sub">这是本方案的落地抓手。每个页面上线前必须逐项打分，总分低于竞品对应页的<strong>不得发布</strong>。建议把这套规则写进 CMS 的发布校验。</p>
+
+  <h3>12.1 通用记分卡（所有页面类型适用）</h3>
+  <table class="tbl">
+    <thead><tr><th>维度</th><th>权重</th><th>竞品基线</th><th>你的目标</th><th>达标判定</th></tr></thead>
+    <tbody>
+      <tr><td><strong>内容深度</strong></td><td>20%</td><td>国家页 2,000 词</td><td>≥ 竞品 ×1.4</td><td>字数统计脚本</td></tr>
+      <tr><td><strong>唯一数据点</strong></td><td>25%</td><td>≤3 条</td><td>≥ 模板规定的配额</td><td>人工 + 数据库字段校验</td></tr>
+      <tr><td><strong>交互元素</strong></td><td>10%</td><td>0（国家页）</td><td>≥1（计算器/筛选/对比器）</td><td>页面内是否有工具组件</td></tr>
+      <tr><td><strong>结构化数据</strong></td><td>15%</td><td>无 Schema 部署</td><td>模板规定的全部 Schema 类型</td><td>Rich Results Test</td></tr>
+      <tr><td><strong>权威外链</strong></td><td>10%</td><td>0（国家页）</td><td>≥5 个不同域名</td><td>外链域名计数</td></tr>
+      <tr><td><strong>内链数量</strong></td><td>10%</td><td>不固定</td><td>≥ 强制内链规则表要求</td><td>构建时自动校验</td></tr>
+      <tr><td><strong>数据时效</strong></td><td>5%</td><td>无标注</td><td>所有数据带核实日期，≤90 天</td><td>字段校验</td></tr>
+      <tr><td><strong>媒体资产</strong></td><td>5%</td><td>极少</td><td>≥3 张原创截图/图表</td><td>媒体计数</td></tr>
+    </tbody>
+  </table>
+
+  <h3>12.2 按页面类型的超越判定线速查</h3>
+  <table class="tbl">
+    <thead><tr><th>页面类型</th><th>竞品现状</th><th>你的超越判定线</th></tr></thead>
+    <tbody>
+      <tr><td>国家枢纽页</td><td>2,000 词 / 13 模块 / 3 唯一数据 / 0 工具 / 0 权威外链</td><td>≥2,800 词 · ≥14 模块 · ≥8 唯一数据 · ≥1 工具 · ≥5 权威外链</td></tr>
+      <tr><td>VS 对比页</td><td>几乎不存在（2 页）</td><td>建站即超越。<strong>核心是给明确裁决，不是列参数</strong></td></tr>
+      <tr><td>城市页</td><td>0 页</td><td>建站即超越。核心是<strong>逐城独立核实</strong>，禁止复制分区描述</td></tr>
+      <tr><td>设备页</td><td>3 页（合并成一个列表页）</td><td>建站即超越。核心是<strong>机型专属安装路径 + 地区版本差异</strong></td></tr>
+      <tr><td>运营商页</td><td>0 页</td><td>建站即超越。核心是<strong>官方资费原文 + 核实日期</strong></td></tr>
+      <tr><td>提供商评测页</td><td>约 1,500 词 / 单一总分 / 无实测 / 无每 GB 折算 / 无网络伙伴</td><td>≥3,000 词 · 7 维分项评分 · ≥7 唯一数据 · 每 GB 折算 · 网络伙伴清单</td></tr>
+      <tr><td>原创数据页</td><td>0 页</td><td>建站即超越。核心是<strong>可嵌入 + 可下载 + 可引用</strong></td></tr>
+      <tr><td>工具页</td><td>1 个（流量计算器）</td><td>6 个工具。核心是<strong>真的能用、结果可信</strong></td></tr>
+      <tr><td>大区枢纽页</td><td>被并入国家页模板，非独立枢纽</td><td>独立 URL + 覆盖国家网格 + 跨境行程建议</td></tr>
+      <tr><td>促销码页</td><td>139 页（其强项）</td><td>≥ 同数量，且增加<strong>历史优惠趋势</strong>与<strong>有效期倒计时</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>12.3 上线前检查清单（Checklist）</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>内容层</h4>
+      <ul style="font-size:13.5px;margin:0;padding-left:18px">
+        <li>唯一性配额达标（≥ 模板规定值）</li>
+        <li>字数 ≥ 竞品同类页 ×1.4</li>
+        <li>跨页段落重复率 &lt; 15%</li>
+        <li>主关键词在 H1、首段前 100 词、至少 1 个 H2 中出现</li>
+        <li>无填充句、无占位符、无"待补充"</li>
+        <li>所有数据带核实日期</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>技术层</h4>
+      <ul style="font-size:13.5px;margin:0;padding-left:18px">
+        <li>URL 符合 §3.3 铁律</li>
+        <li>面包屑正确 + BreadcrumbList 已部署</li>
+        <li>Schema 全部通过 Rich Results Test</li>
+        <li>title ≤ 60 字符，description ≤ 155 字符，均含核心词</li>
+        <li>Canonical 正确，无参数污染</li>
+        <li>hreflang 配对完整（多语种页）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>内链层</h4>
+      <ul style="font-size:13.5px;margin:0;padding-left:18px">
+        <li>强制内链规则表全部满足</li>
+        <li>锚文本分布符合 §7.3 比例</li>
+        <li>无死链（内外链全部实测 &lt; 400）</li>
+        <li>无与其它页面争夺同一主关键词</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>信任层</h4>
+      <ul style="font-size:13.5px;margin:0;padding-left:18px">
+        <li>作者署名 + 作者页链接</li>
+        <li>最后更新日期可见且与 dateModified 一致</li>
+        <li>≥5 个不同域名的权威外链</li>
+        <li>联盟关系披露（若含推广链接）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout ok">
+    <span class="t">最后一句实话</span>
+    这份蓝图能给你的是<strong>结构和路径</strong>——它能保证你不会把资源浪费在竞品已经站稳的地方，也能保证每一页都有明确的"比它强在哪"的判定标准。<br><br>
+    但有件事没有任何架构能替代：<strong>竞品最强的三个模块，恰好都是"需要花时间才能做出来"的</strong>——实时价格数据、实测速度、真机测试。它的国家页之所以能在 231 页里保持可用质量，是因为它有真实的数据引擎在支撑。你要超越它，最终要投的不是文案产能，而是<strong>数据采集能力</strong>：真的买套餐去测、真的打电话去问客服、真的去核实法规原文。<br><br>
+    <strong>架构决定你能不能赢在起跑线；数据决定你能不能守住终点线。</strong>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0 0 8px"><strong>交付物清单</strong></p>
+    <ul style="margin:0;padding-left:20px;font-size:13px">
+      <li><code>esim-comparison-blueprint.html</code> —— 本架构蓝图（12 章）</li>
+      <li><code>keyword-matrix.csv</code> —— 10,614 条长尾关键词矩阵（含簇、页面类型、URL 模板、意图、漏斗层级、优先级、竞品覆盖状态）</li>
+      <li><code>page-inventory.csv</code> —— 页面类型聚合清单（29 类，含承载词数、优先级、竞品覆盖度）</li>
+      <li><code>_gen_matrix.py</code> —— 关键词矩阵生成脚本（可复跑、可改词表）</li>
+    </ul>
+    <p style="margin:16px 0 0;font-size:12.5px;color:#98a1ad">
+      竞品数据采集日期：2026-09-30 ｜ 采集方法：sitemap 全量解析 + 页面模板逐模块拆解 + 枢纽页 HTTP 状态实测<br>
+      竞品英文站 957 条 URL ｜ 24 个语种 ｜ 推算总页量约 23,000
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

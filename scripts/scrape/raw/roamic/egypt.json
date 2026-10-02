@@ -1,0 +1,327 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n35"
+ },
+ "plans": [
+  {
+   "name": "Egypt eSIM 1GB / 7 Days",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$2.00",
+   "badges": []
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 1 Day",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$4.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM 3GB / 14 Days",
+   "data": "3GB",
+   "validity": "14 Days",
+   "price": "$5.00",
+   "badges": []
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 2 Days",
+   "data": "3GB/day",
+   "validity": "2 Days",
+   "price": "$7.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM 5GB / 21 Days",
+   "data": "5GB",
+   "validity": "21 Days",
+   "price": "$7.00",
+   "badges": []
+  },
+  {
+   "name": "Egypt eSIM 10GB / 30 Days",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$11.00",
+   "badges": []
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 3 Days",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$11.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 4 Days",
+   "data": "3GB/day",
+   "validity": "4 Days",
+   "price": "$14.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 5 Days",
+   "data": "3GB/day",
+   "validity": "5 Days",
+   "price": "$15.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 6 Days",
+   "data": "3GB/day",
+   "validity": "6 Days",
+   "price": "$17.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM 20GB / 30 Days",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$19.00",
+   "badges": []
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 7 Days",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$21.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 8 Days",
+   "data": "3GB/day",
+   "validity": "8 Days",
+   "price": "$23.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 9 Days",
+   "data": "3GB/day",
+   "validity": "9 Days",
+   "price": "$25.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 10 Days",
+   "data": "3GB/day",
+   "validity": "10 Days",
+   "price": "$27.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 11 Days",
+   "data": "3GB/day",
+   "validity": "11 Days",
+   "price": "$29.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 12 Days",
+   "data": "3GB/day",
+   "validity": "12 Days",
+   "price": "$31.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 13 Days",
+   "data": "3GB/day",
+   "validity": "13 Days",
+   "price": "$32.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 14 Days",
+   "data": "3GB/day",
+   "validity": "14 Days",
+   "price": "$35.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 15 Days",
+   "data": "3GB/day",
+   "validity": "15 Days",
+   "price": "$36.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 16 Days",
+   "data": "3GB/day",
+   "validity": "16 Days",
+   "price": "$38.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 17 Days",
+   "data": "3GB/day",
+   "validity": "17 Days",
+   "price": "$41.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 18 Days",
+   "data": "3GB/day",
+   "validity": "18 Days",
+   "price": "$43.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 19 Days",
+   "data": "3GB/day",
+   "validity": "19 Days",
+   "price": "$45.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 20 Days",
+   "data": "3GB/day",
+   "validity": "20 Days",
+   "price": "$47.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 21 Days",
+   "data": "3GB/day",
+   "validity": "21 Days",
+   "price": "$48.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 22 Days",
+   "data": "3GB/day",
+   "validity": "22 Days",
+   "price": "$51.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 23 Days",
+   "data": "3GB/day",
+   "validity": "23 Days",
+   "price": "$53.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 24 Days",
+   "data": "3GB/day",
+   "validity": "24 Days",
+   "price": "$55.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 25 Days",
+   "data": "3GB/day",
+   "validity": "25 Days",
+   "price": "$58.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 26 Days",
+   "data": "3GB/day",
+   "validity": "26 Days",
+   "price": "$60.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 27 Days",
+   "data": "3GB/day",
+   "validity": "27 Days",
+   "price": "$62.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 28 Days",
+   "data": "3GB/day",
+   "validity": "28 Days",
+   "price": "$64.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 29 Days",
+   "data": "3GB/day",
+   "validity": "29 Days",
+   "price": "$65.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Egypt eSIM Unlimited Data / 30 Days",
+   "data": "3GB/day",
+   "validity": "30 Days",
+   "price": "$67.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Roamic Travel eSIM for Egypt | Data Plans & Reviews",
+  "h1": "Roamic eSIM Data Plans for Egypt",
+  "chips": [
+   "All plans\n38",
+   "Single-country\n35",
+   "Multiple-country\n3"
+  ],
+  "official_site": "https://clk.roamic.com/DWM1K5",
+  "body_head": "Single\nMulti\nWrite a review\nBack to Egypt eSIM Plans\nRoamic\n\nRoamic is an eSIM service provider offering mobile data solutions for international travelers, digital nomads, and professionals in over 190 regions. It allows users to avoid expensive roaming fees and physical SIM cards by purchasing and activating digital plans (500MB to Unlimited) via QR code, offering instant connectivity with 5G/4G speeds.\n\nVerified\nWeb checkout\nApple Pay\nGoogle Pay\nOfficial Website\nRoamic eSIM Data Plans for Egypt\nAll plans\n38\nSingle-country\n35\nMultiple-country\n3\nSort:\nCheapest\nBest Price/GB\nMost Data\nValidity\nPLAN NAME\nDATA\nVALIDITY\nPRICE/GB\nPRICE\nEgypt eSIM 1GB / 7 Days\n1GB\n7 Days\n$2.00\n$2.00/GB\nView Details\nEgypt eSIM Unlimited Data / 1 Day\n3GB\n+ ∞ at 1Mbps\n1 Day\n$4.00\n$1.33/GB\nView Details\nEgypt eSIM 3GB / 14 Days\n3GB\n14 Days\n$5.00\n$1.67/GB\nView Details\nEgypt eSIM Unlimited Data / 2 Days\n3GB/day\n+ ∞ a"
+ },
+ "slug": "egypt",
+ "url": "https://esimdb.com/egypt/roamic",
+ "status": 200
+}

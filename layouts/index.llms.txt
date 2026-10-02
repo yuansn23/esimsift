@@ -1,0 +1,76 @@
+{{- /* llms.txt —— 面向 LLM 的站点导览（markdown 纯文本输出）*/ -}}
+# {{ .Site.Title }}
+
+> {{ .Site.Params.description }}
+> Every plan is a listed, purchasable plan at check time; verification dates are shown per page. Derived metrics ($/GB, $/day) are computed with identical formulas for every provider — see the methodology page for the rules.
+
+## Country comparisons
+
+{{ $compare := site.GetPage "/compare" -}}
+{{ $countries := where (where (where $compare.Pages "Params.provider" nil) "Params.providers" nil) "Params.nolist" nil -}}
+{{ range $countries -}}
+{{ $p := . -}}
+{{ with $p.Params.iso -}}
+{{ $c := index hugo.Data.countries . -}}
+{{ $s := partial "country-stats.html" . -}}
+- [{{ $c.name }} eSIM comparison — {{ $s.providerCount }} providers, {{ $s.planCount }} plans, from ${{ printf "%.2f" $s.minPrice }}]({{ $p.Permalink }}): cheapest ${{ printf "%.2f" $s.minPrice }}{{ if lt $s.minPerGB 999999.0 }}, best value ${{ printf "%.2f" $s.minPerGB }}/GB{{ end }}{{ if gt $s.maxGB 0 }}, largest cap {{ $s.maxGB }}GB{{ end }}{{ if gt $s.unlimitedCount 0 }}, {{ $s.unlimitedCount }} unlimited plans{{ end }}{{ with $s.checked }}, prices checked {{ . }}{{ end }}
+{{ end -}}
+{{ end -}}
+
+## Brand × country pages
+
+Each country has one page per provider ({{ mul (len $countries) (len hugo.Data.providers) }} pages, e.g. `/compare/japan/airalo/`) with that provider's full plan table, its computed rank among all providers on best $/GB, fair-use caps, and an honest strengths/weaknesses verdict.
+
+## Providers
+
+{{ range $key, $p := hugo.Data.providers -}}
+- [{{ $p.name }}]({{ absURL (printf "esim-providers/%s/" $key) }}): {{ $p.tagline }}{{ with $p.promo_code }} — promo code `{{ . }}` ({{ $p.promo_label }}, expires {{ $p.promo_expires }}){{ end }}
+{{ end -}}
+
+## Provider matchups
+
+One page per pair, one URL per matchup (slug alphabetical; reversed queries land on the same page). Full index at [All provider matchups]({{ absURL "compare/matchups/" }}). Each verdict is computed across the countries both providers cover:
+
+{{ $keys := slice -}}
+{{ range $k, $v := hugo.Data.providers }}{{ $keys = $keys | append $k }}{{ end -}}
+{{ $keys = sort $keys -}}
+{{ range $i, $ka := $keys -}}
+{{ range $kb := after (add $i 1) $keys -}}
+{{ $agg := partial "vs-agg.html" (dict "a" $ka "b" $kb) -}}
+{{ $pa := index hugo.Data.providers $ka -}}
+{{ $pb := index hugo.Data.providers $kb -}}
+- [{{ $pa.name }} vs {{ $pb.name }} eSIM]({{ absURL (printf "compare/%s-vs-%s/" $ka $kb) }}): {{ $pa.name }} cheaper entry in {{ $agg.aWinsPrice }} of {{ $agg.countries }} shared countries, {{ $pb.name }} in {{ $agg.bWinsPrice }}{{ if gt $agg.ties 0 }}, {{ $agg.ties }} exact ties{{ end }}{{ if gt $agg.aUnlimCountries 0 }}; unlimited plans: {{ $pa.name }} in {{ $agg.aUnlimCountries }} countries{{ end }}{{ if gt $agg.bUnlimCountries 0 }}, {{ $pb.name }} in {{ $agg.bUnlimCountries }}{{ end }}
+{{ end -}}
+{{ end -}}
+
+## Data & research
+
+Original analysis computed from the same plan database as the comparison pages:
+
+{{ $research := site.GetPage "/research" -}}
+{{ range $research.Pages -}}
+- [{{ htmlUnescape .Title }}]({{ .Permalink }}): {{ htmlUnescape .Params.description }}
+{{ end -}}
+
+## Guides
+
+{{ $guides := site.GetPage "/guides" -}}
+{{ range $guides.Pages -}}
+- [{{ htmlUnescape .Title }}]({{ .Permalink }}): {{ htmlUnescape .Params.description }}
+{{ end -}}
+
+## How we compare
+
+- [Methodology]({{ absURL "methodology/" }}): data collection schedule, derived-metric formulas, badge rules
+- [Disclosure]({{ absURL "disclosure/" }}): ownership and how the site makes money
+- [Machine-readable price database]({{ absURL "catalog.json" }}): full plan list as JSON
+
+## Site sections
+
+- [All country comparisons]({{ absURL "compare/" }})
+- [Provider matchups index]({{ absURL "compare/matchups/" }})
+- [eSIM providers]({{ absURL "esim-providers/" }})
+- [eSIM deals & promo codes]({{ absURL "esim-deals/" }})
+- [Guides]({{ absURL "guides/" }})
+- [Data & research]({{ absURL "research/" }})
+- [Tools]({{ absURL "tools/" }})
