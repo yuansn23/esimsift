@@ -50,17 +50,13 @@
     {{- $title = index $cands (sub (len $cands) 1) -}}
     {{- range $cands -}}{{- if le (len .) 54 }}{{ $title = . }}{{ break }}{{ end -}}{{- end -}}
   {{- else -}}
-    {{- /* 国家页：同上，覆盖最长国名 United Arab Emirates */ -}}
-    {{- $cands := slice
-      (printf "Best %s eSIM %d: %d Providers Compared From $%.2f" $c.name now.Year $stats.providerCount $stats.minPrice)
-      (printf "Best %s eSIM %d: All %d Providers From $%.2f" $c.name now.Year $stats.providerCount $stats.minPrice)
-      (printf "Best %s eSIM %d: %d Providers From $%.2f" $c.name now.Year $stats.providerCount $stats.minPrice)
-      (printf "Best %s eSIM %d: Compared From $%.2f" $c.name now.Year $stats.minPrice)
-      (printf "Best %s eSIM %d: Prices From $%.2f" $c.name now.Year $stats.minPrice)
-      (printf "Best %s eSIM %d: From $%.2f" $c.name now.Year $stats.minPrice)
-    -}}
-    {{- $title = index $cands (sub (len $cands) 1) -}}
-    {{- range $cands -}}{{- if le (len .) 54 }}{{ $title = . }}{{ break }}{{ end -}}{{- end -}}
+    {{- /* 国家页：完整标题来自 data/titlesegments.toml（脚本预计算，50 国全唯一）。
+           前缀 "Best {Country} eSIM 2026:" + 旅游/网络关键词（travel/tourists/cheap/unlimited/
+           5G/no roaming/value/compare/prepaid/data plan），价格锚点取真实每GB价或最低无限套餐价。 */ -}}
+    {{- $seg := index hugo.Data.titlesegments .Params.iso -}}
+    {{- if $seg.title }}
+      {{- $title = $seg.title -}}
+    {{- end -}}
   {{- end -}}
   {{- with $c.images -}}
     {{- $ogimage = printf "img/countries/%s" (index . 0) -}}

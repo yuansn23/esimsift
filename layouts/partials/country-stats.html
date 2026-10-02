@@ -29,6 +29,7 @@
         "perDay" $perDay
         "perGB" $perGB
         "fup" (.fup_note | default "")
+        "isUnlimited" (eq (float .gb) 0.0)
       ) }}
     {{ end }}
   {{ end }}
@@ -38,6 +39,15 @@
 {{ if gt (len $rows) 0 }}
   {{ $minPrice = (index (sort $rows "price" "asc") 0).price }}
   {{ $minPerGB = (index (sort $rows "perGB" "asc") 0).perGB }}
+{{ end }}
+{{ $minUnlimited := 0.0 }}
+{{ $ul := where $rows "isUnlimited" true }}
+{{ if gt (len $ul) 0 }}
+  {{ $minUnlimited = (index (sort $ul "price" "asc") 0).price }}
+{{ end }}
+{{ $has5g := false }}
+{{ with index hugo.Data.carriers $iso }}
+  {{ range .profiles }}{{ if in .tech "5G" }}{{ $has5g = true }}{{ end }}{{ end }}
 {{ end }}
 {{ $maxGB := 0 }}
 {{ range $rows }}{{ if gt .gb $maxGB }}{{ $maxGB = .gb }}{{ end }}{{ end }}
@@ -54,6 +64,8 @@
   "planCount" (len $rows)
   "minPrice" $minPrice
   "minPerGB" $minPerGB
+  "minUnlimited" $minUnlimited
+  "has5g" $has5g
   "maxGB" $maxGB
   "unlimitedCount" (len (where $rows "gb" 0))
   "checked" $checked
