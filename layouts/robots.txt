@@ -1,8 +1,8 @@
+{{- /* robots.txt —— 显式欢迎 AI/LLM 爬虫（生成式引擎可见性）+ 声明 sitemap。
+     各 AI bot 默认 opt-out（不声明也会爬），显式 Allow 是防御性最佳实践，防止将来误加 Disallow 挡掉。 */ -}}
 User-agent: *
-Disallow: /go/
 Allow: /
 
-# AI crawlers explicitly welcome — price data is meant to be cited.
 User-agent: GPTBot
 Allow: /
 
@@ -15,7 +15,7 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Claude-Web
+User-agent: Claude-User
 Allow: /
 
 User-agent: anthropic-ai
@@ -30,13 +30,16 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+User-agent: GoogleOther
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
 User-agent: Applebot-Extended
 Allow: /
 
-User-agent: Amazonbot
-Allow: /
-
-User-agent: Meta-ExternalAgent
-Allow: /
-
-Sitemap: {{ "sitemap.xml" | absURL }}
+Sitemap: {{ .Site.BaseURL }}sitemap.xml

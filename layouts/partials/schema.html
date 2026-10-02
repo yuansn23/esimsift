@@ -28,3 +28,26 @@
 {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $items) | safeJS }}
 </script>
 {{- end -}}
+
+{{- /* ── Article JSON-LD：guides + research 文章（AI 引用内容页的「作者+日期+发布方」凭证）
+     author 暂用站级 Organization 署名（无真实团队资料时不造假个人）；date 取 front matter。 */ -}}
+{{- if and .IsPage (in (slice "guides" "research") .Section) -}}
+{{- $artDesc := .Site.Params.description -}}
+{{- with .Params.description }}{{ $artDesc = . }}{{ end -}}
+{{- $artImg := "img/site/og-default.webp" -}}
+{{- with .Params.hero }}{{ $artImg = printf "img/esim/%s" . }}{{ end -}}
+<script type="application/ld+json">
+{{ jsonify (dict "indent" "  ") (dict
+  "@context" "https://schema.org"
+  "@type" "Article"
+  "headline" .Title
+  "description" $artDesc
+  "datePublished" (.Date.Format "2006-01-02")
+  "dateModified" (.Date.Format "2006-01-02")
+  "author" (dict "@type" "Organization" "name" .Site.Params.brand "url" .Site.BaseURL)
+  "publisher" (dict "@type" "Organization" "name" .Site.Params.brand "url" .Site.BaseURL)
+  "mainEntityOfPage" .Permalink
+  "image" ($artImg | absURL)
+) | safeJS }}
+</script>
+{{- end -}}

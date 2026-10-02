@@ -1,0 +1,23 @@
+{{- /* ── Organization + WebSite JSON-LD（实体锚点）────────────────────────────
+   AI 引擎（Google AI Overviews / ChatGPT / Perplexity / Gemini）据此把「eSIM Sift」
+   识别为同一实体，引用时归因一致。sameAs 暂不填（无官方社交 profile，不造假）。
+   logo 用品牌图标 apple-touch-icon.png（180×180）；publishingPrinciples 指向方法论页。 */ -}}
+<script type="application/ld+json">
+{{ jsonify (dict "indent" "  ") (dict
+  "@context" "https://schema.org"
+  "@type" "Organization"
+  "name" .Site.Params.brand
+  "url" .Site.BaseURL
+  "logo" ("apple-touch-icon.png" | absURL)
+  "description" .Site.Params.description
+  "publishingPrinciples" ("methodology/" | absURL)
+) | safeJS }}
+</script>
+<script type="application/ld+json">
+{{ jsonify (dict "indent" "  ") (dict
+  "@context" "https://schema.org"
+  "@type" "WebSite"
+  "name" .Site.Params.brand
+  "url" .Site.BaseURL
+) | safeJS }}
+</script>

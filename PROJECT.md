@@ -74,6 +74,19 @@ esimsift/
 
 ### 2.3 SEO / 基建
 - ✅ 结构化数据全在模板层：国家页 FAQPage、子页 BreadcrumbList、品牌页 Product+Review+FAQPage @graph、对决页 FAQPage（**不做假评分**，用"最便宜命中率"透明口径 —— 蓝图红线）
+- ✅ **AEO/GEO 三层（2026-10-02）**：Organization + WebSite 全站 509 页（`partials/schema-org.html`，实体锚点，sameAs 留空待官方 profile）；Article 自动覆盖 guides/research 8 篇（`partials/schema.html`，`.IsPage` 且 Section∈guides/research 门控）；`layouts/robots.txt` 显式 Allow 15 个 AI 爬虫 + sitemap
+
+**每类页面 → 应带的结构化数据（新增页型时按此查漏）**：
+
+| 页面类型 | JSON-LD schema |
+|---|---|
+| 首页 `/` | Organization + WebSite + BreadcrumbList |
+| 国家页 `/compare/{country}/` | Organization + WebSite + **FAQPage** + BreadcrumbList + Product + AggregateOffer |
+| 品牌页 `/esim-providers/{brand}/` | Organization + WebSite + **Product+AggregateOffer+Brand** + **Review+Rating** + FAQPage + BreadcrumbList |
+| 对决页 `/compare/{a}-vs-{b}/` | Organization + WebSite + FAQPage + BreadcrumbList |
+| guides / research 文章 | Organization + WebSite + **Article** + FAQPage + BreadcrumbList |
+| 工具/折扣页 `/tools/` `/esim-deals/` | Organization + WebSite + FAQPage + BreadcrumbList |
+| 列表枢纽 `/compare/` | Organization + WebSite + BreadcrumbList |
 - ✅ `llms.txt`（50 国 + 28 对决 + research/guides 自动枚举）、`catalog.json`（机器可读 50 国）、sitemap 508 URL（自定义 `layouts/sitemap.xml`：无 changefreq/priority；lastmod 三层解析——国家页=该国快照日 / 编辑页=自身 date / 其余=全站最新快照日）
 - ✅ 出站导流单一出口：全站只有 `partials/cta-out.html` 一个出站点，`hugo.toml [params.outbound]` 一处配置（active 指向、rel、UTM、campaign 按页面类型自动）
 - ✅ 品牌 logo：**8/8 全量接入**（airalo/ubigi/yesim/roamic/roami/alosim=.png，holafly/saily=.webp），prov-logo partial 先探 .png 再探 .webp；放 `static/img/providers/<key>.png|.webp` 即自动切换（零配置）
@@ -292,8 +305,10 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `partials/provider-agg.html` / `vs-agg.html` | 品牌级 / 对决级聚合 |
 | `partials/cta-out.html` | ★ 全站唯一出站点（rel/UTM/深链全在这） |
 | `partials/prov-logo.html` | logo 自动切换（fileExists 先探 .png 再探 .webp，都没有 → monogram） |
-| `partials/schema.html` | 全部 JSON-LD（**jsonify 必须 `| safeJS`**，Hugo 0.146+ 否则二次编码） |
+| `partials/schema.html` | BreadcrumbList（全站）+ Article（**自动**：`.IsPage` 且 Section∈guides/research 的 5+3 篇，date/author/hero 全取 front matter）—— **jsonify 必须 `| safeJS`**（Hugo 0.146+ 否则二次编码） |
+| `partials/schema-org.html` | Organization + WebSite JSON-LD（全站实体锚点，AI 搜索识别品牌；sameAs 留空待官方 profile） |
 | `index.llms.txt`（模板） | llms.txt 自动枚举 |
+| `robots.txt`（模板） | 显式 Allow 15 个 AI/LLM 爬虫 + sitemap（`enableRobotsTXT=true` 下自定义模板优先） |
 
 ### 5.2 scripts/ —— 用法与危险等级
 

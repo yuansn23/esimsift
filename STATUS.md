@@ -246,6 +246,16 @@ layouts/partials/country-stats.html  ← 全站唯一聚合入口
 - ✅ 修复：esim-price-index 标题 56>54 → "eSIM Price Index 2026: Every Country Ranked by Cost"(51)，md+regen MAP 双处同步
 - ✅ 验证：520 页 0 error 0 warning；audit_meta 509 页 0 违规 0 重复；h2/h3 0 违规；check_hardcoded OK；sitemap 508 URL 无备份泄漏；research hub 5 区域卡/6 问答卡/6 FAQ/价差行全部渲染
 
+## 已完成（批次H：AEO/GEO 基础设施 + 前端两处修复，2026-10-02）
+
+- ✅ **AI 搜索引擎优化（AEO/GEO）三层补齐**：
+  - `layouts/partials/schema-org.html`（新）：Organization + WebSite JSON-LD 全站 509 页输出（实体锚点 name/url/logo=apple-touch-icon/publishingPrinciples→methodology；**sameAs 留空不造假**，等有官方社交 profile 再补）
+  - `layouts/partials/schema.html` 追加 Article JSON-LD：`.IsPage` 且 Section∈(guides,research) 自动覆盖 5 guides + 3 research 文章（headline/description/datePublished/dateModified/author=publisher=站级 Organization/mainEntityOfPage/image=hero）
+  - `layouts/robots.txt`（新）：显式 Allow 15 个 AI 爬虫（GPTBot/OAI-SearchBot/ChatGPT-User/ClaudeBot/Claude-User/anthropic-ai/PerplexityBot/Perplexity-User/Google-Extended/GoogleOther/cohere-ai/meta-externalagent/Applebot-Extended 等）+ 声明 sitemap（防御性——AI bot 本就 opt-out）
+- ✅ **前端两处修复**：① 品牌筛选 chip 方向写反（原「点=关掉」→ 现「未过滤时点=只看它，其余关掉；已过滤时点=增删切换；全关=重置全开」）② 斑马纹 `#f5f7fa`→`#eef2f7`（略深增行间分隔；用户看到的绿色=浏览器缓存旧 CSS，代码早已中性色）
+- ✅ 验证：509 页 0 error；首页 3 个 JSON-LD 块（Org+WebSite+Breadcrumb）；509 页 Organization、8 篇 Article；robots.txt 含 sitemap；无 %!f
+- ⏭ 暂缓（等真实资料/上线后）：作者实体 byline（用户无真实团队）、llms-full.txt、speakable、Dataset schema
+
 ## 待办（按优先级）
 
 ### P-2 蓝图 Phase 2（等 P-A 真实数据后；见 docs/keyword-map.md 预留槽位）
