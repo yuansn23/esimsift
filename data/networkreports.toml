@@ -28,6 +28,14 @@ opensignal_facts = [
 ookla_slug = "macau-(sar)"
 ookla_mobile = false
 
+[CN]
+# Opensignal does not publish a Mobile Network Experience report for mainland China,
+# so there are no crowdsourced per-carrier awards to carry. Only the Ookla Global
+# Index figure is citable; the page falls back to the fact-list layout.
+ookla_note = "Ookla's Speedtest Global Index put mainland China's median mobile download at 221.77 Mbps in August 2026, 21st of the markets it ranks. There is no Opensignal Mobile Network Experience report for mainland China, so no crowdsourced per-carrier ranking exists to sit beside it."
+ookla_url = "https://www.speedtest.net/global-index/china"
+ookla_date = "2026-08"
+
 [FJ]
 ookla_mobile = false
 
@@ -43,6 +51,33 @@ opensignal_facts = [
   "O2 won the Coverage Experience award outright with 9.0 out of 10; Three took 5G Download Speed with 187 Mbps."
 ]
 
+# awards —— 上面事实的「逐运营商」视图，供 /networks/{country}/ 记分板表格渲染。
+# 纪律：只做同一份源的转述，不引入新数字；Ookla 仍守「获奖者+报告期+单个数字」。
+# 没有获奖的运营商留空字符串，页面渲染成「—」，不编造。
+[[GB.awards]]
+carrier = "EE"
+opensignal = "11 outright awards including Download Speed at 53.2 Mbps"
+ookla = "Won or shared every UK-wide RootScore for a 26th cycle — 130.3 Mbps median download, H1 2026"
+best = "Best speeds, reliability and rural coverage"
+
+[[GB.awards]]
+carrier = "Vodafone"
+opensignal = ""
+ookla = ""
+best = "Mid-market option with improving metro coverage"
+
+[[GB.awards]]
+carrier = "O2"
+opensignal = "Won Coverage Experience outright at 9.0 out of 10"
+ookla = ""
+best = "Widest nationwide coverage"
+
+[[GB.awards]]
+carrier = "Three"
+opensignal = "Won 5G Download Speed at 187 Mbps"
+ookla = ""
+best = "Fastest 5G speeds"
+
 [DE]
 ookla_note = "Ookla named Telekom the fastest mobile network in Germany for Q1–Q2 2026, with a Speed Score of 77.9 ahead of Vodafone's 56.1."
 ookla_url = "https://www.ookla.com/research/reports/award-report-2026-q1-q2-fastest-mobile-network-telekom-germany"
@@ -55,7 +90,31 @@ opensignal_facts = [
   "Opensignal recognizes Telekom as Germany's Best Network for reliable connections and consistent quality."
 ]
 
+# awards —— 上面事实的「逐运营商」视图，供 /networks/{country}/ 记分板表格渲染。
+# 纪律：只做同一份源的转述，不引入新数字；Ookla 仍守「获奖者+报告期+单个数字」。
+# 没有获奖的运营商留空字符串，页面渲染成「—」，不编造。
+[[DE.awards]]
+carrier = "Telekom"
+opensignal = "11 of 14 awards outright, including Download Speed at 68.9 Mbps — named Germany's Best Network"
+ookla = "Best and Fastest Mobile Network, Q1-Q2 2026 — Speed Score 77.9"
+best = "Fastest network and the best rural coverage"
+
+[[DE.awards]]
+carrier = "Vodafone"
+opensignal = "Second in Download Speed behind Telekom at 56.3 Mbps"
+ookla = "Speed Score 56.1, second in the same Q1-Q2 2026 test"
+best = "Strong city 5G at a mid-market price"
+
+[[DE.awards]]
+carrier = "O2"
+opensignal = "Third in Download Speed at 47.4 Mbps"
+ookla = ""
+best = "Budget pick with wide 4G reach"
+
 [FR]
+ookla_note = "Orange was the fastest mobile provider in France in 2H 2024, with a median download of 122.77 Mbps and a median 5G download of 281.3 Mbps."
+ookla_url = "https://www.ookla.com/research/reports/france-speedtest-connectivity-report-h2-2024"
+ookla_date = "2024-12"
 opensignal_title = "France, November 2025, Mobile Network Experience Report"
 opensignal_url = "https://insights.opensignal.com/reports/2025/11/france/mobile-network-experience"
 opensignal_date = "November 2025"
@@ -64,7 +123,31 @@ opensignal_facts = [
   "Bouygues Telecom still collected 12 of 17 awards including Consistent Quality and Reliability, and shared Reliability with Orange at statistically tied 925 scores."
 ]
 
+# awards —— 上面事实的「逐运营商」视图，供 /networks/{country}/ 记分板表格渲染。
+# 纪律：只做同一份源的转述，不引入新数字；Ookla 仍守「获奖者+报告期+单个数字」。
+# 没有获奖的运营商留空字符串，页面渲染成「—」，不编造。
+[[FR.awards]]
+carrier = "Orange"
+opensignal = "Won Download Speed Experience (83.8 Mbps) and 5G Download Speed outright"
+ookla = "Fastest mobile network, 2H 2024 — 122.77 Mbps median download"
+best = "All-round coverage and the best speeds"
+
+[[FR.awards]]
+carrier = "SFR"
+opensignal = ""
+ookla = ""
+best = "Solid city network alongside Orange and Bouygues"
+
+[[FR.awards]]
+carrier = "Bouygues"
+opensignal = "Collected 12 of 17 awards including Consistent Quality, and shared Reliability with Orange at 925 points"
+ookla = ""
+best = "Consistent quality and strong shared coverage"
+
 [ES]
+ookla_note = "Movistar was Spain's Best Mobile Network and Best 5G Network in Ookla's H1 2025 Speedtest Connectivity Report, with a median download of 102.94 Mbps and a median 5G download of 191.62 Mbps."
+ookla_url = "https://www.ookla.com/research/reports/spain-speedtest-connectivity-report-h1-2025"
+ookla_date = "2025-09"
 opensignal_title = "Spain, April 2026, Mobile Network Experience Report"
 opensignal_url = "https://insights.opensignal.com/reports/2026/05/spain/mobile-network-experience"
 opensignal_date = "April 2026"
@@ -72,6 +155,33 @@ opensignal_facts = [
   "Movistar was the most awarded operator (10 outright, 3 joint) and won the Best Network award.",
   "Movistar won Download Speed outright with 96.7 Mbps, leading Orange (66.8) by 30 Mbps; DIGI took both 5G speed awards with 260.4 Mbps on 5G download."
 ]
+
+# awards —— 上面事实的「逐运营商」视图，供 /networks/{country}/ 记分板表格渲染。
+# 纪律：只做同一份源的转述，不引入新数字；Ookla 仍守「获奖者+报告期+单个数字」。
+# 没有获奖的运营商留空字符串，页面渲染成「—」，不编造。
+[[ES.awards]]
+carrier = "Movistar"
+opensignal = "Most awarded operator (10 outright, 3 joint) and winner of Best Network, with Download Speed at 96.7 Mbps"
+ookla = "Best Mobile Network and Best 5G Network, H1 2025"
+best = "Best network overall — fastest and most reliable"
+
+[[ES.awards]]
+carrier = "Vodafone"
+opensignal = ""
+ookla = ""
+best = "City-focused coverage, a step behind the leaders"
+
+[[ES.awards]]
+carrier = "Orange"
+opensignal = "Second in Download Speed behind Movistar at 66.8 Mbps"
+ookla = ""
+best = "Strong city speeds inside the MasOrange group"
+
+[[ES.awards]]
+carrier = "Yoigo"
+opensignal = ""
+ookla = ""
+best = "Budget urban option in the same group as Orange"
 
 [IT]
 opensignal_title = "Italy, December 2025, Mobile Network Experience Report"
@@ -94,7 +204,31 @@ opensignal_facts = [
   "T-Mobile also won Reliability with 942 points (AT&T 939, Verizon 932); AT&T led Time on Network at 99.6%."
 ]
 
+# awards —— 上面事实的「逐运营商」视图，供 /networks/{country}/ 记分板表格渲染。
+# 纪律：只做同一份源的转述，不引入新数字；Ookla 仍守「获奖者+报告期+单个数字」。
+# 没有获奖的运营商留空字符串，页面渲染成「—」，不编造。
+[[US.awards]]
+carrier = "T-Mobile"
+opensignal = "12 of 16 awards outright, including Download Speed at 192.5 Mbps and Reliability at 942/1000"
+ookla = "Fastest mobile network, H1 2026 — 275.6 Mbps median download"
+best = "Fastest speeds and the most consistent experience nationwide"
+
+[[US.awards]]
+carrier = "AT&T"
+opensignal = "Won Time on Network at 99.6%, ahead of Verizon (99.5) and T-Mobile (99.2)"
+ookla = "159.3 Mbps median download, second to T-Mobile in the same H1 2026 test"
+best = "Holding a connection in packed venues and stadiums"
+
+[[US.awards]]
+carrier = "Verizon"
+opensignal = ""
+ookla = ""
+best = "Widest coverage once you leave the cities"
+
 [CA]
+ookla_note = "Bell was the Best and Fastest 5G provider in Canada for 2H 2025, with a median 5G download of 171.17 Mbps; Ookla found no statistical winner for Best Mobile Network overall."
+ookla_url = "https://www.ookla.com/research/reports/canada-speedtest-connectivity-report-h2-2025"
+ookla_date = "2025-12"
 opensignal_title = "Canada, August 2026, Mobile Network Experience Report"
 opensignal_url = "https://insights.opensignal.com/reports/2026/08/canada/mobile-network-experience"
 opensignal_date = "August 2026"
@@ -103,7 +237,31 @@ opensignal_facts = [
   "Rogers took the most awards (9 total); Bell retained the 5G download lead at 173.6 Mbps."
 ]
 
+# awards —— 上面事实的「逐运营商」视图，供 /networks/{country}/ 记分板表格渲染。
+# 纪律：只做同一份源的转述，不引入新数字；Ookla 仍守「获奖者+报告期+单个数字」。
+# 没有获奖的运营商留空字符串，页面渲染成「—」，不编造。
+[[CA.awards]]
+carrier = "Bell"
+opensignal = "Retained the 5G download lead at 173.6 Mbps"
+ookla = "Best and Fastest 5G Network, 2H 2025 — 171.17 Mbps median 5G download"
+best = "Fastest 5G in the big cities"
+
+[[CA.awards]]
+carrier = "Rogers"
+opensignal = "Took the most awards (9 total), leading Application Experience and sharing Reliability with Telus"
+ookla = ""
+best = "Streaming, and holding a 5G signal the longest"
+
+[[CA.awards]]
+carrier = "Telus"
+opensignal = "Won Best Network and Download Speed outright at 91.8 Mbps"
+ookla = ""
+best = "Best network overall, with the fastest typical downloads"
+
 [MX]
+ookla_note = "Telcel was the Best Mobile Network in Mexico for H2 2025, with a Speedtest Connectivity Score of 73.1 and a median 5G download of 212.68 Mbps."
+ookla_url = "https://www.ookla.com/research/reports/mexico-speedtest-connectivity-report-h2-2025"
+ookla_date = "2025-12"
 opensignal_title = "Mexico, October 2025, Mobile Network Experience Report"
 opensignal_url = "https://insights.opensignal.com/reports/2025/10/mexico/mobile-network-experience"
 opensignal_date = "October 2025"
@@ -111,6 +269,27 @@ opensignal_facts = [
   "Telcel kept the Reliability Experience award with 863 points on a 100-1000 scale, 96 points ahead of AT&T.",
   "Telcel's 5G download averaged 180.7 Mbps — over three times the competition — while AT&T won the Availability award."
 ]
+
+# awards —— 上面事实的「逐运营商」视图，供 /networks/{country}/ 记分板表格渲染。
+# 纪律：只做同一份源的转述，不引入新数字；Ookla 仍守「获奖者+报告期+单个数字」。
+# 没有获奖的运营商留空字符串，页面渲染成「—」，不编造。
+[[MX.awards]]
+carrier = "Telcel"
+opensignal = "Kept Reliability at 863/1000, 96 points ahead of AT&T, and averaged 180.7 Mbps on 5G"
+ookla = "Best Mobile Network, H2 2025 — Speedtest Connectivity Score 73.1"
+best = "Best coverage and speed nationwide"
+
+[[MX.awards]]
+carrier = "AT&T Mexico"
+opensignal = "Won the Availability award"
+ookla = ""
+best = "Staying available in the cities"
+
+[[MX.awards]]
+carrier = "Movistar"
+opensignal = ""
+ookla = ""
+best = "Cheapest entry point in the cities"
 
 [BR]
 opensignal_title = "Brazil, January 2026, Mobile Network Experience Report"
@@ -222,6 +401,9 @@ opensignal_facts = [
 ]
 
 [NL]
+ookla_note = "Ookla's Speedtest Connectivity Report for the Netherlands (1H 2025) made Odido the fastest mobile provider across all technologies, with a 216.3 Mbps median download."
+ookla_url = "https://www.ookla.com/research/reports/netherlands-speedtest-connectivity-report-h1-2025"
+ookla_date = "2025-09"
 opensignal_title = "Netherlands, March 2026, Mobile Network Experience Report"
 opensignal_url = "https://insights.opensignal.com/reports/2026/03/netherlands/mobile-network-experience"
 opensignal_date = "March 2026"
@@ -229,6 +411,27 @@ opensignal_facts = [
   "Odido won Best Network, Download Speed outright (146.4 Mbps) and 5G Download Speed (279.9 Mbps) — after sweeping all 14 categories in the March 2025 edition.",
   "KPN won Coverage Experience (9.4 out of 10) and 5G Coverage Experience (8.3); Time on Network was a statistical tie at 99.3% vs 99.1%."
 ]
+
+# awards —— 上面事实的「逐运营商」视图，供 /networks/{country}/ 记分板表格渲染。
+# 纪律：只做同一份源的转述，不引入新数字；Ookla 仍守「获奖者+报告期+单个数字」。
+# 没有获奖的运营商留空字符串，页面渲染成「—」，不编造。
+[[NL.awards]]
+carrier = "KPN"
+opensignal = "Won Coverage Experience (9.4/10) and 5G Coverage Experience (8.3)"
+ookla = ""
+best = "Widest coverage and the best voice quality"
+
+[[NL.awards]]
+carrier = "Vodafone"
+opensignal = ""
+ookla = ""
+best = "Solid city performance, a step behind Odido and KPN"
+
+[[NL.awards]]
+carrier = "Odido"
+opensignal = "Won Best Network, Download Speed outright at 146.4 Mbps and 5G Download Speed at 279.9 Mbps"
+ookla = "Fastest mobile network, 1H 2025 — 216.3 Mbps median download"
+best = "Fastest network and the most awards"
 
 [BE]
 opensignal_title = "Belgium, March 2026, Mobile Network Experience Report"
@@ -368,14 +571,35 @@ opensignal_title = "Thailand, August 2026, Mobile Network Experience Report"
 opensignal_url = "https://insights.opensignal.com/reports/2026/08/thailand/mobile-network-experience"
 opensignal_date = "August 2026"
 opensignal_facts = [
-  "AIS won the Best Network award, while True dtac users had the fastest overall downloads at 48.0 Mbps (up from 45.4).",
-  "True dtac also won 5G Download Speed with 141.2 Mbps, 28.4 Mbps ahead of the runner-up."
+  "AIS is the most awarded operator in Thailand with 7 sole wins and 3 shared, keeping Consistent Quality at 75.1% and Upload Speed at 15 Mbps.",
+  "DTAC and True jointly took the Best Network award, while DTAC won Reliability outright at 907 points and the fastest downloads at 41.1 Mbps; TrueMove H won 5G Availability at 90.2%."
 ]
 
+# awards —— 上面事实的「逐运营商」视图，供 /networks/{country}/ 记分板表格渲染。
+# 纪律：只做同一份源的转述，不引入新数字；Ookla 仍守「获奖者+报告期+单个数字」。
+# 没有获奖的运营商留空字符串，页面渲染成「—」，不编造。
+[[TH.awards]]
+carrier = "AIS"
+opensignal = "Most awarded operator — 7 sole wins and 3 shared, including Consistent Quality at 75.1% and Upload Speed at 15 Mbps"
+ookla = "Fastest mobile network, Q1-Q2 2026 — Speed Score 70.6"
+best = "Best all-round network and the widest coverage"
+
+[[TH.awards]]
+carrier = "True Move"
+opensignal = "Shared the Best Network award and won 5G Availability outright at 90.2%"
+ookla = ""
+best = "Best 5G signal availability"
+
+[[TH.awards]]
+carrier = "DTAC"
+opensignal = "Shared the Best Network award and won Reliability outright at 907/1000, plus the fastest downloads at 41.1 Mbps and 5G Download at 102.7 Mbps"
+ookla = ""
+best = "Most reliable network with the fastest downloads"
+
 [KR]
-ookla_note = "South Korea ranked 7th worldwide for median mobile download speed in Ookla's Speedtest Global Index (June 2026)."
-ookla_url = "https://www.speedtest.net/global-index/south-korea"
-ookla_date = "2026-06"
+ookla_note = "Ookla's RootMetrics controlled testing across the Seoul-Incheon market in H2 2025 put LG U+ on top with an Overall RootScore of 993 out of 1000 and the highest median download speed at 853.37 Mbps; all three carriers scored between 982 and 993."
+ookla_url = "https://www.ookla.com/research/reports/rootmetrics-south-korea-2h-2025"
+ookla_date = "2025-11"
 opensignal_title = "South Korea, December 2025, Mobile Network Experience Report"
 opensignal_url = "https://insights.opensignal.com/reports/2025/12/southkorea/mobile-network-experience"
 opensignal_date = "December 2025"
@@ -383,6 +607,27 @@ opensignal_facts = [
   "SK Telecom won Download Speed outright with 189.3 Mbps, 35 Mbps ahead of KT (154.3), plus Coverage (9.4 out of 10) and 5G Coverage (7.3).",
   "KT won 5G Download Speed with 486.2 Mbps; LG U+ won 5G Availability with 90.3%."
 ]
+
+# awards —— 上面事实的「逐运营商」视图，供 /networks/{country}/ 记分板表格渲染。
+# 纪律：只做同一份源的转述，不引入新数字；Ookla 仍守「获奖者+报告期+单个数字」。
+# 没有获奖的运营商留空字符串，页面渲染成「—」，不编造。
+[[KR.awards]]
+carrier = "SK Telecom"
+opensignal = "Won Download Speed outright at 189.3 Mbps, plus Coverage (9.4/10) and 5G Coverage (7.3)"
+ookla = ""
+best = "Best overall network and the widest coverage"
+
+[[KR.awards]]
+carrier = "KT"
+opensignal = "Won 5G Download Speed at 486.2 Mbps, 35 Mbps clear of the next carrier on overall speed"
+ookla = ""
+best = "Fastest 5G downloads"
+
+[[KR.awards]]
+carrier = "LG U+"
+opensignal = "Won 5G Availability at 90.3%"
+ookla = "Top Overall RootScore in Seoul-Incheon, 2H 2025 — 993/1000, on a median download of 853.37 Mbps"
+best = "Best 5G availability and the fastest city speeds"
 
 [SG]
 opensignal_title = "Singapore, July 2026, Mobile Network Experience Report"

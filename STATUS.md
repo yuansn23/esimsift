@@ -56,6 +56,13 @@ layouts/partials/country-stats.html  ← 全站唯一聚合入口
    算出的指数**不能**当 `reviewRating`（Google 明文禁止「依賴人工編輯編制評分資訊」）。想携带这类指数用
    `additionalProperty`（`PropertyValue`）；`offers.lowPrice/highPrice/offerCount` 必须是 **JSON 数字**不是字符串。
    一律跑 `scripts/check_output.py` 兜底
+10. **抓来的数据可能夹带本地语言，纯英文站必须罗马化**（2026-10-03 事故）：Airalo 韩国套餐源头叫
+   `'짱 Jjang - 1 GB`，原样上了 `/compare/south-korea/` 与 `catalog.json`。**拉丁变音符保留**（`Élan`/`Fáilte`/`Prosím`
+   是真实产品名），**非拉丁一律丢**。归一化在 `scripts/scrape/toml_write.py::clean_plan_name()`；
+   数据层跑 `validate.py`（构建前拦），产物层跑 `check_output.py`（`hugo` 后拦）
+11. **`static/` 下放什么就发布什么**（2026-10-03 发现）：`static/img/esim/图片_backup_20260929/` 连带里面的
+   `.workbuddy/`（内部 py 脚本 + 日志 + memory md）被原样拷进 `public/`，线上 HTTP 200 可直接下载。
+   **备份/草稿/临时产物一律放项目根，`static/` 只放页面真正引用的资源**
 
 ## 已完成（本轮）
 
@@ -352,6 +359,167 @@ layouts/partials/country-stats.html  ← 全站唯一聚合入口
 - ✅ **管线加固**（`package.json`）：新增 `check:output`；`build` = `build:css` → `validate` → **`hugo`** → **`check:output`**（顺序关键：产物校验必须在构建之后）
 - ✅ **校验**：`validate.py` 0 error 0 warning；`check_css_sync.py` OK（486 类）；`hugo` 528 页 exit 0；`check_output.py` **516 页 / 2117 块 JSON-LD 全绿**；`check_headings.py` 0 bad
 - 📌 **结论**：`itemReviewed` 为组织/商家的评分**不得**由编辑部计算；想拿星级只有一条正路 —— 上真实的站内用户评分体系
+
+## 已完成（Japan 深度页收口 + 页头二级菜单 + 品牌子页补链，2026-10-03 第五轮）
+
+- ✅ **`/networks/japan/` 标题下徽章行收口**（用户要求）：删掉 `5G live` 与 `all brands ride all 3` 两个徽章（两者在正文里已反复讲透，徽章位置重复）；保留 `3 carrier networks` + `177 plans tracked`
+- ✅ **日期改为构建时的系统日期**：原徽章读 `country-stats.checkedDate`（= 上游列表最后一次核对日，JP 是 **Sep 30, 2026**），现改 `now.Format "Jan 2, 2006"` → **Updated Oct 3, 2026**。两个日期语义不同，不混用：**发布日期**用 `now`（页面每次发布都显示当天）；**上层核对日**仍在右栏脚注里写明（`…listings at the Sep 30, 2026 snapshot`），保住可信度
+- ✅ **页头 `Network map` 升级为数据驱动二级菜单**（`partials/header.html`）：
+  - 列出所有已发布的 `/networks/{slug}/` 深度页（`site.GetPage` 逐个门控，**0 个时自动退回单链接，1 个时就只有 1 条，不造假条目**；加国家自动变长）
+  - 复用既有 `nav-mega` / `mega-region`（max-h-44 滚动）/ `mega-link` 组件，与 Compare countries、Guides 下拉同款；窄面板 `w-80 left-0`
+  - 与 Compare countries 大菜单**不重复**：那个进 `/compare/{slug}/`（价格），这个进 `/networks/{slug}/`（网络）
+- ✅ **品牌×国家子页补入链**（`compare/provider.html` 新增「Which network does {A} ride in {C}」段）：`/compare/{country}/{brand}/` 这 400 页原本**一条网络链接都没有**。新段落写清「品牌在该国没有自己的基站，走的是本国宿主运营商 ×N + 名字列表」，并给出深度页链接；深度页未建时退回 `/networks/` 枢纽链接 → **建满 50 国后自动变成 400 条入链**
+- ✅ **入链终态**（Japan 为例）：页头菜单 516 页全站 + 枢纽卡 1 + 国家页 1 + 品牌子页 8 = 正文上下文入链 10 条（此前只有 2 条：枢纽 + 国家页）
+- ✅ **校验**：`validate.py` 0/0；`check_css_sync.py` OK（487 类）；`hugo` 528 页 exit 0；`check_output.py` 516 页 / 2117 块 JSON-LD 全绿；`check_headings.py` 0 bad（新 h2 无标点）
+- 📌 **IA 结论**：**不再另建顶层「Networks」入口**——页头已有 7 个顶层项 + 2 个大菜单，再开一个与 Compare countries 内容高度重叠的菜单会稀释信息架构。深度页的入口设计为「页头一个二级菜单 + 三处正文上下文内链」，随国家数自动扩张，无需改结构
+
+## 已完成（清剿抓取数据夹带的非拉丁套餐名 + 双语种守卫，2026-10-03 第六轮）
+
+- ✅ **问题**：用户发现 `/compare/south-korea/airalo/` 里出现韩文 `짱 Jjang - 1 GB`。站点是纯英文站，不该有韩文
+- ✅ **根因**：`data/plans/*.toml` 是 **2026-09-30 从 esimdb.com / holafly.com 抓取**的（`scripts/scrape/`），Airalo 韩国套餐在源头就叫 `'짱 Jjang - 1 GB`（`짱` = 韩语"最棒"，前面还带一个 DOM 残留的 **前导撇号**）。数据原样入库 → 原样上页
+- ✅ **影响面（量化）**：全站源文件扫描，**非拉丁文字只有这一处**（Hangul 18 行 / 1 文件）。其余 `Prosím`(CZ) `Élan`(FR) `Fáilte`(IE) `Hé Hé`/`Hè Hè+`(NL) 等 6 国 100+ 条是**拉丁变音符的本地词，属 Airalo 真实产品名 → 保留**。产物层命中 4 个文件：`/compare/south-korea/`、`/compare/south-korea/airalo/`、`catalog.json`、`/tools/`
+- ✅ **修复**：18 条改名 `'짱 Jjang - X` → `Jjang - X`（丢韩文 + 丢前导撇号），带 18 条精确计数断言，修完 `짱` 残留 0
+- ✅ **抓取层归一化**：`scripts/scrape/toml_write.py` 新增 `clean_plan_name()`（丢非拉丁脚本 + 去前导标点 + 收空格），在 `parse_plan` 里统一过一遍，改动会打印出来 —— **重抓不会复发**
+- ✅ **两侧守卫**（新）：
+  - `scripts/validate.py` §3（数据层，构建前）：套餐名含非拉丁脚本 → **ERROR**；首尾空白、首字符是标点的残留 → ERROR。**新抓数据后跑它**
+  - `scripts/check_output.py` ④（产物层，`hugo` 之后）：全站 `.html` + `.json` 扫非拉丁脚本 → ERROR。**故意不拦拉丁变音符**
+- ✅ **反向测试**（证明守卫不是摆设）：数据层植入 1 条韩文名 → 报 2 条 ERROR（非拉丁 + 前导标点）；产物层植入 `bad.html` + `bad.json` → 报 5 条（含 `catalog.json` 与韩国页的真实残留）。清理后两侧复跑全绿
+- ✅ **校验终态**：`validate.py` 0/0；`hugo` exit 0；`check_output.py` **517 文件（516 页）/ 2117 块 JSON-LD 全绿**；产物内非拉丁字符 **84 → 0**
+- ⚠️ **顺带发现（尚未处理，待用户决策）**：`static/img/esim/图片_backup_20260929/` 是图片处理的备份目录，内含 `.workbuddy/` 子目录（19 个文件：内部 py 脚本 + 处理日志 + memory md）。**`static/` 下所有东西都会被 Hugo 原样发布** —— 线上实测 `https://www.esimsift.com/img/esim/图片_backup_20260929/.workbuddy/process_log.txt` **HTTP 200（35KB）**，且已随 first commit（`3e37047`）进 git。无任何页面链接它（不会被爬虫主动发现），但路径可直接访问。**建议移出 `static/` 放项目根**（见 PROJECT.md §14 红线 22）
+
+## 已完成（networks 网络深度页从 1 国扩到 12 国，2026-10-03 第七轮）
+
+- ✅ **目标**：用户要求把 `/networks/{country}/` 从 Japan 一国扩到 11 国（美国 德国 加拿大 法国 墨西哥 泰国 西班牙 韩国 中国 英国 荷兰），**质量不低于日本、禁止同质化模板化、必须过谷歌 SEO、目的是抢排名与自然流量**
+- ✅ **数据层（3 个研究子代理 + 人工核 URL）**：`data/networkreports.toml` 新增 10 国 `.awards[]` 记分板（每国 3-4 家运营商 × Opensignal/Ookla 双源结论），补齐 CA/FR/MX/ES/**NL** 缺失的 `ookla_note`，KR 的 Ookla 换成 **RootMetrics Seoul-Incheon** 源，TH 的 `opensignal_facts` 校正为 **August 2026** 认证数，新增整块 `[CN]`（**只有 Ookla Global Index 221.77 Mbps；Opensignal 不发布中国大陆报告**）。所有引用 URL 逐个 curl/WebFetch 验真，**未编造任何数字**
+- ✅ **`data/carriers.toml`**：补齐 CN 缺失的 `info.detail`（China Mobile / China Unicom / China Telecom 三条强项+短板）
+- ✅ **11 篇 `content/en/networks/*.md`**：每篇 5-6 个**该国独有**的 H2 议题（非模板），例如
+  - US：Band 71 / VoLTE / 2022 年 3G 关网
+  - DE：2017 实名法 / Video-Ident 与 PostIdent / 欧盟漫游 / 3G 已退网
+  - CA：Bell-Telus 共享无线网 / 高价数据 / 无实名 / 落基山断点
+  - FR：实名登记 / Orange 2G 2026 关停 / 欧盟漫游
+  - MX：2026-01-09 全国线路实名（**旅行 eSIM 属境外发行、豁免**）/ Telcel 一家独大
+  - TH：护照+人脸生物识别 / 游客 SIM 60 天上限 / 海岛覆盖
+  - ES：四个网络三个东家（MasOrange 同一集团）/ 实名 / 加那利与巴利阿里
+  - KR：实名与 ARC（后付费）/ 游客可买 data-only eSIM / 5G 486 Mbps
+  - CN：境外 eSIM 绕过防火墙 / **必须起飞前装好** / 国行手机 eSIM 阉割
+  - GB：无实名 / 脱欧终结欧盟免费漫游 / 农村=EE
+  - NL：无全面实名 / Odido 是 T-Mobile NL 改名 / 预付费 eSIM 稀缺
+  - 后 6 个 H2（运营商卡/记分板/品牌×网络表/城市/FAQ/下一步）为数据驱动结构段，故意保持一致
+- ✅ **踩坑（自查自修）**：`kicker` 与 FAQ 里曾写 `{{< count-providers >}}` **短代码**，但 **YAML front matter 不跑短代码** → 会原样渲染成字面量。10 个文件已改为 `the`（短代码只在正文用）
+- ✅ **语法修正（数据驱动）**：模板 `{{ $country.name }} has N national carrier networks` 对需要冠词的国家会生成 **"United States has 3…"**。新增 `data/countries.toml` 可选字段 `article = "The"`（US/GB/PH/NL/AE 共 5 国），模板改为 `{{ with $country.article }}{{ . }} {{ end }}{{ $country.name }}` → 现渲染 **"The United States has 3 national carrier networks"**。只改主谓位置，`in the United States` 等定语位置不受影响
+- ✅ **校验终态**：`validate.py` **0 error 0 warning**；`check_css_sync.py` OK（487 类）；`hugo` **539 页**（+11）exit 0；`check_output.py` **528 文件（527 页）/ 2161 块 JSON-LD 全绿**（无格式串泄漏、无非拉丁字符、评分全在区间）；`check_headings.py` **0 bad**
+- ✅ **产物层实测（12 页全过）**：
+  - 体积 86-91 KB（日本 90 KB，**新页与日本同档**）
+  - **title 全站 526 条 0 重复**；meta description 132-148 字符；canonical 全有
+  - 每页 **FAQPage×1 + BreadcrumbList×1 + Question×5**（日本 6）
+  - awards 记分板：11 国渲染真实双源表格；**中国无 awards → 自动回退 fact-list 布局**（Ookla 段 + Source 链接），不空块不报错
+  - **内链 0 死链**（12 页全部 href 逐条解析回文件系统）
+  - **入链三条全通**：枢纽 `/networks/` 卡片 ✓、国家页 `/compare/{c}/` Networks 段 ✓、品牌子页 `/compare/{c}/airalo/` 段 ✓（12/12 YES）
+  - 页头 **Network map → Carrier breakdowns** 二级菜单已列出 12 国（带国旗 + "X networks" 文案）
+  - `sitemap.xml` 收录 12 个 `/networks/{c}/`
+- 📌 **结论**：模板已证明是**纯数据驱动**——11 国只加 `content md + networkreports.awards` 就出页，版式/内链/结构化数据零改动；余 38 国同法推进
+
+## 已完成（12 页 SEO/内容策略重写：去同质化 + 信息增量 + 权威外链，2026-10-03 第八轮）
+
+- ✅ **目标**：用户下了 21 条硬要求（关键词植入/自然语义/堆砌/密度/遗漏词/LSI/禁极限目的地/信息增量/语句通畅/谷歌审核/锚文本多样/搜索意图/H2 同质化/排名超越竞品/竞品空白=机会/关键词蚕食/终审/权威外链 3-4 条）。批判性重审 12 页，**先量化再动刀**
+- 🔍 **改前体检（量化，不是感觉）**：
+  - **重复句**：跨页完全相同的句子（≥60 字符、出现在 ≥4 页）**14 条**——全部来自模板静态导语与「Next steps」卡片副文案
+  - **锚文本**：`/compare/{c}/` 在单页内重复 3-4 次、同锚文本跨 12 页 12 次
+  - **外链**：多数页 **0 条**外部权威引用（只有 methodology 内链）
+  - **H2**：多页共用「How {国家} networks score in independent tests」等模板标题
+  - **极限目的地**：正文出现 backcountry / glacier / desert 等小众线
+- ✅ **模板层（`layouts/networks/single.html`）**：为 5 个模板生成的 H2（carriers / scoreboard / brands / cities / next）加 **front matter 覆盖钩子**（`h2_carriers` / `h2_scoreboard` / `h2_brands` / `h2_cities` / `h2_next`），未提供时才落回默认句；4 段静态导语重写为**随国家/网络数变化**的句子；「Keep reading」4 张卡与右侧「Keep exploring」列表改为**逐国文案**；3 处 `methodology` 锚文本改为 `how we rank plans` / `ranking methodology` / `methodology` 三种；右侧 `/networks/` 锚从 `eSIM network map →` 改为 `Network map for every destination →`
+- ✅ **内容层（12 篇 md 全量重写）**：
+  - **删净跨页重复句**（14 → **0**）
+  - **每篇 5-6 个该国独有 H2**，且 H2 覆盖钩子逐个手写 → 全站 **133 个不同 H2，0 碰撞**
+  - **LSI 15/15 全覆盖**（MVNO / roaming / VoLTE / spectrum / congestion / hotspot tethering / fair use / host network / prepaid …）
+  - **禁极限目的地**：删 backcountry/glacier/desert 等，改为大众旅游场景（城市、近郊、热门海岛与常规交通线）
+  - **锚文本多样化**：正文锚重复率 **0%–4.5%**（单页 ≥22 条锚）
+  - **每篇补 2-3 条竞品没写的独有事实**（如 MX 旅行 eSIM 实名豁免、TH 60 天游客 SIM 上限、CN 必须起飞前装机、NL Odido 改名）
+- ✅ **权威外链（自然分布在正文，不是脚注堆）**：每页 **4 条**（Opensignal 国别报告 + Ookla 国别报告 + 该国监管机构 + GSMA eSIM 规范）；**中国 3 条**（Opensignal 不发布大陆报告），美国补 FCC 3G 关网指南凑满 4 条。**全部 URL 逐个 curl/WebFetch 验真后才写入**
+- ✅ **关键词蚕食专项**：`/networks/{c}/` 的 `seo.title` 与 `/compare/{c}/` 的 title **全面错开**——networks 走「Carriers / Networks」纯网络意图，compare 走「Best … Cheap … From $x/GB」比价意图；12 对标题 **0 重叠词组**
+- ✅ **校验终态**：`validate.py` 0 error 0 warning；`hugo` exit 0；`check_output.py` 全绿；`check_headings.py` **0 bad**；`audit_publish.py` **title 526 条 0 重复 / 内链 0 死链 / 入链三条 12/12 全通**
+- 📌 **结论**：可复用的收口清单已固化为 **`audit_networks.py` + `audit_final.py` + `audit_publish.py`** 三件套（跨页重复句 / 锚文本多样性 / 关键词密度 / LSI 覆盖 / H2 唯一性 / 极限目的地词 / 蚕食边界 / 外链数 / 发布就绪）。余 38 国推进时直接跑这套
+
+## 已完成（GEO 深化 + 核心词植入 + 菜单全展开，2026-10-03 第九轮）
+
+- ✅ **① 页头 Network map 子菜单全展开**：原用 `.mega-region`（`max-h-44` + `overflow-y-auto`），12 国已需滚动。改为**两列网格、去掉高度上限**，面板 `left-auto right-0 w-[32rem]`（32rem 是「左侧不越界」上限：触发点右侧约 524px，右对齐后左边缘 ≈12px，1024 宽视口也放得下）。`max-h-[calc(100vh-7rem)]` 只作极端数量（>40 国）在矮屏上的兜底，12 国**永不触发**
+- ✅ **② llms.txt 收录 12 个国家网络页**：原来只列 `/networks/` 枢纽（AI 检索发现层的真实缺口）。`layouts/index.llms.txt` 改为 `range (site.GetPage "/networks").Pages` 动态列出每国页 + 标题 + 描述 → 现在 12 条全部进 llms.txt（生产构建域名正确）
+- ✅ **③ GEO 结构层（模板）**：`layouts/networks/single.html` 新增三块
+  - **短答块**「The short answer」：首屏下方、正文之前，内容来自 front matter `prompt_answer`。硬要求 = 自包含、点名实体（国家 + 运营商 + 数字）、不依赖上文 —— 这是 AI 引擎最容易被整段引用的部分
+  - **关键事实栅格**：8 项全部构建期推导（运营商家数与名单 / 品牌数 / 预付费套餐数 / 不限量套餐数 / 5G 有无 / 最低 $/GB / 访客实名规则 / 实测报告日期），零写死。顺手天然覆盖 5G · unlimited data · prepaid · price 四个核心词，不必在正文硬塞
+  - **ItemList 结构化数据**：逐运营商 `Organization` 实体（名称 + 技术 + 带宽区间 + Opensignal 结论），让 AI 不必解析 HTML 就能拿到「谁在运营 + 测得多少」。JSON-LD 块数 2161 → **2173**（正好 +12）
+- ✅ **④ GEO 正文层：可提取性改造（第三批）** —— 这是最关键的一层。AI 按块检索，**段落首句若以代词开头或依赖上文，被单独抓走就失去意义**。用脚本扫出 29 处，重写 **24 句**为「自包含 + 点名实体」写法，例如
+  - `This question decides a lot of purchases…` → `Whether a United States eSIM keeps working across the Canadian and Mexican borders decides a lot of purchases…`
+  - `The three separate on performance…` → `Bell, Rogers and Telus separate on performance…`
+  - `Every other page in this network map is about signal.` → `China is the one destination in this network map where the question is routing rather than signal.`
+  - `The gap between first and third…` → `The gap between Telcel in first place and Movistar in third…`
+  - 复核：**61 个 H2 段落首句，代词开头/过短 29 → 0**
+- ✅ **⑤ 核心词自然植入（标题 / H2 / FAQ / 正文）**：用户给的核心词表（Travel eSIM · Data plan · Best · 5G · cheap · unlimited Data · for Tourists/Travel · Cheap 5G Travel Data · value · no roaming · compare/price/buy · prepaid · instant activation）
+  - **标题层**：12 个 `seo.title` 统一为 `{国家} Travel eSIM Networks 2026: Best 5G for Tourists/Coverage/Islands…`（49–55 字符）；H1 统一为 `{国家} Travel eSIM Networks: {运营商} Explained`。**与 `/compare/{c}/`（Best X eSIM 2026: … From $y/GB，价格意图）保持边界**
+  - **H2 层**：重命名 13 个 H2 带入 `data plan` / `no roaming` / `cheap` / `best`（如 `Crossing a German border on the same plan` → `Crossing a German border with no roaming charges`）
+  - **FAQ 层**：每页 **5 → 8 条**自然语言问句（+36 条），覆盖 unlimited data / 是否比本地 SIM 划算 / 数据量估算 / 漫游 / instant activation
+  - **终态覆盖（仅 `<article>` 正文计数）**：Travel eSIM 14–26× · data plan 3–7× · 5G 10–36× · best 2–36× · cheap 2–8× · unlimited data 3–4× · prepaid 2–16× · price 5–17× · buy 3–11× · compare 5–17× · for tourists 1–3× · 分散度**刻意不均**（不为植入而植入）
+- ✅ **校验终态**：`validate.py` 0/0；`check_css_sync.py` OK；`hugo` **539 页** exit 0；`check_output.py` **528 文件 / 2173 块 JSON-LD 全绿**；`check_headings.py` **0 bad**；跨页重复句 **0**；H2 **157 个不同 / 0 碰撞**；全站 title 526 条 **0 重复**；内链 **0 死链**
+- 📌 **踩坑（重要）**：**`hugo server` 会往 `public/` 写 dev 输出**（baseURL=localhost + livereload）。本站是**手动上传 `public/` 部署**且无 CI 配置 —— 所以「开着 dev server 直接部署」会把 localhost 链接传上线。**部署前必须先停掉 dev server，再跑一次 `npm run build`**（本次实测：停服后重新生产构建，`public/llms.txt` 里 localhost 出现次数 = 0）
+- 📌 **另一条**：删 `static/img/esim/图片_backup_20260929/` 时 `mv` 报 Permission denied，根因是**运行中的 hugo server 监视该目录并持有句柄**，删除后它的 watcher 报错导致首页 500。**改 `static/` 前先停 dev server**
+
+## 已完成（补齐 H3 标题层 + FAQ 标题化 + 标题层核心词收口，2026-10-03 第十轮）
+
+- ❌ **补齐第九轮漏项**：用户要求核心词植入「标题 **h2h3**」，第九轮只动了 H2。实测 12 页**正文 H3 数量 = 0**（页面上仅有的 5 个 H3 全来自页脚模块：`Popular comparisons` / `eSIM providers` / `Company`…）—— 这一半需求确实没做
+- ✅ **① 正文 H3 共 43 个，全部由原文已有子主题提升而来（零新写内容）**
+  - 做法：把每个 H2 下**本来就存在**的行首加粗引导句（`**Bell leads on 5G.**`）升为真实 `###` 标题；**残留行首加粗句 42 → 0**
+  - 落点全部是「运营商对照段」（每页 3–4 个，一国一条）+「法规段」（france 2 条 / japan 3 条）
+  - 每个 H3 只带与该子主题**真正相关**的核心词（5G / best / cheap / value / prepaid / no roaming / instant activation / tourists）。反向约束也守住了：netherlands Vodafone、south-korea LG U+、thailand True Move 都不是廉价定位，就**不给它们写 cheap/value**
+  - 加粗句升为 H3 后，其下段落首句同步改成**实体开头**（`It retained…` → `Bell retained…`），保住第九轮 GEO 正文规则 —— 复核：H2/H3 后首段「代词开头或过短」**0 处**、跨页重复句 **0**
+- ✅ **② FAQ 问题升级为真实 `<h3>`（97 条）**：FAQ 一直是 `<details>/<summary>`，**不是标题元素**，AI 引擎按标题切块时整块丢失 —— 而用户给的原词「**Unlimited Japan eSIM for Tourists | Instant Activation**」恰好只活在这里
+  - 模板：`<summary …><h3 class="contents font-sans text-ink-900">{{ .q }}</h3><span …>+</span></summary>`
+  - **`display:contents` 是关键**：全局有 `h1,h2,h3,h4 { @apply font-display text-ink-950; text-wrap: balance }`，直接包 h3 会把问题渲染成 Sora 深色并触发 balanced 换行；`contents` 让 h3 不产生盒子 → **视觉零变化、纯语义增益**（`<h3>` 放在 `<summary>` 内是 HTML 规范明确允许的写法）
+  - 8 个共用该结构的版式统一处理：networks / guides ×2 / research ×4 / tools
+  - 升级前先清两类问题：**① 4 条含禁用标点**（`Which Japan network is fastest, Docomo or SoftBank?` → `Is Docomo or SoftBank the faster Japan network?`）；**② 4 条与同页 H2 近乎同题**（china 的 `Will a China eSIM work in a phone bought in China?` 与正文 H2 逐字相同 → `Does a China eSIM work on a mainland-bought handset?`）
+- ✅ **③ 顺带修掉一处原有内容缺陷**：英国页 FAQ 的 `Does a UK eSIM work in Ireland?` 与 `Does a UK eSIM work in Ireland with no roaming charges?` **同事实、同结论**，标题化后变成同页重复标题。后者换成**正文已支撑但信息位不同**的 `Is Northern Ireland covered on a UK eSIM?`（含「边境县手机会漂移到爱尔兰共和国网络」这一独立提醒）
+- ✅ **④ 标题层核心词覆盖（H1 + H2 + H3 + FAQ 问题）**：5G **12/12** · unlimited **12/12** · travel eSIM **12/12** · buy **12/12** · best **10/12** · prepaid **9/12** · cheap **8/12** · data plan **7/12** · value **6/12** · no roaming **6/12** · tourists **3/12**
+  - 第九轮后标题层仍为 0 的 `unlimited`，靠 FAQ 标题化拿到 **12/12**，且**没有新写一句内容**
+  - `for travel` 标题层仍为 0：**故意不做** —— 它是「for Tourists/Travel」的自然语言形态，正文里已有，硬塞进标题就是用户明令禁止的「为植入而植入」
+- ✅ **校验终态**：`validate.py` **0 error / 0 warning**；`check_css_sync.py` **492 个 class 全部命中**（含新增 `contents`）；`hugo` **539 页**；`check_output.py` **528 文件 / 2173 块 JSON-LD** 全绿；`check_headings.py` **527 个 html，bad h2/h3 = 0**；正文 H3 **43 个全唯一**、禁用标点 **0**
+
+## 已完成（城市块信息增益重写：逐城市实况取代模板化单句，2026-10-03 第十一轮）
+
+用户指出：`/networks/` 12 页的城市块都是「城市名 chips + 一句同构泛话」，判为「太敷衍了，毫无信息增益可言，就轻飘飘的一句话难道也符合谷歌 SEO 吗」。
+
+- ✅ **诊断（先量化，不猜）**：城市块 = `carriers.toml[ISO].info.cities`（**只有城市名**）+ front matter `cities_note`（每页一句，句式同构：`{城市列表} all run fast 5G on every network, and city signal is not the variable that decides a {国家} purchase…`）。全站扫描确认：**这是当时唯一真正在渲染的模板化填充块** —— 其余 14 个覆盖键 12 页全部写满（0 页缺），模板里的兜底默认句只在待命、不上屏。
+- ✅ **数据层判断**：仓库内**没有城市级数据源**（无城市速度 / 城市报告），`info.detail`（运营商 strong/weak）只有加拿大有，且 `compare/single.html` 也在用 `info.cities` —— 所以既不能改 `cities` 的 schema，也不能编城市级数字。
+- ✅ **改法**：新增 front matter `cities_detail`（`name` + `reality`），逐城市一句，回答**「这座城市之后，问题从哪条路 / 哪片地形 / 哪个区域开始」** —— 全部建立在仓库已有的网络结构事实（Bell/Telus 共享无线网、Telekom 覆盖最宽）与可核地理（Highway 1 进班夫、Sea-to-Sky 去惠斯勒、Mae Hong Son 环线）之上，**零新造数字**。
+- ✅ **模板**：`{{ replace $r $n (printf "<strong …>%s</strong>" $n) 1 | safeHTML }}` 把段首城市名加粗 → AI 单独抽走一行仍自包含（与红线 28 同源），且**不新增标题**（不给 `check_headings.py` 添风险）。缺 `cities_detail` 时回退旧 chips。
+- ✅ **验收**：`audit_cities.py` —— 12 页 **46 行**城市实况；行数与 front matter 一致、**每条都带 `<strong>`**、首句全部 ≥45 字符且非代词开头、**跨页重复 0**、导语 **12 条互异**；城市行平均 155 字符（旧版整块只有约 200 字符的 1 句）。
+- ✅ **校验终态**：`validate.py` **0 error / 0 warning**；`check_css_sync.py` **492 class 全命中**；`hugo` **539 页**；`check_output.py` **528 文件 / 2173 块 JSON-LD**；`check_headings.py` **527 html，bad h2/h3 = 0**。
+- ⚠️ **踩坑留档**：Hugo 的 `hasPrefix` 是 **STRING PREFIX**、`strings.TrimPrefix` 是 **PREFIX STRING**，两者拼用会**静默失效**（构建全绿但加粗没上屏）—— 改用 `replace` 完成，并靠产物断言兜住（见 PROJECT.md 红线 30）。
+
+## 已完成（guides 全栏目 GEO 合规审核与优化，2026-10-03 第十二轮）
+
+用户要求：审核 `guides/` 导航下的内容是否合规，并优化。审计口径按 §3.8 的四层（发现层 / 结构层 / 标题层 / 正文层）。
+
+- 🔍 **审计结论（改前）**：10 个 guides 页 **10/10 缺整个结构层** —— 短答块、关键事实栅格、实体 ItemList 三块全无，原 JSON-LD 只有 `Article` / `FAQPage` / `BreadcrumbList`。正文层另有 20+ 处首句不以实体起首（`Usually not a callable one.` / `Same network, same service.` / `This is where the two designs genuinely diverge:` / `Yes — completely.` / `No.` / `Modestly.`）。发现层（llms.txt）**已合规**：10 页全部在内。
+- ✅ **结构层（三个版式补齐）**：`guides/region.html` 加短答块 + 6 格事实栅格（国家数 / 最低 $/GB 及国家 / 区域均价 / 最便宜入门价及国家 / 夺冠最多品牌及次数 / 价格核对日，**全部构建期推导**）+ 逐国家 `Country` 实体 ItemList；`guides/single.html` 加短答块 + 阅读时长/复核日 + front matter `facts` 事实对 + **章节索引 ItemList**；`_default/list.html` 加短答块 + 子页 `Article` ItemList（`/guides/` 是唯一使用该版式的栏目）。
+- ✅ **正文层**：改前 20+ 处首句不自足 → 改后 **0**（正文段落 + FAQ 首答双双归零）。全部只重组原句，**未新增事实、未编造数字**。
+- ✅ **刻意不做 HowTo**：guides 的 H2 是问答式标题而非编号步骤，硬拆 `steps` 等于编造 —— 明确放弃。
+- ✅ **顺带修掉 3 类跨页重复**（此前只查 `/networks/` 所以长期未被发现）：3 个模板 H2 各跨 5 页同题、4 段模板正文跨 5 页同文、4 条 FAQ 答案跨 4 页同文。改法 = 把区域名/计数拼进句子 + 给长文页新增 `h2_next` 覆盖钩子。**改后任意两页正文段落逐字重复 = 0**。
+- ✅ **踩坑留档**：`.Fragments.Headings` 顶层是空 ID/Title 的合成根节点，直接 range 只产出 1 条空 ItemList（构建与四重校验均不报错，靠产物断言才发现）；改用 `.Content` 的 `findRE` 扁平提取。
+- ✅ **验收数字**：结构层 **10/10 页 4 项全绿**；正文层未自足首句 **0**；FAQ 首答未自足 **0**；H2 跨页重复 **0**；正文段落跨页重复 **0/247**；ItemList 条目（区域 18/13/8/8/3 个国家；长文 10/9/8/7/8 个章节；枢纽 9 篇指南）。
+- ✅ **校验终态**：`validate.py` **0 error / 0 warning**；`check_css_sync.py` **492 class 全命中**；`hugo` **539 页**；`check_output.py` **528 文件 / 2184 块 JSON-LD**（较改前 +11）；`check_headings.py` **527 html，bad h2/h3 = 0**。
+
+## 已完成（guides 长文页两级目录 + 右侧吸顶栏，2026-10-03 第十三轮）
+
+用户要求：在「Basics & how-to」（= `guides/single.html` 渲染的 5 篇）文章右侧做一个吸顶模板，既要合 Google SEO，也要满足用户搜索意图。方向经用户确认：**右栏 = 目录 + 内链 + 比价**，目录做 **H2 + H3 两级**。
+
+- ✅ **正文先补 H3（内容层）**：5 篇原本只有 50 个 H2、1 个 H3。新增 **29 处 H3**（what-is-an-esim 9 / how-to-install-esim 4 / esim-vs-physical-sim 6 / dual-sim-and-esim 6 / esim-compatibility-check 4），**落点全部是原文已有的并列子主题**（加粗引导句、并列分述、既有清单项、两种用户画像），零硬塞、零新造事实。
+- ✅ **同步改写 H3 后首段首句**：H3 会把原本「不是段落首句」的句子顶到被 AI 单独抽取的位置 —— 本轮因此暴露 6 处 `<45 字符`/代词开头首句（其中 4 处由改动引入），已全部补足为自包含句。
+- ✅ **新建 `layouts/partials/aside-toc.html`**：从 `.Content` 用 `findRE` 扁平提取 H2/H3 生成锚点目录。**只扫正文 markdown** —— 模板渲染的短答块 / 关键事实栅格 / FAQ / 相关阅读刻意不进目录（它们要么在正文之前、要么是页尾模块）。纯服务端渲染，爬虫与禁用 JS 的读者都能拿到。
+- ✅ **`guides/single.html` 改双栏**：单栏 `max-w-3xl` → `max-w-6xl` 栅格 `lg:grid-cols-[minmax(0,720px)_300px]`（与 networks 页同一断点与列宽）；右栏 `sticky top-24` + `max-h-[calc(100vh-7rem)] overflow-y-auto`，内含目录卡 + 复用的 `aside-destinations.html`（热门目的地比价内链）。
+- ✅ **移动端不丢导航**：右栏 `hidden lg:block`，同时在正文顶部插一个 `lg:hidden` 的 `<details>` 折叠目录，手机上长文也有跳转入口。
+- ✅ **高亮跟随（渐进增强）**：JS 只写 `aria-current` 属性，激活样式由 `.toc-link[aria-current="true"]` 承担 —— **一个 class 都不切**。原因：`check_css_sync.py` 会整个跳过含 `{{ }}` 的 class 属性，Tailwind JIT 又不编译运行时拼出的类名，两头都拦不住。新增 `.toc-link` / `.toc-l2` / `.toc-l3` 到 `main.css` 的 `@layer components`，class 属性一律静态字面量。
+- ✅ **验收数字**：5 页目录条目 **20 / 15 / 16 / 15 / 14**（H2+H3）；每个锚点在页面里都有对应 `id`（缺失 0）；模板 H2 混入 **0**；桌面与移动两份目录条目完全一致；标题全局唯一（80 个，重复 0）；H2/H3 后首句违规 **0**；跨页重复段落 **0/119**。渲染后 H3：21 / 17 / 18 / 18 / 31（含 FAQ 与页脚）。
+- ✅ **校验终态**：`validate.py` **0 error / 0 warning**；`check_css_sync.py` **500 class 全命中**（+8）；`hugo` **539 页**；`check_output.py` **528 文件 / 2184 块 JSON-LD**；`check_headings.py` **527 html，bad h2/h3 = 0**。
 
 ## 待办（按优先级）
 

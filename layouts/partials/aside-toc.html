@@ -1,0 +1,40 @@
+{{- /* ─────────────────────────────────────────────────────────────
+   长文页「On this page」章节目录（partials/aside-toc.html）
+
+   为什么要有它：
+   · SEO —— 给搜索引擎和 AI 引擎一份「可切分的章节大纲」。AI Overviews 一类
+     生成式检索按块抓取正文，有明确 H2/H3 锚点结构的页面更容易被单独引用；
+   · 搜索意图 —— 这类长文是信息型检索，读者来「找一个具体答案」（怎么装、
+     贵不贵、锁不锁机），目录让他们一步跳到那一节，而不是从头滚到底。
+
+   规则：
+   ① 只扫 .Content（正文 markdown）。模板渲染的短答块 / 关键事实栅格 / FAQ
+      不在其中 —— 它们要么位于正文之前、要么是页尾模块，进目录只会稀释信号；
+   ② 整段服务端渲染，爬虫与禁用 JS 的读者都能拿到完整目录；
+   ③ 高亮跟随是渐进增强：JS 只写 aria-current 属性，无 JS 时目录照样可点可跳；
+   ④ ⚠ Hugo 的 .Fragments.Headings 顶层是空 ID/Title 的合成根节点（已实测），
+      所以这里用 findRE 从 .Content 扁平提取，返回顺序即文档顺序；
+   ⑤ class 属性必须是静态字面量 —— 含 {{ }} 的属性会被 check_css_sync.py 整个跳过，
+      真漏编译就没人拦了。
+
+   调用：{{ partial "aside-toc.html" . }} —— 本 partial 只渲染 <nav>，
+        卡片外壳与标题由调用方决定（桌面吸顶卡 / 移动端折叠块）。
+   ───────────────────────────────────────────────────────────── */ -}}
+{{- $heads := findRE `<h[23][^>]*>.+?</h[23]>` .Content -}}
+{{- with $heads -}}
+<nav data-toc aria-label="On this page">
+  <ul class="border-l border-ink-100">
+    {{- range . }}
+    {{- $lvl := 2 }}
+    {{- if hasPrefix . "<h3" }}{{ $lvl = 3 }}{{ end }}
+    {{- $id := replaceRE `^.*?id="([^"]+)".*$` "$1" . }}
+    {{- $txt := replaceRE `^.*?>(.+)</h[23]>$` "$1" . | plainify | strings.TrimSpace }}
+    {{- if eq $lvl 3 }}
+    <li><a href="#{{ $id }}" class="toc-link toc-l3" data-toc-link>{{ $txt }}</a></li>
+    {{- else }}
+    <li><a href="#{{ $id }}" class="toc-link toc-l2" data-toc-link>{{ $txt }}</a></li>
+    {{- end }}
+    {{- end }}
+  </ul>
+</nav>
+{{- end -}}

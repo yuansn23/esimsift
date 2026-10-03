@@ -5,19 +5,34 @@ hero_alt: "A traveler boarding a plane while using a phone that runs a home numb
 date: 2026-10-01
 description: "How dual SIM works with one eSIM plus one physical SIM: eSIM Sift explains keeping your home number while the eSIM carries data."
 faq_heading: "Is dual SIM with an eSIM right for you"
+prompt_answer: "Dual SIM lets one phone run two lines at once, and the standard travel setup is a physical SIM holding your home number and an eSIM carrying local data. Calls and texts keep arriving on the home number while mobile data runs on the eSIM, provided you set the eSIM as the line for data and leave data roaming switched off on the home line."
+h2_answer: "The dual SIM setup that works abroad"
+h2_facts: "Dual SIM and eSIM facts"
+facts:
+  - label: "Typical travel setup"
+    value: "Home number on the physical SIM, travel data on the eSIM"
+  - label: "The setting that matters"
+    value: "Set the eSIM as the line for mobile data"
+  - label: "What to switch off"
+    value: "Data roaming on the home line"
+  - label: "What keeps working"
+    value: "Calls and SMS on the home number"
+  - label: "Two eSIMs at once"
+    value: "Supported on recent iPhones and many recent Androids"
+h2_next: "Finish the dual SIM setup"
 faqs:
   - q: "Can I receive SMS on my home SIM while using an eSIM?"
     a: "Yes, as long as the home line stays active in the physical slot. Receiving SMS at your home number continues as normal while the eSIM carries data, which is exactly why the dual SIM setup beats swapping cards — your bank and app verification codes keep arriving."
   - q: "Does dual SIM drain battery faster?"
-    a: "Modestly. Two active radios mean slightly higher idle drain than one, though modern phones manage this well. The practical tip: if you don't need your home line's calls while abroad, you can toggle it off entirely and keep only its SMS arriving — or leave both on and accept a few percent a day."
+    a: "Dual SIM does drain the battery a little faster. Two active radios mean slightly higher idle drain than one, though modern phones manage this well. The practical tip: if you don't need your home line's calls while abroad, you can toggle it off entirely and keep only its SMS arriving — or leave both on and accept a few percent a day."
   - q: "Can I have two eSIMs active at the same time?"
     a: "On recent iPhones (13 and later) and many recent Androids, yes — two eSIM lines can be active simultaneously, physical SIM included or not. On older dual SIM phones, one eSIM plus the physical SIM is the working combination. Check your model in our compatibility guide."
   - q: "What happens if data roaming is on for both lines?"
     a: "The phone uses data through whichever line is set as the data line, but roaming charges follow each line's own rules. The safe pattern abroad: data line set to the eSIM, Data Roaming ON for the eSIM only, and Data Roaming OFF for the home line so it can never silently connect to a foreign network."
   - q: "Which line receives my bank verification codes while traveling?"
-    a: "The line your bank has on file. For most people that is the home number, which keeps receiving SMS as long as the home SIM stays active in its slot. If you ever gave a service the eSIM's number, that line receives those codes instead, so know which number each account uses before you fly."
+    a: "The line your bank has on file receives the codes. For most people that is the home number, which keeps receiving SMS as long as the home SIM stays active in its slot. If you ever gave a service the eSIM's number, that line receives those codes instead, so know which number each account uses before you fly."
   - q: "Can I turn my home line off and back on during a trip?"
-    a: "Yes, and it is non-destructive. Toggling a line off simply stops it from registering; the SIM or profile stays installed and the line returns the moment you switch it back on. It is the cleanest battery saver on data-heavy days, with SMS arriving again whenever you need them."
+    a: "Turning the home line off and back on during a trip is safe and non-destructive. Toggling a line off simply stops it from registering; the SIM or profile stays installed and the line returns the moment you switch it back on. It is the cleanest battery saver on data-heavy days, with SMS arriving again whenever you need them."
   - q: "Does 5G work on both lines at once?"
     a: "On most recent phones the line set for data anchors the 5G connection and the second line sits on 4G or standby, which is fine for calls and texts. The eSIM can run 5G abroad wherever its partner networks broadcast it. The home line does not need 5G to keep receiving calls and SMS."
 ---
@@ -59,17 +74,29 @@ Leave the home line as the default for outgoing calls, or set the eSIM if your p
 
 Each line has its own number, its own plan and its own mailbox. What trips people up is only routing — which line the phone picks for what.
 
-**Outgoing calls** go out on whichever line is the default. On iPhone you can flip the line per call from the dialer, and both platforms let you set a preferred line per contact — the hotel on the eSIM, family on the home line. **Texts** send from the line you choose; iPhone asks which line to start new conversations with and remembers per contact. One more routing rule worth knowing: replies stay on the line the conversation started on, so a thread that began on the home line keeps billing as the home line for its whole life.
+### Which line makes your outgoing calls
 
-The part most guides skip: iMessage, WhatsApp, Telegram and every other messaging app don't use a phone line at all — they ride whichever line carries data. Abroad that is the eSIM by design. WhatsApp keeps working exactly as at home on your registered number; the eSIM moves its bytes and your home line's roaming status is irrelevant to it. iMessage behaves the same way over data, with one nuance — messages addressed to your home number still arrive because Apple's servers route them, but a friend's plain green-bubble SMS to your home number arrives as an international text, free to receive on most home carriers and worth confirming on yours.
+**Outgoing calls** go out on whichever line is the default. On iPhone you can flip the line per call from the dialer, and both platforms let you set a preferred line per contact — the hotel on the eSIM, family on the home line.
+
+### Which line your texts use
+
+**Texts** send from the line you choose; iPhone asks which line to start new conversations with and remembers per contact. One more routing rule worth knowing: replies stay on the line the conversation started on, so a thread that began on the home line keeps billing as the home line for its whole life.
+
+### How WhatsApp and iMessage pick a line
+
+Messaging apps are the part most guides skip. iMessage, WhatsApp, Telegram and every other one of them ignore the phone line completely and ride whichever line carries data. Abroad that is the eSIM by design. WhatsApp keeps working exactly as at home on your registered number; the eSIM moves its bytes and your home line's roaming status is irrelevant to it. iMessage behaves the same way over data, with one nuance — messages addressed to your home number still arrive because Apple's servers route them, but a friend's plain green-bubble SMS to your home number arrives as an international text, free to receive on most home carriers and worth confirming on yours.
 
 The practical takeaway: everyone who reaches you through an app reaches you over the eSIM's data. Only plain SMS and ordinary phone calls touch the home line — and that is exactly the traffic you want arriving.
 
 ## How Wi-Fi Calling behaves abroad
 
+### The trick Wi-Fi Calling gives a dual SIM traveler
+
 Wi-Fi Calling is a home-carrier feature that routes calls and texts over any internet connection instead of the cell network. The dialer behaves normally; the audio moves as data. For a dual-SIM traveler it has one genuinely useful trick: abroad, the home line's calls can ride the eSIM's data connection, so people dialing your home number reach you without roaming voice rates — the call never touches a foreign cell tower.
 
-The catch is billing policy. Some carriers treat Wi-Fi Calling from a foreign network as roaming anyway, some restrict it to calls placed to your home country, and a few disable it abroad entirely. It looks free at home and behaves differently abroad, so verify with your carrier before depending on it. Enable it before departure — on iPhone under *Settings → Cellular →* your home line → *Wi-Fi Calling*, on Android under that SIM's settings on most skins — and place one test call while still on home soil. One safety note: emergency calls may route differently with Wi-Fi Calling active, so check how your carrier handles them where you're headed.
+### Why Wi-Fi Calling billing is unpredictable
+
+Billing policy is the catch, and it varies by carrier rather than by phone. Some carriers treat Wi-Fi Calling from a foreign network as roaming anyway, some restrict it to calls placed to your home country, and a few disable it abroad entirely. It looks free at home and behaves differently abroad, so verify with your carrier before depending on it. Enable it before departure — on iPhone under *Settings → Cellular →* your home line → *Wi-Fi Calling*, on Android under that SIM's settings on most skins — and place one test call while still on home soil. One safety note: emergency calls may route differently with Wi-Fi Calling active, so check how your carrier handles them where you're headed.
 
 ## Data roaming settings explained
 
@@ -78,7 +105,9 @@ The two roaming toggles do different jobs and get confused constantly:
 - **Data Roaming (eSIM line): on abroad.** The eSIM's partner networks are foreign networks; without this toggle it cannot use them at all.
 - **Data Roaming (home line): off, always, abroad.** Your home carrier's roaming rates apply the moment the home line uses foreign data. Off means off — calls and incoming SMS still work.
 
-One more trap: **automatic** network selection can park a line on the wrong partner. If the eSIM connects but crawls, switch its selection to manual and pick from the partner list on the plan page. The same manual trick controls the home line's voice rates — roaming off stops data, but a call you take still bills at the partner's voice rate, and partners of the same carrier can differ widely.
+### The automatic network selection trap
+
+**Automatic** network selection can park a line on the wrong partner. If the eSIM connects but crawls, switch its selection to manual and pick from the partner list on the plan page. The same manual trick controls the home line's voice rates — roaming off stops data, but a call you take still bills at the partner's voice rate, and partners of the same carrier can differ widely.
 
 ## Three bill shock scenarios and the one toggle that stops each
 
@@ -92,7 +121,7 @@ Every bill-shock story ends with a toggle that was already on the phone. Three o
 
 ## Every toggle to set before you fly
 
-The whole system in one glance:
+Every dual SIM setting worth checking before you fly fits in one table:
 
 | Toggle | Line | Set to | Why |
 |---|---|---|---|

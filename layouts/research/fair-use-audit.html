@@ -120,7 +120,7 @@
     <div class="mt-6 max-w-3xl space-y-3">
       {{ range $faqList }}
       <details class="card group p-0">
-        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-ink-900">{{ .q }}<span class="shrink-0 text-lg font-light text-ink-300 transition-transform group-open:rotate-45" aria-hidden="true">+</span></summary>
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-ink-900"><h3 class="contents font-sans text-ink-900">{{ .q }}</h3><span class="shrink-0 text-lg font-light text-ink-300 transition-transform group-open:rotate-45" aria-hidden="true">+</span></summary>
         <p class="px-5 pb-5 text-sm leading-relaxed text-ink-600">{{ .a }}</p>
       </details>
       {{ end }}

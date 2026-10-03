@@ -123,7 +123,14 @@ esimsift/
 
 ### P-2 蓝图 Phase 2（上线后，槽位已留在 docs/keyword-map.md）
 - [ ] 区域枢纽页 ×5（/compare/asia/ 等）
-- [x] ~~`/networks/{country}/` 单国运营商深度页~~ **2026-10-03 起做，Japan 完成（1/50）**：`layouts/networks/single.html`（数据驱动：carrier 画像/品牌→网络表/城市/Opensignal+Ookla/FAQ schema）+ `content/en/networks/japan.md`；枢纽卡 + 国家页 ⑦b 已补回链。余 49 国按同模板加 md
+- [x] ~~`/networks/{country}/` 单国运营商深度页~~ **2026-10-03 上线 12/50**（Japan ✅ 首版；US / DE / CA / FR / MX / TH / ES / KR / CN / GB / NL 同日批量补齐；余 38 国加 md + `networkreports.awards` 即可，版式零改）：`layouts/networks/single.html`（数据驱动：carrier 画像/品牌→网络表/城市/Opensignal+Ookla 记分板/FAQ schema）
+  - **模板层去同质化（2026-10-03 第八轮）**：5 个数据驱动 H2 支持 front matter 覆盖钩子 `h2_carriers` / `h2_scoreboard` / `h2_brands` / `h2_cities` / `h2_next`（不写则落回默认句）；静态导语与「Keep reading / Keep exploring」卡片文案改为随国家与计数变化。**加新国家时不需要动模板**
+  - **GEO 层（2026-10-03 第九轮）**：模板内固定三块 —— ① 「The short answer」直答块（front matter `prompt_answer` + 可选 `h2_answer`）；② 关键事实栅格（8 项全部推导 + front matter `fact_registration`，可选 `h2_facts`）；③ 运营商 `ItemList` JSON-LD 实体列表。llms.txt 由 `layouts/index.llms.txt` 动态收录每国页。**加新国家时只需在 md 里写 `prompt_answer` 与 `fact_registration` 两个字段**
+  - **入链四条（全部 `site.GetPage` 门控，未建页不产生死链；2026-10-03 第二轮补齐）**：
+    ① **页头 `Network map` 二级菜单**（`partials/header.html`）——列出所有已发布深度页（当前 12 条）；**0 个深度页时自动退回单链接**，加国家自动变长，不造假条目
+    ② 枢纽 `/networks/` 目的地卡的「Carrier breakdown →」
+    ③ 国家页 `/compare/{country}/` 的 Networks 段落内嵌回链
+    ④ **品牌×国家子页 `/compare/{country}/{brand}/` 新增「Which network does {A} ride in {C}」段**（原本 400 页一条网络链都没有）——建满 50 国后自动变成 400 条入链
 - [ ] /networks/{carrier}/ 运营商页、/devices/{device}/ 设备页（设备页数据源 devices.toml 已就绪）
 - [ ] tools 再加 2 个
 - [ ] sitemap 分片（>1000 URL 时）
@@ -145,6 +152,9 @@ esimsift/
 ```toml
 [JP]
 name = "Japan"            # 显示名（表格/面包屑/标题用）
+article = "The"           # 可选：需要定冠词的国家才有（US/GB/PH/NL/AE）。只用在主谓位置
+                          #   （`{{ with $country.article }}{{ . }} {{ end }}{{ $country.name }} has N …`）
+                          #   定语位置（`in {{ $country.name }}`）不要拼，否则出现 "in the The …"
 slug = "japan"            # URL 段，必须与 content/en/compare/japan.md 文件名一致
 flag = "img/flags/jp.svg"
 region = "Asia"           # 必须精确等于筛选 chip：Asia/Europe/Americas/Africa & Middle East/Oceania
@@ -338,7 +348,7 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `check_hardcoded.py` | `python -X utf8 scripts/check_hardcoded.py` 硬编码总量守卫：扫 content/en + layouts + hugo.toml，命中"50 countries / 8 providers / 28 matchups"等写死总量即失败（国家页 seo.description 豁免——脚本再生的）。**新增国家/品牌或改模板后必跑** | 只读 |
 | `check_headings.py` | `python -X utf8 scripts/check_headings.py` 渲染产物 h2/h3 标点守卫（`,` `;` `:` `—` `–` 全站 0 豁免；改模板/加内容后跑，需先 build） | 只读 |
 | `check_css_sync.py` | `python -X utf8 scripts/check_css_sync.py` **CSS 同步守卫（2026-10-03 加）**：扫 `layouts/`+`content/` 所有 `class="…"`，与 `static/css/tailwind.css` 逐类比对，缺任一即 exit 1。Tailwind JIT 对未知类静默忽略，没这道守卫时「改了模板忘重建 CSS」会静默上线（症状：HTML 结构正确、样式全无）。已挂进 `npm run validate` | 只读 |
-| `check_output.py` | `python -X utf8 scripts/check_output.py` **产物守卫（2026-10-03 加，须在 `hugo` 之后跑）**：① 全站扫 Go 格式串泄漏 `%!x(…)`（`math.Round` 返回 float64 喂 `%d`、printf 里字面 `%` 没写 `%%`、有 `%s` 不给参数/没占位符多给参数 —— 三种都会把乱码印在正文里而 `hugo` 不报错）；② 每个 JSON-LD 块必须 `json.loads` 可解析；③ `reviewRating`/`aggregateRating`/独立 `Rating` 的 `ratingValue` 必须是 JSON 数字且落在 `[worstRating‖1, bestRating‖5]`（含"量表写成字符串"这一失败模式）。已挂进 `npm run check:output`，并在 `npm run build` 末尾 | 只读 |
+| `check_output.py` | `python -X utf8 scripts/check_output.py` **产物守卫（2026-10-03 加，须在 `hugo` 之后跑）**：① 全站扫 Go 格式串泄漏 `%!x(…)`（`math.Round` 返回 float64 喂 `%d`、printf 里字面 `%` 没写 `%%`、有 `%s` 不给参数/没占位符多给参数 —— 三种都会把乱码印在正文里而 `hugo` 不报错）；② 每个 JSON-LD 块必须 `json.loads` 可解析；③ `reviewRating`/`aggregateRating`/独立 `Rating` 的 `ratingValue` 必须是 JSON 数字且落在 `[worstRating‖1, bestRating‖5]`（含"量表写成字符串"这一失败模式）；④ **全站扫非拉丁文字**（韩文/汉字/西里尔/阿拉伯/泰文/希伯来/日文假名等 —— 站点是纯英文站，拉丁变音符如 `Élan`/`Fáilte`/`Prosím` 是品牌真实套餐名，**故意不拦**）。已挂进 `npm run check:output`，并在 `npm run build` 末尾 | 只读 |
 | `append_carrier_info.py` | 追加 [ISO.info]（幂等，**已执行过，勿再跑**——再跑也只是提示跳过） | 幂等 |
 | `backfill_networks_uniform.py` | `python -X utf8 scripts/backfill_networks_uniform.py` 一键把 8 品牌每国 `networks` 填成该国运营商（同国同运营商，幂等）。**新增品牌转完 TOML 后必跑** | 安全 |
 | `gen_sample_data.py` | ☠☠☠ **永远禁止整跑** —— 会用 SAMPLE 数据覆盖全部真实抓取结果 | 禁令 |
@@ -565,7 +575,7 @@ npm run build
 | guides 指南页 | ✅ 5 篇 + 枢纽 |
 | 区域枢纽页 ×5（/compare/asia/ 等） | ⬜ Phase 2 |
 | /networks/{carrier}/ 运营商页 | ⬜ Phase 2（数据已就绪：networks 2026-10-02 已补真） |
-| /networks/{country}/ 单国运营商深度页 ×50 | 🟡 1/50（Japan ✅ 2026-10-03；模板 `layouts/networks/single.html` 纯数据驱动，其余 49 国只需加 content md + FAQ） |
+| /networks/{country}/ 单国运营商深度页 ×50 | 🟡 **12/50**（Japan + US/DE/CA/FR/MX/TH/ES/KR/CN/GB/NL，2026-10-03；模板 `layouts/networks/single.html` 纯数据驱动 + H2 覆盖钩子，余 38 国只需加 content md + FAQ + `networkreports.awards`） |
 | /devices/{device}/ 设备兼容页 | ⬜ Phase 2（数据源 devices.toml 已备） |
 | tools 第 2/3 个工具 | ⬜ Phase 2（已有行程计算器） |
 | sitemap 分片（>1000 URL） | ⬜ 现在 507，暂不需要 |
@@ -590,7 +600,7 @@ npm run build
 10. 并行 agent 最多 3 个（API 429）；被内存压力杀掉的后台任务**不自动重启**，等指令再续。
 11. **改过 `layouts/` 里的 class 必须重建 CSS**（2026-10-03 版式塌陷事故）—— `static/css/tailwind.css` 是 Tailwind CLI 的独立产物，裸 `hugo` 不会更新它；Tailwind JIT 对未知类**静默忽略、构建不报错**，后果是「HTML 结构对、样式全无」。真实症状：`/networks/japan/` 右侧吸顶内链栏掉到页面底部，因为 `lg:grid-cols-[minmax(0,720px)_300px]` 从未被编译。**对策**：一律 `npm run build`（`build:css` 已前置），并用 `scripts/check_css_sync.py` 兜底；验证时别只看源码，要 `curl -s http://127.0.0.1:1313/css/tailwind.css | grep <类名>` 确认浏览器真拿到了规则。
 12. TOML 表数组（如 `[[XX.info.detail]]`）追加在文件末尾合法；validate.py 目前只校验 profiles 的 join key，追加 detail 后跑一遍确认。
-13. **标题硬规则（用户定，2026-10-01）**：全站 `<h2>/<h3>` 必须一句话、用户视角，**禁止逗号/冒号/破折号碎片**（"X, honestly" / "A: B" / "W — and L" 全是反例；FAQ H2 一律用户问句如 "What should I know before buying a {C} eSIM"）。改模板后跑渲染扫描验证：`python -X utf8` 遍历 public/*.html 提取 h2/h3 文本查 `,:—–`（唯一豁免：/research/ 枢纽卡的文章主标题 "Title: Subtitle" 惯例）。
+13. **标题硬规则（用户定，2026-10-01）**：全站 `<h2>/<h3>` 必须一句话、用户视角，**禁止逗号/冒号/破折号碎片**（"X, honestly" / "A: B" / "W — and L" 全是反例；FAQ H2 一律用户问句如 "What should I know before buying a {C} eSIM"）。**2026-10-03 第十轮起 FAQ 问题本身也是 `<h3>`（见红线 29），所以问句文本同样受这条约束** —— 问句不能靠逗号挂从句（`Which Japan network is fastest, Docomo or SoftBank?` → `Is Docomo or SoftBank the faster Japan network?`）。改模板后跑渲染扫描验证：`python -X utf8 scripts/check_headings.py` 遍历 public/*.html 提取 h2/h3 文本查 `,:—–;`（唯一豁免：/research/ 枢纽卡的文章主标题 "Title: Subtitle" 惯例）。
 14. **`data/*.toml` 文件名禁止连字符** —— `network-reports.toml` 的数据键是带 `-` 的 `"network-reports"`，点号 `hugo.Data.networkReports` 取不到，模板静默渲染空卡且**构建不报错**（真实事故：45 国引用卡全部空白才发现）。已改名 `networkreports.toml`；新数据文件一律无连字符命名。
 15. Go html/template 会把 href 里的 `(` `)` 编码成 `%28%29`（`| safeURL` 也拦不住；HK/Macao 的 Global Index 链接即如此）—— HTTP 等价，接受即可，别再花时间"修"。
 16. `{{ with .field }}` 内 dot 被替换成字段值，再链 `.key` 会报 `can't evaluate field key in type string` —— 需要外层键时用 `range $b := $xs` 显式循环变量。
@@ -602,6 +612,30 @@ npm run build
     - **有 `%s` 就得给够参数、没占位符就别多传参数** → 否则句尾多出 `%!(EXTRA string=Airalo, string=Holafly)`
     通用验证：`grep -rho '%![A-Za-z]*(\([^)]*\))' public/ --include=*.html | sort | uniq -c`，或直接跑 `scripts/check_output.py`。
 20. **`itemReviewed` 为 Organization/LocalBusiness 时，评分必须来自真实用户（2026-10-03 GSC 事故）** —— 品牌页曾用编辑部算的「价格竞争力指数」（cheapest 命中国数÷覆盖国数×10）当 `reviewRating`，导致 GSC 报「评分超出了指定范围或默认范围（在 reviewRating 中）」、内容无效。**双因**：① `bestRating` 写成字符串 `"10"` 且漏 `worstRating` → Google 退回默认 1–5；② 8 个品牌里 7 个分值 < 1，本身就落在区间外。**更根本**：Google 明文规定这类评分「評分必須直接來自用戶，請勿依賴人工編輯編制評分資訊」，编辑计算分**永远拿不到星级**且踩质量指南。**对策**：指数改用 `additionalProperty`（`PropertyValue`）如实携带，页面可见读数不变；`offers.lowPrice/highPrice/offerCount` 必须是 **JSON 数字**。想拿星级只有一条正路 —— 上真实站内用户评分体系。
+21. **抓来的套餐名可能夹带本地语言，必须英文罗马化（2026-10-03 事故）** —— Airalo 韩国套餐在源头叫 `'짱 Jjang - 1 GB`（`짱` 是韩语"最棒"，外加一个 DOM 残留的前导撇号），直接落在 `/compare/south-korea/`、`/compare/south-korea/airalo/`、`catalog.json`、`/tools/` 四处，在纯英文站上是明显瑕疵。**口诀**：拉丁变音符**保留**（`Élan`/`Fáilte`/`Prosím`/`Hé Hé` 是 Airalo 真实产品名，共 6 国 100+ 条），**非拉丁一律丢**（韩文/汉字/西里尔…）。**两侧守卫**：`scripts/validate.py` §3 拦数据层（名字含非拉丁脚本 → ERROR，还查首尾空白与首字符是标点的残留），`scripts/check_output.py` ④ 拦产物层（`.html` + `.json` 全扫）。**抓取层归一化**在 `scripts/scrape/toml_write.py::clean_plan_name()`，重抓自动清洗并把改动打印出来。**新抓一批数据后务必跑 `validate.py`。**
+22. **`static/` 下放任何东西都会原样发布到线上（含内部脚本与笔记）** —— 真实事故：`static/img/esim/图片_backup_20260929/` 是一次图片处理的备份目录，里面还有 `.workbuddy/` 子目录（19 个文件：11 个内部 py 脚本、4 个 process/webp 日志、3 张 png、1 个 memory md）。它被 Hugo 原封不动拷进 `public/`，**线上 `https://www.esimsift.com/img/esim/图片_backup_20260929/.workbuddy/process_log.txt` 实测 HTTP 200**（35KB），且已随 first commit 进了 git。`static/` = 发布目录，**备份/草稿/临时产物一律放项目根**（同红线 17：`_guides_backup_20261002/` 的教训，但那条是 `content/` 渲染成页，这条是 `static/` 直接可下载，更隐蔽）。新加图片资源时只放**页面真的要引用的文件**。
+    - **✅ 已于 2026-10-03 清除**：整个目录移出仓库到 `D:\esimsift\_deleted_20261003_图片_backup_20260929\`（站外、非 git 仓库，19 个文件逐个大小校验一致），`static/` 与 `public/` 下的副本已同步删除。**违规只是「位置不对」，不是「内容不该留」——删前一律先做站外备份**，不要真删。
+    - **准入检查（每次往 `static/` 加东西前跑一遍）**：`find static -type d -name ".workbuddy" -o -name "*backup*"` 与 `find static -type f \( -name "*.py" -o -name "*.log" -o -name "*.txt" -o -name "*.md" \)` 都应为空。`static/` 只放页面引用的图片/字体/`robots.txt`/`llms.txt` 等**真正的站点资源**。
+23. **YAML front matter 里不能写 Hugo 短代码（2026-10-03 事故）** —— 11 篇 networks 页的 `kicker` 与 FAQ 答案里写了 `{{< count-providers >}}`，**front matter 不经过短代码渲染管线**，于是页面直接印出字面量 `{{< count-providers >}}`，而 `hugo` 全程 exit 0、`validate.py` 也不报。**口诀**：短代码只能出现在 `.Content`（md 正文）里；front matter 的值是纯字符串，想动态就留空让模板层去算（title/description/kicker 需要动态数字时，改在模板里 `printf`，不要塞进 front matter）。此类字面量泄漏可被 `scripts/check_output.py` 的 `{{`/`}}` 扫描兜住。
+24. **模板里的固定句会跨页逐字重复 = 同质化模板页（2026-10-03 第八轮）** —— 页面型一旦 ×10 以上实例，模板中**不含国家名/计数的静态句子**（导语、卡片副文案、定死的 H2）会在 12 页里逐字相同。内容层写得再用心，谷歌看到的仍是换皮模板。**两条对策**：① 句子尽量带 `{{ $country.name }}` / `{{ len $nets }}` / `{{ $s.planCount }}`；② 定死的 H2 给 **front matter 覆盖钩子**（本站 networks 已落 `h2_carriers` / `h2_scoreboard` / `h2_brands` / `h2_cities` / `h2_next`）。验收标准：跨页重复句（≥60 字符、≥3 页）必须 **0**，H2 全站 **0 碰撞**。
+25. **锚文本必须分散，权威外链必须落在正文（2026-10-03 第八轮）** —— 同一 URL 的锚文本在一页里重复 3 次（如三处都写 `methodology`）是明显的过度优化信号；同一目标出现 2+ 次就换说法。同时每页要有 **3–4 条权威外链**（Opensignal 国别报告 + Ookla 国别报告 + 该国监管机构 + GSMA），**分布在该论点出现的位置**而不是页脚堆一排，且**每条 URL 落库前必须 curl/WebFetch 验真**（监管站 403/000 是反爬不是死链）。页头导航 / 面包屑 / 侧栏属站点框架，重复属正常，不必改。
+26. **`hugo server` 会往 `public/` 写 dev 输出（2026-10-03 踩坑）** —— 本站是**手动上传 `public/` 部署、无 CI 配置**。开着 dev server 时 `public/` 里是 `baseURL=http://localhost:<port>` + `livereload.js` 的版本，**直接打包上传就会把 localhost 链接发布到线上**（`llms.txt`、sitemap、canonical、og:url 全中招）。**纪律：部署前先停掉所有 `hugo.exe`，再跑一次 `npm run build`，并确认 `grep -c localhost public/llms.txt` = 0。**
+27. **改 `static/` 下会被 watcher 监视的目录前，先停 dev server（2026-10-03 踩坑）** —— 删除 `static/img/esim/图片_backup_20260929/` 时 `mv` 报 `Permission denied`，根因不是权限而是**运行中的 hugo server 持有该目录句柄**；删掉后它的文件监视器抛 `The process cannot access the file`，导致 `/` 与 `/compare/japan/` 渲染 500（生产构建本身是好的）。**顺序：停服 → 改 `static/` → 构建 → 起服。**
+28. **AI 检索按「块」抓取，段落首句必须自包含（2026-10-03 第九轮 GEO）** —— 内容页的每个 H2 段落，**首句若以 `This / It / They / The three / There are` 开头，或依赖上一段才读得懂，被 AI 引擎单独抽走就失去意义**。GEO 硬规则：① 首句点名实体（国家名 + 运营商名 + 机构名），不靠代词；② 首句本身就是结论，不是过渡；③ 关键数字带来源与日期；④ 表格前给一句摘要句。实测 12 页 61 个 H2 段落里曾有 29 处违规，改写后为 0。**新写任何内容页都要过这一关**（脚本按 `## ` 分段取首句，正则匹配 `^(It|They|This|That|These|Those|There|Both)\b` 或长度 <45）。
+29. **FAQ 问题必须是真 `<h3>`，且一律用 `display:contents` 包裹（2026-10-03 第十轮）** —— 站点 FAQ 是 `<details>/<summary>`，`{{ .q }}` 原先只是裸文本，**不是标题元素**，AI 引擎按标题切块时整块 FAQ 丢失。统一改为 `<summary …><h3 class="contents font-sans text-ink-900">{{ .q }}</h3><span …>+</span></summary>`，8 个版式（networks / guides×2 / research×4 / tools）共用同一标记，改一处要全改。三个连带约束：① **`contents` 不能省** —— 全局有 `h1,h2,h3,h4 { @apply font-display text-ink-950; text-wrap: balance }`，裸 `<h3>` 会把问题渲染成 Sora 深色并平衡换行；`display:contents` 让 h3 不生成盒子，才能**零视觉变化**只拿语义（`<h3>` 置于 `<summary>` 内是规范允许的）。② **FAQ 问题现在会被 `check_headings.py` 扫到**，所以问题文本同样禁 `, ; : — –`（曾有 4 条违规，已改写）。③ **FAQ 问题与同页正文 H2 不能近乎同题**，否则产生同页重复标题（曾有 4 处）；同页 FAQ 内部也不允许两条问答同一事实（英国页 Ireland 两条已换成「北爱尔兰 + 边境漂移」，改为信息增量而非删条目）。
+30. **禁止「模板化单句」填充，每个区块必须带独有事实（2026-10-03 第十一轮）** —— `/networks/` 的城市块原本是 `carriers.toml[ISO].info.cities`（**只有城市名**）+ 一句 front matter 泛话（`{城市列表} all run fast 5G on every network, and city signal is not the variable that decides a {国家} purchase. The differences appear…`），12 页同构、零城市级信息，被用户判为「太敷衍、毫无信息增益」。**通用判据：一个区块把国家名换掉后句子仍然成立，它就是填充。** 已改为 front matter `cities_detail`（`name` + `reality`，逐城市一条），reality **必须以城市名起首**（补丁脚本 assert 住），并回答**「这座城市之后，问题从哪条路 / 哪片地形 / 哪个区域开始」**；模板用 `{{ replace $r $n (printf "<strong class='…'>%s</strong>" $n) 1 | safeHTML }}` 加粗段首城市名，使 AI 单独抽走一行仍自包含（与红线 28 同源）。12 页 46 行、跨页重复 0。**新增国家页纪律：`cities_note` 只做导语且必须点名该国自己的排名/结构事实；逐城实况一律进 `cities_detail`；`info.cities` 不能删（`compare/single.html` 在用）。**
+31. **Hugo 字符串函数参数顺序不一致，拼用会静默失效（2026-10-03 踩坑）** —— `hasPrefix` 是 **STRING PREFIX**（`hasPrefix $reality $name`），`strings.TrimPrefix` 是 **PREFIX STRING**（`strings.TrimPrefix $name $rest`），同一模板里方向相反。按直觉写 `hasPrefix $n $r` 会**静默走 else 分支**：`hugo` exit 0、四重校验全绿，只是加粗没上屏。**不要拼用这两个函数** —— 要「把段首实体加粗」直接 `{{ replace $r $n (printf "<strong class='…'>%s</strong>" $n) 1 | safeHTML }}`（`replace` 是 INPUT OLD NEW，**字面**替换非正则；HTML 属性用单引号可免 Go 字符串转义）。**教训是通用的**：模板层的静默失败不会被 `hugo`/`check_output.py` 发现，必须**直接断言产物**（`audit_cities.py` 数渲染 HTML 里的 `<strong>` 个数）。要确认签名就起最小站点（`layouts/index.html` 打印各函数输出）实测，别猜。
+32. **`.Fragments.Headings` 顶层是「合成根节点」，直接 range 会产出空记录（2026-10-03 第十二轮）** —— Hugo 的 `.Fragments.Headings` 顶层有一个 **ID 与 Title 都为空的容器节点**，真正的 `<h2>` 在它的 `.Headings` 子节点里。写 `{{ range $i, $h := .Fragments.Headings }}…$h.ID…{{ end }}` 会**构建成功、四重校验全绿，但只产出一条 `name:"" / url:"…#"` 的空 ItemList**。两种正确写法（均在最小站点实测）：① `{{ range .Fragments.Headings }}{{ range .Headings }}` —— 一层就是 h2，h3 在各自的子节点里；② 用 `.Content` 的 `findRE` 扁平提取：`{{ range $i, $raw := findRE `<h2[^>]*>.+?</h2>` .Content }}`，再用 `replaceRE` 取 `id` 与标题文本。**教训同红线 31：模板层的静默失败只有产物断言能抓** —— `verify_guides.py` 会数 ItemList 的条数与首条 name。
+33. **跨页重复句的检查必须覆盖「所有页面族」，不能只查 `/networks/`（2026-10-03 第十二轮）** —— `audit_networks.py` 只扫 networks，于是 guides 里长期存在：3 个模板 H2（`A regional eSIM or single country eSIM` / `eSIM price guides for other regions` / `More eSIM help before you fly`）各跨 5 页逐字重复、4 段模板正文跨 5 页重复、4 条 FAQ 答案跨 4 页重复。**凡写在 `layouts/` 里、又不含页面变量（区域名 / 计数 / 页面名）的静态句子，必然跨页重复。** 修法：把区域名或计数拼进句子（`One {{ .Params.region }} plan or several single country plans`），或给 front matter 覆盖钩子（guides 长文页新增 `h2_next`）。**通用断言：任意两页的正文段落逐字重复数必须为 0**（检查前先剥掉内链卡片 `<a>…</a>`，那里列同族页面的 description 属合理的重复）。
+34. **GEO 结构层必须覆盖每一个内容版式，不能只做 `/networks/`（2026-10-03 第十二轮）** —— 第九轮只把「短答块 / 关键事实 / 实体 ItemList」做进了 networks，`/guides/` 的两族页面与枢纽页**三块全缺**，AI 拿不到可单独引用的直答句，也拿不到实体清单。补齐位置与内容：`layouts/guides/region.html`（短答块 + 6 格事实栅格，全部构建期推导 + 逐国家 `Country` ItemList）、`layouts/guides/single.html`（短答块 + 阅读时长/复核日 + front matter `facts` 事实对 + 章节索引 ItemList）、`layouts/_default/list.html`（短答块 + 子页 `Article` ItemList；当前仅 `/guides/` 使用该版式）。**新增任何版式都要过 GEO 四层验收**，`audit_guides.py`（发现层 llms.txt / 结构层三块 / 标题层 H3 / 正文层首句自足 + FAQ 首答自足）就是这一层的验收模板。**正文层同样适用于 FAQ 答案**：以 `Yes.` / `No.` / `Modestly.` / `It depends…` 开头的答案被 AI 单独摘走等于没信息，必须点名实体。
+
+35. **长文页的右侧吸顶目录：状态样式一律走 CSS 属性选择器，绝不能由 JS 切 class（2026-10-03 第十三轮）** —— 「Basics & how-to」5 篇长文页（`layouts/guides/single.html`）加了右侧吸顶栏（`On this page` 目录 + 热门目的地比价内链；移动端收成正文之前的 `<details>` 折叠块，桌面栏 `hidden lg:block`）。三条硬约定：
+   ① **目录只扫 `.Content`**（正文 markdown）。模板渲染的短答块 / 关键事实栅格 / FAQ / 相关阅读 **不进目录** —— 它们要么位于正文之前、要么是页尾模块，进目录只会稀释信号。实现用 `findRE `<h[23][^>]*>.+?</h[23]>` .Content` 扁平提取（`.Fragments.Headings` 顶层是合成根节点，见红线 32），再用 `replaceRE` 取 `id` 与文本、`plainify` 去标签，**返回顺序即文档顺序**。
+   ② **高亮状态的 class 绝不出现在 JS 里**。`check_css_sync.py` 会**整个跳过含 `{{ }}` 的 class 属性**（`TEMPLATE_MARKERS`），而 Tailwind JIT 对运行时拼出来的类名静默不编译 —— 两头都拦不住，页面只会「看着能用但没有高亮」。做法：`.toc-link` / `.toc-l2` / `.toc-l3` 写进 `assets/css/main.css` 的 `@layer components`，激活态用 `.toc-link[aria-current="true"]`，JS **只 `setAttribute('aria-current','true')`**，一个 class 都不碰（渐进增强：无 JS 时目录依然完整可点可跳）。
+   ③ **`class="…"` 属性必须是静态字面量**：层级缩进用 `{{ if eq $lvl 3 }}…{{ else }}…{{ end }}` 渲染**两个完整的 `<a>` 标签**，而不是把变量拼进 class 属性值 —— 否则该属性被跳过校验，真漏编译没人拦。
+   **验收**：`verify_toc.py` 断言每页渲染两份目录（桌面 + 移动）、条目数 == md 源 H2+H3 的 2 倍、每个锚点在页面里都有对应 `id`、且**模板 H2（short-answer / keyfacts / faq / more…）零混入**。右栏整栏 `max-h-[calc(100vh-7rem)] overflow-y-auto`，目录长时内部滚动、sticky 不失效。
+
+36. **给长文补 H3 的唯一合法落点：原文已有的并列子主题（2026-10-03 第十三轮）** —— 用户要求目录做两级，但 5 篇正文当时只有 50 个 H2 与 1 个 H3。**不要为了凑层级硬造小节**：本轮 29 处 H3 全部是把原文**已有子结构**提升出来 —— 加粗引导句（`**Installation** is the download…`）、并列分述（`The first is the chip… The second is the profile…`）、既有清单项（三个价格层、三大 Android 品牌）、两种用户画像（`The short-trip traveler` / `The long-stay traveler`）。提升时必须**同步改写该 H3 后首段的首句为自包含句**（红线 28），否则等于把一个代词开头的段落顶到了「会被 AI 单独抽走」的位置 —— 本轮就是这样多出 4 处 `<45 字符`/代词开头首句，已一并修掉。改完硬指标：标题全局唯一、`check_headings.py` bad h2/h3 = 0、H2/H3 后首句违规 0、跨页重复段落 0。**不要动 bullet 清单**（7 条故障排查、4 步选机流程那类），清单项本来就该是列表，H3 化只收益于「有明确分述结构」的 H2。
 
 ---
 

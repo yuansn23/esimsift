@@ -26,7 +26,10 @@
 {{ end }}
 {{ $appRows = sort $appRows "name" "asc" }}{{ $directRows = sort $directRows "name" "asc" }}
 
-<article class="mx-auto max-w-3xl px-4 py-8 sm:px-6">
+{{/* ── 双栏：正文 + 右侧吸顶（栅格断点与列宽对齐 networks/single.html） ── */}}
+<div class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+<div class="grid items-start gap-8 lg:grid-cols-[minmax(0,720px)_300px] lg:justify-center lg:gap-10">
+<article class="min-w-0">
   {{ partial "breadcrumbs.html" . }}
   <h1 class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">{{ .Title }}</h1>
 
@@ -38,6 +41,70 @@
          class="w-full h-auto" loading="eager" fetchpriority="high" decoding="async">
   </figure>
   {{ end }}
+
+  {{/* ── 移动端章节导航：桌面看右侧吸顶栏，手机上折叠成一条，避免长文没有跳转入口 ── */}}
+  <details class="mt-6 rounded-2xl border border-ink-100 bg-ink-50/50 lg:hidden">
+    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-ink-900">
+      <span>On this page</span>
+      <span class="shrink-0 text-lg font-light text-ink-300" aria-hidden="true">+</span>
+    </summary>
+    <div class="px-5 pb-5">{{ partial "aside-toc.html" . }}</div>
+  </details>
+
+  {{/* ── GEO 结构层（与 networks/single.html 同源）：短答块 + 关键事实栅格 + 章节索引 ItemList ──
+       指南页原先只有正文 + FAQ，AI 按块检索时拿不到可单独引用的直答句、事实栅格与章节清单。
+       阅读时长 / 复核日构建期推导；事实对来自 front matter `facts`（label/value）。
+       ⚠ 刻意不做 HowTo：本站指南的 H2 是问答式标题而非编号步骤，硬拆 steps 等于编造。 */}}
+  {{/* ⚠ 默认值不能取自 .Title：指南标题常含逗号，而 H2 禁 `, ; : — –`（check_headings.py 会拦）。
+       所以 h2_answer / h2_facts 一律由 front matter 显式给出干净值，这里只留安全兜底。 */}}
+  {{ $h2Answer := .Params.h2_answer | default "The short answer" }}
+  {{ $h2Facts  := .Params.h2_facts  | default "Key facts about this guide" }}
+  {{ $facts    := .Params.facts }}
+
+  {{ with .Params.prompt_answer }}
+  <section class="mt-8 not-prose" aria-labelledby="short-answer">
+    <div class="rounded-2xl border border-brand-100 bg-brand-50/50 p-6">
+      <p class="eyebrow">The short answer</p>
+      <h2 id="short-answer" class="mt-2 text-2xl font-bold">{{ $h2Answer }}</h2>
+      <p class="mt-3 text-base leading-relaxed text-ink-700">{{ . }}</p>
+    </div>
+  </section>
+  {{ end }}
+
+  <section class="mt-8 not-prose" aria-labelledby="keyfacts">
+    <h2 id="keyfacts" class="text-2xl font-bold">{{ $h2Facts }}</h2>
+    <dl class="mt-4 grid gap-3 sm:grid-cols-2">
+      <div class="rounded-xl bg-ink-50/60 px-4 py-3">
+        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Reading time</dt>
+        <dd class="mt-1 text-sm font-medium text-ink-800">{{ .ReadingTime }} min</dd>
+      </div>
+      <div class="rounded-xl bg-ink-50/60 px-4 py-3">
+        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Last reviewed</dt>
+        <dd class="mt-1 text-sm font-medium text-ink-800">{{ .Lastmod.Format "Jan 2, 2006" }}</dd>
+      </div>
+      {{ range $facts }}
+      <div class="rounded-xl bg-ink-50/60 px-4 py-3">
+        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ .label }}</dt>
+        <dd class="mt-1 text-sm font-medium text-ink-800">{{ .value }}</dd>
+      </div>
+      {{ end }}
+    </dl>
+  </section>
+
+  {{/* ── 章节索引 ItemList：把本文的可检索章节交给 AI，避免整篇被当成一个不可切分的块 ──
+       ⚠ 不要用 `.Fragments.Headings` 直接 range：Hugo 返回的是一棵以「合成根节点」为顶层的树，
+       根的 ID/Title 为空、真正的 h2 在它的 .Headings 里，直接 range 会产出 1 条空记录
+       （构建不报错、四重校验也过，只有产物断言能发现）。用 .Content 的 findRE 扁平提取最稳。 */}}
+  {{ $secItems := slice }}
+  {{ $secName := printf "%s section index" .Title }}
+  {{ range $i, $raw := findRE `<h2[^>]*>.+?</h2>` .Content }}
+    {{ $sid := replaceRE `(?s)^.*?id="([^"]+)".*$` "$1" $raw }}
+    {{ $stitle := replaceRE `(?s)^.*?>(.+)</h2>$` "$1" $raw | replaceRE `<[^>]+>` "" }}
+    {{ $secItems = $secItems | append (dict "@type" "ListItem" "position" (add $i 1) "name" $stitle "url" (printf "%s#%s" $.Permalink $sid)) }}
+  {{ end }}
+  {{ with $secItems }}<script type="application/ld+json">
+  {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "ItemList" "name" $secName "itemListElement" .) | safeJS }}
+  </script>{{ end }}
 
   <div class="prose prose-slate mt-6 max-w-none">{{ .Content }}</div>
 
@@ -89,7 +156,7 @@
 
   <section class="mt-10 not-prose" aria-labelledby="notsup">
     <h2 id="notsup" class="text-2xl font-bold">Which popular phones do not support eSIM?</h2>
-    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">The traps travelers actually hit. Most of these phones look compatible on paper — same name, same year — but the specific variant sold in that market drops the eSIM chip. When a seller and a spec sheet disagree, the EID test settles it.</p>
+    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">Compatibility traps cluster around phones that look fine on paper. Most of these models carry the same name and the same model year as an eSIM-capable version, but the specific variant sold in that market drops the chip. When a seller and a spec sheet disagree, the EID test settles it.</p>
     <div class="card mt-5 overflow-hidden p-0">
       <div class="overflow-x-auto">
         <table class="table-pro">
@@ -186,7 +253,7 @@
         </li>
         {{ end }}
       </ol>
-      {{ with $checked }}<p class="mt-4 text-xs text-ink-400">Every number is sorted from the same dated snapshot — prices checked {{ (time .).Format "Jan 2, 2006" }}. Full rankings in the <a href="/research/esim-price-index/" class="font-semibold text-brand-700 hover:underline">eSIM price index</a>.</p>{{ end }}
+      {{ with $checked }}<p class="mt-4 text-xs text-ink-400">Each {{ $boxFoot }} here is sorted from the same dated snapshot — prices checked {{ (time .).Format "Jan 2, 2006" }}. Full rankings in the <a href="/research/esim-price-index/" class="font-semibold text-brand-700 hover:underline">eSIM price index</a>.</p>{{ end }}
     </div>
   </section>
   {{ end }}
@@ -246,7 +313,7 @@
     <div class="mt-6 space-y-3">
       {{ range . }}
       <details class="card group p-0">
-        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-ink-900">{{ .q }}<span class="shrink-0 text-lg font-light text-ink-300 transition-transform group-open:rotate-45" aria-hidden="true">+</span></summary>
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-ink-900"><h3 class="contents font-sans text-ink-900">{{ .q }}</h3><span class="shrink-0 text-lg font-light text-ink-300 transition-transform group-open:rotate-45" aria-hidden="true">+</span></summary>
         <p class="px-5 pb-5 text-sm leading-relaxed text-ink-600">{{ .a }}</p>
       </details>
       {{ end }}
@@ -262,7 +329,7 @@
   {{/* ── 相关阅读：其余指南 + 工具 + 比较入口（内链闭环） ── */}}
   <section class="mt-10 not-prose" aria-labelledby="more">
     <p class="eyebrow">Keep reading</p>
-    <h2 id="more" class="mt-2 text-2xl font-bold">More eSIM help before you fly</h2>
+    <h2 id="more" class="mt-2 text-2xl font-bold">{{ .Params.h2_next | default "More eSIM help before you fly" }}</h2>
     <div class="mt-5 grid gap-3 sm:grid-cols-2">
       {{ range where site.RegularPages "Section" "guides" }}
       {{ if ne .File.BaseFileName $.File.BaseFileName }}
@@ -274,4 +341,71 @@
     </div>
   </section>
 </article>
+
+{{/* ── 右侧吸顶：章节目录 + 热门目的地比价内链。
+     移动端整块落到正文之后（hidden lg:block），不遮挡阅读；
+     整栏限高并允许内部滚动，目录条目多时 sticky 仍然生效。 ── */}}
+<aside class="hidden lg:block">
+  <div class="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-1">
+    <div class="space-y-4">
+      <div class="card p-5">
+        <p class="eyebrow">On this page</p>
+        <div class="mt-3">{{ partial "aside-toc.html" . }}</div>
+      </div>
+      {{ partial "aside-destinations.html" . }}
+    </div>
+  </div>
+</aside>
+
+</div>
+</div>
+
+{{/* ── 目录高亮跟随（渐进增强）：JS 只写 aria-current 属性，激活样式全由 CSS 承担，
+       所以无 JS、爬虫抓取时目录依然完整可点可跳。 ── */}}
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('[data-toc] a[data-toc-link]'));
+  if (!links.length) return;
+
+  var seen = {}, heads = [];
+  links.forEach(function (a) {
+    var id = decodeURIComponent(a.hash.slice(1));
+    if (!id || seen[id]) return;
+    var el = document.getElementById(id);
+    if (el) { seen[id] = 1; heads.push({ id: id, el: el }); }
+  });
+  if (!heads.length) return;
+
+  var current = null;
+  function setActive(id) {
+    if (id === current) return;
+    current = id;
+    links.forEach(function (a) {
+      if (decodeURIComponent(a.hash.slice(1)) === id) {
+        a.setAttribute('aria-current', 'true');
+      } else {
+        a.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var offset = 120, best = heads[0].id;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].el.getBoundingClientRect().top <= offset) best = heads[i].id;
+      else break;
+    }
+    setActive(best);
+  }
+  function onScroll() {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+</script>
 {{ end }}

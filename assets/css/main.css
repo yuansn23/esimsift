@@ -219,6 +219,26 @@
   .figure figcaption {
     @apply px-4 py-2.5 text-xs text-ink-400;
   }
+
+  /* ── 长文页「On this page」章节目录（guides/single.html：桌面右侧吸顶 + 移动端折叠）
+     高亮状态走 [aria-current] 属性选择器，JS 只切属性、不切 class ——
+     动态拼出来的类名 Tailwind JIT 扫不到，会静默漏编译（check_css_sync.py 也拦不住
+     含模板标记的 class 属性），所以状态一律交给 CSS。 */
+  .toc-link {
+    @apply -ml-px block border-l-2 border-transparent py-1 pr-2 text-[13px] leading-snug text-ink-500 transition-colors;
+  }
+  .toc-link:hover {
+    @apply border-brand-300 text-brand-800;
+  }
+  .toc-link[aria-current="true"] {
+    @apply border-brand-500 font-semibold text-brand-800;
+  }
+  .toc-l2 {
+    @apply pl-3;
+  }
+  .toc-l3 {
+    @apply pl-6;
+  }
 }
 
 /* ========== 动画 ========== */

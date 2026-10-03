@@ -23,6 +23,11 @@ Checks
      ratingValue must be a JSON number and satisfy
      worstRating <= ratingValue <= bestRating, with numeric scales
      (defaults 1 and 5 when omitted, per Google's documentation)
+  4. no non-Latin script in rendered copy or emitted JSON (2026-10-03):
+     the site is English-only, but scraped plan names carried local script
+     (Airalo's Korean "짱 Jjang" showed up on /compare/south-korea/ and in
+     catalog.json + the tools page). Latin accents are allowed - "Élan",
+     "Fáilte", "Prosím" are the providers' real product names.
 
 Exit code 1 on any failure. Run AFTER `hugo`:
     python -X utf8 scripts/check_output.py
@@ -37,6 +42,31 @@ PUBLIC = ROOT / "public"
 
 FMT_ERROR = re.compile(r"%![A-Za-z]*(?:\([^)]*\))?")
 LDJSON = re.compile(r'<script type="application/ld\+json">(.*?)</script>', re.S)
+
+# Non-Latin scripts (English-only site). Latin-1/Latin-Extended letters, digits
+# and typographic marks (∞ ° – — ’ “ ”) are deliberately NOT in this set.
+NON_LATIN = re.compile(
+    "["
+    "\u0370-\u03FF"  # Greek
+    "\u0400-\u04FF"  # Cyrillic
+    "\u0530-\u058F"  # Armenian
+    "\u0590-\u05FF"  # Hebrew
+    "\u0600-\u06FF\u0750-\u077F"  # Arabic
+    "\u0900-\u097F"  # Devanagari
+    "\u0980-\u09FF"  # Bengali
+    "\u0B80-\u0BFF"  # Tamil
+    "\u0D80-\u0DFF"  # Sinhala
+    "\u0E00-\u0E7F"  # Thai
+    "\u0E80-\u0EFF"  # Lao
+    "\u1000-\u109F"  # Myanmar
+    "\u10A0-\u10FF"  # Georgian
+    "\u1100-\u11FF\u3130-\u318F\uAC00-\uD7AF"  # Hangul
+    "\u1780-\u17FF"  # Khmer
+    "\u1800-\u18AF"  # Mongolian
+    "\u3040-\u309F\u30A0-\u30FF"  # Kana
+    "\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF"  # Han
+    "]"
+)
 
 errors: list[str] = []
 
@@ -114,11 +144,33 @@ def main() -> int:
         return 1
 
     pages = sorted(PUBLIC.rglob("*.html"))
+    json_files = sorted(PUBLIC.rglob("*.json"))
     ld_blocks = 0
+    scanned = 0
 
-    for f in pages:
+    # .html -> full check set; emitted .json (catalog.json et al) -> language check
+    targets = [(f, True) for f in pages] + [(f, False) for f in json_files]
+
+    for f, is_html in targets:
         rel = f.relative_to(ROOT).as_posix()
-        text = f.read_text(encoding="utf-8", errors="replace")
+        try:
+            text = f.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        scanned += 1
+
+        hits = NON_LATIN.findall(text)
+        if hits:
+            line = text.count("\n", 0, text.index(hits[0])) + 1
+            uniq = "".join(sorted(set(hits)))[:24]
+            errors.append(
+                f"{rel}:{line}: non-Latin script in output {uniq!r} "
+                f"({len(hits)} char(s)) - site copy is English-only, "
+                f"romanise at scrape time"
+            )
+
+        if not is_html:
+            continue
 
         for m in FMT_ERROR.finditer(text):
             line = text.count("\n", 0, m.start()) + 1
@@ -144,7 +196,8 @@ def main() -> int:
             print(f"  ... and {len(errors) - 40} more")
         return 1
 
-    print(f"OK: {len(pages)} pages, {ld_blocks} JSON-LD blocks - no format leaks, all ratings in range")
+    print(f"OK: {scanned} files ({len(pages)} pages), {ld_blocks} JSON-LD blocks "
+          f"- no format leaks, no non-Latin script, all ratings in range")
     return 0
 
 

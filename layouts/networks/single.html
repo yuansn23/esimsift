@@ -34,6 +34,21 @@
 {{ $s := partial "country-stats.html" $iso }}
 {{ $nets := $country.carriers | default slice }}
 
+{{/* ── 逐国 H2 / 导语覆盖（front matter 可选） ──
+   模板生成的 5 个 H2 与 3 段导语若全站同一句，12 页会构成模板化重复内容。
+   每篇 md 在 front matter 里给出本国版本；缺省兜底刻意写短，把「篇幅」让给每页独有的正文。
+   纪律：覆盖文案里必须自然带上 {国家} eSIM / {国家} network 这类目标词，且 H2 不得含 , ; : — – */}}
+{{ $h2Carriers := .Params.h2_carriers | default (printf "The carrier networks behind a %s eSIM" $country.name) }}
+{{ $h2Score    := .Params.h2_scoreboard | default (printf "Independent test results for %s networks" $country.name) }}
+{{ $h2Brands   := .Params.h2_brands | default (printf "%s host networks by eSIM brand" $country.name) }}
+{{ $h2Cities   := .Params.h2_cities | default (printf "Where every %s network works" $country.name) }}
+{{ $h2Next     := .Params.h2_next | default (printf "Plan the rest of your %s trip" $country.name) }}
+{{ $h2Answer   := .Params.h2_answer | default (printf "%s eSIM networks at a glance" $country.name) }}
+{{ $h2Facts    := .Params.h2_facts | default (printf "%s eSIM network facts" $country.name) }}
+{{ $introCarriers := .Params.intro_carriers | default "Travel eSIM brands do not own masts. They resell capacity from the carriers above, so the network under your plan is chosen by the destination rather than the brand." }}
+{{ $introBrands   := .Params.intro_brands | default "" }}
+{{ $noteCities    := .Params.cities_note | default "Every national network covers these urban areas, so city signal rarely decides the purchase. The differences show up on the routes between cities." }}
+
 {{/* ── 首屏配图：取该国第 2 张图，避开 /compare/{country}/ 已用的第 1 张（同图重复） ── */}}
 {{ $imgs := $country.images | default slice }}
 {{ $hero := "" }}
@@ -94,10 +109,10 @@
 
       <div class="mt-4 flex flex-wrap items-center gap-2">
         <span class="badge bg-brand-50 text-brand-700">{{ len $nets }} carrier networks</span>
-        {{ if $s.has5g }}<span class="badge bg-brand-50 text-brand-700">5G live</span>{{ end }}
-        {{ if $identical }}<span class="badge bg-brand-50 text-brand-700">all brands ride all {{ len $nets }}</span>{{ end }}
         <span class="badge bg-ink-50 text-ink-500">{{ $s.planCount }} plans tracked</span>
-        {{ with $s.checkedDate }}<span class="badge bg-ink-50 text-ink-500">prices checked {{ . }}</span>{{ end }}
+        {{/* 发布日期取构建时的系统日期（now），不是数据快照 checkedDate ——
+             后者是「上游列表最后一次核对」的日期，挂在正文脚注里，两者不要混。 */}}
+        <span class="badge bg-ink-50 text-ink-500">Updated {{ now.Format "Jan 2, 2006" }}</span>
       </div>
 
       {{ with .Params.kicker }}<p class="mt-5 text-lg leading-relaxed text-ink-600">{{ . }}</p>{{ end }}
@@ -111,13 +126,92 @@
       </figure>
       {{ end }}
 
-      <div class="prose prose-slate mt-6 max-w-none">{{ .Content }}</div>
+      {{/* ── GEO ①：直答块 ──
+           AI 引擎（AI Overviews / Perplexity / ChatGPT 检索）最先摘取的是「开头一段自包含的答案」。
+           硬要求：不依赖上文代词、必须点名实体（国家 + 运营商 + 数字），一段话说清结论。
+           内容由 front matter prompt_answer 提供 → 每国不同，不构成模板化重复。 */}}
+      {{ with .Params.prompt_answer }}
+      <section class="mt-6 not-prose" aria-labelledby="short-answer">
+        <div class="rounded-2xl border border-brand-100 bg-brand-50/50 p-6">
+          <p class="eyebrow">The short answer</p>
+          <h2 id="short-answer" class="mt-2 font-display text-lg font-bold text-ink-950">{{ $h2Answer }}</h2>
+          <p class="mt-3 text-sm leading-relaxed text-ink-700">{{ . }}</p>
+        </div>
+      </section>
+      {{ end }}
+
+      {{/* ── GEO ②：关键事实栅格 ──
+           全部构建期推导（网络数/品牌数/套餐数/不限量数/5G/最低单价/实测报告日期），
+           零写死；「访客实名规则」一行来自 front matter fact_registration（各国独有）。
+           这是 AI 引擎最容易整条引用的结构化事实，也顺手天然覆盖 5G / unlimited data /
+           prepaid / price 这几个核心词，不需要在正文里硬塞。 */}}
+      <section class="mt-8 not-prose" aria-labelledby="keyfacts">
+        <h2 id="keyfacts" class="text-2xl font-bold">{{ $h2Facts }}</h2>
+        <dl class="mt-4 grid gap-3 sm:grid-cols-2">
+          <div class="rounded-xl bg-ink-50/60 px-4 py-3">
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">National mobile networks</dt>
+            <dd class="mt-1 text-sm font-medium text-ink-800">{{ len $nets }} — {{ delimit $nets ", " }}</dd>
+          </div>
+          <div class="rounded-xl bg-ink-50/60 px-4 py-3">
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">eSIM brands we track here</dt>
+            <dd class="mt-1 text-sm font-medium text-ink-800">{{ $s.providerCount }}</dd>
+          </div>
+          <div class="rounded-xl bg-ink-50/60 px-4 py-3">
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Prepaid data plans tracked</dt>
+            <dd class="mt-1 text-sm font-medium text-ink-800">{{ $s.planCount }}</dd>
+          </div>
+          <div class="rounded-xl bg-ink-50/60 px-4 py-3">
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Unlimited data plans tracked</dt>
+            <dd class="mt-1 text-sm font-medium text-ink-800">{{ $s.unlimitedCount }}</dd>
+          </div>
+          <div class="rounded-xl bg-ink-50/60 px-4 py-3">
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">5G on the national networks</dt>
+            <dd class="mt-1 text-sm font-medium text-ink-800">{{ if $s.has5g }}Yes{{ else }}Not on record yet{{ end }}</dd>
+          </div>
+          <div class="rounded-xl bg-ink-50/60 px-4 py-3">
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Lowest price we track</dt>
+            <dd class="mt-1 text-sm font-medium text-ink-800">{{ if gt $s.minPerGB 0.0 }}<a href="/compare/{{ $country.slug }}/" class="font-semibold text-brand-700 hover:underline">${{ printf "%.2f" $s.minPerGB }} per GB</a>{{ else }}—{{ end }}</dd>
+          </div>
+          {{ with .Params.fact_registration }}
+          <div class="rounded-xl bg-ink-50/60 px-4 py-3">
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">SIM registration for visitors</dt>
+            <dd class="mt-1 text-sm font-medium text-ink-800">{{ . }}</dd>
+          </div>
+          {{ end }}
+          {{ with $nr }}
+          {{ if or .opensignal_date .ookla_date }}
+          <div class="rounded-xl bg-ink-50/60 px-4 py-3">
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Independent testing on record</dt>
+            <dd class="mt-1 text-sm font-medium text-ink-800">{{ with .opensignal_date }}Opensignal {{ . }}{{ end }}{{ if and .opensignal_date .ookla_date }} · {{ end }}{{ with .ookla_date }}Ookla {{ . }}{{ end }}</dd>
+          </div>
+          {{ end }}
+          {{ end }}
+        </dl>
+        <p class="mt-3 text-xs leading-relaxed text-ink-400">Counts are derived from our own plan database at the {{ with $s.checkedDate }}{{ . }} {{ end }}snapshot. The lowest price is the cheapest single plan we list, which is usually a small trial size rather than a trip-sized allowance.</p>
+      </section>
+
+      {{/* ── GEO ③：运营商实体列表（机器可读） ──
+           让 AI 引擎不必解析 HTML 就能拿到「谁在运营 + 实测结论」，是实体消歧的关键。 */}}
+      {{ $items := slice }}
+      {{ range $i, $n := $nets }}
+        {{ $desc := printf "One of the %d national mobile networks in %s." (len $nets) $country.name }}
+        {{ with index $profiles $n }}{{ $desc = printf "%s network in %s, typically %d-%d Mbps." .tech $country.name .speed_min .speed_top }}{{ end }}
+        {{ with index $awardMap $n }}{{ with .opensignal }}{{ $desc = printf "%s Opensignal verdict: %s." $desc . }}{{ end }}{{ end }}
+        {{ $items = $items | append (dict "@type" "ListItem" "position" (add $i 1) "item" (dict "@type" "Organization" "name" $n "description" $desc)) }}
+      {{ end }}
+      {{ with $items }}
+      <script type="application/ld+json">
+      {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "ItemList" "name" (printf "National mobile network operators in %s" $country.name) "itemListElement" .) | safeJS }}
+      </script>
+      {{ end }}
+
+      <div class="prose prose-slate mt-8 max-w-none">{{ .Content }}</div>
 
       {{/* ── 运营商画像卡：tech / 典型速率 / note / 强项弱项（数据直出） ── */}}
       <section class="mt-10 not-prose" aria-labelledby="carriers">
         <p class="eyebrow">Who runs the masts</p>
-        <h2 id="carriers" class="mt-2 text-2xl font-bold">{{ $country.name }} has {{ len $nets }} national carrier networks</h2>
-        <p class="mt-3 text-sm leading-relaxed text-ink-600">Travel eSIM brands do not own towers. They buy capacity from these carriers, so the network behind your plan is decided by the destination rather than the brand. Speed bands below are indicative ranges from provider listings and public reports — orientation, not measurement.</p>
+        <h2 id="carriers" class="mt-2 text-2xl font-bold">{{ $h2Carriers }}</h2>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ $introCarriers }}</p>
         <div class="mt-6 grid gap-3 sm:grid-cols-2">
           {{ range $nets }}
           {{ $prof := index $profiles . }}
@@ -146,8 +240,7 @@
       {{/* ── 记分板：同一批网络，两家独立机构各自的结论（awards 存在时） ── */}}
       <section class="mt-10 not-prose" aria-labelledby="scoreboard">
         <p class="eyebrow">Scoreboard</p>
-        <h2 id="scoreboard" class="mt-2 text-2xl font-bold">How {{ $country.name }} networks score in independent tests</h2>
-        <p class="mt-3 text-sm leading-relaxed text-ink-600">Two independent firms measure this market, and they measure it differently. Opensignal crowdsources real-user readings and reports the average; Ookla aggregates Speedtest samples and reports the median. Their numbers are not directly comparable — the value of putting them side by side is seeing which network each firm measured as strongest, and on what.</p>
+        <h2 id="scoreboard" class="mt-2 text-2xl font-bold">{{ $h2Score }}</h2>
         <div class="card mt-5 overflow-hidden p-0">
           <div class="overflow-x-auto">
             <table class="table-pro">
@@ -173,14 +266,14 @@
             </table>
           </div>
         </div>
-        <p class="mt-3 text-xs leading-relaxed text-ink-400">Nothing in either test says a travel eSIM will reach these speeds — a plan's ceiling is set by the host network, but what you actually get depends on congestion, your device and where you stand. Per-network Mbps bands above are indicative ranges compiled from provider listings, not measurements — read how we rank plans in our <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>. Sources: {{ with $nr.opensignal_url }}<a href="{{ . }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">{{ $nr.opensignal_title }}</a>{{ with $nr.opensignal_date }}, {{ . }}{{ end }}. {{ end }}{{ with $nr.ookla_url }}<a href="{{ . }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">Ookla report</a>{{ with $nr.ookla_date }}, {{ . }}{{ end }}.{{ end }}</p>
+        <p class="mt-3 text-xs leading-relaxed text-ink-400">Per-network Mbps bands above are indicative ranges compiled from provider listings, not measurements — see <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">how we rank plans</a>. Sources: {{ with $nr.opensignal_url }}<a href="{{ . }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">{{ $nr.opensignal_title }}</a>{{ with $nr.opensignal_date }}, {{ . }}{{ end }}. {{ end }}{{ with $nr.ookla_url }}<a href="{{ . }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">{{ $nr.ookla_label | default "Ookla report" }}</a>{{ with $nr.ookla_date }}, {{ . }}{{ end }}.{{ end }}</p>
       </section>
       {{ else }}
       {{/* ── 无 awards 的市场：回退为事实列表布局 ── */}}
       <section class="mt-10 not-prose" aria-labelledby="authority">
         <div class="card p-6">
           <p class="eyebrow">Independent measurements</p>
-          <h2 id="authority" class="mt-2 text-2xl font-bold">What independent tests say about {{ $country.name }} networks</h2>
+          <h2 id="authority" class="mt-2 text-2xl font-bold">{{ $h2Score }}</h2>
           {{ with $nr }}
             {{ with .opensignal_facts }}
             <ul class="mt-4 space-y-2">
@@ -197,7 +290,7 @@
           {{ else }}
             <p class="mt-3 text-sm leading-relaxed text-ink-600">No named Opensignal report covers this destination yet. Ookla's Global Index still tracks the market month by month.</p>
           {{ end }}
-          <p class="mt-4 border-t border-ink-100 pt-4 text-xs leading-relaxed text-ink-400">Per-network Mbps bands on this page are indicative ranges compiled from provider listings, not measurements. Read how we rank plans in our <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.</p>
+          <p class="mt-4 border-t border-ink-100 pt-4 text-xs leading-relaxed text-ink-400">Per-network Mbps bands on this page are indicative ranges compiled from provider listings, not measurements. Read our <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">ranking methodology</a>.</p>
         </div>
       </section>
       {{ end }}
@@ -205,9 +298,9 @@
       {{/* ── 品牌 → 网络映射表（含品牌×国家页内链） + 同网不同价结论 ── */}}
       <section class="mt-10 not-prose" aria-labelledby="brands">
         <p class="eyebrow">Brand by brand</p>
-        <h2 id="brands" class="mt-2 text-2xl font-bold">Which eSIM brands connect to which {{ $country.name }} network</h2>
+        <h2 id="brands" class="mt-2 text-2xl font-bold">{{ $h2Brands }}</h2>
         <p class="mt-3 text-sm leading-relaxed text-ink-600">
-          {{ if $identical }}At this check every provider we track connects to the same {{ len $nets }} national carriers in {{ $country.name }}, so the brand you pick changes price, plan shapes and support rather than coverage.{{ else }}Providers differ in {{ $country.name }} — some ride a single carrier while others fall back across several, which is what decides rural signal.{{ end }}
+          {{ if $introBrands }}{{ $introBrands }}{{ else if $identical }}At this check every provider we track connects to the same {{ len $nets }} national carriers in {{ $country.name }}, so the brand you pick changes price, plan shapes and support rather than coverage.{{ else }}Providers differ in {{ $country.name }} — some ride a single carrier while others fall back across several, which is what decides rural signal.{{ end }}
         </p>
         <div class="card mt-5 overflow-hidden p-0">
           <div class="overflow-x-auto">
@@ -236,18 +329,33 @@
           <p class="text-sm leading-relaxed text-ink-600"><strong class="text-ink-950">What that parity is worth.</strong> Because every brand buys the same {{ len $nets }} networks, none of them can sell you better coverage in {{ $country.name }} — the difference lands in the bill and nowhere else. Across the brands we track, metered data works out at anywhere from <strong>${{ printf "%.2f" $pgMin }}/GB</strong> to <strong>${{ printf "%.2f" $pgMax }}/GB</strong>, a {{ printf "%.1f" $pgRatio }}× spread that mast choice cannot explain. Judge the plan, not the network — the full ranking sits on the <a href="/compare/{{ $country.slug }}/" class="font-semibold text-brand-700 hover:underline">{{ $country.name }} eSIM comparison</a>.</p>
         </div>
         {{ end }}
-        <p class="mt-4 text-sm leading-relaxed text-ink-600">Full price and plan comparison for the destination sits on the <a href="/compare/{{ $country.slug }}/" class="font-semibold text-brand-700 hover:underline">{{ $country.name }} eSIM comparison</a>.</p>
+        <p class="mt-4 text-sm leading-relaxed text-ink-600">For the price side of the same decision, see our <a href="/compare/{{ $country.slug }}/" class="font-semibold text-brand-700 hover:underline">ranking of {{ $country.name }} eSIM plans</a>.</p>
       </section>
 
-      {{/* ── 城市覆盖（carriers.info.cities，数据直出） ── */}}
-      {{ with $info.cities }}
+      {{/* ── 城市覆盖 ──
+           主路径：front matter `cities_detail` = 逐城市实况（name + reality）。
+             reality 必须以城市名起首（脚本已 assert），模板把该城市名加粗后接续正文 ——
+             AI 单独抽走一行仍读得懂，符合 PROJECT.md 红线 28。
+           回退路径：缺 `cities_detail` 时渲染 carriers.info.cities 的名字 chips（旧行为，保留不报错）。
+           ⚠ 新增国家页时 cities_note 不得写成「X、Y、Z 都是 5G」这类无信息增益的国别泛话，
+             cities_detail 每条要给出「这座城市之后，问题从哪条路/哪片地形开始」。 */}}
+      {{ $cityRows := .Params.cities_detail }}
+      {{ if or $cityRows $info.cities }}
       <section class="mt-10 not-prose" aria-labelledby="cities">
         <p class="eyebrow">City coverage</p>
-        <h2 id="cities" class="mt-2 text-2xl font-bold">Cities where every {{ $country.name }} network works</h2>
-        <ul class="mt-4 flex flex-wrap gap-2">
-          {{ range . }}<li class="rounded-lg border border-ink-100 bg-ink-50/60 px-3 py-1.5 text-[13px] font-medium text-ink-700">{{ . }}</li>{{ end }}
+        <h2 id="cities" class="mt-2 text-2xl font-bold">{{ $h2Cities }}</h2>
+        <p class="mt-4 text-sm leading-relaxed text-ink-600">{{ $noteCities }}</p>
+        {{ with $cityRows }}
+        <ul class="mt-5 grid gap-3 sm:grid-cols-2">
+          {{ range . }}{{ $n := .name }}{{ $r := .reality }}
+          <li class="rounded-xl bg-ink-50/60 px-4 py-3 text-sm leading-relaxed text-ink-700">{{ replace $r $n (printf "<strong class='font-display font-bold text-ink-950'>%s</strong>" $n) 1 | safeHTML }}</li>
+          {{ end }}
         </ul>
-        <p class="mt-4 text-sm leading-relaxed text-ink-600">All {{ len $nets }} national networks cover these urban areas, so city signal is not the variable that decides your pick. Rural routes, mountain roads and island hops are where the {{ len $nets }} carriers separate — see the profiles above.</p>
+        {{ else }}
+        <ul class="mt-4 flex flex-wrap gap-2">
+          {{ range $info.cities }}<li class="rounded-lg border border-ink-100 bg-ink-50/60 px-3 py-1.5 text-[13px] font-medium text-ink-700">{{ . }}</li>{{ end }}
+        </ul>
+        {{ end }}
       </section>
       {{ end }}
 
@@ -259,7 +367,7 @@
         <div class="mt-6 space-y-3">
           {{ range . }}
           <details class="card group p-0">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-ink-900">{{ .q }}<span class="shrink-0 text-lg font-light text-ink-300 transition-transform group-open:rotate-45" aria-hidden="true">+</span></summary>
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-ink-900"><h3 class="contents font-sans text-ink-900">{{ .q }}</h3><span class="shrink-0 text-lg font-light text-ink-300 transition-transform group-open:rotate-45" aria-hidden="true">+</span></summary>
             <p class="px-5 pb-5 text-sm leading-relaxed text-ink-600">{{ .a }}</p>
           </details>
           {{ end }}
@@ -275,12 +383,12 @@
       {{/* ── 内链闭环：网络枢纽 + 国家比价页 + 邻国 + 工具 ── */}}
       <section class="mt-10 not-prose" aria-labelledby="more">
         <p class="eyebrow">Keep reading</p>
-        <h2 id="more" class="mt-2 text-2xl font-bold">Next steps for your {{ $country.name }} trip</h2>
+        <h2 id="more" class="mt-2 text-2xl font-bold">{{ $h2Next }}</h2>
         <div class="mt-5 grid gap-3 sm:grid-cols-2">
           <a href="/compare/{{ $country.slug }}/" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Compare {{ $country.name }} eSIM plans</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">{{ $s.planCount }} plans from {{ $s.providerCount }} brands ranked by $/GB and $/day.</p></a>
-          <a href="/networks/" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">eSIM network map</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">Which host networks every brand uses, destination by destination.</p></a>
-          <a href="/tools/" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">eSIM trip cost calculator</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">Estimate your data by app, then find the cheapest real plan for your dates.</p></a>
-          <a href="/esim-deals/" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Current eSIM deals</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">Live discounts and promo codes across the providers we track.</p></a>
+          <a href="/networks/" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">eSIM network map</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">See how {{ $country.name }} compares with the other destinations we track.</p></a>
+          <a href="/tools/" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">eSIM trip cost calculator</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">Size a {{ $country.name }} data allowance by app, then match it to a real plan.</p></a>
+          <a href="/esim-deals/" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Current eSIM deals</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">Live discounts and promo codes on {{ $country.name }} plans.</p></a>
         </div>
         {{ with $country.neighbors }}
         <p class="mt-5 text-sm leading-relaxed text-ink-600">Travelling on from {{ $country.name }}?
@@ -297,10 +405,10 @@
       <div class="card p-5">
         <p class="eyebrow">Keep exploring</p>
         <ul class="mt-3 space-y-2.5 text-sm">
-          <li><a href="/networks/" class="font-semibold text-brand-700 hover:underline">eSIM network map →</a><span class="mt-0.5 block text-xs leading-relaxed text-ink-500">Host carriers for every destination we track.</span></li>
-          <li><a href="/compare/{{ $country.slug }}/" class="font-semibold text-brand-700 hover:underline">{{ $country.name }} eSIM comparison →</a><span class="mt-0.5 block text-xs leading-relaxed text-ink-500">All {{ $s.planCount }} plans, ranked by $/GB and $/day.</span></li>
+          <li><a href="/networks/" class="font-semibold text-brand-700 hover:underline">Network map for every destination →</a><span class="mt-0.5 block text-xs leading-relaxed text-ink-500">Host carriers in {{ $country.name }} and the other destinations we track.</span></li>
+          <li><a href="/compare/{{ $country.slug }}/" class="font-semibold text-brand-700 hover:underline">All {{ $country.name }} eSIM plans →</a><span class="mt-0.5 block text-xs leading-relaxed text-ink-500">Ranked by $/GB and $/day across {{ $s.providerCount }} brands.</span></li>
         </ul>
-        <p class="mt-3 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">Host assignments come from each provider's own listings at the check date. Our price and fair-use data follow the <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.</p>
+        <p class="mt-3 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">Host assignments come from each provider's own listings at the {{ with $s.checkedDate }}{{ . }} {{ end }}snapshot. Our price and fair-use data follow the <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.</p>
       </div>
     </aside>
 

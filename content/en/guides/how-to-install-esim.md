@@ -5,21 +5,36 @@ hero_alt: "A traveler following a step-by-step checklist on a phone to install a
 date: 2026-10-01
 description: "How to install an eSIM in five minutes: eSIM Sift covers activation timing, QR and app installs, and the errors to avoid before you fly."
 faq_heading: "What should you know before installing an eSIM"
+prompt_answer: "Installing a travel eSIM takes about two minutes on Wi-Fi, and the safest time is before you fly. Buy the plan, scan the provider's QR code or add it from the provider's app, give the line a name, then leave it switched off until you land. On arrival, turn the eSIM line on and set it as the line for mobile data."
+h2_answer: "Installing a travel eSIM in short"
+h2_facts: "eSIM installation facts"
+facts:
+  - label: "Best time to install"
+    value: "Before you fly, while you still have Wi-Fi"
+  - label: "What you need"
+    value: "An unlocked phone and the provider's QR code or app"
+  - label: "Typical install time"
+    value: "Under two minutes"
+  - label: "First setting on arrival"
+    value: "Set the eSIM line as the line for mobile data"
+  - label: "If it will not activate"
+    value: "Check carrier lock and whether the plan has started"
+h2_next: "Sort the rest of your setup"
 faqs:
   - q: "How long before a flight should I install an eSIM?"
     a: "One to three days before departure is the sweet spot. The profile sits dormant until the plan's validity starts, so an early install is safe, and doing it at home means any problem happens on your own Wi-Fi with time to fix it. Avoid installing at the airport gate on 2% battery."
   - q: "Can I install an eSIM without Wi-Fi?"
-    a: "Yes, but Wi-Fi is safer. The profile download is a few hundred kilobytes, small enough for mobile data, yet a dropped connection mid-install is the classic cause of a half-installed profile that then needs the provider to reissue. If you must install on the road, use a stable connection."
+    a: "An eSIM can be installed without Wi-Fi but Wi-Fi is safer. The profile download is a few hundred kilobytes, small enough for mobile data, yet a dropped connection mid-install is the classic cause of a half-installed profile that then needs the provider to reissue. If you must install on the road, use a stable connection."
   - q: "Why does my eSIM say no service after landing?"
     a: "In order of likelihood: Data Roaming is off for the eSIM line, the phone is still using the home SIM for data, the profile hasn't registered on a partner network yet, or the plan's validity hasn't started. Toggle airplane mode for ten seconds, check the roaming toggle first, and give registration a few minutes after landing."
   - q: "Can I reinstall an eSIM on another phone?"
-    a: "Not by rescanning the same QR code. Travel eSIM profiles bind to the first device that installs them, and most QR codes are single-use. Moving phones means contacting the provider to reissue, or buying a fresh package — plan accordingly if you upgrade handsets mid-trip."
+    a: "Rescanning the same QR code will not move an eSIM to another phone. Travel eSIM profiles bind to the first device that installs them, and most QR codes are single-use. Moving phones means contacting the provider to reissue, or buying a fresh package — plan accordingly if you upgrade handsets mid-trip."
   - q: "Do I need to remove my home SIM to install an eSIM?"
-    a: "No. The eSIM installs as a second line that lives alongside the physical SIM, and both stay active at once. Your home number keeps receiving calls and texts while the eSIM carries data abroad, which is exactly how the dual SIM setup is meant to work."
+    a: "The home SIM does not have to come out of the phone at all. An eSIM installs as a second line that lives alongside the physical SIM, and both stay active at once. Your home number keeps receiving calls and texts while the eSIM carries data abroad, which is exactly how the dual SIM setup is meant to work."
   - q: "Does installing an eSIM use much data?"
-    a: "Very little. The profile download is typically a few hundred kilobytes, smaller than a single photo, so even a small mobile allowance covers it. Wi-Fi is still the safer choice because an interrupted download can leave a half-installed profile that needs a provider reissue."
+    a: "Installing an eSIM costs very little data because the profile itself is small. The download is typically a few hundred kilobytes, far less than a single photo, so even a small mobile allowance covers it. Wi-Fi is still the safer choice because an interrupted download can leave a half-installed profile that needs a provider reissue."
   - q: "What is an SM-DP+ address?"
-    a: "It is the address of the server your phone contacts to download the eSIM profile, written like a web domain. Providers send it with the confirmation alongside a matching activation code, and you only type it yourself when installing manually because a QR code will not scan."
+    a: "An SM-DP+ address is the server your phone contacts to download the eSIM profile, written like a web domain. Providers send it with the confirmation alongside a matching activation code, and you only type it yourself when installing manually because a QR code will not scan."
 ---
 
 Installing a travel eSIM takes about five minutes and works best *before* you leave home, on the Wi-Fi you trust. The exact screens differ between providers, but the flow is the same everywhere: buy a package, install the profile, leave it dormant until the plan's validity starts. One distinction solves most confusion: **installing** puts the profile on your phone, **activating** starts the clock — they are separate events.
@@ -57,9 +72,13 @@ Menu names wander across Android skins — Pixel, One UI and MIUI each phrase th
 
 Every provider uses one of two routes, and knowing which shapes the whole experience.
 
+### Install from a QR code or a link
+
 The **QR or direct route** runs entirely from the purchase confirmation. The provider emails a QR code, sometimes alongside a plain link that installs on tap. You scan it in settings, the profile downloads, and you are done — no app, no account, nothing left to manage. This route works with any app-store situation and is the one to prefer when you are already traveling or installing remotely on a family member's phone.
 
-The **app route** bundles purchase and install. The provider's app takes payment, triggers the install prompt itself, and later handles top-ups, extensions and multi-country hopping in one place. The tradeoffs are an extra account to keep access to and a dependency on the app store — a region-blocked app is a real failure mode, covered below in troubleshooting.
+### Install from the provider's own app
+
+An **app route** provider puts the whole purchase inside its own application, which takes payment, triggers the install prompt itself, and later handles top-ups, extensions and multi-country hopping in one place. The tradeoffs are an extra account to keep access to and a dependency on the app store — a region-blocked app is a real failure mode, covered below in troubleshooting.
 
 Both routes deliver the same profile to the same slot. Pick by convenience, not by fear.
 
@@ -91,13 +110,21 @@ Match the validity window to the actual trip rather than the round number. Count
 
 ## How to activate an eSIM after landing
 
-The routine takes under two minutes.
+Activating an eSIM on arrival is one short routine that takes under two minutes.
 
 1. **Cycle airplane mode for ten seconds.** On, count to ten, off. This forces the modem to drop the last network it saw and re-scan everything available.
 2. **Check the eSIM line's Data Roaming toggle.** It must be on for the eSIM line specifically; the home line's roaming toggle is a separate switch that stays off. Confirm the eSIM is also the line chosen for cellular data.
 3. **Give registration a few minutes.** First contact with a partner network is not instant, and for first-connection plans the clock starts at that moment. A minute of patience replaces most support tickets.
 
-Then learn to read the two failure states, because they have different fixes. **No Service** means the line hasn't registered on anything — a profile problem, a wrong-country package, or a network the plan doesn't cover. **Signal bars but no data** means registration worked and the problem is in settings: the roaming toggle, the data-line choice, or a missing APN. Bars first, settings second — that order resolves most arrivals.
+Two failure states look similar and need different fixes.
+
+### What no service means on arrival
+
+**No Service** means the line hasn't registered on anything — a profile problem, a wrong-country package, or a network the plan doesn't cover.
+
+### What full bars and no data mean
+
+**Signal bars but no data** means registration worked and the problem is in settings: the roaming toggle, the data-line choice, or a missing APN. Bars first, settings second — that order resolves most arrivals.
 
 ## What to do if an eSIM won't activate
 

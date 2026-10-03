@@ -5,21 +5,36 @@ hero: "travel-esim-illustration-012.webp"
 hero_alt: "A magnifying glass over a smartphone checking whether the device supports eSIM"
 date: 2026-10-01
 faq_heading: "Will your phone work with a travel eSIM"
+prompt_answer: "The 30-second compatibility check is the EID test run from the phone's own dialer. Dial *#06# and if the screen shows an EID number, the phone has the eSIM chip. Carrier locking is the second check, because a locked handset can carry the hardware and still refuse a travel eSIM. The same model name can also differ by market, so a phone bought in mainland China or a carrier-locked United States unit behaves differently from the same model sold elsewhere."
+h2_answer: "Whether your phone passes the eSIM check"
+h2_facts: "eSIM compatibility facts"
+facts:
+  - label: "The 30-second check"
+    value: "Dial *#06# and look for an EID number"
+  - label: "Second check"
+    value: "Whether the phone is carrier-locked"
+  - label: "Same model different market"
+    value: "Yes, mainland-China iPhones ship without eSIM hardware"
+  - label: "Tablets and laptops"
+    value: "Cellular models usually support eSIM, Wi-Fi-only models do not"
+  - label: "Used phones"
+    value: "Run the EID test before you buy"
+h2_next: "Check the rest before you buy"
 faqs:
   - q: "How do I know if my phone is carrier locked?"
     a: "On iOS 14 and later, open Settings, go to General, then About, and scroll to Carrier Lock — it must say No SIM restrictions. On Android, the lock status lives under Settings in Connections or About phone depending on the brand, or simply ask the carrier. A locked phone refuses third-party eSIM profiles even when its eSIM hardware is present."
   - q: "Do iPhones sold in China support eSIM?"
     a: "Mainland-China iPhone models do not have eSIM hardware — they run dual physical SIMs instead, and that includes current models (the iPhone Air is the one exception: it is eSIM-only worldwide, mainland China included). If your phone was bought in mainland China, assume no eSIM support regardless of model year. Hong Kong models historically shipped with dual physical SIMs as well, so verify with the EID test before buying a plan."
   - q: "Can I use an eSIM on a carrier-locked phone?"
-    a: "No. Carrier locking blocks profiles from any other provider, and travel eSIMs are exactly that. Finished paying off the device? The unlock is usually a free request to the original carrier and typically takes effect within a few days."
+    a: "A carrier-locked phone cannot use a travel eSIM at all. Carrier locking blocks profiles from any other provider, and travel eSIMs are exactly that. Finished paying off the device? The unlock is usually a free request to the original carrier and typically takes effect within a few days."
   - q: "Does eSIM support depend on my carrier at home?"
     a: "For travel eSIMs, no — the profile comes from the travel provider and registers on foreign partner networks, so your home carrier's opinion doesn't matter. What matters is hardware support and an unlocked device. Your home carrier only enters the picture if you convert your main line itself onto an eSIM, which is a different process."
   - q: "My phone is not on the compatibility list. What now?"
-    a: "Don't treat the miss as a verdict. Published lists — ours included — lag behind new releases and miss regional variants. Dial *#06# on the phone itself: if an EID number appears next to the IMEI, the eSIM chip is present and a travel profile will install. No EID means no chip, and the physical SIM route is your fallback."
+    a: "A phone missing from a published list is not a verdict on it. Published lists — ours included — lag behind new releases and miss regional variants. Dial *#06# on the phone itself: if an EID number appears next to the IMEI, the eSIM chip is present and a travel profile will install. No EID means no chip, and the physical SIM route is your fallback."
   - q: "Do Hong Kong Pixel phones support eSIM?"
-    a: "No. Every Hong Kong Pixel ships without the eSIM chip, across all model years — the exception is not hidden in a specific generation, it is the whole market. If a Pixel was bought in Hong Kong, plan on the physical SIM route or a different handset."
+    a: "Hong Kong Pixel phones do not support eSIM in any model year. Every Hong Kong Pixel ships without the eSIM chip, across all model years — the exception is not hidden in a specific generation, it is the whole market. If a Pixel was bought in Hong Kong, plan on the physical SIM route or a different handset."
   - q: "Can an older phone get eSIM added later?"
-    a: "No. The eSIM chip is physical hardware fixed at manufacture — no software update, carrier visit, or repair adds it to a phone that left the factory without one. If *#06# shows no EID, that unit will never take an eSIM profile."
+    a: "An older phone cannot gain eSIM support later. The eSIM chip is physical hardware fixed at manufacture — no software update, carrier visit, or repair adds it to a phone that left the factory without one. If *#06# shows no EID, that unit will never take an eSIM profile."
   - q: "Do cellular iPads work with travel eSIMs?"
     a: "Often yes — cellular iPads follow the same profile flow as iPhones (buy, scan, install), and many travelers use them as data-only devices abroad. Two cautions — only Wi-Fi + Cellular models have a modem at all, and some travel providers scope plans to phones only, so check the provider's supported-devices page before buying."
 ---
@@ -28,12 +43,11 @@ Thirty seconds decides whether any of this site's comparisons apply to you: eith
 
 ## How to check if your phone supports eSIM
 
-Dial `*#06#` on the phone you'll travel with. The phone displays its IMEI — and on eSIM-capable devices, an **EID** number appears alongside it. EID present means the embedded SIM chip exists. That's the whole hardware test, and it beats any published list for one reason: the dialer reads *your exact unit*, not the model family. Spec pages and store listings describe a model line; the variant that reached your pocket may differ.
+Dial `*#06#` on the phone you will travel with, and the screen answers the question directly — alongside the IMEI, an eSIM-capable device shows an **EID** number. EID present means the embedded SIM chip exists. That's the whole hardware test, and it beats any published list for one reason: the dialer reads *your exact unit*, not the model family. Spec pages and store listings describe a model line; the variant that reached your pocket may differ.
 
-The software confirmation, in case you want a second signal:
+### The software confirmation in settings
 
-- **iPhone:** *Settings → Cellular* — if you see **Add eSIM** (or *Add Cellular Plan*), the feature is live.
-- **Android:** *Settings → Network & internet → SIMs* (Samsung: *Connections → SIM manager*) — look for **Add eSIM** or **Download a SIM**.
+The dialer test is the fast one, and the settings menu confirms it. On **iPhone**, *Settings → Cellular* shows **Add eSIM** (or *Add Cellular Plan*) when the feature is live. On **Android**, *Settings → Network & internet → SIMs* (Samsung: *Connections → SIM manager*) shows **Add eSIM** or **Download a SIM**.
 
 A few Android skins omit the EID from the `*#06#` screen while still supporting eSIM. If the dialer shows only an IMEI, fall back to the SIM manager screen above — the presence of an "Add eSIM" control there is equivalent proof. For what actually happens after that tap, the [what an eSIM actually is](/guides/what-is-an-esim/) explainer covers profiles in plain terms.
 
@@ -43,11 +57,19 @@ Every iPhone from the **XR and XS (2018) onward** has eSIM hardware — that cov
 
 ## Which Android phones support eSIM
 
-Support is patchier on Android and variant-dependent — the same model can differ by country of purchase. The safe general rules:
+Support is patchier on Android and variant-dependent — the same model can differ by country of purchase. Three brand groups cover most of it.
 
-- **Google Pixel:** every model from the **Pixel 3** (2018) onward — except all Hong Kong units, plus a few early regional carve-outs on the Pixel 3 and 3a that the variant table below spells out.
-- **Samsung Galaxy:** **S20 series and later** flagships (S/Flip/Fold families) — but the variant decides: US-bought S20 and S21, the S20 FE, Hong Kong Samsungs and Korean-bought S20–S22/Fold/Flip models lack eSIM.
-- **Others:** Motorola, Xiaomi, Oppo, Honor and Nothing flagships from roughly 2020 onward commonly include it; mid-rangers often don't. Huawei support exists (P40 onward) but Huawei ships without Google services, which blocks the app-based install route several providers rely on.
+### eSIM support on Google Pixel
+
+Every Pixel from the **Pixel 3** (2018) onward supports eSIM — except all Hong Kong units, plus a few early regional carve-outs on the Pixel 3 and 3a that the variant table below spells out.
+
+### eSIM support on Samsung Galaxy
+
+Every **S20 series and later** flagship supports eSIM (S/Flip/Fold families) — but the variant decides: US-bought S20 and S21, the S20 FE, Hong Kong Samsungs and Korean-bought S20–S22/Fold/Flip models lack it.
+
+### eSIM support on other Android brands
+
+Motorola, Xiaomi, Oppo, Honor and Nothing flagships from roughly 2020 onward commonly include eSIM, while mid-rangers often don't. Huawei support exists (P40 onward) but Huawei ships without Google services, which blocks the app-based install route several providers rely on.
 
 Japan's domestic Sharp and Rakuten handsets appear in the table too — relevant if you're buying a [Japan eSIM](/compare/japan/) and shopping for a phone locally.
 
@@ -73,7 +95,7 @@ The honest caveat: travel eSIM providers design and price their plans for phones
 
 ## Does a carrier-locked phone block eSIMs
 
-Yes — completely. A phone locked to its original carrier accepts profiles only from that carrier; every travel eSIM install will fail, usually with a vague "cannot activate" error rather than a clear lock message. On iOS 14+, check *Settings → General → About → Carrier Lock*: it must read **No SIM restrictions**. Paid off your device? The unlock is normally a free carrier request — do it a week before departure, not at the gate. And note the cruel detail: a locked phone *passes* the EID dialer test, because the chip exists. Lock is a software gate on top of hardware, which is why the two checks are separate steps.
+A carrier-locked phone cannot install an eSIM at all. It accepts profiles only from the carrier it is locked to; every travel eSIM install will fail, usually with a vague "cannot activate" error rather than a clear lock message. On iOS 14+, check *Settings → General → About → Carrier Lock*: it must read **No SIM restrictions**. Paid off your device? The unlock is normally a free carrier request — do it a week before departure, not at the gate. And note the cruel detail: a locked phone *passes* the EID dialer test, because the chip exists. Lock is a software gate on top of hardware, which is why the two checks are separate steps.
 
 ## Half of compatibility is the provider's install route
 

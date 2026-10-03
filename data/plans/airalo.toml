@@ -5858,49 +5858,49 @@ checked = "2026-09-30"
 networks = ["SK Telecom", "KT", "LG U+"]
 
 [[KR.plans]]
-name = "'짱 Jjang - 1 GB"
+name = "Jjang - 1 GB"
 gb = 1
 days = 3
 type = "data"
 price = 4.00
 
 [[KR.plans]]
-name = "'짱 Jjang - 3 GB"
+name = "Jjang - 3 GB"
 gb = 3
 days = 3
 type = "data"
 price = 8.00
 
 [[KR.plans]]
-name = "'짱 Jjang - 3 GB"
+name = "Jjang - 3 GB"
 gb = 3
 days = 7
 type = "data"
 price = 9.00
 
 [[KR.plans]]
-name = "'짱 Jjang - 5 GB"
+name = "Jjang - 5 GB"
 gb = 5
 days = 7
 type = "data"
 price = 10.00
 
 [[KR.plans]]
-name = "'짱 Jjang - 5 GB"
+name = "Jjang - 5 GB"
 gb = 5
 days = 15
 type = "data"
 price = 10.50
 
 [[KR.plans]]
-name = "'짱 Jjang - 5 GB"
+name = "Jjang - 5 GB"
 gb = 5
 days = 30
 type = "data"
 price = 11.00
 
 [[KR.plans]]
-name = "'짱 Jjang - Unlimited"
+name = "Jjang - Unlimited"
 gb = 0
 days = 3
 type = "unlimited"
@@ -5908,28 +5908,28 @@ price = 12.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[KR.plans]]
-name = "'짱 Jjang - 10 GB"
+name = "Jjang - 10 GB"
 gb = 10
 days = 7
 type = "data"
 price = 18.00
 
 [[KR.plans]]
-name = "'짱 Jjang - 10 GB"
+name = "Jjang - 10 GB"
 gb = 10
 days = 15
 type = "data"
 price = 18.50
 
 [[KR.plans]]
-name = "'짱 Jjang - 10 GB"
+name = "Jjang - 10 GB"
 gb = 10
 days = 30
 type = "data"
 price = 19.00
 
 [[KR.plans]]
-name = "'짱 Jjang - Unlimited"
+name = "Jjang - Unlimited"
 gb = 0
 days = 5
 type = "unlimited"
@@ -5937,7 +5937,7 @@ price = 20.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[KR.plans]]
-name = "'짱 Jjang - Unlimited"
+name = "Jjang - Unlimited"
 gb = 0
 days = 7
 type = "unlimited"
@@ -5945,21 +5945,21 @@ price = 29.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[KR.plans]]
-name = "'짱 Jjang - 20 GB"
+name = "Jjang - 20 GB"
 gb = 20
 days = 15
 type = "data"
 price = 29.00
 
 [[KR.plans]]
-name = "'짱 Jjang - 20 GB"
+name = "Jjang - 20 GB"
 gb = 20
 days = 30
 type = "data"
 price = 30.00
 
 [[KR.plans]]
-name = "'짱 Jjang - Unlimited"
+name = "Jjang - Unlimited"
 gb = 0
 days = 10
 type = "unlimited"
@@ -5967,14 +5967,14 @@ price = 35.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[KR.plans]]
-name = "'짱 Jjang - 50 GB"
+name = "Jjang - 50 GB"
 gb = 50
 days = 30
 type = "data"
 price = 49.00
 
 [[KR.plans]]
-name = "'짱 Jjang - Unlimited"
+name = "Jjang - Unlimited"
 gb = 0
 days = 15
 type = "unlimited"
@@ -5982,7 +5982,7 @@ price = 49.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[KR.plans]]
-name = "'짱 Jjang - Unlimited"
+name = "Jjang - Unlimited"
 gb = 0
 days = 30
 type = "unlimited"

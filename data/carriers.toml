@@ -1125,6 +1125,21 @@ weak = "The smallest coverage footprint."
 [CN.info]
 cities = ["Beijing", "Shanghai", "Guangzhou", "Shenzhen"]
 
+[[CN.info.detail]]
+carrier = "China Mobile"
+strong = "The widest reach of the three - subway tunnels, smaller cities and most tourist routes."
+weak = "The busiest network, so city speeds dip at peak times."
+
+[[CN.info.detail]]
+carrier = "China Unicom"
+strong = "Fast in the big cities, and a frequent host for inbound travel eSIMs."
+weak = "Rural reach sits a step behind China Mobile."
+
+[[CN.info.detail]]
+carrier = "China Telecom"
+strong = "Strong in the south and in every major city."
+weak = "Thinner coverage in the north and far west away from the cities."
+
 [CO.info]
 cities = ["Bogota", "Medellin", "Cartagena"]
 

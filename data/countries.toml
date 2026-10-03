@@ -25,6 +25,7 @@ roami = "japan-esim"
 
 [US]
 name = "United States"
+article = "The"
 slug = "united-states"
 flag = "img/flags/us.svg"
 region = "Americas"
@@ -43,6 +44,7 @@ roami = "united-states-esim"
 
 [GB]
 name = "United Kingdom"
+article = "The"
 slug = "united-kingdom"
 flag = "img/flags/gb.svg"
 region = "Europe"
@@ -307,6 +309,7 @@ roami = "indonesia-esim"
 
 [PH]
 name = "Philippines"
+article = "The"
 slug = "philippines"
 flag = "img/flags/ph.svg"
 region = "Asia"
@@ -375,6 +378,7 @@ roami = "portugal-esim"
 
 [NL]
 name = "Netherlands"
+article = "The"
 slug = "netherlands"
 flag = "img/flags/nl.svg"
 region = "Europe"
@@ -698,6 +702,7 @@ roami = "costa-rica-esim"
 
 [AE]
 name = "United Arab Emirates"
+article = "The"
 slug = "united-arab-emirates"
 flag = "img/flags/ae.svg"
 region = "Africa & Middle East"

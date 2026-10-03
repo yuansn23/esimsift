@@ -38,6 +38,53 @@ def toml_str(s: str) -> str:
     return json.dumps(s, ensure_ascii=False)
 
 
+# --- plan-name normalisation -------------------------------------------------
+# Site copy is English-only. Upstream listings occasionally name a plan with a
+# local-language word: most are Latin script ("Élan", "Fáilte", "Prosím") and are
+# the provider's real product name -> kept verbatim. Non-Latin scripts (Airalo's
+# Korean "짱 Jjang") must never reach a page; keep the Latin remainder.
+NON_LATIN = re.compile(
+    "["
+    "\u0370-\u03FF"  # Greek
+    "\u0400-\u04FF"  # Cyrillic
+    "\u0530-\u058F"  # Armenian
+    "\u0590-\u05FF"  # Hebrew
+    "\u0600-\u06FF\u0750-\u077F"  # Arabic
+    "\u0900-\u097F"  # Devanagari
+    "\u0980-\u09FF"  # Bengali
+    "\u0B80-\u0BFF"  # Tamil
+    "\u0D80-\u0DFF"  # Sinhala
+    "\u0E00-\u0E7F"  # Thai
+    "\u0E80-\u0EFF"  # Lao
+    "\u1000-\u109F"  # Myanmar
+    "\u10A0-\u10FF"  # Georgian
+    "\u1100-\u11FF\u3130-\u318F\uAC00-\uD7AF"  # Hangul
+    "\u1780-\u17FF"  # Khmer
+    "\u1800-\u18AF"  # Mongolian
+    "\u3040-\u309F\u30A0-\u30FF"  # Kana
+    "\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF"  # Han
+    "]+"
+)
+normalized: list[str] = []
+
+
+def clean_plan_name(raw: str, where: str) -> str:
+    """Strip non-Latin script and leading junk from a scraped plan name.
+
+    Drops non-Latin characters, collapses whitespace, and trims the stray
+    leading punctuation the DOM sometimes carries (e.g. `'짱 Jjang - 1 GB`
+    -> `Jjang - 1 GB`). Latin accents are intentionally preserved.
+    """
+    out = NON_LATIN.sub("", raw)
+    out = re.sub(r"\s{2,}", " ", out)
+    out = re.sub(r"^[^0-9A-Za-z\u00C0-\u024F]+", "", out)  # stray leading quotes/punct
+    out = re.sub(r"\s+([-–—/])", r" \1", out).strip()
+    if out and out != raw.strip():
+        normalized.append(f"{where}: {raw.strip()!r} -> {out!r}")
+        return out
+    return raw.strip()
+
+
 def parse_plan(p: dict, problems: list[str], where: str) -> dict | None:
     data_txt = p["data"].replace("\n", " ").strip()
     valid = p["validity"].strip()
@@ -67,7 +114,7 @@ def parse_plan(p: dict, problems: list[str], where: str) -> dict | None:
         problems.append(f"{where}: price <= 0 ({price_txt!r})")
         return None
 
-    plan = {"name": p["name"].strip(), "days": days, "price": round(price, 2)}
+    plan = {"name": clean_plan_name(p["name"], where), "days": days, "price": round(price, 2)}
 
     # fair-use cap text lives in a badge on esimdb DOM ("+ ∞ at 1Mbps")
     cap_badge = ""
@@ -194,6 +241,10 @@ def main() -> None:
 
     print(f"{provider}: {len(blocks)} countries with plans, "
           f"{len(empty_countries)} without ({', '.join(empty_countries) or '-'})")
+    if normalized:
+        print(f"{len(normalized)} plan name(s) normalised (non-Latin script / leading junk):")
+        for n in normalized[:40]:
+            print("  " + n)
     if problems:
         print(f"{len(problems)} problems:")
         for pr in problems[:40]:

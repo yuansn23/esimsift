@@ -41,10 +41,21 @@
 | 关键词模式 | 预留 URL | 条件 |
 |---|---|---|
 | `{carrier} eSIM` / `which eSIM uses {carrier}`（{carrier} = 本地运营商名，如 Movistar） | `/networks/{carrier}/` ×N | 本地运营商↔品牌归属逐运营商核对后；注意与已上线的 `/networks/` 总表同 section，slug 不得冲突 |
-| `{country} mobile networks` / `{country} carriers` / `which network does {country} esim use` / `does {carrier} support esim in {country}` | `/networks/{country-slug}/` ×50（**2026-10-03 起上线，Japan 为首页**） | 承接「国家网络/运营商」意图；**不得争** `{country} eSIM` 价格词（→国家页 compare）、不得争 `{A} vs {B}`（→对决页）、不得争全局网络归属（→`/networks/` 枢纽）。版式 = 模板 `layouts/networks/single.html`（纯数据驱动，加国家只增 content md 不改版式）；每页必带 ①运营商画像卡 ②品牌→网络表（链品牌×国家页）③城市覆盖 ④Opensignal/Ookla 引用 ⑤FAQ(FAQPage)。内链：枢纽目的地卡 chip + 国家页 ⑦b 段落回链 |
+| `{country} mobile networks` / `{country} carriers` / `which network does {country} esim use` / `does {carrier} support esim in {country}` | `/networks/{country-slug}/` ×50（**2026-10-03 起上线：已发布 12 国 = JP US DE CA FR MX TH ES KR CN GB NL，余 38 国加 content md 即可，不改版式**） | 承接「国家网络/运营商」意图；**不得争** `{country} eSIM` 价格词（→国家页 compare）、不得争 `{A} vs {B}`（→对决页）、不得争全局网络归属（→`/networks/` 枢纽）。版式 = 模板 `layouts/networks/single.html`（纯数据驱动，加国家只增 content md 不改版式）；每页必带 ①运营商画像卡 ②品牌→网络表（链品牌×国家页）③城市覆盖 ④Opensignal/Ookla 引用 ⑤FAQ(FAQPage)。内链（四条，全部 `site.GetPage` 门控，未建页不产生死链）：①页头 Network map 二级菜单「Carrier breakdowns」逐国列出（`partials/header.html`，有 0 个深度页时自动退回单链接）②枢纽 `/networks/` 目的地卡「Carrier breakdown →」③国家页 `/compare/{country}/` 「Networks」段内嵌回链 ④品牌×国家子页 `/compare/{country}/{brand}/` 「Which network does {A} ride in {C}」段（建满 50 国后 = 400 条入链） |
 
 > 注：原预留的 `best eSIM for Europe / {region} eSIM → /compare/{region}/ ×5` 已上线，
 > 实际落地为 `/guides/best-{region}-esim/`（layout region），见主映射表；`/compare/{region}/` 槽位废弃。
+
+### 3.1 `/networks/{country}/` 标题纪律（防与 `/compare/{country}/` 蚕食，2026-10-03 定）
+
+两类页共享「{country} eSIM」这一主干词，靠**修饰语**区分意图，标题层不得重叠：
+
+| 页型 | 承接意图 | `<title>` 写法 | 禁用词 |
+|:---|:---|:---|:---|
+| `/networks/{country}/` | 「这个国家的网络/运营商是谁、谁强」 | `{Country} eSIM Networks {Year}: {运营商A} {运营商B} and {运营商C}`（H1 另写 `{Country} eSIM Carriers: ... Explained`） | **禁用 `Best`、禁用 `From $x/GB`、禁用 `Cheap`** —— 这些是价格页的钩子 |
+| `/compare/{country}/` | 「买哪个最便宜/多少流量」 | `Best {Country} eSIM {Year}: {价格钩子} From ${x}/GB` | 不用 `Carriers` / `Networks` 做主干 |
+
+> 起因：初审发现 France / Netherlands / Spain 三页 networks 标题写成 `Best 5G Networks for Tourists`，与 compare 的 `Best {C} eSIM 2026: ...` 共享 `Best` + `5G` 两个高权重词，构成局部蚕食。已全部改写为纯网络意图标题。新增国家照此表执行。
 
 ## 4. 新页面检查清单（进 validate.py）
 

@@ -65,6 +65,15 @@ Every travel eSIM rides a local host carrier; at the current check the providers
 
 - [eSIM network map]({{ absURL "networks/" }}): host carriers for every destination we track, the cross-border carrier groups, cited Opensignal and Ookla verdicts per destination, and a glossary of eSIM network terms
 
+{{ $networkPages := site.GetPage "/networks" -}}
+{{ with $networkPages -}}
+Per-destination carrier breakdowns, one page per country. Each page answers which local networks a travel eSIM can ride, how those networks score in independent Opensignal and Ookla testing, which brands ride which host, and what the local registration and identity rules mean for visitors:
+
+{{ range .Pages -}}
+- [{{ htmlUnescape .Title }}]({{ .Permalink }}): {{ htmlUnescape .Params.description }}
+{{ end -}}
+{{ end -}}
+
 ## How we compare
 
 - [Methodology]({{ absURL "methodology/" }}): data collection schedule, derived-metric formulas, badge rules
