@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "validate": "python scripts/validate.py",
+    "validate": "python scripts/validate.py && python -X utf8 scripts/check_css_sync.py",
+    "check:output": "python -X utf8 scripts/check_output.py",
     "build:css": "tailwindcss -i assets/css/main.css -o static/css/tailwind.css --minify",
     "watch:css": "tailwindcss -i assets/css/main.css -o static/css/tailwind.css --watch",
-    "build": "npm run validate && npm run build:css && hugo",
+    "build": "npm run build:css && npm run validate && hugo && npm run check:output",
     "dev": "npm run build:css && hugo server"
   },
   "devDependencies": {

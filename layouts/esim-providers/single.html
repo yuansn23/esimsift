@@ -89,7 +89,8 @@
 {{ range $cov }}{{ if and .cheapest (eq $cheapName "") }}{{ $cheapName = .name }}{{ $cheapMin = .min }}{{ $cheapURL = .url }}{{ end }}{{ end }}
 
 {{ $pct := 0 }}
-{{ if gt $a.countries 0 }}{{ $pct = math.Round (mul (div (float $a.cheapest) (float $a.countries)) 100.0) }}{{ end }}
+{{/* int 强转必需：math.Round 返回 float64，直接喂给 %d 会渲染出 %!d(float64=…) */}}
+{{ if gt $a.countries 0 }}{{ $pct = int (math.Round (mul (div (float $a.cheapest) (float $a.countries)) 100.0)) }}{{ end }}
 
 <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
   <nav aria-label="Breadcrumb" class="text-sm text-ink-400">
@@ -122,6 +123,7 @@
       <div class="mt-7 flex flex-wrap gap-3">
         {{ partial "cta-out.html" (dict "target" $key "label" (printf "View %s plans" $p.name) "class" "btn-primary" "campaign" (printf "prov-%s" $key) "page" $.RelPermalink) }}
       </div>
+      <p class="mt-3 text-xs text-ink-500">Wondering which local towers it connects to? Every provider rides the same host networks per destination — see the <a href="/networks/" class="font-semibold text-brand-700 hover:underline">eSIM network map</a>.</p>
     </div>
 
     <div class="card p-6">
@@ -129,7 +131,7 @@
       <p class="mt-2 font-display text-2xl font-bold leading-tight text-ink-950">{{ $p.name }} is the cheapest provider in {{ $a.cheapest }} of {{ $a.countries }} countries we track — {{ $pct }}% of its coverage.</p>
       <p class="mt-3 text-sm leading-relaxed text-ink-600">Best $/GB in <strong class="text-ink-950 tnum">{{ $a.bestValue }}</strong> countries; entry price from <strong class="text-ink-950 tnum">${{ printf "%.2f" $a.minPrice }}</strong>. No editorial star-rating — just the numbers, computed the same way for every brand.</p>
       <div class="mt-5 border-t border-ink-100 pt-4">
-        <p class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Price competitiveness</p>
+        <p class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Price competitiveness index (editorial)</p>
         <div class="mt-2 flex items-center gap-3">
           <span class="font-display text-3xl font-extrabold text-brand-700 tnum">{{ printf "%.1f" $score }}</span>
           <span class="text-sm text-ink-500">/ 10 (share of destinations where it's cheapest)</span>
@@ -244,12 +246,37 @@
   {{- $faqEntities := slice -}}
   {{- range $faqList -}}{{- $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) -}}{{- end -}}
 
-  {{/* ── ② Review + Product + FAQ 结构化数据 ── */}}
-  {{- /* Organization 节点（sameAs=官网/商店）仅当 info 子表存在时加入 */ -}}
-  {{- $graph := slice
-        (dict "@type" "Product" "name" (printf "%s eSIM" $p.name) "description" (printf "%s eSIM plans in %d destinations from $%.2f." $p.name $a.countries $a.minPrice) "brand" (dict "@type" "Brand" "name" $p.name) "offers" (dict "@type" "AggregateOffer" "priceCurrency" "USD" "lowPrice" (printf "%.2f" $a.minPrice) "highPrice" (printf "%.2f" $a.maxPrice) "offerCount" $totalPlans))
-        (dict "@type" "Review" "itemReviewed" (dict "@type" "Organization" "name" $p.name) "reviewRating" (dict "@type" "Rating" "ratingValue" (printf "%.1f" $score) "bestRating" "10") "author" (dict "@type" "Organization" "name" "eSIM Sift") "reviewBody" (printf "Computed from our live price database: %s is the cheapest provider in %d of %d destinations and best value in %d." $p.name $a.cheapest $a.countries $a.bestValue))
+  {{/* ── ② Product + Organization + FAQ 结构化数据 ──
+     这里刻意不放 Review / reviewRating。页面上的「价格竞争力指数」是编辑部依价格库
+     计算所得，不是用户评分；Google 对 itemReviewed=Organization 的评分摘要明文要求
+     「评分必须直接来自用户，请勿依赖人工编辑来创建、精选或编制评分信息」，
+     编辑计算分充当 rating 会报 “评分超出了指定范围”，且触碰质量指南。
+     故该指数改为 additionalProperty 如实携带，页面可见读数保持不变。 */}}
+  {{- $scoreR := div (math.Round (mul $score 10)) 10.0 -}}
+  {{- $props := slice
+        (dict "@type" "PropertyValue" "name" "Countries tracked" "value" $a.countries)
+        (dict "@type" "PropertyValue" "name" "Cheapest-plan wins" "value" $a.cheapest)
+        (dict "@type" "PropertyValue" "name" "Best value ($/GB) wins" "value" $a.bestValue)
+        (dict "@type" "PropertyValue" "name" "Price competitiveness index (0-10, editorial)" "value" $scoreR)
   -}}
+  {{- $product := dict
+        "@type" "Product"
+        "name" (printf "%s eSIM" $p.name)
+        "description" (printf "%s eSIM plans in %d destinations from $%.2f." $p.name $a.countries $a.minPrice)
+        "brand" (dict "@type" "Brand" "name" $p.name)
+        "url" .Permalink
+        "offers" (dict "@type" "AggregateOffer" "priceCurrency" "USD"
+          "lowPrice" (div (math.Round (mul $a.minPrice 100)) 100.0)
+          "highPrice" (div (math.Round (mul $a.maxPrice 100)) 100.0)
+          "offerCount" $totalPlans)
+        "additionalProperty" $props
+  -}}
+  {{- if fileExists (printf "static/img/providers/%s.png" $key) -}}
+    {{- $product = merge $product (dict "image" (printf "%simg/providers/%s.png" $.Site.BaseURL $key)) -}}
+  {{- else if fileExists (printf "static/img/providers/%s.webp" $key) -}}
+    {{- $product = merge $product (dict "image" (printf "%simg/providers/%s.webp" $.Site.BaseURL $key)) -}}
+  {{- end -}}
+  {{- $graph := slice $product -}}
   {{- with $p.info -}}
     {{- $same := slice -}}
     {{- with .website }}{{- $same = $same | append . -}}{{- end -}}

@@ -59,6 +59,12 @@ Original analysis computed from the same plan database as the comparison pages:
 - [{{ htmlUnescape .Title }}]({{ .Permalink }}): {{ htmlUnescape .Params.description }}
 {{ end -}}
 
+## eSIM network map
+
+Every travel eSIM rides a local host carrier; at the current check the providers we track use identical hosts in each destination. The map names the host networks per destination, isolates the carrier groups that cross borders (the lever a regional plan pulls), quotes independent Opensignal and Ookla verdicts for each destination with links to the originals, and defines the network vocabulary:
+
+- [eSIM network map]({{ absURL "networks/" }}): host carriers for every destination we track, the cross-border carrier groups, cited Opensignal and Ookla verdicts per destination, and a glossary of eSIM network terms
+
 ## How we compare
 
 - [Methodology]({{ absURL "methodology/" }}): data collection schedule, derived-metric formulas, badge rules
@@ -70,6 +76,7 @@ Original analysis computed from the same plan database as the comparison pages:
 - [All country comparisons]({{ absURL "compare/" }})
 - [Provider matchups index]({{ absURL "compare/matchups/" }})
 - [eSIM providers]({{ absURL "esim-providers/" }})
+- [eSIM network map]({{ absURL "networks/" }})
 - [eSIM deals & promo codes]({{ absURL "esim-deals/" }})
 - [Guides]({{ absURL "guides/" }})
 - [Data & research]({{ absURL "research/" }})

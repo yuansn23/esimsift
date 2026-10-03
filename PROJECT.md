@@ -20,6 +20,7 @@
 | 构建 | **525 页，0 error**；sitemap 508 URL |
 | 页面构成 | 50 国家页 + 400 品牌×国家子页 + 28 品牌对决页 + **1 对决枢纽页 /compare/matchups/** + 8 品牌详情页 + tools/esim-deals/research×3/guides×5/about 等静态页 |
 | 数据验证 | `scripts/validate.py` 8 组检查，0 error 0 warning |
+| 样式构建 | **Tailwind CLI 独立产出 `static/css/tailwind.css`（裸 `hugo` 不会重编译）**；`scripts/check_css_sync.py` 守卫模板 class 与编译产物同步（2026-10-03 加装） |
 | 增信数据 | `data/devices.toml`（14 品牌 351 机型 + 12 不支持条目，2026-10 核对）+ `data/networkreports.toml`（44 国 Opensignal + 50 国 Global Index 深链）+ **`networks` 补真**（8 品牌 × 50 国 = 各国运营商，2026-10-02） |
 | 上线状态 | **未部署**。折扣码已换真（roami web20 / saily VEEPEE25 / ubigi WELCOME10，其余 5 家官方无公开码）、联盟深链是模式假设、GA4 是占位、logo 8/8 全量接入 |
 
@@ -74,7 +75,9 @@ esimsift/
 - ✅ 静态页：about / methodology / disclosure / privacy / terms / contact（disclosure 2026-10-01 已去除同司声明，改为佣金模式 + 诚实规则，勿再加回）
 
 ### 2.3 SEO / 基建
-- ✅ 结构化数据全在模板层：国家页 FAQPage、子页 BreadcrumbList、品牌页 Product+Review+FAQPage @graph、对决页 FAQPage（**不做假评分**，用"最便宜命中率"透明口径 —— 蓝图红线）
+- ✅ 结构化数据全在模板层：国家页 FAQPage、子页 BreadcrumbList、品牌页 Product+Organization+FAQPage @graph、对决页 FAQPage（**不做假评分** —— 蓝图红线）
+  - ⚠️ **品牌页曾挂 `Review`+`reviewRating`，2026-10-03 已移除**。两层原因：① `bestRating` 写成字符串且漏 `worstRating` → Google 退回默认 1–5 区间；② 评分是编辑部按价格库算的指数（多数品牌 0.0–1.2），而 Google 对 `itemReviewed` 为 **Organization/LocalBusiness** 的评分明确规定「評分必須直接來自用戶，請勿依賴人工編輯編制評分資訊」→ 编辑计算分不可充当 rating，会报「评分超出了指定范围」并触碰质量指南。现改为把该指数放进 Product 的 `additionalProperty`（`PropertyValue`）如实携带，页面可见读数不变。**想拿星级只有一条正路：上真实站内用户评分体系**
+  - `offers` 的 `lowPrice`/`highPrice`/`offerCount` 必须是 **JSON 数字**（非字符串），由 `scripts/check_output.py` 守卫
 - ✅ **AEO/GEO 三层（2026-10-02）**：Organization + WebSite 全站 509 页（`partials/schema-org.html`，实体锚点，sameAs 留空待官方 profile）；Article 自动覆盖 guides/research 8 篇（`partials/schema.html`，`.IsPage` 且 Section∈guides/research 门控）；`layouts/robots.txt` 显式 Allow 15 个 AI 爬虫 + sitemap
 
 **每类页面 → 应带的结构化数据（新增页型时按此查漏）**：
@@ -83,7 +86,7 @@ esimsift/
 |---|---|
 | 首页 `/` | Organization + WebSite + BreadcrumbList |
 | 国家页 `/compare/{country}/` | Organization + WebSite + **FAQPage** + BreadcrumbList + Product + AggregateOffer |
-| 品牌页 `/esim-providers/{brand}/` | Organization + WebSite + **Product+AggregateOffer+Brand** + **Review+Rating** + FAQPage + BreadcrumbList |
+| 品牌页 `/esim-providers/{brand}/` | Organization + WebSite + **Product+AggregateOffer+Brand+additionalProperty** + FAQPage + BreadcrumbList（**2026-10-03 起不含 Review/reviewRating**，见 §2.3 说明） |
 | 对决页 `/compare/{a}-vs-{b}/` | Organization + WebSite + FAQPage + BreadcrumbList |
 | guides / research 文章 | Organization + WebSite + **Article** + FAQPage + BreadcrumbList |
 | 工具/折扣页 `/tools/` `/esim-deals/` | Organization + WebSite + FAQPage + BreadcrumbList |
@@ -114,12 +117,13 @@ esimsift/
 
 ### P-C 上线前
 - [ ] privacy/terms/disclosure 法律审校（文中已标 Todo）
-- [ ] GA4 ID 替换 + 与 roamiapp.com 跨域衡量（`layouts/partials/head.html` 占位注释处）
+- [ ] GA4 ID 替换 + 与 roamiapp.com 跨域衡量（`layouts/partials/head.html` 占位注释处）  ，这个完成
 - [ ] OG 图片（每国一张，含最低价数字）
 - [ ] 部署（建议 Cloudflare Pages；见 §16）
 
 ### P-2 蓝图 Phase 2（上线后，槽位已留在 docs/keyword-map.md）
 - [ ] 区域枢纽页 ×5（/compare/asia/ 等）
+- [x] ~~`/networks/{country}/` 单国运营商深度页~~ **2026-10-03 起做，Japan 完成（1/50）**：`layouts/networks/single.html`（数据驱动：carrier 画像/品牌→网络表/城市/Opensignal+Ookla/FAQ schema）+ `content/en/networks/japan.md`；枢纽卡 + 国家页 ⑦b 已补回链。余 49 国按同模板加 md
 - [ ] /networks/{carrier}/ 运营商页、/devices/{device}/ 设备页（设备页数据源 devices.toml 已就绪）
 - [ ] tools 再加 2 个
 - [ ] sitemap 分片（>1000 URL 时）
@@ -304,7 +308,11 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `compare/matchups.html` | 对决枢纽页 /compare/matchups/（28 卡 + 计算瓦片） |
 | `compare/list.html` | /compare/ 枢纽（国家网格 + #matchups 对决网格） |
 | `esim-providers/single.html` | 品牌详情页（含无数据降级简壳） |
-| `guides/single.html` | 指南页（逐篇数据盒 + FAQ schema + 内链闭环；compatibility 篇注入设备库交互块） |
+| `networks/list.html` | /networks/ 网络地图枢纽（目的地卡 + 跨网分组 + 右栏） |
+| `networks/single.html` | 单国运营商深度页 /networks/{country}/（数据驱动；版式对齐 guides） |
+| `guides/single.html` | 指南页（**版式基线**：窄阅读列 + 首屏配图 + 逐篇数据盒 + FAQ schema + 内链闭环；compatibility 篇注入设备库交互块） |
+| `guides/region.html` | 区域指南（5 篇区域聚合表，宽版式，未挂右栏） |
+| `partials/aside-destinations.html` | ★ 右侧吸顶内链模块：11 个高价值目的地里按 `hash.FNV32a RelPermalink` 轮转出 6 条（排除当前国），服务端渲染，链 `/compare/{slug}/`。改目的地池只动这一处 `$pool` |
 | `partials/country-stats.html` | ★ 全站唯一国家级聚合入口（rows/perDay/perGB/minPrice/unlimitedCount/checkedDate；徽章=排序字面位置） |
 | `partials/provider-agg.html` / `vs-agg.html` | 品牌级 / 对决级聚合 |
 | `partials/cta-out.html` | ★ 全站唯一出站点（rel/UTM/深链全在这） |
@@ -329,6 +337,8 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `regen_meta_brand.py` | 2026-10-02 批次F meta 品牌规范脚本（幂等可重跑，--dry-run 先行）：50 国 desc 品牌版 / 28 VS 标题+desc（3 家族轮换）/ 29 手写页 map | 可重跑 |
 | `check_hardcoded.py` | `python -X utf8 scripts/check_hardcoded.py` 硬编码总量守卫：扫 content/en + layouts + hugo.toml，命中"50 countries / 8 providers / 28 matchups"等写死总量即失败（国家页 seo.description 豁免——脚本再生的）。**新增国家/品牌或改模板后必跑** | 只读 |
 | `check_headings.py` | `python -X utf8 scripts/check_headings.py` 渲染产物 h2/h3 标点守卫（`,` `;` `:` `—` `–` 全站 0 豁免；改模板/加内容后跑，需先 build） | 只读 |
+| `check_css_sync.py` | `python -X utf8 scripts/check_css_sync.py` **CSS 同步守卫（2026-10-03 加）**：扫 `layouts/`+`content/` 所有 `class="…"`，与 `static/css/tailwind.css` 逐类比对，缺任一即 exit 1。Tailwind JIT 对未知类静默忽略，没这道守卫时「改了模板忘重建 CSS」会静默上线（症状：HTML 结构正确、样式全无）。已挂进 `npm run validate` | 只读 |
+| `check_output.py` | `python -X utf8 scripts/check_output.py` **产物守卫（2026-10-03 加，须在 `hugo` 之后跑）**：① 全站扫 Go 格式串泄漏 `%!x(…)`（`math.Round` 返回 float64 喂 `%d`、printf 里字面 `%` 没写 `%%`、有 `%s` 不给参数/没占位符多给参数 —— 三种都会把乱码印在正文里而 `hugo` 不报错）；② 每个 JSON-LD 块必须 `json.loads` 可解析；③ `reviewRating`/`aggregateRating`/独立 `Rating` 的 `ratingValue` 必须是 JSON 数字且落在 `[worstRating‖1, bestRating‖5]`（含"量表写成字符串"这一失败模式）。已挂进 `npm run check:output`，并在 `npm run build` 末尾 | 只读 |
 | `append_carrier_info.py` | 追加 [ISO.info]（幂等，**已执行过，勿再跑**——再跑也只是提示跳过） | 幂等 |
 | `backfill_networks_uniform.py` | `python -X utf8 scripts/backfill_networks_uniform.py` 一键把 8 品牌每国 `networks` 填成该国运营商（同国同运营商，幂等）。**新增品牌转完 TOML 后必跑** | 安全 |
 | `gen_sample_data.py` | ☠☠☠ **永远禁止整跑** —— 会用 SAMPLE 数据覆盖全部真实抓取结果 | 禁令 |
@@ -339,17 +349,22 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 ## 6. 常用命令速查
 
 ```bash
-cd "/d/HUGO test/29.1_windows-amd64/hugo_0.159.1_windows-amd64/esimsift"
+cd "D:/esimsift/esimsift"
 
-npm run build                      # 完整管线：validate → Tailwind → hugo（上线前必跑）
+npm run build                      # 完整管线：Tailwind CSS → validate(+CSS 同步守卫) → hugo → check:output（上线前必跑）
 npm run dev                        # Tailwind 预编译 + hugo server（本机 :1313）
-python -X utf8 scripts/validate.py # 单独跑数据验证
+npm run build:css                  # 只重建 Tailwind —— 改过 layouts 里的 class 后必须跑
+npm run validate                   # validate.py + check_css_sync.py
+npm run check:output               # 产物守卫（格式串 / JSON-LD / 评分区间）—— 须在 hugo 之后跑
 
 # 数据刷新三连（改完 plans 后必做后两步）：
 python -X utf8 scripts/gen_provider_pages.py   # ① 子页描述嵌着数字，必须重生成
 python -X utf8 scripts/validate.py             # ②
 npm run build                                   # ③
 ```
+
+⚠️ **不要用裸 `hugo` 代替 `npm run build`。** `hugo` 只把 `static/css/tailwind.css` 拷进 `public/`，
+不会重编译 Tailwind；改了模板 class 而不重建 CSS，新类没有规则、样式静默失效（2026-10-03 已踩）。
 
 **Windows 注意**：python 一律带 `-X utf8`；文件编辑用 Edit/Write 工具，**绝不用 PowerShell Get-Content/Set-Content 批量改文件**（PS 5.1 会把无 BOM UTF-8 按 GBK 读写，中文/箭头变乱码还会吞 `<`）；bash 的 `cd` 不跨命令保持，每条命令里自己 cd。
 
@@ -550,6 +565,7 @@ npm run build
 | guides 指南页 | ✅ 5 篇 + 枢纽 |
 | 区域枢纽页 ×5（/compare/asia/ 等） | ⬜ Phase 2 |
 | /networks/{carrier}/ 运营商页 | ⬜ Phase 2（数据已就绪：networks 2026-10-02 已补真） |
+| /networks/{country}/ 单国运营商深度页 ×50 | 🟡 1/50（Japan ✅ 2026-10-03；模板 `layouts/networks/single.html` 纯数据驱动，其余 49 国只需加 content md + FAQ） |
 | /devices/{device}/ 设备兼容页 | ⬜ Phase 2（数据源 devices.toml 已备） |
 | tools 第 2/3 个工具 | ⬜ Phase 2（已有行程计算器） |
 | sitemap 分片（>1000 URL） | ⬜ 现在 507，暂不需要 |
@@ -572,13 +588,20 @@ npm run build
 8. 国家列表过滤是三层的：`where (where (where .Pages "Params.provider" nil) "Params.providers" nil) "Params.nolist" nil`（排除品牌子页、对决页、nolist 特殊页如 matchups 枢纽）—— 新模板列国家时照抄，别只抄两层。
 9. esimdb 有 AWS WAF：curl 全被拦，必须 Playwright 本机 chromium；airalo.com 官网对高频访问限速（verify 脚本要慢跑）。
 10. 并行 agent 最多 3 个（API 429）；被内存压力杀掉的后台任务**不自动重启**，等指令再续。
-11. TOML 表数组（如 `[[XX.info.detail]]`）追加在文件末尾合法；validate.py 目前只校验 profiles 的 join key，追加 detail 后跑一遍确认。
-12. **标题硬规则（用户定，2026-10-01）**：全站 `<h2>/<h3>` 必须一句话、用户视角，**禁止逗号/冒号/破折号碎片**（"X, honestly" / "A: B" / "W — and L" 全是反例；FAQ H2 一律用户问句如 "What should I know before buying a {C} eSIM"）。改模板后跑渲染扫描验证：`python -X utf8` 遍历 public/*.html 提取 h2/h3 文本查 `,:—–`（唯一豁免：/research/ 枢纽卡的文章主标题 "Title: Subtitle" 惯例）。
-13. **`data/*.toml` 文件名禁止连字符** —— `network-reports.toml` 的数据键是带 `-` 的 `"network-reports"`，点号 `hugo.Data.networkReports` 取不到，模板静默渲染空卡且**构建不报错**（真实事故：45 国引用卡全部空白才发现）。已改名 `networkreports.toml`；新数据文件一律无连字符命名。
-14. Go html/template 会把 href 里的 `(` `)` 编码成 `%28%29`（`| safeURL` 也拦不住；HK/Macao 的 Global Index 链接即如此）—— HTTP 等价，接受即可，别再花时间"修"。
-15. `{{ with .field }}` 内 dot 被替换成字段值，再链 `.key` 会报 `can't evaluate field key in type string` —— 需要外层键时用 `range $b := $xs` 显式循环变量。
-16. **`content/` 下 `_` 前缀目录不会被 Hugo 隐藏**（`_` 只对 static/data/partials 生效）——放进去的备份会渲染成正式页面（真实事故：guides 备份多渲染 6 个重复内容页）。**备份一律放项目根**（如 `_guides_backup_20261002/`）。
-17. **改聚合 dict 键名要全链路改**：list.html 曾把条目键 `minPerGB` 改成 `v` 但下游没跟上 → `$%!f(<nil>)` 静默渲染且**构建 0 报错**。改完 grep `"%!f" public/` 验一遍（与红线 2 同源）。
+11. **改过 `layouts/` 里的 class 必须重建 CSS**（2026-10-03 版式塌陷事故）—— `static/css/tailwind.css` 是 Tailwind CLI 的独立产物，裸 `hugo` 不会更新它；Tailwind JIT 对未知类**静默忽略、构建不报错**，后果是「HTML 结构对、样式全无」。真实症状：`/networks/japan/` 右侧吸顶内链栏掉到页面底部，因为 `lg:grid-cols-[minmax(0,720px)_300px]` 从未被编译。**对策**：一律 `npm run build`（`build:css` 已前置），并用 `scripts/check_css_sync.py` 兜底；验证时别只看源码，要 `curl -s http://127.0.0.1:1313/css/tailwind.css | grep <类名>` 确认浏览器真拿到了规则。
+12. TOML 表数组（如 `[[XX.info.detail]]`）追加在文件末尾合法；validate.py 目前只校验 profiles 的 join key，追加 detail 后跑一遍确认。
+13. **标题硬规则（用户定，2026-10-01）**：全站 `<h2>/<h3>` 必须一句话、用户视角，**禁止逗号/冒号/破折号碎片**（"X, honestly" / "A: B" / "W — and L" 全是反例；FAQ H2 一律用户问句如 "What should I know before buying a {C} eSIM"）。改模板后跑渲染扫描验证：`python -X utf8` 遍历 public/*.html 提取 h2/h3 文本查 `,:—–`（唯一豁免：/research/ 枢纽卡的文章主标题 "Title: Subtitle" 惯例）。
+14. **`data/*.toml` 文件名禁止连字符** —— `network-reports.toml` 的数据键是带 `-` 的 `"network-reports"`，点号 `hugo.Data.networkReports` 取不到，模板静默渲染空卡且**构建不报错**（真实事故：45 国引用卡全部空白才发现）。已改名 `networkreports.toml`；新数据文件一律无连字符命名。
+15. Go html/template 会把 href 里的 `(` `)` 编码成 `%28%29`（`| safeURL` 也拦不住；HK/Macao 的 Global Index 链接即如此）—— HTTP 等价，接受即可，别再花时间"修"。
+16. `{{ with .field }}` 内 dot 被替换成字段值，再链 `.key` 会报 `can't evaluate field key in type string` —— 需要外层键时用 `range $b := $xs` 显式循环变量。
+17. **`content/` 下 `_` 前缀目录不会被 Hugo 隐藏**（`_` 只对 static/data/partials 生效）——放进去的备份会渲染成正式页面（真实事故：guides 备份多渲染 6 个重复内容页）。**备份一律放项目根**（如 `_guides_backup_20261002/`）。
+18. **改聚合 dict 键名要全链路改**：list.html 曾把条目键 `minPerGB` 改成 `v` 但下游没跟上 → `$%!f(<nil>)` 静默渲染且**构建 0 报错**。改完 grep `"%!f" public/` 验一遍（与红线 2 同源）。
+19. **Go 格式串错误的通用三类（2026-10-03 事故，全站 17 个文件中招）** —— 症状都是**乱码直接印在正文里**（还可能进 JSON-LD FAQ），而 `hugo` 全程 exit 0：
+    - `math.Round` 返回 **float64**，喂 `%d` 前必须 `int` 强转 → 否则 `(%!d(float64=84)% of its coverage)`
+    - printf 格式串里的**字面百分号要写 `%%`** → 否则 `20% margin` 变成 `20%!m(MISSING)argin`
+    - **有 `%s` 就得给够参数、没占位符就别多传参数** → 否则句尾多出 `%!(EXTRA string=Airalo, string=Holafly)`
+    通用验证：`grep -rho '%![A-Za-z]*(\([^)]*\))' public/ --include=*.html | sort | uniq -c`，或直接跑 `scripts/check_output.py`。
+20. **`itemReviewed` 为 Organization/LocalBusiness 时，评分必须来自真实用户（2026-10-03 GSC 事故）** —— 品牌页曾用编辑部算的「价格竞争力指数」（cheapest 命中国数÷覆盖国数×10）当 `reviewRating`，导致 GSC 报「评分超出了指定范围或默认范围（在 reviewRating 中）」、内容无效。**双因**：① `bestRating` 写成字符串 `"10"` 且漏 `worstRating` → Google 退回默认 1–5；② 8 个品牌里 7 个分值 < 1，本身就落在区间外。**更根本**：Google 明文规定这类评分「評分必須直接來自用戶，請勿依賴人工編輯編制評分資訊」，编辑计算分**永远拿不到星级**且踩质量指南。**对策**：指数改用 `additionalProperty`（`PropertyValue`）如实携带，页面可见读数不变；`offers.lowPrice/highPrice/offerCount` 必须是 **JSON 数字**。想拿星级只有一条正路 —— 上真实站内用户评分体系。
 
 ---
 

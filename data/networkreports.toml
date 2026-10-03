@@ -339,6 +339,26 @@ opensignal_facts = [
   "SoftBank won Download Speed outright with 65.1 Mbps; NTT docomo won Coverage (9.0 out of 10) and 5G Download Speed (159.1 Mbps).",
   "au led the national award count with 10 sole wins and 1 joint win."
 ]
+# awards —— 上面三条事实的「逐运营商」视图，供 /networks/{country}/ 记分板表格渲染。
+# 纪律：只做上面同样两份源的转述，不引入新数字；Ookla 仍守「获奖者+报告期+单个数字」。
+# 缺这个块的国家，/networks/ 页自动回退为事实列表布局（不报错）。
+[[JP.awards]]
+carrier = "NTT Docomo"
+opensignal = "Coverage 9.0/10 and 5G download 159.1 Mbps"
+ookla = ""
+best = "Rural routes, mountain passes and the smaller islands"
+
+[[JP.awards]]
+carrier = "SoftBank"
+opensignal = "Download Speed winner at 65.1 Mbps"
+ookla = "Fastest mobile network in Japan, H1 2026 — 73.8 Mbps median download"
+best = "City 5G and the corridors around major stations"
+
+[[JP.awards]]
+carrier = "KDDI"
+opensignal = "Most awarded operator — 10 sole wins and 1 joint"
+ookla = "Second to SoftBank in the same H1 2026 test"
+best = "Western Japan and coastal routes"
 
 [TH]
 ookla_note = "Ookla named AIS the fastest mobile network in Thailand for Q1–Q2 2026, with a Speed Score of 70.6 against True dtac's 66.4."

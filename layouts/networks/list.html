@@ -1,0 +1,472 @@
+{{ define "main" }}
+{{/* eSIM 网络归属与决策页 —— /networks/
+   数据源（全部构建期推导，零写死数字）：
+   ① plans/<brand>.toml networks[] —— 品牌→宿主网络（逐国一致性签名校验）
+   ② carriers.toml profiles —— tech / speed_min / speed_top（indicative 典型区间）
+   ③ networkreports.toml —— Opensignal / Ookla 实测结论 + 原文外链（权威层）
+   ④ partial country-stats.html —— 每国套餐数 / 品牌数 / 最低价（价格桥）
+   版式原则（用户定）：
+   · 首屏不留裸文字块——正文并入 Hero 左栏的品牌色 callout，右栏两张实卡填满，无右侧空白
+   · 页面零 <details>——所有目的地内容直接可见可爬（折叠内容仅限 FAQ 之外的补充说明时才允许）
+   · 加国家只增数据不改版式：区域带 + 双列卡 + chip 筛选 + 搜索
+   SEO：h2/h3 无标点；计数一律数据推导；外链全部 target=_blank rel=noopener */}}
+
+{{ $regionOrder := slice "Asia" "Europe" "Americas" "Africa & Middle East" "Oceania" }}
+{{ $regionGuides := dict "Asia" "best-asia-esim" "Europe" "best-europe-esim" "Americas" "best-americas-esim" "Africa & Middle East" "best-africa-middle-east-esim" "Oceania" "best-oceania-esim" }}
+
+{{/* ── ① 逐国聚合：union 宿主集合 + 品牌间一致性签名 ── */}}
+{{ $rows := slice }}
+{{ range $iso, $c := hugo.Data.countries }}
+  {{ $sigs := dict }}
+  {{ $union := dict }}
+  {{ range $pk, $pv := hugo.Data.providers }}
+    {{ $entry := index (index hugo.Data.plans $pk) $iso }}
+    {{ with $entry }}{{ with .networks }}
+      {{ $sig := delimit (sort .) "|" }}
+      {{ $sigs = merge $sigs (dict $sig true) }}
+      {{ range . }}{{ $union = merge $union (dict . true) }}{{ end }}
+    {{ end }}{{ end }}
+  {{ end }}
+  {{ if gt (len $union) 0 }}
+    {{ $nets := slice }}
+    {{ range $n, $v := $union }}{{ $nets = $nets | append $n }}{{ end }}
+    {{ $nets = sort $nets }}
+    {{ $profiles := dict }}
+    {{ with index hugo.Data.carriers $iso }}{{ range .profiles }}{{ $profiles = merge $profiles (dict .name .) }}{{ end }}{{ end }}
+    {{ $top := 0 }}{{ $g5 := 0 }}
+    {{ range $nets }}
+      {{ $p := index $profiles . }}
+      {{ with $p }}
+        {{ if gt .speed_top $top }}{{ $top = .speed_top }}{{ end }}
+        {{ if in .tech "5G" }}{{ $g5 = add $g5 1 }}{{ end }}
+      {{ end }}
+    {{ end }}
+    {{ $rows = $rows | append (dict
+      "iso" $iso "name" $c.name "slug" $c.slug "flag" $c.flag "region" $c.region
+      "nets" $nets "n" (len $nets) "agree" (eq (len $sigs) 1) "top" $top "g5" $g5) }}
+  {{ end }}
+{{ end }}
+{{ $rows = sort $rows "name" "asc" }}
+
+{{ $agreeCount := 0 }}
+{{ range $rows }}{{ if .agree }}{{ $agreeCount = add $agreeCount 1 }}{{ end }}{{ end }}
+
+{{/* ── ② 宿主 → 覆盖目的地（跨国集团榜 + 卡片锚点） ── */}}
+{{ $host := dict }}
+{{ $hostDest := dict }}
+{{ range $rows }}
+  {{ $r := . }}
+  {{ range .nets }}
+    {{ $c0 := 0 }}{{ with index $host . }}{{ $c0 = . }}{{ end }}
+    {{ $host = merge $host (dict . (add $c0 1)) }}
+    {{ $prev := index $hostDest . | default slice }}
+    {{ $hostDest = merge $hostDest (dict . ($prev | append (dict "name" $r.name "iso" $r.iso "flag" $r.flag "region" $r.region))) }}
+  {{ end }}
+{{ end }}
+
+{{/* 跨国运营商集团：出现在 ≥2 个目的地的宿主（区域套餐的支点） */}}
+{{ $multi := slice }}
+{{ range $n, $c := $host }}
+  {{ if ge $c 2 }}
+    {{ $dests := sort (index $hostDest $n) "name" "asc" }}
+    {{ $rl := slice }}
+    {{ range $dests }}{{ $rl = $rl | append .region }}{{ end }}
+    {{ $rl = sort (uniq $rl) }}
+    {{ $multi = $multi | append (dict "name" $n "count" $c "dests" $dests "regionList" $rl) }}
+  {{ end }}
+{{ end }}
+{{ $multi = sort $multi "count" "desc" }}
+{{ $singleCount := sub (len $host) (len $multi) }}
+
+{{/* ── ③ 宿主画像（去重，供卡片 chip 展示 tech / 典型区间） ── */}}
+{{ $netProf := dict }}
+{{ range $rows }}
+  {{ $profiles := dict }}
+  {{ with index hugo.Data.carriers .iso }}{{ range .profiles }}{{ $profiles = merge $profiles (dict .name .) }}{{ end }}{{ end }}
+  {{ range .nets }}
+    {{ $n := . }}
+    {{ $p := index $profiles $n }}
+    {{ with $p }}{{ $netProf = merge $netProf (dict $n $p) }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ $netCount := len $netProf }}
+{{ $fourK := 0 }}{{ $hd := 0 }}
+{{ range $n, $p := $netProf }}
+  {{ if ge $p.speed_min 25 }}{{ $fourK = add $fourK 1 }}{{ else if ge $p.speed_min 10 }}{{ $hd = add $hd 1 }}{{ end }}
+{{ end }}
+{{/* 覆盖优先型宿主：note 提及 rural / mountain / island（数据关键词扫描，非人工标注） */}}
+{{ $ruralNets := slice }}
+{{ range $n, $p := $netProf }}
+  {{ if or (in (lower $p.note) "rural") (in (lower $p.note) "mountain") (in (lower $p.note) "island") }}
+    {{ $ruralNets = $ruralNets | append $n }}
+  {{ end }}
+{{ end }}
+{{ $ruralNets = sort $ruralNets }}
+
+{{/* ── ④ 权威实测覆盖统计 ── */}}
+{{ $citedCount := 0 }}
+{{ range $rows }}{{ with index hugo.Data.networkreports .iso }}{{ if .opensignal_url }}{{ $citedCount = add $citedCount 1 }}{{ end }}{{ end }}{{ end }}
+
+<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+  {{ partial "breadcrumbs.html" . }}
+
+  {{/* ═══ Hero + 右栏实卡（无裸文字块、无右侧空白） ═══ */}}
+  <div class="mt-4 grid items-start gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+    <div>
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="badge bg-brand-50 text-brand-700">network map</span>
+        <span class="badge bg-ink-50 text-ink-500">{{ len $rows }} destinations</span>
+        <span class="badge bg-ink-50 text-ink-500">{{ $netCount }} host networks</span>
+      </div>
+      <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ .Title }}</h1>
+      <p class="mt-4 text-lg leading-relaxed text-ink-600">Your eSIM's coverage and speed follow the local host carrier it rides — not the brand on the voucher. Find your destination for the exact hosts, the cited tester verdicts and the cheapest plan riding them.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <div class="stat-tile"><span class="stat-num tnum">{{ len $rows }}</span><span class="stat-label">Destinations mapped</span></div>
+        <div class="stat-tile"><span class="stat-num tnum">{{ $netCount }}</span><span class="stat-label">Host networks profiled</span></div>
+        <div class="stat-tile"><span class="stat-num tnum">{{ $citedCount }}</span><span class="stat-label">Independent reports cited</span></div>
+      </div>
+      {{ with .Content }}
+      <div class="mt-6 rounded-2xl border border-brand-100 bg-brand-50/50 p-5">
+        <p class="eyebrow">The one finding that matters</p>
+        <div class="prose prose-sm mt-2 max-w-none">{{ . }}</div>
+      </div>
+      {{ end }}
+    </div>
+
+    <aside class="space-y-3 lg:sticky lg:top-24">
+      <div class="card p-6">
+        <p class="eyebrow">Where these numbers come from</p>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">Every tester verdict on this page is <strong class="text-ink-800">quoted from a named Opensignal or Ookla report and linked to the original</strong> — we do not run our own drive tests. The per-network Mbps bands are indicative ranges compiled from provider listings; the linked measurements are the authority.</p>
+        <p class="mt-3 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">Host assignments are taken from each provider's own listings at the check date. Our price and fair-use data follow the <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.</p>
+      </div>
+      <div class="card p-6">
+        <p class="eyebrow">How to read this page</p>
+        <ol class="mt-3 space-y-3.5">
+          <li class="flex gap-3">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white">1</span>
+            <span class="text-sm leading-relaxed text-ink-600"><a href="#hosts" class="font-semibold text-brand-700 hover:underline">Check the cross-border groups</a> — they decide whether one regional plan can carry your whole route.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white">2</span>
+            <span class="text-sm leading-relaxed text-ink-600"><a href="#destinations" class="font-semibold text-brand-700 hover:underline">Open your destination card</a> — host networks, typical bands, cited measurements and the cheapest plan, all visible.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white">3</span>
+            <span class="text-sm leading-relaxed text-ink-600">Then <a href="/compare/" class="font-semibold text-brand-700 hover:underline">compare the plans</a> riding that host and buy the cheapest verified one.</span>
+          </li>
+        </ol>
+      </div>
+      {{ partial "aside-destinations.html" . }}
+    </aside>
+  </div>
+
+  {{/* ═══ 页内跳转（md 起吸顶） ═══ */}}
+  <nav class="z-30 -mx-4 mt-8 border-y border-ink-100 bg-white/90 px-4 py-2 backdrop-blur md:sticky md:top-16 md:-mx-6 md:px-6" aria-label="On this page">
+    <div class="nav-scroll flex gap-2 overflow-x-auto">
+      <a href="#answers" class="chip whitespace-nowrap">Short answer</a>
+      <a href="#decision" class="chip whitespace-nowrap">Decision rules</a>
+      <a href="#hosts" class="chip whitespace-nowrap">Cross-border hosts</a>
+      <a href="#destinations" class="chip whitespace-nowrap">Destinations</a>
+      <a href="#glossary" class="chip whitespace-nowrap">Glossary</a>
+      <a href="#faq" class="chip whitespace-nowrap">FAQ</a>
+    </div>
+  </nav>
+
+  {{/* ═══ Short answer：先给结论 ═══ */}}
+  <section id="answers" class="mt-8 scroll-mt-28" aria-labelledby="answers-h">
+    <div class="overflow-hidden rounded-2xl bg-ink-gradient p-6 text-white sm:p-8">
+      <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-300">The short answer</p>
+      <h2 id="answers-h" class="mt-2 text-xl font-bold text-white sm:text-2xl">What decides your eSIM's network</h2>
+      <div class="mt-5 grid gap-3 sm:grid-cols-2">
+        <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
+          <p class="font-display text-sm font-bold text-white">Which network will my plan use?</p>
+          <p class="mt-1.5 text-sm leading-relaxed text-ink-200">The local host carrier of your destination — the brand on the voucher never changes it. In Japan that is NTT Docomo, SoftBank or KDDI; in Spain, Movistar, Vodafone, Orange or Yoigo.</p>
+        </div>
+        <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
+          <p class="font-display text-sm font-bold text-white">Do all brands use the same network?</p>
+          <p class="mt-1.5 text-sm leading-relaxed text-ink-200">{{ if eq $agreeCount (len $rows) }}At this check, yes — all {{ len hugo.Data.providers }} brands we track list identical hosts in all {{ len $rows }} destinations. They resell local carrier capacity, so coverage is a destination question, not a brand question.{{ else }}{{ $agreeCount }} of {{ len $rows }} destinations have identical hosts across all {{ len hugo.Data.providers }} brands we track; the rest split, and the cards show it.{{ end }}</p>
+        </div>
+        <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
+          <p class="font-display text-sm font-bold text-white">Does the network matter more than the brand?</p>
+          <p class="mt-1.5 text-sm leading-relaxed text-ink-200">Yes for coverage and speed, because both follow the host. The brand decides price, plan shape, install route and support — which is why the same host can carry a cheap plan and a dear one.</p>
+        </div>
+        <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
+          <p class="font-display text-sm font-bold text-white">Where do I see measured speeds?</p>
+          <p class="mt-1.5 text-sm leading-relaxed text-ink-200">In the cited verdicts: {{ $citedCount }} of {{ len $rows }} destinations carry a named Opensignal report, and every destination links to Ookla's live Global Index. We quote them rather than measure them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{/* ═══ 决策规则 ═══ */}}
+  <section id="decision" class="mt-12 scroll-mt-28" aria-labelledby="decision-h">
+    <p class="eyebrow">The decision</p>
+    <h2 id="decision-h" class="mt-2 text-2xl font-bold md:text-3xl">How to pick between host networks</h2>
+    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">Because the hosts are shared across providers, your decision has two steps: pick the destination's best-fitting host profile for what you will actually do, then find the cheapest plan riding it on the country page.</p>
+    <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="card p-5">
+        <p class="font-display text-sm font-bold text-ink-950">Road trips and rural routes</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-ink-600">Coverage beats raw speed. {{ $ruralNets | len }} of the {{ $netCount }} host networks on this map are described in their profiles as covering rural, mountain or island areas — in those destinations, prefer plans riding them and check the country page for the per-network strengths.</p>
+      </div>
+      <div class="card p-5">
+        <p class="font-display text-sm font-bold text-ink-950">4K streaming and hotspot work</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-ink-600">{{ $fourK }} of {{ $netCount }} profiled hosts sustain a typical floor of 25 Mbps or better — enough for 4K video and video calls. A further {{ $hd }} sit in the 10-25 Mbps HD band. Cities rarely differentiate; rural areas do.</p>
+      </div>
+      <div class="card p-5">
+        <p class="font-display text-sm font-bold text-ink-950">City breaks on a budget</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-ink-600">In major metros every host on this map is fast enough for maps, messaging and streaming — so price decides. Jump to the <a href="/compare/" class="font-semibold text-brand-700 hover:underline">country comparison</a> and buy the cheapest verified plan.</p>
+      </div>
+    </div>
+  </section>
+
+  {{/* ═══ 跨国运营商集团榜（目的地 chip 直接可见，无折叠） ═══ */}}
+  <section id="hosts" class="mt-12 scroll-mt-28" aria-labelledby="hosts-h">
+    <p class="eyebrow">Carrier groups</p>
+    <h2 id="hosts-h" class="mt-2 text-2xl font-bold md:text-3xl">Which host networks cross borders</h2>
+    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">Of the {{ $netCount }} host networks behind the destinations on this map, {{ $multi | len }} appear in more than one country — the carrier groups whose networks keep carrying you as you cross a border. That is the lever a regional plan pulls, and the reason one plan can cover a whole trip.</p>
+    <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {{ range $multi }}
+      <div class="card flex flex-col p-4">
+        <div class="flex items-start justify-between gap-2">
+          <p class="font-display text-sm font-bold text-ink-950">{{ .name }}</p>
+          <span class="badge shrink-0 bg-brand-50 text-brand-700">{{ .count }} destinations</span>
+        </div>
+        <p class="mt-1.5 text-xs leading-relaxed text-ink-500">{{ delimit .regionList " · " }}</p>
+        <div class="mt-3 flex flex-wrap gap-1.5">
+          {{ range .dests }}<a href="#net-{{ .iso }}" class="inline-flex items-center gap-1.5 rounded-md bg-ink-50 px-2 py-1 text-[11px] font-medium text-ink-600 transition-colors hover:bg-brand-50 hover:text-brand-800"><img src="{{ .flag | relURL }}" alt="" class="h-3 w-4 rounded-sm object-cover" loading="lazy">{{ .name }}</a>{{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    <div class="card mt-3 p-5">
+      <p class="font-display text-sm font-bold text-ink-950">And the {{ $singleCount }} single-market hosts</p>
+      <p class="mt-1.5 text-sm leading-relaxed text-ink-600">The remaining host networks serve one destination each — national carriers such as KDDI in Japan, Telstra in Australia or STC in Saudi Arabia. They matter for exactly the same reason: coverage and speed in that country follow them. Find your destination below to see which of them your plan connects to.</p>
+    </div>
+  </section>
+
+  {{/* ═══ 目的地：区域分组 + 双列可见卡（零折叠，全内容可爬） ═══ */}}
+  <section id="destinations" class="mt-12 scroll-mt-28" aria-labelledby="dest-h">
+    <p class="eyebrow">Destination by destination</p>
+    <h2 id="dest-h" class="mt-2 text-2xl font-bold md:text-3xl">Which host networks carry each destination</h2>
+    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">Every card below is fully on the page: the host networks and their typical bands, the cited Opensignal and Ookla findings with links to the originals, and the cheapest plan riding those hosts. Filter by region or search by name.</p>
+    <div class="mt-5 flex flex-wrap items-center justify-between gap-3">
+      <div id="region-chips" class="nav-scroll flex gap-2 overflow-x-auto pb-1">
+        <button class="chip chip-active" data-region="all" type="button">All regions</button>
+        {{ range $regionOrder }}
+          {{ $rgx := where $rows "region" . }}
+          {{ if gt (len $rgx) 0 }}<button class="chip whitespace-nowrap" data-region="{{ . }}" type="button">{{ . }} <span class="tnum">{{ len $rgx }}</span></button>{{ end }}
+        {{ end }}
+      </div>
+      <input id="net-filter" type="search" placeholder="Search destination…" class="input-search w-full sm:w-56" aria-label="Search destinations">
+    </div>
+
+    <div id="net-list">
+      {{ range $regionOrder }}
+        {{ $rn := . }}
+        {{ $rg := where $rows "region" $rn }}
+        {{ if gt (len $rg) 0 }}
+        {{ $rh := dict }}
+        {{ range $rg }}{{ range .nets }}{{ $c0 := 0 }}{{ with index $rh . }}{{ $c0 = . }}{{ end }}{{ $rh = merge $rh (dict . (add $c0 1)) }}{{ end }}{{ end }}
+        {{ $rl := slice }}{{ range $n, $c := $rh }}{{ $rl = $rl | append (dict "name" $n "count" $c) }}{{ end }}
+        {{ $rl = sort $rl "count" "desc" }}
+        {{ $topHost := index $rl 0 }}
+        <div class="mt-8" data-region-block="{{ $rn }}">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-brand-100 bg-brand-50/60 px-4 py-3">
+            <h3 class="font-display text-base font-bold text-ink-950">{{ $rn }}</h3>
+            <span class="badge bg-white text-brand-700">{{ len $rg }} destinations</span>
+            <span class="text-xs leading-relaxed text-ink-600">
+              {{ if ge $topHost.count 2 }}Most-shared host <strong class="font-semibold text-ink-800">{{ $topHost.name }}</strong> in {{ $topHost.count }} of {{ len $rg }} destinations{{ else }}No host crosses borders here — each destination runs on its own national carriers{{ end }}
+            </span>
+            {{ $gslug := index $regionGuides $rn }}
+            {{ with site.GetPage (printf "/guides/%s" $gslug) }}<a href="{{ .RelPermalink }}" class="ml-auto whitespace-nowrap text-xs font-semibold text-brand-700 hover:underline">{{ $rn }} eSIM guide →</a>{{ end }}
+          </div>
+
+          <div class="mt-3 grid gap-3 lg:grid-cols-2">
+            {{ range $rg }}
+            {{ $r := . }}
+            {{ $s := partial "country-stats.html" $r.iso }}
+            {{ $nr := index hugo.Data.networkreports $r.iso }}
+            {{ $ooklaSlug := $r.slug }}{{ with $nr }}{{ with .ookla_slug }}{{ $ooklaSlug = . }}{{ end }}{{ end }}
+            {{ $ooklaMobile := true }}{{ with $nr }}{{ if eq .ookla_mobile false }}{{ $ooklaMobile = false }}{{ end }}{{ end }}
+            <article id="net-{{ $r.iso }}" data-name="{{ lower $r.name }}" data-region="{{ $r.region }}" class="card flex flex-col p-4 scroll-mt-32 transition-shadow hover:shadow-lift">
+              <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
+                <img src="{{ $r.flag | relURL }}" alt="{{ $r.name }} flag" class="h-5 w-7 shrink-0 rounded object-cover ring-1 ring-ink-100" width="28" height="20" loading="lazy">
+                <a href="/compare/{{ $r.slug }}/" class="font-display text-sm font-bold text-ink-950 transition-colors hover:text-brand-700">{{ $r.name }}</a>
+                {{ if gt $r.g5 0 }}<span class="badge bg-brand-50 text-brand-700">5G</span>{{ end }}
+                <span class="text-xs text-ink-400">{{ $r.n }} carrier networks</span>
+                <span class="ml-auto text-xs font-bold text-accent-600 tnum">from ${{ printf "%.2f" $s.minPrice }}</span>
+              </div>
+
+              <div class="mt-2.5 flex flex-wrap gap-1.5">
+                {{ range $r.nets }}
+                  {{ $p := index $netProf . }}
+                  <span class="inline-flex items-center gap-1.5 rounded-lg border border-ink-100 bg-white px-2 py-1 text-[11px] leading-none">
+                    <span class="font-semibold text-ink-800">{{ . }}</span>
+                    {{ with $p }}<span class="text-ink-400">{{ .tech }}</span><span class="tnum text-ink-500">{{ .speed_min }}–{{ .speed_top }} Mbps</span>{{ end }}
+                  </span>
+                {{ end }}
+              </div>
+
+              <div class="mt-3 flex-1 rounded-xl border border-ink-100 bg-ink-50/60 p-3.5">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Independent measurements</p>
+                {{ with $nr }}
+                  {{ with .opensignal_facts }}
+                  <ul class="mt-2 space-y-1.5">
+                    {{ range . }}<li class="flex gap-2 text-xs leading-relaxed text-ink-600"><span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-400" aria-hidden="true"></span><span>{{ . }}</span></li>{{ end }}
+                  </ul>
+                  {{ end }}
+                  {{ with .opensignal_url }}
+                  <p class="mt-2 text-[11px] leading-relaxed text-ink-400">Source: <a href="{{ . }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">{{ $nr.opensignal_title }}</a>{{ with $nr.opensignal_date }}, {{ . }}{{ end }}.</p>
+                  {{ end }}
+                  {{ with .ookla_note }}
+                  <p class="mt-2 border-t border-ink-200/70 pt-2 text-xs leading-relaxed text-ink-600">{{ . }}</p>
+                  <p class="mt-1.5 text-[11px] leading-relaxed text-ink-400">Source: <a href="{{ $nr.ookla_url }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">Ookla RootMetrics report</a>{{ with $nr.ookla_date }}, {{ . }}{{ end }}.</p>
+                  {{ end }}
+                {{ end }}
+                {{ if not $nr }}
+                <p class="mt-2 text-xs leading-relaxed text-ink-600">No named Opensignal report covers this destination yet — Ookla's {{ if $ooklaMobile }}mobile{{ else }}fixed-broadband{{ end }} index still tracks the market month by month.</p>
+                {{ end }}
+                <p class="mt-2.5 text-[11px]"><a href="{{ printf "https://www.speedtest.net/global-index/%s" $ooklaSlug }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">Open {{ $r.name }} on Ookla's Global Index →</a></p>
+              </div>
+
+              <div class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-ink-100 pt-3">
+                <span class="text-xs leading-relaxed text-ink-500">{{ $s.planCount }} plans · {{ $s.providerCount }} brands{{ if $r.agree }} · identical hosts{{ end }}</span>
+                <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                  {{ with site.GetPage (printf "/networks/%s" $r.slug) }}<a href="{{ .RelPermalink }}" class="text-xs font-semibold text-brand-700 hover:underline">Carrier breakdown →</a>{{ end }}
+                  <a href="/compare/{{ $r.slug }}/" class="btn-mini">Compare {{ $r.name }} eSIM plans →</a>
+                </div>
+              </div>
+            </article>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      {{ end }}
+    </div>
+    <p id="net-no-results" class="mt-6 hidden text-center text-sm text-ink-400">No destination matches that search.</p>
+  </section>
+
+  {{/* ═══ 术语表 ═══ */}}
+  <section id="glossary" class="mt-12 scroll-mt-28" aria-labelledby="glossary-h">
+    <p class="eyebrow">Glossary</p>
+    <h2 id="glossary-h" class="mt-2 text-2xl font-bold md:text-3xl">Network terms this page uses</h2>
+    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">Travel eSIM marketing rarely explains its own vocabulary. These are the terms behind the cards above, in plain language.</p>
+    <dl class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="card p-4">
+        <dt class="font-display text-sm font-bold text-ink-950">Host network</dt>
+        <dd class="mt-1.5 text-xs leading-relaxed text-ink-600">The local carrier whose towers your phone actually connects to — the mast behind the signal bars. Coverage and speed follow it, so it is the first thing worth knowing about a destination.</dd>
+      </div>
+      <div class="card p-4">
+        <dt class="font-display text-sm font-bold text-ink-950">MNO</dt>
+        <dd class="mt-1.5 text-xs leading-relaxed text-ink-600">Mobile network operator: a company that owns and runs radio infrastructure and holds the spectrum licence, such as Vodafone, Orange or NTT Docomo. The hosts on this page are MNOs.</dd>
+      </div>
+      <div class="card p-4">
+        <dt class="font-display text-sm font-bold text-ink-950">Travel eSIM brand</dt>
+        <dd class="mt-1.5 text-xs leading-relaxed text-ink-600">The shop you buy from — an MVNO or reseller that buys capacity from MNOs and resells it in app form. It owns no towers, which is why several brands can ride the same host.</dd>
+      </div>
+      <div class="card p-4">
+        <dt class="font-display text-sm font-bold text-ink-950">Roaming agreement</dt>
+        <dd class="mt-1.5 text-xs leading-relaxed text-ink-600">A commercial deal letting one carrier's customers use another's network. Travel eSIMs are built on these, which is how a single plan reaches a country its brand has no presence in.</dd>
+      </div>
+      <div class="card p-4">
+        <dt class="font-display text-sm font-bold text-ink-950">Multi-IMSI</dt>
+        <dd class="mt-1.5 text-xs leading-relaxed text-ink-600">A SIM profile carrying several network identities. The eSIM picks whichever partner network is strongest locally, which is why one regional plan can hop carriers at a border.</dd>
+      </div>
+      <div class="card p-4">
+        <dt class="font-display text-sm font-bold text-ink-950">Local access versus roaming</dt>
+        <dd class="mt-1.5 text-xs leading-relaxed text-ink-600">Local access registers your device as a domestic user, so traffic is not routed home and latency stays low. Roaming-style plans tunnel traffic back through the home network — fine for browsing, slower for calls.</dd>
+      </div>
+      <div class="card p-4">
+        <dt class="font-display text-sm font-bold text-ink-950">5G NSA and SA</dt>
+        <dd class="mt-1.5 text-xs leading-relaxed text-ink-600">Non-standalone 5G leans on a 4G core and covers most consumer traffic; standalone 5G uses a 5G core with lower latency but far thinner coverage. A "5G ready" badge on a plan usually means NSA.</dd>
+      </div>
+      <div class="card p-4">
+        <dt class="font-display text-sm font-bold text-ink-950">Typical speed band</dt>
+        <dd class="mt-1.5 text-xs leading-relaxed text-ink-600">Our indicative floor-to-typical range for a network, compiled from provider listings. It is orientation, not measurement — the cited Opensignal and Ookla reports are the measurements.</dd>
+      </div>
+      <div class="card p-4">
+        <dt class="font-display text-sm font-bold text-ink-950">Coverage experience</dt>
+        <dd class="mt-1.5 text-xs leading-relaxed text-ink-600">Opensignal's measure of how often users actually get a usable signal where they go, rather than how fast it is when they do. It is the award that predicts rural and road-trip performance best.</dd>
+      </div>
+    </dl>
+  </section>
+
+  {{/* ═══ 品牌选择真正决定什么 ═══ */}}
+  <section id="what-differs" class="mt-12 scroll-mt-28" aria-labelledby="diff-h">
+    <p class="eyebrow">Brand vs network</p>
+    <h2 id="diff-h" class="mt-2 text-2xl font-bold md:text-3xl">What the brand changes when the network is the same</h2>
+    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">Since the hosts match across providers, the real differences sit one layer up. Here is where a brand choice actually bites.</p>
+    <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="card p-5"><p class="font-display text-sm font-bold text-ink-950">Price and plan shape</p><p class="mt-1.5 text-sm leading-relaxed text-ink-600">The same host network can carry a cheap per-gigabyte plan and an expensive one. That spread is the whole reason this site exists — start from the <a href="/compare/" class="font-semibold text-brand-700 hover:underline">country comparisons</a>.</p></div>
+      <div class="card p-5"><p class="font-display text-sm font-bold text-ink-950">Support and install route</p><p class="mt-1.5 text-sm leading-relaxed text-ink-600">QR-code install, app-based activation, human support hours and ID requirements all vary by brand. We track those differences on each <a href="/esim-providers/" class="font-semibold text-brand-700 hover:underline">provider page</a>.</p></div>
+      <div class="card p-5"><p class="font-display text-sm font-bold text-ink-950">Fair-use limits</p><p class="mt-1.5 text-sm leading-relaxed text-ink-600">Unlimited plans cap heavy use differently — thresholds, hotspoting rules and throttled speeds are brand policy, not network physics. Our <a href="/research/fair-use-audit/" class="font-semibold text-brand-700 hover:underline">fair-use audit</a> compares them line by line.</p></div>
+    </div>
+  </section>
+
+  {{/* ═══ FAQ（可见 Q/A 卡，不用折叠） ═══ */}}
+  {{ with .Params.faqs }}
+  <section id="faq" class="mt-12 scroll-mt-28" aria-labelledby="faq-h">
+    <p class="eyebrow">FAQ</p>
+    <h2 id="faq-h" class="mt-2 text-2xl font-bold md:text-3xl">Which network does your eSIM use</h2>
+    <div class="mt-5 grid gap-3 md:grid-cols-2">
+      {{ range . }}
+      <div class="card p-5">
+        <p class="font-display text-sm font-bold text-ink-950">{{ .q }}</p>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ .a }}</p>
+      </div>
+      {{ end }}
+    </div>
+    {{ $faqEntities := slice }}
+    {{ range . }}{{ $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) }}{{ end }}
+    <script type="application/ld+json">
+      {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $faqEntities) | safeJS }}
+    </script>
+  </section>
+  {{ end }}
+
+  {{/* ═══ ItemList：枢纽页 → 国家页 ═══ */}}
+  {{ $items := slice }}
+  {{ $pos := 0 }}
+  {{ range $rows }}
+    {{ $pos = add $pos 1 }}
+    {{ $items = $items | append (dict "@type" "ListItem" "position" $pos "name" (printf "%s eSIM networks" .name) "url" (printf "%scompare/%s/" site.BaseURL .slug)) }}
+  {{ end }}
+  <script type="application/ld+json">
+    {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "ItemList" "name" .Title "itemListElement" $items) | safeJS }}
+  </script>
+</div>
+
+<script>
+  (function () {
+    var input = document.getElementById('net-filter');
+    var chips = document.querySelectorAll('#region-chips .chip');
+    var empty = document.getElementById('net-no-results');
+    var blocks = document.querySelectorAll('[data-region-block]');
+    var region = 'all';
+    function apply() {
+      var q = (input && input.value || '').trim().toLowerCase();
+      var visible = 0;
+      blocks.forEach(function (b) {
+        var any = false;
+        b.querySelectorAll('article[data-name]').forEach(function (a) {
+          var show = (!q || (a.dataset.name || '').indexOf(q) > -1) && (region === 'all' || a.dataset.region === region);
+          a.style.display = show ? '' : 'none';
+          if (show) any = true;
+        });
+        b.style.display = any ? '' : 'none';
+        if (any) visible++;
+      });
+      if (empty) empty.classList.toggle('hidden', visible > 0);
+    }
+    if (input) input.addEventListener('input', apply);
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        chips.forEach(function (x) { x.classList.remove('chip-active'); });
+        c.classList.add('chip-active');
+        region = c.dataset.region;
+        apply();
+      });
+    });
+  })();
+</script>
+{{ end }}

@@ -11,13 +11,14 @@
 {{- $title := .Title -}}
 {{- $desc := .Site.Params.description -}}
 {{- with .Params.description }}{{ $desc = . }}{{ end -}}
+{{- $lockedTitle := false -}}
 {{- with .Params.seo -}}
-  {{- with .title }}{{ $title = . }}{{ end -}}
+  {{- with .title }}{{ $title = . }}{{ $lockedTitle = true }}{{ end -}}
   {{- with .description }}{{ $desc = . }}{{ end -}}
 {{- end -}}
 {{- $ogimage := "img/site/og-default.webp" -}}
 {{- with .Params.hero }}{{ $ogimage = printf "img/esim/%s" . }}{{ end -}}
-{{- if .Params.iso -}}
+{{- if and .Params.iso (not $lockedTitle) -}}
   {{- $c := index hugo.Data.countries .Params.iso -}}
   {{- $stats := partial "country-stats.html" .Params.iso -}}
   {{- if .Params.provider -}}
@@ -59,6 +60,12 @@
     {{- end -}}
   {{- end -}}
   {{- with $c.images -}}
+    {{- $ogimage = printf "img/countries/%s" (index . 0) -}}
+  {{- end -}}
+{{- end -}}
+{{- /* 带 iso 但已锁定标题的页（如 /networks/{country}/）：仍取该国首图作 og:image */ -}}
+{{- if and .Params.iso (eq $ogimage "img/site/og-default.webp") -}}
+  {{- with (index hugo.Data.countries .Params.iso).images -}}
     {{- $ogimage = printf "img/countries/%s" (index . 0) -}}
   {{- end -}}
 {{- end -}}

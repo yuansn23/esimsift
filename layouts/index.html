@@ -81,7 +81,7 @@
     <form id="country-search" role="search" class="relative w-full sm:w-80">
       <label for="country-filter" class="sr-only">Search destinations</label>
       <svg class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-300" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21l-4.35-4.35M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-      <input id="country-filter" type="search" placeholder="Search 50 countries…" autocomplete="off" spellcheck="false" class="input-search w-full pl-9" aria-label="Search destinations" aria-controls="country-suggest" aria-expanded="false" aria-autocomplete="list" role="combobox">
+      <input id="country-filter" type="search" placeholder="Search {{ len hugo.Data.countries }} countries…" autocomplete="off" spellcheck="false" class="input-search w-full pl-9" aria-label="Search destinations" aria-controls="country-suggest" aria-expanded="false" aria-autocomplete="list" role="combobox">
       <div id="country-suggest" class="absolute left-0 right-0 top-full z-30 mt-2 hidden overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-pop" role="listbox"></div>
     </form>
   </div>

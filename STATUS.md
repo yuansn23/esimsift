@@ -6,10 +6,15 @@
 ## 命令
 
 ```bash
-npm run build     # 数据验证 → Tailwind → hugo（上线前的完整管线）
+npm run build     # Tailwind CSS → 数据校验 + CSS 同步校验 → hugo → 产物校验（上线前的完整管线）
 npm run dev       # Tailwind 预编译 + hugo server
-python scripts/validate.py   # 单独跑数据层验证
+npm run validate  # 单独跑校验（validate.py + check_css_sync.py）
+npm run check:output # 产物校验（格式串泄漏 / JSON-LD 可解析 / 评分区间）——必须在 hugo 之后跑
+npm run build:css # 只重建 Tailwind（改过 layouts 里的 class 后必须跑）
 ```
+
+⚠️ **不要用裸 `hugo` 代替 `npm run build`。** `hugo` 只把 `static/css/tailwind.css` 拷进 `public/`，
+**不会重编译 Tailwind**；改了模板里的 class 而不重建 CSS，新类就没有规则，页面上样式静默失效。
 
 ## 数据流（唯一事实源原则）
 
@@ -38,6 +43,19 @@ layouts/partials/country-stats.html  ← 全站唯一聚合入口
 3. **`[[faq]]` TOML 顶层数组包在 `faq` 键下**：取值要 `.faq`
 4. **`site.Data` 已弃用**：一律 `hugo.Data`（`site.Params`/`site.GetPage` 不受影响）
 5. md 正文禁止内联 JSON-LD（沿用 Roami 的 --minify 教训），结构化数据全在模板层
+6. **改过 `layouts/` 里的 class 必须重建 CSS**（2026-10-03 版式塌陷事故）：Tailwind CLI 产出的
+   `static/css/tailwind.css` 是独立产物，裸 `hugo` 不会更新它；JIT 对未知类**静默忽略不报错**，
+   后果是「HTML 结构对、样式全无」。一律 `npm run build`，并靠 `scripts/check_css_sync.py` 兜底
+7. **新增模板 class 后，用预览服务核对 CSS 真的送到了浏览器**：`curl -s http://127.0.0.1:1313/css/tailwind.css | grep <类名>`，
+   只看源码通过不算通过
+8. **Go 格式串错误只有 `public/` 里看得见**（2026-10-03 事故）：`math.Round` 返回 **float64**，喂 `%d` 前必须 `int` 强转；
+   printf 里的**字面百分号要写 `%%`**；有 `%s` 就得给够参数、没占位符就别传参数。违反任一条都会把
+   `%!d(float64=84)%` / `%!m(MISSING)` / `%!(EXTRA string=…)` 直接印在正文里（还进 JSON-LD FAQ），而 `hugo` 全程 exit 0。
+   一律跑 `scripts/check_output.py` 兜底
+9. **`itemReviewed` 是 Organization/LocalBusiness 时，评分必须来自真实用户**（2026-10-03 GSC 事故）：编辑部按价格库
+   算出的指数**不能**当 `reviewRating`（Google 明文禁止「依賴人工編輯編制評分資訊」）。想携带这类指数用
+   `additionalProperty`（`PropertyValue`）；`offers.lowPrice/highPrice/offerCount` 必须是 **JSON 数字**不是字符串。
+   一律跑 `scripts/check_output.py` 兜底
 
 ## 已完成（本轮）
 
@@ -256,11 +274,91 @@ layouts/partials/country-stats.html  ← 全站唯一聚合入口
 - ✅ 验证：509 页 0 error；首页 3 个 JSON-LD 块（Org+WebSite+Breadcrumb）；509 页 Organization、8 篇 Article；robots.txt 含 sitemap；无 %!f
 - ⏭ 暂缓（等真实资料/上线后）：作者实体 byline（用户无真实团队）、llms-full.txt、speakable、Dataset schema
 
+## 已完成（版式统一 + 全站右侧吸顶内链列，2026-10-03 第二轮）
+
+- ✅ **版式基线确立（用户定）：内容页统一对齐 Basics & how-to 文章版式**
+  - `/networks/{country}/` 从 `max-w-4xl` 单列改为 `max-w-6xl` 双栏 grid（正文列 + 300px 吸顶右栏）
+  - 补首屏配图（`<figure class="mt-6 overflow-hidden rounded-2xl border border-ink-100 …">`，与 guides 同款：`imageConfig` 取显式宽高防 CLS、`eager + fetchpriority=high` 抢 LCP）
+  - **配图取该国第 2 张图**（`countries.images[1]`），刻意避开 `/compare/{country}/` 已用的第 1 张，同国两页不同图；`fileExists` 门控，缺图自动不渲染
+  - 两张表（记分板 / 品牌→网络）由裸 `<table>` 改为 `.table-pro` 卡片（`card overflow-hidden p-0` + `overflow-x-auto`），与 guides 的安装方式表同款（斑马纹 + 吸顶表头 + 左轨高亮）
+- ✅ **新增 `layouts/partials/aside-destinations.html`（可复用吸顶内链模块）**
+  - 候选池 = 11 个高价值目的地（US/GB/CN/JP/DE/FR/ES/IT/AU/CA/HK），自动排除当前页所在国家（`.Params.iso`），避免自链接
+  - **每页展示 6 条**；起点由「页面永久链接的 `hash.FNV32a` % 候选数」决定 → 每页组合各不相同（观感随机），但同一页每次构建**结果完全一致**（可 diff、可复现、可缓存）
+  - **服务端渲染**（不用 JS 随机）——爬虫直接可见，JS 随机对爬虫等于不存在
+  - 每行 = 国旗（`countries.flag`，`alt=""` 装饰性）+ 国家名 + 该目的地最低价（`country-stats.minPrice`）+ 链 `/compare/{slug}/`
+- ✅ **接入页面族**：`/networks/{country}/` 单页、`/networks/` 枢纽（追加到现有 aside）
+- ⛔ **已回退 → `guides/single.html` 不动**（2026-10-03 第三轮）：用户澄清「参考 Basics & how-to 的版式」= 抄它的壳盖到新页，**参考对象本身不许改**。原「包双栏 + 右栏 + Before you buy 卡」的改动已 `git checkout` 还原，guides 10 篇回到原版 `max-w-3xl` 单列。侧栏现只存在于 `/networks/` 与 `/networks/japan/`
+- ✅ **校验**：`validate.py` 0 error 0 warning；hugo exit 0；`check_headings.py` 516 页 bad h2/h3 = 0；全站 515 页重复标题 0；全站真实内链 404 = **0**（逐页 href 映射 public 产物）
+- ✅ **顺手修掉的 3 个存量问题**（都不是本轮引入，但守卫脚本正好报出来）：
+  1. `check_hardcoded.py` 原本失败（exit 1）→ 两处写死总量：`layouts/index.html` 搜索框 `placeholder="Search 50 countries…"` 改 `{{ len hugo.Data.countries }}`；`content/en/networks/japan.md` 正文与 FAQ 的 "eight brands / eight providers" 改 `{{< count-providers >}}` 短代码 / 无数字措辞。**现 `OK: no hardcoded totals`（exit 0）**
+  2. `/esim-deals/` 的 Step 5 链到 `/guides/how-to-install-an-esim/`（**真实 404**，正确 slug 无 "an"）→ 修正
+  3. `/networks/japan/` meta 越界（title 46<48、desc 142>140）→ title 改 "Japan eSIM 2026: Best 5G Data Networks for Tourists"（51），desc 收至 138
+- ⚠️ **价格口径提醒**：侧栏显示的是 `minPrice`（全站「Cheapest」同口径，如 US = Yesim 500MB/1天 $0.51），已在脚注显式披露「usually a 100–500MB trial size rather than a trip-sized plan」。若要改成「≥1GB 起价」（US $1.99 / GB $1.00 / CA $3.00），需同步改 50 国 title/description，属独立决策
+- ⚠️ **`audit_meta.py` 仍有 6 处存量越界（本轮未动，非本轮引入）**：5 篇区域指南 `best-{region}-esim`（title 42–57 越界 + desc 缺品牌词）+ 首页 title 46<48
+- ⏭ **未接入（需用户拍板）**：`/compare/{country}/`（50 个国家页）与 `/compare/{country}/{provider}/`（400 品牌页）为 `max-w-7xl` 全宽设计，加右栏需真重构，暂未动；`guides/region.html`（5 篇区域指南）自身已是国家页聚合表，边际收益低，暂未动
+
+## 已完成（单国运营商深度页 /networks/{country}/ 开篇，2026-10-03）
+
+- ✅ **新页面型上线：`/networks/japan/`（1/50）**——`layouts/networks/single.html`（新，纯数据驱动：运营商画像卡（tech/speed 区间/note/strong-weak，全部取自 `carriers.toml`）+ 品牌→宿主网络表（`plans/*.toml[ISO].networks`，逐行链 `/compare/{country}/{provider}/`）+ 城市覆盖（`carriers.info.cities`）+ Opensignal/Ookla 独立引用（`networkreports.toml`）+ FAQ(FAQPage schema) + 内链闭环）＋ `content/en/networks/japan.md`（front matter 承载 kicker/description/faqs，正文 3 段编辑层；H2 无标点合规）。**零写死**：计数、价格、速率全部构建期推导
+- ✅ **标题机制修复（通用）**：`head.html` 原逻辑「有 `iso` 参数即套国家页 title」→ 新增 `seo.title` 锁定位（显式标题优先），并让锁定标题页仍取该国首图作 `og:image`。新页 title = "Japan Mobile Networks: Carriers Behind Every eSIM"（49 字符，全站重复标题数 0）
+- ✅ **内链入口**：`/networks/` 枢纽目的地卡新增 "Carrier breakdown →" chip（`site.GetPage` 门控，未建的国不生成死链）+ 国家页 ⑦b 段落回链 "Japan carrier breakdown"
+- ✅ **校验**：`validate.py` 0 error 0 warning；`check_headings.py` 516 页 bad h2/h3 = 0；新页内链 100% 可达（0 个 404）；sitemap 515 URL
+- ⚠️ **待用户决策的数据冲突**：`data/faqs/jp.toml` 第 5 条仍写「Roami/Nomad 三网自动切换、Airalo/Saily 只连 Docomo 或 SoftBank」，与 2026-10-02「同国同运营商」规则（8 品牌 = 同样 3 网）矛盾，建议按新规则重写该条
+- ⚠️ **Plan 覆盖度**：新页「品牌→网络表」按 `plans.networks` 渲染，若某品牌该国 networks 为空则整行缺失（当前 8 品牌全有，非阻塞）
+
+## 已完成（修复 CSS 未重建导致版式塌陷 + 新增 CSS 同步守卫，2026-10-03 第三轮）
+
+- 🐞 **事故**：`/networks/japan/` 右侧吸顶内链栏显示在**页面底部**，而非右侧
+- 🔍 **根因（非 HTML 结构问题）**：本站 CSS 是**独立构建产物**——`npm run build:css` 用 Tailwind CLI 产出 `static/css/tailwind.css`，`hugo` 只负责把 `static/` 拷进 `public/`。前几轮改版式时**只跑了 `hugo`，从未重建 CSS**，于是新写的任意值类全部没有对应规则：
+  - `lg:grid-cols-[minmax(0,720px)_300px]` ← 直接后果：grid 无 `grid-template-columns` → 退回单列 → aside 掉到正文下方
+  - `max-w-6xl`（容器宽度没生效，页面通栏）、`lg:justify-center`、`lg:gap-10`、`mt-3.5`
+  - Tailwind JIT 对未知类**静默忽略、不报错**，所以构建一直是绿的
+- ✅ **修复**：重建 CSS（69,261 → 69,472 bytes，纯新增）。已确认 `static/` 与 `public/` 均为新版，预览服务返回的 CSS 含 `.lg\:grid-cols-\[minmax\(0\2c 720px\)_300px\]{grid-template-columns:minmax(0,720px) 300px}`
+- ✅ **新增守卫 `scripts/check_css_sync.py`**：扫 `layouts/` + `content/` 的 `class="…"`，与编译后 CSS 逐类比对，缺任一即 exit 1。已做**复现测试**——手工删除那条 grid 规则，脚本准确报出 `lg:grid-cols-[minmax(0,720px)_300px] → layouts/networks/single.html`
+  - 会剥掉 HTML 注释与 Hugo 注释（`{{- /* … */ -}}`），否则注释里的占位符会误报
+  - 白名单 JS hook 类：`copy-code`、`est-step`
+- ✅ **管线加固**（`package.json`）：`validate` 现在 = `validate.py && check_css_sync.py`；`build` 改为 **`build:css` 先行** → `validate` → `hugo`，一条 `npm run build` 不会再漏编译 CSS
+- ✅ **校验**：`validate.py` 0 error 0 warning；`check_css_sync.py` OK（486 类全部有规则）；hugo 528 页 exit 0；`check_headings.py` 0 bad；全站真实内链 404 = 0
+- 📌 **结论**：**只要动过 `layouts/` 里的 class，就必须跑 `npm run build`（含 build:css），不能只跑 `hugo`**
+
+## 已完成（GSC 评分越界修复 + 全站格式串泄漏清剿 + 产物守卫，2026-10-03 第四轮）
+
+- 🐞 **GSC 报错**：`/esim-providers/holafly/` — 「评分超出了指定范围或默认范围（在 reviewRating 中），存在此问题的内容无效」
+- 🔍 **根因（双因叠加）**：
+  1. 模板把 `"bestRating" "10"` 写成**字符串**、且**没写 `worstRating`** → Google 不认该量表，退回默认区间 **1–5**
+  2. 评分本身是**编辑部算的价格竞争力指数**（`cheapest 命中国数 ÷ 覆盖国数 × 10`）：8 个有数据品牌里 **7 个低于下限 1**（Holafly/Airalo/AloSIM/Saily = 0.0、Roami/Ubigi = 0.2、Roamic = 1.2）→ 整块 Rating 判为无效
+- 🔍 **更根本的合规问题**：Google 明文规定 `itemReviewed` 为 **Organization / LocalBusiness** 时「**評分必須直接來自用戶，請勿依賴人工編輯來創建、精選或編制評分資訊**」。本页评分是价格库算出来的，不是用户打的星 —— 即便区间修好也拿不到星级，且触碰质量指南（可能触发人工处置）
+- ✅ **修复（用户拍板：删掉评分标记）**，改 `layouts/esim-providers/single.html` §②：
+  - **移除 `Review` + `reviewRating` 节点** → 全站 `reviewRating` 出现次数 **8 → 0**
+  - 该指数改用 `additionalProperty`（`PropertyValue`）如实携带：Countries tracked / Cheapest-plan wins / Best value ($/GB) wins / Price competitiveness index (0-10, editorial)
+  - `offers` 的 `lowPrice`/`highPrice` 改 **JSON 数字**（原为 `"10.90"` 字符串），`offerCount` 保持整数
+  - 补 `url`（canonical）+ `image`（`fileExists` 门控，仅当 `static/img/providers/<key>.{png,webp}` 存在才挂）
+  - 页面可见读数照旧（`X.X / 10`），label 改为 `Price competitiveness index (editorial)`，与卡内既有的 "No editorial star-rating — just the numbers" 口径一致
+- 🐞 **顺手扫出 3 处 Go 格式串泄漏到正文**（比 GSC 报错更伤页面质量，因为用户直接看得见，且其中两处还进了 JSON-LD FAQ）：
+
+  | 位置 | 页面症状 | 根因 | 修复 |
+  |:---|:---|:---|:---|
+  | `esim-providers/single.html:92` | `(%!d(float64=84)% of its coverage)` | `math.Round` 返回 **float64**，直接喂 `%d` | 加 `int` 强转 |
+  | `research/fair-use-audit.html:24` | `%!d(float64=63)% carry an explicit note` | 同上 | 加 `int` 强转 |
+  | `tools/list.html:213` | `20%!m(MISSING)argin` | printf 里的**字面百分号没转义** | `20%` → `20%%` |
+  | `compare/vs-single.html:210` | 句尾多出 `%!(EXTRA string=Airalo, string=Holafly)` | printf **无占位符却传了 2 个参数** | 补 `%s`，改成 "one of A or B sells only unlimited…" |
+
+  修复后全站 `%!` 渲染错误 **17 个文件 → 0**
+- ✅ **新增守卫 `scripts/check_output.py`**（**产物层**校验，必须在 `hugo` 之后跑），三类只有 `public/` 里才看得见的缺陷：
+  1. Go 格式串泄漏 `%!x(…)` —— 全 `public/**/*.html` 扫描
+  2. 每个 `<script type="application/ld+json">` 必须 `json.loads` 可解析
+  3. 评分区间：`reviewRating` / `aggregateRating` / 独立 `Rating` 节点的 `ratingValue` 必须是 **JSON 数字**且落在 `[worstRating‖1, bestRating‖5]`（含「量表写成字符串」这一失败模式）；已按 `id()` 去重，嵌套节点不会被报两次
+  - 已做**复现测试**：植入「字符串量表 + 0.0 越界 + 独立 AggregateRating 9 越界 + JSON 坏块 + 两类格式串泄漏」共 6 个缺陷，脚本全部命中且 exit 1；植入合法 `AggregateRating 4.4/[1,5]` 不误报
+- ✅ **管线加固**（`package.json`）：新增 `check:output`；`build` = `build:css` → `validate` → **`hugo`** → **`check:output`**（顺序关键：产物校验必须在构建之后）
+- ✅ **校验**：`validate.py` 0 error 0 warning；`check_css_sync.py` OK（486 类）；`hugo` 528 页 exit 0；`check_output.py` **516 页 / 2117 块 JSON-LD 全绿**；`check_headings.py` 0 bad
+- 📌 **结论**：`itemReviewed` 为组织/商家的评分**不得**由编辑部计算；想拿星级只有一条正路 —— 上真实的站内用户评分体系
+
 ## 待办（按优先级）
 
 ### P-2 蓝图 Phase 2（等 P-A 真实数据后；见 docs/keyword-map.md 预留槽位）
 
 - [ ] 区域枢纽页 ×5（/compare/{region}/）
+- [x] ~~单国运营商深度页~~ **2026-10-03 起做：`/networks/{country}/` Japan 完成（1/50）**，模板已固化，余 49 国加 content md 即可（见上节）
 - [ ] /networks/{carrier}/ 运营商页、/devices/{device}/ 设备页
 - [ ] tools 再加 2 个、sitemap 分片（>1000 URL 时）、国家页 authority 外链
 

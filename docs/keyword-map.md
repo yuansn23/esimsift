@@ -21,9 +21,10 @@
 | `eSIM vs physical SIM` / `prepaid SIM vs eSIM` | `/guides/esim-vs-physical-sim/` | 指南 | 注意：这是**产品形态对比**，不得与 `{A} vs {B}`（品牌对比）混淆，两者词簇无交集 |
 | `how to install an eSIM` / `how to activate an eSIM`（全局） | `/guides/how-to-install-an-esim/` | 指南 | `... in {country}` → 国家页安装区 |
 | `dual SIM eSIM` / `can I use two eSIMs` | `/guides/dual-sim-and-esim/` | 指南 | — |
-| `eSIM compatible phones` / `is my phone eSIM ready` | `/guides/esim-compatibility-check/` | 指南 | Phase 2 工具页上线后承接交互意图，指南保信息意图 |
+| `eSIM compatible phones` / `is my phone eSIM ready` / `does {device} support eSIM` / `{brand} eSIM compatible`（品牌/机型限定兼容查询一并归指南） | `/guides/esim-compatibility-check/` | 指南 | 2026-10-03 决策：设备库单开页与指南重复，已下线（数据与页面备份在仓库外）；机型级查询由指南承接，不再开 /devices/ |
 | `eSIM Sift` / 品牌词 | `/` | 首页 | — |
 | `best {region} eSIM` / `cheapest eSIM in {region}` / `{region} eSIM prices`（{region} ∈ Europe / Asia / Americas / Africa & Middle East / Oceania） | `/guides/best-{region}-esim/` ×5（layout region） | 区域指南页 | 不得争单国词（`{country} eSIM` → 国家页）、不得争全局 how-to（→guides 单篇）、不得争 `{A} vs {B}`（→对决页） |
+| `what network does {A} use in {country}` / `which network does {A} use` / `eSIM network map` / `{country} eSIM which network`（品牌限定网络归属查询）；`which network cross borders` / `regional eSIM plan coverage`（跨国宿主集团）；`what is a host network` / `MVNO` / `multi-IMSI`（网络术语） | `/networks/`（layout networks-list，单页全目的地枢纽） | 网络归属页 | 不得争 `{A} review`/`{A} prices`（→品牌页）、不得争单国价格词（→国家页）、不得争 `{country} eSIM` 单国词（→国家页，本页只做枢纽+外链）；当前实测 8 品牌宿主网络逐国一致，故做单页而非 8 张重复表；页面结构=结论带+决策规则+跨国集团榜+区域分组目的地折叠行+术语表，加国家只增数据不改版式；若未来数据分歧需拆页时先改本表 |
 
 ## 2. 国家语境 vs 全局语境的判定规则
 
@@ -39,8 +40,8 @@
 
 | 关键词模式 | 预留 URL | 条件 |
 |---|---|---|
-| `{carrier} eSIM` / `which eSIM uses {carrier}` | `/networks/{carrier}/` | 网络名真实核对后 |
-| `eSIM for {device}` / `{device} eSIM compatible` | `/devices/{device}/` | 机型库数据线立项后 |
+| `{carrier} eSIM` / `which eSIM uses {carrier}`（{carrier} = 本地运营商名，如 Movistar） | `/networks/{carrier}/` ×N | 本地运营商↔品牌归属逐运营商核对后；注意与已上线的 `/networks/` 总表同 section，slug 不得冲突 |
+| `{country} mobile networks` / `{country} carriers` / `which network does {country} esim use` / `does {carrier} support esim in {country}` | `/networks/{country-slug}/` ×50（**2026-10-03 起上线，Japan 为首页**） | 承接「国家网络/运营商」意图；**不得争** `{country} eSIM` 价格词（→国家页 compare）、不得争 `{A} vs {B}`（→对决页）、不得争全局网络归属（→`/networks/` 枢纽）。版式 = 模板 `layouts/networks/single.html`（纯数据驱动，加国家只增 content md 不改版式）；每页必带 ①运营商画像卡 ②品牌→网络表（链品牌×国家页）③城市覆盖 ④Opensignal/Ookla 引用 ⑤FAQ(FAQPage)。内链：枢纽目的地卡 chip + 国家页 ⑦b 段落回链 |
 
 > 注：原预留的 `best eSIM for Europe / {region} eSIM → /compare/{region}/ ×5` 已上线，
 > 实际落地为 `/guides/best-{region}-esim/`（layout region），见主映射表；`/compare/{region}/` 槽位废弃。

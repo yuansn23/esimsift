@@ -21,7 +21,7 @@
 {{ $totalUnlimited := 0 }}{{ $totalNoted := 0 }}
 {{ range $audit }}{{ $totalUnlimited = add $totalUnlimited .unlimited }}{{ $totalNoted = add $totalNoted .withNote }}{{ end }}
 {{ $pct := 0 }}
-{{ if gt $totalUnlimited 0 }}{{ $pct = math.Round (mul (div (float $totalNoted) (float $totalUnlimited)) 100.0) }}{{ end }}
+{{ if gt $totalUnlimited 0 }}{{ $pct = int (math.Round (mul (div (float $totalNoted) (float $totalUnlimited)) 100.0)) }}{{ end }}
 
 {{/* 逐档品牌名单（FAQ 答案用，全部计算生成） */}}
 {{ $transparentNames := slice }}{{ $partialNames := slice }}{{ $unstatedNames := slice }}

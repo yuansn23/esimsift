@@ -541,7 +541,7 @@
   <section class="mt-14" aria-labelledby="networks">
     <p class="eyebrow">Networks</p>
     <h2 id="networks" class="mt-2 text-2xl font-bold md:text-3xl">Which networks do {{ $country.name }} eSIMs run on</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">Every eSIM connects to a local carrier network. Coverage, speed and rural reach follow that host network — so knowing whose mast your plan uses matters more than the brand on the voucher.</p>
+    <p class="mt-3 max-w-2xl text-ink-600">Every eSIM connects to a local carrier network. Coverage, speed and rural reach follow that host network — so knowing whose mast your plan uses matters more than the brand on the voucher. The destination-by-destination breakdown of all host carriers lives on the <a href="/networks/" class="font-semibold text-brand-700 hover:underline">eSIM network map</a>{{ with site.GetPage (printf "/networks/%s" $country.slug) }}, and this destination has its own <a href="{{ .RelPermalink }}" class="font-semibold text-brand-700 hover:underline">{{ $country.name }} carrier breakdown</a>{{ end }}.</p>
     <div class="mt-6 grid items-start gap-6 lg:grid-cols-[1.5fr_1fr]">
       <div class="grid gap-3 sm:grid-cols-2">
         {{ if gt (len $netKeys) 0 }}

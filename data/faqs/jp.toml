@@ -7,19 +7,19 @@ a = "Among major providers, Roami currently has the lowest entry price for Japan
 
 [[faq]]
 q = "Is unlimited data eSIM in Japan really unlimited?"
-a = "It depends on the provider's fair-use policy. Holafly markets unlimited data but applies fair-use throttling for heavy users, and its flat daily pricing (around $3.90 per day) makes 30 days cost $117. Roami's Japan unlimited plans list no documented fair-use cap for travel plans and cost less at every duration - $18.99 for 7 days versus Holafly's roughly $27 for the same window. Read each plan's fair-use terms before buying if you plan to stream heavily."
+a = "Only within limits. Every unlimited plan we track for Japan caps the full-speed allowance for each day and then throttles - most list 3 GB or 5 GB per day before the fallback, and the fallback speed is listed differently by each provider rather than by any market standard. Duration moves the price as much as the policy does: Holafly's flat daily rate runs about $3.97 per day on a 3-day plan but drops to $2.46 per day over 30 days, so the same brand looks expensive for a weekend and competitive for a month. Read the per-day price and the fair-use cap together before you buy."
 
 [[faq]]
 q = "Is Airalo or Holafly better for Japan?"
-a = "For short trips with light usage, Airalo: its 1GB/7-day plan at $4.50 beats Holafly's cheapest option, and fixed data buckets avoid fair-use ambiguity. For heavy streamers who hate topping up, Holafly's unlimited daily plan is simpler - expect around $3.90 per day. Neither is the cheapest overall: on our Japan comparison table both are undercut by Roami and Saily for the same data."
+a = "Different products, so it depends on how you use data. Airalo sells fixed buckets - its entry Japan plan is 1 GB for 3 days at $4.00 and a 3 GB week costs $8.00 - which suits light use and sidesteps fair-use ambiguity entirely. Holafly sells unlimited data by the day only, from $11.90 for 3 days, which suits heavy streamers who would rather not count gigabytes. Neither is the cheapest for the same data: Roami and Roamic undercut both."
 
 [[faq]]
 q = "Do I need a passport or ID to use an eSIM in Japan?"
-a = "No - not with travel eSIMs. Japanese law requires passport verification for local prepaid SIM cards from SoftBank, NTT Docomo and KDDI, but international travel eSIMs (Airalo, Holafly, Saily, Nomad, Roami) bypass this registration entirely. Buy, scan the QR code, and connect - no document upload at any step."
+a = "No - not with travel eSIMs. Japanese law requires passport verification for local prepaid SIM cards from SoftBank, NTT Docomo and KDDI, but travel eSIMs bypass this registration entirely. Every brand we track for Japan sells without a document upload at any step: buy, scan the QR code, and connect."
 
 [[faq]]
 q = "Which Japanese network does each provider use?"
-a = "It varies, and it affects coverage. Roami and Nomad auto-switch across all three national networks (NTT Docomo, SoftBank, KDDI), which gives you fallback signal in rural areas. Airalo and Saily typically connect to Docomo or SoftBank. Docomo has the widest rural coverage - including Shinkansen corridors and onsen towns - so single-network plans locked to it are safe, but multi-network plans are more resilient."
+a = "All of them. Every provider we track - Airalo, aloSIM, Holafly, Roami, Roamic, Saily, Ubigi and Yesim - connects to the same three national networks in Japan (NTT Docomo, SoftBank and KDDI), so the brand on the voucher does not decide your coverage. What differs between providers is price per GB, plan shapes, hotspot rules and support. Docomo has the widest rural reach of the three, which matters on mountain routes and island hops, but because every Japan plan we list falls back across all three networks your phone picks the strongest signal available rather than staying pinned to one mast."
 
 [[faq]]
 q = "Can one eSIM cover Japan and South Korea on the same trip?"
