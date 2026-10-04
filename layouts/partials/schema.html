@@ -1,12 +1,12 @@
-{{- /* BreadcrumbList JSON-LD —— 模板层输出（md 正文禁止内联 JSON-LD，防 minify 事故）
+{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}{{- /* BreadcrumbList JSON-LD —— 模板层输出（md 正文禁止内联 JSON-LD，防 minify 事故）
   品牌×国家子页（.Params.provider）手动拼 4 级：Home / Compare / Country / Provider；
   其余页沿用 .Ancestors + 当前页。 */ -}}
 {{- $items := slice -}}
 {{- $pos := 1 -}}
 {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" "Home" "item" (.Site.BaseURL | strings.TrimSuffix "/")) -}}
 {{- if .Params.provider -}}
-  {{- $c := index hugo.Data.countries .Params.iso -}}
-  {{- $p := index hugo.Data.providers .Params.provider -}}
+  {{- $c := index $d.countries .Params.iso -}}
+  {{- $p := index $d.providers .Params.provider -}}
   {{- $pos = add $pos 1 -}}
   {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" "Compare countries" "item" (printf "%scompare/" .Site.BaseURL)) -}}
   {{- $pos = add $pos 1 -}}

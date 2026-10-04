@@ -1,0 +1,1028 @@
+{
+  "total": 146,
+  "failed": 0,
+  "results": [
+    {
+      "kind": "carrier",
+      "label": "AE | Etisalat",
+      "url": "https://www.etisalat.ae/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "AE | du",
+      "url": "https://www.du.ae/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "AR | Claro",
+      "url": "https://www.claro.com.ar/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "AR | Movistar",
+      "url": "https://www.movistar.com.ar/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "AR | Personal",
+      "url": "https://www.personal.com.ar/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "AT | A1",
+      "url": "https://www.a1.net/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "AT | Drei",
+      "url": "https://www.drei.at/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "AT | Magenta",
+      "url": "https://www.magenta.at/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "AU | Optus",
+      "url": "https://www.optus.com.au/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "AU | Telstra",
+      "url": "https://www.telstra.com.au/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "AU | Vodafone",
+      "url": "https://www.vodafone.com.au/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "BE | Base",
+      "url": "https://www.base.be/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "BE | Orange",
+      "url": "https://www.orange.be/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "BE | Proximus",
+      "url": "https://www.proximus.be/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "BR | Claro",
+      "url": "https://www.claro.com.br/",
+      "status": 500,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "BR | TIM",
+      "url": "https://www.tim.com.br/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "BR | Vivo",
+      "url": "https://www.vivo.com.br/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "CA | Bell",
+      "url": "https://www.bell.ca/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "CA | Rogers",
+      "url": "https://www.rogers.com/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "CA | Telus",
+      "url": "https://www.telus.com/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "CH | Salt",
+      "url": "https://www.salt.ch/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "CH | Sunrise",
+      "url": "https://www.sunrise.ch/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "CH | Swisscom",
+      "url": "https://www.swisscom.ch/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "CN | China Mobile",
+      "url": "https://www.chinamobileltd.com/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "CN | China Telecom",
+      "url": "https://www.chinatelecom-h.com/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "CN | China Unicom",
+      "url": "https://www.chinaunicom.com.hk/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "CO | Claro",
+      "url": "https://www.claro.com.co/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "CO | Movistar",
+      "url": "https://www.movistar.co/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "CO | Tigo",
+      "url": "https://www.tigo.com.co/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "CR | Claro",
+      "url": "https://www.claro.cr/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "CR | Kolbi",
+      "url": "https://www.kolbi.cr/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "CR | Movistar",
+      "url": "https://www.movistar.cr/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "CZ | O2",
+      "url": "https://www.o2.cz/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "CZ | T-Mobile",
+      "url": "https://www.t-mobile.cz/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "CZ | Vodafone",
+      "url": "https://www.vodafone.cz/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "DE | O2",
+      "url": "https://www.o2online.de/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "DE | Telekom",
+      "url": "https://www.telekom.de/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "DE | Vodafone",
+      "url": "https://www.vodafone.de/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "EG | Etisalat Misr",
+      "url": "https://www.etisalat.eg/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "EG | Orange Egypt",
+      "url": "https://www.orange.eg/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "EG | Vodafone Egypt",
+      "url": "https://web.vodafone.com.eg/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "ES | Movistar",
+      "url": "https://www.movistar.es/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "ES | Orange",
+      "url": "https://www.orange.es/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "ES | Vodafone",
+      "url": "https://www.vodafone.es/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "FJ | Digicel Fiji",
+      "url": "https://www.digicelgroup.com/fj",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "FJ | Vodafone Fiji",
+      "url": "https://www.vodafone.com.fj/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "FR | Bouygues",
+      "url": "https://www.bouyguestelecom.fr/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "FR | Orange",
+      "url": "https://www.orange.fr/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "FR | SFR",
+      "url": "https://www.sfr.fr/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "GB | EE",
+      "url": "https://ee.co.uk/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "GB | O2",
+      "url": "https://www.o2.co.uk/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "GB | Three",
+      "url": "https://www.three.co.uk/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "GB | Vodafone",
+      "url": "https://www.vodafone.co.uk/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "GE | Beeline",
+      "url": "https://www.beeline.ge/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "GE | Magti",
+      "url": "https://www.magti.ge/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "GE | Silknet",
+      "url": "https://silknet.com/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "GR | Cosmote",
+      "url": "https://www.cosmote.gr/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "GR | Vodafone",
+      "url": "https://www.vodafone.gr/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "GR | Wind",
+      "url": "https://www.nova.gr/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "HK | 3HK",
+      "url": "https://www.three.com.hk/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "HK | CSL",
+      "url": "https://www.hkcsl.com/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "HK | SmarTone",
+      "url": "https://www.smartone.com/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "HR | A1 Hrvatska",
+      "url": "https://www.a1.hr/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "HR | Hrvatski Telekom",
+      "url": "https://www.hrvatskitelekom.hr/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "ID | Indosat",
+      "url": "https://www.indosat.com/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "ID | Telkomsel",
+      "url": "https://www.telkomsel.com/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "ID | XL Axiata",
+      "url": "https://www.xl.co.id/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "IE | Eir",
+      "url": "https://www.eir.ie/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "IE | Three",
+      "url": "https://www.three.ie/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "IE | Vodafone",
+      "url": "https://www.vodafone.ie/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "IL | Cellcom",
+      "url": "https://www.cellcom.co.il/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "IL | Partner",
+      "url": "https://www.partner.co.il/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "IL | Pelephone",
+      "url": "https://www.pelephone.co.il/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "IN | Airtel",
+      "url": "https://www.airtel.in/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "IN | Jio",
+      "url": "https://www.jio.com/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "IS | Noa",
+      "url": "https://www.nova.is/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "IS | Siminn",
+      "url": "https://www.siminn.is/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "IS | Vodafone",
+      "url": "https://www.vodafone.is/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "IT | TIM",
+      "url": "https://www.tim.it/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "IT | Vodafone",
+      "url": "https://www.vodafone.it/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "IT | WindTre",
+      "url": "https://www.windtre.it/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "JP | KDDI",
+      "url": "https://www.au.com/mobile/area/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "JP | NTT Docomo",
+      "url": "https://www.docomo.ne.jp/area/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "JP | SoftBank",
+      "url": "https://www.softbank.jp/mobile/network/area/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "KE | Airtel Kenya",
+      "url": "https://www.airtel.co.ke/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "KE | Safaricom",
+      "url": "https://www.safaricom.co.ke/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "KE | Telkom Kenya",
+      "url": "https://www.telkom.co.ke/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "KR | KT",
+      "url": "https://www.kt.com/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "KR | LG U+",
+      "url": "https://www.lguplus.com/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "KR | SK Telecom",
+      "url": "https://www.sktelecom.com/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "MA | Inwi",
+      "url": "https://www.inwi.ma/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "MA | Maroc Telecom",
+      "url": "https://www.iam.ma/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "MA | Orange Maroc",
+      "url": "https://www.orange.ma/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "MO | 3 Macau",
+      "url": "https://www.three.com.mo/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "MO | CTM",
+      "url": "https://www.ctm.net/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "MO | China Telecom",
+      "url": "https://www.chinatelecom.com.mo/",
+      "status": 412,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "MX | AT&T Mexico",
+      "url": "https://www.att.com.mx/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "MX | Movistar",
+      "url": "https://www.movistar.com.mx/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "MX | Telcel",
+      "url": "https://www.telcel.com/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "MY | Celcom",
+      "url": "https://www.celcom.com.my/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "MY | DiGi",
+      "url": "https://www.digi.com.my/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "MY | Maxis",
+      "url": "https://www.maxis.com.my/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "NL | KPN",
+      "url": "https://www.kpn.com/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "NL | Odido",
+      "url": "https://www.odido.nl/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "NL | Vodafone",
+      "url": "https://www.vodafone.nl/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "NZ | 2degrees",
+      "url": "https://www.2degrees.nz/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "NZ | One NZ",
+      "url": "https://www.one.nz/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "NZ | Spark",
+      "url": "https://www.spark.co.nz/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "PE | Claro",
+      "url": "https://www.claro.com.pe/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "PE | Entel",
+      "url": "https://www.entel.pe/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "PE | Movistar",
+      "url": "https://www.movistar.com.pe/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "PH | Globe",
+      "url": "https://www.globe.com.ph/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "PH | Smart",
+      "url": "https://www.smart.com.ph/",
+      "status": 247,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "PL | Orange",
+      "url": "https://www.orange.pl/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "PL | Play",
+      "url": "https://www.play.pl/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "PL | Plus",
+      "url": "https://www.plus.pl/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "PL | T-Mobile",
+      "url": "https://www.t-mobile.pl/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "PT | MEO",
+      "url": "https://www.meo.pt/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "PT | NOS",
+      "url": "https://www.nos.pt/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "PT | Vodafone",
+      "url": "https://www.vodafone.pt/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "QA | Ooredoo",
+      "url": "https://www.ooredoo.qa/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "QA | Vodafone Qatar",
+      "url": "https://www.vodafone.qa/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "SA | Mobily",
+      "url": "https://www.mobily.com.sa/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "SA | STC",
+      "url": "https://www.stc.com.sa/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "SA | Zain",
+      "url": "https://www.sa.zain.com/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "SG | M1",
+      "url": "https://www.m1.com.sg/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "SG | Singtel",
+      "url": "https://www.singtel.com/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "SG | StarHub",
+      "url": "https://www.starhub.com/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "TH | AIS",
+      "url": "https://www.ais.co.th/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "TH | DTAC",
+      "url": "https://www.dtac.co.th/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "TH | True Move",
+      "url": "https://www.true.th/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "TR | Turk Telekom",
+      "url": "https://www.turktelekom.com.tr/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "TR | Turkcell",
+      "url": "https://www.turkcell.com.tr/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "TR | Vodafone",
+      "url": "https://www.vodafone.com.tr/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "TW | Chunghwa Telecom",
+      "url": "https://www.cht.com.tw/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "TW | FarEasTone",
+      "url": "https://www.fetnet.net/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "TW | Taiwan Mobile",
+      "url": "https://www.taiwanmobile.com/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "US | AT&T",
+      "url": "https://www.att.com/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "US | T-Mobile",
+      "url": "https://www.t-mobile.com/",
+      "status": 403,
+      "bucket": "blocked"
+    },
+    {
+      "kind": "carrier",
+      "label": "US | Verizon",
+      "url": "https://www.verizon.com/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "VN | Mobifone",
+      "url": "https://mobifone.vn/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "VN | Viettel",
+      "url": "https://viettel.com.vn/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "VN | Vinaphone",
+      "url": "https://vinaphone.com.vn/",
+      "status": 0,
+      "bucket": "unreachable"
+    },
+    {
+      "kind": "carrier",
+      "label": "ZA | MTN",
+      "url": "https://www.mtn.co.za/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "ZA | Telkom",
+      "url": "https://www.telkom.co.za/",
+      "status": 200,
+      "bucket": "ok"
+    },
+    {
+      "kind": "carrier",
+      "label": "ZA | Vodacom",
+      "url": "https://www.vodacom.co.za/",
+      "status": 200,
+      "bucket": "ok"
+    }
+  ]
+}

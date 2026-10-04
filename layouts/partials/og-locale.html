@@ -1,0 +1,10 @@
+{{- /* og:locale 值 —— Open Graph 规范要求 language_TERRITORY，领土码必须大写：
+       en-us → en_US（不是 en_us，小写领土码会被 Facebook / LinkedIn 判为非法 locale 而回退默认）。
+       注意：Vary 值不在这里控制；只做字符串转换，不判断语言是否启用。 */ -}}
+{{- $lc := . -}}
+{{- $parts := split $lc "-" -}}
+{{- $out := index $parts 0 -}}
+{{- if gt (len $parts) 1 -}}
+{{- $out = printf "%s_%s" (index $parts 0) (upper (index $parts 1)) -}}
+{{- end -}}
+{{- return $out -}}

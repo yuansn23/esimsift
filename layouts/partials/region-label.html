@@ -1,0 +1,12 @@
+{{- /* 区域名 → i18n 显示标签（显示层唯一转换点）
+     为什么需要它：区域英文串（Asia / Europe / Americas / Africa & Middle East / Oceania）
+     同时充当字典键与前端过滤用的 data-region 值，**必须保持英文**；
+     但页面上要显示本地化名称。所以只在这里做显示层转换，键本身不动。
+     未知区域回退为原样返回，不报错。
+     用法：{{ partial "region-label.html" $c.region }} */ -}}
+{{- $map := dict "Asia" "g_asia" "Europe" "g_europe" "Americas" "g_americas" "Africa & Middle East" "g_africa_amp_middle_east" "Oceania" "g_oceania" -}}
+{{- $out := . -}}
+{{- with index $map . -}}
+{{- $out = i18n . -}}
+{{- end -}}
+{{- return $out -}}

@@ -1,4 +1,4 @@
-{{ define "main" }}
+{{ define "main" }}{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}
 {{/* 单国运营商深度页 —— /networks/{country-slug}/
    版式基线：正文区与 Basics & how-to（layouts/guides/single.html）严格同款 ——
    阅读列 720px（= max-w-3xl 768 减 px-6 48）+ 首屏配图 + prose 正文 + card p-6 数据块
@@ -18,8 +18,8 @@
       本页只做「网络维度」的结论层，避免两页互相蚕食。 */}}
 
 {{ $iso := .Params.iso }}
-{{ $country := index hugo.Data.countries $iso }}
-{{ $cdata := index hugo.Data.carriers $iso }}
+{{ $country := index $d.countries $iso }}
+{{ $cdata := index $d.carriers $iso }}
 {{ $profiles := dict }}
 {{ $info := dict }}
 {{ with $cdata }}
@@ -30,7 +30,7 @@
     {{ $info = merge $info (dict "cities" (.cities | default slice) "detail" $det) }}
   {{ end }}
 {{ end }}
-{{ $nr := index hugo.Data.networkreports $iso }}
+{{ $nr := index $d.networkreports $iso }}
 {{ $s := partial "country-stats.html" $iso }}
 {{ $nets := $country.carriers | default slice }}
 
@@ -58,11 +58,11 @@
 {{/* ── 品牌 → 宿主网络（逐家映射 + 一致性签名） ── */}}
 {{ $provRows := slice }}
 {{ $sigs := dict }}
-{{ range $pk, $pdata := hugo.Data.plans }}
+{{ range $pk, $pdata := $d.plans }}
   {{ $entry := index $pdata $iso }}
   {{ with $entry }}{{ with .networks }}
     {{ $sigs = merge $sigs (dict (delimit (sort .) "|") true) }}
-    {{ $pv := index hugo.Data.providers $pk }}
+    {{ $pv := index $d.providers $pk }}
     {{ $provRows = $provRows | append (dict "key" $pk "name" $pv.name "nets" (sort .)) }}
   {{ end }}{{ end }}
 {{ end }}
@@ -80,7 +80,7 @@
 {{/* ── 同网不同价：各品牌最低 $/GB 的极差（只取有按量套餐的品牌） ── */}}
 {{ $pgMin := 0.0 }}
 {{ $pgMax := 0.0 }}
-{{ range $pk, $pdata := hugo.Data.plans }}
+{{ range $pk, $pdata := $d.plans }}
   {{ with index $pdata $iso }}
     {{ $bp := 0.0 }}
     {{ range .plans }}
@@ -112,7 +112,7 @@
         <span class="badge bg-ink-50 text-ink-500">{{ $s.planCount }} plans tracked</span>
         {{/* 发布日期取构建时的系统日期（now），不是数据快照 checkedDate ——
              后者是「上游列表最后一次核对」的日期，挂在正文脚注里，两者不要混。 */}}
-        <span class="badge bg-ink-50 text-ink-500">Updated {{ now.Format "Jan 2, 2006" }}</span>
+        <span class="badge bg-ink-50 text-ink-500">Updated {{ time.Format ":date_medium" now }}</span>
       </div>
 
       {{ with .Params.kicker }}<p class="mt-5 text-lg leading-relaxed text-ink-600">{{ . }}</p>{{ end }}
@@ -133,7 +133,7 @@
       {{ with .Params.prompt_answer }}
       <section class="mt-6 not-prose" aria-labelledby="short-answer">
         <div class="rounded-2xl border border-brand-100 bg-brand-50/50 p-6">
-          <p class="eyebrow">The short answer</p>
+          <p class="eyebrow">{{ i18n "g_the_short_answer" | safeHTML }}</p>
           <h2 id="short-answer" class="mt-2 font-display text-lg font-bold text-ink-950">{{ $h2Answer }}</h2>
           <p class="mt-3 text-sm leading-relaxed text-ink-700">{{ . }}</p>
         </div>
@@ -149,39 +149,39 @@
         <h2 id="keyfacts" class="text-2xl font-bold">{{ $h2Facts }}</h2>
         <dl class="mt-4 grid gap-3 sm:grid-cols-2">
           <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">National mobile networks</dt>
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "networks_single__national_mobile_networks" | safeHTML }}</dt>
             <dd class="mt-1 text-sm font-medium text-ink-800">{{ len $nets }} — {{ delimit $nets ", " }}</dd>
           </div>
           <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">eSIM brands we track here</dt>
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "networks_single__esim_brands_we_track_here" | safeHTML }}</dt>
             <dd class="mt-1 text-sm font-medium text-ink-800">{{ $s.providerCount }}</dd>
           </div>
           <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Prepaid data plans tracked</dt>
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "networks_single__prepaid_data_plans_tracked" | safeHTML }}</dt>
             <dd class="mt-1 text-sm font-medium text-ink-800">{{ $s.planCount }}</dd>
           </div>
           <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Unlimited data plans tracked</dt>
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "networks_single__unlimited_data_plans_tracked" | safeHTML }}</dt>
             <dd class="mt-1 text-sm font-medium text-ink-800">{{ $s.unlimitedCount }}</dd>
           </div>
           <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">5G on the national networks</dt>
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "networks_single__5g_on_the_national_networks" | safeHTML }}</dt>
             <dd class="mt-1 text-sm font-medium text-ink-800">{{ if $s.has5g }}Yes{{ else }}Not on record yet{{ end }}</dd>
           </div>
           <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Lowest price we track</dt>
-            <dd class="mt-1 text-sm font-medium text-ink-800">{{ if gt $s.minPerGB 0.0 }}<a href="/compare/{{ $country.slug }}/" class="font-semibold text-brand-700 hover:underline">${{ printf "%.2f" $s.minPerGB }} per GB</a>{{ else }}—{{ end }}</dd>
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "networks_single__lowest_price_we_track" | safeHTML }}</dt>
+            <dd class="mt-1 text-sm font-medium text-ink-800">{{ if gt $s.minPerGB 0.0 }}<a href="{{ partial "lang-href.html" (printf "/compare/%s/" $country.slug) }}" class="font-semibold text-brand-700 hover:underline">${{ printf "%.2f" $s.minPerGB }} per GB</a>{{ else }}—{{ end }}</dd>
           </div>
           {{ with .Params.fact_registration }}
           <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">SIM registration for visitors</dt>
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "networks_single__sim_registration_for_visitors" | safeHTML }}</dt>
             <dd class="mt-1 text-sm font-medium text-ink-800">{{ . }}</dd>
           </div>
           {{ end }}
           {{ with $nr }}
           {{ if or .opensignal_date .ookla_date }}
           <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Independent testing on record</dt>
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "networks_single__independent_testing_on_record" | safeHTML }}</dt>
             <dd class="mt-1 text-sm font-medium text-ink-800">{{ with .opensignal_date }}Opensignal {{ . }}{{ end }}{{ if and .opensignal_date .ookla_date }} · {{ end }}{{ with .ookla_date }}Ookla {{ . }}{{ end }}</dd>
           </div>
           {{ end }}
@@ -209,7 +209,7 @@
 
       {{/* ── 运营商画像卡：tech / 典型速率 / note / 强项弱项（数据直出） ── */}}
       <section class="mt-10 not-prose" aria-labelledby="carriers">
-        <p class="eyebrow">Who runs the masts</p>
+        <p class="eyebrow">{{ i18n "networks_single__who_runs_the_masts" | safeHTML }}</p>
         <h2 id="carriers" class="mt-2 text-2xl font-bold">{{ $h2Carriers }}</h2>
         <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ $introCarriers }}</p>
         <div class="mt-6 grid gap-3 sm:grid-cols-2">
@@ -227,10 +227,10 @@
             <p class="mt-2 text-xs font-semibold text-ink-700">Typical {{ .speed_min }}–{{ .speed_top }} Mbps <span class="font-normal text-ink-500">— enough for {{ $gf }}</span></p>
             <p class="mt-2 border-t border-ink-100 pt-2 text-xs leading-relaxed text-ink-400">{{ .note }}</p>
             {{ else }}
-            <p class="mt-2 text-xs leading-relaxed text-ink-400">Profile being verified for this network.</p>
+            <p class="mt-2 text-xs leading-relaxed text-ink-400">{{ i18n "g_profile_being_verified_for_this_network" | safeHTML }}</p>
             {{ end }}
-            {{ with $det.strong }}<p class="mt-2 text-xs leading-relaxed text-ink-600"><strong class="text-brand-700">Where it wins:</strong> {{ . }}</p>{{ end }}
-            {{ with $det.weak }}<p class="mt-1 text-xs leading-relaxed text-ink-500"><strong class="text-accent-700">Where it lags:</strong> {{ . }}</p>{{ end }}
+            {{ with $det.strong }}<p class="mt-2 text-xs leading-relaxed text-ink-600"><strong class="text-brand-700">{{ i18n "g_where_it_wins" | safeHTML }}</strong> {{ . }}</p>{{ end }}
+            {{ with $det.weak }}<p class="mt-1 text-xs leading-relaxed text-ink-500"><strong class="text-accent-700">{{ i18n "g_where_it_lags" | safeHTML }}</strong> {{ . }}</p>{{ end }}
           </div>
           {{ end }}
         </div>
@@ -239,17 +239,17 @@
       {{ if $awards }}
       {{/* ── 记分板：同一批网络，两家独立机构各自的结论（awards 存在时） ── */}}
       <section class="mt-10 not-prose" aria-labelledby="scoreboard">
-        <p class="eyebrow">Scoreboard</p>
+        <p class="eyebrow">{{ i18n "networks_single__scoreboard" | safeHTML }}</p>
         <h2 id="scoreboard" class="mt-2 text-2xl font-bold">{{ $h2Score }}</h2>
         <div class="card mt-5 overflow-hidden p-0">
           <div class="overflow-x-auto">
             <table class="table-pro">
               <thead>
                 <tr>
-                  <th>Network</th>
+                  <th>{{ i18n "g_network" | safeHTML }}</th>
                   <th>Opensignal{{ with $nr.opensignal_date }} · {{ . }}{{ end }}</th>
                   <th>Ookla{{ with $nr.ookla_date }} · {{ . }}{{ end }}</th>
-                  <th>Best for</th>
+                  <th>{{ i18n "networks_single__best_for" | safeHTML }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -266,13 +266,13 @@
             </table>
           </div>
         </div>
-        <p class="mt-3 text-xs leading-relaxed text-ink-400">Per-network Mbps bands above are indicative ranges compiled from provider listings, not measurements — see <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">how we rank plans</a>. Sources: {{ with $nr.opensignal_url }}<a href="{{ . }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">{{ $nr.opensignal_title }}</a>{{ with $nr.opensignal_date }}, {{ . }}{{ end }}. {{ end }}{{ with $nr.ookla_url }}<a href="{{ . }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">{{ $nr.ookla_label | default "Ookla report" }}</a>{{ with $nr.ookla_date }}, {{ . }}{{ end }}.{{ end }}</p>
+        <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "networks_single__per_network_mbps_bands_above_are_indicative_ranges_compi" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "networks_single__how_we_rank_plans" | safeHTML }}</a>. Sources: {{ with $nr.opensignal_url }}<a href="{{ . }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">{{ $nr.opensignal_title }}</a>{{ with $nr.opensignal_date }}, {{ . }}{{ end }}. {{ end }}{{ with $nr.ookla_url }}<a href="{{ . }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">{{ $nr.ookla_label | default "Ookla report" }}</a>{{ with $nr.ookla_date }}, {{ . }}{{ end }}.{{ end }}</p>
       </section>
       {{ else }}
       {{/* ── 无 awards 的市场：回退为事实列表布局 ── */}}
       <section class="mt-10 not-prose" aria-labelledby="authority">
         <div class="card p-6">
-          <p class="eyebrow">Independent measurements</p>
+          <p class="eyebrow">{{ i18n "g_independent_measurements" | safeHTML }}</p>
           <h2 id="authority" class="mt-2 text-2xl font-bold">{{ $h2Score }}</h2>
           {{ with $nr }}
             {{ with .opensignal_facts }}
@@ -281,23 +281,23 @@
             </ul>
             {{ end }}
             {{ with .opensignal_url }}
-            <p class="mt-3 text-xs leading-relaxed text-ink-400">Source: <a href="{{ . }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">{{ $nr.opensignal_title }}</a>{{ with $nr.opensignal_date }}, {{ . }}{{ end }}.</p>
+            <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "g_source" | safeHTML }} <a href="{{ . }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">{{ $nr.opensignal_title }}</a>{{ with $nr.opensignal_date }}, {{ . }}{{ end }}.</p>
             {{ end }}
             {{ with .ookla_note }}
             <p class="mt-4 border-t border-ink-100 pt-4 text-sm leading-relaxed text-ink-600">{{ . }}</p>
-            <p class="mt-2 text-xs leading-relaxed text-ink-400">Source: <a href="{{ $nr.ookla_url }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">Ookla report</a>{{ with $nr.ookla_date }}, {{ . }}{{ end }}.</p>
+            <p class="mt-2 text-xs leading-relaxed text-ink-400">{{ i18n "g_source" | safeHTML }} <a href="{{ $nr.ookla_url }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">{{ i18n "networks_single__ookla_report" | safeHTML }}</a>{{ with $nr.ookla_date }}, {{ . }}{{ end }}.</p>
             {{ end }}
           {{ else }}
-            <p class="mt-3 text-sm leading-relaxed text-ink-600">No named Opensignal report covers this destination yet. Ookla's Global Index still tracks the market month by month.</p>
+            <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "networks_single__no_named_opensignal_report_covers_this_destination_yet_o" | safeHTML }}</p>
           {{ end }}
-          <p class="mt-4 border-t border-ink-100 pt-4 text-xs leading-relaxed text-ink-400">Per-network Mbps bands on this page are indicative ranges compiled from provider listings, not measurements. Read our <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">ranking methodology</a>.</p>
+          <p class="mt-4 border-t border-ink-100 pt-4 text-xs leading-relaxed text-ink-400">{{ i18n "networks_single__per_network_mbps_bands_on_this_page_are_indicative_range" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "networks_single__ranking_methodology" | safeHTML }}</a>.</p>
         </div>
       </section>
       {{ end }}
 
       {{/* ── 品牌 → 网络映射表（含品牌×国家页内链） + 同网不同价结论 ── */}}
       <section class="mt-10 not-prose" aria-labelledby="brands">
-        <p class="eyebrow">Brand by brand</p>
+        <p class="eyebrow">{{ i18n "networks_single__brand_by_brand" | safeHTML }}</p>
         <h2 id="brands" class="mt-2 text-2xl font-bold">{{ $h2Brands }}</h2>
         <p class="mt-3 text-sm leading-relaxed text-ink-600">
           {{ if $introBrands }}{{ $introBrands }}{{ else if $identical }}At this check every provider we track connects to the same {{ len $nets }} national carriers in {{ $country.name }}, so the brand you pick changes price, plan shapes and support rather than coverage.{{ else }}Providers differ in {{ $country.name }} — some ride a single carrier while others fall back across several, which is what decides rural signal.{{ end }}
@@ -307,9 +307,9 @@
             <table class="table-pro">
               <thead>
                 <tr>
-                  <th>eSIM brand</th>
+                  <th>{{ i18n "networks_single__esim_brand" | safeHTML }}</th>
                   <th>Host networks in {{ $country.name }}</th>
-                  <th>Plans</th>
+                  <th>{{ i18n "g_plans" | safeHTML }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -317,7 +317,7 @@
                 <tr>
                   <td class="font-medium text-ink-800">{{ .name }}</td>
                   <td class="text-ink-600">{{ delimit .nets ", " }}</td>
-                  <td><a href="/compare/{{ $country.slug }}/{{ .key }}/" class="font-semibold text-brand-700 hover:underline">{{ .name }} in {{ $country.name }} →</a></td>
+                  <td><a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" $country.slug .key) }}" class="font-semibold text-brand-700 hover:underline">{{ .name }} in {{ $country.name }} →</a></td>
                 </tr>
                 {{ end }}
               </tbody>
@@ -326,10 +326,10 @@
         </div>
         {{ if and $identical (gt $pgRatio 1.05) }}
         <div class="card mt-5 p-6">
-          <p class="text-sm leading-relaxed text-ink-600"><strong class="text-ink-950">What that parity is worth.</strong> Because every brand buys the same {{ len $nets }} networks, none of them can sell you better coverage in {{ $country.name }} — the difference lands in the bill and nowhere else. Across the brands we track, metered data works out at anywhere from <strong>${{ printf "%.2f" $pgMin }}/GB</strong> to <strong>${{ printf "%.2f" $pgMax }}/GB</strong>, a {{ printf "%.1f" $pgRatio }}× spread that mast choice cannot explain. Judge the plan, not the network — the full ranking sits on the <a href="/compare/{{ $country.slug }}/" class="font-semibold text-brand-700 hover:underline">{{ $country.name }} eSIM comparison</a>.</p>
+          <p class="text-sm leading-relaxed text-ink-600"><strong class="text-ink-950">{{ i18n "networks_single__what_that_parity_is_worth" | safeHTML }}</strong> Because every brand buys the same {{ len $nets }} networks, none of them can sell you better coverage in {{ $country.name }} — the difference lands in the bill and nowhere else. Across the brands we track, metered data works out at anywhere from <strong>${{ printf "%.2f" $pgMin }}/GB</strong> {{ i18n "g_to" | safeHTML }} <strong>${{ printf "%.2f" $pgMax }}/GB</strong>, a {{ printf "%.1f" $pgRatio }}× spread that mast choice cannot explain. Judge the plan, not the network — the full ranking sits on the <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $country.slug) }}" class="font-semibold text-brand-700 hover:underline">{{ $country.name }} eSIM comparison</a>.</p>
         </div>
         {{ end }}
-        <p class="mt-4 text-sm leading-relaxed text-ink-600">For the price side of the same decision, see our <a href="/compare/{{ $country.slug }}/" class="font-semibold text-brand-700 hover:underline">ranking of {{ $country.name }} eSIM plans</a>.</p>
+        <p class="mt-4 text-sm leading-relaxed text-ink-600">{{ i18n "networks_single__for_the_price_side_of_the_same_decision_see_our" | safeHTML }} <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $country.slug) }}" class="font-semibold text-brand-700 hover:underline">ranking of {{ $country.name }} eSIM plans</a>.</p>
       </section>
 
       {{/* ── 城市覆盖 ──
@@ -342,7 +342,7 @@
       {{ $cityRows := .Params.cities_detail }}
       {{ if or $cityRows $info.cities }}
       <section class="mt-10 not-prose" aria-labelledby="cities">
-        <p class="eyebrow">City coverage</p>
+        <p class="eyebrow">{{ i18n "networks_single__city_coverage" | safeHTML }}</p>
         <h2 id="cities" class="mt-2 text-2xl font-bold">{{ $h2Cities }}</h2>
         <p class="mt-4 text-sm leading-relaxed text-ink-600">{{ $noteCities }}</p>
         {{ with $cityRows }}
@@ -382,17 +382,17 @@
 
       {{/* ── 内链闭环：网络枢纽 + 国家比价页 + 邻国 + 工具 ── */}}
       <section class="mt-10 not-prose" aria-labelledby="more">
-        <p class="eyebrow">Keep reading</p>
+        <p class="eyebrow">{{ i18n "g_keep_reading" | safeHTML }}</p>
         <h2 id="more" class="mt-2 text-2xl font-bold">{{ $h2Next }}</h2>
         <div class="mt-5 grid gap-3 sm:grid-cols-2">
-          <a href="/compare/{{ $country.slug }}/" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Compare {{ $country.name }} eSIM plans</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">{{ $s.planCount }} plans from {{ $s.providerCount }} brands ranked by $/GB and $/day.</p></a>
-          <a href="/networks/" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">eSIM network map</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">See how {{ $country.name }} compares with the other destinations we track.</p></a>
-          <a href="/tools/" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">eSIM trip cost calculator</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">Size a {{ $country.name }} data allowance by app, then match it to a real plan.</p></a>
-          <a href="/esim-deals/" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Current eSIM deals</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">Live discounts and promo codes on {{ $country.name }} plans.</p></a>
+          <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $country.slug) }}" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Compare {{ $country.name }} eSIM plans</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">{{ $s.planCount }} plans from {{ $s.providerCount }} brands ranked by $/GB and $/day.</p></a>
+          <a href="{{ partial "lang-href.html" "/networks/" }}" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_esim_network_map" | safeHTML }}</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">See how {{ $country.name }} compares with the other destinations we track.</p></a>
+          <a href="{{ partial "lang-href.html" "/tools/" }}" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_esim_trip_cost_calculator" | safeHTML }}</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">Size a {{ $country.name }} data allowance by app, then match it to a real plan.</p></a>
+          <a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "networks_single__current_esim_deals" | safeHTML }}</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">Live discounts and promo codes on {{ $country.name }} plans.</p></a>
         </div>
         {{ with $country.neighbors }}
         <p class="mt-5 text-sm leading-relaxed text-ink-600">Travelling on from {{ $country.name }}?
-          {{ range $i, $n := . }}{{ $nc := index hugo.Data.countries $n }}{{ if $i }}, {{ end }}<a href="/compare/{{ $nc.slug }}/" class="font-semibold text-brand-700 hover:underline">{{ $nc.name }}</a>{{ end }}
+          {{ range $i, $n := . }}{{ $nc := index $d.countries $n }}{{ if $i }}, {{ end }}<a href="{{ partial "lang-href.html" (printf "/compare/%s/" $nc.slug) }}" class="font-semibold text-brand-700 hover:underline">{{ $nc.name }}</a>{{ end }}
           — regional plans often cover several of these destinations in one purchase.
         </p>
         {{ end }}
@@ -403,12 +403,12 @@
     <aside class="space-y-4 lg:sticky lg:top-24">
       {{ partial "aside-destinations.html" . }}
       <div class="card p-5">
-        <p class="eyebrow">Keep exploring</p>
+        <p class="eyebrow">{{ i18n "g_keep_exploring" | safeHTML }}</p>
         <ul class="mt-3 space-y-2.5 text-sm">
-          <li><a href="/networks/" class="font-semibold text-brand-700 hover:underline">Network map for every destination →</a><span class="mt-0.5 block text-xs leading-relaxed text-ink-500">Host carriers in {{ $country.name }} and the other destinations we track.</span></li>
-          <li><a href="/compare/{{ $country.slug }}/" class="font-semibold text-brand-700 hover:underline">All {{ $country.name }} eSIM plans →</a><span class="mt-0.5 block text-xs leading-relaxed text-ink-500">Ranked by $/GB and $/day across {{ $s.providerCount }} brands.</span></li>
+          <li><a href="{{ partial "lang-href.html" "/networks/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "networks_single__network_map_for_every_destination" | safeHTML }}</a><span class="mt-0.5 block text-xs leading-relaxed text-ink-500">Host carriers in {{ $country.name }} and the other destinations we track.</span></li>
+          <li><a href="{{ partial "lang-href.html" (printf "/compare/%s/" $country.slug) }}" class="font-semibold text-brand-700 hover:underline">All {{ $country.name }} eSIM plans →</a><span class="mt-0.5 block text-xs leading-relaxed text-ink-500">Ranked by $/GB and $/day across {{ $s.providerCount }} brands.</span></li>
         </ul>
-        <p class="mt-3 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">Host assignments come from each provider's own listings at the {{ with $s.checkedDate }}{{ . }} {{ end }}snapshot. Our price and fair-use data follow the <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.</p>
+        <p class="mt-3 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">Host assignments come from each provider's own listings at the {{ with $s.checkedDate }}{{ . }} {{ end }}snapshot. Our price and fair-use data follow the <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>.</p>
       </div>
     </aside>
 

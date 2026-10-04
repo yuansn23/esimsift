@@ -1,4 +1,4 @@
-{{- /*
+{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}{{- /*
 VS 配对聚合 —— 单一数据入口。传入 dict (a, b)：两个品牌 key（slug 字母序，a < b）。
 对两国均有套餐的每个国家计算各自最低价 / 最优 $/GB / 是否有 unlimited，
 逐国判定 entry-price 胜者与 $/GB 胜者，并汇总 win 计数。
@@ -10,7 +10,7 @@ VS 配对聚合 —— 单一数据入口。传入 dict (a, b)：两个品牌 ke
 */ -}}
 {{- $a := .a -}}
 {{- $b := .b -}}
-{{- $plans := hugo.Data.plans -}}
+{{- $plans := $d.plans -}}
 {{- $rows := slice -}}
 {{- $aWinsPrice := 0 -}}{{- $bWinsPrice := 0 -}}{{- $ties := 0 -}}
 {{- $aWinsValue := 0 -}}{{- $bWinsValue := 0 -}}
@@ -18,7 +18,7 @@ VS 配对聚合 —— 单一数据入口。传入 dict (a, b)：两个品牌 ke
 {{- $aGlobalMin := 0.0 -}}{{- $bGlobalMin := 0.0 -}}
 {{- $aMetered := false -}}{{- $bMetered := false -}}
 {{- $checkedDates := slice -}}
-{{- range $iso, $c := hugo.Data.countries -}}
+{{- range $iso, $c := $d.countries -}}
   {{- /* 每品牌在该国的 minPrice / minPerGB / hasUnlimited */ -}}
   {{- $minA := 0.0 -}}{{- $pgA := 0.0 -}}{{- $unA := false -}}
   {{- $minB := 0.0 -}}{{- $pgB := 0.0 -}}{{- $unB := false -}}
@@ -26,8 +26,8 @@ VS 配对聚合 —— 单一数据入口。传入 dict (a, b)：两个品牌 ke
     {{- $checkedDates = $checkedDates | append .checked -}}
     {{- range .plans -}}
       {{- if or (eq $minA 0.0) (lt (float .price) $minA) }}{{- $minA = float .price -}}{{- end -}}
-      {{- if gt (int .gb) 0 -}}
-        {{- $g := div (float .price) (float (int .gb)) -}}
+      {{- if gt (float .gb) 0.0 -}}
+        {{- $g := div (float .price) (float .gb) -}}
         {{- if or (eq $pgA 0.0) (lt $g $pgA) }}{{- $pgA = $g -}}{{- end -}}
         {{- $aMetered = true -}}
       {{- else -}}{{- $unA = true -}}{{- end -}}
@@ -37,8 +37,8 @@ VS 配对聚合 —— 单一数据入口。传入 dict (a, b)：两个品牌 ke
     {{- $checkedDates = $checkedDates | append .checked -}}
     {{- range .plans -}}
       {{- if or (eq $minB 0.0) (lt (float .price) $minB) }}{{- $minB = float .price -}}{{- end -}}
-      {{- if gt (int .gb) 0 -}}
-        {{- $g := div (float .price) (float (int .gb)) -}}
+      {{- if gt (float .gb) 0.0 -}}
+        {{- $g := div (float .price) (float .gb) -}}
         {{- if or (eq $pgB 0.0) (lt $g $pgB) }}{{- $pgB = $g -}}{{- end -}}
         {{- $bMetered = true -}}
       {{- else -}}{{- $unB = true -}}{{- end -}}
@@ -72,7 +72,7 @@ VS 配对聚合 —— 单一数据入口。传入 dict (a, b)：两个品牌 ke
   {{- $checked = index (sort $checkedDates) (sub (len $checkedDates) 1) -}}
 {{- end -}}
 {{- $checkedDate := "" -}}
-{{- if $checked }}{{- $checkedDate = (time $checked).Format "Jan 2, 2006" -}}{{- end -}}
+{{- if $checked }}{{- $checkedDate = time.Format ":date_medium" (time $checked) -}}{{- end -}}
 {{- $rows = sort $rows "name" "asc" -}}
 {{- return dict
   "rows" $rows

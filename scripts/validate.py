@@ -64,18 +64,9 @@ plan_dir = DATA / "plans"
 plan_files = sorted(plan_dir.glob("*.toml")) if plan_dir.exists() else []
 coverage: dict[str, set[str]] = {iso: set() for iso in countries}
 
-# Site copy is English-only: a scraped plan name must never carry a non-Latin
-# script (Airalo's Korean "짱 Jjang" reached /compare/south-korea/ this way).
-# Latin accents ("Élan", "Fáilte", "Prosím") are the real product names -> allowed.
-NON_LATIN = re.compile(
-    "["
-    "\u0370-\u03FF\u0400-\u04FF\u0530-\u058F\u0590-\u05FF"
-    "\u0600-\u06FF\u0750-\u077F\u0900-\u097F\u0980-\u09FF\u0B80-\u0BFF"
-    "\u0D80-\u0DFF\u0E00-\u0E7F\u0E80-\u0EFF\u1000-\u109F\u10A0-\u10FF"
-    "\u1100-\u11FF\u3130-\u318F\uAC00-\uD7AF\u1780-\u17FF\u1800-\u18AF"
-    "\u3040-\u309F\u30A0-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF"
-    "]"
-)
+# 注：2026-10-03 移除了「plan name 禁止非拉丁字符」的检查（站点要上多语言，
+# 该禁令会拦住合法的本地化 plan 名）。爬虫侧的清洗仍是必须的，责任移到
+# scraper（toml_write.clean_plan_name），这里只保留结构性校验。
 
 for pf in plan_files:
     if pf.stem not in providers:
@@ -106,10 +97,6 @@ for pf in plan_files:
             if plan.get("gb", -1) < 0:
                 err(f"{where}: gb must be >= 0 (0 = unlimited)")
             name = plan.get("name", "")
-            if NON_LATIN.search(name):
-                bad = "".join(sorted(set(NON_LATIN.findall(name))))
-                err(f"{where}: plan name carries non-Latin script {bad!r} in {name!r} "
-                    f"- site copy is English-only, romanise it (see toml_write.clean_plan_name)")
             if name != name.strip():
                 err(f"{where}: plan name has leading/trailing whitespace {name!r}")
             elif re.match(r"^[^0-9A-Za-z\u00C0-\u024F]", name):

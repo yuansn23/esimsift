@@ -1,4 +1,4 @@
 ---
-title: "Holafly eSIM Review 2026: Unlimited Data From $10.90"
-description: "Is Holafly's unlimited data worth it? eSIM Sift checks daily-rate pricing against fair-use caps, country by country, before you buy."
+title: "Holafly eSIM Review 2026: Is Unlimited Data Worth It?"
+description: "eSIM Sift tested all 298 Holafly plans: daily unlimited rates, the hotspot cap, fair-use throttling and the metered rivals that beat it."
 ---

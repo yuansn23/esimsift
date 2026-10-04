@@ -1,4 +1,4 @@
-{{- /* ─────────────────────────────────────────────────────────────
+{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}{{- /* ─────────────────────────────────────────────────────────────
    右侧吸顶 · 热门目的地内链模块（partials/aside-destinations.html）
 
    用途：给内容页挂一组指向国家比价页 /compare/{slug}/ 的内链，
@@ -27,20 +27,20 @@
 {{- end -}}
 {{- $show := first 6 $rot -}}
 <div class="card p-5">
-  <p class="eyebrow">Popular destinations</p>
-  <h2 class="mt-2 font-display text-base font-bold leading-snug text-ink-950">eSIM plans travellers compare next</h2>
+  <p class="eyebrow">{{ i18n "g_popular_destinations" | safeHTML }}</p>
+  <h2 class="mt-2 font-display text-base font-bold leading-snug text-ink-950">{{ i18n "partials_aside_destinations__esim_plans_travellers_compare_next" | safeHTML }}</h2>
   <ul class="mt-3.5 space-y-0.5">
     {{- range $show }}
-    {{- $c := index hugo.Data.countries . }}
+    {{- $c := index $d.countries . }}
     {{- $s := partialCached "country-stats.html" . . }}
     <li>
-      <a href="/compare/{{ $c.slug }}/" class="group -mx-2 flex items-center gap-2.5 rounded-lg px-2 py-1.5 transition-colors hover:bg-brand-50/60">
+      <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $c.slug) }}" class="group -mx-2 flex items-center gap-2.5 rounded-lg px-2 py-1.5 transition-colors hover:bg-brand-50/60">
         <img src="{{ $c.flag | relURL }}" alt="" width="24" height="16" loading="lazy" decoding="async" class="h-4 w-6 shrink-0 rounded-sm object-cover ring-1 ring-ink-100">
         <span class="flex-1 truncate text-sm font-medium text-ink-800 group-hover:text-brand-800">{{ $c.name }}</span>
-        <span class="shrink-0 text-[11px] font-medium text-ink-400">from&nbsp;<span class="font-display text-xs font-bold text-brand-700 tnum">{{ if gt $s.minPrice 0.0 }}${{ printf "%.2f" $s.minPrice }}{{ else }}—{{ end }}</span></span>
+        <span class="shrink-0 text-[11px] font-medium text-ink-400">{{ i18n "partials_aside_destinations__from_nbsp" | safeHTML }}<span class="font-display text-xs font-bold text-brand-700 tnum">{{ if gt $s.minPrice 0.0 }}${{ printf "%.2f" $s.minPrice }}{{ else }}—{{ end }}</span></span>
       </a>
     </li>
     {{- end }}
   </ul>
-  <p class="mt-3 border-t border-ink-100 pt-3 text-[11px] leading-relaxed text-ink-400">Cheapest plan we track in each destination — usually a 100–500MB trial size rather than a trip-sized plan. <a href="/compare/" class="font-semibold text-brand-700 hover:underline">All {{ len hugo.Data.countries }} destinations →</a></p>
+  <p class="mt-3 border-t border-ink-100 pt-3 text-[11px] leading-relaxed text-ink-400">{{ i18n "partials_aside_destinations__cheapest_plan_we_track_in_each_destination_usually_a_100" | safeHTML }} <a href="{{ partial "lang-href.html" "/compare/" }}" class="font-semibold text-brand-700 hover:underline">All {{ len $d.countries }} destinations →</a></p>
 </div>

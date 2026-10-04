@@ -1,29 +1,7 @@
 {{ printf `<?xml version="1.0" encoding="utf-8" standalone="yes"?>` | safeHTML }}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-{{- /* 自定义 sitemap：无 changefreq/priority（Google 忽略），lastmod 三层解析 ——
-     1) 国家页/品牌×国家子页：该国价格快照日期（iso 参数 → country-stats）
-     2) 有 date/lastmod front matter 的编辑页：页面自身日期
-     3) 其余数据驱动页：全站最新快照日期。计算行全部 trim，输出每 URL 一行。 */ -}}
-{{- $dates := slice -}}
-{{- range $iso, $c := hugo.Data.countries -}}
-  {{- $s := partialCached "country-stats.html" $iso $iso -}}
-  {{- with $s.checked }}{{ $dates = $dates | append . }}{{ end -}}
-{{- end -}}
-{{- $fresh := "" -}}
-{{- if gt (len $dates) 0 }}{{ $fresh = index (sort $dates) (sub (len $dates) 1) }}{{ end -}}
-{{- range .Data.Pages -}}
-  {{- $lm := "" -}}
-  {{- with .Params.iso -}}
-    {{- $s := partialCached "country-stats.html" . . -}}
-    {{- with $s.checked }}{{ $lm = . }}{{ end -}}
-  {{- end -}}
-  {{- if not $lm }}{{ with .Lastmod }}{{ if not .IsZero }}{{ $lm = .Format "2006-01-02T15:04:05Z07:00" }}{{ end }}{{ end }}{{ end -}}
-  {{- if not $lm }}{{ $lm = $fresh }}{{ end -}}
-  {{- if $lm }}
-  <url><loc>{{ .Permalink }}</loc><lastmod>{{ (time $lm).Format "2006-01-02T15:04:05Z07:00" }}</lastmod></url>
-  {{- else }}
-  <url><loc>{{ .Permalink }}</loc></url>
-  {{- end -}}
-{{- end }}
+{{- /* 语言站自有 sitemap（/de/sitemap.xml 等）。行渲染逻辑见 partials/sitemap-urls.html。
+     根 /sitemap.xml 不走这里 —— 它由 layouts/sitemapindex.xml 输出默认语言（英文）的 urlset。 */ -}}
+{{- partial "sitemap-urls.html" .Data.Pages }}
 </urlset>

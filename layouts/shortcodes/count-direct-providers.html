@@ -1,2 +1,2 @@
-{{- /* providers.toml type!=app 的品牌数（QR/网页直装） */ -}}
-{{- $n := 0 -}}{{- range hugo.Data.providers }}{{- if ne .type "app" }}{{- $n = add $n 1 }}{{- end }}{{- end -}}{{- $n -}}
+{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}{{- /* providers.toml type!=app 的品牌数（QR/网页直装） */ -}}
+{{- $n := 0 -}}{{- range $d.providers }}{{- if ne .type "app" }}{{- $n = add $n 1 }}{{- end }}{{- end -}}{{- $n -}}

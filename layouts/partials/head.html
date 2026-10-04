@@ -1,4 +1,4 @@
-<meta charset="UTF-8">
+{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 {{/* ── favicon：SVG 优先（现代浏览器）+ ICO 兜底（旧浏览器）+ apple-touch；漏斗=Sift ── */}}
@@ -19,33 +19,37 @@
 {{- $ogimage := "img/site/og-default.webp" -}}
 {{- with .Params.hero }}{{ $ogimage = printf "img/esim/%s" . }}{{ end -}}
 {{- if and .Params.iso (not $lockedTitle) -}}
-  {{- $c := index hugo.Data.countries .Params.iso -}}
+  {{- $c := index $d.countries .Params.iso -}}
   {{- $stats := partial "country-stats.html" .Params.iso -}}
   {{- if .Params.provider -}}
-    {{- /* 品牌×国家子页：候选串从长到短取第一个 ≤54（目标 48-54，无品牌尾缀） */ -}}
-    {{- $p := index hugo.Data.providers .Params.provider -}}
+    {{- /* 品牌×国家子页：候选串从长到短取第一个 ≤54（目标 48-54，无品牌尾缀）。
+           2026-10-04 用户定：标题**不放套餐数量、不放价格** —— 两者都会随数据变动而过时，
+           且价格锚点已由 description 承担（description 仍含价格，是刻意的分工）。
+           保留的意图词：Review / Unlimited / Data / Plans / Compared。 */ -}}
+    {{- $p := index $d.providers .Params.provider -}}
     {{- $my := where $stats.rows "key" .Params.provider -}}
     {{- $myMin := 0.0 -}}
     {{- range $my -}}{{- if or (eq $myMin 0.0) (lt .price $myMin) }}{{ $myMin = .price }}{{ end -}}{{- end -}}
     {{- $met := where $my "gb" "gt" 0 -}}
+    {{- $y := now.Year -}}
     {{- $cands := slice -}}
     {{- if eq (len $met) 0 -}}
       {{- $cands = slice
-        (printf "%s %s eSIM Unlimited Compared: %d Plans From $%.2f" $p.name $c.name (len $my) $myMin)
-        (printf "%s %s eSIM Unlimited: %d Plans From $%.2f" $p.name $c.name (len $my) $myMin)
-        (printf "%s %s eSIM Unlimited Plans From $%.2f" $p.name $c.name $myMin)
-        (printf "%s %s eSIM Unlimited From $%.2f" $p.name $c.name $myMin)
-        (printf "%s %s eSIM Plans From $%.2f" $p.name $c.name $myMin)
-        (printf "%s %s eSIM From $%.2f" $p.name $c.name $myMin)
+        (printf "%s %s eSIM Review %d: Unlimited Data Plans" $p.name $c.name $y)
+        (printf "%s %s eSIM %d: Unlimited Data Plans" $p.name $c.name $y)
+        (printf "%s %s eSIM %d: Unlimited Plans Compared" $p.name $c.name $y)
+        (printf "%s %s eSIM Review %d: Unlimited Plans" $p.name $c.name $y)
+        (printf "%s %s eSIM %d: Unlimited Data" $p.name $c.name $y)
+        (printf "%s %s eSIM %d: Unlimited Plans" $p.name $c.name $y)
       -}}
     {{- else -}}
       {{- $cands = slice
-        (printf "%s %s eSIM Plans Compared: %d Plans From $%.2f" $p.name $c.name (len $my) $myMin)
-        (printf "%s %s eSIM Plans Compared: %d From $%.2f" $p.name $c.name (len $my) $myMin)
-        (printf "%s %s eSIM Plans: All %d From $%.2f" $p.name $c.name (len $my) $myMin)
-        (printf "%s %s eSIM Plans: %d From $%.2f" $p.name $c.name (len $my) $myMin)
-        (printf "%s %s eSIM Plans From $%.2f" $p.name $c.name $myMin)
-        (printf "%s %s eSIM From $%.2f" $p.name $c.name $myMin)
+        (printf "%s %s eSIM Review %d: Data Plans Compared" $p.name $c.name $y)
+        (printf "%s %s eSIM %d: Cheap Data Plans Compared" $p.name $c.name $y)
+        (printf "%s %s eSIM %d: Data Plans Compared" $p.name $c.name $y)
+        (printf "%s %s eSIM Review %d: Plans and Prices" $p.name $c.name $y)
+        (printf "%s %s eSIM %d: Prepaid Data Plans" $p.name $c.name $y)
+        (printf "%s %s eSIM %d: Data Plans" $p.name $c.name $y)
       -}}
     {{- end -}}
     {{- $title = index $cands (sub (len $cands) 1) -}}
@@ -54,7 +58,7 @@
     {{- /* 国家页：完整标题来自 data/titlesegments.toml（脚本预计算，50 国全唯一）。
            前缀 "Best {Country} eSIM 2026:" + 旅游/网络关键词（travel/tourists/cheap/unlimited/
            5G/no roaming/value/compare/prepaid/data plan），价格锚点取真实每GB价或最低无限套餐价。 */ -}}
-    {{- $seg := index hugo.Data.titlesegments .Params.iso -}}
+    {{- $seg := index $d.titlesegments .Params.iso -}}
     {{- if $seg.title }}
       {{- $title = $seg.title -}}
     {{- end -}}
@@ -65,7 +69,7 @@
 {{- end -}}
 {{- /* 带 iso 但已锁定标题的页（如 /networks/{country}/）：仍取该国首图作 og:image */ -}}
 {{- if and .Params.iso (eq $ogimage "img/site/og-default.webp") -}}
-  {{- with (index hugo.Data.countries .Params.iso).images -}}
+  {{- with (index $d.countries .Params.iso).images -}}
     {{- $ogimage = printf "img/countries/%s" (index . 0) -}}
   {{- end -}}
 {{- end -}}
@@ -75,7 +79,14 @@
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $desc }}">
 <link rel="canonical" href="{{ .Permalink }}">
-
+{{- if .Params.noindex }}
+<meta name="robots" content="noindex, follow">
+{{- end }}
+{{/* 逐页 noindex 开关：front matter 里写 noindex: true 即生效 —— 用于正文尚未翻译的
+     占位页（如 content/de/compare/*）。空正文页被收录是实打实的 SEO 损失；正文补齐后
+     删掉该 front matter 即恢复收录。
+     注意：上面 {{- if }} 的左侧裁剪不能省 —— 写成 {{ if }} 会给每一页多输出一个空行。
+     这段紧贴 canonical 且不留独立空行，是为了让英文页产物逐字节不变（改动前此处是空行）。 */}}
 {{/* ── 字体预连接（Sora + Inter）── */}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,7 +100,11 @@
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:image" content="{{ $ogimage | absURL }}">
 <meta name="twitter:card" content="summary_large_image">
-
+{{ if gt (len hugo.Sites) 1 }}{{/* hreflang 只发给「可索引」的译文 —— 指向 noindex 页会被 GSC 判为 hreflang 错误 */}}{{ if not .Params.noindex }}<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
+{{ end }}{{ range .Translations }}{{ if not .Params.noindex }}<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
+{{ end }}{{ end }}<meta property="og:locale" content="{{ partial "og-locale.html" .Language.LanguageCode }}">
+{{ range .Translations }}<meta property="og:locale:alternate" content="{{ partial "og-locale.html" .Language.LanguageCode }}">
+{{ end }}{{ end }}
 {{/* ── Styles（Tailwind 预编译产物，npm run build:css 生成）── */}}
 <link rel="stylesheet" href="/css/tailwind.css">
 

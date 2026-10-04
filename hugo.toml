@@ -26,6 +26,31 @@ isHTML = false
     [markup.goldmark.renderer]
       unsafe = true
 
+# ==========================================
+# 产物目录卫生
+#   2026-10-04 真实事故：一个手敲的 `hugo server`（端口 1313 被占，Hugo 自选了
+#   55171）把 baseURL 换成了 http://localhost:55171 并写进了 public/ ——
+#   136 个文件的 canonical 与 sitemap 全部指向 localhost，且 public/esim-providers/
+#   整个目录是空的（写一半被中断）。
+#
+#   对策是「守卫」而不是「构建前清空」：
+#     · scripts/check_dates.py 断言 A —— public/ 里出现 localhost 直接构建失败
+#     · 该守卫已接入 npm run check:output
+#
+#   ★ 曾试过 `hugo --cleanDestinationDir`（先清空再重建），已**撤销**：
+#     实测 Hugo 阶段从 57 秒涨到 9 分 13 秒（且随产物变多而恶化：4m17s → 9m13s），
+#     代价远大于收益。更糟的是先清空再重建，构建一旦被中断就会留下
+#     「已清空、未写完」的半截产物 —— 反而更危险（这也是 check_dates.py
+#     断言 C「sitemap 里的每个 URL 都必须真的有产物」的由来）。
+#
+#   ★ 关于 renderToMemory：Hugo 的 [server] 配置段**只**支持 redirects / headers，
+#     没有 renderToMemory 这个键 —— 实测写进去无效（产物照样落盘 928 个文件），
+#     只有命令行 flag 生效。所以**不要**指望在配置里防住污染：
+#       · 预览一律用 `npm run dev`（已带 --renderToMemory，绝不写 public/）
+#       · 不要手敲 `hugo server`；万一敲了，务必再跑一次 `npm run build`
+#       · 判据：本地地址栏出现 1313 以外的端口，就已经有产物被污染了
+# ==========================================
+
 [params]
   brand = "eSIM Sift"
   tagline = "Compare Travel eSIM Plans & Prices"
@@ -116,9 +141,36 @@ isHTML = false
         campaign = "partner"
 
 # ==========================================
-# 语言：P0 仅英文，目录结构为多语言预留
+# 语言
+#   英文为默认语言，且 defaultContentLanguageInSubdir = false
+#   → 英文产物留在根路径（public/…），539 个已收录 URL 零变更
+#   → 其他语言落在子目录（public/ja/…）
+#   新增语言只需三步：
+#     1) 在下方追加一个 [languages.<lang>] 块并显式写 contentDir（不写会静默并入默认语言）
+#     2) 新建 content/<lang>/ 与 i18n/<lang>.toml（键名对齐 i18n/en.toml）
+#     3) 需要覆盖数据层散文时，新建 data/<lang>/…（键路径与 data/ 对齐，深合并）
 # ==========================================
+defaultContentLanguageInSubdir = false
+
 [languages.en]
+  languageCode = "en-us"
   languageName = "English"
   contentDir = "content/en"
   weight = 1
+
+# 德语站（/de/）
+#   · contentDir 必须显式写 —— 不写 Hugo 会「静默」把 content/en 也当成德语内容，
+#     结果 /de/ 里全是英文页且不报错，非常难查
+#   · languageCode 用 de-de（不是 de）：hreflang 与 og:locale 直接读它
+#     （输出 hreflang="de-de" / og:locale="de_DE"）
+[languages.de]
+  languageCode = "de-de"
+  languageName = "Deutsch"
+  contentDir = "content/de"
+  weight = 2
+
+# 德语站的站点参数覆盖（英文值在顶层 [params] 里）
+#   不覆盖的话，德语页的 <meta description> 与页脚标语会是英文
+[languages.de.params]
+  tagline = "Reise-eSIM-Tarife & Preise vergleichen"
+  description = "eSIM Sift ist ein unabhängiger eSIM-Preisvergleich: echte Prepaid-Tarife aller großen Reise-eSIM-Anbieter, sortiert nach $/GB und $/Tag."

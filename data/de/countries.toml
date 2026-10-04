@@ -1,0 +1,155 @@
+# 德语国家名覆盖 —— 只写 name
+# 其余字段（slug / flag / region / images / quirks / carriers / neighbors …）
+# 由 layouts/partials/i18n-data.html 从 data/countries.toml 深合并继承。
+# ⚠ 数组字段（quirks / carriers / neighbors / images）是「整体替换」不是逐条合并，
+#   要翻就得整段重写；只写 name 时它们原样保留。
+
+[JP]
+name = "Japan"
+
+[US]
+name = "Vereinigte Staaten"
+
+[GB]
+name = "Vereinigtes Königreich"
+
+[FR]
+name = "Frankreich"
+
+[IT]
+name = "Italien"
+
+[TH]
+name = "Thailand"
+
+[KR]
+name = "Südkorea"
+
+[SG]
+name = "Singapur"
+
+[ES]
+name = "Spanien"
+
+[DE]
+name = "Deutschland"
+
+[AU]
+name = "Australien"
+
+[TW]
+name = "Taiwan"
+
+[HK]
+name = "Hongkong"
+
+[MO]
+name = "Macau"
+
+[MY]
+name = "Malaysia"
+
+[VN]
+name = "Vietnam"
+
+[ID]
+name = "Indonesien"
+
+[PH]
+name = "Philippinen"
+
+[IN]
+name = "Indien"
+
+[CN]
+name = "China"
+
+[PT]
+name = "Portugal"
+
+[NL]
+name = "Niederlande"
+
+[BE]
+name = "Belgien"
+
+[CH]
+name = "Schweiz"
+
+[AT]
+name = "Österreich"
+
+[GR]
+name = "Griechenland"
+
+[TR]
+name = "Türkei"
+
+[IE]
+name = "Irland"
+
+[PL]
+name = "Polen"
+
+[CZ]
+name = "Tschechien"
+
+[HR]
+name = "Kroatien"
+
+[IS]
+name = "Island"
+
+[GE]
+name = "Georgien"
+
+[CA]
+name = "Kanada"
+
+[MX]
+name = "Mexiko"
+
+[BR]
+name = "Brasilien"
+
+[AR]
+name = "Argentinien"
+
+[CO]
+name = "Kolumbien"
+
+[PE]
+name = "Peru"
+
+[CR]
+name = "Costa Rica"
+
+[AE]
+name = "Vereinigte Arabische Emirate"
+
+[SA]
+name = "Saudi-Arabien"
+
+[QA]
+name = "Katar"
+
+[IL]
+name = "Israel"
+
+[EG]
+name = "Ägypten"
+
+[MA]
+name = "Marokko"
+
+[ZA]
+name = "Südafrika"
+
+[KE]
+name = "Kenia"
+
+[NZ]
+name = "Neuseeland"
+
+[FJ]
+name = "Fidschi"

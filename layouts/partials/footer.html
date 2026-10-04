@@ -1,37 +1,37 @@
-<footer class="mt-20 bg-ink-950 text-ink-300">
+{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}<footer class="mt-20 bg-ink-950 text-ink-300">
   <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4 lg:grid-cols-7">
     <div class="md:col-span-2">
-      <a href="{{ .Site.BaseURL }}" class="flex items-center gap-2" aria-label="eSIM Sift home">
+      <a href="{{ .Site.BaseURL }}" class="flex items-center gap-2" aria-label="{{ i18n "g_esim_sift_home" | safeHTML }}">
         <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 text-white">
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M2 3h12L9.5 8v4.5L6.5 14V8L2 3Z" fill="currentColor"/>
           </svg>
         </span>
-        <span class="font-display text-lg font-extrabold tracking-tight text-white">eSIM<span class="text-brand-400">Sift</span></span>
+        <span class="font-display text-lg font-extrabold tracking-tight text-white">{{ i18n "g_esim" | safeHTML }}<span class="text-brand-400">{{ i18n "g_sift" | safeHTML }}</span></span>
       </a>
-      <p class="mt-4 max-w-sm text-sm leading-relaxed text-ink-400">{{ .Site.Params.tagline }} An independent price database — every plan, every provider, one ruler.</p>
+      <p class="mt-4 max-w-sm text-sm leading-relaxed text-ink-400">{{ .Site.Params.tagline }} {{ i18n "partials_footer__blurb" | safeHTML }}</p>
       <div class="mt-5 flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-wider">
-        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-ink-300">Dated prices</span>
-        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-ink-300">No pay-to-rank</span>
-        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-ink-300">Open methodology</span>
+        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-ink-300">{{ i18n "partials_footer__dated_prices" | safeHTML }}</span>
+        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-ink-300">{{ i18n "partials_footer__no_pay_to_rank" | safeHTML }}</span>
+        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-ink-300">{{ i18n "partials_footer__open_methodology" | safeHTML }}</span>
       </div>
     </div>
 
     <div>
-      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">Popular comparisons</h3>
+      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">{{ i18n "partials_footer__popular_comparisons" | safeHTML }}</h3>
       <ul class="mt-4 space-y-2.5 text-sm">
         {{ range first 6 (where (where (where (site.GetPage "/compare").Pages "Params.provider" nil) "Params.providers" nil) "Params.nolist" nil) }}
           {{ $p := . }}
           {{ with $p.Params.iso }}
-            {{ $c := index hugo.Data.countries . }}
-            <li><a href="{{ $p.RelPermalink }}" class="transition-colors hover:text-white">{{ $c.name }} eSIM</a></li>
+            {{ $c := index $d.countries . }}
+            <li><a href="{{ $p.RelPermalink }}" class="transition-colors hover:text-white">{{ i18n "partials_footer__country_esim" (dict "name" $c.name) | safeHTML }}</a></li>
           {{ end }}
         {{ end }}
       </ul>
     </div>
 
     <div>
-      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">Popular matchups</h3>
+      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">{{ i18n "partials_footer__popular_matchups" | safeHTML }}</h3>
       <ul class="mt-4 space-y-2.5 text-sm">
         {{/* 编辑挑选的 6 组对打；slug 约定按字母序，page 缺失则静默跳过（validate.py 兜底） */}}
         {{ $matchups := slice
@@ -45,57 +45,57 @@
         {{ range $matchups }}
           {{ $mp := sort . }}
           {{ with site.GetPage (printf "/compare/%s-vs-%s" (index $mp 0) (index $mp 1)) }}
-            <li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">{{ (index hugo.Data.providers (index $mp 0)).name }} vs {{ (index hugo.Data.providers (index $mp 1)).name }}</a></li>
+            <li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">{{ (index $d.providers (index $mp 0)).name }} vs {{ (index $d.providers (index $mp 1)).name }}</a></li>
           {{ end }}
         {{ end }}
-        <li><a href="/compare/matchups/" class="font-semibold text-brand-300 transition-colors hover:text-white">All matchups →</a></li>
+        <li><a href="{{ partial "lang-href.html" "/compare/matchups/" }}" class="font-semibold text-brand-300 transition-colors hover:text-white">{{ i18n "g_all_matchups" | safeHTML }}</a></li>
       </ul>
     </div>
 
     <div>
-      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">Data &amp; research</h3>
+      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">{{ i18n "g_data_amp_research" | safeHTML }}</h3>
       <ul class="mt-4 space-y-2.5 text-sm">
         {{ with site.GetPage "/research/esim-price-index" }}
-          <li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">eSIM price index</a></li>
+          <li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">{{ i18n "g_esim_price_index" | safeHTML }}</a></li>
         {{ end }}
         {{ with site.GetPage "/research/unlimited-esim" }}
-          <li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">Unlimited eSIM rates</a></li>
+          <li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">{{ i18n "g_unlimited_esim_rates" | safeHTML }}</a></li>
         {{ end }}
         {{ with site.GetPage "/research/fair-use-audit" }}
-          <li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">Fair use audit</a></li>
+          <li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">{{ i18n "g_fair_use_audit_3" | safeHTML }}</a></li>
         {{ end }}
-        <li><a href="/research/" class="font-semibold text-brand-300 transition-colors hover:text-white">All research →</a></li>
+        <li><a href="{{ partial "lang-href.html" "/research/" }}" class="font-semibold text-brand-300 transition-colors hover:text-white">{{ i18n "g_all_research" | safeHTML }}</a></li>
       </ul>
     </div>
 
     <div>
-      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">eSIM providers</h3>
+      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">{{ i18n "g_esim_providers" | safeHTML }}</h3>
       <ul class="mt-4 space-y-2.5 text-sm">
-        {{ range $key, $p := hugo.Data.providers }}
-          <li><a href="/esim-providers/{{ $key }}/" class="transition-colors hover:text-white">{{ $p.name }}</a></li>
+        {{ range $key, $p := $d.providers }}
+          <li><a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $key) }}" class="transition-colors hover:text-white">{{ $p.name }}</a></li>
         {{ end }}
-        <li><a href="/esim-providers/" class="font-semibold text-brand-300 transition-colors hover:text-white">All providers →</a></li>
+        <li><a href="{{ partial "lang-href.html" "/esim-providers/" }}" class="font-semibold text-brand-300 transition-colors hover:text-white">{{ i18n "partials_footer__all_providers" | safeHTML }}</a></li>
       </ul>
     </div>
 
     <div>
-      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">Company</h3>
+      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">{{ i18n "partials_footer__company" | safeHTML }}</h3>
       <ul class="mt-4 space-y-2.5 text-sm">
-        <li><a href="/esim-deals/" class="font-semibold text-accent-400 transition-colors hover:text-white">eSIM deals & promo codes</a></li>
-        <li><a href="/about/" class="transition-colors hover:text-white">About</a></li>
-        <li><a href="/methodology/" class="transition-colors hover:text-white">Methodology</a></li>
-        <li><a href="/disclosure/" class="transition-colors hover:text-white">Disclosure</a></li>
-        <li><a href="/contact/" class="transition-colors hover:text-white">Contact</a></li>
-        <li><a href="/privacy/" class="transition-colors hover:text-white">Privacy Policy</a></li>
-        <li><a href="/terms/" class="transition-colors hover:text-white">Terms of Service</a></li>
+        <li><a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="font-semibold text-accent-400 transition-colors hover:text-white">{{ i18n "partials_footer__esim_deals_promo_codes" | safeHTML }}</a></li>
+        <li><a href="{{ partial "lang-href.html" "/about/" }}" class="transition-colors hover:text-white">{{ i18n "partials_footer__about" | safeHTML }}</a></li>
+        <li><a href="{{ partial "lang-href.html" "/methodology/" }}" class="transition-colors hover:text-white">{{ i18n "partials_footer__methodology" | safeHTML }}</a></li>
+        <li><a href="{{ partial "lang-href.html" "/disclosure/" }}" class="transition-colors hover:text-white">{{ i18n "partials_footer__disclosure" | safeHTML }}</a></li>
+        <li><a href="{{ partial "lang-href.html" "/contact/" }}" class="transition-colors hover:text-white">{{ i18n "partials_footer__contact" | safeHTML }}</a></li>
+        <li><a href="{{ partial "lang-href.html" "/privacy/" }}" class="transition-colors hover:text-white">{{ i18n "partials_footer__privacy_policy" | safeHTML }}</a></li>
+        <li><a href="{{ partial "lang-href.html" "/terms/" }}" class="transition-colors hover:text-white">{{ i18n "partials_footer__terms_of_service" | safeHTML }}</a></li>
       </ul>
     </div>
   </div>
 
   <div class="border-t border-white/10">
     <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-ink-500 sm:flex-row sm:px-6">
-      <p>© 2026 eSIM Sift. Some outbound links are sponsored — see our <a href="/disclosure/" class="underline decoration-ink-600 underline-offset-2 transition-colors hover:text-white">disclosure</a>.</p>
-      <p>Prices verified on the dates shown on each page.</p>
+      <p>{{ i18n "partials_footer__2026_esim_sift_some_outbound_links_are_sponsored_see_our" | safeHTML }} <a href="{{ partial "lang-href.html" "/disclosure/" }}" class="underline decoration-ink-600 underline-offset-2 transition-colors hover:text-white">{{ i18n "g_disclosure" | safeHTML }}</a>.</p>
+      <p>{{ i18n "partials_footer__prices_verified_on_the_dates_shown_on_each_page" | safeHTML }}</p>
     </div>
   </div>
 </footer>

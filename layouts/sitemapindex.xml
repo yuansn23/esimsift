@@ -1,0 +1,16 @@
+{{ printf `<?xml version="1.0" encoding="utf-8" standalone="yes"?>` | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{{- /* ═══ 根 /sitemap.xml 必须保持"英文就在根路径、URL 里没有 /en"的结构 ═══
+
+     Hugo 默认行为：站里出现第二个语言后，根 /sitemap.xml 会变成 <sitemapindex>，
+     指向 /en/sitemap.xml 与 /de/sitemap.xml。那会让搜索引擎以为英文站挂在 /en/ 下面
+     —— 而本站英文 URL 实际就在根（defaultContentLanguageInSubdir = false）。
+     本站已上线，根 sitemap 的结构不能变，所以这里覆盖 sitemapindex 槽位，
+     直接输出默认语言（英文）的 <urlset>，与加德语之前逐字节一致。
+
+     上下文说明：该槽位在默认语言的语言站上下文里渲染（probe 实测 site.Language.Lang == "en"），
+     因此 site.Pages 就是英文页面集合，且 site 全局取到的数据也是英文数据。
+     其他语言的自有 sitemap 由 layouts/sitemap.xml 负责（→ /de/sitemap.xml）。 */ -}}
+{{- partial "sitemap-urls.html" site.Pages }}
+</urlset>

@@ -30,7 +30,8 @@ def classify(rel):
     if parts[0] == "guides": return "guides"
     if parts[0] == "research": return "research"
     if parts[0] in ("tools", "esim-deals"): return parts[0]
-    if rel == "404.html": return "static-404"
+    # 404 豁免对每种语言都成立（de/404.html 早先被算成 static 并计入违规）
+    if rel == "404.html" or rel.endswith("/404.html"): return "static-404"
     return "static"
 
 stats = collections.defaultdict(lambda: {"titles": [], "descs": [], "pages": 0})
@@ -48,6 +49,10 @@ for dirpath, _dirs, files in os.walk(ROOT):
         kind = classify(rel)
         with io.open(full, encoding="utf-8", errors="replace") as fh:
             page = fh.read()
+        # Hugo 的 aliases 会生成一个 <title> 为目标 URL 的跳转壳页 —— 它不是
+        # SEO 落地面，长度规则对它没有意义（早先一直被算成 title<48 的违规）。
+        if 'http-equiv="refresh"' in page:
+            continue
         t = TITLE_RE.search(page)
         d = DESC_RE.search(page)
         title = html.unescape(re.sub(r"\s+", " ", t.group(1)).strip()) if t else ""

@@ -22,7 +22,7 @@
    ───────────────────────────────────────────────────────────── */ -}}
 {{- $heads := findRE `<h[23][^>]*>.+?</h[23]>` .Content -}}
 {{- with $heads -}}
-<nav data-toc aria-label="On this page">
+<nav data-toc aria-label="{{ i18n "g_on_this_page" | safeHTML }}">
   <ul class="border-l border-ink-100">
     {{- range . }}
     {{- $lvl := 2 }}

@@ -1,1 +1,1 @@
-{{- len hugo.Data.providers -}}
+{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}{{- len $d.providers -}}

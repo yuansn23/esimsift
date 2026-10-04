@@ -1,4 +1,4 @@
-{{ define "main" }}
+{{ define "main" }}{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}
 {{/* 区域 eSIM 指南 —— 单个区域的聚合对比页（信息增益：把单国页聚合出区域结论）
    全部指标从 country-stats 推导；每行链国家页（把区域流量导回 money page）。
    区域冠军 = 区域内按最低价夺冠最多的品牌；区域均价 = 区域内各国最优 $/GB 的算术平均。
@@ -7,7 +7,7 @@
 {{/* ── 收集该区域全部国家 + 逐国 stats ── */}}
 {{ $regionCountries := slice }}
 {{ $checkedDates := slice }}
-{{ range $iso, $c := hugo.Data.countries }}
+{{ range $iso, $c := $d.countries }}
   {{ if eq $c.region $.Params.region }}
     {{ $s := partial "country-stats.html" $iso }}
     {{ with $s.checked }}{{ $checkedDates = $checkedDates | append . }}{{ end }}
@@ -28,7 +28,7 @@
 {{ $wins := slice }}
 {{ range $regionCountries }}{{ with .cheapKey }}{{ $wins = $wins | append . }}{{ end }}{{ end }}
 {{ $bestKey := "" }}{{ $bestProv := "" }}{{ $bestWins := 0 }}
-{{ range $pk, $pv := hugo.Data.providers }}
+{{ range $pk, $pv := $d.providers }}
   {{ $c := 0 }}{{ range $wins }}{{ if eq . $pk }}{{ $c = add $c 1 }}{{ end }}{{ end }}
   {{ if gt $c $bestWins }}{{ $bestWins = $c }}{{ $bestKey = $pk }}{{ $bestProv = $pv.name }}{{ end }}
 {{ end }}
@@ -46,16 +46,16 @@
   <div class="mt-4 grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
     <header>
       <div class="flex flex-wrap items-center gap-3">
-        <span class="badge bg-brand-50 text-brand-700">region guide</span>
+        <span class="badge bg-brand-50 text-brand-700">{{ i18n "guides_region__region_guide" | safeHTML }}</span>
         <span class="badge bg-ink-50 text-ink-500">{{ $n }} countries</span>
-        {{ with $checked }}<span class="badge bg-ink-50 text-ink-500">prices checked {{ (time .).Format "Jan 2, 2006" }}</span>{{ end }}
+        {{ with $checked }}<span class="badge bg-ink-50 text-ink-500">prices checked {{ time.Format ":date_medium" (time .) }}</span>{{ end }}
       </div>
       <h1 class="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ .Title }}</h1>
-      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">Every country we track in {{ .Params.region }}, ranked by the cheapest per-gigabyte rate across all {{ len hugo.Data.providers }} providers — so you can see which destinations are cheap to stay connected in, and which provider wins the region on price.</p>
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">Every country we track in {{ .Params.region }}, ranked by the cheapest per-gigabyte rate across all {{ len $d.providers }} providers — so you can see which destinations are cheap to stay connected in, and which provider wins the region on price.</p>
       <div class="mt-6 flex flex-wrap gap-3">
         {{ with index $regionCountries 0 }}<div class="stat-tile"><span class="stat-num text-lg">{{ .name }}</span><span class="stat-label">cheapest at ${{ printf "%.2f" .minPerGB }}/GB</span></div>{{ end }}
         {{ if lt $cheapEntry 999999.0 }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" $cheapEntry }}</span><span class="stat-label">cheapest entry plan in {{ $cheapCountryName }}</span></div>{{ end }}
-        {{ if gt $avgGB 0.0 }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" $avgGB }}</span><span class="stat-label">regional average $/GB</span></div>{{ end }}
+        {{ if gt $avgGB 0.0 }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" $avgGB }}</span><span class="stat-label">{{ i18n "guides_region__regional_average_gb" | safeHTML }}</span></div>{{ end }}
         {{ with $bestProv }}<div class="stat-tile"><span class="stat-num text-lg">{{ $bestProv }}</span><span class="stat-label">cheapest in {{ $bestWins }} of {{ $n }} countries</span></div>{{ end }}
       </div>
     </header>
@@ -77,7 +77,7 @@
   {{ with .Params.prompt_answer }}
   <section class="mt-10" aria-labelledby="short-answer">
     <div class="rounded-2xl border border-brand-100 bg-brand-50/50 p-6">
-      <p class="eyebrow">The short answer</p>
+      <p class="eyebrow">{{ i18n "g_the_short_answer" | safeHTML }}</p>
       <h2 id="short-answer" class="mt-2 text-2xl font-bold">{{ $h2Answer }}</h2>
       <p class="mt-3 text-base leading-relaxed text-ink-700">{{ . }}</p>
     </div>
@@ -88,7 +88,7 @@
     <h2 id="keyfacts" class="text-2xl font-bold">{{ $h2Facts }}</h2>
     <dl class="mt-4 grid gap-3 sm:grid-cols-2">
       <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Countries tracked</dt>
+        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "guides_region__countries_tracked" | safeHTML }}</dt>
         <dd class="mt-1 text-sm font-medium text-ink-800">{{ $n }}</dd>
       </div>
       {{ with index $regionCountries 0 }}
@@ -99,30 +99,30 @@
       {{ end }}
       {{ if gt $avgGB 0.0 }}
       <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Regional average $/GB</dt>
+        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "guides_region__regional_average_gb_2" | safeHTML }}</dt>
         <dd class="mt-1 text-sm font-medium text-ink-800">${{ printf "%.2f" $avgGB }}</dd>
       </div>
       {{ end }}
       {{ if lt $cheapEntry 999999.0 }}
       <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Cheapest entry plan</dt>
+        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "guides_region__cheapest_entry_plan" | safeHTML }}</dt>
         <dd class="mt-1 text-sm font-medium text-ink-800">${{ printf "%.2f" $cheapEntry }} in {{ $cheapCountryName }}</dd>
       </div>
       {{ end }}
       {{ with $bestProv }}
       <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Cheapest in the most countries</dt>
+        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "guides_region__cheapest_in_the_most_countries" | safeHTML }}</dt>
         <dd class="mt-1 text-sm font-medium text-ink-800">{{ . }} — {{ $bestWins }} of {{ $n }}</dd>
       </div>
       {{ end }}
       <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">eSIM brands compared</dt>
-        <dd class="mt-1 text-sm font-medium text-ink-800">{{ len hugo.Data.providers }}</dd>
+        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "guides_region__esim_brands_compared" | safeHTML }}</dt>
+        <dd class="mt-1 text-sm font-medium text-ink-800">{{ len $d.providers }}</dd>
       </div>
       {{ with $checked }}
       <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Prices checked</dt>
-        <dd class="mt-1 text-sm font-medium text-ink-800">{{ (time .).Format "Jan 2, 2006" }}</dd>
+        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "guides_region__prices_checked" | safeHTML }}</dt>
+        <dd class="mt-1 text-sm font-medium text-ink-800">{{ time.Format ":date_medium" (time .) }}</dd>
       </div>
       {{ end }}
     </dl>
@@ -141,17 +141,17 @@
 
   {{/* ── 逐国联赛表（按 $/GB 升序） ── */}}
   <section class="mt-10" aria-labelledby="league">
-    <p class="eyebrow">The numbers</p>
+    <p class="eyebrow">{{ i18n "guides_region__the_numbers" | safeHTML }}</p>
     <h2 id="league" class="text-2xl font-bold">Cheapest eSIM data in {{ .Params.region }}</h2>
     <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">Sorted by the best per-gigabyte rate any provider posts in each of the {{ $n }} {{ .Params.region }} destinations. Click a country for the full side-by-side provider and plan comparison.</p>
     <div class="card mt-5 overflow-hidden p-0">
       <div class="overflow-x-auto">
         <table class="table-pro">
-          <thead><tr><th>Country</th><th>Best $/GB</th><th>Cheapest plan</th><th>Providers</th><th>Unlimited plans</th></tr></thead>
+          <thead><tr><th>{{ i18n "g_country" | safeHTML }}</th><th>{{ i18n "g_best_gb" | safeHTML }}</th><th>{{ i18n "g_cheapest_plan" | safeHTML }}</th><th>{{ i18n "g_providers" | safeHTML }}</th><th>{{ i18n "guides_region__unlimited_plans" | safeHTML }}</th></tr></thead>
           <tbody>
             {{ range $regionCountries }}
             <tr>
-              <td><a href="/compare/{{ .slug }}/" class="flex items-center gap-2.5 font-medium text-ink-900 transition-colors hover:text-brand-700"><img src="{{ .flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">{{ .name }}</a></td>
+              <td><a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="flex items-center gap-2.5 font-medium text-ink-900 transition-colors hover:text-brand-700"><img src="{{ .flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">{{ .name }}</a></td>
               <td class="tnum font-bold text-brand-700">{{ if lt .minPerGB 999999.0 }}${{ printf "%.2f" .minPerGB }}{{ else }}—{{ end }}</td>
               <td class="tnum">{{ if lt .minPrice 999999.0 }}${{ printf "%.2f" .minPrice }}{{ else }}—{{ end }}<span class="ml-1.5 text-xs text-ink-400">{{ with .cheapProv }}{{ . }}{{ end }}</span></td>
               <td class="tnum">{{ .providerCount }}</td>
@@ -166,18 +166,18 @@
 
   {{/* ── 区域冠军（最低价夺冠次数） ── */}}
   <section class="mt-10" aria-labelledby="winner">
-    <p class="eyebrow">The verdict</p>
+    <p class="eyebrow">{{ i18n "guides_region__the_verdict" | safeHTML }}</p>
     <h2 id="winner" class="text-2xl font-bold">Which provider is cheapest in {{ .Params.region }}</h2>
     <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">{{ .Params.region }} has {{ $n }} tracked destinations, each with its own cheapest plan, and counting the wins shows which provider is the region's best price default — not a coverage verdict, just where the numbers land today.</p>
     <div class="card mt-5 overflow-hidden p-0">
       <div class="overflow-x-auto">
         <table class="table-pro">
-          <thead><tr><th>Provider</th><th>Countries where it is cheapest</th></tr></thead>
+          <thead><tr><th>{{ i18n "g_provider" | safeHTML }}</th><th>{{ i18n "guides_region__countries_where_it_is_cheapest" | safeHTML }}</th></tr></thead>
           <tbody>
-            {{ range $pk, $pv := hugo.Data.providers }}
+            {{ range $pk, $pv := $d.providers }}
               {{ $c := 0 }}{{ range $wins }}{{ if eq . $pk }}{{ $c = add $c 1 }}{{ end }}{{ end }}
               <tr>
-                <td><a href="/esim-providers/{{ $pk }}/" class="font-medium text-ink-900 transition-colors hover:text-brand-700">{{ $pv.name }}</a></td>
+                <td><a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $pk) }}" class="font-medium text-ink-900 transition-colors hover:text-brand-700">{{ $pv.name }}</a></td>
                 <td class="tnum">{{ $c }}<span class="ml-1 text-xs text-ink-400">of {{ $n }}</span></td>
               </tr>
             {{ end }}
@@ -185,27 +185,27 @@
         </table>
       </div>
     </div>
-    {{ with $bestKey }}<p class="mt-3 text-xs text-ink-400">The cheapest {{ $.Params.region }} provider changes by destination, so this is a region summary — check the country table above before you buy. Full provider profiles on the <a href="/esim-providers/{{ $bestKey }}/" class="font-semibold text-brand-700 hover:underline">{{ $bestProv }} page</a>.</p>{{ end }}
+    {{ with $bestKey }}<p class="mt-3 text-xs text-ink-400">The cheapest {{ $.Params.region }} provider changes by destination, so this is a region summary — check the country table above before you buy. Full provider profiles on the <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $bestKey) }}" class="font-semibold text-brand-700 hover:underline">{{ $bestProv }} page</a>.</p>{{ end }}
   </section>
 
   {{/* ── 区域 eSIM vs 单国 eSIM（定性洞察，不编造区域套餐价格） ── */}}
   <section class="mt-10" aria-labelledby="regional">
-    <p class="eyebrow">Before you buy</p>
+    <p class="eyebrow">{{ i18n "g_before_you_buy" | safeHTML }}</p>
     <h2 id="regional" class="text-2xl font-bold">One {{ .Params.region }} plan or several single country plans</h2>
     <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">The {{ .Params.region }} table compares single-country plans, because that is what the country pages show and what can be verified line by line. Regional and multi-country eSIMs exist and can be cheaper when a trip crosses several borders — but their prices are not listed the same way, so they never enter the league table above. The rule of thumb: for one country, buy that country's cheapest single-country plan; for three or more countries, check whether a regional plan beats the sum of its single-country parts.</p>
     <div class="mt-5 grid gap-3 sm:grid-cols-2">
-      <div class="card p-5"><p class="font-display text-sm font-bold text-ink-950">One destination</p><p class="mt-1.5 text-sm leading-relaxed text-ink-600">Buy the single-country plan that tops the {{ .Params.region }} table for that country. The cheapest provider there is visible in the country page's own league table.</p></div>
-      <div class="card p-5"><p class="font-display text-sm font-bold text-ink-950">Several destinations</p><p class="mt-1.5 text-sm leading-relaxed text-ink-600">Sum the cheapest single-country plans for your {{ .Params.region }} route first, then compare that total against any regional plan before committing.</p></div>
+      <div class="card p-5"><p class="font-display text-sm font-bold text-ink-950">{{ i18n "guides_region__one_destination" | safeHTML }}</p><p class="mt-1.5 text-sm leading-relaxed text-ink-600">Buy the single-country plan that tops the {{ .Params.region }} table for that country. The cheapest provider there is visible in the country page's own league table.</p></div>
+      <div class="card p-5"><p class="font-display text-sm font-bold text-ink-950">{{ i18n "guides_region__several_destinations" | safeHTML }}</p><p class="mt-1.5 text-sm leading-relaxed text-ink-600">Sum the cheapest single-country plans for your {{ .Params.region }} route first, then compare that total against any regional plan before committing.</p></div>
     </div>
   </section>
 
   {{/* ── 全部国家内链（区域 → 国家闭环） ── */}}
   <section class="mt-10" aria-labelledby="countries">
-    <p class="eyebrow">Explore</p>
+    <p class="eyebrow">{{ i18n "guides_region__explore" | safeHTML }}</p>
     <h2 id="countries" class="text-2xl font-bold">Every {{ .Params.region }} country we track</h2>
     <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {{ range $regionCountries }}
-      <a href="/compare/{{ .slug }}/" class="card card-hover group flex items-center gap-3 p-4">
+      <a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="card card-hover group flex items-center gap-3 p-4">
         <img src="{{ .flag | relURL }}" alt="" class="h-6 w-9 shrink-0 rounded-md object-cover" loading="lazy">
         <span class="flex-1 text-sm font-semibold text-ink-900 group-hover:text-brand-700">{{ .name }}</span>
         <span class="tnum text-xs font-bold text-accent-600">from ${{ printf "%.2f" .minPrice }}</span>
@@ -218,14 +218,14 @@
   {{ $sibs := where (where site.RegularPages "Section" "guides") "Params.layout" "region" }}
   {{ if gt (len $sibs) 1 }}
   <section class="mt-10" aria-labelledby="other-regions">
-    <p class="eyebrow">Keep exploring</p>
+    <p class="eyebrow">{{ i18n "g_keep_exploring" | safeHTML }}</p>
     <h2 id="other-regions" class="text-2xl font-bold">Other regions ranked the same way as {{ .Params.region }}</h2>
     <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {{ range sort $sibs "Weight" "asc" }}
       {{ if ne .RelPermalink $.RelPermalink }}
       {{ $rc := .Params.region }}
       {{ $cnt := 0 }}
-      {{ range $iso, $c := hugo.Data.countries }}{{ if eq $c.region $rc }}{{ $cnt = add $cnt 1 }}{{ end }}{{ end }}
+      {{ range $iso, $c := $d.countries }}{{ if eq $c.region $rc }}{{ $cnt = add $cnt 1 }}{{ end }}{{ end }}
       <a href="{{ .RelPermalink }}" class="card card-hover group flex items-center gap-3 p-4">
         <span class="flex-1 text-sm font-semibold text-ink-900 group-hover:text-brand-700">Best {{ $rc }} eSIM</span>
         <span class="tnum text-xs font-bold text-accent-600">{{ $cnt }} countries</span>

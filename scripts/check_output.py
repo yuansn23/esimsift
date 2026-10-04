@@ -17,20 +17,34 @@ Why this exists (2026-10-03 incident):
   so the guard has to read the output.
 
 Checks
-  1. no Go fmt error residue (`%!x(...)`) anywhere in public/**/*.html
+  1. no Go fmt error residue (`%!x(...)`) anywhere in public/**/*.html + *.json
   2. every <script type="application/ld+json"> block parses as JSON
   3. every Review/reviewRating and AggregateRating is in range:
      ratingValue must be a JSON number and satisfy
      worstRating <= ratingValue <= bestRating, with numeric scales
      (defaults 1 and 5 when omitted, per Google's documentation)
-  4. no non-Latin script in rendered copy or emitted JSON (2026-10-03):
-     the site is English-only, but scraped plan names carried local script
-     (Airalo's Korean "짱 Jjang" showed up on /compare/south-korea/ and in
-     catalog.json + the tools page). Latin accents are allowed - "Élan",
-     "Fáilte", "Prosím" are the providers' real product names.
+  4. no unrendered template residue (`{{` / `<no value>`) in public/**/*.html
+     and *.json — outside <style>/<script> blocks
+
+为什么第 4 条要单列（2026-10-04 实际发生）：
+  content/de/ 下 54 个占位页把开发者备注写成 `{{/* TODO(de)：… */}}` 放在
+  **Markdown 正文**里。Hugo 只解析模板文件，不解析正文，于是这段文字被 Goldmark
+  当成普通段落，读者在 /de/ 的 50 个国家页上能直接看到 "TODO(de)：正文待翻译…"。
+  `hugo` 退出码 0，五重校验当时全绿 —— 它只在**产物**里看得见。
+
+  只扫 `{{` 不扫 `}}`：压缩后的 Tailwind CSS 内联在 <style> 里，`}}` 每天都会
+  出现（390 个文件命中），扫它就是自造假阳性。屏蔽 <style>/<script> 之后
+  再扫，剩下的 `{{` 才是真残留。
+
+历史：曾有一条「全站禁止非拉丁字符」的检查（2026-10-03 加，用于抓爬虫带进来的
+本地文字，例如 Airalo 的韩文 "짱 Jjang" 混进了 /compare/south-korea/）。
+2026-10-03 按站点决策**移除** —— 站点要做多语言，这条禁令会拦住 ja/ko/zh 的
+合法产物，而按语言划豁免前缀只是把同一个问题往后推。数据入口的清洗改由
+scraper 侧负责（见 scripts/scrape/ 与 toml_write.clean_plan_name）。
 
 Exit code 1 on any failure. Run AFTER `hugo`:
     python -X utf8 scripts/check_output.py
+    python -X utf8 scripts/check_output.py --selftest   # 对构造样本自测
 """
 import json
 import re
@@ -42,31 +56,15 @@ PUBLIC = ROOT / "public"
 
 FMT_ERROR = re.compile(r"%![A-Za-z]*(?:\([^)]*\))?")
 LDJSON = re.compile(r'<script type="application/ld\+json">(.*?)</script>', re.S)
+# 模板残留：只看 Go 模板的**开**定界符；`}}` 在压缩 CSS 里是常态，扫不得
+TEMPLATE_OPEN = re.compile(r"\{\{")
+NO_VALUE = re.compile(r"<no value>")
+# 屏蔽行内样式 / 脚本块（含 JSON-LD 自身），避免 CSS/JS 里的花括号造假阳性
+STYLE_SCRIPT = re.compile(r"<(style|script)\b[^>]*>.*?</\1>", re.S | re.I)
 
-# Non-Latin scripts (English-only site). Latin-1/Latin-Extended letters, digits
-# and typographic marks (∞ ° – — ’ “ ”) are deliberately NOT in this set.
-NON_LATIN = re.compile(
-    "["
-    "\u0370-\u03FF"  # Greek
-    "\u0400-\u04FF"  # Cyrillic
-    "\u0530-\u058F"  # Armenian
-    "\u0590-\u05FF"  # Hebrew
-    "\u0600-\u06FF\u0750-\u077F"  # Arabic
-    "\u0900-\u097F"  # Devanagari
-    "\u0980-\u09FF"  # Bengali
-    "\u0B80-\u0BFF"  # Tamil
-    "\u0D80-\u0DFF"  # Sinhala
-    "\u0E00-\u0E7F"  # Thai
-    "\u0E80-\u0EFF"  # Lao
-    "\u1000-\u109F"  # Myanmar
-    "\u10A0-\u10FF"  # Georgian
-    "\u1100-\u11FF\u3130-\u318F\uAC00-\uD7AF"  # Hangul
-    "\u1780-\u17FF"  # Khmer
-    "\u1800-\u18AF"  # Mongolian
-    "\u3040-\u309F\u30A0-\u30FF"  # Kana
-    "\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF"  # Han
-    "]"
-)
+# 允许例外（默认空）：相对 public 的路径 -> 理由。给「指南里贴 Hugo 模板示例」这类
+# 合法场景留一道口子，但必须写明理由，避免变成静默豁免。
+TEMPLATE_ALLOW: dict[str, str] = {}
 
 errors: list[str] = []
 
@@ -138,7 +136,57 @@ def check_rating(node: dict, where: str, handled: set) -> None:
             )
 
 
+def scan_text(text: str, rel: str, is_html: bool) -> list[str]:
+    """文本级检查（第 1、4 条）。抽出来是为了能对**构造样本**自测 ——
+    一个「bad = 0」只有在证明过它会报错之后才有意义。"""
+    out: list[str] = []
+
+    for m in FMT_ERROR.finditer(text):
+        line = text.count("\n", 0, m.start()) + 1
+        ctx = text[max(0, m.start() - 45):m.end() + 25].replace("\n", " ")
+        out.append(f"{rel}:{line}: Go format-string leak -> {ctx.strip()!r}")
+
+    # 4. 未渲染的模板残留
+    if rel not in TEMPLATE_ALLOW:
+        visible = text if not is_html else STYLE_SCRIPT.sub(" ", text)
+        for m in TEMPLATE_OPEN.finditer(visible):
+            line = text.count("\n", 0, m.start()) + 1
+            ctx = visible[max(0, m.start() - 45):m.end() + 60].replace("\n", " ")
+            out.append(
+                f"{rel}:{line}: unrendered template residue -> {ctx.strip()!r}")
+        for m in NO_VALUE.finditer(visible):
+            line = text.count("\n", 0, m.start()) + 1
+            ctx = visible[max(0, m.start() - 45):m.end() + 25].replace("\n", " ")
+            out.append(
+                f"{rel}:{line}: unrendered template residue -> {ctx.strip()!r}")
+    return out
+
+
+def selftest() -> int:
+    cases = [
+        ("body {{ leak", "<p>{{/* TODO */}}</p>", True, 1, "{{"),
+        ("minified CSS }}", "<style>.a{x:1}.b{y:2}}</style>", True, 0, "}}"),
+        ("<no value>", "<p>Hi <no value></p>", True, 1, "<no value>"),
+        ("fmt leak", "<p>%!d(float64=84)%</p>", True, 1, "%!d"),
+        ("json clean", '{"a": 1}', False, 0, ""),
+        ("json tmpl leak", '{"a": "{{ .x }}"}', False, 1, "{{"),
+    ]
+    failed = 0
+    for name, body, is_html, want, needle in cases:
+        got = scan_text(body, "fixture.html", is_html)
+        # want == 0 时没有东西可查 needle（那正是"不该误报"的情形）
+        ok = len(got) == want and (want == 0 or any(needle in g for g in got))
+        failed += 0 if ok else 1
+        print(f"  {'OK  ' if ok else 'MISS'} {name:20s} 期望 {want} 处 "
+              f"（{needle or '无'}）实际 {len(got)} 处")
+    print(f"\n自测{'通过' if not failed else f'失败 {failed} 项'}")
+    return 1 if failed else 0
+
+
 def main() -> int:
+    if "--selftest" in sys.argv[1:]:
+        return selftest()
+
     if not PUBLIC.is_dir():
         print("ERROR public/ not found - run `hugo` first")
         return 1
@@ -148,7 +196,8 @@ def main() -> int:
     ld_blocks = 0
     scanned = 0
 
-    # .html -> full check set; emitted .json (catalog.json et al) -> language check
+    # .html -> format leak + JSON-LD + ratings; emitted .json (catalog.json et al)
+    # -> format leak only (same Go template engine emits it, so it can leak there too)
     targets = [(f, True) for f in pages] + [(f, False) for f in json_files]
 
     for f, is_html in targets:
@@ -159,23 +208,10 @@ def main() -> int:
             continue
         scanned += 1
 
-        hits = NON_LATIN.findall(text)
-        if hits:
-            line = text.count("\n", 0, text.index(hits[0])) + 1
-            uniq = "".join(sorted(set(hits)))[:24]
-            errors.append(
-                f"{rel}:{line}: non-Latin script in output {uniq!r} "
-                f"({len(hits)} char(s)) - site copy is English-only, "
-                f"romanise at scrape time"
-            )
+        errors.extend(scan_text(text, rel, is_html))
 
         if not is_html:
             continue
-
-        for m in FMT_ERROR.finditer(text):
-            line = text.count("\n", 0, m.start()) + 1
-            ctx = text[max(0, m.start() - 45):m.end() + 25].replace("\n", " ")
-            errors.append(f"{rel}:{line}: Go format-string leak -> {ctx.strip()!r}")
 
         for m in LDJSON.finditer(text):
             ld_blocks += 1
@@ -197,7 +233,7 @@ def main() -> int:
         return 1
 
     print(f"OK: {scanned} files ({len(pages)} pages), {ld_blocks} JSON-LD blocks "
-          f"- no format leaks, no non-Latin script, all ratings in range")
+          f"- no format leaks, no template residue, all ratings in range")
     return 0
 
 

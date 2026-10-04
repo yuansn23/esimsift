@@ -1,0 +1,279 @@
+# ============================================================
+# External references — 品牌×国家子页「宿主网络」区块的佐证来源
+# ============================================================
+# 为什么有这个文件
+#   页面列出了「该国由哪些本地运营商承载、典型速度区间、覆盖强弱」这类
+#   判断。列出判断却不给核实入口 = 读者只能选择相信或不相信。
+#   本文件给两类来源，模板渲染成可点开的外链。
+#
+# 两类来源，含义不同，不要混用
+#   [sources]  独立**第三方**：测速/监管机构对整国的测量口径。
+#              当前统一用 Ookla Speedtest Global Index 的该国页
+#              （`/global-index/<slug>`，slug 取自 data/countries.toml，
+#              实测：真 slug -> 200 且页面含国名；假 slug -> 404）。
+#   [carriers] 运营商**官方**站点 / 覆盖地图（一手来源）。
+#              国名按 data/carriers.toml 的 ISO 键，运营商名必须与其
+#              profiles[].name 逐字一致（含空格、大小写、U+002B）。
+#
+# 硬性规则
+#   1. 每条 URL 必须被 scripts/verify_external_refs.py 验证为 HTTP 2xx
+#      才允许留在这里。验证不过的一律删除 —— 宁可少一条链接，不留死链。
+#   2. 不做猜测性填写。不确定的运营商域名不要写，模板会自动跳过。
+#   3. 运营商名与 ISO 的组合必须能在 carriers.toml 里找到，否则是孤儿条目。
+#   4. 复核节奏：随页面「Last checked」一起，手工跑验证脚本。
+#      （网络检查不进 npm run build —— 离线构建必须仍然能过。）
+# ============================================================
+
+# ── 关于「每国第三方来源」────────────────────────────────────
+# 本文件刻意**不**收录 Ookla Global Index 的国家链接。那套 slug 规则
+# （data/networkreports.toml 的 ookla_slug 覆盖 countries.toml 的 slug）
+# 已由 compare/single.html 与 compare/provider.html 共用 —— 同一事实写在三处，
+# 就是三处都会错。实测 `macao` 与 `turkiye` 正是死链，只有例外表里记着
+# 正确写法（`macau`、`t%C3%BCrkiye`），所以例外必须只有一份。
+# ────────────────────────────────────────────────────────────
+
+[carriers.AE]
+"Etisalat" = "https://www.etisalat.ae/"
+"du" = "https://www.du.ae/"
+
+[carriers.AR]
+"Personal" = "https://www.personal.com.ar/"
+"Claro" = "https://www.claro.com.ar/"
+"Movistar" = "https://www.movistar.com.ar/"
+
+[carriers.AT]
+"A1" = "https://www.a1.net/"
+"Magenta" = "https://www.magenta.at/"
+"Drei" = "https://www.drei.at/"
+
+[carriers.AU]
+"Telstra" = "https://www.telstra.com.au/"
+"Optus" = "https://www.optus.com.au/"
+"Vodafone" = "https://www.vodafone.com.au/"
+
+[carriers.BE]
+"Proximus" = "https://www.proximus.be/"
+"Orange" = "https://www.orange.be/"
+"Base" = "https://www.base.be/"
+
+[carriers.BR]
+"Vivo" = "https://www.vivo.com.br/"
+"Claro" = "https://www.claro.com.br/"
+"TIM" = "https://www.tim.com.br/"
+
+[carriers.CA]
+"Bell" = "https://www.bell.ca/"
+"Rogers" = "https://www.rogers.com/"
+"Telus" = "https://www.telus.com/"
+
+[carriers.CH]
+"Swisscom" = "https://www.swisscom.ch/"
+"Sunrise" = "https://www.sunrise.ch/"
+"Salt" = "https://www.salt.ch/"
+
+[carriers.CN]
+"China Mobile" = "https://www.chinamobileltd.com/"
+"China Unicom" = "https://www.chinaunicom.com.hk/"
+"China Telecom" = "https://www.chinatelecom-h.com/"
+
+[carriers.CO]
+"Claro" = "https://www.claro.com.co/"
+"Movistar" = "https://www.movistar.co/"
+"Tigo" = "https://www.tigo.com.co/"
+
+[carriers.CR]
+"Kolbi" = "https://www.kolbi.cr/"
+"Claro" = "https://www.claro.cr/"
+"Movistar" = "https://www.movistar.cr/"
+
+[carriers.CZ]
+"O2" = "https://www.o2.cz/"
+"T-Mobile" = "https://www.t-mobile.cz/"
+"Vodafone" = "https://www.vodafone.cz/"
+
+[carriers.DE]
+"Telekom" = "https://www.telekom.de/"
+"Vodafone" = "https://www.vodafone.de/"
+"O2" = "https://www.o2online.de/"
+
+[carriers.EG]
+"Vodafone Egypt" = "https://web.vodafone.com.eg/"
+"Orange Egypt" = "https://www.orange.eg/"
+"Etisalat Misr" = "https://www.etisalat.eg/"
+
+[carriers.ES]
+"Movistar" = "https://www.movistar.es/"
+"Vodafone" = "https://www.vodafone.es/"
+"Orange" = "https://www.orange.es/"
+
+[carriers.FJ]
+"Vodafone Fiji" = "https://www.vodafone.com.fj/"
+"Digicel Fiji" = "https://www.digicelgroup.com/fj"
+
+[carriers.FR]
+"Orange" = "https://www.orange.fr/"
+"SFR" = "https://www.sfr.fr/"
+"Bouygues" = "https://www.bouyguestelecom.fr/"
+
+[carriers.GB]
+"EE" = "https://ee.co.uk/"
+"Vodafone" = "https://www.vodafone.co.uk/"
+"O2" = "https://www.o2.co.uk/"
+"Three" = "https://www.three.co.uk/"
+
+[carriers.GE]
+"Magti" = "https://www.magti.ge/"
+"Silknet" = "https://silknet.com/"
+"Beeline" = "https://www.beeline.ge/"
+
+[carriers.GR]
+"Cosmote" = "https://www.cosmote.gr/"
+"Vodafone" = "https://www.vodafone.gr/"
+"Wind" = "https://www.nova.gr/"
+
+[carriers.HK]
+"CSL" = "https://www.hkcsl.com/"
+"3HK" = "https://www.three.com.hk/"
+"SmarTone" = "https://www.smartone.com/"
+
+[carriers.HR]
+"Hrvatski Telekom" = "https://www.hrvatskitelekom.hr/"
+"A1 Hrvatska" = "https://www.a1.hr/"
+
+[carriers.ID]
+"Telkomsel" = "https://www.telkomsel.com/"
+"Indosat" = "https://www.indosat.com/"
+"XL Axiata" = "https://www.xl.co.id/"
+
+[carriers.IE]
+"Vodafone" = "https://www.vodafone.ie/"
+"Three" = "https://www.three.ie/"
+"Eir" = "https://www.eir.ie/"
+
+[carriers.IL]
+"Cellcom" = "https://www.cellcom.co.il/"
+"Partner" = "https://www.partner.co.il/"
+"Pelephone" = "https://www.pelephone.co.il/"
+
+[carriers.IN]
+"Jio" = "https://www.jio.com/"
+"Airtel" = "https://www.airtel.in/"
+
+[carriers.IS]
+"Siminn" = "https://www.siminn.is/"
+"Vodafone" = "https://www.vodafone.is/"
+"Noa" = "https://www.nova.is/"   # 品牌名拼作 Noa，官网域名是 nova.is
+
+[carriers.IT]
+"TIM" = "https://www.tim.it/"
+"Vodafone" = "https://www.vodafone.it/"
+"WindTre" = "https://www.windtre.it/"
+
+[carriers.JP]
+"NTT Docomo" = "https://www.docomo.ne.jp/area/"
+"SoftBank" = "https://www.softbank.jp/mobile/network/area/"
+"KDDI" = "https://www.au.com/mobile/area/"
+
+[carriers.KE]
+"Safaricom" = "https://www.safaricom.co.ke/"
+"Airtel Kenya" = "https://www.airtel.co.ke/"
+"Telkom Kenya" = "https://www.telkom.co.ke/"
+
+[carriers.KR]
+"SK Telecom" = "https://www.sktelecom.com/"
+"KT" = "https://www.kt.com/"
+"LG U+" = "https://www.lguplus.com/"
+
+[carriers.MA]
+"Maroc Telecom" = "https://www.iam.ma/"
+"Orange Maroc" = "https://www.orange.ma/"
+"Inwi" = "https://www.inwi.ma/"
+
+[carriers.MO]
+"CTM" = "https://www.ctm.net/"
+"3 Macau" = "https://www.three.com.mo/"
+"China Telecom" = "https://www.chinatelecom.com.mo/"
+
+[carriers.MX]
+"Telcel" = "https://www.telcel.com/"
+"AT&T Mexico" = "https://www.att.com.mx/"
+"Movistar" = "https://www.movistar.com.mx/"
+
+[carriers.MY]
+"Maxis" = "https://www.maxis.com.my/"
+"Celcom" = "https://www.celcom.com.my/"
+"DiGi" = "https://www.digi.com.my/"
+
+[carriers.NL]
+"KPN" = "https://www.kpn.com/"
+"Vodafone" = "https://www.vodafone.nl/"
+"Odido" = "https://www.odido.nl/"
+
+[carriers.NZ]
+"Spark" = "https://www.spark.co.nz/"
+"One NZ" = "https://www.one.nz/"
+"2degrees" = "https://www.2degrees.nz/"
+
+[carriers.PE]
+"Claro" = "https://www.claro.com.pe/"
+"Movistar" = "https://www.movistar.com.pe/"
+"Entel" = "https://www.entel.pe/"
+
+[carriers.PH]
+"Globe" = "https://www.globe.com.ph/"
+"Smart" = "https://www.smart.com.ph/"
+
+[carriers.PL]
+"Orange" = "https://www.orange.pl/"
+"Play" = "https://www.play.pl/"
+"Plus" = "https://www.plus.pl/"
+"T-Mobile" = "https://www.t-mobile.pl/"
+
+[carriers.PT]
+"MEO" = "https://www.meo.pt/"
+"NOS" = "https://www.nos.pt/"
+"Vodafone" = "https://www.vodafone.pt/"
+
+[carriers.QA]
+"Ooredoo" = "https://www.ooredoo.qa/"
+"Vodafone Qatar" = "https://www.vodafone.qa/"
+
+[carriers.SA]
+"STC" = "https://www.stc.com.sa/"
+"Mobily" = "https://www.mobily.com.sa/"
+"Zain" = "https://www.sa.zain.com/"
+
+[carriers.SG]
+"Singtel" = "https://www.singtel.com/"
+"StarHub" = "https://www.starhub.com/"
+"M1" = "https://www.m1.com.sg/"
+
+[carriers.TH]
+"AIS" = "https://www.ais.co.th/"
+"True Move" = "https://www.true.th/"
+"DTAC" = "https://www.dtac.co.th/"
+
+[carriers.TR]
+"Turkcell" = "https://www.turkcell.com.tr/"
+"Vodafone" = "https://www.vodafone.com.tr/"
+"Turk Telekom" = "https://www.turktelekom.com.tr/"
+
+[carriers.TW]
+"Chunghwa Telecom" = "https://www.cht.com.tw/"
+"Taiwan Mobile" = "https://www.taiwanmobile.com/"
+"FarEasTone" = "https://www.fetnet.net/"
+
+[carriers.US]
+"T-Mobile" = "https://www.t-mobile.com/"
+"AT&T" = "https://www.att.com/"
+"Verizon" = "https://www.verizon.com/"
+
+[carriers.VN]
+"Viettel" = "https://viettel.com.vn/"
+"Vinaphone" = "https://vinaphone.com.vn/"
+"Mobifone" = "https://mobifone.vn/"
+
+[carriers.ZA]
+"Vodacom" = "https://www.vodacom.co.za/"
+"MTN" = "https://www.mtn.co.za/"
+"Telkom" = "https://www.telkom.co.za/"

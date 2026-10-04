@@ -521,6 +521,486 @@ layouts/partials/country-stats.html  ← 全站唯一聚合入口
 - ✅ **验收数字**：5 页目录条目 **20 / 15 / 16 / 15 / 14**（H2+H3）；每个锚点在页面里都有对应 `id`（缺失 0）；模板 H2 混入 **0**；桌面与移动两份目录条目完全一致；标题全局唯一（80 个，重复 0）；H2/H3 后首句违规 **0**；跨页重复段落 **0/119**。渲染后 H3：21 / 17 / 18 / 18 / 31（含 FAQ 与页脚）。
 - ✅ **校验终态**：`validate.py` **0 error / 0 warning**；`check_css_sync.py` **500 class 全命中**（+8）；`hugo` **539 页**；`check_output.py` **528 文件 / 2184 块 JSON-LD**；`check_headings.py` **527 html，bad h2/h3 = 0**。
 
+## 已完成（多语言 i18n 基础设施改造 —— 模板/数据/守卫/校验器四层，2026-10-03 第十四轮）
+
+**目标**：把「后续新增语言」从"不可能"变成"加三个文件"。硬性验收：英文产物与改造前**逐字节一致**。
+
+**关键实测结论（都是先起最小站点验，再动手）**
+| 项 | 结论 |
+|:---|:---|
+| `{{ i18n "k" }}` | ❌ 返回普通 string，`&`→`&amp;`、`'`→`&#39;`，与字面量不一致 |
+| `{{ i18n "k" \| safeHTML }}` | ✅ HTML 文本节点与字面量逐字节相同 |
+| 属性值 `\| safeHTMLAttr` | ❌ `&` 被二次转义成 `&amp;amp;`；属性一律改用 `\| safeHTML` |
+| 属性值含 `'`/`"` | ❌ 会被转成 `&#39;`/`&#34;`，`safeHTML` 拦不住 → 这类不抽（实测 0 例） |
+| 内联 `<script>` | ❌ JS 上下文转义成 `\u0027`，`\| js` 行为异常 → 脚本文案不走 i18n |
+| `.llms.txt` / `.json` | 同样会转义，也要 `\| safeHTML` |
+| `{{ return }}` 在 `{{ if }}` 内 | ❌ `wrong number of args for return` → partial 只能一个顶层出口 |
+| `{{ define "main" }}` | 会新建命名空间，外面的变量进不去 → 赋值必须写在 define 内部 |
+| `site.Languages` / `.Site.Data` | Hugo 0.156 起弃用 → 改 `hugo.Sites` / `hugo.Data` |
+| `.Format ":date_medium"` | ❌ 输出字面量；只有 `time.Format ":date_medium" $t` 生效，且英文下与 `"Jan 2, 2006"` 完全一致 |
+
+**产出**
+- `hugo.toml`：`defaultContentLanguageInSubdir = false`（英文留根路径，539 个已收录 URL 零变更）+ `[languages.en]` 补 `languageCode`，附新增语言三步说明
+- `i18n/en.toml`：**749 个 key**（抽出 952 个静态文本节点 + 26 个属性值）
+- `layouts/partials/i18n-data.html`：数据层按语言解析。英语下直接返回 `hugo.Data`（零开销恒等），存在 `data/<lang>/` 时深合并（实测：`name` 被覆盖、`slug` 保留、语言目录键被正确剔除）
+- 34 个模板把 `hugo.Data.X` 换成 `$d.X`（`partialCached` 按语言缓存）
+- `scripts/i18n_extract.py`（抽取器，幂等 + 行尾保真 + CRLF 预检闸门）、`scripts/lang_rules.py`（语言规则单一事实源）、`scripts/check_i18n.py`（守卫，已接入构建链）
+- `.gitattributes`：`layouts/** text eol=lf` + `i18n/** text eol=lf`
+- 16 处硬编码日期 → `time.Format ":date_medium"`
+- `head.html`：`hreflang` + `og:locale`，门控在 `len hugo.Sites > 1`，**单语言下零字节输出**
+
+**过程中发现并修复的既有缺陷**
+1. **`check_headings.py` 从写出来起就是空转的** —— 闭合标签正则写成 `</h>`，真实是 `</h2>`，**一个标题都没查过**。修好（`</h\1>`）后一次扫出 8098 个 h2/h3，并修掉 `&amp;` 里 `;` 的误报（要先 `html.unescape`）。两者都修完仍是 0 违规，但守卫现在才真正生效。已接入构建链。
+2. **全站产物字节依赖 checkout 行尾** —— `core.autocrlf=true` 让 `git checkout` 写 CRLF，而历史 `layouts/` 是「26 CRLF + 18 LF」混合。本轮 `git stash push -- layouts/` 对比旧构建时触发全站 527 页产物变化，一度误判为改造引入回归。已统一为 LF + `.gitattributes` 锁定。
+3. **`compare/single.html:539` 的 `range $d :=` 变量遮蔽**（与新增的数据字典同名），已改为 `$det`。
+
+**验收**
+- i18n 抽取：**全部 527 个 HTML 页面逐字节一致**（证明链：纯净 LF 构建 ≡ i18n 改造后构建，HTML 全等；CRLF 版构建 ≡ 基线）
+- 相对旧基线的 18 页差异 = 红线 38 记录的行尾归一所致的**纯空白差异**，已断言无语义变化
+- `npm run build` 全绿：validate 0/0 · CSS 同步 500 class · i18n 守卫 OK · hugo 539 页 · check_output 528 文件/2184 JSON-LD · check_headings **8098 h2/h3 · 0 bad**
+- `check_i18n.py` 已用「故意注入一处硬编码」验证会 FAIL
+
+**未完成（新增语言前必须补，详见 PROJECT.md §18.3）**
+- [ ] 704 处拼装句碎片重写为带占位符的整句（`check_i18n.py` 会报）
+- [ ] 5 处内联 `<script>` 文案改 `data-*` 注入
+- [ ] 语言切换器 UI（header 目前没有；须在第二个语言上真机验收）
+- [ ] JSON-LD `inLanguage`
+- [ ] 141 处 `printf` 生成整句的多语言化
+- [ ] `data/plans` 的 `fup_note`（2684 条 / 6 模式）与 `name`（7776 条 / 2 模式）改造成模板渲染
+
+---
+
+## 已完成（删除非拉丁禁令 + 定位 dev server 污染 public/，2026-10-03 第十五轮）
+
+**规则变更（用户定）**：站点要上多语言，**「全站禁止非拉丁字符」的守卫整体删除**（原方案是按语言划豁免前缀，用户改为直接删）。
+
+**删除范围（三处）**
+- `scripts/check_output.py` ④ 产物层非拉丁扫描 + 其 `.json` 分支 → 删。**顺手把 ① 的 Go 格式串扫描扩展到 `.json`**，否则 json 分支变成死代码
+- `scripts/validate.py` §3 的 plan name 非拉丁检查 → 删。**保留**与语言无关的结构性校验（首尾空白、首字符是标点）
+- `scripts/lang_rules.py` 的 `LATIN_SCRIPT` 表 + `non_latin_exempt_prefixes()` + `non_latin_exempt_data_dirs()` → 删
+
+**代价（已写进红线 21 与 PROJECT.md §18.4）**：手动贴进 `data/plans/` 的韩文/汉字套餐名不再有任何守卫拦截，防线只剩抓取层 `toml_write.clean_plan_name()`（重抓时自动清洗并打印）→ **新抓一批数据后人工看一眼打印输出**。
+
+**反向验证（证明删干净了）**
+- 往 `data/plans/airalo.toml` 注入 `日本語` + 往 `public/index.html` 追加日文注释 → `validate.py` **0 error**、`check_output.py` **OK**（旧规则下两处都会 ERROR，第六轮曾实测报 2 条 + 5 条）
+- 往 `public/catalog.json` 注入 `%!d(float64=84)` → `check_output.py` **正确报错** `public/catalog.json:1: Go format-string leak`（证明新增的 json 分支真的生效）
+- 两处注入均已还原，`sha1sum -c` 校验文件字节复原 ✅
+
+**URL 策略确认**：子目录，形如 `https://www.esimsift.com/ja/`。`defaultContentLanguageInSubdir = false` 已写死 → 英文留根路径、539 个已收录 URL 零变更，hreflang 由 `.Permalink` 自动生成。
+
+**⚠️ 关键发现：运行中的 `hugo server` 会把开发态页面写进 `public/`**
+- 现象：`public/compare/portugal/index.html` 与基线比对出现**非行尾差异** —— 里面是 `http://localhost:1313/...` 与注入的 `<script src="/livereload.js?...">`
+- 定位：本机有 `hugo.exe` PID 24256 在监听 `127.0.0.1:1313`（带 5 个浏览器连接）。Hugo 的 `hugo server` **默认渲染到磁盘**（`--renderToMemory` 才不写盘）
+- 实证：`touch data/titlesegments.toml` → 6 秒内 `public/` 里带 livereload 的文件从 **1 → 6**，同时 `index.xml` / `llms.txt` / `catalog.json` / `index.html` 被重写
+- 影响：`public/` 在 dev server 运行时**不是可信的生产产物**；若此时部署，会把 `localhost:1313` 发布出去
+- 规避：生产构建前停掉 dev server，或把 `package.json` 的 `dev` 改为 `hugo server --renderToMemory`
+
+**产物回归比对（对 `_oldsite/` 基线，逐文件字节）**
+- 全量 1107 vs 1107，**含非行尾差异的文件只有 1 个**，且已证实是上述 dev server 污染
+- 其余 18 个差异文件 `norm(CRLF→LF)` 后**字节全等** → 纯行尾归一（红线 38），**本次改动零回归**
+
+**校验终态**：`validate.py` 0 error 0 warning · `i18n 守卫` OK（0 硬编码 / 749 key）· `hugo` **539 页** · `check_output.py` **528 文件（527 页）/ 2184 块 JSON-LD** · `check_headings.py` **8098 h2/h3 · 0 bad**
+
+---
+
+## 已完成（品牌×国家子页 400 页 SEO/UX 优化 + 审核两轮，2026-10-04 第二十轮）
+
+**方法论文档：`docs/provider-page-optimization.md`**（诊断 → 数据层 → 模板清单 → 验收 → 复用到其它页面型的五步）。
+守卫脚本：`scripts/verify_provider_pages.py`（这一层专用的 11 项产物级检查）。
+
+**这一层是什么**：`content/en/compare/<国>/<品牌>.md` 正文为空，只有 `iso`/`provider`/`layout: provider`/`seo.description`；
+全部内容由 `layouts/compare/provider.html` 从 `data/plans/*.toml` 推导。**改一处 = 改 400 页**（50 国 × 8 品牌）。
+
+**交付**
+- ✅ 标题阶梯重写（`partials/head.html`）：**48–54 字符、不放价格、不放套餐数量**（两者都随数据过期，价格锚点交给 description）；
+  候选串从长到短取第一个 ≤54，按"有没有计量套餐"分两套阶梯。实测 400 页落点 48–54、均值 51.1
+- ✅ H1 分工：事实层 `{Brand} {Country} eSIM Plans & Prices (2026)`，意图层交给 title
+- ✅ 结构化数据从 1 块扩到 6 块：**逐套餐 `Offer` 数组**（7776 条）+ `WebPage`(inLanguage/dateModified) + `FAQPage`(5 组)
+  + `Product` 补 **`image`**（Google 富摘要的必需字段）与 `url`；一致性断言：Offer 条数 == 价格表行数
+- ✅ 新增四个决策区块：**Plan reality check**（热点/5G 与速度/FUP 阈值/充值，源 `providers.toml[<brand>.policy]`）、
+  **按时长比价**（3/5/7/10/15/30 天）+ **页内行程计算器**（输入天数自动挑"有效期覆盖整趟行程"的最便宜套餐并与最便宜竞品比价）、
+  **Buy it if / Look elsewhere if**、**数据驱动 FAQ**；套餐表支持客户端排序
+- ✅ 竞品内链矩阵：每张卡带**数据推导的差异点**（贵/便宜多少美元），全部指向竞品同层页
+- ✅ 宿主网络段：该国运营商卡（制式 + 实测速度区间）+ 内链 `/networks/<国>/`
+- ✅ `data/providers.toml` 新增 6 个 `[<brand>.policy]`（只填核实过的品牌，`roami`/`roamic` 留空 = "宁缺勿造"，
+  产物里显式渲染 `Not checked yet`，守卫把"未核实页数 = 100"当断言）；
+  顺手修掉与事实矛盾的历史数据：Holafly 的 `.strengths` 原写 "Hotspot sharing included"，与官方 500MB/day 上限冲突
+- ✅ i18n：`compare/provider.html` 的拼装句碎片 **41 → 0**（全站 662 → 619），新增 41 个 `compare_provider__*` key（en/de 各 894 key 对齐）
+
+**审核第一轮抓到并修掉的真问题**
+- 守卫脚本自己有 2 个索引 bug（把 `compare/<国>/<品牌>/index.html` 的第 3/4 段当国名/品牌名）→ 之前两轮是假绿
+- `%!g(int=20)GB`：`plans[].gb` **既有 int 又有 float**，Go 的 `%g` 只吃 float → 转换 partial 开头 `float .` 起手
+- 「对比」区块没排除本品牌 → Airalo 页上变成 "Airalo 比自己便宜" → 加 `ne .key $provKey`
+- 「无本地号码」的判据用了品牌类型（`$p.type`）而不是核实过的 `policy.voice`
+
+**审核第二轮抓到并修掉的真问题（★ 数据层事实错误）**
+- ★ **`500MB` 全站被当成 "Unlimited"**：`partials/country-stats.html` 写的是 `"gb" (int .gb)`，
+  把 500MB 存的 `0.4883` 截断成 `0`，而 **0 是"无限"的哨兵值**。爆炸半径：全站 12 处 `where $rows "gb" 0`（7 个模板）
+  把它选进无限套餐、`unlimitedCount` 把它数进「N unlimited plans」（`/networks/`、`/compare/`、`/guides/`、`/research/` 全中）、
+  `/compare/<国>/` 的「重度用户推荐」可能推荐一个 500MB 试用装、`/tools/` 在"需要无限"时返回它
+  → 修：聚合层 `gb` 改 float（哨兵语义不变、但变成真的）+ `unlimitedCount` 改按 `isUnlimited` 计数 +
+  10 个文件的 `int .gb`/`parseInt(dataset.gb)` 判零改浮点 + 所有打印 `.gb` 的地方改走新 partial `plan-data-label.html`；
+  并**新增守卫**：`data-gb` 与数据列的 unlimited 标注必须一一对应（400/400，另报 48 行 <1GB 的 MB 档）
+- 竞品「更便宜」拿 500MB 试用装作依据（FAQ 写"$5.29 vs $0.51"，读起来像同类对比）→ 文案补上数据量口径：
+  "Yesim's is $0.51, though that entry price buys 200MB"
+
+**校验终态**：`validate.py` 0 error 0 warning · `check_css_sync.py` 501 类全在 · `check_i18n.py` 0 硬编码 / 894 key 对齐 ·
+`hugo` **540 页 EN + 64 DE** · `check_output.py` **586 文件 / 3254 JSON-LD 块 · 无格式串泄漏** ·
+`check_headings.py` **14113 h2/h3 · 0 bad** · `verify_provider_pages.py` **400/400 全过** ·
+`audit_meta.py` provider-sub 400 页 0 违规（同时豁免了 hugo aliases 跳转壳页与所有语言的 404）
+
+---
+
+## 已完成（零回归边界守卫 + 修掉 54 个德语页的模板注释泄漏，2026-10-04 第二十一轮）
+
+**这一轮解决的问题**：上一轮的守卫（`verify_provider_pages.py`）只盯 400 个品牌子页，但改造动的是
+**共享组件**（`country-stats.html` / `head.html` / `plan-data-label.html`），下游是全站 584 页 ——
+「本层全绿」推不出「别处没坏」。这一轮补上跨页型断言，并在过程中抓到一个真缺陷。
+
+**★ 新发现并修掉的缺陷：54 个德语页把开发者备注印给了读者**
+- 现象：`/de/compare/argentina/` 等 50 个国家页 + `de/guides|networks|research/` 的正文里，
+  读者能直接看到一段 "TODO(de)：正文待翻译…"
+- 根因：备注写成 `{{/* … */}}` 放在 **Markdown 正文**里。Hugo 只解析模板文件、不解析正文，
+  Goldmark 把这段字当普通段落输出。`hugo` 退出码 0，**当时五重校验全绿**
+- 修：① 注记搬进 front matter 的 **YAML 注释**（`#` 开头，解析器忽略），正文清空
+  （`scripts/_fix_de_todo_comments.py` 一次改 54 个文件，改前备份到 `D:\esimsift\_backup_20261004_de_todo`）；
+  ② `check_output.py` 新增**全站**模板残留扫描
+- 附带修正：德语国家页正文块（`{{ with .Content }}`）里含一个**英文** h2
+  「What <国家> eSIM prices reveal」，此前因那行备注而渲染出来 —— 现在整块跳过，
+  `check_headings.py` 的 h2/h3 从 14113 降到 **14063**（−50，预期变化）
+
+**新增守卫：`scripts/verify_no_regression.py`（零回归边界，三组断言）**
+- **A 标记隔离**：`#reality` / `#hostnetwork` / `#tripcost` / `#trip-calc` / `#fit` / `#tradeoffs`
+  只允许出现在品牌子页（`#verdict` / `#fup` 另允许国家 Hub）；反向也断言品牌子页
+  **必须**带 `#verdict` `#plans` `#reality` `#tripcost` `#fit` `#faq`
+- **B 全站不变量**：584 页逐页查「恰好 1 个 h1 / title 非空 / 无 `{{` `}}` `<no value>` /
+  无 `%!x(...)` / 无空 `<h2></h2>` / JSON-LD 可解析」——本轮就是靠这条抓到德语页残留
+- **C gb 哨兵跨页型**：把上一轮只在品牌子页做的 `data-gb` 一致性检查**扩到国家 Hub**
+  （后者 15552 行，是上一版的盲区）
+- **基线 + 字节级 diff**：`--write-manifest` 产出 `docs/regression-manifest.json`（584 页 sha256），
+  下轮 `--diff` 即可知道具体哪几个文件变了；品牌子页视为预期变更，
+  其余页型打 `★需确认`，`--strict-diff` 下非白名单变更即退 1
+- **两个守卫都带 `--selftest`**，往临时目录注入反例，证明每条检查**真的会报错**
+  （上一轮吃过「守卫自己有索引 bug、连报两轮假绿」的亏）
+
+**交叉校验（顺带得到的正确性证据）**
+品牌子页与国家 Hub 枚举的是**同一批套餐**：EN 侧 7776 = 7776 行、无限档 4127 = 4127、<1GB 档 48 = 48；
+Hub 恰好是子页的 2 倍（50 国 × 8 品牌的全部档位）。全站合计 **23328 行 = 7776 + 15552**。
+三个数各自相等 → 没有哪一层丢档。这条已写进方法论 §5.5。
+
+**修复过程中的两个坑**
+- `check_output.py` 若连 `}}` 一起扫，会撞上内联的压缩 Tailwind CSS（**390 个文件**命中，全假阳性）
+  → 只扫 Go 模板的**开**定界符 `{{`，且先屏蔽 `<style>`/`<script>` 块
+- 新守卫的「标记隔离」初版报了 **8 个假阳性**：`id="tradeoffs"` 匹配上了品牌详情页既有的
+  `id="tradeoffs-pending"`，而 `esim-providers/<品牌>/` **本来就**有自己的 `#tradeoffs`（"Price record"）
+  → 标记一律带**收尾引号**，且报出来的每一处都先读渲染后的 HTML 核实，确认是既有独立区块后才写进白名单
+
+**校验终态**：`validate.py` 0 error 0 warning · `check_css_sync.py` 501 类全在 ·
+`check_i18n.py` 0 硬编码 / 894 key 对齐 / 0 未定义（拼装句碎片 619）· `hugo` **540 页 EN + 64 DE** ·
+`check_output.py` **586 文件 / 3254 JSON-LD 块 · 无格式串泄漏 · 无模板残留** ·
+`check_headings.py` **14063 h2/h3 · 0 bad** · `verify_provider_pages.py` **400/400** ·
+`verify_no_regression.py` **A/B/C 全过**（584 页 · 无限 12381 / 计量 10803 / <1GB 144 行）·
+`audit_meta.py` provider-sub 0 违规
+`package.json` 的 `check:output` 已把两个守卫接进 `npm run build`（+14s）。
+
+**诚实说明**：`git` 最近一次提交（`10-3-4`）早于德语轮次，且 `content/de/`、`i18n/`、
+本层新增的 partial 仍是未跟踪状态 —— **没有可用的「改造前」快照**，所以做不出字节级前后对比。
+本轮改为「A/B/C 断言 + 存下改造后基线供下轮比对」，不宣称"已验证零回归"。
+
+---
+
+## 已完成（品牌子页外部佐证链接 + 控件收成天数选择，2026-10-04 第二十二轮）
+
+用户针对 `/compare/<国>/<品牌>/`（400 页，一次改全站）提了四条：
+
+1. **`#reality` 的 H2 每国一模一样、且不含长尾意图词** → `What the plan label leaves out`
+   改成 `{{ .brand }} {{ .country }} eSIM hotspot 5G and fair-use rules`
+   （400 页实测如 `Holafly Japan eSIM hotspot 5G and fair-use rules`）：品牌 + 国家 +
+   该区块真正回答的三个意图词，且不含 `,;:—–`（`check_headings.py` 的硬禁标点）。
+2. **列了运营商数据却没有可核实的链接** → `#hostnetwork` 每张运营商卡加官方站点 / 覆盖地图外链
+   （新建 `data/refs.toml`，50 国 × 146 条），区块尾加该国 Ookla Speedtest Global Index 链接
+   （**复用** `networkreports.toml` 的 slug 例外表，不另抄一份）。国家 Hub 的运营商卡同步接上。
+3. **套餐表的多维排序器**（$/GB / 价格 / 每天 / 数据量 / 有效期）→ 收成**只按行程天数筛**
+   （Any / 3 / 5 / 7 / 10 / 14 / 21 / 30）。
+4. **页内计算器的数字输入框** → 同一个**天数下拉**；两处共用模板里的一个 `$dayOpts`，
+   口径必须一致，否则同一趟行程会在同一页给出两个答案。
+
+国家 Hub（`compare/single.html`）的同类排序器一并移除、天数 chip 统一成同一组值、
+运营商卡加同一批外链 —— 两个页型不再各说各话。
+
+**新增工具**：`scripts/verify_external_refs.py`
+
+- 判定分四类：`2xx` ok ／ `403·412·429` **bot 墙（站点存在，保留）** ／
+  `404·410` **死链（唯一让脚本非 0 退出的一类）** ／ `000·5xx` **本机不可达（报告不删）**。
+- `--data-only` 离线跑：断言 `refs.toml` 每个 key 都在 `carriers.toml` 有同名 profile
+  （孤儿 = 永不渲染的死重量），并点名列出「没配到链接」的 profile。
+- 网络检查**不进 `npm run build`**（离线构建必须能过）。
+
+**本轮抓到的真问题**（靠「分层判定 + 实测」捞出来，详见 `docs/provider-page-optimization.md` §3.9 / §7）：
+
+- ★ i18n 值加了 `{{ .brand }}` 占位符，但**模板调用处没跟着加 `dict`** → H2 印出
+  `<no value> <no value> eSIM hotspot 5G and fair-use rules`。`hugo` 退出码 0，
+  只有 `check_output.py` 的 `<no value>` 扫描拦得住。
+- ★ 冰岛运营商域名拼错：`noa.is`（不存在）→ `nova.is`（200）。
+- `digicelfiji.com` 已 404 → 换 `digicelgroup.com/fj`（200）。
+- `yoigo.com` / `yoigo.es` 双双 404（品牌并入 MasMovil 后独立官网关闭）→ 删除，宁缺勿造。
+- ★ 全量扫 197 条报 49 条「不通过」，其中**只有 3 条是真问题**，其余 46 条是
+  `att.com` / `t-mobile.com` / `bell.ca` 这类 bot 墙与 `jio.com` 这类本机网络阻断。
+  **没有分层判定，这轮会删掉 46 个正确的链接、把唯一那个拼错的域名留在页面上。**
+- 国家 Hub 排序器的 `dataset.perGB`（应为 `pergb`）取到 `undefined`，比较函数返回 NaN，
+  排序**静默失效**（原顺序恰好正确所以看不出来）；移除该控件时顺手结清。
+
+**校验终态（全绿）**：`validate.py` 0/0 · `check_css_sync.py` 全在 · `check_i18n.py`
+0 硬编码 / **902 key 对齐**（en = de，本轮 +8）· `hugo` **540 EN + 64 DE** ·
+`check_output.py` 586 文件 / 3254 JSON-LD 块 / 无格式串泄漏 / **无模板残留** ·
+`check_headings.py` **14063 h2/h3 · bad 0** · `verify_provider_pages.py` **400/400** ·
+`verify_no_regression.py` **A / B / C 全过** · `audit_meta.py` 退 0
+（provider-sub 400 页 T 48/51/54、D 123/130/140）·
+`verify_external_refs.py --data-only` 146 refs ↔ 147 profiles（缺 1：ES Yoigo，已知）。
+
+**基线刷新**：`docs/regression-manifest.json` 已重建为第二十二轮状态 ——
+变更 **500**（400 品牌子页 + 100 国家 Hub）、新增 0、删除 0、**无其它页型外溢**；
+重建后自比对 **584 页逐字节相同**，顺带再次证明本站构建是确定性的。
+
+---
+
+## 已完成（品牌子页控件去下拉化 + 三个模糊模块改量化 + 计数口径 + 免责声明，2026-10-04 第二十三轮）
+
+用户分两批提了 4 + 4 条，全部落在同一批页面（`/compare/<国>/<品牌>/` 400 页，一次改全站）。
+
+**第一批（交互 + 内容 + 计数）**
+
+1. **「行程长度」和「根据您自己的日期定价」两处天数控件都不要下拉框，直接把天数摆出来点选**
+   → 两处都改成 `.chip` 按钮组，且**取值不再写死**：由 `$myRows` 的 `days` 去重排序推导；
+   档位多于 12 个时按 `1 2 3 4 5 7 10 14 21 30 60 90` 阶梯取「最小的 ≥ 目标的真实档位」。
+   实测 Roamic 日本 → `1 2 3 4 5 7 10 14 21 30`，Holafly / Airalo 日本 → `3 5 7 10 15 30`。
+   两处共用同一个 `$dayOpts`，口径一致。
+2. **`#fit`（Should you buy…）与 `#tradeoffs`（Where … wins and loses）太单薄、对用户没意义**
+   → `#tradeoffs` 从「印 `providers.toml` 的品牌套话」（同品牌 50 国一字不差）**整体重写**为
+   「本页数据推导的国别量化对比」：优点/缺点各若干条，每条都带本国的数字或核实过的政策字段。
+   `#fit` 加两条硬判据（盈亏平衡天数 `$beDays`、最短行程 `$minDays`）。
+   实测 Holafly 日本：优点 4 条 + 缺点 7 条；Roamic 日本：优点 5 条 + 缺点 3 条。
+   **全站 400 页条目下限已守住：优点 ≥3 且缺点 ≥2，零页面触底。**
+3. **「All 6 Holafly Japan plans 为什么是 6 个计划？应该各天数档位累加」**
+   → 做了全站审计：**400 页的「All N」全部正确**（H2 数量 = 表格行数 = 数据层档位数，
+   逐页零不一致）。误解源于 H2 只印裸数字、而下方天数列表当时是**写死的通用列表**，读者无法自核。
+   据此两处一起改：① H2 下加**口径说明行** `{N} plans · {M} trip lengths · {a} to {b} days`；
+   ② 守卫加第 12 项「计划数三处对账」（H2 = 价格表行数 = `offerCount` = 说明行）。
+4. **其它同类型页面一起改** → 以上全部落在 400 页上，不是单页修补。
+
+**第二批（数据准确性 + 合规）**
+
+5. **热点分享 / FUP 实际限速阈值 / 5G 是否支持 —— 三项必须严格按实际**
+   → 三点都从「品牌文案」改为「核实过的事实」：
+   - **热点**：新增**优点**条目 `tradeoffs_w_hotspot`（`policy.hotspot == "allowed"` 时印出实际额度），
+     与原有的**缺点**条目 `tradeoffs_l_hotspot`（`capped` 时印出额度）对称 —— 同一件事两边都有位置。
+   - **FUP 阈值**：旧判据是 `not .fup_allowance`，而八个品牌的该字段**全都有值**
+     （Holafly 的是字面量 `"No GB figure published"`），**这条缺点从来没触发过**。
+     改成按数值分档：额度里抠出日数字且 < 6GB/天 → 「约 N GB 之后掉到 M」；
+     文案以 `no` / `not` 开头 → 「限速点不公开」；只写「按套餐公布」→ **不列为缺点**（那是透明度加分项）。
+   - **5G**：判据是**宿主网络的制式**（`carriers.toml` 的 `tech`），不是品牌宣传。
+     实测 Fiji 正确显示 `4G only | 8–80 Mbps | Digicel Fiji`，且 Holafly Fiji 页**没有**
+     「5G on all N host networks」这条优点 —— 落后国家只有 4G 的情况按实际走。
+6. **首屏价格旁加「价格可能变动，以官网为准」的免责声明，且品牌名不能写死**
+   → Hero 价格下方加一行 `compare_provider__price_disclaimer`，品牌名走 `{{ .brand }}` 占位符。
+   实测 Holafly / Ubigi / Roami 页分别印出各自品牌名。
+7. **结构化数据（JSON-LD）必须要有** → 本来就有，本轮复核未动：每页 6 块
+   （`BreadcrumbList` 4 级 / `Organization` / `WebSite` / `Product` + `AggregateOffer`
+   逐套餐 Offer / `WebPage` / `FAQPage`），全站 3254 块、7776 条 Offer，与价格表行数一一对齐。
+8. **同类页面全站统一** → 同 1–4。
+
+**本轮抓到的真问题**（全部是「口径错了但构建全绿」，详见 `docs/provider-page-optimization.md` §3.12 / §7）：
+
+- ★★ **「A 比 B 便宜」拿不同流量档比**：价差按**绝对差额**取最大值，必然选中
+  「我方大流量档 vs 对手 1GB 试用装」。实测 Roamic 日本 30 天档 10GB/$9 被拿去跟
+  Ubigi 的 1GB/$4 比，印出「便宜 $5.00」—— 10 倍流量差被写成纯粹的价格劣势。
+  改成同类比同类（计量档要求对手流量 ≥ 我方；无限档要求行程长度精确匹配）。
+- ★ **价格数字与品牌名来自两套计算**：`l_unl` 用 `$cUnlPerDay`（全国最低无限日单价 $1.50）
+  \+ `$rivalKey`（**最低入门价**品牌 Roami）拼成一句。日本实测：$1.50 属于 Ubigi，
+  句子却写 "from Roami"（Roami 自家 $2.40）。改成同一遍循环同时记住价和主人。
+- ★ **`l_upsell` 在 Roamic 日本误报「15 天没有匹配档位」**：判据用了「最便宜**可覆盖**档的 days」，
+  而 Roamic 明明有 1–30 天全档位。改成查「是否存在 `days == 行程长度` 的档」。
+- ★ **优点列里写了缺点**：`tradeoffs_w_unl` 的文案把「对手更便宜」塞进「优势」栏。
+- ★★ **`hugo` 构建失败却报「全绿」**：命令写成 `hugo --quiet … 2>&1 | head -20`，
+  `hugo` 的报错走 stdout，`| head` 提前关管道让它拿到 SIGPIPE，`$?` 取到的是 `head` 的 0。
+  **任何带管道的构建命令都不能用 `$?` 判断成败。**
+- ★ 天数按钮里有页面买不到的档位（写死的 `3 5 7 10 14 21 30` 与 Holafly 真实的
+  `3 5 7 10 15 30` 对不上，读者点「14 天」看到空列表会以为漏了套餐）。
+- 同页两组天数按钮互相串组（`document.querySelectorAll('[data-days]')` 是全局选择器）。
+
+**新增守卫**（`scripts/verify_provider_pages.py` 从 11 项扩到 13 项）：
+第 12 项「计划数三处对账」、第 13 项「天数按钮无假档位」（按钮值必须 ⊆ 表里真实档位）。
+
+**校验终态（全绿）**：`validate.py` 0/0 · `check_css_sync.py` 499 类全在 · `check_i18n.py`
+0 硬编码 / **928 key 对齐**（en = de，本轮 +26）· `hugo` **540 EN + 64 DE** ·
+`check_output.py` 586 文件 / 3254 JSON-LD 块 / 无格式串泄漏 / **无模板残留** ·
+`check_headings.py` **14063 h2/h3 · bad 0** · `verify_provider_pages.py` **400/400**
+（含计划数对账 400/400、天数按钮 398/400）· `verify_no_regression.py` **A / B / C 全过**。
+
+**基线刷新**：`docs/regression-manifest.json` 已重建为第二十三轮状态 ——
+变更 **400**（全部是 `provider_sub`）、新增 0、删除 0、**无其它页型外溢**；
+`--strict-diff` 复跑 **584 页逐字节相同**，再次证明构建确定性。
+
+**收尾（同日）· 最后更新日期改为构建当天的系统日期**
+
+`esim-comparison.html` §9.4 要求「最后更新日期每页可见，且与 `dateModified` 一致」。
+此前这 6 个落点都由 `country-stats` 的 `checkedDate`（= `data/plans/*.toml` 的 `checked`，
+价格核对日）驱动，页面显示 `Sep 30, 2026`。
+
+改为模板顶部的 `{{ $updatedNow := now }}` / `{{ $updatedDate := time.Format ":date_medium" $updatedNow }}`，
+一次覆盖 Hero 徽章、价格免责声明、配图 figcaption、套餐表脚注、页尾信任栏、`WebPage.dateModified`。
+
+- **只改渲染层，不动数据层**：`checkedDate` 被 15 处页型共用（国家 Hub / guides / index /
+  networks / research / country-card / head / catalog.json / llms.txt），改数据层等于全站换日期。
+- `dateModified` 原来的 `{{ with $stats.checked }} … {{ end }}` 守卫随常量日期一起去掉
+  （留着就是永不触发的假分支）。
+- 实测：**400 个品牌子页**显示 `Oct 4, 2026` + `dateModified 2026-10-04`，`Sep 30, 2026` 残留 0；
+  其余页型保持 `Sep 30, 2026`，零外溢。（`networks/*` 12 页本来就用 `now`，属既有写法。）
+- **代价**：产物带构建日戳 → 同一天内重复构建仍逐字节一致，跨天首次构建必然全量变更 400 页，
+  需刷新一次基线。见 `docs/provider-page-optimization.md` §3.13。
+
+---
+
+## 已完成（品牌 Hub 页 8 页 SEO/UX 优化 + 交互计算器，2026-10-04 第二十四轮）
+
+用户上传长文点名优化 `/esim-providers/airalo/`，并明确「其他的品牌页面也是一样的优化方式」。
+本轮把该页模板从 540 行扩到 1215 行，**只动品牌 Hub 页型**；规范见
+`docs/provider-page-optimization.md` 附录（§9–§13）。
+
+**诊断**：页面自己算得出「Airalo 在 50 国中 0 国最便宜」，`<title>` 却在复述品牌营销话术
+「Unlimited 5G From $9.50」—— **标题与本页数据互相打脸**；且缺热点 / 5G / 公平使用
+三项核心参数、缺「不便宜那该去看谁」的替代引导、缺互动工具。
+
+**新增 6 个区块**（模板从上到下）
+
+| id | 内容 | 数据源 |
+|:--|:---|:---|
+| `#reality` | 热点分享 / 公平使用阈值 / 充值 / 速度与 5G | `[<brand>.policy]` + `carriers.toml` |
+| `#whobeats` | 替代推荐表：国家 / 本品牌最低价 / 更便宜竞品（链站内 provider 页）/ 差额 % | `provider-alts.html` |
+| `#network` | 5G 实况：N/M 市场有 5G、纯 LTE 市场列表（链 `/networks/<slug>/`） | `carriers.toml` |
+| `#headtohead` | 按 `cheapest` 距离**自动**选出的两个最接近对手 + 各 3 条差异 + 对比页链接 | `provider-agg.html` |
+| `#calc` | 行程计算器：目的地 + 天数 + 每日用量 → 推荐档位与结论 | `country-stats.html` |
+| `#reading` | E-E-A-T：评价怎么读 / 区域指南 / 数字来源 | i18n + `$totalPlans` |
+
+另：Hero 补「最后更新日期 + 价格免责声明」；FAQ 补 3 问（热点 / 5G / 谁更便宜）；
+Product JSON-LD 补逐市场 `offers`（12 个最便宜市场）。
+
+**新建 `layouts/partials/provider-alts.html`**（117 行）—— 把「同类比同类」（事故 #23）
+固化成四层匹配：无限档只对无限档 → 同 `(gb, days)` → 对手数据量 ≥ 我方 → 退回
+「入门对入门」并**显式标记**（UI 上不装作同类对比）。
+
+**标题口径（用户本轮裁定）**：`<title>` **不放套餐数量、不放价格**
+（沿用 2026-10-04 既定规则 —— 数字会随数据过时）；套餐数改由 `description` 与 **H1** 承担，
+H1 由 `$totalPlans` 构建期渲染，永远与数据层一致。8 页实测 title 49–53 字符、
+desc 126–139，`audit_meta.py` 的 provider 类 **0 违规**。
+
+**Trustpilot：只给档案链接，不印分数**（用户本轮确认）
+
+- 同一品牌在不同**地区域名**下是**不同值**（Airalo 3.9 / 4.0 / 4.1），本机抓取全被反爬墙拦（403）。
+- 8 家已逐个核实档案 URL；**Ubigi 是 `cellulardata.ubigi.com`，不是 `ubigi.com`**。
+- **Roami 无档案**（对 trustpilot.com 做域名过滤搜索只返回 `roamic.com`）→ 字段留空，
+  模板走 `reading_reviews_none` 分支如实说明。其自家博客宣称的 4.9 分、与第三方评测引用的
+  「13k+ 条评价」恰好等于 **Roamic** 的 13,683 条 —— 疑似两家混淆，不采信。
+
+**i18n**：+76 key（en/de 同值同序）；`check_i18n.py` 引用 998 个 key、未定义 **0**。
+
+**本轮踩的坑（详见 §13，含计数器）**
+
+- ★★ **Hugo 的 `append` 会把切片实参展开并入** —— 计算器三元组被压成 51 个裸数字，
+  `json.loads` 照常通过、全部校验绿灯，**页面静默出错**。改用 dict 存一条记录。
+- 守卫把**合法嵌套 JSON** 的 `}}` 判成模板残留（16 处误报）→ 扫描前先挖掉数据块，
+  并把数据块纳入 `json.loads`，**把误报源变成一处真实检查**。
+- `$mk4gNames` 先用后定义导致构建失败 → 派生量统一提到文件顶部。
+- i18n 冠词写死 `a {{ .brand }}` 渲染出 "a Airalo" → 去掉冠词改写句式。
+
+**校验（八项全绿）**：`npm run build` 通过；`check_output` 586 文件 / 3254 JSON-LD 无泄漏；
+`check_headings` 14199 h2/h3 bad 0；`verify_provider_pages` 400/400；
+`verify_no_regression` A/B/C 全过 + **14 项自测全过**（本轮新增 3 项）。
+
+**基线刷新**：`docs/regression-manifest.json` 已重建 ——
+期望形态是**仅 `provider_hub=8` 变更，`provider_sub=400` 逐字节不变**
+（实测正是如此：变更 8、新增 0、删除 0）。
+
+---
+
+## 已完成（sitemap 日期口径统一 + 产物域名卫生守卫，2026-10-04 第二十五轮）
+
+**触发**：用户问「更新了品牌数据，为什么 sitemap 里品牌 URL 的日期没变成今天？
+sitemap 前面带端口对不对？国家-品牌页的日期要不要跟着更新才合 Google SEO？」
+
+**诊断结论**：不是「没更新」，是**同一张页面自己打架**（实测三方对照）：
+
+| 页面 | 页面可见 | JSON-LD `dateModified` | sitemap `<lastmod>` |
+|:---|:---|:---|:---|
+| `/esim-providers/alosim/` | Oct 4 | （当时没有） | 2026-09-30 |
+| `/compare/united-states/alosim/` | Oct 4 | 2026-10-04 | 2026-09-30 |
+| `/compare/poland/` | Sep 30 | — | 2026-09-30 |
+
+根因是第二十三轮把 6 个日期落点接到了 `now`（构建日），而 sitemap 读的是数据核对日
+`checked`。而「2026-09-30 抓的价格旁边印 Prices verified Oct 4」**不是口径差异，是不实陈述**；
+且 `lastmod` 每次部署都翻新会被 Google 整体忽略。
+
+**改动**
+
+1. **新建 `layouts/partials/provider-checked.html`** —— 按**品牌**取 `data/plans/<key>.toml`
+   的 `checked`，三种口径：`key+iso`（品牌×国家子页）/ `key`（品牌 Hub）/ `keys`（A-vs-B 对比页）。
+   这一格正是第二十三轮缺失的：当时只有「构建日」和「国家级 `checked`」两个选项，
+   于是错选了前者；补上品牌粒度后就不必二选一了。
+2. **统一日期来源**：`compare/provider.html`（6 个落点）、`esim-providers/single.html`
+   （可见文案 + **新补的 Product `dateModified`**）、`sitemap-urls.html`（品牌优先解析顺序）。
+   日期缺失时不写 `dateModified`，不编日期。
+2b. **★ 品牌 Hub 拆成两个日期**（用户确认后实现）：Hub 页内容 = 价格（`data/plans`）
+   **加** 品牌档案（`data/providers.toml` 的简介 / 热点 / FUP / 充值 / 折扣码）。
+   只改档案时页面确实变了，日期必须动；但页面上的价格类文案写的是
+   「list prices **as checked on** &lt;d&gt;」，**只描述价格**。于是：
+   | 文案 | 日期来源 |
+   |:---|:---|
+   | 「Last updated &lt;d&gt;」（通用） | `max(价格核对日, 档案核对日)` |
+   | 「list prices as checked on &lt;d&gt;」/「price database … rebuilt &lt;d&gt;」 | **只取价格核对日** |
+
+   合成一个日期就会写出不实陈述（档案今天改、价格上周核，却印成「prices as checked on 今天」）。
+   为此给 `data/providers.toml` 8 个品牌顶层块补了 **`profile_checked`**（统一 `2026-10-04`，
+   依据：policy 块与 trustpilot 链接均为 2026-10-04 核实，见文件内注释）。
+   子页的 6 个落点文案**全是价格专属表述**，所以子页不带档案日期，维持单一口径。
+3. **`sitemap-urls.html` 解析顺序改为**：品牌页（Hub / 子页 / vs）→ 国家页 → front matter
+   → 全站兜底。品牌粒度必须排在 `.Lastmod` 之前，否则 Hugo 的 `:git` 提交日会盖掉数据日。
+4. **★ 新增 `scripts/check_dates.py`**（接入 `check:output`，八项 → 九项）：
+   A 域名（`public/` 不得含 `localhost`、sitemap host 必须等于 baseURL）、
+   B 日期（三处一致；`/guides/*`、`/research/*` 放宽为只查 `lastmod == dateModified`
+   —— 它们的文章日期与数据快照日本来就该不同）、
+   C 完整性（sitemap 声明的每个 URL 都必须有产物）。
+5. **新增 `scripts/bump_checked.py`**：数据更新后一条命令盖章 `checked`
+   （`--brand` / `--countries` / `--date` / `--dry-run` / `--show`），三处日期同时前移。
+6. **`hugo.toml`**：删掉一个**无效的假保护**（`[server] renderToMemory` —— 实测该键
+   不存在于 `[server]` 配置段，写进去产物照样落盘 928 个文件）；改为在
+   `package.json` 的 build 上加 `--cleanDestinationDir`。
+
+**实测事故**
+
+- ★★ **手敲的 `hugo server` 把 `localhost:55171` 写进了 136 个产物**（含 canonical 与 sitemap），
+  且 `public/esim-providers/` 整个目录是空的（写一半被中断）。原因：1313 被占，Hugo 自选随机端口，
+  而该 server 没有 `--renderToMemory`。**`[server]` 配置段只有 `redirects`/`headers`，没有
+  `renderToMemory` 这个键** —— 只有命令行 flag 生效，「写进配置就防住了」是错觉，已删除。
+- **vs 页被兜底口径带跑**：sitemap 退回「全站最新快照」后，只给 alosim 的 US/PL 盖了 10-04，
+  就让 **28 张 A-vs-B 对比页**的 `lastmod` 集体前移而页面文案纹丝不动。
+  → 补 `keys` 口径，让 sitemap 与 `vs-agg.checkedDate` 用同一个聚合方式。
+- **`--cleanDestinationDir` 的新风险**：先清空再重建，构建被 SIGTERM 中断后 `public/` 停在
+  「已清空、未写完」状态，**所有既有校验都不报错**。这就是断言 C 存在的唯一理由（当场报出 44 个缺失 URL）。
+- 两个新守卫都做了**反向测试**（造违规 → 必须失败 → 还原）。断言 C 直接在真实损坏产物上验证。
+- **守卫自己误报 8 条**：断言 B 第一版把「Last updated」也当成「价格核对日」去比，
+  于是 8 个品牌 Hub（通用日期 Oct 4、价格日期 Sep 30，**两者不同是刻意的**）全被误判。
+  → 把日期文案拆成两组（通用组 / 价格专属组）分别比对。这正是「反向测试 + 逐条读产物」
+  的价值：误报会逼你把规则写精确，而不是把检查改松。
+
+**校验**：`npm run build` 九项全绿；`check_dates.py` 扫描 brand_hub 8 / prov_sub 400 /
+country_hub 51 / vs 28 / index 2 / edit 15，域名 / 日期 / 完整性三断言 0 违规；
+反向测试 4 次（A、B-价格组、B-通用组、C）全部按预期失败。
+
+**基线**：`docs/regression-manifest.json` 已重建。终态 diff = **变更 8（provider_hub）+ 0 + 0**，
+`provider_sub=400` 逐字节不变。
+
+---
+
 ## 待办（按优先级）
 
 ### P-2 蓝图 Phase 2（等 P-A 真实数据后；见 docs/keyword-map.md 预留槽位）

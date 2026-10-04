@@ -2,11 +2,11 @@
 <div class="relative overflow-hidden bg-hero-mesh">
   <div class="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6">
     <p class="font-display text-7xl font-extrabold tracking-tight text-ink-200">4<span class="text-accent-500">0</span>4</p>
-    <h1 class="mt-4 text-2xl font-bold md:text-3xl">This page took a roaming detour.</h1>
-    <p class="mx-auto mt-3 max-w-md text-ink-600">The link you followed doesn't exist — but your destination probably does.</p>
+    <h1 class="mt-4 text-2xl font-bold md:text-3xl">{{ i18n "404__this_page_took_a_roaming_detour" | safeHTML }}</h1>
+    <p class="mx-auto mt-3 max-w-md text-ink-600">{{ i18n "404__the_link_you_followed_doesn_t_exist_but_your_destination" | safeHTML }}</p>
     <div class="mt-8 flex flex-wrap justify-center gap-3">
-      <a href="/compare/" class="btn-primary">Browse comparisons</a>
-      <a href="/" class="btn-out">Back home</a>
+      <a href="{{ partial "lang-href.html" "/compare/" }}" class="btn-primary">{{ i18n "404__browse_comparisons" | safeHTML }}</a>
+      <a href="{{ partial "lang-href.html" "/" }}" class="btn-out">{{ i18n "404__back_home" | safeHTML }}</a>
     </div>
   </div>
 </div>

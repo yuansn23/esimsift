@@ -1,13 +1,13 @@
-<header class="sticky top-0 z-50 border-b border-ink-100 bg-white/85 backdrop-blur-lg">
+{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}<header class="sticky top-0 z-50 border-b border-ink-100 bg-white/85 backdrop-blur-lg">
   <div class="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6">
     {{/* 品牌字标：Sift + 漏斗符号 */}}
-    <a href="{{ .Site.BaseURL }}" class="group flex items-center gap-2" aria-label="eSIM Sift home">
+    <a href="{{ .Site.BaseURL }}" class="group flex items-center gap-2" aria-label="{{ i18n "g_esim_sift_home" | safeHTML }}">
       <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-ink-950 text-white transition-transform duration-300 group-hover:rotate-6">
         <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M2 3h12L9.5 8v4.5L6.5 14V8L2 3Z" fill="currentColor"/>
         </svg>
       </span>
-      <span class="font-display text-lg font-extrabold tracking-tight text-ink-950">eSIM<span class="text-brand-600">Sift</span></span>
+      <span class="font-display text-lg font-extrabold tracking-tight text-ink-950">{{ i18n "g_esim" | safeHTML }}<span class="text-brand-600">{{ i18n "g_sift" | safeHTML }}</span></span>
     </a>
 
     {{ $compare := site.GetPage "/compare" }}
@@ -20,7 +20,7 @@
     {{ range $countryPages }}
       {{ $cp := . }}
       {{ with .Params.iso }}
-        {{ $c := index hugo.Data.countries . }}
+        {{ $c := index $d.countries . }}
         {{ $entry := dict "name" $c.name "url" $cp.RelPermalink "flag" $c.flag }}
         {{ if $c.featured }}{{ $popular = $popular | append $entry }}{{ end }}
         {{ $byRegion = merge $byRegion (dict $c.region ((index $byRegion $c.region | default slice) | append $entry)) }}
@@ -30,23 +30,23 @@
          所以菜单随 content/en/networks/*.md 增加自动变长，未建的国不会出现死链。
          注意 slug 取 countries.toml[ISO].slug，与 /compare/{slug}/ 同一套。 */}}
     {{ $netDests := slice }}
-    {{ range $iso, $c := hugo.Data.countries }}
+    {{ range $iso, $c := $d.countries }}
       {{ with site.GetPage (printf "/networks/%s" $c.slug) }}
         {{ $netDests = $netDests | append (dict "name" $c.name "url" .RelPermalink "flag" $c.flag) }}
       {{ end }}
     {{ end }}
     {{ $netDests = sort $netDests "name" "asc" }}
-    <nav class="ml-6 hidden items-center gap-1 md:flex" aria-label="Main">
+    <nav class="ml-6 hidden items-center gap-1 md:flex" aria-label="{{ i18n "partials_header__main" | safeHTML }}">
       <div class="group relative">
-        <a href="/compare/" aria-haspopup="true" class="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">
-          Compare countries
+        <a href="{{ partial "lang-href.html" "/compare/" }}" aria-haspopup="true" class="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">
+          {{ i18n "g_compare_countries" | safeHTML }}
           <svg class="text-ink-300 transition-transform duration-200 group-hover:rotate-180" width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </a>
         {{/* 区域大菜单：热门列 + 5 区域块（各自滚动），180+ 国也无需改结构 */}}
         <div class="nav-mega">
           <div class="grid grid-cols-4 gap-x-5 gap-y-5">
             <div>
-              <p class="px-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-400">Popular</p>
+              <p class="px-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "partials_header__popular" | safeHTML }}</p>
               <div class="mega-region mt-1.5 space-y-0.5">
                 {{ range $popular }}
                   <a href="{{ .url }}" class="mega-link">
@@ -59,7 +59,7 @@
             {{ range $regionOrder }}
               {{ $list := index $byRegion . | default slice }}
               <div>
-                <p class="px-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ . }} <span class="tnum font-semibold text-ink-300">{{ $list | len }}</span></p>
+                <p class="px-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ partial "region-label.html" . | safeHTML }} <span class="tnum font-semibold text-ink-300">{{ $list | len }}</span></p>
                 <div class="mega-region mt-1.5 space-y-0.5">
                   {{ range $list }}
                     <a href="{{ .url }}" class="mega-link">
@@ -72,20 +72,20 @@
             {{ end }}
           </div>
           <div class="mt-4 flex items-center justify-between border-t border-ink-100 pt-3.5">
-            <p class="text-xs text-ink-400">Every plan, one table — no pay-to-win rankings.</p>
-            <a href="/compare/" class="flex items-center gap-1.5 rounded-lg bg-ink-950 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-ink-800">
-              All {{ $countryPages | len }} countries <span aria-hidden="true">→</span>
+            <p class="text-xs text-ink-400">{{ i18n "partials_header__every_plan_one_table_no_pay_to_win_rankings" | safeHTML }}</p>
+            <a href="{{ partial "lang-href.html" "/compare/" }}" class="flex items-center gap-1.5 rounded-lg bg-ink-950 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-ink-800">
+              {{ i18n "partials_header__all_countries" (dict "n" ($countryPages | len)) | safeHTML }} <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
       </div>
-      <a href="/esim-providers/" class="rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">eSIM providers</a>
+      <a href="{{ partial "lang-href.html" "/esim-providers/" }}" class="rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">{{ i18n "g_esim_providers" | safeHTML }}</a>
       {{/* Network map：有已发布的运营商深度页时展开二级菜单（只列真实存在的页），
            否则退回单链接 —— 只有日本页时菜单里就只有日本，不造假条目。 */}}
       {{ if gt (len $netDests) 0 }}
       <div class="group relative">
-        <a href="/networks/" aria-haspopup="true" class="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">
-          Network map
+        <a href="{{ partial "lang-href.html" "/networks/" }}" aria-haspopup="true" class="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">
+          {{ i18n "g_network_map" | safeHTML }}
           <svg class="text-ink-300 transition-transform duration-200 group-hover:rotate-180" width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </a>
         {{/* 面板宽 32rem 是「左边缘不越界」的上限：触发点右侧约 524px，
@@ -94,71 +94,96 @@
             12 国就要滚动）。max-h 只作为极端数量（>40 国）在矮屏上的兜底，
             正常情况永不触发。 */}}
         <div class="nav-mega left-auto right-0 w-[32rem]">
-          <p class="px-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-400">Carrier breakdowns <span class="tnum font-semibold text-ink-300">{{ $netDests | len }}</span></p>
+          <p class="px-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "partials_header__carrier_breakdowns" | safeHTML }} <span class="tnum font-semibold text-ink-300">{{ $netDests | len }}</span></p>
           <div class="mt-1.5 grid max-h-[calc(100vh-7rem)] grid-cols-2 gap-x-3 gap-y-0.5 overflow-y-auto pr-0.5">
             {{ range $netDests }}
               <a href="{{ .url }}" class="mega-link">
                 <img src="{{ .flag | relURL }}" alt="" class="h-3.5 w-5 shrink-0 rounded-sm object-cover" width="20" height="14" loading="lazy">
-                <span class="min-w-0">{{ .name }} networks</span>
+                <span class="min-w-0">{{ .name }} {{ i18n "partials_header__networks_suffix" | safeHTML }}</span>
               </a>
             {{ end }}
           </div>
-          <p class="mt-3 border-t border-ink-100 px-2.5 pt-3 text-xs leading-relaxed text-ink-400">Which host networks carry each destination, network by network.</p>
-          <a href="/networks/" class="mega-link mt-1 font-semibold text-brand-700"><span>All {{ $countryPages | len }} destinations →</span></a>
+          <p class="mt-3 border-t border-ink-100 px-2.5 pt-3 text-xs leading-relaxed text-ink-400">{{ i18n "partials_header__which_host_networks_carry_each_destination_network_by_ne" | safeHTML }}</p>
+          <a href="{{ partial "lang-href.html" "/networks/" }}" class="mega-link mt-1 font-semibold text-brand-700"><span>{{ i18n "partials_header__all_destinations" (dict "n" ($countryPages | len)) | safeHTML }}</span></a>
         </div>
       </div>
       {{ else }}
-      <a href="/networks/" class="rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">Network map</a>
+      <a href="{{ partial "lang-href.html" "/networks/" }}" class="rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">{{ i18n "g_network_map" | safeHTML }}</a>
       {{ end }}
-      <a href="/compare/matchups/" class="rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">Versus</a>
-      <a href="/tools/" class="rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">Tools</a>
-      <a href="/esim-deals/" class="rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">eSIM deals</a>
+      <a href="{{ partial "lang-href.html" "/compare/matchups/" }}" class="rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">{{ i18n "partials_header__versus" | safeHTML }}</a>
+      <a href="{{ partial "lang-href.html" "/tools/" }}" class="rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">{{ i18n "g_tools" | safeHTML }}</a>
+      <a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">{{ i18n "g_esim_deals" | safeHTML }}</a>
       {{/* Guides 下拉（报告 §3：Research 并入 Guides，顶层项保持 ≤7）*/}}
       <div class="group relative">
-        <a href="/guides/" aria-haspopup="true" class="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">
-          Guides
+        <a href="{{ partial "lang-href.html" "/guides/" }}" aria-haspopup="true" class="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">
+          {{ i18n "g_guides" | safeHTML }}
           <svg class="text-ink-300 transition-transform duration-200 group-hover:rotate-180" width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </a>
         <div class="nav-mega left-auto right-0 w-72">
-          <p class="px-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-400">Basics &amp; how-to</p>
+          <p class="px-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "partials_header__basics_amp_how_to" | safeHTML }}</p>
           <div class="mega-region mt-1.5 space-y-0.5">
-            {{ with site.GetPage "/guides/what-is-an-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>What is an eSIM?</span></a>{{ end }}
-            {{ with site.GetPage "/guides/how-to-install-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>How to install an eSIM</span></a>{{ end }}
-            {{ with site.GetPage "/guides/esim-vs-physical-sim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>eSIM vs physical SIM</span></a>{{ end }}
-            {{ with site.GetPage "/guides/dual-sim-and-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>Dual SIM and eSIM</span></a>{{ end }}
-            {{ with site.GetPage "/guides/esim-compatibility-check" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>eSIM compatibility check</span></a>{{ end }}
+            {{ with site.GetPage "/guides/what-is-an-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>{{ i18n "partials_header__what_is_an_esim" | safeHTML }}</span></a>{{ end }}
+            {{ with site.GetPage "/guides/how-to-install-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>{{ i18n "partials_header__how_to_install_an_esim" | safeHTML }}</span></a>{{ end }}
+            {{ with site.GetPage "/guides/esim-vs-physical-sim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>{{ i18n "partials_header__esim_vs_physical_sim" | safeHTML }}</span></a>{{ end }}
+            {{ with site.GetPage "/guides/dual-sim-and-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>{{ i18n "partials_header__dual_sim_and_esim" | safeHTML }}</span></a>{{ end }}
+            {{ with site.GetPage "/guides/esim-compatibility-check" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>{{ i18n "partials_header__esim_compatibility_check" | safeHTML }}</span></a>{{ end }}
           </div>
-          <p class="mt-3 px-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-400">Regional guides</p>
+          <p class="mt-3 px-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "partials_header__regional_guides" | safeHTML }}</p>
           <div class="mega-region mt-1.5 space-y-0.5">
-            {{ with site.GetPage "/guides/best-europe-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>Best Europe eSIM</span></a>{{ end }}
-            {{ with site.GetPage "/guides/best-asia-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>Best Asia eSIM</span></a>{{ end }}
-            {{ with site.GetPage "/guides/best-americas-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>Best Americas eSIM</span></a>{{ end }}
-            {{ with site.GetPage "/guides/best-africa-middle-east-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>Best Africa &amp; Middle East eSIM</span></a>{{ end }}
-            {{ with site.GetPage "/guides/best-oceania-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>Best Oceania eSIM</span></a>{{ end }}
+            {{ with site.GetPage "/guides/best-europe-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>{{ i18n "partials_header__best_europe_esim" | safeHTML }}</span></a>{{ end }}
+            {{ with site.GetPage "/guides/best-asia-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>{{ i18n "partials_header__best_asia_esim" | safeHTML }}</span></a>{{ end }}
+            {{ with site.GetPage "/guides/best-americas-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>{{ i18n "partials_header__best_americas_esim" | safeHTML }}</span></a>{{ end }}
+            {{ with site.GetPage "/guides/best-africa-middle-east-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>{{ i18n "partials_header__best_africa_amp_middle_east_esim" | safeHTML }}</span></a>{{ end }}
+            {{ with site.GetPage "/guides/best-oceania-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>{{ i18n "partials_header__best_oceania_esim" | safeHTML }}</span></a>{{ end }}
           </div>
-          <p class="mt-3 px-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-400">Data &amp; research</p>
+          <p class="mt-3 px-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "g_data_amp_research" | safeHTML }}</p>
           <div class="mega-region mt-1.5 space-y-0.5">
-            {{ with site.GetPage "/research/esim-price-index" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>eSIM price index</span></a>{{ end }}
-            {{ with site.GetPage "/research/unlimited-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>Unlimited eSIM rates</span></a>{{ end }}
-            {{ with site.GetPage "/research/fair-use-audit" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>Fair use audit</span></a>{{ end }}
-            <a href="/research/" class="mega-link font-semibold text-brand-700"><span>All research →</span></a>
+            {{ with site.GetPage "/research/esim-price-index" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>{{ i18n "g_esim_price_index" | safeHTML }}</span></a>{{ end }}
+            {{ with site.GetPage "/research/unlimited-esim" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>{{ i18n "g_unlimited_esim_rates" | safeHTML }}</span></a>{{ end }}
+            {{ with site.GetPage "/research/fair-use-audit" }}<a href="{{ .RelPermalink }}" class="mega-link"><span>{{ i18n "g_fair_use_audit_3" | safeHTML }}</span></a>{{ end }}
+            <a href="{{ partial "lang-href.html" "/research/" }}" class="mega-link font-semibold text-brand-700"><span>{{ i18n "g_all_research" | safeHTML }}</span></a>
           </div>
         </div>
       </div>
     </nav>
 
-    <a href="/compare/" class="btn-primary ml-auto hidden text-xs md:inline-flex">Compare eSIMs</a>
+    {{/* ── 语言切换器 ──
+         ① 逐 hugo.Sites 遍历，不用 .Translations —— 后者只含有译文的页面，
+            第二个语言的内容没建全时切换器会时有时无；
+         ② 当前页在该语言下有对应译文就用那一页，没有就退回该语言首页
+            （$target 默认值 = .Home），因此永远不会 404；
+         ③ 只用一种语言时整块不输出 —— 加德语前英文产物一个字节都不变。 */}}
+    {{ if gt (len hugo.Sites) 1 }}
+    <div class="group relative ml-auto">
+      <button type="button" aria-haspopup="true" aria-label="{{ i18n "lang_switcher__label" | safeHTML }}" class="flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-50 hover:text-ink-950">
+        <span class="uppercase">{{ .Language.Lang }}</span>
+        <svg class="text-ink-300 transition-transform duration-200 group-hover:rotate-180" width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="nav-mega left-auto right-0 w-44">
+        {{ range hugo.Sites }}
+          {{ $target := .Home }}
+          {{ range $.AllTranslations }}{{ if eq .Language.Lang $target.Language.Lang }}{{ $target = . }}{{ end }}{{ end }}
+          <a href="{{ $target.RelPermalink }}" hreflang="{{ $target.Language.LanguageCode }}"{{ if eq $target.Language.Lang $.Language.Lang }} aria-current="true"{{ end }} class="mega-link">
+            <span class="font-semibold">{{ $target.Language.LanguageName }}</span>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+    <a href="{{ partial "lang-href.html" "/compare/" }}" class="btn-primary hidden text-xs md:inline-flex">{{ i18n "partials_header__compare_esims" | safeHTML }}</a>
   </div>
 
   {{/* 移动端导航行 */}}
-  <nav class="nav-scroll flex gap-1.5 overflow-x-auto border-t border-ink-100 px-4 py-2.5 md:hidden" aria-label="Mobile">
-    <a href="/compare/" class="whitespace-nowrap rounded-full bg-ink-950 px-3.5 py-1.5 text-xs font-semibold text-white">Compare</a>
-    <a href="/esim-providers/" class="whitespace-nowrap rounded-full bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-700">Providers</a>
-    <a href="/networks/" class="whitespace-nowrap rounded-full bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-700">Networks</a>
-    <a href="/compare/matchups/" class="whitespace-nowrap rounded-full bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-700">VS</a>
-    <a href="/tools/" class="whitespace-nowrap rounded-full bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-700">Tools</a>
-    <a href="/esim-deals/" class="whitespace-nowrap rounded-full bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-700">Deals</a>
-    <a href="/guides/" class="whitespace-nowrap rounded-full bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-700">Guides</a>
-    <a href="/research/" class="whitespace-nowrap rounded-full bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-700">Research</a>
+  <nav class="nav-scroll flex gap-1.5 overflow-x-auto border-t border-ink-100 px-4 py-2.5 md:hidden" aria-label="{{ i18n "partials_header__mobile" | safeHTML }}">
+    <a href="{{ partial "lang-href.html" "/compare/" }}" class="whitespace-nowrap rounded-full bg-ink-950 px-3.5 py-1.5 text-xs font-semibold text-white">{{ i18n "g_compare" | safeHTML }}</a>
+    <a href="{{ partial "lang-href.html" "/esim-providers/" }}" class="whitespace-nowrap rounded-full bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-700">{{ i18n "g_providers" | safeHTML }}</a>
+    <a href="{{ partial "lang-href.html" "/networks/" }}" class="whitespace-nowrap rounded-full bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-700">{{ i18n "g_networks" | safeHTML }}</a>
+    <a href="{{ partial "lang-href.html" "/compare/matchups/" }}" class="whitespace-nowrap rounded-full bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-700">VS</a>
+    <a href="{{ partial "lang-href.html" "/tools/" }}" class="whitespace-nowrap rounded-full bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-700">{{ i18n "g_tools" | safeHTML }}</a>
+    <a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="whitespace-nowrap rounded-full bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-700">{{ i18n "g_deals" | safeHTML }}</a>
+    <a href="{{ partial "lang-href.html" "/guides/" }}" class="whitespace-nowrap rounded-full bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-700">{{ i18n "g_guides" | safeHTML }}</a>
+    <a href="{{ partial "lang-href.html" "/research/" }}" class="whitespace-nowrap rounded-full bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-700">{{ i18n "g_research" | safeHTML }}</a>
+    {{/* 移动端语言切换：列出「其它」语言，跳各自首页（移动端不放下拉，省一层点击） */}}
+    {{ if gt (len hugo.Sites) 1 }}{{ range hugo.Sites }}{{ if ne .Language.Lang $.Language.Lang }}<a href="{{ .Home.RelPermalink }}" hreflang="{{ .Language.LanguageCode }}" class="whitespace-nowrap rounded-full border border-ink-200 px-3.5 py-1.5 text-xs font-semibold uppercase text-ink-700">{{ .Language.Lang }}</a>{{ end }}{{ end }}{{ end }}
   </nav>
 </header>

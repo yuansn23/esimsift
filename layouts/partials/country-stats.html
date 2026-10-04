@@ -1,28 +1,31 @@
-{{- /*
+{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}{{- /*
 国家统计聚合 —— 单一数据入口。从 data/plans/*.<ISO> 聚合所有品牌套餐，算出派生指标。
 被 head.html / compare 模板 / 卡片复用。传入：ISO 码字符串。返回：rows(全部套餐行) providers(品牌key列表) providerCount planCount
+     ⚠️ `gb` 必须保持 **float**：0 是"无限"的哨兵值，而小于 1GB 的计量档存的是小数
+     （500MB → 0.4883）。一旦有人在聚合处写 `int .gb`，500MB 会截断成 0，
+     全站 12 处 `where "gb" 0` 就把它当成无限流量 —— 这条是 2026-10-04 修回的真实事故。
       minPrice minPerGB maxGB unlimitedCount checked checkedDate
 */ -}}
 {{ $iso := . }}
 {{ $rows := slice }}
 {{ $providerKeys := slice }}
 {{ $checkedDates := slice }}
-{{ range $pk, $pdata := hugo.Data.plans }}
+{{ range $pk, $pdata := $d.plans }}
   {{ $c := index $pdata $iso }}
   {{ with $c }}
     {{ $providerKeys = $providerKeys | append $pk }}
     {{ $checkedDates = $checkedDates | append .checked }}
-    {{ $prov := index hugo.Data.providers $pk }}
+    {{ $prov := index $d.providers $pk }}
     {{ range .plans }}
       {{ $perDay := div (float .price) (float .days) }}
       {{ $perGB := 999999.0 }}
-      {{ if gt (int .gb) 0 }}{{ $perGB = div (float .price) (float .gb) }}{{ end }}
+      {{ if gt (float .gb) 0.0 }}{{ $perGB = div (float .price) (float .gb) }}{{ end }}
       {{ $rows = $rows | append (dict
         "key" $pk
         "provider" $prov.name
         "networks" (delimit $c.networks ", ")
         "name" .name
-        "gb" (int .gb)
+        "gb" (float .gb)
         "days" (int .days)
         "type" .type
         "price" (float .price)
@@ -46,17 +49,17 @@
   {{ $minUnlimited = (index (sort $ul "price" "asc") 0).price }}
 {{ end }}
 {{ $has5g := false }}
-{{ with index hugo.Data.carriers $iso }}
+{{ with index $d.carriers $iso }}
   {{ range .profiles }}{{ if in .tech "5G" }}{{ $has5g = true }}{{ end }}{{ end }}
 {{ end }}
-{{ $maxGB := 0 }}
+{{ $maxGB := 0.0 }}
 {{ range $rows }}{{ if gt .gb $maxGB }}{{ $maxGB = .gb }}{{ end }}{{ end }}
 {{ $checked := "" }}
 {{ if gt (len $checkedDates) 0 }}
   {{ $checked = index (sort $checkedDates) (sub (len $checkedDates) 1) }}
 {{ end }}
 {{ $checkedDate := "" }}
-{{ if $checked }}{{ $checkedDate = (time $checked).Format "Jan 2, 2006" }}{{ end }}
+{{ if $checked }}{{ $checkedDate = time.Format ":date_medium" (time $checked) }}{{ end }}
 {{ return dict
   "rows" $rows
   "providers" $providerKeys
@@ -67,7 +70,7 @@
   "minUnlimited" $minUnlimited
   "has5g" $has5g
   "maxGB" $maxGB
-  "unlimitedCount" (len (where $rows "gb" 0))
+  "unlimitedCount" (len (where $rows "isUnlimited" true))
   "checked" $checked
   "checkedDate" $checkedDate
 }}

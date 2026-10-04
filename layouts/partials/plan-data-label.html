@@ -1,0 +1,24 @@
+{{- /* 数据量 → 显示标签（显示层唯一转换点）
+     为什么需要它：`plans[].gb` 用 **0 表示"无限"**，而小于 1GB 的计量档存的是小数
+     （500MB 存成 0.4883）。任何地方只要写成 `int .gb`，500MB 的试用装就会被截断成
+     0 —— 页面随即把它标成 "unlimited"，既与事实相反又正好是最容易被读者当真的一栏。
+
+     由一处统一转换，保证列表页、行程对比表、页内计算器三处口径一致：
+       0        → "unlimited"（i18n，德语可译）
+       <1       → "500MB"（×1024 取整）
+       ≥1       → "5GB"
+     用法：{{ partial "plan-data-label.html" .gb }}
+
+     ⚠️ 必须 `float .` 起手：`gb` 在数据里**有的是 int（5 / 20）有的是 float（0.4883）**，
+     Go 的 `%g` 只接受 float，直接喂 int 会渲染成 `%!g(int=20)GB` 并在产物里可见 ——
+     这条由 `scripts/check_output.py` 兜住。 */ -}}
+{{- $gb := float . -}}
+{{- $out := "" -}}
+{{- if le $gb 0.0 -}}
+  {{- $out = i18n "compare_provider__trip_data_unlimited" -}}
+{{- else if lt $gb 1.0 -}}
+  {{- $out = printf "%.0f%s" (mul $gb 1024) (i18n "g_unit_mb") -}}
+{{- else -}}
+  {{- $out = printf "%g%s" $gb (i18n "g_unit_gb") -}}
+{{- end -}}
+{{- return $out -}}

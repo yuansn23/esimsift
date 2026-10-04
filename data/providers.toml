@@ -10,7 +10,10 @@
 #   airalo/holafly/yesim/roamic/alosim 官方无公开码 → 无 promo_* 字段（模块自动隐藏）。
 #   promo_pct 供 deals 页"折扣后实际价/翻盘分析"计算；promo_expires 官方均未标
 #   过期日，统一占位 2027-12-31，上线前逐个复核。
-# [brand.info] → 公司档案（HQ/法人/官网/双商店/客服/退款/目的地数），
+# [brand.info] → 公司档案（HQ/法人/官网/双商店/客服/退款/目的地数/Trustpilot 档案），
+#   trustpilot：官方档案 URL 2026-10-04 逐个核实。**只存链接不存分数** —— 分数按
+#     Trustpilot 地区域名分片（Airalo 3.9/4.0/4.1 三个值），抓取被反爬墙拦截无法
+#     给出可核实单值；品牌页改为「给档案链接 + 教读者怎么读」。roami 无档案，留空。
 #   2026-10-01 三路代理逐品牌在官方页面核验，来源见各品牌块内注释。
 # logo：static/img/providers/<key>.png 或 .webp（prov-logo 自动探测），
 #   alosim/roami 暂无 logo 文件 → monogram 占位。
@@ -26,6 +29,7 @@
 # ============================================================
 
 [roami]
+profile_checked = "2026-10-04"   # 品牌档案（简介/政策/官网事实）核对日
 name = "Roami"
 founded = 2024
 tagline = "App-first travel eSIM with 24/7 activation"
@@ -48,6 +52,7 @@ promo_terms = "New users only — apply at checkout for 20% off your first order
 hq = "Hong Kong"
 legal = "Hong Kong LinZe Co., Limited"
 website = "https://roamiapp.com"
+# trustpilot：无 —— 域名过滤搜索 trustpilot.com 无 Roami 档案；自家博客宣称的 4.9 分无档案支撑，不采信
 app_android = ""   # 官网有 Play 徽章但无实际链接，Play 商店搜不到 App（截至核验日）
 app_ios = "https://apps.apple.com/us/app/roami-esim-global-work-travel/id6747127122"
 support = "24/7 human support (online assistance 365 days) and email"
@@ -57,6 +62,7 @@ refund = "Roami's worry-free refund policy promises a full refund if the plan do
 destinations = 200
 
 [airalo]
+profile_checked = "2026-10-04"   # 品牌档案（简介/政策/官网事实）核对日
 name = "Airalo"
 founded = 2019
 tagline = "The original eSIM marketplace"
@@ -73,6 +79,7 @@ sponsored = true
 hq = "Singapore"
 legal = "AIRGSM Pte. Ltd."
 website = "https://www.airalo.com"
+trustpilot = "https://www.trustpilot.com/review/airalo.com"
 app_android = "https://play.google.com/store/apps/details?id=com.mobillium.airalo"
 app_ios = "https://apps.apple.com/us/app/airalo-esim-for-travel-data/id1475911720"
 support = "24/7 live chat (website and in-app) and email"
@@ -82,14 +89,15 @@ refund = "Airalo lets you withdraw within 14 days of purchase, but the right exp
 destinations = 200
 
 [holafly]
+profile_checked = "2026-10-04"   # 品牌档案（简介/政策/官网事实）核对日
 name = "Holafly"
 founded = 2018
 tagline = "Unlimited data, pay by the day"
 type = "marketplace"
 color = "#31B44A"
 initials = "Ho"
-strengths = ["Unlimited-data plans in 190+ destinations", "One-plan-per-country simplicity", "Hotspot sharing included"]
-weaknesses = ["Flat daily pricing gets expensive on long trips", "No budget tier - one plan shape only", "Fair-use throttling applies despite the unlimited label"]
+strengths = ["Unlimited-data plans in 190+ destinations", "One-plan-per-country simplicity", "Buy any number of days - you pay only for the days you travel"]
+weaknesses = ["Hotspot sharing capped at 500 MB/day on destination plans", "Flat daily pricing gets expensive on long trips", "No top-ups - a used-up plan is replaced, not refilled"]
 sponsored = true
 # 2026-10-01 官方核验：无公开折扣码（首页横幅为邀请返利活动，非公开码）
 
@@ -98,6 +106,7 @@ sponsored = true
 hq = "Dublin, Ireland"
 legal = "Holafly Limited"
 website = "https://esim.holafly.com"
+trustpilot = "https://www.trustpilot.com/review/holafly.com"
 app_android = "https://play.google.com/store/apps/details?id=com.holafly.holafly"
 app_ios = "https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786"
 support = "24/7 live chat in multiple languages, WhatsApp (+1 661 384 8482) and email"
@@ -107,6 +116,7 @@ refund = "Holafly gives you up to 6 months from purchase to request a refund. A 
 destinations = 200
 
 [saily]
+profile_checked = "2026-10-04"   # 品牌档案（简介/政策/官网事实）核对日
 name = "Saily"
 founded = 2024
 tagline = "The no-logs eSIM from the NordVPN team"
@@ -129,6 +139,7 @@ promo_terms = "Partner promotion published on Saily's official site. Enter the c
 hq = "Amsterdam, Netherlands"
 legal = "NordSec B.V."
 website = "https://saily.com"
+trustpilot = "https://www.trustpilot.com/review/saily.com"
 app_android = "https://play.google.com/store/apps/details?id=com.saily.android"
 app_ios = "https://apps.apple.com/us/app/saily-esim-data-for-travel/id6475045151"
 support = "24/7 live chat in the Saily app, web support tickets and email (no phone support)"
@@ -138,6 +149,7 @@ refund = "Refunds can be requested within 30 days of activation and while the da
 destinations = 200
 
 [yesim]
+profile_checked = "2026-10-04"   # 品牌档案（简介/政策/官网事实）核对日
 name = "Yesim"
 founded = 2019
 tagline = "Swiss-based eSIM with pay-as-you-go data"
@@ -154,6 +166,7 @@ sponsored = true
 hq = "Zug, Switzerland"
 legal = "GENESIS GROUP AG"
 website = "https://yesim.app"
+trustpilot = "https://www.trustpilot.com/review/yesim.app"
 app_android = "https://play.google.com/store/apps/details?id=com.yesimmobile"
 app_ios = "https://apps.apple.com/us/app/yesim-esim-virtual-2nd-line/id1458505230"
 support = "24/7 live chat in the Yesim app, contact form and email"
@@ -163,6 +176,7 @@ refund = "Yesim refunds only completely unused and unactivated services, request
 destinations = 200   # 官方全球套餐页 "200+ destinations"（Play 商店页仍写 140+）
 
 [ubigi]
+profile_checked = "2026-10-04"   # 品牌档案（简介/政策/官网事实）核对日
 name = "Ubigi"
 founded = 2017
 tagline = "Global 4G/5G eSIM from Transatel, an NTT company"
@@ -185,6 +199,7 @@ promo_terms = "Official welcome code from Ubigi's help center: 10% off your firs
 hq = "Paris La Défense (Courbevoie), France"
 legal = "Transatel (NTT Group)"
 website = "https://www.ubigi.com"
+trustpilot = "https://www.trustpilot.com/review/cellulardata.ubigi.com"
 app_android = "https://play.google.com/store/apps/details?id=com.transatel.selfcare.ubigi"
 app_ios = "https://apps.apple.com/us/app/ubigi-travel-esim-mobile-data/id1375857674"
 support = "Chat (24/7 virtual assistant) and a web contact form; no published support email or phone"
@@ -194,6 +209,7 @@ refund = "Ubigi data plans are non-refundable once use has started — even part
 destinations = 200
 
 [roamic]
+profile_checked = "2026-10-04"   # 品牌档案（简介/政策/官网事实）核对日
 name = "Roamic"
 founded = 2021
 tagline = "European eSIM brand with unlimited options"
@@ -211,6 +227,7 @@ sponsored = true
 hq = "Sant Cugat del Vallès (Barcelona), Spain"
 legal = "Bytetravel S.A."
 website = "https://roamic.com"
+trustpilot = "https://www.trustpilot.com/review/roamic.com"
 app_android = ""   # 无 App（Play/App Store 均搜不到）
 app_ios = ""       # 无 App
 support = "24/7 live chat and email; phone +34 91 791 94 91"
@@ -220,6 +237,7 @@ refund = "Roamic's homepage promises a no-questions-asked refund if your eSIM go
 destinations = 190
 
 [alosim]
+profile_checked = "2026-10-04"   # 品牌档案（简介/政策/官网事实）核对日
 name = "aloSIM"
 founded = 2021
 tagline = "Budget eSIM app from Canada's AffinityClick"
@@ -236,6 +254,7 @@ sponsored = true
 hq = "Ottawa, Ontario, Canada"
 legal = "AffinityClick Inc."
 website = "https://alosim.com"
+trustpilot = "https://www.trustpilot.com/review/alosim.com"
 app_android = "https://play.google.com/store/apps/details?id=com.affinityclick.alosim"
 app_ios = "https://apps.apple.com/us/app/alosim-5g-prepaid-travel-esim/id1535815057"
 support = "Live chat (website and in-app) and email, available 24 hours a day, 365 days a year; phone +1 877-278-3625"
@@ -243,3 +262,118 @@ support_email = "support@alosim.com"
 response_time = ""   # 官方仅承诺 24/7/365 在线，无时限承诺
 refund = "aloSIM offers a 30-day money-back guarantee: a full refund if you can't install the eSIM or hit connectivity issues, including discovering your device isn't eSIM-compatible. You need your original receipt, and the team may ask why you're requesting the refund."
 destinations = 200
+
+# ============================================================
+# [<provider>.policy] —— 政策事实（品牌×国家子页的「Plan reality check」数据源）
+#
+# 为什么单独抽出来：价格表回答「多少钱」，但用户真正踩坑的是三件标签外的事 ——
+# 热点是否被限、满速能用多少 GB、能不能续充。这三件事在套餐数据里没有，
+# 过去只散落在 strengths/weaknesses 的散文里，模板无法结构化渲染，
+# 也无法让「无限流量」这个卖点接受检验。
+#
+# 字段（全部可选，模板对缺失字段降级为「尚未核实」而不是编造）：
+#   hotspot           capped | allowed | none  —— 热点/共享的形态
+#   hotspot_allowance 展示用额度串（如 "500 MB/day"）
+#   hotspot_note      一句人话解释
+#   fup_allowance     满速额度（"No GB figure published" 也是合法答案）
+#   fup_drop          限速后的速度档
+#   fup_note          一句人话解释
+#   topup             true | false —— 用尽能否续充
+#   topup_note
+#   voice             data-only | app —— 有无本地号码
+#
+# 核实口径（2026-10-04 一次；2026-10-04 二次补齐 roami / roamic）：
+# 以厂商官方「technical specs / 套餐页细则 / 官方 FAQ」为准；
+# 官方未公布数字时如实写「未公布」，第三方实测数字在 note 里注明来源性质。
+# roami / roamic 已按各自官网补齐（见文末两张表），八个品牌现在全覆盖。
+# 政策会变，上线后每季度复核一次。
+# ============================================================
+
+[holafly.policy]
+hotspot = "capped"
+hotspot_allowance = "500 MB/day"
+hotspot_note = "Holafly's own technical specs cap tethering at 500 MB/day on destination plans. Unlimited hotspot exists only on the separate Holafly Plans subscription, not on the travel plans below."
+fup_allowance = "No GB figure published"
+fup_drop = "256 Kbps - 1 Mbps"
+fup_note = "Holafly publishes no daily GB threshold and says throttling is temporary, never longer than 24 hours. Independent testing in early 2026 measured the cut-off at 500 MB - 1 GB/day in most Western destinations, and host operators can also slow you after roughly 90 GB in a month."
+topup = false
+topup_note = "Holafly has no top-ups. If a plan runs out you buy a new eSIM rather than adding data to the existing one."
+voice = "data-only"
+
+[airalo.policy]
+hotspot = "allowed"
+hotspot_allowance = "No separate cap"
+hotspot_note = "Tethering is allowed and counted against your plan's data allowance, with no separate hotspot limit and no cap on connected devices."
+fup_allowance = "3 GB/day on unlimited plans"
+fup_drop = "1 Mbps"
+fup_note = "Airalo publishes one fair-use rule for all its unlimited plans: pass 3 GB in a day and speed drops to 1 Mbps for the rest of that day, resetting 24 hours after activation. Metered plans are never throttled - they simply stop when the data is gone."
+topup = true
+topup_note = "Top-ups are available in the Airalo app, so running low mid-trip costs a few dollars rather than a new eSIM."
+voice = "data-only"
+
+[saily.policy]
+hotspot = "allowed"
+hotspot_allowance = "No separate cap"
+hotspot_note = "Saily advertises unrestricted hotspot sharing; tethering data is drawn from the same plan allowance as your phone."
+fup_allowance = "5 GB/day on unlimited plans"
+fup_drop = "1 Mbps"
+fup_note = "Saily states its daily cap openly: 5 GB at full speed per 24-hour cycle, then around 1 Mbps. That is the most generous published threshold among the unlimited travel plans we track."
+topup = true
+topup_note = "In-app top-ups, so a shortfall is a two-tap fix."
+voice = "data-only"
+
+[ubigi.policy]
+hotspot = "allowed"
+hotspot_allowance = "No separate cap"
+hotspot_note = "Data sharing is explicitly allowed and hotspot traffic counts against the plan's own allowance rather than a separate tethering budget."
+fup_allowance = "Varies by plan - published per plan page"
+fup_drop = "1 - 2 Mbps"
+fup_note = "Ubigi publishes a different threshold on each unlimited plan, and the spread is large - two plans at the same price have been seen giving 15 GB total versus 5 GB/day. Read the fair-use line on the exact plan page you are buying from."
+topup = true
+topup_note = "Topping up is supported in the Ubigi account dashboard."
+voice = "data-only"
+
+[alosim.policy]
+hotspot = "allowed"
+hotspot_allowance = "From the plan allowance"
+hotspot_note = "Tethering is permitted and shares the same data pool as the phone, with no separate hotspot tier."
+fup_allowance = "1.5 - 2 GB/day on unlimited plans"
+fup_drop = "512 Kbps"
+fup_note = "aloSIM's unlimited tiers slow to roughly 512 Kbps once the daily full-speed allowance is used. Its metered packs behave like hard-capped data and are not throttled."
+topup = true
+topup_note = "Flexible top-ups through the free aloSIM app."
+voice = "data-only"
+
+[yesim.policy]
+hotspot = "allowed"
+hotspot_allowance = "From the plan allowance"
+hotspot_note = "Hotspot use is permitted and normally drawn from the plan's own data pool rather than a separate tethering allowance."
+fup_allowance = "500 MB - 2 GB/day, stated before purchase"
+fup_drop = "Reduced speed until the next cycle"
+fup_note = "Yesim puts its daily full-speed allowance on the plan page before you buy, which is more than most rivals do. Thresholds sit between 500 MB and 2 GB/day depending on destination, and its metered plans are not throttled."
+topup = true
+topup_note = "Top-ups are handled in the Yesim app."
+voice = "data-only"
+
+# ── 以下是第二轮补的（2026-10-04），八个品牌至此全覆盖 ──────────────
+[roamic.policy]
+hotspot = "allowed"
+hotspot_allowance = "Allowed for personal use"
+hotspot_note = "Roamic's product pages list hotspot as supported. Its fair-use page allows normal personal tethering but prohibits sharing the connection across many devices or reselling it, so a family hotspotting a laptop and two tablets is outside the terms."
+fup_allowance = "3 GB/day"
+fup_drop = "1 Mbps"
+fup_note = "Roamic states one figure everywhere: 3 GB at full speed in each 24-hour period, then 1 Mbps until the cycle resets. No extra charge and the connection is never cut off. This is the clearest published threshold of any unlimited provider we track."
+topup = true
+topup_note = "Roamic sells top-ups online, so a plan that runs short can be extended without installing a new eSIM."
+voice = "data-only"
+
+[roami.policy]
+hotspot = "allowed"
+hotspot_allowance = "Up to 5 devices"
+hotspot_note = "Roami advertises free hotspot sharing on every plan for up to five devices, with tethering traffic counted against the plan allowance rather than a separate hotspot budget."
+fup_allowance = "30 GB/day"
+fup_drop = "Reduced speed"
+fup_note = "Roami's destination pages state that speed may reduce after 30 GB in a single day, but its USA page claims no fair-use throttle at all and its UK guide cites 2 GB/day on the unlimited tier instead. Treat the threshold as destination-dependent and read the plan page for the country you are buying."
+topup = true
+topup_note = "Top-ups are bought in the Roami app and activate on the existing eSIM within seconds, with no new QR code to install."
+voice = "data-only"

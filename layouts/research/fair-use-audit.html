@@ -1,13 +1,13 @@
-{{ define "main" }}
+{{ define "main" }}{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}
 {{/* 研究页 · Fair Use Audit —— 逐品牌审计 unlimited 套餐的公平使用条款
    口径：只统计我们实际跟踪到的套餐；fup_note 逐字记录，非转述。
    交叉链接：unlimited 榜 / 国家页（每国 fup 在套餐行内原样展示）。 */}}
 {{ $audit := dict }}
-{{ range $pk, $pdata := hugo.Data.plans }}
+{{ range $pk, $pdata := $d.plans }}
   {{ $unlim := 0 }}{{ $withNote := 0 }}{{ $notes := slice }}
   {{ range $iso, $pc := $pdata }}
     {{ range $pc.plans }}
-      {{ if eq (int .gb) 0 }}
+      {{ if eq (float .gb) 0.0 }}
         {{ $unlim = add $unlim 1 }}
         {{ with .fup_note }}
           {{ $withNote = add $withNote 1 }}
@@ -27,9 +27,9 @@
 {{ $transparentNames := slice }}{{ $partialNames := slice }}{{ $unstatedNames := slice }}
 {{ range $pk, $a := $audit }}
   {{ if gt $a.unlimited 0 }}
-    {{ if eq $a.withNote $a.unlimited }}{{ $transparentNames = $transparentNames | append (index hugo.Data.providers $pk).name }}
-    {{ else if gt $a.withNote 0 }}{{ $partialNames = $partialNames | append (index hugo.Data.providers $pk).name }}
-    {{ else }}{{ $unstatedNames = $unstatedNames | append (index hugo.Data.providers $pk).name }}{{ end }}
+    {{ if eq $a.withNote $a.unlimited }}{{ $transparentNames = $transparentNames | append (index $d.providers $pk).name }}
+    {{ else if gt $a.withNote 0 }}{{ $partialNames = $partialNames | append (index $d.providers $pk).name }}
+    {{ else }}{{ $unstatedNames = $unstatedNames | append (index $d.providers $pk).name }}{{ end }}
   {{ end }}
 {{ end }}
 
@@ -39,20 +39,20 @@
   <div class="mt-4 grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
   <header>
     <div class="flex flex-wrap items-center gap-3">
-      <span class="badge bg-brand-50 text-brand-700">original research</span>
+      <span class="badge bg-brand-50 text-brand-700">{{ i18n "g_original_research" | safeHTML }}</span>
       <span class="badge bg-ink-50 text-ink-500 tnum">{{ $totalUnlimited }} unlimited plans audited</span>
     </div>
     <h1 class="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ .Title }}</h1>
-    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">“Unlimited” on an eSIM listing never means unthrottled. We audit the fair-use policy of every unlimited plan in our database — recorded verbatim at check time — and publish what each provider's small print actually does.</p>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">{{ i18n "research_fair_use_audit__unlimited_on_an_esim_listing_never_means_unthrottled_we_" | safeHTML }}</p>
     <div class="mt-6 flex flex-wrap gap-3">
-      <div class="stat-tile"><span class="stat-num tnum">{{ $totalUnlimited }}</span><span class="stat-label">unlimited plans tracked</span></div>
-      <div class="stat-tile"><span class="stat-num tnum text-brand-700">{{ $pct }}%</span><span class="stat-label">carry an explicit FUP note</span></div>
-      <div class="stat-tile"><span class="stat-num tnum">{{ sub $totalUnlimited $totalNoted }}</span><span class="stat-label">say nothing on the listing</span></div>
+      <div class="stat-tile"><span class="stat-num tnum">{{ $totalUnlimited }}</span><span class="stat-label">{{ i18n "research_fair_use_audit__unlimited_plans_tracked" | safeHTML }}</span></div>
+      <div class="stat-tile"><span class="stat-num tnum text-brand-700">{{ $pct }}%</span><span class="stat-label">{{ i18n "research_fair_use_audit__carry_an_explicit_fup_note" | safeHTML }}</span></div>
+      <div class="stat-tile"><span class="stat-num tnum">{{ sub $totalUnlimited $totalNoted }}</span><span class="stat-label">{{ i18n "research_fair_use_audit__say_nothing_on_the_listing" | safeHTML }}</span></div>
     </div>
   </header>
   <figure class="figure">
-    <img src="/img/esim/travel-esim-illustration-003.webp" alt="Traveler reading the fair use policy of an unlimited eSIM plan" width="2848" height="1470">
-    <figcaption>Every "unlimited" eSIM carries a fair-use policy — we quote each one verbatim.</figcaption>
+    <img src="/img/esim/travel-esim-illustration-003.webp" alt="{{ i18n "research_fair_use_audit__traveler_reading_the_fair_use_policy_of_an_unlimited_esi" | safeHTML }}" width="2848" height="1470">
+    <figcaption>{{ i18n "research_fair_use_audit__every_unlimited_esim_carries_a_fair_use_policy_we_quote_" | safeHTML }}</figcaption>
   </figure>
   </div>
 
@@ -60,29 +60,29 @@
 
   {{/* ── 审计表（逐品牌） ── */}}
   <section class="mt-12" aria-labelledby="audit">
-    <p class="eyebrow">The audit</p>
-    <h2 id="audit" class="mt-2 text-2xl font-bold md:text-3xl">What each provider's unlimited really means</h2>
+    <p class="eyebrow">{{ i18n "research_fair_use_audit__the_audit" | safeHTML }}</p>
+    <h2 id="audit" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "research_fair_use_audit__what_each_provider_s_unlimited_really_means" | safeHTML }}</h2>
     <div class="card mt-6 overflow-hidden p-0">
       <div class="overflow-x-auto">
         <table class="table-pro">
           <thead>
-            <tr><th>Provider</th><th>Unlimited plans tracked</th><th>With explicit FUP note</th><th>What the note says</th><th>Verdict</th></tr>
+            <tr><th>{{ i18n "g_provider" | safeHTML }}</th><th>{{ i18n "research_fair_use_audit__unlimited_plans_tracked_2" | safeHTML }}</th><th>{{ i18n "research_fair_use_audit__with_explicit_fup_note" | safeHTML }}</th><th>{{ i18n "research_fair_use_audit__what_the_note_says" | safeHTML }}</th><th>{{ i18n "research_fair_use_audit__verdict" | safeHTML }}</th></tr>
           </thead>
           <tbody>
             {{ range $pk, $a := $audit }}
-              {{ $p := index hugo.Data.providers $pk }}
+              {{ $p := index $d.providers $pk }}
             <tr>
-              <td><a href="/esim-providers/{{ $pk }}/" class="font-medium text-ink-800 transition-colors hover:text-brand-700">{{ $p.name }}</a></td>
+              <td><a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $pk) }}" class="font-medium text-ink-800 transition-colors hover:text-brand-700">{{ $p.name }}</a></td>
               <td class="tnum">{{ if gt .unlimited 0 }}{{ .unlimited }}{{ else }}—{{ end }}</td>
               <td class="tnum">{{ if gt .unlimited 0 }}{{ .withNote }}/{{ .unlimited }}{{ else }}—{{ end }}</td>
               <td class="max-w-sm text-xs text-ink-600">
-                {{ if .notes }}{{ range first 2 .notes }}<p class="mb-1">“{{ . | truncate 110 }}”</p>{{ end }}{{ if gt (len .notes) 2 }}<p class="text-ink-400">+{{ sub (len .notes) 2 }} more variants</p>{{ end }}{{ else if gt .unlimited 0 }}<span class="text-ink-300">no note on any tracked listing</span>{{ else }}<span class="text-ink-300">sells no unlimited plans</span>{{ end }}
+                {{ if .notes }}{{ range first 2 .notes }}<p class="mb-1">“{{ . | truncate 110 }}”</p>{{ end }}{{ if gt (len .notes) 2 }}<p class="text-ink-400">+{{ sub (len .notes) 2 }} more variants</p>{{ end }}{{ else if gt .unlimited 0 }}<span class="text-ink-300">{{ i18n "research_fair_use_audit__no_note_on_any_tracked_listing" | safeHTML }}</span>{{ else }}<span class="text-ink-300">{{ i18n "research_fair_use_audit__sells_no_unlimited_plans" | safeHTML }}</span>{{ end }}
               </td>
               <td>
-                {{ if eq .unlimited 0 }}<span class="badge bg-ink-50 text-ink-500">not applicable</span>
-                {{ else if eq .withNote .unlimited }}<span class="badge bg-brand-50 text-brand-700">transparent</span>
-                {{ else if gt .withNote 0 }}<span class="badge bg-accent-50 text-accent-700">partial</span>
-                {{ else }}<span class="badge bg-accent-100 text-accent-800">unstated</span>{{ end }}
+                {{ if eq .unlimited 0 }}<span class="badge bg-ink-50 text-ink-500">{{ i18n "research_fair_use_audit__not_applicable" | safeHTML }}</span>
+                {{ else if eq .withNote .unlimited }}<span class="badge bg-brand-50 text-brand-700">{{ i18n "g_transparent" | safeHTML }}</span>
+                {{ else if gt .withNote 0 }}<span class="badge bg-accent-50 text-accent-700">{{ i18n "g_partial" | safeHTML }}</span>
+                {{ else }}<span class="badge bg-accent-100 text-accent-800">{{ i18n "g_unstated" | safeHTML }}</span>{{ end }}
               </td>
             </tr>
             {{ end }}
@@ -90,18 +90,18 @@
         </table>
       </div>
     </div>
-    <p class="mt-3 text-xs text-ink-400">“Verdict” reflects only what a provider's own listing states at check time: <em>transparent</em> = every tracked unlimited plan carries an explicit note; <em>partial</em> = some do; <em>unstated</em> = none do. We do not paraphrase or interpret policies — notes are quoted verbatim.</p>
+    <p class="mt-3 text-xs text-ink-400">{{ i18n "research_fair_use_audit__verdict_reflects_only_what_a_provider_s_own_listing_stat" | safeHTML }} <em>{{ i18n "g_transparent" | safeHTML }}</em> {{ i18n "research_fair_use_audit__every_tracked_unlimited_plan_carries_an_explicit_note" | safeHTML }} <em>{{ i18n "g_partial" | safeHTML }}</em> {{ i18n "research_fair_use_audit__some_do" | safeHTML }} <em>{{ i18n "g_unstated" | safeHTML }}</em> {{ i18n "research_fair_use_audit__none_do_we_do_not_paraphrase_or_interpret_policies_notes" | safeHTML }}</p>
   </section>
 
   {{/* ── 买前四查 ── */}}
   <section class="mt-12" aria-labelledby="beforebuy">
-    <p class="eyebrow">Before you buy</p>
-    <h2 id="beforebuy" class="mt-2 text-2xl font-bold md:text-3xl">Four things to check on any unlimited plan</h2>
+    <p class="eyebrow">{{ i18n "g_before_you_buy" | safeHTML }}</p>
+    <h2 id="beforebuy" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "research_fair_use_audit__four_things_to_check_on_any_unlimited_plan" | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2">
-      <div class="card p-6"><h3 class="font-display text-base font-bold text-ink-950">1 · The daily rate rather than the sticker price</h3><p class="mt-3 text-sm leading-relaxed text-ink-600">Divide the price by the days. The <a href="/research/unlimited-esim/" class="font-semibold text-brand-700 hover:underline">unlimited league table</a> does this for every country we track.</p></div>
-      <div class="card p-6"><h3 class="font-display text-base font-bold text-ink-950">2 · Whether a fair-use note exists at all</h3><p class="mt-3 text-sm leading-relaxed text-ink-600">A listing with no FUP note isn't a promise of unthrottled data — it just means the seller didn't state one. Treat “unstated” as “unknown”, not “none”.</p></div>
-      <div class="card p-6"><h3 class="font-display text-base font-bold text-ink-950">3 · Hotspot sharing rules</h3><p class="mt-3 text-sm leading-relaxed text-ink-600">Tethering is where fair-use policies bite hardest. Some plans allow it, some throttle it, some drop it after a threshold — it's in the per-plan notes on each country page.</p></div>
-      <div class="card p-6"><h3 class="font-display text-base font-bold text-ink-950">4 · Whether a big metered bucket is cheaper</h3><p class="mt-3 text-sm leading-relaxed text-ink-600">If your usage is predictable, a 20GB metered plan often beats unlimited on price. Check both tables on your <a href="/compare/" class="font-semibold text-brand-700 hover:underline">destination's page</a> before committing.</p></div>
+      <div class="card p-6"><h3 class="font-display text-base font-bold text-ink-950">{{ i18n "research_fair_use_audit__1_the_daily_rate_rather_than_the_sticker_price" | safeHTML }}</h3><p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "research_fair_use_audit__divide_the_price_by_the_days_the" | safeHTML }} <a href="{{ partial "lang-href.html" "/research/unlimited-esim/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "research_fair_use_audit__unlimited_league_table" | safeHTML }}</a> {{ i18n "research_fair_use_audit__does_this_for_every_country_we_track" | safeHTML }}</p></div>
+      <div class="card p-6"><h3 class="font-display text-base font-bold text-ink-950">{{ i18n "research_fair_use_audit__2_whether_a_fair_use_note_exists_at_all" | safeHTML }}</h3><p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "research_fair_use_audit__a_listing_with_no_fup_note_isn_t_a_promise_of_unthrottle" | safeHTML }}</p></div>
+      <div class="card p-6"><h3 class="font-display text-base font-bold text-ink-950">{{ i18n "research_fair_use_audit__3_hotspot_sharing_rules" | safeHTML }}</h3><p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "research_fair_use_audit__tethering_is_where_fair_use_policies_bite_hardest_some_p" | safeHTML }}</p></div>
+      <div class="card p-6"><h3 class="font-display text-base font-bold text-ink-950">{{ i18n "research_fair_use_audit__4_whether_a_big_metered_bucket_is_cheaper" | safeHTML }}</h3><p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "research_fair_use_audit__if_your_usage_is_predictable_a_20gb_metered_plan_often_b" | safeHTML }} <a href="{{ partial "lang-href.html" "/compare/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "research_fair_use_audit__destination_s_page" | safeHTML }}</a> {{ i18n "research_fair_use_audit__before_committing" | safeHTML }}</p></div>
     </div>
   </section>
 
@@ -116,7 +116,7 @@
   {{ if gt (len $faqList) 0 }}
   <section class="mt-12" aria-labelledby="faq">
     <p class="eyebrow">FAQ</p>
-    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">How do you spot a fair-use catch before you buy</h2>
+    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "research_fair_use_audit__how_do_you_spot_a_fair_use_catch_before_you_buy" | safeHTML }}</h2>
     <div class="mt-6 max-w-3xl space-y-3">
       {{ range $faqList }}
       <details class="card group p-0">
@@ -135,13 +135,13 @@
 
   {{/* ── 相关阅读（研究互联） ── */}}
   <section class="mt-12" aria-labelledby="related">
-    <p class="eyebrow">Keep reading</p>
-    <h2 id="related" class="mt-2 text-2xl font-bold md:text-3xl">Related research &amp; comparisons</h2>
+    <p class="eyebrow">{{ i18n "g_keep_reading" | safeHTML }}</p>
+    <h2 id="related" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "g_related_research_amp_comparisons" | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <a href="/research/unlimited-esim/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Unlimited eSIM daily rates</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Every country's cheapest unlimited rate, and when it beats metered data.</p></a>
-      <a href="/research/esim-price-index/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">eSIM price index</p><p class="mt-2 text-xs leading-relaxed text-ink-500">All {{ len hugo.Data.countries }} countries ranked by best $/GB, with regional averages.</p></a>
-      <a href="/compare/matchups/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Provider matchups</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Every provider head-to-head, computed country by country.</p></a>
-      <a href="/esim-providers/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Provider reviews</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Each provider's plans, pricing behavior and coverage, reviewed.</p></a>
+      <a href="{{ partial "lang-href.html" "/research/unlimited-esim/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_unlimited_esim_daily_rates" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_fair_use_audit__every_country_s_cheapest_unlimited_rate_and_when_it_beat" | safeHTML }}</p></a>
+      <a href="{{ partial "lang-href.html" "/research/esim-price-index/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_esim_price_index" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">All {{ len $d.countries }} countries ranked by best $/GB, with regional averages.</p></a>
+      <a href="{{ partial "lang-href.html" "/compare/matchups/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_provider_matchups_2" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_fair_use_audit__every_provider_head_to_head_computed_country_by_country" | safeHTML }}</p></a>
+      <a href="{{ partial "lang-href.html" "/esim-providers/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_provider_reviews" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_fair_use_audit__each_provider_s_plans_pricing_behavior_and_coverage_revi" | safeHTML }}</p></a>
     </div>
   </section>
 
@@ -149,8 +149,8 @@
   <section class="mt-12">
     <div class="relative overflow-hidden rounded-3xl bg-ink-gradient px-7 py-8 text-ink-300 md:px-10">
       <div class="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
-      <p class="font-display text-lg font-bold text-white">The small print, in large print.</p>
-      <p class="mt-2 max-w-2xl text-sm leading-relaxed">Fair-use notes are captured verbatim from each provider's listing at check time and re-verified on our regular schedule — see the <a href="/methodology/" class="font-semibold text-brand-300 hover:underline">methodology</a>. Every unlimited plan's note is also shown on its own row in each <a href="/compare/" class="font-semibold text-brand-300 hover:underline">country price table</a>.</p>
+      <p class="font-display text-lg font-bold text-white">{{ i18n "research_fair_use_audit__the_small_print_in_large_print" | safeHTML }}</p>
+      <p class="mt-2 max-w-2xl text-sm leading-relaxed">{{ i18n "research_fair_use_audit__fair_use_notes_are_captured_verbatim_from_each_provider_" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>{{ i18n "research_fair_use_audit__every_unlimited_plan_s_note_is_also_shown_on_its_own_row" | safeHTML }} <a href="{{ partial "lang-href.html" "/compare/" }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "research_fair_use_audit__country_price_table" | safeHTML }}</a>.</p>
     </div>
   </section>
 </div>

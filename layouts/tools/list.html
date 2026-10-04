@@ -1,21 +1,21 @@
-{{ define "main" }}
+{{ define "main" }}{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}
 {{/* 旅行成本计算器 —— 数据层驱动，纯客户端计算，零依赖。
    输出：单一推荐（Our pick）+ 内部跳转到对应品牌×国家页 / 品牌详情页。
    作为可嵌入小工具（反链 moat）：数据内联 JSON，页面可被 iframe 引用。 */}}
 {{ $countries := slice }}
 {{ $plans := slice }}
-{{ range $iso, $c := hugo.Data.countries }}
+{{ range $iso, $c := $d.countries }}
   {{ $countries = $countries | append (dict "iso" $iso "name" $c.name "region" $c.region "slug" $c.slug) }}
-  {{ range $pk, $pdata := hugo.Data.plans }}
+  {{ range $pk, $pdata := $d.plans }}
     {{ with index $pdata $iso }}
       {{ range .plans }}
-        {{ $plans = $plans | append (dict "iso" $iso "provider" $pk "name" .name "gb" (int .gb) "days" (int .days) "type" .type "price" (float .price)) }}
+        {{ $plans = $plans | append (dict "iso" $iso "provider" $pk "name" .name "gb" (float .gb) "days" (int .days) "label" (partial "plan-data-label.html" .gb) "type" .type "price" (float .price)) }}
       {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}
 {{ $provs := dict }}
-{{ range $key, $p := hugo.Data.providers }}{{ $provs = merge $provs (dict $key $p.name) }}{{ end }}
+{{ range $key, $p := $d.providers }}{{ $provs = merge $provs (dict $key $p.name) }}{{ end }}
 
 {{/* ── 活动码率表（MB/小时）：估算器 JS + 参考表同源；对标竞品并超越（竞品只给 GB，我们闭环到真实套餐） ── */}}
 {{ $acts := slice
@@ -31,19 +31,19 @@
 
 {{/* ── 品牌入口（计算生成）：覆盖国家数 + 全球最低价及其所在国 ── */}}
 {{ $provCards := slice }}
-{{ range $pk, $pdata := hugo.Data.plans }}
+{{ range $pk, $pdata := $d.plans }}
   {{ $cnt := 0 }}{{ $min := 999999.0 }}{{ $minIso := "" }}
   {{ range $iso, $pc := $pdata }}
     {{ $cnt = add $cnt 1 }}
     {{ range $pc.plans }}{{ if lt (float .price) $min }}{{ $min = float .price }}{{ $minIso = $iso }}{{ end }}{{ end }}
   {{ end }}
-  {{ $provCards = $provCards | append (dict "key" $pk "name" (index hugo.Data.providers $pk).name "countries" $cnt "min" $min "minCountry" (index hugo.Data.countries $minIso).name) }}
+  {{ $provCards = $provCards | append (dict "key" $pk "name" (index $d.providers $pk).name "countries" $cnt "min" $min "minCountry" (index $d.countries $minIso).name) }}
 {{ end }}
 {{ $provCards = sort $provCards "name" "asc" }}
 
 {{/* ── 热门国家入口（计算生成）：品牌覆盖数降序取 12（竞争最激烈 = 价格最锋利的市场） ── */}}
 {{ $popList := slice }}
-{{ range $iso, $c := hugo.Data.countries }}
+{{ range $iso, $c := $d.countries }}
   {{ $s := partialCached "country-stats.html" $iso $iso }}
   {{ $popList = $popList | append (dict "name" $c.name "slug" $c.slug "flag" $c.flag "min" $s.minPrice "provs" $s.providerCount "rank" (printf "%02d|%s" (sub 100 $s.providerCount) $c.name)) }}
 {{ end }}
@@ -54,33 +54,33 @@
 
   <div class="mt-6 grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
   <header class="max-w-3xl">
-    <p class="eyebrow">Free tool</p>
-    <h1 class="mt-2 text-3xl font-extrabold tracking-tight md:text-4xl">eSIM trip cost calculator</h1>
+    <p class="eyebrow">{{ i18n "tools_list__free_tool" | safeHTML }}</p>
+    <h1 class="mt-2 text-3xl font-extrabold tracking-tight md:text-4xl">{{ i18n "g_esim_trip_cost_calculator" | safeHTML }}</h1>
     <p class="mt-4 text-lg leading-relaxed text-ink-600">
-      Don't know how many gigabytes you need? Start from what you actually do online — the estimator below turns your apps into GB, then into the single cheapest real plan that covers your trip.
+      {{ i18n "tools_list__don_t_know_how_many_gigabytes_you_need_start_from_what_y" | safeHTML }}
     </p>
   </header>
   <figure class="figure">
-    <img src="/img/esim/travel-esim-illustration-005.webp" alt="Traveler estimating eSIM data needs before a trip" width="2848" height="1470">
+    <img src="/img/esim/travel-esim-illustration-005.webp" alt="{{ i18n "tools_list__traveler_estimating_esim_data_needs_before_a_trip" | safeHTML }}" width="2848" height="1470">
     <figcaption>From app hours to gigabytes to the cheapest real plan — computed live from {{ len $plans }} tracked listings.</figcaption>
   </figure>
   </div>
 
   {{/* ── 用量估算器：活动小时 → GB/天 → 行程总 GB（读取计算器的天数滑杆），一键回填数据需求 ── */}}
   <section class="mt-10" aria-labelledby="estimate">
-    <p class="eyebrow">Usage estimator</p>
-    <h2 id="estimate" class="mt-2 text-2xl font-bold md:text-3xl">How much data do you need for your trip?</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">Set roughly how many hours a day you spend on each activity. We convert the hours into gigabytes using the rates in our reference table below — then hand the total straight to the calculator.</p>
+    <p class="eyebrow">{{ i18n "tools_list__usage_estimator" | safeHTML }}</p>
+    <h2 id="estimate" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "tools_list__how_much_data_do_you_need_for_your_trip" | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "tools_list__set_roughly_how_many_hours_a_day_you_spend_on_each_activ" | safeHTML }}</p>
     <div class="mt-6 grid gap-6 lg:grid-cols-[1.6fr_1fr]">
       <div class="card p-0" id="est-rows"></div>
       <div class="card flex flex-col p-6 lg:sticky lg:top-24">
-        <p class="text-xs font-bold uppercase tracking-wider text-ink-400">Your daily usage</p>
-        <p class="mt-2 font-display text-3xl font-extrabold text-ink-950 tnum"><span id="est-gbday">— GB</span><span class="text-base font-semibold text-ink-400"> / day</span></p>
-        <p class="mt-5 text-xs font-bold uppercase tracking-wider text-ink-400">For your <span id="est-days">7</span>-day trip, rounded up</p>
-        <p class="mt-2 font-display text-3xl font-extrabold text-brand-700 tnum" id="est-total">— GB</p>
-        <label class="mt-4 flex items-center gap-2 text-sm text-ink-600"><input id="est-margin" type="checkbox" class="accent-brand-600"> Add a 20% safety margin</label>
-        <button type="button" id="est-use" class="btn-primary mt-6">Find the cheapest plan for this →</button>
-        <p class="mt-3 text-xs text-ink-400">Sets your data need in the calculator below and re-picks the winner from real plans.</p>
+        <p class="text-xs font-bold uppercase tracking-wider text-ink-400">{{ i18n "tools_list__your_daily_usage" | safeHTML }}</p>
+        <p class="mt-2 font-display text-3xl font-extrabold text-ink-950 tnum"><span id="est-gbday">{{ i18n "g_gb_2" | safeHTML }}</span><span class="text-base font-semibold text-ink-400"> / day</span></p>
+        <p class="mt-5 text-xs font-bold uppercase tracking-wider text-ink-400">{{ i18n "tools_list__for_your" | safeHTML }} <span id="est-days">7</span>{{ i18n "tools_list__day_trip_rounded_up" | safeHTML }}</p>
+        <p class="mt-2 font-display text-3xl font-extrabold text-brand-700 tnum" id="est-total">{{ i18n "g_gb_2" | safeHTML }}</p>
+        <label class="mt-4 flex items-center gap-2 text-sm text-ink-600"><input id="est-margin" type="checkbox" class="accent-brand-600"> {{ i18n "tools_list__add_a_20_safety_margin" | safeHTML }}</label>
+        <button type="button" id="est-use" class="btn-primary mt-6">{{ i18n "tools_list__find_the_cheapest_plan_for_this" | safeHTML }}</button>
+        <p class="mt-3 text-xs text-ink-400">{{ i18n "tools_list__sets_your_data_need_in_the_calculator_below_and_re_picks" | safeHTML }}</p>
       </div>
     </div>
   </section>
@@ -88,28 +88,28 @@
   <div id="calc" class="mt-12 grid gap-6 lg:grid-cols-[1fr_1.6fr]">
     {{/* ── 输入面板 ── */}}
     <div class="card p-6 lg:sticky lg:top-24">
-      <label class="block text-xs font-bold uppercase tracking-wider text-ink-400" for="calc-country">Destination</label>
+      <label class="block text-xs font-bold uppercase tracking-wider text-ink-400" for="calc-country">{{ i18n "tools_list__destination" | safeHTML }}</label>
       <select id="calc-country" class="input-search mt-2"></select>
 
-      <label class="mt-6 block text-xs font-bold uppercase tracking-wider text-ink-400" for="calc-days">Trip length</label>
+      <label class="mt-6 block text-xs font-bold uppercase tracking-wider text-ink-400" for="calc-days">{{ i18n "tools_list__trip_length" | safeHTML }}</label>
       <div class="mt-2 flex items-center gap-3">
         <input id="calc-days" type="range" min="1" max="45" value="7" class="w-full accent-brand-600">
-        <span id="calc-days-val" class="w-20 text-right font-display text-lg font-bold text-ink-950 tnum">7 days</span>
+        <span id="calc-days-val" class="w-20 text-right font-display text-lg font-bold text-ink-950 tnum">{{ i18n "tools_list__7_days" | safeHTML }}</span>
       </div>
 
-      <p class="mt-6 text-xs font-bold uppercase tracking-wider text-ink-400">Data need</p>
+      <p class="mt-6 text-xs font-bold uppercase tracking-wider text-ink-400">{{ i18n "tools_list__data_need" | safeHTML }}</p>
       <div class="mt-2 grid grid-cols-2 gap-2" id="calc-need">
-        <button type="button" class="chip chip-active" data-gb="1">Light · 1GB</button>
-        <button type="button" class="chip" data-gb="5">Standard · 5GB</button>
-        <button type="button" class="chip" data-gb="10">Heavy · 10GB</button>
-        <button type="button" class="chip" data-gb="0">Unlimited</button>
-        <button type="button" class="chip hidden col-span-2" data-gb="" id="calc-need-custom">Your estimate</button>
+        <button type="button" class="chip chip-active" data-gb="1">{{ i18n "tools_list__light_1gb" | safeHTML }}</button>
+        <button type="button" class="chip" data-gb="5">{{ i18n "tools_list__standard_5gb" | safeHTML }}</button>
+        <button type="button" class="chip" data-gb="10">{{ i18n "tools_list__heavy_10gb" | safeHTML }}</button>
+        <button type="button" class="chip" data-gb="0">{{ i18n "g_unlimited" | safeHTML }}</button>
+        <button type="button" class="chip hidden col-span-2" data-gb="" id="calc-need-custom">{{ i18n "tools_list__your_estimate" | safeHTML }}</button>
       </div>
 
       <div class="mt-7 rounded-2xl bg-brand-50/70 p-4">
-        <p class="text-[11px] font-bold uppercase tracking-wider text-brand-700">How it works</p>
+        <p class="text-[11px] font-bold uppercase tracking-wider text-brand-700">{{ i18n "tools_list__how_it_works" | safeHTML }}</p>
         <p class="mt-1.5 text-sm leading-relaxed text-ink-600">
-          A plan matches when its validity covers your trip <em>and</em> its data covers your need. Unlimited plans always satisfy the data test; the fair-use caps are listed on each comparison page.
+          {{ i18n "tools_list__a_plan_matches_when_its_validity_covers_your_trip" | safeHTML }} <em>{{ i18n "g_and" | safeHTML }}</em> {{ i18n "tools_list__its_data_covers_your_need_unlimited_plans_always_satisfy" | safeHTML }}
         </p>
       </div>
     </div>
@@ -117,20 +117,20 @@
     {{/* ── 结果面板 ── */}}
     <div>
       <div id="calc-result" class="space-y-3"></div>
-      <p class="mt-4 text-xs text-ink-400">Prices in USD, excluding promo codes and taxes. Data re-checked on the dates shown on each country page.</p>
+      <p class="mt-4 text-xs text-ink-400">{{ i18n "tools_list__prices_in_usd_excluding_promo_codes_and_taxes_data_re_ch" | safeHTML }}</p>
     </div>
   </div>
 
   {{/* ── 参考码率表：估算器同一数据源渲染（+3 行仅表内：邮件/视频上传/照片） ── */}}
   <section class="mt-12" aria-labelledby="rates">
-    <p class="eyebrow">The rates</p>
-    <h2 id="rates" class="mt-2 text-2xl font-bold md:text-3xl">How much data each app uses per hour</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">Typical rates at default quality settings — the same numbers the estimator above uses. Apps vary, and a video app's quality setting matters far more than which app it is; treat these as planning numbers and let the 20% margin absorb the difference.</p>
+    <p class="eyebrow">{{ i18n "tools_list__the_rates" | safeHTML }}</p>
+    <h2 id="rates" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "tools_list__how_much_data_each_app_uses_per_hour" | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "tools_list__typical_rates_at_default_quality_settings_the_same_numbe" | safeHTML }}</p>
     <div class="card mt-6 overflow-hidden p-0">
       <div class="overflow-x-auto">
         <table class="table-pro">
           <thead>
-            <tr><th>Activity</th><th>Typical data use</th><th>What 1GB buys you</th></tr>
+            <tr><th>{{ i18n "tools_list__activity" | safeHTML }}</th><th>{{ i18n "tools_list__typical_data_use" | safeHTML }}</th><th>{{ i18n "tools_list__what_1gb_buys_you" | safeHTML }}</th></tr>
           </thead>
           <tbody>
             {{ range $acts }}
@@ -141,64 +141,64 @@
             </tr>
             {{ end }}
             <tr>
-              <td class="font-medium text-ink-800">Email without attachments</td>
-              <td class="tnum text-ink-600">5 MB/hour</td>
+              <td class="font-medium text-ink-800">{{ i18n "tools_list__email_without_attachments" | safeHTML }}</td>
+              <td class="tnum text-ink-600">{{ i18n "tools_list__5_mb_hour" | safeHTML }}</td>
               <td class="text-sm text-ink-600 tnum">≈ {{ printf "%.0f" (div 1024.0 5.0) }} hours</td>
             </tr>
             <tr>
-              <td class="font-medium text-ink-800">Video upload (1080p)</td>
-              <td class="tnum text-ink-600">1,200 MB/hour</td>
+              <td class="font-medium text-ink-800">{{ i18n "tools_list__video_upload_1080p" | safeHTML }}</td>
+              <td class="tnum text-ink-600">{{ i18n "tools_list__1_200_mb_hour" | safeHTML }}</td>
               <td class="text-sm text-ink-600 tnum">≈ {{ printf "%.1f" (div 1024.0 1200.0) }} hours</td>
             </tr>
             <tr>
-              <td class="font-medium text-ink-800">Photo upload to cloud</td>
-              <td class="tnum text-ink-600">3 MB per photo</td>
+              <td class="font-medium text-ink-800">{{ i18n "tools_list__photo_upload_to_cloud" | safeHTML }}</td>
+              <td class="tnum text-ink-600">{{ i18n "tools_list__3_mb_per_photo" | safeHTML }}</td>
               <td class="text-sm text-ink-600 tnum">≈ {{ printf "%.0f" (div 1024.0 3.0) }} photos</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-    <p class="mt-3 text-xs text-ink-400">Rates are industry-typical figures at default app quality; streaming at 4K or auto-quality on a big screen can double them. Our <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a> documents how every price these rates feed into is collected.</p>
+    <p class="mt-3 text-xs text-ink-400">{{ i18n "tools_list__rates_are_industry_typical_figures_at_default_app_qualit" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a> {{ i18n "tools_list__documents_how_every_price_these_rates_feed_into_is_colle" | safeHTML }}</p>
   </section>
 
   {{/* ── 热门国家入口（计算生成） ── */}}
   <section class="mt-12" aria-labelledby="popular">
-    <p class="eyebrow">Popular destinations</p>
-    <h2 id="popular" class="mt-2 text-2xl font-bold md:text-3xl">eSIM prices for the most compared destinations</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">The destinations where the most providers compete — usually where prices are sharpest. Every card opens the full country table with every plan side by side.</p>
+    <p class="eyebrow">{{ i18n "g_popular_destinations" | safeHTML }}</p>
+    <h2 id="popular" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "tools_list__esim_prices_for_the_most_compared_destinations" | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "tools_list__the_destinations_where_the_most_providers_compete_usuall" | safeHTML }}</p>
     <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
       {{ range first 12 $popRanked }}
-      <a href="/compare/{{ .slug }}/" class="card card-hover group flex items-center gap-3 p-4">
+      <a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="card card-hover group flex items-center gap-3 p-4">
         <img src="{{ .flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy" width="24" height="16">
         <span class="flex-1 text-sm font-semibold text-ink-900 group-hover:text-brand-700">{{ .name }}</span>
-        <span class="text-right text-[11px] leading-tight text-ink-400 tnum">from <span class="block font-display text-sm font-bold text-brand-700">${{ printf "%.2f" .min }}</span></span>
+        <span class="text-right text-[11px] leading-tight text-ink-400 tnum">{{ i18n "g_from" | safeHTML }} <span class="block font-display text-sm font-bold text-brand-700">${{ printf "%.2f" .min }}</span></span>
       </a>
       {{ end }}
     </div>
-    <p class="mt-3 text-xs text-ink-400">“From” is the cheapest plan any provider sells in that country. All {{ len $popList }} destinations are in the <a href="/compare/" class="font-semibold text-brand-700 hover:underline">country index</a> and ranked by $/GB in the <a href="/research/esim-price-index/" class="font-semibold text-brand-700 hover:underline">eSIM price index</a>.</p>
+    <p class="mt-3 text-xs text-ink-400">“From” is the cheapest plan any provider sells in that country. All {{ len $popList }} destinations are in the <a href="{{ partial "lang-href.html" "/compare/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "tools_list__country_index" | safeHTML }}</a> {{ i18n "tools_list__and_ranked_by_gb_in_the" | safeHTML }} <a href="{{ partial "lang-href.html" "/research/esim-price-index/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_price_index" | safeHTML }}</a>.</p>
   </section>
 
   {{/* ── 品牌入口（计算生成） ── */}}
   <section class="mt-12" aria-labelledby="provs">
-    <p class="eyebrow">Providers</p>
-    <h2 id="provs" class="mt-2 text-2xl font-bold md:text-3xl">Compare eSIM providers side by side</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">Every brand whose plans we track, with the cheapest listing we have ever recorded from it. Full pricing behavior — where each is cheapest and where it stings — is on its review page, and pair-by-pair verdicts live in the matchup index.</p>
+    <p class="eyebrow">{{ i18n "g_providers" | safeHTML }}</p>
+    <h2 id="provs" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "tools_list__compare_esim_providers_side_by_side" | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "tools_list__every_brand_whose_plans_we_track_with_the_cheapest_listi" | safeHTML }}</p>
     <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
       {{ range $provCards }}
-      <a href="/esim-providers/{{ .key }}/" class="card card-hover group p-4">
+      <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" .key) }}" class="card card-hover group p-4">
         <div class="flex items-center gap-3">
-          {{ partial "prov-logo.html" (dict "p" (index hugo.Data.providers .key) "key" .key "class" "h-9 w-9") }}
+          {{ partial "prov-logo.html" (dict "p" (index $d.providers .key) "key" .key "class" "h-9 w-9") }}
           <div class="min-w-0">
             <p class="truncate font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ .name }}</p>
             <p class="text-xs text-ink-400 tnum">{{ .countries }} countries covered</p>
           </div>
         </div>
-        <p class="mt-3 text-xs text-ink-500">plans from <span class="font-display text-sm font-bold text-brand-700 tnum">${{ printf "%.2f" .min }}</span><span class="text-ink-400"> · cheapest in {{ .minCountry }}</span></p>
+        <p class="mt-3 text-xs text-ink-500">{{ i18n "tools_list__plans_from" | safeHTML }} <span class="font-display text-sm font-bold text-brand-700 tnum">${{ printf "%.2f" .min }}</span><span class="text-ink-400"> · cheapest in {{ .minCountry }}</span></p>
       </a>
       {{ end }}
     </div>
-    <p class="mt-3 text-xs text-ink-400">Two brands on your shortlist? Every pairing — Airalo vs Holafly included — is scored country by country in the <a href="/compare/matchups/" class="font-semibold text-brand-700 hover:underline">provider matchups</a>.</p>
+    <p class="mt-3 text-xs text-ink-400">{{ i18n "tools_list__two_brands_on_your_shortlist_every_pairing_airalo_vs_hol" | safeHTML }} <a href="{{ partial "lang-href.html" "/compare/matchups/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_provider_matchups" | safeHTML }}</a>.</p>
   </section>
 
   {{/* ── 数据驱动 FAQ（正文 + FAQPage schema 同源；小时数由 $acts 码率实时计算） ── */}}
@@ -214,7 +214,7 @@
   {{ $faqList = $faqList | append (dict "q" "When is an unlimited eSIM cheaper than a fixed data plan?" "a" (printf "When your daily usage clears the country's break-even — its best unlimited daily rate divided by its best metered $/GB. Heavy streamers usually cross it; email-and-maps travelers almost never do. Compare both sides on your destination's page, and before buying any 'unlimited' listing, check what its fair-use policy actually throttles in our fair-use audit — every unlimited plan's note is quoted verbatim there.")) }}
   <section class="mt-12" aria-labelledby="faq">
     <p class="eyebrow">FAQ</p>
-    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">How do you pick the right eSIM plan for your trip</h2>
+    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "tools_list__how_do_you_pick_the_right_esim_plan_for_your_trip" | safeHTML }}</h2>
     <div class="mt-6 max-w-3xl space-y-3">
       {{ range $faqList }}
       <details class="card group p-0">
@@ -231,7 +231,7 @@
   </script>
 
   <p class="mt-10 text-xs text-ink-400">
-    This calculator is powered by our full price database — embed it on your own travel site (link back to eSIM Sift, and we'll keep the data fresh). See the <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.
+    {{ i18n "tools_list__this_calculator_is_powered_by_our_full_price_database_em" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>.
   </p>
 </div>
 
@@ -285,7 +285,7 @@
     var html = '<div class="card relative overflow-hidden border-2 border-brand-600 p-6">'
       + '<span class="badge bg-brand-600 text-white">Our pick</span>'
       + '<p class="mt-3 font-display text-lg font-bold text-ink-950">' + pick.name + '</p>'
-      + '<p class="mt-1 text-sm text-ink-600"><span class="font-semibold text-ink-900">' + pname + '</span> · ' + (pick.gb === 0 ? 'Unlimited' : pick.gb + 'GB') + ' · ' + pick.days + ' days · ' + cname + '</p>'
+      + '<p class="mt-1 text-sm text-ink-600"><span class="font-semibold text-ink-900">' + pname + '</span> · ' + pick.label + ' · ' + pick.days + ' days · ' + cname + '</p>'
       + '<p class="mt-3 text-3xl font-extrabold text-ink-950 tnum">' + money(pick.price) + ' <span class="text-base font-semibold text-ink-400">' + money(pick.price / days) + '/day</span></p>'
       + '<div class="mt-5 flex flex-wrap gap-3">'
       + '<a href="' + subUrl + '" class="btn-primary">See ' + pname + ' ' + cname + ' plans</a>'

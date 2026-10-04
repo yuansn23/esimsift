@@ -1,4 +1,4 @@
-{{ define "main" }}
+{{ define "main" }}{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}
 {{ $compareSection := site.GetPage "/compare" }}
 {{ $countries := where (where (where $compareSection.Pages "Params.provider" nil) "Params.providers" nil) "Params.nolist" nil }}
 {{ $totalPlans := 0 }}
@@ -8,7 +8,7 @@
 {{ $checkedLatest := "" }}
 {{ range $countries }}
   {{ with .Params.iso }}
-    {{ $c := index hugo.Data.countries . }}
+    {{ $c := index $d.countries . }}
     {{ $s := partial "country-stats.html" . }}
     {{ $totalPlans = add $totalPlans $s.planCount }}
     {{ if and (gt $s.minPrice 0) (or (eq $minGlobal 0.0) (lt $s.minPrice $minGlobal)) }}{{ $minGlobal = $s.minPrice }}{{ end }}
@@ -28,41 +28,41 @@
 <section class="relative overflow-hidden bg-hero-mesh">
   <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-14 pt-12 sm:px-6 lg:grid-cols-[1.15fr_1fr] lg:pb-20 lg:pt-16">
     <div class="animate-fade-up">
-      <p class="eyebrow">Independent eSIM price database</p>
+      <p class="eyebrow">{{ i18n "index__independent_esim_price_database" | safeHTML }}</p>
       <h1 class="mt-3 text-3xl font-extrabold leading-[1.08] tracking-tight md:text-5xl">
-        Compare Travel eSIM Plans & Prices.<br>
+        {{ i18n "index__compare_travel_esim_plans_prices" | safeHTML }}<br>
         <span class="relative whitespace-nowrap">
-          <span class="relative z-10">Best Deals 2026</span>
+          <span class="relative z-10">{{ i18n "index__best_deals_2026" | safeHTML }}</span>
           <span class="absolute inset-x-0 bottom-1.5 z-0 h-3.5 bg-accent-200/70" aria-hidden="true"></span>
         </span>
        
       </h1>
       <p class="mt-5 max-w-xl text-lg leading-relaxed text-ink-600">
-        Real prepaid plans from {{ len hugo.Data.providers }} providers in {{ len hugo.Data.countries }} countries, ranked with the same honest formulas: $/GB, $/day, fair-use limits decoded. No marketing spin.
+        {{ i18n "home__hero_lead" (dict "providers" (len $d.providers) "countries" (len $d.countries)) | safeHTML }}
       </p>
       <div class="mt-7 flex flex-wrap gap-3">
-        <a href="/compare/" class="btn-primary px-6 py-3 text-base">Browse {{ $countries | len }} countries</a>
-        <a href="/methodology/" class="btn-out px-6 py-3 text-base">How we compare</a>
+        <a href="{{ partial "lang-href.html" "/compare/" }}" class="btn-primary px-6 py-3 text-base">{{ i18n "home__browse_countries" (dict "n" ($countries | len)) | safeHTML }}</a>
+        <a href="{{ partial "lang-href.html" "/methodology/" }}" class="btn-out px-6 py-3 text-base">{{ i18n "index__how_we_compare" | safeHTML }}</a>
       </div>
       <div class="mt-9 grid max-w-lg grid-cols-3 gap-3">
-        <div class="stat-tile"><span class="stat-num tnum">{{ $countries | len }}</span><span class="stat-label">Countries</span></div>
-        <div class="stat-tile"><span class="stat-num tnum">{{ $totalPlans }}</span><span class="stat-label">Plans tracked</span></div>
-        <div class="stat-tile"><span class="stat-num tnum">${{ printf "%.0f" $minGlobal }}<span class="text-sm font-semibold text-ink-400">+</span></span><span class="stat-label">Entry price</span></div>
+        <div class="stat-tile"><span class="stat-num tnum">{{ $countries | len }}</span><span class="stat-label">{{ i18n "g_countries" | safeHTML }}</span></div>
+        <div class="stat-tile"><span class="stat-num tnum">{{ $totalPlans }}</span><span class="stat-label">{{ i18n "g_plans_tracked" | safeHTML }}</span></div>
+        <div class="stat-tile"><span class="stat-num tnum">${{ printf "%.0f" $minGlobal }}<span class="text-sm font-semibold text-ink-400">+</span></span><span class="stat-label">{{ i18n "index__entry_price" | safeHTML }}</span></div>
       </div>
     </div>
 
     {{/* Hero 插图卡 + 悬浮价格签 */}}
     <div class="relative mx-auto w-full max-w-md lg:max-w-none">
       <figure class="figure shadow-pop">
-        <img src="/img/site/home-hero.webp" alt="Traveler comparing eSIM data plans on a phone before an international trip" width="2848" height="1470" fetchpriority="high">
+        <img src="/img/site/home-hero.webp" alt="{{ i18n "index__traveler_comparing_esim_data_plans_on_a_phone_before_an_" | safeHTML }}" width="2848" height="1470" fetchpriority="high">
       </figure>
       <div class="absolute -bottom-4 -left-3 flex items-center gap-3 rounded-2xl border border-ink-100 bg-white px-4 py-3 shadow-pop sm:-left-6">
         <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-100 text-brand-700" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5 14 4.5v3c0 3.5-2.5 6-6 7-3.5-1-6-3.5-6-7v-3l6-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
         </span>
         <div>
-          <p class="text-[11px] font-semibold uppercase tracking-wide text-ink-400">Best value right now</p>
-          <p class="font-display text-sm font-bold text-ink-950 tnum">from ${{ printf "%.2f" $minGlobal }}</p>
+          <p class="text-[11px] font-semibold uppercase tracking-wide text-ink-400">{{ i18n "index__best_value_right_now" | safeHTML }}</p>
+          <p class="font-display text-sm font-bold text-ink-950 tnum">{{ i18n "home__from_price" (dict "p" (printf "%.2f" $minGlobal)) | safeHTML }}</p>
         </div>
       </div>
     </div>
@@ -75,53 +75,53 @@
 <section class="mt-16" id="countries">
   <div class="flex flex-wrap items-end justify-between gap-4">
     <div>
-      <p class="eyebrow">Country comparisons</p>
-      <h2 class="mt-2 text-2xl font-bold md:text-3xl">Find your destination</h2>
+      <p class="eyebrow">{{ i18n "index__country_comparisons" | safeHTML }}</p>
+      <h2 class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "index__find_your_destination" | safeHTML }}</h2>
     </div>
     <form id="country-search" role="search" class="relative w-full sm:w-80">
-      <label for="country-filter" class="sr-only">Search destinations</label>
+      <label for="country-filter" class="sr-only">{{ i18n "g_search_destinations" | safeHTML }}</label>
       <svg class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-300" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21l-4.35-4.35M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-      <input id="country-filter" type="search" placeholder="Search {{ len hugo.Data.countries }} countries…" autocomplete="off" spellcheck="false" class="input-search w-full pl-9" aria-label="Search destinations" aria-controls="country-suggest" aria-expanded="false" aria-autocomplete="list" role="combobox">
+      <input id="country-filter" type="search" placeholder="{{ i18n "home__search_placeholder" (dict "n" (len $d.countries)) | safeHTML }}" autocomplete="off" spellcheck="false" class="input-search w-full pl-9" aria-label="{{ i18n "g_search_destinations" | safeHTML }}" aria-controls="country-suggest" aria-expanded="false" aria-autocomplete="list" role="combobox">
       <div id="country-suggest" class="absolute left-0 right-0 top-full z-30 mt-2 hidden overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-pop" role="listbox"></div>
     </form>
   </div>
-  <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink-600">Pick a destination to see every provider that covers it side by side — real $/GB and $/day figures, fair-use limits decoded, and the cheapest option flagged. From Japan and the USA to Turkey, Thailand, and across Europe, each country page ranks {{ len hugo.Data.providers }} providers with the same honest formulas.</p>
+  <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink-600">{{ i18n "home__country_grid_lead" (dict "providers" (len $d.providers)) | safeHTML }}</p>
   <div id="region-chips" class="nav-scroll mt-5 flex gap-2 overflow-x-auto pb-1">
-    <button class="chip chip-active" data-region="all" type="button">All</button>
-    <button class="chip" data-region="Asia" type="button">Asia</button>
-    <button class="chip" data-region="Europe" type="button">Europe</button>
-    <button class="chip" data-region="Americas" type="button">Americas</button>
-    <button class="chip" data-region="Africa &amp; Middle East" type="button">Africa &amp; Middle East</button>
-    <button class="chip" data-region="Oceania" type="button">Oceania</button>
+    <button class="chip chip-active" data-region="all" type="button">{{ i18n "g_all" | safeHTML }}</button>
+    <button class="chip" data-region="Asia" type="button">{{ i18n "g_asia" | safeHTML }}</button>
+    <button class="chip" data-region="Europe" type="button">{{ i18n "g_europe" | safeHTML }}</button>
+    <button class="chip" data-region="Americas" type="button">{{ i18n "g_americas" | safeHTML }}</button>
+    <button class="chip" data-region="Africa &amp; Middle East" type="button">{{ i18n "g_africa_amp_middle_east" | safeHTML }}</button>
+    <button class="chip" data-region="Oceania" type="button">{{ i18n "g_oceania" | safeHTML }}</button>
   </div>
   <div id="country-grid" class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {{ range $countries }}{{ partial "country-card.html" . }}{{ end }}
   </div>
-  <p id="no-results" class="mt-6 hidden text-center text-sm text-ink-400">No country matches that search.</p>
+  <p id="no-results" class="mt-6 hidden text-center text-sm text-ink-400">{{ i18n "g_no_country_matches_that_search" | safeHTML }}</p>
 </section>
 
 {{/* ── 最便宜地板（按区域）── */}}
 <section class="mt-16" aria-labelledby="price-floor">
   <div class="flex flex-wrap items-end justify-between gap-4">
     <div>
-      <p class="eyebrow">Live price floor</p>
-      <h2 id="price-floor" class="mt-2 text-2xl font-bold md:text-3xl">The cheapest eSIM in each region</h2>
+      <p class="eyebrow">{{ i18n "index__live_price_floor" | safeHTML }}</p>
+      <h2 id="price-floor" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "index__the_cheapest_esim_in_each_region" | safeHTML }}</h2>
     </div>
-    {{ if $checkedLatest }}<p class="text-xs font-medium text-ink-400">Prices checked {{ (time $checkedLatest).Format "Jan 2, 2006" }}</p>{{ end }}
+    {{ if $checkedLatest }}<p class="text-xs font-medium text-ink-400">{{ i18n "home__prices_checked" (dict "d" (time.Format ":date_medium" (time $checkedLatest))) | safeHTML }}</p>{{ end }}
   </div>
   <div class="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
     {{ $regionGuides := dict "Asia" "asia" "Europe" "europe" "Americas" "americas" "Africa & Middle East" "africa-middle-east" "Oceania" "oceania" }}
     {{ range $regions }}
       {{ $region := . }}
       {{ with index $regionCheapest $region }}
-      <a href="/guides/best-{{ index $regionGuides $region }}-esim/" class="card card-hover group p-4">
-        <p class="text-[11px] font-bold uppercase tracking-wide text-ink-400">{{ $region }}</p>
+      <a href="{{ partial "lang-href.html" (printf "/guides/best-%s-esim/" (index $regionGuides $region)) }}" class="card card-hover group p-4">
+        <p class="text-[11px] font-bold uppercase tracking-wide text-ink-400">{{ partial "region-label.html" $region | safeHTML }}</p>
         <div class="mt-3 flex items-center gap-2.5">
-          <img src="{{ .flag }}" alt="{{ .name }} flag" class="h-7 w-10 rounded-md object-cover ring-1 ring-ink-100" loading="lazy">
+          <img src="{{ .flag }}" alt="{{ i18n "home__flag_alt" (dict "name" .name) | safeHTML }}" class="h-7 w-10 rounded-md object-cover ring-1 ring-ink-100" loading="lazy">
           <span class="truncate font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ .name }}</span>
         </div>
-        <p class="mt-2 text-xs text-ink-400">from <strong class="tnum text-accent-600">${{ printf "%.2f" .price }}</strong>{{ with .provider }} · {{ . }}{{ end }}</p>
-        <p class="mt-3 border-t border-ink-50 pt-2 text-xs font-semibold text-brand-700">See the full region →</p>
+        <p class="mt-2 text-xs text-ink-400">{{ i18n "g_from" | safeHTML }} <strong class="tnum text-accent-600">${{ printf "%.2f" .price }}</strong>{{ with .provider }} · {{ . }}{{ end }}</p>
+        <p class="mt-3 border-t border-ink-50 pt-2 text-xs font-semibold text-brand-700">{{ i18n "index__see_the_full_region" | safeHTML }}</p>
       </a>
       {{ end }}
     {{ end }}
@@ -130,52 +130,52 @@
 
 {{/* ── 工作方式三步 ── */}}
 <section class="mt-20">
-  <p class="eyebrow">How Sift works</p>
-  <h2 class="mt-2 text-2xl font-bold md:text-3xl">Three steps with zero spin</h2>
+  <p class="eyebrow">{{ i18n "index__how_sift_works" | safeHTML }}</p>
+  <h2 class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "index__three_steps_with_zero_spin" | safeHTML }}</h2>
   <div class="mt-6 grid gap-4 md:grid-cols-3">
     <div class="card card-hover p-6">
       <span class="font-display text-4xl font-extrabold text-brand-200">01</span>
-      <h3 class="mt-3 text-lg font-bold">Pick a country</h3>
-      <p class="mt-2 text-sm leading-relaxed text-ink-600">Every provider that sells a plan there, in one table — including the fine print others bury.</p>
+      <h3 class="mt-3 text-lg font-bold">{{ i18n "index__pick_a_country" | safeHTML }}</h3>
+      <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "index__every_provider_that_sells_a_plan_there_in_one_table_incl" | safeHTML }}</p>
     </div>
     <div class="card card-hover p-6">
       <span class="font-display text-4xl font-extrabold text-brand-200">02</span>
-      <h3 class="mt-3 text-lg font-bold">Read the real metrics</h3>
-      <p class="mt-2 text-sm leading-relaxed text-ink-600">$/GB and $/day computed with identical formulas for every provider. Badges are literal sort positions.</p>
+      <h3 class="mt-3 text-lg font-bold">{{ i18n "index__read_the_real_metrics" | safeHTML }}</h3>
+      <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "index__gb_and_day_computed_with_identical_formulas_for_every_pr" | safeHTML }}</p>
     </div>
     <div class="card card-hover p-6">
       <span class="font-display text-4xl font-extrabold text-brand-200">03</span>
-      <h3 class="mt-3 text-lg font-bold">Buy where you like</h3>
-      <p class="mt-2 text-sm leading-relaxed text-ink-600">One click out to the provider. We mark sponsored links openly — rankings never follow the money.</p>
+      <h3 class="mt-3 text-lg font-bold">{{ i18n "index__buy_where_you_like" | safeHTML }}</h3>
+      <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "index__one_click_out_to_the_provider_we_mark_sponsored_links_op" | safeHTML }}</p>
     </div>
   </div>
 </section>
 
 {{/* ── 信任 ── */}}
 <section class="mt-20">
-  <p class="eyebrow">Why trust eSIM Sift</p>
-  <h2 class="mt-2 text-2xl font-bold md:text-3xl">A database rather than an ad network</h2>
+  <p class="eyebrow">{{ i18n "index__why_trust_esim_sift" | safeHTML }}</p>
+  <h2 class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "index__a_database_rather_than_an_ad_network" | safeHTML }}</h2>
   <div class="mt-6 grid gap-4 md:grid-cols-3">
     <div class="card p-6">
       <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-100 text-accent-600" aria-hidden="true">
         <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 2v8m0 0 3-3m-3 3L7 7m-5 3a8 8 0 1 0 16 0 8 8 0 0 0-16 0Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
-      <h3 class="mt-4 font-bold">Real prices with check dates</h3>
-      <p class="mt-2 text-sm leading-relaxed text-ink-600">Every plan is a listed, purchasable plan at check time, with the verification date shown on the page. Full sweeps monthly.</p>
+      <h3 class="mt-4 font-bold">{{ i18n "index__real_prices_with_check_dates" | safeHTML }}</h3>
+      <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "index__every_plan_is_a_listed_purchasable_plan_at_check_time_wi" | safeHTML }}</p>
     </div>
     <div class="card p-6">
       <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700" aria-hidden="true">
         <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M4 10l3 3m-3-3 3-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 3H9m7 14H9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
       </span>
-      <h3 class="mt-4 font-bold">Same ruler for everyone</h3>
-      <p class="mt-2 text-sm leading-relaxed text-ink-600">$/GB, $/day and every badge are computed from one database with identical formulas. No provider can buy a sort position.</p>
+      <h3 class="mt-4 font-bold">{{ i18n "index__same_ruler_for_everyone" | safeHTML }}</h3>
+      <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "index__gb_day_and_every_badge_are_computed_from_one_database_wi" | safeHTML }}</p>
     </div>
     <div class="card p-6">
       <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-100 text-ink-700" aria-hidden="true">
         <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3 3 6l7 3 7-3-7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3 6v8l7 3 7-3V6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
       </span>
-      <h3 class="mt-4 font-bold">Radically transparent</h3>
-      <p class="mt-2 text-sm leading-relaxed text-ink-600">We publish our <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a> and our <a href="/disclosure/" class="font-semibold text-brand-700 hover:underline">disclosure</a> — including who owns us.</p>
+      <h3 class="mt-4 font-bold">{{ i18n "index__radically_transparent" | safeHTML }}</h3>
+      <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "index__we_publish_our" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a> {{ i18n "index__and_our" | safeHTML }} <a href="{{ partial "lang-href.html" "/disclosure/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_disclosure" | safeHTML }}</a> {{ i18n "index__including_who_owns_us" | safeHTML }}</p>
     </div>
   </div>
 </section>
@@ -183,8 +183,8 @@
 {{/* ── 品牌带 ── */}}
 <section class="mt-20">
   <div class="card flex flex-wrap items-center justify-center gap-x-8 gap-y-4 px-6 py-7">
-    <p class="text-xs font-bold uppercase tracking-[0.18em] text-ink-400">Providers we track</p>
-    {{ range $key, $p := hugo.Data.providers }}
+    <p class="text-xs font-bold uppercase tracking-[0.18em] text-ink-400">{{ i18n "index__providers_we_track" | safeHTML }}</p>
+    {{ range $key, $p := $d.providers }}
       <span class="flex items-center gap-2.5">
         {{ partial "prov-logo.html" (dict "p" $p "key" $key "class" "h-7 w-7 rounded-lg" "text" "text-xs") }}
         <span class="font-display text-sm font-bold text-ink-800">{{ $p.name }}</span>
@@ -194,13 +194,13 @@
 </section>
 
 {{/* ── FAQ（静态问题 + FAQPage schema）── */}}
-{{ $faqList := slice }}
-{{ $faqList = $faqList | append (dict "q" "What is the cheapest eSIM right now?" "a" (printf "Across all %d countries we track, the cheapest plan in the database is $%.2f, but that is a small, short-duration plan for one destination. Your real floor price depends on where you are going. <a href=\"/compare/\">Pick your destination</a> to see every provider's cheapest plan, not one sponsor's headline." (len hugo.Data.countries) $minGlobal)) }}
-{{ $faqList = $faqList | append (dict "q" "Do eSIMs work in my phone?" "a" "Most phones made since 2019 support eSIM, including every iPhone XS or later and recent Pixel and Samsung Galaxy models. If your phone is carrier-locked or much older, it may not. Each provider's own compatibility checker is the final word before you buy.") }}
-{{ $faqList = $faqList | append (dict "q" "How much data do I need for a week abroad?" "a" "Roughly 1 to 2 GB per week covers maps, messaging and light browsing, while streaming video or hotspotting a laptop can burn that in a day. Every country page lists the $/GB and $/day for each plan, so you can size the data to your trip instead of buying the headline bundle.") }}
-{{ $faqList = $faqList | append (dict "q" "Which eSIM is best for Europe?" "a" "There is no single winner. The cheapest provider changes from country to country, and some plans bundle 30+ European countries while others are single-country. See our <a href=\"/guides/best-europe-esim/\">Europe eSIM comparison</a> and read the fair-use fine print before trusting a best-for-Europe claim.") }}
-{{ $faqList = $faqList | append (dict "q" "Do travel eSIMs expire?" "a" "Yes. Most plans activate when you land and run for 7, 15 or 30 days, then expire even if data is left over. A few providers sell longer or top-up plans. The validity column on every country page lists the exact window for each plan.") }}
-{{ $faqList = $faqList | append (dict "q" "What does $/GB versus $/day mean?" "a" "Both are honest ways to compare value. $/GB is what you pay per gigabyte, best if you know your usage. $/day spreads the plan cost over its validity, best for short trips. We compute both with the same formula for every provider, so nobody can game the comparison.") }}
+{{ $faqList := slice }}{{/* 首答里的 compare 链接用 relLangURL 生成，德语站自动指向 /de/compare/ */}}
+{{ $faqList = $faqList | append (dict "q" (i18n "home__faq_q1") "a" (i18n "home__faq_a1" (dict "countries" (len $d.countries) "price" (printf "%.2f" $minGlobal) "compare" (relLangURL "compare/")))) }}
+{{ $faqList = $faqList | append (dict "q" (i18n "home__faq_q2") "a" (i18n "home__faq_a2")) }}
+{{ $faqList = $faqList | append (dict "q" (i18n "home__faq_q3") "a" (i18n "home__faq_a3")) }}
+{{ $faqList = $faqList | append (dict "q" (i18n "home__faq_q4") "a" (i18n "home__faq_a4" (dict "europe" "/guides/best-europe-esim/"))) }}
+{{ $faqList = $faqList | append (dict "q" (i18n "home__faq_q5") "a" (i18n "home__faq_a5")) }}
+{{ $faqList = $faqList | append (dict "q" (i18n "home__faq_q6") "a" (i18n "home__faq_a6")) }}
 {{ $faqEntities := slice }}
 {{ range $faqList }}{{ $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) }}{{ end }}
 <script type="application/ld+json">
@@ -209,7 +209,7 @@
 
 <section class="mt-20" aria-labelledby="faq">
   <p class="eyebrow">FAQ</p>
-  <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">Which travel eSIM should you buy</h2>
+  <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "index__which_travel_esim_should_you_buy" | safeHTML }}</h2>
   <div class="mt-5 space-y-3">
     {{ range $faqList }}
     <details class="faq-item">
@@ -225,10 +225,10 @@
   <div class="relative overflow-hidden rounded-4xl bg-ink-gradient px-6 py-12 text-center shadow-pop md:py-16">
     <div class="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
     <div class="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-accent-500/15 blur-3xl" aria-hidden="true"></div>
-    <h2 class="text-2xl font-bold text-white md:text-3xl">Stop overpaying for roaming.</h2>
-    <p class="mx-auto mt-3 max-w-md text-ink-300">Check your destination once — buy the plan that actually fits the trip.</p>
+    <h2 class="text-2xl font-bold text-white md:text-3xl">{{ i18n "index__stop_overpaying_for_roaming" | safeHTML }}</h2>
+    <p class="mx-auto mt-3 max-w-md text-ink-300">{{ i18n "index__check_your_destination_once_buy_the_plan_that_actually_f" | safeHTML }}</p>
     <div class="mt-7">
-      <a href="/compare/" class="btn-primary px-7 py-3 text-base">Compare eSIMs now</a>
+      <a href="{{ partial "lang-href.html" "/compare/" }}" class="btn-primary px-7 py-3 text-base">{{ i18n "index__compare_esims_now" | safeHTML }}</a>
     </div>
   </div>
 </section>
@@ -237,9 +237,13 @@
 {{- /* 目的地搜索索引：服务端把 50 国（名称/slug/区域/旗/底价/供应商数）序列化为 JSON，前端做 typeahead */ -}}
 {{- $searchData := slice -}}
 {{- range $countries -}}
-  {{- $c := index hugo.Data.countries .Params.iso -}}
+  {{- $c := index $d.countries .Params.iso -}}
   {{- $s := partial "country-stats.html" .Params.iso -}}
-  {{- $searchData = $searchData | append (dict "name" $c.name "slug" $c.slug "region" $c.region "flag" ($c.flag | relURL) "price" $s.minPrice "providers" $s.providerCount "plans" $s.planCount) -}}
+  {{- /* region 走 region-label.html 取本地化名，但必须 htmlUnescape：
+         i18n 值里 "&" 写成 "&amp;"（HTML 上下文用），而这里是 JSON 数据岛，
+         不退实体就会产出 "Afrika &amp; Nahost" 并被 jsonify 转成 \u0026amp;，
+         前端拿到的是字面量 "&amp;" 而非 "&"。HTML 渲染点（L118 / country-card）不脱。 */ -}}
+  {{- $searchData = $searchData | append (dict "name" $c.name "slug" $c.slug "region" (partial "region-label.html" $c.region | htmlUnescape) "flag" ($c.flag | relURL) "price" $s.minPrice "providers" $s.providerCount "plans" $s.planCount) -}}
 {{- end -}}
 <script id="country-index" type="application/json">{{ $searchData | jsonify | safeJS }}</script>
 
@@ -284,7 +288,7 @@
     function renderSuggest(list) {
       if (!suggest) return;
       if (!list.length) {
-        suggest.innerHTML = '<div class="px-3 py-2.5 text-sm text-ink-400">No match — try “Japan” or pick a region below.</div>';
+        suggest.innerHTML = '<div class="px-3 py-2.5 text-sm text-ink-400">{{ i18n "home__no_match" | safeHTML }}</div>';
         suggest.classList.remove('hidden');
         input.setAttribute('aria-expanded', 'true');
         return;
@@ -292,13 +296,13 @@
       var html = '';
       list.slice(0, 8).forEach(function (c, i) {
         var price = c.price > 0 ? Number(c.price).toFixed(2) : '';
-        html += '<a href="/compare/' + c.slug + '/" class="suggest-item" role="option" data-i="' + i + '">'
+        html += '<a href="{{ relLangURL "compare/" }}' + c.slug + '/" class="suggest-item" role="option" data-i="' + i + '">'
           + '<img src="' + c.flag + '" alt="" loading="lazy">'
           + '<span class="min-w-0 flex-1">'
           + '<span class="suggest-name">' + c.name + '</span>'
-          + '<span class="suggest-meta">' + c.region + ' · ' + c.providers + ' providers</span>'
+          + '<span class="suggest-meta">' + c.region + ' · ' + c.providers + ' {{ i18n "home__suggest_providers" | safeHTML }}</span>'
           + '</span>'
-          + (price ? '<span class="suggest-price">from $' + price + '</span>' : '')
+          + (price ? '<span class="suggest-price">{{ i18n "home__suggest_from" | safeHTML }}' + price + '</span>' : '')
           + '</a>';
       });
       suggest.innerHTML = html;

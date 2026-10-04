@@ -348,7 +348,7 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `check_hardcoded.py` | `python -X utf8 scripts/check_hardcoded.py` 硬编码总量守卫：扫 content/en + layouts + hugo.toml，命中"50 countries / 8 providers / 28 matchups"等写死总量即失败（国家页 seo.description 豁免——脚本再生的）。**新增国家/品牌或改模板后必跑** | 只读 |
 | `check_headings.py` | `python -X utf8 scripts/check_headings.py` 渲染产物 h2/h3 标点守卫（`,` `;` `:` `—` `–` 全站 0 豁免；改模板/加内容后跑，需先 build） | 只读 |
 | `check_css_sync.py` | `python -X utf8 scripts/check_css_sync.py` **CSS 同步守卫（2026-10-03 加）**：扫 `layouts/`+`content/` 所有 `class="…"`，与 `static/css/tailwind.css` 逐类比对，缺任一即 exit 1。Tailwind JIT 对未知类静默忽略，没这道守卫时「改了模板忘重建 CSS」会静默上线（症状：HTML 结构正确、样式全无）。已挂进 `npm run validate` | 只读 |
-| `check_output.py` | `python -X utf8 scripts/check_output.py` **产物守卫（2026-10-03 加，须在 `hugo` 之后跑）**：① 全站扫 Go 格式串泄漏 `%!x(…)`（`math.Round` 返回 float64 喂 `%d`、printf 里字面 `%` 没写 `%%`、有 `%s` 不给参数/没占位符多给参数 —— 三种都会把乱码印在正文里而 `hugo` 不报错）；② 每个 JSON-LD 块必须 `json.loads` 可解析；③ `reviewRating`/`aggregateRating`/独立 `Rating` 的 `ratingValue` 必须是 JSON 数字且落在 `[worstRating‖1, bestRating‖5]`（含"量表写成字符串"这一失败模式）；④ **全站扫非拉丁文字**（韩文/汉字/西里尔/阿拉伯/泰文/希伯来/日文假名等 —— 站点是纯英文站，拉丁变音符如 `Élan`/`Fáilte`/`Prosím` 是品牌真实套餐名，**故意不拦**）。已挂进 `npm run check:output`，并在 `npm run build` 末尾 | 只读 |
+| `check_output.py` | `python -X utf8 scripts/check_output.py` **产物守卫（2026-10-03 加，须在 `hugo` 之后跑）**：① 全站扫 Go 格式串泄漏 `%!x(…)`（`math.Round` 返回 float64 喂 `%d`、printf 里字面 `%` 没写 `%%`、有 `%s` 不给参数/没占位符多给参数 —— 三种都会把乱码印在正文里而 `hugo` 不报错）；② 每个 JSON-LD 块必须 `json.loads` 可解析；③ `reviewRating`/`aggregateRating`/独立 `Rating` 的 `ratingValue` 必须是 JSON 数字且落在 `[worstRating‖1, bestRating‖5]`（含"量表写成字符串"这一失败模式）；④ **~~全站扫非拉丁文字~~（2026-10-03 移除）** —— 站点要上多语言，禁令会拦住 ja/ko/zh 的合法产物，按语言划豁免前缀只是把同一个问题往后推。**移除后 ① 的格式串扫描范围扩大到 `.json`**（原先 json 分支只服务于 ④，不扩范围就成了死代码）。数据入口的清洗仍归 `scripts/scrape/toml_write.py::clean_plan_name()`（详见红线 21、§18.4）。已挂进 `npm run check:output`，并在 `npm run build` 末尾 | 只读 |
 | `append_carrier_info.py` | 追加 [ISO.info]（幂等，**已执行过，勿再跑**——再跑也只是提示跳过） | 幂等 |
 | `backfill_networks_uniform.py` | `python -X utf8 scripts/backfill_networks_uniform.py` 一键把 8 品牌每国 `networks` 填成该国运营商（同国同运营商，幂等）。**新增品牌转完 TOML 后必跑** | 安全 |
 | `gen_sample_data.py` | ☠☠☠ **永远禁止整跑** —— 会用 SAMPLE 数据覆盖全部真实抓取结果 | 禁令 |
@@ -612,7 +612,7 @@ npm run build
     - **有 `%s` 就得给够参数、没占位符就别多传参数** → 否则句尾多出 `%!(EXTRA string=Airalo, string=Holafly)`
     通用验证：`grep -rho '%![A-Za-z]*(\([^)]*\))' public/ --include=*.html | sort | uniq -c`，或直接跑 `scripts/check_output.py`。
 20. **`itemReviewed` 为 Organization/LocalBusiness 时，评分必须来自真实用户（2026-10-03 GSC 事故）** —— 品牌页曾用编辑部算的「价格竞争力指数」（cheapest 命中国数÷覆盖国数×10）当 `reviewRating`，导致 GSC 报「评分超出了指定范围或默认范围（在 reviewRating 中）」、内容无效。**双因**：① `bestRating` 写成字符串 `"10"` 且漏 `worstRating` → Google 退回默认 1–5；② 8 个品牌里 7 个分值 < 1，本身就落在区间外。**更根本**：Google 明文规定这类评分「評分必須直接來自用戶，請勿依賴人工編輯編制評分資訊」，编辑计算分**永远拿不到星级**且踩质量指南。**对策**：指数改用 `additionalProperty`（`PropertyValue`）如实携带，页面可见读数不变；`offers.lowPrice/highPrice/offerCount` 必须是 **JSON 数字**。想拿星级只有一条正路 —— 上真实站内用户评分体系。
-21. **抓来的套餐名可能夹带本地语言，必须英文罗马化（2026-10-03 事故）** —— Airalo 韩国套餐在源头叫 `'짱 Jjang - 1 GB`（`짱` 是韩语"最棒"，外加一个 DOM 残留的前导撇号），直接落在 `/compare/south-korea/`、`/compare/south-korea/airalo/`、`catalog.json`、`/tools/` 四处，在纯英文站上是明显瑕疵。**口诀**：拉丁变音符**保留**（`Élan`/`Fáilte`/`Prosím`/`Hé Hé` 是 Airalo 真实产品名，共 6 国 100+ 条），**非拉丁一律丢**（韩文/汉字/西里尔…）。**两侧守卫**：`scripts/validate.py` §3 拦数据层（名字含非拉丁脚本 → ERROR，还查首尾空白与首字符是标点的残留），`scripts/check_output.py` ④ 拦产物层（`.html` + `.json` 全扫）。**抓取层归一化**在 `scripts/scrape/toml_write.py::clean_plan_name()`，重抓自动清洗并把改动打印出来。**新抓一批数据后务必跑 `validate.py`。**
+21. **抓来的套餐名可能夹带本地语言，必须英文罗马化（2026-10-03 事故）** —— Airalo 韩国套餐在源头叫 `'짱 Jjang - 1 GB`（`짱` 是韩语"最棒"，外加一个 DOM 残留的前导撇号），直接落在 `/compare/south-korea/`、`/compare/south-korea/airalo/`、`catalog.json`、`/tools/` 四处，在纯英文站上是明显瑕疵。**口诀**：拉丁变音符**保留**（`Élan`/`Fáilte`/`Prosím`/`Hé Hé` 是 Airalo 真实产品名，共 6 国 100+ 条），**非拉丁一律丢**（韩文/汉字/西里尔…）。**两侧守卫（2026-10-03 晚已变更）**：产物层（`check_output.py` ④）与数据层（`validate.py` §3）的**「非拉丁禁令」已整体删除** —— 站点要上多语言，这条禁令会拦住 ja/ko/zh 的合法内容，按语言划豁免前缀只是把同一个问题往后推。**现在唯一的防线是抓取层归一化**：`scripts/scrape/toml_write.py::clean_plan_name()`（丢非拉丁脚本 + 去前导标点 + 收空格），重抓自动清洗并把改动打印出来。`validate.py` §3 保留与语言无关的结构性校验（首尾空白、首字符是标点的残留）。**代价（必须知道）**：若有人**手动**往 `data/plans/` 贴一条带韩文/汉字的套餐名，构建不会再拦 —— **新抓一批数据后请人工看一眼 `clean_plan_name` 的打印输出**。
 22. **`static/` 下放任何东西都会原样发布到线上（含内部脚本与笔记）** —— 真实事故：`static/img/esim/图片_backup_20260929/` 是一次图片处理的备份目录，里面还有 `.workbuddy/` 子目录（19 个文件：11 个内部 py 脚本、4 个 process/webp 日志、3 张 png、1 个 memory md）。它被 Hugo 原封不动拷进 `public/`，**线上 `https://www.esimsift.com/img/esim/图片_backup_20260929/.workbuddy/process_log.txt` 实测 HTTP 200**（35KB），且已随 first commit 进了 git。`static/` = 发布目录，**备份/草稿/临时产物一律放项目根**（同红线 17：`_guides_backup_20261002/` 的教训，但那条是 `content/` 渲染成页，这条是 `static/` 直接可下载，更隐蔽）。新加图片资源时只放**页面真的要引用的文件**。
     - **✅ 已于 2026-10-03 清除**：整个目录移出仓库到 `D:\esimsift\_deleted_20261003_图片_backup_20260929\`（站外、非 git 仓库，19 个文件逐个大小校验一致），`static/` 与 `public/` 下的副本已同步删除。**违规只是「位置不对」，不是「内容不该留」——删前一律先做站外备份**，不要真删。
     - **准入检查（每次往 `static/` 加东西前跑一遍）**：`find static -type d -name ".workbuddy" -o -name "*backup*"` 与 `find static -type f \( -name "*.py" -o -name "*.log" -o -name "*.txt" -o -name "*.md" \)` 都应为空。`static/` 只放页面引用的图片/字体/`robots.txt`/`llms.txt` 等**真正的站点资源**。
@@ -637,9 +637,29 @@ npm run build
 
 36. **给长文补 H3 的唯一合法落点：原文已有的并列子主题（2026-10-03 第十三轮）** —— 用户要求目录做两级，但 5 篇正文当时只有 50 个 H2 与 1 个 H3。**不要为了凑层级硬造小节**：本轮 29 处 H3 全部是把原文**已有子结构**提升出来 —— 加粗引导句（`**Installation** is the download…`）、并列分述（`The first is the chip… The second is the profile…`）、既有清单项（三个价格层、三大 Android 品牌）、两种用户画像（`The short-trip traveler` / `The long-stay traveler`）。提升时必须**同步改写该 H3 后首段的首句为自包含句**（红线 28），否则等于把一个代词开头的段落顶到了「会被 AI 单独抽走」的位置 —— 本轮就是这样多出 4 处 `<45 字符`/代词开头首句，已一并修掉。改完硬指标：标题全局唯一、`check_headings.py` bad h2/h3 = 0、H2/H3 后首句违规 0、跨页重复段落 0。**不要动 bullet 清单**（7 条故障排查、4 步选机流程那类），清单项本来就该是列表，H3 化只收益于「有明确分述结构」的 H2。
 
----
+37. **Hugo `i18n` 返回的是普通字符串，会被转义；一律要 `| safeHTML`（2026-10-03 第十四轮）** —— 把模板硬编码文案抽进 `i18n/*.toml` 时，`{{ i18n "k" }}` 会把 `&` 转成 `&amp;`、`'` 转成 `&#39;`，与原来的字面量**不再逐字节一致**。实测结论（起最小站点验证）：
+    - **HTML 文本节点**：`{{ i18n "k" | safeHTML }}` ✅ 与字面量逐字节相同（`&` `'` `"` `<b>` `&#160;` 全部通过）；不带 `safeHTML` ❌。
+    - **属性值**：也必须 `| safeHTML`（**不是** `safeHTMLAttr` —— 后者会把已有的 `&amp;` 二次转义成 `&amp;amp;`）。但属性上下文里 `'` 会被转成 `&#39;`、`"` 转成 `&#34;`，`safeHTML` 也拦不住 —— **含这两个字符的属性值不要抽 i18n**（语义等价但字节不同）。
+    - **内联 `<script>`**：JS 上下文会转义成 `\u0027`，`| js` 在本版 Hugo 行为异常 —— **脚本里的文案不能走 i18n**，改为模板把结果注入 `data-*` 属性、JS 只读不算。
+    - **`.llms.txt` / `.json` 等文本输出格式同样会转义**，一样要 `| safeHTML`。
+    - **口诀：把源模板里的字面量原样存进 TOML，渲染时统一 `| safeHTML`** —— 这就是恒等变换。
+38. **模板行尾（CRLF/LF）会直接改变产物字节，而 `core.autocrlf=true` 会偷偷改它（2026-10-03 第十四轮，真实事故）** —— Hugo 把模板里**标签之间的换行**原样写进 HTML，所以模板是 CRLF 还是 LF，`public/` 的字节就不同。本站历史状态是 `layouts/` 「26 个 CRLF + 18 个 LF」混合（`git checkout` 写 CRLF、工具写 LF），导致**同一份提交在不同机器上构建出不同的产物**。本轮事故链：`git stash push -- layouts/`（为对比而临时回退模板）触发 git 按 autocrlf 把 26 个文件重写为 CRLF → 全站 527 页产物全变，一度误判为 i18n 改造引入回归。
+    - **已修**：`layouts/` 统一为 LF，并新增 `.gitattributes` 锁定 `layouts/** text eol=lf` + `i18n/** text eol=lf`。
+    - **代价**：18 个页面（`compare/matchups`、`esim-deals`、`guides/*` 8 页、`index.html`、`research/*` 4 页、`tools/`）相对旧产物有 **CRLF→LF 的纯空白差异**，已逐页断言无语义变化（同一批内容在 LF 与 CRLF 下 splitlines 完全相同）。其中真正"含多行文本节点"的模板只有 10 个：`compare/matchups.html`、`esim-deals/list.html`、`guides/single.html`、`guides/region.html`、`index.html`、`research/{list,price-index,fair-use-audit,unlimited-esim}.html`、`tools/list.html`。
+    - **纪律**：① 不要在 Windows 上用 `git stash` 对比模板（会按 autocrlf 重写行尾）；要对比旧产物请用 `git worktree add` + 手动统一 LF。② 写任何会改模板的脚本，读写都必须 `open(..., newline="")`，否则跨行文本节点的换行符会被归一。③ `scripts/i18n_extract.py` 已内置**行尾预检闸门**，模板含 CRLF 直接 exit 1。
+39. **Hugo 模板作用域与函数签名的四个坑（2026-10-03 第十四轮，均起最小站点实测）** ——
+    - **`{{ define "main" }}` 新建模板命名空间**：在它**之前**声明的变量（如 `{{ $d := partialCached ... }}`）在 `define` 内部**不可见**，报 `undefined variable "$d"`。赋值必须写在 `define` 内部。同理 `{{ block }}`。
+    - **`{{ return }}` 不能写在 `{{ if }}` / `{{ range }}` 块内**：会报 `wrong number of args for return: want 0 got 1`。partial 必须**只有一个顶层出口**（把结果算进变量，最后一行 `{{ return $x }}`）。
+    - **`site.Languages` 在 Hugo 0.156 起已弃用**（`.Site.Data` 同样，改 `hugo.Data`）；替代是 **`hugo.Sites`**（返回 site 对象，语言取 `.Language.Lang`）。
+    - **`.Format ":date_medium"` 无效**（会输出字面量 `:date_medium`），**只有 `time.Format ":date_medium" $t` 生效**。`time.Format ":date_medium"` 与硬编码 `"Jan 2, 2006"` 在英文下输出**完全一致**（实测 `Sep 30, 2026`），可安全替换 15 处硬编码，且自动本地化（日语 → `2026年9月30日`）。
+40. **`check_headings.py` 从写出来起就是空转的（2026-10-03 第十四轮发现）** —— 闭合标签正则写成 `</h>`，而真实 HTML 是 `</h2>` / `</h3>`，**一个标题都没匹配过**；它长期报告「527 页 bad h2/h3 = 0」只是因为从没检查。已修成 `</h\1>`，修好后一次扫出 **8098 个 h2/h3**（同一页 31 个，旧正则 0 个）。修完还发现第二个误报源：`&amp;` 里的 `;` 会被标点禁令命中，所以**必须先 `html.unescape()` 再查标点**。两个修复后真实结果仍是 0 违规 —— 标题确实合规，但守卫现在才真正生效。
+    - **通用教训**：守卫脚本本身也要验「它真的会失败」。任何 `bad = 0` 的守卫，都要**故意注入一个反例**确认它报错（本轮对 `check_i18n.py` 就做了这一步）。本轮已把 `check_i18n.py` 与 `check_headings.py` 接入 `npm run build`。
+
+41. **「全站禁止非拉丁字符」守卫已整体删除（2026-10-03 第十五轮，用户决策）** —— 站点要上多语言，禁令会拦住 ja/ko/zh 的合法产物；原方案是「按语言划豁免前缀」，用户决定**直接删**（豁免前缀只是把同一个问题往后推，还要养一张 `LATIN_SCRIPT` 语言表）。删除三处：`check_output.py` ④ + 其 `.json` 分支、`validate.py` §3 的 plan name 检查、`lang_rules.py` 的 `LATIN_SCRIPT` 与两个 `non_latin_exempt_*()`。**连带修复**：`check_output.py` 的 Go 格式串扫描从 `.html` 扩到 `.json`（原先 json 分支只服务于那条禁令，不扩就是死代码）。**代价必须知道**：手动贴进 `data/plans/` 的韩文/汉字套餐名**不再有任何守卫拦截**，防线只剩抓取层 `toml_write.clean_plan_name()`（重抓时自动清洗并打印改动）→ **新抓一批数据后人工看一眼它的打印输出**。反向验证方式：往 `data/plans/airalo.toml` 注入 `日本語`、往 `public/index.html` 追加日文 → `validate.py` 与 `check_output.py` 都必须**通过**（第六轮旧规则下它们会报 2 条 + 5 条）。
+42. **运行中的 `hugo server` 会把开发态页面写进 `public/`，污染生产产物（2026-10-03 第十五轮，真实事故苗头）** —— `hugo server` **默认渲染到磁盘**（只有 `--renderToMemory` 才不写盘）。现象：`public/compare/portugal/index.html` 出现 `http://localhost:1313/...` 与注入的 `<script src="/livereload.js?...">`，与基线比对时报「非行尾差异」，一度像是改造引入的回归。实证：`touch data/titlesegments.toml` 后 6 秒内，`public/` 里带 livereload 的文件从 **1 → 6**，`index.xml` / `llms.txt` / `catalog.json` / `index.html` 同时被重写。**两个后果**：① `public/` 在 dev server 运行时**不是可信产物**，此时部署 = 把 `localhost:1313` 发布出去（SEO 灾难）；② `check_output.py` / `check_headings.py` 读的就是 `public/`，会对着混合产物下结论。**规矩**：跑 `npm run build` 与任何产物级校验前，先确认没有 `hugo server` 在跑（`tasklist | grep hugo` / `netstat -ano | grep 1313`）；长期解法是把 `package.json` 的 `dev` 改成 `hugo server --renderToMemory`。**教训与红线 40 同源**：拿到「产物不一致」的结论时，先怀疑环境（谁在写这个目录），再怀疑代码。
 
 ## 15. 等用户决策/提供的事项（代码侧做不了的）
+
 
 | 事项 | 影响 |
 |---|---|
@@ -668,3 +688,68 @@ npm run build
 2. `cd` 到项目目录，跑 `python -X utf8 scripts/validate.py` 确认数据没坏。
 3. `npm run dev` 起 :1313 抽查：首页 / `/compare/japan/`（全模块国）/ `/esim-providers/airalo/` / `/compare/roami-vs-roamic/`。
 4. 看本文件 §3 待办挑下一件事；动侧翼页型前先查 `docs/keyword-map.md`。
+
+---
+
+## 18. 多语言（i18n）基础设施 —— 新增一个语言怎么走
+
+> 2026-10-03 第十四轮完成基础设施改造。**当前仍只有英文**，英文产物与改造前逐字节一致（除红线 38 记录的 18 页纯空白差异）。
+
+### 18.1 已就位的东西
+
+| 位置 | 作用 |
+|:---|:---|
+| `hugo.toml` `[languages.en]` + `defaultContentLanguageInSubdir = false` | 英文留在根路径，539 个已收录 URL 零变更；新语言落 `public/<lang>/` |
+| `i18n/en.toml`（749 key） | 模板层文案单表。key 命名：跨文件复用 → `g_<slug>`；文件独有 → `<filetag>__<slug>` |
+| `layouts/partials/i18n-data.html` | 数据层按语言解析。英语下**直接返回 `hugo.Data`（零开销恒等）**；存在 `data/<lang>/` 时深合并覆盖 |
+| `data/<lang>/…` 约定 | 与 `data/` 同路径的覆盖文件，只写需要翻译的键（如 `data/ja/countries.toml` 只写 `name` / `quirks`） |
+| `scripts/lang_rules.py` | 语言规则单一事实源：产物目录前缀、标题是否允许破折号（原「哪些语言用拉丁字母」一栏随非拉丁禁令一并删除，见 §18.4） |
+| `scripts/i18n_extract.py` | 模板文案抽取器（幂等、行尾保真、内置 CRLF 预检） |
+| `scripts/check_i18n.py` | 守卫：模板层不得新增硬编码；各语言 key 必须与 `en.toml` 对齐 |
+| `layouts/partials/head.html` | `hreflang` + `og:locale`，**仅在 `len hugo.Sites > 1` 时输出**，单语言下零字节 |
+
+### 18.2 新增语言三步
+
+```toml
+# 1) hugo.toml 追加（contentDir 必须显式写，不写会静默并入默认语言）
+[languages.ja]
+  languageCode = "ja-jp"
+  languageName = "日本語"
+  contentDir  = "content/ja"
+  weight      = 2
+```
+2) 建 `content/ja/`（长文）与 `i18n/ja.toml`（键名与 `i18n/en.toml` 一一对齐 —— 漏一个 `check_i18n.py` 直接失败）
+3) 需要覆盖数据层散文时建 `data/ja/…`，路径与 `data/` 对齐
+
+```bash
+npm run build          # 已含 check_i18n + check_headings
+```
+另需确认：`scripts/lang_rules.py` 的 `DASH_OK` 是否包含该语言（决定标题里的 `—`/`–` 是否放行）。**不再需要确认字符脚本** —— 非拉丁禁令已于 2026-10-03 删除（见 §18.4），加日语/中文/韩语不会再被任何守卫拦住。
+
+### 18.3 本轮未完成（新增语言前必须补）
+
+| 项 | 说明 |
+|:---|:---|
+| **704 处拼装句碎片** | `scripts/check_i18n.py` 会报。它们是紧邻 `{{ }}` 的句子片段（如 `Real prepaid plans from`），**多语言必须整体重写成带命名占位符的整句**（德语/日语语序不同，碎片拼接必崩），不能逐片翻译 |
+| **5 处内联 `<script>` 文案** | 改用 `data-*` 属性注入（见红线 37） |
+| **语言切换器 UI** | header 里目前**没有**。建议落点在 `layouts/partials/header.html` 主 nav 右侧，用 `{{ if gt (len hugo.Sites) 1 }}` 门控 + `range .AllTranslations` 出链接，class 复用现有 `nav` token；**必须在第二个语言上真机看过再上线** |
+| **JSON-LD `inLanguage`** | `schema.html` / `schema-org.html` 尚未加 |
+| **141 处 `printf` 生成整句** | 多语言后需要 3×N 套措辞（`esim-providers/single.html` 一个文件占 46 条） |
+| **`data/plans` 的 `fup_note` / `name`** | 2684 条仅 6 种模式、7776 条仅 2 个主模式 —— 应当**改造成模板渲染而不是翻译**（一次省 10460 条） |
+
+### 18.4 语言相关的校验豁免机制（2026-10-03 晚已收窄）
+
+**原来的「非拉丁字符禁令」已整体删除**，原因：站点要上多语言，而 ja/ko/zh 的合法产物天然含非拉丁字符。当时的两条路是（a）按语言划豁免前缀、（b）删掉禁令 —— 选了 (b)，因为 (a) 只是把同一个问题往后推，还要维护一张 `LATIN_SCRIPT` 语言表。
+
+删除范围（三处，全部已落地）：
+- `check_output.py` ④ 产物层非拉丁扫描 + 其 `.json` 分支 → 删。顺手把 ① 的 Go 格式串扫描**扩展到 `.json`**，避免 json 分支变成死代码
+- `validate.py` §3 的 plan name 非拉丁检查 → 删。**保留**与语言无关的结构性校验（首尾空白、首字符是标点）
+- `lang_rules.py` 的 `LATIN_SCRIPT` / `non_latin_exempt_prefixes()` / `non_latin_exempt_data_dirs()` → 删
+
+**代价**：手动贴进 `data/plans/` 的非拉丁套餐名不再有任何守卫拦截。防线只剩抓取层 `toml_write.clean_plan_name()`（**重抓数据时**自动清洗并打印），所以红线 21 加了一句「新抓一批数据后人工看一眼打印输出」。
+
+**仍然生效的豁免**：
+- `check_headings.py` 在 `public/<非拉丁语言>/` 下放宽 `—`/`–`（`DASH_OK` 表；逗号/分号/冒号**仍全语言禁止**）
+- `lang_rules.py` 未启用的语言不出现在任何豁免集合里 → 单语言时校验行为与改造前一致
+
+---

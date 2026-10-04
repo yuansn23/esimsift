@@ -1,19 +1,19 @@
-{{- /* provider-agg.html —— 每品牌跨国家聚合（单一数据源推导，零手工维护）
+{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}{{- /* provider-agg.html —— 每品牌跨国家聚合（单一数据源推导，零手工维护）
       返回 dict: key -> { countries, minPrice, minPerGB, cheapest, bestValue,
                          coverage: [ {iso,name,region,flag,min,cheapest,url} ] }
       cheapest  = 该国最低价命中数（并列都算）；bestValue = 该国最佳 $/GB 命中数。
       供 esim-providers 列表页 / 品牌详情页共用。 */ -}}
-{{- $countries := hugo.Data.countries -}}
+{{- $countries := $d.countries -}}
 
 {{- /* ① 先算每国全局 min / best $/GB（跨全部品牌） */ -}}
 {{- $g := dict -}}
 {{- range $iso, $c := $countries -}}
   {{- $gMin := 0.0 -}}{{- $gBest := 0.0 -}}
-  {{- range $pk, $pd := hugo.Data.plans -}}
+  {{- range $pk, $pd := $d.plans -}}
     {{- with index $pd $iso -}}
       {{- range .plans -}}
         {{- if or (eq $gMin 0.0) (lt .price $gMin) }}{{ $gMin = .price }}{{ end -}}
-        {{- if gt (int .gb) 0 -}}
+        {{- if gt (float .gb) 0.0 -}}
           {{- $pgb := div (float .price) (float .gb) -}}
           {{- if or (eq $gBest 0.0) (lt $pgb $gBest) }}{{ $gBest = $pgb }}{{ end -}}
         {{- end -}}
@@ -25,7 +25,7 @@
 
 {{- /* ② 每品牌聚合 */ -}}
 {{- $agg := dict -}}
-{{- range $pk, $pdata := hugo.Data.plans -}}
+{{- range $pk, $pdata := $d.plans -}}
   {{- $n := 0 -}}{{- $minPrice := 0.0 -}}{{- $maxPrice := 0.0 -}}{{- $minPerGB := 0.0 -}}{{- $cheapest := 0 -}}{{- $bestValue := 0 -}}
   {{- $cov := slice -}}
   {{- range $iso, $pc := $pdata -}}
@@ -34,7 +34,7 @@
     {{- $myMin := 0.0 -}}{{- $myBest := 0.0 -}}
     {{- range $pc.plans -}}
       {{- if or (eq $myMin 0.0) (lt .price $myMin) }}{{ $myMin = .price }}{{ end -}}
-      {{- if gt (int .gb) 0 -}}
+      {{- if gt (float .gb) 0.0 -}}
         {{- $pgb := div (float .price) (float .gb) -}}
         {{- if or (eq $myBest 0.0) (lt $pgb $myBest) }}{{ $myBest = $pgb }}{{ end -}}
       {{- end -}}

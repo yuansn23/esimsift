@@ -1,17 +1,17 @@
-{{ define "main" }}
+{{ define "main" }}{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}
 {{/* 品牌详情页 —— /esim-providers/<key>/
    全部数字由 provider-agg 聚合推导，正文文案数据驱动，零手工维护。 */}}
 {{ $key := .File.ContentBaseName }}
-{{ $p := index hugo.Data.providers $key }}
+{{ $p := index $d.providers $key }}
 {{ $agg := partial "provider-agg.html" . }}
 {{ $a := index $agg $key }}
 {{ if not $a }}{{/* 价格数据尚未入库（抓取队列中）：渲染降级壳页，只用 providers.toml 静态事实，绝不触碰空数据 */}}
 <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
-  <nav aria-label="Breadcrumb" class="text-sm text-ink-400">
+  <nav aria-label="{{ i18n "g_breadcrumb" | safeHTML }}" class="text-sm text-ink-400">
     <ol class="flex flex-wrap items-center gap-1.5">
-      <li><a href="{{ .Site.BaseURL }}" class="transition-colors hover:text-ink-700">Home</a></li>
+      <li><a href="{{ .Site.BaseURL }}" class="transition-colors hover:text-ink-700">{{ i18n "g_home" | safeHTML }}</a></li>
       <li aria-hidden="true">/</li>
-      <li><a href="/esim-providers/" class="transition-colors hover:text-ink-700">eSIM providers</a></li>
+      <li><a href="{{ partial "lang-href.html" "/esim-providers/" }}" class="transition-colors hover:text-ink-700">{{ i18n "g_esim_providers" | safeHTML }}</a></li>
       <li aria-hidden="true">/</li>
       <li class="font-medium text-ink-700">{{ $p.name }}</li>
     </ol>
@@ -25,42 +25,42 @@
         <span class="badge bg-ink-50 text-ink-500">{{ if eq $p.type "app" }}App-based{{ else }}Marketplace{{ end }}</span>
       </div>
       <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ $p.name }} eSIM review {{ now.Year }}</h1>
-      <p class="mt-4 max-w-xl text-lg leading-relaxed text-ink-600">{{ $p.tagline }}. We're currently verifying {{ $p.name }} prices across the {{ len hugo.Data.countries }} destinations we track — the country-by-country comparison lands here as soon as the check completes.</p>
+      <p class="mt-4 max-w-xl text-lg leading-relaxed text-ink-600">{{ $p.tagline }}. We're currently verifying {{ $p.name }} prices across the {{ len $d.countries }} destinations we track — the country-by-country comparison lands here as soon as the check completes.</p>
       <div class="mt-7 flex flex-wrap gap-3">
         {{ partial "cta-out.html" (dict "target" $key "label" (printf "View %s plans" $p.name) "class" "btn-primary" "campaign" (printf "prov-%s" $key) "page" $.RelPermalink) }}
       </div>
     </div>
     <div class="card p-6">
-      <p class="eyebrow">Company snapshot</p>
+      <p class="eyebrow">{{ i18n "g_company_snapshot" | safeHTML }}</p>
       <dl class="mt-4 space-y-2.5 text-sm">
-        <div class="flex justify-between gap-3"><dt class="text-ink-400">Founded</dt><dd class="font-medium text-ink-800 tnum">{{ $p.founded }}</dd></div>
-        {{ with $p.info }}{{ with .hq }}<div class="flex justify-between gap-3"><dt class="text-ink-400">Headquarters</dt><dd class="text-right font-medium text-ink-800">{{ . }}</dd></div>{{ end }}{{ end }}
-        <div class="flex justify-between gap-3"><dt class="text-ink-400">Model</dt><dd class="font-medium text-ink-800">{{ if eq $p.type "app" }}App-based{{ else }}Marketplace{{ end }}</dd></div>
-        <div class="flex justify-between gap-3"><dt class="text-ink-400">Relationship</dt><dd class="font-medium text-ink-800">{{ if $p.sponsored }}Sponsored partner{{ else }}Our own brand{{ end }}</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ink-400">{{ i18n "g_founded" | safeHTML }}</dt><dd class="font-medium text-ink-800 tnum">{{ $p.founded }}</dd></div>
+        {{ with $p.info }}{{ with .hq }}<div class="flex justify-between gap-3"><dt class="text-ink-400">{{ i18n "g_headquarters" | safeHTML }}</dt><dd class="text-right font-medium text-ink-800">{{ . }}</dd></div>{{ end }}{{ end }}
+        <div class="flex justify-between gap-3"><dt class="text-ink-400">{{ i18n "g_model" | safeHTML }}</dt><dd class="font-medium text-ink-800">{{ if eq $p.type "app" }}App-based{{ else }}Marketplace{{ end }}</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ink-400">{{ i18n "g_relationship" | safeHTML }}</dt><dd class="font-medium text-ink-800">{{ if $p.sponsored }}Sponsored partner{{ else }}Our own brand{{ end }}</dd></div>
       </dl>
-      <p class="mt-4 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">Rankings and "cheapest" badges on this site are computed by price alone — see our <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.</p>
+      <p class="mt-4 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">{{ i18n "g_rankings_and_cheapest_badges_on_this_site_are_computed_b" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>.</p>
     </div>
   </header>
 
   <section class="mt-12" aria-labelledby="tradeoffs-pending">
-    <p class="eyebrow">Honest trade-offs</p>
+    <p class="eyebrow">{{ i18n "g_honest_trade_offs" | safeHTML }}</p>
     <h2 id="tradeoffs-pending" class="mt-2 text-2xl font-bold md:text-3xl">Where does {{ $p.name }} win on price and where does it lose</h2>
     <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-brand-700">Strengths</h3>
+        <h3 class="font-display text-base font-bold text-brand-700">{{ i18n "g_strengths" | safeHTML }}</h3>
         <ul class="mt-4 space-y-2 text-sm text-ink-700">
           {{ range $p.strengths }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ . }}</li>{{ end }}
         </ul>
       </div>
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-accent-700">Watch out for</h3>
+        <h3 class="font-display text-base font-bold text-accent-700">{{ i18n "g_watch_out_for" | safeHTML }}</h3>
         <ul class="mt-4 space-y-2 text-sm text-ink-600">
           {{ range $p.weaknesses }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ . }}</li>{{ end }}
         </ul>
       </div>
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-ink-900">Price check in progress</h3>
-        <p class="mt-4 text-sm leading-relaxed text-ink-600">Our editors are pulling {{ $p.name }}'s full plan catalogue for the {{ len hugo.Data.countries }} destinations this site tracks. Until it's verified, compare the brands we've already checked on the <a href="/esim-providers/" class="font-semibold text-brand-700 hover:underline">provider overview</a> or browse <a href="/compare/" class="font-semibold text-brand-700 hover:underline">any country page</a>.</p>
+        <h3 class="font-display text-base font-bold text-ink-900">{{ i18n "esim_providers_single__price_check_in_progress" | safeHTML }}</h3>
+        <p class="mt-4 text-sm leading-relaxed text-ink-600">Our editors are pulling {{ $p.name }}'s full plan catalogue for the {{ len $d.countries }} destinations this site tracks. Until it's verified, compare the brands we've already checked on the <a href="{{ partial "lang-href.html" "/esim-providers/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "esim_providers_single__provider_overview" | safeHTML }}</a> {{ i18n "esim_providers_single__or_browse" | safeHTML }} <a href="{{ partial "lang-href.html" "/compare/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "esim_providers_single__any_country_page" | safeHTML }}</a>.</p>
       </div>
     </div>
   </section>
@@ -76,12 +76,12 @@
 {{/* 头号对手：除自己外 cheapest 命中数最高者 */}}
 {{ $rivalKey := "" }}{{ $rivalCount := -1 }}
 {{ range $k, $v := $agg }}{{ if and (ne $k $key) (gt $v.cheapest $rivalCount) }}{{ $rivalKey = $k }}{{ $rivalCount = $v.cheapest }}{{ end }}{{ end }}
-{{ $rival := index hugo.Data.providers $rivalKey }}
+{{ $rival := index $d.providers $rivalKey }}
 
 {{/* 套餐形态：metered / unlimited / 总数 */}}
 {{ $metered := 0 }}{{ $unlim := 0 }}{{ $totalPlans := 0 }}
-{{ range $iso, $pc := index hugo.Data.plans $key }}
-  {{ range $pc.plans }}{{ $totalPlans = add $totalPlans 1 }}{{ if eq (int .gb) 0 }}{{ $unlim = add $unlim 1 }}{{ else }}{{ $metered = add $metered 1 }}{{ end }}{{ end }}
+{{ range $iso, $pc := index $d.plans $key }}
+  {{ range $pc.plans }}{{ $totalPlans = add $totalPlans 1 }}{{ if eq (float .gb) 0.0 }}{{ $unlim = add $unlim 1 }}{{ else }}{{ $metered = add $metered 1 }}{{ end }}{{ end }}
 {{ end }}
 
 {{/* 最便宜命中国（首个） */}}
@@ -92,12 +92,95 @@
 {{/* int 强转必需：math.Round 返回 float64，直接喂给 %d 会渲染出 %!d(float64=…) */}}
 {{ if gt $a.countries 0 }}{{ $pct = int (math.Round (mul (div (float $a.cheapest) (float $a.countries)) 100.0)) }}{{ end }}
 
+{{/* ── 页面级派生量（2026-10-04 品牌 Hub 优化）─────────────────────────────
+     · 日期有两个，因为本页内容来自**两份**数据源，而文案分两类：
+       $checkedISO / $updatedDate —— 页面级「最后核对日」= max(价格核对日, 档案核对日)
+         用于通用表述「Last updated <d>」、JSON-LD dateModified、sitemap lastmod。
+       $priceISO  / $priceDate    —— 价格专属日期（只取 data/plans 的 checked）
+         用于「Prices … as checked on <d>」与「our price database … rebuilt <d>」。
+       ★ 两者不能合并：档案（简介/热点/FUP/充值）更新而价格没动时，通用日期该前移，
+         价格文案却必须留在价格核对日 —— 否则又是一句不实陈述。
+     ★ 一律不用 `now`：盖构建日等于对读者宣称「今天核过」，而每次部署都翻新的
+       lastmod 会被 Google 整体忽略。数据更新后跑
+       `python scripts/bump_checked.py --brand <key>`（价格）/ 手改
+       `data/providers.toml` 的 profile_checked（档案）。
+     · $alts —— 逐国「竞品更便宜」聚合，口径（同类比同类）固化在 partial 里。
+     · $mk5g / $mk4g —— 5G 实况。宿主网络在 data 里是**国家级**事实（八个品牌
+       共用同一批运营商，见 scripts/backfill_networks_uniform.py），所以这一节
+       回答的是「目的地有没有 5G」，不是「哪个品牌有 5G」—— 措辞必须诚实。
+     · $pol —— providers.toml [<brand>.policy]，热点 / FUP / 充值 / 语音四条。 */}}
+{{ $priceISO := partial "provider-checked.html" (dict "key" $key) }}
+{{ $checkedISO := partial "provider-checked.html" (dict "key" $key "profile" true) }}
+{{ $updatedDate := "" }}
+{{ with $checkedISO }}{{ $updatedDate = time.Format ":date_medium" (time .) }}{{ end }}
+{{ $priceDate := "" }}
+{{ with $priceISO }}{{ $priceDate = time.Format ":date_medium" (time .) }}{{ end }}
+{{ $pol := $p.policy }}
+{{ $alts := partial "provider-alts.html" (dict "key" $key "cov" $cov "d" $d) }}
+{{ $reviewURL := "" }}{{ with $p.info }}{{ with .trustpilot }}{{ $reviewURL = . }}{{ end }}{{ end }}
+
+{{ $mk5g := 0 }}{{ $mk4g := slice }}{{ $netProfiles := 0 }}
+{{ range $iso, $pc := index $d.plans $key }}
+  {{ $has5g := false }}
+  {{ $names := slice }}
+  {{ with index $d.carriers $iso }}
+    {{ range .profiles }}
+      {{ $netProfiles = add $netProfiles 1 }}
+      {{ $names = $names | append .name }}
+      {{ if in .tech "5G" }}{{ $has5g = true }}{{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $cc := index $d.countries $iso }}
+  {{ if $has5g }}
+    {{ $mk5g = add $mk5g 1 }}
+  {{ else }}
+    {{ $mk4g = $mk4g | append (dict "name" $cc.name "slug" $cc.slug "carriers" (delimit $names " · ")) }}
+  {{ end }}
+{{ end }}
+{{ $mkTotal := add $mk5g (len $mk4g) }}
+{{/* 纯 4G 市场的国家名（数组）—— 在 #reality 的 5G 卡与 FAQ Q12 中复用。
+     必须在这里算好：Hugo 模板不允许「先用后定义」。 */}}
+{{ $mk4gNames := slice }}
+{{ range $mk4g }}{{ $mk4gNames = $mk4gNames | append .name }}{{ end }}
+
+{{/* 计算器数据：只送「本品牌的全部档位 + 该国三个基准」。
+     不送全场 155 档 × 50 国（≈ 150KB）—— 那样页面会失控。
+     基准：c = 全国最便宜的计量档，b = 全国最佳 $/GB 档，u = 全国最便宜的无限档。*/}}
+{{ $calc := dict }}
+{{ range $c := $cov }}
+  {{ $ciso := $c.iso }}
+  {{ $s := partialCached "country-stats.html" $ciso $ciso }}
+  {{ $mineList := slice }}
+  {{ range where $s.rows "key" $key }}
+    {{/* ★ 这里必须用 dict 而不是 slice：Hugo 的 append 遇到切片实参会逐个展开并入
+         （append $s (slice a b c) 等价于 append $s a b c），把三元组压成一串裸数字；
+         而用双层 slice 反包又会被 Hugo 直接拒绝（cannot append slice of []interface{}
+         to slice of interface{}）。用 dict 存一条档位，才是唯一既成组又合法的写法。
+         JS 侧 pick() 读 .gb / .days / .price。 */}}
+    {{ $mineList = $mineList | append (dict "gb" (float .gb) "days" (int .days) "price" (float .price)) }}
+  {{ end }}
+  {{ $met := where $s.rows "isUnlimited" false }}
+  {{ $unl := where $s.rows "isUnlimited" true }}
+  {{ $cRow := dict }}{{ if gt (len $met) 0 }}{{ $cRow = index (sort $met "price" "asc") 0 }}{{ end }}
+  {{ $bRow := dict }}{{ if gt (len $met) 0 }}{{ $bRow = index (sort $met "perGB" "asc") 0 }}{{ end }}
+  {{ $uRow := dict }}{{ if gt (len $unl) 0 }}{{ $uRow = index (sort $unl "price" "asc") 0 }}{{ end }}
+  {{ $cEntry := slice }}
+  {{ if $cRow }}{{ $cEntry = slice (float $cRow.gb) (int $cRow.days) (float $cRow.price) $cRow.key (partial "plan-data-label.html" (float $cRow.gb)) }}{{ end }}
+  {{ $bEntry := slice }}
+  {{ if $bRow }}{{ $bEntry = slice (float $bRow.gb) (int $bRow.days) (float $bRow.price) $bRow.key (partial "plan-data-label.html" (float $bRow.gb)) }}{{ end }}
+  {{ $uEntry := slice }}
+  {{ if $uRow }}{{ $uEntry = slice (int $uRow.days) (float $uRow.price) $uRow.key (partial "plan-data-label.html" 0.0) }}{{ end }}
+  {{ $calc = merge $calc (dict $ciso (dict "m" $mineList "c" $cEntry "b" $bEntry "u" $uEntry)) }}
+{{ end }}
+{{ $brandNames := dict }}
+{{ range $k, $v := $d.providers }}{{ $brandNames = merge $brandNames (dict $k $v.name) }}{{ end }}
+
 <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
-  <nav aria-label="Breadcrumb" class="text-sm text-ink-400">
+  <nav aria-label="{{ i18n "g_breadcrumb" | safeHTML }}" class="text-sm text-ink-400">
     <ol class="flex flex-wrap items-center gap-1.5">
-      <li><a href="{{ .Site.BaseURL }}" class="transition-colors hover:text-ink-700">Home</a></li>
+      <li><a href="{{ .Site.BaseURL }}" class="transition-colors hover:text-ink-700">{{ i18n "g_home" | safeHTML }}</a></li>
       <li aria-hidden="true">/</li>
-      <li><a href="/esim-providers/" class="transition-colors hover:text-ink-700">eSIM providers</a></li>
+      <li><a href="{{ partial "lang-href.html" "/esim-providers/" }}" class="transition-colors hover:text-ink-700">{{ i18n "g_esim_providers" | safeHTML }}</a></li>
       <li aria-hidden="true">/</li>
       <li class="font-medium text-ink-700">{{ $p.name }}</li>
     </ol>
@@ -112,26 +195,34 @@
         <span class="badge bg-ink-50 text-ink-500">{{ if eq $p.type "app" }}App-based{{ else }}Marketplace{{ end }}</span>
         <span class="badge bg-ink-50 text-ink-500">{{ $a.countries }} destinations</span>
       </div>
-      <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ $p.name }} eSIM review {{ now.Year }}</h1>
+      {{/* H1：把「品牌自称」换成「我们算出来的值」。
+          套餐数只进 H1、不进 <title> —— title 里的数字会随数据过时（2026-10-04 用户口径），
+          H1 由 $totalPlans 实时渲染，永远与数据层一致。
+          降级壳页（上面那个分支）不适用：那里没有价格数据，$totalPlans 不存在。 */}}
+      <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ $p.name }} eSIM Review {{ now.Year }}: {{ $totalPlans }} Plans, Prices and Real Value</h1>
       <p class="mt-4 max-w-xl text-lg leading-relaxed text-ink-600">{{ $p.tagline }}. Every claim below is computed from our live price database — {{ $a.countries }} destinations, {{ $totalPlans }} plans, one formula.</p>
       <div class="mt-6 flex flex-wrap gap-3">
-        <div class="stat-tile"><span class="stat-num tnum">{{ $a.countries }}</span><span class="stat-label">Countries</span></div>
-        <div class="stat-tile"><span class="stat-num tnum text-accent-600">${{ printf "%.2f" $a.minPrice }}</span><span class="stat-label">Cheapest plan</span></div>
-        {{ if gt $a.minPerGB 0.0 }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" $a.minPerGB }}</span><span class="stat-label">Best $/GB</span></div>{{ end }}
-        <div class="stat-tile"><span class="stat-num tnum">#{{ $a.cheapest }}</span><span class="stat-label">Cheapest in</span></div>
+        <div class="stat-tile"><span class="stat-num tnum">{{ $a.countries }}</span><span class="stat-label">{{ i18n "g_countries" | safeHTML }}</span></div>
+        <div class="stat-tile"><span class="stat-num tnum text-accent-600">${{ printf "%.2f" $a.minPrice }}</span><span class="stat-label">{{ i18n "g_cheapest_plan" | safeHTML }}</span></div>
+        {{ if gt $a.minPerGB 0.0 }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" $a.minPerGB }}</span><span class="stat-label">{{ i18n "g_best_gb" | safeHTML }}</span></div>{{ end }}
+        <div class="stat-tile"><span class="stat-num tnum">#{{ $a.cheapest }}</span><span class="stat-label">{{ i18n "g_cheapest_in" | safeHTML }}</span></div>
       </div>
-      <div class="mt-7 flex flex-wrap gap-3">
+      {{ with $updatedDate }}<p class="mt-3 text-xs text-ink-400 tnum">{{ i18n "esim_providers_single__last_updated" (dict "date" .) | safeHTML }}</p>{{ end }}
+      <div class="mt-5 flex flex-wrap gap-3">
         {{ partial "cta-out.html" (dict "target" $key "label" (printf "View %s plans" $p.name) "class" "btn-primary" "campaign" (printf "prov-%s" $key) "page" $.RelPermalink) }}
       </div>
-      <p class="mt-3 text-xs text-ink-500">Wondering which local towers it connects to? Every provider rides the same host networks per destination — see the <a href="/networks/" class="font-semibold text-brand-700 hover:underline">eSIM network map</a>.</p>
+      {{/* 价格免责声明：紧贴价格出现的位置。品牌名是占位符，换品牌自动换名字。
+           日期用 $priceDate（价格核对日），**不是** $updatedDate —— 这句在说价格。 */}}
+      <p class="mt-3 max-w-xl text-xs leading-relaxed text-ink-400">{{ i18n "compare_provider__price_disclaimer" (dict "brand" $p.name "date" $priceDate) | safeHTML }}</p>
+      <p class="mt-2 text-xs text-ink-500">{{ i18n "esim_providers_single__wondering_which_local_towers_it_connects_to_every_provid" | safeHTML }} <a href="{{ partial "lang-href.html" "/networks/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_network_map" | safeHTML }}</a>.</p>
     </div>
 
     <div class="card p-6">
-      <p class="eyebrow">The computed verdict</p>
+      <p class="eyebrow">{{ i18n "esim_providers_single__the_computed_verdict" | safeHTML }}</p>
       <p class="mt-2 font-display text-2xl font-bold leading-tight text-ink-950">{{ $p.name }} is the cheapest provider in {{ $a.cheapest }} of {{ $a.countries }} countries we track — {{ $pct }}% of its coverage.</p>
-      <p class="mt-3 text-sm leading-relaxed text-ink-600">Best $/GB in <strong class="text-ink-950 tnum">{{ $a.bestValue }}</strong> countries; entry price from <strong class="text-ink-950 tnum">${{ printf "%.2f" $a.minPrice }}</strong>. No editorial star-rating — just the numbers, computed the same way for every brand.</p>
+      <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__best_gb_in" | safeHTML }} <strong class="text-ink-950 tnum">{{ $a.bestValue }}</strong> {{ i18n "esim_providers_single__countries_entry_price_from" | safeHTML }} <strong class="text-ink-950 tnum">${{ printf "%.2f" $a.minPrice }}</strong>{{ i18n "esim_providers_single__no_editorial_star_rating_just_the_numbers_computed_the_s" | safeHTML }}</p>
       <div class="mt-5 border-t border-ink-100 pt-4">
-        <p class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Price competitiveness index (editorial)</p>
+        <p class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "esim_providers_single__price_competitiveness_index_editorial" | safeHTML }}</p>
         <div class="mt-2 flex items-center gap-3">
           <span class="font-display text-3xl font-extrabold text-brand-700 tnum">{{ printf "%.1f" $score }}</span>
           <span class="text-sm text-ink-500">/ 10 (share of destinations where it's cheapest)</span>
@@ -150,8 +241,8 @@
   {{- $q1 := printf "How many countries does %s cover?" $p.name -}}
   {{- if eq $v 1 -}}{{- $q1 = printf "Where can I use a %s eSIM?" $p.name -}}
   {{- else if eq $v 2 -}}{{- $q1 = printf "Which countries does the %s eSIM work in?" $p.name -}}{{- end -}}
-  {{- $a1 := printf "%s sells eSIMs for %d of the %d destinations this site tracks, all priced from the same dated snapshot." $p.name $a.countries (len hugo.Data.countries) -}}
-  {{- with $p.info -}}{{- with .destinations -}}{{- $a1 = printf "%s Its own catalogue lists %d+ destinations in total — we track the %d where demand is highest." $a1 . (len hugo.Data.countries) -}}{{- end -}}{{- end -}}
+  {{- $a1 := printf "%s sells eSIMs for %d of the %d destinations this site tracks, all priced from the same dated snapshot." $p.name $a.countries (len $d.countries) -}}
+  {{- with $p.info -}}{{- with .destinations -}}{{- $a1 = printf "%s Its own catalogue lists %d+ destinations in total — we track the %d where demand is highest." $a1 . (len $d.countries) -}}{{- end -}}{{- end -}}
   {{- $a1 = printf "%s For a specific trip, open that destination's page in the <a href=\"/compare/\">country comparison</a> and every %s plan sorts against the field." $a1 $p.name -}}
   {{- $faqList = $faqList | append (dict "q" $q1 "a" $a1) -}}
 
@@ -243,6 +334,42 @@
   {{- $q10 := printf "How does %s compare with %s?" $p.name $rival.name -}}
   {{- if eq $v 1 -}}{{- $q10 = printf "How does %s stack up against %s?" $p.name $rival.name -}}{{- end -}}
   {{- $faqList = $faqList | append (dict "q" $q10 "a" (printf "Across the destinations we track, %s is the cheapest provider in %d countries vs %s in %d. The full country-by-country table is our <a href=\"%s\">%s vs %s comparison</a>." $p.name $a.cheapest $rival.name $rivalCount $vsURL2 $p.name $rival.name)) -}}
+
+  {{- /* Q11 热点（用户直接点名：页面完全没提是否支持热点分享）。
+         八品牌的 hotspot 都是**品牌级**政策，所以这里可以给一个确定的答案。 */ -}}
+  {{- with $pol -}}
+    {{- with .hotspot_note -}}
+      {{- $faqList = $faqList | append (dict "q" (printf "Does %s support hotspot sharing?" $p.name) "a" (printf "%s sets its hotspot rules globally rather than country by country, so this single answer covers every market we track. %s In short: <strong>%s</strong>. Tethering traffic is drawn from the same data allowance as your phone unless that note says otherwise, so a laptop session drains a metered plan noticeably faster — size the plan for the devices you are actually bringing." $p.name . $pol.hotspot_allowance)) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* Q12 5G（用户点名「Airalo 5G coverage countries」；答案按宿主网络的实况给，
+         绝不按品牌编 —— data 层的 networks 是国家级事实）。 */ -}}
+  {{- $q12 := printf "Does %s support 5G?" $p.name -}}
+  {{- if eq $v 1 -}}{{- $q12 = printf "Will I get 5G on a %s eSIM?" $p.name -}}
+  {{- else if eq $v 2 -}}{{- $q12 = printf "Is 5G included with %s?" $p.name -}}{{- end -}}
+  {{- $a12 := printf "An eSIM cannot invent a network the destination does not have. 5G is live on the host networks in %d of the %d markets where %s sells, so whether you get 5G is decided by where you fly, not by which brand you bought." $mk5g $mkTotal $p.name -}}
+  {{- if gt (len $mk4g) 0 -}}
+    {{- $a12 = printf "%s One market we track is LTE only — %s — and no brand can change that." $a12 (delimit $mk4gNames ", ") -}}
+  {{- end -}}
+  {{- $a12 = printf "%s Check your own destination on our <a href=\"/networks/\">eSIM network map</a> before you count on 5G speeds." $a12 -}}
+  {{- $faqList = $faqList | append (dict "q" $q12 "a" $a12) -}}
+
+  {{- /* Q13 「谁比它便宜」（直接回答用户说的「看完不便宜之后不知道去看谁」） */ -}}
+  {{- $q13 := printf "Who is cheaper than %s?" $p.name -}}
+  {{- if gt $alts.n 0 -}}
+    {{- $a13 := printf "It depends on the market. In %d of the %d countries where we track %s, another brand sells a comparable plan — same data allowance, same validity — for less." $alts.n $alts.total $p.name -}}
+    {{- if gt $alts.topAltN 1 -}}
+      {{- $a13 = printf "%s The most frequent winner against it is %s, ahead in %d markets." $a13 $alts.topAltName $alts.topAltN -}}
+    {{- else -}}
+      {{- $a13 = printf "%s No single rival dominates the list." $a13 -}}
+    {{- end -}}
+    {{- $a13 = printf "%s Our <a href=\"%s\">%s vs %s comparison</a> shows the same gap brand by brand, and the table above lists all %d markets with both prices side by side." $a13 $vsURL2 $p.name $rival.name $alts.n -}}
+    {{- $faqList = $faqList | append (dict "q" $q13 "a" $a13) -}}
+  {{- else -}}
+    {{- $faqList = $faqList | append (dict "q" $q13 "a" (printf "In the %d markets where we track %s, no other brand we compare sells a comparable plan for less — on the price record it is the floor of its own catalogue. Check the <a href=\"/esim-providers/\">full provider ranking</a> for the markets where that does not hold." $alts.total $p.name)) -}}
+  {{- end -}}
+
   {{- $faqEntities := slice -}}
   {{- range $faqList -}}{{- $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) -}}{{- end -}}
 
@@ -259,6 +386,29 @@
         (dict "@type" "PropertyValue" "name" "Best value ($/GB) wins" "value" $a.bestValue)
         (dict "@type" "PropertyValue" "name" "Price competitiveness index (0-10, editorial)" "value" $scoreR)
   -}}
+  {{- /* 逐市场 Offer：只给区间（旧实现）时，AI 引擎答不了「某品牌在某国多少钱」。
+        取「每个市场最便宜的那一档」× 12 个最便宜的市场，作为 AggregateOffer 内的
+        offers 数组 —— 既有区间又有具体报价，且不会把 900+ 条套餐塞进 JSON-LD。 */ -}}
+  {{- $offerList := slice -}}
+  {{- range first 12 (sort $cov "min" "asc") -}}
+    {{- $cmin := 0.0 -}}{{- $cname := "" -}}{{- $cgb := 0.0 -}}{{- $cdays := 0 -}}
+    {{- $cs := partialCached "country-stats.html" .iso .iso -}}
+    {{- $cm := where $cs.rows "key" $key -}}
+    {{- if gt (len $cm) 0 -}}
+      {{- $c1 := index (sort $cm "price" "asc") 0 -}}
+      {{- $cmin = float $c1.price -}}{{- $cname = $c1.name -}}{{- $cgb = float $c1.gb -}}{{- $cdays = int $c1.days -}}
+      {{- $offerList = $offerList | append (dict
+            "@type" "Offer"
+            "name" (printf "%s %s eSIM" $p.name $cname)
+            "category" "eSIM data plan"
+            "price" $cmin
+            "priceCurrency" "USD"
+            "availability" "https://schema.org/InStock"
+            "url" (printf "%s#calc" $.Permalink)
+            "areaServed" (dict "@type" "Country" "name" (index $d.countries .iso).name)
+          ) -}}
+    {{- end -}}
+  {{- end -}}
   {{- $product := dict
         "@type" "Product"
         "name" (printf "%s eSIM" $p.name)
@@ -268,7 +418,8 @@
         "offers" (dict "@type" "AggregateOffer" "priceCurrency" "USD"
           "lowPrice" (div (math.Round (mul $a.minPrice 100)) 100.0)
           "highPrice" (div (math.Round (mul $a.maxPrice 100)) 100.0)
-          "offerCount" $totalPlans)
+          "offerCount" $totalPlans
+          "offers" $offerList)
         "additionalProperty" $props
   -}}
   {{- if fileExists (printf "static/img/providers/%s.png" $key) -}}
@@ -276,6 +427,9 @@
   {{- else if fileExists (printf "static/img/providers/%s.webp" $key) -}}
     {{- $product = merge $product (dict "image" (printf "%simg/providers/%s.webp" $.Site.BaseURL $key)) -}}
   {{- end -}}
+  {{- /* dateModified 与页面可见「Last updated」、sitemap lastmod 同源（品牌级 checked）。
+         日期缺失时**不写**该字段 —— 宁可少一个字段，不写一个编出来的日期。 */ -}}
+  {{- with $checkedISO }}{{- $product = merge $product (dict "dateModified" .) -}}{{- end -}}
   {{- $graph := slice $product -}}
   {{- with $p.info -}}
     {{- $same := slice -}}
@@ -305,7 +459,7 @@
           <p class="mt-1.5 text-lg font-bold text-ink-950">{{ $p.promo_label }} — code
             <code class="ml-1 rounded-lg border border-brand-400 bg-white px-2.5 py-1 font-mono text-base tracking-widest text-brand-800">{{ . }}</code>
           </p>
-          <p class="mt-1.5 text-xs text-ink-400">Expires {{ time.Format "Jan 2, 2006" $p.promo_expires }}. See all <a href="/esim-deals/" class="font-semibold text-brand-700 hover:underline">eSIM deals</a>.</p>
+          <p class="mt-1.5 text-xs text-ink-400">Expires {{ time.Format ":date_medium" $p.promo_expires }}. See all <a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_deals" | safeHTML }}</a>.</p>
         </div>
         {{ partial "cta-out.html" (dict "target" $key "label" (printf "Use code at %s" $p.name) "class" "btn-primary text-xs" "campaign" (printf "prov-%s" $key) "page" $.RelPermalink) }}
       </div>
@@ -313,50 +467,120 @@
   </section>
   {{ end }}
 
+  {{/* ── ③a′ Plan reality check（品牌级）──
+     用户直接点名的三件事：热点分享 / 公平使用限速阈值 / 是否支持 5G。
+     数据源：providers.toml [<brand>.policy]（八品牌全覆盖）+ carriers.toml 的 tech。
+     诚实边界：宿主运营商在 data 层是**国家级**事实，八个品牌在同一个国家走同一批网络，
+     所以第 4 张卡讲的是「目的地有没有 5G」，而不是编一个品牌级的 5G 名单。
+     $mk4gNames 已在文件顶部算好（Hugo 不允许先用后定义）。 */}}
+  <section class="mt-12" aria-labelledby="reality">
+    <p class="eyebrow">{{ i18n "esim_providers_single__reality_eyebrow" | safeHTML }}</p>
+    <h2 id="reality" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "esim_providers_single__reality_h2" (dict "brand" $p.name) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "esim_providers_single__reality_lead" (dict "brand" $p.name) | safeHTML }}</p>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2">
+      <div class="card p-6">
+        <div class="flex items-start justify-between gap-3">
+          <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "compare_provider__hotspot_sharing" | safeHTML }}</h3>
+          {{ with $pol }}
+          <span class="badge shrink-0 {{ if eq .hotspot "capped" }}bg-accent-50 text-accent-700{{ else if eq .hotspot "none" }}bg-ink-50 text-ink-500{{ else }}bg-emerald-50 text-emerald-600{{ end }}">
+            {{- if eq .hotspot "capped" }}{{ i18n "compare_provider__status_capped" | safeHTML }}
+            {{- else if eq .hotspot "none" }}{{ i18n "compare_provider__status_none" | safeHTML }}
+            {{- else }}{{ i18n "compare_provider__status_allowed" | safeHTML }}{{ end -}}
+          </span>
+          {{ end }}
+        </div>
+        {{ with $pol }}
+        <p class="mt-2 font-display text-lg font-bold text-ink-950">{{ .hotspot_allowance }}</p>
+        <p class="mt-2 text-sm leading-relaxed text-ink-500">{{ .hotspot_note }}</p>
+        {{ else }}
+        <p class="mt-2 font-display text-lg font-bold text-ink-400">{{ i18n "compare_provider__status_unverified" | safeHTML }}</p>
+        {{ end }}
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "compare_provider__fair_use_threshold" | safeHTML }}</h3>
+        {{ with $pol }}
+        <p class="mt-2 font-display text-lg font-bold text-ink-950">{{ .fup_allowance }}</p>
+        {{ with .fup_drop }}<p class="mt-1 text-xs font-semibold text-accent-700">{{ i18n "compare_provider__fup_drop_to" | safeHTML }} {{ . }}</p>{{ end }}
+        <p class="mt-2 text-sm leading-relaxed text-ink-500">{{ .fup_note }}</p>
+        {{ else }}
+        <p class="mt-2 font-display text-lg font-bold text-ink-400">{{ i18n "compare_provider__status_unverified" | safeHTML }}</p>
+        {{ end }}
+      </div>
+      <div class="card p-6">
+        <div class="flex items-start justify-between gap-3">
+          <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "compare_provider__top_ups" | safeHTML }}</h3>
+          {{ with $pol }}
+          <span class="badge shrink-0 {{ if .topup }}bg-emerald-50 text-emerald-600{{ else }}bg-accent-50 text-accent-700{{ end }}">
+            {{- if .topup }}{{ i18n "compare_provider__status_available" | safeHTML }}{{ else }}{{ i18n "compare_provider__status_none" | safeHTML }}{{ end -}}
+          </span>
+          {{ end }}
+        </div>
+        {{ with $pol }}
+        <p class="mt-2 text-sm leading-relaxed text-ink-500">{{ .topup_note }}</p>
+        <p class="mt-2 text-xs font-semibold text-ink-400">{{ i18n "esim_providers_single__reality_voice" | safeHTML }}</p>
+        {{ end }}
+      </div>
+      <div class="card p-6">
+        <div class="flex items-start justify-between gap-3">
+          <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "compare_provider__speed_and_coverage" | safeHTML }}</h3>
+          <span class="badge shrink-0 {{ if gt $mk5g 0 }}bg-brand-50 text-brand-700{{ else }}bg-ink-50 text-ink-500{{ end }}">
+            {{- if gt $mk5g 0 }}{{ i18n "compare_provider__speed_5g" | safeHTML }}{{ else }}{{ i18n "compare_provider__speed_4g" | safeHTML }}{{ end -}}
+          </span>
+        </div>
+        <p class="mt-2 font-display text-lg font-bold text-ink-950 tnum">{{ i18n "esim_providers_single__reality_5g_count" (dict "n5g" $mk5g "total" $mkTotal) | safeHTML }}</p>
+        <p class="mt-2 text-sm leading-relaxed text-ink-500">{{ i18n "esim_providers_single__reality_5g_text" (dict "n" $netProfiles "brand" $p.name) | safeHTML }}</p>
+        {{ if gt (len $mk4g) 0 }}
+        <p class="mt-2 text-sm leading-relaxed text-accent-700">{{ i18n "esim_providers_single__reality_4g_note" (dict "list" (delimit $mk4gNames ", ")) | safeHTML }}</p>
+        {{ end }}
+        <p class="mt-2 text-xs leading-relaxed text-ink-400">{{ i18n "esim_providers_single__reality_5g_link" | safeHTML }} <a href="{{ partial "lang-href.html" "/networks/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_network_map" | safeHTML }}</a> · <a href="{{ partial "lang-href.html" "/research/fair-use-audit/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "esim_providers_single__fair_use_audit" | safeHTML }}</a></p>
+      </div>
+    </div>
+  </section>
+
   {{/* ── ③b 运作方式 + 公司档案（对标竞品站品牌页的信息增量）── */}}
   <section class="mt-12" aria-labelledby="howworks">
-    <p class="eyebrow">The mechanics</p>
+    <p class="eyebrow">{{ i18n "esim_providers_single__the_mechanics" | safeHTML }}</p>
     <h2 id="howworks" class="mt-2 text-2xl font-bold md:text-3xl">How {{ $p.name }} works</h2>
     <div class="mt-6 grid items-start gap-4 lg:grid-cols-[1.5fr_1fr]">
       <div class="card p-6">
         {{ if eq $p.type "app" }}
         <ol class="space-y-4">
-          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">1</span><div><p class="font-semibold text-ink-950">Install the app and buy in-app</p><p class="mt-1 text-sm leading-relaxed text-ink-600">Pick your destination and plan inside the app — checkout, eSIM and top-ups all live in one place, no email vouchers.</p></div></li>
-          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">2</span><div><p class="font-semibold text-ink-950">One tap installs the eSIM</p><p class="mt-1 text-sm leading-relaxed text-ink-600">The app writes the eSIM profile directly — no QR-code juggling, and it can switch host networks automatically where {{ $p.name }} holds multiple agreements.</p></div></li>
-          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">3</span><div><p class="font-semibold text-ink-950">Data starts when you land</p><p class="mt-1 text-sm leading-relaxed text-ink-600">The plan activates per its validity window; if you run low, buy a top-up in the app and keep the same eSIM.</p></div></li>
+          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">1</span><div><p class="font-semibold text-ink-950">{{ i18n "esim_providers_single__install_the_app_and_buy_in_app" | safeHTML }}</p><p class="mt-1 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__pick_your_destination_and_plan_inside_the_app_checkout_e" | safeHTML }}</p></div></li>
+          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">2</span><div><p class="font-semibold text-ink-950">{{ i18n "esim_providers_single__one_tap_installs_the_esim" | safeHTML }}</p><p class="mt-1 text-sm leading-relaxed text-ink-600">The app writes the eSIM profile directly — no QR-code juggling, and it can switch host networks automatically where {{ $p.name }} holds multiple agreements.</p></div></li>
+          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">3</span><div><p class="font-semibold text-ink-950">{{ i18n "esim_providers_single__data_starts_when_you_land" | safeHTML }}</p><p class="mt-1 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__the_plan_activates_per_its_validity_window_if_you_run_lo" | safeHTML }}</p></div></li>
         </ol>
         {{ else }}
         <ol class="space-y-4">
-          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">1</span><div><p class="font-semibold text-ink-950">Buy on the website</p><p class="mt-1 text-sm leading-relaxed text-ink-600">Choose the country package and pay online — the eSIM arrives by email within minutes, before you travel.</p></div></li>
-          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">2</span><div><p class="font-semibold text-ink-950">Scan the QR code</p><p class="mt-1 text-sm leading-relaxed text-ink-600">Settings → Cellular → Add eSIM (iOS) or the equivalent on Android — the profile downloads and sits dormant until the validity window starts.</p></div></li>
-          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">3</span><div><p class="font-semibold text-ink-950">It activates on arrival</p><p class="mt-1 text-sm leading-relaxed text-ink-600">The line registers on the local partner network when you land. Need more data later? Buy a new package and install it the same way.</p></div></li>
+          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">1</span><div><p class="font-semibold text-ink-950">{{ i18n "esim_providers_single__buy_on_the_website" | safeHTML }}</p><p class="mt-1 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__choose_the_country_package_and_pay_online_the_esim_arriv" | safeHTML }}</p></div></li>
+          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">2</span><div><p class="font-semibold text-ink-950">{{ i18n "esim_providers_single__scan_the_qr_code" | safeHTML }}</p><p class="mt-1 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__settings_cellular_add_esim_ios_or_the_equivalent_on_andr" | safeHTML }}</p></div></li>
+          <li class="flex gap-3.5"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">3</span><div><p class="font-semibold text-ink-950">{{ i18n "esim_providers_single__it_activates_on_arrival" | safeHTML }}</p><p class="mt-1 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__the_line_registers_on_the_local_partner_network_when_you" | safeHTML }}</p></div></li>
         </ol>
         {{ end }}
       </div>
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-ink-950">Company snapshot</h3>
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "g_company_snapshot" | safeHTML }}</h3>
         <dl class="mt-4 space-y-2.5 text-sm">
-          <div class="flex justify-between gap-3"><dt class="text-ink-400">Founded</dt><dd class="font-medium text-ink-800 tnum">{{ $p.founded }}</dd></div>
+          <div class="flex justify-between gap-3"><dt class="text-ink-400">{{ i18n "g_founded" | safeHTML }}</dt><dd class="font-medium text-ink-800 tnum">{{ $p.founded }}</dd></div>
           {{ with $p.info }}
           {{ $info := . }}
-          {{ with .hq }}<div class="flex justify-between gap-3"><dt class="text-ink-400">Headquarters</dt><dd class="text-right font-medium text-ink-800">{{ . }}{{ with $info.legal }} <span class="block text-xs text-ink-400">{{ . }}</span>{{ end }}</dd></div>{{ end }}
+          {{ with .hq }}<div class="flex justify-between gap-3"><dt class="text-ink-400">{{ i18n "g_headquarters" | safeHTML }}</dt><dd class="text-right font-medium text-ink-800">{{ . }}{{ with $info.legal }} <span class="block text-xs text-ink-400">{{ . }}</span>{{ end }}</dd></div>{{ end }}
           {{ end }}
-          <div class="flex justify-between gap-3"><dt class="text-ink-400">Model</dt><dd class="font-medium text-ink-800">{{ if eq $p.type "app" }}App-based{{ else }}Marketplace{{ end }}</dd></div>
-          <div class="flex justify-between gap-3"><dt class="text-ink-400">Destinations tracked</dt><dd class="font-medium text-ink-800 tnum">{{ $a.countries }}</dd></div>
-          <div class="flex justify-between gap-3"><dt class="text-ink-400">Plans tracked</dt><dd class="font-medium text-ink-800 tnum">{{ $totalPlans }}</dd></div>
-          <div class="flex justify-between gap-3"><dt class="text-ink-400">Price range</dt><dd class="font-medium text-ink-800 tnum">${{ printf "%.2f" $a.minPrice }} – ${{ printf "%.2f" $a.maxPrice }}</dd></div>
-          <div class="flex justify-between gap-3"><dt class="text-ink-400">Relationship</dt><dd class="font-medium text-ink-800">{{ if $p.sponsored }}Sponsored partner{{ else }}Our own brand{{ end }}</dd></div>
+          <div class="flex justify-between gap-3"><dt class="text-ink-400">{{ i18n "g_model" | safeHTML }}</dt><dd class="font-medium text-ink-800">{{ if eq $p.type "app" }}App-based{{ else }}Marketplace{{ end }}</dd></div>
+          <div class="flex justify-between gap-3"><dt class="text-ink-400">{{ i18n "esim_providers_single__destinations_tracked" | safeHTML }}</dt><dd class="font-medium text-ink-800 tnum">{{ $a.countries }}</dd></div>
+          <div class="flex justify-between gap-3"><dt class="text-ink-400">{{ i18n "g_plans_tracked" | safeHTML }}</dt><dd class="font-medium text-ink-800 tnum">{{ $totalPlans }}</dd></div>
+          <div class="flex justify-between gap-3"><dt class="text-ink-400">{{ i18n "esim_providers_single__price_range" | safeHTML }}</dt><dd class="font-medium text-ink-800 tnum">${{ printf "%.2f" $a.minPrice }} – ${{ printf "%.2f" $a.maxPrice }}</dd></div>
+          <div class="flex justify-between gap-3"><dt class="text-ink-400">{{ i18n "g_relationship" | safeHTML }}</dt><dd class="font-medium text-ink-800">{{ if $p.sponsored }}Sponsored partner{{ else }}Our own brand{{ end }}</dd></div>
         </dl>
         {{ with $p.info }}
         {{ if or .app_android .app_ios .website }}
         <div class="mt-4 flex flex-wrap gap-2 border-t border-ink-100 pt-3">
-          {{ with .website }}<a href="{{ . }}" target="_blank" rel="{{ if $p.sponsored }}sponsored nofollow {{ end }}noopener" class="badge bg-ink-50 text-ink-600 transition-colors hover:bg-ink-100 hover:text-ink-800">Official site ↗</a>{{ end }}
-          {{ with .app_android }}<a href="{{ . }}" target="_blank" rel="noopener" class="badge bg-ink-50 text-ink-600 transition-colors hover:bg-ink-100 hover:text-ink-800">Google Play ↗</a>{{ end }}
-          {{ with .app_ios }}<a href="{{ . }}" target="_blank" rel="noopener" class="badge bg-ink-50 text-ink-600 transition-colors hover:bg-ink-100 hover:text-ink-800">App Store ↗</a>{{ end }}
+          {{ with .website }}<a href="{{ . }}" target="_blank" rel="{{ if $p.sponsored }}sponsored nofollow {{ end }}noopener" class="badge bg-ink-50 text-ink-600 transition-colors hover:bg-ink-100 hover:text-ink-800">{{ i18n "esim_providers_single__official_site" | safeHTML }}</a>{{ end }}
+          {{ with .app_android }}<a href="{{ . }}" target="_blank" rel="noopener" class="badge bg-ink-50 text-ink-600 transition-colors hover:bg-ink-100 hover:text-ink-800">{{ i18n "esim_providers_single__google_play" | safeHTML }}</a>{{ end }}
+          {{ with .app_ios }}<a href="{{ . }}" target="_blank" rel="noopener" class="badge bg-ink-50 text-ink-600 transition-colors hover:bg-ink-100 hover:text-ink-800">{{ i18n "esim_providers_single__app_store" | safeHTML }}</a>{{ end }}
         </div>
         {{ end }}
         {{ end }}
-        <p class="mt-4 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">Rankings and "cheapest" badges on this site are computed by price alone — see our <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.</p>
+        <p class="mt-4 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">{{ i18n "g_rankings_and_cheapest_badges_on_this_site_are_computed_b" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>.</p>
       </div>
     </div>
   </section>
@@ -364,20 +588,20 @@
   {{/* ── ③c 客服 & 退款（info 子表驱动；缺失则整块隐藏）── */}}
   {{ with $p.info }}
   <section class="mt-12" aria-labelledby="support">
-    <p class="eyebrow">Support & refunds</p>
+    <p class="eyebrow">{{ i18n "esim_providers_single__support_refunds" | safeHTML }}</p>
     <h2 id="support" class="mt-2 text-2xl font-bold md:text-3xl">Getting help from {{ $p.name }}</h2>
     <div class="mt-6 grid items-start gap-4 lg:grid-cols-2">
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-ink-950">Customer support</h3>
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "esim_providers_single__customer_support" | safeHTML }}</h3>
         <dl class="mt-4 space-y-2.5 text-sm">
-          {{ with .support }}<div class="flex justify-between gap-3"><dt class="shrink-0 text-ink-400">Channels</dt><dd class="text-right font-medium text-ink-800">{{ . }}</dd></div>{{ end }}
-          {{ with .support_email }}<div class="flex justify-between gap-3"><dt class="shrink-0 text-ink-400">Email</dt><dd class="text-right"><a href="mailto:{{ . }}" class="font-medium text-brand-700 hover:underline break-all">{{ . }}</a></dd></div>{{ end }}
-          {{ with .response_time }}<div class="flex justify-between gap-3"><dt class="shrink-0 text-ink-400">Response time</dt><dd class="text-right font-medium text-ink-800">{{ . }}</dd></div>{{ end }}
+          {{ with .support }}<div class="flex justify-between gap-3"><dt class="shrink-0 text-ink-400">{{ i18n "esim_providers_single__channels" | safeHTML }}</dt><dd class="text-right font-medium text-ink-800">{{ . }}</dd></div>{{ end }}
+          {{ with .support_email }}<div class="flex justify-between gap-3"><dt class="shrink-0 text-ink-400">{{ i18n "esim_providers_single__email" | safeHTML }}</dt><dd class="text-right"><a href="mailto:{{ . }}" class="font-medium text-brand-700 hover:underline break-all">{{ . }}</a></dd></div>{{ end }}
+          {{ with .response_time }}<div class="flex justify-between gap-3"><dt class="shrink-0 text-ink-400">{{ i18n "esim_providers_single__response_time" | safeHTML }}</dt><dd class="text-right font-medium text-ink-800">{{ . }}</dd></div>{{ end }}
         </dl>
         <p class="mt-4 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">As published on {{ $p.name }}'s official site — channels and response times can change; the app is usually the fastest route.</p>
       </div>
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-ink-950">The refund policy in short</h3>
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "esim_providers_single__the_refund_policy_in_short" | safeHTML }}</h3>
         {{ with .refund }}<p class="mt-4 text-sm leading-relaxed text-ink-700">{{ . }}</p>{{ end }}
         <p class="mt-3 text-xs leading-relaxed text-ink-400">Summarised from {{ $p.name }}'s published refund terms. Full conditions live on the provider's own policy page — read them before relying on a refund.</p>
       </div>
@@ -412,7 +636,7 @@
   {{ $medEntry := dict }}{{ if gt (len $minsSorted) 0 }}{{ $medEntry = index $minsSorted (div (sub (len $minsSorted) 1) 2) }}{{ end }}
 
   <section class="mt-12" aria-labelledby="tradeoffs">
-    <p class="eyebrow">Price record</p>
+    <p class="eyebrow">{{ i18n "esim_providers_single__price_record" | safeHTML }}</p>
     <h2 id="tradeoffs" class="mt-2 text-2xl font-bold md:text-3xl">Where does {{ $p.name }} win on price and where does it lose</h2>
     <p class="mt-3 max-w-2xl text-ink-600">We re-priced {{ $p.name }} against every other provider in each of its {{ $a.countries }} countries. It is the strictly cheapest option in {{ len $winsL }} of them{{ if gt (len $winsL) 0 }} — undercutting the next-best brand by {{ printf "%.0f" $avgW }}% on average where it wins{{ end }}. In the typical country where it loses{{ if gt $medL 200.0 }}, its entry plan costs about {{ printf "%.0f" (add (div $medL 100.0) 1.0) }}&times; that country's cheapest entry{{ else }}, its entry plan costs {{ printf "%.0f" $medL }}% more than that country's best offer{{ end }}. Every row below links to the full country table.</p>
     <div class="mt-6 grid gap-4 lg:grid-cols-2">
@@ -431,9 +655,9 @@
           </li>
           {{ end }}
         </ol>
-        <p class="mt-4 text-xs text-ink-400">Entry-plan price vs the next-cheapest provider in the same country. Every winner above also carries a <em>cheapest</em> badge in the coverage list below.</p>
+        <p class="mt-4 text-xs text-ink-400">{{ i18n "esim_providers_single__entry_plan_price_vs_the_next_cheapest_provider_in_the_sa" | safeHTML }} <em>{{ i18n "g_cheapest_2" | safeHTML }}</em> {{ i18n "esim_providers_single__badge_in_the_coverage_list_below" | safeHTML }}</p>
         {{ else }}
-        <p class="mt-4 text-sm leading-relaxed text-ink-600">{{ $p.name }} is not the strictly cheapest provider in any of the {{ $a.countries }} countries we track — it competes on plan design instead of entry price. Compare it brand-by-brand in the <a href="/compare/matchups/" class="font-semibold text-brand-700 hover:underline">provider matchups</a> before buying.</p>
+        <p class="mt-4 text-sm leading-relaxed text-ink-600">{{ $p.name }} is not the strictly cheapest provider in any of the {{ $a.countries }} countries we track — it competes on plan design instead of entry price. Compare it brand-by-brand in the <a href="{{ partial "lang-href.html" "/compare/matchups/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_provider_matchups" | safeHTML }}</a> {{ i18n "esim_providers_single__before_buying" | safeHTML }}</p>
         {{ end }}
       </div>
       <div class="card p-6">
@@ -460,21 +684,21 @@
     </div>
     <div class="mt-4 grid gap-4 md:grid-cols-3">
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-ink-900">Plan shape</h3>
+        <h3 class="font-display text-base font-bold text-ink-900">{{ i18n "esim_providers_single__plan_shape" | safeHTML }}</h3>
         <p class="mt-4 text-sm leading-relaxed text-ink-600">
           {{ if and (gt $metered 0) (gt $unlim 0) }}Sells both metered buckets ({{ $metered }} plans) and unlimited plans ({{ $unlim }}){{ else if $unlim }}Unlimited-only: {{ $unlim }} pay-by-the-day plans, no budget tier{{ else }}Metered only: {{ $metered }} fixed-GB plans{{ end }} across {{ $a.countries }} destinations.
         </p>
-        {{ with $medEntry.min }}<p class="mt-3 text-sm text-ink-600">Typical entry price across its markets: <strong class="text-ink-950 tnum">${{ printf "%.2f" . }}</strong>.</p>{{ end }}
-        {{ if gt $a.minPerGB 0.0 }}<p class="mt-1 text-sm text-ink-600">Best value anywhere: <strong class="text-ink-950 tnum">${{ printf "%.2f" $a.minPerGB }}/GB</strong>.</p>{{ end }}
+        {{ with $medEntry.min }}<p class="mt-3 text-sm text-ink-600">{{ i18n "esim_providers_single__typical_entry_price_across_its_markets" | safeHTML }} <strong class="text-ink-950 tnum">${{ printf "%.2f" . }}</strong>.</p>{{ end }}
+        {{ if gt $a.minPerGB 0.0 }}<p class="mt-1 text-sm text-ink-600">{{ i18n "esim_providers_single__best_value_anywhere" | safeHTML }} <strong class="text-ink-950 tnum">${{ printf "%.2f" $a.minPerGB }}/GB</strong>.</p>{{ end }}
       </div>
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-brand-700">Strengths</h3>
+        <h3 class="font-display text-base font-bold text-brand-700">{{ i18n "g_strengths" | safeHTML }}</h3>
         <ul class="mt-4 space-y-2 text-sm text-ink-700">
           {{ range $p.strengths }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ . }}</li>{{ end }}
         </ul>
       </div>
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-accent-700">Watch out for</h3>
+        <h3 class="font-display text-base font-bold text-accent-700">{{ i18n "g_watch_out_for" | safeHTML }}</h3>
         <ul class="mt-4 space-y-2 text-sm text-ink-600">
           {{ range $p.weaknesses }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ . }}</li>{{ end }}
         </ul>
@@ -482,14 +706,68 @@
     </div>
   </section>
 
+  {{/* ── ④b Where to go instead（可操作的替代方案）──
+     用户反馈的原话是「页面告诉他 Airalo 不便宜，但没告诉他该去看谁」。
+     这张表逐国给出：本品牌最低价 vs **同类规格**竞品最低价 + 差额 + 双方链接。
+     规格匹配口径（同数据量同有效期 → 退到数据量不少于我方 → 再退到入门对入门）
+     固化在 partials/provider-alts.html，页面上把口径原文印出来让读者自核。 */}}
+  <section class="mt-12" aria-labelledby="whobeats">
+    <p class="eyebrow">{{ i18n "esim_providers_single__who_beats_eyebrow" | safeHTML }}</p>
+    <h2 id="whobeats" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "esim_providers_single__who_beats_h2" (dict "brand" $p.name) | safeHTML }}</h2>
+    {{ if gt $alts.n 0 }}
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "esim_providers_single__who_beats_lead" (dict "brand" $p.name "n" $alts.n "total" $alts.total) | safeHTML }}</p>
+    <div class="card mt-5 overflow-x-auto">
+      <table class="table-pro min-w-[760px]">
+        <thead>
+          <tr>
+            <th class="min-w-[150px]">{{ i18n "g_country" | safeHTML }}</th>
+            <th>{{ i18n "esim_providers_single__who_beats_col_mine" (dict "brand" $p.name) | safeHTML }}</th>
+            <th class="min-w-[150px]">{{ i18n "esim_providers_single__who_beats_col_rival" | safeHTML }}</th>
+            <th>{{ i18n "esim_providers_single__who_beats_col_rival_price" | safeHTML }}</th>
+            <th>{{ i18n "esim_providers_single__who_beats_col_gap" | safeHTML }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range first 10 $alts.rows }}
+          <tr>
+            <td>
+              <a href="{{ .url }}" class="group flex items-center gap-2.5">
+                <img src="{{ .flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">
+                <span class="font-semibold text-ink-950 group-hover:text-brand-700">{{ .name }}</span>
+              </a>
+            </td>
+            <td class="text-ink-700">
+              <span class="font-bold text-ink-950 tnum">${{ printf "%.2f" .mine }}</span>
+              <span class="text-xs text-ink-400">{{ .mineLabel }} / {{ .mineDays }} d</span>
+            </td>
+            <td>
+              <a href="{{ printf "/esim-providers/%s/" .altKey }}" class="font-semibold text-brand-700 hover:underline">{{ .altName }}</a>
+            </td>
+            <td class="text-ink-700">
+              <span class="font-bold text-ink-950 tnum">${{ printf "%.2f" .altPrice }}</span>
+              <span class="text-xs text-ink-400">{{ .altLabel }} / {{ .altDays }} d</span>
+            </td>
+            <td><span class="badge bg-accent-50 text-accent-700 tnum">&minus;{{ printf "%.0f" .pct }}%</span></td>
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3 max-w-3xl text-xs leading-relaxed text-ink-400">{{ i18n "esim_providers_single__who_beats_caveat" (dict "brand" $p.name) | safeHTML }}</p>
+    <p class="mt-3 text-sm text-ink-600">{{ i18n "esim_providers_single__who_beats_route" (dict "brand" $p.name "rival" $alts.topAltName "n" $alts.topAltN) | safeHTML }} <a href="{{ printf "/esim-providers/%s/" $alts.topAltKey }}" class="font-semibold text-brand-700 hover:underline">{{ $alts.topAltName }}</a> · <a href="{{ partial "lang-href.html" "/compare/matchups/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_provider_matchups" | safeHTML }}</a></p>
+    {{ else }}
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "esim_providers_single__who_beats_none" (dict "brand" $p.name "total" $alts.total) | safeHTML }} <a href="{{ partial "lang-href.html" "/compare/matchups/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_provider_matchups" | safeHTML }}</a></p>
+    {{ end }}
+  </section>
+
   {{/* ── ⑤ 覆盖（按区域分组，替代“国家超链接堆砌”）── */}}
   <section class="mt-12" aria-labelledby="coverage">
-    <p class="eyebrow">Destinations & coverage</p>
+    <p class="eyebrow">{{ i18n "esim_providers_single__destinations_coverage" | safeHTML }}</p>
     <h2 id="coverage" class="mt-2 text-2xl font-bold md:text-3xl">Where you can buy {{ $p.name }} eSIMs</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">Grouped by region, with each country's cheapest {{ $p.name }} plan. Countries marked <span class="badge bg-emerald-50 text-emerald-600">cheapest</span> are where {{ $p.name }} is the lowest-price provider we track.</p>
+    <p class="mt-3 max-w-2xl text-ink-600">Grouped by region, with each country's cheapest {{ $p.name }} plan. Countries marked <span class="badge bg-emerald-50 text-emerald-600">{{ i18n "g_cheapest_2" | safeHTML }}</span> are where {{ $p.name }} is the lowest-price provider we track.</p>
     {{ with $p.info }}{{ if and .destinations (gt (int .destinations) $a.countries) }}
     <p class="mt-3 max-w-2xl rounded-xl bg-ink-50 px-4 py-3 text-sm leading-relaxed text-ink-500">
-      <strong class="font-semibold text-ink-700">A note on coverage:</strong> we verify and rank {{ $p.name }} in the {{ $a.countries }} destinations listed below. {{ $p.name }} itself sells eSIMs for roughly {{ (int .destinations) }}+ destinations — the list here is our tracked scope, not the limit of what {{ $p.name }} offers.
+      <strong class="font-semibold text-ink-700">{{ i18n "esim_providers_single__a_note_on_coverage" | safeHTML }}</strong> we verify and rank {{ $p.name }} in the {{ $a.countries }} destinations listed below. {{ $p.name }} itself sells eSIMs for roughly {{ (int .destinations) }}+ destinations — the list here is our tracked scope, not the limit of what {{ $p.name }} offers.
     </p>
     {{ end }}{{ end }}
     <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -509,7 +787,7 @@
                 <img src="{{ .flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">
                 <span class="flex-1 text-sm font-medium text-ink-800 group-hover:text-brand-800">{{ .name }}</span>
                 {{ if gt .min 0.0 }}<span class="text-xs text-ink-400 tnum">from ${{ printf "%.2f" .min }}</span>{{ end }}
-                {{ if .cheapest }}<span class="badge bg-emerald-50 text-emerald-600">cheapest</span>{{ end }}
+                {{ if .cheapest }}<span class="badge bg-emerald-50 text-emerald-600">{{ i18n "g_cheapest_2" | safeHTML }}</span>{{ end }}
               </a>
             </li>
             {{ end }}
@@ -520,16 +798,75 @@
     </div>
   </section>
 
+  {{/* ── ⑤a′ Network reality（按目的地）──
+     用户点名的「Network Coverage & 5G Reality」。
+     诚实边界：data 层的 networks 是**国家级**的（八个品牌同国同网），所以这一节
+     不能编「Airalo 在韩国只有 LTE」这种品牌级说法。换成两个**可核对**的答案：
+       ① 本站追踪的 50 个市场里，有多少个宿主网络已经跑 5G（哪一个是纯 4G）；
+       ② 本品牌在哪些「有 5G 的市场」同时也是最便宜的 —— 这一条天然是品牌独有的。 */}}
+  {{ $net5gCheap := slice }}
+  {{ range $c := $cov }}
+    {{ if .cheapest }}
+      {{ $is5g := false }}
+      {{ with index $d.carriers $c.iso }}{{ range .profiles }}{{ if in .tech "5G" }}{{ $is5g = true }}{{ end }}{{ end }}{{ end }}
+      {{ if $is5g }}{{ $net5gCheap = $net5gCheap | append $c }}{{ end }}
+    {{ end }}
+  {{ end }}
+  <section class="mt-12" aria-labelledby="network">
+    <p class="eyebrow">{{ i18n "esim_providers_single__network_eyebrow" | safeHTML }}</p>
+    <h2 id="network" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "esim_providers_single__network_h2" (dict "brand" $p.name) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "esim_providers_single__network_lead" (dict "brand" $p.name "n" $netProfiles) | safeHTML }}</p>
+    <div class="mt-6 grid gap-4 lg:grid-cols-2">
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-brand-700">{{ i18n "esim_providers_single__network_5g_title" (dict "n5g" $mk5g "total" $mkTotal) | safeHTML }}</h3>
+        {{ if gt (len $net5gCheap) 0 }}
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__network_5g_cheap_lead" (dict "brand" $p.name) | safeHTML }}</p>
+        <ul class="mt-3 space-y-1">
+          {{ range first 8 $net5gCheap }}
+          <li>
+            <a href="{{ .url }}" class="group flex items-center gap-2 rounded-lg px-2 py-1.5 -mx-2 transition-colors hover:bg-brand-50/60">
+              <img src="{{ .flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">
+              <span class="flex-1 text-sm font-medium text-ink-800 group-hover:text-brand-800">{{ .name }}</span>
+              {{ if gt .min 0.0 }}<span class="text-xs text-ink-400 tnum">from ${{ printf "%.2f" .min }}</span>{{ end }}
+              <span class="badge bg-emerald-50 text-emerald-600">{{ i18n "g_cheapest_2" | safeHTML }}</span>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+        {{ else }}
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__network_5g_cheap_none" (dict "brand" $p.name) | safeHTML }}</p>
+        {{ end }}
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "esim_providers_single__network_lte_title" | safeHTML }}</h3>
+        {{ if gt (len $mk4g) 0 }}
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__network_lte_lead" | safeHTML }}</p>
+        <ul class="mt-3 space-y-2">
+          {{ range $mk4g }}
+          <li class="text-sm text-ink-700">
+            <a href="{{ partial "lang-href.html" (printf "/networks/%s/" .slug) }}" class="font-semibold text-ink-950 hover:text-brand-700 hover:underline">{{ .name }}</a>
+            <span class="text-xs text-ink-400"> — {{ .carriers }}</span>
+          </li>
+          {{ end }}
+        </ul>
+        {{ else }}
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__network_lte_none" | safeHTML }}</p>
+        {{ end }}
+        <p class="mt-3 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">{{ i18n "esim_providers_single__network_footnote" | safeHTML }} <a href="{{ partial "lang-href.html" "/networks/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_network_map" | safeHTML }}</a></p>
+      </div>
+    </div>
+  </section>
+
   {{/* ── ⑤b 哪里最便宜 / 最贵（入口价排序，选购增益）── */}}
   {{ $byCheap := sort $cov "min" "asc" }}
   {{ $byDear := sort $cov "min" "desc" }}
   {{ if gt (len $byCheap) 3 }}
   <section class="mt-8" aria-labelledby="spread">
     <h2 id="spread" class="text-2xl font-bold">Where {{ $p.name }} plans cost the least and the most</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">Same provider, very different entry prices by country. If your destination sits in the right-hand column, compare against the full table before buying.</p>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "esim_providers_single__same_provider_very_different_entry_prices_by_country_if_" | safeHTML }}</p>
     <div class="mt-6 grid gap-4 md:grid-cols-2">
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-brand-700">Lowest entry prices</h3>
+        <h3 class="font-display text-base font-bold text-brand-700">{{ i18n "esim_providers_single__lowest_entry_prices" | safeHTML }}</h3>
         <ul class="mt-4 space-y-2">
           {{ range first 3 $byCheap }}
           <li>
@@ -543,7 +880,7 @@
         </ul>
       </div>
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-accent-700">Highest entry prices</h3>
+        <h3 class="font-display text-base font-bold text-accent-700">{{ i18n "esim_providers_single__highest_entry_prices" | safeHTML }}</h3>
         <ul class="mt-4 space-y-2">
           {{ range first 3 $byDear }}
           <li>
@@ -562,12 +899,12 @@
 
   {{/* ── ⑥ 对比对手（Alternatives）── */}}
   <section class="mt-12" aria-labelledby="alternatives">
-    <p class="eyebrow">Alternatives</p>
+    <p class="eyebrow">{{ i18n "esim_providers_single__alternatives" | safeHTML }}</p>
     <h2 id="alternatives" class="mt-2 text-2xl font-bold md:text-3xl">{{ $p.name }} vs the field</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {{ range $k, $v := $agg }}
         {{ if ne $k $key }}
-          {{ $op := index hugo.Data.providers $k }}
+          {{ $op := index $d.providers $k }}
           {{ $vsPair := sort (slice $key $k) }}
           <div class="card card-hover p-5">
             <a href="{{ printf "/esim-providers/%s/" $k }}" class="group flex items-center gap-3">
@@ -577,7 +914,7 @@
                 {{ if gt $v.minPrice 0.0 }}<p class="text-xs text-ink-400 tnum">from ${{ printf "%.2f" $v.minPrice }}</p>{{ end }}
               </div>
             </a>
-            <p class="mt-3 text-xs leading-relaxed text-ink-500">Cheapest in <strong class="text-ink-700 tnum">{{ $v.cheapest }}</strong> of {{ $v.countries }} countries.</p>
+            <p class="mt-3 text-xs leading-relaxed text-ink-500">{{ i18n "g_cheapest_in" | safeHTML }} <strong class="text-ink-700 tnum">{{ $v.cheapest }}</strong> of {{ $v.countries }} countries.</p>
             <div class="mt-3 flex items-center justify-between gap-2">
               <a href="{{ printf "/compare/%s-vs-%s/" (index $vsPair 0) (index $vsPair 1) }}" class="text-xs font-semibold text-brand-700 hover:underline">{{ $p.name }} vs {{ $op.name }} →</a>
               <a href="{{ printf "/esim-providers/%s/" $k }}" class="text-xs font-medium text-ink-400 transition-colors hover:text-ink-700">{{ $op.name }} review</a>
@@ -586,6 +923,132 @@
         {{ end }}
       {{ end }}
     </div>
+  </section>
+
+  {{/* ── ⑥b 头对头：挑两个「最接近的对手」（cheapest 命中数差距最小者）──
+     用户要的「Airalo vs Saily / Airalo vs Holafly 快速对比锚点」。
+     对手按 |本品牌 cheapest 命中数 − 对方命中数| 升序取前 2 —— 「最接近」是算出来的，
+     不是拍脑袋挑的；每条差异都带双方的实测数字。 */}}
+  {{ $rivL := slice }}
+      {{ range $k, $v := $agg }}
+    {{ if ne $k $key }}
+      {{ $pv := index $d.providers $k }}
+      {{ $rivL = $rivL | append (dict
+        "key" $k "name" $pv.name "cheap" $v.cheapest "countries" $v.countries
+        "minPrice" $v.minPrice "minPerGB" $v.minPerGB
+        "dist" (math.Abs (float (sub $v.cheapest $a.cheapest)))) }}
+    {{ end }}
+  {{ end }}
+  {{ $rivTop := first 2 (sort $rivL "dist" "asc") }}
+  {{ if gt (len $rivTop) 0 }}
+  <section class="mt-12" aria-labelledby="headtohead">
+    <p class="eyebrow">{{ i18n "esim_providers_single__h2h_eyebrow" | safeHTML }}</p>
+    <h2 id="headtohead" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "esim_providers_single__h2h_h2" (dict "brand" $p.name) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "esim_providers_single__h2h_lead" (dict "brand" $p.name) | safeHTML }}</p>
+    <div class="mt-6 grid gap-4 lg:grid-cols-2">
+      {{ range $rivTop }}
+      {{ $pk := .key }}
+      {{ $vsPair := sort (slice $key $pk) }}
+      <div class="card p-6">
+        <div class="flex items-center gap-3">
+          {{ partial "prov-logo.html" (dict "p" (index $d.providers $pk) "key" $pk "class" "h-10 w-10" "text" "text-sm") }}
+          <h3 class="font-display text-base font-bold text-ink-950">{{ $p.name }} vs {{ .name }}</h3>
+        </div>
+        <ul class="mt-4 space-y-2.5 text-sm text-ink-700">
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">·</span><span>{{ i18n "esim_providers_single__h2h_count" (dict "brand" $p.name "rival" .name "n" .cheap "total" .countries "mine" $a.cheapest) | safeHTML }}</span></li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">·</span><span>{{ i18n "esim_providers_single__h2h_entry" (dict "brand" $p.name "price" (printf "%.2f" .minPrice) "mine" (printf "%.2f" $a.minPrice)) | safeHTML }}</span></li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">·</span><span>{{ if gt .minPerGB 0.0 }}{{ i18n "esim_providers_single__h2h_value" (dict "price" (printf "%.2f" .minPerGB) "mine" (printf "%.2f" $a.minPerGB)) | safeHTML }}{{ else }}{{ i18n "esim_providers_single__h2h_no_value" | safeHTML }}{{ end }}</span></li>
+        </ul>
+        <div class="mt-4 flex flex-wrap items-center gap-3 border-t border-ink-100 pt-3">
+          <a href="{{ partial "lang-href.html" (printf "/compare/%s-vs-%s/" (index $vsPair 0) (index $vsPair 1)) }}" class="text-xs font-semibold text-brand-700 hover:underline">{{ i18n "esim_providers_single__h2h_full" (dict "brand" $p.name "rival" .name) | safeHTML }}</a>
+          <a href="{{ printf "/esim-providers/%s/" $pk }}" class="text-xs font-medium text-ink-400 transition-colors hover:text-ink-700">{{ .name }} review</a>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── ⑥c 行程计算器（品牌维度）──
+     与 /tools/ 的跨品牌计算器同一套匹配语义（有效期覆盖行程 且 数据量覆盖需求，
+     无限档恒满足），但只带**本品牌**的档位 + 该国三个基准，页面体积可控。
+     不重造第二个全站计算器：跨品牌的部分在页面底部指向 /tools/。
+     所有 JS 可见文案走 data-msg-* 注入（占位符用单花括号，Hugo 不会插值）。 */}}
+  <section class="mt-12" aria-labelledby="calc">
+    <p class="eyebrow">{{ i18n "esim_providers_single__calc_eyebrow" | safeHTML }}</p>
+    <h2 id="calc" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "esim_providers_single__calc_h2" (dict "brand" $p.name) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "esim_providers_single__calc_lead" (dict "brand" $p.name) | safeHTML }}</p>
+    <div id="prov-calc" class="card mt-6 p-6"
+         data-msg-t1="{{ i18n "esim_providers_single__calc_card_mine" }}"
+         data-msg-t2="{{ i18n "esim_providers_single__calc_card_field" }}"
+         data-msg-t3="{{ i18n "esim_providers_single__calc_card_unl" }}"
+         data-msg-plan-line="{{ i18n "esim_providers_single__calc_plan_line" }}"
+         data-msg-nocover="{{ i18n "esim_providers_single__calc_nocover" }}"
+         data-msg-na="{{ i18n "esim_providers_single__calc_na" }}"
+         data-msg-need="{{ i18n "esim_providers_single__calc_need" }}"
+         data-msg-v-floor="{{ i18n "esim_providers_single__calc_v_floor" }}"
+         data-msg-v-above="{{ i18n "esim_providers_single__calc_v_above" }}"
+         data-msg-v-level="{{ i18n "esim_providers_single__calc_v_level" }}"
+         data-msg-v-unl="{{ i18n "esim_providers_single__calc_v_unl" }}"
+         data-msg-unl="{{ i18n "esim_providers_single__calc_unit_unl" }}"
+         data-msg-days="{{ i18n "esim_providers_single__calc_unit_days" }}"
+         data-msg-mb="{{ i18n "g_unit_mb" }}"
+         data-msg-gb="{{ i18n "g_unit_gb" }}">
+      <div class="grid gap-6 lg:grid-cols-3">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-ink-400" for="calc-dest">{{ i18n "esim_providers_single__calc_dest_label" | safeHTML }}</label>
+          <select id="calc-dest" class="input-search mt-2">
+            {{ range $regionOrder }}
+              {{ $rg := . }}
+              {{ $rc := where $cov "region" $rg }}
+              {{ if gt (len $rc) 0 }}
+              <optgroup label="{{ $rg }}">
+                {{ range $rc }}<option value="{{ .iso }}">{{ .name }}</option>{{ end }}
+              </optgroup>
+              {{ end }}
+            {{ end }}
+          </select>
+        </div>
+        <div>
+          <span id="calc-days-label" class="block text-xs font-bold uppercase tracking-wider text-ink-400">{{ i18n "esim_providers_single__calc_days_label" | safeHTML }}</span>
+          <div id="calc-days" class="mt-2 flex flex-wrap items-center gap-1.5" role="group" aria-labelledby="calc-days-label">
+            {{ range $i, $cd := slice 3 5 7 10 14 21 30 }}
+            <button type="button" class="chip{{ if eq $i 2 }} chip-active{{ end }}" data-days="{{ $cd }}" aria-pressed="{{ if eq $i 2 }}true{{ else }}false{{ end }}">{{ i18n "compare_provider__plan_days_option" (dict "n" $cd) | safeHTML }}</button>
+            {{ end }}
+          </div>
+        </div>
+        <div>
+          <span id="calc-gb-label" class="block text-xs font-bold uppercase tracking-wider text-ink-400">{{ i18n "esim_providers_single__calc_gb_label" | safeHTML }}</span>
+          <div id="calc-gb" class="mt-2 flex flex-wrap items-center gap-1.5" role="group" aria-labelledby="calc-gb-label">
+            {{ range $i, $cg := slice 0.5 1.0 2.0 5.0 }}
+            <button type="button" class="chip{{ if eq $i 1 }} chip-active{{ end }}" data-gb="{{ $cg }}" aria-pressed="{{ if eq $i 1 }}true{{ else }}false{{ end }}">{{ i18n "esim_providers_single__calc_gb_option" (dict "n" $cg) | safeHTML }}</button>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      <div class="mt-6 grid gap-3 sm:grid-cols-3">
+        <div class="card p-4">
+          <p class="text-[11px] font-bold uppercase tracking-wider text-ink-400" id="calc-c1-t"></p>
+          <p class="mt-1 font-display text-xl font-extrabold text-ink-950 tnum" id="calc-c1-v"></p>
+          <p class="mt-1 text-xs leading-relaxed text-ink-500" id="calc-c1-s"></p>
+        </div>
+        <div class="card p-4">
+          <p class="text-[11px] font-bold uppercase tracking-wider text-ink-400" id="calc-c2-t"></p>
+          <p class="mt-1 font-display text-xl font-extrabold text-ink-950 tnum" id="calc-c2-v"></p>
+          <p class="mt-1 text-xs leading-relaxed text-ink-500" id="calc-c2-s"></p>
+        </div>
+        <div class="card p-4">
+          <p class="text-[11px] font-bold uppercase tracking-wider text-ink-400" id="calc-c3-t"></p>
+          <p class="mt-1 font-display text-xl font-extrabold text-ink-950 tnum" id="calc-c3-v"></p>
+          <p class="mt-1 text-xs leading-relaxed text-ink-500" id="calc-c3-s"></p>
+        </div>
+      </div>
+      <p class="mt-4 text-sm leading-relaxed text-ink-700" id="calc-verdict"></p>
+      <p class="mt-1 text-xs text-ink-400 tnum" id="calc-need"></p>
+      <noscript><p class="mt-3 text-sm text-ink-500">{{ i18n "esim_providers_single__calc_noscript" | safeHTML }}</p></noscript>
+    </div>
+    <p class="mt-3 text-xs text-ink-400">{{ i18n "esim_providers_single__calc_more" | safeHTML }}</p>
+    <script id="prov-calc-data" type="application/json">{{ dict "by" $calc "brands" $brandNames "self" $key "selfName" $p.name | jsonify | safeJS }}</script>
   </section>
 
   {{/* ── ⑦ FAQ ── */}}
@@ -605,16 +1068,183 @@
     </div>
   </section>
 
+  {{/* ── ⑦b 延伸阅读 + 第三方评价去向 + 数据来源（E-E-A-T）──
+     关于 Trustpilot：**只给档案链接，不给分数**。原因写在 docs §3.14 ——
+     同一品牌在 trustpilot.com 的不同地区域名下聚合成 3.9 / 4.0 / 4.1 三个值
+     （按语言/地区分片），本机又被 403 挡住无法读原文核实。按项目「宁缺勿造」的纪律，
+     印一个核实不了的分数字比不印更糟：Google 对评分摘要要求可核实的来源，
+     而读者无法自行复现的分数就是编造。
+     所以这一栏做的是**教读者怎么读评价页**（去看 1 星、按目的地筛），
+     以及把判断权交回读者 —— 链接指过去，分数让他们自己看。 */}}
+  {{ $regGuide := dict "Asia" "best-asia-esim" "Europe" "best-europe-esim" "Americas" "best-americas-esim" "Africa & Middle East" "best-africa-middle-east-esim" "Oceania" "best-oceania-esim" }}
+  {{ $regCount := dict }}
+  {{ range $cov }}
+    {{ $cur := 0 }}{{ with index $regCount .region }}{{ $cur = . }}{{ end }}
+    {{ $regCount = merge $regCount (dict .region (add $cur 1)) }}
+  {{ end }}
+  <section class="mt-12" aria-labelledby="reading">
+    <p class="eyebrow">{{ i18n "esim_providers_single__reading_eyebrow" | safeHTML }}</p>
+    <h2 id="reading" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "esim_providers_single__reading_h2" (dict "brand" $p.name) | safeHTML }}</h2>
+    <div class="mt-6 grid gap-4 lg:grid-cols-3">
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "esim_providers_single__reading_reviews_h3" (dict "brand" $p.name) | safeHTML }}</h3>
+        {{ if $reviewURL }}
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__reading_reviews_note" (dict "brand" $p.name) | safeHTML }}</p>
+        <a href="{{ $reviewURL }}" target="_blank" rel="noopener nofollow" class="mt-3 inline-block text-sm font-semibold text-brand-700 hover:underline">{{ i18n "esim_providers_single__reading_reviews_link" (dict "brand" $p.name) | safeHTML }}</a>
+        {{ else }}
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__reading_reviews_none" (dict "brand" $p.name) | safeHTML }}</p>
+        {{ end }}
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "esim_providers_single__reading_guides_h3" | safeHTML }}</h3>
+        <ul class="mt-3 space-y-2 text-sm">
+          {{ range $regionOrder }}
+            {{ $rg := . }}
+            {{ $cnt := 0 }}{{ with index $regCount $rg }}{{ $cnt = . }}{{ end }}
+            {{ if gt $cnt 0 }}
+            <li><a href="{{ partial "lang-href.html" (printf "/guides/%s/" (index $regGuide $rg)) }}" class="font-medium text-ink-800 hover:text-brand-700 hover:underline">{{ i18n "esim_providers_single__reading_guide_region" (dict "region" $rg) | safeHTML }}</a> <span class="text-xs text-ink-400 tnum">{{ $cnt }}</span></li>
+            {{ end }}
+          {{ end }}
+          <li><a href="{{ partial "lang-href.html" "/guides/how-to-install-esim/" }}" class="font-medium text-ink-800 hover:text-brand-700 hover:underline">{{ i18n "esim_providers_single__reading_guide_install" | safeHTML }}</a></li>
+          <li><a href="{{ partial "lang-href.html" "/guides/esim-compatibility-check/" }}" class="font-medium text-ink-800 hover:text-brand-700 hover:underline">{{ i18n "esim_providers_single__reading_guide_compat" | safeHTML }}</a></li>
+          <li><a href="{{ partial "lang-href.html" "/guides/dual-sim-and-esim/" }}" class="font-medium text-ink-800 hover:text-brand-700 hover:underline">{{ i18n "esim_providers_single__reading_guide_dualsim" | safeHTML }}</a></li>
+        </ul>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "esim_providers_single__reading_data_h3" | safeHTML }}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600 tnum">{{ i18n "esim_providers_single__reading_data_note" (dict "brand" $p.name "plans" $totalPlans "countries" $a.countries "date" $priceDate) | safeHTML }}</p>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="{{ partial "lang-href.html" "/research/fair-use-audit/" }}" class="font-medium text-ink-800 hover:text-brand-700 hover:underline">{{ i18n "esim_providers_single__reading_fup" | safeHTML }}</a></li>
+          <li><a href="{{ partial "lang-href.html" "/research/unlimited-esim/" }}" class="font-medium text-ink-800 hover:text-brand-700 hover:underline">{{ i18n "esim_providers_single__reading_unlimited" | safeHTML }}</a></li>
+          <li><a href="{{ partial "lang-href.html" "/research/esim-price-index/" }}" class="font-medium text-ink-800 hover:text-brand-700 hover:underline">{{ i18n "esim_providers_single__reading_index" | safeHTML }}</a></li>
+          <li><a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-medium text-ink-800 hover:text-brand-700 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   {{/* ── ⑧ Trust 尾 ── */}}
   <section class="mt-12">
     <div class="relative overflow-hidden rounded-3xl bg-ink-gradient px-7 py-8 text-ink-300 md:px-10">
       <div class="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
       <p class="font-display text-lg font-bold text-white">{{ $p.name }} vs {{ $rival.name }}? We computed the numbers.</p>
       <p class="mt-2 max-w-2xl text-sm leading-relaxed">
-        Every price, badge and ranking on this page is a literal sort position from our price database — no editorial pay-to-rank. How we collect and check data is in our <a href="/methodology/" class="font-semibold text-brand-300 hover:underline">methodology</a>; how we make money in our <a href="/disclosure/" class="font-semibold text-brand-300 hover:underline">disclosure</a>.
+        {{ i18n "esim_providers_single__every_price_badge_and_ranking_on_this_page_is_a_literal_" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>{{ i18n "g_how_we_make_money_in_our" | safeHTML }} <a href="{{ partial "lang-href.html" "/disclosure/" }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "g_disclosure" | safeHTML }}</a>.
       </p>
     </div>
   </section>
 </div>
+
+{{/* ── 行程计算器（品牌维度）──
+     匹配语义与 /tools/ 的跨品牌计算器一致：有效期覆盖行程 且 数据量覆盖需求，无限档恒满足。
+     全部可见文案来自容器上的 data-msg-* 属性（服务端 i18n 渲染），JS 只做占位符替换 ——
+     不在 JS 里拼英文句子，否则等于把译者的语序假设写死在代码里。 */}}
+<script>
+(function () {
+  var root = document.getElementById('prov-calc');
+  var holder = document.getElementById('prov-calc-data');
+  if (!root || !holder) return;
+  var DATA;
+  try { DATA = JSON.parse(holder.textContent); } catch (e) { return; }
+  var BY = DATA.by || {}, NAMES = DATA.brands || {}, SELFNAME = DATA.selfName || '';
+  var M = root.dataset;
+  var sel = document.getElementById('calc-dest');
+  if (!sel) return;
+  var trip = 7, perDay = 1;
+
+  function num(n) { return String(Math.round(n * 100) / 100); }
+  function money(n) { return '$' + n.toFixed(2); }
+  function label(g) {
+    if (g <= 0) return M.msgUnl;
+    if (g < 1) return Math.round(g * 1024) + M.msgMb;
+    return num(g) + M.msgGb;
+  }
+  function fill(tpl, map) {
+    return String(tpl || '').replace(/\{(\w+)\}/g, function (m, k) {
+      return map[k] === undefined ? m : map[k];
+    });
+  }
+  // plans：本品牌在该市场的档位，形如 [{gb, days, price}]（见模板侧注释：
+  // 用 dict 而非数组，因为 Hugo 的 append 无法成组地并入切片）。
+  function pick(plans, days, need) {
+    var out = null;
+    for (var i = 0; i < plans.length; i++) {
+      var p = plans[i];
+      if (p.days < days) continue;
+      if (p.gb > 0 && p.gb < need) continue;
+      if (!out || p.price < out.price) out = p;
+    }
+    return out;
+  }
+  function setCard(i, title, value, sub) {
+    var t = document.getElementById('calc-c' + i + '-t');
+    if (t) t.textContent = title;
+    var v = document.getElementById('calc-c' + i + '-v');
+    if (v) v.textContent = value;
+    var s = document.getElementById('calc-c' + i + '-s');
+    if (s) s.textContent = sub;
+  }
+  function brandName(k) { return NAMES[k] || k; }
+  function render() {
+    var c = BY[sel.value];
+    if (!c) return;
+    var need = Math.round(trip * perDay * 10) / 10;
+    var mine = pick(c.m || [], trip, need);
+    setCard(1, fill(M.msgT1, { brand: SELFNAME }),
+      mine ? money(mine.price) : '—',
+      mine ? fill(M.msgPlanLine, { price: money(mine.price), data: label(mine.gb), days: mine.days })
+           : fill(M.msgNocover, { need: num(need), days: trip }));
+
+    var cf = (c.c && c.c.length) ? c.c : null;
+    setCard(2, M.msgT2, cf ? money(cf[2]) : '—',
+      cf ? brandName(cf[3]) + ' · ' + cf[4] + ' · ' + fill(M.msgDays, { n: cf[1] }) : M.msgNa);
+
+    var cu = (c.u && c.u.length) ? c.u : null;
+    setCard(3, M.msgT3, cu ? money(cu[1]) : '—',
+      cu ? brandName(cu[2]) + ' · ' + cu[3] + ' · ' + fill(M.msgDays, { n: cu[0] }) : M.msgNa);
+
+    var v = '';
+    if (mine && mine.gb > 0 && c.b && c.b.length) {
+      var pergb = mine.price / mine.gb;
+      var floor = c.b[2] / c.b[0];
+      v = fill(M.msgVFloor, {
+        brand: SELFNAME, pergb: num(pergb), floor: num(floor),
+        floorBrand: brandName(c.b[3]), floorData: c.b[4]
+      });
+      var pct = Math.round((pergb / floor - 1) * 100);
+      v += ' ' + (pct > 5 ? fill(M.msgVAbove, { pct: pct }) : M.msgVLevel);
+    } else if (mine) {
+      v = fill(M.msgVUnl, {
+        days: trip, price: money(mine.price),
+        alt: cu ? money(cu[1]) : '—', altBrand: cu ? brandName(cu[2]) : '—'
+      });
+    }
+    var vo = document.getElementById('calc-verdict');
+    if (vo) vo.textContent = v;
+    var no = document.getElementById('calc-need');
+    if (no) no.textContent = fill(M.msgNeed, { days: trip, gb: num(perDay), need: num(need) });
+  }
+
+  function wireGroup(id, attr, setter) {
+    var box = document.getElementById(id);
+    if (!box) return;
+    var btns = box.querySelectorAll('button[' + attr + ']');
+    Array.prototype.forEach.call(btns, function (b) {
+      b.addEventListener('click', function () {
+        Array.prototype.forEach.call(btns, function (o) {
+          o.classList.remove('chip-active'); o.setAttribute('aria-pressed', 'false');
+        });
+        b.classList.add('chip-active'); b.setAttribute('aria-pressed', 'true');
+        setter(parseFloat(b.getAttribute(attr)));
+        render();
+      });
+    });
+  }
+  wireGroup('calc-days', 'data-days', function (n) { if (n > 0) trip = n; });
+  wireGroup('calc-gb', 'data-gb', function (n) { if (n > 0) perDay = n; });
+  sel.addEventListener('change', render);
+  render();
+})();
+</script>
 {{ end }}{{/* /价格数据守卫 */}}
 {{ end }}

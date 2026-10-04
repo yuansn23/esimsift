@@ -1,10 +1,10 @@
-{{ define "main" }}
+{{ define "main" }}{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}
 {{/* 对决枢纽页 /compare/matchups/ —— 28 组对决的可收录索引页（用户需求：对决页要有独立入口）
    蓝图边界（docs/keyword-map.md）：本页只承接 "eSIM provider comparison / 对决列表" 导航词，
    单对决头词归 /compare/{a}-vs-{b}/，不得在卡片文案里抢词。
    全部统计实时计算（vs-agg）；nolist: true → 不进国家网格/catalog/llms 国家清单。 */}}
 {{ $keys := slice }}
-{{ range $k, $v := hugo.Data.providers }}{{ $keys = $keys | append $k }}{{ end }}
+{{ range $k, $v := $d.providers }}{{ $keys = $keys | append $k }}{{ end }}
 {{ $keys = sort $keys }}
 
 {{ $cards := slice }}
@@ -13,7 +13,7 @@
     {{ with site.GetPage (printf "/compare/%s-vs-%s" $ka $kb) }}
       {{ $agg := partial "vs-agg.html" (dict "a" $ka "b" $kb) }}
       {{ $cards = $cards | append (dict
-        "url" .RelPermalink "na" (index hugo.Data.providers $ka).name "nb" (index hugo.Data.providers $kb).name
+        "url" .RelPermalink "na" (index $d.providers $ka).name "nb" (index $d.providers $kb).name
         "ka" $ka "kb" $kb
         "aWins" $agg.aWinsPrice "bWins" $agg.bWinsPrice "ties" $agg.ties "n" $agg.countries
         "gap" (math.Abs (sub $agg.aWinsPrice $agg.bWinsPrice))
@@ -31,58 +31,58 @@
   <div class="mt-4 grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
   <header>
     <div class="flex flex-wrap items-center gap-3">
-      <span class="badge bg-brand-50 text-brand-700">head-to-head index</span>
+      <span class="badge bg-brand-50 text-brand-700">{{ i18n "compare_matchups__head_to_head_index" | safeHTML }}</span>
       <span class="badge bg-ink-50 text-ink-500 tnum">{{ $total }} matchups</span>
-      <span class="badge bg-ink-50 text-ink-500 tnum">{{ hugo.Data.providers | len }} providers</span>
+      <span class="badge bg-ink-50 text-ink-500 tnum">{{ $d.providers | len }} providers</span>
     </div>
     <h1 class="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ .Title }}</h1>
-    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">Every provider pair we track, one page per matchup. Verdicts are not opinions: for each shared country we compare the cheapest plans head-to-head and count who wins — the same dated prices that power every table on this site.</p>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">{{ i18n "compare_matchups__every_provider_pair_we_track_one_page_per_matchup_verdic" | safeHTML }}</p>
     <div class="mt-6 flex flex-wrap gap-3">
       {{ with $closest.n }}<div class="stat-tile"><span class="stat-num text-lg">{{ $closest.na }} vs {{ $closest.nb }}</span><span class="stat-label">closest rivalry — decided in {{ $closest.n }} countries</span></div>{{ end }}
-      {{ with $blowout.n }}<div class="stat-tile"><span class="stat-num text-lg">{{ $blowout.na }} vs {{ $blowout.nb }}</span><span class="stat-label">most lopsided — one side wins nearly everywhere</span></div>{{ end }}
-      <a href="/esim-providers/" class="stat-tile transition-colors hover:bg-ink-50"><span class="stat-num text-base">Provider reviews →</span><span class="stat-label">each brand's pricing behavior in full</span></a>
+      {{ with $blowout.n }}<div class="stat-tile"><span class="stat-num text-lg">{{ $blowout.na }} vs {{ $blowout.nb }}</span><span class="stat-label">{{ i18n "compare_matchups__most_lopsided_one_side_wins_nearly_everywhere" | safeHTML }}</span></div>{{ end }}
+      <a href="{{ partial "lang-href.html" "/esim-providers/" }}" class="stat-tile transition-colors hover:bg-ink-50"><span class="stat-num text-base">{{ i18n "compare_matchups__provider_reviews" | safeHTML }}</span><span class="stat-label">{{ i18n "compare_matchups__each_brand_s_pricing_behavior_in_full" | safeHTML }}</span></a>
     </div>
   </header>
   <figure class="figure">
-    <img src="/img/esim/travel-esim-illustration-004.webp" alt="Two eSIM providers compared country by country" width="2848" height="1470">
-    <figcaption>Every matchup verdict is computed country by country from the same dated price snapshot.</figcaption>
+    <img src="/img/esim/travel-esim-illustration-004.webp" alt="{{ i18n "compare_matchups__two_esim_providers_compared_country_by_country" | safeHTML }}" width="2848" height="1470">
+    <figcaption>{{ i18n "compare_matchups__every_matchup_verdict_is_computed_country_by_country_fro" | safeHTML }}</figcaption>
   </figure>
   </div>
 
   {{ .Content }}
 
   <section class="mt-10" aria-labelledby="all">
-    <p class="eyebrow" id="all">All matchups</p>
-    <h2 class="mt-2 text-2xl font-bold md:text-3xl">How every provider compares head-to-head</h2>
+    <p class="eyebrow" id="all">{{ i18n "compare_matchups__all_matchups" | safeHTML }}</p>
+    <h2 class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_matchups__how_every_provider_compares_head_to_head" | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {{ range $cards }}
       <a href="{{ .url }}" class="card card-hover group p-5">
         <div class="flex items-center gap-3">
-          {{ partial "prov-logo.html" (dict "p" (index hugo.Data.providers .ka) "key" .ka "class" "h-10 w-10") }}
-          <span class="font-display text-[11px] font-bold uppercase tracking-wider text-ink-300" aria-hidden="true">vs</span>
-          {{ partial "prov-logo.html" (dict "p" (index hugo.Data.providers .kb) "key" .kb "class" "h-10 w-10") }}
+          {{ partial "prov-logo.html" (dict "p" (index $d.providers .ka) "key" .ka "class" "h-10 w-10") }}
+          <span class="font-display text-[11px] font-bold uppercase tracking-wider text-ink-300" aria-hidden="true">{{ i18n "g_vs" | safeHTML }}</span>
+          {{ partial "prov-logo.html" (dict "p" (index $d.providers .kb) "key" .kb "class" "h-10 w-10") }}
           {{ if gt .aWins .bWins }}<span class="badge bg-brand-50 text-brand-700 ml-auto tnum">{{ .na }} {{ .aWins }}–{{ .bWins }}</span>
           {{ else if gt .bWins .aWins }}<span class="badge bg-brand-50 text-brand-700 ml-auto tnum">{{ .nb }} {{ .bWins }}–{{ .aWins }}</span>
-          {{ else }}<span class="badge bg-ink-50 text-ink-500 ml-auto">even</span>{{ end }}
+          {{ else }}<span class="badge bg-ink-50 text-ink-500 ml-auto">{{ i18n "compare_matchups__even" | safeHTML }}</span>{{ end }}
         </div>
         <p class="mt-3 font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ .na }} vs {{ .nb }}</p>
         <p class="mt-2 text-xs leading-relaxed text-ink-500">{{ if gt .aWins .bWins }}{{ .na }} starts cheaper in {{ .aWins }} of {{ .n }} countries{{ else if gt .bWins .aWins }}{{ .nb }} starts cheaper in {{ .bWins }} of {{ .n }} countries{{ else }}Nearly even across {{ .n }} countries{{ end }}{{ if gt .ties 0 }} (identical entry prices in {{ .ties }}){{ end }}.</p>
-        <p class="mt-3 text-xs font-semibold text-brand-700 opacity-0 transition-opacity group-hover:opacity-100">See the verdict →</p>
+        <p class="mt-3 text-xs font-semibold text-brand-700 opacity-0 transition-opacity group-hover:opacity-100">{{ i18n "g_see_the_verdict" | safeHTML }}</p>
       </a>
       {{ end }}
     </div>
-    <p class="mt-3 text-xs text-ink-400">Each verdict counts the countries where both providers sell plans, comparing each one's cheapest plan (and separately its best $/GB) from the same dated snapshot. Reversed queries land on the same page — one URL per matchup, no near-duplicates.</p>
+    <p class="mt-3 text-xs text-ink-400">{{ i18n "compare_matchups__each_verdict_counts_the_countries_where_both_providers_s" | safeHTML }}</p>
   </section>
 
   {{/* ── 相关阅读 ── */}}
   <section class="mt-12" aria-labelledby="related">
-    <p class="eyebrow">Keep reading</p>
-    <h2 id="related" class="mt-2 text-2xl font-bold md:text-3xl">Related research &amp; comparisons</h2>
+    <p class="eyebrow">{{ i18n "g_keep_reading" | safeHTML }}</p>
+    <h2 id="related" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "g_related_research_amp_comparisons" | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <a href="/compare/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Compare by country</p><p class="mt-2 text-xs leading-relaxed text-ink-500">All {{ len hugo.Data.countries }} destination pages — every provider in one table.</p></a>
-      <a href="/research/esim-price-index/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">eSIM price index</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ len hugo.Data.countries }} countries ranked by best $/GB, with regional averages.</p></a>
-      <a href="/research/unlimited-esim/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Unlimited daily rates</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Where unlimited data is cheapest per day, and when it wins.</p></a>
-      <a href="/research/fair-use-audit/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Fair-use audit</p><p class="mt-2 text-xs leading-relaxed text-ink-500">What every “unlimited” plan's small print really throttles.</p></a>
+      <a href="{{ partial "lang-href.html" "/compare/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "compare_matchups__compare_by_country" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">All {{ len $d.countries }} destination pages — every provider in one table.</p></a>
+      <a href="{{ partial "lang-href.html" "/research/esim-price-index/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_esim_price_index" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ len $d.countries }} countries ranked by best $/GB, with regional averages.</p></a>
+      <a href="{{ partial "lang-href.html" "/research/unlimited-esim/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "compare_matchups__unlimited_daily_rates" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "compare_matchups__where_unlimited_data_is_cheapest_per_day_and_when_it_win" | safeHTML }}</p></a>
+      <a href="{{ partial "lang-href.html" "/research/fair-use-audit/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_fair_use_audit" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "compare_matchups__what_every_unlimited_plan_s_small_print_really_throttles" | safeHTML }}</p></a>
     </div>
   </section>
 </div>

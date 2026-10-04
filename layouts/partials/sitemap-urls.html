@@ -1,0 +1,78 @@
+{{- /* sitemap-urls.html —— 输出 sitemap 的 <url> 行（被 sitemap.xml 与 sitemapindex.xml 共用）。
+     入参：页面集合（slice of Page）。
+
+     数据一律走 site 全局，所以调用方必须保证"当前渲染上下文 = 目标语言的语言站"：
+       · layouts/sitemap.xml       —— Hugo 按语言各渲染一次 → /de/sitemap.xml
+       · layouts/sitemapindex.xml  —— 在默认语言（en）上下文渲染一次 → 根 /sitemap.xml
+     （已用 2 语言 probe 实测：sitemapindex 槽位里 site.Language.Lang == "en"。）
+
+     lastmod 解析顺序（2026-10-04 改为「品牌优先」—— 同一页面的可见日期、
+     JSON-LD dateModified 与这里的 lastmod 必须同源，否则三个机器可读面互相打脸）：
+       1) 品牌页：品牌 Hub 取 max(该品牌价格核对日, 该品牌档案核对日 profile_checked)；
+          品牌×国家子页与 A-vs-B 对比页只取价格核对日（它们的文案全是价格专属表述）。
+          品牌粒度让「刷新一个品牌」只动这个品牌的页面，不会把无关页的 lastmod 带跑。
+       2) 国家页（无品牌）：该国全部品牌的最大价格核对日（country-stats）
+       3) 有 date/lastmod front matter 的编辑页：页面自身日期
+       4) 其余数据驱动页：全站最新价格核对日
+
+     ★ 品牌粒度必须排在 `.Lastmod` 之前：品牌页 front matter 只有 title/description，
+       一旦 Hugo 用 `:git` 推出一个提交日，它就会盖过品牌级日期，日期又跟数据脱钩。
+
+     ★ 绝不 fallback 到 `now`：每次部署都翻新 lastmod 会让 Google 判定本站
+       lastmod 无信息量并整体忽略。日期只能跟着数据走。
+
+     noindex 页不进 sitemap：占位页（德语正文未翻译）既标 noindex 又出现在 sitemap 里，
+     Search Console 会报 "Submitted URL marked 'noindex'"。英文页没有 noindex 参数，故不受影响。 */ -}}
+{{- $pages := . -}}
+{{- $d := partialCached "i18n-data.html" site.Home site.Language.Lang -}}
+{{- $dates := slice -}}
+{{- range $iso, $c := $d.countries -}}
+  {{- $s := partialCached "country-stats.html" $iso $iso -}}
+  {{- with $s.checked }}{{ $dates = $dates | append . }}{{ end -}}
+{{- end -}}
+{{- $fresh := "" -}}
+{{- if gt (len $dates) 0 }}{{ $fresh = index (sort $dates) (sub (len $dates) 1) }}{{ end -}}
+{{- range $pages -}}
+{{- if not .Params.noindex -}}
+  {{- $lm := "" -}}
+  {{- /* ① 品牌页优先，三种形态：
+        · 品牌×国家子页 —— front matter 的 provider
+        · 品牌 Hub       —— content/en/esim-providers/<key>.md（靠文件名认；_index 是列表页，排除）
+        · A-vs-B 对比页  —— front matter 的 providers（slice）
+        对比页的口径必须与页面可见日期同源（vs-agg 取两品牌的最大 checked），
+        否则任何不相干品牌刷新都会把 28 张 vs 页的 lastmod 一起带跑。 */ -}}
+  {{- $pk := "" -}}
+  {{- with .Params.provider }}{{ $pk = . }}{{ end -}}
+  {{- if and (not $pk) (eq .Section "esim-providers") .IsPage -}}
+    {{- with .File }}{{ if ne .ContentBaseName "_index" }}{{ $pk = .ContentBaseName }}{{ end }}{{ end -}}
+  {{- end -}}
+  {{- $pks := slice -}}
+  {{- with .Params.providers }}{{ $pks = . }}{{ end -}}
+  {{- $pis := "" }}{{ with .Params.iso }}{{ $pis = . }}{{ end -}}
+  {{- /* 品牌 Hub（有 key、无 iso）还要算上品牌档案核对日：
+         Hub 页的内容 = 价格 + 档案（简介/热点/FUP/充值/折扣码），
+         只改档案时页面确实变了，lastmod 必须跟着动。
+         品牌×国家子页（有 iso）只看该国价格，不算档案。 */ -}}
+  {{- $wantProfile := false -}}
+  {{- if and $pk (not $pis) }}{{ $wantProfile = true }}{{ end -}}
+  {{- if $pk -}}
+    {{- with partial "provider-checked.html" (dict "key" $pk "iso" $pis "profile" $wantProfile) }}{{ $lm = . }}{{ end -}}
+  {{- else if gt (len $pks) 0 -}}
+    {{- with partial "provider-checked.html" (dict "keys" $pks) }}{{ $lm = . }}{{ end -}}
+  {{- end -}}
+  {{- /* ② 国家页：该国全部品牌里最新的核对日 */ -}}
+  {{- if not $lm -}}
+    {{- with .Params.iso -}}
+      {{- $s := partialCached "country-stats.html" . . -}}
+      {{- with $s.checked }}{{ $lm = . }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if not $lm }}{{ with .Lastmod }}{{ if not .IsZero }}{{ $lm = .Format "2006-01-02T15:04:05Z07:00" }}{{ end }}{{ end }}{{ end -}}
+  {{- if not $lm }}{{ $lm = $fresh }}{{ end -}}
+  {{- if $lm }}
+  <url><loc>{{ .Permalink }}</loc><lastmod>{{ (time $lm).Format "2006-01-02T15:04:05Z07:00" }}</lastmod></url>
+  {{- else }}
+  <url><loc>{{ .Permalink }}</loc></url>
+  {{- end -}}
+{{- end -}}
+{{- end -}}

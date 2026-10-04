@@ -1,0 +1,17 @@
+{{- /* 按语言解析数据层。
+       英语（默认语言）没有 data/en/ 覆盖目录，直接返回 hugo.Data —— 零开销、恒等。
+       其他语言若存在 data/<lang>/ 覆盖文件，则先剔除语言目录键，再深合并覆盖值。
+       用法：{{ $d := partialCached "i18n-data.html" . site.Language.Lang }} 之后用 $d.countries / $d.plans …
+       注意：Hugo 的 return 不能写在 if 块内，因此出口只有一个。 */ -}}
+{{- $ov := index hugo.Data site.Language.Lang -}}
+{{- $out := hugo.Data -}}
+{{- if $ov -}}
+  {{- $langKeys := slice -}}
+  {{- range hugo.Sites -}}{{- $langKeys = $langKeys | append .Language.Lang -}}{{- end -}}
+  {{- $base := dict -}}
+  {{- range $k, $v := hugo.Data -}}
+    {{- if not (in $langKeys $k) -}}{{- $base = merge $base (dict $k $v) -}}{{- end -}}
+  {{- end -}}
+  {{- $out = merge $base $ov -}}
+{{- end -}}
+{{- return $out -}}

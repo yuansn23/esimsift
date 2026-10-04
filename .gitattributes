@@ -1,0 +1,24 @@
+# 行尾策略 —— 产物字节的隐藏依赖，必须锁定
+#
+# 背景：Hugo 会把模板里标签之间的换行原样写进 HTML。本站 core.autocrlf=true，
+# 一旦 checkout 写出 CRLF，含多行文本节点的模板产物就会与 LF 状态下不同。
+# 历史上 layouts/ 是「26 个 CRLF + 18 个 LF」的混合状态，导致同一份提交
+# 在不同机器上构建出不同的 public/。此处强制模板与语言文件为 LF。
+#
+# content/ 与 data/ 当前在工作区是一致的 CRLF，且不参与该问题，暂不纳入，
+# 以免产生与本次改造无关的大规模行尾 diff。
+layouts/** text eol=lf
+i18n/** text eol=lf
+
+# 二进制资源，禁止任何行尾/编码转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.rar binary
+*.zip binary

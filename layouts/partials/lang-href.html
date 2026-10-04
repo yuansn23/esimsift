@@ -1,0 +1,46 @@
+{{- /*
+  lang-href.html —— 语言感知的"安全版 relLangURL"。
+
+  用法：href="{{ partial "lang-href.html" "/methodology/" }}"
+        href="{{ partial "lang-href.html" (printf "/compare/%s/" $country.slug) }}"
+
+  为什么不能直接用 relLangURL：relLangURL 只加语言前缀，**不检查目标页是否存在**。
+  本站是多语言部分翻译状态（德语目前只有首页有内容），对 /methodology/ 直接
+  relLangURL 会产出 /de/methodology/ —— 一个 404。
+  （已用 2 语言 probe 实测确认：德语站 site.GetPage "/methodology" 返回 NIL，
+   而 relLangURL "methodology/" 照样产出 /de/methodology/。）
+
+  解析顺序（三层兜底，永不 404）：
+    1. 当前语言有该页  → .RelPermalink（德语内容补上后自动切德语，无需再动模板）
+    2. 默认语言有该页  → .RelPermalink（hugo.Sites 按 weight 排序，en weight=1 排第一）
+    3. 都没有          → relURL(原路径)（退化回改造前的行为，英文根路径）
+
+  入参：站内路径字符串。允许有/无前导斜杠，允许带 ?query / #fragment
+       （query 与 fragment 原样保留、不参与查页）。
+  出参：相对 URL 字符串。
+
+  注意：对英文站而言输出恒等于入参，所以英文产物逐字节不变。
+*/ -}}
+{{- $in := string . -}}
+{{- $cut := $in -}}
+{{- if strings.Contains $cut "?" -}}{{- $cut = index (split $cut "?") 0 -}}{{- end -}}
+{{- if strings.Contains $cut "#" -}}{{- $cut = index (split $cut "#") 0 -}}{{- end -}}
+{{- $tail := strings.TrimPrefix $cut $in -}}
+{{- $key := strings.TrimSuffix "/" (strings.TrimPrefix "/" $cut) -}}
+{{- $url := "" -}}
+{{- if eq $key "" -}}
+  {{- $url = site.Home.RelPermalink -}}
+{{- else -}}
+  {{- with site.GetPage (printf "/%s" $key) -}}{{- $url = .RelPermalink -}}{{- end -}}
+  {{- if not $url -}}
+    {{- range hugo.Sites -}}
+      {{- if not $url -}}
+        {{- with .GetPage (printf "/%s" $key) -}}{{- $url = .RelPermalink -}}{{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if not $url -}}
+    {{- $url = relURL (printf "/%s%s" $key (cond (strings.HasSuffix $cut "/") "/" "")) -}}
+  {{- end -}}
+{{- end -}}
+{{- return printf "%s%s" $url $tail -}}

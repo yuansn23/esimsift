@@ -1,0 +1,117 @@
+{{- /* provider-alts.html —— 品牌 Hub 页的「替代方案」聚合（逐国、同类比同类）
+      输入：dict "key" 品牌key "cov" 该品牌的 coverage 切片 "d" i18n-data
+      输出：dict
+        rows   逐国「竞品更便宜」条目，按价差百分比降序
+        n      竞品在多少个国家比它便宜（分母 total）
+        total  该品牌可售国家数
+        medPct 这些国家的价差中位数（%）
+        worst  价差最大的一条
+        topAltKey / topAltName / topAltN  最常击败它的那个品牌
+
+    为什么要有这个 partial 而不是再写一遍：
+      · 上一轮在品牌×国家子页踩过「拿我方 10GB 档去比对手 1GB 试用装」的坑
+        （绝对价差取最大必然选中这种失真对比）。这里把口径固化成三层：
+          ① 双方都是无限档 → 无限比无限
+          ② 我方是计量档 → 优先找 (gb, days) **完全相同**的竞品档
+          ③ 找不到同规格 → 退到「数据量不少于我方」的竞品档
+          ④ 再找不到（对手压根没这么大档）→ 才退回「入门价对入门价」，并标记出来
+        标记会渲染成页面上的口径说明，读者能自核。
+      · 数据量一律走 plan-data-label.html 转换（0=无限 / <1GB 存小数），
+        绝不在这里写 int .gb。 */ -}}
+{{- $key := .key -}}
+{{- $d := .d -}}
+{{- $rowsOut := slice -}}
+{{- range $c := .cov -}}
+  {{- $iso := $c.iso -}}
+  {{- $s := partialCached "country-stats.html" $iso $iso -}}
+  {{- $all := $s.rows -}}
+  {{- $my := where $all "key" $key -}}
+  {{- if gt (len $my) 0 -}}
+    {{- $mine := index (sort $my "price" "asc") 0 -}}
+    {{- $mg := float $mine.gb -}}
+    {{- $md := int $mine.days -}}
+    {{- $pool := slice -}}
+    {{- $mt := "same-spec" -}}
+    {{- if eq $mg 0.0 -}}
+      {{- /* 我方最便宜是无限档：只跟无限档比 */ -}}
+      {{- range $all -}}
+        {{- if and (ne .key $key) (eq (float .gb) 0.0) -}}{{- $pool = $pool | append . -}}{{- end -}}
+      {{- end -}}
+      {{- $mt = "unlimited" -}}
+    {{- else -}}
+      {{- $exact := slice -}}
+      {{- $super := slice -}}
+      {{- range $all -}}
+        {{- if ne .key $key -}}
+          {{- if and (eq (int .days) $md) (eq (float .gb) $mg) -}}{{- $exact = $exact | append . -}}{{- end -}}
+          {{- if and (gt (float .gb) 0.0) (ge (float .gb) $mg) -}}{{- $super = $super | append . -}}{{- end -}}
+        {{- end -}}
+      {{- end -}}
+      {{- if gt (len $exact) 0 -}}
+        {{- $pool = $exact -}}{{- $mt = "same-spec" -}}
+      {{- else if gt (len $super) 0 -}}
+        {{- $pool = $super -}}{{- $mt = "at-least" -}}
+      {{- else -}}
+        {{- range $all -}}{{- if ne .key $key -}}{{- $pool = $pool | append . -}}{{- end -}}{{- end -}}
+        {{- $mt = "entry" -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if gt (len $pool) 0 -}}
+      {{- $alt := index (sort $pool "price" "asc") 0 -}}
+      {{- $mp := float $mine.price -}}
+      {{- $ap := float $alt.price -}}
+      {{- if lt $ap $mp -}}
+        {{- $apb := index $d.providers $alt.key -}}
+        {{- $rowsOut = $rowsOut | append (dict
+              "iso" $iso
+              "name" $c.name
+              "region" $c.region
+              "flag" $c.flag
+              "url" $c.url
+              "mine" $mp
+              "mineName" $mine.name
+              "mineLabel" (partial "plan-data-label.html" $mg)
+              "mineDays" $md
+              "altKey" $alt.key
+              "altName" $apb.name
+              "altPrice" $ap
+              "altNamePlan" $alt.name
+              "altLabel" (partial "plan-data-label.html" (float $alt.gb))
+              "altDays" (int $alt.days)
+              "pct" (mul 100.0 (div (sub $mp $ap) $mp))
+              "mt" $mt) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $sorted := sort $rowsOut "pct" "desc" -}}
+{{- $n := len $sorted -}}
+{{- $med := 0.0 -}}
+{{- if gt $n 0 -}}
+  {{- $asc := sort $rowsOut "pct" "asc" -}}
+  {{- $med = (index $asc (div $n 2)).pct -}}
+{{- end -}}
+{{- $worst := dict -}}
+{{- if gt $n 0 -}}{{- $worst = index $sorted 0 -}}{{- end -}}
+{{- /* 最常击败它的品牌：按 altKey 计数 */ -}}
+{{- $cnt := dict -}}
+{{- range $sorted -}}
+  {{- $cur := index $cnt .altKey | default 0 -}}
+  {{- $cnt = merge $cnt (dict .altKey (add $cur 1)) -}}
+{{- end -}}
+{{- $topKey := "" -}}{{- $topN := 0 -}}
+{{- range $k, $v := $cnt -}}
+  {{- if gt $v $topN -}}{{- $topN = $v -}}{{- $topKey = $k -}}{{- end -}}
+{{- end -}}
+{{- $topName := "" -}}
+{{- with $topKey -}}{{- $topName = (index $d.providers $topKey).name -}}{{- end -}}
+{{- return dict
+      "rows" $sorted
+      "n" $n
+      "total" (len .cov)
+      "medPct" $med
+      "worst" $worst
+      "topAltKey" $topKey
+      "topAltName" $topName
+      "topAltN" $topN
+-}}

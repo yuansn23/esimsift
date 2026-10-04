@@ -1,11 +1,11 @@
-{{ define "main" }}
+{{ define "main" }}{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}
 {{/* 研究页 · eSIM Price Index —— 50 国 $/GB 排行榜（外链磁铁）
    全部指标从 country-stats 推导；每行链国家页 + 最优套餐的品牌×国家子页（把引用流量导回 money page）。
    区域卡列出该区域全部国家（按 $/GB 排序的可点 chips）；洞察区/FAQ 全部计算生成（改数据自动刷新）。
    关键词边界（docs/keyword-map.md）：全局价格对比词归本页，单国价格词归国家页。 */}}
 {{ $list := slice }}
 {{ $checkedDates := slice }}
-{{ range $iso, $c := hugo.Data.countries }}
+{{ range $iso, $c := $d.countries }}
   {{ $s := partial "country-stats.html" $iso }}
   {{ with $s.checked }}{{ $checkedDates = $checkedDates | append . }}{{ end }}
   {{ if lt $s.minPerGB 999999.0 }}
@@ -13,7 +13,7 @@
     {{ $list = $list | append (dict
       "name" $c.name "slug" $c.slug "flag" $c.flag "region" $c.region
       "minPrice" $s.minPrice "minPerGB" $s.minPerGB
-      "bestKey" $b.key "bestProv" $b.provider "bestName" ($b.name | default (printf "%dGB / %d days" $b.gb $b.days))
+      "bestKey" $b.key "bestProv" $b.provider "bestName" ($b.name | default (printf "%s / %d days" (partial "plan-data-label.html" $b.gb) $b.days))
       "providers" $s.providerCount "plans" $s.planCount "unlimited" $s.unlimitedCount
     ) }}
   {{ end }}
@@ -56,22 +56,22 @@
   <div class="mt-4 grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
   <header>
     <div class="flex flex-wrap items-center gap-3">
-      <span class="badge bg-brand-50 text-brand-700">original research</span>
+      <span class="badge bg-brand-50 text-brand-700">{{ i18n "g_original_research" | safeHTML }}</span>
       <span class="badge bg-ink-50 text-ink-500">{{ $n }} countries</span>
-      {{ with $checked }}<span class="badge bg-ink-50 text-ink-500">prices checked {{ (time .).Format "Jan 2, 2006" }}</span>{{ end }}
+      {{ with $checked }}<span class="badge bg-ink-50 text-ink-500">prices checked {{ time.Format ":date_medium" (time .) }}</span>{{ end }}
     </div>
     <h1 class="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ .Title }}</h1>
-    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">The same ruler, {{ len hugo.Data.countries }} times. For every destination we track, this index takes the cheapest per-gigabyte rate across all providers and ranks the countries against each other — the cheapest places to buy eSIM data, and the most expensive.</p>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">The same ruler, {{ len $d.countries }} times. For every destination we track, this index takes the cheapest per-gigabyte rate across all providers and ranks the countries against each other — the cheapest places to buy eSIM data, and the most expensive.</p>
     <div class="mt-6 flex flex-wrap gap-3">
-      {{ with $medianRow.minPerGB }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" . }}</span><span class="stat-label">median best $/GB</span></div>{{ end }}
+      {{ with $medianRow.minPerGB }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" . }}</span><span class="stat-label">{{ i18n "g_median_best_gb" | safeHTML }}</span></div>{{ end }}
       {{ with $cheapest.name }}<div class="stat-tile"><span class="stat-num text-lg">{{ $cheapest.name }}</span><span class="stat-label">cheapest at ${{ printf "%.2f" $cheapest.minPerGB }}/GB</span></div>{{ end }}
       {{ with $dearest.name }}<div class="stat-tile"><span class="stat-num text-lg">{{ $dearest.name }}</span><span class="stat-label">priciest at ${{ printf "%.2f" $dearest.minPerGB }}/GB</span></div>{{ end }}
       {{ with index $regionSorted 0 }}<div class="stat-tile"><span class="stat-num text-lg">{{ .region }}</span><span class="stat-label">cheapest region, avg ${{ printf "%.2f" .avg }}/GB</span></div>{{ end }}
     </div>
   </header>
   <figure class="figure">
-    <img src="/img/esim/travel-esim-illustration-001.webp" alt="Phone showing eSIM data prices for different countries" width="2848" height="1470">
-    <figcaption>eSIM prices by country — every $/GB rate computed from the same dated snapshot.</figcaption>
+    <img src="/img/esim/travel-esim-illustration-001.webp" alt="{{ i18n "research_price_index__phone_showing_esim_data_prices_for_different_countries" | safeHTML }}" width="2848" height="1470">
+    <figcaption>{{ i18n "research_price_index__esim_prices_by_country_every_gb_rate_computed_from_the_s" | safeHTML }}</figcaption>
   </figure>
   </div>
 
@@ -80,15 +80,15 @@
   {{/* ── 最便宜 / 最贵 Top5 ── */}}
   {{ if gt $n 4 }}
   <section class="mt-12" aria-labelledby="extremes">
-    <p class="eyebrow">The extremes</p>
-    <h2 id="extremes" class="mt-2 text-2xl font-bold md:text-3xl">Which countries have the cheapest and priciest eSIM data</h2>
+    <p class="eyebrow">{{ i18n "research_price_index__the_extremes" | safeHTML }}</p>
+    <h2 id="extremes" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "research_price_index__which_countries_have_the_cheapest_and_priciest_esim_data" | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 md:grid-cols-2">
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-brand-700">5 cheapest per GB</h3>
+        <h3 class="font-display text-base font-bold text-brand-700">{{ i18n "research_price_index__5_cheapest_per_gb" | safeHTML }}</h3>
         <ol class="mt-4 space-y-2">
           {{ range first 5 $ranked }}
           <li>
-            <a href="/compare/{{ .slug }}/" class="group flex items-center gap-2.5 rounded-lg px-2 py-1.5 -mx-2 transition-colors hover:bg-brand-50/60">
+            <a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="group flex items-center gap-2.5 rounded-lg px-2 py-1.5 -mx-2 transition-colors hover:bg-brand-50/60">
               <img src="{{ .flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">
               <span class="flex-1 text-sm font-medium text-ink-800 group-hover:text-brand-800">{{ .name }}</span>
               <span class="text-xs text-ink-400">{{ .bestProv }}</span>
@@ -99,11 +99,11 @@
         </ol>
       </div>
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-accent-700">5 priciest per GB</h3>
+        <h3 class="font-display text-base font-bold text-accent-700">{{ i18n "research_price_index__5_priciest_per_gb" | safeHTML }}</h3>
         <ol class="mt-4 space-y-2">
           {{ range last 5 $ranked }}
           <li>
-            <a href="/compare/{{ .slug }}/" class="group flex items-center gap-2.5 rounded-lg px-2 py-1.5 -mx-2 transition-colors hover:bg-brand-50/60">
+            <a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="group flex items-center gap-2.5 rounded-lg px-2 py-1.5 -mx-2 transition-colors hover:bg-brand-50/60">
               <img src="{{ .flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">
               <span class="flex-1 text-sm font-medium text-ink-800 group-hover:text-brand-800">{{ .name }}</span>
               <span class="text-xs text-ink-400">{{ .bestProv }}</span>
@@ -119,55 +119,55 @@
 
   {{/* ── 全榜（每行链国家页 + 最优套餐子页） ── */}}
   <section class="mt-12" aria-labelledby="league">
-    <p class="eyebrow">The full index</p>
-    <h2 id="league" class="mt-2 text-2xl font-bold md:text-3xl">The full league table of eSIM prices by country</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">“Best $/GB” is the cheapest per-gigabyte rate any provider offers there — usually a large bucket, not the entry plan. Every country and every winning plan is a link: the country name opens the full provider table, the plan opens that provider's plans for the country.</p>
+    <p class="eyebrow">{{ i18n "research_price_index__the_full_index" | safeHTML }}</p>
+    <h2 id="league" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "research_price_index__the_full_league_table_of_esim_prices_by_country" | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "research_price_index__best_gb_is_the_cheapest_per_gigabyte_rate_any_provider_o" | safeHTML }}</p>
     <div class="card mt-6 overflow-hidden p-0">
       <div class="overflow-x-auto">
         <table class="table-pro">
           <thead>
-            <tr><th>#</th><th>Country</th><th>Region</th><th>Best $/GB</th><th>Winning plan</th><th>Plans from</th><th>Providers</th><th>Unlimited</th><th>Compare</th></tr>
+            <tr><th>#</th><th>{{ i18n "g_country" | safeHTML }}</th><th>{{ i18n "research_price_index__region" | safeHTML }}</th><th>{{ i18n "g_best_gb" | safeHTML }}</th><th>{{ i18n "research_price_index__winning_plan" | safeHTML }}</th><th>{{ i18n "g_plans_from" | safeHTML }}</th><th>{{ i18n "g_providers" | safeHTML }}</th><th>{{ i18n "g_unlimited" | safeHTML }}</th><th>{{ i18n "g_compare" | safeHTML }}</th></tr>
           </thead>
           <tbody>
             {{ range $i, $r := $ranked }}
             <tr>
               <td class="tnum text-ink-400">{{ add $i 1 }}</td>
-              <td><a href="/compare/{{ .slug }}/" class="flex items-center gap-2 font-medium text-ink-800 transition-colors hover:text-brand-700"><img src="{{ .flag | relURL }}" alt="" class="h-3.5 w-5 shrink-0 rounded-sm object-cover" loading="lazy" width="20" height="14">{{ .name }}</a></td>
+              <td><a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="flex items-center gap-2 font-medium text-ink-800 transition-colors hover:text-brand-700"><img src="{{ .flag | relURL }}" alt="" class="h-3.5 w-5 shrink-0 rounded-sm object-cover" loading="lazy" width="20" height="14">{{ .name }}</a></td>
               <td class="text-ink-500">{{ .region }}</td>
               <td class="font-display font-bold text-brand-700 tnum">${{ printf "%.2f" .minPerGB }}</td>
-              <td class="text-sm"><a href="/compare/{{ .slug }}/{{ .bestKey }}/" class="font-medium text-brand-700 hover:underline">{{ .bestName | truncate 30 }}</a><span class="block text-xs text-ink-400">by <a href="/esim-providers/{{ .bestKey }}/" class="text-ink-500 transition-colors hover:text-brand-700">{{ .bestProv }}</a></span></td>
+              <td class="text-sm"><a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug .bestKey) }}" class="font-medium text-brand-700 hover:underline">{{ .bestName | truncate 30 }}</a><span class="block text-xs text-ink-400">{{ i18n "research_price_index__by" | safeHTML }} <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" .bestKey) }}" class="text-ink-500 transition-colors hover:text-brand-700">{{ .bestProv }}</a></span></td>
               <td class="tnum">${{ printf "%.2f" .minPrice }}</td>
               <td class="tnum text-ink-500">{{ .providers }}</td>
               <td class="tnum text-ink-500">{{ if gt .unlimited 0 }}{{ .unlimited }} plans{{ else }}—{{ end }}</td>
-              <td><a href="/compare/{{ .slug }}/" class="btn-mini">View plans →</a></td>
+              <td><a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="btn-mini">{{ i18n "g_view_plans" | safeHTML }}</a></td>
             </tr>
             {{ end }}
           </tbody>
         </table>
       </div>
     </div>
-    <p class="mt-3 text-xs text-ink-400">Method: for each country, the minimum of price÷GB over every metered plan from every provider, from the same dated snapshot. Unlimited (per-day) plans are excluded from the $/GB column but counted in their own column — see <a href="/research/unlimited-esim/" class="font-semibold text-brand-700 hover:underline">which countries have the cheapest unlimited eSIMs</a>. Full rules in the <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.</p>
+    <p class="mt-3 text-xs text-ink-400">{{ i18n "research_price_index__method_for_each_country_the_minimum_of_price_gb_over_eve" | safeHTML }} <a href="{{ partial "lang-href.html" "/research/unlimited-esim/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "research_price_index__which_countries_have_the_cheapest_unlimited_esims" | safeHTML }}</a>{{ i18n "g_full_rules_in_the" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>.</p>
   </section>
 
   {{/* ── 计算洞察：价差意味着什么 ── */}}
   {{ if and (gt $spread 0.0) (gt $gb10Low 0.0) }}
   <section class="mt-12" aria-labelledby="spread">
-    <p class="eyebrow">Read it like a traveler</p>
-    <h2 id="spread" class="mt-2 text-2xl font-bold md:text-3xl">What the price spread means for your trip</h2>
+    <p class="eyebrow">{{ i18n "research_price_index__read_it_like_a_traveler" | safeHTML }}</p>
+    <h2 id="spread" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "research_price_index__what_the_price_spread_means_for_your_trip" | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 md:grid-cols-3">
       <div class="card p-6">
         <p class="font-display text-3xl font-extrabold text-brand-700 tnum">{{ printf "%.1f" $spread }}×</p>
-        <h3 class="mt-2 font-display text-base font-bold text-ink-950">Cheapest vs priciest country</h3>
-        <p class="mt-3 text-sm leading-relaxed text-ink-600">The same gigabyte costs {{ printf "%.1f" $spread }} times more in <a href="/compare/{{ $dearest.slug }}/" class="font-semibold text-brand-700 hover:underline">{{ $dearest.name }}</a> than in <a href="/compare/{{ $cheapest.slug }}/" class="font-semibold text-brand-700 hover:underline">{{ $cheapest.name }}</a> (${{ printf "%.2f" $cheapest.minPerGB }}/GB vs ${{ printf "%.2f" $dearest.minPerGB }}/GB). Destination choice moves the price far more than provider choice does.</p>
+        <h3 class="mt-2 font-display text-base font-bold text-ink-950">{{ i18n "research_price_index__cheapest_vs_priciest_country" | safeHTML }}</h3>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">The same gigabyte costs {{ printf "%.1f" $spread }} times more in <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $dearest.slug) }}" class="font-semibold text-brand-700 hover:underline">{{ $dearest.name }}</a> {{ i18n "research_price_index__than_in" | safeHTML }} <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $cheapest.slug) }}" class="font-semibold text-brand-700 hover:underline">{{ $cheapest.name }}</a> (${{ printf "%.2f" $cheapest.minPerGB }}/GB vs ${{ printf "%.2f" $dearest.minPerGB }}/GB). Destination choice moves the price far more than provider choice does.</p>
       </div>
       <div class="card p-6">
         <p class="font-display text-3xl font-extrabold text-brand-700 tnum">{{ printf "%.0f" $gb10Low }} GB</p>
-        <h3 class="mt-2 font-display text-base font-bold text-ink-950">What $10 buys at the extremes</h3>
-        <p class="mt-3 text-sm leading-relaxed text-ink-600">$10 buys about {{ printf "%.0f" $gb10Low }} GB of budget data in <a href="/compare/{{ $cheapest.slug }}/" class="font-semibold text-brand-700 hover:underline">{{ $cheapest.name }}</a> — but only {{ printf "%.1f" $gb10High }} GB in <a href="/compare/{{ $dearest.slug }}/" class="font-semibold text-brand-700 hover:underline">{{ $dearest.name }}</a>. In expensive markets a short validity small bucket, not a big one, is usually the sane buy.</p>
+        <h3 class="mt-2 font-display text-base font-bold text-ink-950">{{ i18n "research_price_index__what_10_buys_at_the_extremes" | safeHTML }}</h3>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">$10 buys about {{ printf "%.0f" $gb10Low }} GB of budget data in <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $cheapest.slug) }}" class="font-semibold text-brand-700 hover:underline">{{ $cheapest.name }}</a> — but only {{ printf "%.1f" $gb10High }} GB in <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $dearest.slug) }}" class="font-semibold text-brand-700 hover:underline">{{ $dearest.name }}</a>{{ i18n "research_price_index__in_expensive_markets_a_short_validity_small_bucket_not_a" | safeHTML }}</p>
       </div>
       <div class="card p-6">
         <p class="font-display text-3xl font-extrabold text-brand-700 tnum">{{ printf "%.1f" $regionGap }}×</p>
-        <h3 class="mt-2 font-display text-base font-bold text-ink-950">The regional gap</h3>
+        <h3 class="mt-2 font-display text-base font-bold text-ink-950">{{ i18n "research_price_index__the_regional_gap" | safeHTML }}</h3>
         <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ $rCheap.region }} averages ${{ printf "%.2f" $rCheap.avg }}/GB — {{ printf "%.1f" $regionGap }}× cheaper than {{ $rDear.region }} at ${{ printf "%.2f" $rDear.avg }}/GB. Multi-country trips through a cheap region can safely buy bigger buckets; check the region card below for its own league.</p>
       </div>
     </div>
@@ -176,9 +176,9 @@
 
   {{/* ── 区域均价 + 区域内国家链 ── */}}
   <section class="mt-12" aria-labelledby="regions">
-    <p class="eyebrow">By region</p>
-    <h2 id="regions" class="mt-2 text-2xl font-bold md:text-3xl">Regional averages and the countries behind them</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">Each region's average $/GB, with its countries ranked cheapest-first underneath — click any country to see its full provider table.</p>
+    <p class="eyebrow">{{ i18n "research_price_index__by_region" | safeHTML }}</p>
+    <h2 id="regions" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "research_price_index__regional_averages_and_the_countries_behind_them" | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "research_price_index__each_region_s_average_gb_with_its_countries_ranked_cheap" | safeHTML }}</p>
     <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {{ range $i, $rs := $regionSorted }}
       <div class="card p-5">
@@ -189,7 +189,7 @@
         <p class="mt-1 text-xs text-ink-400 tnum">{{ .count }} countries tracked{{ if eq $i 0 }} · cheapest region{{ end }}</p>
         <div class="mt-3 flex flex-wrap gap-1.5">
           {{ range .countries }}
-          <a href="/compare/{{ .slug }}/" class="rounded-full bg-ink-50 px-2 py-0.5 text-[11px] font-medium text-ink-600 transition-colors hover:bg-brand-50 hover:text-brand-700">{{ .name }} <span class="tnum text-ink-400">${{ printf "%.2f" .minPerGB }}</span></a>
+          <a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="rounded-full bg-ink-50 px-2 py-0.5 text-[11px] font-medium text-ink-600 transition-colors hover:bg-brand-50 hover:text-brand-700">{{ .name }} <span class="tnum text-ink-400">${{ printf "%.2f" .minPerGB }}</span></a>
           {{ end }}
         </div>
       </div>
@@ -211,7 +211,7 @@
   {{ if gt (len $faqList) 0 }}
   <section class="mt-12" aria-labelledby="faq">
     <p class="eyebrow">FAQ</p>
-    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">What should you know about eSIM prices by country</h2>
+    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "research_price_index__what_should_you_know_about_esim_prices_by_country" | safeHTML }}</h2>
     <div class="mt-6 max-w-3xl space-y-3">
       {{ range $faqList }}
       <details class="card group p-0">
@@ -230,13 +230,13 @@
 
   {{/* ── 相关阅读（研究互联） ── */}}
   <section class="mt-12" aria-labelledby="related">
-    <p class="eyebrow">Keep reading</p>
-    <h2 id="related" class="mt-2 text-2xl font-bold md:text-3xl">Related research &amp; comparisons</h2>
+    <p class="eyebrow">{{ i18n "g_keep_reading" | safeHTML }}</p>
+    <h2 id="related" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "g_related_research_amp_comparisons" | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <a href="/research/unlimited-esim/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Unlimited eSIM daily rates</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Where unlimited data is cheapest per day, and when it beats a metered bucket.</p></a>
-      <a href="/research/fair-use-audit/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Fair-use audit</p><p class="mt-2 text-xs leading-relaxed text-ink-500">What every “unlimited” plan's small print actually throttles, provider by provider.</p></a>
-      <a href="/compare/matchups/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Provider matchups</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Airalo vs Holafly and every other head-to-head, computed country by country.</p></a>
-      <a href="/esim-providers/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Provider reviews</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Where each provider is cheapest and priciest, computed across all {{ len hugo.Data.countries }} countries.</p></a>
+      <a href="{{ partial "lang-href.html" "/research/unlimited-esim/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_unlimited_esim_daily_rates" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_price_index__where_unlimited_data_is_cheapest_per_day_and_when_it_bea" | safeHTML }}</p></a>
+      <a href="{{ partial "lang-href.html" "/research/fair-use-audit/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_fair_use_audit" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_price_index__what_every_unlimited_plan_s_small_print_actually_throttl" | safeHTML }}</p></a>
+      <a href="{{ partial "lang-href.html" "/compare/matchups/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_provider_matchups_2" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_price_index__airalo_vs_holafly_and_every_other_head_to_head_computed_" | safeHTML }}</p></a>
+      <a href="{{ partial "lang-href.html" "/esim-providers/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_provider_reviews" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Where each provider is cheapest and priciest, computed across all {{ len $d.countries }} countries.</p></a>
     </div>
   </section>
 
@@ -244,11 +244,11 @@
   <section class="mt-12">
     <div class="relative overflow-hidden rounded-3xl bg-ink-gradient px-7 py-8 text-ink-300 md:px-10">
       <div class="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
-      <p class="font-display text-lg font-bold text-white">Cite it, fork it, check it.</p>
-      <p class="mt-2 max-w-2xl text-sm leading-relaxed">Every number here is a literal sort of the same dated snapshot — no editorial adjustments. The whole database is also published as machine-readable JSON, and the collection schedule is documented in our <a href="/methodology/" class="font-semibold text-brand-300 hover:underline">methodology</a>.</p>
+      <p class="font-display text-lg font-bold text-white">{{ i18n "research_price_index__cite_it_fork_it_check_it" | safeHTML }}</p>
+      <p class="mt-2 max-w-2xl text-sm leading-relaxed">{{ i18n "research_price_index__every_number_here_is_a_literal_sort_of_the_same_dated_sn" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>.</p>
       <div class="mt-5 flex flex-wrap gap-3">
-        <a href="{{ "catalog.json" | absURL }}" class="btn-out text-xs">Price database (JSON)</a>
-        <a href="/disclosure/" class="btn-ghost text-xs">How we make money</a>
+        <a href="{{ "catalog.json" | absURL }}" class="btn-out text-xs">{{ i18n "research_price_index__price_database_json" | safeHTML }}</a>
+        <a href="{{ partial "lang-href.html" "/disclosure/" }}" class="btn-ghost text-xs">{{ i18n "research_price_index__how_we_make_money" | safeHTML }}</a>
       </div>
     </div>
   </section>

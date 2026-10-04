@@ -1,11 +1,11 @@
-{{ define "main" }}
+{{ define "main" }}{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}
 {{/* 研究页 · Best Unlimited eSIM —— 有 unlimited 套餐的国家按最低日均价排名
    全部指标从 country-stats 推导；表内品牌/套餐可点（品牌×国家子页）。
    盈亏平衡区：日费率 ÷ 最便宜 $/GB = unlimited 划算的每日用量门槛（全部计算生成）。
    关键词边界：全局 "best unlimited eSIM" 归本页，"{country} unlimited eSIM" 归国家页。 */}}
 {{ $list := slice }}
 {{ $checkedDates := slice }}
-{{ range $iso, $c := hugo.Data.countries }}
+{{ range $iso, $c := $d.countries }}
   {{ $s := partial "country-stats.html" $iso }}
   {{ with $s.checked }}{{ $checkedDates = $checkedDates | append . }}{{ end }}
   {{ $urows := where $s.rows "gb" 0 }}
@@ -31,7 +31,7 @@
 
 {{/* 哪些品牌卖 unlimited（覆盖国家数） */}}
 {{ $provUnlimited := dict }}
-{{ range $iso, $c := hugo.Data.countries }}
+{{ range $iso, $c := $d.countries }}
   {{ $s := partial "country-stats.html" $iso }}
   {{ range where $s.rows "gb" 0 }}
     {{ $cur := index $provUnlimited .provider | default 0 }}
@@ -63,24 +63,24 @@
   <div class="mt-4 grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
   <header>
     <div class="flex flex-wrap items-center gap-3">
-      <span class="badge bg-brand-50 text-brand-700">original research</span>
+      <span class="badge bg-brand-50 text-brand-700">{{ i18n "g_original_research" | safeHTML }}</span>
       <span class="badge bg-ink-50 text-ink-500">{{ $n }} countries with unlimited</span>
-      {{ with $checked }}<span class="badge bg-ink-50 text-ink-500">prices checked {{ (time .).Format "Jan 2, 2006" }}</span>{{ end }}
+      {{ with $checked }}<span class="badge bg-ink-50 text-ink-500">prices checked {{ time.Format ":date_medium" (time .) }}</span>{{ end }}
     </div>
     <h1 class="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ .Title }}</h1>
-    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">Unlimited eSIMs are priced per day, so the only fair ranking is the daily rate. For every country where an unlimited plan exists, we list the lowest per-day price across all providers — and the fair-use catch behind it.</p>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">{{ i18n "research_unlimited_esim__unlimited_esims_are_priced_per_day_so_the_only_fair_rank" | safeHTML }}</p>
   </header>
   <figure class="figure">
-    <img src="/img/esim/travel-esim-illustration-002.webp" alt="Traveler comparing unlimited eSIM plans on a phone" width="2848" height="1470">
-    <figcaption>Unlimited eSIM plans ranked by daily rate — the only fair comparison across countries and trip lengths.</figcaption>
+    <img src="/img/esim/travel-esim-illustration-002.webp" alt="{{ i18n "research_unlimited_esim__traveler_comparing_unlimited_esim_plans_on_a_phone" | safeHTML }}" width="2848" height="1470">
+    <figcaption>{{ i18n "research_unlimited_esim__unlimited_esim_plans_ranked_by_daily_rate_the_only_fair_" | safeHTML }}</figcaption>
   </figure>
   </div>
 
   {{/* ── 首屏指标：全宽三卡（不挤 hero 左栏） ── */}}
   <div class="mt-8 grid gap-4 sm:grid-cols-3">
     {{ with index $ranked 0 }}<div class="card p-6"><span class="stat-num text-lg">{{ .name }}</span><span class="stat-label">cheapest unlimited, ${{ printf "%.2f" .bestDaily }}/day</span></div>{{ end }}
-    <div class="card p-6"><span class="stat-num tnum">{{ $n }}</span><span class="stat-label">countries with unlimited plans</span></div>
-    {{ with $beMedian }}<div class="card p-6"><span class="stat-num tnum">{{ printf "%.1f" . }} GB</span><span class="stat-label">median break-even per day</span></div>{{ end }}
+    <div class="card p-6"><span class="stat-num tnum">{{ $n }}</span><span class="stat-label">{{ i18n "research_unlimited_esim__countries_with_unlimited_plans" | safeHTML }}</span></div>
+    {{ with $beMedian }}<div class="card p-6"><span class="stat-num tnum">{{ printf "%.1f" . }} GB</span><span class="stat-label">{{ i18n "research_unlimited_esim__median_break_even_per_day" | safeHTML }}</span></div>{{ end }}
   </div>
 
   {{/* ── 谁在卖 unlimited：单行小徽章（品牌×覆盖数，按覆盖数降序） ── */}}
@@ -89,7 +89,7 @@
   {{ $provList = sort $provList "rank" "asc" }}
   {{ with $provList }}
   <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
-    <span class="text-xs font-semibold uppercase tracking-wider text-ink-400">Who sells unlimited</span>
+    <span class="text-xs font-semibold uppercase tracking-wider text-ink-400">{{ i18n "research_unlimited_esim__who_sells_unlimited" | safeHTML }}</span>
     {{ range . }}<span class="badge bg-ink-50 text-ink-500">{{ .name }} <span class="tnum font-semibold text-ink-700">{{ .count }}</span></span>{{ end }}
   </div>
   {{ end }}
@@ -98,20 +98,20 @@
 
   {{/* ── 怎么读 unlimited 价格（选购增益） ── */}}
   <section class="mt-12" aria-labelledby="howpriced">
-    <p class="eyebrow">Read the prices right</p>
-    <h2 id="howpriced" class="mt-2 text-2xl font-bold md:text-3xl">How unlimited eSIM pricing works</h2>
+    <p class="eyebrow">{{ i18n "research_unlimited_esim__read_the_prices_right" | safeHTML }}</p>
+    <h2 id="howpriced" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "research_unlimited_esim__how_unlimited_esim_pricing_works" | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 md:grid-cols-3">
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-ink-950">Per day rather than per GB</h3>
-        <p class="mt-3 text-sm leading-relaxed text-ink-600">Unlimited plans sell a number of days, not gigabytes. A “$3.90/day” plan bought for 7 days costs $27.30 upfront — the daily rate is the only number that compares across trip lengths.</p>
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "research_unlimited_esim__per_day_rather_than_per_gb" | safeHTML }}</h3>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "research_unlimited_esim__unlimited_plans_sell_a_number_of_days_not_gigabytes_a_3_" | safeHTML }}</p>
       </div>
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-ink-950">Longer trips mean a lower daily rate</h3>
-        <p class="mt-3 text-sm leading-relaxed text-ink-600">Most providers discount longer validity. The cheapest daily rate in a country is usually the 20–30 day package, not the 5-day one — our table always shows the best rate.</p>
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "research_unlimited_esim__longer_trips_mean_a_lower_daily_rate" | safeHTML }}</h3>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "research_unlimited_esim__most_providers_discount_longer_validity_the_cheapest_dai" | safeHTML }}</p>
       </div>
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-ink-950">“Unlimited” always has a ceiling</h3>
-        <p class="mt-3 text-sm leading-relaxed text-ink-600">Every unlimited plan we track carries a fair-use policy that can throttle your speed. We record each plan's policy note verbatim — see the <a href="/research/fair-use-audit/" class="font-semibold text-brand-700 hover:underline">fair-use audit</a> before you buy.</p>
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "research_unlimited_esim__unlimited_always_has_a_ceiling" | safeHTML }}</h3>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "research_unlimited_esim__every_unlimited_plan_we_track_carries_a_fair_use_policy_" | safeHTML }} <a href="{{ partial "lang-href.html" "/research/fair-use-audit/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_fair_use_audit_2" | safeHTML }}</a> {{ i18n "research_unlimited_esim__before_you_buy" | safeHTML }}</p>
       </div>
     </div>
   </section>
@@ -119,57 +119,57 @@
   {{/* ── 盈亏平衡：什么时候 unlimited 更划算 ── */}}
   {{ if gt $beN 2 }}
   <section class="mt-12" aria-labelledby="breakeven">
-    <p class="eyebrow">When unlimited actually wins</p>
-    <h2 id="breakeven" class="mt-2 text-2xl font-bold md:text-3xl">When is an unlimited eSIM cheaper than metered data?</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">Divide a country's best unlimited daily rate by its best metered $/GB and you get the break-even: how many GB per day you must actually use before unlimited pays for itself. We computed it for every country — the spread is huge.</p>
+    <p class="eyebrow">{{ i18n "research_unlimited_esim__when_unlimited_actually_wins" | safeHTML }}</p>
+    <h2 id="breakeven" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "research_unlimited_esim__when_is_an_unlimited_esim_cheaper_than_metered_data" | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "research_unlimited_esim__divide_a_country_s_best_unlimited_daily_rate_by_its_best" | safeHTML }}</p>
     <div class="mt-6 grid gap-4 md:grid-cols-3">
       <div class="card p-6">
         <p class="font-display text-3xl font-extrabold text-brand-700 tnum">{{ printf "%.1f" $beLow.be }} GB/day</p>
-        <h3 class="mt-2 font-display text-base font-bold text-ink-950">The easiest win is <a href="/compare/{{ $beLow.slug }}/" class="text-brand-700 hover:underline">{{ $beLow.name }}</a></h3>
+        <h3 class="mt-2 font-display text-base font-bold text-ink-950">{{ i18n "research_unlimited_esim__the_easiest_win_is" | safeHTML }} <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $beLow.slug) }}" class="text-brand-700 hover:underline">{{ $beLow.name }}</a></h3>
         <p class="mt-3 text-sm leading-relaxed text-ink-600">Unlimited at ${{ printf "%.2f" $beLow.bestDaily }}/day against ${{ printf "%.2f" $beLow.minPerGB }}/GB metered: stream a couple of hours a day and unlimited already pays. A heavy user's dream market.</p>
       </div>
       <div class="card p-6">
         <p class="font-display text-3xl font-extrabold text-brand-700 tnum">{{ printf "%.1f" $beMedian }} GB/day</p>
-        <h3 class="mt-2 font-display text-base font-bold text-ink-950">The median country</h3>
+        <h3 class="mt-2 font-display text-base font-bold text-ink-950">{{ i18n "research_unlimited_esim__the_median_country" | safeHTML }}</h3>
         <p class="mt-3 text-sm leading-relaxed text-ink-600">Across the {{ $beN }} countries we computed, the typical break-even sits at {{ printf "%.1f" $beMedian }} GB/day. Rough rule: if you burn through more than {{ printf "%.1f" $beMedian }} GB on a normal travel day (maps + music + an evening of video), unlimited is likely the cheaper side.</p>
       </div>
       <div class="card p-6">
         <p class="font-display text-3xl font-extrabold text-accent-700 tnum">{{ printf "%.1f" $beHigh.be }} GB/day</p>
-        <h3 class="mt-2 font-display text-base font-bold text-ink-950">The hardest win is <a href="/compare/{{ $beHigh.slug }}/" class="text-brand-700 hover:underline">{{ $beHigh.name }}</a></h3>
+        <h3 class="mt-2 font-display text-base font-bold text-ink-950">{{ i18n "research_unlimited_esim__the_hardest_win_is" | safeHTML }} <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $beHigh.slug) }}" class="text-brand-700 hover:underline">{{ $beHigh.name }}</a></h3>
         <p class="mt-3 text-sm leading-relaxed text-ink-600">Cheap metered data (${{ printf "%.2f" $beHigh.minPerGB }}/GB) meets a pricier unlimited rate (${{ printf "%.2f" $beHigh.bestDaily }}/day): you would need {{ printf "%.1f" $beHigh.be }} GB every single day before unlimited wins. Buy a big bucket here instead.</p>
       </div>
     </div>
-    <p class="mt-3 text-xs text-ink-400">Break-even = best unlimited $/day ÷ best metered $/GB in the same country, same dated snapshot. Fair-use throttling still applies above the break-even — read the <a href="/research/fair-use-audit/" class="font-semibold text-brand-700 hover:underline">fair-use audit</a> before betting a heavy-streaming trip on one.</p>
+    <p class="mt-3 text-xs text-ink-400">{{ i18n "research_unlimited_esim__break_even_best_unlimited_day_best_metered_gb_in_the_sam" | safeHTML }} <a href="{{ partial "lang-href.html" "/research/fair-use-audit/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_fair_use_audit_2" | safeHTML }}</a> {{ i18n "research_unlimited_esim__before_betting_a_heavy_streaming_trip_on_one" | safeHTML }}</p>
   </section>
   {{ end }}
 
   {{/* ── 全榜（国家链 + 品牌/套餐钻取链） ── */}}
   <section class="mt-12" aria-labelledby="league">
-    <p class="eyebrow">The full league</p>
-    <h2 id="league" class="mt-2 text-2xl font-bold md:text-3xl">Unlimited eSIM daily rates ranked country by country</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">“Best daily rate” is the cheapest price-per-day any provider's unlimited plan achieves in that country. Every entry is a link: the country name opens all its plans, the provider name opens that provider's plans there, the plan name opens the cheapest listing.</p>
+    <p class="eyebrow">{{ i18n "research_unlimited_esim__the_full_league" | safeHTML }}</p>
+    <h2 id="league" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "research_unlimited_esim__unlimited_esim_daily_rates_ranked_country_by_country" | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "research_unlimited_esim__best_daily_rate_is_the_cheapest_price_per_day_any_provid" | safeHTML }}</p>
     <div class="card mt-6 overflow-hidden p-0">
       <div class="overflow-x-auto">
         <table class="table-pro">
           <thead>
-            <tr><th>#</th><th>Country</th><th>Best daily rate</th><th>Cheapest unlimited plan</th><th>Fair-use note</th><th>Compare</th></tr>
+            <tr><th>#</th><th>{{ i18n "g_country" | safeHTML }}</th><th>{{ i18n "research_unlimited_esim__best_daily_rate" | safeHTML }}</th><th>{{ i18n "research_unlimited_esim__cheapest_unlimited_plan" | safeHTML }}</th><th>{{ i18n "research_unlimited_esim__fair_use_note" | safeHTML }}</th><th>{{ i18n "g_compare" | safeHTML }}</th></tr>
           </thead>
           <tbody>
             {{ range $i, $r := $ranked }}
             <tr>
               <td class="tnum text-ink-400">{{ add $i 1 }}</td>
-              <td><a href="/compare/{{ .slug }}/" class="flex items-center gap-2 font-medium text-ink-800 transition-colors hover:text-brand-700"><img src="{{ .flag | relURL }}" alt="" class="h-3.5 w-5 shrink-0 rounded-sm object-cover" loading="lazy" width="20" height="14">{{ .name }}</a></td>
-              <td class="font-display font-bold text-brand-700 tnum">${{ printf "%.2f" .bestDaily }}/day <span class="font-sans text-xs font-medium">· <a href="/compare/{{ .slug }}/{{ .bestDailyKey }}/" class="text-ink-500 underline decoration-ink-200 underline-offset-2 transition-colors hover:text-brand-700">{{ .bestDailyProv }}</a></span></td>
-              <td class="text-sm"><a href="/compare/{{ .slug }}/{{ .cheapestKey }}/" class="font-medium text-brand-700 hover:underline">{{ .cheapestName | truncate 26 }}</a><span class="block text-xs text-ink-400 tnum">${{ printf "%.2f" .cheapestPrice }} / {{ .cheapestDays }} days · <a href="/esim-providers/{{ .cheapestKey }}/" class="text-ink-500 transition-colors hover:text-brand-700">{{ .cheapestProv }}</a></span></td>
-              <td class="max-w-xs text-xs text-ink-500">{{ with .fup }}{{ . | truncate 90 }}{{ else }}<span class="text-ink-300">not stated</span>{{ end }}</td>
-              <td><a href="/compare/{{ .slug }}/" class="btn-mini">View plans →</a></td>
+              <td><a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="flex items-center gap-2 font-medium text-ink-800 transition-colors hover:text-brand-700"><img src="{{ .flag | relURL }}" alt="" class="h-3.5 w-5 shrink-0 rounded-sm object-cover" loading="lazy" width="20" height="14">{{ .name }}</a></td>
+              <td class="font-display font-bold text-brand-700 tnum">${{ printf "%.2f" .bestDaily }}/day <span class="font-sans text-xs font-medium">· <a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug .bestDailyKey) }}" class="text-ink-500 underline decoration-ink-200 underline-offset-2 transition-colors hover:text-brand-700">{{ .bestDailyProv }}</a></span></td>
+              <td class="text-sm"><a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug .cheapestKey) }}" class="font-medium text-brand-700 hover:underline">{{ .cheapestName | truncate 26 }}</a><span class="block text-xs text-ink-400 tnum">${{ printf "%.2f" .cheapestPrice }} / {{ .cheapestDays }} days · <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" .cheapestKey) }}" class="text-ink-500 transition-colors hover:text-brand-700">{{ .cheapestProv }}</a></span></td>
+              <td class="max-w-xs text-xs text-ink-500">{{ with .fup }}{{ . | truncate 90 }}{{ else }}<span class="text-ink-300">{{ i18n "research_unlimited_esim__not_stated" | safeHTML }}</span>{{ end }}</td>
+              <td><a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="btn-mini">{{ i18n "g_view_plans" | safeHTML }}</a></td>
             </tr>
             {{ end }}
           </tbody>
         </table>
       </div>
     </div>
-    <p class="mt-3 text-xs text-ink-400">Fair-use notes are recorded verbatim from each provider's plan listing at check time; “not stated” means the listing carried no explicit note — graded per provider in the <a href="/research/fair-use-audit/" class="font-semibold text-brand-700 hover:underline">fair-use audit</a>. Full rules in the <a href="/methodology/" class="font-semibold text-brand-700 hover:underline">methodology</a>.</p>
+    <p class="mt-3 text-xs text-ink-400">{{ i18n "research_unlimited_esim__fair_use_notes_are_recorded_verbatim_from_each_provider_" | safeHTML }} <a href="{{ partial "lang-href.html" "/research/fair-use-audit/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_fair_use_audit_2" | safeHTML }}</a>{{ i18n "g_full_rules_in_the" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>.</p>
   </section>
 
   {{/* ── 数据驱动 FAQ（正文 + FAQPage schema 同源） ── */}}
@@ -186,7 +186,7 @@
   {{ if gt (len $faqList) 0 }}
   <section class="mt-12" aria-labelledby="faq">
     <p class="eyebrow">FAQ</p>
-    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">What should you know before buying unlimited eSIM data</h2>
+    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "research_unlimited_esim__what_should_you_know_before_buying_unlimited_esim_data" | safeHTML }}</h2>
     <div class="mt-6 max-w-3xl space-y-3">
       {{ range $faqList }}
       <details class="card group p-0">
@@ -205,13 +205,13 @@
 
   {{/* ── 相关阅读（研究互联） ── */}}
   <section class="mt-12" aria-labelledby="related">
-    <p class="eyebrow">Keep reading</p>
-    <h2 id="related" class="mt-2 text-2xl font-bold md:text-3xl">Related research &amp; comparisons</h2>
+    <p class="eyebrow">{{ i18n "g_keep_reading" | safeHTML }}</p>
+    <h2 id="related" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "g_related_research_amp_comparisons" | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <a href="/research/esim-price-index/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">eSIM price index</p><p class="mt-2 text-xs leading-relaxed text-ink-500">All {{ len hugo.Data.countries }} countries ranked by best $/GB, with regional averages.</p></a>
-      <a href="/research/fair-use-audit/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Fair-use audit</p><p class="mt-2 text-xs leading-relaxed text-ink-500">What every “unlimited” plan's small print actually throttles.</p></a>
-      <a href="/compare/matchups/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Provider matchups</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Holafly vs Airalo and every other head-to-head, with computed verdicts.</p></a>
-      <a href="/esim-providers/" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Provider reviews</p><p class="mt-2 text-xs leading-relaxed text-ink-500">Which providers sell unlimited where — and where each is cheapest.</p></a>
+      <a href="{{ partial "lang-href.html" "/research/esim-price-index/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_esim_price_index" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">All {{ len $d.countries }} countries ranked by best $/GB, with regional averages.</p></a>
+      <a href="{{ partial "lang-href.html" "/research/fair-use-audit/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_fair_use_audit" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_unlimited_esim__what_every_unlimited_plan_s_small_print_actually_throttl" | safeHTML }}</p></a>
+      <a href="{{ partial "lang-href.html" "/compare/matchups/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_provider_matchups_2" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_unlimited_esim__holafly_vs_airalo_and_every_other_head_to_head_with_comp" | safeHTML }}</p></a>
+      <a href="{{ partial "lang-href.html" "/esim-providers/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_provider_reviews" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_unlimited_esim__which_providers_sell_unlimited_where_and_where_each_is_c" | safeHTML }}</p></a>
     </div>
   </section>
 
@@ -219,8 +219,8 @@
   <section class="mt-12">
     <div class="relative overflow-hidden rounded-3xl bg-ink-gradient px-7 py-8 text-ink-300 md:px-10">
       <div class="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
-      <p class="font-display text-lg font-bold text-white">Unlimited, compared honestly.</p>
-      <p class="mt-2 max-w-2xl text-sm leading-relaxed">Every rate on this page is a literal sort of the same dated snapshot — no provider pays for placement, and fair-use catches are shown, not hidden. See the <a href="/methodology/" class="font-semibold text-brand-300 hover:underline">methodology</a> and <a href="/disclosure/" class="font-semibold text-brand-300 hover:underline">disclosure</a>.</p>
+      <p class="font-display text-lg font-bold text-white">{{ i18n "research_unlimited_esim__unlimited_compared_honestly" | safeHTML }}</p>
+      <p class="mt-2 max-w-2xl text-sm leading-relaxed">{{ i18n "research_unlimited_esim__every_rate_on_this_page_is_a_literal_sort_of_the_same_da" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a> {{ i18n "g_and" | safeHTML }} <a href="{{ partial "lang-href.html" "/disclosure/" }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "g_disclosure" | safeHTML }}</a>.</p>
     </div>
   </section>
 </div>

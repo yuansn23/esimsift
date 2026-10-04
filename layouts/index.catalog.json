@@ -1,10 +1,10 @@
-{{- /* catalog.json —— 机器可读价格库（全站单一数据源的导出视图）*/ -}}
+{{ $d := partialCached "i18n-data.html" . site.Language.Lang }}{{- /* catalog.json —— 机器可读价格库（全站单一数据源的导出视图）*/ -}}
 {{- $countries := slice -}}
 {{- $compare := site.GetPage "/compare" -}}
 {{- range where (where (where $compare.Pages "Params.provider" nil) "Params.providers" nil) "Params.nolist" nil -}}
 {{- $p := . -}}
 {{- with $p.Params.iso -}}
-{{- $c := index hugo.Data.countries . -}}
+{{- $c := index $d.countries . -}}
 {{- $s := partial "country-stats.html" . -}}
 {{- $plans := slice -}}
 {{- range $s.rows -}}

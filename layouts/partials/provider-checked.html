@@ -1,0 +1,75 @@
+{{- /* provider-checked.html —— 品牌级「最后核对日」，来自两份数据的最大值。
+     入参：dict ["key" <品牌key>] ["keys" <品牌key 的 slice>] ["iso" <ISO 码>] ["profile" true]
+     返回：日期字符串 "YYYY-MM-DD"（无数据时返回 ""）
+
+     为什么需要它（2026-10-04 修复的真实缺陷）
+       同一个页面上有三处日期，以前各说各话：
+         · 页面可见文案  —— compare/provider.html 与 esim-providers/single.html 用 `now`（构建日）
+         · JSON-LD dateModified —— 同样用 `now`
+         · sitemap <lastmod>    —— 用 country-stats 的 checked（数据核对日）
+       结果 /compare/united-states/alosim/ 一边印着「Prices verified Oct 4, 2026」，
+       一边在 sitemap 里声明 lastmod = 2026-09-30 —— 两个都是机器可读，
+       Google 同时读，互相打脸；更糟的是「今天核过价」本身是个不实陈述，
+       因为该页价格确实是 2026-09-30 抓的。
+
+     现在改成单一来源：**数据核对日**。
+       日期变 → 页面可见日期、dateModified、sitemap lastmod 一起变。
+       日期不变 → 三处都不动（这正是我们希望 Google 看到的行为）。
+
+     ★ 刻意不用 `now`：lastmod 每次部署都翻新 = Google 判定该站的 lastmod 无信息量，
+       最终整体忽略。只有「跟着数据走」的日期才值得 Google 花抓取预算。
+
+     四种口径：
+       · key + iso        → 该品牌在该国的价格核对日（品牌×国家子页用）
+       · key              → 该品牌全部市场的最新价格核对日（品牌 Hub 的价格类文案用）
+       · key + profile    → 上面那个 与 该品牌档案核对日（providers.toml 的
+                            profile_checked）取最大（品牌 Hub 的「Last updated」用）
+       · keys             → 这几个品牌全部市场的最新价格核对日（A-vs-B 对比页用）
+
+     ★ 为什么「品牌 Hub 的价格类文案」和「品牌 Hub 的 Last updated」要分开：
+       品牌 Hub 的内容来自两份数据 —— 价格（data/plans）与品牌档案
+       （data/providers.toml 的简介 / 热点 / FUP / 充值 / 折扣码）。只改后者时
+       档案日期前移、价格日期不动：
+         · 「Last updated <d>」是通用表述 → 取两者最大，诚实
+         · 「Prices … as checked on <d>」是价格专属表述 → 只能取价格日期，
+           否则又是一句不实陈述（这正是本轮要修的毛病）
+       `check_dates.py` 断言 B 按这个不对称规则校验（品牌 Hub 的价格类文案
+       必须等于价格日期，而不是 lastmod）。
+
+     ★ 为什么要支持 keys（2026-10-04 补）：vs 页的可见日期取的是
+       vs-agg 的 checkedDate（= 两个品牌的最大价格核对日）。sitemap 若退回
+       「全站最新快照」兜底，只要**任何**一个不相干的品牌刷新了数据，
+       全部 28 张 vs 页的 lastmod 就会集体前移、而页面文案纹丝不动 ——
+       实测就是这么炸的。两边必须用同一个聚合口径。 */ -}}
+{{- $keys := slice -}}
+{{- with .keys }}{{ range . }}{{ $keys = $keys | append . }}{{ end }}{{ end -}}
+{{- with .key }}{{ $keys = $keys | append . }}{{ end -}}
+{{- $iso := "" -}}
+{{- with .iso }}{{ $iso = . }}{{ end -}}
+{{- $withProfile := false -}}
+{{- if .profile }}{{ $withProfile = true }}{{ end -}}
+{{- $d := partialCached "i18n-data.html" site.Home site.Language.Lang -}}
+{{- $dates := slice -}}
+{{- range $k := $keys -}}
+  {{- with index $d.plans $k -}}
+    {{- if $iso -}}
+      {{- with index . $iso -}}
+        {{- with .checked }}{{ $dates = $dates | append . }}{{ end -}}
+      {{- end -}}
+    {{- else -}}
+      {{- range $i, $c := . -}}
+        {{- with $c.checked }}{{ $dates = $dates | append . }}{{ end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- /* 档案核对日只在品牌级（不带 iso）参与，且只对单个 key 有意义 */ -}}
+  {{- if and $withProfile (not $iso) -}}
+    {{- with index $d.providers $k -}}
+      {{- with .profile_checked }}{{ $dates = $dates | append . }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $out := "" -}}
+{{- /* ISO 日期字符串按字典序排序即为时间序，取末位 = 最新 */ -}}
+{{- if gt (len $dates) 0 }}{{ $out = index (sort $dates) (sub (len $dates) 1) }}{{ end -}}
+{{- return $out -}}
