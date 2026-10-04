@@ -5,11 +5,16 @@
 # sponsored: false → 自家品牌，follow
 # color / initials → 模板层品牌单色徽标（prov-avatar），非 logo 商标
 # promo_* → 折扣码模块（deals 页 / 国家页 / 品牌子页共用）
-#   2026-10-01 全部换真：roami web20（官网公示·新用户 20%）/ saily VEEPEE25
-#   （官方合作页 25%）/ ubigi WELCOME10（官方 FAQ 首购 10%）；
-#   airalo/holafly/yesim/roamic/alosim 官方无公开码 → 无 promo_* 字段（模块自动隐藏）。
-#   promo_pct 供 deals 页"折扣后实际价/翻盘分析"计算；promo_expires 官方均未标
-#   过期日，统一占位 2027-12-31，上线前逐个复核。
+#   2026-10-04 第二轮全量核实（研究底稿 docs/promos/<brand>.json，8 品牌全有实码）：
+#   roami web20（官网公示·整单 20%·零门槛，promo_rank=1 恒排第一）/ saily VEEPEE25
+#   （官方合作页 saily.com/veepee 实测在线 25%）/ yesim DREWDEAL 20% / airalo
+#   NEWTOAIRALO15 15%（新客）/ alosim ESIMTWEAKS 15% / ubigi PROMO15 15%（仅无限档）
+#   / roamic FYESIM10 10% / holafly MYESIMNOW5 5%（官方，仅 5%）。
+#   新增字段：promo_rank（deals 页排序）· promo_audience（all/new/existing）·
+#   promo_scope（适用范围）· promo_min_spend（最低消费，空 = 无）·
+#   promo_bestfor（决策指引一句话）· promo_alts（备用码 [{code,label,audience}]）。
+#   promo_pct 供 deals 页"折扣后实际价/翻盘分析"计算；promo_expires 空 = 官方未标过期日
+#   （页面显示 no expiry published，不编日期）。
 # [brand.info] → 公司档案（HQ/法人/官网/双商店/客服/退款/目的地数/Trustpilot 档案），
 #   trustpilot：官方档案 URL 2026-10-04 逐个核实。**只存链接不存分数** —— 分数按
 #     Trustpilot 地区域名分片（Airalo 3.9/4.0/4.1 三个值），抓取被反爬墙拦截无法
@@ -39,13 +44,20 @@ initials = "Ro"
 strengths = ["Aggressive pricing across Asia", "No ID verification for travel plans", "24/7 activation and human support", "Auto-switching across all three Japanese networks"]
 weaknesses = ["Younger brand with fewer third-party reviews", "Deepest discounts concentrate on 3-30 day plans"]
 sponsored = false
-# 折扣码：web20（roamiapp.com 首页公开横幅，新用户专享 20% off）
+# 折扣码：web20（roamiapp.com 官网全站公示：首页横幅 + 各目的地页结账框 + 官方博客）
+# 2026-10-04 官方核实：整单 20% off，无任何使用门槛（无最低消费/无新客限制/无套餐类型限制）
+promo_rank = 1
 promo_code = "web20"
-promo_label = "20% off your first order (new users)"
+promo_label = "20% off your entire order"
 promo_pct = 20
-promo_expires = "2027-12-31"   # ⚠ 官网未标过期日，占位；请与用户确认
-promo_verified = "2026-10-01"
-promo_terms = "New users only — apply at checkout for 20% off your first order. Bonus on the official site: 100MB of free data when you download the Roami app."
+promo_audience = "all"
+promo_scope = "Any plan in 200+ destinations — single-country, regional, or unlimited"
+promo_min_spend = ""
+promo_expires = ""
+promo_verified = "2026-10-04"
+promo_unconditional = true   # 官方条款零门槛（无最低消费/无新客限制/无套餐类型限制）——全库唯一
+promo_bestfor = "Everyone — the only tracked code with zero conditions"
+promo_terms = "Published by Roami itself (homepage banner and every destination page): apply at checkout for 20% off your entire order. No minimum spend, no new-customer restriction, no plan-type restriction. Bonus: 100MB of free data when you download the Roami app."
 
 # 公司档案（官方页面核验 2026-10-01：terms/privacy/contact/首页/App Store）
 [roami.info]
@@ -72,7 +84,19 @@ initials = "Ai"
 strengths = ["Widest country coverage in the industry", "Established trust and brand recognition", "Regional plans (Asia, Europe) for multi-country trips"]
 weaknesses = ["No longer the cheapest in most single countries", "Smaller data allowances at entry price points"]
 sponsored = true
-# 2026-10-01 官方核验：无公开折扣码（官网/商店页仅有推荐返利计划，非公开码）
+# 折扣码：NEWTOAIRALO15（verified-thirdparty 2026-10，研究底稿 docs/promos/airalo.json）
+promo_rank = 4
+promo_code = "NEWTOAIRALO15"
+promo_label = "15% off your first order (new customers)"
+promo_pct = 15
+promo_audience = "new"
+promo_scope = "Any eSIM — local, regional, global, or unlimited — across 200+ destinations"
+promo_min_spend = ""
+promo_expires = "2026-12-31"
+promo_verified = "2026-10-04"
+promo_bestfor = "New Airalo customers — returning customers should use AIRALOESIM10"
+promo_terms = "One redemption per customer, up to a maximum discount of 100 USD. Cannot be combined with other promotions or Airmoney credit. Campaign may end early if the redemption cap is reached."
+promo_alts = [{ code = "AIRALOESIM10", label = "10% off any eSIM priced 10 USD or more", audience = "existing", pct = 10 }]
 
 # 公司档案（官方页面核验 2026-10-01：Terms/Contact/商店页）
 [airalo.info]
@@ -99,7 +123,19 @@ initials = "Ho"
 strengths = ["Unlimited-data plans in 190+ destinations", "One-plan-per-country simplicity", "Buy any number of days - you pay only for the days you travel"]
 weaknesses = ["Hotspot sharing capped at 500 MB/day on destination plans", "Flat daily pricing gets expensive on long trips", "No top-ups - a used-up plan is replaced, not refilled"]
 sponsored = true
-# 2026-10-01 官方核验：无公开折扣码（首页横幅为邀请返利活动，非公开码）
+# 折扣码：MYESIMNOW5（官方 2026-10-04 核实，研究底稿 docs/promos/holafly.json）
+promo_rank = 8
+promo_code = "MYESIMNOW5"
+promo_label = "5% off all destination eSIMs"
+promo_pct = 5
+promo_audience = "all"
+promo_scope = "All destination eSIM plans in 190+ destinations"
+promo_min_spend = ""
+promo_expires = ""
+promo_verified = "2026-10-04"
+promo_bestfor = "An honest baseline — Holafly has no bigger standing code; deeper discounts come only from seasonal sales or Holafly Plans subscriptions"
+promo_terms = "Holafly's only official standing coupon is 5%. Partner codes add 10% on Holafly Plans subscriptions (monthly or annual), and seasonal sales can reach 30-50% — but no standing code beats 5% on destination eSIMs."
+promo_alts = [{ code = "TRAVELESIMEXPERT", label = "5% off eSIMs · 10% off Plans subscriptions", audience = "all", pct = 5 }]
 
 # 公司档案（官方页面核验 2026-10-01：T&C/refund policy/contact/商店页）
 [holafly.info]
@@ -126,13 +162,19 @@ initials = "Sa"
 strengths = ["Competitive per-GB pricing", "Built by the Nord Security team", "Flexible in-app top-ups"]
 weaknesses = ["Newer service with a shorter track record", "Destination list still growing"]
 sponsored = true
-# 折扣码：VEEPEE25（官方合作页 saily.com/veepee/ 公示，25% off）
+# 折扣码：VEEPEE25（官方合作页 saily.com/veepee，2026-10-04 WebFetch 实测在线：25% off）
+promo_rank = 2
 promo_code = "VEEPEE25"
 promo_label = "25% off Saily eSIMs"
 promo_pct = 25
-promo_expires = "2027-12-31"   # ⚠ 官方页未标过期日，占位；上线前复核
-promo_verified = "2026-10-01"
-promo_terms = "Partner promotion published on Saily's official site. Enter the code in the Saily app's checkout; if it's rejected the promo may have ended — Saily also maintains an official coupon page (saily.com/coupon/)."
+promo_audience = "all"
+promo_scope = "All Saily eSIMs in 200+ destinations, applied via the official partner link"
+promo_min_spend = ""
+promo_expires = ""
+promo_verified = "2026-10-04"
+promo_bestfor = "The biggest headline percentage we track — check the discount landed before paying"
+promo_terms = "Exclusive 25% partner promotion published on saily.com/veepee. The official link pre-applies the coupon (?coupon=VEEPEE25); the code can also be entered in the app checkout. If it is rejected the promotion may have ended — the standing 10% codes below are the fallback. Saily also maintains an official coupon page (saily.com/coupon/)."
+promo_alts = [{ code = "ESIMD", label = "10% off all plans incl. unlimited", audience = "all", pct = 10 }, { code = "ESIMDUDE", label = "10% off standard, regional, global and unlimited plans", audience = "all", pct = 10 }]
 
 # 公司档案（官方页面核验 2026-10-01：terms/support 文章/refund center）
 [saily.info]
@@ -159,7 +201,19 @@ initials = "Ye"
 strengths = ["Founded 2019 in Switzerland", "Pay-per-use international eSIM across 140+ countries", "Self-service business platform for teams", "Unlimited and fixed plans in most destinations"]
 weaknesses = ["Smaller brand recognition outside Europe", "Pay-per-MB international plan takes reading to compare"]
 sponsored = true
-# 2026-10-01 官方核验：无公开折扣码（官网仅推"推荐/忠诚度折扣"，无公示码）
+# 折扣码：DREWDEAL（verified-thirdparty 2026-09-10，研究底稿 docs/promos/yesim.json）
+promo_rank = 3
+promo_code = "DREWDEAL"
+promo_label = "20% off Yesim eSIM plans"
+promo_pct = 20
+promo_audience = "all"
+promo_scope = "All Yesim eSIM plans in 200+ destinations"
+promo_min_spend = ""
+promo_expires = ""
+promo_verified = "2026-10-04"
+promo_bestfor = "All users — 20% with no first-purchase restriction; new users can alternatively take the official 15% welcome code"
+promo_terms = "Yesim's own loyalty programme also carries WELCOMETOYESIM (15% off a first purchase, official) plus a 5% cashback and euro 5 + euro 5 referral ladder — the welcome code is the official fallback if DREWDEAL is rejected."
+promo_alts = [{ code = "WELCOMETOYESIM", label = "15% off your first eSIM purchase", audience = "new", pct = 15 }, { code = "MYBESTSIM20", label = "20% off unlimited-data plans", audience = "all", pct = 20 }]
 
 # 公司档案（官方页面核验 2026-10-01：terms/refund policy/contacts/help center）
 [yesim.info]
@@ -186,13 +240,19 @@ initials = "Ub"
 strengths = ["Operated by Transatel (NTT Group) since the 2017 eSIM launch", "Coverage in 200+ destinations", "Connectivity heritage across cars and laptops", "5G where host networks offer it"]
 weaknesses = ["Account setup required before buying", "Entry prices above the budget brands"]
 sponsored = true
-# 折扣码：WELCOME10（官方帮助中心 FAQ 公示，首购 10% off）
-promo_code = "WELCOME10"
-promo_label = "10% off your first Ubigi data plan"
-promo_pct = 10
-promo_expires = "2027-12-31"   # ⚠ 官方 FAQ 未标过期日，占位；上线前复核
-promo_verified = "2026-10-01"
-promo_terms = "Official welcome code from Ubigi's help center: 10% off your first data-plan purchase in any destination (monthly plans typically excluded). Enter it in the promo field during checkout."
+# 折扣码：PROMO15（官方站内 promo 顶栏，2026-10-04 核实，研究底稿 docs/promos/ubigi.json）
+promo_rank = 6
+promo_code = "PROMO15"
+promo_label = "15% off unlimited-data plans"
+promo_pct = 15
+promo_audience = "conditional"
+promo_scope = "Unlimited-data plans only (e.g. Vietnam, UAE unlimited) — monthly plans excluded"
+promo_min_spend = ""
+promo_expires = ""
+promo_verified = "2026-10-04"
+promo_bestfor = "Unlimited-plan buyers — for a first purchase of a regular (metered) plan use WELCOME10 instead"
+promo_terms = "Served via Ubigi's own promo top-bar on plan pages; limited-time promotion with no published end date. First-time customers buying metered plans get 10% off with WELCOME10."
+promo_alts = [{ code = "WELCOME10", label = "10% off your first data-plan purchase", audience = "new", pct = 10 }, { code = "MYBESTSIM10", label = "10% off every plan and destination", audience = "all", pct = 10 }]
 
 # 公司档案（官方页面核验 2026-10-01：帮助中心/退款 FAQ/联系页/隐私声明）
 [ubigi.info]
@@ -219,7 +279,19 @@ initials = "Rm"
 strengths = ["Backed by Spain's Byte Travel since 2021", "170+ countries and regions", "Unlimited-data options in many destinations", "Wholesale/API reseller platform behind the consumer brand"]
 weaknesses = ["Younger brand with a thinner review track record", "Unlimited plans carry fair-use limits"]
 sponsored = true
-# 2026-10-01 官方核验：无公开折扣码（站内有 Bixgrow 联盟/推荐系统，非公开码）
+# 折扣码：FYESIM10（verified-thirdparty 2026-09-17，研究底稿 docs/promos/roamic.json）
+promo_rank = 7
+promo_code = "FYESIM10"
+promo_label = "10% off all plans"
+promo_pct = 10
+promo_audience = "all"
+promo_scope = "All plans — single-country, regional, and unlimited"
+promo_min_spend = ""
+promo_expires = ""
+promo_verified = "2026-10-04"
+promo_bestfor = "All users; TRAVELDEALZ10 is the equivalent fallback at the same 10%"
+promo_terms = "Entered at the final checkout step. Roamic has no official coupons page — all tracked codes are third-party partner codes, so if one is rejected try the fallback."
+promo_alts = [{ code = "TRAVELDEALZ10", label = "10% off all packages", audience = "all", pct = 10 }, { code = "ESIMP5", label = "5% off eligible plans", audience = "all", pct = 5 }]
 # type 修正：app → marketplace（两家商店均无 Roamic App，官网无任何商店链接，购买走网页）
 
 # 公司档案（官方页面核验 2026-10-01：legal notice/contact/refund/FAQ）
@@ -247,7 +319,19 @@ initials = "AL"
 strengths = ["Built by AffinityClick, an Ottawa telecom company", "Cheap country packs across 175+ countries", "Free eSIM app with flexible top-ups"]
 weaknesses = ["Fewer unlimited options than rivals", "Support is self-serve first"]
 sponsored = true
-# 2026-10-01 官方核验：无公开折扣码（仅有 $3 推荐-返利计划）
+# 折扣码：ESIMTWEAKS（verified-thirdparty 2026，研究底稿 docs/promos/alosim.json）
+promo_rank = 5
+promo_code = "ESIMTWEAKS"
+promo_label = "15% off every plan"
+promo_pct = 15
+promo_audience = "all"
+promo_scope = "Every plan type — country, regional, global, and daily unlimited"
+promo_min_spend = ""
+promo_expires = ""
+promo_verified = "2026-10-04"
+promo_bestfor = "All users — aloSIM's standing codes cluster at 15%, and this one has the broadest scope"
+promo_terms = "aloSIM's standing partner codes (ESIMTWEAKS / TRAVELESIMEXPERT / ESIMD) all sit at 15%. If one is rejected, the others are direct substitutes rather than a downgrade."
+promo_alts = [{ code = "TRAVELESIMEXPERT", label = "15% off all plans", audience = "all", pct = 15 }, { code = "ESIMD", label = "15% off your first eSIM", audience = "new", pct = 15 }]
 
 # 公司档案（官方页面核验 2026-10-01：about/contact/refund policy/商店页）
 [alosim.info]

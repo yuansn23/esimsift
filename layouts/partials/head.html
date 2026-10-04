@@ -1,5 +1,8 @@
 {{ $d := partialCached "i18n-data.html" . site.Language.Lang }}<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{{/* ── 仅亮色设计：声明后浏览器的强制暗色（Chrome auto dark 等）会跳过整站，
+     否则浅色斑马纹/徽标被硬映射成深绿灰、整站配色失真。 ── */}}
+<meta name="color-scheme" content="only light">
 
 {{/* ── favicon：SVG 优先（现代浏览器）+ ICO 兜底（旧浏览器）+ apple-touch；漏斗=Sift ── */}}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">

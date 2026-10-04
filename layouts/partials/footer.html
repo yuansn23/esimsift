@@ -1,5 +1,5 @@
 {{ $d := partialCached "i18n-data.html" . site.Language.Lang }}<footer class="mt-20 bg-ink-950 text-ink-300">
-  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4 lg:grid-cols-7">
+  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4 lg:grid-cols-8">
     <div class="md:col-span-2">
       <a href="{{ .Site.BaseURL }}" class="flex items-center gap-2" aria-label="{{ i18n "g_esim_sift_home" | safeHTML }}">
         <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 text-white">
@@ -49,6 +49,20 @@
           {{ end }}
         {{ end }}
         <li><a href="{{ partial "lang-href.html" "/compare/matchups/" }}" class="font-semibold text-brand-300 transition-colors hover:text-white">{{ i18n "g_all_matchups" | safeHTML }}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">{{ i18n "partials_footer__regional_guides" | safeHTML }}</h3>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        {{/* 五篇区域指南与页头 Guides 下拉同一批页面（site.GetPage 门控，缺页静默跳过）；
+             页头只在悬停时可见，footer 常驻提升入口可见性（2026-10-04 用户要求）。 */}}
+        {{ with site.GetPage "/guides/best-europe-esim" }}<li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">{{ i18n "partials_header__best_europe_esim" | safeHTML }}</a></li>{{ end }}
+        {{ with site.GetPage "/guides/best-asia-esim" }}<li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">{{ i18n "partials_header__best_asia_esim" | safeHTML }}</a></li>{{ end }}
+        {{ with site.GetPage "/guides/best-americas-esim" }}<li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">{{ i18n "partials_header__best_americas_esim" | safeHTML }}</a></li>{{ end }}
+        {{ with site.GetPage "/guides/best-africa-middle-east-esim" }}<li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">{{ i18n "partials_header__best_africa_amp_middle_east_esim" | safeHTML }}</a></li>{{ end }}
+        {{ with site.GetPage "/guides/best-oceania-esim" }}<li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">{{ i18n "partials_header__best_oceania_esim" | safeHTML }}</a></li>{{ end }}
+        <li><a href="{{ partial "lang-href.html" "/guides/" }}" class="font-semibold text-brand-300 transition-colors hover:text-white">{{ i18n "partials_footer__all_guides" | safeHTML }}</a></li>
       </ul>
     </div>
 

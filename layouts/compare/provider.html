@@ -298,7 +298,8 @@
           <p class="mt-1.5 text-lg font-bold text-ink-950">{{ i18n "compare_provider__promo_line" (dict "label" $p.promo_label) | safeHTML }}
             <code class="ml-1 rounded-lg border border-brand-400 bg-white px-2.5 py-1 font-mono text-base tracking-widest text-brand-800">{{ . }}</code>
           </p>
-          <p class="mt-1.5 text-xs text-ink-400">{{ i18n "compare_provider__promo_expires" (dict "date" (time.Format ":date_medium" $p.promo_expires) "brand" $p.name) | safeHTML }}</p>
+          {{ with $p.promo_expires }}<p class="mt-1.5 text-xs text-ink-400">{{ i18n "compare_provider__promo_expires" (dict "date" (time.Format ":date_medium" .) "brand" $p.name) | safeHTML }}</p>
+          {{ else }}<p class="mt-1.5 text-xs text-ink-400">{{ i18n "compare_provider__promo_no_expiry" (dict "brand" $p.name) | safeHTML }}</p>{{ end }}
         </div>
         {{ partial "cta-out.html" (dict "target" $provKey "slugMap" $country.slugs "label" (i18n "compare_provider__promo_cta" (dict "brand" $p.name) | safeHTML) "class" "btn-primary text-xs" "campaign" $campaign "page" $.RelPermalink) }}
       </div>

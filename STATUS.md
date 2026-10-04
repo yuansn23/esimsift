@@ -1001,6 +1001,99 @@ country_hub 51 / vs 28 / index 2 / edit 15，域名 / 日期 / 完整性三断�
 
 ---
 
+## 已完成（套餐总表斑马纹去绿 + footer 增设 Regional guides 列，2026-10-04 第二十六轮）
+
+**① 套餐总表斑马纹在暗色渲染下发绿 → 换中性近白**（用户反馈 /compare/united-states/
+「All … eSIM plans compared」斑马纹是深绿色、数据看不清；同页 FUP 表正常）。
+
+- **根因（截图实测复现）**：斑马纹 `#eef2f7` 本身是中性浅灰（亮色渲染完全正常），
+  但它带蓝青色调，在浏览器**强制暗色**（Chrome force-dark / Dark Reader）下被映射成
+  **深青绿**，数百行大表整片发绿。用户看到的「深绿」来自暗色渲染，不是 CSS 写错。
+- **修法（只动套餐总表，FUP 表等其它 `.table-pro` 原样）**：
+  - `layouts/compare/single.html` 套餐总表加 `table-soft` 类；
+  - `assets/css/main.css` 新增 `.table-soft tbody tr:nth-child(even)` = `#f7f8fa`
+    （中性近白，hover `#f0f2f5`），写在 `.table-pro` 斑马纹规则之后、同特异性后者胜出。
+  - 判据：**中性色（无蓝青偏）在 force-dark 下映射为中性深灰，不发绿**；
+    亮色下条纹也更轻。已在本地构建产物上用亮/暗两种渲染截图验证。
+- 注意：`.table-pro` 全局规则**没有改**——用户明确「FUP 模块不动」。
+
+**② footer 增设「Regional guides」列**（用户要求：5 篇区域指南保留页头不动，
+同时放到 footer 提升入口可见性）。
+
+- `layouts/partials/footer.html`：在「Popular matchups」与「Data & research」之间插入
+  Regional guides 列 —— 5 篇区域指南（复用页头 `partials_header__best_*` key，
+  `site.GetPage` 门控缺页跳过）+「All guides →」；网格 `lg:grid-cols-7` → `lg:grid-cols-8`。
+- i18n：`partials_footer__regional_guides` / `partials_footer__all_guides` 两个 key
+  **en/de 成对新增**（只加一边 `check_i18n.py` 直接失败；de 曾因重复定义炸过一次构建
+  —— TOML 重复 key 是**构建期报错**，不是静默覆盖）。
+- 教训：**TOML 重复 key = 构建失败**（`key is already defined`），报错行号即文件头，
+  修之前先 `grep -n` 确认只定义了一次。
+
+**校验**：`npm run build` 九项全绿（hugo 136s）。产物抽查：套餐总表
+`class="table-pro table-soft"`、FUP 表保持 `table-pro`；footer 六条链接全部命中
+`public/guides/*/index.html`；DE 页 footer 出现「Regionale Ratgeber / Alle Ratgeber」。
+
+**基线**：`docs/regression-manifest.json` 已重建（footer 是全站组件，本轮 584 页
+产物均含 footer 变更 + 51×2 个国家 Hub 含表格 class，属预期；结构守卫 A/B/C 与
+品牌子页 13 项全绿）。
+
+---
+
+## 已完成（点行乱跳 bug + 斑马纹「深色」根修 color-scheme，2026-10-04 第二十七轮）
+
+**① 点表格任意行 → 数据乱跳（真 bug）**：`compare/single.html` 过滤脚本用裸
+`querySelectorAll('[data-days]')` / `'[data-prov]'` 选过滤 chip，但每个 `<tr>` 也带
+`data-days` / `data-prov`（供 apply() 读 dataset 排序用）→ **表格行被误选成过滤按钮**，
+点任意行 = 把该行有效期天数当过滤条件触发 apply() 重排 + 隐藏行。修法：选择器限定
+`.chip[data-days]` / `.chip[data-prov]` / `.chip[data-unlim]`（三处，加注释防回归）。
+
+**② 斑马纹「还是深色」根修**：第二十六轮换成中性 `#f7f8fa` 没用——浏览器**强制暗色渲染**
+（Chrome auto dark 等）会把一切浅色一律压暗，换什么颜色都逃不掉。正解：站点声明
+`color-scheme: only light`（`head.html` 加 `<meta name="color-scheme" content="only light">`
++ `main.css` `html{color-scheme:only light}` 双保险），告诉浏览器「本站仅亮色设计」→
+强制暗色跳过整站。实测 `--force-dark-mode` 下整站保持亮色、斑马纹浅灰可读。
+
+**教训**：用户视角的「颜色不对」先确认他的渲染环境（暗色模式/扩展），别急着改色值；
+`[data-x]` 裸属性选择器在有服务端渲染属性复用时必须限定类名。
+
+---
+
+## 已完成（折扣码全量补齐 + deals 页决策化重设计，2026-10-04 第二十八轮）
+
+**① View plan 换行修复**：`.btn-out` 缺 `whitespace-nowrap`（`.btn-mini` 一直有），
+表格窄列里按钮文案折行。补上即修，全站出站按钮受益。
+
+**② 折扣码数据全量补齐（8/8 品牌全有实码，此前仅 3 家）**：
+- 研究底稿：`docs/promos/roami.json` **新建**（web20 = 官网全站公示，整单 20% off，
+  **零门槛**——官方 India/US/UK 页均为 "20% off your order"，无新客/最低消费/套餐限制）；
+  `promos.json` 聚合加 roami 并**置首**（brand_count 16→17，offer_count 121）；
+  `promos_all.csv` 追加一行（21 列对齐）。
+- 站点唯一事实源 `data/providers.toml`：8 品牌全配 promo_*。新增字段
+  `promo_rank`（排序）· `promo_audience`（all/new/existing/conditional）·
+  `promo_scope` · `promo_min_spend` · `promo_bestfor`（决策指引）·
+  `promo_alts`（备用码 [{code,label,audience,pct}]）· `promo_unconditional`（仅 roami）。
+  头筹码：roami web20(20) / saily VEEPEE25(25，官方合作页 2026-10-04 WebFetch 实测在线) /
+  yesim DREWDEAL(20) / airalo NEWTOAIRALO15(15 新客, 上限 $100) / alosim ESIMTWEAKS(15) /
+  ubigi PROMO15(15 仅无限档, 官方) / roamic FYESIM10(10) / holafly MYESIMNOW5(5, 官方)。
+  **promo_expires 空字符串 = 官方未标过期日，页面显示 no expiry published，不编日期**
+  （废掉旧的 2027-12-31 占位）。
+
+**③ deals 页重设计（决策型折扣码聚集地）**：
+- 卡片区：排名徽章（#1 = Best overall — no conditions）+ 适用人群 chip +
+  **Best for 决策指引行** + scope/无过期披露 + **备用码块**（含 audience 标签）。
+- **新增决策矩阵表**（①b）：5 种用户情境 → 构建期从数据推导最优码
+  （零门槛=web20 / 最大头条=VEEPEE25 / 新客首购 / 回头客 / 无限流量），
+  `promo_alts` 与头条码一起参加选优。竞品只列码，这张表给的是决策。
+- FAQ 新增两条数据驱动问答（零门槛码是谁 / 最大长期折扣是谁）。
+- 无码品牌区随 8/8 有码自动消失（`$noCode` 为空 → 区块跳过，逻辑无需改）。
+- i18n 19 个新 key，en + de 成对（de 暂英文占位，与该前缀既有状态一致）。
+
+**判据沉淀**：折扣码页的 SEO 价值不在「码全」，在「帮用户选码」——情境 → 码的映射
+（构建期从条款字段推导）是竞品没有的价格库级增益；**官方未标过期日就不显示过期日**，
+编日期 = 第二轮「Sep 30 旁边印 Oct 4」同类不实陈述。
+
+---
+
 ## 待办（按优先级）
 
 ### P-2 蓝图 Phase 2（等 P-A 真实数据后；见 docs/keyword-map.md 预留槽位）

@@ -20,16 +20,48 @@
   {{ $gmin = merge $gmin (dict $iso $gm) }}
 {{ end }}
 
-{{/* 分桶：有码 / 无码；最新核验日期 */}}
+{{/* 分桶 + 排序：promo_rank 升序（roami=1 恒第一），无码品牌照旧成桶 */}}
 {{ $withCode := slice }}{{ $noCode := slice }}{{ $lastVerified := "" }}
 {{ range $key, $p := $d.providers }}
   {{ if $p.promo_code }}
-    {{ $withCode = $withCode | append $key }}
+    {{ $withCode = $withCode | append (dict "key" $key "rank" ($p.promo_rank | default 99)) }}
     {{ with $p.promo_verified }}{{ if gt . $lastVerified }}{{ $lastVerified = . }}{{ end }}{{ end }}
   {{ else }}
     {{ $noCode = $noCode | append $key }}
   {{ end }}
 {{ end }}
+{{ $withCode = sort $withCode "rank" }}
+
+{{/* 决策矩阵的扁平 offer 库：头条码 + 备用码一起参加选优 */}}
+{{ $offers := slice }}
+{{ range $withCode }}
+  {{ $key := .key }}{{ $p := index $d.providers $key }}
+  {{ $offers = $offers | append (dict "brand" $key "bname" $p.name "code" $p.promo_code "pct" ($p.promo_pct | default 0) "aud" ($p.promo_audience | default "all") "label" $p.promo_label "min" ($p.promo_min_spend | default "") "primary" true) }}
+  {{ range $p.promo_alts }}
+    {{ $offers = $offers | append (dict "brand" $key "bname" $p.name "code" .code "pct" (.pct | default 0) "aud" (.audience | default "all") "label" .label "min" "" "primary" false) }}
+  {{ end }}
+{{ end }}
+
+{{/* 矩阵选优（全部构建期推导，零写死）：
+     ① 零门槛 = promo_unconditional（官方条款无任何条件）
+     ② 最大头条折扣 = 头条码 pct 最大
+     ③ 新客首购 = aud=new，pct 降序、头条码优先
+     ④ 回头客 = aud=existing
+     ⑤ 无限流量 = label 含 "off unlimited"，pct 降序、头条码优先 */}}
+{{ $pickUncond := dict }}{{ $pickBig := dict }}{{ $bp := 0.0 }}
+{{ range $withCode }}
+  {{ $p := index $d.providers .key }}
+  {{ if $p.promo_unconditional }}{{ $pickUncond = dict "brand" .key "bname" $p.name "code" $p.promo_code "pct" $p.promo_pct "note" $p.promo_scope }}{{ end }}
+  {{ if and $p.promo_pct (gt $p.promo_pct $bp) }}{{ $bp = $p.promo_pct }}{{ $pickBig = dict "brand" .key "bname" $p.name "code" $p.promo_code "pct" $p.promo_pct }}{{ end }}
+{{ end }}
+{{ $candsNew := sort (where $offers "aud" "new") "pct" "desc" "primary" "desc" }}
+{{ $candsExist := sort (where $offers "aud" "existing") "pct" "desc" "primary" "desc" }}
+{{ $candsUnl := slice }}
+{{ range $offers }}{{ if strings.Contains (strings.ToLower .label) "off unlimited" }}{{ $candsUnl = $candsUnl | append . }}{{ end }}{{ end }}
+{{ $candsUnl = sort $candsUnl "pct" "desc" "primary" "desc" }}
+{{ $pickNew := dict }}{{ with index $candsNew 0 }}{{ $pickNew = . }}{{ end }}
+{{ $pickExist := dict }}{{ with index $candsExist 0 }}{{ $pickExist = . }}{{ end }}
+{{ $pickUnl := dict }}{{ with index $candsUnl 0 }}{{ $pickUnl = . }}{{ end }}
 
 {{/* 无码性价比冠军（FAQ/导语用）：cheapest 命中数最高者 */}}
 {{ $ncKey := "" }}{{ $ncCount := -1 }}
@@ -53,8 +85,8 @@
   <section class="mt-10" aria-labelledby="live-codes">
     <h2 id="live-codes" class="text-2xl font-bold">{{ i18n "esim_deals_list__live_codes_verified_against_real_prices" | safeHTML }}</h2>
     <div class="mt-5 grid gap-4 md:grid-cols-2">
-      {{ range $withCode }}
-        {{ $key := . }}{{ $p := index $d.providers $key }}{{ $a := index $agg $key }}
+      {{ range $i, $w := $withCode }}
+        {{ $key := $w.key }}{{ $p := index $d.providers $key }}{{ $a := index $agg $key }}
 
         {{/* 品牌全库最便宜套餐（折扣后实际价的锚点） */}}
         {{ $bestName := "" }}{{ $bestPrice := 0.0 }}{{ $bestISO := "" }}
@@ -71,16 +103,22 @@
         <div class="card card-hover p-6" id="{{ $key }}">
           <div class="flex flex-wrap items-start justify-between gap-3">
             <div class="flex items-center gap-3.5">
+              <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ink-50 font-display text-base font-extrabold text-ink-500" aria-hidden="true">{{ add $i 1 }}</span>
               {{ partial "prov-logo.html" (dict "p" $p "key" $key "class" "h-11 w-11" "text" "text-base") }}
               <div>
                 <h3 class="font-display text-lg font-bold"><a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $key) }}" class="hover:text-brand-700">{{ $p.name }}</a></h3>
                 <p class="text-xs text-ink-400">{{ $p.tagline }}</p>
               </div>
             </div>
-            {{ with $p.promo_expires }}<span class="badge bg-accent-50 text-accent-700">Expires {{ time.Format ":date_medium" . }}</span>{{ end }}
+            <div class="flex flex-col items-end gap-1.5">
+              {{ if eq (add $i 1) 1 }}<span class="badge bg-brand-600 text-white">{{ i18n "esim_deals_list__best_overall_no_conditions" | safeHTML }}</span>{{ end }}
+              <span class="badge bg-ink-50 text-ink-600">{{ index (dict "all" (i18n "esim_deals_list__aud_all" | safeHTML) "new" (i18n "esim_deals_list__aud_new" | safeHTML) "existing" (i18n "esim_deals_list__aud_existing" | safeHTML) "conditional" (i18n "esim_deals_list__aud_conditional" | safeHTML)) ($p.promo_audience | default "all") }}</span>
+              {{ with $p.promo_expires }}<span class="badge bg-accent-50 text-accent-700">Expires {{ time.Format ":date_medium" . }}</span>{{ end }}
+            </div>
           </div>
 
           <p class="mt-5 text-2xl font-extrabold tracking-tight text-ink-950">{{ $p.promo_label }}</p>
+          {{ with $p.promo_bestfor }}<p class="mt-1.5 text-sm leading-relaxed text-ink-600"><strong class="font-semibold text-ink-800">{{ i18n "esim_deals_list__bestfor" | safeHTML }}</strong> {{ . }}</p>{{ end }}
           <div class="mt-3 flex flex-wrap items-center gap-3">
             <button type="button" class="copy-code group flex items-center gap-3 rounded-xl border-2 border-dashed border-brand-300 bg-brand-50/60 px-4 py-2.5 transition-colors hover:border-brand-500"
               data-code="{{ $p.promo_code }}" aria-label="Copy promo code {{ $p.promo_code }}">
@@ -89,8 +127,23 @@
             </button>
             {{ partial "cta-out.html" (dict "target" $key "label" (printf "Get %s" $p.name) "class" "btn-primary text-xs" "campaign" "esim-deals" "page" "deals") }}
           </div>
+          <p class="mt-2 text-xs text-ink-500">
+            {{ with $p.promo_scope }}{{ . }}{{ end }}
+            {{ with $p.promo_min_spend }} · {{ i18n "esim_deals_list__min_spend" | safeHTML }} {{ . }}{{ else }}{{ if not $p.promo_expires }} · {{ i18n "esim_deals_list__no_expiry" | safeHTML }}{{ end }}{{ end }}
+          </p>
 
           {{ with $p.promo_terms }}<p class="mt-3 text-sm leading-relaxed text-ink-600">{{ . }}</p>{{ end }}
+
+          {{ with $p.promo_alts }}
+          <div class="mt-3 rounded-xl border border-ink-100 bg-ink-50/60 px-4 py-3">
+            <p class="text-xs font-semibold text-ink-500">{{ i18n "esim_deals_list__backup_codes" | safeHTML }}</p>
+            <ul class="mt-1.5 space-y-1">
+              {{ range . }}
+              <li class="text-xs leading-relaxed text-ink-600"><code class="rounded bg-white px-1.5 py-0.5 font-mono font-bold tracking-wider text-brand-800">{{ .code }}</code> — {{ .label }}</li>
+              {{ end }}
+            </ul>
+          </div>
+          {{ end }}
 
           {{ if and (gt $bestPrice 0.0) (gt $pct 0) }}
           <p class="mt-4 rounded-xl bg-ink-50 px-4 py-3 text-sm leading-relaxed text-ink-600">
@@ -106,6 +159,48 @@
           </p>
         </div>
       {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── ①b 决策矩阵：什么情况用哪个码（构建期推导，零写死） ── */}}
+  {{ $rows := slice }}
+  {{ with $pickUncond }}{{ $rows = $rows | append (dict "sit" (i18n "esim_deals_list__sit_no_strings" | safeHTML) "pick" . "note" .note) }}{{ end }}
+  {{ with $pickBig }}{{ $rows = $rows | append (dict "sit" (i18n "esim_deals_list__sit_biggest" | safeHTML) "pick" . "note" "") }}{{ end }}
+  {{ with $pickNew }}{{ $rows = $rows | append (dict "sit" (i18n "esim_deals_list__sit_first" | safeHTML) "pick" . "note" .label) }}{{ end }}
+  {{ with $pickExist }}{{ $rows = $rows | append (dict "sit" (i18n "esim_deals_list__sit_returning" | safeHTML) "pick" . "note" .label) }}{{ end }}
+  {{ with $pickUnl }}{{ $rows = $rows | append (dict "sit" (i18n "esim_deals_list__sit_unlimited" | safeHTML) "pick" . "note" .label) }}{{ end }}
+  {{ if $rows }}
+  <section class="mt-12" aria-labelledby="matrix">
+    <p class="eyebrow">{{ i18n "esim_deals_list__matrix_eyebrow" | safeHTML }}</p>
+    <h2 id="matrix" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "esim_deals_list__matrix_title" | safeHTML }}</h2>
+    <p class="mt-3 max-w-3xl text-ink-600">{{ i18n "esim_deals_list__matrix_intro" | safeHTML }}</p>
+    <div class="mt-6 overflow-x-auto">
+      <table class="table-pro table-soft w-full min-w-[760px]">
+        <thead>
+          <tr>
+            <th class="w-[38%] text-left">{{ i18n "esim_deals_list__matrix_col_situation" | safeHTML }}</th>
+            <th class="text-left">{{ i18n "esim_deals_list__matrix_col_pick" | safeHTML }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range $rows }}
+          <tr>
+            <td class="font-semibold text-ink-900">{{ .sit }}</td>
+            <td>
+              <div class="flex flex-wrap items-center gap-2.5">
+                {{ $pp := index $d.providers .pick.brand }}
+                {{ partial "prov-logo.html" (dict "p" $pp "key" .pick.brand "class" "h-7 w-7" "text" "text-xs") }}
+                <a href="#{{ .pick.brand }}" class="font-semibold text-ink-950 hover:text-brand-700">{{ .pick.bname }}</a>
+                <code class="rounded bg-ink-50 px-1.5 py-0.5 font-mono text-xs font-bold tracking-wider text-brand-800">{{ .pick.code }}</code>
+                <span class="tnum text-xs font-bold text-brand-700">{{ .pick.pct }}%</span>
+              </div>
+              {{ with .note }}<p class="mt-1 text-xs leading-relaxed text-ink-500">{{ . }}</p>{{ end }}
+            </td>
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
     </div>
   </section>
   {{ end }}
@@ -129,8 +224,8 @@
           </tr>
         </thead>
         <tbody>
-          {{ range $withCode }}
-            {{ $key := . }}{{ $p := index $d.providers $key }}{{ $a := index $agg $key }}
+          {{ range $w := $withCode }}
+            {{ $key := $w.key }}{{ $p := index $d.providers $key }}{{ $a := index $agg $key }}
             {{ $pct := $p.promo_pct | default 0 }}
             {{ $effEntry := mul $a.minPrice (div (sub 100.0 $pct) 100.0) }}
             {{/* 翻盘数：非 cheapest 国里，折后最低价 < 该国全局最低价 */}}
@@ -226,6 +321,8 @@
 
   {{/* ── ⑥ FAQ（数据驱动 + schema）── */}}
   {{ $faqList := slice }}
+  {{ $faqList = $faqList | append (dict "q" "Which eSIM promo code has no conditions at all?" "a" (printf "Roami's <code>web20</code> — 20%% off your entire order with no minimum spend, no new-customer restriction, and no plan-type restriction. Roami publishes it on its own site (homepage banner and every destination page), which is why it tops this page.") ) }}
+  {{ $faqList = $faqList | append (dict "q" "Which provider has the biggest standing eSIM discount?" "a" (printf "Saily's <code>VEEPEE25</code> — 25%% off, published on Saily's official partner page saily.com/veepee and re-verified October 4, 2026. It is a partner promotion rather than a standing code, so if it has ended the standing 10%% codes (ESIMD / ESIMDUDE) are the fallback.") ) }}
   {{ $faqList = $faqList | append (dict "q" "Do eSIM promo codes stack with other discounts?" "a" "Usually not. Every provider we've tested allows one code per order, and codes generally don't combine with in-app sales or referral credits. The terms line on each card above says who the code is for (for example new customers only).") }}
   {{ $faqList = $faqList | append (dict "q" "Why don't your comparison tables show discounted prices?" "a" (printf "Rankings on this site are always computed from list prices, the same day we check them. A code changes what you personally pay, but not the fair baseline for ranking providers — otherwise a sponsor could buy a better position. Apply any code on top of the prices you see in our comparisons. Full rules on the <a href=\"/methodology/\">methodology</a> page.") ) }}
   {{ $faqList = $faqList | append (dict "q" "The promo code didn't work at checkout. Now what?" "a" "Three checks, in order: the expiry date on the card above (expired codes come down the same day), the terms line (some codes are new-customer-only or plan-specific), and typos — copy the code instead of typing it. If all three pass and it still fails, tell us via <a href=\"/contact/\">contact</a>; we re-verify within 24 hours.") }}

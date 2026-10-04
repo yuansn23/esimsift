@@ -169,7 +169,7 @@
       <span id="plan-filter-count" class="text-xs text-ink-400 tnum"></span>
     </div>
     <div class="card mt-5 overflow-x-auto">
-      <table class="table-pro min-w-[880px]">
+      <table class="table-pro table-soft min-w-[880px]">
         <thead>
           <tr>
             <th class="min-w-[170px]">{{ i18n "g_provider" | safeHTML }}</th>
@@ -226,9 +226,12 @@
         var tbody = document.getElementById('plan-rows');
         if (!tbody) return;
         var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
-        var chips = Array.prototype.slice.call(document.querySelectorAll('[data-days]'));
-        var provChips = Array.prototype.slice.call(document.querySelectorAll('[data-prov]'));
-        var unlimChip = document.querySelector('[data-unlim]');
+        /* 选择器必须限定 .chip —— 表格行 <tr> 同样带 data-days/data-prov
+           （供 apply() 读 dataset 用），裸 [data-days] 会把行误选成过滤按钮：
+           点任意行 = 把该行有效期当过滤条件 → 整表重排跳动的 bug。 */
+        var chips = Array.prototype.slice.call(document.querySelectorAll('.chip[data-days]'));
+        var provChips = Array.prototype.slice.call(document.querySelectorAll('.chip[data-prov]'));
+        var unlimChip = document.querySelector('.chip[data-unlim]');
         var count = document.getElementById('plan-filter-count');
         var minDays = 0;
         var unlimOnly = false;

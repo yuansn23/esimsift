@@ -1,0 +1,44 @@
+{
+ "brand_key": "roami",
+ "brand_name": "Roami",
+ "brand_alias": [
+  "roamiapp.com",
+  "roamiesim"
+ ],
+ "official_site": "https://roamiapp.com/",
+ "captured": "2026-10-04",
+ "offers": [
+  {
+   "code": "web20",
+   "kind": "coupon",
+   "discount": "20% off your entire order",
+   "percent": 20.0,
+   "amount": null,
+   "currency": "USD",
+   "audience": "all",
+   "where": "web+app",
+   "min_spend": null,
+   "max_discount": null,
+   "stackable": null,
+   "uses": null,
+   "scope": "any plan, any destination (200+ countries) — no conditions",
+   "expires": "no expiry published",
+   "terms": [
+    "Official code published site-wide: homepage banner + every destination page checkout box",
+    "No minimum spend, no new-customer restriction, no plan-type restriction",
+    "Applied at checkout; entry box labeled 'Claim 20% Off — Code: web20'",
+    "Bonus on the official site: 100MB of free data when you download the Roami app (no credit card)"
+   ],
+   "source": "official",
+   "source_url": "https://roamiapp.com/india-esim",
+   "verified": "2026-10-04",
+   "confidence": "official"
+  }
+ ],
+ "notes": [
+  "web20 is published by Roami itself: homepage hero banner ('Get 20% OFF with code: web20'), the India/USA/UK destination pages ('Use promo code web20 at checkout to get 20% OFF your order'), and the official blog.",
+  "Official wording is '20% off your entire order' / '20% OFF your order' — no audience or spend threshold anywhere in the official funnel; treat as unconditional.",
+  "Official blog (UK price guide) independently confirms: 'Use promo code web20 at checkout for 20 percent off any UK eSIM plan'."
+ ],
+ "offer_count": 1
+}

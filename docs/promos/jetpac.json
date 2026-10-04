@@ -1,0 +1,149 @@
+{
+ "brand_key": "jetpac",
+ "brand_name": "Jetpac Travel eSIM",
+ "brand_alias": [
+  "jetpacglobal.com"
+ ],
+ "official_site": "https://www.jetpacglobal.com/",
+ "captured": "2026-10-04",
+ "offers": [
+  {
+   "code": "ESIM15",
+   "kind": "coupon",
+   "discount": "15% off",
+   "percent": 15.0,
+   "amount": null,
+   "currency": "",
+   "audience": "all",
+   "where": "web+app",
+   "min_spend": null,
+   "max_discount": null,
+   "stackable": null,
+   "uses": null,
+   "scope": "eSIM plans",
+   "expires": "unknown",
+   "terms": [
+    "Found embedded in the site's own JSON payload"
+   ],
+   "source": "official",
+   "source_url": "https://www.jetpacglobal.com/",
+   "verified": "2026-10-04",
+   "confidence": "official"
+  },
+  {
+   "code": "Teresa20",
+   "kind": "coupon",
+   "discount": "20% off",
+   "percent": 20.0,
+   "amount": null,
+   "currency": "",
+   "audience": "all",
+   "where": "web+app",
+   "min_spend": null,
+   "max_discount": null,
+   "stackable": null,
+   "uses": null,
+   "scope": "eSIM plans",
+   "expires": "unknown",
+   "terms": [
+    "Found embedded in the site's own JSON payload (partner/ambassador code)"
+   ],
+   "source": "official",
+   "source_url": "https://www.jetpacglobal.com/",
+   "verified": "2026-10-04",
+   "confidence": "official"
+  },
+  {
+   "code": "",
+   "kind": "coupon",
+   "discount": "Extra 10% off",
+   "percent": 10.0,
+   "amount": null,
+   "currency": "",
+   "audience": "all",
+   "where": "web",
+   "min_spend": null,
+   "max_discount": null,
+   "stackable": null,
+   "uses": null,
+   "scope": "promotional banner",
+   "expires": "unknown",
+   "terms": [
+    "Site promo copy: 'Buy your Jetpac eSIM today and get extra 10% off'"
+   ],
+   "source": "official",
+   "source_url": "https://www.jetpacglobal.com/",
+   "verified": "2026-10-04",
+   "confidence": "official"
+  },
+  {
+   "code": "FYESIM15",
+   "kind": "coupon",
+   "discount": "15% off first purchase",
+   "percent": 15.0,
+   "amount": null,
+   "currency": "",
+   "audience": "new",
+   "where": "web+app",
+   "min_spend": null,
+   "max_discount": null,
+   "stackable": null,
+   "uses": null,
+   "scope": "first purchase",
+   "expires": "ongoing",
+   "terms": [
+    "Once per customer"
+   ],
+   "source": "aggregator",
+   "source_url": "https://findyouresim.co.uk/discount-codes",
+   "verified": "2026-09",
+   "confidence": "reported"
+  },
+  {
+   "code": "",
+   "kind": "referral",
+   "discount": "Refer a friend",
+   "percent": null,
+   "amount": null,
+   "currency": "",
+   "audience": "all",
+   "where": "app",
+   "min_spend": null,
+   "max_discount": null,
+   "stackable": null,
+   "uses": null,
+   "scope": "referral programme",
+   "expires": "ongoing",
+   "terms": null,
+   "source": "official",
+   "source_url": "https://www.jetpacglobal.com/referral",
+   "verified": "2026-10-04",
+   "confidence": "official"
+  },
+  {
+   "code": "",
+   "kind": "bonus_data",
+   "discount": "LoungeKey™ airport-lounge voucher on qualifying flight delay",
+   "percent": null,
+   "amount": null,
+   "currency": "",
+   "audience": "all",
+   "where": "web",
+   "min_spend": null,
+   "max_discount": null,
+   "stackable": null,
+   "uses": null,
+   "scope": "flight-delay compensation perk (via FlightStats)",
+   "expires": "ongoing",
+   "terms": null,
+   "source": "official",
+   "source_url": "https://www.jetpacglobal.com/",
+   "verified": "2026-10-04",
+   "confidence": "official"
+  }
+ ],
+ "notes": [
+  "Jetpac's own JSON payload (window.__NEXT_DATA__-style) contains ESIM15 and Teresa20."
+ ],
+ "offer_count": 6
+}

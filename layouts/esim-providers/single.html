@@ -459,7 +459,8 @@
           <p class="mt-1.5 text-lg font-bold text-ink-950">{{ $p.promo_label }} — code
             <code class="ml-1 rounded-lg border border-brand-400 bg-white px-2.5 py-1 font-mono text-base tracking-widest text-brand-800">{{ . }}</code>
           </p>
-          <p class="mt-1.5 text-xs text-ink-400">Expires {{ time.Format ":date_medium" $p.promo_expires }}. See all <a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_deals" | safeHTML }}</a>.</p>
+          {{ with $p.promo_expires }}<p class="mt-1.5 text-xs text-ink-400">Expires {{ time.Format ":date_medium" . }}. See all <a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_deals" | safeHTML }}</a>.</p>
+          {{ else }}<p class="mt-1.5 text-xs text-ink-400">{{ i18n "esim_providers_single__promo_no_expiry" | safeHTML }} <a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_deals" | safeHTML }}</a>.</p>{{ end }}
         </div>
         {{ partial "cta-out.html" (dict "target" $key "label" (printf "Use code at %s" $p.name) "class" "btn-primary text-xs" "campaign" (printf "prov-%s" $key) "page" $.RelPermalink) }}
       </div>

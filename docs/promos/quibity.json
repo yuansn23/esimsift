@@ -1,0 +1,83 @@
+{
+ "brand_key": "quibity",
+ "brand_name": "Quibity eSIM",
+ "brand_alias": [
+  "quibity.com"
+ ],
+ "official_site": "https://quibity.com/",
+ "captured": "2026-10-04",
+ "offers": [
+  {
+   "code": "QUIBITY8",
+   "kind": "coupon",
+   "discount": "8% off any eSIM",
+   "percent": 8.0,
+   "amount": null,
+   "currency": "",
+   "audience": "all",
+   "where": "web+app",
+   "min_spend": "none",
+   "max_discount": null,
+   "stackable": "one_per_order",
+   "uses": "once_per_account",
+   "scope": "any plan incl. regional and global, 190+ countries",
+   "expires": "ongoing (page states 'Valid in October 2026')",
+   "terms": [
+    "One use per customer account, one coupon per order",
+    "Not valid for business and reseller accounts",
+    "Quibity can change or withdraw the code at any time",
+    "Discount taken off before payment"
+   ],
+   "source": "official",
+   "source_url": "https://quibity.com/coupons",
+   "verified": "2026-10",
+   "confidence": "official"
+  },
+  {
+   "code": "",
+   "kind": "loyalty",
+   "discount": "Exclusive discounts via Travel Journal",
+   "percent": null,
+   "amount": null,
+   "currency": "",
+   "audience": "existing",
+   "where": "app",
+   "min_spend": null,
+   "max_discount": null,
+   "stackable": null,
+   "uses": null,
+   "scope": "unlock exclusive discounts by tracking visited countries",
+   "expires": "ongoing",
+   "terms": null,
+   "source": "official",
+   "source_url": "https://quibity.com/",
+   "verified": "2026-10-04",
+   "confidence": "official"
+  },
+  {
+   "code": "",
+   "kind": "loyalty",
+   "discount": "Usage-based discounts",
+   "percent": null,
+   "amount": null,
+   "currency": "",
+   "audience": "existing",
+   "where": "app",
+   "min_spend": null,
+   "max_discount": null,
+   "stackable": null,
+   "uses": null,
+   "scope": "pay only for the data you use",
+   "expires": "ongoing",
+   "terms": null,
+   "source": "official",
+   "source_url": "https://quibity.com/",
+   "verified": "2026-10-04",
+   "confidence": "official"
+  }
+ ],
+ "notes": [
+  "Quibity publishes an official coupons page with a single standing code QUIBITY8 (8%)."
+ ],
+ "offer_count": 3
+}

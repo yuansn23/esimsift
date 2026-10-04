@@ -10,6 +10,10 @@
     scroll-behavior: smooth;
     /* 锚点定位避开 sticky header */
     scroll-padding-top: 5.5rem;
+    /* 仅亮色设计：双保险（与 head.html 的 meta 呼应）。
+       站点没有暗色设计，浏览器强制暗色（Chrome auto dark 等）会把
+       浅色斑马纹等硬映射成深绿灰、整站失真；声明后浏览器跳过暗色化。 */
+    color-scheme: only light;
   }
   body {
     @apply font-sans text-ink-800 antialiased;
@@ -37,7 +41,7 @@
     @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent-600 px-5 py-2.5 text-sm font-semibold text-white shadow-cta transition-all duration-200 hover:bg-accent-700 hover:shadow-lift active:translate-y-px;
   }
   .btn-out {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-ink-200 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700 shadow-soft transition-all duration-200 hover:border-brand-400 hover:text-brand-700 active:translate-y-px;
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-ink-200 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700 shadow-soft transition-all duration-200 hover:border-brand-400 hover:text-brand-700 active:translate-y-px;
   }
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 rounded-lg px-3 py-1.5 text-sm font-semibold text-ink-600 transition-colors hover:bg-ink-50 hover:text-ink-900;
@@ -100,6 +104,17 @@
   }
   .table-pro tbody tr:nth-child(even):hover {
     background-color: #e9eef4;
+  }
+  /* 套餐总表（compare/single.html 的数百行大表）专用：斑马纹改用更浅的中性灰。
+     原 #eef2f7 带蓝青色调，在浏览器强制暗色（Chrome force-dark / Dark Reader）下
+     被映射成深青绿，行数据可读性差（2026-10-04 用户反馈 + 截图实测复现）。
+     中性近白色在暗色下映射为中性深灰、不发绿，亮色下条纹也更轻。
+     仅加在套餐总表上，FUP 表等其它 .table-pro 保持原样。 */
+  .table-soft tbody tr:nth-child(even) {
+    background-color: #f7f8fa;
+  }
+  .table-soft tbody tr:nth-child(even):hover {
+    background-color: #f0f2f5;
   }
 
   /* 品牌首字母徽标（providers.toml color 驱动）—— 当前为 logo 占位符方案 */
