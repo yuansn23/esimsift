@@ -2,11 +2,8 @@
   <div class="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6">
     {{/* 品牌字标：Sift + 漏斗符号 */}}
     <a href="{{ .Site.BaseURL }}" class="group flex items-center gap-2" aria-label="{{ i18n "g_esim_sift_home" | safeHTML }}">
-      <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-ink-950 text-white transition-transform duration-300 group-hover:rotate-6">
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M2 3h12L9.5 8v4.5L6.5 14V8L2 3Z" fill="currentColor"/>
-        </svg>
-      </span>
+      {{/* 品牌 logo：直接用 apple-touch-icon（自带青绿圆角底 + 白漏斗），替换原 SVG 占位 */}}
+      <img src="/apple-touch-icon.png" alt="" width="32" height="32" class="h-8 w-8 transition-transform duration-300 group-hover:rotate-6">
       <span class="font-display text-lg font-extrabold tracking-tight text-ink-950">{{ i18n "g_esim" | safeHTML }}<span class="text-brand-600">{{ i18n "g_sift" | safeHTML }}</span></span>
     </a>
 

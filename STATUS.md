@@ -1094,6 +1094,109 @@ country_hub 51 / vs 28 / index 2 / edit 15，域名 / 日期 / 完整性三断�
 
 ---
 
+## 已完成（翻盘表用户化重写 + Roami 零门槛醒目高亮，2026-10-05 第二十九轮）
+
+**用户反馈**：① 翻盘表「Cheapest in (no code) 1/50」「Cheapest in (with code) 2/50」用户看不懂；
+② Roami 是主推品牌，其零门槛条款（无最低消费/无新客限制/无套餐类型限制/每单都能用）必须突出醒目展示（英文）。
+
+**① 翻盘表重写**（`layouts/esim-deals/list.html`）：
+- 表头改为**两行分组头**：跨列大标题「In how many of the 50 countries we track is this brand
+  the cheapest option?」+ 两个子列「No code needed / With the code applied」——表头本身就是一个问句，
+  单元格就是答案。
+- 单元格 `1 / 50` → **`1 of 50 countries`**（自带单位，脱离表头也能读懂）；两列价格合并为一列
+  `$1.99 → $1.59`（列表价 → 用码后）。
+- 新增**变化标记**：折后多赢的国家显示 `+1 more` 绿色徽章，无变化显示灰色 `no change`
+  ——直接回答「这个码到底有没有用」。
+- 表下新增**读表说明**（How to read this table）：用一句话解释两个数字分别怎么算、
+  `1 → 2` 与 `no change` 各是什么意思。
+- 卡片底部与无码区同款文案统一为 `Already the cheapest option in N of 50 countries we track`。
+
+**② Roami 零门槛高亮块**（数据驱动，非写死）：
+- `providers.toml [roami]` 新增 `promo_uncond_short`（一句话版）+ `promo_uncond_points`
+  （四条 head/sub：No minimum spend / No new-customer restriction / No plan-type restriction /
+  Every order qualifies）。
+- 卡片在码按钮正下方渲染**深绿标题条 + 品牌浅底 2×2 对勾清单**（`border-brand-500` 边框 +
+  `bg-brand-600` 标题条，全卡视觉焦点）；决策矩阵第一行 note 同步换成零门槛短句。
+- 渲染条件 `promo_unconditional && promo_uncond_points`——未来其他品牌若也拿到零门槛码，
+  填字段即自动获得同款高亮。
+
+**i18n**：删 5 个废弃 key（`cheapest_in_no_code/with_code/cheapest_plan_list/after_code/cheapest_provider_in`），
+新增 13 个（flip_* / zero_conditions_head / already_cheapest_in 等），en + de 成对，key 对齐 1035 = 1035。
+
+**校验**：`npm run build` 九项全绿；截图验证卡片高亮块与翻盘表渲染。基线已重建——
+**注意**：本轮 diff 出现 `networks/* 12 页`，根因是 `layouts/networks/single.html:115` 的
+`Updated` 徽章取 `now`（构建日），**每天构建都会变**，属既有设计（注释言明与数据快照
+checkedDate 刻意分离），但会让回归基线日日失真 → 见待办。
+
+---
+
+## 已完成（deals 页新增「参数总表」，客观公正版，2026-10-05 第三十轮）
+
+**用户问**：要不要加一张把每个品牌折扣参数横向对比的总表？会不会冗余？重点推 roami 但要客观公正。
+
+**判断：不冗余——前提是它做卡片做不到的事（同参数跨品牌对齐）**。页面四表分工明确：
+卡片=单品牌叙事 / **参数总表=横向比参数（本轮新增）** / 决策矩阵=情境选码 / 翻盘表=价格数学。
+总表刻意**不放价格**（翻盘表负责），避免两张表打架。
+
+**设计（8 列，`layouts/esim-deals/list.html` 新区块，位于卡片之后、决策矩阵之前）**：
+Provider（logo + 官方/第三方徽章 + 出处域名）| Best code | Discount | Who qualifies |
+What it covers | How often | Expiry | Restrictions（限制逐条列出；零限制渲染绿色对勾 +
+"None — no strings attached" + 无最低消费/无客户限制/无套餐限制说明）。
+**排序规则透明可审计**：限制条数升序 → 折扣降序 → promo_rank；用复合字符串键
+`printf "%02d%04d%02d"` 实现（Hugo `sort` 只支持单键）。表下两段说明：
+*How this table is ordered*（排序规则 + "Not stated" = 官方没写就不编）+
+*Which row is yours*（怎么选：已定品牌看那行 / 未定品牌选零限制行）。
+
+**客观公正的落点**：所有限制逐条可追溯 `docs/promos/*.json` 的
+source / confidence / uses / min_spend / max_discount / stackable 字段——
+Saily 25% 需走 Veepee 合作链接（官网 WebFetch 实测）、Yesim DREWDEAL 为第三方博客码
+（2026-09-10 后未复测）、Airalo 新客 + 每账号一次 + $100 上限 + 不可叠加、
+Ubigi 仅无限档 + 倒计时限时、aloSIM 第三方 + 不与 aloCASH 叠加。
+**Roami 的客观赢法**：唯一「零限制 且 20%」的码——Holafly 结构上同样零限制但只有 5%，
+其他 ≥20% 的码（Saily/Yesim）都至少带一条限制。排序后 Roami 自然第一，无任何人工置顶。
+
+**数据层**（`providers.toml`，8 品牌新增 `promo_source` / `promo_source_label` /
+`promo_coverage` / `promo_uses` / `promo_constraints`，Ubigi 另加 `promo_expiry_note`——
+**不得**把非日期文本塞进 `promo_expires`，否则 `time.Format` 重演第二十八轮的炸构建）。
+
+**连带修正（诚实性）**：原卡文案 "the only tracked code with zero conditions" 不实——
+Holafly MYESIMNOW5 结构上同样零门槛。已修：① holafly 补 `promo_unconditional = true`；
+② `$pickUncond` 选优改为「零门槛里折扣最高者」（否则 range 顺序会错选 holafly）；
+③ roami `promo_bestfor` 去掉 "only" 说法；④ 矩阵零门槛行 note 兜底改用 `promo_coverage`。
+
+**坑**：H2 "Every code, side by side" 被 `check_headings.py` 拦（h2/h3 禁逗号/分号/冒号/
+em/en 破折号，H1 豁免）→ 改 "Compare every code on one grid"。**新增 h2/h3 先过标点守卫。**
+
+i18n +21 key（en/de 成对，1056 = 1056 对齐）。九项构建全绿；基线 diff = deals 1 处（预期）；
+截图验证排序与徽章。
+
+## 已完成（参数总表长尾标题 + 行动号召按钮，2026-10-05 第三十二轮）
+
+**① H2 长尾化**：`Compare every code on one grid` → `Compare every eSIM promo code side by side`
+（与 H1「eSIM promo codes & deals 2026」错位覆盖「compare esim promo code」搜索意图；
+无逗号/破折号，过 check_headings）。en/de 成对。
+
+**② 参数总表每行加 CTA**：Best code 列在码下方加 `Use code at {brand}` 按钮
+（复用全站唯一出站出口 `cta-out.html`，rel=sponsored nofollow + UTM 由 hugo.toml targets 驱动，
+target=$key 深链到品牌官网 base）。i18n key `esim_deals_list__params_cta`（带 {{ .brand }} 占位），
+en/de 成对。8/8 按钮产物核验。
+
+九项全绿；基线 diff = deals 1 处（预期）；已重建。
+
+## 已完成（header 品牌图标 + footer 宣传语重写，2026-10-05 第三十一轮）
+
+**① header logo**：`header.html` 原「ink-950 圆角块 + 内联 SVG 漏斗」→
+`<img src="/apple-touch-icon.png">`（PNG 自带青绿圆角底 + 白漏斗，与 favicon 同源），
+保留 hover 旋转。footer 左上 logo 未动（用户只点名 header）。
+
+**② footer 宣传语**：`footer.html` 改为只渲染 `partials_footer__blurb`（去掉 tagline 前缀拼接，
+tagline 参数保留仍喂 `<title>`/og）；en 换新定位文案
+（"We don't rank by ad spend — we rank by who's actually cheaper. …"），de 成对译德语（du 语气）。
+
+九项构建全绿；基线重建（header/footer 全站组件，584 页均变属预期）。
+
+---
+
 ## 待办（按优先级）
 
 ### P-2 蓝图 Phase 2（等 P-A 真实数据后；见 docs/keyword-map.md 预留槽位）
@@ -1104,6 +1207,7 @@ country_hub 51 / vs 28 / index 2 / edit 15，域名 / 日期 / 完整性三断�
 - [ ] tools 再加 2 个、sitemap 分片（>1000 URL 时）、国家页 authority 外链
 
 ### P-A 数据收尾（价格已全真 ✅，剩非价格项）
+- [ ] **`/networks/*` 的 `Updated` 徽章取 `now`（构建日）**（2026-10-05 发现）：`layouts/networks/single.html:115` 每天构建都变 → 12 页天天进回归 diff、且与第二十五轮「日期跟数据走」原则冲突；`check_dates.py` 未覆盖 /networks/。改法需先定数据口径（网络快照核对日），再纳入严格模式
 - [x] ~~**抓取队列**~~ 已全量完成：8 品牌 × 50 国 = 400 raw JSON = 8776 条真实套餐（esimdb 七家 + holafly 官网 PDP + roami 本地提取）；`validate.py` 0 error 0 warning，无 SAMPLE
 - [ ] networks 逐品牌补真（esimdb 不展示网络名；airalo.com 国家页有 host networks 可抓，其余品牌官网同理）
 - [x] ~~**折扣码换真**~~（2026-10-01 完成，见上轮日志；遗留：3 家 promo_expires 占位 2027-12-31 需上线前复核）

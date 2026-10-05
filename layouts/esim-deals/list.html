@@ -48,10 +48,11 @@
      ③ 新客首购 = aud=new，pct 降序、头条码优先
      ④ 回头客 = aud=existing
      ⑤ 无限流量 = label 含 "off unlimited"，pct 降序、头条码优先 */}}
-{{ $pickUncond := dict }}{{ $pickBig := dict }}{{ $bp := 0.0 }}
+{{ $pickUncond := dict }}{{ $pickBig := dict }}{{ $bp := 0.0 }}{{ $up := 0.0 }}
 {{ range $withCode }}
   {{ $p := index $d.providers .key }}
-  {{ if $p.promo_unconditional }}{{ $pickUncond = dict "brand" .key "bname" $p.name "code" $p.promo_code "pct" $p.promo_pct "note" $p.promo_scope }}{{ end }}
+  {{/* 零门槛可能有多个（roami web20 20% / holafly MYESIMNOW5 5%）→ 取折扣最高者，不靠先后顺序 */}}
+  {{ if and $p.promo_unconditional (gt $p.promo_pct $up) }}{{ $up = $p.promo_pct }}{{ $pickUncond = dict "brand" .key "bname" $p.name "code" $p.promo_code "pct" $p.promo_pct "note" ($p.promo_uncond_short | default $p.promo_coverage) }}{{ end }}
   {{ if and $p.promo_pct (gt $p.promo_pct $bp) }}{{ $bp = $p.promo_pct }}{{ $pickBig = dict "brand" .key "bname" $p.name "code" $p.promo_code "pct" $p.promo_pct }}{{ end }}
 {{ end }}
 {{ $candsNew := sort (where $offers "aud" "new") "pct" "desc" "primary" "desc" }}
@@ -127,6 +128,24 @@
             </button>
             {{ partial "cta-out.html" (dict "target" $key "label" (printf "Get %s" $p.name) "class" "btn-primary text-xs" "campaign" "esim-deals" "page" "deals") }}
           </div>
+
+          {{ if and $p.promo_unconditional $p.promo_uncond_points }}
+          <div class="mt-4 overflow-hidden rounded-xl border-2 border-brand-500 shadow-soft">
+            <p class="flex items-center gap-2 bg-brand-600 px-4 py-2.5 font-display text-sm font-extrabold text-white">
+              <svg class="h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 1a9 9 0 100 18 9 9 0 000-18zm4.03 6.53a.75.75 0 00-1.06-1.06L9.5 9.94 7.53 7.97a.75.75 0 10-1.06 1.06l2.5 2.5a.75.75 0 001.06 0l4-4z" clip-rule="evenodd"/></svg>
+              {{ i18n "esim_deals_list__zero_conditions_head" | safeHTML }}
+            </p>
+            <ul class="grid gap-2.5 bg-brand-50 px-4 py-3.5 sm:grid-cols-2">
+              {{ range $p.promo_uncond_points }}
+              <li class="flex items-start gap-2">
+                <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0l-3.5-3.5a1 1 0 111.4-1.4l2.8 2.79 6.8-6.79a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>
+                <span class="text-sm leading-snug"><strong class="font-bold text-ink-900">{{ .head }}</strong><span class="text-ink-600"> — {{ .sub }}</span></span>
+              </li>
+              {{ end }}
+            </ul>
+          </div>
+          {{ end }}
+
           <p class="mt-2 text-xs text-ink-500">
             {{ with $p.promo_scope }}{{ . }}{{ end }}
             {{ with $p.promo_min_spend }} · {{ i18n "esim_deals_list__min_spend" | safeHTML }} {{ . }}{{ else }}{{ if not $p.promo_expires }} · {{ i18n "esim_deals_list__no_expiry" | safeHTML }}{{ end }}{{ end }}
@@ -155,10 +174,100 @@
           {{ end }}
 
           <p class="mt-3 text-xs text-ink-400">
-            Verified{{ with $p.promo_verified }} {{ time.Format ":date_medium" . }}{{ end }} · cheapest in {{ $a.cheapest }} of {{ $a.countries }} tracked countries · <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $key) }}" class="font-medium text-brand-700 hover:underline">{{ $p.name }} review</a>
+            Verified{{ with $p.promo_verified }} {{ time.Format ":date_medium" . }}{{ end }} · {{ i18n "esim_deals_list__already_cheapest_in" (dict "n" $a.cheapest "total" $a.countries) | safeHTML }} · <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $key) }}" class="font-medium text-brand-700 hover:underline">{{ $p.name }} review</a>
           </p>
         </div>
       {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── ①a 参数总表：同一把尺子横向对比（全部从 promo_* 字段推导，零写死）
+       排序 = 限制条数升序 → 折扣降序 → promo_rank（复合字符串键，稳定可复现）。
+       与卡片的分工：卡片讲单个品牌的来龙去脉，本表只做同参数对齐对比。
+       价格维度不在本表（翻盘分析表负责），避免与下方表格重复。 ── */}}
+  {{ $rowsT := slice }}
+  {{ range $withCode }}
+    {{ $key := .key }}{{ $p := index $d.providers $key }}
+    {{ $cons := slice }}{{ with $p.promo_constraints }}{{ $cons = . }}{{ end }}
+    {{ $ns := len $cons }}
+    {{ $pct := int ($p.promo_pct | default 0) }}
+    {{ $rowsT = $rowsT | append (dict "key" $key "p" $p "cons" $cons "ns" $ns "pct" $pct
+        "srt" (printf "%02d%04d%02d" $ns (sub 100 $pct) (int (.rank | default 99)))) }}
+  {{ end }}
+  {{ $rowsT = sort $rowsT "srt" }}
+  {{ if $rowsT }}
+  <section class="mt-12" aria-labelledby="param-table">
+    <p class="eyebrow">{{ i18n "esim_deals_list__params_eyebrow" | safeHTML }}</p>
+    <h2 id="param-table" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "esim_deals_list__params_title" | safeHTML }}</h2>
+    <p class="mt-3 max-w-3xl text-ink-600">{{ i18n "esim_deals_list__params_intro" | safeHTML }}</p>
+    <div class="mt-6 overflow-x-auto">
+      <table class="table-pro table-soft w-full min-w-[980px]">
+        <thead>
+          <tr>
+            <th class="text-left">{{ i18n "g_provider" | safeHTML }}</th>
+            <th class="text-left">{{ i18n "esim_deals_list__params_th_code" | safeHTML }}</th>
+            <th class="text-right">{{ i18n "esim_deals_list__params_th_discount" | safeHTML }}</th>
+            <th class="text-left">{{ i18n "esim_deals_list__params_th_who" | safeHTML }}</th>
+            <th class="text-left">{{ i18n "esim_deals_list__params_th_covers" | safeHTML }}</th>
+            <th class="text-left">{{ i18n "esim_deals_list__params_th_often" | safeHTML }}</th>
+            <th class="text-left">{{ i18n "esim_deals_list__params_th_expiry" | safeHTML }}</th>
+            <th class="text-left">{{ i18n "esim_deals_list__params_th_limits" | safeHTML }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range $i, $r := $rowsT }}
+            {{ $key := $r.key }}{{ $p := $r.p }}{{ $hasMin := ne ($p.promo_min_spend | default "") "" }}
+            <tr{{ if eq $i 0 }} class="bg-brand-50/70"{{ end }}>
+              <td class="align-top">
+                <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $key) }}" class="flex items-center gap-2.5 hover:text-brand-700">
+                  {{ partial "prov-logo.html" (dict "p" $p "key" $key "class" "h-7 w-7" "text" "text-xs") }}
+                  <span class="font-semibold text-ink-950">{{ $p.name }}</span>
+                </a>
+                <p class="mt-1.5 flex flex-wrap items-center gap-1.5">
+                  <span class="badge {{ if eq $p.promo_source "official" }}bg-brand-100 text-brand-800{{ else }}bg-ink-100 text-ink-600{{ end }}">{{ index (dict "official" (i18n "esim_deals_list__src_official" | safeHTML) "partner" (i18n "esim_deals_list__src_partner" | safeHTML)) ($p.promo_source | default "official") }}</span>
+                  {{ with $p.promo_source_label }}<span class="text-[11px] text-ink-400">{{ . }}</span>{{ end }}
+                </p>
+                {{ if eq $i 0 }}<span class="badge mt-1.5 bg-brand-600 text-white">{{ i18n "esim_deals_list__best_overall_no_conditions" | safeHTML }}</span>{{ end }}
+              </td>
+              <td class="align-top">
+                <code class="rounded bg-ink-50 px-1.5 py-0.5 font-mono text-xs font-bold tracking-wider text-brand-800">{{ $p.promo_code }}</code>
+                {{/* 行动号召：直接去品牌官网用码（全站唯一出站出口，rel/UTM 由 hugo.toml targets 配置驱动） */}}
+                {{ partial "cta-out.html" (dict "target" $key "label" (i18n "esim_deals_list__params_cta" (dict "brand" $p.name) | safeHTML) "class" "btn-mini mt-2" "campaign" "esim-deals" "page" "deals-params") }}
+              </td>
+              <td class="align-top text-right"><span class="tnum font-display text-base font-extrabold{{ if eq $i 0 }} text-brand-700{{ else }} text-ink-900{{ end }}">{{ $r.pct }}%</span></td>
+              <td class="align-top text-sm text-ink-700">{{ index (dict "all" (i18n "esim_deals_list__aud_all" | safeHTML) "new" (i18n "esim_deals_list__aud_new" | safeHTML) "existing" (i18n "esim_deals_list__aud_existing" | safeHTML) "conditional" (i18n "esim_deals_list__aud_conditional" | safeHTML)) ($p.promo_audience | default "all") }}</td>
+              <td class="align-top text-sm text-ink-700">{{ with $p.promo_coverage }}{{ . }}{{ else }}{{ $p.promo_scope }}{{ end }}</td>
+              <td class="align-top text-sm text-ink-700">{{ $uk := $p.promo_uses | default "" }}{{ if eq $uk "repeatable" }}{{ i18n "esim_deals_list__uses_repeatable" | safeHTML }}{{ else if eq $uk "once_per_account" }}{{ i18n "esim_deals_list__uses_once" | safeHTML }}{{ else }}<span class="text-ink-400">{{ i18n "esim_deals_list__uses_not_stated" | safeHTML }}</span>{{ end }}</td>
+              <td class="align-top text-sm text-ink-700">{{ if $p.promo_expires }}{{ time.Format ":date_medium" $p.promo_expires }}{{ else }}{{ with $p.promo_expiry_note }}{{ . }}{{ else }}<span class="text-ink-400">{{ i18n "esim_deals_list__no_expiry" | safeHTML }}</span>{{ end }}{{ end }}</td>
+              <td class="align-top">
+                {{ if or (gt $r.ns 0) $hasMin }}
+                  <ul class="space-y-1">
+                    {{ with $p.promo_min_spend }}<li class="flex items-start gap-1.5 text-xs leading-relaxed text-ink-600"><span class="mt-[5px] h-1 w-1 shrink-0 rounded-full bg-ink-300"></span><span>{{ i18n "esim_deals_list__min_spend" | safeHTML }} {{ . }}</span></li>{{ end }}
+                    {{ range $r.cons }}<li class="flex items-start gap-1.5 text-xs leading-relaxed text-ink-600"><span class="mt-[5px] h-1 w-1 shrink-0 rounded-full bg-ink-300"></span><span>{{ . }}</span></li>{{ end }}
+                  </ul>
+                {{ else }}
+                  <p class="flex items-center gap-1.5 text-sm font-semibold text-brand-700">
+                    <svg class="h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0l-3.5-3.5a1 1 0 111.4-1.4l2.8 2.79 6.8-6.79a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>
+                    {{ i18n "esim_deals_list__no_strings" | safeHTML }}
+                  </p>
+                  <p class="mt-1 text-xs leading-relaxed text-ink-500">{{ i18n "esim_deals_list__no_strings_detail" | safeHTML }}</p>
+                {{ end }}
+              </td>
+            </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-4 space-y-3">
+      <p class="rounded-xl bg-ink-50 px-4 py-3 text-sm leading-relaxed text-ink-600">
+        <strong class="font-semibold text-ink-800">{{ i18n "esim_deals_list__params_legend_head" | safeHTML }}</strong>
+        {{ i18n "esim_deals_list__params_legend_body" | safeHTML }}
+      </p>
+      <p class="rounded-xl border border-brand-100 bg-brand-50/60 px-4 py-3 text-sm leading-relaxed text-ink-700">
+        <strong class="font-semibold text-ink-900">{{ i18n "esim_deals_list__params_verdict_head" | safeHTML }}</strong>
+        {{ i18n "esim_deals_list__params_verdict_body" | safeHTML }}
+      </p>
     </div>
   </section>
   {{ end }}
@@ -211,16 +320,19 @@
     <p class="eyebrow">{{ i18n "esim_deals_list__code_math" | safeHTML }}</p>
     <h2 id="flip" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "esim_deals_list__when_a_discount_code_still_loses" | safeHTML }}</h2>
     <p class="mt-3 max-w-3xl text-ink-600">{{ i18n "esim_deals_list__a_code_changes_what" | safeHTML }} <em>{{ i18n "esim_deals_list__you" | safeHTML }}</em> pay — but the ranking in our tables is always the pre-code baseline. Here's the honest follow-up question: after applying each code to the provider's cheapest plan in every country, in how many of our {{ len $d.countries }} tracked countries would that provider actually become #1? Sometimes the answer is "all of them". Sometimes it's "still none — just buy the other brand."</p>
+    {{ $total := len $d.countries }}
     <div class="mt-6 overflow-x-auto">
-      <table class="table-pro w-full min-w-[720px]">
+      <table class="table-pro table-soft w-full min-w-[820px]">
         <thead>
           <tr>
-            <th class="text-left">{{ i18n "g_provider" | safeHTML }}</th>
-            <th class="text-left">{{ i18n "g_code" | safeHTML }}</th>
-            <th class="text-right">{{ i18n "esim_deals_list__cheapest_plan_list" | safeHTML }}</th>
-            <th class="text-right">{{ i18n "esim_deals_list__after_code" | safeHTML }}</th>
-            <th class="text-right">{{ i18n "esim_deals_list__cheapest_in_no_code" | safeHTML }}</th>
-            <th class="text-right">{{ i18n "esim_deals_list__cheapest_in_with_code" | safeHTML }}</th>
+            <th class="align-bottom text-left" rowspan="2">{{ i18n "g_provider" | safeHTML }}</th>
+            <th class="align-bottom text-left" rowspan="2">{{ i18n "g_code" | safeHTML }}</th>
+            <th class="align-bottom text-right" rowspan="2">{{ i18n "esim_deals_list__flip_th_price" | safeHTML }}<br><span class="text-[11px] font-normal text-ink-400">{{ i18n "esim_deals_list__flip_th_price_sub" | safeHTML }}</span></th>
+            <th class="text-center" colspan="2">{{ i18n "esim_deals_list__flip_th_group" (dict "total" $total) | safeHTML }}</th>
+          </tr>
+          <tr>
+            <th class="text-right">{{ i18n "esim_deals_list__flip_th_without" | safeHTML }}</th>
+            <th class="text-right">{{ i18n "esim_deals_list__flip_th_with" | safeHTML }}</th>
           </tr>
         </thead>
         <tbody>
@@ -244,15 +356,21 @@
                 </a>
               </td>
               <td><code class="rounded bg-ink-50 px-1.5 py-0.5 font-mono text-xs font-bold tracking-wider text-brand-800">{{ $p.promo_code }}</code></td>
-              <td class="text-right tnum">${{ printf "%.2f" $a.minPrice }}</td>
-              <td class="text-right tnum font-semibold text-brand-700">${{ printf "%.2f" $effEntry }}</td>
-              <td class="text-right tnum">{{ $a.cheapest }} / {{ $a.countries }}</td>
-              <td class="text-right tnum">{{ add $a.cheapest $flips }} / {{ $a.countries }}</td>
+              <td class="whitespace-nowrap text-right tnum">${{ printf "%.2f" $a.minPrice }} <span class="text-ink-400">→</span> <strong class="font-semibold text-brand-700">${{ printf "%.2f" $effEntry }}</strong></td>
+              <td class="text-right tnum">{{ i18n "esim_deals_list__flip_cell" (dict "n" $a.cheapest "total" $a.countries) | safeHTML }}</td>
+              <td class="whitespace-nowrap text-right tnum">
+                {{ i18n "esim_deals_list__flip_cell" (dict "n" (add $a.cheapest $flips) "total" $a.countries) | safeHTML }}
+                {{ if gt $flips 0 }}<span class="badge ml-2 bg-brand-100 text-brand-800">{{ i18n "esim_deals_list__flip_more" (dict "n" $flips) | safeHTML }}</span>{{ else }}<span class="ml-2 text-[11px] font-normal text-ink-400">{{ i18n "esim_deals_list__flip_no_change" | safeHTML }}</span>{{ end }}
+              </td>
             </tr>
           {{ end }}
         </tbody>
       </table>
     </div>
+    <p class="mt-4 rounded-xl bg-ink-50 px-4 py-3 text-sm leading-relaxed text-ink-600">
+      <strong class="font-semibold text-ink-800">{{ i18n "esim_deals_list__flip_legend_head" | safeHTML }}</strong>
+      {{ i18n "esim_deals_list__flip_legend_body" (dict "total" $total) | safeHTML }}
+    </p>
     <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "esim_deals_list__method_for_every_country_the_provider_s_cheapest_plan_pr" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="underline underline-offset-2 hover:text-ink-600">{{ i18n "g_methodology" | safeHTML }}</a> {{ i18n "esim_deals_list__page" | safeHTML }}</p>
   </section>
   {{ end }}
@@ -274,7 +392,7 @@
               <p class="text-xs text-ink-400">{{ i18n "g_from" | safeHTML }} <span class="tnum">${{ printf "%.2f" $a.minPrice }}</span>{{ if gt $a.minPerGB 0.0 }} · best <span class="tnum">${{ printf "%.2f" $a.minPerGB }}/GB</span>{{ end }}</p>
             </div>
           </a>
-          <p class="mt-3 text-xs leading-relaxed text-ink-500">{{ i18n "esim_deals_list__cheapest_provider_in" | safeHTML }} <strong class="text-ink-700 tnum">{{ $a.cheapest }}</strong> of {{ $a.countries }} tracked countries — no coupon required.</p>
+          <p class="mt-3 text-xs leading-relaxed text-ink-500">{{ i18n "esim_deals_list__already_cheapest_in" (dict "n" $a.cheapest "total" $a.countries) | safeHTML }} — {{ i18n "esim_deals_list__no_coupon_required" | safeHTML }}</p>
           <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $key) }}" class="mt-3 inline-block text-xs font-semibold text-brand-700 hover:underline">{{ $p.name }} review →</a>
         </div>
       {{ end }}
