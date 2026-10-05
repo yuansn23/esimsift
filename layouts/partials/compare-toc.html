@@ -1,0 +1,28 @@
+{{- /* ─────────────────────────────────────────────────────────────
+   国家 Hub 页「本页导航」（partials/compare-toc.html）
+
+   与 guides 的 aside-toc.html 分开，是因为两者的目录**来源**根本不同：
+   · 指南页：章节写在 md 正文里，扫 .Content 提取 h2/h3 即可；
+   · 国家页：正文只有段落，所有 H2（榜单/主表/真相表/选网/FAQ…）都由
+     compare/single.html 用模板渲染 —— 没有可扫的标题，只能在调用方显式声明
+     一份章节表（id + label），本 partial 只负责把它渲染成 <nav>。
+
+   ⚠ 调用方必须保证 id 与各 <section aria-labelledby="…"> 一致、且条件分支
+     与该 section 的渲染守卫一致；否则目录会出现点不动的死链。
+
+   调用：{{ partial "compare-toc.html" (dict "items" $toc) }}
+        $toc 为 []dict{"id": "…", "label": "…"}，服务端渲染，爬虫可见。
+
+   ⚠ class 属性必须是静态字面量（含 {{ }} 的属性会被 check_css_sync.py 整段跳过，
+     真漏编译就没人拦了）；toc-link / toc-l2 的样式在 assets/css/main.css。
+   ───────────────────────────────────────────────────────────── */ -}}
+{{- $items := .items -}}
+{{- with $items -}}
+<nav data-toc aria-label="{{ i18n "g_on_this_page" | safeHTML }}">
+  <ul class="border-l border-ink-100">
+    {{- range . }}
+    <li><a href="#{{ .id }}" class="toc-link toc-l2" data-toc-link>{{ .label }}</a></li>
+    {{- end }}
+  </ul>
+</nav>
+{{- end -}}

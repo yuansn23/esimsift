@@ -7,7 +7,7 @@ region: "Americas"
 hero: "travel-esim-illustration-017.webp"
 hero_alt: "Hiker checking an eSIM data plan on a phone in the American mountains"
 weight: 3
-prompt_answer: "The Americas contain two very different price markets. The United States and Canada are among the most expensive places in the developed world to buy mobile data, while Mexico and much of Latin America cost far less per gigabyte. A single-country trip is a single-country decision, and a multi-country route needs the sum of those plans compared against a regional one."
+prompt_answer: "The Americas contain two very different price markets. The USA and Canada are among the most expensive places in the developed world to buy mobile data, while Mexico and much of Latin America cost far less per gigabyte. A single-country trip is a single-country decision, and a multi-country route needs the sum of those plans compared against a regional one."
 h2_answer: "The two price markets of the Americas"
 h2_facts: "Americas eSIM price facts"
 faqs:

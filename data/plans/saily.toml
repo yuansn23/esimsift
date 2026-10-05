@@ -3462,35 +3462,35 @@ checked = "2026-09-30"
 networks = ["EE", "Vodafone", "O2", "Three"]
 
 [[GB.plans]]
-name = "United Kingdom 1GB 7 days"
+name = "UK 1GB 7 days"
 gb = 1
 days = 7
 type = "data"
 price = 4.49
 
 [[GB.plans]]
-name = "United Kingdom 3GB 30 days"
+name = "UK 3GB 30 days"
 gb = 3
 days = 30
 type = "data"
 price = 8.99
 
 [[GB.plans]]
-name = "United Kingdom 5GB 30 days"
+name = "UK 5GB 30 days"
 gb = 5
 days = 30
 type = "data"
 price = 12.99
 
 [[GB.plans]]
-name = "United Kingdom 10GB 30 days"
+name = "UK 10GB 30 days"
 gb = 10
 days = 30
 type = "data"
 price = 18.99
 
 [[GB.plans]]
-name = "United Kingdom UNLIMITED 7 days"
+name = "UK UNLIMITED 7 days"
 gb = 0
 days = 7
 type = "unlimited"
@@ -3498,14 +3498,14 @@ price = 28.99
 fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom 20GB 30 days"
+name = "UK 20GB 30 days"
 gb = 20
 days = 30
 type = "data"
 price = 30.99
 
 [[GB.plans]]
-name = "United Kingdom UNLIMITED 10 days"
+name = "UK UNLIMITED 10 days"
 gb = 0
 days = 10
 type = "unlimited"
@@ -3513,7 +3513,7 @@ price = 34.99
 fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom UNLIMITED 15 days"
+name = "UK UNLIMITED 15 days"
 gb = 0
 days = 15
 type = "unlimited"
@@ -3521,7 +3521,7 @@ price = 48.99
 fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom UNLIMITED 20 days"
+name = "UK UNLIMITED 20 days"
 gb = 0
 days = 20
 type = "unlimited"
@@ -3529,7 +3529,7 @@ price = 59.99
 fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom UNLIMITED 25 days"
+name = "UK UNLIMITED 25 days"
 gb = 0
 days = 25
 type = "unlimited"
@@ -3537,7 +3537,7 @@ price = 65.99
 fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom UNLIMITED 30 days"
+name = "UK UNLIMITED 30 days"
 gb = 0
 days = 30
 type = "unlimited"
@@ -3549,28 +3549,28 @@ checked = "2026-09-30"
 networks = ["T-Mobile", "AT&T", "Verizon"]
 
 [[US.plans]]
-name = "United States 1GB 7 days"
+name = "USA 1GB 7 days"
 gb = 1
 days = 7
 type = "data"
 price = 3.99
 
 [[US.plans]]
-name = "United States 3GB 30 days"
+name = "USA 3GB 30 days"
 gb = 3
 days = 30
 type = "data"
 price = 8.99
 
 [[US.plans]]
-name = "United States 5GB 30 days"
+name = "USA 5GB 30 days"
 gb = 5
 days = 30
 type = "data"
 price = 13.99
 
 [[US.plans]]
-name = "United States UNLIMITED 5 days"
+name = "USA UNLIMITED 5 days"
 gb = 0
 days = 5
 type = "unlimited"
@@ -3578,14 +3578,14 @@ price = 18.99
 fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
 
 [[US.plans]]
-name = "United States 10GB 30 days"
+name = "USA 10GB 30 days"
 gb = 10
 days = 30
 type = "data"
 price = 22.99
 
 [[US.plans]]
-name = "United States UNLIMITED 7 days"
+name = "USA UNLIMITED 7 days"
 gb = 0
 days = 7
 type = "unlimited"
@@ -3593,7 +3593,7 @@ price = 28.99
 fup_note = "5 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States UNLIMITED 10 days"
+name = "USA UNLIMITED 10 days"
 gb = 0
 days = 10
 type = "unlimited"
@@ -3601,14 +3601,14 @@ price = 34.99
 fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
 
 [[US.plans]]
-name = "United States 20GB 30 days"
+name = "USA 20GB 30 days"
 gb = 20
 days = 30
 type = "data"
 price = 36.99
 
 [[US.plans]]
-name = "United States UNLIMITED 15 days"
+name = "USA UNLIMITED 15 days"
 gb = 0
 days = 15
 type = "unlimited"
@@ -3616,7 +3616,7 @@ price = 48.99
 fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
 
 [[US.plans]]
-name = "United States UNLIMITED 20 days"
+name = "USA UNLIMITED 20 days"
 gb = 0
 days = 20
 type = "unlimited"
@@ -3624,7 +3624,7 @@ price = 59.99
 fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
 
 [[US.plans]]
-name = "United States UNLIMITED 25 days"
+name = "USA UNLIMITED 25 days"
 gb = 0
 days = 25
 type = "unlimited"
@@ -3632,7 +3632,7 @@ price = 65.99
 fup_note = "5 GB per day at full speed, then ∞ at 1kbps"
 
 [[US.plans]]
-name = "United States UNLIMITED 30 days"
+name = "USA UNLIMITED 30 days"
 gb = 0
 days = 30
 type = "unlimited"

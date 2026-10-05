@@ -28,14 +28,108 @@
 {{ end }}
 {{ $campaign := printf "compare-%s" (lower $country.slug) }}
 
+{{/* ── ⑥ 逐品牌在本国的实测聚合（模块⑥用；纯计算，一次遍历）──────────────────
+     为什么要有它：模块⑥原先给每个品牌渲染 tagline + 3 优点 + 2 缺点，这些字段
+     来自 data/providers.toml，**50 个国家页逐字相同** —— 模板级同质化：
+     对读者没有信息增量，对谷歌是一页重复内容 ×50。
+     现在改成只呈现「逐国才会变」的量：本国档位数、最低价、最佳 $/GB、骑的本地网，
+     外加一条由数据算出来的结论。品牌的通用画像留在 /esim-providers/<key>/，
+     全站只写一份（各品牌的 profile 页本来就有）。
+     perGB 的口径：无限档在 country-stats 里是 999999 哨兵值，必须用 .isUnlimited
+     排除，否则「最佳 $/GB」会被无限档顶掉。 */}}
+{{ $provAgg := dict }}
+{{ range $rows }}
+  {{ $a := index $provAgg .key }}
+  {{ if not $a }}{{ $a = dict "count" 0 "ul" 0 "minPrice" 0.0 "minGB" 0.0 "minDays" 0 "bestPerGB" 0.0 "bestGB" 0.0 "bestDays" 0 "networks" .networks }}{{ end }}
+  {{ $a = merge $a (dict "count" (add (int $a.count) 1) "networks" .networks) }}
+  {{ if .isUnlimited }}{{ $a = merge $a (dict "ul" (add (int $a.ul) 1)) }}{{ end }}
+  {{ if or (eq (float $a.minPrice) 0.0) (lt .price (float $a.minPrice)) }}
+    {{ $a = merge $a (dict "minPrice" .price "minGB" .gb "minDays" .days) }}
+  {{ end }}
+  {{ if not .isUnlimited }}
+    {{ if or (eq (float $a.bestPerGB) 0.0) (lt .perGB (float $a.bestPerGB)) }}
+      {{ $a = merge $a (dict "bestPerGB" .perGB "bestGB" .gb "bestDays" .days) }}
+    {{ end }}
+  {{ end }}
+  {{ $provAgg = merge $provAgg (dict .key $a) }}
+{{ end }}
+
 {{/* 与 compare/provider.html 共用两件事：运营商官方站点（佐证来源）与行程天数选项。
      同一组值/同一份来源只在一处定义，两个页型必须给出相同的答案。 */}}
 {{ $carrierRefs := dict }}
 {{ with index site.Data.refs.carriers $iso }}{{ $carrierRefs = . }}{{ end }}
 {{ $dayOpts := slice 3 5 7 10 14 21 30 }}
 
+{{/* ── ⑧ 网络 × 运营商归属的**纯计算**（渲染在 ⑦b，见下）─────────────────────────
+     为什么提到布局之前：右侧「本页导航」必须在渲染任何 section **之前**就知道
+     ⑦b 到底渲不渲染（守卫条件 = $netKeys 或 $profiles 非空），否则目录会挂出死链。
+     这段是从 ⑦b 原地搬上来的，取值口径一字未改。 */}}
+{{ $netMap := dict }}
+{{ range $r := $stats.rows }}
+  {{ range split $r.networks ", " }}
+    {{ if ne . "" }}
+      {{ $cur := index $netMap . | default slice }}
+      {{ if not (in $cur $r.provider) }}{{ $netMap = merge $netMap (dict . ($cur | append $r.provider)) }}{{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $netKeys := slice }}
+{{ range $n, $v := $netMap }}{{ $netKeys = $netKeys | append $n }}{{ end }}
+{{/* 运营商画像（data/carriers.toml，可选）：profiles[].name 与 carriers[]/networks 连接；
+     info.cities = 主要城市清单；info.detail[] = 逐运营商 strong/weak（可选，缺省不渲染） */}}
+{{ $profiles := dict }}
+{{ $carrierInfo := dict }}
+{{ with index $d.carriers .Params.iso }}
+  {{ range .profiles }}{{ $profiles = merge $profiles (dict .name .) }}{{ end }}
+  {{ with .info }}{{ $carrierInfo = . }}{{ end }}
+{{ end }}
+{{ $details := dict }}
+{{ range $det := $carrierInfo.detail }}{{ $details = merge $details (dict $det.carrier $det) }}{{ end }}
+
+{{/* ── 本页导航（右侧吸顶 + 手机折叠）的章节表 ────────────────────────────────
+     国家 Hub 页的 H2 全部由**本模板**渲染，md 正文只有段落、没有标题 ——
+     所以不能像 guides/single.html 那样扫 .Content，只能在这里显式声明。
+     id 必须与各 <section aria-labelledby="..."> 严格一致（改 section 时同步改这里）；
+     条件分支也必须与该 section 的渲染守卫一致，否则目录会挂出点不动的死链。
+     label 走 i18n：服务德语站，同时本身就是一组页内锚文本。 */}}
+{{ $toc := slice
+  (dict "id" "verdict"   "label" (i18n "compare_single__toc_verdict"))
+  (dict "id" "table"     "label" (i18n "compare_single__toc_table"))
+}}
+{{ if .Content }}{{ $toc = $toc | append (dict "id" "analysis" "label" (i18n "compare_single__toc_analysis")) }}{{ end }}
+{{ if $unlimited }}{{ $toc = $toc | append (dict "id" "fup" "label" (i18n "compare_single__toc_fup")) }}{{ end }}
+{{ $toc = $toc | append (dict "id" "choose" "label" (i18n "compare_single__toc_choose")) }}
+{{ $toc = $toc | append (dict "id" "bytrip" "label" (i18n "compare_single__toc_bytrip")) }}
+{{ $toc = $toc | append (dict "id" "providers" "label" (i18n "compare_single__toc_providers")) }}
+{{ if $country.quirks }}{{ $toc = $toc | append (dict "id" "quirks" "label" (i18n "compare_single__toc_quirks")) }}{{ end }}
+{{ if or (gt (len $netKeys) 0) (gt (len $profiles) 0) }}{{ $toc = $toc | append (dict "id" "networks" "label" (i18n "compare_single__toc_networks")) }}{{ end }}
+{{ $toc = $toc | append (dict "id" "netdata" "label" (i18n "compare_single__toc_netdata")) }}
+{{ if $faqs }}{{ $toc = $toc | append (dict "id" "faq" "label" (i18n "compare_single__toc_faq")) }}{{ end }}
+{{ $toc = $toc | append (dict "id" "next" "label" (i18n "compare_single__toc_next")) }}
+{{ $toc = $toc | append (dict "id" "guides" "label" (i18n "compare_single__toc_guides")) }}
+
 <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
   {{ partial "breadcrumbs.html" . }}
+
+  {{/* ── 手机/平板：折叠式「本页导航」。桌面这一块由右侧吸顶栏承担（xl 起）。
+       放在首屏之前，是为了长页在手机上也有跳转入口，而不是一路滚到底。 ── */}}
+  <details class="mt-5 rounded-2xl border border-ink-100 bg-ink-50/50 xl:hidden">
+    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-ink-900">
+      <span>{{ i18n "g_on_this_page" | safeHTML }}</span>
+      <span class="shrink-0 text-lg font-light text-ink-300" aria-hidden="true">+</span>
+    </summary>
+    <div class="px-5 pb-5">{{ partial "compare-toc.html" (dict "items" $toc) }}</div>
+  </details>
+
+  {{/* ── 双栏：正文 + 右侧吸顶导航。栅格断点定在 xl（1280px）——
+       lg 起就收窄会把主表（min-w 880px）挤成横向滚动条，得不偿失。
+
+       ⚠ 这里**不能**写 `items-start`：那会让侧栏自身高度 = 目录卡高度，
+       `sticky top-24` 就没有可滚动的行程，等于完全不吸顶（表现为一滚就走）。
+       用默认的 stretch，侧栏跟着正文拉到整行高度，内层 sticky 才真正生效。
+       2026-10-05 用户实测反馈「右侧要吸顶」——根因就是这一处。 ── */}}
+  <div class="grid gap-10 xl:grid-cols-[minmax(0,1fr)_15rem]">
+  <div class="min-w-0">
 
   {{/* ── ① Hero ── */}}
   <header class="mt-6 grid items-center gap-8 lg:grid-cols-[1.25fr_1fr]">
@@ -45,7 +139,7 @@
         <span class="badge bg-brand-50 text-brand-700">{{ $country.region }}</span>
         {{ with $stats.checkedDate }}<span class="badge bg-ink-50 text-ink-500">✓ Prices checked {{ . }}</span>{{ end }}
       </div>
-      <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">Best eSIM for {{ $country.name }} in {{ now.Year }}</h1>
+      <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">Best eSIM for {{ $country.alias | default $country.name }} in {{ now.Year }}</h1>
       <p class="mt-4 max-w-xl text-lg leading-relaxed text-ink-600">
         Every prepaid eSIM plan for {{ $country.name }} from every major provider, ranked by the same formulas — $/GB, $/day and fair-use fine print decoded.
       </p>
@@ -85,6 +179,37 @@
       )
     ) | safeJS }}
   </script>
+
+  {{/* ItemList 结构化数据：主表的**默认排序**（$/GB 升序、无限档最后）前 10 名。
+       与上面的 Product/AggregateOffer 分工不同 ——
+       Product 说的是「这个目的地有什么、价格区间多大」，
+       ItemList 说的是「按什么顺序排、具体哪几条」，每条指向对应的品牌×国家子页
+       （站内可爬链接，不是出站）。榜单用真实价格库排序，是页面主表的前 10 行，
+       与正文所见完全一致，不另造口径。 */}}
+  {{ $itemList := slice }}
+  {{ range $i, $r := first 10 $sorted }}
+    {{ $u := printf "%scompare/%s/%s/" $.Site.BaseURL $country.slug $r.key }}
+    {{ with site.GetPage (printf "/compare/%s/%s" $country.slug $r.key) }}{{ $u = .Permalink }}{{ end }}
+    {{ $itemList = $itemList | append (dict
+      "@type" "ListItem"
+      "position" (add $i 1)
+      "name" (printf "%s %s" $r.provider $r.name)
+      "url" $u
+    ) }}
+  {{ end }}
+  {{ with $itemList }}
+  <script type="application/ld+json">
+    {{ jsonify (dict "indent" "  ") (dict
+      "@context" "https://schema.org"
+      "@type" "ItemList"
+      "name" (printf "Best %s eSIM plans ranked by cost per GB" $country.name)
+      "description" (printf "The first 10 rows of our %s comparison table in default sort order - best cost per GB first, unlimited plans last. All %d tracked plans are listed on the page." $country.name $stats.planCount)
+      "itemListOrder" "https://schema.org/ItemListOrderAscending"
+      "numberOfItems" (len $sorted)
+      "itemListElement" .
+    ) | safeJS }}
+  </script>
+  {{ end }}
 
   {{/* ── ② TL;DR 快速结论 ── */}}
   <section class="mt-14" aria-labelledby="verdict">
@@ -440,15 +565,39 @@
     </div>
   </section>
 
-  {{/* ── ⑥ 品牌逐个点评 ── */}}
+  {{/* ── ⑥ 品牌在本国的实测表现（逐国唯一，反同质化）─────────────────────────
+       卡片只讲「在这个国家才会变的事」：档位数、最低价、最佳 $/GB、骑的本地网、
+       以及一条由数据算出来的结论。通用画像（tagline/优缺点）不在这里重复，
+       各自的 /esim-providers/<key>/ 已经写了一份，链接就在卡片底部。 ── */}}
   <section class="mt-14" aria-labelledby="providers">
     <p class="eyebrow">{{ i18n "compare_single__the_lineup" | safeHTML }}</p>
     <h2 id="providers" class="mt-2 text-2xl font-bold md:text-3xl">Which eSIM providers cover {{ $country.name }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_single__prov_lead" (dict "n" (len $stats.providers) "country" $country.name) | safeHTML }}</p>
     <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {{ range $stats.providers }}
         {{ $pk := . }}
         {{ $p := index $d.providers . }}
         {{ $min := index $provMin . | default 0.0 }}
+        {{ $a := index $provAgg $pk }}
+        {{ $size := partial "plan-data-label.html" $a.minGB }}
+        {{ $days := i18n "compare_single__prov_days_n" (dict "n" $a.minDays) }}
+        {{ if eq (int $a.minDays) 1 }}{{ $days = i18n "compare_single__prov_days_1" (dict "n" $a.minDays) }}{{ end }}
+        {{/* 结论由数据算：本国最低价命中 / 本国最佳 $/GB 命中 / 比最佳贵多少 */}}
+        {{ $hasMetered := lt (float $stats.minPerGB) 900000.0 }}
+        {{ $isCheap := and (gt (float $a.minPrice) 0.0) (eq (float $a.minPrice) (float $stats.minPrice)) }}
+        {{ $isBest := and $hasMetered (gt (float $a.bestPerGB) 0.0) (eq (float $a.bestPerGB) (float $stats.minPerGB)) }}
+        {{ $tag := "" }}
+        {{ if and $isCheap $isBest }}
+          {{ $tag = i18n "compare_single__prov_tag_both" }}
+        {{ else if $isCheap }}
+          {{ $tag = i18n "compare_single__prov_tag_cheapest" (dict "total" (len $stats.providers)) }}
+        {{ else if $isBest }}
+          {{ $tag = i18n "compare_single__prov_tag_bestvalue" (dict "total" (len $stats.providers)) }}
+        {{ else if eq (float $a.bestPerGB) 0.0 }}
+          {{ $tag = i18n "compare_single__prov_tag_unlimited" (dict "country" $country.name) }}
+        {{ else if $hasMetered }}
+          {{ $tag = i18n "compare_single__prov_tag_above" (dict "pct" (printf "%.0f" (mul (sub (div (float $a.bestPerGB) (float $stats.minPerGB)) 1.0) 100))) }}
+        {{ end }}
         <div class="card card-hover scroll-mt-24 p-6" id="{{ $pk }}">
           <div class="flex items-center justify-between gap-3">
             <div class="flex items-center gap-3">
@@ -462,16 +611,41 @@
             </div>
             {{ if gt $min 0.0 }}<span class="badge bg-ink-50 text-ink-600 tnum">from ${{ printf "%.2f" $min }}</span>{{ end }}
           </div>
-          <p class="mt-3 text-sm text-ink-500">{{ $p.tagline }}</p>
+          <dl class="mt-4 border-t border-ink-100 text-sm">
+            <div class="flex items-baseline justify-between gap-3 border-b border-ink-50 py-2">
+              <dt class="shrink-0 text-ink-400">{{ i18n "compare_single__prov_row_plans" | safeHTML }}</dt>
+              <dd class="text-right font-medium text-ink-800 tnum">{{ if gt (int $a.ul) 0 }}{{ i18n "compare_single__prov_plans_ul_v" (dict "n" $a.count "ul" $a.ul) }}{{ else }}{{ i18n "compare_single__prov_plans_v" (dict "n" $a.count) }}{{ end }}</dd>
+            </div>
+            {{ if gt (float $a.minPrice) 0.0 }}
+            <div class="flex items-baseline justify-between gap-3 border-b border-ink-50 py-2">
+              <dt class="shrink-0 text-ink-400">{{ i18n "compare_single__prov_row_cheapest" | safeHTML }}</dt>
+              <dd class="text-right font-medium text-ink-800 tnum">{{ i18n "compare_single__prov_cheapest_v" (dict "price" (printf "%.2f" $a.minPrice) "size" $size "days" $days) }}</dd>
+            </div>
+            {{ end }}
+            <div class="flex items-baseline justify-between gap-3 border-b border-ink-50 py-2">
+              <dt class="shrink-0 text-ink-400">{{ i18n "compare_single__prov_row_value" | safeHTML }}</dt>
+              <dd class="text-right font-medium text-ink-800 tnum">
+                {{ if gt (float $a.bestGB) 0.0 }}
+                  {{ $bvSize := partial "plan-data-label.html" $a.bestGB }}
+                  {{ $bvDays := i18n "compare_single__prov_days_n" (dict "n" $a.bestDays) }}
+                  {{ if eq (int $a.bestDays) 1 }}{{ $bvDays = i18n "compare_single__prov_days_1" (dict "n" $a.bestDays) }}{{ end }}
+                  {{ i18n "compare_single__prov_value_v" (dict "pergb" (printf "%.2f" $a.bestPerGB) "size" $bvSize "days" $bvDays) }}
+                {{ else }}
+                  {{ i18n "compare_single__prov_unlimited_v" (dict "price" (printf "%.2f" $a.minPrice) "n" $a.count) }}
+                {{ end }}
+              </dd>
+            </div>
+            {{ with $a.networks }}
+            <div class="flex items-baseline justify-between gap-3 py-2">
+              <dt class="shrink-0 text-ink-400">{{ i18n "compare_single__prov_row_networks" | safeHTML }}</dt>
+              <dd class="text-right text-xs font-medium leading-relaxed text-ink-600">{{ . }}</dd>
+            </div>
+            {{ end }}
+          </dl>
+          {{ with $tag }}<p class="mt-3 rounded-xl bg-brand-50/70 px-3 py-2 text-xs font-semibold leading-relaxed text-brand-800">{{ . }}</p>{{ end }}
           {{ with $p.promo_code }}
             <p class="mt-3 text-xs text-ink-500">{{ i18n "g_promo_code" | safeHTML }} <code class="rounded bg-brand-50 px-1.5 py-0.5 font-mono font-bold text-brand-700">{{ . }}</code> — {{ $p.promo_label }} · <a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "compare_single__all_deals" | safeHTML }}</a></p>
           {{ end }}
-          <ul class="mt-4 space-y-1.5 text-sm text-ink-700">
-            {{ range first 3 $p.strengths }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ . }}</li>{{ end }}
-          </ul>
-          <ul class="mt-2.5 space-y-1.5 text-sm text-ink-500">
-            {{ range first 2 $p.weaknesses }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ . }}</li>{{ end }}
-          </ul>
           <div class="mt-4 flex flex-wrap items-center gap-3">
             {{ with site.GetPage (printf "/compare/%s/%s" $country.slug $pk) }}
               <a href="{{ .RelPermalink }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:underline">
@@ -513,28 +687,9 @@
   </section>
   {{ end }}
 
-  {{/* ── ⑦b 网络 × 运营商归属（逐国唯一，反同质化；信息增量=谁骑在哪个网上）── */}}
-  {{ $netMap := dict }}
-  {{ range $r := $stats.rows }}
-    {{ range split $r.networks ", " }}
-      {{ if ne . "" }}
-        {{ $cur := index $netMap . | default slice }}
-        {{ if not (in $cur $r.provider) }}{{ $netMap = merge $netMap (dict . ($cur | append $r.provider)) }}{{ end }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
-  {{ $netKeys := slice }}
-  {{ range $n, $v := $netMap }}{{ $netKeys = $netKeys | append $n }}{{ end }}
-  {{/* 运营商画像（data/carriers.toml，可选）：profiles[].name 与 carriers[]/networks 连接；
-       info.cities = 主要城市清单；info.detail[] = 逐运营商 strong/weak（可选，缺省不渲染） */}}
-  {{ $profiles := dict }}
-  {{ $carrierInfo := dict }}
-  {{ with index $d.carriers .Params.iso }}
-    {{ range .profiles }}{{ $profiles = merge $profiles (dict .name .) }}{{ end }}
-    {{ with .info }}{{ $carrierInfo = . }}{{ end }}
-  {{ end }}
-  {{ $details := dict }}
-  {{ range $det := $carrierInfo.detail }}{{ $details = merge $details (dict $det.carrier $det) }}{{ end }}
+  {{/* ── ⑦b 网络 × 运营商归属（逐国唯一，反同质化；信息增量=谁骑在哪个网上）──
+       $netMap / $netKeys / $profiles / $carrierInfo / $details 的计算已提前到本文件顶部
+       （右侧「本页导航」需要提前判断这一节渲不渲染）。此处只留渲染守卫。 */}}
   {{ if or (gt (len $netKeys) 0) (gt (len $profiles) 0) }}
   <section class="mt-14" aria-labelledby="networks">
     <p class="eyebrow">{{ i18n "g_networks" | safeHTML }}</p>
@@ -618,6 +773,65 @@
       <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "compare_single__all_the_carriers_above_serve_these_metros_with_full_spee" | safeHTML }}</p>
     </div>
     {{ end }}
+    {{- /* 按旅行类型选网（可选：data/carriers.toml 的 <ISO>.info.trips；缺 trips 的国家整块不渲染）
+        复用本节已算好的 $netMap（运营商→品牌名）与 $details（strong 文案），不另立口径。
+        trip → 网络 → 该网络上最优 $/GB 套餐：全部构建期从价格库推导，零写死。
+        ⚠ 全部动作用 {{- -}} 裁剪空白：守卫不渲染时必须零输出，否则 50 个国家页全进回归 diff。 */ -}}
+    {{- $tripText := dict
+      "city" (dict "head" (i18n "compare_single__trip_city") "sub" (i18n "compare_single__trip_city_sub"))
+      "road" (dict "head" (i18n "compare_single__trip_road") "sub" (i18n "compare_single__trip_road_sub"))
+      "parks" (dict "head" (i18n "compare_single__trip_parks") "sub" (i18n "compare_single__trip_parks_sub"))
+      "mixed" (dict "head" (i18n "compare_single__trip_mixed") "sub" (i18n "compare_single__trip_mixed_sub"))
+    -}}
+    {{- with $carrierInfo.trips }}
+    {{/* 全部 trip 的运营商都被所有品牌覆盖时（美国就是这种市场），把这句实话提到顶部说一次，
+        不在每张卡里重复；只有存在品牌差集时才逐卡标注谁骑在上面。 */}}
+    {{ $anyPartial := false }}
+    {{ range . }}{{ $n := index $netMap .carrier }}{{ if and $n (lt (len $n) $stats.providerCount) }}{{ $anyPartial = true }}{{ end }}{{ end }}
+    <div class="card mt-4 p-5" id="trip-network">
+      <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "compare_single__trips_head" | safeHTML }}</h3>
+      <p class="mt-1.5 max-w-3xl text-xs leading-relaxed text-ink-500">{{ i18n "compare_single__trips_intro" | safeHTML }}</p>
+      {{ if not $anyPartial }}<p class="mt-2 max-w-3xl text-xs leading-relaxed text-ink-400">{{ i18n "compare_single__trips_all_ride" (dict "total" $stats.providerCount) | safeHTML }}</p>{{ end }}
+      <div class="mt-4 grid gap-3 md:grid-cols-2">
+        {{ range $t := . }}
+        {{ $tt := index $tripText $t.key }}
+        {{ $names := slice }}{{ with index $netMap $t.carrier }}{{ $names = . }}{{ end }}
+        {{/* 该行程类型「够用且最便宜」的套餐：① 数据量+有效期都够 → ② 只要求数据量够 → ③ 兜底全场最便宜 */}}
+        {{ $hit := slice }}{{ $big := slice }}{{ $all := slice }}
+        {{ range $stats.rows }}
+          {{ if in $names .provider }}
+            {{ $all = $all | append . }}
+            {{ if not .isUnlimited }}
+              {{ if ge .gb (float ($t.min_gb | default 0)) }}{{ $big = $big | append . }}{{ end }}
+              {{ if and (ge .gb (float ($t.min_gb | default 0))) (ge .days (int ($t.min_days | default 0))) }}{{ $hit = $hit | append . }}{{ end }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ $pick := slice }}{{ $pool := slice }}
+        {{ if gt (len $hit) 0 }}{{ $pool = $hit }}{{ else if gt (len $big) 0 }}{{ $pool = $big }}{{ else }}{{ $pool = $all }}{{ end }}
+        {{ if gt (len $pool) 0 }}{{ $pick = index (sort $pool "price" "asc") 0 }}{{ end }}
+        {{ with $tt }}
+        <div class="rounded-xl border border-ink-100 p-4">
+          <div class="flex flex-wrap items-center gap-2">
+            <p class="font-display text-sm font-bold text-ink-950">{{ .head }}</p>
+            <span class="badge bg-brand-50 text-brand-700">{{ $t.carrier }}</span>
+          </div>
+          <p class="mt-1.5 text-xs leading-relaxed text-ink-500">{{ .sub }}</p>
+          {{ with index $details $t.carrier }}{{ with .strong }}<p class="mt-2 text-xs leading-relaxed text-ink-600">{{ . }}</p>{{ end }}{{ end }}
+          {{/* 只有存在品牌差集时才在这里标注谁骑在上面（全都能骑的实话已在顶部说过一次） */}}
+          {{ if lt (len $names) $stats.providerCount }}
+            <p class="mt-2.5 text-xs leading-relaxed text-ink-400">{{ i18n "compare_single__trips_on_network" (dict "n" (len $names) "total" $stats.providerCount "carrier" $t.carrier) | safeHTML }}</p>
+          {{ end }}
+          {{ if gt (len $pick) 0 }}
+          <p class="mt-1.5 text-xs font-semibold text-ink-800">{{ i18n "compare_single__trips_fit" | safeHTML }} <span class="text-brand-700">${{ printf "%.2f" $pick.price }}</span> <span class="font-normal text-ink-500">· {{ $pick.provider }} {{ $pick.name }}</span></p>
+          <a href="{{ printf "/compare/%s/%s/" $country.slug $pick.key }}" class="mt-1.5 inline-block text-xs font-semibold text-brand-700 hover:underline">{{ i18n "compare_single__see_provider_plan" (dict "provider" $pick.provider) | safeHTML }}</a>
+          {{ end }}
+        </div>
+        {{ end }}
+        {{ end }}
+      </div>
+    </div>
+    {{- end }}
     {{ if gt (len $profiles) 0 }}<p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "compare_single__speeds_are_typical_real_world_downloads_4g_floor_to_good" | safeHTML }}</p>{{ end }}
   </section>
 
@@ -764,13 +978,15 @@
       {{ range $i, $l := . }}
       {{ $anchor := printf "%s eSIM" $l.name }}
       {{ if eq (mod $i 3) 1 }}{{ $anchor = printf "eSIM for %s" $l.name }}{{ else if eq (mod $i 3) 2 }}{{ $anchor = printf "%s eSIM prices" $l.name }}{{ end }}
-      <a href="{{ $l.url }}" class="card card-hover group flex items-center gap-4 p-4">
-        <img src="{{ $l.flag | relURL }}" alt="" class="h-9 w-[3.25rem] rounded-lg object-cover ring-1 ring-ink-100" loading="lazy">
-        <span class="flex-1">
-          <span class="block font-semibold text-ink-900 group-hover:text-brand-700">{{ $anchor }}</span>
-          {{ if gt $l.min 0.0 }}<span class="mt-0.5 block text-xs text-ink-400 tnum">from ${{ printf "%.2f" $l.min }} · {{ $l.count }} brands</span>{{ end }}
+      {{/* 五列窄卡：卡片内改为竖排——横排时国旗+箭头吃掉 ~84px，文字只剩约 50px 宽会被挤成竖排，
+           竖排后标题独占整卡宽度，窄断点也读得顺。 */}}
+      <a href="{{ $l.url }}" class="card card-hover group flex flex-col p-4">
+        <span class="flex items-start justify-between gap-2">
+          <img src="{{ $l.flag | relURL }}" alt="" class="h-9 w-[3.25rem] shrink-0 rounded-lg object-cover ring-1 ring-ink-100" loading="lazy">
+          <span class="text-ink-300 transition-colors group-hover:text-brand-600" aria-hidden="true">→</span>
         </span>
-        <span class="text-ink-300 transition-colors group-hover:text-brand-600" aria-hidden="true">→</span>
+        <span class="mt-3 block text-sm font-semibold leading-snug text-ink-950 group-hover:text-brand-700">{{ $anchor }}</span>
+        {{ if gt $l.min 0.0 }}<span class="mt-1.5 block text-xs leading-relaxed text-ink-400 tnum">from ${{ printf "%.2f" $l.min }} · {{ $l.count }} brands</span>{{ end }}
       </a>
       {{ end }}
     </div>
@@ -813,5 +1029,73 @@
       </p>
     </div>
   </section>
+  </div>
+
+  {{/* ── 右侧吸顶栏：只保留「本页导航」。
+       2026-10-05 按用户要求移除了原先挂在这里的
+       「Popular destinations / eSIM plans travellers compare next」内链卡
+       （与正文 ⑨a「eSIM for your next destination」重复且噪声大）。
+       整栏限高并允许内部滚动，目录条目多时 sticky 仍然生效；移动端整块不渲染。 ── */}}
+  <aside class="hidden xl:block">
+    <div class="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-1">
+      <div class="card p-5">
+        <p class="eyebrow">{{ i18n "g_on_this_page" | safeHTML }}</p>
+        <div class="mt-3">{{ partial "compare-toc.html" (dict "items" $toc) }}</div>
+      </div>
+    </div>
+  </aside>
+
+  </div>
 </div>
+
+{{/* ── 目录高亮跟随（渐进增强）：与 guides/single.html 同一套做法 ——
+     JS 只写 aria-current 属性，激活样式全由 CSS 的 [aria-current] 选择器承担，
+     所以无 JS、爬虫抓取时目录依然完整可点可跳。页面上有两份目录（折叠 + 吸顶），
+     setActive 会把同一 id 的所有链接一起点亮。 ── */}}
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('[data-toc] a[data-toc-link]'));
+  if (!links.length) return;
+
+  var seen = {}, heads = [];
+  links.forEach(function (a) {
+    var id = decodeURIComponent(a.hash.slice(1));
+    if (!id || seen[id]) return;
+    var el = document.getElementById(id);
+    if (el) { seen[id] = 1; heads.push({ id: id, el: el }); }
+  });
+  if (!heads.length) return;
+
+  var current = null;
+  function setActive(id) {
+    if (id === current) return;
+    current = id;
+    links.forEach(function (a) {
+      if (decodeURIComponent(a.hash.slice(1)) === id) {
+        a.setAttribute('aria-current', 'true');
+      } else {
+        a.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var offset = 120, best = heads[0].id;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].el.getBoundingClientRect().top <= offset) best = heads[i].id;
+      else break;
+    }
+    setActive(best);
+  }
+  function onScroll() {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+</script>
 {{ end }}

@@ -93,7 +93,7 @@ Read the two columns as independent verdicts on the same three networks, one ave
 
 ## Seoul against the rest of Korea
 
-Korea is small, dense and highly urbanised, which compresses the coverage problem compared with the United States or Canada. Even so, the three networks separate in the places a visitor is most likely to go.
+Korea is small, dense and highly urbanised, which compresses the coverage problem compared with the USA or Canada. Even so, the three networks separate in the places a visitor is most likely to go.
 
 | | What to expect | Which network |
 |---|---|---|

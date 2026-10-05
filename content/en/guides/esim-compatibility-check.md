@@ -5,7 +5,7 @@ hero: "travel-esim-illustration-012.webp"
 hero_alt: "A magnifying glass over a smartphone checking whether the device supports eSIM"
 date: 2026-10-01
 faq_heading: "Will your phone work with a travel eSIM"
-prompt_answer: "The 30-second compatibility check is the EID test run from the phone's own dialer. Dial *#06# and if the screen shows an EID number, the phone has the eSIM chip. Carrier locking is the second check, because a locked handset can carry the hardware and still refuse a travel eSIM. The same model name can also differ by market, so a phone bought in mainland China or a carrier-locked United States unit behaves differently from the same model sold elsewhere."
+prompt_answer: "The 30-second compatibility check is the EID test run from the phone's own dialer. Dial *#06# and if the screen shows an EID number, the phone has the eSIM chip. Carrier locking is the second check, because a locked handset can carry the hardware and still refuse a travel eSIM. The same model name can also differ by market, so a phone bought in mainland China or a carrier-locked USA unit behaves differently from the same model sold elsewhere."
 h2_answer: "Whether your phone passes the eSIM check"
 h2_facts: "eSIM compatibility facts"
 facts:

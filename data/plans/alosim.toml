@@ -6321,98 +6321,98 @@ checked = "2026-09-30"
 networks = ["EE", "Vodafone", "O2", "Three"]
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 1
 days = 1
 type = "data"
 price = 3.50
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 3
 days = 1
 type = "data"
 price = 4.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 1
 days = 3
 type = "data"
 price = 4.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 1
 days = 7
 type = "data"
 price = 4.50
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 1
 days = 5
 type = "data"
 price = 4.50
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 3
 days = 1
 type = "data"
 price = 5.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 5
 days = 3
 type = "data"
 price = 6.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 2
 days = 15
 type = "data"
 price = 6.50
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 5
 days = 5
 type = "data"
 price = 7.50
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 5
 days = 7
 type = "data"
 price = 8.50
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 5
 days = 10
 type = "data"
 price = 9.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 3
 days = 30
 type = "data"
 price = 9.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 5
 days = 15
 type = "data"
 price = 9.50
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 0
 days = 3
 type = "unlimited"
@@ -6420,49 +6420,49 @@ price = 11.50
 fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 10
 days = 5
 type = "data"
 price = 12.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 5
 days = 30
 type = "data"
 price = 13.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 10
 days = 7
 type = "data"
 price = 13.50
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 10
 days = 10
 type = "data"
 price = 14.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 10
 days = 15
 type = "data"
 price = 14.50
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 20
 days = 7
 type = "data"
 price = 17.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 0
 days = 5
 type = "unlimited"
@@ -6470,35 +6470,35 @@ price = 19.00
 fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 20
 days = 10
 type = "data"
 price = 20.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 10
 days = 30
 type = "data"
 price = 20.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 20
 days = 15
 type = "data"
 price = 22.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 50
 days = 10
 type = "data"
 price = 25.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 0
 days = 7
 type = "unlimited"
@@ -6506,21 +6506,21 @@ price = 27.00
 fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 50
 days = 15
 type = "data"
 price = 30.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 20
 days = 30
 type = "data"
 price = 32.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 0
 days = 10
 type = "unlimited"
@@ -6528,7 +6528,7 @@ price = 35.00
 fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 0
 days = 15
 type = "unlimited"
@@ -6536,14 +6536,14 @@ price = 49.00
 fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 50
 days = 30
 type = "data"
 price = 50.00
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 0
 days = 20
 type = "unlimited"
@@ -6551,7 +6551,7 @@ price = 60.00
 fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
 
 [[GB.plans]]
-name = "united kingdom (uk)"
+name = "UK"
 gb = 0
 days = 30
 type = "unlimited"
@@ -6563,77 +6563,77 @@ checked = "2026-09-30"
 networks = ["T-Mobile", "AT&T", "Verizon"]
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 1
 days = 1
 type = "data"
 price = 3.50
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 3
 days = 1
 type = "data"
 price = 4.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 1
 days = 3
 type = "data"
 price = 4.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 1
 days = 5
 type = "data"
 price = 4.50
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 3
 days = 1
 type = "data"
 price = 5.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 1
 days = 7
 type = "data"
 price = 5.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 5
 days = 3
 type = "data"
 price = 7.50
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 2
 days = 15
 type = "data"
 price = 8.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 3
 days = 30
 type = "data"
 price = 9.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 5
 days = 5
 type = "data"
 price = 10.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 0
 days = 3
 type = "unlimited"
@@ -6641,42 +6641,42 @@ price = 11.50
 fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 5
 days = 7
 type = "data"
 price = 12.50
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 5
 days = 10
 type = "data"
 price = 13.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 5
 days = 15
 type = "data"
 price = 13.50
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 5
 days = 30
 type = "data"
 price = 14.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 10
 days = 5
 type = "data"
 price = 15.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 0
 days = 5
 type = "unlimited"
@@ -6684,42 +6684,42 @@ price = 19.00
 fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 10
 days = 7
 type = "data"
 price = 21.50
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 10
 days = 10
 type = "data"
 price = 22.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 10
 days = 15
 type = "data"
 price = 22.50
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 10
 days = 30
 type = "data"
 price = 23.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 20
 days = 7
 type = "data"
 price = 24.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 0
 days = 7
 type = "unlimited"
@@ -6727,21 +6727,21 @@ price = 27.00
 fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 20
 days = 10
 type = "data"
 price = 28.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 50
 days = 10
 type = "data"
 price = 31.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 0
 days = 10
 type = "unlimited"
@@ -6749,35 +6749,35 @@ price = 35.00
 fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 20
 days = 15
 type = "data"
 price = 36.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 20
 days = 30
 type = "data"
 price = 37.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 50
 days = 15
 type = "data"
 price = 40.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 50
 days = 30
 type = "data"
 price = 42.00
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 0
 days = 15
 type = "unlimited"
@@ -6785,7 +6785,7 @@ price = 49.00
 fup_note = "3 GB per day at full speed, then ∞ at 1kbps"
 
 [[US.plans]]
-name = "united states (usa)"
+name = "USA"
 gb = 0
 days = 30
 type = "unlimited"

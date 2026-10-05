@@ -94,9 +94,9 @@ One reading habit matters here. The two firms disagree on some categories becaus
 
 The CRTC, which regulates Canadian telecoms, publishes consumer guidance on [roaming charges and how they work](https://crtc.gc.ca/eng/phone/mobile/trav.htm), and the Wireless Code it enforces sets the rules a Canadian provider must follow on billing. That matters less for a prepaid SIM than for a contract, but it is worth knowing that Canadian consumer protection is comparatively strong. On price, a travel eSIM is the simpler purchase. An eSIM profile is a downloadable standard rather than a chip, which is why it can be bought from abroad at all — a point the [GSMA](https://www.gsma.com/esim/) documents for anyone who wants the mechanics.
 
-## Does a Canada eSIM work in the United States
+## Does a Canada eSIM work in the USA
 
-Usually you need a North America plan, not a Canada-only one. A Canada eSIM is provisioned for Canadian networks and stops at the border, and there is no continental free-roaming arrangement. If your trip crosses into the United States — and a great many Canadian itineraries do — buy a regional plan and confirm the country list before paying. The carrier detail on the other side is on our [United States eSIM networks](/networks/united-states/) page.
+Usually you need a North America plan, not a Canada-only one. A Canada eSIM is provisioned for Canadian networks and stops at the border, and there is no continental free-roaming arrangement. If your trip crosses into the USA — and a great many Canadian itineraries do — buy a regional plan and confirm the country list before paying. The carrier detail on the other side is on our [USA eSIM networks](/networks/united-states/) page.
 
 That also changes the arithmetic. A North America plan costs more per gigabyte than a Canada-only one because it covers a larger market, so buy it only if the itinerary actually crosses. If your trip stays inside Canada, a single-country plan is cheaper and simpler, and the [allowance calculator](/tools/) will size it. Current discounts sit on the [eSIM deals we keep updated](/esim-deals/).
 

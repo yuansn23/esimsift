@@ -13386,21 +13386,21 @@ checked = "2026-09-30"
 networks = ["EE", "Vodafone", "O2", "Three"]
 
 [[GB.plans]]
-name = "United Kingdom eSIM 1GB / 7 Days"
+name = "UK eSIM 1GB / 7 Days"
 gb = 1
 days = 7
 type = "data"
 price = 1.00
 
 [[GB.plans]]
-name = "United Kingdom eSIM 3GB / 14 Days"
+name = "UK eSIM 3GB / 14 Days"
 gb = 3
 days = 14
 type = "data"
 price = 3.00
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 1 Day"
+name = "UK eSIM Unlimited Data / 1 Day"
 gb = 0
 days = 1
 type = "unlimited"
@@ -13408,7 +13408,7 @@ price = 3.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 2 Days"
+name = "UK eSIM Unlimited Data / 2 Days"
 gb = 0
 days = 2
 type = "unlimited"
@@ -13416,21 +13416,21 @@ price = 4.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM 5GB / 21 Days"
+name = "UK eSIM 5GB / 21 Days"
 gb = 5
 days = 21
 type = "data"
 price = 4.00
 
 [[GB.plans]]
-name = "United Kingdom eSIM 10GB / 30 Days"
+name = "UK eSIM 10GB / 30 Days"
 gb = 10
 days = 30
 type = "data"
 price = 6.00
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 3 Days"
+name = "UK eSIM Unlimited Data / 3 Days"
 gb = 0
 days = 3
 type = "unlimited"
@@ -13438,7 +13438,7 @@ price = 6.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 4 Days"
+name = "UK eSIM Unlimited Data / 4 Days"
 gb = 0
 days = 4
 type = "unlimited"
@@ -13446,7 +13446,7 @@ price = 7.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 5 Days"
+name = "UK eSIM Unlimited Data / 5 Days"
 gb = 0
 days = 5
 type = "unlimited"
@@ -13454,14 +13454,14 @@ price = 9.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM 20GB / 30 Days"
+name = "UK eSIM 20GB / 30 Days"
 gb = 20
 days = 30
 type = "data"
 price = 10.00
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 6 Days"
+name = "UK eSIM Unlimited Data / 6 Days"
 gb = 0
 days = 6
 type = "unlimited"
@@ -13469,7 +13469,7 @@ price = 11.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 8 Days"
+name = "UK eSIM Unlimited Data / 8 Days"
 gb = 0
 days = 8
 type = "unlimited"
@@ -13477,7 +13477,7 @@ price = 13.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 7 Days"
+name = "UK eSIM Unlimited Data / 7 Days"
 gb = 0
 days = 7
 type = "unlimited"
@@ -13485,7 +13485,7 @@ price = 13.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 9 Days"
+name = "UK eSIM Unlimited Data / 9 Days"
 gb = 0
 days = 9
 type = "unlimited"
@@ -13493,7 +13493,7 @@ price = 15.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 11 Days"
+name = "UK eSIM Unlimited Data / 11 Days"
 gb = 0
 days = 11
 type = "unlimited"
@@ -13501,7 +13501,7 @@ price = 16.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 10 Days"
+name = "UK eSIM Unlimited Data / 10 Days"
 gb = 0
 days = 10
 type = "unlimited"
@@ -13509,7 +13509,7 @@ price = 16.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 12 Days"
+name = "UK eSIM Unlimited Data / 12 Days"
 gb = 0
 days = 12
 type = "unlimited"
@@ -13517,7 +13517,7 @@ price = 17.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 13 Days"
+name = "UK eSIM Unlimited Data / 13 Days"
 gb = 0
 days = 13
 type = "unlimited"
@@ -13525,7 +13525,7 @@ price = 18.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 14 Days"
+name = "UK eSIM Unlimited Data / 14 Days"
 gb = 0
 days = 14
 type = "unlimited"
@@ -13533,7 +13533,7 @@ price = 19.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 15 Days"
+name = "UK eSIM Unlimited Data / 15 Days"
 gb = 0
 days = 15
 type = "unlimited"
@@ -13541,7 +13541,7 @@ price = 20.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 16 Days"
+name = "UK eSIM Unlimited Data / 16 Days"
 gb = 0
 days = 16
 type = "unlimited"
@@ -13549,7 +13549,7 @@ price = 21.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 17 Days"
+name = "UK eSIM Unlimited Data / 17 Days"
 gb = 0
 days = 17
 type = "unlimited"
@@ -13557,14 +13557,14 @@ price = 22.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM 50GB / 30 Days"
+name = "UK eSIM 50GB / 30 Days"
 gb = 50
 days = 30
 type = "data"
 price = 22.00
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 18 Days"
+name = "UK eSIM Unlimited Data / 18 Days"
 gb = 0
 days = 18
 type = "unlimited"
@@ -13572,7 +13572,7 @@ price = 23.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 19 Days"
+name = "UK eSIM Unlimited Data / 19 Days"
 gb = 0
 days = 19
 type = "unlimited"
@@ -13580,7 +13580,7 @@ price = 24.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 21 Days"
+name = "UK eSIM Unlimited Data / 21 Days"
 gb = 0
 days = 21
 type = "unlimited"
@@ -13588,7 +13588,7 @@ price = 25.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 20 Days"
+name = "UK eSIM Unlimited Data / 20 Days"
 gb = 0
 days = 20
 type = "unlimited"
@@ -13596,7 +13596,7 @@ price = 25.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 22 Days"
+name = "UK eSIM Unlimited Data / 22 Days"
 gb = 0
 days = 22
 type = "unlimited"
@@ -13604,7 +13604,7 @@ price = 26.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 25 Days"
+name = "UK eSIM Unlimited Data / 25 Days"
 gb = 0
 days = 25
 type = "unlimited"
@@ -13612,7 +13612,7 @@ price = 27.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 24 Days"
+name = "UK eSIM Unlimited Data / 24 Days"
 gb = 0
 days = 24
 type = "unlimited"
@@ -13620,7 +13620,7 @@ price = 27.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 23 Days"
+name = "UK eSIM Unlimited Data / 23 Days"
 gb = 0
 days = 23
 type = "unlimited"
@@ -13628,7 +13628,7 @@ price = 27.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 27 Days"
+name = "UK eSIM Unlimited Data / 27 Days"
 gb = 0
 days = 27
 type = "unlimited"
@@ -13636,7 +13636,7 @@ price = 28.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 26 Days"
+name = "UK eSIM Unlimited Data / 26 Days"
 gb = 0
 days = 26
 type = "unlimited"
@@ -13644,7 +13644,7 @@ price = 28.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 29 Days"
+name = "UK eSIM Unlimited Data / 29 Days"
 gb = 0
 days = 29
 type = "unlimited"
@@ -13652,7 +13652,7 @@ price = 29.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 28 Days"
+name = "UK eSIM Unlimited Data / 28 Days"
 gb = 0
 days = 28
 type = "unlimited"
@@ -13660,7 +13660,7 @@ price = 29.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[GB.plans]]
-name = "United Kingdom eSIM Unlimited Data / 30 Days"
+name = "UK eSIM Unlimited Data / 30 Days"
 gb = 0
 days = 30
 type = "unlimited"
@@ -13672,21 +13672,21 @@ checked = "2026-09-30"
 networks = ["T-Mobile", "AT&T", "Verizon"]
 
 [[US.plans]]
-name = "United States eSIM 1GB / 7 Days"
+name = "USA eSIM 1GB / 7 Days"
 gb = 1
 days = 7
 type = "data"
 price = 2.00
 
 [[US.plans]]
-name = "United States eSIM 3GB / 14 Days"
+name = "USA eSIM 3GB / 14 Days"
 gb = 3
 days = 14
 type = "data"
 price = 3.00
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 1 Day"
+name = "USA eSIM Unlimited Data / 1 Day"
 gb = 0
 days = 1
 type = "unlimited"
@@ -13694,14 +13694,14 @@ price = 3.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM 5GB / 21 Days"
+name = "USA eSIM 5GB / 21 Days"
 gb = 5
 days = 21
 type = "data"
 price = 5.00
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 2 Days"
+name = "USA eSIM Unlimited Data / 2 Days"
 gb = 0
 days = 2
 type = "unlimited"
@@ -13709,14 +13709,14 @@ price = 6.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM 10GB / 30 Days"
+name = "USA eSIM 10GB / 30 Days"
 gb = 10
 days = 30
 type = "data"
 price = 8.00
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 3 Days"
+name = "USA eSIM Unlimited Data / 3 Days"
 gb = 0
 days = 3
 type = "unlimited"
@@ -13724,7 +13724,7 @@ price = 9.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 4 Days"
+name = "USA eSIM Unlimited Data / 4 Days"
 gb = 0
 days = 4
 type = "unlimited"
@@ -13732,14 +13732,14 @@ price = 12.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM 20GB / 30 Days"
+name = "USA eSIM 20GB / 30 Days"
 gb = 20
 days = 30
 type = "data"
 price = 15.00
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 5 Days"
+name = "USA eSIM Unlimited Data / 5 Days"
 gb = 0
 days = 5
 type = "unlimited"
@@ -13747,7 +13747,7 @@ price = 15.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 6 Days"
+name = "USA eSIM Unlimited Data / 6 Days"
 gb = 0
 days = 6
 type = "unlimited"
@@ -13755,7 +13755,7 @@ price = 16.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 7 Days"
+name = "USA eSIM Unlimited Data / 7 Days"
 gb = 0
 days = 7
 type = "unlimited"
@@ -13763,7 +13763,7 @@ price = 18.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 8 Days"
+name = "USA eSIM Unlimited Data / 8 Days"
 gb = 0
 days = 8
 type = "unlimited"
@@ -13771,7 +13771,7 @@ price = 20.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 9 Days"
+name = "USA eSIM Unlimited Data / 9 Days"
 gb = 0
 days = 9
 type = "unlimited"
@@ -13779,7 +13779,7 @@ price = 23.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 10 Days"
+name = "USA eSIM Unlimited Data / 10 Days"
 gb = 0
 days = 10
 type = "unlimited"
@@ -13787,7 +13787,7 @@ price = 25.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 11 Days"
+name = "USA eSIM Unlimited Data / 11 Days"
 gb = 0
 days = 11
 type = "unlimited"
@@ -13795,7 +13795,7 @@ price = 26.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 12 Days"
+name = "USA eSIM Unlimited Data / 12 Days"
 gb = 0
 days = 12
 type = "unlimited"
@@ -13803,7 +13803,7 @@ price = 28.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 13 Days"
+name = "USA eSIM Unlimited Data / 13 Days"
 gb = 0
 days = 13
 type = "unlimited"
@@ -13811,7 +13811,7 @@ price = 30.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 14 Days"
+name = "USA eSIM Unlimited Data / 14 Days"
 gb = 0
 days = 14
 type = "unlimited"
@@ -13819,7 +13819,7 @@ price = 32.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 15 Days"
+name = "USA eSIM Unlimited Data / 15 Days"
 gb = 0
 days = 15
 type = "unlimited"
@@ -13827,7 +13827,7 @@ price = 34.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 16 Days"
+name = "USA eSIM Unlimited Data / 16 Days"
 gb = 0
 days = 16
 type = "unlimited"
@@ -13835,14 +13835,14 @@ price = 35.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM 50GB / 30 Days"
+name = "USA eSIM 50GB / 30 Days"
 gb = 50
 days = 30
 type = "data"
 price = 36.00
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 17 Days"
+name = "USA eSIM Unlimited Data / 17 Days"
 gb = 0
 days = 17
 type = "unlimited"
@@ -13850,7 +13850,7 @@ price = 37.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 18 Days"
+name = "USA eSIM Unlimited Data / 18 Days"
 gb = 0
 days = 18
 type = "unlimited"
@@ -13858,7 +13858,7 @@ price = 39.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 19 Days"
+name = "USA eSIM Unlimited Data / 19 Days"
 gb = 0
 days = 19
 type = "unlimited"
@@ -13866,7 +13866,7 @@ price = 41.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 20 Days"
+name = "USA eSIM Unlimited Data / 20 Days"
 gb = 0
 days = 20
 type = "unlimited"
@@ -13874,7 +13874,7 @@ price = 43.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 21 Days"
+name = "USA eSIM Unlimited Data / 21 Days"
 gb = 0
 days = 21
 type = "unlimited"
@@ -13882,7 +13882,7 @@ price = 45.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 22 Days"
+name = "USA eSIM Unlimited Data / 22 Days"
 gb = 0
 days = 22
 type = "unlimited"
@@ -13890,7 +13890,7 @@ price = 47.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 23 Days"
+name = "USA eSIM Unlimited Data / 23 Days"
 gb = 0
 days = 23
 type = "unlimited"
@@ -13898,7 +13898,7 @@ price = 48.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 24 Days"
+name = "USA eSIM Unlimited Data / 24 Days"
 gb = 0
 days = 24
 type = "unlimited"
@@ -13906,7 +13906,7 @@ price = 50.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 25 Days"
+name = "USA eSIM Unlimited Data / 25 Days"
 gb = 0
 days = 25
 type = "unlimited"
@@ -13914,7 +13914,7 @@ price = 51.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 26 Days"
+name = "USA eSIM Unlimited Data / 26 Days"
 gb = 0
 days = 26
 type = "unlimited"
@@ -13922,7 +13922,7 @@ price = 52.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 27 Days"
+name = "USA eSIM Unlimited Data / 27 Days"
 gb = 0
 days = 27
 type = "unlimited"
@@ -13930,7 +13930,7 @@ price = 53.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 28 Days"
+name = "USA eSIM Unlimited Data / 28 Days"
 gb = 0
 days = 28
 type = "unlimited"
@@ -13938,7 +13938,7 @@ price = 54.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 29 Days"
+name = "USA eSIM Unlimited Data / 29 Days"
 gb = 0
 days = 29
 type = "unlimited"
@@ -13946,7 +13946,7 @@ price = 55.00
 fup_note = "3 GB per day at full speed, then ∞ at 1Mbps"
 
 [[US.plans]]
-name = "United States eSIM Unlimited Data / 30 Days"
+name = "USA eSIM Unlimited Data / 30 Days"
 gb = 0
 days = 30
 type = "unlimited"

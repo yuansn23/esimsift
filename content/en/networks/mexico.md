@@ -36,8 +36,8 @@ faqs:
     a: "Telcel. It swept all four speed awards in Opensignal's October 2025 report, with Download Speed at 46.0 Mbps against AT&T's 27.2 and a 5G download of 180.7 Mbps, more than three times the competition. It also kept Reliability at 863 out of 1000, 96 points clear of AT&T, and won Coverage Experience. Ookla separately named it Mexico's Best Mobile Network. For anywhere outside the major cities and resorts, Telcel is the safe answer."
   - q: "Is 5G available on a Mexico eSIM?"
     a: "Yes, and it is concentrated. Telcel's 5G download averaged 180.7 Mbps in Opensignal's October 2025 testing, but the footprint follows the big cities and the resort corridors rather than the whole country. All three carriers we track list 5G, so 5G availability is not a differentiator between brands — where you are going is."
-  - q: "Does a Mexico eSIM work in the United States or Canada?"
-    a: "Not on a Mexico-only plan. It is provisioned for Mexican networks and stops at the border. If your trip crosses into the United States, buy a North America or regional plan and check the country list before paying. There is no continental free-roaming arrangement in North America."
+  - q: "Does a Mexico eSIM work in the USA or Canada?"
+    a: "Not on a Mexico-only plan. It is provisioned for Mexican networks and stops at the border. If your trip crosses into the USA, buy a North America or regional plan and check the country list before paying. There is no continental free-roaming arrangement in North America."
   - q: "What network does Movistar use in Mexico?"
     a: "Movistar does not run a full radio network of its own across the country, so its traffic depends on another carrier's infrastructure rather than its own masts. That is why it does not appear in the award tables alongside Telcel and AT&T, and why it is best treated as a cheap city option rather than an alternative for rural travel."
   - q: "Is unlimited data available on a Mexico eSIM?"
@@ -108,6 +108,6 @@ Telcel's 5G averaged 180.7 Mbps in Opensignal's October 2025 testing, which is r
 
 That makes 5G a poor reason to pay more here, and coverage a good reason to choose carefully. The useful checks before you buy are whether the plan lists Telcel, whether it covers the regions on your route, and whether the allowance matches the length of the trip. Our [comparison of Mexico eSIM plans](/compare/mexico/) ranks them by price per gigabyte and per day, the [usage calculator](/tools/) will size an allowance to your itinerary, and live discounts sit on the [this month's eSIM deals](/esim-deals/).
 
-If your trip also crosses into the United States, the carrier detail on that side is on our [United States eSIM networks](/networks/united-states/) page, and a North America plan is the right purchase rather than two single-country ones.
+If your trip also crosses into the USA, the carrier detail on that side is on our [USA eSIM networks](/networks/united-states/) page, and a North America plan is the right purchase rather than two single-country ones.
 
 Three closing notes. Mexican spectrum is licensed nationally across bands that do not align with every imported handset, so confirm your device before relying on 5G. Fair-use limits and hotspot rules vary by provider even when the network underneath is identical. And upload throughput matters if you plan to post from the road, which is exactly when a small allowance runs out fastest.

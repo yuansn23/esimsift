@@ -21,5 +21,5 @@ q = "Which networks do France eSIMs use?"
 a = "Plans on this page run on Orange, SFR, Bouygues. Differences matter mostly outside the big cities - the network column in the main table shows which carrier each plan rides."
 
 [[faq]]
-q = "Can one eSIM cover France and United Kingdom?"
+q = "Can one eSIM cover France and the UK?"
 a = "Regional Asia/continental plans from Airalo and Nomad bundle France with neighbors - usually worse $/GB than single-country plans, but cheaper than two separate eSIMs. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."

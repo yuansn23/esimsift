@@ -1472,6 +1472,35 @@ carrier = "T-Mobile"
 strong = "Fastest 5G in city centers and excellent indoor coverage in metros."
 weak = "Rural stretches between cities can drop to slower layers."
 
+# 按旅行类型选网（compare 国家页「Which network fits your trip」模块）
+#   carrier 必须与上面 [[US.profiles]] / info.detail 的 name **精确一致**；
+#   why 文案不重写：模板直接取该 carrier 的 detail.strong（已复核的既有文案，单一事实源）
+#   min_gb / min_days = 该行程类型的合理下限，用于从价格库挑「够用的最便宜套餐」
+#   显示顺序 = 数组顺序（勿改成 [US.trips] 表，map 会按字母序打乱）
+[[US.info.trips]]
+key = "city"
+carrier = "T-Mobile"
+min_gb = 3
+min_days = 5
+
+[[US.info.trips]]
+key = "road"
+carrier = "Verizon"
+min_gb = 10
+min_days = 10
+
+[[US.info.trips]]
+key = "parks"
+carrier = "Verizon"
+min_gb = 5
+min_days = 7
+
+[[US.info.trips]]
+key = "mixed"
+carrier = "AT&T"
+min_gb = 20
+min_days = 30
+
 [VN.info]
 cities = ["Hanoi", "Ho Chi Minh City", "Da Nang"]
 

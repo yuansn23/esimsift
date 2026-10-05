@@ -193,7 +193,7 @@ opensignal_facts = [
 ]
 
 [US]
-ookla_note = "Ookla named T-Mobile the fastest mobile network in the United States for H1 2026, recording a median download of 275.6 Mbps against AT&T's 159.3."
+ookla_note = "Ookla named T-Mobile the fastest mobile network in the USA for H1 2026, recording a median download of 275.6 Mbps against AT&T's 159.3."
 ookla_url = "https://www.ookla.com/research/reports/united-states-speedtest-connectivity-report-h1-2026"
 ookla_date = "2026-07"
 opensignal_title = "United States, July 2026, Mobile Network Experience Report"

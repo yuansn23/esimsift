@@ -243,7 +243,7 @@
          i18n 值里 "&" 写成 "&amp;"（HTML 上下文用），而这里是 JSON 数据岛，
          不退实体就会产出 "Afrika &amp; Nahost" 并被 jsonify 转成 \u0026amp;，
          前端拿到的是字面量 "&amp;" 而非 "&"。HTML 渲染点（L118 / country-card）不脱。 */ -}}
-  {{- $searchData = $searchData | append (dict "name" $c.name "slug" $c.slug "region" (partial "region-label.html" $c.region | htmlUnescape) "flag" ($c.flag | relURL) "price" $s.minPrice "providers" $s.providerCount "plans" $s.planCount) -}}
+  {{- $searchData = $searchData | append (dict "name" $c.name "full" ($c.full | default "") "slug" $c.slug "region" (partial "region-label.html" $c.region | htmlUnescape) "flag" ($c.flag | relURL) "price" $s.minPrice "providers" $s.providerCount "plans" $s.planCount) -}}
 {{- end -}}
 <script id="country-index" type="application/json">{{ $searchData | jsonify | safeJS }}</script>
 
@@ -260,7 +260,9 @@
     var index = [];
     try { index = JSON.parse(document.getElementById('country-index').textContent); } catch (e) { index = []; }
 
-    // 常见别名：让 "usa" / "uk" / "uae" 也能命中全称
+    // 常见别名：让 "usa" / "uk" / "uae" 也能命中。显示名已是简称（USA/UK），
+    // 所以这里的映射方向是「俗称 → 全称」，而全称在同一张索引里由 full 字段承载
+    // （见下面的 haystack 拼接），两条路都能走通。
     var aliases = { us: 'united states', usa: 'united states', uk: 'united kingdom', uae: 'united arab emirates' };
 
     function norm(s) {
@@ -273,7 +275,7 @@
       if (aliases[qn]) qn = aliases[qn];
       var tokens = qn.split(' ');
       return index.filter(function (c) {
-        var h = norm(c.name) + ' ' + norm(c.region);
+        var h = norm(c.name) + ' ' + norm(c.full) + ' ' + norm(c.region);
         return tokens.every(function (t) { return h.indexOf(t) !== -1; });
       });
     }

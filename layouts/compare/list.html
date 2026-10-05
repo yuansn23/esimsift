@@ -2,12 +2,100 @@
 {{ $countries := where (where (where .Pages "Params.provider" nil) "Params.providers" nil) "Params.nolist" nil }}
 {{ $isoCount := $countries | len }}
 {{ $totalPlans := 0 }}
+
+{{/* ═══ 聚合层（本轮 2026-10-05 扩容）═══════════════════════════════════════
+     这一页下方新增了三个数据模块（入门价榜 / 区域概览 / 品牌覆盖矩阵），
+     它们和原有的统计条共用**同一次**遍历，避免 50 个国家各扫三四遍价格库。
+     产出的四个容器：
+       $cheap       每国一条（入门价 / 最优 $/GB / 最便宜那条套餐 / 品牌数）
+       $regionCount 区域 → 目的地数
+       $regionAgg   区域 → 最低入门价与全区最优 $/GB（由 $cheap 二次汇总）
+       $provAgg     品牌 → 覆盖国家数 + 全球最低价
+     ⚠ country-stats 走 partialCached（variant=iso）：同一页多处调用共用一份缓存。 */}}
+{{ $cheap := slice }}
+{{ $regionCount := dict }}
+{{ $brandRows := slice }}
 {{ range $countries }}
   {{ with .Params.iso }}
-    {{ $s := partial "country-stats.html" . }}
+    {{ $c := index $d.countries . }}
+    {{ $s := partialCached "country-stats.html" . . }}
     {{ $totalPlans = add $totalPlans $s.planCount }}
+    {{ $regionCount = merge $regionCount (dict $c.region (add (int (index $regionCount $c.region | default 0)) 1)) }}
+    {{ if gt $s.minPrice 0.0 }}
+      {{ $byPrice := sort $s.rows "price" "asc" }}
+      {{ $pick := index $byPrice 0 }}
+      {{/* 排序键：入门价升序 → 同价时按最优 $/GB 升序 → 再按国名（保证构建确定性）。
+           本站大量目的地的入门价都是同一家的 500MB 试用档（同价），不加分隔键的话
+           榜单前十会全部并列 $0.51、顺序取决于遍历序，等于没排。 */}}
+      {{ $cheap = $cheap | append (dict
+        "name" $c.name "slug" $c.slug "flag" $c.flag "region" $c.region
+        "price" $s.minPrice "pergb" $s.minPerGB "plans" $s.planCount "providers" $s.providerCount
+        "cheapProv" $pick.provider "cheapPlan" $pick.name "cheapUrl" (printf "/compare/%s/%s/" $c.slug $pick.key)
+        "sortkey" (printf "%010.2f|%010.2f|%s" $s.minPrice $s.minPerGB $c.name)) }}
+    {{ end }}
+    {{/* 每国每品牌的最低价与最优 $/GB：一次遍历成表，避免下面 品牌×国家 双重循环
+         把成本乘上 8 倍。$/GB 用 999999.0 当「无计量档」哨兵，必须排除。 */}}
+    {{ $mine := dict }}
+    {{ $mineGB := dict }}
+    {{ range $s.rows }}
+      {{ $cur := index $mine .key }}
+      {{ if or (not $cur) (lt .price $cur) }}{{ $mine = merge $mine (dict .key .price) }}{{ end }}
+      {{ if lt .perGB 999999.0 }}
+        {{ $curGB := index $mineGB .key }}
+        {{ if or (not $curGB) (lt .perGB $curGB) }}{{ $mineGB = merge $mineGB (dict .key .perGB) }}{{ end }}
+      {{ end }}
+    {{ end }}
+    {{ range $s.providers }}{{ $brandRows = $brandRows | append (dict "key" . "country" $c.name "slug" $c.slug "min" (float (index $mine . | default 0)) "pergb" (float (index $mineGB . | default 0))) }}{{ end }}
   {{ end }}
 {{ end }}
+
+{{/* ── 品牌价格榜：覆盖数 + 全球最低价 + 全球最优 $/GB，按最低价升序 ──
+     ⚠ 这份数据里 8 个品牌都覆盖全部 50 个目的地（统一回填的），所以「覆盖」不是差异点：
+     表格照实给出「50 of 50」，价值在于它解释了为什么选品牌是选价格，而不是选覆盖。 */}}
+{{ $provAgg := dict }}
+{{ range $brandRows }}
+  {{ $pk := index $provAgg .key }}
+  {{ $b := dict "count" (add (int ($pk.count | default 0)) 1) }}
+  {{ $curMin := 0.0 }}{{ if $pk }}{{ $curMin = float ($pk.minPrice | default 0) }}{{ end }}
+  {{ if and (gt .min 0.0) (or (eq $curMin 0.0) (lt .min $curMin)) }}
+    {{ $b = merge $b (dict "minPrice" .min "minCountry" .country "minSlug" .slug) }}
+  {{ else if $pk }}
+    {{ $b = merge $b (dict "minPrice" $curMin "minCountry" $pk.minCountry "minSlug" $pk.minSlug) }}
+  {{ end }}
+  {{ $curGB := 0.0 }}{{ if $pk }}{{ $curGB = float ($pk.minPerGB | default 0) }}{{ end }}
+  {{ if and (gt .pergb 0.0) (or (eq $curGB 0.0) (lt .pergb $curGB)) }}
+    {{ $b = merge $b (dict "minPerGB" .pergb "gbCountry" .country) }}
+  {{ else if $pk }}
+    {{ $b = merge $b (dict "minPerGB" $curGB "gbCountry" $pk.gbCountry) }}
+  {{ end }}
+  {{ $provAgg = merge $provAgg (dict .key $b) }}
+{{ end }}
+{{ $provOrder := slice }}
+{{ range $k, $v := $provAgg }}{{ $provOrder = $provOrder | append (dict "key" $k "count" $v.count "minPrice" $v.minPrice) }}{{ end }}
+{{ $provOrder = sort $provOrder "minPrice" "asc" }}
+
+{{/* ── 区域概览：五区各自的入门价地板与最优 $/GB（全部由 $cheap 二次汇总，零写死）── */}}
+{{ $regions := slice "Asia" "Europe" "Americas" "Africa & Middle East" "Oceania" }}
+{{ $regionGuides := dict "Asia" "asia" "Europe" "europe" "Americas" "americas" "Africa & Middle East" "africa-middle-east" "Oceania" "oceania" }}
+{{ $regionAgg := dict }}
+{{ range $regions }}
+  {{ $rg := . }}
+  {{ $min := 0.0 }}{{ $minName := "" }}{{ $minSlug := "" }}
+  {{ $bp := 0.0 }}{{ $bpName := "" }}
+  {{ range $cheap }}
+    {{ if eq .region $rg }}
+      {{ if or (eq $min 0.0) (lt .price $min) }}{{ $min = .price }}{{ $minName = .name }}{{ $minSlug = .slug }}{{ end }}
+      {{ if and (lt .pergb 999999.0) (or (eq $bp 0.0) (lt .pergb $bp)) }}{{ $bp = .pergb }}{{ $bpName = .name }}{{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $regionAgg = merge $regionAgg (dict $rg (dict
+    "count" (int (index $regionCount $rg | default 0))
+    "min" $min "minName" $minName "minSlug" $minSlug
+    "bestPerGB" $bp "bestName" $bpName)) }}
+{{ end }}
+
+{{ $cheapTop := first 10 (sort $cheap "sortkey" "asc") }}
+
 <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6">
   {{ partial "breadcrumbs.html" . }}
 
@@ -28,7 +116,7 @@
   </figure>
   </div>
 
-  <section class="mt-10">
+  <section class="mt-10" id="all-destinations">
     <div class="flex flex-wrap items-center justify-between gap-3">
       <div id="region-chips" class="nav-scroll flex gap-2 overflow-x-auto pb-1">
         <button class="chip chip-active" data-region="all" type="button">{{ i18n "g_all" | safeHTML }}</button>
@@ -44,6 +132,126 @@
       {{ range $countries }}{{ partial "country-card.html" . }}{{ end }}
     </div>
     <p id="no-results" class="mt-6 hidden text-center text-sm text-ink-400">{{ i18n "g_no_country_matches_that_search" | safeHTML }}</p>
+  </section>
+
+  {{/* ── 导语长文（md 正文）：给枢纽页一份可切分的说明性正文。
+       原先这段 .Content 挂在页尾、正文又是空的 —— 枢纽页只剩卡片网格，
+       搜索引擎既读不到「这个索引是什么」，也没有可引用的段落。 ── */}}
+  {{ with .Content }}<div class="prose mt-14 max-w-none">{{ . }}</div>{{ end }}
+
+  {{/* ── 入门价榜（长尾：「cheapest eSIM」类查询）──────────────────────────────
+      口径 = 各国最低价（country-stats.minPrice），与卡片、国家页完全同源；
+      「最便宜的那条套餐」也一并给出，因为入门价往往是 100–500MB 的试用档，
+      不写清楚会让人以为那就是旅行套餐的价钱。 */}}
+  <section class="mt-14 scroll-mt-24" id="cheapest">
+    <p class="eyebrow">{{ i18n "compare_list__cheapest_eyebrow" | safeHTML }}</p>
+    <h2 class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_list__cheapest_head" | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_list__cheapest_lead" (dict "n" $isoCount) | safeHTML }}</p>
+    <div class="card mt-5 overflow-x-auto">
+      <table class="table-pro table-soft min-w-[720px]">
+        <thead>
+          <tr>
+            <th class="w-10"><span class="sr-only">{{ i18n "compare_list__rank" | safeHTML }}</span></th>
+            <th class="min-w-[170px]">{{ i18n "g_country" | safeHTML }}</th>
+            <th>{{ i18n "g_cheapest" | safeHTML }}</th>
+            <th class="min-w-[220px]">{{ i18n "compare_list__cheapest_plan_col" | safeHTML }}</th>
+            <th>{{ i18n "g_best_gb" | safeHTML }}</th>
+            <th class="min-w-[120px]">{{ i18n "g_providers" | safeHTML }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range $i, $r := $cheapTop }}
+          <tr>
+            <td class="tnum text-ink-400">{{ add $i 1 }}</td>
+            <td class="min-w-[170px]">
+              <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $r.slug) }}" class="flex items-center gap-2.5 font-semibold text-ink-950 hover:text-brand-700 hover:underline">
+                <img src="{{ $r.flag | relURL }}" alt="" class="h-4 w-6 shrink-0 rounded-sm object-cover ring-1 ring-ink-100" loading="lazy">
+                {{ $r.name }}
+              </a>
+            </td>
+            <td class="font-bold text-ink-950 tnum">${{ printf "%.2f" $r.price }}</td>
+            <td class="text-ink-600">
+              <span class="font-semibold text-ink-800">{{ $r.cheapProv }}</span>
+              <span class="text-ink-500">· {{ $r.cheapPlan }}</span>
+            </td>
+            <td class="text-ink-600 tnum">{{ if lt $r.pergb 999999.0 }}${{ printf "%.2f" $r.pergb }}{{ else }}{{ i18n "compare_single__unlimited_only" | safeHTML }}{{ end }}</td>
+            <td class="text-xs text-ink-400 tnum">{{ $r.providers }} {{ i18n "g_providers" | safeHTML }} · {{ $r.plans }} {{ i18n "compare_single__plans_suffix" | safeHTML }}</td>
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3 text-xs text-ink-400">{{ i18n "compare_list__cheapest_note" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>.</p>
+  </section>
+
+  {{/* ── 区域概览：把 50 个目的地收成 5 个长尾入口 ── */}}
+  <section class="mt-14 scroll-mt-24" id="regions">
+    <p class="eyebrow">{{ i18n "compare_list__regions_eyebrow" | safeHTML }}</p>
+    <h2 class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_list__regions_head" | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_list__regions_lead" | safeHTML }}</p>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      {{ range $rg := $regions }}
+      {{ $a := index $regionAgg $rg }}
+      <div class="card card-hover flex flex-col p-5">
+        <p class="font-display text-base font-bold text-ink-950">{{ partial "region-label.html" $rg | safeHTML }}</p>
+        <p class="mt-0.5 text-xs text-ink-400">{{ i18n "compare_list__n_destinations" (dict "n" $a.count) | safeHTML }}</p>
+        <ul class="mt-3 space-y-1.5 text-xs leading-relaxed">
+          {{ with $a.minSlug }}
+          <li class="text-ink-500">{{ i18n "compare_list__region_cheapest" (dict "country" $a.minName "price" (printf "%.2f" $a.min)) | safeHTML }} <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $a.minSlug) }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "compare_list__see_plans" | safeHTML }}</a></li>
+          {{ end }}
+          {{ if gt $a.bestPerGB 0.0 }}
+          <li class="text-ink-500">{{ i18n "compare_list__region_best_gb" (dict "pergb" (printf "%.2f" $a.bestPerGB) "country" $a.bestName) | safeHTML }}</li>
+          {{ end }}
+        </ul>
+        <a href="{{ partial "lang-href.html" (printf "/guides/best-%s-esim/" (index $regionGuides $rg)) }}" class="mt-3 border-t border-ink-100 pt-3 text-xs font-semibold text-brand-700 hover:underline">{{ i18n "compare_list__region_guide" (dict "region" (partial "region-label.html" $rg)) | safeHTML }}</a>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* ── 品牌价格榜（长尾：「which eSIM brand is cheapest」）─────────────────────
+      原本想做成「覆盖矩阵」，但数据里 8 个品牌都覆盖全部 50 个目的地，
+      那样的矩阵只会输出 8 行 50/50 —— 没有信息增量。改成按**真实价格**排序：
+      覆盖数照实给出（并说明它在本站不是差异点），价值落在每个品牌的全球最低价
+      与全球最优 $/GB 上，两列都附「落在哪个国家」并可点进该国页面。 */}}
+  <section class="mt-14 scroll-mt-24" id="brands">
+    <p class="eyebrow">{{ i18n "compare_list__brands_eyebrow" | safeHTML }}</p>
+    <h2 class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_list__brands_head" | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_list__brands_lead" (dict "brands" (len $d.providers) "countries" $isoCount) | safeHTML }}</p>
+    <div class="card mt-5 overflow-x-auto">
+      <table class="table-pro table-soft min-w-[720px]">
+        <thead>
+          <tr>
+            <th class="min-w-[190px]">{{ i18n "compare_list__brands_col" | safeHTML }}</th>
+            <th class="min-w-[200px]">{{ i18n "compare_list__brands_cheapest_col" | safeHTML }}</th>
+            <th class="min-w-[170px]">{{ i18n "compare_list__brands_value_col" | safeHTML }}</th>
+            <th>{{ i18n "compare_list__brands_reach_col" | safeHTML }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range $provOrder }}
+          {{ $p := index $d.providers .key }}
+          {{ $a := index $provAgg .key }}
+          <tr>
+            <td class="min-w-[190px]">
+              <a href="{{ printf "/esim-providers/%s/" .key }}" class="flex items-center gap-2.5 font-semibold text-ink-950 hover:text-brand-700 hover:underline">
+                {{ partial "prov-logo.html" (dict "p" $p "key" .key "class" "h-7 w-7 rounded-lg" "text" "text-[10px]") }}
+                {{ $p.name }}
+              </a>
+            </td>
+            <td class="text-sm text-ink-600">
+              {{ with $a.minCountry }}<span class="font-bold text-ink-950 tnum">${{ printf "%.2f" $a.minPrice }}</span> <span class="text-ink-500">· {{ . }}</span> <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $a.minSlug) }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "compare_list__see_plans" | safeHTML }}</a>{{ else }}—{{ end }}
+            </td>
+            <td class="text-sm text-ink-600 tnum">
+              {{ if gt $a.minPerGB 0.0 }}<span class="font-semibold text-ink-900">${{ printf "%.2f" $a.minPerGB }}/GB</span> <span class="text-ink-500">· {{ $a.gbCountry }}</span>{{ else }}—{{ end }}
+            </td>
+            <td class="text-xs text-ink-400 tnum">{{ i18n "compare_list__brands_reach" (dict "n" .count "total" $isoCount) | safeHTML }}</td>
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "compare_list__brands_note" | safeHTML }} <a href="{{ partial "lang-href.html" "/esim-providers/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "compare_list__provider_profiles" | safeHTML }}</a>.</p>
   </section>
 
   {{/* ── 对决预告：编辑精选 6 组，全量入口 /compare/matchups/（可收录枢纽页） ── */}}
@@ -81,7 +289,88 @@
     </div>
   </section>
 
-  {{ with .Content }}<div class="prose mt-12 max-w-none">{{ . }}</div>{{ end }}
+  {{/* ── FAQ：问题与 FAQPage schema 同源（一份 $faqList 两处用）。
+       每个答案都由构建期注入真实数字（套餐数 / 地板价 / 覆盖数 / 复核日），
+       不含 HTML —— FAQPage 的答案文本要能被纯文本引用，塞标签会稀释它。
+       所有取值都先落到局部字符串再进 dict，缺数据时退成空串而不是 <no value>。 ── */}}
+  {{ $prov1 := dict }}{{ $prov2 := dict }}
+  {{ if gt (len $provOrder) 0 }}{{ $prov1 = index $provOrder 0 }}{{ end }}
+  {{ if gt (len $provOrder) 1 }}{{ $prov2 = index $provOrder 1 }}{{ end }}
+  {{ $b1 := "" }}{{ $p1 := "" }}{{ $c1 := "" }}{{ $b2 := "" }}{{ $p2 := "" }}
+  {{ with $prov1 }}{{ $a := index $provAgg .key }}{{ $b1 = (index $d.providers .key).name }}{{ $p1 = printf "%.2f" $a.minPrice }}{{ $c1 = $a.minCountry }}{{ end }}
+  {{ with $prov2 }}{{ $a2 := index $provAgg .key }}{{ $b2 = (index $d.providers .key).name }}{{ $p2 = printf "%.2f" $a2.minPrice }}{{ end }}
+  {{ $floorName := "" }}{{ $floorPrice := "" }}{{ $floorProv := "" }}{{ $floorPlan := "" }}
+  {{/* index 对空 slice 会直接报错（不是返回 nil），所以先判长度再取第 0 条 */}}
+  {{ if gt (len $cheapTop) 0 }}
+    {{ with index $cheapTop 0 }}
+      {{ $floorName = .name }}{{ $floorPrice = printf "%.2f" .price }}
+      {{ $floorProv = .cheapProv }}{{ $floorPlan = .cheapPlan }}
+    {{ end }}
+  {{ end }}
+  {{ $checkedLatest := "" }}
+  {{ range $countries }}{{ with .Params.iso }}{{ $s := partialCached "country-stats.html" . . }}{{ if and $s.checked (or (eq $checkedLatest "") (gt $s.checked $checkedLatest)) }}{{ $checkedLatest = $s.checked }}{{ end }}{{ end }}{{ end }}
+  {{ $checkDate := "" }}
+  {{ if $checkedLatest }}{{ $checkDate = time.Format ":date_medium" (time $checkedLatest) }}{{ end }}
+  {{ $faqList := slice }}
+  {{ $faqList = $faqList | append (dict
+    "q" (i18n "compare_list__faq_q1")
+    "a" (i18n "compare_list__faq_a1" (dict "plans" $totalPlans "brands" (len $d.providers) "countries" $isoCount))) }}
+  {{ with $floorName }}
+    {{ $faqList = $faqList | append (dict
+      "q" (i18n "compare_list__faq_q2")
+      "a" (i18n "compare_list__faq_a2" (dict "country" $floorName "price" $floorPrice "provider" $floorProv "plan" $floorPlan))) }}
+  {{ end }}
+  {{ with $b1 }}
+    {{ $faqList = $faqList | append (dict
+      "q" (i18n "compare_list__faq_q3")
+      "a" (i18n "compare_list__faq_a3" (dict "brand" $b1 "price" $p1 "country" $c1 "second" $b2 "price2" $p2))) }}
+  {{ end }}
+  {{ $faqList = $faqList | append (dict "q" (i18n "compare_list__faq_q4") "a" (i18n "compare_list__faq_a4")) }}
+  {{ if $checkDate }}
+    {{ $faqList = $faqList | append (dict "q" (i18n "compare_list__faq_q5") "a" (i18n "compare_list__faq_a5" (dict "date" $checkDate))) }}
+  {{ end }}
+  {{ $faqEntities := slice }}
+  {{ range $faqList }}{{ $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) }}{{ end }}
+  {{ with $faqEntities }}
+  <script type="application/ld+json">
+  {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" .) | safeJS }}
+  </script>
+  {{ end }}
+
+  <section class="mt-14 scroll-mt-24" id="faq">
+    <p class="eyebrow">FAQ</p>
+    <h2 class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_list__faq_head" | safeHTML }}</h2>
+    <div class="mt-5 space-y-3">
+      {{ range $faqList }}
+      <details class="faq-item">
+        <summary>{{ .q }}<span class="faq-icon" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></summary>
+        <p class="faq-body">{{ .a | safeHTML }}</p>
+      </details>
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* ── ItemList：把这张索引的 50 个目的地交给搜索引擎与 AI 引擎，
+       每条指向对应国家页（站内可爬）。与卡片网格同源、同序（按品牌覆盖数降序）。 ── */}}
+  {{ $itemList := slice }}
+  {{ range $i, $p := $countries }}
+    {{ with $p.Params.iso }}
+      {{ $c := index $d.countries . }}
+      {{ $itemList = $itemList | append (dict "@type" "ListItem" "position" (add $i 1) "name" (printf "%s eSIM" $c.name) "url" $p.Permalink) }}
+    {{ end }}
+  {{ end }}
+  {{ with $itemList }}
+  <script type="application/ld+json">
+  {{ jsonify (dict "indent" "  ") (dict
+    "@context" "https://schema.org"
+    "@type" "ItemList"
+    "name" (printf "%d eSIM destinations" $isoCount)
+    "description" (printf "Every destination in the eSIM Sift price index, one comparison table each. %d plans from %d providers tracked." $totalPlans (len $d.providers))
+    "numberOfItems" (len .)
+    "itemListElement" .
+  ) | safeJS }}
+  </script>
+  {{ end }}
 </div>
 
 <script>
@@ -91,6 +380,8 @@
     var chips = document.querySelectorAll('#region-chips .chip');
     var empty = document.getElementById('no-results');
     var region = 'all';
+    /* 搜索 haystack 由 country-card.html 写入 data-name（显示名 + 英文全称），
+       所以 "usa"/"uk"/"united states" 都能命中；这里只做大小写与首尾空格归一。 */
     function apply() {
       var q = (input && input.value || '').trim().toLowerCase();
       var visible = 0;

@@ -10996,252 +10996,252 @@ checked = "2026-09-30"
 networks = ["EE", "Vodafone", "O2", "Three"]
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0.4883
 days = 1
 type = "data"
 price = 0.51
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 1
 days = 30
 type = "data"
 price = 2.84
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 1
 type = "unlimited"
 price = 3.97
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 2
 type = "unlimited"
 price = 7.94
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 5
 days = 30
 type = "data"
 price = 10.89
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 3
 type = "unlimited"
 price = 11.91
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 4
 type = "unlimited"
 price = 15.88
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 10
 days = 30
 type = "data"
 price = 18.14
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 5
 type = "unlimited"
 price = 19.85
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 6
 type = "unlimited"
 price = 23.82
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 20
 days = 30
 type = "data"
 price = 24.95
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 7
 type = "unlimited"
 price = 27.78
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 8
 type = "unlimited"
 price = 29.84
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 30
 days = 30
 type = "data"
 price = 31.75
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 9
 type = "unlimited"
 price = 31.90
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 10
 type = "unlimited"
 price = 33.95
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 11
 type = "unlimited"
 price = 36.01
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 12
 type = "unlimited"
 price = 38.06
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 13
 type = "unlimited"
 price = 40.12
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 14
 type = "unlimited"
 price = 42.18
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 15
 type = "unlimited"
 price = 44.23
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 16
 type = "unlimited"
 price = 45.59
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 17
 type = "unlimited"
 price = 46.95
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 18
 type = "unlimited"
 price = 48.31
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 19
 type = "unlimited"
 price = 49.67
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 20
 type = "unlimited"
 price = 51.03
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 21
 type = "unlimited"
 price = 52.39
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 22
 type = "unlimited"
 price = 53.75
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 23
 type = "unlimited"
 price = 55.12
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 24
 type = "unlimited"
 price = 56.48
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 25
 type = "unlimited"
 price = 57.84
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 26
 type = "unlimited"
 price = 59.20
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 27
 type = "unlimited"
 price = 60.56
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 28
 type = "unlimited"
 price = 61.92
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 29
 type = "unlimited"
 price = 63.28
 
 [[GB.plans]]
-name = "United Kingdom (UK)"
+name = "UK"
 gb = 0
 days = 30
 type = "unlimited"

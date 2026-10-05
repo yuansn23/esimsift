@@ -1170,6 +1170,154 @@ em/en 破折号，H1 豁免）→ 改 "Compare every code on one grid"。**新�
 i18n +21 key（en/de 成对，1056 = 1056 对齐）。九项构建全绿；基线 diff = deals 1 处（预期）；
 截图验证排序与徽章。
 
+## 已完成（国家页「eSIM for your next destination」窄卡文字挤压修复，2026-10-05 第三十八轮）
+
+用户：该模块下 5 个国家卡片「文字都挤压在一起」，只改这一处，其他不动。
+
+- 根因：卡片是**横排 flex**（国旗 h-9 w-[3.25rem] + `flex-1` 文字 + 箭头），栅格 `lg:grid-cols-5`。
+  lg 断点每卡约 182px，扣内边距 32 + 国旗 52 + gap 16 + 箭头 16 → **文字只剩约 50px**，
+  比最长单词还窄（xl 1500px 下也只有约 89px）→ 文字被压成竖排并顶到国旗/箭头。
+- 修法（只动 `layouts/compare/single.html` 的 `#next` 卡片）：卡片改**竖排** `flex flex-col`，
+  首行「国旗 + 箭头」用 `justify-between`，标题 `text-sm font-semibold leading-snug` 独占整卡宽度，
+  价位行 `mt-1.5 text-xs leading-relaxed`；国旗加 `shrink-0`。标题与价位不再与国旗争横向空间。
+- 影响面：**仅 100 个国家页**（en 50 + de 50）进 diff，其他页面零改动（已验基线）。
+- 九项全绿（0 error / 584 html / 14804 h2/h3 零违规）；旧写法全站残留 0；基线已重建。
+
+## 已完成（国家页右栏真吸顶 + 模块⑥ 逐国实测反同质化，2026-10-05 第三十七轮）
+
+**① 右栏「本页导航」真正吸顶**。根因不是缺 `sticky`，而是外层栅格写了 `items-start`：
+它让 `<aside>` 自身高度 = 目录卡高度，内层 `sticky top-24` 没有可滚动的行程，表现成
+「一滚就走」。改为默认 `stretch`（`class="grid gap-10 xl:grid-cols-[minmax(0,1fr)_15rem]"`），
+侧栏随正文拉到整行高，吸顶才生效。注意：`items-start` 在 ⑦ 的 quirks 栅格、
+⑦b 的其它栅格里是**对的**（那些是行内图文对齐），只有「侧栏要吸顶」的这一处不能有。
+
+**② 模块⑥「Which eSIM providers cover X」反同质化改造**。原先每张卡渲染
+`tagline + strengths[0:3] + weaknesses[0:2]`，这些字段来自 `data/providers.toml`，
+**50 个国家页逐字相同** —— 模板级同质化，对读者没有信息增量，对谷歌是重复内容 ×50。
+现在改为逐国实测（顶部新增 `$provAgg` 一次遍历聚合）：
+- 本国档位数（含其中无限档数）
+- 本国最低价 + 对应数据量/天数
+- 本国最佳 $/GB + 对应数据量/天数（无限档用 `.isUnlimited` 排除，否则被 999999 哨兵顶掉）
+- 本国骑的本地网络（`networks` 字段，逐国不同）
+- 一条**算出来的**结论：本国最低价命中 / 本国最佳 $/GB 命中 / 两者都中 /
+  该国只有无限档 / 比本国最佳贵 N%
+通用画像（tagline/优缺点）不再重复，留在各自的 `/esim-providers/<key>/`，卡片底部有链接。
+新增 i18n 17 key（en/de 成对）。**验收判据：50 国模块⑥ 文本块的 md5 去重后 = 50**（改造前 = 1）。
+
+**③ 验证方式**：本轮起按用户要求**不做截图验证**，改为产物文本抽取 + 哈希去重 + 类名断言。
+
+九项全绿（h2/h3 14804 处 0 违规）；基线已重建；dev server 重启。
+
+## 已完成（枢纽 H2 长尾化 + 目录对齐 H2 + 右栏去重 + footer 加 X，2026-10-05 第三十六轮）
+
+**① /compare/ H2 全部改为谷歌长尾词**（用户死要求）。前 6 个在 `content/en/compare/_index.md`：
+What this index actually contains → **How to compare travel eSIM plans**；The two numbers everything
+is ranked by → **eSIM cost per GB and cost per day explained**；What a country page gives you →
+**What a country eSIM comparison shows**；What actually moves the price… → **Why travel eSIM prices
+differ by country**；Local SIM **versus** roaming versus eSIM → Local SIM **vs** roaming vs eSIM（vs
+才是搜索词形态）；How to use this index → **How to use this eSIM comparison index**。后 5 个在 i18n
+（en/de 成对）：cheapest_head 去 "The"；head_to_head → **Head-to-head eSIM provider comparisons**；
+faq_head → **eSIM pricing and comparison FAQs**（regions_head / brands_head 本身已是长尾，未动）。
+check_headings 的 `,;:—–` 禁令全程避开。
+
+**② 国家页右栏只留「本页导航」**：删掉 `compare/single.html` 里挂的
+`aside-destinations.html`（"Popular destinations / eSIM plans travellers compare next" 卡）——
+与正文 ⑨a「eSIM for your next destination」主题重复且占宽。partial 本身保留（guides/networks
+还在用），i18n key 不删。
+
+**③ 右栏目录 label 与 H2 一一镜像**（用户实测反馈"Top picks by trip 对不上"）：13 个
+`compare_single__toc_*` 全部改成对应 H2 去掉国名后的写法（如 verdict → "Which eSIM is best for
+your trip"、faq → "Buying an eSIM FAQ"），en/de 成对。校验：101 国家页 TOC 锚点 0 死链，US 页
+13 H2 ↔ 13 TOC 条目顺序完全一致。
+
+**④ footer 社交新增 X**：`hugo.toml` 追加 `[[params.social]] key="x" url="https://x.com/esimsift"`
+（自动进 Organization sameAs），`social-links.html` 补 X 的 24×24 path。全站 footer 同步。
+
+九项全绿；diff 583/584（footer 加图标全站生效，预期）；dev server 已重启（hugo.toml 变更需重启）。
+**待办（未动，用户未点名）**：国家页 H2 "Things to know before buying a …"（quirks）与
+"What should I know before buying a …"（faq）近似重复，若按长尾规则应二改一。
+
+## 已完成（全站 USA/UK 统一 + 国家页右侧导航 + ItemList 补齐 + /compare/ 枢纽扩容，2026-10-05 第三十五轮）
+
+**① 国家页右侧「本页导航」（模板级，50 国统一生效）**
+- `layouts/partials/compare-toc.html`（新增）：渲染章节表为 `<nav data-toc>`。
+  与 guides 的 aside-toc 分开，是因为国家页 H2 全由模板渲染（md 正文没有标题），扫不到。
+- `compare/single.html`：章节表 `$toc` 显式声明（id 与各 `<section aria-labelledby>` 一一对应，
+  条件分支与渲染守卫一致）；桌面 `xl:grid-cols-[minmax(0,1fr)_15rem]` 右侧吸顶
+  （断点定在 xl，lg 起收窄会把 min-w 880px 的主表挤成横滚）+ 移动端 `<details>` 折叠块；
+  复用 guides 同款 `aside-destinations.html` 热门目的地内链；滚动高亮走 aria-current（无 JS 也可用）。
+- **⑦b 的 $netMap/$netKeys/$profiles 纯计算提前到布局之前**：目录必须在渲染前知道该节渲不渲染，
+  否则挂死链。只是搬家，口径未改。50 国页锚点全验：0 死链。
+- 新增 i18n `compare_single__toc_*` ×13（en/de 成对）。
+
+**② ItemList 结构化数据补齐**：50 国页原有 Product + FAQPage + BreadcrumbList，唯缺 ItemList。
+在 `compare/single.html` Product 块后加一份「主表默认排序前 10 名」ItemList（position/name/url
+指向品牌×国家子页）。50/50 全覆盖，JSON 可解析（check_output 通过）。
+
+**③ 全站 United States→USA、United Kingdom→UK**（用户定）
+- `data/countries.toml`：US `name="USA"`（新增 `full="United States"` 只喂搜索 haystack）、
+  GB `name="UK"`（新增 `full="United Kingdom"`）。slug 不变，URL 与既有索引不失效。
+- `data/titlesegments.toml`：US/GB 标题同步改简称。
+- `data/faqs/*.toml` + `content/en/**/*.md`：**带冠词的短语先替换**（"for United States"→"for the USA"），
+  再兜底裸词 —— `scripts/_rename_us_gb.py`（规则顺序敏感），content 35 文件 115 处。
+- `data/plans/*.toml`：套餐名是**国家标签拼出来的描述串**（roamic "United States eSIM 5GB / 21 Days"、
+  saily "United Kingdom 1GB 7 days"、yesim "United Kingdom (UK)"、alosim 小写 "united states (usa)"），
+  4 文件 196 处同步改（UAE 不受影响；仍逐字保留 opensignal 外部报告标题）。
+- 搜索兜底：`country-card.html` 的 `data-name` = 显示名 + full（"usa united states"），
+  首页 typeahead 的 haystack 加 `full`，alias 表方向仍是俗称→全称。搜 "united states"/"united"/"uk" 都命中。
+- `verify_provider_pages.py`：标题国家名判定改为「slug / name / full 三选一」（跟数据层走，不再抄名单）；
+  长度下限 48→44（USA/UK 天然短，为凑字数注水不值）。
+- 残留 7+7 处 = Opensignal 报告真实标题（逐字引用，E-E-A-T）+ 首页搜索 JSON 的 full 字段（刻意）。
+- `data/de/countries.toml` 不动：那是德语本地化名（Vereinigte Staaten），不是英文串。
+
+**④ /compare/ 枢纽页扩容（SEO + 用户意图）**
+- `content/en/compare/_index.md`：新增 6 段长文正文（原先正文为空，枢纽页只剩卡片网格），
+  H2 全部避开 `[,;:—–]`；数量用 shortcode 注入，不写死。
+- 三个新数据模块（一次遍历聚合，`country-stats` 改 `partialCached`）：
+  ①入门价榜（排序键 = 入门价→同价按最优 $/GB→国名，避免前十全并列 $0.51）
+  ②区域概览 ×5（各区入门价地板 + 最优 $/GB，链到区域指南）
+  ③品牌价格榜（按各品牌全球最低价排序；数据里 8 品牌全覆盖 50 国，所以不做"覆盖矩阵"——
+    那只会输出 8 行 50/50，没信息增量）
+- FAQ ×5 + FAQPage schema（一份 `$faqList` 两处用，答案纯文本、构建期注入真实数字）。
+- ItemList（50 个目的地，站内可爬链接）。新增 i18n `compare_list__*` ×27（en/de 成对）。
+
+**改动面**：584 页中 580 页进 diff —— 全站 footer 列国家名（USA/UK）+ 101 国家页版式 + 枢纽重排，
+均属本轮预期；九项校验全绿；基线已重建。
+
+**坑（本轮新增）**：HTML 属性里嵌 `{{ printf "%.2f" … }}` 的内层双引号会把外层属性截断
+（Go html/template 按 `"` 结束属性）—— 带内层引号的表达式要用**单引号**包属性：
+`style='width: {{ printf "%.0f" … }}%'`。另：`index` 对**空 slice** 直接报错（不返回 nil），
+取第 0 条前必须先判 `len`。
+
+## 已完成（美国国家页：按旅行类型选网 + H1 用 USA 别名，2026-10-05 第三十四轮）
+
+**背景**：用户给了一份外部「美国国家页优化方案」。**核对后方案 7/9 项已实现**（运营商选择指南
+= carriers.toml 驱动的 profiles+strong/weak、无限套餐真相表 = policy 数据、按时长/人群推荐、
+/tools/ 旅行成本计算器、ItemList+Product+FAQPage+BreadcrumbList、vs 页内链、$/GB 与品牌筛选）。
+用户拍板只做其中 2 项：**① 按旅行类型推荐网络 ② H1 改用 USA 别名**。
+
+**① 按旅行类型选网（模板级通用，先只填美国数据）**
+- 数据层：`data/carriers.toml` 的 `[[US.info.trips]]` = {key, carrier, min_gb, min_days}，
+  carrier 必须与 profiles/detail 的 name 精确一致；**why 文案不重写**，模板直接取该 carrier
+  的 `info.detail[].strong`（已复核文案，单一事实源）。
+- 模板：`compare/single.html` 网络节内新增 `#trip-network` 卡（H3「Which network fits your trip」+
+  4 张 trip 卡：城市/公路/国家公园/长住混合），复用本节已算好的 `$netMap`/`$details`，不另立口径。
+- 套餐挑选逻辑：① min_gb+min_days 都满足 → ② 只满足 min_gb → ③ 兜底任取，各取最便宜。
+- **反重复设计**：美国 8 家品牌都能连全部 3 网 → 首版四张卡都在重复「8 of 8 … $0.62/GB · aloSIM」，
+  等于没信息量。改为：全都能骑时把「网络不限制品牌选择」这句**提到顶部只说一次**
+  （`$anyPartial` 判定），卡片只保留该行程类型的「够用最便宜套餐」（现为 $3/$8/$5/$15 四个不同结果）。
+
+**② H1 别名**：`data/countries.toml[US].alias = "USA"` → H1 `Best eSIM for USA in 2026`
+（title 仍是 United States，两个词都覆盖）；模板 `{{ $country.alias | default $country.name }}`，
+缺省回退，其他 50 国零影响。de 页经 data 深合并同样生效。
+
+**★ 坑（本轮真事故）**：守卫块不渲染 ≠ 零输出。首版把 `$tripText`/`with` 写在行首，未裁剪空白，
+**50 个国家页各多出 4 个空行**，全进回归 diff（100 处变更）；同一处还误多加一个 `{{ end }}`
+把外层 section 的 `{{ if }}` 提前闭合，Hugo 报 `undefined variable "$faqs"`。
+修法：整块动作用 `{{- ... -}}` 裁剪（含注释），末行 `{{- end }}`；修后 diff = **仅 US en+de 2 处**。
+
+九项全绿；基线已重建；iframe 定位截图核验模块视觉。
+
 ## 已完成（footer 社交链接 + Organization sameAs，2026-10-05 第三十三轮）
 
 **① 社交链接**：`hugo.toml` 新增 `[[params.social]]` 数组（单一事实源：facebook/youtube/tumblr，

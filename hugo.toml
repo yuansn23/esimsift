@@ -74,6 +74,10 @@ isHTML = false
     key = "tumblr"
     label = "Tumblr"
     url = "https://www.tumblr.com/blog/esimsift"
+  [[params.social]]
+    key = "x"
+    label = "X"
+    url = "https://x.com/esimsift"
 
   # ==========================================
   # 出站流量配置（单一控制点）

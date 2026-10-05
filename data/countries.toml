@@ -24,7 +24,14 @@ quirks = [
 roami = "japan-esim"
 
 [US]
-name = "United States"
+name = "USA"
+# full = 英文全称，**不用于显示**：只喂给站内搜索的 haystack（用户仍会打
+# "united states" / 只打 "united"）与 schema/描述的长尾兜底。
+full = "United States"
+# 2026-10-05 用户定：全站显示名统一为 USA（卡片/H1/正文/FAQ/title 一致），
+# 不再出现 "United States"。slug 仍为 united-states（URL 与既有索引不失效）。
+# alias 保留：H1 走 `alias | default name`，缺省回退 name，其他国零影响。
+alias = "USA"
 article = "The"
 slug = "united-states"
 flag = "img/flags/us.svg"
@@ -43,7 +50,10 @@ quirks = [
 roami = "united-states-esim"
 
 [GB]
-name = "United Kingdom"
+name = "UK"
+full = "United Kingdom"
+# 2026-10-05 用户定：显示名统一为 UK（slug 仍为 united-kingdom）。无 alias，
+# H1 直接取 name ——"Best eSIM for UK in 2026"。
 article = "The"
 slug = "united-kingdom"
 flag = "img/flags/gb.svg"
