@@ -58,6 +58,24 @@ isHTML = false
   ga4 = "G-J6SXGGEN8L"
 
   # ==========================================
+  # 官方社交 profile —— footer 底部图标 + Organization JSON-LD 的 sameAs（单一事实源）
+  # 数组顺序 = 页面展示顺序（**不要改成 map**，map 会按字母序打乱）
+  # 新增平台：这里加一项 + 在 partials/social-links.html 的 $icons 里补一个 svg path
+  # ==========================================
+  [[params.social]]
+    key = "facebook"
+    label = "Facebook"
+    url = "https://www.facebook.com/profile.php?id=61578347454834"
+  [[params.social]]
+    key = "youtube"
+    label = "YouTube"
+    url = "https://www.youtube.com/@esimsift"
+  [[params.social]]
+    key = "tumblr"
+    label = "Tumblr"
+    url = "https://www.tumblr.com/blog/esimsift"
+
+  # ==========================================
   # 出站流量配置（单一控制点）
   # - 换导流目标：只改 active
   # - rel = "" → follow（自家站，如 Roami）

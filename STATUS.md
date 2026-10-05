@@ -1170,6 +1170,22 @@ em/en 破折号，H1 豁免）→ 改 "Compare every code on one grid"。**新�
 i18n +21 key（en/de 成对，1056 = 1056 对齐）。九项构建全绿；基线 diff = deals 1 处（预期）；
 截图验证排序与徽章。
 
+## 已完成（footer 社交链接 + Organization sameAs，2026-10-05 第三十三轮）
+
+**① 社交链接**：`hugo.toml` 新增 `[[params.social]]` 数组（单一事实源：facebook/youtube/tumblr，
+**数组序 = 展示序**，不要改成 map——map 按字母序打乱）；新建 `partials/social-links.html`
+（内联 SVG 图标 + rel="me noopener" + aria-label，新平台两步：toml 加项 + $icons 补 path）；
+footer 底栏改为三段式（披露文案 | 社交图标 | 日期说明，lg 三点分布）。
+
+**② sameAs 补齐**：`schema-org.html` 的 Organization JSON-LD 从「暂不填（无官方账号）」
+改为从 `params.social` 派生 sameAs（无配置则整个键不出现）——实体锚点补全，AI 引擎
+归因一致。en/de 同源（社交链接与语言无关）。
+
+**坑**：改 hugo.toml 后 `hugo server` 未热更（服务还活着但吐旧内容）→ 配置变更后必须重启
+dev server；`hugo config` 可先验证 Hugo 侧参数是否可见。
+
+九项全绿；基线重建（footer+schema 全站组件，584 页均变属预期）；图标 2x 截图核验形状。
+
 ## 已完成（参数总表长尾标题 + 行动号召按钮，2026-10-05 第三十二轮）
 
 **① H2 长尾化**：`Compare every code on one grid` → `Compare every eSIM promo code side by side`

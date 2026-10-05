@@ -107,9 +107,10 @@
   </div>
 
   <div class="border-t border-white/10">
-    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-ink-500 sm:flex-row sm:px-6">
-      <p>{{ i18n "partials_footer__2026_esim_sift_some_outbound_links_are_sponsored_see_our" | safeHTML }} <a href="{{ partial "lang-href.html" "/disclosure/" }}" class="underline decoration-ink-600 underline-offset-2 transition-colors hover:text-white">{{ i18n "g_disclosure" | safeHTML }}</a>.</p>
-      <p>{{ i18n "partials_footer__prices_verified_on_the_dates_shown_on_each_page" | safeHTML }}</p>
+    <div class="mx-auto flex max-w-7xl flex-col items-center gap-4 px-4 py-5 text-xs text-ink-500 sm:px-6 lg:flex-row lg:justify-between">
+      <p class="text-center lg:text-left">{{ i18n "partials_footer__2026_esim_sift_some_outbound_links_are_sponsored_see_our" | safeHTML }} <a href="{{ partial "lang-href.html" "/disclosure/" }}" class="underline decoration-ink-600 underline-offset-2 transition-colors hover:text-white">{{ i18n "g_disclosure" | safeHTML }}</a>.</p>
+      {{ partial "social-links.html" . }}
+      <p class="text-center lg:text-right">{{ i18n "partials_footer__prices_verified_on_the_dates_shown_on_each_page" | safeHTML }}</p>
     </div>
   </div>
 </footer>
