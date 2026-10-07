@@ -1,0 +1,113 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n11"
+ },
+ "plans": [
+  {
+   "name": "Ireland",
+   "data": "100MB",
+   "validity": "7 Days",
+   "price": "$0.00",
+   "badges": []
+  },
+  {
+   "name": "Ireland",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$2.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Ireland",
+   "data": "3.5GB",
+   "validity": "1 Day",
+   "price": "$3.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Ireland",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$6.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Ireland",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$10.29",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Ireland",
+   "data": "3.5GB/day",
+   "validity": "3 Days",
+   "price": "$10.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Ireland",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$16.79",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Ireland",
+   "data": "20GB",
+   "validity": "90 Days",
+   "price": "$23.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Ireland",
+   "data": "3.5GB/day",
+   "validity": "7 Days",
+   "price": "$24.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Ireland",
+   "data": "50GB",
+   "validity": "180 Days",
+   "price": "$40.89",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Ireland",
+   "data": "3.5GB/day",
+   "validity": "15 Days",
+   "price": "$44.99",
+   "badges": [
+    "20% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GigSky Travel eSIM for Ireland | Data Plans & Reviews",
+  "h1": "GigSky eSIM Data Plans for Ireland",
+  "networks": null
+ },
+ "slug": "ireland",
+ "url": "https://esimdb.com/ireland/gigsky",
+ "status": 200
+}

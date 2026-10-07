@@ -1,16 +1,17 @@
 # Israel FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for Israel?"
-a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "{cheap_brand} holds the headline number for {country}: {cheap_plan} at ${cheap_price}. Price and value are different measurements, and on cost per gigabyte the winner is {value_brand}'s {value_plan} at ${value_pergb}/GB. Buy for the trip you are actually taking rather than for the lowest figure on the page."
 
 [[faq]]
 q = "Is unlimited eSIM data in Israel actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Holafly at $21.99 ($4.40/day), carries: No published cap; throttling reported above 3GB/day. Treat them as big-but-capped plans and compare the caps."
+a = "Capped, not unlimited - the {unl_count} unlimited plans for {country} throttle once the daily allowance is spent. {unl_brand} comes out cheapest per day at ${unl_perday}, and the full band here spans {unl_perday_range}. Compare caps across brands before buying, because the throttled speed is the number that matters and {unl_brand}'s is {unl_drop}."
 
 [[faq]]
 q = "Airalo or Holafly for Israel?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($4.25/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "It comes down to shape - buckets of data against unlimited days. Airalo's {ah_airalo_plan} works out at ${ah_airalo_pergb}/GB for ${ah_airalo_price}, and what you buy is what you get. Where Holafly wins is predictability, from ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and where Airalo wins is a short, light trip."
 
 [[faq]]
 q = "Do I need ID verification for a Israel eSIM?"
@@ -21,5 +22,7 @@ q = "Which networks do Israel eSIMs use?"
 a = "Plans on this page run on Cellcom, Partner, Pelephone. Differences matter mostly outside the big cities - the network column in the main table shows which carrier each plan rides."
 
 [[faq]]
-q = "Can one eSIM cover Israel?"
-a = "No single-country plan here bundles neighbors - regional plans from Airalo and Nomad cover multi-stop trips, usually at a $/GB premium. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+# Q6：国家没有 countries.toml `neighbors`（无邻国 7 国之一），所以问题点名 **region** 而不是邻国 ——
+# 否则只剩「Can one eSIM cover Israel?」这种同义反复的问法（2026-10-07 第四十二轮修）。
+q = "Can one eSIM cover Israel and the rest of the Middle East?"
+a = "Not with a country plan alone, because {country} plans stop at the border. Adding {neighbor} means a regional bundle or a second plan, and the two-country arithmetic is worth doing before you buy."

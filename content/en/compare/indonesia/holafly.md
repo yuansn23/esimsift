@@ -4,5 +4,5 @@ iso: ID
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for Indonesia: 6 daily plans from $2.46/day, fair-use caps decoded — 153 Indonesia eSIMs tracked."
+  description: "eSIM Sift compares Holafly unlimited eSIMs for Indonesia: 6 daily plans from $2.46/day, fair-use caps decoded — 161 Indonesia eSIMs tracked."
 ---

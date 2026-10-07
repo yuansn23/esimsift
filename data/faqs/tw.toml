@@ -1,16 +1,17 @@
 # Taiwan FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for Taiwan?"
-a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "{cheap_brand} holds the headline number for {country}: {cheap_plan} at ${cheap_price}. {runner_brand} sits next at ${runner_price}, and the strongest per-gigabyte rate comes from {value_brand}'s {value_plan} at ${value_pergb}/GB. Small buckets suit city breaks, while longer stays are usually cheaper per gigabyte with a bigger plan."
 
 [[faq]]
 q = "Is unlimited eSIM data in Taiwan actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Roami at $18.99 ($2.71/day), carries: Soft cap 2GB/day at full speed, then throttled. Treat them as big-but-capped plans and compare the caps."
+a = "Capped, not unlimited - the {unl_count} unlimited plans for {country} throttle once the daily allowance is spent. Prices run {unl_perday_range} per day depending on duration, and {unl_brand} is the cheapest at ${unl_perday}/day. Two figures decide whether a capped plan suits you, and {unl_brand} publishes both: {unl_allowance}, then {unl_drop}."
 
 [[faq]]
 q = "Airalo or Holafly for Taiwan?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($3.80/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "It comes down to shape - buckets of data against unlimited days. Airalo's strongest {country} offer is ${ah_airalo_pergb}/GB, sold as {ah_airalo_plan} for ${ah_airalo_price}. Holafly only sells unlimited by the day: {ah_holafly_days} days for ${ah_holafly_price}, or ${ah_holafly_perday} a day."
 
 [[faq]]
 q = "Do I need ID verification for a Taiwan eSIM?"
@@ -22,4 +23,4 @@ a = "Plans on this page run on Chunghwa Telecom, Taiwan Mobile, FarEasTone. Diff
 
 [[faq]]
 q = "Can one eSIM cover Taiwan and Japan?"
-a = "Regional Asia/continental plans from Airalo and Nomad bundle Taiwan with neighbors - usually worse $/GB than single-country plans, but cheaper than two separate eSIMs. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+a = "Not on a single-country plan. If the itinerary continues from {country} into {neighbor}, compare a regional package with two separate plans, since the tables here price each market on its own."

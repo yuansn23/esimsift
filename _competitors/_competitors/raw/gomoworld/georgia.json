@@ -1,0 +1,52 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single"
+ },
+ "plans": [
+  {
+   "name": "Georgia",
+   "data": "4GB",
+   "validity": "7 Days",
+   "price": "$4.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Georgia",
+   "data": "19GB",
+   "validity": "30 Days",
+   "price": "$12.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Georgia",
+   "data": "40GB",
+   "validity": "30 Days",
+   "price": "$24.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Georgia",
+   "data": "60GB",
+   "validity": "30 Days",
+   "price": "$35.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GoMoWorld Travel eSIM for Georgia | Data Plans & Reviews",
+  "h1": "GoMoWorld eSIM Data Plans for Georgia",
+  "networks": null
+ },
+ "slug": "georgia",
+ "url": "https://esimdb.com/georgia/gomoworld",
+ "status": 200
+}

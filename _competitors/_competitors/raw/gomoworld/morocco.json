@@ -1,0 +1,52 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single"
+ },
+ "plans": [
+  {
+   "name": "Morocco",
+   "data": "1.5GB",
+   "validity": "7 Days",
+   "price": "$4.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "7GB",
+   "validity": "30 Days",
+   "price": "$12.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "15GB",
+   "validity": "30 Days",
+   "price": "$24.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "23GB",
+   "validity": "30 Days",
+   "price": "$35.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GoMoWorld Travel eSIM for Morocco | Data Plans & Reviews",
+  "h1": "GoMoWorld eSIM Data Plans for Morocco",
+  "networks": null
+ },
+ "slug": "morocco",
+ "url": "https://esimdb.com/morocco/gomoworld",
+ "status": 200
+}

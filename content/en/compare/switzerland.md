@@ -3,7 +3,7 @@ title: "Switzerland eSIM"
 iso: CH
 weight: 24
 seo:
-  description: "eSIM Sift compares every Switzerland eSIM: 156 real plans from 8 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every Switzerland eSIM: 166 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 Providers in Switzerland price the same gigabyte very differently. Budget buyers in Switzerland land on yesim 500MB / 1 Day at $0.51. The same money inside the 100GB bucket reaches about 950MB at $0.55/GB. roami takes the per-gigabyte race with a 100GB / 30-day plan at $0.55/GB. That is 88 unlimited plans among 156 options for Switzerland from {{< count-providers >}} providers.

@@ -1,16 +1,17 @@
 # Croatia FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for Croatia?"
-a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "{cheap_brand}'s {cheap_plan} is the cheapest {country} plan we track, at ${cheap_price}. Price and value are different measurements, and on cost per gigabyte the winner is {value_brand}'s {value_plan} at ${value_pergb}/GB. If you only need maps and messaging the entry price is enough, and anyone streaming should shop on $/GB."
 
 [[faq]]
 q = "Is unlimited eSIM data in Croatia actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Roami at $18.99 ($2.71/day), carries: Soft cap 2GB/day at full speed, then throttled. Treat them as big-but-capped plans and compare the caps."
+a = "Not quite - all {unl_count} 'unlimited' {country} plans carry a fair-use policy. {unl_brand} comes out cheapest per day at ${unl_perday}, and the full band here spans {unl_perday_range}. Check the fallback speed before you commit, because that is what you get after the daily allowance: {unl_drop}."
 
 [[faq]]
 q = "Airalo or Holafly for Croatia?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($3.80/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "They sell different things, so the answer depends on how you use data. Airalo's {ah_airalo_plan} works out at ${ah_airalo_pergb}/GB for ${ah_airalo_price}, and what you buy is what you get. Take Holafly if you would rather not count gigabytes, since its {country} packages start at ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and take Airalo for a light, short trip."
 
 [[faq]]
 q = "Do I need ID verification for a Croatia eSIM?"
@@ -21,5 +22,7 @@ q = "Which networks do Croatia eSIMs use?"
 a = "Plans on this page run on Hrvatski Telekom, A1 Hrvatska. Differences matter mostly outside the big cities - the network column in the main table shows which carrier each plan rides."
 
 [[faq]]
-q = "Can one eSIM cover Croatia?"
-a = "No single-country plan here bundles neighbors - regional plans from Airalo and Nomad cover multi-stop trips, usually at a $/GB premium. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+# Q6：国家没有 countries.toml `neighbors`（无邻国 7 国之一），所以问题点名 **region** 而不是邻国 ——
+# 否则只剩「Can one eSIM cover Croatia?」这种同义反复的问法（2026-10-07 第四十二轮修）。
+q = "Can one eSIM cover Croatia and the rest of Europe?"
+a = "Only with a regional package, because the country plans on this page do not cross borders. The markets around {country} all have their own tables here - {neighbors_all} among them - so price a regional bundle against two single-country plans."

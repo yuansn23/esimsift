@@ -1,0 +1,4155 @@
+# maya - competitor plan data
+# primary source: maya.net (official)
+# captured: 2026-10-04   countries: 50
+# normalised to the esimsift plan schema (gb/days/type/price/fup_note).
+# NOTE: this file is a SEPARATE capture set - it is not wired into data/plans/.
+
+[AE]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/uae"
+networks = ["Etisalat (5G)"]
+
+[[AE.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[AE.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[AE.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[AE.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[AE.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[AE.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[AE.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[AE.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[AE.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[AE.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[AR]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/argentina"
+networks = ["Claro Argentina (LTE)"]
+
+[[AR.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[AR.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[AR.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[AR.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[AR.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[AR.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[AR.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[AR.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[AR.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[AR.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[AT]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/austria"
+networks = ["A1 Telekom Austria AG (5G)", "Hutchison Drei Austria GmbH (LTE)", "Orange (LTE)"]
+
+[[AT.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[AT.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[AT.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[AT.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[AT.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[AT.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[AT.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[AT.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[AT.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[AT.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[AU]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/australia"
+networks = ["Optus (5G)"]
+
+[[AU.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[AU.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[AU.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[AU.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[AU.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[AU.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[AU.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[AU.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[AU.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[AU.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[BE]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/belgium"
+networks = ["ORANGE Belgium nv_SA (5G)", "Proximus PLC (LTE)"]
+
+[[BE.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[BE.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[BE.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[BE.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[BE.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[BE.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[BE.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[BE.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[BE.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[BE.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[BR]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/brazil"
+networks = ["Claro Brasil (LTE)"]
+
+[[BR.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[BR.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[BR.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[BR.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[BR.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[BR.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[BR.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[BR.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[BR.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[BR.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[CA]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/canada"
+networks = ["Bell Mobility Inc. (5G)", "SaskTel (3G)", "TELUS Communications Inc. (LTE)"]
+
+[[CA.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[CA.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[CA.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[CA.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[CA.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[CA.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[CA.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[CA.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[CA.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[CA.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[CH]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/switzerland"
+networks = ["Sunrise Communications AG (LTE)"]
+
+[[CH.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[CH.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[CH.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[CH.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[CH.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[CH.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[CH.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[CH.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[CH.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[CH.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[CN]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/china"
+networks = ["China Mobile (5G)"]
+
+[[CN.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[CN.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[CN.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[CN.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[CN.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[CN.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[CN.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[CN.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[CN.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[CN.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[CO]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/colombia"
+networks = ["Tigo Colombia (5G)"]
+
+[[CO.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[CO.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[CO.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[CO.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[CO.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[CO.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[CO.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[CO.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[CO.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[CO.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[CR]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/costa-rica"
+networks = ["LIBERTY COSTA RICA (LTE)"]
+
+[[CR.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[CR.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[CR.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[CR.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[CR.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[CR.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[CR.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[CR.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[CR.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[CR.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[CZ]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/czech-republic"
+networks = ["Vodafone (LTE)"]
+
+[[CZ.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[CZ.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[CZ.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[CZ.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[CZ.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[CZ.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[CZ.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[CZ.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[CZ.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[CZ.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[DE]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/germany"
+networks = ["Vodafone (LTE)"]
+
+[[DE.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[DE.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[DE.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[DE.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[DE.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[DE.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[DE.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[DE.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[DE.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[DE.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[EG]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/egypt"
+networks = ["Orange (LTE)"]
+
+[[EG.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[EG.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[EG.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[EG.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[EG.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[EG.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[EG.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[EG.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[EG.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[EG.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[ES]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/spain"
+networks = ["Vodafone (LTE)", "Orange Espagne, S.A., sociedad unipersonal (5G)"]
+
+[[ES.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[ES.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[ES.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[ES.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[ES.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[ES.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[ES.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[ES.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[ES.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[ES.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[FJ]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/fiji"
+networks = ["Vodafone (LTE)"]
+
+[[FJ.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[FJ.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[FJ.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[FJ.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[FJ.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[FJ.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[FJ.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[FJ.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[FJ.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[FJ.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[FR]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/france"
+networks = ["Free Mobile (5G)", "Orange (LTE)"]
+
+[[FR.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[FR.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[FR.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[FR.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[FR.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[FR.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[FR.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[FR.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[FR.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[FR.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[GB]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/uk"
+networks = ["Vodafone (LTE)", "EE Limited (5G)", "Hutchison 3G UK Limited (5G)"]
+
+[[GB.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[GB.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[GB.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[GB.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[GB.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[GB.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[GB.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[GB.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[GB.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[GB.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[GE]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/georgia"
+networks = ["Silknet (LTE)"]
+
+[[GE.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[GE.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[GE.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[GE.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[GE.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[GE.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[GE.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[GE.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[GE.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[GE.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[GR]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/greece"
+networks = ["Vodafone (LTE)"]
+
+[[GR.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[GR.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[GR.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[GR.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[GR.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[GR.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[GR.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[GR.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[GR.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[GR.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[HK]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/hong-kong"
+networks = ["Hutchison 3G Hong Kong (5G)"]
+
+[[HK.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[HK.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[HK.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[HK.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[HK.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[HK.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[HK.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[HK.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[HK.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[HK.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[HR]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/croatia"
+networks = ["VIPnet d.o.o. (5G)"]
+
+[[HR.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[HR.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[HR.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[HR.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[HR.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[HR.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[HR.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[HR.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[HR.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[HR.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[ID]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/indonesia"
+networks = ["Indosat (5G)", "Hutchison 3 (5G)"]
+
+[[ID.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[ID.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[ID.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[ID.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[ID.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[ID.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[ID.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[ID.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[ID.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[ID.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[IE]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/ireland"
+networks = ["Three Ireland (Hutchison) Limited (5G)", "Vodafone (LTE)"]
+
+[[IE.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[IE.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[IE.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[IE.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[IE.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[IE.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[IE.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[IE.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[IE.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[IE.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[IL]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/israel"
+networks = ["Hot Mobile (5G)", "Pelephone (5G)"]
+
+[[IL.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[IL.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[IL.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[IL.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[IL.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[IL.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[IL.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[IL.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[IL.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[IL.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[IN]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/india"
+networks = ["Reliance JIO (LTE)"]
+
+[[IN.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[IN.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[IN.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[IN.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[IN.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[IN.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[IN.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[IN.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[IN.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[IN.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[IS]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/iceland"
+networks = ["S\u00fdn hf. (3G)"]
+
+[[IS.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[IS.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[IS.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[IS.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[IS.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[IS.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[IS.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[IS.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[IS.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[IS.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[IT]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/italy"
+networks = ["ILIAD Italy (5G)", "Vodafone (LTE)", "WIND Telecomunicazioni S.P.A. (LTE)"]
+
+[[IT.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[IT.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[IT.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[IT.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[IT.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[IT.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[IT.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[IT.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[IT.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[IT.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[JP]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/japan"
+networks = ["Rakuten Mobile Inc. (5G)"]
+
+[[JP.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[JP.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[JP.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[JP.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[JP.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[JP.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[JP.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[JP.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[JP.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[JP.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[KE]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/kenya"
+networks = ["Airtel (5G)"]
+
+[[KE.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[KE.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[KE.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[KE.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[KE.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[KE.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[KE.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[KE.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[KE.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[KE.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[KR]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/south-korea"
+networks = ["KT (5G)"]
+
+[[KR.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[KR.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[KR.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[KR.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[KR.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[KR.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[KR.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[KR.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[KR.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[KR.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[MA]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/morocco"
+networks = ["Orange Maroc (Meditel) (LTE)"]
+
+[[MA.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[MA.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[MA.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[MA.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[MA.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[MA.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[MA.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[MA.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[MA.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[MA.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[MO]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/macau"
+networks = ["Hutchison Telephone Macau Co. (LTE)"]
+
+[[MO.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[MO.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[MO.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[MO.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[MO.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[MO.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[MO.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[MO.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[MO.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[MO.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[MX]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/mexico"
+networks = []
+
+[[MX.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[MX.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[MX.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[MX.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[MX.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[MX.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[MX.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[MX.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[MX.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[MX.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[MY]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/malaysia"
+networks = ["Maxis Mobile Services Sdn Bhd (5G)", "Umobile_Mi3G Network Sdn Bhd (LTE)"]
+
+[[MY.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[MY.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[MY.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[MY.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[MY.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[MY.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[MY.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[MY.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[MY.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[MY.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[NL]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/netherlands"
+networks = ["KPN B.V. (5G)", "Vodafone (LTE)"]
+
+[[NL.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[NL.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[NL.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[NL.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[NL.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[NL.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[NL.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[NL.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[NL.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[NL.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[NZ]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/new-zealand"
+networks = ["One (5G)"]
+
+[[NZ.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[NZ.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[NZ.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[NZ.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[NZ.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[NZ.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[NZ.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[NZ.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[NZ.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[NZ.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[PE]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/peru"
+networks = ["Claro Peru (LTE)"]
+
+[[PE.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[PE.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[PE.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[PE.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[PE.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[PE.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[PE.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[PE.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[PE.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[PE.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[PH]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/philippines"
+networks = ["Globe (5G)"]
+
+[[PH.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[PH.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[PH.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[PH.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[PH.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[PH.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[PH.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[PH.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[PH.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[PH.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[PL]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/poland"
+networks = ["Play (P4) (LTE)"]
+
+[[PL.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[PL.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[PL.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[PL.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[PL.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[PL.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[PL.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[PL.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[PL.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[PL.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[PT]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/portugal"
+networks = ["Vodafone (LTE)", "NOS Comunicacoes, S.A. (5G)"]
+
+[[PT.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[PT.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[PT.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[PT.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[PT.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[PT.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[PT.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[PT.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[PT.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[PT.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[QA]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/qatar"
+networks = ["Vodafone (5G)"]
+
+[[QA.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[QA.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[QA.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[QA.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[QA.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[QA.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[QA.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[QA.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[QA.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[QA.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[SA]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/saudi-arabia"
+networks = ["ZAIN (5G)"]
+
+[[SA.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[SA.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[SA.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[SA.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[SA.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[SA.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[SA.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[SA.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[SA.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[SA.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[SG]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/singapore"
+networks = ["StarHub (5G)"]
+
+[[SG.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[SG.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[SG.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[SG.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[SG.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[SG.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[SG.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[SG.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[SG.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[SG.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[TH]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/thailand"
+networks = ["dtac TriNet Co.Ltd.DTN (5G)", "True Move H Universal Ltd II (LTE)", "True Move H Universal Ltd III (5G)"]
+
+[[TH.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[TH.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[TH.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[TH.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[TH.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[TH.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[TH.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[TH.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[TH.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[TH.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[TR]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/turkey"
+networks = ["AVEA (5G)"]
+
+[[TR.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[TR.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[TR.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[TR.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[TR.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[TR.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[TR.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[TR.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[TR.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[TR.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[TW]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/taiwan"
+networks = ["Chunghwa Telecom Mobile (5G)"]
+
+[[TW.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[TW.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[TW.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[TW.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[TW.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[TW.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[TW.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[TW.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[TW.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[TW.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[US]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/usa"
+networks = ["Verizon (5G)"]
+
+[[US.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[US.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[US.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[US.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[US.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[US.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[US.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[US.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[US.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[US.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[VN]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/vietnam"
+networks = ["Vietnamobile (LTE)"]
+
+[[VN.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[VN.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[VN.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[VN.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[VN.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[VN.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[VN.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[VN.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[VN.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[VN.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+
+
+[ZA]
+checked = "2026-10-04"
+source = "maya.net (official)"
+url = "https://maya.net/esim/south-africa"
+networks = ["Cell C (LTE)", "Vodacom (LTE)"]
+
+[[ZA.plans]]
+name = "3 Days - Unlimited Global Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 9.99
+
+[[ZA.plans]]
+name = "7 Days Unlimited Global Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 19.99
+
+[[ZA.plans]]
+name = "14 Days - Unlimited Global Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 27.99
+
+[[ZA.plans]]
+name = "30 Days Unlimited Global Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 49.99
+
+[[ZA.plans]]
+name = "3 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.98
+cruise_addon = true
+
+[[ZA.plans]]
+name = "3 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 3
+type = "unlimited"
+price = 49.99
+cruise_addon = true
+
+[[ZA.plans]]
+name = "7 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 7
+type = "unlimited"
+price = 109.99
+cruise_addon = true
+
+[[ZA.plans]]
+name = "14 Days - Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.98
+cruise_addon = true
+
+[[ZA.plans]]
+name = "14 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 14
+type = "unlimited"
+price = 160.99
+cruise_addon = true
+
+[[ZA.plans]]
+name = "30 Days Unlimited Global + Cruise Data"
+gb = 0
+days = 30
+type = "unlimited"
+price = 299.99
+cruise_addon = true
+

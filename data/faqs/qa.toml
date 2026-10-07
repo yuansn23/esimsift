@@ -1,16 +1,17 @@
 # Qatar FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for Qatar?"
-a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "Start with {cheap_brand}, whose {cheap_plan} is the cheapest {country} plan at ${cheap_price}. Best value per gigabyte is a separate question, and the answer here is {value_brand}'s {value_plan} at ${value_pergb}/GB. If you only need maps and messaging the entry price is enough, and anyone streaming should shop on $/GB."
 
 [[faq]]
 q = "Is unlimited eSIM data in Qatar actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Holafly at $21.99 ($4.40/day), carries: 1.5GB/day high-speed cap, then 3G speeds. Treat them as big-but-capped plans and compare the caps."
+a = "'Unlimited' here means unlimited data, not unlimited speed: {unl_count} {country} plans apply fair-use caps. The best day rate belongs to {unl_brand} - ${unl_perday} for a {unl_days}-day package at ${unl_price} - and the market spans {unl_perday_range}. Check the fallback speed before you commit, because that is what you get after the daily allowance: {unl_drop}."
 
 [[faq]]
 q = "Airalo or Holafly for Qatar?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($4.25/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "Airalo and Holafly solve different problems, so compare the models before the prices. Airalo's way into {country} is a data bucket - {ah_airalo_plan} at ${ah_airalo_price}, or ${ah_airalo_pergb}/GB at its sharpest. Take Holafly if you would rather not count gigabytes, since its {country} packages start at ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and take Airalo for a light, short trip."
 
 [[faq]]
 q = "Do I need ID verification for a Qatar eSIM?"
@@ -22,4 +23,4 @@ a = "Plans on this page run on Ooredoo, Vodafone Qatar. Differences matter mostl
 
 [[faq]]
 q = "Can one eSIM cover Qatar and United Arab Emirates?"
-a = "Regional Asia/continental plans from Airalo and Nomad bundle Qatar with neighbors - usually worse $/GB than single-country plans, but cheaper than two separate eSIMs. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+a = "One country per plan, so a {country} eSIM stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."

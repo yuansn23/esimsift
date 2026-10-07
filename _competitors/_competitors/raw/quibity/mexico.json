@@ -1,0 +1,70 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n6"
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Mexico",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$6.80",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Mexico",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$14.40",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Mexico",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$14.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Mexico",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$21.50",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Mexico",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$39.50",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - Mexico",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$71.20",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Mexico | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Mexico",
+  "networks": null
+ },
+ "slug": "mexico",
+ "url": "https://esimdb.com/mexico/quibity",
+ "status": 200
+}

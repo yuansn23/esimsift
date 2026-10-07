@@ -6,8 +6,9 @@
 ## 命令
 
 ```bash
-npm run build     # Tailwind CSS → 数据校验 + CSS 同步校验 → hugo → 产物校验（上线前的完整管线）
-npm run dev       # Tailwind 预编译 + hugo server
+npm run build     # 数据日期自动盖章 → Tailwind CSS → 数据校验 + CSS 同步校验 → hugo → 产物校验（上线前的完整管线）
+npm run dev       # 同上（含盖章）+ hugo server
+npm run stamp     # 单独跑「数据变了就把核对日推到今天」（见 §4.3；台账 docs/checked-state.json 必须提交）
 npm run validate  # 单独跑校验（validate.py + check_css_sync.py）
 npm run check:output # 产物校验（格式串泄漏 / JSON-LD 可解析 / 评分区间）——必须在 hugo 之后跑
 npm run build:css # 只重建 Tailwind（改过 layouts 里的 class 后必须跑）
@@ -1170,6 +1171,298 @@ em/en 破折号，H1 豁免）→ 改 "Compare every code on one grid"。**新�
 i18n +21 key（en/de 成对，1056 = 1056 对齐）。九项构建全绿；基线 diff = deals 1 处（预期）；
 截图验证排序与徽章。
 
+## 已完成（页面日期改为自动跟随数据 + Nomad 收尾，2026-10-07 第四十三轮）
+
+**用户请求**：「既然更新了页面的数据驱动内容，✓ Prices checked Oct 4, 2026 这个就需要改为当前系统日期。只要是页面数据驱动更新了，日期就应该要改变，不仅限于是这个国家 esim 页面」（并给出 Nomad logo 路径 `static/img/logo/`）。
+
+### 1. 页面日期改为「跟随数据自动走」（核心）
+
+**问题**：日期机制原本靠人记得跑 `bump_checked.py` —— 必然漏。Nomad 就是活证据：数据 10-06 入库、页面却一直印 `Prices checked Oct 4`。
+
+**为什么不能简单换成构建日**：用 `now` 会让 `lastmod` 每次部署都翻新，Google 判定本站 lastmod 无信息量后整体忽略；而且当价格其实是上周抓的时，「今天核过价」本身是不实陈述（第二十三轮试过、已撤回）。**正解是「日期 = 该数据最后一次变化的日期」，并让它自动维护。**
+
+**做法**：新增 `scripts/stamp_checked.py`，给每个「日期单元」存一份内容指纹（sha256）：
+- 单元 = `plans.<brand>.<ISO>`（价格）· `profile.<brand>`（品牌档案，含 `.info`/`.policy` 子表）
+- 指纹变了 → 日期 = 今天；没变 → 不动；**首次建台账** → 保留现值；**台账已在而冒出新的单元**（新品牌 / 新市场入库）→ 盖今天
+- 已挂进 `npm run build` 的**第一步**（`npm run stamp`），改完数据直接构建就行
+- 台账 `docs/checked-state.json`（459 个单元）**必须提交进版本库**
+
+**指纹口径**：排除**日期字段行 + 纯注释行 + 行内注释**（含引号内 `#` 与 `\"` 转义的正确处理）。⇒ 改注释 / 调格式**不会**让日期凭空前移；改一个价格**必然**前移。
+
+### 2. Nomad 收尾
+
+- **logo 归位**：`static/img/logo/nomad.png` → **`static/img/providers/nomad.png`**（前者只是素材下载区，放进去不生效；`prov-logo.html` 探测的是 `providers/`，且**只认 `.png`/`.webp`**）。512×512 合法 PNG，产物里 603 页已渲染真 logo、`Nd` monogram 残留 **0**。
+- **价格核对日推到当天**：Nomad 50 国 `checked` 10-04 → **2026-10-07**。四处同源已验：可见文案 `Prices checked Oct 7, 2026` ／子页 `Oct 7, 2026` ×5 ／JSON-LD `dateModified: 2026-10-07` ／sitemap `lastmod 2026-10-07T00:00:00Z`。
+- 品牌档案日保持 **10-06**（那是真核验日）—— 品牌 hub 的 `Last updated` 取两者最大 = Oct 7 ✓，「prices as checked on」只取价格日 = Oct 7 ✓（不对称口径仍成立）。
+
+### 3. 变更面归因（627 页，0 页未解释）
+
+| 数量 | 原因 |
+|---|---|
+| 603 页 | Nomad 徽标 `monogram → 真 logo`（Nomad 出现在全站每一个品牌列表里） |
+| 24 页 | `guides/*` + `networks/*` + `research/*` —— 它们引用了 Nomad 的**价格核对日**（Oct 4 → Oct 7） |
+| **0 页** | 未解释 |
+
+验证方式：产物里含 `providers/nomad.png` 的页面 **603 个**，**全部**落在变更集内；**0 页**含徽标却没变（集合闭合）。基线已重建（643 文件，`--diff` 逐字节一致）。
+
+### 4. 三个坑（已进 PROJECT.md 红线 48–50）
+
+1. **★ 指纹不能包含注释**：第一版把整段原始文本算进去，于是改一句**行内注释**（`color = "#16456B"   # monogram 兜底色…`）就把 Nomad 的品牌档案核对日从 10-06 顶到 10-07 —— **页面一个像素没变，日期却动了**，正是本轮要消灭的那类不实陈述。修法：依次剥掉日期行 → 纯注释行 → 行内注释（`strip_inline_comment()`）。**通用判据：不进产物的东西，不许进指纹。**
+2. **★ 「首次遇到」有两个相反的正确行为**：**首次建台账**（状态文件整个不存在）必须**保留现值**，否则全站日期集体跳到今天 = 批量不实陈述；**台账已在而冒出新的单元**必须**盖今天**，否则刚入库的数据顶着旧日期（正是 Nomad 那次的毛病）。判据：问清是「**系统**首次」还是「**这个对象**首次」。
+3. **★ 自写验证脚本的哈希口径必须与守卫一致**：我临时写的对比脚本把 manifest 的 `files[rel]` 当成了字符串（实际是 `{sha256, cls}` 字典），于是报出「643/643 全变」的假警报 —— 差点把 627 的真实归因带偏。**要对齐守卫的实现，别自己另写一套。**
+
+### 5. 验证
+
+- `npm run build` **十项全绿**：`0 error(s), 0 warning(s)` ／ 645 files (643 pages), 3694 JSON-LD ／ `OK：产物域名正确，日期与数据一致` ／ `OK: R10 骨架不重复` + `OK: R11 邻国问答不重复` ／ 检查 A·B·C 全过。
+- `stamp_checked.py --selftest` **29 项全过**（含「改注释不触发」「新增块盖当天」「同日再改不重写」「幂等」「引号内 `#` 不误伤」「未动的国家保持原样」）。
+- **反向验证（真改真跑）**：给 `nomad.toml` 的 US 块插一行 → `--check` 精准报 `plans.nomad.US 现值 2026-10-04 → 应为 2026-10-07` 并退 1；写模式**只改 1 行**；恢复现场后复跑 `--check` OK。
+- `bump_checked.py` 重构后 `--show` 输出**逐字节不变**（抽出 `Block` + `parse_blocks()` 供两个脚本共用，避免出现第二份「块头定义」）。
+- **幂等性**：`npm run stamp` 连跑两次均为「无改动」；基线 `--diff` 643 页逐字节相同。
+
+### 6. 遗留 / 待你决定
+
+- **哪些数据源该驱动日期**：目前只有 `plans` 与 `providers` 会驱动。`countries.toml` / `carriers.toml` / `refs.toml` / `faqs/<iso>.toml` / `titlesegments.toml` 改了**不会动任何日期** —— 因为那些页面**现在压根没印日期**。要不要给它们加日期（以及印在哪儿）是产品决定，不是技术缺口。
+- **第二批品牌 logo**：`gigsky.png` ✓ / `jetpac.webp` ✓ 已在素材区；`bensim.jpg` **名字拼写应为 `bnesim` 且 jpg 探测不到**，接入时须转格式改名。
+- 上一轮遗留未动：slot4「ID 规定」14 国历史同句；德语站 FAQ 正文仍是英文。
+
+## 已完成（49 国 FAQ 去模板化 · 句架层拉丁方阵 + Q6 事实修正，2026-10-07 第四十二轮）
+
+**用户请求**：第四十一轮遗留的「49 国三条答案仍是同一副句架、只有数字位不同」要改写，「符合 SEO 即可」。
+
+### 诊断：数字不再过期 ≠ 内容不再重复
+
+第四十一轮把数字改成构建期现算，**数字**问题解决了，但**句架**仍是模板：49 国（jp 手写除外）的三条答案在 50 页里逐字只差数字位。国家 Hub 页正文最强的两块是价格表和 FAQ，FAQ 若 49 页同文，等于 49 页共享同一段「原创内容」—— 既稀释单页独特性，也正是 Google 判 thin/doorway 的典型形态。
+另外 Q6「Regional Asia/continental plans from Airalo and Nomad bundle {country} with neighbors」是 **41 国逐字相同、且对法国 / 美国 / 阿根廷自相矛盾**的断言（数据集里根本没有区域档，只有单国档）。
+
+### 设计：三槽 × 7 片段 + 拉丁方阵
+
+- 每条答案拆 **open（直接回答，最可能被答案引擎摘走的第一句）/ body（数据事实）/ close（行动建议）** 三槽，每槽 7 片段（库 = `scripts/faq_frames.py`，21 片段 + Q6 的 7 变体）。
+- 分配 `a = i % 7`、`b = i // 7`、`c = (a + b) % 7`（i = ISO 升序位次，jp 除外）。数学性质：(a,b) 把 49 格用满各一次；固定 b 时 c 是 a 的双射 ⇒ (a,c) 各一次；固定 a 时同理 ⇒ (b,c) 各一次 ⇒ **任意两国的三元组至多在一个分量上相同 = 任意两页最多共用一句**。池子必须 ≥ 7（|pool|² ≥ 49）。
+- 覆盖 Q1（最便宜）/ Q2（unlimited 计数）/ Q3（Airalo vs Holafly $/GB）三条；Q6 单独 7 变体。
+
+### Q6：从「无数据支撑的断言」变成数据驱动
+
+- 新增两个 token：`{neighbor}` 取**问题里点名的那个邻国**（英国的问题问「英国和法国」⇒ 答法国；机械取 `neighbors[0]` 会答成爱尔兰）+ `{neighbors_all}`。
+- 7 个没有邻国的国家（HR / IS / CR / IL / MA / ZA / KE）走按 region 生成的兜底短语，且这 7 国**各占一个变体** —— 否则同 region 的两国（HR / IS 都是 Europe）会渲染出逐字相同的一段。
+
+### 附带修掉的两处 Q6 文案缺陷（只影响这 7 个无邻国）
+
+1. **问题退化成同义反复**：43 国的 Q6 点名了第二个国家（`Can one eSIM cover the UK and France?`），这 7 国却是 `Can one eSIM cover Iceland?` —— 单念像句废话，也抓不到任何「区域 eSIM」意图。改为点名 **`countries.toml` 的 `region`**：`Can one eSIM cover Iceland and the rest of Europe?` / `… Costa Rica and the rest of the Americas?` / `… Israel and the rest of the Middle East?` / `… Kenya and the rest of Africa?`（问题文本是各国静态字符串，改动只在这 7 个文件里，各加了一行注释说明为何用 region 而不是邻国）。
+2. **答案里印出内部口吻**：`{neighbor}` 对无邻国走兜底 `"another market on this site"`，渲染进 6 国答案（×en/de = 12 页）成 `Adding another market on this site means…`。改为 `"another country"` —— 读者语言，且与邻国版（`Adding France means…`）语法位一致。
+   ⚠ 残留（未动，1 页）：克罗地亚用到的变体 #2 里 `{neighbors_all}` 的兜底是 `the other {region} markets we cover` → `the other Europe markets we cover among them`，读起来略微自指，但语法成立。
+
+### 守卫：R10（源级）+ R11（产物级）
+
+- **R10 例外地读源文件** —— 判的是句架，而句架只存在于源文件里（产物里 token 已变成各不相同的数字国名，反而看不出重复）：a) 三段答案 49 国骨架两两不同；b) 每条答案必须拆得回 `faq_frames.py` 的片段组合；c) 任意两国最多共用一个槽；d) slot6 取自库内 7 变体且无邻国的 7 国各占一个；e) slot6 必须含 `{country}`。
+- **R11 读产物**：Q6 在各国页上必须两两不同 —— R10(e) 在源级保不了「互称邻国的一对国家（FR / IE 都指向 UK）分到同一变体」会不会撞车，只有在产物里才暴露。**这条规则就是被那个真实 bug 逼出来的**：对修复前的产物跑，精准报出 `R11 [en] ['FR','IE']` + `R11 [de] ['FR','IE']`。**验证法**：新守卫先对改造前的旧产物跑（抓到），再对修完的产物跑（0 报）—— 只做后者等于没验。
+- `--selftest` **13 项**（`selftest()` 7 例 R1–R9 + `frame_selftest()` 6 例 R10，含「正确样本不误报」）全过。
+
+### 踩坑（4 个，详见 PROJECT.md 红线 44–46）
+
+1. **★ 自己写错又自己抓到**：Q1 body 本想写「It is also the cheapest per day, at ${cheap_perday}」，实测 **50/50 国全部不成立** —— 绝对价最低的永远是最小档（US 的 Yesim 500MB / 1 天 = $0.51/天），而 $/天 最低的是长周期大流量档（US = $0.06/天）。降级为恒等式 `That is ${cheap_perday}/day across the plan's validity window.`。同类：Q3「a metered plan never throttles」是**无法证伪的绝对句** → 改成「a fixed bucket rather than a daily allowance」。**红线 44：每一句比较级 / 最高级都必须能指着一条数据说清口径。**
+2. **★ R10 初版按「句数」判 → 42 条假失败**：Q2 的 `open[1]` 本身就是两句，任何两国只要共用一个 open 就命中 2 句，真正该抓的「共用两个片段」反被淹没。改成从片段库 `decompose()` 反解三元组、判「最多共用一个**槽**」→ 归零。**副产品更有价值**：`decompose()` 拆不开 = 手改了文案却没同步片段库 —— 这个「失败」本身就是该报的错。**红线 45。**
+3. **★ Q6 撞车**：V2 / V6 两个变体不含 `{country}`，而法国与爱尔兰**互称邻国**（都指向 UK）且分到同一变体 → 两国渲染出逐字相同的一段。修法：变体补 `{country}`（14 处重刷）+ 源级断言「Q6 每个变体必须含 `{country}`」+ 新增产物级 R11。
+4. **★ `selftest()` 打底值带 `{token}` 导致 R1 误报**：`good = dict(toml_faq)` 改用 `{q: ANY_TOKEN.sub("X", a) …}`（样本模拟的是**已渲染**产物，源文件里的占位符在这里必须已变成值）。
+
+### 验证
+
+- **产物级反同质化（独立度量，不只依赖 R10 的源级读数）**：抽 50 国 en hub 的 6 条 `<details class="faq-item">` 正文按问法序号分组去重 —— Q1 **50/50**、Q2 **50/50**、Q3 **50/50**、Q5 **50/50**、Q6 **50/50**（Q6 改造前是 41 国逐字相同）；**问题层也 50/50**；de 站读数完全相同。
+- **Q6 文案修正的变更集可精确证明**：修前修后各存一份基线对比 → **变更 14 个 = 7 国（IS HR CR IL MA ZA KE）× (en + de) 的 `country_hub`，新增 0 / 删除 0**。`grep -rl "another market on this site" public/` = **0 文件**。
+- ⚠ **这条度量本身也修正了一个判据**：第四十一轮之后按**字面** md5 去重早就"通过"了（50/50/50，因为每页数字不同），但**句架其实只有 1 种** —— **md5 会被页内数字骗过**。真正该做的是先把页内变量抹成占位符再比（即 R10 的 `skeleton()`）。第三十七轮定的「md5 去重必须 = N」判据，对「模板里含页内数字」的模块是**假绿**。
+- 源级 slot 读数：slot1 / 2 / 3 = **49 种 / 49 国**；slot6 = 无邻国 7 国各占一个变体；slot5 = 50 / 50。
+- **已知历史重复（INFO，不判失败）**：slot4「ID 规定」有 **14 国**共用同一句（AE AR CN EG ID IL IN KE MA MX PH SA TR VN，都是实名登记要求的市场，句子站得住）→ slot4 = 37 种 / 50 页。
+- 改写执行：`改写 196 处 / 已是目标 0 处 / 拒绝 0 处`（49 国 × 4 条）；复跑 `0 改写 / 196 已是目标`（幂等）。
+- `check_faq_facts.py --selftest` **13 项全过**；`faq_frames.py --check` OK；`grep -c '\$[0-9]' data/faqs/*.toml` = **0 行**。
+- `npm run build` 全量：**十项全绿** —— `0 error(s), 0 warning(s)` / `645 files (643 pages), 3694 JSON-LD` / 品牌子页全过 / `OK: 100 country pages - every FAQ number matches data/plans, no tokens left, schema in sync` / `OK: R10 骨架不重复` / `OK: R11 邻国问答不重复 - 100 国页的 Q6 逐条不同` / `OK: 检查 A·B·C 全部通过`。
+- **爆炸半径证明**（比 diff 更硬）：`faq-live-tokens.html` 只被 `layouts/compare/single.html` 引用，`data/faqs/*.toml` 也只被它消费 ⇒ 本轮产物变更只可能是国别 Hub 页（en + de）。基线重建 **643 文件**、复跑 0 变更。
+
+### 遗留（可选，非债）
+
+- slot4「ID 规定」14 国同句 —— 逐国改写需要**该国实名规定的真实外部来源**，没有来源不编。
+- 德语站 FAQ 正文仍是英文（既有状态，本轮未动）：`{country}` 会渲染成德语名（`Deutschland`），而句子是英语。要处理需先定口径是「翻译」还是「独立的对比视角」。
+
+## 已完成（FAQ 数字断言改为构建期现算 + 新增产物级 FAQ 守卫，2026-10-07 第四十一轮）
+
+**用户请求**：第四十轮留下的「99 条 FAQ 事实断言过期」要拍板（原始三选项：脚本重算 / 改无数字措辞 / 不动），
+用户要求「帮我优化这个，符合谷歌 SEO 即可」。
+
+### 诊断：为什么不能只是"重算一遍"
+
+`data/faqs/*.toml` 里三条答案把数字写死了（最便宜 / unlimited 计数 / Airalo-Holafly 报价），
+而真值在 `data/plans/*.toml` 里、每次抓价或接入品牌都会变 → **页面自相矛盾**：
+US 的 FAQ 说「Roami $2.99 最便宜」，正上方价格表里最低的是 Yesim $0.51。
+这正是 Google 明令反对的一类问题（结构化数据必须与用户所见一致；价格页数据陈旧直接掉 E-E-A-T），
+而 49/50 国答案逐字相同本身也是模板级重复内容。原审计器还按固定问法匹配，**jp 被整条跳过**
+（jp 写「$1.99 for 1GB over 7 days」，实际是 3 天）。
+
+### 做法：第 4 个选项 —— 让数字**不可能**过期
+
+| 层 | 动作 |
+|---|---|
+| 新 partial | `layouts/partials/faq-live-tokens.html`：从 `country-stats` 的 `$rows` + `providers.toml [x.policy]` 现算 **30 个 token**（`cheap_*` / `runner_*` / `value_*` / `unl_*` / `ah_*` / `brands_list` / `plan_count` / `brand_count`），取值缺失输出 `n/a` 而不是空串 |
+| 模板 | `layouts/compare/single.html` 组装 `$faqs` 时做一次 `{token}` → 值替换。**可见正文与 FAQPage JSON-LD 读同一份 `$faqs`，schema 与用户所见天然同源** |
+| 数据 | `scripts/migrate_faq_frames.py`（一次性、幂等）改写 **151 处 / 50 国**；jp 保留其独有分析口吻、同样 token 化，并把 Q5 的品牌枚举换成 `{brands_list}`（nomad 接入后它少列了一家） |
+| 守卫 | 删除只读源文本的 `audit_faq_facts.py`，新增 `scripts/check_faq_facts.py`（**读产物**，R1–R9，带 `--selftest`），挂进 `check:output`（校验九项 → **十项**） |
+
+**口径**（写进 partial 头注释，别再另立第二套）：最便宜 = 价最低 → 同价取流量更大 → 再同取品牌 key 升序；
+最佳 $/GB **只算计量档**（无限档 perGB 是 999999 哨兵）；无限最优按 `$/天`；
+FUP 取 `[<brand>.policy]` 而**不是** plan 的 `fup_note`（roami/yesim 的 fup_note 全缺、holafly 那条写的是
+"Always On" 附加包说明，用了就会写出假句子）。
+
+**守卫规则**：R1 无未替换 token ／ R2 无 `n/a`·`$0.00` 哨兵漏出 ／ R3 问题集合与 toml 一致 ／
+R4 可见正文与 FAQPage schema 同文 ／ R5/R6/R7 三条答案的品牌与价格与现算一致 ／
+R8/R9 文案不变量（最便宜不得是 Airalo/Holafly、最便宜档必须是计量档）。
+**必须读产物**：源文本现在只有 `{token}`，模板写错在源文本里看不出来（同 `check_output.py` 的立身之本）。
+
+### ★ 本轮踩的坑
+
+1. **红线 39 再踩一次**：partial 里写了两处 `{{ return }}`（一处在 `if` 内），第二处退化成 Go 关键字，
+   报 `wrong number of args for return: want 0 got 1`。改写成 `if` 包裹、**只留一个顶层出口**即解。
+   项目里其他 partial 都只有一个 return，所以这条红线此前没被触发过 —— 现在 partial 头注释里引了红线号。
+2. **数值区间类 token 要把货币符号包进值里**：`unl_perday_range` 初版只算 `1.67 to 4.14`，
+   套进 `by day rates run from ${...}` 就成了「from $1.67 to 4.14」—— 第二个数丢符号。
+   改成 token 自带 `$`、文案写 `from {unl_perday_range}`。**凡"区间/列表"型 token，单位要跟值走。**
+3. **反同质化第一次没过**：`unlimited` 那条在 50 页里去重只有 **45**（两组市场的事实完全相同：
+   HR/IE/PT 与 DE/GR/NL/PL）。原因是该句里只有 "here" 没有国家名 → 事实相同的国家必然同文。
+   改「plans here」→「plans for {country}」后 **50/50**。附带收益：答案里带上了目的地词。
+
+### 验证（全部为**产物文本断言**，按用户约定不做截图）
+
+- **新守卫双向验证**（这是它有意义的前提）：
+  ① 对**本轮之前的旧产物**跑 → `ERROR FAQ fact guard: 342 problem(s) across 100 pages`
+  （抓到了「Roami $2.99 vs 实为 Yesim $0.51」「All 10 vs 实际 94」「Holafly $4.37 vs 实际 $11.90/3 天」，
+  且抓到了 jp —— 旧审计器跳过的那个）；② 修完后跑 → `OK: 100 country pages - every FAQ number
+  matches data/plans, no tokens left, schema in sync`。`--selftest` 7 项全过（含"正确样本不误报"）。
+- **十项构建全绿**：`validate` 0/0；`OK: 645 files (643 pages), 3694 JSON-LD blocks`；
+  `checked 643 html files, 16291 h2/h3, bad: 0`；品牌子页 450/450（天数按钮无假档位 448/450）；
+  `仍显示「尚未核实」政策的页面 0`；`check_dates` 域名/日期/完整性通过（585 URL 全有产物）；检查 A/B/C 通过。
+- **零回归 diff = 变更 100 / 新增 0 / 删除 0，且 100 全部是 `country_hub`** —— 正好是 50 国 × en/de 两个语言，
+  **爆炸半径精确等于改动意图**（没有任何意外页型被带上）。重建基线（643 文件）后复跑 0 变更。
+- **反同质化**：三条答案在 50 个国家 hub 上去重 **50 / 50 / 50**（改造前：Q1 与 Q3 各只有 2 种）。
+- 渲染抽查（US / JP / Macao，与价格表逐条对照）：
+  US「Yesim's 500MB / 1 Day at $0.51 ($0.51/day) … best value per gigabyte is Nomad's Local USA - 30 Days - 50 GB at $0.60/GB」；
+  US unlimited「All 94 … day rates run from $1.67 to $4.14 … Roami at $49.99 for 30 days ($1.67/day)」；
+  JP 保留自有口吻「Roami … $1.99 for its 1GB / 3 Days package, and Roamic is the closest challenger at $2.00」。
+- **判据固化**：`grep -n '\$[0-9]' data/faqs/*.toml` → **0 行**（占位 `$` 后面是 `{`，不算）。
+
+### 文档同步
+
+`PROJECT.md`（§0 最后更新、§4.5 FAQ 数据手册加"必须写 `{token}`"小节、§5.2 脚本表加两个脚本、
+§6 命令速查、§7 连带影响表 #4 改为"已不用手动管"、**§7.1 整节重写为"已修 + 遗留"**、§14 新增红线 43）、
+`docs/add-brands-plan-2026-10-06.md`（§6.1 选项 D 与 §7.5 更新为已修）。
+`docs/keyword-map.md` **无需改** —— 本轮的词归属没变（三条答案的选题不变，只是答案里的数字改成现算）。
+
+### 遗留（可选，非债）
+
+1. **jp 之外 49 国的三条答案仍是同一副句架**（每个数字位都不同、去重 50/50，但句式相同）。
+   若要继续提 SEO，可逐国改写成 jp 那种带分析的口吻 —— **只改 `data/faqs/*.toml` 文案，模板与守卫都不用动**。
+2. **Q6「Regional Asia/continental plans from Airalo and Nomad…」是 50 国逐字相同、且无数据支撑的断言**
+   （我们的 plans 数据里只有单国档，没有区域档），待核实或改写。它不是"过期数字"，是"无法自证的断言"。
+3. `hugo` 单次全量构建在本机实测 **~250s**（跑守卫链条的完整 `npm run build` 约 7-9 分钟），
+   比轮次记录里的 70-140s 慢 —— 与本轮改动无关（第一次带 partial 的探针构建只用 38s），
+   疑与本机负载/工作区未提交文件数（554+）有关，未深究。
+
+## 已完成（新增品牌第一批 · Nomad 试点全链路，2026-10-06 第四十轮）
+
+**用户请求**：把 `_competitors/*/raw/` 里的 bensim / gigsky / jetpac / nomad 四个品牌 × 50 国套餐接入，
+并先要"是不是牵一发而动全身"的影响面判断。
+
+**四条拍板（用户）**：① 价格全站统一 USD（BNESIM 的 EUR 要折汇）② 国家名统一 USA / UK（新数据先改名再落地）
+③ 范围只做这 4 家（raw 里其余 5 家 quibity/roamless/gomoworld/maya/firsty 不做）
+④ **先拿 Nomad（50/50、数据最干净）单独打通全链路、验收无误再批量上其余 3 个**。
+
+**影响面结论**：见 `docs/add-brands-plan-2026-10-06.md`。站点模板几乎全数据驱动
+（`range $d.providers` / `country-stats.html` / `vs-agg.html`），改动集中在 **L1 数据层**；
+真正"全身"的是**每一页的数字与结论都变** —— 因为 `footer.html:88` 有一份
+`range $key, $p := $d.providers` 的**全品牌清单**，加一个品牌 = **全站每页都进 diff**。
+页面量公式：`+N 子页 + 1 品牌 hub + (M-1) 对决页`。
+
+### Nomad 试点落地（8 品牌 → 9 品牌）
+
+| 层 | 动作 |
+|---|---|
+| 数据 | `scripts/scrape/raw/nomad/`（50 JSON）→ `toml_write.py nomad --checked 2026-10-04` → `data/plans/nomad.toml`（**442 条 / 50 国**，data 292 + unlimited 150）→ `backfill_networks_uniform.py`；`_rename_us_gb.py` 改名 25 处（`United States`→`Local USA` / `United Kingdom`→`Local UK`） |
+| 档案 | `data/providers.toml` 加 `[nomad]` + `[nomad.info]`（hq/legal/website/trustpilot 只存链接/support_email/destinations）+ `[nomad.policy]`（hotspot/fup/topup/voice）+ `promo_*`（`BEYOND20` 20%，另有 FALL30 / ESIMDNOMAD20 作 alt）；`profile_checked="2026-10-06"` |
+| 出站 | `hugo.toml` 加 `[params.outbound.targets.nomad]`。**刻意不配 `country_path`** —— Nomad 逐国 slug 口径与本站不对齐（本站 `turkiye` vs Nomad `turkey`），机械拼接必产 404 |
+| 页面 | 品牌 hub `content/en/esim-providers/nomad.md`；**450 子页**（`gen_provider_pages.py`）；**36 对决页**（28 旧未动 + 8 新，用 `scripts/gen_vs_pages.py` 只补不重写） |
+| 元数据 | `regen_meta_brand.py` 重写 50 国家页 desc + 28 旧对决页 title/desc（共报 82 个文件，diff 逐条核对无误报）；`_solve_titles.py --write` 重算 50 条国家页 title，**仅 6 条变化**（AU/GB/SA/TH/US/ZA —— Nomad 改变了"最低 $/GB"「有无无限档」的分支判定） |
+| 文档 | `PROJECT.md` §0/§2/§4.7/§5/§7/§9/§13/§14 计数与"nomad 已退场"表述全部更正；`docs/keyword-map.md` 品牌词条；本轮 |
+
+### ★ 本轮踩的坑（都值得写进手册）
+
+1. **零回归守卫的"页型判据"依赖品牌集，品牌集变了判据必须跟着变** —— `verify_no_regression.py`
+   的 `BRANDS` 写死 8 家 → 新品牌子页掉进 `classify()` 的 `static` 兜底 → **401 条假失败**
+   （`✗ [A:static] compare/argentina/nomad/index.html: 出现了只属于 [...] 的区块 id="verdict"`）。
+   已改为从 `data/providers.toml` 推导，并补 2 条分类自测用例钉死该约束。
+2. **`toml_write.py` 的 `CHECKED` 常量是"首批抓取日"** —— 新品牌补抓不传日期会让整批数据
+   宣称一个月前的核对日，页面 / `dateModified` / sitemap 三处一起撒谎。已加 `--checked YYYY-MM-DD`。
+3. **`_rename_us_gb.py` 会改 `data/plans/*.toml` 的套餐名**（脚本内有 `PLAN_RULES` + `PLAN_TARGETS`），
+   不是只改 md —— 事先按文档串判断会判错。
+4. **元数据重建的"改动面"比脚本报的大**：`regen_meta_brand.py` 报 82 个文件，实际国家页 50 +
+   对决页 28 + 品牌 hub 8 ≈ 86，逐条 diff 确认非虚报后照单接受。
+5. **`append` 的静默形状事故（第二十四轮旧账，本轮再次确认）**：凡把数据喂给前端 JS，
+   都要**断言元素形状**，不能只断言"是合法 JSON"（`json.loads` 全过但 `p[0]` 取错）。
+6. **i18n 文案里按百分比枚举品牌的句子会漏新品牌** —— `esim_deals_list__params_verdict_body`
+   原文写"every other code at or above 20% here — Saily's 25% and Yesim's 20%"，Nomad 的
+   `BEYOND20` 也是 20% 但没被列入 → 已补（en/de 成对）。**这是"随品牌集变化的手写枚举"，
+   下一次接入 gigsky/jetpac/bnesim 时要再看一眼。**
+
+### 验收（全部为**产物文本断言**，按用户约定不做截图）
+
+- **九项全绿**：`validate` 0 error 0 warning；`OK: 645 files (643 pages), 3694 JSON-LD blocks`；
+  `checked 643 html files, 16291 h2/h3, bad: 0`；品牌子页 **450/450** 各项合规（"天数按钮无假档位" 448/450）；
+  `仍显示「尚未核实」政策的页面 0`（证明 `policy` 已生效）；检查 A/B/C 全过。
+- 产物体量：**643 页 / 450 品牌子页 / 36 对决页 / 9 品牌 hub / sitemap 585 URL**；套餐总数 **8218**。
+- 断言：footer 品牌链接 9 家；50 国家 hub 内品牌子页链接数分布 `{9: 50}`（50 页全 9）；
+  **反同质化：nomad 品牌卡在 50 页去重后 md5 = 50**（US「11 plans · 3 unlimited / $0.60/GB」
+  vs Fiji「5 plans / $1.95/GB」）；50 国 hub 全链到 nomad 子页（0 缺失）；
+  matchups 索引去重对决链接 36 = 落地文件 36；`check_links.py` 168,632 条 href → **坏链 0**。
+- 基线：本轮共重建 **3 次**（Nomad 落地后 → i18n 文案修正后 → monogram 缩写微调后）。最终基线
+  643 文件、复跑 diff **0 变更 / 0 新增 / 0 删除**。中间两次 diff 的构成都逐条核对过：
+  ① i18n 那次 = `deals=1` + `networks=12`（后者是本文件末尾 P-A 那条 known issue，见"遗留"）；
+  ② monogram 那次 = **603 页**（`provider_sub 450 + country_hub 101 + matchup 36 + provider_hub 10 + home 2 + compare_index 2 + deals 1 + tools 1`），
+  全由 `initials` 一处数据改动引起，属预期。
+- 终检：`check_links.py` 168,632 条 href → **坏链 0**；`audit_faq_facts.py` 独立复核 3 国（US/JP/FJ）
+  确认审计器读数与手工算的真值一致（US 实际最便宜 Yesim $0.51 / unlimited 94 条）。
+
+### 一处主动微调（可一行回退）
+
+`data/providers.toml` 的 `[nomad] initials` 从 `"No"` 改成 **`"Nd"`** —— 品牌卡上是
+「`[No] Nomad`」（monogram 徽标 + 品牌名紧邻），**"No" 会被读成单词 "no"**。站点无 Nomad 官方
+logo 素材（`_competitors/*/brand/nomad.json` 里也没有 logo/主色字段），真 logo 到位前一直用它。
+代价：monogram 出现在全站 603 页 → 基线 diff 603 处（预期）。**想回退就把 `initials` 改回 `"No"`。**
+
+### 遗留（未修，等用户拍板）
+
+- **99 条国家 FAQ 事实断言过期**（`audit_faq_facts.py` 首跑：`cheap_bad 49 + unl_bad 50`）。
+  **排除 nomad 跑一遍仍是 99 条 → 改动前就存在的技术债**；Nomad 让其中 45 国"最便宜品牌 /
+  无限档计数"发生变化。例：US FAQ 写"Roami $2.99 最便宜"实际 Yesim $0.51；写"All 10 unlimited"实际 94 条。
+  → **2026-10-07 第四十一轮已修**（三条答案改构建期现算 + 新守卫 `check_faq_facts.py`），见本文件顶部那一节。
+- `PROJECT.md` §18（i18n）里的 key 数 / 已收录 URL 数仍是旧值，属历史round欠更（本轮未动）。
+- **`/networks/*` 的 `Updated` 徽章取 `now`（构建日）**（2026-10-05 已发现，挂在文末 P-A 待办里）：
+  本轮重建基线时又撞上 —— 构建跨过本地零点，12 个 networks 页从 `Oct 6` 变 `Oct 7`，
+  于是在基线 diff 里报成 `networks=12`。**这 12 处与本轮改动无关**（本轮 i18n 只动了 deals 页），
+  是已知的 `now`-徽章噪声。重建后的基线已含新日期；**下次构建（跨日）会再报这 12 处，别再误判成回归**。
+
+---
+
+## 已完成（内链地毯体检 + /networks/fiji/ 死链修复 + 关键词地图纠正，2026-10-06 第三十九轮）
+
+用户：分析哪个页面跳到不存在的 `/guides/how-to-install-an-esim/`，删掉该跳转。
+
+- **结论：全站 0 引用。** 新增 `scripts/check_links.py`（扫 public/ 全部 href，解析目标文件是否存在）：
+  152,441 条 href → `/guides/how-to-install-an-esim/` **一个引用都没有**（源码 / 构建产物 / 线上抽查三处均为 0；
+  线上部署已含第三十七、三十八轮改动，确认部署是最新）。该 URL 线上确为 404，属**历史遗留的孤立 404**
+  —— 早前轮次 `/esim-deals/` Step 5 曾链它（STATUS.md 有记录），已修，无内链可删。
+- **唯一残留引用在文档里**：`docs/keyword-map.md` 把错误 slug 当规范 URL 记录 → 已改为
+  `/guides/how-to-install-esim/` 并标注原因（防后续内容再生产时复发）。docs/ 全目录内链目标复验 0 失效。
+- **顺手修掉全站唯一真实内链 404**：`/networks/fiji/`（被 8 个品牌页引用）。根因：`esim-providers/single.html`
+  的 4G 名单无条件拼 `/networks/<slug>/`，但 `content/en/networks/` 只有 12 国建页；Fiji 是唯一纯 4G 市场，
+  8 个品牌页全中招。修法=`site.GetPage` 守卫：有页面才给链接，没有则降级为纯文字（国家名 + 运营商信息保留）。
+  复验：全站坏链 **0**；12 国 /networks 链接照旧（9 次/国未变）。
+- 九项全绿（0 error / 584 html / 14804 h2/h3 零违规）；基线重建。diff 中 12 个 networks 页属
+  **已知待办的「Updated 徽章取构建日」**（每次重建必变，非本轮改动），真实改动=8 个品牌页。
+
 ## 已完成（国家页「eSIM for your next destination」窄卡文字挤压修复，2026-10-05 第三十八轮）
 
 用户：该模块下 5 个国家卡片「文字都挤压在一起」，只改这一处，其他不动。
@@ -1380,7 +1673,8 @@ tagline 参数保留仍喂 `<title>`/og）；en 换新定位文案
 - [ ] `data/carriers.toml` 50 国画像逐国人工核对（本轮已全覆盖 ~154 profiles，但速度区间/覆盖特性为编辑常识典型值，P-A 上线前逐市场核实）
 
 ### P-B 内容生产线
-- [ ] 49 国 3 段分析 + 6 条 FAQ 的人工润色（生成器已产出可读初稿，japan.md/jp.toml 为手写样板；数字全部由数据计算而来，改数据重跑生成器即可刷新）
+- [ ] 49 国 3 段分析的人工润色（生成器已产出可读初稿，japan.md / jp.toml 为手写样板；数字全部由数据计算而来，改数据重跑生成器即可刷新）
+- [x] ~~**49 国 6 条 FAQ**~~ 已数据化 + 去模板化：三条带数字的答案走构建期 token 现算（第四十一轮），句架走 `faq_frames.py` 拉丁方阵分配 ⇒ 任意两页最多共用一句（第四十二轮）。**接品牌 / 刷价之后不需要再动 FAQ**。遗留：slot4「ID 规定」14 国同句（缺外部来源，不编）
 - [ ] 变体子页（cheapest/unlimited/long-stay）— 等主站数据 ≥10 国再上，防关键词蚕食
 
 ### P-C 上线前

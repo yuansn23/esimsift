@@ -1,0 +1,1842 @@
+{
+  "_note": "stamp_checked.py 的内容指纹台账：每份数据改动一次，对应单元的日期就前移一次。**必须提交进版本库** —— 删掉它等于把所有数据的『最后改动日』抹成未知（下次运行会把现值当基线重新登记，不会前移，但也就失去了检测能力）。",
+  "_version": 1,
+  "units": {
+    "plans.airalo.AE": {
+      "hash": "ef99ad3ac9d18d1b",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.AR": {
+      "hash": "99fb63eaa8558ccc",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.AT": {
+      "hash": "d51d0877ec794b0c",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.AU": {
+      "hash": "38aa3d03219cc93e",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.BE": {
+      "hash": "ac045d6e077e7c64",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.BR": {
+      "hash": "995ae271a2669d11",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.CA": {
+      "hash": "84d5550e6dc6d106",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.CH": {
+      "hash": "ae0be592c23d17b1",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.CN": {
+      "hash": "3fbf441f8727dec9",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.CO": {
+      "hash": "71668fb696c347f7",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.CR": {
+      "hash": "258ea54c43f7917d",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.CZ": {
+      "hash": "12a5bebf463f3878",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.DE": {
+      "hash": "01640517715fc043",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.EG": {
+      "hash": "4f2649b3f8e2d675",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.ES": {
+      "hash": "365e0d548e12eac3",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.FJ": {
+      "hash": "ed25fda1f7693a7d",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.FR": {
+      "hash": "6d38c5c9bfc483d1",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.GB": {
+      "hash": "adce4112ad649028",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.GE": {
+      "hash": "2f10c62e97157691",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.GR": {
+      "hash": "5f68383bb47e1364",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.HK": {
+      "hash": "e1a38e9b3bfc688f",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.HR": {
+      "hash": "f0ee9553ba483838",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.ID": {
+      "hash": "e2a68d9d06752e8d",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.IE": {
+      "hash": "7f32f894c6b9f515",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.IL": {
+      "hash": "222fd993900a95cf",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.IN": {
+      "hash": "7b70c240c510d8cd",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.IS": {
+      "hash": "6be9a8c0b4fc5f6f",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.IT": {
+      "hash": "3bf5cd3c76edca2f",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.JP": {
+      "hash": "43f37e7de357b02a",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.KE": {
+      "hash": "3acfce8a986d2e66",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.KR": {
+      "hash": "570b44c183621354",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.MA": {
+      "hash": "5a281089cc49fbf0",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.MO": {
+      "hash": "fdcc459961e9f07a",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.MX": {
+      "hash": "bd7b8585e5b852da",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.MY": {
+      "hash": "0f8b89dc1b9c4268",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.NL": {
+      "hash": "6cff5d8a1d238f30",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.NZ": {
+      "hash": "3cd411455f32003f",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.PE": {
+      "hash": "4d6850296a55b6be",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.PH": {
+      "hash": "19449427efe66499",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.PL": {
+      "hash": "bd83291ab1364eed",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.PT": {
+      "hash": "8daf4bab77dc9562",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.QA": {
+      "hash": "152c40c8b136cd2c",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.SA": {
+      "hash": "e285d8387f672ecb",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.SG": {
+      "hash": "d098739d6ca2f62d",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.TH": {
+      "hash": "7146603ce6c516d8",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.TR": {
+      "hash": "1379266584d630b2",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.TW": {
+      "hash": "fb1dd3c2f69c3bec",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.US": {
+      "hash": "93fd0a7754b15ecb",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.VN": {
+      "hash": "a96b51aeb505129f",
+      "date": "2026-09-30"
+    },
+    "plans.airalo.ZA": {
+      "hash": "76a58978d857ac94",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.AE": {
+      "hash": "a333d44c41e29385",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.AR": {
+      "hash": "aaf6e4b2b366a142",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.AT": {
+      "hash": "4c25c16d263d733f",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.AU": {
+      "hash": "3e34c3ac52d0fd42",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.BE": {
+      "hash": "f098fda9b37f89ff",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.BR": {
+      "hash": "c57f5df2068b5df1",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.CA": {
+      "hash": "3aa46761e3d1c9ae",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.CH": {
+      "hash": "f004d2bcb8a0e3c4",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.CN": {
+      "hash": "b86290cb105ab3a2",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.CO": {
+      "hash": "2e55f794f30a2457",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.CR": {
+      "hash": "8f5998b86c119e14",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.CZ": {
+      "hash": "1a158ad391a296f7",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.DE": {
+      "hash": "655a4f1b8315be89",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.EG": {
+      "hash": "65d9c92d19312deb",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.ES": {
+      "hash": "96c6c43f15690620",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.FJ": {
+      "hash": "043207e65d8a06ab",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.FR": {
+      "hash": "05f636b3cbd07849",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.GB": {
+      "hash": "24b9bedafd9a4b9f",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.GE": {
+      "hash": "b9caa042e824c0b1",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.GR": {
+      "hash": "14f0aa2d1fae37a9",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.HK": {
+      "hash": "ffa5b4a7577c9b65",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.HR": {
+      "hash": "523ba60353ed75cb",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.ID": {
+      "hash": "c132c481a074d829",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.IE": {
+      "hash": "068167cc51ef8a2a",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.IL": {
+      "hash": "0a07b038c06b7385",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.IN": {
+      "hash": "a00566b0e5b49f02",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.IS": {
+      "hash": "810eaaad082ac689",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.IT": {
+      "hash": "b4c2c6c489fc7deb",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.JP": {
+      "hash": "a18e496c3c61a5b9",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.KE": {
+      "hash": "9a1bf7f047cfe083",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.KR": {
+      "hash": "5535dd1d5b209057",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.MA": {
+      "hash": "71067be7bb64c553",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.MO": {
+      "hash": "df1c1b916f940fac",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.MX": {
+      "hash": "f761dda635e6e1c8",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.MY": {
+      "hash": "8ed12610b8db1af0",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.NL": {
+      "hash": "0b0a750e4e387e7a",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.NZ": {
+      "hash": "ce50d2eb002231f1",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.PE": {
+      "hash": "0a7b687059c090e6",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.PH": {
+      "hash": "11a869a18136264d",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.PL": {
+      "hash": "64f83ca3bbfb9edf",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.PT": {
+      "hash": "17bfe243f54e3109",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.QA": {
+      "hash": "dabeccb8455dacb4",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.SA": {
+      "hash": "cc229f68c232cdf1",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.SG": {
+      "hash": "e11603fbe898f046",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.TH": {
+      "hash": "8d29747dafb81fc1",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.TR": {
+      "hash": "4a4a2e4fc1d6f891",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.TW": {
+      "hash": "2d9553a0a2996f32",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.US": {
+      "hash": "52edb0225c3218a7",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.VN": {
+      "hash": "1db3fc2ff08d8492",
+      "date": "2026-09-30"
+    },
+    "plans.alosim.ZA": {
+      "hash": "86176aa1e64bef86",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.AE": {
+      "hash": "12ce5b7f4e357a5c",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.AR": {
+      "hash": "6b008a146bbd7ab3",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.AT": {
+      "hash": "493927c801419c86",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.AU": {
+      "hash": "e632e22f3df54ce9",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.BE": {
+      "hash": "b58d0c27f8c061a8",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.BR": {
+      "hash": "eedb95db9e799cc9",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.CA": {
+      "hash": "f3a8084fc374c11c",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.CH": {
+      "hash": "8b02843c7856f717",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.CN": {
+      "hash": "cb9d559d463e7012",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.CO": {
+      "hash": "c72df454aac2cf69",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.CR": {
+      "hash": "914cee42e587be00",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.CZ": {
+      "hash": "e054c5027de6240e",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.DE": {
+      "hash": "bf9250c3c166c1f9",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.EG": {
+      "hash": "aa5b85b22c17a7bd",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.ES": {
+      "hash": "9a33892dfdd57995",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.FJ": {
+      "hash": "3651894594a616a8",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.FR": {
+      "hash": "41351f8888079736",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.GB": {
+      "hash": "eea35544b9f3c285",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.GE": {
+      "hash": "5f9c79e25ab3caac",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.GR": {
+      "hash": "99693b6b7ef7f423",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.HK": {
+      "hash": "b281675f1990aa56",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.HR": {
+      "hash": "a37b0f5c1a7dd74f",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.ID": {
+      "hash": "6c219f7d83fb8b02",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.IE": {
+      "hash": "4071a9d9252c1cfd",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.IL": {
+      "hash": "a4c93f9bfdee9f94",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.IN": {
+      "hash": "8f7c82a20788b77f",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.IS": {
+      "hash": "0eb28c04c04b6c0c",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.IT": {
+      "hash": "28a479852ff955cc",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.JP": {
+      "hash": "49afe43ad9e4a927",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.KE": {
+      "hash": "922462c641745c9d",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.KR": {
+      "hash": "4f19a307fe2529aa",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.MA": {
+      "hash": "e180d53dadf42df1",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.MO": {
+      "hash": "8ad5f56ebbe6ad0d",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.MX": {
+      "hash": "797c9c17144f307f",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.MY": {
+      "hash": "cc8d87381f5ccc36",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.NL": {
+      "hash": "d85b3c88dafbdcd2",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.NZ": {
+      "hash": "cae158ba235cf5b2",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.PE": {
+      "hash": "9d82004e0899c254",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.PH": {
+      "hash": "d85e288672da02c5",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.PL": {
+      "hash": "40ce84c8e30ffe17",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.PT": {
+      "hash": "55b67ad58d64a271",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.QA": {
+      "hash": "e27a53d029491015",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.SA": {
+      "hash": "e0e9377070905e97",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.SG": {
+      "hash": "3c353d2c1a2e9dad",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.TH": {
+      "hash": "df650a6227e9a55e",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.TR": {
+      "hash": "40a855b37903eec0",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.TW": {
+      "hash": "05fe6e6c93a241d5",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.US": {
+      "hash": "44c29d20922f04c9",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.VN": {
+      "hash": "861b5a4646949779",
+      "date": "2026-09-30"
+    },
+    "plans.holafly.ZA": {
+      "hash": "5d67a815c66fb659",
+      "date": "2026-09-30"
+    },
+    "plans.nomad.AE": {
+      "hash": "384dc1be7c8aacae",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.AR": {
+      "hash": "16907f273eeddc0e",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.AT": {
+      "hash": "197bb3ca2d09f056",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.AU": {
+      "hash": "2682ae049db0aebf",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.BE": {
+      "hash": "28a4687d32810893",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.BR": {
+      "hash": "a51d4bcf7b8ac6dc",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.CA": {
+      "hash": "58cb857f8a270b7f",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.CH": {
+      "hash": "fe96313d7e751ed9",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.CN": {
+      "hash": "6ec4b58212482d09",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.CO": {
+      "hash": "50ca4ffbdb97e99b",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.CR": {
+      "hash": "79942e5653c9c114",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.CZ": {
+      "hash": "fdd6ca76aeb62f02",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.DE": {
+      "hash": "7c5f0e0e96301476",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.EG": {
+      "hash": "3b275c650bc2e290",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.ES": {
+      "hash": "67e6e89780c52972",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.FJ": {
+      "hash": "4372d0a4c681e963",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.FR": {
+      "hash": "8b298dab5f9db37b",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.GB": {
+      "hash": "f8e8aca54950b78d",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.GE": {
+      "hash": "bc5a9d2999539d74",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.GR": {
+      "hash": "848a07eeecd2762b",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.HK": {
+      "hash": "d9ef6df83d8674ab",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.HR": {
+      "hash": "0700c35866365339",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.ID": {
+      "hash": "2e8a74d6ac34335b",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.IE": {
+      "hash": "516ace49b7b3cb0a",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.IL": {
+      "hash": "4acda4764e40cd6d",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.IN": {
+      "hash": "cd5d2c810ff40c09",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.IS": {
+      "hash": "73b357fba398fe5a",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.IT": {
+      "hash": "d1ad0099729300ef",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.JP": {
+      "hash": "df1a527335d3918d",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.KE": {
+      "hash": "fe6d1b36168e1ec8",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.KR": {
+      "hash": "81a93e8072e3d758",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.MA": {
+      "hash": "d752a71098fa97da",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.MO": {
+      "hash": "e3b9db2d7fcbde0d",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.MX": {
+      "hash": "5d782148c7a6e69e",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.MY": {
+      "hash": "ac1b322c5a6c3fe7",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.NL": {
+      "hash": "efe49c4f50b7b59a",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.NZ": {
+      "hash": "97f599d743528299",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.PE": {
+      "hash": "c2ecf8aeeaad9648",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.PH": {
+      "hash": "68cf5c1fc3f5bf63",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.PL": {
+      "hash": "afc3cf5b326430b9",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.PT": {
+      "hash": "2ff65770df19c18e",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.QA": {
+      "hash": "57f6726b27b9808c",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.SA": {
+      "hash": "e6cee04e1273ccdf",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.SG": {
+      "hash": "d253961d84092ac6",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.TH": {
+      "hash": "12c923e8b5d370a1",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.TR": {
+      "hash": "1b03eaf5390a89b2",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.TW": {
+      "hash": "40440257be8183ee",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.US": {
+      "hash": "252b152bf464019a",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.VN": {
+      "hash": "484a5d25b09f5de7",
+      "date": "2026-10-07"
+    },
+    "plans.nomad.ZA": {
+      "hash": "04a23783b4af9594",
+      "date": "2026-10-07"
+    },
+    "plans.roami.AE": {
+      "hash": "cb2953e70bafb1d8",
+      "date": "2026-09-30"
+    },
+    "plans.roami.AR": {
+      "hash": "6999b622c78dd236",
+      "date": "2026-09-30"
+    },
+    "plans.roami.AT": {
+      "hash": "4961cf5654228582",
+      "date": "2026-09-30"
+    },
+    "plans.roami.AU": {
+      "hash": "7f80fa57666f777b",
+      "date": "2026-09-30"
+    },
+    "plans.roami.BE": {
+      "hash": "845205fbeacdbe24",
+      "date": "2026-09-30"
+    },
+    "plans.roami.BR": {
+      "hash": "e0acb398a82d93ab",
+      "date": "2026-09-30"
+    },
+    "plans.roami.CA": {
+      "hash": "7cfb586695280d6f",
+      "date": "2026-09-30"
+    },
+    "plans.roami.CH": {
+      "hash": "be784ad80e9c8278",
+      "date": "2026-09-30"
+    },
+    "plans.roami.CN": {
+      "hash": "6f82b0dd3dae2b15",
+      "date": "2026-09-30"
+    },
+    "plans.roami.CO": {
+      "hash": "93538300abd6f89b",
+      "date": "2026-09-30"
+    },
+    "plans.roami.CR": {
+      "hash": "c066aa149c42daf5",
+      "date": "2026-09-30"
+    },
+    "plans.roami.CZ": {
+      "hash": "f3948e1e7e4c2aaf",
+      "date": "2026-09-30"
+    },
+    "plans.roami.DE": {
+      "hash": "56b0eb428258f1a1",
+      "date": "2026-09-30"
+    },
+    "plans.roami.EG": {
+      "hash": "c2171c002369409d",
+      "date": "2026-09-30"
+    },
+    "plans.roami.ES": {
+      "hash": "ca5e2ae83f028dbc",
+      "date": "2026-09-30"
+    },
+    "plans.roami.FJ": {
+      "hash": "f895e89b74c6a6b6",
+      "date": "2026-09-30"
+    },
+    "plans.roami.FR": {
+      "hash": "79da60457c10e4db",
+      "date": "2026-09-30"
+    },
+    "plans.roami.GB": {
+      "hash": "bfee1658f6f3bd74",
+      "date": "2026-09-30"
+    },
+    "plans.roami.GE": {
+      "hash": "4022c22b2df92f04",
+      "date": "2026-09-30"
+    },
+    "plans.roami.GR": {
+      "hash": "9e0c1109d0fcc4a8",
+      "date": "2026-09-30"
+    },
+    "plans.roami.HK": {
+      "hash": "6cbaf45b17fb0fb8",
+      "date": "2026-09-30"
+    },
+    "plans.roami.HR": {
+      "hash": "394d371a69fb4664",
+      "date": "2026-09-30"
+    },
+    "plans.roami.ID": {
+      "hash": "1380ff5ac025193d",
+      "date": "2026-09-30"
+    },
+    "plans.roami.IE": {
+      "hash": "2e73c3d92c1bba94",
+      "date": "2026-09-30"
+    },
+    "plans.roami.IL": {
+      "hash": "6358f451db646915",
+      "date": "2026-09-30"
+    },
+    "plans.roami.IN": {
+      "hash": "746edae462ba3623",
+      "date": "2026-09-30"
+    },
+    "plans.roami.IS": {
+      "hash": "a257f889a82fb821",
+      "date": "2026-09-30"
+    },
+    "plans.roami.IT": {
+      "hash": "fa5a89ddb28f63ea",
+      "date": "2026-09-30"
+    },
+    "plans.roami.JP": {
+      "hash": "d61c8d24974cd9ba",
+      "date": "2026-09-30"
+    },
+    "plans.roami.KE": {
+      "hash": "95fb8da1d2a87aa6",
+      "date": "2026-09-30"
+    },
+    "plans.roami.KR": {
+      "hash": "a11c12a5fef22063",
+      "date": "2026-09-30"
+    },
+    "plans.roami.MA": {
+      "hash": "811fb3503b05afce",
+      "date": "2026-09-30"
+    },
+    "plans.roami.MO": {
+      "hash": "62f31a242f82e11a",
+      "date": "2026-09-30"
+    },
+    "plans.roami.MX": {
+      "hash": "eea80c09ff4dd8a7",
+      "date": "2026-09-30"
+    },
+    "plans.roami.MY": {
+      "hash": "224f0e6b98a7c109",
+      "date": "2026-09-30"
+    },
+    "plans.roami.NL": {
+      "hash": "10d37b0d94285bba",
+      "date": "2026-09-30"
+    },
+    "plans.roami.NZ": {
+      "hash": "745ef481afddb8d5",
+      "date": "2026-09-30"
+    },
+    "plans.roami.PE": {
+      "hash": "25fa719800adc768",
+      "date": "2026-09-30"
+    },
+    "plans.roami.PH": {
+      "hash": "3d29cd2e788af917",
+      "date": "2026-09-30"
+    },
+    "plans.roami.PL": {
+      "hash": "414a1c925f869c09",
+      "date": "2026-09-30"
+    },
+    "plans.roami.PT": {
+      "hash": "a1befbf228d79ef5",
+      "date": "2026-09-30"
+    },
+    "plans.roami.QA": {
+      "hash": "4b7a25b4213269f6",
+      "date": "2026-09-30"
+    },
+    "plans.roami.SA": {
+      "hash": "3b5370a4339a2439",
+      "date": "2026-09-30"
+    },
+    "plans.roami.SG": {
+      "hash": "15f2d6cf9772a19a",
+      "date": "2026-09-30"
+    },
+    "plans.roami.TH": {
+      "hash": "068c02c78440866d",
+      "date": "2026-09-30"
+    },
+    "plans.roami.TR": {
+      "hash": "4956c18cf78ede1c",
+      "date": "2026-09-30"
+    },
+    "plans.roami.TW": {
+      "hash": "6bf8c7a07f82c34a",
+      "date": "2026-09-30"
+    },
+    "plans.roami.US": {
+      "hash": "14b9f5f50901dba7",
+      "date": "2026-09-30"
+    },
+    "plans.roami.VN": {
+      "hash": "33e0ed09ca4682e4",
+      "date": "2026-09-30"
+    },
+    "plans.roami.ZA": {
+      "hash": "ea1b8b5ab0c97199",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.AE": {
+      "hash": "87820e5bb0188c02",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.AR": {
+      "hash": "8de3ae02f7bc3efa",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.AT": {
+      "hash": "e7799e6d96e0e763",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.AU": {
+      "hash": "25dd298f48d2d2de",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.BE": {
+      "hash": "b4247a034ff59b70",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.BR": {
+      "hash": "c56542bdb9581ac6",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.CA": {
+      "hash": "006d6bd75cb1eb61",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.CH": {
+      "hash": "39a70f1127e9eeba",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.CN": {
+      "hash": "dc92159665e21a01",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.CO": {
+      "hash": "7c64e9cd980766d2",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.CR": {
+      "hash": "4a43e215c8da8abb",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.CZ": {
+      "hash": "7db65b04c9fbb851",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.DE": {
+      "hash": "6855a896a640ee15",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.EG": {
+      "hash": "a48c441bd09595e2",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.ES": {
+      "hash": "b077915818a4866b",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.FJ": {
+      "hash": "b195f1b846b6f1f7",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.FR": {
+      "hash": "b23386a1fde83393",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.GB": {
+      "hash": "b6a9094caab156ea",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.GE": {
+      "hash": "8db0350182a31c93",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.GR": {
+      "hash": "014a0c957dad09d7",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.HK": {
+      "hash": "8516ddc1ffb72b6c",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.HR": {
+      "hash": "a82ed0a74e463559",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.ID": {
+      "hash": "768fd13b2783d845",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.IE": {
+      "hash": "4bfbe6a440f97d45",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.IL": {
+      "hash": "745c55e2d47e5745",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.IN": {
+      "hash": "897b8cfcd6957d3e",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.IS": {
+      "hash": "e0661c0d0de3c1f0",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.IT": {
+      "hash": "5ae2bb907637f397",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.JP": {
+      "hash": "ef1e320dd0ddbbd5",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.KE": {
+      "hash": "1e39f3508d3a73a7",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.KR": {
+      "hash": "5d9a8a5d935723bb",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.MA": {
+      "hash": "0b2c2f44f6beb31b",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.MO": {
+      "hash": "e8bf501a3aad8801",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.MX": {
+      "hash": "58b09edbc9731e03",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.MY": {
+      "hash": "b11eedb34b622d88",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.NL": {
+      "hash": "a5a5e2abb4debfea",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.NZ": {
+      "hash": "f10d4d48fcae97b1",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.PE": {
+      "hash": "b2f65df8d5c229f1",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.PH": {
+      "hash": "be6278ff1e182b60",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.PL": {
+      "hash": "99d3a2b4abdff390",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.PT": {
+      "hash": "ede6f9f1dfab585b",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.QA": {
+      "hash": "67ad19c151d2cc85",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.SA": {
+      "hash": "da1c1676c6bae913",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.SG": {
+      "hash": "e2ef3c93c7849eea",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.TH": {
+      "hash": "56139b08fff69808",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.TR": {
+      "hash": "b40d535cca6be316",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.TW": {
+      "hash": "4eb1f97f64c43a44",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.US": {
+      "hash": "059b7766fcbb2d05",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.VN": {
+      "hash": "f1f41e29734dae75",
+      "date": "2026-09-30"
+    },
+    "plans.roamic.ZA": {
+      "hash": "27978ced25c497ff",
+      "date": "2026-09-30"
+    },
+    "plans.saily.AE": {
+      "hash": "73d50e337c5b1505",
+      "date": "2026-09-30"
+    },
+    "plans.saily.AR": {
+      "hash": "8ced69ae5fbc1fb4",
+      "date": "2026-09-30"
+    },
+    "plans.saily.AT": {
+      "hash": "2fad9c104fc7a09f",
+      "date": "2026-09-30"
+    },
+    "plans.saily.AU": {
+      "hash": "e337f9c6d7c0eaf2",
+      "date": "2026-09-30"
+    },
+    "plans.saily.BE": {
+      "hash": "c7f679f8f86f3d4a",
+      "date": "2026-09-30"
+    },
+    "plans.saily.BR": {
+      "hash": "7e35b16c4806573d",
+      "date": "2026-09-30"
+    },
+    "plans.saily.CA": {
+      "hash": "7929d60711d79059",
+      "date": "2026-09-30"
+    },
+    "plans.saily.CH": {
+      "hash": "8f4d7e5cb649b488",
+      "date": "2026-09-30"
+    },
+    "plans.saily.CN": {
+      "hash": "47ce75bb27fc1401",
+      "date": "2026-09-30"
+    },
+    "plans.saily.CO": {
+      "hash": "e1145f058d014ac0",
+      "date": "2026-09-30"
+    },
+    "plans.saily.CR": {
+      "hash": "70cea4ef43813ff5",
+      "date": "2026-09-30"
+    },
+    "plans.saily.CZ": {
+      "hash": "6941c2ecddb40d4f",
+      "date": "2026-09-30"
+    },
+    "plans.saily.DE": {
+      "hash": "49401365f741ab7d",
+      "date": "2026-09-30"
+    },
+    "plans.saily.EG": {
+      "hash": "268c095a49dc527a",
+      "date": "2026-09-30"
+    },
+    "plans.saily.ES": {
+      "hash": "a392676d9084545b",
+      "date": "2026-09-30"
+    },
+    "plans.saily.FJ": {
+      "hash": "f8ab0fb41f292cb6",
+      "date": "2026-09-30"
+    },
+    "plans.saily.FR": {
+      "hash": "7b5010d99e926c80",
+      "date": "2026-09-30"
+    },
+    "plans.saily.GB": {
+      "hash": "a83cccf60071f8f2",
+      "date": "2026-09-30"
+    },
+    "plans.saily.GE": {
+      "hash": "488db5a3a3990c2a",
+      "date": "2026-09-30"
+    },
+    "plans.saily.GR": {
+      "hash": "ad4752be553c5731",
+      "date": "2026-09-30"
+    },
+    "plans.saily.HK": {
+      "hash": "68ffc31d08bfaf97",
+      "date": "2026-09-30"
+    },
+    "plans.saily.HR": {
+      "hash": "6beec87e97ac83b6",
+      "date": "2026-09-30"
+    },
+    "plans.saily.ID": {
+      "hash": "3a814a772127c9da",
+      "date": "2026-09-30"
+    },
+    "plans.saily.IE": {
+      "hash": "a1115c8acd33de27",
+      "date": "2026-09-30"
+    },
+    "plans.saily.IL": {
+      "hash": "e9f64a4b3f062817",
+      "date": "2026-09-30"
+    },
+    "plans.saily.IN": {
+      "hash": "d16157a8df7d2a31",
+      "date": "2026-09-30"
+    },
+    "plans.saily.IS": {
+      "hash": "9a892b0515dc3b1e",
+      "date": "2026-09-30"
+    },
+    "plans.saily.IT": {
+      "hash": "9b3ce34f5b829391",
+      "date": "2026-09-30"
+    },
+    "plans.saily.JP": {
+      "hash": "80a7f2e975f37b37",
+      "date": "2026-09-30"
+    },
+    "plans.saily.KE": {
+      "hash": "2df019407ae2ef94",
+      "date": "2026-09-30"
+    },
+    "plans.saily.KR": {
+      "hash": "42d73558c6a38c78",
+      "date": "2026-09-30"
+    },
+    "plans.saily.MA": {
+      "hash": "9aebf77eb7a2d26d",
+      "date": "2026-09-30"
+    },
+    "plans.saily.MO": {
+      "hash": "5b25a7e63e428a17",
+      "date": "2026-09-30"
+    },
+    "plans.saily.MX": {
+      "hash": "73a0528e64f34170",
+      "date": "2026-09-30"
+    },
+    "plans.saily.MY": {
+      "hash": "a97c5a04fd91a4ae",
+      "date": "2026-09-30"
+    },
+    "plans.saily.NL": {
+      "hash": "58193a4284752321",
+      "date": "2026-09-30"
+    },
+    "plans.saily.NZ": {
+      "hash": "e6a29eea851029d8",
+      "date": "2026-09-30"
+    },
+    "plans.saily.PE": {
+      "hash": "495461afbde49df4",
+      "date": "2026-09-30"
+    },
+    "plans.saily.PH": {
+      "hash": "eb9948bf6b70f98b",
+      "date": "2026-09-30"
+    },
+    "plans.saily.PL": {
+      "hash": "9821684019ddc504",
+      "date": "2026-09-30"
+    },
+    "plans.saily.PT": {
+      "hash": "36effea7c4ffebfe",
+      "date": "2026-09-30"
+    },
+    "plans.saily.QA": {
+      "hash": "c4f6a1d53b38a40a",
+      "date": "2026-09-30"
+    },
+    "plans.saily.SA": {
+      "hash": "4befd7cfa949de17",
+      "date": "2026-09-30"
+    },
+    "plans.saily.SG": {
+      "hash": "2652570188628dcf",
+      "date": "2026-09-30"
+    },
+    "plans.saily.TH": {
+      "hash": "332ab473746aa0c0",
+      "date": "2026-09-30"
+    },
+    "plans.saily.TR": {
+      "hash": "b6ab87d72930f349",
+      "date": "2026-09-30"
+    },
+    "plans.saily.TW": {
+      "hash": "d2e49d1d0a879cc2",
+      "date": "2026-09-30"
+    },
+    "plans.saily.US": {
+      "hash": "d483b301439c597c",
+      "date": "2026-09-30"
+    },
+    "plans.saily.VN": {
+      "hash": "f558a85bcef7697a",
+      "date": "2026-09-30"
+    },
+    "plans.saily.ZA": {
+      "hash": "fbcf3c0735f93321",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.AE": {
+      "hash": "b41be3fd9040c9d6",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.AR": {
+      "hash": "c74c0c68b14a9930",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.AT": {
+      "hash": "e24b4e0f4270cda4",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.AU": {
+      "hash": "cdd5f2ab4090395b",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.BE": {
+      "hash": "dd2fb2c8a6c8940f",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.BR": {
+      "hash": "45138efa1ff962e0",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.CA": {
+      "hash": "7a9fab4eba5e3ed6",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.CH": {
+      "hash": "6a7e1eddf70da07f",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.CN": {
+      "hash": "a8bdb4882e7353b0",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.CO": {
+      "hash": "3ad305368e79c7f5",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.CR": {
+      "hash": "1ae6bc30ff9e92e2",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.CZ": {
+      "hash": "410df52e1b3dccc9",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.DE": {
+      "hash": "5448939f7179528c",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.EG": {
+      "hash": "dde3206fe5e5a3d7",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.ES": {
+      "hash": "90c114ece2a34420",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.FJ": {
+      "hash": "d60d40fb4fb592cf",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.FR": {
+      "hash": "fbd26592d3f8e9f2",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.GB": {
+      "hash": "3d7202c679003755",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.GE": {
+      "hash": "2769fc863c82a034",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.GR": {
+      "hash": "63cc14c12b2c97ee",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.HK": {
+      "hash": "70c6d33d4505a8ce",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.HR": {
+      "hash": "6851d6096223bfdb",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.ID": {
+      "hash": "8cdaa4cc7b58848b",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.IE": {
+      "hash": "0d4e912fa70ee734",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.IL": {
+      "hash": "eb20c9bc6064d6a8",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.IN": {
+      "hash": "e8bcbe11d3b92ed6",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.IS": {
+      "hash": "4840eaaaa5916065",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.IT": {
+      "hash": "918ca42328eb542d",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.JP": {
+      "hash": "e419607e42933db5",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.KE": {
+      "hash": "c406c362a4c410ba",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.KR": {
+      "hash": "1696f7c785a14297",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.MA": {
+      "hash": "793dcd607bc59f60",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.MO": {
+      "hash": "c6c79a6b88f10ce9",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.MX": {
+      "hash": "722fb722b698b5f8",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.MY": {
+      "hash": "6cdb21d2cd09053d",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.NL": {
+      "hash": "12abc83dcd1d7b5e",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.NZ": {
+      "hash": "7f9a5d9e5e9dc88d",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.PE": {
+      "hash": "59bc8de04ed7d282",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.PH": {
+      "hash": "9fb55d0323ff9692",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.PL": {
+      "hash": "8515ca54cccebf14",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.PT": {
+      "hash": "b47598ce4f1bde72",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.QA": {
+      "hash": "0cacb4c79f354a09",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.SA": {
+      "hash": "5dbdd03e6ecf4686",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.SG": {
+      "hash": "21cc8614f9920e89",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.TH": {
+      "hash": "75d98a564a94324a",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.TR": {
+      "hash": "fc1583c5b5fa7ac1",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.TW": {
+      "hash": "600afc0f3464c8a1",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.US": {
+      "hash": "72ce177118a52b0f",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.VN": {
+      "hash": "77773abe313f148b",
+      "date": "2026-09-30"
+    },
+    "plans.ubigi.ZA": {
+      "hash": "0402d504bbbe5d1c",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.AE": {
+      "hash": "0f356af68648dfed",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.AR": {
+      "hash": "7ab2bee1f3bf336f",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.AT": {
+      "hash": "cfb087ea15d2218a",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.AU": {
+      "hash": "6c8e0c5c2ba33d4a",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.BE": {
+      "hash": "e3bf3e97dc33de49",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.BR": {
+      "hash": "91c7e5f8af06f593",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.CA": {
+      "hash": "99e20ce4d82a8b46",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.CH": {
+      "hash": "cb1fce7af6be240c",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.CN": {
+      "hash": "2591f4701ba08daa",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.CO": {
+      "hash": "f20955a21c32f24b",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.CR": {
+      "hash": "ffe237a5efb580fc",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.CZ": {
+      "hash": "6e320647332c63f1",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.DE": {
+      "hash": "92cc338ef0948175",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.EG": {
+      "hash": "bcf6e704395a74b3",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.ES": {
+      "hash": "2d9531eea6a078ad",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.FJ": {
+      "hash": "a954a19689d78c5b",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.FR": {
+      "hash": "6012a56e26f1aaca",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.GB": {
+      "hash": "251b8e6ef44ba31e",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.GE": {
+      "hash": "7226e54e11a8486f",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.GR": {
+      "hash": "a86a7bd7c0495141",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.HK": {
+      "hash": "4f4961dce62d68b8",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.HR": {
+      "hash": "61b8dfbbf39a5e6c",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.ID": {
+      "hash": "db33cca509c928a7",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.IE": {
+      "hash": "bef78d30e2340f7f",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.IL": {
+      "hash": "be868aa909fee514",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.IN": {
+      "hash": "23985595d54a2eba",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.IS": {
+      "hash": "2364a0a8b521d74f",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.IT": {
+      "hash": "3dc1447dae79e264",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.JP": {
+      "hash": "600dc7f37eb8af49",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.KE": {
+      "hash": "0854bdab3a19ba33",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.KR": {
+      "hash": "b538cb0b2b2dac38",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.MA": {
+      "hash": "38266698fc0c3e46",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.MO": {
+      "hash": "2f9ea6373950465f",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.MX": {
+      "hash": "4296c06a258469f5",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.MY": {
+      "hash": "2d298886437e234f",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.NL": {
+      "hash": "74b076dde3172aac",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.NZ": {
+      "hash": "3c10f9433e2d6dde",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.PE": {
+      "hash": "2585a31f251e95d0",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.PH": {
+      "hash": "bb1676a3845959ef",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.PL": {
+      "hash": "1f89168256173456",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.PT": {
+      "hash": "5da9bfecef3f965b",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.QA": {
+      "hash": "8003dd09e012f163",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.SA": {
+      "hash": "b76774c688151327",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.SG": {
+      "hash": "808620d6bf4c5a28",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.TH": {
+      "hash": "12eb9110e6d9266e",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.TR": {
+      "hash": "78c18e4119889b8e",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.TW": {
+      "hash": "cb71f5697f6b0e83",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.US": {
+      "hash": "4055921765efe362",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.VN": {
+      "hash": "0da11894588fbe6c",
+      "date": "2026-09-30"
+    },
+    "plans.yesim.ZA": {
+      "hash": "5ffc9a304529fc9e",
+      "date": "2026-09-30"
+    },
+    "profile.airalo": {
+      "hash": "a475a57260f82cbf",
+      "date": "2026-10-04"
+    },
+    "profile.alosim": {
+      "hash": "965bcee4c6edb165",
+      "date": "2026-10-04"
+    },
+    "profile.holafly": {
+      "hash": "654c41bbf6a4ea85",
+      "date": "2026-10-04"
+    },
+    "profile.nomad": {
+      "hash": "50a6126fb691ea06",
+      "date": "2026-10-06"
+    },
+    "profile.roami": {
+      "hash": "9102c518839d8f8c",
+      "date": "2026-10-04"
+    },
+    "profile.roamic": {
+      "hash": "cb79a0234e3e9820",
+      "date": "2026-10-04"
+    },
+    "profile.saily": {
+      "hash": "867d81902307a2dc",
+      "date": "2026-10-04"
+    },
+    "profile.ubigi": {
+      "hash": "006752be494509c5",
+      "date": "2026-10-04"
+    },
+    "profile.yesim": {
+      "hash": "cc2e4b25c32910d0",
+      "date": "2026-10-04"
+    }
+  }
+}

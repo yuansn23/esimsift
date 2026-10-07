@@ -1,0 +1,106 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n10"
+ },
+ "plans": [
+  {
+   "name": "Local Canada - 7 Days - 1 GB",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$7.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Canada - 30 Days - 3 GB",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$8.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Canada - 30 Days - 5 GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$13.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Canada - 30 Days - 10 GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$17.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Canada - 3 Days - unlimited",
+   "data": "2GB/day",
+   "validity": "3 Days",
+   "price": "$18.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Local Canada - 5 Days - unlimited",
+   "data": "2GB/day",
+   "validity": "5 Days",
+   "price": "$25.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Local Canada - 7 Days - unlimited",
+   "data": "2GB/day",
+   "validity": "7 Days",
+   "price": "$30.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Local Canada - 30 Days - 20 GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$31.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Canada - 10 Days - unlimited",
+   "data": "2GB/day",
+   "validity": "10 Days",
+   "price": "$35.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Local Canada - 30 Days - 50 GB",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$69.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Nomad Travel eSIM for Canada | Data Plans & Reviews",
+  "h1": "Nomad eSIM Data Plans for Canada",
+  "networks": null
+ },
+ "slug": "canada",
+ "url": "https://esimdb.com/canada/nomad",
+ "status": 200
+}

@@ -1,7 +1,10 @@
 # eSIM Sift 项目文档（交接手册）
 
 > **用途**：隔几天回来接着干时，看这一份就能接上。写了什么、还缺什么、每个文件干嘛的、常见操作怎么做。
-> **最后更新**：2026-10-02 批次G（guides 5 篇深度重写 + 首屏配图 / compat 设备库 UX / research 枢纽区域联赛+问答路由 / 全站去写死三层架构 + 双守卫脚本）+ **P0 host-networks 补真**（8 品牌 × 50 国 `networks` 全量 = 各国运营商，`backfill_networks_uniform.py`，见 §4.3）
+> **最后更新**：2026-10-07 **日期自动盖章 + Nomad 收尾** —— 页面日期不再靠人记得跑脚本：新增 `scripts/stamp_checked.py` 按**内容指纹**维护 `checked` / `profile_checked`（数据真的改了才把日期推到当天；改注释、调格式不动），已挂进 `npm run build` 第一步，台账 `docs/checked-state.json` **必须提交**；Nomad 的 logo 归位 `static/img/providers/`、价格核对日推到当天。
+> 上一轮（同日）：FAQ 逐国去模板化（49 国的三条答案 × 三槽七片段拉丁方阵）。见 §4.3 / §5.2 / §7.1 / §14 红线 47–49
+> **上一批**：2026-10-06 **第二批品牌扩容·Nomad 试点**（8 品牌 → 9 品牌，全链路打通：plans 442 条 / 品牌档案 / 出站 target / 450 子页 / 36 对决页 / 50 国 meta + 6 条 title 重算；基线重建，见 §7 与 `docs/add-brands-plan-2026-10-06.md`。**gigsky / jetpac / bnesim 待接**）
+> 上一版：2026-10-02 批次G（guides 5 篇深度重写 + 首屏配图 / compat 设备库 UX / research 枢纽区域联赛+问答路由 / 全站去写死三层架构 + 双守卫脚本）+ **P0 host-networks 补真**（`networks` 全量 = 各国运营商，`backfill_networks_uniform.py`，见 §4.3）
 > **配套文件**：`STATUS.md`（按时间顺序的施工日志，看"当时为什么这么做"）、`docs/keyword-map.md`（关键词→URL 唯一映射表，上新页型前必查）。
 
 ---
@@ -10,19 +13,20 @@
 
 **eSIM Sift（esimsift.com）**：独立 eSIM 比价站，对标 esimdb.com / mybestsim.com。Hugo 0.159.1 + Tailwind CLI，英语站（目录已为多语言预留）。核心原则：**单一事实源** —— 所有数字只存在于 `data/*.toml`，模板层全部实时推导，改数据 = 全站数字自动刷新，永不手工改页面里的价格。
 
-**当前状态（2026-10-01 批次D 后）**：
+**当前状态（2026-10-06 Nomad 试点上线后）**：
 
 | 指标 | 数值 |
 |---|---|
-| 品牌 | 8 家（airalo / holafly / saily / yesim / ubigi / roamic / alosim + 自家 roami；**roami ≠ roamic，两个不同品牌**；nomad 已全量退场） |
+| 品牌 | **9 家**（airalo / holafly / saily / yesim / ubigi / roamic / alosim / **nomad** + 自家 roami；**roami ≠ roamic，两个不同品牌**）。2026-10-06 起规划扩到 12 家（第二批 = nomad✅ / gigsky / jetpac / bnesim） |
 | 国家 | 50 国（`data/countries.toml` 锁定） |
-| 套餐总数 | **8776 条真实数据**：airalo 985 / holafly 298（官网 PDP 直抓）/ saily 471 / yesim 1652 / ubigi 483（含 80 条订阅）/ roamic 1791 / alosim 915 / roami 1181 |
-| 构建 | **525 页，0 error**；sitemap 508 URL |
-| 页面构成 | 50 国家页 + 400 品牌×国家子页 + 28 品牌对决页 + **1 对决枢纽页 /compare/matchups/** + 8 品牌详情页 + tools/esim-deals/research×3/guides×5/about 等静态页 |
+| 套餐总数 | **8218 条真实数据**：airalo 985 / holafly 298（官网 PDP 直抓）/ saily 471 / yesim 1652 / ubigi 483（含 80 条订阅）/ roamic 1791 / alosim 915 / roami 1181 / **nomad 442** |
+| 构建 | **643 页，0 error**；sitemap 585 URL |
+| 页面构成 | 50 国家页 + **450** 品牌×国家子页 + **36** 品牌对决页 + **1** 对决枢纽页 /compare/matchups/ + **9** 品牌详情页 + tools/esim-deals/research×3/guides×5/about 等静态页 |
 | 数据验证 | `scripts/validate.py` 8 组检查，0 error 0 warning |
 | 样式构建 | **Tailwind CLI 独立产出 `static/css/tailwind.css`（裸 `hugo` 不会重编译）**；`scripts/check_css_sync.py` 守卫模板 class 与编译产物同步（2026-10-03 加装） |
-| 增信数据 | `data/devices.toml`（14 品牌 351 机型 + 12 不支持条目，2026-10 核对）+ `data/networkreports.toml`（44 国 Opensignal + 50 国 Global Index 深链）+ **`networks` 补真**（8 品牌 × 50 国 = 各国运营商，2026-10-02） |
-| 上线状态 | **未部署**。折扣码已换真（roami web20 / saily VEEPEE25 / ubigi WELCOME10，其余 5 家官方无公开码）、联盟深链是模式假设、GA4 是占位、logo 8/8 全量接入 |
+| 增信数据 | `data/devices.toml`（14 品牌 351 机型 + 12 不支持条目，2026-10 核对）+ `data/networkreports.toml`（44 国 Opensignal + 50 国 Global Index 深链）+ **`networks` 补真**（9 品牌 × 50 国 = 各国运营商，2026-10-02 规则 + 2026-10-06 新品牌随行） |
+| 上线状态 | **已部署 esimsift.com**（手动上传 `public/`，无 CI；**本轮 Nomad 改动尚未部署**）。GA4 已换真（`hugo.toml [params] ga4 = "G-J6SXGGEN8L"`）；折扣码 9/9 全量有码（`promo_verified` 逐条记核验日）；**联盟深链仍是模式假设**（`country_path` 未逐家核实）；logo **8/9**（nomad 暂用 monogram —— 官方站取不到素材与主色，`color="#16456B"` 是占位）。**部署前纪律**：停掉所有 `hugo.exe` → `npm run build` → `grep -c localhost public/llms.txt` 必须为 0 |
+
 
 ---
 
@@ -36,8 +40,8 @@ esimsift/
 ├── docs/keyword-map.md    # 关键词→URL 映射（防蚕食前置门）
 ├── data/                  # ★ 单一事实源（所有数字在这）
 │   ├── countries.toml     # 50 国主数据
-│   ├── providers.toml     # 8 品牌档案
-│   ├── plans/<brand>.toml # 每品牌×国家套餐（8 个文件）
+│   ├── providers.toml     # 9 品牌档案
+│   ├── plans/<brand>.toml # 每品牌×国家套餐（9 个文件）
 │   ├── carriers.toml      # 50 国运营商画像 + 城市明细
 │   ├── devices.toml       # eSIM 兼容设备库（14 品牌 351 机型 + 12 不支持条目）
 │   ├── networkreports.toml# 44 国 Opensignal 独立引用（⚠ 文件名禁连字符）
@@ -55,21 +59,21 @@ esimsift/
 ## 2. 已完成功能清单
 
 ### 2.1 数据层
-- ✅ **8 品牌 × 50 国真实套餐全量入库**（8776 条，来源与口径见各 plans 文件头注释：esimdb.com 单国套餐 USD 牌价；holafly 为官网 PDP USD 价表）
+- ✅ **9 品牌 × 50 国真实套餐全量入库**（8218 条，来源与口径见各 plans 文件头注释：esimdb.com 单国套餐 USD 牌价；holafly 为官网 PDP USD 价表；**nomad 2026-10-06 接入**，源 `_competitors/*/raw/nomad/` → `scripts/scrape/raw/nomad/`（50 JSON）→ `toml_write.py nomad --checked 2026-10-04`）
 - ✅ 抓取管线：esimdb 穿透 AWS WAF（本机 Playwright chromium）、holafly 官网 PDP 抓取器、roami 本地项目提取器、raw→TOML 转换器（断点续跑、坏数据进人工复核清单）
 - ✅ 套餐建模规则（`toml_write.py`，详见 §4.3）：固定量 / 日额型 / unlimited（限速徽章识别）/ Ubigi Monthly·Yearly 订阅 / holafly FUP 透传 / 通用名重写
 - ✅ `carriers.toml`：50 国 ~154 条运营商画像（速度区间/制式/覆盖特性）+ 50 国 `[ISO.info].cities` 主要城市 + 18 个关键市场 54 条逐运营商 strong/weak
 - ✅ `devices.toml`（2026-10-01）：eSIM 兼容设备库 —— 14 品牌组 351 机型 + 9 组变体警告 + 12 条明确不支持；compatibility 指南页交互块（搜索/tab/chips）live 计数，增删机型无需改模板
 - ✅ `networkreports.toml`（2026-10-01）：44 国 Opensignal 独立引用 —— 获奖≤3 事实卡 + Ookla 新闻式归属卡（页脚禁商业转载其数据）+ Global Index 深链卡 50 国兜底；HK/MO/TR slug 覆盖，IS/GE/KE/MO/CN/FJ 无报告自动降级 index-only
-- ✅ **`plans/*.toml` `networks` 补真（P0，2026-10-02）**：8 品牌 × 50 国 = 400 条 host-network 全量填充。规则 = **运营商是国家属性、与品牌无关**（同国同运营商），故直接取自 `countries.toml.carriers`（已验证与 `carriers.toml` profiles.name 逐条一致，0 mismatch），`scripts/backfill_networks_uniform.py` 一键幂等填充
+- ✅ **`plans/*.toml` `networks` 补真（P0，2026-10-02）**：**9 品牌 × 50 国 = 450 条** host-network 全量填充。规则 = **运营商是国家属性、与品牌无关**（同国同运营商），故直接取自 `countries.toml.carriers`（已验证与 `carriers.toml` profiles.name 逐条一致，0 mismatch），`scripts/backfill_networks_uniform.py` 一键幂等填充（**新增品牌转完 TOML 后必跑**）
 - ✅ `validate.py` 8 组数据检查挂入 `npm run build`（坏数据进不了构建）
 
 ### 2.2 页面型
 - ✅ **国家页** `/compare/<country>/`（50 页，全站核心）：TL;DR 三卡（按预算/性价比/长停留推荐，CTA 进站内子页）→ 13 模块：全套餐对比表（排序 + 有效期 chips + **品牌多选 chips + Unlimited only 开关**，纯客户端 data-* 过滤）、怎么选（按用量分档）、按人群×按时长 8 卡推荐矩阵、品牌口碑区（logo+名可点进品牌页）、运营商覆盖区（速度档位 + 主要城市 + 逐运营商优劣势）、**独立网络数据区**（Opensignal 事实卡 + Ookla 归属卡 + Global Index 深链卡，44 国核实 + 无报告国降级 index-only）、FAQ、出站表格、**「First time using an eSIM?」guides 五卡条**（锚文本按 `mod (len slug) 3` 三档轮换防同质化）
-- ✅ **品牌×国家子页** `/compare/<country>/<brand>/`（400 页，`gen_provider_pages.py` 生成，描述数字直读数据）
-- ✅ **品牌对决页** `/compare/{a}-vs-{b}/`（28 页 = C(8,2)，verdict-first + 逐国判胜表 + 数据驱动 FAQ + sibling 互链）+ **对决枢纽页** `/compare/matchups/`（28 卡全量索引 + closest rivalry/most lopsided 计算瓦片；header/footer/llms.txt 入口）+ vs 页 "Other eSIM comparisons" 勾选选择器（8 logo 卡最多勾 2 个，第 3 个挤掉最早勾选，字母序实时拼 `/compare/{a}-vs-{b}/`）
-- ✅ **品牌详情页** `/esim-providers/<key>/`（8 页，计算式结论"cheapest in N of M"、竞争力评分、**价格胜负区（全计算：逐国 {B}最低价 vs 全场次优价，赢省%/输溢价% Top5 双卡带链接；>200% 用 ×倍数展示；unlimited-only 品牌带口径脚注；0 胜/0 负空态兜底）**、按区域覆盖清单；公司概况卡含总部/法人 + 官网/双商店链接 chips；客服&退款专区（渠道/邮箱/响应承诺 + 退款摘要）；覆盖区"50 国追踪≠品牌全部目的地"备注；FAQ 含 "{brand} support"/"{brand} refund" 长尾问答；schema 含 Organization(sameAs)；**无数据品牌自动降级为简壳页**）
-- ✅ `/tools/` 行程计算器 **+ 用量估算器（对标 mybestsim data-usage-calculator 并反超：竞品止步于"你需要 X GB"，我们闭环到真实套餐）**：8 活动小时步进 → GB/天 → 行程总 GB（20% 余量开关，读取天数滑杆）→ 一键回填 chip 重选套餐；码率参考表（$acts 模板单一来源，11 行含 1GB 折算）；底部 12 热门国家卡 + 8 品牌卡（全计算生成）+ FAQ×3+schema；`/esim-deals/` 折扣码页（对标 mybestsim 并超越：实码卡（核验日期+条款+折扣后实际价实时计算）→ "折扣码翻盘分析"表（折后价 vs 全场最低价，N/50 翻盘数）→ 无码品牌计算式替代价值 → 5 步使用教程 → 4 条无码省钱路径（全内链）→ FAQ×5+schema → 底部 8 品牌入口 + 4 相关页）
+- ✅ **品牌×国家子页** `/compare/<country>/<brand>/`（**450 页** = 9 品牌 × 50 国，`gen_provider_pages.py` 生成，描述数字直读数据）
+- ✅ **品牌对决页** `/compare/{a}-vs-{b}/`（**36 页** = C(9,2)，verdict-first + 逐国判胜表 + 数据驱动 FAQ + sibling 互链）+ **对决枢纽页** `/compare/matchups/`（**36 卡**全量索引 + closest rivalry/most lopsided 计算瓦片；header/footer/llms.txt 入口）+ vs 页 "Other eSIM comparisons" 勾选选择器（品牌 logo 卡最多勾 2 个，第 3 个挤掉最早勾选，字母序实时拼 `/compare/{a}-vs-{b}/`；**卡片按 `providers.toml` 枚举，加品牌自动出现**）
+- ✅ **品牌详情页** `/esim-providers/<key>/`（**9 页**，计算式结论"cheapest in N of M"、竞争力评分、**价格胜负区（全计算：逐国 {B}最低价 vs 全场次优价，赢省%/输溢价% Top5 双卡带链接；>200% 用 ×倍数展示；unlimited-only 品牌带口径脚注；0 胜/0 负空态兜底）**、按区域覆盖清单；公司概况卡含总部/法人 + 官网/双商店链接 chips；客服&退款专区（渠道/邮箱/响应承诺 + 退款摘要）；覆盖区"50 国追踪≠品牌全部目的地"备注；FAQ 含 "{brand} support"/"{brand} refund" 长尾问答；schema 含 Organization(sameAs)；**无数据品牌自动降级为简壳页**）
+- ✅ `/tools/` 行程计算器 **+ 用量估算器（对标 mybestsim data-usage-calculator 并反超：竞品止步于"你需要 X GB"，我们闭环到真实套餐）**：8 活动小时步进 → GB/天 → 行程总 GB（20% 余量开关，读取天数滑杆）→ 一键回填 chip 重选套餐；码率参考表（$acts 模板单一来源，11 行含 1GB 折算）；底部 12 热门国家卡 + **9** 品牌卡（全计算生成）+ FAQ×3+schema；`/esim-deals/` 折扣码页（对标 mybestsim 并超越：实码卡（核验日期+条款+折扣后实际价实时计算）→ "折扣码翻盘分析"表（折后价 vs 全场最低价，N/50 翻盘数）→ 无码品牌计算式替代价值 → 5 步使用教程 → 4 条无码省钱路径（全内链）→ FAQ×5+schema → 底部 **9** 品牌入口 + 4 相关页）
 - ✅ `/research/` 3 页（price-index 50 国 $/GB 联赛表 / unlimited-esim 日费率榜 + **盈亏平衡分析** / fair-use-audit 逐品牌 FUP 审计）——全部从数据实时推导；**每行/每卡可钻取**（Winning plan 列链品牌×国家子页、区域卡列出全部国家 chips、unlimited 表品牌/套餐双链）；每页含计算洞察区 + 数据驱动 FAQ ×3-4 + FAQPage schema + Related research ×4 互联卡；unlimited-esim 首屏指标已解挤（全宽三卡条 + 品牌覆盖 chips）；**枢纽页 2026-10-02 升级**：首屏两栏配图（hero front matter 同 guides）+ **区域价格联赛**（region 聚合各国最优 $/GB 均值，5 卡排序）+ 最贵/最便宜价差叙事（计算倍数）+ **问答路由卡 ×6**（搜索意图→对应页）+ FAQ×6 schema + 正文 3 段立场声明
 - ✅ `/guides/` 5 篇（what-is / how-to-install / vs-physical-sim / dual-sim / compatibility-check）：**2026-10-02 深度重写至 1677-1955 词**（对位竞品博客的信息增量段：SM-DP+ 手动录入、双线来电路由、区域变体机制、验机清单等；FAQ 7-8 条；内链 9-14 条/篇短锚轮换）；**每篇首屏配图**（front matter `hero`+`hero_alt`，imageConfig 宽高 + eager + fetchpriority=high + og:image 联动）；专用 `layouts/guides/single.html` 注入逐篇计算数据盒（$/GB 榜/入门价榜/unlimited 日费率榜/安装方式表，指标互不重复）+ front-matter `faqs` 渲染 FAQ + FAQPage schema + 相关阅读闭环；compatibility-check 篇专属注入 devices.toml 交互设备库（**品牌分组卡片**：搜索 + 品牌 tab + 351 chips + 变体内联警示 + 不支持表，与正文 EID 终审原则互指）
 - ✅ 静态页：about / methodology / disclosure / privacy / terms / contact（disclosure 2026-10-01 已去除同司声明，改为佣金模式 + 诚实规则，勿再加回）
@@ -91,9 +95,9 @@ esimsift/
 | guides / research 文章 | Organization + WebSite + **Article** + FAQPage + BreadcrumbList |
 | 工具/折扣页 `/tools/` `/esim-deals/` | Organization + WebSite + FAQPage + BreadcrumbList |
 | 列表枢纽 `/compare/` | Organization + WebSite + BreadcrumbList |
-- ✅ `llms.txt`（50 国 + 28 对决 + research/guides 自动枚举）、`catalog.json`（机器可读 50 国）、sitemap 508 URL（自定义 `layouts/sitemap.xml`：无 changefreq/priority；lastmod 三层解析——国家页=该国快照日 / 编辑页=自身 date / 其余=全站最新快照日）
+- ✅ `llms.txt`（50 国 + 36 对决 + research/guides 自动枚举）、`catalog.json`（机器可读 50 国）、sitemap 585 URL（自定义 `layouts/sitemap.xml`：无 changefreq/priority；lastmod 三层解析——国家页=该国快照日 / 编辑页=自身 date / 其余=全站最新快照日）
 - ✅ 出站导流单一出口：全站只有 `partials/cta-out.html` 一个出站点，`hugo.toml [params.outbound]` 一处配置（active 指向、rel、UTM、campaign 按页面类型自动）
-- ✅ 品牌 logo：**8/8 全量接入**（airalo/ubigi/yesim/roamic/roami/alosim=.png，holafly/saily=.webp），prov-logo partial 先探 .png 再探 .webp；放 `static/img/providers/<key>.png|.webp` 即自动切换（零配置）
+- ✅ 品牌 logo：**8/9**（airalo/ubigi/yesim/roamic/roami/alosim=.png，holafly/saily=.webp，**nomad 暂用 monogram**——官网取不到可用 hex，`color="#16456B"` 是占位），prov-logo partial 先探 .png 再探 .webp；放 `static/img/providers/<key>.png|.webp` 即自动切换（零配置）
 - ✅ 内链纪律：TL;DR/品牌区/锚文本全部指向站内；漏斗出口只在表格 View 列和 cta-out
 
 ---
@@ -101,9 +105,9 @@ esimsift/
 ## 3. 待完成功能（按优先级）
 
 ### P-A 数据项（上线前必须）
-- [x] ~~折扣码换真~~ **2026-10-01 完成**：三路代理在 8 家官方页面逐项核验。有公开码：roami `web20`（官网公示·新用户 20%）/ saily `VEEPEE25`（官方合作页 25%）/ ubigi `WELCOME10`（官方 FAQ 首购 10%）；airalo/holafly/yesim/roamic/alosim 官方无公开码（仅有推荐返利计划）→ 无 promo 字段，模块自动隐藏。**遗留**：三家 promo_expires 均为占位 2027-12-31（官方没标过期日），上线前复核一次
+- [x] ~~折扣码换真~~ **2026-10-01 起，2026-10-04 复核，2026-10-06 随新品牌补齐**：**9/9 品牌全量有码**，`promo_verified` 逐条记核验日 —— roami `web20`(20%) / airalo `NEWTOAIRALO15`(15%) / holafly `MYESIMNOW5`(5%) / saily `VEEPEE25`(25%) / yesim `DREWDEAL`(20%) / ubigi `PROMO15`(15%) / roamic `FYESIM10`(10%) / alosim `ESIMTWEAKS`(15%) / **nomad `BEYOND20`(20%，另有 `FALL30` 30% 满 2 件 / `ESIMDNOMAD20`)**。**遗留**：仅 airalo 有官方过期日（2026-12-31），其余官方未标 → 上线前复核一次；条款/适用面写在各品牌 `promo_scope` / `promo_constraints` / `promo_terms`
 - [ ] **联盟深链规则核实**：`hugo.toml [params.outbound.targets.*]` 的 `country_path` 和 `data/countries.toml [ISO.slugs]` 目前是模式假设（roami 假设 `/{slug}/`，其他家没配逐国深链）→ 逐品牌确认联盟链接的国家级 URL 格式
-- [x] ~~**networks 补真**~~ **2026-10-02 完成**：按"同国同运营商"规则，8 品牌 × 50 国 `networks` 全量 = `countries.toml.carriers`（`backfill_networks_uniform.py`）。国家页表格网络列 + ⑦b 区块已自动增强
+- [x] ~~**networks 补真**~~ **2026-10-02 完成（2026-10-06 随新品牌续填）**：按"同国同运营商"规则，9 品牌 × 50 国 `networks` 全量 = `countries.toml.carriers`（`backfill_networks_uniform.py`）。国家页表格网络列 + ⑦b 区块已自动增强
 - [ ] **Opensignal 缺口（可暂缓）**：`networkreports.toml` 目前 44 国 Opensignal；剩 6 国只有 Global Index 深链兜底 —— CN/IS/GE/KE（用户 2026-10-02 决定"这 4 国算了"）+ MO/FJ（Opensignal 无对应市场报告）。若日后要补，格式照抄现有条目，数据由用户人工提供（禁 web 抓取）
 - [ ] **carriers.toml 剩余 32 国 detail**：目前只有 18 个关键市场有逐运营商 strong/weak，其余国家只有 cities + 画像
 - [ ] carriers.toml 速度区间逐市场核实（现值是编辑常识典型值）
@@ -117,9 +121,9 @@ esimsift/
 
 ### P-C 上线前
 - [ ] privacy/terms/disclosure 法律审校（文中已标 Todo）
-- [ ] GA4 ID 替换 + 与 roamiapp.com 跨域衡量（`layouts/partials/head.html` 占位注释处）  ，这个完成
+- [x] ~~GA4 ID 替换~~ **已完成**：`hugo.toml [params] ga4 = "G-J6SXGGEN8L"`，`head.html` 取该参数（`{{ with site.Params.ga4 }}` 门控）。**遗留**：与 roamiapp.com 的跨域衡量未配
 - [ ] OG 图片（每国一张，含最低价数字）
-- [ ] 部署（建议 Cloudflare Pages；见 §16）
+- [x] ~~部署~~ **已部署 esimsift.com**（手动上传 `public/`；每次改动需重新上传，见 §16）
 
 ### P-2 蓝图 Phase 2（上线后，槽位已留在 docs/keyword-map.md）
 - [ ] 区域枢纽页 ×5（/compare/asia/ 等）
@@ -130,7 +134,7 @@ esimsift/
     ① **页头 `Network map` 二级菜单**（`partials/header.html`）——列出所有已发布深度页（当前 12 条）；**0 个深度页时自动退回单链接**，加国家自动变长，不造假条目
     ② 枢纽 `/networks/` 目的地卡的「Carrier breakdown →」
     ③ 国家页 `/compare/{country}/` 的 Networks 段落内嵌回链
-    ④ **品牌×国家子页 `/compare/{country}/{brand}/` 新增「Which network does {A} ride in {C}」段**（原本 400 页一条网络链都没有）——建满 50 国后自动变成 400 条入链
+    ④ **品牌×国家子页 `/compare/{country}/{brand}/` 新增「Which network does {A} ride in {C}」段**（原本 400 页一条网络链都没有）——建满 50 国后自动变成 **450** 条入链
 - [ ] /networks/{carrier}/ 运营商页、/devices/{device}/ 设备页（设备页数据源 devices.toml 已就绪）
 - [ ] tools 再加 2 个
 - [ ] sitemap 分片（>1000 URL 时）
@@ -225,7 +229,35 @@ price = 13.50            # ★ 必须两位小数 float！price = 13 是 int64�
 fup_note = "…"           # 可选：限速说明/日额说明/订阅性质（fair-use-audit 页直接引用原文）
 ```
 
-**networks 规则（P0 已定，2026-10-02）**：运营商是**国家属性、不是品牌属性**——同一个国家里每家 eSIM 品牌骑的都是同一批本地网络。所以 `networks` 直接 = `countries.toml` 里该国的 `carriers` 列表，**不要逐品牌去查**。`toml_write.py` 生成时会先写 `networks = []`，随后跑 `python -X utf8 scripts/backfill_networks_uniform.py` 一键填满全部 8 家（幂等，重跑安全）。
+**日期字段 `checked` / `profile_checked` —— 自动盖章（2026-10-07 起）**
+页面上四处机器可读的日期只有两个来源，都由 `scripts/stamp_checked.py` 按**内容指纹**自动维护：
+
+| 字段 | 位置 | 喂给谁 |
+|---|---|---|
+| `checked` | `data/plans/<brand>.toml` 的 `[ISO]` 块 | 国家 hub / 品牌×国家子页 / 品牌 hub 的价格文案 / vs 页 / sitemap `lastmod` |
+| `profile_checked` | `data/providers.toml` 的 `[<brand>]` 段 | 品牌 hub 的「Last updated」（与价格日取最大；价格专属文案只取价格日） |
+
+**规则一句话：指纹变了（数据真的改了）→ 日期 = 构建当天；指纹没变 → 日期不动。**
+指纹 = 段内容 sha256，**排除日期字段、注释与空行** —— 所以改注释/调格式不会让日期凭空前移
+（那是不实陈述），改一个价格必然前移。
+
+- 已挂进 `npm run build` 的**第一步**（`npm run stamp`），不依赖人记得跑。
+- **首次建台账**（`docs/checked-state.json` 不存在）只登记现值、**不**改日期；
+  台账已在而冒出**新单元**（新品牌 / 新市场入库）→ 直接盖当天。
+- **`docs/checked-state.json` 必须提交进版本库**：删掉它等于把所有数据的「最后改动日」抹成未知。
+- 手工盖特定日期仍走 `bump_checked.py`；指纹没变时 stamp **尊重你的现值，不会回滚**（真去官网重核过一遍、价格恰好没变的情况）。
+
+⚠️ 口径**不是**「构建日」：用 `now` 会让 `lastmod` 每次部署都翻新，Google 判定本站
+`lastmod` 无信息量后**整体忽略**（第二十三轮试过、已撤回）。只有跟着数据走的日期才值得抓取预算。
+
+**目前「不」驱动任何页面日期的数据源**（改了它们，页面日期不动）：
+`data/countries.toml`（国家 hub 正文：quirks / region / neighbors …）· `data/de/countries.toml`（德语国名覆盖）·
+`data/carriers.toml`（运营商卡 `#hostnetwork`）· `data/refs.toml`（运营商官方外链）·
+`data/faqs/<iso>.toml`（FAQ 问答文案）· `data/titlesegments.toml`（标题片段）。
+要让它们也驱动日期，得先回答「这些页面的日期印在哪儿」—— 目前这些页面**压根没印日期**，
+所以这是产品决定，不是技术缺口（见 §15）。
+
+**networks 规则（P0 已定，2026-10-02）**：运营商是**国家属性、不是品牌属性**——同一个国家里每家 eSIM 品牌骑的都是同一批本地网络。所以 `networks` 直接 = `countries.toml` 里该国的 `carriers` 列表，**不要逐品牌去查**。`toml_write.py` 生成时会先写 `networks = []`，随后跑 `python -X utf8 scripts/backfill_networks_uniform.py` 一键填满全部 9 家（幂等，重跑安全）——**每接入一个新品牌、转完 TOML 后立刻跑一次**。
 
 **type 判定规则**（抓取器的既定口径，人工补数据时保持一致）：
 - 卡面 `10GB` → `data, gb=10`
@@ -257,7 +289,41 @@ weak = "Mid-city and indoor speeds can trail …"
 **维护**：补剩余 32 国 detail 时直接在该国块后追加 `[[XX.info.detail]]`（TOML 表数组可以追加在文件任何位置，validate 会查 join key）。
 
 ### 4.5 `data/faqs/<iso>.toml` —— 国家 FAQ
-**作用**：国家页 FAQ 模块 + FAQPage schema。文件名 = 小写 ISO（`jp.toml`）。顶层是 `[[faq]]` 数组（模板取值 `.faq`）。只做**对比角度**（激活/安装类问题归 Roami 主站，防 SERP 重叠）。jp.toml 是手写样板，其余为生成初稿（P-B 润色）。
+**作用**：国家页 FAQ 模块 + FAQPage schema。文件名 = 小写 ISO（`jp.toml`）。顶层是 `[[faq]]` 数组（模板取值 `.faq`）。6 条 = 前三条**数字类**（最便宜 / unlimited 计数 / Airalo vs Holafly）+ 后三条**事实类**（ID 规定 / 运营商 / 邻国）。只做**对比角度**（激活/安装类问题归 Roami 主站，防 SERP 重叠）。
+
+**规则一：三条数字类答案只写 `{token}`，绝不填真实数字**（2026-10-07 第四十一轮）
+这三条的真值随每次抓价变化，写死就会与正上方价格表打架 —— 2026-10-06 实测 99 条断言过期、45 国「最便宜品牌」易主。
+值由 `layouts/partials/faq-live-tokens.html` 在构建期现算（32 个 token，口径见该文件头注释），
+`compare/single.html` 渲染前做一次替换，可见正文与 FAQPage schema 同源。
+- 可用 token 一览就写在 `faq-live-tokens.html` 返回的 dict 里（`cheap_*` / `value_*` / `unl_*` / `ah_*` / `neighbor*` / `brands_list` / `plan_count` …）。
+- **拼错 token 名不会报错**：`replace` 找不到就原样留下，页面会出现 `{cheap_brad}`。由 `scripts/check_faq_facts.py` 的 R1 拦住。
+- 任一取值缺失时 token 输出 `n/a`（不空着），由守卫的 R2 拦住 —— 别把 `n/a` 当成正常文案。
+- **`{country}` 是无冠词形式**（`USA` / `UK` / `Japan`；德语站是 `Vereinigte Staaten`），所以只能写
+  `for {country}` / `{country} plans` / `{country} alone`，**不能写 `the {country}`** —— 会渲染成 "the Japan"。
+
+**规则二：49 国的答案骨架由 `scripts/faq_frames.py` 统一分配，别手改**（第四十二轮）
+每条答案 = **open（直接回答，最可能被答案引擎摘走的第一句）+ body（数据事实）+ close（行动建议）**，
+每槽 7 个片段共 21 个；分配 `a = i % 7`、`b = i // 7`、`c = (a + b) % 7`（i = ISO 升序位次，jp 除外）。
+这是**拉丁方阵**：(a,b) / (a,c) / (b,c) 三组对子各把 7×7 的 49 格用满一次 ⇒
+**任意两国的三元组至多在一个分量上相同 = 任意两页最多共用一句**。
+- 池子必须 ≥ 7：49 国要两两 (a,b) 不重复就需要 `|pool|² ≥ 49`，改成 6 立刻退化。
+- **手改某国文案必须同步片段库**，否则守卫 R10 报「拆不回片段库」。这是有意设计：防止数据与库各说各话。
+- 片段里禁写 `$数字`；`{unl_allowance}` 只能放在**冒号之后**（ubigi 的值是整句
+  "Varies by plan - published per plan page"，冒号后大写是合法英文，内嵌进从句就不成句）。
+- `--check` 离线校验分配不变量与片段写法；`--force` 是改了片段库要重刷全站时用的（**会覆盖人工润色**）。
+- jp 除外：它三条是手写的分析口吻，不参与方阵（R10 跳过 jp）。
+
+**规则三：Q6（「一张 eSIM 能覆盖 X 和邻国吗」）的问题与 answer token 是一对，改一个要看另一个**（第四十二轮）
+- 43 国的问题**点名一个邻国**（`Can one eSIM cover the UK and France?`），而这个点名是**载荷**：
+  `{neighbor}` 会去问题里找那个国家名（`faq-live-tokens.html`：`in $q6 .`），找不到才退回 `neighbors[0]`。
+  **所以问题里写谁，答案就答谁** —— 英国的问题问法国，答的就是法国（机械取 `neighbors[0]` 会答成爱尔兰）。
+- 7 个**没有 `neighbors`** 的国家（HR / IS / CR / IL / MA / ZA / KE）问题**点名 `region`** 而不是邻国
+  （`Can one eSIM cover Iceland and the rest of Europe?`）—— 原先是 `Can one eSIM cover Iceland?`，
+  同义反复、抓不到任何区域意图。问题文本是**各国静态字符串**（`q` 字段不过 token 替换管线，只有 `a` 会）。
+- `{neighbor}` 对无邻国走兜底 `"another country"`（曾写作 `"another market on this site"` —— 内部口吻印进了 12 页）。
+- `{neighbors_all}` 对无邻国兜底 `the other {region} markets we cover`（**仅克罗地亚用到，略微自指，已知残留**）。
+
+改完必须跑 `npm run build`（守卫在 `check:output` 里）。
 
 ### 4.5a `data/devices.toml` —— eSIM 兼容设备库
 **作用**：/guides/esim-compatibility-check/ 的交互设备表（搜索框 + 品牌 tab + 机型 chips + 变体警示条）+ 不支持机型表。模板 live 计数（总机型数 = range 累加），文章正文只说 "several hundred"——增删机型不用改模板也不用改文章。
@@ -291,10 +357,10 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | 路径 | 性质 | 说明 |
 |---|---|---|
 | `compare/<slug>.md` ×50 | 生成初稿 + japan.md 手写样板 | front matter `iso` + `seo.description`，正文 3 段数据驱动分析（P-B 润色） |
-| `compare/<slug>/<brand>.md` ×400 | **脚本生成，勿手改** | `gen_provider_pages.py` 重建时会覆盖/增删 |
-| `compare/{a}-vs-{b}.md` ×28 | 手写（front matter 即可） | `providers: [a,b]` 字母序 + `layout: vs-single`；标题/描述自拟防同质化 |
+| `compare/<slug>/<brand>.md` ×450 | **脚本生成，勿手改** | `gen_provider_pages.py` 重建时会覆盖/增删 |
+| `compare/{a}-vs-{b}.md` ×36 | **脚本补缺 + 手写并存** | `providers: [a,b]` 字母序 + `layout: vs-single`；标题/描述由 `regen_meta_brand.py` 按数据重算防同质化。**新增品牌用 `scripts/gen_vs_pages.py` 只补不存在的对，绝不重写已有页** |
 | `compare/matchups.md` ×1 | 手写（front matter 即可） | 对决枢纽页：`layout: matchups` + **`nolist: true`**（不进国家网格/catalog/llms 国家清单——全站过滤器第三层）；卡片按 providers.toml 键枚举，**新增品牌自动出现** |
-| `esim-providers/<key>.md` ×8 | 手写（front matter 即可） | 品牌详情页正文全部由模板聚合推导 |
+| `esim-providers/<key>.md` ×9 | 手写（front matter 即可） | 品牌详情页正文全部由模板聚合推导 |
 | `guides/` ×5 | 手写正文 | **1677-1955 词**（2026-10-02 深度重写，备份 `_guides_backup_20261002/` 在项目根）；front matter 带 `date` + `faq_heading` + `faqs`（7-8 条）+ `hero` + `hero_alt`（首屏图，模板渲染 figure + og:image）；内链 9-14 条/篇（短锚文本全轮换）；正文计数一律 shortcode；数据盒由 guides/single.html 按文件名注入 |
 | `research/` ×3 + `_index` | 手写 front matter | 正文由专属模板从数据推导；_index 枢纽 front matter 同 guides 带 `hero`/`faqs`（2026-10-02） |
 | `tools/` `esim-deals/` `_index/about/methodology/disclosure/privacy/terms/contact` | 手写 | privacy/terms 有法律审校 Todo 标注 |
@@ -313,9 +379,9 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | 文件 | 作用 |
 |---|---|
 | `compare/single.html` | 国家页（13 模块 + 表格筛选 JS：品牌 chips/Unlimited 开关/排序/有效期） |
-| `compare/provider.html` | 品牌×国家子页（400 页共用） |
-| `compare/vs-single.html` | 对决页（28 页共用） |
-| `compare/matchups.html` | 对决枢纽页 /compare/matchups/（28 卡 + 计算瓦片） |
+| `compare/provider.html` | 品牌×国家子页（450 页共用） |
+| `compare/vs-single.html` | 对决页（36 页共用） |
+| `compare/matchups.html` | 对决枢纽页 /compare/matchups/（36 卡 + 计算瓦片） |
 | `compare/list.html` | /compare/ 枢纽（国家网格 + #matchups 对决网格） |
 | `esim-providers/single.html` | 品牌详情页（含无数据降级简壳） |
 | `networks/list.html` | /networks/ 网络地图枢纽（目的地卡 + 跨网分组 + 右栏） |
@@ -339,8 +405,13 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `scrape/scrape_esimdb.py` | `python -X utf8 -u scripts/scrape/scrape_esimdb.py <brand>... [--force]` → `scripts/scrape/raw/<brand>/`（断点续跑：已有 json 跳过；重抓删对应 json 或 --force） | 安全（只写 raw/） |
 | `scrape/scrape_holafly.py` | 同上，抓 holafly 官网 PDP（UAE 的 slug 是 `esim-dubai`，已在 VARIANTS 里） | 安全 |
 | `scrape/extract_roami.py` | 从本机 Roami 项目源数据提取 → `raw/roami/` | 安全 |
-| `scrape/toml_write.py` | `python -X utf8 scripts/scrape/toml_write.py <brand> [--dry-run]` → `data/plans/<brand>.toml`。**执行前确认顶部 `CHECKED` 常量是当天日期**（checked 字段全从这来）。--dry-run 只报 problems 不写文件 | ⚠ 覆盖该品牌 plans |
-| `gen_provider_pages.py` | `python -X utf8 scripts/gen_provider_pages.py` 重建 400 子页（品牌集变更后必跑；**绝不碰 plans**） | 安全 |
+| `scrape/toml_write.py` | `python -X utf8 scripts/scrape/toml_write.py <brand> [--dry-run] [--checked YYYY-MM-DD]` → `data/plans/<brand>.toml`。**默认 `CHECKED` 常量 = 首批抓取日 `2026-09-30`**；非首批批次（新品牌补抓）用 `--checked` 显式写真实核对日 —— ⚠ **不传就会让整批数据宣称旧日期**。--dry-run 只报 problems 不写文件 | ⚠ 覆盖该品牌 plans |
+| `stamp_checked.py` | `python -X utf8 scripts/stamp_checked.py` **（2026-10-07 加，已挂在 `npm run build` 第一步）**：按**内容指纹**自动维护 `checked` / `profile_checked` —— 指纹变了就把日期盖成当天，没变就不动。首次建台账保留现值；台账已在而出现新单元（新品牌/新市场）盖当天。`--check` 只读、该盖未盖退 1；`--dry-run` 预演；`--date` 指定；`--selftest` **29 项**（含"改注释不触发""新增块盖当天""幂等"等反例）。台账 `docs/checked-state.json` **必须提交**。**它只认 `data/plans/*.toml` 与 `data/providers.toml`**，其余数据源见下方「不驱动日期的数据源」 | ⚠ 改写 plans + providers 的日期行 |
+| `bump_checked.py` | `python -X utf8 scripts/bump_checked.py --brand xyz [--countries US,PL] [--date YYYY-MM-DD] [--dry-run]`，`--show` 一览各品牌当前日期。**手工**把指定国家盖成指定日期 —— 真去官网核了一遍、价格恰好没变时用；日常刷新**不需要**它 | ⚠ 覆盖该品牌 plans 的日期行 |
+| `gen_provider_pages.py` | `python -X utf8 scripts/gen_provider_pages.py` 重建 450 子页（品牌集变更后必跑；**绝不碰 plans**） | 安全 |
+| `gen_vs_pages.py` | `python -X utf8 scripts/gen_vs_pages.py` **只补** `content/en/compare/{a}-vs-{b}.md` 缺失的品牌对，**绝不重写已有页**（品牌集变更后跑）。标题/描述复用两个标题族 + 字符数 48-54 / 120-140 断言 | 安全（只补缺） |
+| `check_faq_facts.py` | `python -X utf8 scripts/check_faq_facts.py` **FAQ 守卫（2026-10-07 加，须在 `hugo` 之后跑）**：**读 `public/` 产物**独立从 `data/plans` 重算真值逐条对账 —— R1 无未替换 `{token}`；R2 无 `n/a`/`$0.00` 哨兵漏出；R3 问题集合与 toml 一致；R4 可见正文与 FAQPage JSON-LD 同文；R5/R6/R7 三条答案的品牌与价格与现算一致；R8/R9 文案不变量（最便宜不是 Airalo/Holafly、最便宜档必须计量）。**必须读产物**：源文本里现在只有 `{token}`，模板写错在源文本里看不出来。**R10 例外地读源文件**（判的是句架，产物里 token 已变成各不相同的数字国名，反而看不出重复）：a) 三条答案 49 国骨架两两不同；b) 每条答案必须拆得回 `faq_frames.py` 的片段组合；c) 任意两国最多共用一个槽；d) slot6 取自库内 7 变体且无邻国的 7 国各占一个；e) slot6 必须含 `{country}`。**R11 读产物**：Q6 在各国页上必须两两不同 —— R10(e) 在源级保证它，但**源级看不见**「互称邻国的一对国家（FR/IE 都指向 UK）分到同一变体」会不会撞车，只有在产物里才暴露（这条规则就是被那个真实 bug 逼出来的，实测对修复前的产物跑会精准报出 `R11 [en] ['FR','IE']`）。`--selftest` **13 项**（`selftest()` 7 例 R1-R9 + `frame_selftest()` 6 例 R10，含"正确样本不误报"）。已挂进 `npm run check:output` | 只读 |
+| `faq_frames.py` | FAQ 答案骨架库 + 分配 + 迁移（2026-10-07 第四十二轮）。`--check` 离线校验分配不变量；默认只替换**认得的旧骨架**，其余拒绝改写（保护人工润色）；`--force` 重刷全站（覆盖人工润色）。**取代**了第四十一轮的一次性 `migrate_faq_frames.py`（已删除） | 幂等（改 faqs 文案） |
 | `validate.py` | `python -X utf8 scripts/validate.py` 8 组检查（国家/品牌键/套餐字段/join key/对决页规则/运营商画像） | 只读 |
 | `audit_meta.py` | `python -X utf8 scripts/audit_meta.py [--limit N]` 扫 public/ 渲染产物（2026-10-02 规范 v3）：标题 48-54 内页禁品牌（首页唯一豁免）/ 描述 120-140 必含品牌 / 重复 / 分页型统计（改 meta 后必跑） | 只读 |
 | `regen_meta_fixes.py` | 2026-10-01 批次E 一次性修复脚本（已被批次F regen_meta_brand.py 取代，勿重跑） | ⚠ 一次性 |
@@ -350,7 +421,7 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `check_css_sync.py` | `python -X utf8 scripts/check_css_sync.py` **CSS 同步守卫（2026-10-03 加）**：扫 `layouts/`+`content/` 所有 `class="…"`，与 `static/css/tailwind.css` 逐类比对，缺任一即 exit 1。Tailwind JIT 对未知类静默忽略，没这道守卫时「改了模板忘重建 CSS」会静默上线（症状：HTML 结构正确、样式全无）。已挂进 `npm run validate` | 只读 |
 | `check_output.py` | `python -X utf8 scripts/check_output.py` **产物守卫（2026-10-03 加，须在 `hugo` 之后跑）**：① 全站扫 Go 格式串泄漏 `%!x(…)`（`math.Round` 返回 float64 喂 `%d`、printf 里字面 `%` 没写 `%%`、有 `%s` 不给参数/没占位符多给参数 —— 三种都会把乱码印在正文里而 `hugo` 不报错）；② 每个 JSON-LD 块必须 `json.loads` 可解析；③ `reviewRating`/`aggregateRating`/独立 `Rating` 的 `ratingValue` 必须是 JSON 数字且落在 `[worstRating‖1, bestRating‖5]`（含"量表写成字符串"这一失败模式）；④ **~~全站扫非拉丁文字~~（2026-10-03 移除）** —— 站点要上多语言，禁令会拦住 ja/ko/zh 的合法产物，按语言划豁免前缀只是把同一个问题往后推。**移除后 ① 的格式串扫描范围扩大到 `.json`**（原先 json 分支只服务于 ④，不扩范围就成了死代码）。数据入口的清洗仍归 `scripts/scrape/toml_write.py::clean_plan_name()`（详见红线 21、§18.4）。已挂进 `npm run check:output`，并在 `npm run build` 末尾 | 只读 |
 | `append_carrier_info.py` | 追加 [ISO.info]（幂等，**已执行过，勿再跑**——再跑也只是提示跳过） | 幂等 |
-| `backfill_networks_uniform.py` | `python -X utf8 scripts/backfill_networks_uniform.py` 一键把 8 品牌每国 `networks` 填成该国运营商（同国同运营商，幂等）。**新增品牌转完 TOML 后必跑** | 安全 |
+| `backfill_networks_uniform.py` | `python -X utf8 scripts/backfill_networks_uniform.py` 一键把 9 品牌每国 `networks` 填成该国运营商（同国同运营商，幂等）。**新增品牌转完 TOML 后必跑** | 安全 |
 | `gen_sample_data.py` | ☠☠☠ **永远禁止整跑** —— 会用 SAMPLE 数据覆盖全部真实抓取结果 | 禁令 |
 | `scrape/verify_airalo.py` `probe_*.py` `discover_slugs.py` | 一次性验证/探测工具（airalo 官网对照校验已通过：JP/IT/US 全档一致） | 存档 |
 
@@ -364,8 +435,8 @@ cd "D:/esimsift/esimsift"
 npm run build                      # 完整管线：Tailwind CSS → validate(+CSS 同步守卫) → hugo → check:output（上线前必跑）
 npm run dev                        # Tailwind 预编译 + hugo server（本机 :1313）
 npm run build:css                  # 只重建 Tailwind —— 改过 layouts 里的 class 后必须跑
-npm run validate                   # validate.py + check_css_sync.py
-npm run check:output               # 产物守卫（格式串 / JSON-LD / 评分区间）—— 须在 hugo 之后跑
+npm run validate                   # validate.py + check_css_sync.py + check_i18n.py
+npm run check:output               # 产物守卫（格式串 / JSON-LD / 评分区间 / h2-h3 标点 / 品牌子页 / FAQ 数字 / 日期 / 零回归）—— 须在 hugo 之后跑
 
 # 数据刷新三连（改完 plans 后必做后两步）：
 python -X utf8 scripts/gen_provider_pages.py   # ① 子页描述嵌着数字，必须重生成
@@ -399,7 +470,19 @@ npm run build                                   # ③
 
 ## 7. 操作手册 A：新增一个品牌（完整 10 步，每步带检查点）
 
-以新增第 9 家品牌 `xyz` 为例。**做完一步，先过"✅ 检查点"确认没错，再走下一步**——前一步错了后面全白搭。
+以新增第 10 家品牌 `xyz` 为例（现 9 家）。**做完一步，先过"✅ 检查点"确认没错，再走下一步**——前一步错了后面全白搭。
+
+> **★ 2026-10-06 Nomad 试点教训：这 10 步之外，还有 5 处会连带受影响，别漏**
+>
+> | # | 连带项 | 为什么 | 怎么处理 |
+> |---|---|---|---|
+> | 1 | `scripts/verify_no_regression.py` 的分类基础 | 旧版把 `BRANDS` **写死 8 个**，新品牌子页掉进 `static` 兜底 → 401 条假失败。**页型判据依赖的数据集变了，判据必须跟着变** | 已改为从 `providers.toml` 推导；**以后任何"按品牌分类/枚举"的守卫都照此办理** |
+> | 2 | 国家页 / 对决页的 title + description | 描述里的「N providers」「from $x」全是实时数字 | `regen_meta_brand.py --dry-run` 确认后真跑 |
+> | 3 | 国家页 title 的价格锚（`data/titlesegments.toml`） | 「From $x/GB」「有无无限档」由全市场数据算，新竞争者可能易主 | `_solve_titles.py --write` 重算（Nomad 让 6/50 条变化），再 `--dry-run` 比对 |
+> | 4 | `data/faqs/*.toml` 的事实断言 | 「最便宜是 X、$Y」「All N unlimited plans」会被新品牌改写 | **已不用手动管**：这三条已改成 `{token}`，值由 `partials/faq-live-tokens.html` 构建期现算（2026-10-07）。接完品牌直接 build，`scripts/check_faq_facts.py` 会自动对账；**要改的只有新品牌把某国最优解抢走后的文案口吻**（可选，见 §7.1 遗留） |
+> | 5 | 三份文档 | 品牌集/页数/套餐数散落在多处 | `PROJECT.md`（本文件 §0/§2/§4.7/§5）+ `STATUS.md` 本轮节 + `docs/keyword-map.md` 新品牌词归属 |
+>
+> **新增品牌的"页面总数变化公式"**：`+N 子页（N = 该品牌覆盖国数）+ 1 品牌 hub + (M-1) 对决页`（M = 接入后品牌总数）。Nomad = +50 + 1 + 8 = **+59 页**（复核：584 → **643 页**）。
 
 1. **抓数据**（三选一，产物都是 `scripts/scrape/raw/xyz/*.json`，一国一文件）：
    - esimdb 有专页 → `python -X utf8 -u scripts/scrape/scrape_esimdb.py xyz`
@@ -408,7 +491,8 @@ npm run build                                   # ③
    - **✅ 检查点**：`scripts/scrape/raw/xyz/` 下 json 数量 = 该品牌实际覆盖的国家数；`Read` 一个 json 看里面是真套餐（name/gb/days/price 都有值），不是空数组或反爬错误页。
 
 2. **转 TOML + 填 networks**：
-   - 改 `toml_write.py` 顶部 `CHECKED` 为当天 → `python -X utf8 scripts/scrape/toml_write.py xyz --dry-run` 确认 `0 problems` → 去掉 `--dry-run` 真写 → `python -X utf8 scripts/backfill_networks_uniform.py`
+   - `python -X utf8 scripts/scrape/toml_write.py xyz --dry-run --checked YYYY-MM-DD` 确认 `0 problems` → 去掉 `--dry-run` 真写 → `python -X utf8 scripts/backfill_networks_uniform.py`
+   - `--checked` **传不传都能自愈，但首次建台账前仍要传对**（2026-10-07 起）：`npm run build` 第一步的 `stamp_checked.py` 按内容指纹把日期盖成「数据实际变化的当天」，所以重抓整批老国家时**忘了传也会被纠正**（旧常量 2026-09-30 不会漏到页面上）。**唯一例外是首次建台账**（`docs/checked-state.json` 不存在）—— 那时它只登记现值、不改日期，所以**新品牌务必传 `--checked $(date +%F)`**，否则整批数据会顶着旧日期直到第一次改动。
    - **✅ 检查点**：
      - dry-run 结尾是 `0 problems`（有 problems 就先把列出的坏数据修掉再真写）；
      - 真写后 `data/plans/xyz.toml` 存在，且 `grep -n "price = [0-9]*$" data/plans/xyz.toml` 命中 **0 行**（= 没有整数价，全是两位小数 float）；
@@ -423,22 +507,22 @@ npm run build                                   # ③
 5. **品牌页**：新建 `content/en/esim-providers/xyz.md`，只写 front matter（title/description），正文由模板聚合。
    - **✅ 检查点**：build 后 `/esim-providers/xyz/` 能打开且出现聚合数字（"cheapest in N of M"、竞争力评分），**不是**"无数据简壳页"——若降级成简壳，说明 plans 没被读到，回头查第 2 步。
 
-6. **对决页**：与每个现有品牌组合，新建 `content/en/compare/{a}-vs-{b}.md`（文件名**严格字母序**）×8 个（**枢纽页 /compare/matchups/ 的卡片按 providers.toml 枚举，新品牌自动出现，无需改它**）：
+6. **对决页**：与每个现有品牌组合，新建 `content/en/compare/{a}-vs-{b}.md`（文件名**严格字母序**）×9 个（**枢纽页 /compare/matchups/ 的卡片按 providers.toml 枚举，新品牌自动出现，无需改它**）。**优先用 `python -X utf8 scripts/gen_vs_pages.py`** —— 它只补缺失的对，已有页一个字不动：
    ```markdown
    ---
-   title: "Xyz vs Airalo eSIM Compared: Prices & Verdict 2026"   # 自拟，别和现有 28 个撞框架
+   title: "Xyz vs Airalo eSIM Compared: Prices & Verdict 2026"   # 自拟，别和现有 36 个撞框架
    description: "Which eSIM is cheaper, Xyz or Airalo? Computed comparison of entry prices, $/GB and fair-use caps."
    providers: ["airalo", "xyz"]    # 字母序！validate 会查
    layout: vs-single
    ---
    ```
-   - **✅ 检查点**：`content/en/compare/` 下新增 8 个含 `xyz` 的文件，且每个文件名里两品牌是字母序（如 `airalo-vs-xyz`、`xyz-vs-yesim`，绝不能 `xyz-vs-airalo`）；validate 不报字母序错误。
+   - **✅ 检查点**：`content/en/compare/` 下新增 9 个含 `xyz` 的文件，且每个文件名里两品牌是字母序（如 `airalo-vs-xyz`、`xyz-vs-yesim`，绝不能 `xyz-vs-airalo`）；validate 不报字母序错误；**已有 36 页的 mtime 不变**（`gen_vs_pages.py` 会打印 `existing NN untouched / created MM`）。
 
 7. **`python -X utf8 scripts/gen_provider_pages.py`** —— 生成 xyz × N 国子页（同时会清掉不在 providers.toml 里的品牌的旧子页）。
    - **✅ 检查点**：脚本结尾 `OK: N provider×country sub-pages written`，N 比加品牌前多了约 50（= xyz 覆盖的国家数）；`content/en/compare/<slug>/xyz.md` 已经出现在各国家目录下。
 
 8. **`python -X utf8 scripts/validate.py && npm run build`** —— 0 error 才算完。
-   - **✅ 检查点**：validate 结尾 `0 error(s), 0 warning(s)`；build 正常结束（Hugo 打印 Pages/Total 汇总、无 `Error:` 行）；页面总数比加之前涨约 **59 页**（50 子页 + 1 品牌页 + 8 对决页，子页数按 xyz 实际覆盖国微调）。
+   - **✅ 检查点**：validate 结尾 `0 error(s), 0 warning(s)`；build 正常结束（Hugo 打印 Pages/Total 汇总、无 `Error:` 行）；页面总数比加之前涨约 **60 页**（50 子页 + 1 品牌页 + 9 对决页；子页数按 xyz 实际覆盖国微调）。**涨页数不是全部** —— 全站每一页都会变（`footer.html` 的 `range $d.providers` 有一份全品牌清单），基线 diff 应显示「全站变更 + 新增 N 页」，属预期。
 
 9. **渲染抽查**：`/esim-providers/xyz/`、`/compare/#matchups`（出现新对决卡）、`/compare/japan/xyz/`（子页）、国家页表格出现新品牌 chip、sitemap/llms.txt 自动纳入。
    - **✅ 检查点**：这 5 个 URL 逐一打开、数字都出来了；兜底跑 `grep -rc "%!f" public/ --include="*.html" | grep -v ":0"` 应无输出（= 没有渲染成 nil 的价格）。
@@ -446,7 +530,59 @@ npm run build                                   # ③
 10. **可选收尾**：footer "Popular matchups" 列是手挑 6 组（`layouts/partials/footer.html`，缺页会静默跳过所以不必须改）；真 logo 放 `static/img/providers/xyz.png`。
     - **✅ 检查点**：放好 logo 后重新 build，品牌页/卡片从单色字母徽标（monogram）自动切成真 logo。
 
-**删除品牌**（反向操作）：providers.toml 删块 → hugo.toml 删 target → 删品牌页 md + 相关 vs md → **删 `data/plans/xyz.toml`** → `gen_provider_pages.py`（清子页）→ 删 `raw/xyz/` → validate + build。参考 nomad 退场就是这么做的。**✅ 检查点**：build 后 `/esim-providers/xyz/` 返回 404、`/compare/#matchups` 里 xyz 卡片消失、validate 0 error。
+### 7.1 FAQ 数字断言：已改为**构建期现算**（2026-10-07 第四十一轮，已修）
+
+**问题（存量债）**：`data/faqs/*.toml` 里三条答案把数字写死了 ——
+「最便宜是 X、$Y」「All N 'unlimited' plans」「Holafly 最低 $Y/天」。
+真值在 `data/plans/*.toml` 里，每次抓价或接入新品牌都会变，于是**页面自相矛盾**：
+US 的 FAQ 说「Roami $2.99 最便宜」，而正上方价格表里最低的是 Yesim $0.51。
+首次审计（已删除的一次性脚本 `audit_faq_facts.py`）报 **99 条过期**，其中 45 国「最便宜品牌」易主；
+且它按 `q.startswith("What is the cheapest")` 匹配，**jp 的自定义问法被整条跳过**（jp 的 $1.99/7 天实际是 3 天）。
+排除 nomad 复跑仍是 99 条 → **改动前就过期**，不是某一轮引入的。
+
+**修法（不是重算一遍数字，而是让数字不可能过期）**：
+1. 三条答案改写成**只留 `{token}` 占位**的文案（当时用一次性脚本 `scripts/migrate_faq_frames.py`，151 处 / 50 国；
+   该脚本已在第四十二轮删除，其 token 化规则并入 `scripts/faq_frames.py` 的历史规则 —— 见下「第二轮」）。
+   jp 保留其独有分析口吻，同样 token 化；jp 的 Q5 品牌枚举换成 `{brands_list}`（nomad 接入后它少列了一家）。
+2. 值由 `layouts/partials/faq-live-tokens.html` 在**构建期从 `data/plans` 现算**，30 个 token。
+3. `layouts/compare/single.html` 组装 `$faqs` 时做一次 `{token}` → 值替换；
+   可见正文与 FAQPage JSON-LD 都读同一份 `$faqs`，**structured data 与用户所见天然同源**。
+4. 新守卫 `scripts/check_faq_facts.py`（已挂进 `check:output`）**读产物、独立重算对账**（见 §5.2）。
+
+**口径**（与页面其它模块逐字一致，别另立第二套）：
+最便宜 = 价格最低 → 同价取流量更大 → 再同取品牌 key 升序；最佳 $/GB 只算**计量档**（无限档 perGB 是 999999 哨兵）；
+无限最优按 `$/天`；FUP 取 `providers.toml [<brand>.policy]` 而**不是** plan 的 `fup_note`
+（roami/yesim 的 fup_note 全缺、holafly 那条写的是 "Always On" 附加包说明，不可用）。
+
+**收益**：接品牌 / 刷价之后**不需要再动 FAQ**；页面的 FAQ 与价格表不可能再打架；每国文案的每个数字位都随数据变化（反同质化）。
+
+**第二轮（第四十二轮）：句架也不再重复**
+第一轮之后，49 国（jp 除外）的三条答案仍是**同一副句架**，只有数字位不同 —— 50 页里同一句话出现 49 次，是模板级重复内容。本轮：
+1. 每条答案拆成 **open（直接回答）/ body（数据事实）/ close（行动建议）** 三槽，每槽 7 片段
+   （库在 `scripts/faq_frames.py`，共 21 个片段 + Q6 的 7 个变体）。
+2. 分配用**拉丁方阵** `a = i % 7`、`b = i // 7`、`c = (a + b) % 7` ⇒ 任意两页最多共用一句（推导见 §4.5）。
+3. 顺带修掉 **Q6 的事实缺陷**：原文「Regional Asia/continental plans from Airalo and Nomad bundle
+   {country} with neighbors」对法国 / 美国 / 阿根廷是**自相矛盾**的句子（数据集里根本没有区域档，
+   只有单国档），且 41 国逐字相同、对欧洲国家读起来荒谬。现改为
+   `{neighbor}`（取**问题里点名的那个邻国** —— 英国的问题问「英国和法国」就答法国；
+   机械取 `neighbors[0]` 会答成爱尔兰）+ `{neighbors_all}`；
+   7 个没有邻国的国家（HR / IS / CR / IL / MA / ZA / KE）走按 region 生成的兜底短语，
+   且这 7 国**各占一个变体** —— 否则同 region 的两国（HR / IS 都是 Europe）会渲染出逐字相同的一段。
+4. 守卫加 **R10**（见 §5.2 表），把「骨架两两不同 / 最多共用一个槽 / 每条答案拆得回片段库」钉死。
+   自测 5 个 R10 反例（同文 / 共用两个槽 / 兜底撞车 / 答案偏离片段库 / 正确样本不误报）。
+
+**收益**：句架层面 50 页两两不同；Q6 从「无数据支撑的断言」变成数据驱动（点名真实邻国）。
+
+**遗留（不是债，是可选）**：
+- 后三条里 **slot4「ID 规定」有 14 国共用同一句**（AE AR CN EG ID IL IN KE MA MX PH SA TR VN ——
+  都是有实名登记要求的市场，句子本身站得住）。要逐国改写必须先核实当地法规，**没有外部事实来源我不编**。
+  守卫把它当 INFO 报数（`slot4: 37 种骨架 / 50 页 ← 有历史重复`），不判失败。
+- **德语站的 FAQ 正文仍是英文**（`data/faqs/` 只有英文一份），而句里的国名已经是德语
+  （`{country}` → "Vereinigte Staaten"）—— 既有状态，本轮未动。要修就是 50 国 × 6 条 × 翻译，
+  应单开一轮，并先决定德语 FAQ 是「翻译」还是「独立的对比视角」（后者 SEO 更好但工作量翻倍）。
+
+**删除品牌**（反向操作）：providers.toml 删块 → hugo.toml 删 target → 删品牌页 md + 相关 vs md → **删 `data/plans/xyz.toml`** → `gen_provider_pages.py`（清子页）→ 删 `raw/xyz/` → `regen_meta_brand.py` + `_solve_titles.py --write`（数字会变）→ validate + build。**✅ 检查点**：build 后 `/esim-providers/xyz/` 返回 404、`/compare/#matchups` 里 xyz 卡片消失、validate 0 error。
+> ⚠ **`nomad` 曾走过这条路又回来了**（退场 → 2026-10-06 重新接入，见 §0）。所以别再把 nomad 当"删除品牌"的参考案例 —— **本节的步骤顺序就是参考**，`raw/` 与 `data/plans/*.toml` 的备份别随手真删（Nomad 能回来靠的就是 `_competitors/raw/` 里的原始 JSON 还在）。
 
 ---
 
@@ -474,7 +610,7 @@ npm run build                                   # ③
 5. `data/carriers.toml` 加 `[XX]` + `[[XX.profiles]]`（+ 可选 `[XX.info]`）。
    - **✅ 检查点**：profiles 里每个 `name` 都和 `countries.toml [XX].carriers` 逐字一致（validate 会查 join key，不一致就报错）；build 后国家页运营商区渲染出速度档位 + 城市。
 6. 每品牌补 `[XX]` 套餐（抓取或手补，同情况 A）。
-   - **✅ 检查点**：8 个 `data/plans/*.toml` 里都有 `[XX]` 块；跑一遍 `python -X utf8 scripts/backfill_networks_uniform.py` 把 8 家的 `[XX].networks` 都填成该国运营商。
+   - **✅ 检查点**：9 个 `data/plans/*.toml` 里都有 `[XX]` 块；跑一遍 `python -X utf8 scripts/backfill_networks_uniform.py` 把 9 家的 `[XX].networks` 都填成该国运营商。
 7. `gen_provider_pages.py` → `validate.py` → **`regen_meta_brand.py --dry-run` 确认后真跑**（新国家的 seo.description 由它按实时数据重写，含品牌词与字符数校验）→ `npm run build` → `audit_meta.py` + `check_hardcoded.py` 双守卫。
    - **✅ 检查点**：validate 结尾 `0 error(s), 0 warning(s)`；regen_meta_brand dry-run 无意外改动；build 无 `Error`；`audit_meta.py` 标题 48-54 / 描述 120-140 合规、`check_hardcoded.py` 无写死总量（两个守卫脚本都 0 命中）。
 8. 自动纳入：首页区域网格、header 大菜单、sitemap、catalog.json、llms.txt、guides/research 页数据盒、对决页判胜表、matchups 枢纽 —— 全部无需手工。
@@ -494,19 +630,21 @@ npm run build                                   # ③
 cd "/d/HUGO test/29.1_windows-amd64/hugo_0.159.1_windows-amd64/esimsift"
 
 # ① 改 scripts/scrape/toml_write.py 顶部 CHECKED = 当天日期（一处改，全品牌生效）
+#    或逐次显式传 --checked YYYY-MM-DD（推荐，不动常量）
 
 # ② 重抓（esimdb 七家，--force 全量；约几十分钟，挂后台）
 python -X utf8 -u scripts/scrape/scrape_esimdb.py airalo saily yesim ubigi roamic alosim --force
 python -X utf8 -u scripts/scrape/scrape_holafly.py --force
 python -X utf8 scripts/scrape/extract_roami.py      # roami 从本机 Roami 项目提
+#    nomad 的原始 JSON 在 _competitors/*/raw/nomad/，拷进 scripts/scrape/raw/nomad/ 后同样走 toml_write
 
 # ③ 逐家转换（每家确认 0 problems）
-for b in airalo saily yesim ubigi roamic alosim holafly roami; do python -X utf8 scripts/scrape/toml_write.py $b; done
+for b in airalo saily yesim ubigi roamic alosim holafly roami nomad; do python -X utf8 scripts/scrape/toml_write.py $b --checked $(date +%F); done
 
-# ④⑤⑥ 三连
+# ④⑤⑥ 三连（日期不用管：npm run build 的第一步会自动盖章）
 python -X utf8 scripts/gen_provider_pages.py
 python -X utf8 scripts/validate.py
-npm run build
+npm run build     # 内含 npm run stamp → 数据变过的品牌，日期自动推到「今天」
 ```
 
 增量刷新（只更新个别国家）：只删对应 `raw/<brand>/<slug>.json` 再跑（不带 --force），转换器照常全量输出。
@@ -570,7 +708,7 @@ npm run build
 | 蓝图项 | 状态 |
 |---|---|
 | keyword-map（词簇→URL 唯一映射） | ✅ 完成，上新页型前查它 |
-| VS 对决页 + 对决枢纽页 /compare/matchups/ | ✅ 28/28 + 枢纽索引页（closest/lopsided 计算瓦片） |
+| VS 对决页 + 对决枢纽页 /compare/matchups/ | ✅ 36/36 + 枢纽索引页（closest/lopsided 计算瓦片） |
 | research 数据研究页 | ✅ 3 页（price-index / unlimited / fair-use） |
 | guides 指南页 | ✅ 5 篇 + 枢纽 |
 | 区域枢纽页 ×5（/compare/asia/ 等） | ⬜ Phase 2 |
@@ -578,7 +716,7 @@ npm run build
 | /networks/{country}/ 单国运营商深度页 ×50 | 🟡 **12/50**（Japan + US/DE/CA/FR/MX/TH/ES/KR/CN/GB/NL，2026-10-03；模板 `layouts/networks/single.html` 纯数据驱动 + H2 覆盖钩子，余 38 国只需加 content md + FAQ + `networkreports.awards`） |
 | /devices/{device}/ 设备兼容页 | ⬜ Phase 2（数据源 devices.toml 已备） |
 | tools 第 2/3 个工具 | ⬜ Phase 2（已有行程计算器） |
-| sitemap 分片（>1000 URL） | ⬜ 现在 507，暂不需要 |
+| sitemap 分片（>1000 URL） | ⬜ 现在 585，暂不需要 |
 | 国家页 authority 外链 | ✅ 2026-10-01：50 国 Opensignal/Ookla/Global Index 引用区（networkreports.toml） |
 | 城市页 / 假评分 / 词数 KPI | ❌ 蓝图明确不做 |
 
@@ -588,7 +726,7 @@ npm run build
 
 ## 14. 红线与坑（每条都真踩过）
 
-1. **☠ `gen_sample_data.py` 永远禁止整跑** —— 会用 SAMPLE 覆盖 8776 条真实数据。`gen_provider_pages.py` 才是日常用的生成器（它绝不碰 plans）。
+1. **☠ `gen_sample_data.py` 永远禁止整跑** —— 会用 SAMPLE 覆盖 8218 条真实数据。`gen_provider_pages.py` 才是日常用的生成器（它绝不碰 plans）。
 2. **price 必须两位小数 float**（`price = 13.50` 不是 `13`）—— int64 会让 Hugo `printf "%.2f"` 渲染成 `$%!f(int64=13)`（airalo 品牌页真实事故）。生成器已修，**手补数据时是唯一风险点**。修完可用 `grep -rc "%!f" public/` 验证。
 3. **禁止 PowerShell Get-Content/Set-Content 批量改文件** —— PS 5.1 GBK 乱码会吃掉 `<` 标签。只用 Edit/Write 工具或 `python -X utf8` 脚本。bash heredoc 里含撇号（'）会挂 —— 脚本一律 Write 工具写文件再执行。
 4. **hugo 不清理 public/ 旧页** —— 删页后 `rm -rf public` 再构建，或部署用 `--cleanDestinationDir`（曾经 /vs/ 旧页残留）。
@@ -658,16 +796,34 @@ npm run build
 41. **「全站禁止非拉丁字符」守卫已整体删除（2026-10-03 第十五轮，用户决策）** —— 站点要上多语言，禁令会拦住 ja/ko/zh 的合法产物；原方案是「按语言划豁免前缀」，用户决定**直接删**（豁免前缀只是把同一个问题往后推，还要养一张 `LATIN_SCRIPT` 语言表）。删除三处：`check_output.py` ④ + 其 `.json` 分支、`validate.py` §3 的 plan name 检查、`lang_rules.py` 的 `LATIN_SCRIPT` 与两个 `non_latin_exempt_*()`。**连带修复**：`check_output.py` 的 Go 格式串扫描从 `.html` 扩到 `.json`（原先 json 分支只服务于那条禁令，不扩就是死代码）。**代价必须知道**：手动贴进 `data/plans/` 的韩文/汉字套餐名**不再有任何守卫拦截**，防线只剩抓取层 `toml_write.clean_plan_name()`（重抓时自动清洗并打印改动）→ **新抓一批数据后人工看一眼它的打印输出**。反向验证方式：往 `data/plans/airalo.toml` 注入 `日本語`、往 `public/index.html` 追加日文 → `validate.py` 与 `check_output.py` 都必须**通过**（第六轮旧规则下它们会报 2 条 + 5 条）。
 42. **运行中的 `hugo server` 会把开发态页面写进 `public/`，污染生产产物（2026-10-03 第十五轮，真实事故苗头）** —— `hugo server` **默认渲染到磁盘**（只有 `--renderToMemory` 才不写盘）。现象：`public/compare/portugal/index.html` 出现 `http://localhost:1313/...` 与注入的 `<script src="/livereload.js?...">`，与基线比对时报「非行尾差异」，一度像是改造引入的回归。实证：`touch data/titlesegments.toml` 后 6 秒内，`public/` 里带 livereload 的文件从 **1 → 6**，`index.xml` / `llms.txt` / `catalog.json` / `index.html` 同时被重写。**两个后果**：① `public/` 在 dev server 运行时**不是可信产物**，此时部署 = 把 `localhost:1313` 发布出去（SEO 灾难）；② `check_output.py` / `check_headings.py` 读的就是 `public/`，会对着混合产物下结论。**规矩**：跑 `npm run build` 与任何产物级校验前，先确认没有 `hugo server` 在跑（`tasklist | grep hugo` / `netstat -ano | grep 1313`）；长期解法是把 `package.json` 的 `dev` 改成 `hugo server --renderToMemory`。**教训与红线 40 同源**：拿到「产物不一致」的结论时，先怀疑环境（谁在写这个目录），再怀疑代码。
 
+43. **页面文案里的「可派生数字」一律不得写死（2026-10-07 第四十一轮）** —— 全站每个数字都从 `data/` 推导，唯独 `data/faqs/*.toml` 的答案曾经写死，代价是：接一个品牌就让 **99 条断言过期**、45 国「最便宜品牌」易主，页面与正上方价格表**自相矛盾**（US 正文说 Roami $2.99，表格里最低的是 Yesim $0.51）。现在这三条答案只留 `{token}`，值由 `layouts/partials/faq-live-tokens.html` 构建期现算，`scripts/check_faq_facts.py` 读产物独立对账（R1–R9）。**新增任何"带数字的文案段落"都照此办理**：能派生就必须派生，派生不出来就别往文案里放数字。
+    - **判据**：`grep -n '\$[0-9]' data/faqs/*.toml` 必须 **0 行**（`${cheap_price}` 这种占位不算，因为 `$` 后面是 `{`）。
+    - 两个具体坑：① **`{{ return }}` 只能有一个顶层出口** —— 本轮再次踩到红线 39（partial 里写了两处 `return`，第二处退化成 Go 关键字，报 `wrong number of args for return: want 0 got 1`；改写成 `if` 包裹即解）；② **数值区间类 token 要把货币符号包进值里** —— `unl_perday_range` 初版只算 `1.67 to 4.14`，套进 `from ${...}` 就成了「from $1.67 to 4.14」，第二个数丢符号。
+    - **守卫要双向验证**：新守卫先对**改造前的旧产物**跑一遍（实测 `342 problem(s) / 100 页`，证明它抓得住且抓得到 jp —— 旧审计器因按固定问法匹配而跳过了 jp），再对修完的产物跑（`OK: 100 country pages`）。只做后者等于没验。
+44. **文案里的每一句比较级 / 最高级，都必须能指着一条数据说清口径（2026-10-07 第四十二轮，自己写错又自己抓到）** —— 我在 Q1 的 body 片段里写了「It is also the cheapest per day, at ${cheap_perday}」，想当然以为「绝对价最低 = $/天 最低」。**实测 50/50 国全部不成立**：绝对价最低的永远是最小档（US 的 Yesim 500MB/1 天 = $0.51/天），而 $/天 最低的是长周期大流量档（US = $0.06/天）。同类还有 Q3 的「a metered plan never throttles」—— 听上去对，但它是**无法证伪的绝对句**。**规矩**：说不清口径就删掉，或降级成恒等式（`perDay = price / days`）。⚠ **R10 只保证句架不重复，不保证句子为真** —— 事实正确性靠 R5–R9 与人工复核，写新文案时必须自己盯。
+45. **按「句数」设计的判据会被「一个片段里含两句」骗到；要判就判真正的不变量（第四十二轮）** —— 反同质化最初写成「任意两国最多共用 1 句」，结果 Q2 的 open[1] 本身就是两句（"No. Each of the … caps its daily full-speed allowance."），任何两国只要用同一个 open 就命中 2 句 → **42 条假失败**，而真正该抓的「两国共用两个片段」反倒看不出来。改成从片段库反解三元组、判「最多共用一个**槽**」后归零。**副产品更有价值**：`decompose()` 拆不开 = 有人手改了文案却没同步片段库 —— 这个「失败」本身就是一条该报的错（已进 selftest 第 5 例）。
+    - **同源教训**：判据要建在**不变量**上，不是不变量在某一层的表现形式。句数是表象，片段组合才是那个不变量。
+46. **两处「同一份定义抄第二遍」的诱惑，本轮都主动合并了（第四十二轮）** —— ① 片段库只有一处：`scripts/faq_frames.py`；第四十一轮的一次性 `migrate_faq_frames.py` 已删除（它的 token 化规则并进新库的历史规则），否则两处骨架定义迟早各说各话。② `{neighbor}` 的兜底短语生成逻辑只在 `faq-live-tokens.html` 一处。**反过来也成立**：真正的数据（`countries.toml` 的 `neighbors`）也只有一份，德语站的国名覆盖走 `data/de/countries.toml` 深合并，不复制。
+47. **字面 md5 去重会被「页内数字」骗成假绿（第四十二轮，第三十七轮判据的补正）** —— 第三十七轮定的反同质化判据是「模块在 N 页产物里抽文本算 md5，去重后必须 = N」。这条判据对**不含页内变量**的模块是对的，但对 FAQ 三条答案**失效**：它们 49 国"逐字只差数字位"，第四十一轮把数字改成构建期现算之后，字面 md5 去重立刻就是 **50/50/50** —— 全绿，可**句架其实只有 1 种**，模板级重复内容一点没少。**判据升级：先把页内变量（token / 数字 / 国名）抹成占位符得到「骨架」再去重，必须 = N**（实现见 `check_faq_facts.py::skeleton()`，断言见 R10）。**附带的度量陷阱**：按「问题文本」分组也会出假象 —— 问题里含国名（`What is the cheapest eSIM for Thailand?`），按字面分组得到的是 `1/50` 而不是 `50/50`；**必须按问法序号分组**。
+
+48. **「日期 = 构建日」和「日期靠人记得跑脚本」都错，正解是「日期 = 数据最后变化日」且自动维护（第四十三轮）** —— ① 用 `now` 会让 `lastmod` 每次部署都翻新，Google 判定本站 `lastmod` 无信息量后**整体忽略**，而且当价格其实是上周抓的时，「今天核过价」本身就是不实陈述（第二十三轮试过、已撤回）。② 但反过来靠人记得跑 `bump_checked.py` 也一样错 —— 会漏：Nomad 10-06 入库、页面却一直宣称 Oct 4，直到用户发现。正解是 `scripts/stamp_checked.py` 按**内容指纹**自动盖章（已挂进 `npm run build` 第一步）。**判据：页面上每一个印出来的日期，都必须能回溯到一条自动规则，而不是某个人的记性。**
+49. **指纹的「内容面」必须与产物的「渲染面」对齐（第四十三轮）** —— 第一版 `block_hash` 把整段原始文本（含注释）算进指纹，于是改一句**行内注释**（`color = "#16456B"   # monogram 兜底色…`）就把 Nomad 的品牌档案核对日从 10-06 顶到 10-07 —— **页面一个像素没变，日期却动了，这正是我们本来要消灭的那类不实陈述**。修法：日期字段行 → 纯注释行 → 行内注释（含引号内 `#` 的转义处理）依次剥掉再算 sha。**通用判据：给「内容指纹」下定义时先问「这块内容会进产物吗」，不会进的一律不许进指纹。**
+50. **「首次遇到」的语义会分岔，别用一句代码糊过去（第四十三轮）** —— 同一句「这个单元台账里没有」在两种场景下正确行为**相反**：**首次建台账**（状态文件整个不存在）必须**保留现值**，否则全站日期集体跳到今天 = 批量不实陈述；**台账已在而冒出新的单元**（新品牌 / 新市场入库）必须**盖今天**，否则刚入库的数据顶着旧日期（正是 Nomad 那次的毛病）。**判据：凡带「首次」语义的机制，都要问清是「系统首次」还是「这个对象首次」。** 附带纪律：越权/状态类文件（`docs/checked-state.json`、`docs/regression-manifest.json`）**必须提交进版本库**，它们分别是「最后改动日」与「零回归基线」的唯一记忆。
+
 ## 15. 等用户决策/提供的事项（代码侧做不了的）
+
+
 
 
 | 事项 | 影响 |
 |---|---|
 | ~~真实折扣码~~ | ✅ 2026-10-01 完成（3 家有码 5 家无码，见 providers.toml；仅 promo_expires 需上线前复核） |
-| ~~8 张品牌 logo~~ | ✅ 2026-10-01 全量接入（providers/ 下 6 png + 2 webp） |
+| ~~品牌 logo~~ | ✅ 2026-10-07 全 **9 家**接入（`static/img/providers/` 下 7 png + 2 webp，含 Nomad）。★ **生效目录是 `static/img/providers/`**，素材放 `static/img/logo/` 不生效；且只认 **png/webp**（jpg 探测不到） |
 | **联盟深链格式确认**（每家国家级 URL 规则） | hugo.toml country_path + countries.toml slugs；影响转化归因 |
 | **Roami 定价决策** | ⚠ 业务发现：数据算出 **Roamic 在 35/50 国比自家 Roami 便宜**（Roami 只赢 15 国）—— roami-vs-roamic 对决页如实展示了这个结论；要么调价要么接受 |
 | ~~networks 逐品牌官方数据来源确认~~ | ✅ 2026-10-02 按"同国同运营商"规则用 `countries.toml.carriers` 补全，无需逐品牌查（见 §4.3） |
+| **哪些数据源该驱动页面日期？** | 目前只有 `plans`（价格）与 `providers`（品牌档案）驱动日期。`countries.toml`（国家 hub 正文）/ `carriers.toml` / `refs.toml` / `faqs/<iso>.toml` / `titlesegments.toml` 改了**不会**动任何日期 —— 因为那些页面**现在压根没印日期**。要让它们也驱动，得先定「日期印在哪儿、印给谁看」（见 §4.3 的「不驱动日期的数据源」） |
+| **第二批品牌的 logo 归位** | 素材已在 `static/img/logo/`：`gigsky.png` ✓ / `jetpac.webp` ✓ / `bensim.jpg` ✗（BNESIM 拼写为 `bnesim`，且 **jpg 探测不到**，接入时须转 png 或 webp 并改名） |
 
 ---
 

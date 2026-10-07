@@ -1,0 +1,79 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n7"
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Spain",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.40",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Spain",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$6.70",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Spain",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$6.80",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Spain",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$8.60",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Spain",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$14.60",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - Spain",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$26.40",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "50GB 60 days - Spain",
+   "data": "50GB",
+   "validity": "60 Days",
+   "price": "$59.20",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Spain | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Spain",
+  "networks": null
+ },
+ "slug": "spain",
+ "url": "https://esimdb.com/spain/quibity",
+ "status": 200
+}

@@ -1,0 +1,211 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n21"
+ },
+ "plans": [
+  {
+   "name": "United Arab Emirates - Unlimited 1 Day",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$5.50",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 3GB",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$6.50",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 1GB",
+   "data": "1GB",
+   "validity": "4 Days",
+   "price": "$7.00",
+   "badges": [
+    "New Users Only"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 5GB",
+   "data": "5GB",
+   "validity": "1 Day",
+   "price": "$7.50",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 3GB",
+   "data": "3GB",
+   "validity": "4 Days",
+   "price": "$7.50",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 5GB",
+   "data": "5GB",
+   "validity": "4 Days",
+   "price": "$8.50",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 3GB",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$9.00",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 5GB",
+   "data": "5GB",
+   "validity": "7 Days",
+   "price": "$10.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 10GB",
+   "data": "10GB",
+   "validity": "1 Day",
+   "price": "$11.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates - Unlimited 3 Days",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$12.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 5GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$12.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 10GB",
+   "data": "10GB",
+   "validity": "4 Days",
+   "price": "$14.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 10GB",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$16.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 10GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$20.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates - Unlimited 7 Days",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$28.50",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 20GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$33.99",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 15GB",
+   "data": "15GB",
+   "validity": "7 Days",
+   "price": "$37.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates - Unlimited 14 Days",
+   "data": "3GB/day",
+   "validity": "14 Days",
+   "price": "$47.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates 15GB",
+   "data": "15GB",
+   "validity": "30 Days",
+   "price": "$50.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates - Unlimited 21 Days",
+   "data": "3GB/day",
+   "validity": "21 Days",
+   "price": "$58.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "United Arab Emirates - Unlimited 30 Days",
+   "data": "3GB/day",
+   "validity": "30 Days",
+   "price": "$69.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Jetpac Travel eSIM for United Arab Emirates | Data Plans & Reviews",
+  "h1": "Jetpac eSIM Data Plans for United Arab Emirates",
+  "networks": null
+ },
+ "slug": "united-arab-emirates",
+ "url": "https://esimdb.com/uae/jetpac",
+ "status": 200
+}

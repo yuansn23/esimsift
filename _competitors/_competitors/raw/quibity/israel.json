@@ -1,0 +1,70 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n6"
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Israel",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.00",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Israel",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$6.80",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Israel",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$6.80",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Israel",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$8.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Israel",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$15.40",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - Israel",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$27.90",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Israel | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Israel",
+  "networks": null
+ },
+ "slug": "israel",
+ "url": "https://esimdb.com/israel/quibity",
+ "status": 200
+}

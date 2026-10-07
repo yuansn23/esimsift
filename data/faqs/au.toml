@@ -1,16 +1,17 @@
 # Australia FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for Australia?"
-a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "{cheap_brand} holds the headline number for {country}: {cheap_plan} at ${cheap_price}. That is ${cheap_perday}/day across the plan's validity window. If you only need maps and messaging the entry price is enough, and anyone streaming should shop on $/GB."
 
 [[faq]]
 q = "Is unlimited eSIM data in Australia actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Holafly at $21.99 ($4.40/day), carries: No published cap; throttling reported above 3GB/day. Treat them as big-but-capped plans and compare the caps."
+a = "Capped, not unlimited - the {unl_count} unlimited plans for {country} throttle once the daily allowance is spent. Day rates across the set span {unl_perday_range}, and the cheapest is {unl_brand} at ${unl_perday}/day - ${unl_price} for {unl_days} days. Check the fallback speed before you commit, because that is what you get after the daily allowance: {unl_drop}."
 
 [[faq]]
 q = "Airalo or Holafly for Australia?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($4.25/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "It comes down to shape - buckets of data against unlimited days. Airalo's best {country} rate is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - and that is a fixed bucket rather than a daily allowance. Take Holafly if you would rather not count gigabytes, since its {country} packages start at ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and take Airalo for a light, short trip."
 
 [[faq]]
 q = "Do I need ID verification for a Australia eSIM?"
@@ -22,4 +23,4 @@ a = "Plans on this page run on Telstra, Optus, Vodafone. Differences matter most
 
 [[faq]]
 q = "Can one eSIM cover Australia and New Zealand?"
-a = "Regional Asia/continental plans from Airalo and Nomad bundle Australia with neighbors - usually worse $/GB than single-country plans, but cheaper than two separate eSIMs. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+a = "Not on a single-country plan. If the itinerary continues from {country} into {neighbor}, compare a regional package with two separate plans, since the tables here price each market on its own."

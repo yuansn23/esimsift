@@ -1,0 +1,79 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n7"
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Czech Republic",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.00",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Czech Republic",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$6.70",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Czech Republic",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$6.80",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Czech Republic",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$8.60",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Czech Republic",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$14.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - Czech Republic",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$27.00",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "50GB 60 days - Czech Republic",
+   "data": "50GB",
+   "validity": "60 Days",
+   "price": "$60.60",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Czech Republic | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Czech Republic",
+  "networks": null
+ },
+ "slug": "czechia",
+ "url": "https://esimdb.com/czechia/quibity",
+ "status": 200
+}

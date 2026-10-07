@@ -1,0 +1,95 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n9"
+ },
+ "plans": [
+  {
+   "name": "Singapore",
+   "data": "100MB",
+   "validity": "7 Days",
+   "price": "$0.00",
+   "badges": []
+  },
+  {
+   "name": "Singapore",
+   "data": "3.5GB",
+   "validity": "1 Day",
+   "price": "$3.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Singapore",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$10.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Singapore",
+   "data": "3.5GB/day",
+   "validity": "3 Days",
+   "price": "$10.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Singapore",
+   "data": "3.5GB/day",
+   "validity": "7 Days",
+   "price": "$25.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Singapore",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$27.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Singapore",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$45.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Singapore",
+   "data": "3.5GB/day",
+   "validity": "15 Days",
+   "price": "$46.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Singapore",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$84.99",
+   "badges": [
+    "20% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GigSky Travel eSIM for Singapore | Data Plans & Reviews",
+  "h1": "GigSky eSIM Data Plans for Singapore",
+  "networks": null
+ },
+ "slug": "singapore",
+ "url": "https://esimdb.com/singapore/gigsky",
+ "status": 200
+}

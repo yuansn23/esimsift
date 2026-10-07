@@ -3,7 +3,7 @@ title: "Malaysia eSIM"
 iso: MY
 weight: 15
 seo:
-  description: "eSIM Sift compares every Malaysia eSIM: 151 real plans from 8 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every Malaysia eSIM: 158 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 Sort the table for Malaysia by cost per gigabyte and the order changes. 500MB / 1 Day from yesim is the cheapest buy in Malaysia at $0.51. Small buckets cost roughly 2.5 times the rate of the big ones here. Value leadership sits with roamic, whose 50GB / 30-day plan lands at $0.42/GB. Counting everything, {{< count-providers >}} providers list 151 plans for Malaysia, of which 88 are unlimited.

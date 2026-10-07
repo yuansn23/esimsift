@@ -1,6 +1,6 @@
 ---
 title: "Airalo or Roamic eSIM? 2026 Price and Data Comparison"
-description: "eSIM Sift compares Airalo and Roamic eSIMs: entry prices, $/GB and unlimited data in every shared country — a computed verdict."
+description: "Airalo or Roamic for your trip? eSIM Sift computes the verdict: cheapest plan per country, best $/GB, unlimited coverage — live prices."
 providers: ["airalo", "roamic"]
 layout: vs-single
 ---

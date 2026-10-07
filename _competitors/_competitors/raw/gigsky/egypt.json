@@ -1,0 +1,88 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n8"
+ },
+ "plans": [
+  {
+   "name": "Egypt",
+   "data": "3.5GB",
+   "validity": "1 Day",
+   "price": "$5.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Egypt",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$10.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Egypt",
+   "data": "3.5GB/day",
+   "validity": "3 Days",
+   "price": "$12.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Egypt",
+   "data": "3.5GB/day",
+   "validity": "7 Days",
+   "price": "$24.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Egypt",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$29.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Egypt",
+   "data": "3.5GB/day",
+   "validity": "15 Days",
+   "price": "$39.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Egypt",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$49.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Egypt",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$89.99",
+   "badges": [
+    "20% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GigSky Travel eSIM for Egypt | Data Plans & Reviews",
+  "h1": "GigSky eSIM Data Plans for Egypt",
+  "networks": null
+ },
+ "slug": "egypt",
+ "url": "https://esimdb.com/egypt/gigsky",
+ "status": 200
+}

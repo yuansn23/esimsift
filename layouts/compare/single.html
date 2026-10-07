@@ -6,6 +6,21 @@
 {{ $sorted := sort $rows "perGB" "asc" }}
 {{ $faqs := slice }}
 {{ if $d.faqs }}{{ with index $d.faqs (lower $iso) }}{{ $faqs = .faq }}{{ end }}{{ end }}
+{{/* ── FAQ 的「活数字」────────────────────────────────────────────────────────
+     data/faqs/*.toml 里三条答案（最便宜 / unlimited 计数 / Airalo-Holafly 价差）
+     原本把数字写死，而真值在 data/plans 里、每次抓价或接入新品牌都会变 ——
+     结果页面自相矛盾：正文说 Roami $2.99，正上方表格说 Yesim $0.51。
+     现在文案只留 {token} 占位，值由 partials/faq-live-tokens.html 在构建期现算。
+     替换只在这里做一次：下方可见正文与 FAQPage JSON-LD 都读 $faqs，天然同源。
+     守卫 scripts/check_faq_facts.py 读产物、独立重算对账，兜住「改完数据忘了文案」。 */}}
+{{ $liveTokens := partial "faq-live-tokens.html" $iso }}
+{{ $liveFaqs := slice }}
+{{ range $faqs }}
+  {{ $ans := .a }}
+  {{ range $k, $v := $liveTokens }}{{ $ans = replace $ans (printf "{%s}" $k) $v }}{{ end }}
+  {{ $liveFaqs = $liveFaqs | append (dict "q" .q "a" $ans) }}
+{{ end }}
+{{ $faqs = $liveFaqs }}
 {{ $imgs := $country.images | default slice }}
 {{ $imgURL := printf "/img/countries/%s" }}
 

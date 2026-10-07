@@ -1,0 +1,59 @@
+{
+ "tab": {
+  "clicked": false,
+  "label": null
+ },
+ "plans": [
+  {
+   "name": "Philippines",
+   "data": "100MB",
+   "validity": "7 Days",
+   "price": "$0.00",
+   "badges": []
+  },
+  {
+   "name": "Philippines",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$11.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Philippines",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$29.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Philippines",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$48.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Philippines",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$96.99",
+   "badges": [
+    "20% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GigSky Travel eSIM for Philippines | Data Plans & Reviews",
+  "h1": "GigSky eSIM Data Plans for Philippines",
+  "networks": null
+ },
+ "slug": "philippines",
+ "url": "https://esimdb.com/philippines/gigsky",
+ "status": 200
+}

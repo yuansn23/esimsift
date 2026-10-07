@@ -1,6 +1,6 @@
 ---
 title: "aloSIM or Saily eSIM? 2026 Price and Data Comparison"
-description: "aloSIM or Saily for your trip? eSIM Sift computes the verdict: cheapest plan per country, best $/GB, unlimited coverage — live prices."
+description: "eSIM Sift compares aloSIM and Saily eSIMs: entry prices, $/GB and unlimited data in every shared country — a computed verdict."
 providers: ["alosim", "saily"]
 layout: vs-single
 ---

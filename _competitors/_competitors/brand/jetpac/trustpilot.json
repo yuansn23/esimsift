@@ -1,0 +1,13 @@
+{
+ "brand": "jetpac",
+ "official_site": "https://www.jetpacglobal.com",
+ "source": "trustpilot",
+ "status": "placeholder - not scraped (trustpilot blocks curl with 403; deferred, needs browser automation)",
+ "tp_review_url": null,
+ "tp_slug_hint": "www.jetpacglobal.com (typical Trustpilot slug = brand domain, confirm before scraping)",
+ "rating": null,
+ "review_count": null,
+ "rating_distribution": null,
+ "fetched_at": null,
+ "notes": "Fill tp_review_url + rating + review_count when Trustpilot scraping is scheduled."
+}

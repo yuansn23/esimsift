@@ -1,0 +1,135 @@
+{
+ "brand_key": "firsty",
+ "brand_name": "Firsty",
+ "official_site": "https://www.firsty.app/",
+ "captured": "2026-10-04",
+ "trustpilot": {
+  "url": "https://www.trustpilot.com/review/firsty.app",
+  "rating": null,
+  "review_count": null,
+  "trust_score": null,
+  "five_star_pct": null,
+  "verified_reviews": null,
+  "last_checked": null,
+  "recent_reviews": [],
+  "note": "PLACEHOLDER - to be filled manually by the user"
+ },
+ "official": {
+  "http_status": 200,
+  "bytes": null,
+  "organization_jsonld": {
+   "@context": "https://schema.org",
+   "@type": "Organization",
+   "@id": "https://www.firsty.app/#organization",
+   "name": "Firsty",
+   "url": "https://www.firsty.app/",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.firsty.app/firsty-logo.png",
+    "width": 600,
+    "height": 160
+   },
+   "foundingDate": "2023",
+   "sameAs": [
+    "https://discord.gg/cWDPuE4URb",
+    "https://www.instagram.com/firsty_app/",
+    "https://www.reddit.com/r/FirstyeSIM/",
+    "https://www.facebook.com/firstyapp/",
+    "https://www.linkedin.com/company/firsty-app",
+    "https://www.tiktok.com/@firsty.app"
+   ]
+  },
+  "apps": {
+   "@context": "https://schema.org",
+   "@type": "SoftwareApplication",
+   "name": "Firsty App",
+   "operatingSystem": "iOS, Android",
+   "applicationCategory": "UtilitiesApplication",
+   "url": "https://www.firsty.app/",
+   "downloadUrl": "https://firsty.onelink.me/MQXc?af_js_web=true&af_ss_ver=2_9_3&pid=Website&af_sub5=qr_web&af_ss_ui=true&af_ss_gtm_ui=true",
+   "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "EUR"
+   },
+   "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 4.6,
+    "ratingCount": 1864
+   },
+   "publisher": {
+    "@id": "https://www.firsty.app/#organization"
+   }
+  },
+  "app_ratings": [],
+  "meta": {
+   "note": "Firsty sells ONE global price list, identical in every country - there is no per-country pricing to scrape. Country pages (/<country>-esim, 250+) only restate the same model."
+  },
+  "emails_found": [],
+  "social_links": [],
+  "site_text_len": 0,
+  "about_facts": [
+   "Free tier is ad-funded: watch a short ad to unlock a small data allowance (~20 MB at 1 Mbps per site copy, stacks, lasts 7 days).",
+   "Classic: prepaid per-GB packages, 0.5-50 GB, from EUR 0.98/GB.",
+   "Unlimited: per-day from EUR 2/day; 5 GB at high speed then 512 Kbps throttle.",
+   "Coverage claim: 176 countries on the homepage."
+  ],
+  "pricing_model": {
+   "schema": "one global price list - identical in every country (no per-country pricing)",
+   "tiers": [
+    {
+     "name": "Free",
+     "price": 0,
+     "currency": "EUR",
+     "mechanics": "watch a short ad to unlock ~20 MB at basic speed (1 Mbps); data stacks and lasts 7 days",
+     "availability_note": "available to users in North America, Europe & APAC per site copy"
+    },
+    {
+     "name": "Classic",
+     "billing": "prepaid per-GB packages",
+     "packages_gb_range": [
+      0.5,
+      50
+     ],
+     "from_price_eur_per_gb": 0.98,
+     "notes": "high speed, no ads; pay only for the GB you need"
+    },
+    {
+     "name": "Unlimited",
+     "billing": "per-day",
+     "from_price_eur_per_day": 2.0,
+     "notes": "5 GB at high speed per day, then 512 Kbps until next day/top-up; pausable"
+    }
+   ]
+  },
+  "stated_price_points": [
+   {
+    "data_gb": 1.5,
+    "price_eur": 4.5,
+    "implied_eur_per_gb": 3.0
+   },
+   {
+    "data_gb": 5.0,
+    "price_eur": 9.5,
+    "implied_eur_per_gb": 1.9
+   },
+   {
+    "data_gb": 10.0,
+    "price_eur": 17.0,
+    "implied_eur_per_gb": 1.7
+   },
+   {
+    "data_gb": 10.0,
+    "price_eur": 19.5,
+    "implied_eur_per_gb": 1.95
+   }
+  ]
+ },
+ "plan_source": "firsty.app official pages",
+ "plan_rows": 6,
+ "feature_notes": [
+  "Only 6 rows by design: the website exposes the model + floors + a few sample price points; the complete per-GB ladder is app-only. Nothing was inferred.",
+  "Two different 10 GB figures (EUR 17.00 / EUR 19.50) appear in site copy; both are kept verbatim rather than reconciled."
+ ],
+ "fetch_error": null
+}

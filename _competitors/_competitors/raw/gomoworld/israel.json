@@ -1,0 +1,52 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single"
+ },
+ "plans": [
+  {
+   "name": "Israel",
+   "data": "4GB",
+   "validity": "7 Days",
+   "price": "$4.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Israel",
+   "data": "18GB",
+   "validity": "30 Days",
+   "price": "$12.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Israel",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$24.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Israel",
+   "data": "75GB",
+   "validity": "30 Days",
+   "price": "$35.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GoMoWorld Travel eSIM for Israel | Data Plans & Reviews",
+  "h1": "GoMoWorld eSIM Data Plans for Israel",
+  "networks": null
+ },
+ "slug": "israel",
+ "url": "https://esimdb.com/israel/gomoworld",
+ "status": 200
+}

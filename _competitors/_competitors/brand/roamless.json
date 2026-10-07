@@ -1,0 +1,37 @@
+{
+ "brand_key": "roamless",
+ "brand_name": "Roamless",
+ "official_site": "https://roamless.com/",
+ "captured": "2026-10-04",
+ "trustpilot": {
+  "url": "https://www.trustpilot.com/review/roamless.com",
+  "rating": null,
+  "review_count": null,
+  "trust_score": null,
+  "five_star_pct": null,
+  "verified_reviews": null,
+  "last_checked": null,
+  "recent_reviews": [],
+  "note": "PLACEHOLDER - to be filled manually by the user"
+ },
+ "official": {
+  "http_status": null,
+  "bytes": null,
+  "organization_jsonld": null,
+  "apps": [],
+  "app_ratings": [],
+  "meta": {},
+  "emails_found": [],
+  "social_links": [],
+  "site_text_len": 0,
+  "about_facts": [],
+  "note": "Official site NOT scraped this round: esimdb already exposes the full plan matrix (1,304 rows across 50 countries), including the brand's signature 'Pay-As-You-Go / No Expiry' badge and a free tier."
+ },
+ "plan_source": "esimdb.com",
+ "plan_rows": 1304,
+ "feature_notes": [
+  "'No expiry' validity appears on several plans (badge: Pay-As-You-Go) - not a fixed-day product; build_plans records days=0 for those.",
+  "A $0.00 'FREE <country> eSIM & Data' entry exists (New Users Only, 525MB) - dropped by the price>0 rule in build_plans (not a purchasable plan)."
+ ],
+ "fetch_error": null
+}

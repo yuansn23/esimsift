@@ -1,0 +1,106 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n10"
+ },
+ "plans": [
+  {
+   "name": "Morocco",
+   "data": "3.5GB",
+   "validity": "1 Day",
+   "price": "$7.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "500MB",
+   "validity": "7 Days",
+   "price": "$11.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "500MB",
+   "validity": "7 Days",
+   "price": "$13.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "3.5GB/day",
+   "validity": "3 Days",
+   "price": "$16.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "1GB",
+   "validity": "15 Days",
+   "price": "$17.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "2GB",
+   "validity": "30 Days",
+   "price": "$29.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "3.5GB/day",
+   "validity": "7 Days",
+   "price": "$36.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$39.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "3.5GB/day",
+   "validity": "15 Days",
+   "price": "$68.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$138.99",
+   "badges": [
+    "20% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GigSky Travel eSIM for Morocco | Data Plans & Reviews",
+  "h1": "GigSky eSIM Data Plans for Morocco",
+  "networks": null
+ },
+ "slug": "morocco",
+ "url": "https://esimdb.com/morocco/gigsky",
+ "status": 200
+}

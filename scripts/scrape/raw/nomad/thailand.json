@@ -1,0 +1,75 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n7"
+ },
+ "plans": [
+  {
+   "name": "Local Thailand - 7 Days - 1 GB",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.00",
+   "badges": []
+  },
+  {
+   "name": "Local Thailand - 30 Days - 3 GB",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$6.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Thailand - 30 Days - 5 GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$8.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Thailand - 30 Days - 10 GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$10.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Thailand - 10 Days - 50 GB",
+   "data": "50GB",
+   "validity": "10 Days",
+   "price": "$12.00",
+   "badges": []
+  },
+  {
+   "name": "Local Thailand - 10 Days - Unlimited",
+   "data": "2GB/day",
+   "validity": "10 Days",
+   "price": "$16.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Local Thailand - 30 Days - Unlimited",
+   "data": "2GB/day",
+   "validity": "30 Days",
+   "price": "$33.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Nomad Travel eSIM for Thailand | Data Plans & Reviews",
+  "h1": "Nomad eSIM Data Plans for Thailand",
+  "networks": null
+ },
+ "slug": "thailand",
+ "url": "https://esimdb.com/thailand/nomad",
+ "status": 200
+}

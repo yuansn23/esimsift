@@ -1,0 +1,113 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n11"
+ },
+ "plans": [
+  {
+   "name": "Canada",
+   "data": "100MB",
+   "validity": "7 Days",
+   "price": "$0.00",
+   "badges": []
+  },
+  {
+   "name": "Canada",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$2.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Canada",
+   "data": "3.5GB",
+   "validity": "1 Day",
+   "price": "$4.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Canada",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$8.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Canada",
+   "data": "3.5GB/day",
+   "validity": "3 Days",
+   "price": "$10.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Canada",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$14.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Canada",
+   "data": "3.5GB/day",
+   "validity": "7 Days",
+   "price": "$20.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Canada",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$21.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Canada",
+   "data": "20GB",
+   "validity": "180 Days",
+   "price": "$29.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Canada",
+   "data": "3.5GB/day",
+   "validity": "15 Days",
+   "price": "$33.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Canada",
+   "data": "50GB",
+   "validity": "90 Days",
+   "price": "$59.99",
+   "badges": [
+    "20% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GigSky Travel eSIM for Canada | Data Plans & Reviews",
+  "h1": "GigSky eSIM Data Plans for Canada",
+  "networks": null
+ },
+ "slug": "canada",
+ "url": "https://esimdb.com/canada/gigsky",
+ "status": 200
+}

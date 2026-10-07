@@ -4,5 +4,5 @@ iso: GE
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Georgia: 5 plans from $4.79, best $2.45/GB (#7 of 8) — ranked against 130 Georgia plans."
+  description: "eSIM Sift compares Saily eSIM plans for Georgia: 5 plans from $4.79, best $2.45/GB (#8 of 9) — ranked against 140 Georgia plans."
 ---

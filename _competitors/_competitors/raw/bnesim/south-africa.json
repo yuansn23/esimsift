@@ -1,0 +1,693 @@
+{
+ "brand": "bnesim",
+ "slug": "south-africa",
+ "iso2": "ZA",
+ "country_name": "South Africa",
+ "url": "https://www.bnesim.com/plans/za/",
+ "source": "api.bnesim.com/v0.1/sim_card_landing_pricing/ (public)",
+ "status": 200,
+ "plans": [
+  {
+   "id": "89671",
+   "name": "Surf 1 GB in South Africa",
+   "amount": 1,
+   "unit": "GB",
+   "price": "16.31",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89672",
+   "name": "Surf 3 GB in South Africa",
+   "amount": 3,
+   "unit": "GB",
+   "price": "47.50",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89673",
+   "name": "Surf 5 GB in South Africa",
+   "amount": 5,
+   "unit": "GB",
+   "price": "76.70",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89674",
+   "name": "Surf 10 GB in South Africa",
+   "amount": 10,
+   "unit": "GB",
+   "price": "146.80",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89675",
+   "name": "Surf 20 GB in South Africa",
+   "amount": 20,
+   "unit": "GB",
+   "price": "287.10",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89948",
+   "name": "Surf 20 GB in South Africa for 30 days",
+   "amount": 20,
+   "unit": "GB",
+   "price": "255.57",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89952",
+   "name": "Surf 1 GB in South Africa for 30 days",
+   "amount": 1,
+   "unit": "GB",
+   "price": "14.52",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89951",
+   "name": "Surf 3 GB in South Africa for 30 days",
+   "amount": 3,
+   "unit": "GB",
+   "price": "42.28",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89950",
+   "name": "Surf 5 GB in South Africa for 30 days",
+   "amount": 5,
+   "unit": "GB",
+   "price": "68.28",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89949",
+   "name": "Surf 10 GB in South Africa for 30 days",
+   "amount": 10,
+   "unit": "GB",
+   "price": "130.68",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  }
+ ],
+ "regional_options": [
+  {
+   "id": "90649",
+   "name": "Surf 1 GB in Africa for 30 days",
+   "amount": 1,
+   "unit": "GB",
+   "price": "12.64",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90648",
+   "name": "Surf 1 GB in Africa",
+   "amount": 1,
+   "unit": "GB",
+   "price": "14.20",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90651",
+   "name": "Surf 3 GB in Africa for 30 days",
+   "amount": 3,
+   "unit": "GB",
+   "price": "35.68",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90650",
+   "name": "Surf 3 GB in Africa",
+   "amount": 3,
+   "unit": "GB",
+   "price": "41.32",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90653",
+   "name": "Surf 5 GB in Africa for 30 days",
+   "amount": 5,
+   "unit": "GB",
+   "price": "55.85",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90652",
+   "name": "Surf 5 GB in Africa",
+   "amount": 5,
+   "unit": "GB",
+   "price": "66.74",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90655",
+   "name": "Surf 10 GB in Africa for 30 days",
+   "amount": 10,
+   "unit": "GB",
+   "price": "102.39",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90654",
+   "name": "Surf 10 GB in Africa",
+   "amount": 10,
+   "unit": "GB",
+   "price": "127.80",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90657",
+   "name": "Surf 20 GB in Africa for 30 days",
+   "amount": 20,
+   "unit": "GB",
+   "price": "191.36",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90656",
+   "name": "Surf 20 GB in Africa",
+   "amount": 20,
+   "unit": "GB",
+   "price": "247.08",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Africa",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  }
+ ]
+}

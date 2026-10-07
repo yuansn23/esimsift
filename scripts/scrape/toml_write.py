@@ -2,6 +2,11 @@
 """Convert scraped esimdb raw JSON -> data/plans/<provider>.toml
 
 Usage: python -X utf8 scripts/scrape/toml_write.py <provider> [--dry-run]
+                                      [--checked YYYY-MM-DD]
+
+--checked 覆盖写入 plans 块的核对日。默认 CHECKED（本站首批 8 品牌的抓取日）。
+          某一批 raw 若在别的日期抓取，必须传真实抓取日 —— 日期是对读者的声明，
+          不是构建产物；用默认值会把「今天核过价」这句话说成假的。
 
 Parsing rules (raw 'data' text -> model):
   "10GB"                     -> type=data, gb=10
@@ -23,7 +28,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 RAW = Path(__file__).resolve().parent / "raw"
 
-CHECKED = "2026-09-30"
+CHECKED = "2026-09-30"   # 首批 8 品牌抓取日；其它批次用 --checked 覆盖
 
 RX_FIXED = re.compile(r"^(\d+(?:\.\d+)?)\s*GB$", re.I)
 RX_FIXED_MB = re.compile(r"^(\d+(?:\.\d+)?)\s*MB$", re.I)
@@ -194,6 +199,9 @@ def fmt_gb(g: float) -> str:
 def main() -> None:
     provider = sys.argv[1]
     dry = "--dry-run" in sys.argv
+    checked = CHECKED
+    if "--checked" in sys.argv:
+        checked = sys.argv[sys.argv.index("--checked") + 1]
     rawdir = RAW / provider
     files = sorted(rawdir.glob("*.json"))
     if not files:
@@ -258,7 +266,7 @@ def main() -> None:
     else:
         src = f"esimdb.com/{provider} (Single-country plans, USD list prices)"
     lines = [
-        f"# Scraped from {src} on {CHECKED}.",
+        f"# Scraped from {src} on {checked}.",
         "# Raw capture: scripts/scrape/raw/ (per-country JSON incl. badges & page meta).",
         "# networks: not exposed on plan cards - left empty until verified per brand page.",
         "",
@@ -266,7 +274,7 @@ def main() -> None:
     iso_name = {iso: name for _, (iso, name) in by_slug.items()}
     for iso in sorted(blocks, key=lambda k: iso_name.get(k, k)):
         lines.append(f"[{iso}]")
-        lines.append(f'checked = "{CHECKED}"')
+        lines.append(f'checked = "{checked}"')
         lines.append("networks = []")
         lines.append("")
         for plan in blocks[iso]:

@@ -1,16 +1,17 @@
 # Hong Kong FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for Hong Kong?"
-a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "At ${cheap_price}, {cheap_brand}'s {cheap_plan} is the cheapest way online in {country}. The next cheapest brand is {runner_brand}, at ${runner_price}. Decide your days and your rough gigabytes first, then pick the plan that fits both."
 
 [[faq]]
 q = "Is unlimited eSIM data in Hong Kong actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Roami at $19.99 ($2.86/day), carries: Soft cap 2GB/day at full speed, then throttled. Treat them as big-but-capped plans and compare the caps."
+a = "Treat them as capped: {unl_count} unlimited {country} plans each state a daily allowance and a fallback speed. The spread is wide - {unl_perday_range} a day - and {unl_brand} sits at the bottom of it at ${unl_perday}/day over {unl_days} days. The part people miss is what happens after the cap: {unl_drop}."
 
 [[faq]]
 q = "Airalo or Holafly for Hong Kong?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($3.92/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "The honest answer is that these two are not interchangeable. On Airalo's side the best value is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - priced per gigabyte rather than per day. Holafly's model is daily unlimited, starting at {ah_holafly_days} days for ${ah_holafly_price} - ${ah_holafly_perday}/day - so heavy use costs the same as light use."
 
 [[faq]]
 q = "Do I need ID verification for a Hong Kong eSIM?"
@@ -22,4 +23,4 @@ a = "Plans on this page run on CSL, 3HK, SmarTone. Differences matter mostly out
 
 [[faq]]
 q = "Can one eSIM cover Hong Kong and Taiwan?"
-a = "Regional Asia/continental plans from Airalo and Nomad bundle Hong Kong with neighbors - usually worse $/GB than single-country plans, but cheaper than two separate eSIMs. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+a = "Only via a regional plan, because the {country} tables here are scoped to one market. Crossing into {neighbor} means either a regional package or a second plan, and the per-gigabyte rate is what tells them apart."

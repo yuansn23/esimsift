@@ -3,7 +3,7 @@ title: "Spain eSIM"
 iso: ES
 weight: 9
 seo:
-  description: "eSIM Sift compares every Spain eSIM: 175 real plans from 8 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
+  description: "eSIM Sift compares every Spain eSIM: 185 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
 ---
 
 Only a few dollars separate the good and bad buys in Spain per gigabyte. The cheapest plan in Spain is yesim 500MB / 1 Day at $0.51. That gap is the story in Spain in one line: 2.3 times the rate for the smallest bucket. Best value per gigabyte goes to ubigi, where 20GB over 30 days works out to $0.45 a gigabyte. Between {{< count-providers >}} providers there are 175 plans for Spain on file, 90 carrying an unlimited label.

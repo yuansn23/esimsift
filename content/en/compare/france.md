@@ -3,7 +3,7 @@ title: "France eSIM"
 iso: FR
 weight: 4
 seo:
-  description: "eSIM Sift compares every France eSIM: 178 real plans from 8 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
+  description: "eSIM Sift compares every France eSIM: 188 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
 ---
 
 The price list for France is not flat, and its shape decides what you pay. The entry point for France is yesim 500MB / 1 Day, at $0.51. The same spend in France at $0.30/GB would give you about 1.7GB. Cheapest by the gigabyte is ubigi, with 240GB over 365 days at $0.30/GB. We track {{< count-providers >}} providers here, listing 178 plans for France between them, 88 of them unlimited.

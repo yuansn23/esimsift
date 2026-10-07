@@ -1,0 +1,77 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n7"
+ },
+ "plans": [
+  {
+   "name": "Malaysia 1 GB 7 Days",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.00",
+   "badges": []
+  },
+  {
+   "name": "Malaysia 3 GB 30 Days",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$7.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Malaysia 5 GB 30 Days",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$11.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Malaysia 10 GB 30 Days",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$16.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Malaysia - 5 Days - unlimited",
+   "data": "2GB/day",
+   "validity": "5 Days",
+   "price": "$18.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Malaysia 20 GB 45 Days",
+   "data": "20GB",
+   "validity": "45 Days",
+   "price": "$25.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Malaysia - 10 Days - unlimited",
+   "data": "2GB/day",
+   "validity": "10 Days",
+   "price": "$33.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Nomad Travel eSIM for Malaysia | Data Plans & Reviews",
+  "h1": "Nomad eSIM Data Plans for Malaysia",
+  "networks": null
+ },
+ "slug": "malaysia",
+ "url": "https://esimdb.com/malaysia/nomad",
+ "status": 200
+}

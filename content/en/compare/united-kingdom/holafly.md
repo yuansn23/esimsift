@@ -4,5 +4,5 @@ iso: GB
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for the UK: 6 daily plans from $2.46/day, fair-use caps decoded — live prices."
+  description: "eSIM Sift compares Holafly unlimited eSIMs for UK: 6 daily plans from $2.46/day, fair-use caps decoded — 206 UK eSIMs tracked."
 ---

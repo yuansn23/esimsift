@@ -1,0 +1,61 @@
+{
+ "tab": {
+  "clicked": false,
+  "label": null
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Costa Rica",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Costa Rica",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$14.70",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Costa Rica",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$15.50",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Costa Rica",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$22.70",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Costa Rica",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$40.10",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Costa Rica | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Costa Rica",
+  "networks": null
+ },
+ "slug": "costa-rica",
+ "url": "https://esimdb.com/costa-rica/quibity",
+ "status": 200
+}

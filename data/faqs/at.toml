@@ -1,16 +1,17 @@
 # Austria FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for Austria?"
-a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "The lowest price on this page is {cheap_brand}'s {cheap_plan} - ${cheap_price} for {country}. That is ${cheap_perday}/day across the plan's validity window. Small buckets suit city breaks, while longer stays are usually cheaper per gigabyte with a bigger plan."
 
 [[faq]]
 q = "Is unlimited eSIM data in Austria actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Holafly at $21.99 ($4.40/day), carries: Full speed for the first 2GB each day, then 512kbps. Treat them as big-but-capped plans and compare the caps."
+a = "Big rather than boundless: {unl_count} unlimited {country} plans all apply fair-use rules. Day rates across the set span {unl_perday_range}, and the cheapest is {unl_brand} at ${unl_perday}/day - ${unl_price} for {unl_days} days. Two figures decide whether a capped plan suits you, and {unl_brand} publishes both: {unl_allowance}, then {unl_drop}."
 
 [[faq]]
 q = "Airalo or Holafly for Austria?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($4.25/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "Neither is the cheapest plan on this page, and the two are not competing on the same terms either. Airalo's best {country} rate is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - and that is a fixed bucket rather than a daily allowance. Holafly only sells unlimited by the day: {ah_holafly_days} days for ${ah_holafly_price}, or ${ah_holafly_perday} a day."
 
 [[faq]]
 q = "Do I need ID verification for a Austria eSIM?"
@@ -22,4 +23,4 @@ a = "Plans on this page run on A1, Magenta, Drei. Differences matter mostly outs
 
 [[faq]]
 q = "Can one eSIM cover Austria and Italy?"
-a = "Regional Asia/continental plans from Airalo and Nomad bundle Austria with neighbors - usually worse $/GB than single-country plans, but cheaper than two separate eSIMs. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+a = "Not with a country plan alone, because {country} plans stop at the border. Adding {neighbor} means a regional bundle or a second plan, and the two-country arithmetic is worth doing before you buy."

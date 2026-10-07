@@ -1,0 +1,108 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n10"
+ },
+ "plans": [
+  {
+   "name": "Macao 3GB",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$7.00",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Macao 1GB",
+   "data": "1GB",
+   "validity": "4 Days",
+   "price": "$7.00",
+   "badges": [
+    "New Users Only"
+   ]
+  },
+  {
+   "name": "Macao 5GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$10.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Macao 10GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$14.99",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Macao 15GB",
+   "data": "15GB",
+   "validity": "30 Days",
+   "price": "$19.99",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Macao - Unlimited 7 Days",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$26.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Macao 30GB",
+   "data": "30GB",
+   "validity": "30 Days",
+   "price": "$29.99",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Macao - Unlimited 10 Days",
+   "data": "3GB/day",
+   "validity": "10 Days",
+   "price": "$33.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Macao 40GB",
+   "data": "40GB",
+   "validity": "30 Days",
+   "price": "$34.99",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Macao 20GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$35.00",
+   "badges": [
+    "15% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Jetpac Travel eSIM for Macau | Data Plans & Reviews",
+  "h1": "Jetpac eSIM Data Plans for Macau",
+  "networks": null
+ },
+ "slug": "macao",
+ "url": "https://esimdb.com/macau/jetpac",
+ "status": 200
+}

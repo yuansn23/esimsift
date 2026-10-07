@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """零回归边界守卫 —— 回答「这轮改造有没有伤到别的页型」。
 
-为什么需要它：`verify_provider_pages.py` 只盯 400 个品牌×国家子页。本轮改造必然
+为什么需要它：`verify_provider_pages.py` 只盯品牌×国家子页。本轮改造必然
 改到共享组件（`country-stats.html` / `head.html` / `plan-data-label.html`），
-它们的下游是**全站 584 个页**。「本层通过」不等于「别处没坏」。
+它们的下游是**全站每一个页**。「本层通过」不等于「别处没坏」。
 
 它做四件事：
 
@@ -12,11 +12,18 @@
          同时正向断言：品牌子页必须**确实**带上这些区块（否则是漏渲染）。
 
   检查 B 全站不变量 —— 恰好 1 个 h1、title 非空、无 `{{` / `}}` / `<no value>`
-         / `%!x(...)` 残留、无空的 h2/h3、JSON-LD 可解析。共 584 页全扫。
+         / `%!x(...)` 残留、无空的 h2/h3、JSON-LD 可解析。全站每页都扫。
 
   检查 C gb 哨兵跨页型一致性 —— `gb` 用 0 表示"无限"、小于 1GB 存小数。
          任何一处 `int .gb` 都会把 500MB 变成"Unlimited"。本项覆盖品牌子页
-         **和国家 Hub**（后者 15552 行，是前一版守卫的盲区）。
+         **和国家 Hub**（后者是前一版守卫的盲区）。
+
+  检查 D 基线清单 + 字节级 diff —— 产出一份 `docs/regression-manifest.json`
+         （每页 sha256）。下一轮改完跑 `--diff` 就能知道**具体哪几个文件变了**，
+         并据此判断变化是否落在预期白名单内。
+
+⚠️ 品牌集与页数**一律从 data/ 推导，不写死**（2026-10-06 因写死 8 品牌集，
+   新品牌页掉进 static 兜底、报出 401 条假失败）。
 
   检查 D 基线清单 + 字节级 diff —— 产出一份 `docs/regression-manifest.json`
          （每页 sha256）。下一轮改完跑 `--diff` 就能知道**具体哪几个文件变了**，
@@ -38,6 +45,7 @@ import json
 import re
 import sys
 import tempfile
+import tomllib
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -46,7 +54,15 @@ ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
 MANIFEST = ROOT / "docs" / "regression-manifest.json"
 
-BRANDS = {"airalo", "alosim", "holafly", "roami", "roamic", "saily", "ubigi", "yesim"}
+# 品牌集必须从 data/providers.toml 推导，不能写死。
+# 2026-10-06 事故：写死的 8 品牌集不认识新接入的 nomad，于是
+# `compare/<国>/nomad/index.html` 被 classify() 落到 "static" 兜底，
+# 接着检查 A 报「static 页里出现了品牌子页专属区块」—— 一口气 401 条假失败，
+# 而真相只是守卫不认识新品牌。**页型判据依赖的数据集变了，判据必须跟着变。**
+BRANDS = {
+    k for k, v in (tomllib.loads((ROOT / "data" / "providers.toml").read_text(encoding="utf-8"))).items()
+    if isinstance(v, dict) and v.get("name")
+}
 
 TITLE_RE = re.compile(r"<title>(.*?)</title>", re.S)
 H1_RE = re.compile(r"<h1[^>]*>(.*?)</h1>", re.S)
@@ -371,6 +387,8 @@ def selftest() -> int:
             for e in hit[:2]:
                 print(f"        -> {e}")
     # 分类自测：段数不同不能混为一谈（踩过一次）
+    # 2026-10-06 加最后两条：品牌集必须来自 data/providers.toml —— 写死品牌集时，
+    # 新接入的品牌页会掉进 "static" 兜底，触发 401 条假失败。这两条把它钉死。
     cls_cases = [
         ("compare/netherlands/holafly/index.html", "provider_sub"),
         ("compare/netherlands/index.html", "country_hub"),
@@ -378,6 +396,8 @@ def selftest() -> int:
         ("compare/airalo-vs-saily/index.html", "matchup"),
         ("esim-providers/holafly/index.html", "provider_hub"),
         ("tools/index.html", "tools"),
+        ("compare/netherlands/nomad/index.html", "provider_sub"),
+        ("esim-providers/nomad/index.html", "provider_hub"),
     ]
     for rel, want in cls_cases:
         got = classify(rel)

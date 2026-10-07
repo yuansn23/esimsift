@@ -1,0 +1,4868 @@
+# gigsky - competitor plan data
+# primary source: esimdb.com
+# captured: 2026-10-04   countries: 50
+# normalised to the esimsift plan schema (gb/days/type/price/fup_note).
+# NOTE: this file is a SEPARATE capture set - it is not wired into data/plans/.
+
+[AE]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/uae/gigsky"
+networks = []
+
+[[AE.plans]]
+name = "United Arab Emirates"
+gb = 1
+days = 15
+type = "data"
+price = 3.99
+
+[[AE.plans]]
+name = "United Arab Emirates"
+gb = 3.5
+days = 1
+type = "data"
+price = 5.99
+
+[[AE.plans]]
+name = "United Arab Emirates"
+gb = 3
+days = 15
+type = "data"
+price = 8.99
+
+[[AE.plans]]
+name = "United Arab Emirates"
+gb = 5
+days = 30
+type = "data"
+price = 14.99
+
+[[AE.plans]]
+name = "United Arab Emirates"
+gb = 3.5
+days = 3
+type = "data"
+price = 17.49
+
+[[AE.plans]]
+name = "United Arab Emirates"
+gb = 10
+days = 30
+type = "data"
+price = 26.99
+
+[[AE.plans]]
+name = "United Arab Emirates"
+gb = 3.5
+days = 7
+type = "data"
+price = 35.49
+
+[[AE.plans]]
+name = "United Arab Emirates"
+gb = 3.5
+days = 15
+type = "data"
+price = 56.49
+
+
+[AR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/argentina/gigsky"
+networks = []
+
+[[AR.plans]]
+name = "Argentina"
+gb = 1
+days = 7
+type = "data"
+price = 3.99
+
+[[AR.plans]]
+name = "Argentina"
+gb = 3.5
+days = 1
+type = "data"
+price = 6.99
+
+[[AR.plans]]
+name = "Argentina"
+gb = 3
+days = 15
+type = "data"
+price = 9.49
+
+[[AR.plans]]
+name = "Argentina"
+gb = 10.5
+days = 3
+type = "data"
+price = 14.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[AR.plans]]
+name = "Argentina"
+gb = 5
+days = 30
+type = "data"
+price = 16.29
+
+[[AR.plans]]
+name = "Argentina"
+gb = 10
+days = 30
+type = "data"
+price = 28.79
+
+[[AR.plans]]
+name = "Argentina"
+gb = 24.5
+days = 7
+type = "data"
+price = 28.99
+fup_note = "3.5 GB per day for 7 days"
+
+[[AR.plans]]
+name = "Argentina"
+gb = 20
+days = 90
+type = "data"
+price = 44.99
+
+[[AR.plans]]
+name = "Argentina"
+gb = 52.5
+days = 15
+type = "data"
+price = 46.49
+fup_note = "3.5 GB per day for 15 days"
+
+
+[AT]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/austria/gigsky"
+networks = []
+
+[[AT.plans]]
+name = "Austria"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[AT.plans]]
+name = "Austria"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[AT.plans]]
+name = "Austria"
+gb = 3
+days = 15
+type = "data"
+price = 5.49
+
+[[AT.plans]]
+name = "Austria"
+gb = 10
+days = 30
+type = "data"
+price = 9.79
+
+[[AT.plans]]
+name = "Austria"
+gb = 5
+days = 30
+type = "data"
+price = 10.29
+
+[[AT.plans]]
+name = "Austria"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[AT.plans]]
+name = "Austria"
+gb = 20
+days = 90
+type = "data"
+price = 13.99
+
+[[AT.plans]]
+name = "Austria"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[AT.plans]]
+name = "Austria"
+gb = 50
+days = 180
+type = "data"
+price = 27.89
+
+[[AT.plans]]
+name = "Austria"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[AU]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/australia/gigsky"
+networks = []
+
+[[AU.plans]]
+name = "Australia"
+gb = 3.5
+days = 1
+type = "data"
+price = 4.99
+
+[[AU.plans]]
+name = "Australia"
+gb = 1
+days = 7
+type = "data"
+price = 4.99
+
+[[AU.plans]]
+name = "Australia"
+gb = 3
+days = 15
+type = "data"
+price = 11.99
+
+[[AU.plans]]
+name = "Australia"
+gb = 10.5
+days = 3
+type = "data"
+price = 14.99
+fup_note = "3.5 GB per day for 3 days"
+
+[[AU.plans]]
+name = "Australia"
+gb = 5
+days = 30
+type = "data"
+price = 19.99
+
+[[AU.plans]]
+name = "Australia"
+gb = 10
+days = 30
+type = "data"
+price = 29.99
+
+[[AU.plans]]
+name = "Australia"
+gb = 24.5
+days = 7
+type = "data"
+price = 34.99
+fup_note = "3.5 GB per day for 7 days"
+
+[[AU.plans]]
+name = "Australia"
+gb = 52.5
+days = 15
+type = "data"
+price = 64.49
+fup_note = "3.5 GB per day for 15 days"
+
+[[AU.plans]]
+name = "Australia"
+gb = 50
+days = 90
+type = "data"
+price = 82.49
+
+[[AU.plans]]
+name = "Australia"
+gb = 100
+days = 180
+type = "data"
+price = 123.99
+
+
+[BE]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/belgium/gigsky"
+networks = []
+
+[[BE.plans]]
+name = "Belgium"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[BE.plans]]
+name = "Belgium"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[BE.plans]]
+name = "Belgium"
+gb = 3
+days = 15
+type = "data"
+price = 5.49
+
+[[BE.plans]]
+name = "Belgium"
+gb = 5
+days = 30
+type = "data"
+price = 7.79
+
+[[BE.plans]]
+name = "Belgium"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[BE.plans]]
+name = "Belgium"
+gb = 10
+days = 30
+type = "data"
+price = 11.79
+
+[[BE.plans]]
+name = "Belgium"
+gb = 20
+days = 90
+type = "data"
+price = 17.99
+
+[[BE.plans]]
+name = "Belgium"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[BE.plans]]
+name = "Belgium"
+gb = 50
+days = 180
+type = "data"
+price = 31.39
+
+[[BE.plans]]
+name = "Belgium"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[BR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/brazil/gigsky"
+networks = []
+
+[[BR.plans]]
+name = "Brazil"
+gb = 1
+days = 7
+type = "data"
+price = 3.49
+
+[[BR.plans]]
+name = "Brazil"
+gb = 3.5
+days = 1
+type = "data"
+price = 4.99
+
+[[BR.plans]]
+name = "Brazil"
+gb = 3
+days = 15
+type = "data"
+price = 8.99
+
+[[BR.plans]]
+name = "Brazil"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[BR.plans]]
+name = "Brazil"
+gb = 5
+days = 30
+type = "data"
+price = 12.29
+
+[[BR.plans]]
+name = "Brazil"
+gb = 10
+days = 30
+type = "data"
+price = 21.79
+
+[[BR.plans]]
+name = "Brazil"
+gb = 24.5
+days = 7
+type = "data"
+price = 23.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[BR.plans]]
+name = "Brazil"
+gb = 20
+days = 90
+type = "data"
+price = 33.99
+
+[[BR.plans]]
+name = "Brazil"
+gb = 52.5
+days = 15
+type = "data"
+price = 42.49
+fup_note = "3.5 GB per day for 15 days"
+
+
+[CA]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/canada/gigsky"
+networks = []
+
+[[CA.plans]]
+name = "Canada"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[CA.plans]]
+name = "Canada"
+gb = 3.5
+days = 1
+type = "data"
+price = 4.99
+
+[[CA.plans]]
+name = "Canada"
+gb = 3
+days = 15
+type = "data"
+price = 8.49
+
+[[CA.plans]]
+name = "Canada"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[CA.plans]]
+name = "Canada"
+gb = 5
+days = 30
+type = "data"
+price = 14.99
+
+[[CA.plans]]
+name = "Canada"
+gb = 24.5
+days = 7
+type = "data"
+price = 20.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[CA.plans]]
+name = "Canada"
+gb = 10
+days = 30
+type = "data"
+price = 21.49
+
+[[CA.plans]]
+name = "Canada"
+gb = 20
+days = 180
+type = "data"
+price = 29.99
+
+[[CA.plans]]
+name = "Canada"
+gb = 52.5
+days = 15
+type = "data"
+price = 33.49
+fup_note = "3.5 GB per day for 15 days"
+
+[[CA.plans]]
+name = "Canada"
+gb = 50
+days = 90
+type = "data"
+price = 59.99
+
+
+[CH]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/switzerland/gigsky"
+networks = []
+
+[[CH.plans]]
+name = "Switzerland"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[CH.plans]]
+name = "Switzerland"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[CH.plans]]
+name = "Switzerland"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[CH.plans]]
+name = "Switzerland"
+gb = 5
+days = 30
+type = "data"
+price = 8.29
+
+[[CH.plans]]
+name = "Switzerland"
+gb = 10
+days = 30
+type = "data"
+price = 9.79
+
+[[CH.plans]]
+name = "Switzerland"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[CH.plans]]
+name = "Switzerland"
+gb = 20
+days = 90
+type = "data"
+price = 16.99
+
+[[CH.plans]]
+name = "Switzerland"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[CH.plans]]
+name = "Switzerland"
+gb = 50
+days = 180
+type = "data"
+price = 33.89
+
+[[CH.plans]]
+name = "Switzerland"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[CN]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/china/gigsky"
+networks = []
+
+[[CN.plans]]
+name = "China"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.99
+
+[[CN.plans]]
+name = "China"
+gb = 1
+days = 7
+type = "data"
+price = 5.99
+
+[[CN.plans]]
+name = "China"
+gb = 10.5
+days = 3
+type = "data"
+price = 11.99
+fup_note = "3.5 GB per day for 3 days"
+
+[[CN.plans]]
+name = "China"
+gb = 3
+days = 15
+type = "data"
+price = 15.99
+
+[[CN.plans]]
+name = "China"
+gb = 5
+days = 30
+type = "data"
+price = 23.99
+
+[[CN.plans]]
+name = "China"
+gb = 24.5
+days = 7
+type = "data"
+price = 27.99
+fup_note = "3.5 GB per day for 7 days"
+
+[[CN.plans]]
+name = "China"
+gb = 10
+days = 30
+type = "data"
+price = 36.49
+
+[[CN.plans]]
+name = "China"
+gb = 52.5
+days = 15
+type = "data"
+price = 51.49
+fup_note = "3.5 GB per day for 15 days"
+
+[[CN.plans]]
+name = "China"
+gb = 20
+days = 90
+type = "data"
+price = 69.99
+
+
+[CO]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/colombia/gigsky"
+networks = []
+
+[[CO.plans]]
+name = "Colombia"
+gb = 1
+days = 7
+type = "data"
+price = 3.49
+
+[[CO.plans]]
+name = "Colombia"
+gb = 3.5
+days = 1
+type = "data"
+price = 4.99
+
+[[CO.plans]]
+name = "Colombia"
+gb = 3
+days = 15
+type = "data"
+price = 9.99
+
+[[CO.plans]]
+name = "Colombia"
+gb = 10.5
+days = 3
+type = "data"
+price = 14.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[CO.plans]]
+name = "Colombia"
+gb = 5
+days = 30
+type = "data"
+price = 15.29
+
+[[CO.plans]]
+name = "Colombia"
+gb = 10
+days = 30
+type = "data"
+price = 26.79
+
+[[CO.plans]]
+name = "Colombia"
+gb = 24.5
+days = 7
+type = "data"
+price = 29.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[CO.plans]]
+name = "Colombia"
+gb = 20
+days = 90
+type = "data"
+price = 38.99
+
+[[CO.plans]]
+name = "Colombia"
+gb = 52.5
+days = 15
+type = "data"
+price = 46.99
+fup_note = "3.5 GB per day for 15 days"
+
+[[CO.plans]]
+name = "Colombia"
+gb = 50
+days = 180
+type = "data"
+price = 79.99
+
+
+[CR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/costa-rica/gigsky"
+networks = []
+
+[[CR.plans]]
+name = "Costa Rica"
+gb = 3.5
+days = 1
+type = "data"
+price = 4.99
+
+[[CR.plans]]
+name = "Costa Rica"
+gb = 1
+days = 7
+type = "data"
+price = 6.99
+
+[[CR.plans]]
+name = "Costa Rica"
+gb = 10.5
+days = 3
+type = "data"
+price = 14.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[CR.plans]]
+name = "Costa Rica"
+gb = 3
+days = 15
+type = "data"
+price = 16.49
+
+[[CR.plans]]
+name = "Costa Rica"
+gb = 5
+days = 30
+type = "data"
+price = 21.99
+
+[[CR.plans]]
+name = "Costa Rica"
+gb = 24.5
+days = 7
+type = "data"
+price = 26.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[CR.plans]]
+name = "Costa Rica"
+gb = 52.5
+days = 15
+type = "data"
+price = 36.49
+fup_note = "3.5 GB per day for 15 days"
+
+[[CR.plans]]
+name = "Costa Rica"
+gb = 10
+days = 30
+type = "data"
+price = 39.99
+
+
+[CZ]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/czechia/gigsky"
+networks = []
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 1
+days = 7
+type = "data"
+price = 4.99
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 3
+days = 15
+type = "data"
+price = 9.99
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 5
+days = 30
+type = "data"
+price = 16.49
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 10
+days = 30
+type = "data"
+price = 26.49
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 50
+days = 90
+type = "data"
+price = 71.99
+
+[[CZ.plans]]
+name = "Czech Republic"
+gb = 100
+days = 180
+type = "data"
+price = 107.99
+
+
+[DE]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/germany/gigsky"
+networks = []
+
+[[DE.plans]]
+name = "Germany"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[DE.plans]]
+name = "Germany"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[DE.plans]]
+name = "Germany"
+gb = 3
+days = 15
+type = "data"
+price = 7.49
+
+[[DE.plans]]
+name = "Germany"
+gb = 5
+days = 30
+type = "data"
+price = 10.29
+
+[[DE.plans]]
+name = "Germany"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[DE.plans]]
+name = "Germany"
+gb = 10
+days = 30
+type = "data"
+price = 14.29
+
+[[DE.plans]]
+name = "Germany"
+gb = 20
+days = 90
+type = "data"
+price = 20.99
+
+[[DE.plans]]
+name = "Germany"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[DE.plans]]
+name = "Germany"
+gb = 50
+days = 180
+type = "data"
+price = 34.89
+
+[[DE.plans]]
+name = "Germany"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[EG]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/egypt/gigsky"
+networks = []
+
+[[EG.plans]]
+name = "Egypt"
+gb = 3.5
+days = 1
+type = "data"
+price = 5.99
+
+[[EG.plans]]
+name = "Egypt"
+gb = 1
+days = 7
+type = "data"
+price = 10.99
+
+[[EG.plans]]
+name = "Egypt"
+gb = 10.5
+days = 3
+type = "data"
+price = 12.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[EG.plans]]
+name = "Egypt"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.99
+fup_note = "3.5 GB per day for 7 days"
+
+[[EG.plans]]
+name = "Egypt"
+gb = 3
+days = 15
+type = "data"
+price = 29.99
+
+[[EG.plans]]
+name = "Egypt"
+gb = 52.5
+days = 15
+type = "data"
+price = 39.99
+fup_note = "3.5 GB per day for 15 days"
+
+[[EG.plans]]
+name = "Egypt"
+gb = 5
+days = 30
+type = "data"
+price = 49.49
+
+[[EG.plans]]
+name = "Egypt"
+gb = 10
+days = 30
+type = "data"
+price = 89.99
+
+
+[ES]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/spain/gigsky"
+networks = []
+
+[[ES.plans]]
+name = "Spain"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[ES.plans]]
+name = "Spain"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[ES.plans]]
+name = "Spain"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[ES.plans]]
+name = "Spain"
+gb = 5
+days = 30
+type = "data"
+price = 8.29
+
+[[ES.plans]]
+name = "Spain"
+gb = 10
+days = 30
+type = "data"
+price = 9.79
+
+[[ES.plans]]
+name = "Spain"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[ES.plans]]
+name = "Spain"
+gb = 20
+days = 90
+type = "data"
+price = 16.99
+
+[[ES.plans]]
+name = "Spain"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[ES.plans]]
+name = "Spain"
+gb = 50
+days = 180
+type = "data"
+price = 33.89
+
+[[ES.plans]]
+name = "Spain"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[FJ]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/fiji/gigsky"
+networks = []
+
+[[FJ.plans]]
+name = "Asia Pacific"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[FJ.plans]]
+name = "Asia Pacific"
+gb = 1
+days = 7
+type = "data"
+price = 3.49
+
+[[FJ.plans]]
+name = "Cruise & Asia Pacific"
+gb = 3
+days = 1
+type = "data"
+price = 4.99
+
+[[FJ.plans]]
+name = "Cruise & World"
+gb = 3
+days = 1
+type = "data"
+price = 4.99
+
+[[FJ.plans]]
+name = "Fiji"
+gb = 1
+days = 7
+type = "data"
+price = 4.99
+
+[[FJ.plans]]
+name = "Vanuatu"
+gb = 1
+days = 7
+type = "data"
+price = 4.99
+
+[[FJ.plans]]
+name = "Cruise + Asia Pacific"
+gb = 3
+days = 1
+type = "data"
+price = 6.99
+
+[[FJ.plans]]
+name = "Cruise + World"
+gb = 3
+days = 1
+type = "data"
+price = 6.99
+
+[[FJ.plans]]
+name = "World Plan Lite"
+gb = 1
+days = 15
+type = "data"
+price = 6.99
+
+[[FJ.plans]]
+name = "World Plan"
+gb = 1
+days = 7
+type = "data"
+price = 7.99
+
+[[FJ.plans]]
+name = "Asia Pacific"
+gb = 3
+days = 15
+type = "data"
+price = 8.99
+
+[[FJ.plans]]
+name = "World Plan Lite"
+gb = 2
+days = 15
+type = "data"
+price = 9.99
+
+[[FJ.plans]]
+name = "Asia Pacific"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[FJ.plans]]
+name = "Cruise & Asia Pacific"
+gb = 0.488281
+days = 1
+type = "data"
+price = 10.99
+
+[[FJ.plans]]
+name = "Cruise & World"
+gb = 0.488281
+days = 1
+type = "data"
+price = 10.99
+
+[[FJ.plans]]
+name = "Vanuatu"
+gb = 3
+days = 15
+type = "data"
+price = 11.99
+
+[[FJ.plans]]
+name = "Asia Pacific"
+gb = 5
+days = 30
+type = "data"
+price = 12.99
+
+[[FJ.plans]]
+name = "Fiji"
+gb = 3.5
+days = 1
+type = "data"
+price = 12.99
+
+[[FJ.plans]]
+name = "Fiji"
+gb = 3
+days = 15
+type = "data"
+price = 13.99
+
+[[FJ.plans]]
+name = "Cruise & Asia Pacific"
+gb = 9
+days = 3
+type = "data"
+price = 14.49
+fup_note = "3 GB per day for 3 days"
+
+[[FJ.plans]]
+name = "Cruise & World"
+gb = 9
+days = 3
+type = "data"
+price = 14.49
+fup_note = "3 GB per day for 3 days"
+
+[[FJ.plans]]
+name = "World Plan Lite"
+gb = 3
+days = 15
+type = "data"
+price = 16.99
+
+[[FJ.plans]]
+name = "Cruise + Asia Pacific"
+gb = 0.488281
+days = 1
+type = "data"
+price = 17.99
+
+[[FJ.plans]]
+name = "Cruise + World"
+gb = 0.488281
+days = 1
+type = "data"
+price = 17.99
+
+[[FJ.plans]]
+name = "World Plan"
+gb = 3
+days = 15
+type = "data"
+price = 18.99
+
+[[FJ.plans]]
+name = "Fiji"
+gb = 5
+days = 30
+type = "data"
+price = 19.99
+
+[[FJ.plans]]
+name = "Vanuatu"
+gb = 5
+days = 30
+type = "data"
+price = 19.99
+
+[[FJ.plans]]
+name = "Cruise & Asia Pacific"
+gb = 1
+days = 7
+type = "data"
+price = 19.99
+
+[[FJ.plans]]
+name = "Cruise & World"
+gb = 1
+days = 7
+type = "data"
+price = 19.99
+
+[[FJ.plans]]
+name = "Cruise + World"
+gb = 0.244141
+days = 1
+type = "data"
+price = 19.99
+
+[[FJ.plans]]
+name = "Cruise + Asia Pacific"
+gb = 9
+days = 3
+type = "data"
+price = 20.49
+fup_note = "3 GB per day for 3 days"
+
+[[FJ.plans]]
+name = "Cruise + World"
+gb = 9
+days = 3
+type = "data"
+price = 20.49
+fup_note = "3 GB per day for 3 days"
+
+[[FJ.plans]]
+name = "Asia Pacific"
+gb = 10
+days = 30
+type = "data"
+price = 22.99
+
+[[FJ.plans]]
+name = "Asia Pacific"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[FJ.plans]]
+name = "World Plan Lite"
+gb = 5
+days = 15
+type = "data"
+price = 24.99
+
+[[FJ.plans]]
+name = "Fiji"
+gb = 10.5
+days = 3
+type = "data"
+price = 27.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[FJ.plans]]
+name = "Cruise & Asia Pacific"
+gb = 21
+days = 7
+type = "data"
+price = 31.99
+fup_note = "3 GB per day for 7 days"
+
+[[FJ.plans]]
+name = "Cruise & World"
+gb = 21
+days = 7
+type = "data"
+price = 31.99
+fup_note = "3 GB per day for 7 days"
+
+[[FJ.plans]]
+name = "Fiji"
+gb = 10
+days = 30
+type = "data"
+price = 32.99
+
+[[FJ.plans]]
+name = "Vanuatu"
+gb = 10
+days = 30
+type = "data"
+price = 32.99
+
+[[FJ.plans]]
+name = "World Plan"
+gb = 5
+days = 30
+type = "data"
+price = 32.99
+
+[[FJ.plans]]
+name = "Asia Pacific"
+gb = 20
+days = 60
+type = "data"
+price = 36.99
+
+[[FJ.plans]]
+name = "Cruise & Asia Pacific"
+gb = 3
+days = 15
+type = "data"
+price = 39.99
+
+[[FJ.plans]]
+name = "Cruise & World"
+gb = 3
+days = 15
+type = "data"
+price = 39.99
+
+[[FJ.plans]]
+name = "Cruise + Asia Pacific"
+gb = 21
+days = 7
+type = "data"
+price = 44.49
+fup_note = "3 GB per day for 7 days"
+
+[[FJ.plans]]
+name = "Cruise + World"
+gb = 21
+days = 7
+type = "data"
+price = 44.49
+fup_note = "3 GB per day for 7 days"
+
+[[FJ.plans]]
+name = "Asia Pacific"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+[[FJ.plans]]
+name = "World Plan Lite"
+gb = 10
+days = 60
+type = "data"
+price = 44.99
+
+[[FJ.plans]]
+name = "Asia Pacific"
+gb = 50
+days = 90
+type = "data"
+price = 57.99
+
+[[FJ.plans]]
+name = "Cruise & Asia Pacific"
+gb = 45
+days = 15
+type = "data"
+price = 59.49
+fup_note = "3 GB per day for 15 days"
+
+[[FJ.plans]]
+name = "Cruise & World"
+gb = 45
+days = 15
+type = "data"
+price = 59.49
+fup_note = "3 GB per day for 15 days"
+
+[[FJ.plans]]
+name = "Fiji"
+gb = 24.5
+days = 7
+type = "data"
+price = 60.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[FJ.plans]]
+name = "Cruise + Asia Pacific"
+gb = 3
+days = 15
+type = "data"
+price = 62.99
+
+[[FJ.plans]]
+name = "Cruise + World"
+gb = 3
+days = 15
+type = "data"
+price = 62.99
+
+[[FJ.plans]]
+name = "World Plan"
+gb = 10
+days = 60
+type = "data"
+price = 64.99
+
+[[FJ.plans]]
+name = "Cruise & Asia Pacific"
+gb = 5
+days = 30
+type = "data"
+price = 69.99
+
+[[FJ.plans]]
+name = "Cruise & World"
+gb = 5
+days = 30
+type = "data"
+price = 69.99
+
+[[FJ.plans]]
+name = "World Plan Lite"
+gb = 20
+days = 180
+type = "data"
+price = 79.99
+
+[[FJ.plans]]
+name = "Cruise + Asia Pacific"
+gb = 45
+days = 15
+type = "data"
+price = 82.99
+fup_note = "3 GB per day for 15 days"
+
+[[FJ.plans]]
+name = "Cruise + World"
+gb = 45
+days = 15
+type = "data"
+price = 82.99
+fup_note = "3 GB per day for 15 days"
+
+[[FJ.plans]]
+name = "World Plan"
+gb = 20
+days = 90
+type = "data"
+price = 99.99
+
+[[FJ.plans]]
+name = "Cruise + Asia Pacific"
+gb = 5
+days = 30
+type = "data"
+price = 99.99
+
+[[FJ.plans]]
+name = "Cruise + World"
+gb = 5
+days = 30
+type = "data"
+price = 99.99
+
+[[FJ.plans]]
+name = "World Plan Lite"
+gb = 50
+days = 180
+type = "data"
+price = 109.99
+
+[[FJ.plans]]
+name = "Fiji"
+gb = 52.5
+days = 15
+type = "data"
+price = 110.99
+fup_note = "3.5 GB per day for 15 days"
+
+[[FJ.plans]]
+name = "Cruise & Asia Pacific"
+gb = 10
+days = 30
+type = "data"
+price = 119.99
+
+[[FJ.plans]]
+name = "Cruise & World"
+gb = 10
+days = 30
+type = "data"
+price = 119.99
+
+[[FJ.plans]]
+name = "World Plan"
+gb = 50
+days = 180
+type = "data"
+price = 169.99
+
+[[FJ.plans]]
+name = "Cruise + Asia Pacific"
+gb = 10
+days = 30
+type = "data"
+price = 174.99
+
+[[FJ.plans]]
+name = "Cruise + World"
+gb = 10
+days = 30
+type = "data"
+price = 174.99
+
+[[FJ.plans]]
+name = "World Plan Lite"
+gb = 100
+days = 180
+type = "data"
+price = 179.99
+
+
+[FR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/france/gigsky"
+networks = []
+
+[[FR.plans]]
+name = "France"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[FR.plans]]
+name = "France"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[FR.plans]]
+name = "France"
+gb = 3
+days = 15
+type = "data"
+price = 6.49
+
+[[FR.plans]]
+name = "France"
+gb = 5
+days = 30
+type = "data"
+price = 10.29
+
+[[FR.plans]]
+name = "France"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[FR.plans]]
+name = "France"
+gb = 10
+days = 30
+type = "data"
+price = 14.79
+
+[[FR.plans]]
+name = "France"
+gb = 20
+days = 90
+type = "data"
+price = 20.49
+
+[[FR.plans]]
+name = "France"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[FR.plans]]
+name = "France"
+gb = 50
+days = 180
+type = "data"
+price = 34.39
+
+[[FR.plans]]
+name = "France"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[GB]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/uk/gigsky"
+networks = []
+
+[[GB.plans]]
+name = "United Kingdom"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[GB.plans]]
+name = "United Kingdom"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[GB.plans]]
+name = "United Kingdom"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[GB.plans]]
+name = "United Kingdom"
+gb = 10.5
+days = 3
+type = "data"
+price = 7.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[GB.plans]]
+name = "United Kingdom"
+gb = 5
+days = 30
+type = "data"
+price = 8.29
+
+[[GB.plans]]
+name = "United Kingdom"
+gb = 10
+days = 30
+type = "data"
+price = 9.79
+
+[[GB.plans]]
+name = "United Kingdom"
+gb = 24.5
+days = 7
+type = "data"
+price = 14.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[GB.plans]]
+name = "United Kingdom"
+gb = 20
+days = 90
+type = "data"
+price = 16.99
+
+[[GB.plans]]
+name = "United Kingdom"
+gb = 52.5
+days = 15
+type = "data"
+price = 23.49
+fup_note = "3.5 GB per day for 15 days"
+
+[[GB.plans]]
+name = "United Kingdom"
+gb = 50
+days = 180
+type = "data"
+price = 33.89
+
+
+[GE]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/georgia/gigsky"
+networks = []
+
+[[GE.plans]]
+name = "Georgia"
+gb = 1
+days = 15
+type = "data"
+price = 11.49
+
+[[GE.plans]]
+name = "Georgia"
+gb = 3
+days = 30
+type = "data"
+price = 24.99
+
+[[GE.plans]]
+name = "Georgia"
+gb = 5
+days = 30
+type = "data"
+price = 45.99
+
+[[GE.plans]]
+name = "Georgia"
+gb = 10
+days = 30
+type = "data"
+price = 65.99
+
+
+[GR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/greece/gigsky"
+networks = []
+
+[[GR.plans]]
+name = "Greece"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[GR.plans]]
+name = "Greece"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[GR.plans]]
+name = "Greece"
+gb = 3
+days = 15
+type = "data"
+price = 8.49
+
+[[GR.plans]]
+name = "Greece"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[GR.plans]]
+name = "Greece"
+gb = 5
+days = 30
+type = "data"
+price = 10.79
+
+[[GR.plans]]
+name = "Greece"
+gb = 10
+days = 30
+type = "data"
+price = 18.29
+
+[[GR.plans]]
+name = "Greece"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[GR.plans]]
+name = "Greece"
+gb = 20
+days = 90
+type = "data"
+price = 35.49
+
+[[GR.plans]]
+name = "Greece"
+gb = 50
+days = 180
+type = "data"
+price = 40.89
+
+[[GR.plans]]
+name = "Greece"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[HK]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/hong-kong/gigsky"
+networks = []
+
+[[HK.plans]]
+name = "Hong Kong"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[HK.plans]]
+name = "Hong Kong"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.99
+
+[[HK.plans]]
+name = "Hong Kong"
+gb = 3
+days = 15
+type = "data"
+price = 6.49
+
+[[HK.plans]]
+name = "Hong Kong"
+gb = 10.5
+days = 3
+type = "data"
+price = 8.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[HK.plans]]
+name = "Hong Kong"
+gb = 5
+days = 30
+type = "data"
+price = 8.99
+
+[[HK.plans]]
+name = "Hong Kong"
+gb = 10
+days = 30
+type = "data"
+price = 14.49
+
+[[HK.plans]]
+name = "Hong Kong"
+gb = 24.5
+days = 7
+type = "data"
+price = 18.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[HK.plans]]
+name = "Hong Kong"
+gb = 52.5
+days = 15
+type = "data"
+price = 33.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[HR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/croatia/gigsky"
+networks = []
+
+[[HR.plans]]
+name = "Croatia"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[HR.plans]]
+name = "Croatia"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[HR.plans]]
+name = "Croatia"
+gb = 3
+days = 15
+type = "data"
+price = 6.99
+
+[[HR.plans]]
+name = "Croatia"
+gb = 5
+days = 30
+type = "data"
+price = 9.29
+
+[[HR.plans]]
+name = "Croatia"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[HR.plans]]
+name = "Croatia"
+gb = 10
+days = 30
+type = "data"
+price = 14.79
+
+[[HR.plans]]
+name = "Croatia"
+gb = 20
+days = 90
+type = "data"
+price = 23.49
+
+[[HR.plans]]
+name = "Croatia"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[HR.plans]]
+name = "Croatia"
+gb = 50
+days = 180
+type = "data"
+price = 33.89
+
+[[HR.plans]]
+name = "Croatia"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[ID]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/indonesia/gigsky"
+networks = []
+
+[[ID.plans]]
+name = "Indonesia"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[ID.plans]]
+name = "Indonesia"
+gb = 1
+days = 7
+type = "data"
+price = 3.49
+
+[[ID.plans]]
+name = "Indonesia"
+gb = 3
+days = 15
+type = "data"
+price = 7.99
+
+[[ID.plans]]
+name = "Indonesia"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[ID.plans]]
+name = "Indonesia"
+gb = 5
+days = 30
+type = "data"
+price = 12.79
+
+[[ID.plans]]
+name = "Indonesia"
+gb = 10
+days = 30
+type = "data"
+price = 19.79
+
+[[ID.plans]]
+name = "Indonesia"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[ID.plans]]
+name = "Indonesia"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[IE]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/ireland/gigsky"
+networks = []
+
+[[IE.plans]]
+name = "Ireland"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[IE.plans]]
+name = "Ireland"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[IE.plans]]
+name = "Ireland"
+gb = 3
+days = 15
+type = "data"
+price = 6.99
+
+[[IE.plans]]
+name = "Ireland"
+gb = 5
+days = 30
+type = "data"
+price = 10.29
+
+[[IE.plans]]
+name = "Ireland"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[IE.plans]]
+name = "Ireland"
+gb = 10
+days = 30
+type = "data"
+price = 16.79
+
+[[IE.plans]]
+name = "Ireland"
+gb = 20
+days = 90
+type = "data"
+price = 23.99
+
+[[IE.plans]]
+name = "Ireland"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[IE.plans]]
+name = "Ireland"
+gb = 50
+days = 180
+type = "data"
+price = 40.89
+
+[[IE.plans]]
+name = "Ireland"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[IL]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/israel/gigsky"
+networks = []
+
+[[IL.plans]]
+name = "Israel"
+gb = 3.5
+days = 1
+type = "data"
+price = 4.99
+
+[[IL.plans]]
+name = "Cruise & Middle East"
+gb = 3
+days = 1
+type = "data"
+price = 4.99
+
+[[IL.plans]]
+name = "Cruise & World"
+gb = 3
+days = 1
+type = "data"
+price = 4.99
+
+[[IL.plans]]
+name = "Israel"
+gb = 1
+days = 7
+type = "data"
+price = 4.99
+
+[[IL.plans]]
+name = "Palestine"
+gb = 1
+days = 7
+type = "data"
+price = 5.99
+
+[[IL.plans]]
+name = "Middle East"
+gb = 1
+days = 7
+type = "data"
+price = 5.99
+
+[[IL.plans]]
+name = "Palestine"
+gb = 3.5
+days = 1
+type = "data"
+price = 6.99
+
+[[IL.plans]]
+name = "Cruise + World"
+gb = 3
+days = 1
+type = "data"
+price = 6.99
+
+[[IL.plans]]
+name = "Cruise + Middle East"
+gb = 3
+days = 1
+type = "data"
+price = 6.99
+
+[[IL.plans]]
+name = "World Plan Lite"
+gb = 1
+days = 15
+type = "data"
+price = 6.99
+
+[[IL.plans]]
+name = "World Plan"
+gb = 1
+days = 7
+type = "data"
+price = 7.99
+
+[[IL.plans]]
+name = "World Plan Lite"
+gb = 2
+days = 15
+type = "data"
+price = 9.99
+
+[[IL.plans]]
+name = "Israel"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[IL.plans]]
+name = "Cruise & Middle East"
+gb = 0.488281
+days = 1
+type = "data"
+price = 10.99
+
+[[IL.plans]]
+name = "Cruise & World"
+gb = 0.488281
+days = 1
+type = "data"
+price = 10.99
+
+[[IL.plans]]
+name = "Israel"
+gb = 3
+days = 15
+type = "data"
+price = 12.99
+
+[[IL.plans]]
+name = "Cruise & Middle East"
+gb = 9
+days = 3
+type = "data"
+price = 14.49
+fup_note = "3 GB per day for 3 days"
+
+[[IL.plans]]
+name = "Cruise & World"
+gb = 9
+days = 3
+type = "data"
+price = 14.49
+fup_note = "3 GB per day for 3 days"
+
+[[IL.plans]]
+name = "Middle East"
+gb = 5
+days = 30
+type = "data"
+price = 14.49
+
+[[IL.plans]]
+name = "Palestine"
+gb = 10.5
+days = 3
+type = "data"
+price = 14.99
+fup_note = "3.5 GB per day for 3 days"
+
+[[IL.plans]]
+name = "Palestine"
+gb = 3
+days = 15
+type = "data"
+price = 15.49
+
+[[IL.plans]]
+name = "World Plan Lite"
+gb = 3
+days = 15
+type = "data"
+price = 16.99
+
+[[IL.plans]]
+name = "Cruise + Middle East"
+gb = 0.488281
+days = 1
+type = "data"
+price = 17.99
+
+[[IL.plans]]
+name = "Cruise + World"
+gb = 0.488281
+days = 1
+type = "data"
+price = 17.99
+
+[[IL.plans]]
+name = "World Plan"
+gb = 3
+days = 15
+type = "data"
+price = 18.99
+
+[[IL.plans]]
+name = "Middle East"
+gb = 3
+days = 15
+type = "data"
+price = 19.99
+
+[[IL.plans]]
+name = "Cruise & Middle East"
+gb = 1
+days = 7
+type = "data"
+price = 19.99
+
+[[IL.plans]]
+name = "Cruise & World"
+gb = 1
+days = 7
+type = "data"
+price = 19.99
+
+[[IL.plans]]
+name = "Cruise + World"
+gb = 0.244141
+days = 1
+type = "data"
+price = 19.99
+
+[[IL.plans]]
+name = "Cruise + World"
+gb = 9
+days = 3
+type = "data"
+price = 20.49
+fup_note = "3 GB per day for 3 days"
+
+[[IL.plans]]
+name = "Cruise + Middle East"
+gb = 9
+days = 3
+type = "data"
+price = 20.49
+fup_note = "3 GB per day for 3 days"
+
+[[IL.plans]]
+name = "Israel"
+gb = 5
+days = 30
+type = "data"
+price = 20.99
+
+[[IL.plans]]
+name = "Israel"
+gb = 24.5
+days = 7
+type = "data"
+price = 23.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[IL.plans]]
+name = "Middle East"
+gb = 10
+days = 30
+type = "data"
+price = 23.99
+
+[[IL.plans]]
+name = "World Plan Lite"
+gb = 5
+days = 15
+type = "data"
+price = 24.99
+
+[[IL.plans]]
+name = "Palestine"
+gb = 5
+days = 30
+type = "data"
+price = 25.49
+
+[[IL.plans]]
+name = "Palestine"
+gb = 24.5
+days = 7
+type = "data"
+price = 31.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[IL.plans]]
+name = "Cruise & Middle East"
+gb = 21
+days = 7
+type = "data"
+price = 31.99
+fup_note = "3 GB per day for 7 days"
+
+[[IL.plans]]
+name = "Cruise & World"
+gb = 21
+days = 7
+type = "data"
+price = 31.99
+fup_note = "3 GB per day for 7 days"
+
+[[IL.plans]]
+name = "World Plan"
+gb = 5
+days = 30
+type = "data"
+price = 32.99
+
+[[IL.plans]]
+name = "Israel"
+gb = 10
+days = 30
+type = "data"
+price = 36.49
+
+[[IL.plans]]
+name = "Cruise & Middle East"
+gb = 3
+days = 15
+type = "data"
+price = 39.99
+
+[[IL.plans]]
+name = "Cruise & World"
+gb = 3
+days = 15
+type = "data"
+price = 39.99
+
+[[IL.plans]]
+name = "Middle East"
+gb = 20
+days = 30
+type = "data"
+price = 41.99
+
+[[IL.plans]]
+name = "Israel"
+gb = 52.5
+days = 15
+type = "data"
+price = 42.49
+fup_note = "3.5 GB per day for 15 days"
+
+[[IL.plans]]
+name = "Cruise + World"
+gb = 21
+days = 7
+type = "data"
+price = 44.49
+fup_note = "3 GB per day for 7 days"
+
+[[IL.plans]]
+name = "Cruise + Middle East"
+gb = 21
+days = 7
+type = "data"
+price = 44.49
+fup_note = "3 GB per day for 7 days"
+
+[[IL.plans]]
+name = "World Plan Lite"
+gb = 10
+days = 60
+type = "data"
+price = 44.99
+
+[[IL.plans]]
+name = "Palestine"
+gb = 10
+days = 30
+type = "data"
+price = 47.49
+
+[[IL.plans]]
+name = "Palestine"
+gb = 52.5
+days = 15
+type = "data"
+price = 55.99
+fup_note = "3.5 GB per day for 15 days"
+
+[[IL.plans]]
+name = "Cruise & Middle East"
+gb = 45
+days = 15
+type = "data"
+price = 59.49
+fup_note = "3 GB per day for 15 days"
+
+[[IL.plans]]
+name = "Cruise & World"
+gb = 45
+days = 15
+type = "data"
+price = 59.49
+fup_note = "3 GB per day for 15 days"
+
+[[IL.plans]]
+name = "Cruise + Middle East"
+gb = 3
+days = 15
+type = "data"
+price = 62.99
+
+[[IL.plans]]
+name = "Cruise + World"
+gb = 3
+days = 15
+type = "data"
+price = 62.99
+
+[[IL.plans]]
+name = "World Plan"
+gb = 10
+days = 60
+type = "data"
+price = 64.99
+
+[[IL.plans]]
+name = "Cruise & Middle East"
+gb = 5
+days = 30
+type = "data"
+price = 69.99
+
+[[IL.plans]]
+name = "Cruise & World"
+gb = 5
+days = 30
+type = "data"
+price = 69.99
+
+[[IL.plans]]
+name = "World Plan Lite"
+gb = 20
+days = 180
+type = "data"
+price = 79.99
+
+[[IL.plans]]
+name = "Cruise + World"
+gb = 45
+days = 15
+type = "data"
+price = 82.99
+fup_note = "3 GB per day for 15 days"
+
+[[IL.plans]]
+name = "Cruise + Middle East"
+gb = 45
+days = 15
+type = "data"
+price = 82.99
+fup_note = "3 GB per day for 15 days"
+
+[[IL.plans]]
+name = "World Plan"
+gb = 20
+days = 90
+type = "data"
+price = 99.99
+
+[[IL.plans]]
+name = "Cruise + Middle East"
+gb = 5
+days = 30
+type = "data"
+price = 99.99
+
+[[IL.plans]]
+name = "Cruise + World"
+gb = 5
+days = 30
+type = "data"
+price = 99.99
+
+[[IL.plans]]
+name = "World Plan Lite"
+gb = 50
+days = 180
+type = "data"
+price = 109.99
+
+[[IL.plans]]
+name = "Cruise & Middle East"
+gb = 10
+days = 30
+type = "data"
+price = 119.99
+
+[[IL.plans]]
+name = "Cruise & World"
+gb = 10
+days = 30
+type = "data"
+price = 119.99
+
+[[IL.plans]]
+name = "World Plan"
+gb = 50
+days = 180
+type = "data"
+price = 169.99
+
+[[IL.plans]]
+name = "Cruise + Middle East"
+gb = 10
+days = 30
+type = "data"
+price = 174.99
+
+[[IL.plans]]
+name = "Cruise + World"
+gb = 10
+days = 30
+type = "data"
+price = 174.99
+
+[[IL.plans]]
+name = "World Plan Lite"
+gb = 100
+days = 180
+type = "data"
+price = 179.99
+
+
+[IN]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/india/gigsky"
+networks = []
+
+[[IN.plans]]
+name = "India"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[IN.plans]]
+name = "India"
+gb = 3.5
+days = 1
+type = "data"
+price = 6.99
+
+[[IN.plans]]
+name = "India"
+gb = 3
+days = 15
+type = "data"
+price = 8.99
+
+[[IN.plans]]
+name = "India"
+gb = 5
+days = 30
+type = "data"
+price = 13.29
+
+[[IN.plans]]
+name = "India"
+gb = 10.5
+days = 3
+type = "data"
+price = 14.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[IN.plans]]
+name = "India"
+gb = 10
+days = 30
+type = "data"
+price = 22.79
+
+[[IN.plans]]
+name = "India"
+gb = 24.5
+days = 7
+type = "data"
+price = 28.99
+fup_note = "3.5 GB per day for 7 days"
+
+[[IN.plans]]
+name = "India"
+gb = 52.5
+days = 15
+type = "data"
+price = 46.49
+fup_note = "3.5 GB per day for 15 days"
+
+
+[IS]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/iceland/gigsky"
+networks = []
+
+[[IS.plans]]
+name = "Iceland"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[IS.plans]]
+name = "Iceland"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[IS.plans]]
+name = "Iceland"
+gb = 3
+days = 15
+type = "data"
+price = 7.49
+
+[[IS.plans]]
+name = "Iceland"
+gb = 5
+days = 30
+type = "data"
+price = 10.29
+
+[[IS.plans]]
+name = "Iceland"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[IS.plans]]
+name = "Iceland"
+gb = 10
+days = 30
+type = "data"
+price = 17.29
+
+[[IS.plans]]
+name = "Iceland"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[IS.plans]]
+name = "Iceland"
+gb = 20
+days = 90
+type = "data"
+price = 28.49
+
+[[IS.plans]]
+name = "Iceland"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+[[IS.plans]]
+name = "Iceland"
+gb = 50
+days = 180
+type = "data"
+price = 47.89
+
+
+[IT]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/italy/gigsky"
+networks = []
+
+[[IT.plans]]
+name = "Italy"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[IT.plans]]
+name = "Italy"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[IT.plans]]
+name = "Italy"
+gb = 3
+days = 15
+type = "data"
+price = 6.99
+
+[[IT.plans]]
+name = "Italy"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[IT.plans]]
+name = "Italy"
+gb = 5
+days = 30
+type = "data"
+price = 11.29
+
+[[IT.plans]]
+name = "Italy"
+gb = 10
+days = 30
+type = "data"
+price = 17.79
+
+[[IT.plans]]
+name = "Italy"
+gb = 20
+days = 90
+type = "data"
+price = 23.99
+
+[[IT.plans]]
+name = "Italy"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[IT.plans]]
+name = "Italy"
+gb = 50
+days = 180
+type = "data"
+price = 33.89
+
+[[IT.plans]]
+name = "Italy"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[JP]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/japan/gigsky"
+networks = []
+
+[[JP.plans]]
+name = "Japan"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[JP.plans]]
+name = "Japan"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[JP.plans]]
+name = "Japan"
+gb = 3
+days = 15
+type = "data"
+price = 7.49
+
+[[JP.plans]]
+name = "Japan"
+gb = 5
+days = 30
+type = "data"
+price = 10.29
+
+[[JP.plans]]
+name = "Japan"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[JP.plans]]
+name = "Japan"
+gb = 10
+days = 30
+type = "data"
+price = 16.79
+
+[[JP.plans]]
+name = "Japan"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[JP.plans]]
+name = "Japan"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[KE]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/kenya/gigsky"
+networks = []
+
+[[KE.plans]]
+name = "Kenya"
+gb = 1
+days = 7
+type = "data"
+price = 5.99
+
+[[KE.plans]]
+name = "Kenya"
+gb = 3.5
+days = 1
+type = "data"
+price = 10.99
+
+[[KE.plans]]
+name = "Kenya"
+gb = 3
+days = 15
+type = "data"
+price = 14.99
+
+[[KE.plans]]
+name = "Kenya"
+gb = 10.5
+days = 3
+type = "data"
+price = 22.99
+fup_note = "3.5 GB per day for 3 days"
+
+[[KE.plans]]
+name = "Kenya"
+gb = 5
+days = 30
+type = "data"
+price = 23.99
+
+[[KE.plans]]
+name = "Kenya"
+gb = 10
+days = 30
+type = "data"
+price = 42.99
+
+[[KE.plans]]
+name = "Kenya"
+gb = 24.5
+days = 7
+type = "data"
+price = 45.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[KE.plans]]
+name = "Kenya"
+gb = 52.5
+days = 15
+type = "data"
+price = 73.49
+fup_note = "3.5 GB per day for 15 days"
+
+
+[KR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/south-korea/gigsky"
+networks = []
+
+[[KR.plans]]
+name = "South Korea"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[KR.plans]]
+name = "South Korea"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[KR.plans]]
+name = "South Korea"
+gb = 10.5
+days = 3
+type = "data"
+price = 7.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[KR.plans]]
+name = "South Korea"
+gb = 3
+days = 15
+type = "data"
+price = 8.49
+
+[[KR.plans]]
+name = "South Korea"
+gb = 5
+days = 30
+type = "data"
+price = 10.29
+
+[[KR.plans]]
+name = "South Korea"
+gb = 24.5
+days = 7
+type = "data"
+price = 16.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[KR.plans]]
+name = "South Korea"
+gb = 10
+days = 30
+type = "data"
+price = 17.79
+
+[[KR.plans]]
+name = "South Korea"
+gb = 52.5
+days = 15
+type = "data"
+price = 29.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[MA]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/morocco/gigsky"
+networks = []
+
+[[MA.plans]]
+name = "Morocco"
+gb = 3.5
+days = 1
+type = "data"
+price = 7.99
+
+[[MA.plans]]
+name = "Morocco"
+gb = 0.488281
+days = 7
+type = "data"
+price = 11.49
+
+[[MA.plans]]
+name = "Morocco"
+gb = 0.488281
+days = 7
+type = "data"
+price = 13.99
+
+[[MA.plans]]
+name = "Morocco"
+gb = 10.5
+days = 3
+type = "data"
+price = 16.99
+fup_note = "3.5 GB per day for 3 days"
+
+[[MA.plans]]
+name = "Morocco"
+gb = 1
+days = 15
+type = "data"
+price = 17.49
+
+[[MA.plans]]
+name = "Morocco"
+gb = 2
+days = 30
+type = "data"
+price = 29.99
+
+[[MA.plans]]
+name = "Morocco"
+gb = 24.5
+days = 7
+type = "data"
+price = 36.99
+fup_note = "3.5 GB per day for 7 days"
+
+[[MA.plans]]
+name = "Morocco"
+gb = 3
+days = 15
+type = "data"
+price = 39.99
+
+[[MA.plans]]
+name = "Morocco"
+gb = 52.5
+days = 15
+type = "data"
+price = 68.49
+fup_note = "3.5 GB per day for 15 days"
+
+[[MA.plans]]
+name = "Morocco"
+gb = 10
+days = 30
+type = "data"
+price = 138.99
+
+
+[MO]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/macau/gigsky"
+networks = []
+
+[[MO.plans]]
+name = "Macau"
+gb = 1
+days = 7
+type = "data"
+price = 4.99
+
+[[MO.plans]]
+name = "Macau"
+gb = 3.5
+days = 1
+type = "data"
+price = 7.99
+
+[[MO.plans]]
+name = "Macau"
+gb = 3
+days = 15
+type = "data"
+price = 11.99
+
+[[MO.plans]]
+name = "Macau"
+gb = 5
+days = 30
+type = "data"
+price = 19.99
+
+[[MO.plans]]
+name = "Macau"
+gb = 10.5
+days = 3
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[MO.plans]]
+name = "Macau"
+gb = 10
+days = 30
+type = "data"
+price = 32.99
+
+[[MO.plans]]
+name = "Macau"
+gb = 24.5
+days = 7
+type = "data"
+price = 56.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[MO.plans]]
+name = "Macau"
+gb = 52.5
+days = 15
+type = "data"
+price = 103.49
+fup_note = "3.5 GB per day for 15 days"
+
+
+[MX]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/mexico/gigsky"
+networks = []
+
+[[MX.plans]]
+name = "Mexico"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[MX.plans]]
+name = "Mexico"
+gb = 3.5
+days = 1
+type = "data"
+price = 4.99
+
+[[MX.plans]]
+name = "Mexico"
+gb = 3
+days = 15
+type = "data"
+price = 8.49
+
+[[MX.plans]]
+name = "Mexico"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[MX.plans]]
+name = "Mexico"
+gb = 5
+days = 30
+type = "data"
+price = 14.99
+
+[[MX.plans]]
+name = "Mexico"
+gb = 24.5
+days = 7
+type = "data"
+price = 20.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[MX.plans]]
+name = "Mexico"
+gb = 10
+days = 30
+type = "data"
+price = 21.49
+
+[[MX.plans]]
+name = "Mexico"
+gb = 20
+days = 180
+type = "data"
+price = 29.99
+
+[[MX.plans]]
+name = "Mexico"
+gb = 52.5
+days = 15
+type = "data"
+price = 33.49
+fup_note = "3.5 GB per day for 15 days"
+
+[[MX.plans]]
+name = "Mexico"
+gb = 50
+days = 90
+type = "data"
+price = 59.99
+
+
+[MY]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/malaysia/gigsky"
+networks = []
+
+[[MY.plans]]
+name = "Malaysia"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[MY.plans]]
+name = "Malaysia"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[MY.plans]]
+name = "Malaysia"
+gb = 3
+days = 15
+type = "data"
+price = 7.49
+
+[[MY.plans]]
+name = "Malaysia"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[MY.plans]]
+name = "Malaysia"
+gb = 5
+days = 30
+type = "data"
+price = 11.29
+
+[[MY.plans]]
+name = "Malaysia"
+gb = 10
+days = 30
+type = "data"
+price = 18.79
+
+[[MY.plans]]
+name = "Malaysia"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[MY.plans]]
+name = "Malaysia"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[NL]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/netherlands/gigsky"
+networks = []
+
+[[NL.plans]]
+name = "Netherlands"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[NL.plans]]
+name = "Netherlands"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[NL.plans]]
+name = "Netherlands"
+gb = 3
+days = 15
+type = "data"
+price = 6.99
+
+[[NL.plans]]
+name = "Netherlands"
+gb = 5
+days = 30
+type = "data"
+price = 9.29
+
+[[NL.plans]]
+name = "Netherlands"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[NL.plans]]
+name = "Netherlands"
+gb = 10
+days = 30
+type = "data"
+price = 16.79
+
+[[NL.plans]]
+name = "Netherlands"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[NL.plans]]
+name = "Netherlands"
+gb = 20
+days = 90
+type = "data"
+price = 24.99
+
+[[NL.plans]]
+name = "Netherlands"
+gb = 50
+days = 180
+type = "data"
+price = 34.89
+
+[[NL.plans]]
+name = "Netherlands"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[NZ]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/new-zealand/gigsky"
+networks = []
+
+[[NZ.plans]]
+name = "New Zealand"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[NZ.plans]]
+name = "New Zealand"
+gb = 1
+days = 7
+type = "data"
+price = 4.99
+
+[[NZ.plans]]
+name = "New Zealand"
+gb = 10.5
+days = 3
+type = "data"
+price = 7.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[NZ.plans]]
+name = "New Zealand"
+gb = 3
+days = 15
+type = "data"
+price = 11.99
+
+[[NZ.plans]]
+name = "New Zealand"
+gb = 24.5
+days = 7
+type = "data"
+price = 16.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[NZ.plans]]
+name = "New Zealand"
+gb = 5
+days = 30
+type = "data"
+price = 19.99
+
+[[NZ.plans]]
+name = "New Zealand"
+gb = 52.5
+days = 15
+type = "data"
+price = 29.99
+fup_note = "3.5 GB per day for 15 days"
+
+[[NZ.plans]]
+name = "New Zealand"
+gb = 10
+days = 30
+type = "data"
+price = 32.99
+
+
+[PE]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/peru/gigsky"
+networks = []
+
+[[PE.plans]]
+name = "Peru"
+gb = 1
+days = 7
+type = "data"
+price = 3.49
+
+[[PE.plans]]
+name = "Peru"
+gb = 3.5
+days = 1
+type = "data"
+price = 5.49
+
+[[PE.plans]]
+name = "Peru"
+gb = 3
+days = 15
+type = "data"
+price = 10.49
+
+[[PE.plans]]
+name = "Peru"
+gb = 10.5
+days = 3
+type = "data"
+price = 18.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[PE.plans]]
+name = "Peru"
+gb = 5
+days = 30
+type = "data"
+price = 18.79
+
+[[PE.plans]]
+name = "Peru"
+gb = 10
+days = 30
+type = "data"
+price = 24.79
+
+[[PE.plans]]
+name = "Peru"
+gb = 24.5
+days = 7
+type = "data"
+price = 33.99
+fup_note = "3.5 GB per day for 7 days"
+
+[[PE.plans]]
+name = "Peru"
+gb = 52.5
+days = 15
+type = "data"
+price = 46.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[PH]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/philippines/gigsky"
+networks = []
+
+[[PH.plans]]
+name = "Philippines"
+gb = 1
+days = 7
+type = "data"
+price = 11.49
+
+[[PH.plans]]
+name = "Philippines"
+gb = 3
+days = 15
+type = "data"
+price = 29.99
+
+[[PH.plans]]
+name = "Philippines"
+gb = 5
+days = 30
+type = "data"
+price = 48.49
+
+[[PH.plans]]
+name = "Philippines"
+gb = 10
+days = 30
+type = "data"
+price = 96.99
+
+
+[PL]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/poland/gigsky"
+networks = []
+
+[[PL.plans]]
+name = "Poland"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[PL.plans]]
+name = "Poland"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[PL.plans]]
+name = "Poland"
+gb = 3
+days = 15
+type = "data"
+price = 5.49
+
+[[PL.plans]]
+name = "Poland"
+gb = 5
+days = 30
+type = "data"
+price = 7.79
+
+[[PL.plans]]
+name = "Poland"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[PL.plans]]
+name = "Poland"
+gb = 10
+days = 30
+type = "data"
+price = 10.79
+
+[[PL.plans]]
+name = "Poland"
+gb = 20
+days = 90
+type = "data"
+price = 16.99
+
+[[PL.plans]]
+name = "Poland"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[PL.plans]]
+name = "Poland"
+gb = 50
+days = 180
+type = "data"
+price = 33.89
+
+[[PL.plans]]
+name = "Poland"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[PT]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/portugal/gigsky"
+networks = []
+
+[[PT.plans]]
+name = "Portugal"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[PT.plans]]
+name = "Portugal"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[PT.plans]]
+name = "Portugal"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[PT.plans]]
+name = "Portugal"
+gb = 5
+days = 30
+type = "data"
+price = 8.29
+
+[[PT.plans]]
+name = "Portugal"
+gb = 10
+days = 30
+type = "data"
+price = 9.79
+
+[[PT.plans]]
+name = "Portugal"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[PT.plans]]
+name = "Portugal"
+gb = 20
+days = 90
+type = "data"
+price = 16.99
+
+[[PT.plans]]
+name = "Portugal"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[PT.plans]]
+name = "Portugal"
+gb = 50
+days = 180
+type = "data"
+price = 33.89
+
+[[PT.plans]]
+name = "Portugal"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[QA]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/qatar/gigsky"
+networks = []
+
+[[QA.plans]]
+name = "Qatar"
+gb = 1
+days = 7
+type = "data"
+price = 6.99
+
+[[QA.plans]]
+name = "Qatar"
+gb = 3.5
+days = 1
+type = "data"
+price = 8.99
+
+[[QA.plans]]
+name = "Qatar"
+gb = 3
+days = 15
+type = "data"
+price = 16.99
+
+[[QA.plans]]
+name = "Qatar"
+gb = 10.5
+days = 3
+type = "data"
+price = 18.99
+fup_note = "3.5 GB per day for 3 days"
+
+[[QA.plans]]
+name = "Qatar"
+gb = 5
+days = 30
+type = "data"
+price = 29.99
+
+[[QA.plans]]
+name = "Qatar"
+gb = 24.5
+days = 7
+type = "data"
+price = 37.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[QA.plans]]
+name = "Qatar"
+gb = 10
+days = 30
+type = "data"
+price = 39.99
+
+[[QA.plans]]
+name = "Qatar"
+gb = 52.5
+days = 15
+type = "data"
+price = 59.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[SA]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/saudi-arabia/gigsky"
+networks = []
+
+[[SA.plans]]
+name = "Saudi Arabia"
+gb = 1
+days = 7
+type = "data"
+price = 6.99
+
+[[SA.plans]]
+name = "Saudi Arabia"
+gb = 3
+days = 15
+type = "data"
+price = 17.99
+
+[[SA.plans]]
+name = "Saudi Arabia"
+gb = 5
+days = 30
+type = "data"
+price = 27.99
+
+[[SA.plans]]
+name = "Saudi Arabia"
+gb = 10
+days = 30
+type = "data"
+price = 48.49
+
+[[SA.plans]]
+name = "Saudi Arabia"
+gb = 50
+days = 90
+type = "data"
+price = 131.99
+
+[[SA.plans]]
+name = "Saudi Arabia"
+gb = 100
+days = 180
+type = "data"
+price = 197.99
+
+
+[SG]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/singapore/gigsky"
+networks = []
+
+[[SG.plans]]
+name = "Singapore"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[SG.plans]]
+name = "Singapore"
+gb = 1
+days = 7
+type = "data"
+price = 10.49
+
+[[SG.plans]]
+name = "Singapore"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.99
+fup_note = "3.5 GB per day for 3 days"
+
+[[SG.plans]]
+name = "Singapore"
+gb = 24.5
+days = 7
+type = "data"
+price = 25.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[SG.plans]]
+name = "Singapore"
+gb = 3
+days = 15
+type = "data"
+price = 27.49
+
+[[SG.plans]]
+name = "Singapore"
+gb = 5
+days = 30
+type = "data"
+price = 45.99
+
+[[SG.plans]]
+name = "Singapore"
+gb = 52.5
+days = 15
+type = "data"
+price = 46.49
+fup_note = "3.5 GB per day for 15 days"
+
+[[SG.plans]]
+name = "Singapore"
+gb = 10
+days = 30
+type = "data"
+price = 84.99
+
+
+[TH]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/thailand/gigsky"
+networks = []
+
+[[TH.plans]]
+name = "Thailand"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[TH.plans]]
+name = "Thailand"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[TH.plans]]
+name = "Thailand"
+gb = 3
+days = 15
+type = "data"
+price = 5.49
+
+[[TH.plans]]
+name = "Thailand"
+gb = 5
+days = 30
+type = "data"
+price = 7.29
+
+[[TH.plans]]
+name = "Thailand"
+gb = 10
+days = 30
+type = "data"
+price = 9.79
+
+[[TH.plans]]
+name = "Thailand"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[TH.plans]]
+name = "Thailand"
+gb = 20
+days = 90
+type = "data"
+price = 15.99
+
+[[TH.plans]]
+name = "Thailand"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[TH.plans]]
+name = "Thailand"
+gb = 50
+days = 180
+type = "data"
+price = 26.39
+
+[[TH.plans]]
+name = "Thailand"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[TR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/turkey/gigsky"
+networks = []
+
+[[TR.plans]]
+name = "Turkey"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[TR.plans]]
+name = "Turkey"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[TR.plans]]
+name = "Turkey"
+gb = 3
+days = 15
+type = "data"
+price = 5.99
+
+[[TR.plans]]
+name = "Turkey"
+gb = 5
+days = 30
+type = "data"
+price = 9.29
+
+[[TR.plans]]
+name = "Turkey"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[TR.plans]]
+name = "Turkey"
+gb = 10
+days = 30
+type = "data"
+price = 14.29
+
+[[TR.plans]]
+name = "Turkey"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[TR.plans]]
+name = "Turkey"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[TW]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/taiwan/gigsky"
+networks = []
+
+[[TW.plans]]
+name = "Taiwan"
+gb = 1
+days = 7
+type = "data"
+price = 4.99
+
+[[TW.plans]]
+name = "Taiwan"
+gb = 3.5
+days = 1
+type = "data"
+price = 5.49
+
+[[TW.plans]]
+name = "Taiwan"
+gb = 10.5
+days = 3
+type = "data"
+price = 11.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[TW.plans]]
+name = "Taiwan"
+gb = 3
+days = 15
+type = "data"
+price = 12.99
+
+[[TW.plans]]
+name = "Taiwan"
+gb = 5
+days = 30
+type = "data"
+price = 21.99
+
+[[TW.plans]]
+name = "Taiwan"
+gb = 24.5
+days = 7
+type = "data"
+price = 25.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[TW.plans]]
+name = "Taiwan"
+gb = 10
+days = 30
+type = "data"
+price = 36.49
+
+[[TW.plans]]
+name = "Taiwan"
+gb = 52.5
+days = 15
+type = "data"
+price = 46.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[US]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/usa/gigsky"
+networks = []
+
+[[US.plans]]
+name = "North America"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[US.plans]]
+name = "United States"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[US.plans]]
+name = "United States"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[US.plans]]
+name = "North America"
+gb = 3.5
+days = 1
+type = "data"
+price = 4.99
+
+[[US.plans]]
+name = "Cruise & Americas/Caribbean"
+gb = 3
+days = 1
+type = "data"
+price = 4.99
+
+[[US.plans]]
+name = "Cruise & World"
+gb = 3
+days = 1
+type = "data"
+price = 4.99
+
+[[US.plans]]
+name = "Cruise + Americas/Caribbean"
+gb = 3
+days = 1
+type = "data"
+price = 6.99
+
+[[US.plans]]
+name = "Cruise + World"
+gb = 3
+days = 1
+type = "data"
+price = 6.99
+
+[[US.plans]]
+name = "World Plan Lite"
+gb = 1
+days = 15
+type = "data"
+price = 6.99
+
+[[US.plans]]
+name = "World Plan"
+gb = 1
+days = 7
+type = "data"
+price = 7.99
+
+[[US.plans]]
+name = "United States"
+gb = 3
+days = 15
+type = "data"
+price = 8.49
+
+[[US.plans]]
+name = "North America"
+gb = 3
+days = 15
+type = "data"
+price = 8.99
+
+[[US.plans]]
+name = "World Plan Lite"
+gb = 2
+days = 15
+type = "data"
+price = 9.99
+
+[[US.plans]]
+name = "United States"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[US.plans]]
+name = "North America"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[US.plans]]
+name = "Cruise & Americas/Caribbean"
+gb = 0.488281
+days = 1
+type = "data"
+price = 10.99
+
+[[US.plans]]
+name = "Cruise & World"
+gb = 0.488281
+days = 1
+type = "data"
+price = 10.99
+
+[[US.plans]]
+name = "United States"
+gb = 5
+days = 30
+type = "data"
+price = 12.49
+
+[[US.plans]]
+name = "Cruise & Americas/Caribbean"
+gb = 9
+days = 3
+type = "data"
+price = 14.49
+fup_note = "3 GB per day for 3 days"
+
+[[US.plans]]
+name = "Cruise & World"
+gb = 9
+days = 3
+type = "data"
+price = 14.49
+fup_note = "3 GB per day for 3 days"
+
+[[US.plans]]
+name = "North America"
+gb = 5
+days = 30
+type = "data"
+price = 14.99
+
+[[US.plans]]
+name = "World Plan Lite"
+gb = 3
+days = 15
+type = "data"
+price = 16.99
+
+[[US.plans]]
+name = "Cruise + Americas/Caribbean"
+gb = 0.488281
+days = 1
+type = "data"
+price = 17.99
+
+[[US.plans]]
+name = "Cruise + World"
+gb = 0.488281
+days = 1
+type = "data"
+price = 17.99
+
+[[US.plans]]
+name = "World Plan"
+gb = 3
+days = 15
+type = "data"
+price = 18.99
+
+[[US.plans]]
+name = "Cruise & Americas/Caribbean"
+gb = 1
+days = 7
+type = "data"
+price = 19.99
+
+[[US.plans]]
+name = "Cruise & World"
+gb = 1
+days = 7
+type = "data"
+price = 19.99
+
+[[US.plans]]
+name = "Cruise + World"
+gb = 0.244141
+days = 1
+type = "data"
+price = 19.99
+
+[[US.plans]]
+name = "North America"
+gb = 24.5
+days = 7
+type = "data"
+price = 20.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[US.plans]]
+name = "Cruise + Americas/Caribbean"
+gb = 9
+days = 3
+type = "data"
+price = 20.49
+fup_note = "3 GB per day for 3 days"
+
+[[US.plans]]
+name = "Cruise + World"
+gb = 9
+days = 3
+type = "data"
+price = 20.49
+fup_note = "3 GB per day for 3 days"
+
+[[US.plans]]
+name = "United States"
+gb = 10
+days = 30
+type = "data"
+price = 21.49
+
+[[US.plans]]
+name = "North America"
+gb = 10
+days = 30
+type = "data"
+price = 21.99
+
+[[US.plans]]
+name = "United States"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[US.plans]]
+name = "World Plan Lite"
+gb = 5
+days = 15
+type = "data"
+price = 24.99
+
+[[US.plans]]
+name = "North America"
+gb = 20
+days = 180
+type = "data"
+price = 29.99
+
+[[US.plans]]
+name = "United States"
+gb = 20
+days = 180
+type = "data"
+price = 29.99
+
+[[US.plans]]
+name = "Cruise & Americas/Caribbean"
+gb = 21
+days = 7
+type = "data"
+price = 31.99
+fup_note = "3 GB per day for 7 days"
+
+[[US.plans]]
+name = "Cruise & World"
+gb = 21
+days = 7
+type = "data"
+price = 31.99
+fup_note = "3 GB per day for 7 days"
+
+[[US.plans]]
+name = "World Plan"
+gb = 5
+days = 30
+type = "data"
+price = 32.99
+
+[[US.plans]]
+name = "North America"
+gb = 52.5
+days = 15
+type = "data"
+price = 33.49
+fup_note = "3.5 GB per day for 15 days"
+
+[[US.plans]]
+name = "United States"
+gb = 50
+days = 90
+type = "data"
+price = 39.99
+
+[[US.plans]]
+name = "Cruise & Americas/Caribbean"
+gb = 3
+days = 15
+type = "data"
+price = 39.99
+
+[[US.plans]]
+name = "Cruise & World"
+gb = 3
+days = 15
+type = "data"
+price = 39.99
+
+[[US.plans]]
+name = "Cruise + Americas/Caribbean"
+gb = 21
+days = 7
+type = "data"
+price = 44.49
+fup_note = "3 GB per day for 7 days"
+
+[[US.plans]]
+name = "Cruise + World"
+gb = 21
+days = 7
+type = "data"
+price = 44.49
+fup_note = "3 GB per day for 7 days"
+
+[[US.plans]]
+name = "United States"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+[[US.plans]]
+name = "World Plan Lite"
+gb = 10
+days = 60
+type = "data"
+price = 44.99
+
+[[US.plans]]
+name = "Cruise & Americas/Caribbean"
+gb = 45
+days = 15
+type = "data"
+price = 59.49
+fup_note = "3 GB per day for 15 days"
+
+[[US.plans]]
+name = "Cruise & World"
+gb = 45
+days = 15
+type = "data"
+price = 59.49
+fup_note = "3 GB per day for 15 days"
+
+[[US.plans]]
+name = "North America"
+gb = 50
+days = 60
+type = "data"
+price = 59.99
+
+[[US.plans]]
+name = "Cruise + Americas/Caribbean"
+gb = 3
+days = 15
+type = "data"
+price = 62.99
+
+[[US.plans]]
+name = "Cruise + World"
+gb = 3
+days = 15
+type = "data"
+price = 62.99
+
+[[US.plans]]
+name = "World Plan"
+gb = 10
+days = 60
+type = "data"
+price = 64.99
+
+[[US.plans]]
+name = "Cruise & Americas/Caribbean"
+gb = 5
+days = 30
+type = "data"
+price = 69.99
+
+[[US.plans]]
+name = "Cruise & World"
+gb = 5
+days = 30
+type = "data"
+price = 69.99
+
+[[US.plans]]
+name = "World Plan Lite"
+gb = 20
+days = 180
+type = "data"
+price = 79.99
+
+[[US.plans]]
+name = "Cruise + Americas/Caribbean"
+gb = 45
+days = 15
+type = "data"
+price = 82.99
+fup_note = "3 GB per day for 15 days"
+
+[[US.plans]]
+name = "Cruise + World"
+gb = 45
+days = 15
+type = "data"
+price = 82.99
+fup_note = "3 GB per day for 15 days"
+
+[[US.plans]]
+name = "World Plan"
+gb = 20
+days = 90
+type = "data"
+price = 99.99
+
+[[US.plans]]
+name = "Cruise + Americas/Caribbean"
+gb = 5
+days = 30
+type = "data"
+price = 99.99
+
+[[US.plans]]
+name = "Cruise + World"
+gb = 5
+days = 30
+type = "data"
+price = 99.99
+
+[[US.plans]]
+name = "World Plan Lite"
+gb = 50
+days = 180
+type = "data"
+price = 109.99
+
+[[US.plans]]
+name = "Cruise & Americas/Caribbean"
+gb = 10
+days = 30
+type = "data"
+price = 119.99
+
+[[US.plans]]
+name = "Cruise & World"
+gb = 10
+days = 30
+type = "data"
+price = 119.99
+
+[[US.plans]]
+name = "World Plan"
+gb = 50
+days = 180
+type = "data"
+price = 169.99
+
+[[US.plans]]
+name = "Cruise + Americas/Caribbean"
+gb = 10
+days = 30
+type = "data"
+price = 174.99
+
+[[US.plans]]
+name = "Cruise + World"
+gb = 10
+days = 30
+type = "data"
+price = 174.99
+
+[[US.plans]]
+name = "World Plan Lite"
+gb = 100
+days = 180
+type = "data"
+price = 179.99
+
+
+[VN]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/vietnam/gigsky"
+networks = []
+
+[[VN.plans]]
+name = "Vietnam"
+gb = 1
+days = 7
+type = "data"
+price = 2.99
+
+[[VN.plans]]
+name = "Vietnam"
+gb = 3.5
+days = 1
+type = "data"
+price = 3.49
+
+[[VN.plans]]
+name = "Vietnam"
+gb = 3
+days = 15
+type = "data"
+price = 7.49
+
+[[VN.plans]]
+name = "Vietnam"
+gb = 5
+days = 30
+type = "data"
+price = 10.29
+
+[[VN.plans]]
+name = "Vietnam"
+gb = 10.5
+days = 3
+type = "data"
+price = 10.49
+fup_note = "3.5 GB per day for 3 days"
+
+[[VN.plans]]
+name = "Vietnam"
+gb = 10
+days = 30
+type = "data"
+price = 16.79
+
+[[VN.plans]]
+name = "Vietnam"
+gb = 24.5
+days = 7
+type = "data"
+price = 24.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[VN.plans]]
+name = "Vietnam"
+gb = 52.5
+days = 15
+type = "data"
+price = 44.99
+fup_note = "3.5 GB per day for 15 days"
+
+
+[ZA]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/south-africa/gigsky"
+networks = []
+
+[[ZA.plans]]
+name = "South Africa"
+gb = 1
+days = 7
+type = "data"
+price = 5.99
+
+[[ZA.plans]]
+name = "South Africa"
+gb = 3.5
+days = 1
+type = "data"
+price = 8.99
+
+[[ZA.plans]]
+name = "South Africa"
+gb = 3
+days = 15
+type = "data"
+price = 14.99
+
+[[ZA.plans]]
+name = "South Africa"
+gb = 10.5
+days = 3
+type = "data"
+price = 18.99
+fup_note = "3.5 GB per day for 3 days"
+
+[[ZA.plans]]
+name = "South Africa"
+gb = 5
+days = 30
+type = "data"
+price = 23.99
+
+[[ZA.plans]]
+name = "South Africa"
+gb = 24.5
+days = 7
+type = "data"
+price = 37.49
+fup_note = "3.5 GB per day for 7 days"
+
+[[ZA.plans]]
+name = "South Africa"
+gb = 10
+days = 30
+type = "data"
+price = 42.99
+
+[[ZA.plans]]
+name = "South Africa"
+gb = 52.5
+days = 15
+type = "data"
+price = 59.99
+fup_note = "3.5 GB per day for 15 days"
+

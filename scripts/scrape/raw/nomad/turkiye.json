@@ -1,0 +1,88 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n8"
+ },
+ "plans": [
+  {
+   "name": "Nomad - Turkey - 7 Days - 1 GB",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$4.00",
+   "badges": []
+  },
+  {
+   "name": "Nomad - Turkey - 30 Days - 3 GB",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$6.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Nomad - Turkey - 30 Days - 5 GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$9.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Nomad - Turkey - 30 Days - 10 GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$13.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Turkey - 5 Days -Unlimited",
+   "data": "2GB/day",
+   "validity": "5 Days",
+   "price": "$17.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Nomad - Turkey - 30 Days - 20 GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$20.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Turkey - 10 Days -Unlimited",
+   "data": "2GB/day",
+   "validity": "10 Days",
+   "price": "$28.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Nomad - Turkey - 30 Days - 50 GB",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$31.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Nomad Travel eSIM for Turkey | Data Plans & Reviews",
+  "h1": "Nomad eSIM Data Plans for Turkey",
+  "networks": null
+ },
+ "slug": "turkiye",
+ "url": "https://esimdb.com/turkey/nomad",
+ "status": 200
+}

@@ -3,7 +3,7 @@ title: "Thailand eSIM"
 iso: TH
 weight: 6
 seo:
-  description: "eSIM Sift compares every Thailand eSIM: 158 real plans from 8 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every Thailand eSIM: 165 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 Cheap entry prices in Thailand hide a wide spread once you normalise for data. Cheapest of the lot is yesim 500MB / 1 Day at $0.51. In Thailand, the same $0.51 reaches about 950MB at the $0.55/GB rate. By rate, airalo sets the floor at $0.55/GB for 50GB over 30 days. {{< count-providers >}} providers list 158 plans for Thailand here, 90 of them unlimited.

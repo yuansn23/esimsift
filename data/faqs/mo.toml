@@ -1,16 +1,17 @@
 # Macao FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for Macao?"
-a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "{cheap_brand} holds the headline number for {country}: {cheap_plan} at ${cheap_price}. That works out at ${cheap_perday} a day, which suits a short stop better than a long one. Match the plan to your trip length rather than chasing the single lowest number."
 
 [[faq]]
 q = "Is unlimited eSIM data in Macao actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Roami at $19.99 ($2.86/day), carries: Soft cap 2GB/day at full speed, then throttled. Treat them as big-but-capped plans and compare the caps."
+a = "Capped, not unlimited - the {unl_count} unlimited plans for {country} throttle once the daily allowance is spent. Duration moves the rate as much as the cap does: {unl_perday_range} per day across the set, with {unl_brand} lowest at ${unl_perday} for {unl_days} days. What {unl_brand} publishes: {unl_allowance}; after that, {unl_drop}."
 
 [[faq]]
 q = "Airalo or Holafly for Macao?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($3.92/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "It comes down to shape - buckets of data against unlimited days. For {country}, Airalo's cheapest rate per gigabyte is ${ah_airalo_pergb} ({ah_airalo_plan}, ${ah_airalo_price}). Holafly sells unlimited days instead, its smallest {country} package being {ah_holafly_days} days for ${ah_holafly_price} (${ah_holafly_perday}/day)."
 
 [[faq]]
 q = "Do I need ID verification for a Macao eSIM?"
@@ -22,4 +23,4 @@ a = "Plans on this page run on CTM, 3 Macau, China Telecom. Differences matter m
 
 [[faq]]
 q = "Can one eSIM cover Macao and Hong Kong?"
-a = "Regional Asia/continental plans from Airalo and Nomad bundle Macao with neighbors - usually worse $/GB than single-country plans, but cheaper than two separate eSIMs. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+a = "Not on a single-country plan. If the itinerary continues from {country} into {neighbor}, compare a regional package with two separate plans, since the tables here price each market on its own."

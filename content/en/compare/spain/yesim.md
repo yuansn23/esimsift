@@ -4,5 +4,5 @@ iso: ES
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for Spain: 36 plans from $0.51, best $1.04/GB (#6 of 8) — ranked against 175 Spain plans."
+  description: "eSIM Sift compares Yesim eSIM plans for Spain: 36 plans from $0.51, best $1.04/GB (#7 of 9) — ranked against 185 Spain plans."
 ---

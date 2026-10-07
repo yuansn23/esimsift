@@ -1,0 +1,113 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n11"
+ },
+ "plans": [
+  {
+   "name": "Croatia",
+   "data": "100MB",
+   "validity": "7 Days",
+   "price": "$0.00",
+   "badges": []
+  },
+  {
+   "name": "Croatia",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$2.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Croatia",
+   "data": "3.5GB",
+   "validity": "1 Day",
+   "price": "$3.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Croatia",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$6.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Croatia",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$9.29",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Croatia",
+   "data": "3.5GB/day",
+   "validity": "3 Days",
+   "price": "$10.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Croatia",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$14.79",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Croatia",
+   "data": "20GB",
+   "validity": "90 Days",
+   "price": "$23.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Croatia",
+   "data": "3.5GB/day",
+   "validity": "7 Days",
+   "price": "$24.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Croatia",
+   "data": "50GB",
+   "validity": "180 Days",
+   "price": "$33.89",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Croatia",
+   "data": "3.5GB/day",
+   "validity": "15 Days",
+   "price": "$44.99",
+   "badges": [
+    "20% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GigSky Travel eSIM for Croatia | Data Plans & Reviews",
+  "h1": "GigSky eSIM Data Plans for Croatia",
+  "networks": null
+ },
+ "slug": "croatia",
+ "url": "https://esimdb.com/croatia/gigsky",
+ "status": 200
+}

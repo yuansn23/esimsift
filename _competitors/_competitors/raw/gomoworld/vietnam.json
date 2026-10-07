@@ -1,0 +1,52 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country 4"
+ },
+ "plans": [
+  {
+   "name": "Viet Nam",
+   "data": "4GB",
+   "validity": "7 Days",
+   "price": "$4.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Viet Nam",
+   "data": "15GB",
+   "validity": "30 Days",
+   "price": "$12.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Viet Nam",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$24.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Viet Nam",
+   "data": "75GB",
+   "validity": "30 Days",
+   "price": "$35.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GoMoWorld Travel eSIM for Vietnam | Data Plans & Reviews",
+  "h1": "GoMoWorld eSIM Data Plans for Vietnam",
+  "networks": null
+ },
+ "slug": "vietnam",
+ "url": "https://esimdb.com/vietnam/gomoworld",
+ "status": 200
+}

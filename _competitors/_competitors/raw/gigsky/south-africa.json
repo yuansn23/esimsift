@@ -1,0 +1,95 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n9"
+ },
+ "plans": [
+  {
+   "name": "South Africa",
+   "data": "100MB",
+   "validity": "7 Days",
+   "price": "$0.00",
+   "badges": []
+  },
+  {
+   "name": "South Africa",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "South Africa",
+   "data": "3.5GB",
+   "validity": "1 Day",
+   "price": "$8.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "South Africa",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$14.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "South Africa",
+   "data": "3.5GB/day",
+   "validity": "3 Days",
+   "price": "$18.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "South Africa",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$23.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "South Africa",
+   "data": "3.5GB/day",
+   "validity": "7 Days",
+   "price": "$37.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "South Africa",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$42.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "South Africa",
+   "data": "3.5GB/day",
+   "validity": "15 Days",
+   "price": "$59.99",
+   "badges": [
+    "20% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GigSky Travel eSIM for South Africa | Data Plans & Reviews",
+  "h1": "GigSky eSIM Data Plans for South Africa",
+  "networks": null
+ },
+ "slug": "south-africa",
+ "url": "https://esimdb.com/south-africa/gigsky",
+ "status": 200
+}

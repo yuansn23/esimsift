@@ -1,0 +1,79 @@
+{
+ "tab": {
+  "clicked": false,
+  "label": null
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Australia",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.30",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Australia",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$7.60",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Australia",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$7.70",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Australia",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$10.70",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Australia",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$18.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - Australia",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$33.20",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "50GB 60 days - Australia",
+   "data": "50GB",
+   "validity": "60 Days",
+   "price": "$80.30",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Australia | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Australia",
+  "networks": null
+ },
+ "slug": "australia",
+ "url": "https://esimdb.com/australia/quibity",
+ "status": 200
+}

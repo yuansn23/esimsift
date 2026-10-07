@@ -1,16 +1,17 @@
 # Brazil FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for Brazil?"
-a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "Start with {cheap_brand}, whose {cheap_plan} is the cheapest {country} plan at ${cheap_price}. That is ${cheap_perday}/day across the plan's validity window. The table above sorts every option, so compare the shape of a plan as well as its price."
 
 [[faq]]
 q = "Is unlimited eSIM data in Brazil actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Roami at $18.99 ($2.71/day), carries: Soft cap 2GB/day at full speed, then throttled. Treat them as big-but-capped plans and compare the caps."
+a = "'Unlimited' here means unlimited data, not unlimited speed: {unl_count} {country} plans apply fair-use caps. Day rates across the set span {unl_perday_range}, and the cheapest is {unl_brand} at ${unl_perday}/day - ${unl_price} for {unl_days} days. Throttling rather than disconnection is the trade-off, with speeds falling to {unl_drop} once the allowance is spent."
 
 [[faq]]
 q = "Airalo or Holafly for Brazil?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($3.80/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "Airalo and Holafly solve different problems, so compare the models before the prices. Airalo's best {country} rate is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - and that is a fixed bucket rather than a daily allowance. The flat-rate option is Holafly, at {ah_holafly_days} days from ${ah_holafly_price} - ${ah_holafly_perday}/day whatever you use."
 
 [[faq]]
 q = "Do I need ID verification for a Brazil eSIM?"
@@ -22,4 +23,4 @@ a = "Plans on this page run on Vivo, Claro, TIM. Differences matter mostly outsi
 
 [[faq]]
 q = "Can one eSIM cover Brazil and Argentina?"
-a = "Regional Asia/continental plans from Airalo and Nomad bundle Brazil with neighbors - usually worse $/GB than single-country plans, but cheaper than two separate eSIMs. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+a = "One country per plan, so a {country} eSIM stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."

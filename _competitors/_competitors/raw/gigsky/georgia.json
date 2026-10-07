@@ -1,0 +1,52 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n4"
+ },
+ "plans": [
+  {
+   "name": "Georgia",
+   "data": "1GB",
+   "validity": "15 Days",
+   "price": "$11.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Georgia",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$24.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Georgia",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$45.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Georgia",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$65.99",
+   "badges": [
+    "20% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GigSky Travel eSIM for Georgia | Data Plans & Reviews",
+  "h1": "GigSky eSIM Data Plans for Georgia",
+  "networks": null
+ },
+ "slug": "georgia",
+ "url": "https://esimdb.com/georgia/gigsky",
+ "status": 200
+}

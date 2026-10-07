@@ -1,0 +1,79 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n7"
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Iceland",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.00",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Iceland",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$7.10",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Iceland",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$7.50",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Iceland",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$9.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Iceland",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$17.30",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - Iceland",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$31.60",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "50GB 60 days - Iceland",
+   "data": "50GB",
+   "validity": "60 Days",
+   "price": "$71.60",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Iceland | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Iceland",
+  "networks": null
+ },
+ "slug": "iceland",
+ "url": "https://esimdb.com/iceland/quibity",
+ "status": 200
+}

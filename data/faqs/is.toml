@@ -1,16 +1,17 @@
 # Iceland FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for Iceland?"
-a = "Roami - the 1GB / 7 Days at $3.99 ($0.57/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "Start with {cheap_brand}, whose {cheap_plan} is the cheapest {country} plan at ${cheap_price}. Price and value are different measurements, and on cost per gigabyte the winner is {value_brand}'s {value_plan} at ${value_pergb}/GB. Decide your days and your rough gigabytes first, then pick the plan that fits both."
 
 [[faq]]
 q = "Is unlimited eSIM data in Iceland actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Holafly at $23.99 ($4.80/day), carries: No published cap; throttling reported above 3GB/day. Treat them as big-but-capped plans and compare the caps."
+a = "'Unlimited' here means unlimited data, not unlimited speed: {unl_count} {country} plans apply fair-use caps. {unl_brand} comes out cheapest per day at ${unl_perday}, and the full band here spans {unl_perday_range}. The part people miss is what happens after the cap: {unl_drop}."
 
 [[faq]]
 q = "Airalo or Holafly for Iceland?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($4.68/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "Airalo and Holafly solve different problems, so compare the models before the prices. Airalo's {ah_airalo_plan} works out at ${ah_airalo_pergb}/GB for ${ah_airalo_price}, and what you buy is what you get. Holafly's model is daily unlimited, starting at {ah_holafly_days} days for ${ah_holafly_price} - ${ah_holafly_perday}/day - so heavy use costs the same as light use."
 
 [[faq]]
 q = "Do I need ID verification for a Iceland eSIM?"
@@ -21,5 +22,7 @@ q = "Which networks do Iceland eSIMs use?"
 a = "Plans on this page run on Siminn, Vodafone, Noa. Differences matter mostly outside the big cities - the network column in the main table shows which carrier each plan rides."
 
 [[faq]]
-q = "Can one eSIM cover Iceland?"
-a = "No single-country plan here bundles neighbors - regional plans from Airalo and Nomad cover multi-stop trips, usually at a $/GB premium. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+# Q6：国家没有 countries.toml `neighbors`（无邻国 7 国之一），所以问题点名 **region** 而不是邻国 ——
+# 否则只剩「Can one eSIM cover Iceland?」这种同义反复的问法（2026-10-07 第四十二轮修）。
+q = "Can one eSIM cover Iceland and the rest of Europe?"
+a = "Not on a single-country plan. If the itinerary continues from {country} into {neighbor}, compare a regional package with two separate plans, since the tables here price each market on its own."

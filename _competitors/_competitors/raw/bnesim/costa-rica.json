@@ -1,0 +1,693 @@
+{
+ "brand": "bnesim",
+ "slug": "costa-rica",
+ "iso2": "CR",
+ "country_name": "Costa Rica",
+ "url": "https://www.bnesim.com/plans/cr/",
+ "source": "api.bnesim.com/v0.1/sim_card_landing_pricing/ (public)",
+ "status": 200,
+ "plans": [
+  {
+   "id": "87390",
+   "name": "Surf 1 GB in Costa Rica",
+   "amount": 1,
+   "unit": "GB",
+   "price": "8.09",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "CLARO"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "94c4a13655fd717680550147a8bd8266176b8e56.png",
+      "network_code": "CRICL",
+      "network_speeds": "3G",
+      "best_network_speed": "3G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "3G"
+   ],
+   "best_networks_speed": "3G",
+   "region": "Costa Rica",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "87391",
+   "name": "Surf 3 GB in Costa Rica",
+   "amount": 3,
+   "unit": "GB",
+   "price": "23.59",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "CLARO"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "94c4a13655fd717680550147a8bd8266176b8e56.png",
+      "network_code": "CRICL",
+      "network_speeds": "3G",
+      "best_network_speed": "3G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "3G"
+   ],
+   "best_networks_speed": "3G",
+   "region": "Costa Rica",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "87392",
+   "name": "Surf 5 GB in Costa Rica",
+   "amount": 5,
+   "unit": "GB",
+   "price": "38.09",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "CLARO"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "94c4a13655fd717680550147a8bd8266176b8e56.png",
+      "network_code": "CRICL",
+      "network_speeds": "3G",
+      "best_network_speed": "3G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "3G"
+   ],
+   "best_networks_speed": "3G",
+   "region": "Costa Rica",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "87393",
+   "name": "Surf 10 GB in Costa Rica",
+   "amount": 10,
+   "unit": "GB",
+   "price": "72.89",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "CLARO"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "94c4a13655fd717680550147a8bd8266176b8e56.png",
+      "network_code": "CRICL",
+      "network_speeds": "3G",
+      "best_network_speed": "3G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "3G"
+   ],
+   "best_networks_speed": "3G",
+   "region": "Costa Rica",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "87394",
+   "name": "Surf 20 GB in Costa Rica",
+   "amount": 20,
+   "unit": "GB",
+   "price": "142.59",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "CLARO"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "94c4a13655fd717680550147a8bd8266176b8e56.png",
+      "network_code": "CRICL",
+      "network_speeds": "3G",
+      "best_network_speed": "3G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "3G"
+   ],
+   "best_networks_speed": "3G",
+   "region": "Costa Rica",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "87400",
+   "name": "Surf 20 GB in Costa Rica for 30 days",
+   "amount": 20,
+   "unit": "GB",
+   "price": "101.95",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "CLARO"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "94c4a13655fd717680550147a8bd8266176b8e56.png",
+      "network_code": "CRICL",
+      "network_speeds": "3G",
+      "best_network_speed": "3G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "3G"
+   ],
+   "best_networks_speed": "3G",
+   "region": "Costa Rica",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "87404",
+   "name": "Surf 1 GB in Costa Rica for 30 days",
+   "amount": 1,
+   "unit": "GB",
+   "price": "5.78",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "CLARO"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "94c4a13655fd717680550147a8bd8266176b8e56.png",
+      "network_code": "CRICL",
+      "network_speeds": "3G",
+      "best_network_speed": "3G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "3G"
+   ],
+   "best_networks_speed": "3G",
+   "region": "Costa Rica",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "87403",
+   "name": "Surf 3 GB in Costa Rica for 30 days",
+   "amount": 3,
+   "unit": "GB",
+   "price": "16.86",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "CLARO"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "94c4a13655fd717680550147a8bd8266176b8e56.png",
+      "network_code": "CRICL",
+      "network_speeds": "3G",
+      "best_network_speed": "3G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "3G"
+   ],
+   "best_networks_speed": "3G",
+   "region": "Costa Rica",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "87402",
+   "name": "Surf 5 GB in Costa Rica for 30 days",
+   "amount": 5,
+   "unit": "GB",
+   "price": "27.23",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "CLARO"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "94c4a13655fd717680550147a8bd8266176b8e56.png",
+      "network_code": "CRICL",
+      "network_speeds": "3G",
+      "best_network_speed": "3G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "3G"
+   ],
+   "best_networks_speed": "3G",
+   "region": "Costa Rica",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "87401",
+   "name": "Surf 10 GB in Costa Rica for 30 days",
+   "amount": 10,
+   "unit": "GB",
+   "price": "52.11",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "CLARO"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "94c4a13655fd717680550147a8bd8266176b8e56.png",
+      "network_code": "CRICL",
+      "network_speeds": "3G",
+      "best_network_speed": "3G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "3G"
+   ],
+   "best_networks_speed": "3G",
+   "region": "Costa Rica",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  }
+ ],
+ "regional_options": [
+  {
+   "id": "90053",
+   "name": "Surf 1 GB in Global per 30 days",
+   "amount": 1,
+   "unit": "GB",
+   "price": "14.66",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90063",
+   "name": "Surf 1 GB in Global",
+   "amount": 1,
+   "unit": "GB",
+   "price": "18.76",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90055",
+   "name": "Surf 3 GB in Global per 30 days",
+   "amount": 3,
+   "unit": "GB",
+   "price": "37.94",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90065",
+   "name": "Surf 3 GB in Global",
+   "amount": 3,
+   "unit": "GB",
+   "price": "48.56",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90057",
+   "name": "Surf 5 GB in Global per 30 days",
+   "amount": 5,
+   "unit": "GB",
+   "price": "58.17",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90067",
+   "name": "Surf 5 GB in Global",
+   "amount": 5,
+   "unit": "GB",
+   "price": "74.45",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90059",
+   "name": "Surf 10 GB in Global per 30 days",
+   "amount": 10,
+   "unit": "GB",
+   "price": "101.92",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90069",
+   "name": "Surf 10 GB in Global",
+   "amount": 10,
+   "unit": "GB",
+   "price": "130.45",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90061",
+   "name": "Surf 20 GB in Global per 30 days",
+   "amount": 20,
+   "unit": "GB",
+   "price": "174.49",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90071",
+   "name": "Surf 20 GB in Global",
+   "amount": 20,
+   "unit": "GB",
+   "price": "223.35",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  }
+ ]
+}

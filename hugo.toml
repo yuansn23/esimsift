@@ -162,6 +162,18 @@ isHTML = false
         medium = "referral"
         campaign = "partner"
 
+    [params.outbound.targets.nomad]
+      base = "https://www.nomadesim.com"
+      label = "Check on Nomad"
+      rel = "sponsored nofollow"
+      # 不加 country_path：Nomad 的逐国 URL 是 /{slug}-eSIM，但 slug 口径并不对齐
+      # （本站 turkiye ↔ Nomad 用 turkey），机械拼接会产出 404。与其余 7 家品牌
+      # 保持一致，先走 base；逐国深链要等逐国核对 slug 后再开（见 STATUS.md 待办）。
+      [params.outbound.targets.nomad.utm]
+        source = "esimsift"
+        medium = "referral"
+        campaign = "partner"
+
 # ==========================================
 # 语言
 #   英文为默认语言，且 defaultContentLanguageInSubdir = false

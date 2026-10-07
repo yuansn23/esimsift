@@ -3,7 +3,7 @@ title: "Argentina eSIM"
 iso: AR
 weight: 37
 seo:
-  description: "eSIM Sift compares every Argentina eSIM: 136 real plans from 8 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every Argentina eSIM: 141 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 eSIM prices in Argentina are less flat than the headline number suggests. Cheapest of the lot is yesim 199MB / 1 Day at $0.51. In Argentina, the same $0.51 reaches about 402MB at the $1.30/GB rate. ubigi wins on rate, at $1.30/GB for a 60GB / 30-day bucket. Across {{< count-providers >}} providers the board runs to 136 plans for Argentina, 77 sold as unlimited.

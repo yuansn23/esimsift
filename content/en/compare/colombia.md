@@ -3,7 +3,7 @@ title: "Colombia eSIM"
 iso: CO
 weight: 38
 seo:
-  description: "eSIM Sift compares every Colombia eSIM: 142 real plans from 8 providers, cheapest Roamic from $4.00, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every Colombia eSIM: 147 real plans from 9 providers, cheapest Nomad from $4.00, ranked by $/GB and $/day."
 ---
 
 In Colombia the cheapest sticker and the best value are different plans. The lowest sticker price belongs to roamic, whose 1GB / 7 Days costs $4.00. Small plans in Colombia cost 4.1 times more per gigabyte than its best plan. Value leadership sits with airalo, whose 50GB / 30-day plan lands at $0.98/GB. The full board is 142 plans for Colombia from {{< count-providers >}} providers, 79 of them unlimited.

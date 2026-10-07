@@ -1,0 +1,12 @@
+wrote COVERAGE.md
+{
+ "nomad": 442,
+ "jetpac": 877,
+ "gigsky": 619,
+ "quibity": 308,
+ "roamless": 1304,
+ "gomoworld": 200,
+ "maya": 500,
+ "bnesim": 528,
+ "firsty": 6
+}

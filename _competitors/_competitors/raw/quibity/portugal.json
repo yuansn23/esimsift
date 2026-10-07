@@ -1,0 +1,79 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n7"
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Portugal",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$4.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Portugal",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$6.20",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Portugal",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$6.40",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Portugal",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$7.70",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Portugal",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$12.70",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - Portugal",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$22.80",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "50GB 60 days - Portugal",
+   "data": "50GB",
+   "validity": "60 Days",
+   "price": "$50.60",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Portugal | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Portugal",
+  "networks": null
+ },
+ "slug": "portugal",
+ "url": "https://esimdb.com/portugal/quibity",
+ "status": 200
+}

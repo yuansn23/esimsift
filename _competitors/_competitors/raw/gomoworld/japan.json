@@ -1,0 +1,52 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single"
+ },
+ "plans": [
+  {
+   "name": "Japan",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$4.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Japan",
+   "data": "14GB",
+   "validity": "30 Days",
+   "price": "$12.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Japan",
+   "data": "30GB",
+   "validity": "30 Days",
+   "price": "$24.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Japan",
+   "data": "45GB",
+   "validity": "30 Days",
+   "price": "$35.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GoMoWorld Travel eSIM for Japan | Data Plans & Reviews",
+  "h1": "GoMoWorld eSIM Data Plans for Japan",
+  "networks": null
+ },
+ "slug": "japan",
+ "url": "https://esimdb.com/japan/gomoworld",
+ "status": 200
+}

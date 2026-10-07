@@ -4,5 +4,5 @@ iso: HR
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for Croatia: 6 daily plans from $2.46/day, fair-use caps decoded — 170 Croatia eSIMs tracked."
+  description: "eSIM Sift compares Holafly unlimited eSIMs for Croatia: 6 daily plans from $2.46/day, fair-use caps decoded — 180 Croatia eSIMs tracked."
 ---

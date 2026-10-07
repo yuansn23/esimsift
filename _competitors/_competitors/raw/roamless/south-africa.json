@@ -1,0 +1,270 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n26"
+ },
+ "plans": [
+  {
+   "name": "FREE South Africa eSIM & Data",
+   "data": "375MB",
+   "validity": "No expiry",
+   "price": "$0.00",
+   "badges": [
+    "Pay-As-You-Go",
+    "New Users Only"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "1GB",
+   "validity": "No expiry",
+   "price": "$3.45",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - 30 Days",
+   "data": "1GB",
+   "validity": "30 Days",
+   "price": "$3.95",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "2GB",
+   "validity": "No expiry",
+   "price": "$6.90",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - 30 Days",
+   "data": "2GB",
+   "validity": "30 Days",
+   "price": "$6.95",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "South Africa - 30 Days",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$8.95",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "3GB",
+   "validity": "No expiry",
+   "price": "$10.35",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - 30 Days",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$12.45",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "4GB",
+   "validity": "No expiry",
+   "price": "$13.80",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "5GB",
+   "validity": "No expiry",
+   "price": "$17.25",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "6GB",
+   "validity": "No expiry",
+   "price": "$20.70",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - 30 Days",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$21.95",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "7GB",
+   "validity": "No expiry",
+   "price": "$24.15",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "8GB",
+   "validity": "No expiry",
+   "price": "$27.60",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "9GB",
+   "validity": "No expiry",
+   "price": "$31.05",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "10GB",
+   "validity": "No expiry",
+   "price": "$34.50",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - 30 Days",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$36.95",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "15GB",
+   "validity": "No expiry",
+   "price": "$51.75",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "20GB",
+   "validity": "No expiry",
+   "price": "$69.00",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "25GB",
+   "validity": "No expiry",
+   "price": "$86.25",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "30GB",
+   "validity": "No expiry",
+   "price": "$103.50",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "35GB",
+   "validity": "No expiry",
+   "price": "$120.75",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "40GB",
+   "validity": "No expiry",
+   "price": "$138.00",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "45GB",
+   "validity": "No expiry",
+   "price": "$155.25",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "50GB",
+   "validity": "No expiry",
+   "price": "$172.50",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  },
+  {
+   "name": "South Africa - No Expiration",
+   "data": "100GB",
+   "validity": "No expiry",
+   "price": "$345.00",
+   "badges": [
+    "20% OFF",
+    "Pay-As-You-Go"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Roamless Travel eSIM for South Africa | Data Plans & Reviews",
+  "h1": "Roamless eSIM Data Plans for South Africa",
+  "networks": null
+ },
+ "slug": "south-africa",
+ "url": "https://esimdb.com/south-africa/roamless",
+ "status": 200
+}

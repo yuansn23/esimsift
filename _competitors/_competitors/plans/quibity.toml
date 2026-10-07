@@ -1,0 +1,2511 @@
+# quibity - competitor plan data
+# primary source: esimdb.com
+# captured: 2026-10-04   countries: 50
+# normalised to the esimsift plan schema (gb/days/type/price/fup_note).
+# NOTE: this file is a SEPARATE capture set - it is not wired into data/plans/.
+
+[AE]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/uae/quibity"
+networks = []
+
+[[AE.plans]]
+name = "1GB 7 days - United Arab Emirates"
+gb = 1
+days = 7
+type = "data"
+price = 5.30
+
+[[AE.plans]]
+name = "3GB 10 days - United Arab Emirates"
+gb = 3
+days = 10
+type = "data"
+price = 12.30
+
+[[AE.plans]]
+name = "3GB 15 days - United Arab Emirates"
+gb = 3
+days = 15
+type = "data"
+price = 13.00
+
+[[AE.plans]]
+name = "5GB 15 days - United Arab Emirates"
+gb = 5
+days = 15
+type = "data"
+price = 18.70
+
+[[AE.plans]]
+name = "10GB 30 days - United Arab Emirates"
+gb = 10
+days = 30
+type = "data"
+price = 34.70
+
+
+[AR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/argentina/quibity"
+networks = []
+
+[[AR.plans]]
+name = "1GB 7 days - Argentina"
+gb = 1
+days = 7
+type = "data"
+price = 7.30
+
+[[AR.plans]]
+name = "3GB 10 days - Argentina"
+gb = 3
+days = 10
+type = "data"
+price = 16.40
+
+[[AR.plans]]
+name = "3GB 15 days - Argentina"
+gb = 3
+days = 15
+type = "data"
+price = 17.20
+
+[[AR.plans]]
+name = "5GB 15 days - Argentina"
+gb = 5
+days = 15
+type = "data"
+price = 24.60
+
+[[AR.plans]]
+name = "10GB 30 days - Argentina"
+gb = 10
+days = 30
+type = "data"
+price = 45.70
+
+
+[AT]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/austria/quibity"
+networks = []
+
+[[AT.plans]]
+name = "1GB 7 days - Austria"
+gb = 1
+days = 7
+type = "data"
+price = 4.90
+
+[[AT.plans]]
+name = "3GB 10 days - Austria"
+gb = 3
+days = 10
+type = "data"
+price = 6.50
+
+[[AT.plans]]
+name = "3GB 15 days - Austria"
+gb = 3
+days = 15
+type = "data"
+price = 6.70
+
+[[AT.plans]]
+name = "5GB 15 days - Austria"
+gb = 5
+days = 15
+type = "data"
+price = 8.40
+
+[[AT.plans]]
+name = "10GB 30 days - Austria"
+gb = 10
+days = 30
+type = "data"
+price = 14.10
+
+[[AT.plans]]
+name = "20GB 30 days - Austria"
+gb = 20
+days = 30
+type = "data"
+price = 25.40
+
+[[AT.plans]]
+name = "50GB 60 days - Austria"
+gb = 50
+days = 60
+type = "data"
+price = 56.90
+
+
+[AU]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/australia/quibity"
+networks = []
+
+[[AU.plans]]
+name = "1GB 7 days - Australia"
+gb = 1
+days = 7
+type = "data"
+price = 5.30
+
+[[AU.plans]]
+name = "3GB 10 days - Australia"
+gb = 3
+days = 10
+type = "data"
+price = 7.60
+
+[[AU.plans]]
+name = "3GB 15 days - Australia"
+gb = 3
+days = 15
+type = "data"
+price = 7.70
+
+[[AU.plans]]
+name = "5GB 15 days - Australia"
+gb = 5
+days = 15
+type = "data"
+price = 10.70
+
+[[AU.plans]]
+name = "10GB 30 days - Australia"
+gb = 10
+days = 30
+type = "data"
+price = 18.90
+
+[[AU.plans]]
+name = "20GB 30 days - Australia"
+gb = 20
+days = 30
+type = "data"
+price = 33.20
+
+[[AU.plans]]
+name = "50GB 60 days - Australia"
+gb = 50
+days = 60
+type = "data"
+price = 80.30
+
+
+[BE]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/belgium/quibity"
+networks = []
+
+[[BE.plans]]
+name = "1GB 7 days - Belgium"
+gb = 1
+days = 7
+type = "data"
+price = 4.90
+
+[[BE.plans]]
+name = "3GB 10 days - Belgium"
+gb = 3
+days = 10
+type = "data"
+price = 6.50
+
+[[BE.plans]]
+name = "3GB 15 days - Belgium"
+gb = 3
+days = 15
+type = "data"
+price = 6.70
+
+[[BE.plans]]
+name = "5GB 15 days - Belgium"
+gb = 5
+days = 15
+type = "data"
+price = 8.20
+
+[[BE.plans]]
+name = "10GB 30 days - Belgium"
+gb = 10
+days = 30
+type = "data"
+price = 14.00
+
+[[BE.plans]]
+name = "20GB 30 days - Belgium"
+gb = 20
+days = 30
+type = "data"
+price = 25.40
+
+[[BE.plans]]
+name = "50GB 60 days - Belgium"
+gb = 50
+days = 60
+type = "data"
+price = 56.60
+
+
+[BR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/brazil/quibity"
+networks = []
+
+[[BR.plans]]
+name = "1GB 7 days - Brazil"
+gb = 1
+days = 7
+type = "data"
+price = 6.80
+
+[[BR.plans]]
+name = "3GB 10 days - Brazil"
+gb = 3
+days = 10
+type = "data"
+price = 14.50
+
+[[BR.plans]]
+name = "3GB 15 days - Brazil"
+gb = 3
+days = 15
+type = "data"
+price = 15.00
+
+[[BR.plans]]
+name = "5GB 15 days - Brazil"
+gb = 5
+days = 15
+type = "data"
+price = 21.60
+
+[[BR.plans]]
+name = "10GB 30 days - Brazil"
+gb = 10
+days = 30
+type = "data"
+price = 39.70
+
+[[BR.plans]]
+name = "20GB 30 days - Brazil"
+gb = 20
+days = 30
+type = "data"
+price = 75.50
+
+
+[CA]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/canada/quibity"
+networks = []
+
+[[CA.plans]]
+name = "1GB 7 days - Canada"
+gb = 1
+days = 7
+type = "data"
+price = 4.10
+
+[[CA.plans]]
+name = "3GB 15 days - Canada"
+gb = 3
+days = 15
+type = "data"
+price = 9.50
+
+[[CA.plans]]
+name = "5GB 15 days - Canada"
+gb = 5
+days = 15
+type = "data"
+price = 13.60
+
+[[CA.plans]]
+name = "10GB 30 days - Canada"
+gb = 10
+days = 30
+type = "data"
+price = 24.80
+
+[[CA.plans]]
+name = "20GB 30 days - Canada"
+gb = 20
+days = 30
+type = "data"
+price = 47.20
+
+
+[CH]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/switzerland/quibity"
+networks = []
+
+[[CH.plans]]
+name = "1GB 7 days - Switzerland"
+gb = 1
+days = 7
+type = "data"
+price = 3.90
+
+[[CH.plans]]
+name = "3GB 15 days - Switzerland"
+gb = 3
+days = 15
+type = "data"
+price = 5.90
+
+[[CH.plans]]
+name = "3GB 10 days - Switzerland"
+gb = 3
+days = 10
+type = "data"
+price = 5.90
+
+[[CH.plans]]
+name = "5GB 15 days - Switzerland"
+gb = 5
+days = 15
+type = "data"
+price = 7.60
+
+[[CH.plans]]
+name = "10GB 30 days - Switzerland"
+gb = 10
+days = 30
+type = "data"
+price = 13.70
+
+[[CH.plans]]
+name = "20GB 30 days - Switzerland"
+gb = 20
+days = 30
+type = "data"
+price = 25.70
+
+[[CH.plans]]
+name = "50GB 60 days - Switzerland"
+gb = 50
+days = 60
+type = "data"
+price = 58.80
+
+
+[CN]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/china/quibity"
+networks = []
+
+[[CN.plans]]
+name = "1GB 7 days - China"
+gb = 1
+days = 7
+type = "data"
+price = 5.60
+
+[[CN.plans]]
+name = "3GB 15 days - China"
+gb = 3
+days = 15
+type = "data"
+price = 8.60
+
+[[CN.plans]]
+name = "5GB 30 days - China"
+gb = 5
+days = 30
+type = "data"
+price = 12.50
+
+[[CN.plans]]
+name = "10GB 30 days - China"
+gb = 10
+days = 30
+type = "data"
+price = 18.70
+
+[[CN.plans]]
+name = "20GB 30 days - China"
+gb = 20
+days = 30
+type = "data"
+price = 34.80
+
+
+[CO]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/colombia/quibity"
+networks = []
+
+[[CO.plans]]
+name = "1GB 7 days - Colombia"
+gb = 1
+days = 7
+type = "data"
+price = 6.00
+
+[[CO.plans]]
+name = "3GB 15 days - Colombia"
+gb = 3
+days = 15
+type = "data"
+price = 15.10
+
+[[CO.plans]]
+name = "5GB 15 days - Colombia"
+gb = 5
+days = 15
+type = "data"
+price = 22.20
+
+[[CO.plans]]
+name = "10GB 30 days - Colombia"
+gb = 10
+days = 30
+type = "data"
+price = 41.80
+
+
+[CR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/costa-rica/quibity"
+networks = []
+
+[[CR.plans]]
+name = "1GB 7 days - Costa Rica"
+gb = 1
+days = 7
+type = "data"
+price = 5.90
+
+[[CR.plans]]
+name = "3GB 10 days - Costa Rica"
+gb = 3
+days = 10
+type = "data"
+price = 14.70
+
+[[CR.plans]]
+name = "3GB 15 days - Costa Rica"
+gb = 3
+days = 15
+type = "data"
+price = 15.50
+
+[[CR.plans]]
+name = "5GB 15 days - Costa Rica"
+gb = 5
+days = 15
+type = "data"
+price = 22.70
+
+[[CR.plans]]
+name = "10GB 30 days - Costa Rica"
+gb = 10
+days = 30
+type = "data"
+price = 40.10
+
+
+[CZ]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/czechia/quibity"
+networks = []
+
+[[CZ.plans]]
+name = "1GB 7 days - Czech Republic"
+gb = 1
+days = 7
+type = "data"
+price = 5.00
+
+[[CZ.plans]]
+name = "3GB 10 days - Czech Republic"
+gb = 3
+days = 10
+type = "data"
+price = 6.70
+
+[[CZ.plans]]
+name = "3GB 15 days - Czech Republic"
+gb = 3
+days = 15
+type = "data"
+price = 6.80
+
+[[CZ.plans]]
+name = "5GB 15 days - Czech Republic"
+gb = 5
+days = 15
+type = "data"
+price = 8.60
+
+[[CZ.plans]]
+name = "10GB 30 days - Czech Republic"
+gb = 10
+days = 30
+type = "data"
+price = 14.90
+
+[[CZ.plans]]
+name = "20GB 30 days - Czech Republic"
+gb = 20
+days = 30
+type = "data"
+price = 27.00
+
+[[CZ.plans]]
+name = "50GB 60 days - Czech Republic"
+gb = 50
+days = 60
+type = "data"
+price = 60.60
+
+
+[DE]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/germany/quibity"
+networks = []
+
+[[DE.plans]]
+name = "1GB 7 days - Germany"
+gb = 1
+days = 7
+type = "data"
+price = 4.70
+
+[[DE.plans]]
+name = "3GB 10 days - Germany"
+gb = 3
+days = 10
+type = "data"
+price = 6.40
+
+[[DE.plans]]
+name = "3GB 15 days - Germany"
+gb = 3
+days = 15
+type = "data"
+price = 6.50
+
+[[DE.plans]]
+name = "5GB 15 days - Germany"
+gb = 5
+days = 15
+type = "data"
+price = 7.90
+
+[[DE.plans]]
+name = "10GB 30 days - Germany"
+gb = 10
+days = 30
+type = "data"
+price = 13.30
+
+[[DE.plans]]
+name = "20GB 30 days - Germany"
+gb = 20
+days = 30
+type = "data"
+price = 23.90
+
+[[DE.plans]]
+name = "50GB 60 days - Germany"
+gb = 50
+days = 60
+type = "data"
+price = 53.40
+
+
+[EG]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/egypt/quibity"
+networks = []
+
+[[EG.plans]]
+name = "1GB 7 days - Egypt"
+gb = 1
+days = 7
+type = "data"
+price = 4.30
+
+[[EG.plans]]
+name = "3GB 10 days - Egypt"
+gb = 3
+days = 10
+type = "data"
+price = 9.60
+
+[[EG.plans]]
+name = "3GB 15 days - Egypt"
+gb = 3
+days = 15
+type = "data"
+price = 10.20
+
+[[EG.plans]]
+name = "5GB 15 days - Egypt"
+gb = 5
+days = 15
+type = "data"
+price = 14.70
+
+[[EG.plans]]
+name = "10GB 30 days - Egypt"
+gb = 10
+days = 30
+type = "data"
+price = 27.50
+
+[[EG.plans]]
+name = "20GB 30 days - Egypt"
+gb = 20
+days = 30
+type = "data"
+price = 52.70
+
+
+[ES]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/spain/quibity"
+networks = []
+
+[[ES.plans]]
+name = "1GB 7 days - Spain"
+gb = 1
+days = 7
+type = "data"
+price = 5.40
+
+[[ES.plans]]
+name = "3GB 10 days - Spain"
+gb = 3
+days = 10
+type = "data"
+price = 6.70
+
+[[ES.plans]]
+name = "3GB 15 days - Spain"
+gb = 3
+days = 15
+type = "data"
+price = 6.80
+
+[[ES.plans]]
+name = "5GB 15 days - Spain"
+gb = 5
+days = 15
+type = "data"
+price = 8.60
+
+[[ES.plans]]
+name = "10GB 30 days - Spain"
+gb = 10
+days = 30
+type = "data"
+price = 14.60
+
+[[ES.plans]]
+name = "20GB 30 days - Spain"
+gb = 20
+days = 30
+type = "data"
+price = 26.40
+
+[[ES.plans]]
+name = "50GB 60 days - Spain"
+gb = 50
+days = 60
+type = "data"
+price = 59.20
+
+
+[FJ]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/fiji/quibity"
+networks = []
+
+[[FJ.plans]]
+name = "1GB 7 days - Fiji"
+gb = 1
+days = 7
+type = "data"
+price = 9.60
+
+[[FJ.plans]]
+name = "3GB 10 days - Fiji"
+gb = 3
+days = 10
+type = "data"
+price = 22.10
+
+[[FJ.plans]]
+name = "3GB 15 days - Fiji"
+gb = 3
+days = 15
+type = "data"
+price = 23.30
+
+[[FJ.plans]]
+name = "5GB 15 days - Fiji"
+gb = 5
+days = 15
+type = "data"
+price = 33.00
+
+
+[FR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/france/quibity"
+networks = []
+
+[[FR.plans]]
+name = "1GB 7 days - France"
+gb = 1
+days = 7
+type = "data"
+price = 4.90
+
+[[FR.plans]]
+name = "3GB 10 days - France"
+gb = 3
+days = 10
+type = "data"
+price = 6.40
+
+[[FR.plans]]
+name = "3GB 15 days - France"
+gb = 3
+days = 15
+type = "data"
+price = 6.50
+
+[[FR.plans]]
+name = "5GB 15 days - France"
+gb = 5
+days = 15
+type = "data"
+price = 8.00
+
+[[FR.plans]]
+name = "10GB 30 days - France"
+gb = 10
+days = 30
+type = "data"
+price = 13.40
+
+[[FR.plans]]
+name = "20GB 30 days - France"
+gb = 20
+days = 30
+type = "data"
+price = 24.10
+
+[[FR.plans]]
+name = "50GB 60 days - France"
+gb = 50
+days = 60
+type = "data"
+price = 54.00
+
+
+[GB]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/uk/quibity"
+networks = []
+
+[[GB.plans]]
+name = "1GB 7 days - United Kingdom"
+gb = 1
+days = 7
+type = "data"
+price = 5.00
+
+[[GB.plans]]
+name = "3GB 10 days - United Kingdom"
+gb = 3
+days = 10
+type = "data"
+price = 6.70
+
+[[GB.plans]]
+name = "3GB 15 days - United Kingdom"
+gb = 3
+days = 15
+type = "data"
+price = 6.80
+
+[[GB.plans]]
+name = "5GB 15 days - United Kingdom"
+gb = 5
+days = 15
+type = "data"
+price = 8.80
+
+[[GB.plans]]
+name = "10GB 30 days - United Kingdom"
+gb = 10
+days = 30
+type = "data"
+price = 15.10
+
+[[GB.plans]]
+name = "20GB 30 days - United Kingdom"
+gb = 20
+days = 30
+type = "data"
+price = 27.50
+
+[[GB.plans]]
+name = "50GB 60 days - United Kingdom"
+gb = 50
+days = 60
+type = "data"
+price = 61.80
+
+
+[GE]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/georgia/quibity"
+networks = []
+
+[[GE.plans]]
+name = "1GB 7 days - Georgia"
+gb = 1
+days = 7
+type = "data"
+price = 5.60
+
+[[GE.plans]]
+name = "3GB 10 days - Georgia"
+gb = 3
+days = 10
+type = "data"
+price = 9.00
+
+[[GE.plans]]
+name = "3GB 15 days - Georgia"
+gb = 3
+days = 15
+type = "data"
+price = 9.50
+
+[[GE.plans]]
+name = "5GB 15 days - Georgia"
+gb = 5
+days = 15
+type = "data"
+price = 13.10
+
+[[GE.plans]]
+name = "10GB 30 days - Georgia"
+gb = 10
+days = 30
+type = "data"
+price = 23.30
+
+[[GE.plans]]
+name = "20GB 30 days - Georgia"
+gb = 20
+days = 30
+type = "data"
+price = 43.60
+
+
+[GR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/greece/quibity"
+networks = []
+
+[[GR.plans]]
+name = "1GB 7 days - Greece"
+gb = 1
+days = 7
+type = "data"
+price = 4.90
+
+[[GR.plans]]
+name = "3GB 10 days - Greece"
+gb = 3
+days = 10
+type = "data"
+price = 6.40
+
+[[GR.plans]]
+name = "3GB 15 days - Greece"
+gb = 3
+days = 15
+type = "data"
+price = 6.50
+
+[[GR.plans]]
+name = "5GB 15 days - Greece"
+gb = 5
+days = 15
+type = "data"
+price = 8.10
+
+[[GR.plans]]
+name = "10GB 30 days - Greece"
+gb = 10
+days = 30
+type = "data"
+price = 13.80
+
+[[GR.plans]]
+name = "20GB 30 days - Greece"
+gb = 20
+days = 30
+type = "data"
+price = 24.80
+
+[[GR.plans]]
+name = "50GB 60 days - Greece"
+gb = 50
+days = 60
+type = "data"
+price = 55.40
+
+
+[HK]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/hong-kong/quibity"
+networks = []
+
+[[HK.plans]]
+name = "1GB 7 days - Hong Kong"
+gb = 1
+days = 7
+type = "data"
+price = 5.30
+
+[[HK.plans]]
+name = "3GB 10 days - Hong Kong"
+gb = 3
+days = 10
+type = "data"
+price = 7.70
+
+[[HK.plans]]
+name = "3GB 15 days - Hong Kong"
+gb = 3
+days = 15
+type = "data"
+price = 8.10
+
+[[HK.plans]]
+name = "5GB 15 days - Hong Kong"
+gb = 5
+days = 15
+type = "data"
+price = 11.20
+
+[[HK.plans]]
+name = "10GB 30 days - Hong Kong"
+gb = 10
+days = 30
+type = "data"
+price = 19.40
+
+[[HK.plans]]
+name = "20GB 30 days - Hong Kong"
+gb = 20
+days = 30
+type = "data"
+price = 36.10
+
+
+[HR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/croatia/quibity"
+networks = []
+
+[[HR.plans]]
+name = "1GB 7 days - Croatia"
+gb = 1
+days = 7
+type = "data"
+price = 4.90
+
+[[HR.plans]]
+name = "3GB 10 days - Croatia"
+gb = 3
+days = 10
+type = "data"
+price = 6.70
+
+[[HR.plans]]
+name = "3GB 15 days - Croatia"
+gb = 3
+days = 15
+type = "data"
+price = 6.80
+
+[[HR.plans]]
+name = "5GB 15 days - Croatia"
+gb = 5
+days = 15
+type = "data"
+price = 8.60
+
+[[HR.plans]]
+name = "10GB 30 days - Croatia"
+gb = 10
+days = 30
+type = "data"
+price = 14.90
+
+[[HR.plans]]
+name = "20GB 30 days - Croatia"
+gb = 20
+days = 30
+type = "data"
+price = 26.70
+
+[[HR.plans]]
+name = "50GB 60 days - Croatia"
+gb = 50
+days = 60
+type = "data"
+price = 59.30
+
+
+[ID]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/indonesia/quibity"
+networks = []
+
+[[ID.plans]]
+name = "1GB 7 days - Indonesia"
+gb = 1
+days = 7
+type = "data"
+price = 5.00
+
+[[ID.plans]]
+name = "3GB 15 days - Indonesia"
+gb = 3
+days = 15
+type = "data"
+price = 6.80
+
+[[ID.plans]]
+name = "3GB 10 days - Indonesia"
+gb = 3
+days = 10
+type = "data"
+price = 6.80
+
+[[ID.plans]]
+name = "5GB 15 days - Indonesia"
+gb = 5
+days = 15
+type = "data"
+price = 8.90
+
+[[ID.plans]]
+name = "10GB 30 days - Indonesia"
+gb = 10
+days = 30
+type = "data"
+price = 15.40
+
+[[ID.plans]]
+name = "20GB 30 days - Indonesia"
+gb = 20
+days = 30
+type = "data"
+price = 28.00
+
+[[ID.plans]]
+name = "50GB 60 days - Indonesia"
+gb = 50
+days = 60
+type = "data"
+price = 62.90
+
+
+[IE]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/ireland/quibity"
+networks = []
+
+[[IE.plans]]
+name = "1GB 7 days - Ireland"
+gb = 1
+days = 7
+type = "data"
+price = 5.00
+
+[[IE.plans]]
+name = "3GB 15 days - Ireland"
+gb = 3
+days = 15
+type = "data"
+price = 6.70
+
+[[IE.plans]]
+name = "3GB 10 days - Ireland"
+gb = 3
+days = 10
+type = "data"
+price = 6.70
+
+[[IE.plans]]
+name = "5GB 15 days - Ireland"
+gb = 5
+days = 15
+type = "data"
+price = 8.50
+
+[[IE.plans]]
+name = "10GB 30 days - Ireland"
+gb = 10
+days = 30
+type = "data"
+price = 14.40
+
+[[IE.plans]]
+name = "20GB 30 days - Ireland"
+gb = 20
+days = 30
+type = "data"
+price = 26.10
+
+[[IE.plans]]
+name = "50GB 60 days - Ireland"
+gb = 50
+days = 60
+type = "data"
+price = 58.30
+
+
+[IL]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/israel/quibity"
+networks = []
+
+[[IL.plans]]
+name = "1GB 7 days - Israel"
+gb = 1
+days = 7
+type = "data"
+price = 5.00
+
+[[IL.plans]]
+name = "3GB 15 days - Israel"
+gb = 3
+days = 15
+type = "data"
+price = 6.80
+
+[[IL.plans]]
+name = "3GB 10 days - Israel"
+gb = 3
+days = 10
+type = "data"
+price = 6.80
+
+[[IL.plans]]
+name = "5GB 15 days - Israel"
+gb = 5
+days = 15
+type = "data"
+price = 8.90
+
+[[IL.plans]]
+name = "10GB 30 days - Israel"
+gb = 10
+days = 30
+type = "data"
+price = 15.40
+
+[[IL.plans]]
+name = "20GB 30 days - Israel"
+gb = 20
+days = 30
+type = "data"
+price = 27.90
+
+
+[IN]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/india/quibity"
+networks = []
+
+[[IN.plans]]
+name = "1GB 7 days - India"
+gb = 1
+days = 7
+type = "data"
+price = 6.30
+
+[[IN.plans]]
+name = "3GB 10 days - India"
+gb = 3
+days = 10
+type = "data"
+price = 12.20
+
+[[IN.plans]]
+name = "3GB 15 days - India"
+gb = 3
+days = 15
+type = "data"
+price = 12.70
+
+[[IN.plans]]
+name = "5GB 15 days - India"
+gb = 5
+days = 15
+type = "data"
+price = 18.00
+
+[[IN.plans]]
+name = "10GB 30 days - India"
+gb = 10
+days = 30
+type = "data"
+price = 32.80
+
+[[IN.plans]]
+name = "20GB 30 days - India"
+gb = 20
+days = 30
+type = "data"
+price = 61.90
+
+
+[IS]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/iceland/quibity"
+networks = []
+
+[[IS.plans]]
+name = "1GB 7 days - Iceland"
+gb = 1
+days = 7
+type = "data"
+price = 5.00
+
+[[IS.plans]]
+name = "3GB 10 days - Iceland"
+gb = 3
+days = 10
+type = "data"
+price = 7.10
+
+[[IS.plans]]
+name = "3GB 15 days - Iceland"
+gb = 3
+days = 15
+type = "data"
+price = 7.50
+
+[[IS.plans]]
+name = "5GB 15 days - Iceland"
+gb = 5
+days = 15
+type = "data"
+price = 9.90
+
+[[IS.plans]]
+name = "10GB 30 days - Iceland"
+gb = 10
+days = 30
+type = "data"
+price = 17.30
+
+[[IS.plans]]
+name = "20GB 30 days - Iceland"
+gb = 20
+days = 30
+type = "data"
+price = 31.60
+
+[[IS.plans]]
+name = "50GB 60 days - Iceland"
+gb = 50
+days = 60
+type = "data"
+price = 71.60
+
+
+[IT]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/italy/quibity"
+networks = []
+
+[[IT.plans]]
+name = "1GB 7 days - Italy"
+gb = 1
+days = 7
+type = "data"
+price = 4.90
+
+[[IT.plans]]
+name = "3GB 10 days - Italy"
+gb = 3
+days = 10
+type = "data"
+price = 6.40
+
+[[IT.plans]]
+name = "3GB 15 days - Italy"
+gb = 3
+days = 15
+type = "data"
+price = 6.50
+
+[[IT.plans]]
+name = "5GB 15 days - Italy"
+gb = 5
+days = 15
+type = "data"
+price = 8.10
+
+[[IT.plans]]
+name = "10GB 30 days - Italy"
+gb = 10
+days = 30
+type = "data"
+price = 13.70
+
+[[IT.plans]]
+name = "20GB 30 days - Italy"
+gb = 20
+days = 30
+type = "data"
+price = 24.60
+
+[[IT.plans]]
+name = "50GB 60 days - Italy"
+gb = 50
+days = 60
+type = "data"
+price = 55.00
+
+
+[JP]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/japan/quibity"
+networks = []
+
+[[JP.plans]]
+name = "1GB 7 days - Japan"
+gb = 1
+days = 7
+type = "data"
+price = 5.90
+
+[[JP.plans]]
+name = "3GB 15 days - Japan"
+gb = 3
+days = 15
+type = "data"
+price = 9.70
+
+[[JP.plans]]
+name = "5GB 30 days - Japan"
+gb = 5
+days = 30
+type = "data"
+price = 14.20
+
+[[JP.plans]]
+name = "10GB 30 days - Japan"
+gb = 10
+days = 30
+type = "data"
+price = 21.20
+
+[[JP.plans]]
+name = "20GB 30 days - Japan"
+gb = 20
+days = 30
+type = "data"
+price = 40.00
+
+
+[KE]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/kenya/quibity"
+networks = []
+
+[[KE.plans]]
+name = "1GB 7 days - Kenya"
+gb = 1
+days = 7
+type = "data"
+price = 7.90
+
+[[KE.plans]]
+name = "3GB 10 days - Kenya"
+gb = 3
+days = 10
+type = "data"
+price = 18.50
+
+[[KE.plans]]
+name = "3GB 15 days - Kenya"
+gb = 3
+days = 15
+type = "data"
+price = 19.40
+
+[[KE.plans]]
+name = "5GB 15 days - Kenya"
+gb = 5
+days = 15
+type = "data"
+price = 28.00
+
+[[KE.plans]]
+name = "10GB 30 days - Kenya"
+gb = 10
+days = 30
+type = "data"
+price = 51.90
+
+
+[KR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/south-korea/quibity"
+networks = []
+
+[[KR.plans]]
+name = "1GB 7 days - South Korea"
+gb = 1
+days = 7
+type = "data"
+price = 3.70
+
+[[KR.plans]]
+name = "3GB 15 days - South Korea"
+gb = 3
+days = 15
+type = "data"
+price = 4.60
+
+[[KR.plans]]
+name = "5GB 30 days - South Korea"
+gb = 5
+days = 30
+type = "data"
+price = 6.50
+
+[[KR.plans]]
+name = "10GB 30 days - South Korea"
+gb = 10
+days = 30
+type = "data"
+price = 10.40
+
+[[KR.plans]]
+name = "20GB 30 days - South Korea"
+gb = 20
+days = 30
+type = "data"
+price = 19.20
+
+
+[MA]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/morocco/quibity"
+networks = []
+
+[[MA.plans]]
+name = "1GB 7 days - Morocco"
+gb = 1
+days = 7
+type = "data"
+price = 4.50
+
+[[MA.plans]]
+name = "3GB 10 days - Morocco"
+gb = 3
+days = 10
+type = "data"
+price = 11.30
+
+[[MA.plans]]
+name = "3GB 15 days - Morocco"
+gb = 3
+days = 15
+type = "data"
+price = 11.90
+
+[[MA.plans]]
+name = "5GB 15 days - Morocco"
+gb = 5
+days = 15
+type = "data"
+price = 17.30
+
+[[MA.plans]]
+name = "10GB 30 days - Morocco"
+gb = 10
+days = 30
+type = "data"
+price = 33.00
+
+
+[MO]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/macau/quibity"
+networks = []
+
+[[MO.plans]]
+name = "1GB 7 days - Macao"
+gb = 1
+days = 7
+type = "data"
+price = 5.00
+
+[[MO.plans]]
+name = "3GB 10 days - Macao"
+gb = 3
+days = 10
+type = "data"
+price = 6.80
+
+[[MO.plans]]
+name = "3GB 15 days - Macao"
+gb = 3
+days = 15
+type = "data"
+price = 7.00
+
+[[MO.plans]]
+name = "5GB 15 days - Macao"
+gb = 5
+days = 15
+type = "data"
+price = 8.80
+
+[[MO.plans]]
+name = "10GB 30 days - Macao"
+gb = 10
+days = 30
+type = "data"
+price = 14.60
+
+[[MO.plans]]
+name = "20GB 30 days - Macao"
+gb = 20
+days = 30
+type = "data"
+price = 27.30
+
+[[MO.plans]]
+name = "50GB 60 days - Macao"
+gb = 50
+days = 60
+type = "data"
+price = 61.90
+
+
+[MX]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/mexico/quibity"
+networks = []
+
+[[MX.plans]]
+name = "1GB 7 days - Mexico"
+gb = 1
+days = 7
+type = "data"
+price = 6.80
+
+[[MX.plans]]
+name = "3GB 10 days - Mexico"
+gb = 3
+days = 10
+type = "data"
+price = 14.40
+
+[[MX.plans]]
+name = "3GB 15 days - Mexico"
+gb = 3
+days = 15
+type = "data"
+price = 14.90
+
+[[MX.plans]]
+name = "5GB 15 days - Mexico"
+gb = 5
+days = 15
+type = "data"
+price = 21.50
+
+[[MX.plans]]
+name = "10GB 30 days - Mexico"
+gb = 10
+days = 30
+type = "data"
+price = 39.50
+
+[[MX.plans]]
+name = "20GB 30 days - Mexico"
+gb = 20
+days = 30
+type = "data"
+price = 71.20
+
+
+[MY]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/malaysia/quibity"
+networks = []
+
+[[MY.plans]]
+name = "1GB 7 days - Malaysia"
+gb = 1
+days = 7
+type = "data"
+price = 5.00
+
+[[MY.plans]]
+name = "3GB 10 days - Malaysia"
+gb = 3
+days = 10
+type = "data"
+price = 6.80
+
+[[MY.plans]]
+name = "3GB 15 days - Malaysia"
+gb = 3
+days = 15
+type = "data"
+price = 7.10
+
+[[MY.plans]]
+name = "5GB 15 days - Malaysia"
+gb = 5
+days = 15
+type = "data"
+price = 9.50
+
+[[MY.plans]]
+name = "10GB 30 days - Malaysia"
+gb = 10
+days = 30
+type = "data"
+price = 16.20
+
+[[MY.plans]]
+name = "20GB 30 days - Malaysia"
+gb = 20
+days = 30
+type = "data"
+price = 29.70
+
+[[MY.plans]]
+name = "50GB 60 days - Malaysia"
+gb = 50
+days = 60
+type = "data"
+price = 67.00
+
+
+[NL]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/netherlands/quibity"
+networks = []
+
+[[NL.plans]]
+name = "1GB 7 days - Netherlands"
+gb = 1
+days = 7
+type = "data"
+price = 4.90
+
+[[NL.plans]]
+name = "3GB 10 days - Netherlands"
+gb = 3
+days = 10
+type = "data"
+price = 6.50
+
+[[NL.plans]]
+name = "3GB 15 days - Netherlands"
+gb = 3
+days = 15
+type = "data"
+price = 6.70
+
+[[NL.plans]]
+name = "5GB 15 days - Netherlands"
+gb = 5
+days = 15
+type = "data"
+price = 8.20
+
+[[NL.plans]]
+name = "10GB 30 days - Netherlands"
+gb = 10
+days = 30
+type = "data"
+price = 14.00
+
+[[NL.plans]]
+name = "20GB 30 days - Netherlands"
+gb = 20
+days = 30
+type = "data"
+price = 25.40
+
+[[NL.plans]]
+name = "50GB 60 days - Netherlands"
+gb = 50
+days = 60
+type = "data"
+price = 56.60
+
+
+[NZ]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/new-zealand/quibity"
+networks = []
+
+[[NZ.plans]]
+name = "1GB 7 days - New Zealand"
+gb = 1
+days = 7
+type = "data"
+price = 5.00
+
+[[NZ.plans]]
+name = "3GB 10 days - New Zealand"
+gb = 3
+days = 10
+type = "data"
+price = 6.70
+
+[[NZ.plans]]
+name = "3GB 15 days - New Zealand"
+gb = 3
+days = 15
+type = "data"
+price = 6.80
+
+[[NZ.plans]]
+name = "5GB 15 days - New Zealand"
+gb = 5
+days = 15
+type = "data"
+price = 8.50
+
+[[NZ.plans]]
+name = "10GB 30 days - New Zealand"
+gb = 10
+days = 30
+type = "data"
+price = 14.50
+
+[[NZ.plans]]
+name = "20GB 30 days - New Zealand"
+gb = 20
+days = 30
+type = "data"
+price = 26.20
+
+[[NZ.plans]]
+name = "50GB 60 days - New Zealand"
+gb = 50
+days = 60
+type = "data"
+price = 58.70
+
+
+[PE]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/peru/quibity"
+networks = []
+
+[[PE.plans]]
+name = "1GB 7 days - Peru"
+gb = 1
+days = 7
+type = "data"
+price = 6.40
+
+[[PE.plans]]
+name = "3GB 15 days - Peru"
+gb = 3
+days = 15
+type = "data"
+price = 15.40
+
+[[PE.plans]]
+name = "5GB 15 days - Peru"
+gb = 5
+days = 15
+type = "data"
+price = 22.50
+
+[[PE.plans]]
+name = "10GB 30 days - Peru"
+gb = 10
+days = 30
+type = "data"
+price = 42.10
+
+
+[PH]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/philippines/quibity"
+networks = []
+
+[[PH.plans]]
+name = "1GB 7 days - Philippines"
+gb = 1
+days = 7
+type = "data"
+price = 5.30
+
+[[PH.plans]]
+name = "3GB 10 days - Philippines"
+gb = 3
+days = 10
+type = "data"
+price = 8.10
+
+[[PH.plans]]
+name = "3GB 15 days - Philippines"
+gb = 3
+days = 15
+type = "data"
+price = 8.50
+
+[[PH.plans]]
+name = "5GB 15 days - Philippines"
+gb = 5
+days = 15
+type = "data"
+price = 11.60
+
+[[PH.plans]]
+name = "10GB 30 days - Philippines"
+gb = 10
+days = 30
+type = "data"
+price = 20.30
+
+[[PH.plans]]
+name = "20GB 30 days - Philippines"
+gb = 20
+days = 30
+type = "data"
+price = 38.00
+
+
+[PL]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/poland/quibity"
+networks = []
+
+[[PL.plans]]
+name = "1GB 7 days - Poland"
+gb = 1
+days = 7
+type = "data"
+price = 5.00
+
+[[PL.plans]]
+name = "3GB 10 days - Poland"
+gb = 3
+days = 10
+type = "data"
+price = 6.70
+
+[[PL.plans]]
+name = "3GB 15 days - Poland"
+gb = 3
+days = 15
+type = "data"
+price = 6.80
+
+[[PL.plans]]
+name = "5GB 15 days - Poland"
+gb = 5
+days = 15
+type = "data"
+price = 8.80
+
+[[PL.plans]]
+name = "10GB 30 days - Poland"
+gb = 10
+days = 30
+type = "data"
+price = 15.10
+
+[[PL.plans]]
+name = "20GB 30 days - Poland"
+gb = 20
+days = 30
+type = "data"
+price = 27.50
+
+[[PL.plans]]
+name = "50GB 60 days - Poland"
+gb = 50
+days = 60
+type = "data"
+price = 62.10
+
+
+[PT]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/portugal/quibity"
+networks = []
+
+[[PT.plans]]
+name = "1GB 7 days - Portugal"
+gb = 1
+days = 7
+type = "data"
+price = 4.90
+
+[[PT.plans]]
+name = "3GB 10 days - Portugal"
+gb = 3
+days = 10
+type = "data"
+price = 6.20
+
+[[PT.plans]]
+name = "3GB 15 days - Portugal"
+gb = 3
+days = 15
+type = "data"
+price = 6.40
+
+[[PT.plans]]
+name = "5GB 15 days - Portugal"
+gb = 5
+days = 15
+type = "data"
+price = 7.70
+
+[[PT.plans]]
+name = "10GB 30 days - Portugal"
+gb = 10
+days = 30
+type = "data"
+price = 12.70
+
+[[PT.plans]]
+name = "20GB 30 days - Portugal"
+gb = 20
+days = 30
+type = "data"
+price = 22.80
+
+[[PT.plans]]
+name = "50GB 60 days - Portugal"
+gb = 50
+days = 60
+type = "data"
+price = 50.60
+
+
+[QA]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/qatar/quibity"
+networks = []
+
+[[QA.plans]]
+name = "1GB 7 days - Qatar"
+gb = 1
+days = 7
+type = "data"
+price = 5.80
+
+[[QA.plans]]
+name = "3GB 10 days - Qatar"
+gb = 3
+days = 10
+type = "data"
+price = 9.90
+
+[[QA.plans]]
+name = "3GB 15 days - Qatar"
+gb = 3
+days = 15
+type = "data"
+price = 10.40
+
+[[QA.plans]]
+name = "5GB 15 days - Qatar"
+gb = 5
+days = 15
+type = "data"
+price = 14.40
+
+[[QA.plans]]
+name = "10GB 30 days - Qatar"
+gb = 10
+days = 30
+type = "data"
+price = 25.80
+
+[[QA.plans]]
+name = "20GB 30 days - Qatar"
+gb = 20
+days = 30
+type = "data"
+price = 48.40
+
+
+[SA]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/saudi-arabia/quibity"
+networks = []
+
+[[SA.plans]]
+name = "1GB 7 days - Saudi Arabia"
+gb = 1
+days = 7
+type = "data"
+price = 6.70
+
+[[SA.plans]]
+name = "3GB 10 days - Saudi Arabia"
+gb = 3
+days = 10
+type = "data"
+price = 13.40
+
+[[SA.plans]]
+name = "3GB 15 days - Saudi Arabia"
+gb = 3
+days = 15
+type = "data"
+price = 14.10
+
+[[SA.plans]]
+name = "5GB 15 days - Saudi Arabia"
+gb = 5
+days = 15
+type = "data"
+price = 19.90
+
+[[SA.plans]]
+name = "10GB 30 days - Saudi Arabia"
+gb = 10
+days = 30
+type = "data"
+price = 36.90
+
+[[SA.plans]]
+name = "20GB 30 days - Saudi Arabia"
+gb = 20
+days = 30
+type = "data"
+price = 69.80
+
+
+[SG]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/singapore/quibity"
+networks = []
+
+[[SG.plans]]
+name = "1GB 7 days - Singapore"
+gb = 1
+days = 7
+type = "data"
+price = 5.50
+
+[[SG.plans]]
+name = "3GB 10 days - Singapore"
+gb = 3
+days = 10
+type = "data"
+price = 8.10
+
+[[SG.plans]]
+name = "3GB 15 days - Singapore"
+gb = 3
+days = 15
+type = "data"
+price = 8.40
+
+[[SG.plans]]
+name = "5GB 15 days - Singapore"
+gb = 5
+days = 15
+type = "data"
+price = 11.50
+
+[[SG.plans]]
+name = "10GB 30 days - Singapore"
+gb = 10
+days = 30
+type = "data"
+price = 20.60
+
+[[SG.plans]]
+name = "20GB 30 days - Singapore"
+gb = 20
+days = 30
+type = "data"
+price = 36.40
+
+
+[TH]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/thailand/quibity"
+networks = []
+
+[[TH.plans]]
+name = "1GB 7 days - Thailand"
+gb = 1
+days = 7
+type = "data"
+price = 5.10
+
+[[TH.plans]]
+name = "3GB 10 days - Thailand"
+gb = 3
+days = 10
+type = "data"
+price = 7.30
+
+[[TH.plans]]
+name = "3GB 15 days - Thailand"
+gb = 3
+days = 15
+type = "data"
+price = 7.70
+
+[[TH.plans]]
+name = "5GB 15 days - Thailand"
+gb = 5
+days = 15
+type = "data"
+price = 10.40
+
+[[TH.plans]]
+name = "10GB 30 days - Thailand"
+gb = 10
+days = 30
+type = "data"
+price = 18.00
+
+[[TH.plans]]
+name = "20GB 30 days - Thailand"
+gb = 20
+days = 30
+type = "data"
+price = 35.00
+
+[[TH.plans]]
+name = "50GB 60 days - Thailand"
+gb = 50
+days = 60
+type = "data"
+price = 77.70
+
+
+[TR]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/turkey/quibity"
+networks = []
+
+[[TR.plans]]
+name = "1GB 7 days - Turkey"
+gb = 1
+days = 7
+type = "data"
+price = 2.90
+
+[[TR.plans]]
+name = "3GB 10 days - Turkey"
+gb = 3
+days = 10
+type = "data"
+price = 4.70
+
+[[TR.plans]]
+name = "3GB 15 days - Turkey"
+gb = 3
+days = 15
+type = "data"
+price = 5.00
+
+[[TR.plans]]
+name = "5GB 15 days - Turkey"
+gb = 5
+days = 15
+type = "data"
+price = 7.70
+
+[[TR.plans]]
+name = "10GB 30 days - Turkey"
+gb = 10
+days = 30
+type = "data"
+price = 12.80
+
+[[TR.plans]]
+name = "20GB 30 days - Turkey"
+gb = 20
+days = 30
+type = "data"
+price = 24.90
+
+[[TR.plans]]
+name = "50GB 60 days - Turkey"
+gb = 50
+days = 60
+type = "data"
+price = 58.90
+
+
+[TW]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/taiwan/quibity"
+networks = []
+
+[[TW.plans]]
+name = "1GB 7 days - Taiwan"
+gb = 1
+days = 7
+type = "data"
+price = 6.40
+
+[[TW.plans]]
+name = "3GB 10 days - Taiwan"
+gb = 3
+days = 10
+type = "data"
+price = 8.40
+
+[[TW.plans]]
+name = "3GB 15 days - Taiwan"
+gb = 3
+days = 15
+type = "data"
+price = 8.60
+
+[[TW.plans]]
+name = "5GB 15 days - Taiwan"
+gb = 5
+days = 15
+type = "data"
+price = 10.70
+
+[[TW.plans]]
+name = "10GB 30 days - Taiwan"
+gb = 10
+days = 30
+type = "data"
+price = 20.30
+
+[[TW.plans]]
+name = "20GB 30 days - Taiwan"
+gb = 20
+days = 30
+type = "data"
+price = 39.60
+
+
+[US]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/usa/quibity"
+networks = []
+
+[[US.plans]]
+name = "1GB 7 days - United States"
+gb = 1
+days = 7
+type = "data"
+price = 5.40
+
+[[US.plans]]
+name = "3GB 10 days - United States"
+gb = 3
+days = 10
+type = "data"
+price = 7.30
+
+[[US.plans]]
+name = "3GB 15 days - United States"
+gb = 3
+days = 15
+type = "data"
+price = 7.50
+
+[[US.plans]]
+name = "5GB 15 days - United States"
+gb = 5
+days = 15
+type = "data"
+price = 9.80
+
+[[US.plans]]
+name = "10GB 30 days - United States"
+gb = 10
+days = 30
+type = "data"
+price = 15.00
+
+[[US.plans]]
+name = "20GB 30 days - United States"
+gb = 20
+days = 30
+type = "data"
+price = 30.50
+
+[[US.plans]]
+name = "50GB 60 days - United States"
+gb = 50
+days = 60
+type = "data"
+price = 68.90
+
+
+[VN]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/vietnam/quibity"
+networks = []
+
+[[VN.plans]]
+name = "1GB 7 days - Vietnam"
+gb = 1
+days = 7
+type = "data"
+price = 5.60
+
+[[VN.plans]]
+name = "3GB 15 days - Vietnam"
+gb = 3
+days = 15
+type = "data"
+price = 9.10
+
+[[VN.plans]]
+name = "3GB 10 days - Vietnam"
+gb = 3
+days = 10
+type = "data"
+price = 9.40
+
+[[VN.plans]]
+name = "5GB 15 days - Vietnam"
+gb = 5
+days = 15
+type = "data"
+price = 13.40
+
+[[VN.plans]]
+name = "10GB 30 days - Vietnam"
+gb = 10
+days = 30
+type = "data"
+price = 21.30
+
+[[VN.plans]]
+name = "20GB 30 days - Vietnam"
+gb = 20
+days = 30
+type = "data"
+price = 37.60
+
+
+[ZA]
+checked = "2026-10-04"
+source = "esimdb.com"
+url = "https://esimdb.com/south-africa/quibity"
+networks = []
+
+[[ZA.plans]]
+name = "1GB 7 days - South Africa"
+gb = 1
+days = 7
+type = "data"
+price = 3.30
+
+[[ZA.plans]]
+name = "3GB 10 days - South Africa"
+gb = 3
+days = 10
+type = "data"
+price = 7.90
+
+[[ZA.plans]]
+name = "3GB 15 days - South Africa"
+gb = 3
+days = 15
+type = "data"
+price = 8.20
+
+[[ZA.plans]]
+name = "5GB 15 days - South Africa"
+gb = 5
+days = 15
+type = "data"
+price = 11.90
+
+[[ZA.plans]]
+name = "10GB 30 days - South Africa"
+gb = 10
+days = 30
+type = "data"
+price = 22.00
+

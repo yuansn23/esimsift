@@ -1,0 +1,79 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n7"
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Turkey",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$2.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Turkey",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$4.70",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Turkey",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$5.00",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Turkey",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$7.70",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Turkey",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$12.80",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - Turkey",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$24.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "50GB 60 days - Turkey",
+   "data": "50GB",
+   "validity": "60 Days",
+   "price": "$58.90",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Turkey | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Turkey",
+  "networks": null
+ },
+ "slug": "turkiye",
+ "url": "https://esimdb.com/turkey/quibity",
+ "status": 200
+}

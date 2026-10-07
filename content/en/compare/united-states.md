@@ -3,7 +3,7 @@ title: "USA eSIM"
 iso: US
 weight: 2
 seo:
-  description: "eSIM Sift compares every USA eSIM: 220 real plans from 8 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every USA eSIM: 231 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
 ---
 
 eSIM prices in the USA are less flat than the headline number suggests. Nothing in the USA comes in under yesim's 500MB / 1 Day at $0.51. That $0.51 buys a fraction of what it would at the $0.62/GB rate, which is nearer 842MB. On cost per gigabyte alosim leads with a 50GB / 10-day plan at $0.62/GB. Across {{< count-providers >}} providers the board runs to 220 plans for the USA, 91 sold as unlimited.

@@ -1,0 +1,264 @@
+{
+ "brand": "bnesim",
+ "slug": "fiji",
+ "iso2": "FJ",
+ "country_name": "Fiji",
+ "url": "https://www.bnesim.com/plans/fj/",
+ "source": "api.bnesim.com/v0.1/sim_card_landing_pricing/ (public)",
+ "status": 200,
+ "plans": [
+  {
+   "id": "89598",
+   "name": "Surf 1 GB in Fiji",
+   "amount": 1,
+   "unit": "GB",
+   "price": "55.19",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "DIGICEL"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "811758e1b2cea212c351af9baa0c155f488967c7.png",
+      "network_code": "FJIDP",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Fiji",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89599",
+   "name": "Surf 3 GB in Fiji",
+   "amount": 3,
+   "unit": "GB",
+   "price": "160.60",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "DIGICEL"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "811758e1b2cea212c351af9baa0c155f488967c7.png",
+      "network_code": "FJIDP",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Fiji",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89600",
+   "name": "Surf 5 GB in Fiji",
+   "amount": 5,
+   "unit": "GB",
+   "price": "259.40",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "DIGICEL"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "811758e1b2cea212c351af9baa0c155f488967c7.png",
+      "network_code": "FJIDP",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Fiji",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89869",
+   "name": "Surf 10 GB in Fiji for 30 days",
+   "amount": 10,
+   "unit": "GB",
+   "price": "442.15",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "DIGICEL"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "811758e1b2cea212c351af9baa0c155f488967c7.png",
+      "network_code": "FJIDP",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Fiji",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89872",
+   "name": "Surf 1 GB in Fiji for 30 days",
+   "amount": 1,
+   "unit": "GB",
+   "price": "49.13",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "DIGICEL"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "811758e1b2cea212c351af9baa0c155f488967c7.png",
+      "network_code": "FJIDP",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Fiji",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89871",
+   "name": "Surf 3 GB in Fiji for 30 days",
+   "amount": 3,
+   "unit": "GB",
+   "price": "142.96",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "DIGICEL"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "811758e1b2cea212c351af9baa0c155f488967c7.png",
+      "network_code": "FJIDP",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Fiji",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "89870",
+   "name": "Surf 5 GB in Fiji for 30 days",
+   "amount": 5,
+   "unit": "GB",
+   "price": "230.91",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "DIGICEL"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "811758e1b2cea212c351af9baa0c155f488967c7.png",
+      "network_code": "FJIDP",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Fiji",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  }
+ ],
+ "regional_options": []
+}

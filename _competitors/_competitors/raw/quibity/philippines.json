@@ -1,0 +1,70 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n6"
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Philippines",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.30",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Philippines",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$8.10",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Philippines",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$8.50",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Philippines",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$11.60",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Philippines",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$20.30",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - Philippines",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$38.00",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Philippines | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Philippines",
+  "networks": null
+ },
+ "slug": "philippines",
+ "url": "https://esimdb.com/philippines/quibity",
+ "status": 200
+}

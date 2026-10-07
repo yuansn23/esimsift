@@ -1,0 +1,123 @@
+{
+ "offers": [],
+ "aggregate": null,
+ "organization": {
+  "name": "Jetpac",
+  "url": "https://www.jetpacglobal.com/",
+  "description": "Jetpac provides affordable travel eSIMs with prepaid mobile data plans for over 200 destinations worldwide, helping travellers stay connected without expensive roaming charges.",
+  "foundingDate": "2022",
+  "logo": {
+   "@type": "ImageObject",
+   "url": "https://www.jetpacglobal.com/_fe/_next/image?url=%2Fimages%2Fheader%2Fheader-logo.svg&w=384&q=75"
+  },
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "63 Alexandra Terrace, #06-18 Harbourlink Innohub",
+   "addressLocality": "Singapore",
+   "postalCode": "119937",
+   "addressCountry": "SG"
+  },
+  "contactPoint": [
+   {
+    "@type": "ContactPoint",
+    "contactType": "Customer Support",
+    "telephone": "+1-815-853-8722",
+    "email": "support@jetpacglobal.com",
+    "url": "https://www.jetpacglobal.com/contact-us",
+    "areaServed": {
+     "@type": "Place",
+     "name": "Worldwide"
+    },
+    "availableLanguage": [
+     "English",
+     "Chinese",
+     "Dutch",
+     "French",
+     "German",
+     "Italian",
+     "Japanese",
+     "Korean",
+     "Portuguese",
+     "Spanish"
+    ],
+    "hoursAvailable": {
+     "@type": "OpeningHoursSpecification",
+     "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+     ],
+     "opens": "00:00",
+     "closes": "23:59"
+    }
+   },
+   {
+    "@type": "ContactPoint",
+    "contactType": "WhatsApp Support",
+    "telephone": "+1-815-853-8722",
+    "url": "https://www.jetpacglobal.com/contact-us",
+    "areaServed": {
+     "@type": "Place",
+     "name": "Worldwide"
+    },
+    "availableLanguage": [
+     "English"
+    ],
+    "hoursAvailable": {
+     "@type": "OpeningHoursSpecification",
+     "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+     ],
+     "opens": "00:00",
+     "closes": "23:59"
+    }
+   }
+  ],
+  "sameAs": [
+   "https://www.facebook.com/jetpacglobal",
+   "https://www.instagram.com/jetpacglobal",
+   "https://www.linkedin.com/company/jetpacglobal",
+   "https://x.com/jetpacglobal",
+   "https://www.youtube.com/@JetpacGlobal"
+  ],
+  "alternateName": "Jetpac Global"
+ },
+ "ratings": [
+  {
+   "name": "Jetpac eSIM App for iOS",
+   "@type": "AggregateRating",
+   "ratingValue": "4.2",
+   "ratingCount": "113",
+   "bestRating": "5",
+   "worstRating": "1"
+  },
+  {
+   "name": "Jetpac eSIM App for Android",
+   "@type": "AggregateRating",
+   "ratingValue": "4.6",
+   "ratingCount": "1006",
+   "bestRating": "5",
+   "worstRating": "1"
+  }
+ ],
+ "networks": [],
+ "meta": {
+  "title": "Jetpac eSIM for International Travel – 200+ Destinations",
+  "h1": "Best eSIM for international travel",
+  "bytes": 759265
+ },
+ "slug": "united-kingdom",
+ "jetpac_slug": "uk",
+ "url": "https://www.jetpacglobal.com/uk-esim/",
+ "status": 200
+}

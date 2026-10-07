@@ -1,0 +1,268 @@
+{
+ "brand": "jetpac",
+ "source": "jetpacglobal.com product page JSON-LD (schema.org Product / AggregateOffer)",
+ "source_url": "https://www.jetpacglobal.com/product-details/japan-esim",
+ "captured_at": "2026-10-04T10:55:38+00:00",
+ "raw_file": "_competitors/_probe/jetpac_japan.html",
+ "country": "japan",
+ "area_served": "Japan",
+ "brand_official": "Jetpac eSIM",
+ "aggregate_rating": {
+  "rating_value": "4.8",
+  "review_count": "3276",
+  "note": "on-site rating shown in Product ld+json; trustpilot NOT scraped (placeholder only)"
+ },
+ "aggregate_offer": {
+  "low_price": 5,
+  "high_price": 65.99,
+  "offer_count_declared": 24,
+  "offer_count_extracted": 24,
+  "currency": "USD"
+ },
+ "offers": [
+  {
+   "sku": "JAPAN-UNLIMITEDGB-10D",
+   "name": "Japan eSIM - Unlimited GB - 10 Days",
+   "data": "Unlimited GB",
+   "validity": "10 Days",
+   "price": 33.99,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-UNLIMITEDGB-15D",
+   "name": "Japan eSIM - Unlimited GB - 15 Days",
+   "data": "Unlimited GB",
+   "validity": "15 Days",
+   "price": 41.99,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-UNLIMITEDGB-21D",
+   "name": "Japan eSIM - Unlimited GB - 21 Days",
+   "data": "Unlimited GB",
+   "validity": "21 Days",
+   "price": 49.99,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-UNLIMITEDGB-3D",
+   "name": "Japan eSIM - Unlimited GB - 3 Days",
+   "data": "Unlimited GB",
+   "validity": "3 Days",
+   "price": 10.99,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-UNLIMITEDGB-30D",
+   "name": "Japan eSIM - Unlimited GB - 30 Days",
+   "data": "Unlimited GB",
+   "validity": "30 Days",
+   "price": 65.99,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-UNLIMITEDGB-5D",
+   "name": "Japan eSIM - Unlimited GB - 5 Days",
+   "data": "Unlimited GB",
+   "validity": "5 Days",
+   "price": 16.99,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-UNLIMITEDGB-7D",
+   "name": "Japan eSIM - Unlimited GB - 7 Days",
+   "data": "Unlimited GB",
+   "validity": "7 Days",
+   "price": 25.99,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-3GB-1D",
+   "name": "Japan eSIM - 3 GB - 1 Day",
+   "data": "3 GB",
+   "validity": "1 Day",
+   "price": 5,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-5GB-1D",
+   "name": "Japan eSIM - 5 GB - 1 Day",
+   "data": "5 GB",
+   "validity": "1 Day",
+   "price": 6,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-10GB-1D",
+   "name": "Japan eSIM - 10 GB - 1 Day",
+   "data": "10 GB",
+   "validity": "1 Day",
+   "price": 9,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-5GB-30D",
+   "name": "Japan eSIM - 5 GB - 30 Days",
+   "data": "5 GB",
+   "validity": "30 Days",
+   "price": 10,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-10GB-30D",
+   "name": "Japan eSIM - 10 GB - 30 Days",
+   "data": "10 GB",
+   "validity": "30 Days",
+   "price": 16,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-15GB-30D",
+   "name": "Japan eSIM - 15 GB - 30 Days",
+   "data": "15 GB",
+   "validity": "30 Days",
+   "price": 21,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-30GB-30D",
+   "name": "Japan eSIM - 30 GB - 30 Days",
+   "data": "30 GB",
+   "validity": "30 Days",
+   "price": 29.99,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-40GB-30D",
+   "name": "Japan eSIM - 40 GB - 30 Days",
+   "data": "40 GB",
+   "validity": "30 Days",
+   "price": 34.99,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-20GB-30D",
+   "name": "Japan eSIM - 20 GB - 30 Days",
+   "data": "20 GB",
+   "validity": "30 Days",
+   "price": 40,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-3GB-4D",
+   "name": "Japan eSIM - 3 GB - 4 Days",
+   "data": "3 GB",
+   "validity": "4 Days",
+   "price": 6,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-5GB-4D",
+   "name": "Japan eSIM - 5 GB - 4 Days",
+   "data": "5 GB",
+   "validity": "4 Days",
+   "price": 7,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-1GB-4D",
+   "name": "Japan eSIM - 1 GB - 4 Days",
+   "data": "1 GB",
+   "validity": "4 Days",
+   "price": 7,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-10GB-4D",
+   "name": "Japan eSIM - 10 GB - 4 Days",
+   "data": "10 GB",
+   "validity": "4 Days",
+   "price": 11.5,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-3GB-7D",
+   "name": "Japan eSIM - 3 GB - 7 Days",
+   "data": "3 GB",
+   "validity": "7 Days",
+   "price": 7,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-5GB-7D",
+   "name": "Japan eSIM - 5 GB - 7 Days",
+   "data": "5 GB",
+   "validity": "7 Days",
+   "price": 8,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-10GB-7D",
+   "name": "Japan eSIM - 10 GB - 7 Days",
+   "data": "10 GB",
+   "validity": "7 Days",
+   "price": 13,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  },
+  {
+   "sku": "JAPAN-15GB-7D",
+   "name": "Japan eSIM - 15 GB - 7 Days",
+   "data": "15 GB",
+   "validity": "7 Days",
+   "price": 16,
+   "currency": "USD",
+   "price_valid_until": "2027-12-31",
+   "availability": "InStock"
+  }
+ ],
+ "notes": [
+  "Voice packs / messaging features appear only in RSC flight data as copy, not structured - not extracted.",
+  "priceValidUntil 2027-12-31 on all offers (likely placeholder expiry set by Jetpac)."
+ ]
+}

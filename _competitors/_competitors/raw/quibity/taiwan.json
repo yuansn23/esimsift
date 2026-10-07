@@ -1,0 +1,70 @@
+{
+ "tab": {
+  "clicked": false,
+  "label": null
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Taiwan",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$6.40",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Taiwan",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$8.40",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Taiwan",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$8.60",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Taiwan",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$10.70",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Taiwan",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$20.30",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - Taiwan",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$39.60",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Taiwan | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Taiwan",
+  "networks": null
+ },
+ "slug": "taiwan",
+ "url": "https://esimdb.com/taiwan/quibity",
+ "status": 200
+}

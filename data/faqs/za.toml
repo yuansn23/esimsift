@@ -1,16 +1,17 @@
 # South Africa FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for South Africa?"
-a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "At ${cheap_price}, {cheap_brand}'s {cheap_plan} is the cheapest way online in {country}. {runner_brand} sits next at ${runner_price}, and the strongest per-gigabyte rate comes from {value_brand}'s {value_plan} at ${value_pergb}/GB. The table above sorts every option, so compare the shape of a plan as well as its price."
 
 [[faq]]
 q = "Is unlimited eSIM data in South Africa actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Roami at $18.99 ($2.71/day), carries: Soft cap 2GB/day at full speed, then throttled. Treat them as big-but-capped plans and compare the caps."
+a = "Treat them as capped: {unl_count} unlimited {country} plans each state a daily allowance and a fallback speed. Prices run {unl_perday_range} per day depending on duration, and {unl_brand} is the cheapest at ${unl_perday}/day. Throttling rather than disconnection is the trade-off, with speeds falling to {unl_drop} once the allowance is spent."
 
 [[faq]]
 q = "Airalo or Holafly for South Africa?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($3.80/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "The honest answer is that these two are not interchangeable. Airalo's strongest {country} offer is ${ah_airalo_pergb}/GB, sold as {ah_airalo_plan} for ${ah_airalo_price}. The flat-rate option is Holafly, at {ah_holafly_days} days from ${ah_holafly_price} - ${ah_holafly_perday}/day whatever you use."
 
 [[faq]]
 q = "Do I need ID verification for a South Africa eSIM?"
@@ -21,5 +22,7 @@ q = "Which networks do South Africa eSIMs use?"
 a = "Plans on this page run on Vodacom, MTN, Telkom. Differences matter mostly outside the big cities - the network column in the main table shows which carrier each plan rides."
 
 [[faq]]
-q = "Can one eSIM cover South Africa?"
-a = "No single-country plan here bundles neighbors - regional plans from Airalo and Nomad cover multi-stop trips, usually at a $/GB premium. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+# Q6：国家没有 countries.toml `neighbors`（无邻国 7 国之一），所以问题点名 **region** 而不是邻国 ——
+# 否则只剩「Can one eSIM cover South Africa?」这种同义反复的问法（2026-10-07 第四十二轮修）。
+q = "Can one eSIM cover South Africa and the rest of Africa?"
+a = "Only via a regional plan, because the {country} tables here are scoped to one market. Crossing into {neighbor} means either a regional package or a second plan, and the per-gigabyte rate is what tells them apart."

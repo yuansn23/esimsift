@@ -1,16 +1,17 @@
 # Singapore FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for Singapore?"
-a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "{cheap_brand}'s {cheap_plan} is the cheapest {country} plan we track, at ${cheap_price}. {runner_brand} sits next at ${runner_price}, and the strongest per-gigabyte rate comes from {value_brand}'s {value_plan} at ${value_pergb}/GB. Buy for the trip you are actually taking rather than for the lowest figure on the page."
 
 [[faq]]
 q = "Is unlimited eSIM data in Singapore actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Roami at $20.99 ($3.00/day), carries: Soft cap 2GB/day at full speed, then throttled. Treat them as big-but-capped plans and compare the caps."
+a = "Not quite - all {unl_count} 'unlimited' {country} plans carry a fair-use policy. Prices run {unl_perday_range} per day depending on duration, and {unl_brand} is the cheapest at ${unl_perday}/day. Compare caps across brands before buying, because the throttled speed is the number that matters and {unl_brand}'s is {unl_drop}."
 
 [[faq]]
 q = "Airalo or Holafly for Singapore?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($4.03/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "They sell different things, so the answer depends on how you use data. Airalo's strongest {country} offer is ${ah_airalo_pergb}/GB, sold as {ah_airalo_plan} for ${ah_airalo_price}. Where Holafly wins is predictability, from ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and where Airalo wins is a short, light trip."
 
 [[faq]]
 q = "Do I need ID verification for a Singapore eSIM?"
@@ -22,4 +23,4 @@ a = "Plans on this page run on Singtel, StarHub, M1. Differences matter mostly o
 
 [[faq]]
 q = "Can one eSIM cover Singapore and Malaysia?"
-a = "Regional Asia/continental plans from Airalo and Nomad bundle Singapore with neighbors - usually worse $/GB than single-country plans, but cheaper than two separate eSIMs. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+a = "Not with a single-country plan. Everything in our {country} tables is scoped to {country} alone, so a trip that also takes in {neighbor} needs either a second country plan or a regional bundle."

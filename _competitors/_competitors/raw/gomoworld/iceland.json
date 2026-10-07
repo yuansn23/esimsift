@@ -1,0 +1,52 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single"
+ },
+ "plans": [
+  {
+   "name": "Iceland",
+   "data": "5GB",
+   "validity": "7 Days",
+   "price": "$4.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Iceland",
+   "data": "15GB",
+   "validity": "30 Days",
+   "price": "$12.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Iceland",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$24.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Iceland",
+   "data": "75GB",
+   "validity": "30 Days",
+   "price": "$35.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GoMoWorld Travel eSIM for Iceland | Data Plans & Reviews",
+  "h1": "GoMoWorld eSIM Data Plans for Iceland",
+  "networks": null
+ },
+ "slug": "iceland",
+ "url": "https://esimdb.com/iceland/gomoworld",
+ "status": 200
+}

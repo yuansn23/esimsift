@@ -1,0 +1,61 @@
+{
+ "tab": {
+  "clicked": false,
+  "label": null
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Morocco",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$4.50",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Morocco",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$11.30",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Morocco",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$11.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Morocco",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$17.30",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Morocco",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$33.00",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Morocco | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Morocco",
+  "networks": null
+ },
+ "slug": "morocco",
+ "url": "https://esimdb.com/morocco/quibity",
+ "status": 200
+}

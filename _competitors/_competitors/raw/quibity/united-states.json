@@ -1,0 +1,79 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n7"
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - United States",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.40",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - United States",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$7.30",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - United States",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$7.50",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - United States",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$9.80",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - United States",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$15.00",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - United States",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$30.50",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "50GB 60 days - United States",
+   "data": "50GB",
+   "validity": "60 Days",
+   "price": "$68.90",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for USA | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for United States of America",
+  "networks": null
+ },
+ "slug": "united-states",
+ "url": "https://esimdb.com/usa/quibity",
+ "status": 200
+}

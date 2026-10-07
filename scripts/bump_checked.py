@@ -54,21 +54,58 @@ def plan_files(brand: str | None) -> list[pathlib.Path]:
     return sorted(PLANS_DIR.glob("*.toml"))
 
 
+class Block:
+    """一份数据里的一个「段」—— plans 的 `[ISO]` 块、providers.toml 的 `[key]` 段。
+
+    stamp_checked.py 靠它做「内容指纹 → 日期」的映射，所以段的边界与
+    「哪个字段是日期」必须只有一份定义，就在本文件里。
+    """
+
+    __slots__ = ("key", "start", "end", "date_idx", "date")
+
+    def __init__(self, key: str, start: int, end: int,
+                 date_idx: int = -1, date: str = ""):
+        self.key = key
+        self.start = start        # 段头行下标（含）
+        self.end = end            # 段尾行下标（不含）
+        self.date_idx = date_idx  # 日期字段所在行；同段出现多个时**只认第一个**
+        self.date = date
+
+
+def read_lines(path: pathlib.Path) -> list[str]:
+    """按 LF 切行、其余字节原样保留（写回 `"\\n".join(lines)` 即复原）。"""
+    with io.open(path, "r", encoding="utf-8", newline="") as f:
+        return f.read().split("\n")
+
+
+def parse_blocks(lines: list[str], header_re, date_re, val_group: int) -> list[Block]:
+    """按 header_re 切段，段内用 date_re 抓日期字段（值取 val_group）。"""
+    out: list[Block] = []
+    cur: Block | None = None
+    for i, s in enumerate(lines):
+        m = header_re.match(s)
+        if m:
+            if cur is not None:
+                cur.end = i
+                out.append(cur)
+            cur = Block(m.group(1), i, len(lines))
+            continue
+        if cur is not None and cur.date_idx < 0:
+            m2 = date_re.match(s)
+            if m2:
+                cur.date_idx = i
+                cur.date = m2.group(val_group)
+    if cur is not None:
+        cur.end = len(lines)
+        out.append(cur)
+    return out
+
+
 def scan(path: pathlib.Path) -> dict[str, str]:
     """返回 {ISO: checked}，按文件出现顺序。"""
-    out: dict[str, str] = {}
-    with io.open(path, "r", encoding="utf-8", newline="") as f:
-        cur = None
-        for line in f:
-            s = line.rstrip("\r\n")
-            m = RE_ISO_HEADER.match(s)
-            if m:
-                cur = m.group(1)
-                continue
-            m = RE_CHECKED.match(s)
-            if m and cur:
-                out[cur] = m.group(2)
-    return out
+    return {b.key: b.date
+            for b in parse_blocks(read_lines(path), RE_ISO_HEADER, RE_CHECKED, 2)
+            if b.date}
 
 
 def apply(path: pathlib.Path, targets: set[str] | None, newdate: str, dry: bool):

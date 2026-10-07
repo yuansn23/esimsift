@@ -1,0 +1,68 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n6"
+ },
+ "plans": [
+  {
+   "name": "Local Israel - 7 Days - 1 GB",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$4.50",
+   "badges": []
+  },
+  {
+   "name": "Local Israel - 30 Days - 3 GB",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$9.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Israel - 30 Days - 5 GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$14.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Israel - 30 Days - 10 GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$19.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Israel - 30 Days - 20 GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$29.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Israel - 30 Days - 50 GB",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$39.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Nomad Travel eSIM for Israel | Data Plans & Reviews",
+  "h1": "Nomad eSIM Data Plans for Israel",
+  "networks": null
+ },
+ "slug": "israel",
+ "url": "https://esimdb.com/israel/nomad",
+ "status": 200
+}

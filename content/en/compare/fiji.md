@@ -3,7 +3,7 @@ title: "Fiji eSIM"
 iso: FJ
 weight: 50
 seo:
-  description: "eSIM Sift compares every Fiji eSIM: 98 real plans from 8 providers, cheapest Roamic from $3.00, ranked by $/GB with fair-use caps decoded."
+  description: "eSIM Sift compares every Fiji eSIM: 103 real plans from 9 providers, cheapest Roamic from $3.00, ranked by $/GB with fair-use caps decoded."
 ---
 
 Cheap entry prices in Fiji hide a wide spread once you normalise for data. The lowest price in Fiji is roamic 1GB / 7 Days, at $3.00. Put $3.00 through the $1.17/GB rate in Fiji and you would clear about 2.6GB. yesim takes the per-gigabyte race with a 30GB / 30-day plan at $1.17/GB. {{< count-providers >}} providers list 98 plans for Fiji here, 52 of them unlimited.

@@ -1,0 +1,52 @@
+{
+ "tab": {
+  "clicked": false,
+  "label": null
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Fiji",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$9.60",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Fiji",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$22.10",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Fiji",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$23.30",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Fiji",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$33.00",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Fiji | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Fiji",
+  "networks": null
+ },
+ "slug": "fiji",
+ "url": "https://esimdb.com/fiji/quibity",
+ "status": 200
+}

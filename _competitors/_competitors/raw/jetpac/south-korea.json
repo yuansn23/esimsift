@@ -1,0 +1,239 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n24"
+ },
+ "plans": [
+  {
+   "name": "South Korea 3GB",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$6.50",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "South Korea 5GB",
+   "data": "5GB",
+   "validity": "1 Day",
+   "price": "$7.00",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "South Korea 1GB",
+   "data": "1GB",
+   "validity": "4 Days",
+   "price": "$7.00",
+   "badges": [
+    "New Users Only"
+   ]
+  },
+  {
+   "name": "South Korea 3GB",
+   "data": "3GB",
+   "validity": "4 Days",
+   "price": "$7.50",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "South Korea 5GB",
+   "data": "5GB",
+   "validity": "4 Days",
+   "price": "$8.00",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "South Korea 3GB",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$9.00",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "South Korea 10GB",
+   "data": "10GB",
+   "validity": "1 Day",
+   "price": "$9.50",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "South Korea 5GB",
+   "data": "5GB",
+   "validity": "7 Days",
+   "price": "$9.50",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "South Korea 5GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$11.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea 10GB",
+   "data": "10GB",
+   "validity": "4 Days",
+   "price": "$12.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea Unlimited - 3 days",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$12.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea 10GB",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$14.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea 15GB",
+   "data": "15GB",
+   "validity": "7 Days",
+   "price": "$17.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea 10GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$17.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea Unlimited - 5 days",
+   "data": "3GB/day",
+   "validity": "5 Days",
+   "price": "$19.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea 15GB",
+   "data": "15GB",
+   "validity": "30 Days",
+   "price": "$22.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea Unlimited (7 Days)",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$26.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea Unlimited (10 Days)",
+   "data": "3GB/day",
+   "validity": "10 Days",
+   "price": "$33.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea 30GB",
+   "data": "30GB",
+   "validity": "30 Days",
+   "price": "$34.99",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea Unlimited - 15 days",
+   "data": "3GB/day",
+   "validity": "15 Days",
+   "price": "$41.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea 20GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$43.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea 40GB",
+   "data": "40GB",
+   "validity": "30 Days",
+   "price": "$44.99",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea Unlimited - 21 days",
+   "data": "3GB/day",
+   "validity": "21 Days",
+   "price": "$49.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "South Korea Unlimited - 30 days",
+   "data": "3GB/day",
+   "validity": "30 Days",
+   "price": "$65.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Jetpac Travel eSIM for South Korea | Data Plans & Reviews",
+  "h1": "Jetpac eSIM Data Plans for South Korea",
+  "networks": null
+ },
+ "slug": "south-korea",
+ "url": "https://esimdb.com/south-korea/jetpac",
+ "status": 200
+}

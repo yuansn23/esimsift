@@ -20,13 +20,21 @@
 #     Trustpilot 地区域名分片（Airalo 3.9/4.0/4.1 三个值），抓取被反爬墙拦截无法
 #     给出可核实单值；品牌页改为「给档案链接 + 教读者怎么读」。roami 无档案，留空。
 #   2026-10-01 三路代理逐品牌在官方页面核验，来源见各品牌块内注释。
-# logo：static/img/providers/<key>.png 或 .webp（prov-logo 自动探测），
-#   alosim/roami 暂无 logo 文件 → monogram 占位。
-# logo 占位符方案：monogram 徽标即占位符；想换真 logo 只需把
-#   static/img/providers/<key>.png 放进去，prov-logo partial 自动切换，无需改本文件
+# logo：static/img/providers/<key>.png 或 .webp（prov-logo.html 自动探测）。
+#   ★ 生效目录是 **static/img/providers/**，不是 static/img/logo/ ——
+#   后者只是素材下载区，放进去不会生效（2026-10-07 踩过）。
+#   ★ 探测只认 .png / .webp；.jpg/.jpeg 一律探测不到，放之前先转格式。
+#   2026-10-07 起 9 家（含 nomad）都有真 logo；monogram 徽标退为**兜底**
+#   （真 logo 缺失或加载失败时才露出），谁要换 logo 只需把
+#   static/img/providers/<key>.png 放进去，prov-logo 自动切换，无需改本文件。
 #
 # 品牌集（2026-09-30 用户定稿 8 家）：airalo / holafly / saily / yesim /
 #   ubigi / roamic / alosim + 自家 roami。roami ≠ roamic（两个不同品牌）。
+#   **2026-10-06 起扩到 12 家**（用户定：只做这 4 个），第二批 = nomad / gigsky /
+#   jetpac / bnesim。做法是「先单品牌打通全链路、验收无误再批量」——
+#   nomad 为试点（50/50 国覆盖、数据最干净），其余 3 家待 nomad 验收后接入。
+#   第二批数据源：esimdb 同源抓取（scripts/scrape/raw/<brand>/）；
+#   bnesim 例外，来自官网公开定价 API，且**计价货币是 EUR**，接入前必须先折 USD。
 # 套餐数据来源：esimdb.com（holafly 不在 esimdb，单独从官网抓）；
 #   founded 事实来源：Yesim 官方新闻(2019 瑞士) / Transatel 官网(Ubigi 品牌
 #   2017，NTT 2019 收购) / Roamic=Byte Travel(西班牙, 2021) /
@@ -399,6 +407,55 @@ response_time = ""   # 官方仅承诺 24/7/365 在线，无时限承诺
 refund = "aloSIM offers a 30-day money-back guarantee: a full refund if you can't install the eSIM or hit connectivity issues, including discovering your device isn't eSIM-compatible. You need your original receipt, and the team may ask why you're requesting the refund."
 destinations = 200
 
+[nomad]
+profile_checked = "2026-10-06"   # 品牌档案核对日（2026-10-06 在官方页逐条核验：首页 / about / terms-and-conditions）
+name = "Nomad"
+founded = 2020
+tagline = "LotusFlare's travel eSIM with per-country local plans"
+type = "app"
+color = "#16456B"   # monogram 兜底色（真 logo 已就位 static/img/providers/nomad.png；此色非官方值，仅兜底露出）
+initials = "Nd"
+strengths = ["Operated by LotusFlare and launched in 2020", "More than one host network in every country as standard", "Add-on data activates on the same eSIM with no new QR code", "200+ destinations and 3M+ registered users"]
+weaknesses = ["Unlimited plans drop to 1 Mbps after 2 GB in a day", "No single published fair-use figure - the cap sits in each plan's own details", "A few plans still require manual activation, per Nomad's own destination pages"]
+sponsored = true
+# 折扣码：BEYOND20 / FALL30（2026-10-06 在 nomadesim.com 首页横幅实测原文：
+# "Save 20% with BEYOND20 or 30% off 2+ eSIMs with FALL30."，研究底稿 docs/promos/nomad.json）
+promo_rank = 9
+promo_code = "BEYOND20"
+promo_label = "20% off selected plans (autumn campaign)"
+promo_pct = 20
+promo_audience = "conditional"
+promo_scope = "Selected plans in the 'Beyond the Usual' autumn campaign"
+promo_min_spend = ""
+promo_expires = ""
+promo_verified = "2026-10-06"
+# ── 参数总表字段（全部可追溯到 docs/promos/nomad.json）──
+promo_source = "official"
+promo_source_label = "nomadesim.com"
+promo_coverage = "Selected plans in the autumn campaign"
+promo_uses = "repeatable"
+promo_constraints = ["Selected plans only - not the whole catalogue", "Seasonal autumn campaign with no published end date"]
+promo_bestfor = "Single-plan buyers this autumn - if you are buying two eSIMs in one order, FALL30 is strictly better at 30%"
+promo_terms = "Rendered in Nomad's own homepage banner during its 'Beyond the Usual' autumn campaign: BEYOND20 takes 20% off selected plans, FALL30 takes 30% off a basket containing two or more eSIMs. Neither carries a published end date. Because FALL30 needs a multi-eSIM basket, a one-plan buyer should use BEYOND20."
+promo_alts = [{ code = "FALL30", label = "30% off orders with 2 or more eSIMs", audience = "conditional", pct = 30 }, { code = "ESIMDNOMAD20", label = "20% off eligible plans", audience = "all", pct = 20 }]
+
+# 公司档案（官方页面核验 2026-10-06：about/us · terms-and-conditions · 首页 footer · 商店页）
+[nomad.info]
+hq = "Santa Clara, California, USA"
+legal = "LotusFlare, Inc."
+website = "https://www.nomadesim.com"
+# trustpilot：只存档案链接不存分数。同一次访问里该站自己展示的分数就不一致
+# （页面徽标 4.8/5.0 与 4.7/5.0，同页 "Based on 45,137 reviews" 处又是 4.3/5.0）——
+# 这正是全站「不给单值」的原因，见本文件顶部说明。
+trustpilot = "https://www.trustpilot.com/review/www.nomadesim.com"
+app_android = "https://play.google.com/store/apps/details?id=com.lotusflare.nomad.mobile.android"
+app_ios = "https://apps.apple.com/app/nomad-esim-data-packs/id1521602300"
+support = "24/7 live chat (website and in-app) and email"
+support_email = "hello-cs@getnomad.app"
+response_time = ""
+refund = "Nomad lets you ask for a refund or a change before the eSIM is installed or activated; after activation it refunds only when the fault is a technical problem originating from Nomad. Whether a given plan qualifies is stated in that plan's own description, so check it before buying. Complaints go through the Help Center in the app or website, or by email to hello-cs@getnomad.app."
+destinations = 200
+
 # ============================================================
 # [<provider>.policy] —— 政策事实（品牌×国家子页的「Plan reality check」数据源）
 #
@@ -512,4 +569,16 @@ fup_drop = "Reduced speed"
 fup_note = "Roami's destination pages state that speed may reduce after 30 GB in a single day, but its USA page claims no fair-use throttle at all and its UK guide cites 2 GB/day on the unlimited tier instead. Treat the threshold as destination-dependent and read the plan page for the country you are buying."
 topup = true
 topup_note = "Top-ups are bought in the Roami app and activate on the existing eSIM within seconds, with no new QR code to install."
+voice = "data-only"
+
+# ── 第二轮扩品牌（2026-10-06 起）：Nomad 试点，先打通全链路再接 GigSky / Jetpac / BNESIM ──
+[nomad.policy]
+hotspot = "allowed"
+hotspot_allowance = "Shared with your plan data"
+hotspot_note = "Nomad advertises sharing your data across multiple devices rather than a separate tethering allowance, so hotspot traffic comes out of the same plan data."
+fup_allowance = "2 GB/day on unlimited plans"
+fup_drop = "1 Mbps"
+fup_note = "Every one of the 150 Nomad unlimited plans we track states the same threshold: 2 GB at full speed per day, then unlimited at 1 Mbps. Nomad publishes no brand-wide fair-use figure - its destination pages point you at the individual plan's details, and that is where this number comes from."
+topup = true
+topup_note = "Extra data is sold as an add-on and activates automatically on the existing eSIM when the original plan expires, so there is no new QR code to install."
 voice = "data-only"

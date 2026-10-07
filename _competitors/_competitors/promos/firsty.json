@@ -1,0 +1,58 @@
+{
+ "brand_key": "firsty",
+ "brand_name": "Firsty",
+ "brand_alias": [
+  "firsty.app"
+ ],
+ "official_site": "https://www.firsty.app/",
+ "captured": "2026-10-04",
+ "offers": [
+  {
+   "code": "",
+   "kind": "free_trial",
+   "discount": "Free tier — ~20MB at 1Mbps, watch-ad unlock, 7-day validity",
+   "percent": null,
+   "amount": null,
+   "currency": "",
+   "audience": "new",
+   "where": "app",
+   "min_spend": null,
+   "max_discount": null,
+   "stackable": null,
+   "uses": null,
+   "scope": "Firsty Free tier",
+   "expires": "ongoing",
+   "terms": null,
+   "source": "official",
+   "source_url": "https://www.firsty.app/",
+   "verified": "2026-10-04",
+   "confidence": "official"
+  },
+  {
+   "code": "",
+   "kind": "referral",
+   "discount": "Refer a Friend",
+   "percent": null,
+   "amount": null,
+   "currency": "",
+   "audience": "all",
+   "where": "app",
+   "min_spend": null,
+   "max_discount": null,
+   "stackable": null,
+   "uses": null,
+   "scope": "referral programme",
+   "expires": "ongoing",
+   "terms": null,
+   "source": "official",
+   "source_url": "https://www.firsty.app/refer-a-friend",
+   "verified": "2026-10-04",
+   "confidence": "official"
+  }
+ ],
+ "notes": [
+  "Firsty sells one global price list (Free / Classic €0.98 per GB / Unlimited €2 per day); no per-country pricing.",
+  "Its homepage JSON carries discount fields but all currently 0 — no standing % coupon found."
+ ],
+ "offer_count": 2
+}

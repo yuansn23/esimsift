@@ -4,5 +4,5 @@ iso: HK
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for Hong Kong: 36 plans from $0.57, best $1.06/GB (#5 of 8) — ranked against 153 Hong Kong plans."
+  description: "eSIM Sift compares Yesim eSIM plans for Hong Kong: 36 plans from $0.57, best $1.06/GB (#6 of 9) — ranked against 161 Hong Kong plans."
 ---

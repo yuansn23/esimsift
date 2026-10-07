@@ -1,0 +1,85 @@
+{
+ "brand_key": "maya",
+ "brand_name": "Maya Mobile",
+ "official_site": "https://maya.net/",
+ "captured": "2026-10-04",
+ "trustpilot": {
+  "url": "https://www.trustpilot.com/review/maya.net",
+  "rating": null,
+  "review_count": null,
+  "trust_score": null,
+  "five_star_pct": null,
+  "verified_reviews": null,
+  "last_checked": null,
+  "recent_reviews": [],
+  "note": "PLACEHOLDER - to be filled manually by the user"
+ },
+ "official": {
+  "http_status": 200,
+  "bytes": 966032,
+  "organization_jsonld": null,
+  "apps": [],
+  "app_ratings": [],
+  "meta": {
+   "description": "Travel eSIM for 165+ countries and 20+ cruises. Install once, roam everywhere. Unlimited data from USD 1.67/day with real human support, 24/7.",
+   "og:description": "Travel eSIM for 165+ countries and 20+ cruises. Install once, roam everywhere. Unlimited data from USD 1.67/day with real human support, 24/7.",
+   "og:site_name": "Mobile Maya Inc"
+  },
+  "emails_found": [
+   "john.doe@example.com",
+   "support@maya.net"
+  ],
+  "social_links": [
+   "http://instagram.com/mayatravelmode",
+   "https://www.facebook.com/mayatravelmode",
+   "https://www.linkedin.com/company/mayatravelmode",
+   "https://www.tiktok.com/@mayatravelmode",
+   "https://www.trustpilot.com/review/maya.net",
+   "https://www.youtube.com/@mayatravelmode"
+  ],
+  "site_text_len": 3485,
+  "about_facts": [
+   {
+    "url": "https://maya.net/about",
+    "bytes": 713697,
+    "title": "Maya eSIM — Global Travel eSIM, 165+ Countries, USD 1.67/day",
+    "facts": [],
+    "emails": [
+     "john.doe@example.com",
+     "support@maya.net"
+    ]
+   },
+   {
+    "url": "https://maya.net/about-us",
+    "bytes": 713697,
+    "title": "Maya eSIM — Global Travel eSIM, 165+ Countries, USD 1.67/day",
+    "facts": [],
+    "emails": [
+     "john.doe@example.com",
+     "support@maya.net"
+    ]
+   },
+   {
+    "url": "https://maya.net/company",
+    "bytes": 713697,
+    "title": "Maya eSIM — Global Travel eSIM, 165+ Countries, USD 1.67/day",
+    "facts": [],
+    "emails": [
+     "john.doe@example.com",
+     "support@maya.net"
+    ]
+   },
+   {
+    "url": "https://maya.net/careers",
+    "bytes": 713697,
+    "title": "Maya eSIM — Global Travel eSIM, 165+ Countries, USD 1.67/day",
+    "facts": [],
+    "emails": [
+     "john.doe@example.com",
+     "support@maya.net"
+    ]
+   }
+  ]
+ },
+ "fetch_error": null
+}

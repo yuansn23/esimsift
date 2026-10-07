@@ -1,0 +1,1933 @@
+{
+ "plans": [
+  {
+   "product_id": "698da0a77602d0b572ce9fd3",
+   "name": "Global",
+   "cycle": null,
+   "cycle_units": null,
+   "data_type": null,
+   "price_usd": null,
+   "price_bundle": {},
+   "public": null,
+   "activation_type": null
+  },
+  {
+   "product_id": "21370459",
+   "name": "3 Days - Unlimited Global Data",
+   "cycle": 3,
+   "cycle_units": "day",
+   "data_type": "UNLIMITED",
+   "price_usd": 9.99,
+   "price_bundle": {
+    "USD": 9.99,
+    "EUR": 8.49,
+    "GBP": 7.29,
+    "AUD": 13.79,
+    "BRL": 49.05,
+    "CAD": 13.69,
+    "CHF": 7.79,
+    "INR": 942.76,
+    "JPY": 1564.63,
+    "MXN": 171.43,
+    "NZD": 16.78,
+    "PHP": 604.79,
+    "PLN": 35.86,
+    "SGD": 12.69,
+    "ZAR": 163.74
+   },
+   "public": false,
+   "activation_type": "API"
+  },
+  {
+   "product_id": "21442251",
+   "name": "3 Days Unlimited Global Data",
+   "cycle": 3,
+   "cycle_units": "day",
+   "data_type": "UNLIMITED",
+   "price_usd": 9.99,
+   "price_bundle": {
+    "USD": 9.99,
+    "EUR": 8.49,
+    "GBP": 7.29,
+    "AUD": 13.79,
+    "BRL": 49.05,
+    "CAD": 13.69,
+    "CHF": 7.79,
+    "INR": 942.76,
+    "JPY": 1564.63,
+    "MXN": 171.43,
+    "NZD": 16.78,
+    "PHP": 604.79,
+    "PLN": 35.86,
+    "SGD": 12.69,
+    "ZAR": 163.74
+   },
+   "public": true,
+   "activation_type": "PDP"
+  },
+  {
+   "product_id": "21442252",
+   "name": "7 Days Unlimited Global Data",
+   "cycle": 7,
+   "cycle_units": "day",
+   "data_type": "UNLIMITED",
+   "price_usd": 19.99,
+   "price_bundle": {
+    "USD": 19.99,
+    "EUR": 16.99,
+    "GBP": 14.59,
+    "AUD": 27.59,
+    "BRL": 98.15,
+    "CAD": 27.39,
+    "CHF": 15.59,
+    "INR": 1886.46,
+    "JPY": 3130.83,
+    "MXN": 343.03,
+    "NZD": 33.58,
+    "PHP": 1210.19,
+    "PLN": 71.76,
+    "SGD": 25.39,
+    "ZAR": 327.64
+   },
+   "public": true,
+   "activation_type": "PDP"
+  },
+  {
+   "product_id": "21370460",
+   "name": "14 Days - Unlimited Global Data",
+   "cycle": 14,
+   "cycle_units": "day",
+   "data_type": "UNLIMITED",
+   "price_usd": 27.99,
+   "price_bundle": {
+    "USD": 27.99,
+    "EUR": 23.79,
+    "GBP": 20.43,
+    "AUD": 38.63,
+    "BRL": 137.43,
+    "CAD": 38.35,
+    "CHF": 21.83,
+    "INR": 2641.42,
+    "JPY": 4383.79,
+    "MXN": 480.31,
+    "NZD": 47.02,
+    "PHP": 1694.51,
+    "PLN": 100.48,
+    "SGD": 35.55,
+    "ZAR": 458.76
+   },
+   "public": false,
+   "activation_type": "API"
+  },
+  {
+   "product_id": "21442253",
+   "name": "14 Days Unlimited Global Data",
+   "cycle": 14,
+   "cycle_units": "day",
+   "data_type": "UNLIMITED",
+   "price_usd": 27.99,
+   "price_bundle": {
+    "USD": 27.99,
+    "EUR": 23.79,
+    "GBP": 20.43,
+    "AUD": 38.63,
+    "BRL": 137.43,
+    "CAD": 38.35,
+    "CHF": 21.83,
+    "INR": 2641.42,
+    "JPY": 4383.79,
+    "MXN": 480.31,
+    "NZD": 47.02,
+    "PHP": 1694.51,
+    "PLN": 100.48,
+    "SGD": 35.55,
+    "ZAR": 458.76
+   },
+   "public": true,
+   "activation_type": "PDP"
+  },
+  {
+   "product_id": "21442254",
+   "name": "30 Days Unlimited Global Data",
+   "cycle": 30,
+   "cycle_units": "day",
+   "data_type": "UNLIMITED",
+   "price_usd": 49.99,
+   "price_bundle": {
+    "USD": 49.99,
+    "EUR": 42.49,
+    "GBP": 36.49,
+    "AUD": 68.99,
+    "BRL": 245.45,
+    "CAD": 68.49,
+    "CHF": 38.99,
+    "INR": 4717.56,
+    "JPY": 7829.43,
+    "MXN": 857.83,
+    "NZD": 83.98,
+    "PHP": 3026.39,
+    "PLN": 179.46,
+    "SGD": 63.49,
+    "ZAR": 819.34
+   },
+   "public": true,
+   "activation_type": "PDP"
+  },
+  {
+   "product_id": "69b28b746bf072fc1def8447",
+   "name": "Global Cruise",
+   "cycle": null,
+   "cycle_units": null,
+   "data_type": null,
+   "price_usd": null,
+   "price_bundle": {},
+   "public": null,
+   "activation_type": null
+  },
+  {
+   "product_id": "21370462",
+   "name": "3 Days - Unlimited Global + Cruise Data",
+   "cycle": 3,
+   "cycle_units": "day",
+   "data_type": "UNLIMITED",
+   "price_usd": 49.98,
+   "price_bundle": {
+    "USD": 49.98,
+    "EUR": 42.48,
+    "GBP": 36.49,
+    "AUD": 68.97,
+    "BRL": 245.4,
+    "CAD": 68.47,
+    "CHF": 38.98,
+    "INR": 4716.61,
+    "JPY": 7827.87,
+    "MXN": 857.66,
+    "NZD": 83.97,
+    "PHP": 3025.79,
+    "PLN": 179.43,
+    "SGD": 63.47,
+    "ZAR": 819.17
+   },
+   "public": false,
+   "activation_type": "API"
+  },
+  {
+   "product_id": "21442255",
+   "name": "3 Days Unlimited Global + Cruise Data",
+   "cycle": 3,
+   "cycle_units": "day",
+   "data_type": "UNLIMITED",
+   "price_usd": 49.99,
+   "price_bundle": {
+    "USD": 49.99,
+    "EUR": 42.49,
+    "GBP": 36.49,
+    "AUD": 68.99,
+    "BRL": 245.45,
+    "CAD": 68.49,
+    "CHF": 38.99,
+    "INR": 4717.56,
+    "JPY": 7829.43,
+    "MXN": 857.83,
+    "NZD": 83.98,
+    "PHP": 3026.39,
+    "PLN": 179.46,
+    "SGD": 63.49,
+    "ZAR": 819.34
+   },
+   "public": true,
+   "activation_type": "PDP"
+  },
+  {
+   "product_id": "21442256",
+   "name": "7 Days Unlimited Global + Cruise Data",
+   "cycle": 7,
+   "cycle_units": "day",
+   "data_type": "UNLIMITED",
+   "price_usd": 109.99,
+   "price_bundle": {
+    "USD": 109.99,
+    "EUR": 93.49,
+    "GBP": 80.29,
+    "AUD": 151.79,
+    "BRL": 540.05,
+    "CAD": 150.69,
+    "CHF": 85.79,
+    "INR": 10379.76,
+    "JPY": 17226.63,
+    "MXN": 1887.43,
+    "NZD": 184.78,
+    "PHP": 6658.79,
+    "PLN": 394.86,
+    "SGD": 139.69,
+    "ZAR": 1802.74
+   },
+   "public": true,
+   "activation_type": "PDP"
+  },
+  {
+   "product_id": "21370461",
+   "name": "14 Days - Unlimited Global + Cruise Data",
+   "cycle": 14,
+   "cycle_units": "day",
+   "data_type": "UNLIMITED",
+   "price_usd": 160.98,
+   "price_bundle": {
+    "USD": 160.98,
+    "EUR": 136.83,
+    "GBP": 117.52,
+    "AUD": 222.15,
+    "BRL": 790.41,
+    "CAD": 220.54,
+    "CHF": 125.56,
+    "INR": 15191.68,
+    "JPY": 25212.69,
+    "MXN": 2762.42,
+    "NZD": 270.45,
+    "PHP": 9745.73,
+    "PLN": 577.92,
+    "SGD": 204.44,
+    "ZAR": 2638.46
+   },
+   "public": false,
+   "activation_type": "API"
+  },
+  {
+   "product_id": "21442257",
+   "name": "14 Days Unlimited Global + Cruise Data",
+   "cycle": 14,
+   "cycle_units": "day",
+   "data_type": "UNLIMITED",
+   "price_usd": 160.99,
+   "price_bundle": {
+    "USD": 160.99,
+    "EUR": 136.84,
+    "GBP": 117.52,
+    "AUD": 222.17,
+    "BRL": 790.46,
+    "CAD": 220.56,
+    "CHF": 125.57,
+    "INR": 15192.63,
+    "JPY": 25214.25,
+    "MXN": 2762.59,
+    "NZD": 270.46,
+    "PHP": 9746.33,
+    "PLN": 577.95,
+    "SGD": 204.46,
+    "ZAR": 2638.63
+   },
+   "public": true,
+   "activation_type": "PDP"
+  },
+  {
+   "product_id": "21442258",
+   "name": "30 Days Unlimited Global + Cruise Data",
+   "cycle": 30,
+   "cycle_units": "day",
+   "data_type": "UNLIMITED",
+   "price_usd": 299.99,
+   "price_bundle": {
+    "USD": 299.99,
+    "EUR": 254.99,
+    "GBP": 218.99,
+    "AUD": 413.99,
+    "BRL": 1472.95,
+    "CAD": 410.99,
+    "CHF": 233.99,
+    "INR": 28310.06,
+    "JPY": 46984.43,
+    "MXN": 5147.83,
+    "NZD": 503.98,
+    "PHP": 18161.39,
+    "PLN": 1076.96,
+    "SGD": 380.99,
+    "ZAR": 4916.84
+   },
+   "public": true,
+   "activation_type": "PDP"
+  }
+ ],
+ "carriers": {
+  "BGD": [
+   {
+    "network": "Grameen Phone Bangladesh",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "BRN": [
+   {
+    "network": "DST Communications Sdn Bhd DS",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   },
+   {
+    "network": "PCSB",
+    "tech": "3G",
+    "apn": "Auto APN on iOS 15.4+"
+   },
+   {
+    "network": "Unified National Networks Sdn Bhd",
+    "tech": "3G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "CHN": [
+   {
+    "network": "China Mobile",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "HKG": [
+   {
+    "network": "Hutchison 3G Hong Kong",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "IND": [
+   {
+    "network": "Reliance JIO",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "IDN": [
+   {
+    "network": "Indosat",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   },
+   {
+    "network": "Hutchison 3",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "JPN": [
+   {
+    "network": "Rakuten Mobile Inc.",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "LAO": [
+   {
+    "network": "ETL",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "MAC": [
+   {
+    "network": "Hutchison Telephone Macau Co.",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "MYS": [
+   {
+    "network": "Maxis Mobile Services Sdn Bhd",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   },
+   {
+    "network": "Umobile_Mi3G Network Sdn Bhd",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "MMR": [
+   {
+    "network": "MPT",
+    "tech": "LTE",
+    "apn": "Auto-APN, TikTok not supported"
+   },
+   {
+    "network": "Telenor Myanmar",
+    "tech": "3G",
+    "apn": "Auto-APN, TikTok not supported"
+   }
+  ],
+  "PAK": [
+   {
+    "network": "Jazz",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "PHL": [
+   {
+    "network": "Globe",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "SGP": [
+   {
+    "network": "StarHub",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "PRK": [
+   {
+    "network": "KT Corporation II",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "LKA": [
+   {
+    "network": "SLT Mobitel",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "TWN": [
+   {
+    "network": "Chunghwa Telecom Mobile",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "THA": [
+   {
+    "network": "dtac TriNet Co.Ltd.DTN",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   },
+   {
+    "network": "True Move H Universal Ltd II",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   },
+   {
+    "network": "True Move H Universal Ltd III",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "UZB": [
+   {
+    "network": "Beeline",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "VNM": [
+   {
+    "network": "Vietnamobile",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "AIA": [
+   {
+    "network": "Flow",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "ATG": [
+   {
+    "network": "Flow",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "ABW": [
+   {
+    "network": "Setar",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "BHS": [
+   {
+    "network": "The Bahamas Telecommunications Company Ltd.",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "BRB": [
+   {
+    "network": "Flow",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "VGB": [
+   {
+    "network": "Flow",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "CYM": [
+   {
+    "network": "Flow",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "DMA": [
+   {
+    "network": "Flow",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "DOM": [
+   {
+    "network": "Claro Dominican Republic",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "GRD": [
+   {
+    "network": "Flow",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "GLP": [
+   {
+    "network": "Orange Caraibe",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "JAM": [
+   {
+    "network": "Flow",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "MTQ": [
+   {
+    "network": "Free Caraibe",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "MSR": [
+   {
+    "network": "Flow",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "PRI": [
+   {
+    "network": "Liberty Mobile Puerto Rico Inc.",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "KNA": [
+   {
+    "network": "Flow",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "LCA": [
+   {
+    "network": "Flow",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "MAF": [
+   {
+    "network": "Free Caraibe",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "VCT": [
+   {
+    "network": "Flow",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "TCA": [
+   {
+    "network": "Flow",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "AUT": [
+   {
+    "network": "A1 Telekom Austria AG",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Hutchison Drei Austria GmbH",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Orange",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "BEL": [
+   {
+    "network": "ORANGE Belgium nv_SA",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Proximus PLC",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "BGR": [
+   {
+    "network": "Telenor Bulgaria",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Mobiltel A1",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "HRV": [
+   {
+    "network": "VIPnet d.o.o.",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "CZE": [
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "DNK": [
+   {
+    "network": "Hi3G Denmark ApS",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Telia Nattjanster Norden AB",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "EST": [
+   {
+    "network": "Telia Eesti AS",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Tele2 Eesti Aktsiaselts",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "FIN": [
+   {
+    "network": "TeliaSonera Finland Oyj",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Elisa Corporation",
+    "tech": "3G",
+    "apn": "Auto APN"
+   }
+  ],
+  "FRA": [
+   {
+    "network": "Free Mobile",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Orange",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "DEU": [
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "GRC": [
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "HUN": [
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "ISL": [
+   {
+    "network": "Sýn hf.",
+    "tech": "3G",
+    "apn": "Auto APN"
+   }
+  ],
+  "IRL": [
+   {
+    "network": "Three Ireland (Hutchison) Limited",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "ITA": [
+   {
+    "network": "ILIAD Italy",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "WIND Telecomunicazioni S.P.A.",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "LVA": [
+   {
+    "network": "SIA Bite Mobile",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Tele2 SIA",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Latvijas Mobilais Telefons",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "LIE": [
+   {
+    "network": "Telecom Liechtenstein AG",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "LTU": [
+   {
+    "network": "UAB Bite— Lietuva",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "UAB Tele2",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Telia Lietuva AB",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "LUX": [
+   {
+    "network": "Tango SA",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Orange Communications Luxembourg S.A.",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "MLT": [
+   {
+    "network": "Vodafone",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "NLD": [
+   {
+    "network": "KPN B.V.",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "NOR": [
+   {
+    "network": "Telia Norge AS",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "POL": [
+   {
+    "network": "Play (P4)",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "PRT": [
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "NOS Comunicacoes, S.A.",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "ROU": [
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "S.C. Orange Romania S.A.",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "SMR": [
+   {
+    "network": "ILIAD Italy",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "WIND Telecomunicazioni S.P.A.",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "SVK": [
+   {
+    "network": "Orange Slovensko, a.s.",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "O2 Slovakia, s.r.o.",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "SVN": [
+   {
+    "network": "Mobitel (Telekom Slovenije)",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "A1 Telekom Austria AG",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "ESP": [
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Orange Espagne, S.A., sociedad unipersonal",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "SWE": [
+   {
+    "network": "Tele2 AB",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Telia Company AB",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "CHE": [
+   {
+    "network": "Sunrise Communications AG",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "TUR": [
+   {
+    "network": "AVEA",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "UKR": [
+   {
+    "network": "Kyivstar",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "GBR": [
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "EE Limited",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Hutchison 3G UK Limited",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "VAT": [
+   {
+    "network": "ILIAD Italy",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "WIND Telecomunicazioni S.P.A.",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "ARG": [
+   {
+    "network": "Claro Argentina",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "BOL": [
+   {
+    "network": "Tigo Bolivia",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "BRA": [
+   {
+    "network": "Claro Brasil",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "CHL": [
+   {
+    "network": "Claro Chile",
+    "tech": "3G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "COL": [
+   {
+    "network": "Tigo Colombia",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "CRI": [
+   {
+    "network": "LIBERTY COSTA RICA",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "ECU": [
+   {
+    "network": "Claro Ecuador",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "SLV": [
+   {
+    "network": "Tigo El Salvador",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "GTM": [
+   {
+    "network": "Tigo Guatemala",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "HND": [
+   {
+    "network": "Tigo Honduras",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "MEX": [
+   {
+    "network": "Telcel México",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "NIC": [
+   {
+    "network": "Tigo Nicaragua",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "PAN": [
+   {
+    "network": "Tigo Panama",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   },
+   {
+    "network": "+Movil",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "PRY": [
+   {
+    "network": "Tigo Paraguay",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "PER": [
+   {
+    "network": "Claro Peru",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "URY": [
+   {
+    "network": "Claro Uruguay",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "VEN": [
+   {
+    "network": "Digitel",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "BHR": [
+   {
+    "network": "Zain Bahrain",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "CYP": [
+   {
+    "network": "EPIC Ltd.",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "EGY": [
+   {
+    "network": "Orange",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "IRN": [
+   {
+    "network": "MCI",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "IRQ": [
+   {
+    "network": "Korek Telecom",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   },
+   {
+    "network": "Zain Iraq",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "ISR": [
+   {
+    "network": "Hot Mobile",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Pelephone",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "JOR": [
+   {
+    "network": "Zain JO",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "KWT": [
+   {
+    "network": "ZAIN",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "MAR": [
+   {
+    "network": "Orange Maroc (Meditel)",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "OMN": [
+   {
+    "network": "Omantel",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "QAT": [
+   {
+    "network": "Vodafone",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "SAU": [
+   {
+    "network": "ZAIN",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "TUN": [
+   {
+    "network": "Orange",
+    "tech": "LTE",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "ARE": [
+   {
+    "network": "Etisalat",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "CAN": [
+   {
+    "network": "Bell Mobility Inc.",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "SaskTel",
+    "tech": "3G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "TELUS Communications Inc.",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "USA": [
+   {
+    "network": "Verizon",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "AUS": [
+   {
+    "network": "Optus",
+    "tech": "5G",
+    "apn": "Auto APN on iOS 15.4+"
+   }
+  ],
+  "NZL": [
+   {
+    "network": "One",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "AFG": [
+   {
+    "network": "Roshan",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "ALB": [
+   {
+    "network": "ONE Albania",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Vodafone AL",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "ANT": [
+   {
+    "network": "UTS",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "DZA": [
+   {
+    "network": "Mobilis",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Ooredoo DZ",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "AND": [
+   {
+    "network": "STA",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "ARM": [
+   {
+    "network": "Viva",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "AZE": [
+   {
+    "network": "Nar",
+    "tech": "3G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Bakcell",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "BLR": [
+   {
+    "network": "A1",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "BEN": [
+   {
+    "network": "Celtiis",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "BMU": [
+   {
+    "network": "Digicel",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "BIH": [
+   {
+    "network": "Eronet",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "BWA": [
+   {
+    "network": "Orange",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "BFA": [
+   {
+    "network": "Orange",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "KHM": [
+   {
+    "network": "Metfone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "CMR": [
+   {
+    "network": "Orange",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "CAF": [
+   {
+    "network": "Orange",
+    "tech": "3G",
+    "apn": "Auto APN"
+   }
+  ],
+  "TCD": [
+   {
+    "network": "Airtel",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "COM": [
+   {
+    "network": "Yas",
+    "tech": "3G",
+    "apn": "Auto APN"
+   }
+  ],
+  "CUW": [
+   {
+    "network": "UTS",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "COD": [
+   {
+    "network": "Vodacom",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Orange",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "FRO": [
+   {
+    "network": "Vodafone",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Føroya Tele",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "FJI": [
+   {
+    "network": "Vodafone",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "GUF": [
+   {
+    "network": "Orange",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "GAB": [
+   {
+    "network": "Gabon Telecom",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Airtel",
+    "tech": "3G",
+    "apn": "Auto APN"
+   }
+  ],
+  "GEO": [
+   {
+    "network": "Silknet",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "GHA": [
+   {
+    "network": "AT",
+    "tech": "3G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Tigo",
+    "tech": "3G",
+    "apn": "Auto APN"
+   }
+  ],
+  "GIB": [
+   {
+    "network": "Gibtelecom",
+    "tech": "3G",
+    "apn": "Auto APN"
+   }
+  ],
+  "GGY": [
+   {
+    "network": "JT",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Sure",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "GIN": [
+   {
+    "network": "Orange",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "GNB": [
+   {
+    "network": "Orange",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "IMN": [
+   {
+    "network": "JT",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Sure",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "CIV": [
+   {
+    "network": "Orange",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "JEY": [
+   {
+    "network": "JT",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Sure",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "KAZ": [
+   {
+    "network": "Beeline",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Tele2",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "KEN": [
+   {
+    "network": "Airtel",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "KSV": [
+   {
+    "network": "Monaco Telecom",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "KGZ": [
+   {
+    "network": "Beeline",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "LBR": [
+   {
+    "network": "Orange",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "MKD": [
+   {
+    "network": "A1 MK",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "MDG": [
+   {
+    "network": "Telma",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "MWI": [
+   {
+    "network": "Airtel",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "MLI": [
+   {
+    "network": "Orange",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Malitel",
+    "tech": "3G",
+    "apn": "Auto APN"
+   }
+  ],
+  "MUS": [
+   {
+    "network": "Emtel",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "MYT": [
+   {
+    "network": "Orange",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "MDA": [
+   {
+    "network": "Orange",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "MNG": [
+   {
+    "network": "Mobicom",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "MNE": [
+   {
+    "network": "MTEL",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "MOZ": [
+   {
+    "network": "Vodacom",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "NPL": [
+   {
+    "network": "Ncell",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "NER": [
+   {
+    "network": "Airtel",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "NGA": [
+   {
+    "network": "Airtel",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "MTN",
+    "tech": "3G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Glo",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "PLW": [
+   {
+    "network": "PNCC",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "PSE": [
+   {
+    "network": "Ooredoo",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "COG": [
+   {
+    "network": "Airtel",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "REU": [
+   {
+    "network": "Orange",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "RUS": [
+   {
+    "network": "Tele2",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "RWA": [
+   {
+    "network": "Airtel",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Tigo",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "BLM": [
+   {
+    "network": "Orange",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "SXM": [
+   {
+    "network": "UTS",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "SEN": [
+   {
+    "network": "Yas",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "SRB": [
+   {
+    "network": "A1 RS",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Yettel",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "SYC": [
+   {
+    "network": "Cable & Wireless",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "ZAF": [
+   {
+    "network": "Cell C",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Vodacom",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "KOR": [
+   {
+    "network": "KT",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "TJK": [
+   {
+    "network": "MegaFon",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "TZA": [
+   {
+    "network": "Vodacom",
+    "tech": "3G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Airtel",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "TTO": [
+   {
+    "network": "Digicel",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "VIR": [
+   {
+    "network": "T-Mobile",
+    "tech": "5G",
+    "apn": "Auto APN"
+   },
+   {
+    "network": "Liberty",
+    "tech": "LTE",
+    "apn": "Auto APN"
+   }
+  ],
+  "UGA": [
+   {
+    "network": "Airtel",
+    "tech": "5G",
+    "apn": "Auto APN"
+   }
+  ],
+  "VUT": [
+   {
+    "network": "Vodafone",
+    "tech": "3G",
+    "apn": "Auto APN"
+   }
+  ],
+  "ZMB": [
+   {
+    "network": "Airtel",
+    "tech": "3G",
+    "apn": "Auto APN"
+   }
+  ]
+ },
+ "meta": {
+  "title": "Ireland eSIM - Unlimited Data &amp; No Roaming Fees | Maya Mo...",
+  "h1": "Ireland + 165 countries Global Unlimited Data.",
+  "bytes": 889519
+ },
+ "slug": "ireland",
+ "maya_slug": "ireland",
+ "url": "https://maya.net/esim/ireland",
+ "status": 200
+}

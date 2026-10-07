@@ -1,0 +1,239 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n24"
+ },
+ "plans": [
+  {
+   "name": "Japan 3GB",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$5.00",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Japan 5GB",
+   "data": "5GB",
+   "validity": "1 Day",
+   "price": "$6.00",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Japan 3GB",
+   "data": "3GB",
+   "validity": "4 Days",
+   "price": "$6.00",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Japan 5GB",
+   "data": "5GB",
+   "validity": "4 Days",
+   "price": "$7.00",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Japan 3GB",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$7.00",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Japan 1GB",
+   "data": "1GB",
+   "validity": "4 Days",
+   "price": "$7.00",
+   "badges": [
+    "New Users Only"
+   ]
+  },
+  {
+   "name": "Japan 5GB",
+   "data": "5GB",
+   "validity": "7 Days",
+   "price": "$8.00",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Japan 10GB",
+   "data": "10GB",
+   "validity": "1 Day",
+   "price": "$9.00",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Japan 5GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$10.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan (Unlimited 3 days)",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$10.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan 10GB",
+   "data": "10GB",
+   "validity": "4 Days",
+   "price": "$11.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan 10GB",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$13.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan 15GB",
+   "data": "15GB",
+   "validity": "7 Days",
+   "price": "$16.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan 10GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$16.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan (Unlimited 5 days)",
+   "data": "3GB/day",
+   "validity": "5 Days",
+   "price": "$16.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan 15GB",
+   "data": "15GB",
+   "validity": "30 Days",
+   "price": "$21.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan Unlimited-7 Days",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$25.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan 30GB",
+   "data": "30GB",
+   "validity": "30 Days",
+   "price": "$29.99",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan Unlimited-10 Days",
+   "data": "3GB/day",
+   "validity": "10 Days",
+   "price": "$33.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan 40GB",
+   "data": "40GB",
+   "validity": "30 Days",
+   "price": "$34.99",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan 20GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$40.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan (Unlimited 15 days)",
+   "data": "3GB/day",
+   "validity": "15 Days",
+   "price": "$41.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan (Unlimited 21 days)",
+   "data": "3GB/day",
+   "validity": "21 Days",
+   "price": "$49.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Japan (Unlimited 30 days)",
+   "data": "3GB/day",
+   "validity": "30 Days",
+   "price": "$65.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Jetpac Travel eSIM for Japan | Data Plans & Reviews",
+  "h1": "Jetpac eSIM Data Plans for Japan",
+  "networks": null
+ },
+ "slug": "japan",
+ "url": "https://esimdb.com/japan/jetpac",
+ "status": 200
+}

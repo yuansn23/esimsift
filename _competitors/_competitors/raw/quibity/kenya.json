@@ -1,0 +1,61 @@
+{
+ "tab": {
+  "clicked": false,
+  "label": null
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Kenya",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$7.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Kenya",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$18.50",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Kenya",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$19.40",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Kenya",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$28.00",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Kenya",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$51.90",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Kenya | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Kenya",
+  "networks": null
+ },
+ "slug": "kenya",
+ "url": "https://esimdb.com/kenya/quibity",
+ "status": 200
+}

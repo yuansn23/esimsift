@@ -1,16 +1,17 @@
 # Philippines FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for Philippines?"
-a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "The lowest price on this page is {cheap_brand}'s {cheap_plan} - ${cheap_price} for {country}. Best value per gigabyte is a separate question, and the answer here is {value_brand}'s {value_plan} at ${value_pergb}/GB. Match the plan to your trip length rather than chasing the single lowest number."
 
 [[faq]]
 q = "Is unlimited eSIM data in Philippines actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Roami at $16.99 ($2.43/day), carries: Soft cap 2GB/day at full speed, then throttled. Treat them as big-but-capped plans and compare the caps."
+a = "Big rather than boundless: {unl_count} unlimited {country} plans all apply fair-use rules. The best day rate belongs to {unl_brand} - ${unl_perday} for a {unl_days}-day package at ${unl_price} - and the market spans {unl_perday_range}. What {unl_brand} publishes: {unl_allowance}; after that, {unl_drop}."
 
 [[faq]]
 q = "Airalo or Holafly for Philippines?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($3.55/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "Neither is the cheapest plan on this page, and the two are not competing on the same terms either. Airalo's way into {country} is a data bucket - {ah_airalo_plan} at ${ah_airalo_price}, or ${ah_airalo_pergb}/GB at its sharpest. Holafly sells unlimited days instead, its smallest {country} package being {ah_holafly_days} days for ${ah_holafly_price} (${ah_holafly_perday}/day)."
 
 [[faq]]
 q = "Do I need ID verification for a Philippines eSIM?"
@@ -22,4 +23,4 @@ a = "Plans on this page run on Globe, Smart. Differences matter mostly outside t
 
 [[faq]]
 q = "Can one eSIM cover Philippines and Indonesia?"
-a = "Regional Asia/continental plans from Airalo and Nomad bundle Philippines with neighbors - usually worse $/GB than single-country plans, but cheaper than two separate eSIMs. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+a = "Not with a country plan alone, because {country} plans stop at the border. Adding {neighbor} means a regional bundle or a second plan, and the two-country arithmetic is worth doing before you buy."

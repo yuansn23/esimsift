@@ -1,0 +1,209 @@
+{{- /* 构建期「活数字」token 表 —— FAQ 文案里的 {token} 在这里现算。
+       传入：ISO 码字符串。返回：token 名 -> 字符串值 的 dict（调用方对答案做 replace）。
+
+   ── 为什么要有它 ───────────────────────────────────────────────────────────
+   data/faqs/*.toml 的答案里原本写死了三处数字断言：
+     · 「最便宜的是 X，$Y」                  -> 真值随每次抓价变化
+     · 「All N 'unlimited' plans」           -> 同上
+     · 「Holafly 最低 $Y/天」                -> 同上
+   写死 = 页面自相矛盾：正文说 A 品牌 $2.99，正上方表格说 B 品牌 $0.51；
+   而且每接一个品牌 / 每刷一次价，150 句话都要人工重算（2026-10-06 接 nomad
+   时实测 99 条断言过期，其中 45 国「最便宜品牌」直接易主）。
+   现在文案只留 {token} 占位，数字全部从 $rows 现算 —— 数据变了文案自动跟着变。
+
+   ── 口径（与页面其它模块逐字一致，别另立第二套）──────────────────────────
+     · 最便宜   = 价格最低；同价取流量更大者；再同取品牌 key 升序（构建确定性）
+     · 追赶者   = 价格升序里第一个**换品牌**的档（同品牌第二个档算不上「challenger」）
+     · 最佳 $/GB 只统计**计量档**：无限档在 country-stats 里 perGB 是 999999 哨兵
+     · 无限制    = 按 perDay（$/天）取最优；lo/hi 是该国全部无限档的 $/天 区间
+     · 数据标签走 partials/plan-data-label.html（gb 的 0 是「无限」哨兵，小于 1GB 存小数）
+     · FUP 取 **providers.toml [<brand>.policy]**，不取 plan 的 fup_note ——
+       fup_note 有 roami/yesim 全缺、holafly 写的是 "Always On" 附加包说明，不可用
+     · 所有 row 字段用 `index $row "perGB"` 读，不用 `$row.perGB`：
+       Hugo 对 map 的点号取值大小写行为不稳，索引取值是唯一无歧义写法
+
+   任一取值缺失时输出 "n/a"（不是空串）：让 scripts/check_faq_facts.py 报错拦住，
+   而不是静默渲染成「$n/a/GB」。 */ -}}
+{{- $iso := . -}}
+{{- $d := partialCached "i18n-data.html" . site.Language.Lang -}}
+{{- $stats := partialCached "country-stats.html" $iso $iso -}}
+{{- $rows := $stats.rows -}}
+{{- $country := index $d.countries $iso -}}
+{{- $na := "n/a" -}}
+
+{{- /* 品牌清单（按显示名**不分大小写**排序，牛津式连接）—— 用于「我们追踪的每一家…」这类句子。
+     不分大小写是必须的：Go 的 sort 按字节序，'aloSIM' 会排到 'Yesim' 后面。 */ -}}
+{{- $pairs := slice -}}
+{{- range $stats.providers -}}
+  {{- $pr := index $d.providers . -}}
+  {{- with $pr.name -}}{{- $pairs = $pairs | append (dict "l" (lower .) "n" .) -}}{{- end -}}
+{{- end -}}
+{{- $names := slice -}}
+{{- range (sort $pairs "l" "asc") -}}{{- $names = $names | append .n -}}{{- end -}}
+{{- $bl := "" -}}
+{{- $bn := len $names -}}
+{{- if eq $bn 1 -}}
+  {{- $bl = index $names 0 -}}
+{{- else if gt $bn 1 -}}
+  {{- $bl = printf "%s and %s" (delimit (first (sub $bn 1) $names) ", ") (index $names (sub $bn 1)) -}}
+{{- else -}}
+  {{- $bl = $na -}}
+{{- end -}}
+
+{{- /* ── 邻国 token（Q6「Can one eSIM cover {C} and …?」专用）──────────────
+     两个值都从 countries.toml 的 `neighbors` 推导，国名从 countries.toml 取。
+     · neighbors_all 全量邻国牛津列表 —— 用于「周边市场」那句
+     · neighbor 该国 Q6 问题里**点名的那个**邻国 —— 答案必须对上问题：
+       英国的问题问的是「英国和法国」，若机械取 neighbors[0] 会答成爱尔兰。
+     7 国（HR/IS/CR/IL/MA/ZA/KE）没有 neighbors，必须给语法上仍成立的短语兜底。
+     ⚠ 两处 `index … 0` 都必须先判长度：空切片越界会让 hugo 直接挂。
+     ⚠ 兜底短语是小写开头，**只能出现在句中**，不能让它顶着句号起句。 */ -}}
+{{- $region := $country.region | default "its region" -}}
+{{- $nbsAll := slice -}}
+{{- range ($country.neighbors | default slice) -}}
+  {{- with index $d.countries . -}}{{- with .name -}}{{- $nbsAll = $nbsAll | append . -}}{{- end -}}{{- end -}}
+{{- end -}}
+{{- $nbsList := printf "the other %s markets we cover" $region -}}
+{{- $nn := len $nbsAll -}}
+{{- if eq $nn 1 -}}
+  {{- $nbsList = index $nbsAll 0 -}}
+{{- else if gt $nn 1 -}}
+  {{- $nbsList = printf "%s and %s" (delimit (first (sub $nn 1) $nbsAll) ", ") (index $nbsAll (sub $nn 1)) -}}
+{{- end -}}
+{{- $q6 := "" -}}
+{{- with index $d.faqs (lower $iso) -}}
+  {{- range .faq -}}{{- if hasPrefix .q "Can one eSIM cover" -}}{{- $q6 = .q -}}{{- end -}}{{- end -}}
+{{- end -}}
+{{- $nbMain := "" -}}
+{{- range $nbsAll -}}{{- if and (eq $nbMain "") (in $q6 .) -}}{{- $nbMain = . -}}{{- end -}}{{- end -}}
+{{- if and (eq $nbMain "") (gt $nn 0) -}}{{- $nbMain = index $nbsAll 0 -}}{{- end -}}
+{{- if eq $nbMain "" -}}{{- $nbMain = "another country" -}}{{- end -}}
+
+{{- $t := dict
+  "country"        ($country.name | default $iso)
+  "neighbor"       $nbMain
+  "neighbors_all"  $nbsList
+  "plan_count"     (string $stats.planCount)
+  "brand_count"    (string $stats.providerCount)
+  "brands_list"    $bl
+  "cheap_brand"    $na
+  "cheap_plan"     $na
+  "cheap_price"    $na
+  "cheap_perday"   $na
+  "cheap_pergb"    $na
+  "runner_brand"   $na
+  "runner_price"   $na
+  "value_brand"    $na
+  "value_plan"     $na
+  "value_pergb"    $na
+  "unl_count"      "0"
+  "unl_brand"      $na
+  "unl_days"       $na
+  "unl_price"      $na
+  "unl_perday"     $na
+  "unl_allowance"  $na
+  "unl_drop"       $na
+  "unl_perday_lo"  $na
+  "unl_perday_hi"  $na
+  "unl_perday_range" $na
+  "ah_airalo_pergb"   $na
+  "ah_airalo_plan"    $na
+  "ah_airalo_price"   $na
+  "ah_holafly_days"   $na
+  "ah_holafly_price"  $na
+  "ah_holafly_perday" $na
+-}}
+
+{{- /* 无数据国家：整表保持 n/a，交给守卫报错。
+     包 if 而不是提前 return —— **红线 39**：`{{ return }}` 不能写在 `{{ if }}` / `{{ range }}` 里，
+     且一个 partial 只能有一个顶层出口；写两处第二处会退化成 Go 关键字，报
+     `wrong number of args for return: want 0 got 1`（2026-10-07 实测踩到）。 */ -}}
+{{- if gt (len $rows) 0 -}}
+
+  {{- /* ── ① 最便宜 / 追赶者 ── */ -}}
+  {{- $byPrice := sort $rows "price" "asc" -}}
+  {{- $cheap := index $byPrice 0 -}}
+  {{- $minPrice := index $cheap "price" -}}
+  {{- range $byPrice -}}
+    {{- if le (index . "price") $minPrice -}}
+      {{- if or (gt (index . "gb") (index $cheap "gb"))
+                (and (eq (index . "gb") (index $cheap "gb")) (lt (index . "key") (index $cheap "key"))) -}}
+        {{- $cheap = . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $cheapKey := index $cheap "key" -}}
+  {{- $t = merge $t (dict
+    "cheap_brand"  (index $cheap "provider")
+    "cheap_plan"   (index $cheap "name")
+    "cheap_price"  (printf "%.2f" (index $cheap "price"))
+    "cheap_perday" (printf "%.2f" (index $cheap "perDay"))
+    "cheap_pergb"  (cond (gt (index $cheap "gb") 0.0) (printf "%.2f" (index $cheap "perGB")) $na)
+  ) -}}
+  {{- range $byPrice -}}
+    {{- if and (ne (index . "key") $cheapKey) (eq (index $t "runner_brand") $na) -}}
+      {{- $t = merge $t (dict
+        "runner_brand" (index . "provider")
+        "runner_price" (printf "%.2f" (index . "price"))
+      ) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* ── ② 最佳 $/GB（只算计量档，排除无限哨兵）── */ -}}
+  {{- $metered := where $rows "isUnlimited" false -}}
+  {{- if gt (len $metered) 0 -}}
+    {{- $value := index (sort $metered "perGB" "asc") 0 -}}
+    {{- $t = merge $t (dict
+      "value_brand" (index $value "provider")
+      "value_plan"  (index $value "name")
+      "value_pergb" (printf "%.2f" (index $value "perGB"))
+    ) -}}
+  {{- end -}}
+
+  {{- /* ── ③ 无限档：计数 / 最优 / $/天 区间 / 该品牌政策 ── */ -}}
+  {{- $unl := where $rows "isUnlimited" true -}}
+  {{- if gt (len $unl) 0 -}}
+    {{- $unlByDay := sort $unl "perDay" "asc" -}}
+    {{- $cu := index $unlByDay 0 -}}
+    {{- $lo := index $unlByDay 0 -}}
+    {{- $hi := index $unlByDay (sub (len $unlByDay) 1) -}}
+    {{- $loV := printf "%.2f" (index $lo "perDay") -}}
+    {{- $hiV := printf "%.2f" (index $hi "perDay") -}}
+    {{- $pol := dict -}}
+    {{- with index $d.providers (index $cu "key") -}}{{- $pol = .policy | default dict -}}{{- end -}}
+    {{- $t = merge $t (dict
+      "unl_count"     (string (len $unl))
+      "unl_brand"     (index $cu "provider")
+      "unl_days"      (string (index $cu "days"))
+      "unl_price"     (printf "%.2f" (index $cu "price"))
+      "unl_perday"    (printf "%.2f" (index $cu "perDay"))
+      "unl_allowance" ($pol.fup_allowance | default $na)
+      "unl_drop"      ($pol.fup_drop | default $na)
+      "unl_perday_lo" $loV
+      "unl_perday_hi" $hiV
+      "unl_perday_range" (cond (eq $loV $hiV) (printf "$%s" $loV) (printf "$%s to $%s" $loV $hiV))
+    ) -}}
+  {{- end -}}
+
+  {{- /* ── ④ 该国 Airalo / Holafly 的各自最优（Q3 对比用）── */ -}}
+  {{- $aMetered := where (where $rows "key" "airalo") "isUnlimited" false -}}
+  {{- if gt (len $aMetered) 0 -}}
+    {{- $airalo := index (sort $aMetered "perGB" "asc") 0 -}}
+    {{- $t = merge $t (dict
+      "ah_airalo_pergb" (printf "%.2f" (index $airalo "perGB"))
+      "ah_airalo_plan"  (index $airalo "name")
+      "ah_airalo_price" (printf "%.2f" (index $airalo "price"))
+    ) -}}
+  {{- end -}}
+  {{- $hRows := where $rows "key" "holafly" -}}
+  {{- if gt (len $hRows) 0 -}}
+    {{- $holafly := index (sort $hRows "price" "asc") 0 -}}
+    {{- $t = merge $t (dict
+      "ah_holafly_days"   (string (index $holafly "days"))
+      "ah_holafly_price"  (printf "%.2f" (index $holafly "price"))
+      "ah_holafly_perday" (printf "%.2f" (index $holafly "perDay"))
+    ) -}}
+  {{- end -}}
+
+{{- end -}}
+{{- return $t -}}

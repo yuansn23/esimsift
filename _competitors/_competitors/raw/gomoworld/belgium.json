@@ -1,0 +1,52 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country 4"
+ },
+ "plans": [
+  {
+   "name": "Belgium",
+   "data": "4GB",
+   "validity": "7 Days",
+   "price": "$4.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Belgium",
+   "data": "15GB",
+   "validity": "30 Days",
+   "price": "$12.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Belgium",
+   "data": "50GB",
+   "validity": "30 Days",
+   "price": "$24.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  },
+  {
+   "name": "Belgium",
+   "data": "75GB",
+   "validity": "30 Days",
+   "price": "$35.99",
+   "badges": [
+    "€2 OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GoMoWorld Travel eSIM for Belgium | Data Plans & Reviews",
+  "h1": "GoMoWorld eSIM Data Plans for Belgium",
+  "networks": null
+ },
+ "slug": "belgium",
+ "url": "https://esimdb.com/belgium/gomoworld",
+ "status": 200
+}

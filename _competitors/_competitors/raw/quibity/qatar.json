@@ -1,0 +1,70 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n6"
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Qatar",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.80",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - Qatar",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$9.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Qatar",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$10.40",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Qatar",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$14.40",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Qatar",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$25.80",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - Qatar",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$48.40",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Qatar | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Qatar",
+  "networks": null
+ },
+ "slug": "qatar",
+ "url": "https://esimdb.com/qatar/quibity",
+ "status": 200
+}

@@ -1,0 +1,97 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n9"
+ },
+ "plans": [
+  {
+   "name": "Local Egypt - 7 Days - 1 GB",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$6.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Egypt - 30 Days - 3 GB",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$12.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Egypt - 3 Days - unlimited",
+   "data": "2GB/day",
+   "validity": "3 Days",
+   "price": "$14.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Local Egypt - 30 Days - 5 GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$18.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Egypt - 5 Days - unlimited",
+   "data": "2GB/day",
+   "validity": "5 Days",
+   "price": "$21.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Local Egypt - 7 Days - unlimited",
+   "data": "2GB/day",
+   "validity": "7 Days",
+   "price": "$27.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Local Egypt - 30 Days - 10 GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$28.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  },
+  {
+   "name": "Local Egypt - 10 Days - unlimited",
+   "data": "2GB/day",
+   "validity": "10 Days",
+   "price": "$35.00",
+   "badges": [
+    "+ ∞ at 1Mbps"
+   ]
+  },
+  {
+   "name": "Local Egypt - 30 Days - 20 GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$37.00",
+   "badges": [
+    "$3 OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Nomad Travel eSIM for Egypt | Data Plans & Reviews",
+  "h1": "Nomad eSIM Data Plans for Egypt",
+  "networks": null
+ },
+ "slug": "egypt",
+ "url": "https://esimdb.com/egypt/nomad",
+ "status": 200
+}

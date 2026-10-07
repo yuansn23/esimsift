@@ -1,0 +1,104 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n10"
+ },
+ "plans": [
+  {
+   "name": "China",
+   "data": "100MB",
+   "validity": "7 Days",
+   "price": "$0.00",
+   "badges": []
+  },
+  {
+   "name": "China",
+   "data": "3.5GB",
+   "validity": "1 Day",
+   "price": "$3.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "China",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "China",
+   "data": "3.5GB/day",
+   "validity": "3 Days",
+   "price": "$11.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "China",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$15.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "China",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$23.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "China",
+   "data": "3.5GB/day",
+   "validity": "7 Days",
+   "price": "$27.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "China",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$36.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "China",
+   "data": "3.5GB/day",
+   "validity": "15 Days",
+   "price": "$51.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "China",
+   "data": "20GB",
+   "validity": "90 Days",
+   "price": "$69.99",
+   "badges": [
+    "20% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GigSky Travel eSIM for China | Data Plans & Reviews",
+  "h1": "GigSky eSIM Data Plans for China",
+  "networks": null
+ },
+ "slug": "china",
+ "url": "https://esimdb.com/china/gigsky",
+ "status": 200
+}

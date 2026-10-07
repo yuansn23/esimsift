@@ -1,0 +1,61 @@
+{
+ "tab": {
+  "clicked": false,
+  "label": null
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Japan",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$5.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Japan",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$9.70",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 30 days - Japan",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$14.20",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Japan",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$21.20",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - Japan",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$40.00",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Japan | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Japan",
+  "networks": null
+ },
+ "slug": "japan",
+ "url": "https://esimdb.com/japan/quibity",
+ "status": 200
+}

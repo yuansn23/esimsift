@@ -1,16 +1,17 @@
 # Turkiye FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for Turkiye?"
-a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "The lowest price on this page is {cheap_brand}'s {cheap_plan} - ${cheap_price} for {country}. {runner_brand} sits next at ${runner_price}, and the strongest per-gigabyte rate comes from {value_brand}'s {value_plan} at ${value_pergb}/GB. Decide your days and your rough gigabytes first, then pick the plan that fits both."
 
 [[faq]]
 q = "Is unlimited eSIM data in Turkiye actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Roami at $16.99 ($2.43/day), carries: Soft cap 2GB/day at full speed, then throttled. Treat them as big-but-capped plans and compare the caps."
+a = "Big rather than boundless: {unl_count} unlimited {country} plans all apply fair-use rules. Prices run {unl_perday_range} per day depending on duration, and {unl_brand} is the cheapest at ${unl_perday}/day. The part people miss is what happens after the cap: {unl_drop}."
 
 [[faq]]
 q = "Airalo or Holafly for Turkiye?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($3.55/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "Neither is the cheapest plan on this page, and the two are not competing on the same terms either. Airalo's strongest {country} offer is ${ah_airalo_pergb}/GB, sold as {ah_airalo_plan} for ${ah_airalo_price}. Holafly's model is daily unlimited, starting at {ah_holafly_days} days for ${ah_holafly_price} - ${ah_holafly_perday}/day - so heavy use costs the same as light use."
 
 [[faq]]
 q = "Do I need ID verification for a Turkiye eSIM?"
@@ -22,4 +23,4 @@ a = "Plans on this page run on Turkcell, Vodafone, Turk Telekom. Differences mat
 
 [[faq]]
 q = "Can one eSIM cover Turkiye and Greece?"
-a = "Regional Asia/continental plans from Airalo and Nomad bundle Turkiye with neighbors - usually worse $/GB than single-country plans, but cheaper than two separate eSIMs. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+a = "Not with a country plan alone, because {country} plans stop at the border. Adding {neighbor} means a regional bundle or a second plan, and the two-country arithmetic is worth doing before you buy."

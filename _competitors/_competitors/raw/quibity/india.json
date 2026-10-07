@@ -1,0 +1,70 @@
+{
+ "tab": {
+  "clicked": false,
+  "label": null
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - India",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$6.30",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - India",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$12.20",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - India",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$12.70",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - India",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$18.00",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - India",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$32.80",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - India",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$61.90",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for India | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for India",
+  "networks": null
+ },
+ "slug": "india",
+ "url": "https://esimdb.com/india/quibity",
+ "status": 200
+}

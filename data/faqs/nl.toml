@@ -1,16 +1,17 @@
 # Netherlands FAQ - generated (review before launch)
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 
 [[faq]]
 q = "What is the cheapest eSIM for Netherlands?"
-a = "Roami - the 1GB / 7 Days at $2.99 ($0.43/day) is the cheapest plan we track. That buys 1GB over 7 days: enough for maps and messaging if your hotel has Wi-Fi."
+a = "At ${cheap_price}, {cheap_brand}'s {cheap_plan} is the cheapest way online in {country}. That works out at ${cheap_perday} a day, which suits a short stop better than a long one. If you only need maps and messaging the entry price is enough, and anyone streaming should shop on $/GB."
 
 [[faq]]
 q = "Is unlimited eSIM data in Netherlands actually unlimited?"
-a = "Not quite. All 10 'unlimited' plans here apply fair-use policies - the cheapest, Roami at $21.99 ($3.14/day), carries: Soft cap 2GB/day at full speed, then throttled. Treat them as big-but-capped plans and compare the caps."
+a = "Treat them as capped: {unl_count} unlimited {country} plans each state a daily allowance and a fallback speed. Duration moves the rate as much as the cap does: {unl_perday_range} per day across the set, with {unl_brand} lowest at ${unl_perday} for {unl_days} days. Check the fallback speed before you commit, because that is what you get after the daily allowance: {unl_drop}."
 
 [[faq]]
 q = "Airalo or Holafly for Netherlands?"
-a = "Different animals. Airalo sells metered buckets - its best rate here is competitive per GB - while Holafly only sells unlimited-by-day ($4.15/day at its cheapest tier). Short light trip: Airalo-style buckets win. Heavy data or hotspot sharing: Holafly's flat rate caps your downside."
+a = "The honest answer is that these two are not interchangeable. For {country}, Airalo's cheapest rate per gigabyte is ${ah_airalo_pergb} ({ah_airalo_plan}, ${ah_airalo_price}). Take Holafly if you would rather not count gigabytes, since its {country} packages start at ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and take Airalo for a light, short trip."
 
 [[faq]]
 q = "Do I need ID verification for a Netherlands eSIM?"
@@ -22,4 +23,4 @@ a = "Plans on this page run on KPN, Vodafone, Odido. Differences matter mostly o
 
 [[faq]]
 q = "Can one eSIM cover Netherlands and Germany?"
-a = "Regional Asia/continental plans from Airalo and Nomad bundle Netherlands with neighbors - usually worse $/GB than single-country plans, but cheaper than two separate eSIMs. For a two-country trip, compare one regional plan against two country-specific ones in the tables before buying."
+a = "Only via a regional plan, because the {country} tables here are scoped to one market. Crossing into {neighbor} means either a regional package or a second plan, and the per-gigabyte rate is what tells them apart."

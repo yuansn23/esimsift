@@ -1,0 +1,95 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n9"
+ },
+ "plans": [
+  {
+   "name": "Peru",
+   "data": "100MB",
+   "validity": "7 Days",
+   "price": "$0.00",
+   "badges": []
+  },
+  {
+   "name": "Peru",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$3.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Peru",
+   "data": "3.5GB",
+   "validity": "1 Day",
+   "price": "$5.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Peru",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$10.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Peru",
+   "data": "3.5GB/day",
+   "validity": "3 Days",
+   "price": "$18.49",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Peru",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$18.79",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Peru",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$24.79",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Peru",
+   "data": "3.5GB/day",
+   "validity": "7 Days",
+   "price": "$33.99",
+   "badges": [
+    "20% OFF"
+   ]
+  },
+  {
+   "name": "Peru",
+   "data": "3.5GB/day",
+   "validity": "15 Days",
+   "price": "$46.99",
+   "badges": [
+    "20% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GigSky Travel eSIM for Peru | Data Plans & Reviews",
+  "h1": "GigSky eSIM Data Plans for Peru",
+  "networks": null
+ },
+ "slug": "peru",
+ "url": "https://esimdb.com/peru/gigsky",
+ "status": 200
+}

@@ -1,0 +1,61 @@
+{
+ "tab": {
+  "clicked": false,
+  "label": null
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - South Africa",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$3.30",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 10 days - South Africa",
+   "data": "3GB",
+   "validity": "10 Days",
+   "price": "$7.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - South Africa",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$8.20",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - South Africa",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$11.90",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - South Africa",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$22.00",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for South Africa | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for South Africa",
+  "networks": null
+ },
+ "slug": "south-africa",
+ "url": "https://esimdb.com/south-africa/quibity",
+ "status": 200
+}

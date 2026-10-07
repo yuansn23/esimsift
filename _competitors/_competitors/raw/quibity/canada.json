@@ -1,0 +1,61 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n5"
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Canada",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$4.10",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Canada",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$9.50",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Canada",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$13.60",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Canada",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$24.80",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "20GB 30 days - Canada",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$47.20",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Canada | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Canada",
+  "networks": null
+ },
+ "slug": "canada",
+ "url": "https://esimdb.com/canada/quibity",
+ "status": 200
+}

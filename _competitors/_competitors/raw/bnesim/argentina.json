@@ -1,0 +1,1053 @@
+{
+ "brand": "bnesim",
+ "slug": "argentina",
+ "iso2": "AR",
+ "country_name": "Argentina",
+ "url": "https://www.bnesim.com/plans/ar/",
+ "source": "api.bnesim.com/v0.1/sim_card_landing_pricing/ (public)",
+ "status": 200,
+ "plans": [
+  {
+   "id": "86979",
+   "name": "Surf 1 GB in Argentina",
+   "amount": 1,
+   "unit": "GB",
+   "price": "8.09",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "Claro"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "dfa5645e81bb9d7f76c3cbca4305dd2fd841c916.png",
+      "network_code": "ARGCM",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Argentina",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "86980",
+   "name": "Surf 3 GB in Argentina",
+   "amount": 3,
+   "unit": "GB",
+   "price": "23.59",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "Claro"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "dfa5645e81bb9d7f76c3cbca4305dd2fd841c916.png",
+      "network_code": "ARGCM",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Argentina",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "86981",
+   "name": "Surf 5 GB in Argentina",
+   "amount": 5,
+   "unit": "GB",
+   "price": "38.09",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "Claro"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "dfa5645e81bb9d7f76c3cbca4305dd2fd841c916.png",
+      "network_code": "ARGCM",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Argentina",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "86982",
+   "name": "Surf 10 GB in Argentina",
+   "amount": 10,
+   "unit": "GB",
+   "price": "72.89",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "Claro"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "dfa5645e81bb9d7f76c3cbca4305dd2fd841c916.png",
+      "network_code": "ARGCM",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Argentina",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "86983",
+   "name": "Surf 20 GB in Argentina",
+   "amount": 20,
+   "unit": "GB",
+   "price": "142.59",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "Claro"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "dfa5645e81bb9d7f76c3cbca4305dd2fd841c916.png",
+      "network_code": "ARGCM",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Argentina",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "86989",
+   "name": "Surf 20 GB in Argentina for 30 days",
+   "amount": 20,
+   "unit": "GB",
+   "price": "101.95",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "Claro"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "dfa5645e81bb9d7f76c3cbca4305dd2fd841c916.png",
+      "network_code": "ARGCM",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Argentina",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "86993",
+   "name": "Surf 1 GB in Argentina for 30 days",
+   "amount": 1,
+   "unit": "GB",
+   "price": "5.78",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "Claro"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "dfa5645e81bb9d7f76c3cbca4305dd2fd841c916.png",
+      "network_code": "ARGCM",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Argentina",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "86992",
+   "name": "Surf 3 GB in Argentina for 30 days",
+   "amount": 3,
+   "unit": "GB",
+   "price": "16.86",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "Claro"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "dfa5645e81bb9d7f76c3cbca4305dd2fd841c916.png",
+      "network_code": "ARGCM",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Argentina",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "86991",
+   "name": "Surf 5 GB in Argentina for 30 days",
+   "amount": 5,
+   "unit": "GB",
+   "price": "27.23",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "Claro"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "dfa5645e81bb9d7f76c3cbca4305dd2fd841c916.png",
+      "network_code": "ARGCM",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Argentina",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "86990",
+   "name": "Surf 10 GB in Argentina for 30 days",
+   "amount": 10,
+   "unit": "GB",
+   "price": "52.11",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "Claro"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "dfa5645e81bb9d7f76c3cbca4305dd2fd841c916.png",
+      "network_code": "ARGCM",
+      "network_speeds": "4G",
+      "best_network_speed": "4G"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "4G",
+   "region": "Argentina",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  }
+ ],
+ "regional_options": [
+  {
+   "id": "90639",
+   "name": "Surf 1 GB in South America for 30 days",
+   "amount": 1,
+   "unit": "GB",
+   "price": "7.21",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South America",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90638",
+   "name": "Surf 1 GB in South America",
+   "amount": 1,
+   "unit": "GB",
+   "price": "8.10",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South America",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90053",
+   "name": "Surf 1 GB in Global per 30 days",
+   "amount": 1,
+   "unit": "GB",
+   "price": "14.66",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90063",
+   "name": "Surf 1 GB in Global",
+   "amount": 1,
+   "unit": "GB",
+   "price": "18.76",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90641",
+   "name": "Surf 3 GB in South America for 30 days",
+   "amount": 3,
+   "unit": "GB",
+   "price": "20.36",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South America",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90640",
+   "name": "Surf 3 GB in South America",
+   "amount": 3,
+   "unit": "GB",
+   "price": "23.57",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South America",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90643",
+   "name": "Surf 5 GB in South America for 30 days",
+   "amount": 5,
+   "unit": "GB",
+   "price": "31.86",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South America",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90055",
+   "name": "Surf 3 GB in Global per 30 days",
+   "amount": 3,
+   "unit": "GB",
+   "price": "37.94",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90642",
+   "name": "Surf 5 GB in South America",
+   "amount": 5,
+   "unit": "GB",
+   "price": "38.07",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South America",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90065",
+   "name": "Surf 3 GB in Global",
+   "amount": 3,
+   "unit": "GB",
+   "price": "48.56",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90057",
+   "name": "Surf 5 GB in Global per 30 days",
+   "amount": 5,
+   "unit": "GB",
+   "price": "58.17",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90645",
+   "name": "Surf 10 GB in South America for 30 days",
+   "amount": 10,
+   "unit": "GB",
+   "price": "58.40",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South America",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90644",
+   "name": "Surf 10 GB in South America",
+   "amount": 10,
+   "unit": "GB",
+   "price": "72.90",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South America",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90067",
+   "name": "Surf 5 GB in Global",
+   "amount": 5,
+   "unit": "GB",
+   "price": "74.45",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90059",
+   "name": "Surf 10 GB in Global per 30 days",
+   "amount": 10,
+   "unit": "GB",
+   "price": "101.92",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90647",
+   "name": "Surf 20 GB in South America for 30 days",
+   "amount": 20,
+   "unit": "GB",
+   "price": "109.15",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South America",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90069",
+   "name": "Surf 10 GB in Global",
+   "amount": 10,
+   "unit": "GB",
+   "price": "130.45",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90646",
+   "name": "Surf 20 GB in South America",
+   "amount": 20,
+   "unit": "GB",
+   "price": "140.94",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "South America",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90061",
+   "name": "Surf 20 GB in Global per 30 days",
+   "amount": 20,
+   "unit": "GB",
+   "price": "174.49",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": 30,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  },
+  {
+   "id": "90071",
+   "name": "Surf 20 GB in Global",
+   "amount": 20,
+   "unit": "GB",
+   "price": "223.35",
+   "full_price": "0.00",
+   "currency": "EUR",
+   "duration": -1,
+   "infinity": false,
+   "carriers": [
+    "BNE"
+   ],
+   "networks": [
+    [
+     {
+      "name": "",
+      "logo": "BNE_BestNetworkEver_Logo_1.png"
+     }
+    ]
+   ],
+   "networkSpeed": [
+    "5G",
+    "4G",
+    "3G",
+    "2G"
+   ],
+   "best_networks_speed": "5G",
+   "region": "Global",
+   "flag_class": "flag-icon-eu",
+   "esim": 1,
+   "sms": false,
+   "phoneNumber": false
+  }
+ ]
+}

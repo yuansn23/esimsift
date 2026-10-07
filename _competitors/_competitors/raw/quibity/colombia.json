@@ -1,0 +1,52 @@
+{
+ "tab": {
+  "clicked": false,
+  "label": null
+ },
+ "plans": [
+  {
+   "name": "1GB 7 days - Colombia",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$6.00",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "3GB 15 days - Colombia",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$15.10",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "5GB 15 days - Colombia",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$22.20",
+   "badges": [
+    "10% OFF"
+   ]
+  },
+  {
+   "name": "10GB 30 days - Colombia",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$41.80",
+   "badges": [
+    "10% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Quibity Travel eSIM for Colombia | Data Plans & Reviews",
+  "h1": "Quibity eSIM Data Plans for Colombia",
+  "networks": null
+ },
+ "slug": "colombia",
+ "url": "https://esimdb.com/colombia/quibity",
+ "status": 200
+}

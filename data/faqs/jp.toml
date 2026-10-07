@@ -1,17 +1,18 @@
 # 日本 FAQ —— 只做对比角度（激活/安装类问题归 Roami 站，防 SERP 重叠）
+# 三条含数字的答案（最便宜 / unlimited 计数 / Airalo-Holafly）用 {token} 占位；值由 layouts/partials/faq-live-tokens.html 构建期现算 —— 不要手改回真实数字：会与正上方价格表打架，且 scripts/check_faq_facts.py 会失败。
 # 文件名 = 小写 ISO 码，模板按 index site.Data.faqs (lower iso) 取
 
 [[faq]]
 q = "Which is the cheapest eSIM for Japan?"
-a = "Among major providers, Roami currently has the lowest entry price for Japan at $1.99 for 1GB over 7 days, and its 3GB/7-day plan at $3.99 undercuts every competitor's budget tier. Saily is the closest challenger at $3.99 for 1GB. If you only need maps and messaging, either plan covers a short city break - but on a per-GB basis Roami's larger bundles are the strongest value in the market."
+a = "Among major providers, {cheap_brand} currently has the lowest entry price for {country} at ${cheap_price} for its {cheap_plan} package, and {runner_brand} is the closest challenger at ${runner_price}. If you only need maps and messaging, either plan covers a short city break - but on a per-GB basis {value_brand}'s {value_plan} is the strongest value we track at ${value_pergb}/GB."
 
 [[faq]]
 q = "Is unlimited data eSIM in Japan really unlimited?"
-a = "Only within limits. Every unlimited plan we track for Japan caps the full-speed allowance for each day and then throttles - most list 3 GB or 5 GB per day before the fallback, and the fallback speed is listed differently by each provider rather than by any market standard. Duration moves the price as much as the policy does: Holafly's flat daily rate runs about $3.97 per day on a 3-day plan but drops to $2.46 per day over 30 days, so the same brand looks expensive for a weekend and competitive for a month. Read the per-day price and the fair-use cap together before you buy."
+a = "Only within limits. Every one of the {unl_count} unlimited plans we track for {country} caps the full-speed allowance for each day and then throttles, and the day rate across them runs from {unl_perday_range}. The cheapest by day rate is {unl_brand} at ${unl_price} for {unl_days} days (${unl_perday}/day); its published terms: allowance {unl_allowance}; after that, {unl_drop}. Read the per-day price and the fair-use cap together before you buy."
 
 [[faq]]
 q = "Is Airalo or Holafly better for Japan?"
-a = "Different products, so it depends on how you use data. Airalo sells fixed buckets - its entry Japan plan is 1 GB for 3 days at $4.00 and a 3 GB week costs $8.00 - which suits light use and sidesteps fair-use ambiguity entirely. Holafly sells unlimited data by the day only, from $11.90 for 3 days, which suits heavy streamers who would rather not count gigabytes. Neither is the cheapest for the same data: Roami and Roamic undercut both."
+a = "Different products, so it depends on how you use data. Airalo sells fixed buckets - its best {country} rate is ${ah_airalo_pergb}/GB ({ah_airalo_plan} at ${ah_airalo_price}) - which suits light use and sidesteps fair-use ambiguity entirely. Holafly sells unlimited data by the day only, from ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), which suits heavy streamers who would rather not count gigabytes. For the same data neither is the cheapest on this page: {cheap_brand} leads at ${cheap_price}."
 
 [[faq]]
 q = "Do I need a passport or ID to use an eSIM in Japan?"
@@ -19,7 +20,7 @@ a = "No - not with travel eSIMs. Japanese law requires passport verification for
 
 [[faq]]
 q = "Which Japanese network does each provider use?"
-a = "All of them. Every provider we track - Airalo, aloSIM, Holafly, Roami, Roamic, Saily, Ubigi and Yesim - connects to the same three national networks in Japan (NTT Docomo, SoftBank and KDDI), so the brand on the voucher does not decide your coverage. What differs between providers is price per GB, plan shapes, hotspot rules and support. Docomo has the widest rural reach of the three, which matters on mountain routes and island hops, but because every Japan plan we list falls back across all three networks your phone picks the strongest signal available rather than staying pinned to one mast."
+a = "All of them. Every provider we track - {brands_list} - connects to the same three national networks in Japan (NTT Docomo, SoftBank and KDDI), so the brand on the voucher does not decide your coverage. What differs between providers is price per GB, plan shapes, hotspot rules and support. Docomo has the widest rural reach of the three, which matters on mountain routes and island hops, but because every Japan plan we list falls back across all three networks your phone picks the strongest signal available rather than staying pinned to one mast."
 
 [[faq]]
 q = "Can one eSIM cover Japan and South Korea on the same trip?"

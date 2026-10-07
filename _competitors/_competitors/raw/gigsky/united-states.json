@@ -1,0 +1,771 @@
+{
+ "tab": {
+  "clicked": false,
+  "label": null
+ },
+ "plans": [
+  {
+   "name": "North America",
+   "data": "100MB",
+   "validity": "7 Days",
+   "price": "$0.00",
+   "badges": [
+    "Low latency"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "100MB",
+   "validity": "7 Days",
+   "price": "$0.00",
+   "badges": [
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan",
+   "data": "100MB",
+   "validity": "3 Days",
+   "price": "$0.00",
+   "badges": [
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & Americas/Caribbean",
+   "data": "100MB",
+   "validity": "7 Days",
+   "price": "$0.00",
+   "badges": [
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & World",
+   "data": "100MB",
+   "validity": "7 Days",
+   "price": "$0.00",
+   "badges": [
+    "Low latency"
+   ]
+  },
+  {
+   "name": "North America",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$2.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$2.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "3.5GB",
+   "validity": "1 Day",
+   "price": "$3.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "North America",
+   "data": "3.5GB",
+   "validity": "1 Day",
+   "price": "$4.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & Americas/Caribbean",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$4.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & World",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$4.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + Americas/Caribbean",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$6.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + World",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$6.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan Lite",
+   "data": "1GB",
+   "validity": "15 Days",
+   "price": "$6.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$7.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$8.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "North America",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$8.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan Lite",
+   "data": "2GB",
+   "validity": "15 Days",
+   "price": "$9.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "3.5GB/day",
+   "validity": "3 Days",
+   "price": "$10.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "North America",
+   "data": "3.5GB/day",
+   "validity": "3 Days",
+   "price": "$10.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & Americas/Caribbean",
+   "data": "500MB",
+   "validity": "1 Day",
+   "price": "$10.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & World",
+   "data": "500MB",
+   "validity": "1 Day",
+   "price": "$10.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$12.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & Americas/Caribbean",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$14.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & World",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$14.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "North America",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$14.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan Lite",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$16.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + Americas/Caribbean",
+   "data": "500MB",
+   "validity": "1 Day",
+   "price": "$17.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + World",
+   "data": "500MB",
+   "validity": "1 Day",
+   "price": "$17.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$18.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & Americas/Caribbean",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$19.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & World",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$19.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + World",
+   "data": "250MB",
+   "validity": "1 Day",
+   "price": "$19.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "North America",
+   "data": "3.5GB/day",
+   "validity": "7 Days",
+   "price": "$20.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + Americas/Caribbean",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$20.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + World",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$20.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$21.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "North America",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$21.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "3.5GB/day",
+   "validity": "7 Days",
+   "price": "$24.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan Lite",
+   "data": "5GB",
+   "validity": "15 Days",
+   "price": "$24.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "North America",
+   "data": "20GB",
+   "validity": "180 Days",
+   "price": "$29.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "20GB",
+   "validity": "180 Days",
+   "price": "$29.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & Americas/Caribbean",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$31.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & World",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$31.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + Americas/Caribbean",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$31.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + World",
+   "data": "1GB",
+   "validity": "7 Days",
+   "price": "$31.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$32.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "North America",
+   "data": "3.5GB/day",
+   "validity": "15 Days",
+   "price": "$33.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "50GB",
+   "validity": "90 Days",
+   "price": "$39.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & Americas/Caribbean",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$39.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & World",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$39.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + Americas/Caribbean",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$44.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + World",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$44.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "United States",
+   "data": "3.5GB/day",
+   "validity": "15 Days",
+   "price": "$44.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan Lite",
+   "data": "10GB",
+   "validity": "60 Days",
+   "price": "$44.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & Americas/Caribbean",
+   "data": "3GB/day",
+   "validity": "15 Days",
+   "price": "$59.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & World",
+   "data": "3GB/day",
+   "validity": "15 Days",
+   "price": "$59.49",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "North America",
+   "data": "50GB",
+   "validity": "60 Days",
+   "price": "$59.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + Americas/Caribbean",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$62.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + World",
+   "data": "3GB",
+   "validity": "15 Days",
+   "price": "$62.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan",
+   "data": "10GB",
+   "validity": "60 Days",
+   "price": "$64.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & Americas/Caribbean",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$69.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & World",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$69.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan Lite",
+   "data": "20GB",
+   "validity": "180 Days",
+   "price": "$79.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + Americas/Caribbean",
+   "data": "3GB/day",
+   "validity": "15 Days",
+   "price": "$82.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + World",
+   "data": "3GB/day",
+   "validity": "15 Days",
+   "price": "$82.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan",
+   "data": "20GB",
+   "validity": "90 Days",
+   "price": "$99.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + Americas/Caribbean",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$99.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + World",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$99.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan Lite",
+   "data": "50GB",
+   "validity": "180 Days",
+   "price": "$109.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & Americas/Caribbean",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$119.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise & World",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$119.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan",
+   "data": "50GB",
+   "validity": "180 Days",
+   "price": "$169.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + Americas/Caribbean",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$174.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Cruise + World",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$174.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "World Plan Lite",
+   "data": "100GB",
+   "validity": "180 Days",
+   "price": "$179.99",
+   "badges": [
+    "20% OFF",
+    "Low latency"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "GigSky Travel eSIM for USA | Data Plans & Reviews",
+  "h1": "GigSky eSIM Data Plans for United States of America",
+  "networks": null
+ },
+ "slug": "united-states",
+ "url": "https://esimdb.com/usa/gigsky",
+ "status": 200
+}
