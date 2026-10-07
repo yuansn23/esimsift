@@ -1,9 +1,10 @@
 # 新增品牌（BNESIM / GigSky / Jetpac / Nomad）× 50 国 —— 影响面分析与实施方案
 
-> 起草：2026-10-06 · 状态：**Nomad 试点已落地并验收通过，gigsky / jetpac / bnesim 待接**（见 §7）
+> 起草：2026-10-06 · 状态：**Nomad ✅、Jetpac ✅（2026-10-07 落地并验收通过），gigsky / bnesim 待接**（见 §7 / §8）
 > 数据源：`D:\esimsift\esimsift\_competitors\_competitors\raw\{bnesim,gigsky,jetpac,nomad}\`
 > 起草时基线（复核订正）：8 品牌 × 50 国 = 400 品牌子页 / **7,776** 套餐 / **584** 页（原稿写 8,776 / 582，均误）
 > 现行基线（Nomad 接入后）：**9 品牌 × 50 国 = 450 品牌子页 / 36 对决页 / 8,218 套餐 / 643 页 / sitemap 585 URL**
+> **现行基线（Jetpac 接入后，2026-10-07）**：**10 品牌 / 499 品牌子页（9×50 + jetpac 49）/ 45 对决页 / 9,095 套餐 / 702 页 / sitemap 644 URL**
 
 ---
 
@@ -297,17 +298,25 @@ footer 品牌链接 9 ／ 50 国 hub 品牌链分布 `{9: 50}` ／ **nomad 卡�
 | **变更面** | 627 页 = **603**（徽标 monogram → 真 logo）+ **24**（引用了 nomad 价格日的 guides/networks/research），**0 页未解释**；基线已重建（643 文件） |
 
 ⚠️ **接第二批品牌时必须注意**：
-- **logo 只认 `static/img/providers/<key>.png|.webp`**。素材区现有：`gigsky.png` ✓、`jetpac.webp` ✓、
+- **logo 只认 `static/img/providers/<key>.png|.webp`**。素材区：`gigsky.png` ✓ 待归位；~~`jetpac.webp`~~ ✅ 2026-10-07 已归位；
   `bensim.jpg` ✗ —— **品牌 key 应为 `bnesim`（当前素材文件名拼成了 `bensim`），且 jpg 探测不到**，
   须转 png/webp 并改名。（另注意品牌名不要与自家 `roami` / `roamic` 混淆。）
 - **新品牌 TOML 入库后日期会自动盖当天**（`stamp_checked.py` 把台账里没有的单元当作「新入库」），
   **但首次建台账是例外**（保留现值）——所以第一次跑之前要确认 `toml_write.py` 的 `--checked` 传对了。
+- **`--checked` 传 raw 的真实抓取日，不是「今天」**（jetpac 的 raw 是 10-04 抓的，写成 10-07 就是文件头印假日期）；
+  之后再 `bump_checked --brand <b>` 把**页面声明的核对日**推到当天。同时在 `providers.toml` 给 `<brand>` 顶层写
+  `profile_checked`（jetpac = 10-07）—— 品牌 hub 的 `Last updated` 取 max(价格日, 档案日)。
+- **`backfill_networks_uniform.py` 是全局脚本**，不是「只补新品牌」：跑一次会把历史品牌遗留的空 `networks`
+  一并补真（Jetpac 那次顺带修好了 nomad 的 `networks = []`，**单独实测影响 123 页**）。做变更面归因时要分开记账。
+- **Jetpac 的官网是 SPA，深链不可用**：`/product-details/{slug}-esim` 对任意路径返回 **200**、标题由 slug 现场拼接、
+  价格回落 $1 占位 —— 只有 `japan` 有真内容。**状态码不能当证据**。按 Nomad 先例**只走 base，不加 `country_path`**。
 
 ---
 
-## 8. 剩余 3 家接入手册（按 Nomad 试点沉淀的完整顺序）
+## 8. 剩余 2 家接入手册（按 Nomad / Jetpac 两次沉淀的完整顺序）
 
-数据规模：**gigsky 50/50 · 619 条** ／ **jetpac 49/50（缺 Fiji）· 877 条** ／ **bnesim 48/50 · 528 条（EUR）**。
+数据规模：**gigsky 50/50 · 619 条** ／ **bnesim 48/50 · 528 条（EUR，需 EUR→USD 折算并诚实披露口径）**。
+（**jetpac ✅ 已于 2026-10-07 完成**：49/50 国 · 877 条 / 499 子页 / 45 对决页 / 702 页，实测步骤与坑见 §8 下方注释。）
 
 每家按此顺序，**每一步都要过上一节的产物断言**：
 
@@ -315,16 +324,35 @@ footer 品牌链接 9 ／ 50 国 hub 品牌链分布 `{9: 50}` ／ **nomad 卡�
 # 0) bnesim 专有：EUR → USD 折算（先定汇率 + 汇率日期，写进 plans 文件头注释）
 #    并在 providers.toml [bnesim] 记录折算口径（诚实披露）
 # 1) raw JSON 进 scripts/scrape/raw/<brand>/（数量 = 覆盖国数：50/49/48）
-python -X utf8 scripts/scrape/toml_write.py <brand> --checked <当天> --dry-run   # 确认 0 problems
-python -X utf8 scripts/scrape/toml_write.py <brand> --checked <当天>
-python -X utf8 scripts/scrape/backfill_networks_uniform.py                       # networks 补齐
+python -X utf8 scripts/scrape/toml_write.py <brand> --checked <raw 的真实抓取日> --dry-run  # 确认 0 problems
+python -X utf8 scripts/scrape/toml_write.py <brand> --checked <raw 的真实抓取日>
+python -X utf8 scripts/backfill_networks_uniform.py                      # networks 补齐（⚠ 全局脚本）
 python -X utf8 scripts/_rename_us_gb.py --dry-run && python -X utf8 scripts/_rename_us_gb.py
 # 2) providers.toml 加 <brand> 块（含 info / policy / promo_*）+ profile_checked
 # 3) hugo.toml 加 [params.outbound.targets.<brand>]
 # 4) content/en/esim-providers/<brand>.md（title 48-54 无品牌词 / description 120-140 含 "eSIM Sift"）
 # 5) gen_provider_pages.py → gen_vs_pages.py → regen_meta_brand.py → _solve_titles.py --write
-# 6) npm run build（九项）→ verify_no_regression --diff → --write-manifest
+# 6) npm run build → verify_no_regression --diff → --write-manifest
 ```
+
+> **`--checked` 写抓取日，不写今天**（2026-10-07 踩过）：raw JSON 是 10-04 抓的，
+> 却在 `--checked` 里传 10-07，文件头就印出「Scraped … on 2026-10-07」——**不实陈述**。
+> 正确姿势：`--checked <raw 的真实抓取日>`（落文件头 + 块内初始值），
+> 之后 `python -X utf8 scripts/bump_checked.py --brand <brand>` 把**页面声明的核对日**
+> 推到当天。文件头 = 抓取日，块内 `checked` = 页面核对日，两者本来就不是同一个东西。
+
+> **`backfill_networks_uniform.py` 是全局脚本，不是「只补新品牌」**（2026-10-07 实测）：
+> 它按 `countries[ISO].carriers` 给**所有**品牌的 `plans[ISO].networks` 做统一回填。
+> 接 Jetpac 时跑一次，把 nomad 此前遗留的 `networks = []` 一并补成了真实运营商 ——
+> 这会让 nomad 的 50 个子页 `#hostnetwork` 从降级态变成正常渲染，**属于第二个变量**。
+> 做变更面归因时必须把它和「新品牌接入」分开记账，否则会把 nomad 的改动算到 Jetpac 头上。
+
+> **删品牌时必须同时清理对决页**（2026-10-07 实测）：`gen_provider_pages.py` 有陈旧子页
+> 清理（`removed`），但**没有**清理 `content/en/compare/*-vs-*.md` 的逻辑。残留一个引用
+> 已删品牌的 vs 页，hugo 不是静默降级而是**直接失败**：
+> `ERROR compare/vs-single: unknown provider "x"` → `nil pointer evaluating interface {}.name`
+> （`vs-single.html` 拿空的 `$pa` 去取 `.name`），整站构建退出码 1、产物写不全。
+> 这是「fail loud」而非静默，但顺序上会让人误以为新品牌数据有问题。
 
 **缺国必须正确传播**：jetpac 缺 Fiji、bnesim 缺 2 国 →
 任何 `#N of M`、`from N providers`、"All N unlimited plans" 的 **N 要按国核算**，

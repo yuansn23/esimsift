@@ -1,0 +1,158 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n15"
+ },
+ "plans": [
+  {
+   "name": "Czech Republic 1GB",
+   "data": "1GB",
+   "validity": "4 Days",
+   "price": "$7.00",
+   "badges": [
+    "New Users Only"
+   ]
+  },
+  {
+   "name": "Czech Republic 3GB",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$8.50",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Czech Republic 5GB",
+   "data": "5GB",
+   "validity": "1 Day",
+   "price": "$9.00",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Czech Republic 10GB",
+   "data": "10GB",
+   "validity": "1 Day",
+   "price": "$11.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Czech Republic Unlimited-3 Days",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$12.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Czech Republic 15GB",
+   "data": "15GB",
+   "validity": "7 Days",
+   "price": "$19.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Czech Republic Unlimited-5 Days",
+   "data": "3GB/day",
+   "validity": "5 Days",
+   "price": "$19.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Czech Republic Unlimited-7 Days",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$26.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Czech Republic 30GB",
+   "data": "30GB",
+   "validity": "30 Days",
+   "price": "$29.99",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Czech Republic Unlimited-10 Days",
+   "data": "3GB/day",
+   "validity": "10 Days",
+   "price": "$33.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Czech Republic 40GB",
+   "data": "40GB",
+   "validity": "30 Days",
+   "price": "$34.99",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Czech Republic 20GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$40.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Czech Republic Unlimited-15 Days",
+   "data": "3GB/day",
+   "validity": "15 Days",
+   "price": "$41.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Czech Republic Unlimited-21 Days",
+   "data": "3GB/day",
+   "validity": "21 Days",
+   "price": "$49.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Czech Republic Unlimited-30 Days",
+   "data": "3GB/day",
+   "validity": "30 Days",
+   "price": "$65.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Jetpac Travel eSIM for Czech Republic | Data Plans & Reviews",
+  "h1": "Jetpac eSIM Data Plans for Czech Republic",
+  "networks": null
+ },
+ "slug": "czechia",
+ "url": "https://esimdb.com/czechia/jetpac",
+ "status": 200
+}

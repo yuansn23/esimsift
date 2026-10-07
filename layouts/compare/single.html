@@ -501,12 +501,14 @@
       </div>
       <div class="card p-6">
         <h3 class="font-display text-base font-bold text-ink-950">How to install your {{ $country.name }} eSIM</h3>
-        <ol class="mt-4 space-y-3 text-sm text-ink-700">
-          <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">1</span><span><strong class="text-ink-950">{{ i18n "compare_single__buy_before_you_fly" | safeHTML }}</strong> {{ i18n "compare_single__plans_are_delivered_instantly_by_email_marketplace_provi" | safeHTML }}</span></li>
-          <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">2</span><span><strong class="text-ink-950">{{ i18n "compare_single__install_on_wi_fi" | safeHTML }}</strong> {{ i18n "compare_single__scan_the_qr_code_or_tap_the_in_app_install_button_the_es" | safeHTML }}</span></li>
-          <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">3</span><span><strong class="text-ink-950">{{ i18n "compare_single__land_and_it_just_works" | safeHTML }}</strong> The eSIM connects to its host network in {{ $country.name }} automatically — keep data roaming ON for the eSIM line.</span></li>
-        </ol>
-        <p class="mt-4 text-xs text-ink-400">{{ i18n "compare_single__works_on_esim_capable_phones_iphone_xs_and_newer_most_20" | safeHTML }}</p>
+        {{/* 三步安装说明原样重复 50 遍、且与 /guides/how-to-install-esim/ 是同一份内容：
+             这里只留一句过渡 + 指向 guide 的 CTA，正文归到单一 URL，避免跨页内容重复。 */}}
+        <p class="mt-4 text-sm leading-relaxed text-ink-700">{{ i18n "compare_single__install_oneshot" (dict "country" $country.name) | safeHTML }}</p>
+        {{/* 兼容性说明（机型清单）在 /guides/esim-compatibility-check/ 有完整设备库，此处不再复述同一份内容 */}}
+        <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "compare_single__device_compat_link" | safeHTML }} <a href="{{ partial "lang-href.html" "/guides/esim-compatibility-check/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "compare_single__device_list_link" | safeHTML }}</a></p>
+        <div class="mt-5">
+          <a href="{{ partial "lang-href.html" "/guides/how-to-install-esim/" }}" class="btn-out px-4 py-2 text-sm">{{ i18n "compare_single__full_install_guide" | safeHTML }} →</a>
+        </div>
       </div>
     </div>
   </section>

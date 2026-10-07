@@ -2,7 +2,7 @@
 title: "Japan eSIM"
 iso: JP
 seo:
-  description: "eSIM Sift compares every Japan eSIM: 187 real plans from 9 providers, cheapest Roami from $1.99, ranked by $/GB with fair-use caps decoded."
+  description: "eSIM Sift compares every Japan eSIM: 211 real plans from 10 providers, cheapest Roami from $1.99, ranked by $/GB with fair-use caps decoded."
 ---
 
 The raw table hides a split in how Japan eSIMs are priced, and understanding it saves real money. One camp sells fixed data buckets - pay $4-8 for a few gigabytes that expire with the validity window. The other camp, led by Holafly, sells unlimited data billed by the day at roughly $3.90 per day flat. Below about 5GB of expected usage, fixed buckets win easily. Past 15GB, the daily plans start to look reasonable - but only if you check their fair-use fine print first, because "unlimited" almost never means unlimited speed.

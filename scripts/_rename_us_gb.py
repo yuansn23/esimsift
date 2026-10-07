@@ -78,6 +78,11 @@ PLAN_RULES: list[tuple[str, str]] = [
     ("united kingdom (uk)", "UK"),
     ("United States (USA)", "USA"),
     ("United Kingdom (UK)", "UK"),
+    # ⚠ 顺序敏感：必须排在 ("United States", "USA") **之前**。
+    #   Jetpac 的 esimdb 商品名用的是全称 "United States Of America"（Of 大写），
+    #   先命中短模式会产出不通顺的 "USA Of America"（2026-10-07 实测）。
+    ("United States Of America", "USA"),
+    ("United States of America", "USA"),
     ("United States", "USA"),
     ("United Kingdom", "UK"),
 ]

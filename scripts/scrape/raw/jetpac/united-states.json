@@ -1,0 +1,252 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n23"
+ },
+ "plans": [
+  {
+   "name": "USA 3GB",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$6.00",
+   "badges": [
+    "$4 OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA 3GB",
+   "data": "3GB",
+   "validity": "4 Days",
+   "price": "$6.50",
+   "badges": [
+    "$4 OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "United States Of America 1GB",
+   "data": "1GB",
+   "validity": "4 Days",
+   "price": "$7.00",
+   "badges": [
+    "New Users Only",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA 3GB",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$7.99",
+   "badges": [
+    "$4 OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA 5GB",
+   "data": "5GB",
+   "validity": "1 Day",
+   "price": "$8.00",
+   "badges": [
+    "$4 OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA 5GB",
+   "data": "5GB",
+   "validity": "4 Days",
+   "price": "$9.50",
+   "badges": [
+    "$4 OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA 10GB",
+   "data": "10GB",
+   "validity": "1 Day",
+   "price": "$10.50",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA 5GB",
+   "data": "5GB",
+   "validity": "7 Days",
+   "price": "$10.50",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA 5GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$12.99",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA 10GB",
+   "data": "10GB",
+   "validity": "4 Days",
+   "price": "$13.50",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA 10GB",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$15.50",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA 15GB",
+   "data": "15GB",
+   "validity": "7 Days",
+   "price": "$16.50",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA 10GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$19.00",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA Unlimited-5 Days",
+   "data": "3GB/day",
+   "validity": "5 Days",
+   "price": "$19.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA 15GB",
+   "data": "15GB",
+   "validity": "30 Days",
+   "price": "$22.00",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA Unlimited-7 Days",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$26.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA 30GB",
+   "data": "30GB",
+   "validity": "30 Days",
+   "price": "$29.99",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA Unlimited-10 Days",
+   "data": "3GB/day",
+   "validity": "10 Days",
+   "price": "$33.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA 40GB",
+   "data": "40GB",
+   "validity": "30 Days",
+   "price": "$34.99",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "United States Of America 20GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$35.00",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA Unlimited-15 Days",
+   "data": "3GB/day",
+   "validity": "15 Days",
+   "price": "$44.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA Unlimited-21 Days",
+   "data": "3GB/day",
+   "validity": "21 Days",
+   "price": "$49.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "USA Unlimited-30 Days",
+   "data": "3GB/day",
+   "validity": "30 Days",
+   "price": "$67.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF",
+    "Low latency"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Jetpac Travel eSIM for USA | Data Plans & Reviews",
+  "h1": "Jetpac eSIM Data Plans for United States of America",
+  "networks": null
+ },
+ "slug": "united-states",
+ "url": "https://esimdb.com/usa/jetpac",
+ "status": 200
+}

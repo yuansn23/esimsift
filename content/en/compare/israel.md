@@ -3,7 +3,7 @@ title: "Israel eSIM"
 iso: IL
 weight: 44
 seo:
-  description: "eSIM Sift compares every Israel eSIM: 167 real plans from 9 providers, cheapest Yesim from $0.57, ranked by $/GB with fair-use caps decoded."
+  description: "eSIM Sift compares every Israel eSIM: 179 real plans from 10 providers, cheapest Yesim from $0.57, ranked by $/GB and $/day."
 ---
 
 Two pricing models compete in Israel, and they suit different trips. Cheapest of the lot is yesim 500MB / 1 Day at $0.57. In Israel, the same $0.57 reaches about 1.1GB at the $0.50/GB rate. roamic takes the per-gigabyte race with a 50GB / 30-day plan at $0.50/GB. The tracked catalogue holds 161 plans for Israel from {{< count-providers >}} providers, 88 of them unlimited.

@@ -3,7 +3,7 @@ title: "Croatia eSIM"
 iso: HR
 weight: 31
 seo:
-  description: "eSIM Sift compares every Croatia eSIM: 180 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every Croatia eSIM: 195 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 Only a few dollars separate the good and bad buys in Croatia per gigabyte. At the very bottom sits yesim 500MB / 1 Day, priced at $0.51. The same money inside the 50GB bucket reaches about 1.4GB at $0.36/GB. Per-gigabyte pricing is set by roamic at $0.36 for 50GB over 30 days. Between {{< count-providers >}} providers there are 170 plans for Croatia on file, 87 carrying an unlimited label.

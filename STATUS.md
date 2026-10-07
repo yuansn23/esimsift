@@ -1652,7 +1652,100 @@ tagline 参数保留仍喂 `<title>`/og）；en 换新定位文案
 
 九项构建全绿；基线重建（header/footer 全站组件，584 页均变属预期）。
 
+## 已完成（第二批品牌扩容 · Jetpac 接入 + 三处基础瑕疵修复，2026-10-07 第四十四轮）
+
+**目标**：Jetpac 全链路接入（9 → 10 品牌），沿用 Nomad 试点沉淀的手册顺序。
+
+### 落地（49/50 国 · 877 条）
+
+| 层 | 动作 |
+|:---|:---|
+| 数据 | `scripts/scrape/raw/jetpac/` 50 个 JSON 入库 → `toml_write.py jetpac --checked 2026-10-04`（**raw 的真实抓取日，不是今天**）→ `backfill_networks_uniform.py` → `_rename_us_gb.py`；产出 `data/plans/jetpac.toml` **49 国 877 条**（unlimited 325 / 计量 552），**FJ 无块**（空国被正确丢弃） |
+| 档案 | `providers.toml` 新增 `[jetpac]` / `[jetpac.info]` / `[jetpac.policy]`（10 品牌齐）；`profile_checked="2026-10-07"`；`color="#3C249C"` 从 logo 采样；`promo_code="ESIM15"`（15%）+ 2 个备选码 |
+| 接线 | `hugo.toml` 加 `[params.outbound.targets.jetpac]`（**故意不加 `country_path`**，见下）；`content/en/esim-providers/jetpac.md`（title 51 / desc 137）；logo 归位 `static/img/providers/jetpac.webp` |
+| 页面 | `gen_provider_pages.py` → **499** 子页（9×50 + 49）；`gen_vs_pages.py` → 新增 9 对决页（C(10,2)=**45**）；`regen_meta_brand.py` 65 文件；`_solve_titles.py --write` **只有 1 行变化**（Qatar 无限最低价 $4.54→$4.50，其余 49 国段分配纹丝不动） |
+
+### ★ 验收：变更面 100% 归因（做了**对照构建**，不是「看着对」）
+
+| 问题 | 方法 | 结果 |
+|:---|:---|:---|
+| 642 处变更是否全由 Jetpac 引起？ | 把 Jetpac 从**数据层 + providers.toml + content** 三处撤出，重建到项目外，与当前 public 逐字节比 | 共有 **643** 页里 **642 页不同，其中不含 "jetpac" 字样的 = 0**；新增页恰好 **59**（49 子页 + 9 对决页 + 1 hub）；撤掉后**唯一毫无变化**的页是 `en/index.html`（语言重定向壳，不含页脚） |
+| 59 个新页收录了吗？ | sitemap | 585 → **644 URL**，59/59 全收录 |
+| 缺国（Fiji）传播对不对？ | 逐国读产物计数 | **Fiji 页 `#6 of 9 providers`，荷兰页 `#2 of 10`**；德语站同样正确（`de/compare/fiji/` 正文零 jetpac，只有页脚 2 处链接） |
+| 日期盖章对不对？ | 读台账 | 509 单元（459 → +50）：`plans.jetpac.*` **49 个**（缺 FJ）+ profile 1 个，全 `2026-10-07`；8 个老品牌仍各自 `2026-09-30` —— **子页声明自己的核对日，国家页取聚合** |
+
+### 同轮修掉的三处基础瑕疵（都是这轮才暴露的真问题）
+
+1. **`bump_checked.py` 写回丢行尾** —— `raw.rstrip("\r")` 只用于匹配、写回时没还回去，`jetpac.toml` 因此混进 **49 行 LF**（CRLF 文件）。修法：`eol = "\r" if raw.endswith("\r") else ""` 拼回行尾。
+2. **`jetpac.toml` 行尾混杂** → 统一为 CRLF（与同目录另外 9 个 plans 文件一致）。**顺带证明零产物影响**：对照实验的差异集只含 nomad 相关页。
+3. **`verify_provider_pages.py` 第 13 项从「静默跳过」改成显式双分支** —— 原写法 `if grp:` 让「页面上压根没有按钮组」静默通过，报告只印 `497/499`，分不清「按设计不渲染」与「漏渲染」。真相是模板门槛 `{{ if gt (len $myRows) 3 }}`（斐济的 saily/ubigi 各 2 个套餐）→ 现在 `≤3 且无按钮组` 计入 `chips_na` 并显式打印，`>3 且无按钮组` 直接 FAIL。**按纪律注入反例证明会红**：改名荷兰 jetpac 页的 `id="plan-days-group"` → 如期 `价格表有 15 行却没有天数按钮组` + 退出码 1 → 按字节还原（sha256 一致）。
+
+### ★ 本轮踩的坑（详见 §14 红线 51–53）
+
+- **`Path.write_text()` 在 Windows 默认把 `\n` 转 CRLF** → 对**本来就是 CRLF** 的 `data/plans/*.toml` 写出 `\r\r\n`，注释里的孤立 `\r` 是非法 TOML → hugo `invalid character in comment` **整站构建失败**；同样写法对 LF 的 `providers.toml` 却没事 —— 极易蒙混过关。
+- **删品牌时残留对决页 = 构建失败**：对照实验里 `ignoreFiles=['jetpac\.md$']` 漏了 `airalo-vs-jetpac.md` / `jetpac-vs-nomad.md` 两种命名 → `unknown provider "jetpac"` → nil pointer → **产物只写出 559/643 页**。`gen_provider_pages.py` 只清理子页。
+- **Jetpac 官网是 SPA，深链不可用**：`/product-details/{slug}-esim` 对任意路径返回 **200**、标题由 slug 现场拼接、价格回落 $1 占位。串行复测（`kenya` 落到 Vatican City、`netherlands`/`united-states` 只有占位价、只有 `japan` 有真内容）→ 按 Nomad 先例**只走 base**。**教训：状态码不能当证据。**
+- **`--checked` 要写 raw 的真实抓取日**，不是今天（jetpac raw 是 10-04 抓的）—— 否则文件头写着「Scraped … on 2026-10-07」是不实陈述。
+
+### 一处附带修复（非 Jetpac 特有，已分开记账）
+
+跑了 `scripts/backfill_networks_uniform.py`（**全局脚本**，给所有品牌回填 `plans[ISO].networks`），顺手修好 nomad 此前遗留的 `networks = []`。**单独做了单变量实验量化影响面：123 页**（国家页/对决页 59 + 德语 51 + `/networks/*` 13），**品牌子页 0** —— 因为子页的 `#hostnetwork` 渲染的是**国家级** `carriers.toml`，不是品牌自己的 networks 字段。123 页全部与 nomad 相关（「完全不提 nomad 的差异页」= 0）。
+
+### 验收（全部为**产物文本断言**，按用户约定不做截图）
+
+- `npm run build` 九项全绿：704 文件 / 702 页 / 4028 段 JSON-LD / 17769 个 h2/h3（bad 0）/ 499 子页 13 项全过 / sitemap 644 / A·B·C 三组不变量通过
+- 子页 13 项：标题 499/499（46–54，均 50.9）、description 499/499、H1 499/499、逐套餐 Offer 与表行数一致 499/499（Offer 合计 **9095** 条）、FAQPage 499/499、BreadcrumbList 4 级 499/499、WebPage 元数据 499/499、计划数三处对账 499/499、**天数按钮 497/497 + 2 页按设计不渲染**、套餐行标注（无限 4602 / <1GB 计量 48）、「尚未核实」政策页 0
+- 零回归基线重建（**702 页**）
+
 ---
+
+## 已完成（发布前体检 + 两处必修项，2026-10-07 第四十九轮）
+
+**用户请求**：审核当前这批内容能否正式发布；给出结论后「两处都修」。
+
+### 体检（结论：技术就绪）
+
+- `npm run validate` **真实退出码 0**（0 error / 0 warning）；702 页 / sitemap **644 URL** / 4028 JSON-LD / 品牌子页 499
+- `check_links.py`：**187,316 条 href，坏链 0**
+- 英文 643 页无 `draft` / 无 `noindex`，全在 sitemap；产物无 localhost、无备份目录泄漏；
+  **大写 `SAMPLE`/`TODO`/`PLACEHOLDER` 全为 0**（首查 105 个命中**全是小写误报**：`Speedtest samples` / HTML `placeholder=` / `todo`）
+- ⚠️ **`| tail` 会吞掉退出码**：第一次用 `npm run build 2>&1 | tail -40`，取到的 `$?` 是 `tail` 的 0；
+  改「重定向到文件 + `$?`」才拿到真值（这条坑记忆里有过，本轮又差点复现）
+
+### 必修项 ①：legal 页把「待办」渲染给了读者
+
+`/privacy/` 与 `/terms/` 的正文里印着 `<p><em>Todo: legal review before launch.</em></p>` ——
+`content/en/privacy.md:6` / `terms.md:6` 的编辑备忘被 Markdown 当**斜体正文**渲染，**读者与 Google 都看得到**。
+→ 移入 front matter 注释（含移入原因与日期）。
+**顺手踩坑**：替换时误把匹配模式里的 `---` 一并删掉，注释落到 front matter **外面** → 页面出现 **4 个 `<h1>`**
+→ B 类不变量当场 FAIL（`✗ privacy/index.html: 4 个 <h1>`）。已修，并加断言（`---` 行号必须 == `[0, 6]`）。见红线 59。
+
+### 必修项 ②：`#whobeats` 的问题在判据，不只是文案
+
+导语宣称 *"the same data allowance and the same validity… rather than a bigger bucket"*，
+但 `partials/provider-alts.html` 的真实逻辑**只在 ② 同规格分支查天数**，`① unlimited` 与 `③ at-least` 都只比数据量：
+
+| 事实 | 证据 |
+|:---|:---|
+| 全量 499 个品牌×国家单元的匹配分布 | `same-spec 336` / `at-least 101` / `unlimited 62` / **`entry 0`** |
+| **① unlimited 分支**：`无限 3d ↔ 无限 1d` | holafly 页 **10/10 行**全违规（holafly 是纯 unlimited 品牌） |
+| **③ at-least 分支**：`1GB/30d → 1GB/7d` 等 | 8 例（yesim 5 · jetpac 2 · roami 1），**对手档覆盖不了行程** |
+| 页面可见行（每页 Top-10）规格不符 | **33 / 93 = 35.5%**（上轮口径 31.8%） |
+| `mt` 字段 | **死字段** —— 只在 `provider-alts.html` 写入，`layouts/` 全文零读取；而其注释写着「会渲染成标记」 |
+
+**修法（判据 + 文案一起改）**
+- `① unlimited` 与 `③ at-least` 两个分支各补 `(ge (int .days) $md)`
+- **删掉 ④ 的 entry 回退**（全量 499 单元一次都没触发，且「入门价对入门价」本就不是 like-for-like）→ 无可比项就**该国不列出**
+- `who_beats_lead` / `who_beats_caveat`（en/de 同步）改成与三层口径逐字一致
+- 头注释加 2026-10-07 修订说明；`mt` 的注释改为「目前没有模板读取」
+
+### 验收
+
+- `npm run build` **EXIT=0** 九项全绿（704 files / 702 pages / 4028 JSON-LD / 499 子页 / FAQ R1–R11 / 日期一致 / A·B·C）
+- 产物断言：`/privacy/` `/terms/` **h1 = 1 且正文无 `legal review`/`Todo`**；
+  品牌 hub 的 whobeats 表格 **88 行 / 规格不符 0 行**（yesim 由 7 行降到 2 行 —— 判据收紧后只剩真可比项）
+- `--diff`：**变更 12 = provider_hub 10 + static 2（privacy / terms）**，新增 0、删除 0 —— 完全归因
+- 基线重建 **702 文件**
 
 ## 待办（按优先级）
 
@@ -1677,8 +1770,122 @@ tagline 参数保留仍喂 `<title>`/og）；en 换新定位文案
 - [x] ~~**49 国 6 条 FAQ**~~ 已数据化 + 去模板化：三条带数字的答案走构建期 token 现算（第四十一轮），句架走 `faq_frames.py` 拉丁方阵分配 ⇒ 任意两页最多共用一句（第四十二轮）。**接品牌 / 刷价之后不需要再动 FAQ**。遗留：slot4「ID 规定」14 国同句（缺外部来源，不编）
 - [ ] 变体子页（cheapest/unlimited/long-stay）— 等主站数据 ≥10 国再上，防关键词蚕食
 
+### 第四十八轮（2026-10-07）：两组定向审核（用户点名 4 个 URL）
+
+**触发**：用户点名两对页面要求各审一次 —— **组 1 同国跨品牌**
+（`/compare/austria/alosim/` vs `/compare/austria/airalo/`）、**组 2 同品牌跨国家**
+（`/compare/united-states/yesim/` vs `/compare/japan/yesim/`）。
+
+- [x] **数字（同一仪器 + 页对页句级交集）**：
+      组 1 **共享 59 / 72 句 = 82%**（组内聚合 73%）；组 2 **共享 36 / 74 句 = 48%**（组内聚合 48%）。
+- [x] **关键洞察（差值成因）**：组 1 的 10 页**共享同一个国家** → 「国家级事实」整块共享
+      （`#hostnetwork` 运营商 + Ookla 基准 + 测速句）；组 2 的 50 页**国家各不同** → 国家级事实完全不重复，
+      只剩「品牌档案」那一小块。**「同国」才是同质化的高风险面。**
+- [x] **口径副产品**：`norm()` 只归一化数字与品牌名、**不归一化国家名** —— 含国家名的句子在
+      **跨国分组**里不算重复、在**同国分组**里算重复。这是正确的（同国页面确实逐字重复），
+      但引用数字时必须说明分组维度。
+- [x] **逐条归因（这是审核的核心产出）**：
+      - 组 1 的 59 条 = `faq` 11 + `others` 8 + `hostnetwork` 8 + `tradeoffs` 7 + `reality` 4 + `fit` 4 + 方法论/UI 17
+      - 组 2 的 36 条 = `reality` 8 + `tradeoffs` 7 + `faq` 5 + `fit` 3 + `tc-w-days` 3 + 方法论/UI 10
+      - **两组合计 95 条里，可改的 = 0 条** —— 全部落进「国家级事实 / 品牌级档案 / 方法论披露与 UI」三类。
+- [x] **查证后排除的三个「疑似缺陷」**（都先核实再下结论）：
+      ① `#fit` 里出现 `Yesim's smallest plan…` —— 不是硬编码，是数据驱动取「除自己外最便宜的对手」，
+      yesim 页显示的是 Roamic（无自指 bug）；
+      ② Hub 页两个同名 H2 —— 分属互斥分支（降级壳页 vs 正常页），同页不会同时出现；
+      ③ `#others` 的 8 条共享 —— 同国必然列同一批对手，属**导航职能**的结构性事实。
+- [x] **本轮唯一改动**：`compare_provider__faq_a_rival`（**499** 个子页）删掉套话首句
+      `Both work in {{ .country }}, and the answer depends on how much data you will actually use rather than on either brand.`
+      → 答案直接从事实开始（与第四十六轮对 `faq_a_hotspot` / `faq_a_unlimited` 的处理一致：
+      答案引擎摘的是**答案第一句**）。组 1 共享句 **60 → 59**（`faq` 12 → 11）、模板槽位 **604 → 594**。
+- [x] **验收**：`npm run build` EXIT=0 九项全绿（704 files / 702 pages / 4028 JSON-LD / 17769 h2h3 bad 0）；
+      `--diff` **变更 499 = provider_sub，新增 0、删除 0**（改动只触及品牌子页）；基线重建 702 文件。
+
+**结论：两组到此为正确终点。** 想继续压只有两条路 —— 给 `#others` 换句式（= minor variations，反向操作）
+或按品牌裁剪竞品列表（牺牲信息完整性）—— 两条都不该走。将来要降「同国跨品牌」的重复面，
+唯一站得住的方向是**减少国家级事实在各页的复述次数**（如把安装说明 / 机型说明链出到 guide），而不是改写句式。
+
+### 第四十七轮（2026-10-07）：模板化同质化 —— 第二轮整改（P1/P2/P3）
+
+**触发**：用户「模板化同质化的问题呢 继续优化」→ 执行第四十六轮登记的 P1/P2/P3。
+
+- [x] **P1 ① 国家页安装卡压缩**：三步有序列表（Buy / Install on Wi-Fi / Land and it works）
+      → **一句 + 按钮链到 `/guides/how-to-install-esim/`**。那三步与 guide 是同一份内容、
+      在 51 页（50 EN + DE 国家页）上重了 51 遍。新增 key `compare_single__install_oneshot` /
+      `compare_single__full_install_guide`（en/de 对齐，德语走 du-form）。
+- [x] **P1 ① 延伸**：安装卡的机型说明（`Works on eSIM-capable phones…` + `Your physical SIM keeps working`）
+      → **一句 + 链到 `/guides/esim-compatibility-check/`**。完整设备库已有专页，是第二处同类重复。
+      新增 key `compare_single__device_compat_link` / `compare_single__device_list_link`。
+- [x] **P1 ② 更正上一轮的误判**：`/methodology/` **早已存在**（`content/en/methodology.md` 四节），
+      且**已被 699 个产物页链接、链接总数 1679**。上轮只核句子不核链接，把「已存在」写成「待建」。
+- [x] **P2 ③ 品牌 Hub `#reality` 导语**：`Price is only half the decision. These four terms decide…`
+      → `Quoted from {brand}'s own published policy. Where a brand publishes nothing, we say so rather than guess.`
+      （零信息句 → 来源披露；与四张卡不重复）
+- [x] **P2 ③ 连带**：删掉 Hub 页**同一句披露的第二次出现**（正常页分支那处 `Rankings and "cheapest" badges…`）。
+      页尾另有 `every price, badge and ranking…is a literal sort…` 完整披露，删后不缺口径。
+- [x] **P2 ④ 对决页 FAQ 首答末句**（45 页）：`The gap flips by destination, so check your country in the table above.`
+      → **`The widest entry-price gap is in {country} — {A} lists ${x} against {B} at ${y}.`**
+      由 `$rows` 现算（模板顶部新增 `$gapRow` / `$gapMax`）；全平手时降级为 exact-price-tie 句。
+      原句在 `50 win / 0 loss` 的 matchup 上自相矛盾（无「翻盘」可言）。
+- [x] **P3 ⑤ 两套说法消解**：Hub 那句被换掉后，`Price is only half (of) the decision.` 不再有两个版本。
+- [x] **效果**：国家页模板槽位 3232 → **3182**（51 页）；每页可见文本净减 **274 字符**
+      （旧 497 → 新 223），× 51 页 ≈ **14,000 字符**。对决页新句**已不在指纹列**（= 真差异化）。
+- [x] **验收**：`npm run build` EXIT=0 九项全绿（704 files / 702 pages / 4028 JSON-LD / 17769 h2h3 bad 0）；
+      `--diff` 报 **变更 155 = `country_hub` 100 + `matchup` 45 + `provider_hub` 10，新增 0、删除 0**
+      —— **品牌子页 0 变更**，与改动范围完全吻合；基线重建 702 文件。
+- [x] **反同质化判据**：三个页型**内容模块全部唯一**；剩余「重复」逐条查证为 **UI 骨架与导航**
+      （空容器 / 导航列表 / `calc-*` 计算器控件）—— 这些必须全站一致。
+- [x] **德语站**：`/de/compare/austria/` 渲染德语新文案；guide 链接经 `lang-href` 回落英文路径，**无 404**。
+
+**⚠️ 本轮新增两条纪律**：
+1. **`模板槽位 / 总槽位` 这个占比对「删内容」不敏感** —— 删重复块时分子分母同步下降，占比可能纹丝不动。
+   衡量「减少真实重复」要看**绝对量**（字符数 / 绝对槽位差）。占比适合横截面比页型。
+2. **判定「某页/某能力缺失」前先数实际引用** —— `grep -rn "<路径>" layouts/ | wc -l`。
+   上轮把已存在且被 699 页链接的 `/methodology/` 判成「待建」，就是从一句话反推整页。
+
+**本轮查证后「不做」（附理由，避免下轮重复劳动）**：
+- Hub 的两个同名 H2（`#tradeoffs-pending` / `#tradeoffs`）**分属互斥分支**（降级壳页 vs 正常页），
+  同页不会同时出现 —— 不是重复标题。**先确认分支关系再下结论**。
+- Hub「客服」「退款」两张卡的来源披露主题不同，合并会丢信息 → 保留。
+- 剩余 47%（国家页）/ 55%（hub）的模板槽位成分是**方法论披露 + 区块引导语 + UI 说明 + 来源声明**，
+  按「一致性 = E-E-A-T」原则**不应变量化** → 到此为止是正确终点。
+
+**顺带发现（未动，登记在案）**：德语站国家页有**大量英文段落**（`i18n/de.toml` 的
+`compare_single__*` / `esim_providers_single__*` 一族存的是英文原文，约上百条）；属 i18n 完整性，应单开一轮。
+
+### 第四十六轮（2026-10-07）：模板化同质化 —— 全站普查 + 首轮整改
+
+**触发**：用户拿 `esimsift-模板化分析.md` 来问 `/compare/austria/alosim/` 与 `/compare/austria/airalo/`
+是否模板化、如何优化、其他文件是否同样问题（排除作者署名/bio/资质）。
+
+- [x] **新增诊断工具 `scripts/audit_boilerplate.py`** —— 句子级跨页 boilerplate 普查。
+  补上旧判据的盲区：**「跨页模块 md5 去重 = N」是必要不充分条件**（区块含一个页内专属数字就唯一）。
+  实测奥地利 10 个品牌子页**块级去重 10/10 全唯一，句子级却是 74% 模板槽位**。
+  ⚠ **不进 `npm run build`**（诊断工具不是守卫，给阈值就会被「优化掉」）。
+- [x] **全站同质化地图**（整改前）：品牌子页同国内跨品牌 **74–76%**、同品牌跨国家 55–64%、
+  品牌 Hub **55%**、国家页 **49%**、对决页 **40%**、networks 16%、guides 0%。
+- [x] **竞品卡片去重复**（最大一块）：`#others` 原印 `providers.toml` 全局 tagline，
+  11 条 × 449 页 ≈ **4900 槽位**。改为页内算出的「该竞品在**本国**的 $/GB 名次 + 入门档」
+  （新增 `compare_provider__op_market_v1..v3` / `op_unl_v1..v2`，en/de 对齐）。
+- [x] **去掉同页冗余**：`trip_note` 与 `calc_note` 在同一页把「30 天行程用 30 天档计价」解释两遍。
+- [x] **FAQ 去掉通用开场白**：`faq_a_hotspot` / `faq_a_unlimited` 直接给事实
+  （答案引擎摘的是答案第一句，不该是套话）。
+- [x] **修语法 bug**：`reality_lead` 的 `whether a {{ .brand }} plan` → aloSIM 渲染成 **"a aloSIM"**。
+- [x] **效果**：品牌子页全站 **43% → 31%**（模板槽位 18194 → 12772，**−5422，−30%**）。
+  **同国内 74% → 74% 基本未动** —— 预期内，印证「剩下的是国家级事实 + 方法论 + 计算器说明，
+  正确修法是**合并**不是改写」。
+- [x] **验收**：`npm run build` EXIT=0 九项全绿；`--diff` 报
+  **「变更 499 = provider_sub，新增 0、删除 0」**（只波及品牌子页）；基线重建 702 文件。
+- [x] **交付文档**：`esimsift-模板化分析-回应与整改.md`（含方法论纠偏与后续 P1–P3）。
+
+- [x] ~~**P1 国家页安装说明**~~ 第四十七轮完成：三步列表 → 一句 + 链到 `/guides/how-to-install-esim/`
+- [x] ~~**P1 建 `/methodology/` 权威页`~~ **本条是误判 —— 该页早已存在且被 699 页链接/1679 处**（第四十七轮复核更正）
+- [x] ~~**P2 品牌 Hub** 两条零信息句~~ 第四十七轮完成：改为 `Quoted from {brand}'s own published policy…`
+- [x] ~~**P2 对决页** `The gap flips by destination…`~~ 第四十七轮完成：改为实际最大价差国（`$rows` 现算）
+- [x] ~~**P3 跨模板统一**：`Price is only half of the decision.`（子页）vs `…half the decision.`（Hub）~~ 第四十七轮消解（Hub 那句已换掉）
+- **不做（附理由）**：不给方法论句做措辞变体（minor variations）；不按品牌改写国家级事实（八品牌 `networks` 完全一致，只能编造）
+
 ### P-C 上线前
-- [ ] privacy/terms 法律审校（文中已标注 Todo）
+- [ ] privacy/terms 法律审校（**2026-10-07**：正文里的 `Todo:` 行已移入 front matter 注释，页面不再渲染待办文字；法律审校本身仍未做）
 - [ ] GA4 ID 替换 + 与 roamiapp.com 跨域衡量（head.html 占位注释处）
 - [ ] OG 图片（每国一张，含最低价数字）
 - [ ] 部署（Cloudflare Pages 建议；`/go/` 边缘函数跳板可后加）

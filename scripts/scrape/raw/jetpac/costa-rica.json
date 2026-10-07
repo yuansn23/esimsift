@@ -1,0 +1,148 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n14"
+ },
+ "plans": [
+  {
+   "name": "Costa Rica 1GB",
+   "data": "1GB",
+   "validity": "4 Days",
+   "price": "$7.00",
+   "badges": [
+    "New Users Only"
+   ]
+  },
+  {
+   "name": "Costa Rica - Unlimited 1 Day",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$9.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica 3GB",
+   "data": "3GB",
+   "validity": "30 Days",
+   "price": "$15.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica 5GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$20.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica - Unlimited 3 Days",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$27.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica 10GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$33.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica 15GB",
+   "data": "15GB",
+   "validity": "30 Days",
+   "price": "$46.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica 20GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$58.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica - Unlimited 7 Days",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$63.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica 30GB",
+   "data": "30GB",
+   "validity": "30 Days",
+   "price": "$79.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica - Unlimited 14 Days",
+   "data": "3GB/day",
+   "validity": "14 Days",
+   "price": "$126.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica 40GB",
+   "data": "40GB",
+   "validity": "30 Days",
+   "price": "$126.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica - Unlimited 21 Days",
+   "data": "3GB/day",
+   "validity": "21 Days",
+   "price": "$189.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Costa Rica - Unlimited 30 Days",
+   "data": "3GB/day",
+   "validity": "30 Days",
+   "price": "$270.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Jetpac Travel eSIM for Costa Rica | Data Plans & Reviews",
+  "h1": "Jetpac eSIM Data Plans for Costa Rica",
+  "networks": null
+ },
+ "slug": "costa-rica",
+ "url": "https://esimdb.com/costa-rica/jetpac",
+ "status": 200
+}

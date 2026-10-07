@@ -602,204 +602,400 @@
       "hash": "5d67a815c66fb659",
       "date": "2026-09-30"
     },
+    "plans.jetpac.AE": {
+      "hash": "ccfa19ebe8eaa0bf",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.AR": {
+      "hash": "50f6b529949351f1",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.AT": {
+      "hash": "a13f39f86dad3770",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.AU": {
+      "hash": "43663b47d6c133a7",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.BE": {
+      "hash": "dc9d7a0eaf71f198",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.BR": {
+      "hash": "133cdca1af786a2f",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.CA": {
+      "hash": "3185f3150600941b",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.CH": {
+      "hash": "95d41d6ac2a3cf4e",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.CN": {
+      "hash": "d8201927ecaaf81c",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.CO": {
+      "hash": "afa0c2cbd2f34243",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.CR": {
+      "hash": "5766359695a476c0",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.CZ": {
+      "hash": "bd21f290d075d0c0",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.DE": {
+      "hash": "ea276a45db5dfc38",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.EG": {
+      "hash": "78bac550aafcab87",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.ES": {
+      "hash": "730eb41e687615cd",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.FR": {
+      "hash": "79189a7906f08ff2",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.GB": {
+      "hash": "5a8efb89e7d236ca",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.GE": {
+      "hash": "f3e3da48edf8075b",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.GR": {
+      "hash": "4079252e9233623b",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.HK": {
+      "hash": "38f46bc03621210b",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.HR": {
+      "hash": "f5b91ae5aabda479",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.ID": {
+      "hash": "95b9323a1a8db6d8",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.IE": {
+      "hash": "bfd9bcdbe84d57b9",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.IL": {
+      "hash": "f343445191cff054",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.IN": {
+      "hash": "1906a1c9a5de360f",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.IS": {
+      "hash": "e76488a882a8bc54",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.IT": {
+      "hash": "395547fc256db129",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.JP": {
+      "hash": "9784bb23943f0d1e",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.KE": {
+      "hash": "86c6255e8a5a2d58",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.KR": {
+      "hash": "17521d68dfeefe82",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.MA": {
+      "hash": "f5a824f368f055ed",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.MO": {
+      "hash": "29b649db6f3ac2cf",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.MX": {
+      "hash": "16dc5b9417ceed6b",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.MY": {
+      "hash": "9588323a1bf59d8e",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.NL": {
+      "hash": "c9d08406bdce7f0e",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.NZ": {
+      "hash": "9e69b975bbb76b53",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.PE": {
+      "hash": "6ccdef76d69cd53f",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.PH": {
+      "hash": "12cb36d6f95d3216",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.PL": {
+      "hash": "6ced55385e21e960",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.PT": {
+      "hash": "c54c4ac7401903c2",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.QA": {
+      "hash": "11e6bd1da46705b6",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.SA": {
+      "hash": "b0099e575e4b9068",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.SG": {
+      "hash": "96d160253e93c185",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.TH": {
+      "hash": "93af50583d4bdae6",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.TR": {
+      "hash": "73a8cc3e1bad0125",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.TW": {
+      "hash": "79a155712f5e8b84",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.US": {
+      "hash": "a729aed9a2bf1444",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.VN": {
+      "hash": "2350dac9cff2e235",
+      "date": "2026-10-07"
+    },
+    "plans.jetpac.ZA": {
+      "hash": "b036b1cfec0a2b84",
+      "date": "2026-10-07"
+    },
     "plans.nomad.AE": {
-      "hash": "384dc1be7c8aacae",
+      "hash": "ebf24afff3c39cd9",
       "date": "2026-10-07"
     },
     "plans.nomad.AR": {
-      "hash": "16907f273eeddc0e",
+      "hash": "ccee2ae91b955bda",
       "date": "2026-10-07"
     },
     "plans.nomad.AT": {
-      "hash": "197bb3ca2d09f056",
+      "hash": "c338344fcb9e4948",
       "date": "2026-10-07"
     },
     "plans.nomad.AU": {
-      "hash": "2682ae049db0aebf",
+      "hash": "e17137cc2112bf57",
       "date": "2026-10-07"
     },
     "plans.nomad.BE": {
-      "hash": "28a4687d32810893",
+      "hash": "b09fcc1b43b22106",
       "date": "2026-10-07"
     },
     "plans.nomad.BR": {
-      "hash": "a51d4bcf7b8ac6dc",
+      "hash": "18ff15df24c5550b",
       "date": "2026-10-07"
     },
     "plans.nomad.CA": {
-      "hash": "58cb857f8a270b7f",
+      "hash": "ec4e4c157febc99a",
       "date": "2026-10-07"
     },
     "plans.nomad.CH": {
-      "hash": "fe96313d7e751ed9",
+      "hash": "5567de3f4f015f01",
       "date": "2026-10-07"
     },
     "plans.nomad.CN": {
-      "hash": "6ec4b58212482d09",
+      "hash": "7664822ebf758f61",
       "date": "2026-10-07"
     },
     "plans.nomad.CO": {
-      "hash": "50ca4ffbdb97e99b",
+      "hash": "2eeca87a76acf604",
       "date": "2026-10-07"
     },
     "plans.nomad.CR": {
-      "hash": "79942e5653c9c114",
+      "hash": "ad24ea89eaced4d4",
       "date": "2026-10-07"
     },
     "plans.nomad.CZ": {
-      "hash": "fdd6ca76aeb62f02",
+      "hash": "2a722f17460a72f0",
       "date": "2026-10-07"
     },
     "plans.nomad.DE": {
-      "hash": "7c5f0e0e96301476",
+      "hash": "fd34aca1a74cb7b3",
       "date": "2026-10-07"
     },
     "plans.nomad.EG": {
-      "hash": "3b275c650bc2e290",
+      "hash": "c5669d1be524303e",
       "date": "2026-10-07"
     },
     "plans.nomad.ES": {
-      "hash": "67e6e89780c52972",
+      "hash": "abdc839dac1f725b",
       "date": "2026-10-07"
     },
     "plans.nomad.FJ": {
-      "hash": "4372d0a4c681e963",
+      "hash": "fd139ec941d2f172",
       "date": "2026-10-07"
     },
     "plans.nomad.FR": {
-      "hash": "8b298dab5f9db37b",
+      "hash": "bf1d13e33d64a95b",
       "date": "2026-10-07"
     },
     "plans.nomad.GB": {
-      "hash": "f8e8aca54950b78d",
+      "hash": "560966b757e687ba",
       "date": "2026-10-07"
     },
     "plans.nomad.GE": {
-      "hash": "bc5a9d2999539d74",
+      "hash": "2c0f49ba1c88798b",
       "date": "2026-10-07"
     },
     "plans.nomad.GR": {
-      "hash": "848a07eeecd2762b",
+      "hash": "2ce381e2b182f53f",
       "date": "2026-10-07"
     },
     "plans.nomad.HK": {
-      "hash": "d9ef6df83d8674ab",
+      "hash": "0cc3ec079615ff59",
       "date": "2026-10-07"
     },
     "plans.nomad.HR": {
-      "hash": "0700c35866365339",
+      "hash": "fff2920f8c945497",
       "date": "2026-10-07"
     },
     "plans.nomad.ID": {
-      "hash": "2e8a74d6ac34335b",
+      "hash": "d3efefd4b0326585",
       "date": "2026-10-07"
     },
     "plans.nomad.IE": {
-      "hash": "516ace49b7b3cb0a",
+      "hash": "24f6201001b03268",
       "date": "2026-10-07"
     },
     "plans.nomad.IL": {
-      "hash": "4acda4764e40cd6d",
+      "hash": "0f5bfda2ae8245aa",
       "date": "2026-10-07"
     },
     "plans.nomad.IN": {
-      "hash": "cd5d2c810ff40c09",
+      "hash": "942590651932fbe0",
       "date": "2026-10-07"
     },
     "plans.nomad.IS": {
-      "hash": "73b357fba398fe5a",
+      "hash": "d429edf0584b632e",
       "date": "2026-10-07"
     },
     "plans.nomad.IT": {
-      "hash": "d1ad0099729300ef",
+      "hash": "37dfb1699c62af91",
       "date": "2026-10-07"
     },
     "plans.nomad.JP": {
-      "hash": "df1a527335d3918d",
+      "hash": "742c9cd1c4c1bf94",
       "date": "2026-10-07"
     },
     "plans.nomad.KE": {
-      "hash": "fe6d1b36168e1ec8",
+      "hash": "69285c23ad4dcb39",
       "date": "2026-10-07"
     },
     "plans.nomad.KR": {
-      "hash": "81a93e8072e3d758",
+      "hash": "7d0a8c9542a386f3",
       "date": "2026-10-07"
     },
     "plans.nomad.MA": {
-      "hash": "d752a71098fa97da",
+      "hash": "1b40e8ef4faa7434",
       "date": "2026-10-07"
     },
     "plans.nomad.MO": {
-      "hash": "e3b9db2d7fcbde0d",
+      "hash": "a72146ea9ded6dd2",
       "date": "2026-10-07"
     },
     "plans.nomad.MX": {
-      "hash": "5d782148c7a6e69e",
+      "hash": "4c980fdba2471aad",
       "date": "2026-10-07"
     },
     "plans.nomad.MY": {
-      "hash": "ac1b322c5a6c3fe7",
+      "hash": "90b713aa809fb951",
       "date": "2026-10-07"
     },
     "plans.nomad.NL": {
-      "hash": "efe49c4f50b7b59a",
+      "hash": "3b379b27756c8781",
       "date": "2026-10-07"
     },
     "plans.nomad.NZ": {
-      "hash": "97f599d743528299",
+      "hash": "bfe017b6ed3547e1",
       "date": "2026-10-07"
     },
     "plans.nomad.PE": {
-      "hash": "c2ecf8aeeaad9648",
+      "hash": "7a2cda67c26268ac",
       "date": "2026-10-07"
     },
     "plans.nomad.PH": {
-      "hash": "68cf5c1fc3f5bf63",
+      "hash": "a82800ca3d716f96",
       "date": "2026-10-07"
     },
     "plans.nomad.PL": {
-      "hash": "afc3cf5b326430b9",
+      "hash": "a642973e56cf16a7",
       "date": "2026-10-07"
     },
     "plans.nomad.PT": {
-      "hash": "2ff65770df19c18e",
+      "hash": "48abe09992a17e01",
       "date": "2026-10-07"
     },
     "plans.nomad.QA": {
-      "hash": "57f6726b27b9808c",
+      "hash": "202552f04581283e",
       "date": "2026-10-07"
     },
     "plans.nomad.SA": {
-      "hash": "e6cee04e1273ccdf",
+      "hash": "f908ff83f0f017c7",
       "date": "2026-10-07"
     },
     "plans.nomad.SG": {
-      "hash": "d253961d84092ac6",
+      "hash": "0814856172c1c780",
       "date": "2026-10-07"
     },
     "plans.nomad.TH": {
-      "hash": "12c923e8b5d370a1",
+      "hash": "13dbc5721fcb5112",
       "date": "2026-10-07"
     },
     "plans.nomad.TR": {
-      "hash": "1b03eaf5390a89b2",
+      "hash": "b55493bd543bc509",
       "date": "2026-10-07"
     },
     "plans.nomad.TW": {
-      "hash": "40440257be8183ee",
+      "hash": "49ae0083a252270c",
       "date": "2026-10-07"
     },
     "plans.nomad.US": {
-      "hash": "252b152bf464019a",
+      "hash": "654a84814a9347a2",
       "date": "2026-10-07"
     },
     "plans.nomad.VN": {
-      "hash": "484a5d25b09f5de7",
+      "hash": "e9a81a5de0cf4f08",
       "date": "2026-10-07"
     },
     "plans.nomad.ZA": {
-      "hash": "04a23783b4af9594",
+      "hash": "35b9735b854a95db",
       "date": "2026-10-07"
     },
     "plans.roami.AE": {
@@ -1814,9 +2010,13 @@
       "hash": "654c41bbf6a4ea85",
       "date": "2026-10-04"
     },
+    "profile.jetpac": {
+      "hash": "99c595c6cf4b3423",
+      "date": "2026-10-07"
+    },
     "profile.nomad": {
-      "hash": "50a6126fb691ea06",
-      "date": "2026-10-06"
+      "hash": "7420353bbbbd543e",
+      "date": "2026-10-07"
     },
     "profile.roami": {
       "hash": "9102c518839d8f8c",

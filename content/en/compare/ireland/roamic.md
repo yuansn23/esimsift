@@ -4,5 +4,5 @@ iso: IE
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift compares Roamic eSIM plans for Ireland: 36 plans from $1.00, best $0.36/GB (#1 of 9) — ranked against 181 Ireland plans."
+  description: "eSIM Sift compares Roamic eSIM plans for Ireland: 36 plans from $1.00, best $0.36/GB (#1 of 10) — ranked against 196 Ireland plans."
 ---

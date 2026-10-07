@@ -3,7 +3,7 @@ title: "Australia eSIM"
 iso: AU
 weight: 11
 seo:
-  description: "eSIM Sift compares every Australia eSIM: 163 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every Australia eSIM: 180 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 The market in Australia looks mid-market on entry price and much better on value. The cheapest way in is yesim 399MB / 1 Day, listed at $0.51. Put $0.51 through the $0.66/GB rate in Australia and you would clear about 792MB. Best value per gigabyte goes to roami, where 50GB over 30 days works out to $0.66 a gigabyte. Between {{< count-providers >}} providers there are 153 plans for Australia on file, 88 carrying an unlimited label.

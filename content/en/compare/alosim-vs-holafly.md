@@ -1,6 +1,6 @@
 ---
 title: "aloSIM or Holafly eSIM? 2026 Price and Data Comparison"
-description: "Which eSIM is cheaper, aloSIM or Holafly? eSIM Sift compares entry prices, $/GB and fair-use caps in every shared country — prices change."
+description: "eSIM Sift compares aloSIM and Holafly eSIMs: entry prices, $/GB and unlimited data in every shared country — a computed verdict."
 providers: ["alosim", "holafly"]
 layout: vs-single
 ---

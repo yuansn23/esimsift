@@ -110,7 +110,17 @@ def scan(path: pathlib.Path) -> dict[str, str]:
 
 def apply(path: pathlib.Path, targets: set[str] | None, newdate: str, dry: bool):
     """就地改写 checked 行。targets=None 表示该文件所有国家。
-    返回 [(ISO, 旧值, 新值)]。文件保持 LF，其它字节不动。"""
+    返回 [(ISO, 旧值, 新值)]。**保持文件原有行尾**（CRLF 文件改完还是 CRLF），
+    其它字节不动。
+
+    为什么强调行尾：`data/plans/*.toml` 全部是 CRLF，而 providers.toml 是 LF。
+    这里若把替换行写成不带 `\\r` 的 LF，CRLF 文件里就会混进 49 行 LF ——
+    TOML 仍然合法（`\\r\\n` 与 `\\n` 都行），但文件从此「行尾混杂」，
+    以后任何用**文本模式默认换行**回写它的脚本都会把 `\\r\\n` 变成 `\\r\\r\\n`，
+    而注释行里的孤立 `\\r` 是**非法 TOML 字符** → hugo 直接
+    `failed to load data ... invalid character in comment` 整站构建失败。
+    （2026-10-07 接 Jetpac 时实测踩到，jetpac.toml 有 49 行 LF。）
+    """
     with io.open(path, "r", encoding="utf-8", newline="") as f:
         text = f.read()
     lines = text.split("\n")
@@ -126,7 +136,8 @@ def apply(path: pathlib.Path, targets: set[str] | None, newdate: str, dry: bool)
         if m and cur and (targets is None or cur in targets):
             old = m.group(2)
             if old != newdate:
-                lines[i] = f'{m.group(1)}checked = "{newdate}"{m.group(3)}'
+                eol = "\r" if raw.endswith("\r") else ""   # ★ 还原原行尾
+                lines[i] = f'{m.group(1)}checked = "{newdate}"{m.group(3)}{eol}'
                 changed.append((cur, old, newdate))
     if changed and not dry:
         with io.open(path, "w", encoding="utf-8", newline="") as f:

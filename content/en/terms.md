@@ -1,9 +1,10 @@
 ---
 title: "Terms of Service: Price Data Accuracy and Liability"
 description: "The terms of service for using eSIM Sift, including our price-data disclaimer and the limits of our editorial liability."
+# TODO(launch): legal review not yet completed. This reminder used to be a body line
+# (the italic underscore-wrapped "Todo" sentence) that Markdown rendered as visible
+# text to readers and crawlers; moved into front matter 2026-10-07. Delete once reviewed.
 ---
-
-_Todo: legal review before launch._
 
 ## Use of the site
 

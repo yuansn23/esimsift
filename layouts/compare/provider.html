@@ -1053,11 +1053,17 @@
     <p class="eyebrow">{{ i18n "compare_provider__the_other_side_by_side" | safeHTML }}</p>
     <h2 id="others" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__others_h2" (dict "brand" $p.name "country" $country.name) | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {{ range $stats.providers }}
+      {{ range $i, $pk := $stats.providers }}
         {{ if ne . $provKey }}
           {{ $op := index $d.providers . }}
           {{ $omin := index $provMin . | default 0.0 }}
           {{ $sub := site.GetPage (printf "/compare/%s/%s" $country.slug .) }}
+          {{/* 竞品在本国的 $/GB 名次 —— 与页面自己的 $rank 同一把尺子（$ranked 已按 perGB 升序） */}}
+          {{ $orank := 0 }}
+          {{ range $j, $r := $ranked }}{{ if eq $r.key $pk }}{{ $orank = add $j 1 }}{{ end }}{{ end }}
+          {{/* 无限专营品牌没有 $/GB 可言，不能报名次（与页面的 $rankable 同一个理由） */}}
+          {{ $oUnlOnly := true }}
+          {{ range where $rows "key" $pk }}{{ if gt (float .gb) 0.0 }}{{ $oUnlOnly = false }}{{ end }}{{ end }}
           <a href="{{ with $sub }}{{ .RelPermalink }}{{ else }}{{ partial "lang-href.html" (printf "/compare/%s/#%s" $country.slug .) }}{{ end }}" class="card card-hover group flex flex-col p-5">
             <div class="flex items-center gap-3">
               {{ partial "prov-logo.html" (dict "p" $op "key" . "class" "h-10 w-10" "text" "text-sm") }}
@@ -1066,7 +1072,18 @@
                 {{ if gt $omin 0.0 }}<p class="text-xs text-ink-400 tnum">{{ i18n "compare_provider__from_price" (dict "price" (printf "%.2f" $omin)) | safeHTML }}</p>{{ end }}
               </div>
             </div>
-            <p class="mt-3 flex-1 text-xs leading-relaxed text-ink-500">{{ $op.tagline }}</p>
+            {{/* 2026-10-07：这里原本印 providers.toml 的全局 tagline —— 同一句话在 449 个
+                 页面上逐字出现（≈4900 个正文句子槽位，是全站单点最大的一块重复内容）。
+                 改为「该竞品在**本国**的 $/GB 名次 + 它的入门档数据量」：信息由页内数据算出，
+                 与上方 from-price、下方价差三行各说一件事，不是同一句的三种说法。
+                 变体按卡序轮换 —— 同页 9 张卡都读同一句式会像机器贴的。 */}}
+            <p class="mt-3 flex-1 text-xs leading-relaxed text-ink-500">
+              {{- if $oUnlOnly -}}
+                {{ i18n (printf "compare_provider__op_unl_v%d" (add (mod $i 2) 1)) (dict "name" $op.name "country" $country.name) | safeHTML }}
+              {{- else -}}
+                {{ i18n (printf "compare_provider__op_market_v%d" (add (mod $i 3) 1)) (dict "name" $op.name "country" $country.name "plan" (index $provPick $pk) "rank" $orank "total" $stats.providerCount) | safeHTML }}
+              {{- end -}}
+            </p>
             {{/* 差异点：同一国家、同一把尺子下的相对位置，不是形容词 */}}
             <p class="mt-3 border-t border-ink-100 pt-3 text-xs leading-relaxed">
               {{ if and (gt $omin 0.0) (gt $myMin 0.0) }}

@@ -3,7 +3,7 @@ title: "Germany eSIM"
 iso: DE
 weight: 10
 seo:
-  description: "eSIM Sift compares every Germany eSIM: 187 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every Germany eSIM: 202 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 The cheapest plan in Germany is rarely the cheapest trip. For the smallest outlay you get yesim's 500MB / 1 Day at $0.51. That $0.51 buys a fraction of what it would at the $0.50/GB rate, which is nearer 1.0GB. The value crown is alosim's, at $0.50/GB for 50GB over 10 days. The full board is 177 plans for Germany from {{< count-providers >}} providers, 88 of them unlimited.

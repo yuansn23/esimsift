@@ -1,0 +1,173 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n15"
+ },
+ "plans": [
+  {
+   "name": "Netherlands 3GB",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$7.00",
+   "badges": [
+    "$4 OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Netherlands 1GB",
+   "data": "1GB",
+   "validity": "4 Days",
+   "price": "$7.00",
+   "badges": [
+    "New Users Only",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Netherlands 5GB",
+   "data": "5GB",
+   "validity": "30 Days",
+   "price": "$9.99",
+   "badges": [
+    "$4 OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Netherlands Unlimited-3 Days",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$12.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Netherlands 10GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$15.00",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Netherlands 15GB",
+   "data": "15GB",
+   "validity": "30 Days",
+   "price": "$19.99",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Netherlands Unlimited-5 Days",
+   "data": "3GB/day",
+   "validity": "5 Days",
+   "price": "$19.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Netherlands Unlimited-7 Days",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$26.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Netherlands 30GB",
+   "data": "30GB",
+   "validity": "30 Days",
+   "price": "$27.99",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Netherlands Unlimited-10 Days",
+   "data": "3GB/day",
+   "validity": "10 Days",
+   "price": "$33.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Netherlands 40GB",
+   "data": "40GB",
+   "validity": "30 Days",
+   "price": "$34.99",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Netherlands 20GB",
+   "data": "20GB",
+   "validity": "30 Days",
+   "price": "$40.00",
+   "badges": [
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Netherlands Unlimited-15 Days",
+   "data": "3GB/day",
+   "validity": "15 Days",
+   "price": "$41.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Netherlands Unlimited-21 Days",
+   "data": "3GB/day",
+   "validity": "21 Days",
+   "price": "$49.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF",
+    "Low latency"
+   ]
+  },
+  {
+   "name": "Netherlands Unlimited-30 Days",
+   "data": "3GB/day",
+   "validity": "30 Days",
+   "price": "$65.99",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF",
+    "Low latency"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Jetpac Travel eSIM for Netherlands | Data Plans & Reviews",
+  "h1": "Jetpac eSIM Data Plans for Netherlands",
+  "networks": null
+ },
+ "slug": "netherlands",
+ "url": "https://esimdb.com/netherlands/jetpac",
+ "status": 200
+}

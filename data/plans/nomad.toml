@@ -4,7 +4,7 @@
 
 [AR]
 checked = "2026-10-07"
-networks = []
+networks = ["Personal", "Claro", "Movistar"]
 
 [[AR.plans]]
 name = "Local Argentina - 7 Days - 1 GB"
@@ -43,7 +43,7 @@ price = 47.00
 
 [AU]
 checked = "2026-10-07"
-networks = []
+networks = ["Telstra", "Optus", "Vodafone"]
 
 [[AU.plans]]
 name = "Local Australia - 7 Days - 1 GB"
@@ -121,7 +121,7 @@ price = 32.00
 
 [AT]
 checked = "2026-10-07"
-networks = []
+networks = ["A1", "Magenta", "Drei"]
 
 [[AT.plans]]
 name = "Local Austria - 7 Days - 1 GB"
@@ -199,7 +199,7 @@ price = 45.00
 
 [BE]
 checked = "2026-10-07"
-networks = []
+networks = ["Proximus", "Orange", "Base"]
 
 [[BE.plans]]
 name = "Local Belgium - 7 Days - 1 GB"
@@ -277,7 +277,7 @@ price = 45.00
 
 [BR]
 checked = "2026-10-07"
-networks = []
+networks = ["Vivo", "Claro", "TIM"]
 
 [[BR.plans]]
 name = "Local Brazil - 7 Days - 1 GB"
@@ -339,7 +339,7 @@ price = 45.00
 
 [CA]
 checked = "2026-10-07"
-networks = []
+networks = ["Bell", "Rogers", "Telus"]
 
 [[CA.plans]]
 name = "Local Canada - 7 Days - 1 GB"
@@ -417,7 +417,7 @@ price = 69.00
 
 [CN]
 checked = "2026-10-07"
-networks = []
+networks = ["China Mobile", "China Unicom", "China Telecom"]
 
 [[CN.plans]]
 name = "Local China - 7 Days - 1 GB"
@@ -495,7 +495,7 @@ price = 35.00
 
 [CO]
 checked = "2026-10-07"
-networks = []
+networks = ["Claro", "Movistar", "Tigo"]
 
 [[CO.plans]]
 name = "Local Colombia - 7 Days - 1 GB"
@@ -534,7 +534,7 @@ price = 39.00
 
 [CR]
 checked = "2026-10-07"
-networks = []
+networks = ["Kolbi", "Claro", "Movistar"]
 
 [[CR.plans]]
 name = "Local Costa Rica - 7 Days - 1 GB"
@@ -589,7 +589,7 @@ fup_note = "2 GB per day at full speed, then ∞ at 1Mbps"
 
 [HR]
 checked = "2026-10-07"
-networks = []
+networks = ["Hrvatski Telekom", "A1 Hrvatska"]
 
 [[HR.plans]]
 name = "Local Croatia - 7 Days - 1 GB"
@@ -667,7 +667,7 @@ fup_note = "2 GB per day at full speed, then ∞ at 1Mbps"
 
 [CZ]
 checked = "2026-10-07"
-networks = []
+networks = ["O2", "T-Mobile", "Vodafone"]
 
 [[CZ.plans]]
 name = "Local Czech Republic - 7 Days - 1 GB"
@@ -745,7 +745,7 @@ price = 45.00
 
 [EG]
 checked = "2026-10-07"
-networks = []
+networks = ["Vodafone Egypt", "Orange Egypt", "Etisalat Misr"]
 
 [[EG.plans]]
 name = "Local Egypt - 7 Days - 1 GB"
@@ -816,7 +816,7 @@ price = 37.00
 
 [FJ]
 checked = "2026-10-07"
-networks = []
+networks = ["Vodafone Fiji", "Digicel Fiji"]
 
 [[FJ.plans]]
 name = "Local Fiji - 7 Days - 1 GB"
@@ -855,7 +855,7 @@ price = 39.00
 
 [FR]
 checked = "2026-10-07"
-networks = []
+networks = ["Orange", "SFR", "Bouygues"]
 
 [[FR.plans]]
 name = "Local France - 7 Days - 1 GB"
@@ -933,7 +933,7 @@ price = 35.00
 
 [GE]
 checked = "2026-10-07"
-networks = []
+networks = ["Magti", "Silknet", "Beeline"]
 
 [[GE.plans]]
 name = "Nomad - Georgia - 7 Days - 1 GB"
@@ -1011,7 +1011,7 @@ price = 55.00
 
 [DE]
 checked = "2026-10-07"
-networks = []
+networks = ["Telekom", "Vodafone", "O2"]
 
 [[DE.plans]]
 name = "Local Germany - 7 Days - 1 GB"
@@ -1089,7 +1089,7 @@ price = 32.00
 
 [GR]
 checked = "2026-10-07"
-networks = []
+networks = ["Cosmote", "Vodafone", "Wind"]
 
 [[GR.plans]]
 name = "Local Greece - 7 Days - 1 GB"
@@ -1167,7 +1167,7 @@ fup_note = "2 GB per day at full speed, then ∞ at 1Mbps"
 
 [HK]
 checked = "2026-10-07"
-networks = []
+networks = ["CSL", "3HK", "SmarTone"]
 
 [[HK.plans]]
 name = "Local Hong Kong - 7 Days - 1 GB"
@@ -1229,7 +1229,7 @@ price = 49.00
 
 [IS]
 checked = "2026-10-07"
-networks = []
+networks = ["Siminn", "Vodafone", "Noa"]
 
 [[IS.plans]]
 name = "Local Iceland - 7 Days - 1 GB"
@@ -1307,7 +1307,7 @@ price = 45.00
 
 [IN]
 checked = "2026-10-07"
-networks = []
+networks = ["Jio", "Airtel"]
 
 [[IN.plans]]
 name = "India 1 GB 7 Days"
@@ -1369,7 +1369,7 @@ price = 43.00
 
 [ID]
 checked = "2026-10-07"
-networks = []
+networks = ["Telkomsel", "Indosat", "XL Axiata"]
 
 [[ID.plans]]
 name = "Indonesia 1 GB 7 Days"
@@ -1431,7 +1431,7 @@ price = 41.00
 
 [IE]
 checked = "2026-10-07"
-networks = []
+networks = ["Vodafone", "Three", "Eir"]
 
 [[IE.plans]]
 name = "Local Ireland - 7 Days - 1 GB"
@@ -1509,7 +1509,7 @@ price = 45.00
 
 [IL]
 checked = "2026-10-07"
-networks = []
+networks = ["Cellcom", "Partner", "Pelephone"]
 
 [[IL.plans]]
 name = "Local Israel - 7 Days - 1 GB"
@@ -1555,7 +1555,7 @@ price = 39.00
 
 [IT]
 checked = "2026-10-07"
-networks = []
+networks = ["TIM", "Vodafone", "WindTre"]
 
 [[IT.plans]]
 name = "Local Italy - 7 Days - 1 GB"
@@ -1633,7 +1633,7 @@ price = 35.00
 
 [JP]
 checked = "2026-10-07"
-networks = []
+networks = ["NTT Docomo", "SoftBank", "KDDI"]
 
 [[JP.plans]]
 name = "Japan 1 GB 7 Days"
@@ -1711,7 +1711,7 @@ fup_note = "2 GB per day at full speed, then ∞ at 1Mbps"
 
 [KE]
 checked = "2026-10-07"
-networks = []
+networks = ["Safaricom", "Airtel Kenya", "Telkom Kenya"]
 
 [[KE.plans]]
 name = "Kenya 1 GB 7 Days"
@@ -1750,7 +1750,7 @@ price = 59.00
 
 [MO]
 checked = "2026-10-07"
-networks = []
+networks = ["CTM", "3 Macau", "China Telecom"]
 
 [[MO.plans]]
 name = "Local Macau - 7 Days - 1 GB"
@@ -1796,7 +1796,7 @@ price = 45.00
 
 [MY]
 checked = "2026-10-07"
-networks = []
+networks = ["Maxis", "Celcom", "DiGi"]
 
 [[MY.plans]]
 name = "Malaysia 1 GB 7 Days"
@@ -1851,7 +1851,7 @@ fup_note = "2 GB per day at full speed, then ∞ at 1Mbps"
 
 [MX]
 checked = "2026-10-07"
-networks = []
+networks = ["Telcel", "AT&T Mexico", "Movistar"]
 
 [[MX.plans]]
 name = "Local Mexico - 7 Days - 1 GB"
@@ -1922,7 +1922,7 @@ fup_note = "2 GB per day at full speed, then ∞ at 1Mbps"
 
 [MA]
 checked = "2026-10-07"
-networks = []
+networks = ["Maroc Telecom", "Orange Maroc", "Inwi"]
 
 [[MA.plans]]
 name = "Local Morocco - 7 Days - 1 GB"
@@ -2000,7 +2000,7 @@ price = 45.00
 
 [NL]
 checked = "2026-10-07"
-networks = []
+networks = ["KPN", "Vodafone", "Odido"]
 
 [[NL.plans]]
 name = "Local Netherlands - 7 Days - 1 GB"
@@ -2078,7 +2078,7 @@ price = 45.00
 
 [NZ]
 checked = "2026-10-07"
-networks = []
+networks = ["Spark", "One NZ", "2degrees"]
 
 [[NZ.plans]]
 name = "Local New Zealand - 7 Days - 1 GB"
@@ -2149,7 +2149,7 @@ fup_note = "2 GB per day at full speed, then ∞ at 1Mbps"
 
 [PE]
 checked = "2026-10-07"
-networks = []
+networks = ["Claro", "Movistar", "Entel"]
 
 [[PE.plans]]
 name = "Local Peru - 7 Days - 1 GB"
@@ -2220,7 +2220,7 @@ price = 35.00
 
 [PH]
 checked = "2026-10-07"
-networks = []
+networks = ["Globe", "Smart"]
 
 [[PH.plans]]
 name = "Philippines 1 GB 7 Days"
@@ -2282,7 +2282,7 @@ price = 45.00
 
 [PL]
 checked = "2026-10-07"
-networks = []
+networks = ["Orange", "Play", "Plus", "T-Mobile"]
 
 [[PL.plans]]
 name = "Local Poland - 7 Days - 1 GB"
@@ -2360,7 +2360,7 @@ price = 45.00
 
 [PT]
 checked = "2026-10-07"
-networks = []
+networks = ["MEO", "NOS", "Vodafone"]
 
 [[PT.plans]]
 name = "Local Portugal - 7 Days - 1 GB"
@@ -2438,7 +2438,7 @@ price = 45.00
 
 [QA]
 checked = "2026-10-07"
-networks = []
+networks = ["Ooredoo", "Vodafone Qatar"]
 
 [[QA.plans]]
 name = "Local Qatar - 7 Days - 1 GB"
@@ -2500,7 +2500,7 @@ price = 49.00
 
 [SA]
 checked = "2026-10-07"
-networks = []
+networks = ["STC", "Mobily", "Zain"]
 
 [[SA.plans]]
 name = "Local Saudi Arabia - 7 Days - 1 GB"
@@ -2578,7 +2578,7 @@ price = 41.00
 
 [SG]
 checked = "2026-10-07"
-networks = []
+networks = ["Singtel", "StarHub", "M1"]
 
 [[SG.plans]]
 name = "Local Singapore - 7 Days - 1 GB"
@@ -2640,7 +2640,7 @@ price = 31.00
 
 [ZA]
 checked = "2026-10-07"
-networks = []
+networks = ["Vodacom", "MTN", "Telkom"]
 
 [[ZA.plans]]
 name = "Local South Africa - 7 Days - 1 GB"
@@ -2695,7 +2695,7 @@ fup_note = "2 GB per day at full speed, then ∞ at 1Mbps"
 
 [KR]
 checked = "2026-10-07"
-networks = []
+networks = ["SK Telecom", "KT", "LG U+"]
 
 [[KR.plans]]
 name = "South Korea 1 GB 7 Days"
@@ -2773,7 +2773,7 @@ price = 39.00
 
 [ES]
 checked = "2026-10-07"
-networks = []
+networks = ["Movistar", "Vodafone", "Orange", "Yoigo"]
 
 [[ES.plans]]
 name = "Local Spain - 7 Days - 1 GB"
@@ -2851,7 +2851,7 @@ price = 35.00
 
 [CH]
 checked = "2026-10-07"
-networks = []
+networks = ["Swisscom", "Sunrise", "Salt"]
 
 [[CH.plans]]
 name = "Local Switzerland - 7 Days - 1 GB"
@@ -2929,7 +2929,7 @@ price = 43.00
 
 [TW]
 checked = "2026-10-07"
-networks = []
+networks = ["Chunghwa Telecom", "Taiwan Mobile", "FarEasTone"]
 
 [[TW.plans]]
 name = "Taiwan 1 GB 7 Days"
@@ -3007,7 +3007,7 @@ price = 39.00
 
 [TH]
 checked = "2026-10-07"
-networks = []
+networks = ["AIS", "True Move", "DTAC"]
 
 [[TH.plans]]
 name = "Local Thailand - 7 Days - 1 GB"
@@ -3062,7 +3062,7 @@ fup_note = "2 GB per day at full speed, then ∞ at 1Mbps"
 
 [TR]
 checked = "2026-10-07"
-networks = []
+networks = ["Turkcell", "Vodafone", "Turk Telekom"]
 
 [[TR.plans]]
 name = "Nomad - Turkey - 7 Days - 1 GB"
@@ -3124,7 +3124,7 @@ price = 31.00
 
 [GB]
 checked = "2026-10-07"
-networks = []
+networks = ["EE", "Vodafone", "O2", "Three"]
 
 [[GB.plans]]
 name = "Local UK - 7 Days - 1 GB"
@@ -3231,7 +3231,7 @@ fup_note = "2 GB per day at full speed, then ∞ at 1Mbps"
 
 [US]
 checked = "2026-10-07"
-networks = []
+networks = ["T-Mobile", "AT&T", "Verizon"]
 
 [[US.plans]]
 name = "Local USA - 7 Days - 1 GB"
@@ -3315,7 +3315,7 @@ price = 120.00
 
 [AE]
 checked = "2026-10-07"
-networks = []
+networks = ["Etisalat", "du"]
 
 [[AE.plans]]
 name = "Local United Arab Emirates - 7 Days - 1 GB"
@@ -3386,7 +3386,7 @@ fup_note = "2 GB per day at full speed, then ∞ at 1Mbps"
 
 [VN]
 checked = "2026-10-07"
-networks = []
+networks = ["Viettel", "Vinaphone", "Mobifone"]
 
 [[VN.plans]]
 name = "Local Vietnam - 7 Days - 1 GB"

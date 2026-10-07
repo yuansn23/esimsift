@@ -3,7 +3,7 @@ title: "South Korea eSIM"
 iso: KR
 weight: 7
 seo:
-  description: "eSIM Sift compares every South Korea eSIM: 161 real plans from 9 providers, cheapest Roamic from $1.00, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every South Korea eSIM: 185 real plans from 10 providers, cheapest Roamic from $1.00, ranked by $/GB and $/day."
 ---
 
 Data in South Korea is affordable. Picking the wrong shape of it costs you. The floor in South Korea is roamic's 1GB / 7 Days, at $1.00. Small plans in South Korea cost 1.8 times more per gigabyte than its best plan. roami wins on rate, at $0.55/GB for a 20GB / 7-day bucket. Across {{< count-providers >}} providers the board runs to 151 plans for South Korea, 88 sold as unlimited.

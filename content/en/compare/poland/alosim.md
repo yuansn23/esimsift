@@ -4,5 +4,5 @@ iso: PL
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Poland: 12 plans from $4.50, best $0.75/GB (#5 of 9) — ranked against 163 Poland plans."
+  description: "eSIM Sift compares aloSIM eSIM plans for Poland: 12 plans from $4.50, best $0.75/GB (#5 of 10) — ranked against 178 Poland plans."
 ---

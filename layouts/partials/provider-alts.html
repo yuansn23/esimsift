@@ -11,11 +11,16 @@
     为什么要有这个 partial 而不是再写一遍：
       · 上一轮在品牌×国家子页踩过「拿我方 10GB 档去比对手 1GB 试用装」的坑
         （绝对价差取最大必然选中这种失真对比）。这里把口径固化成三层：
-          ① 双方都是无限档 → 无限比无限
+          ① 双方都是无限档 → 无限比无限（对手天数也不得少于我方）
           ② 我方是计量档 → 优先找 (gb, days) **完全相同**的竞品档
-          ③ 找不到同规格 → 退到「数据量不少于我方」的竞品档
-          ④ 再找不到（对手压根没这么大档）→ 才退回「入门价对入门价」，并标记出来
-        标记会渲染成页面上的口径说明，读者能自核。
+          ③ 找不到同规格 → 退到「数据量与天数都不少于我方」的竞品档
+          ④ 再找不到 → 该国不列出（宁缺勿滥）；不做「入门价对入门价」的强行比较
+        ★ 2026-10-07 修订：原先只有 ② 查天数，①③ 只比数据量 —— 于是产出
+          「我方 1GB/30d → 对手 1GB/7d」（8 例）与「无限 3d → 无限 1d」（holafly 整页 10 行）
+          这类覆盖不了行程的推荐。现 ①③ 均补上天数条件；④ 的 entry 回退在全量 499
+          单元里一次都没触发、且语义上本就不是 like-for-like，已删除。
+        rows[].mt 记录每行的匹配方式（same-spec / at-least / unlimited）——**目前没有任何模板读取它**，
+        别以为页面上有逐行标记；读者能自核的是表格下方印出的 who_beats_caveat 口径原文。
       · 数据量一律走 plan-data-label.html 转换（0=无限 / <1GB 存小数），
         绝不在这里写 int .gb。 */ -}}
 {{- $key := .key -}}
@@ -35,7 +40,7 @@
     {{- if eq $mg 0.0 -}}
       {{- /* 我方最便宜是无限档：只跟无限档比 */ -}}
       {{- range $all -}}
-        {{- if and (ne .key $key) (eq (float .gb) 0.0) -}}{{- $pool = $pool | append . -}}{{- end -}}
+        {{- if and (ne .key $key) (eq (float .gb) 0.0) (ge (int .days) $md) -}}{{- $pool = $pool | append . -}}{{- end -}}
       {{- end -}}
       {{- $mt = "unlimited" -}}
     {{- else -}}
@@ -44,16 +49,13 @@
       {{- range $all -}}
         {{- if ne .key $key -}}
           {{- if and (eq (int .days) $md) (eq (float .gb) $mg) -}}{{- $exact = $exact | append . -}}{{- end -}}
-          {{- if and (gt (float .gb) 0.0) (ge (float .gb) $mg) -}}{{- $super = $super | append . -}}{{- end -}}
+          {{- if and (gt (float .gb) 0.0) (ge (float .gb) $mg) (ge (int .days) $md) -}}{{- $super = $super | append . -}}{{- end -}}
         {{- end -}}
       {{- end -}}
       {{- if gt (len $exact) 0 -}}
         {{- $pool = $exact -}}{{- $mt = "same-spec" -}}
       {{- else if gt (len $super) 0 -}}
         {{- $pool = $super -}}{{- $mt = "at-least" -}}
-      {{- else -}}
-        {{- range $all -}}{{- if ne .key $key -}}{{- $pool = $pool | append . -}}{{- end -}}{{- end -}}
-        {{- $mt = "entry" -}}
       {{- end -}}
     {{- end -}}
     {{- if gt (len $pool) 0 -}}

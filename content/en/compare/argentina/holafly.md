@@ -4,5 +4,5 @@ iso: AR
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for Argentina: 6 daily plans from $2.98/day, fair-use caps decoded — 141 Argentina eSIMs tracked."
+  description: "eSIM Sift compares Holafly unlimited eSIMs for Argentina: 6 daily plans from $2.98/day, fair-use caps decoded — 154 Argentina eSIMs tracked."
 ---

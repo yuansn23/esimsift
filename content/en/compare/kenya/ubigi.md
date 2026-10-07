@@ -4,5 +4,5 @@ iso: KE
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Kenya: 9 plans from $9.00, best $1.65/GB (#1 of 9) — ranked against 128 Kenya plans."
+  description: "eSIM Sift compares Ubigi eSIM plans for Kenya: 9 plans from $9.00, best $1.65/GB (#1 of 10) — ranked against 139 Kenya plans."
 ---

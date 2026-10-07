@@ -34,6 +34,15 @@
 {{/* 首行国家的网络对比（FAQ 举例） */}}
 {{ $r0 := dict }}
 {{ if gt (len $rows) 0 }}{{ $r0 = index $rows 0 }}{{ end }}
+
+{{/* 最大入门价价差国（FAQ 最后一句用真数据代替「总之要看你去的国家」这类空话） */}}
+{{ $gapRow := dict }}{{ $gapMax := 0.0 }}
+{{ range $rows }}
+  {{ $hi := .aMin }}{{ $lo := .bMin }}
+  {{ if lt .aMin .bMin }}{{ $hi = .bMin }}{{ $lo = .aMin }}{{ end }}
+  {{ $diff := sub $hi $lo }}
+  {{ if gt $diff $gapMax }}{{ $gapMax = $diff }}{{ $gapRow = . }}{{ end }}
+{{ end }}
 {{ $netA := "" }}{{ $netB := "" }}
 {{ with $r0.iso }}
   {{ with index (index $d.plans $a) . }}{{ $netA = delimit .networks ", " }}{{ end }}
@@ -202,7 +211,7 @@
 
   {{/* 数据驱动 FAQ（正文 + FAQPage schema 同源） */}}
   {{- $faqList := slice -}}
-  {{- $faqList = $faqList | append (dict "q" (printf "Which is cheaper, %s or %s?" $na $nb) "a" (printf "By entry price, %s. Across the %d countries where both sell plans, %s has the cheaper cheapest-plan in %d countries and %s in %d (%d exact ties). The gap flips by destination, so check your country in the table above." (cond (eq $priceWinnerName "Neither") "it is close to a dead heat" (printf "%s wins" $priceWinnerName)) $n $na $agg.aWinsPrice $nb $agg.bWinsPrice $agg.ties)) -}}
+  {{- $faqList = $faqList | append (dict "q" (printf "Which is cheaper, %s or %s?" $na $nb) "a" (printf "By entry price, %s. Across the %d countries where both sell plans, %s has the cheaper cheapest-plan in %d countries and %s in %d (%d exact ties). %s" (cond (eq $priceWinnerName "Neither") "it is close to a dead heat" (printf "%s wins" $priceWinnerName)) $n $na $agg.aWinsPrice $nb $agg.bWinsPrice $agg.ties (cond (gt $gapMax 0.0) (printf "The widest entry-price gap is in %s — %s lists $%.2f against %s at $%.2f." $gapRow.name (cond (eq $gapRow.pW $a) $na $nb) (cond (eq $gapRow.pW $a) $gapRow.aMin $gapRow.bMin) (cond (eq $gapRow.pW $a) $nb $na) (cond (eq $gapRow.pW $a) $gapRow.bMin $gapRow.aMin)) "Every shared country is an exact price tie, so the pick comes down to plan shapes and fair use."))) -}}
   {{- $faqList = $faqList | append (dict "q" (printf "Is %s vs %s different from this page?" $nb $na) "a" (printf "No. It is the same comparison read in the other direction — our table lists both providers in every country, so the %s vs %s verdict is identical. We keep one URL per matchup instead of two near-duplicate pages." $nb $na)) -}}
   {{- if $valueWinnerName -}}
     {{- $faqList = $faqList | append (dict "q" (printf "Which has the better price per GB, %s or %s?" $na $nb) "a" (printf "%s — it posts the better cheapest $/GB rate in %d of the countries where both sell metered plans (%s wins %d). Unlimited-only plans are excluded because they are priced per day, not per GB." $valueWinnerName (cond (eq $valueWinnerName $na) $agg.aWinsValue $agg.bWinsValue) (cond (eq $valueWinnerName $na) $nb $na) (cond (eq $valueWinnerName $na) $agg.bWinsValue $agg.aWinsValue))) -}}

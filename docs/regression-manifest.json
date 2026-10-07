@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-07T05:00:00Z",
+ "generated_at": "2026-10-07T10:20:58Z",
  "note": "零回归基线。下一轮改完跑 verify_no_regression.py --diff <本文件>，即可看出哪些页发生变化；provider_sub 变更是预期的，其余需人工确认。",
  "class_counts": {
   "alias_shell": 1,
@@ -8,10 +8,10 @@
   "deals": 1,
   "guides": 12,
   "home": 2,
-  "matchup": 36,
+  "matchup": 45,
   "networks": 14,
-  "provider_hub": 10,
-  "provider_sub": 450,
+  "provider_hub": 11,
+  "provider_sub": 499,
   "research": 5,
   "static": 8,
   "tools": 1
@@ -19,2992 +19,3282 @@
  "files": {
   "404.html": {
    "cls": "static",
-   "sha256": "a14471a9315c02138bc05f4c7ba42941df2213dae05098cc3408a2cc2989de4e",
+   "sha256": "cbc1ef9532e858a8fa4b093e30bed1247969465ed36474acf56538437b2e03a6",
    "title_len": 18
   },
   "about/index.html": {
    "cls": "static",
-   "sha256": "2ed3f9559a6e559a5c8c51c1bcceb9867c380a1e9e5d1f93013080a0a0315ec1",
+   "sha256": "de6ca4a7e193d7e132c8bfe2b773d4699c2f859b01309895924fb21b8d8857f9",
    "title_len": 51
   },
   "compare/airalo-vs-alosim/index.html": {
    "cls": "matchup",
-   "sha256": "766aff16fb0ceecade91d504c5f927c4e7eebe81a1aa8974476543abea1241ff",
+   "sha256": "473420c5d4f482b9b1af51ac1b058543072cb0055edd677e8c72c7a197893381",
    "title_len": 52
   },
   "compare/airalo-vs-holafly/index.html": {
    "cls": "matchup",
-   "sha256": "ab9310ef129918c19f958c9bf4f99e25a7cc80baa679c24862e71e580bdee554",
+   "sha256": "865a0cbc2ec61a0f12687a5ed8e9c10438aae8367ebf83c339e14b2e44461f0a",
    "title_len": 53
+  },
+  "compare/airalo-vs-jetpac/index.html": {
+   "cls": "matchup",
+   "sha256": "e2b3e10efb8867de80feed8b1e1f315eeb3eb54c412e7b9c34bc1cbb6b2a08fe",
+   "title_len": 52
   },
   "compare/airalo-vs-nomad/index.html": {
    "cls": "matchup",
-   "sha256": "9e5c620c5fcfc0321eed8bb78068c731013e3680507e0d3a22da5153a9cc4094",
+   "sha256": "10eec41e8bcd1a620a55a6733618bef7328eb56f96c5b1ed6c1c22a69bd31348",
    "title_len": 54
   },
   "compare/airalo-vs-roami/index.html": {
    "cls": "matchup",
-   "sha256": "40e3fba96997c0a826703925dd0b141b2e43f5e71d71501e27bcf0714e912eb8",
+   "sha256": "4d7b6f93b116cbd088db2cee24089d576457d5e247490b3b090c8c1dc53661c4",
    "title_len": 51
   },
   "compare/airalo-vs-roamic/index.html": {
    "cls": "matchup",
-   "sha256": "c0f4f9d75437dfa46c10afdb9a808507d2bb032ce92a5588a945344e7501b0e1",
+   "sha256": "d16c7cf7562f260e629ece58e01d8a595e3680597dc85a8dd5adf1eed223a919",
    "title_len": 53
   },
   "compare/airalo-vs-saily/index.html": {
    "cls": "matchup",
-   "sha256": "c5e3d576d44cca06c183dd217d01a57f1e13c83ccab6512c7cb7e363172f1bef",
+   "sha256": "2a0521d3164a95134005d44a391d448016de5fd451e2a571af3dde8ec10e8cff",
    "title_len": 54
   },
   "compare/airalo-vs-ubigi/index.html": {
    "cls": "matchup",
-   "sha256": "f8bccbeb0eef1bfa7752c8887e471e01f793ba22c70185a892c5256d8826e030",
+   "sha256": "db64b50da248a97fd7ad5775cd7f4e962f14524d7f910a7e79a4101a276395cb",
    "title_len": 51
   },
   "compare/airalo-vs-yesim/index.html": {
    "cls": "matchup",
-   "sha256": "479cd42d197eac7294b4136a96b9705e2ce94f04bfe70e3c636ba8e78b8f413f",
+   "sha256": "a342d03c164e38f006896d8b75dbb5424736eb6b1ccc37e38529052457ed9b03",
    "title_len": 54
   },
   "compare/alosim-vs-holafly/index.html": {
    "cls": "matchup",
-   "sha256": "ea5d637fcb09801148272e855c9023fe9b3eebe2e792fdcfeeb337034a03e7df",
+   "sha256": "f8925e36ba98ff426b5b3d1d6fe2e2af7d1cf07b2c2d1b3999ec5d77c3eb4b51",
    "title_len": 54
+  },
+  "compare/alosim-vs-jetpac/index.html": {
+   "cls": "matchup",
+   "sha256": "45208d64fd723d27a919a2cfb0f1e2c8846939e13e90d82f36200e05840d9756",
+   "title_len": 52
   },
   "compare/alosim-vs-nomad/index.html": {
    "cls": "matchup",
-   "sha256": "dee42d1bef27ee0eb19776210ded5c52fb8bd59107578dd49ed6c2cf883a7c6c",
+   "sha256": "47479b40e4fc5adbf134c5ab0f6ef63cd9de4abbdd716ff43942e96970af605d",
    "title_len": 54
   },
   "compare/alosim-vs-roami/index.html": {
    "cls": "matchup",
-   "sha256": "31f140404855dbabcedc616e79b47b9b6c0d8be39db9be88e8dd423b13eb400c",
+   "sha256": "0ef424c95c86a5b7d5001ba3704a2b8b1c8257f2401c08799dd8b72babf71028",
    "title_len": 51
   },
   "compare/alosim-vs-roamic/index.html": {
    "cls": "matchup",
-   "sha256": "634e3c628d35d3265d32749e22e24ed3356bb689be1f7d7552119449e40b6cfb",
+   "sha256": "b42b8dde33286a76b03e6a1e761e7cd999355d8c90439598afd1052d3e42ec4c",
    "title_len": 52
   },
   "compare/alosim-vs-saily/index.html": {
    "cls": "matchup",
-   "sha256": "80d674b9f95539c91a9434d1e85037ec29bc44aca9220b7933653edef8991b68",
+   "sha256": "3ac4756ea670cff539cd8c5122069a4d2019252792038520e3e9a0c77d795bab",
    "title_len": 52
   },
   "compare/alosim-vs-ubigi/index.html": {
    "cls": "matchup",
-   "sha256": "b36723c17a0aa84156a444b9f8ee39f2b2da5257cab917b22d69370693a65c3c",
+   "sha256": "032359b6d7bcc31f5dd60589fd956bac6ffbda24de6e98fe1af686b96299b292",
    "title_len": 51
   },
   "compare/alosim-vs-yesim/index.html": {
    "cls": "matchup",
-   "sha256": "47d018470b7fda1266549f05bf38b426acb116eb1e5158da33620112787d6d8f",
+   "sha256": "babac1aa7aca5c5f2af1a70ec1884850544bf746a897f5df88bf493f1fcf605d",
    "title_len": 54
   },
   "compare/argentina/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "55a759612bbcbebd402b69bc33d43dd351596c9fe0712efa61c161e05a3524de",
+   "sha256": "88c40a8dccd6d71c15037c1537076e448e1e9fa039268cda56d91a323e2e89cd",
    "title_len": 54
   },
   "compare/argentina/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "be54bef6ea3a84d50c629f18413f8d55cbd81cbd59685cce3091dcb368f1723b",
+   "sha256": "25ae49f92c9fff8ad175860f6cd40dffae02d521bd42dbc97020d01382c9079e",
    "title_len": 54
   },
   "compare/argentina/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "c317ae0bf40b48f931a3562294fb3f7cebdd9e4f9e21ece101e95f9a1efdf726",
+   "sha256": "93af440e9a588315200b9ca77330a9c8936fcb352f9a3ba32182df2823f9be2e",
    "title_len": 49
   },
   "compare/argentina/index.html": {
    "cls": "country_hub",
-   "sha256": "362bdd13f0585c948a4b17411d73ce1f6150a51f4f2e29c0834e4901a611ee99",
+   "sha256": "0683fe860fd1831dd8fa6d2ccb2be4849c0662784971bd9fb6f1f52443947020",
    "title_len": 53
+  },
+  "compare/argentina/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "03cf9eb41fb348c892b4d5d94713e058f7aff528461c682c66771da20e93c9d1",
+   "title_len": 54
   },
   "compare/argentina/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "22e59201d0bcd4c13178d4416b91940e782b2e3b542a04e7d7c38d9f56c8a405",
+   "sha256": "bd0bc0a15ad1b5de1599811d1e25a5aff692eed1007a7ef28f76447111e24cd9",
    "title_len": 53
   },
   "compare/argentina/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "17e03339e5fb2577e99177255d4d732cb8c0872b6ab9c11383cb67264ea982e8",
+   "sha256": "a0bb756d8f4f8ff1a04f86e9da2b00f1aef4d4c0dc1c1241facec81ecfb16106",
    "title_len": 53
   },
   "compare/argentina/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "6d2675c1eef895a0ab9208b584545f25234f712c9a8f4dc877040565fa502545",
+   "sha256": "f213e546c9f41f71ede950785f23505a4f52a4407f42467e71dedd8cea88db8b",
    "title_len": 54
   },
   "compare/argentina/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "536e63ff50140931f5117672d99c38149c735481934071166b30f6957fd21e8b",
+   "sha256": "d03ec6085332bee29e090a9ccba6318aa1d41e7055d7936bac40b1ddc2050460",
    "title_len": 53
   },
   "compare/argentina/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "b7d8e23c992ff222d44a5aceeae75f0039f2739e9f3df0b06e6ef71b887e1626",
+   "sha256": "3b385c0f28225a3379decb2adfd8f7b314b421a001fa00362f10b600a012c946",
    "title_len": 53
   },
   "compare/argentina/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "e5a959d6894ada39d2886657756106f30ce38788b3daa6f671763c459fec4249",
+   "sha256": "8e8a30ecd227eb20c3190d7c199ab9db033b56ea7c37622050455113799b57b8",
    "title_len": 53
   },
   "compare/australia/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "4365ba34795c5664e0b339f77f2b4ccff5670a05a657e129cc4ef68a200b5e9b",
+   "sha256": "e6ba1f48466eb0e67278cebe15909a17f5df8997cca1b927009273a6c2836fa8",
    "title_len": 54
   },
   "compare/australia/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "bd54169a2654877a30ef7602888886f7bb7c3375e2ce59ed3fc62dd32e80c464",
+   "sha256": "0731a1ce345c997c6a08c6fc9dc4f12b80740db5dabde5dc70c0e305f280924a",
    "title_len": 54
   },
   "compare/australia/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "178c13e6a3795e4bc029e326aa6d0c433133ec61dea22e4a600ba7f1040c3a5d",
+   "sha256": "50284b54e323a470daf69f96e5be49baa4930c11462d327c32a42bc947c382aa",
    "title_len": 49
   },
   "compare/australia/index.html": {
    "cls": "country_hub",
-   "sha256": "a21234bc5aa8cb19096dd7219c0f39936d5311ad80bf9459f6a17891c187e053",
+   "sha256": "4b520c25192f7da09ad97e47215dd6d81fd52c01cf43d39a70d4c955a9529c57",
    "title_len": 53
+  },
+  "compare/australia/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "1b048e633ddbee03882fa81878c488c195ea619715b2b38eb28a991dd8fc9ca1",
+   "title_len": 54
   },
   "compare/australia/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "2d7a33775c42916c0b0c60f406f25903e3ee1e8b046382c65d65051df1413563",
+   "sha256": "ef4296fb3581c1520f6722353022ef801ef8e941f6666afc795b7541f5990166",
    "title_len": 53
   },
   "compare/australia/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "b50173478cb8268b8acd0e005809542bf5116d792edd1de75ba2c74266c6417d",
+   "sha256": "b71bf64b5d611bce982ac1e9f261ffd0b4535c60fff52b3f536079c7ec876fa4",
    "title_len": 53
   },
   "compare/australia/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "3f8981bce092fbbf96ea0042d1a15f81ae2a8c8cdfb7ce2dd5285490416dfe25",
+   "sha256": "bba63a65c0205070862766ed6edd33180e44069457593b192cd2aa5f17565a80",
    "title_len": 54
   },
   "compare/australia/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "2eca4fcd7334cf4cedcc42a6f968844aa9303e60c091c7362c3f38554b35aa73",
+   "sha256": "96662409a01c2f97ae4e84b2066a407a0022772c59a7d96448836597bb307633",
    "title_len": 53
   },
   "compare/australia/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "452e9495017c76e85d11255a6c9531bf741793067d5b51976872e62e2b2709ef",
+   "sha256": "346fe406fc21756a22b44eb622a07333e96c6a49506996ab4359d1897adf0dd6",
    "title_len": 53
   },
   "compare/australia/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "cefaed90d3124f86671cb0d4ab948cd3af4e4d748cd72a58388faa5cce54aa91",
+   "sha256": "a6a3dcf27fb116e074a9cb2cc51e02ef25544c7e0bded7d2d35d4c4e54f201a9",
    "title_len": 53
   },
   "compare/austria/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "5319811e137880991afceaf23959ebebaaea45288497dfc1fdb3dc6d9eb29b57",
+   "sha256": "72cb7fd416dd6ad8472d7ae20c9bbdbd07f1d6b6fafaaaf97aaa7da62ab090f6",
    "title_len": 52
   },
   "compare/austria/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "249193e6e1fd3d602c10e4cc2325f733ee0a2bf7e0be35d74b7d7bee442d3c5e",
+   "sha256": "aae03071c3ed6af58207ed01f76c24f9aff35540df5a3f2348fa315bad5ed3ed",
    "title_len": 52
   },
   "compare/austria/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "cfb0fe56635eae4fd97a976ad75fb6b2cc6b6c59dc64d618b383c24196983588",
+   "sha256": "ae9ad9319288aa2b4a0d7b92f6d55322a816e48e85748dffeacd3be23074c88b",
    "title_len": 54
   },
   "compare/austria/index.html": {
    "cls": "country_hub",
-   "sha256": "a464e075243ee54bf43093dcbf98eb6aa8cd77a74dee42e0bae3746a985532db",
+   "sha256": "01a15baca29fd3503857180bb9c019be47becf9a95271c66fcfdeea5183b890e",
    "title_len": 51
+  },
+  "compare/austria/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "b8549c1c7b8de2cd82b5f03d3041b97a04f37b90f0ea9f0a3e8c997718488350",
+   "title_len": 52
   },
   "compare/austria/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "810f1d82a514b407e1cf41cf7483f0439f199eb9c1270f936bc6ce324934bc40",
+   "sha256": "649613cd27d5f6a88ed07b760036754d790e6e69c4f486d8fb490bff85dac25e",
    "title_len": 51
   },
   "compare/austria/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "b88dedd1744750c1971ed48d52eb210bf29b805db2666cebe34547ec0e24e445",
+   "sha256": "8b409190f87b640d827d10a95c089b1744f378c2bee9ed24e4ad0530e8b3140d",
    "title_len": 51
   },
   "compare/austria/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "70251bc6fc7b87cb0af2ac54f7b6f7fd8b774b33675147cb0c71e0513e5e94a7",
+   "sha256": "cf838583cd13ba2971825660d61a1d2044a9e9e6349828dccb71fee3b5f9d903",
    "title_len": 52
   },
   "compare/austria/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "15987ad21fbda3877cb09128537739f800c925ac0bb53e418546e0d31d99137c",
+   "sha256": "395364423cdb873b36d8e265f3335be1fc3b033b6366d92bc31a3a2b2508d68b",
    "title_len": 51
   },
   "compare/austria/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "2365746701678bf8a306de18fd0fc849a927d3391d11a3c9b400ee208de90d32",
+   "sha256": "014264c83715720e7ea30909ce7d43dd2cef8ecd5978e7426ae9e5ae404be0b3",
    "title_len": 51
   },
   "compare/austria/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "b9b3279cd39c661c595c121fd36252fd636c45a791ba3ceb70d97e962f3a451c",
+   "sha256": "2df7212e54a936682a56ecf6489659f88c2a668498ed8f452be3135677c70624",
    "title_len": 51
   },
   "compare/belgium/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "29d620956cfcdd93087d308cab291ebd2275409e38e3ea8ee59f99f2e257faea",
+   "sha256": "8d2f5521a9db3beccee63c04a0af133dbf0c8163ae6ed344aa634f2c1064e98f",
    "title_len": 52
   },
   "compare/belgium/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "3625bd1ceee66d32acc854ab043b6ec3b7503296b7767898a4723807752bedb2",
+   "sha256": "bdd169337197ca8b310e087dfd3c77efd0eb002009318088b31eb08196790f7c",
    "title_len": 52
   },
   "compare/belgium/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "35f4d3ae3838e6b66a627ef2c537b3e1be7fe85002cb02802f5bcf438753bda0",
+   "sha256": "ff2fcb3bbee8478f25af33d8ed059dd907c7e0fccb5b82288f7166f788eda19c",
    "title_len": 54
   },
   "compare/belgium/index.html": {
    "cls": "country_hub",
-   "sha256": "8a57de774ecb03b4c10fab8dffd7c259649995cdd12c329172b2aa6d35840a2e",
+   "sha256": "bc6795e24048db8da03c37e5812ddae472051deae44d4b32a0925d5f29ef9d4e",
    "title_len": 51
+  },
+  "compare/belgium/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "31f4776974972f3ba23395084d764ef32002c0c99329506657f241550dfcc8a6",
+   "title_len": 52
   },
   "compare/belgium/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "26617115e61a9b237f85c075e19eebdd917bc5bd650c5fb10542ef7a20efc3b9",
+   "sha256": "f2bccabd319779c3769eced232d63b23002cfc1faa6d77631337e0e774152b8a",
    "title_len": 51
   },
   "compare/belgium/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "22d6bf69c9f44c1a0076a461383c3f0406e54a8b5753c798f6787c34e56e8694",
+   "sha256": "12130cd619d9a3f546bc7bacd95713431f9fd924d89bae0c27506b117b266151",
    "title_len": 51
   },
   "compare/belgium/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "89322eaada73d5180bc1832ff64a9229b73abddabd5c73cd4112231f7c4ff741",
+   "sha256": "0e05d1778d8b841067e34c5bf9ac336d36a080e57f3368c4e38154cd40e29d8b",
    "title_len": 52
   },
   "compare/belgium/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "b11479f53ebb2fa067c1585d71ce30b02abca2581887ac3a6f49a9cfc3e01339",
+   "sha256": "01c744227ff2becf9aec9cf40f484e97a5baef14af8ee8b0fce518dd10fd7000",
    "title_len": 51
   },
   "compare/belgium/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "2dd6dfc06e382601735da1a1251033afffbd49a6e635dc2ebad09bdca6cb6057",
+   "sha256": "ddfd69ad3a382e9e62f6cba9089c415fb17fe557c6df4c70b101c6ab58c192f7",
    "title_len": 51
   },
   "compare/belgium/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "115f3c8346368b80d5a822512d18eecfa24124fec37b4cc20e18a2e38c0ae1bf",
+   "sha256": "2b04ccbb065cc063439489582fd3fd864b850c01339e10f65a7ca6b22faf3787",
    "title_len": 51
   },
   "compare/brazil/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "469390eb5e0cbe18402624d89701e8cbf0855a13220cd318b0afd227a6377fc3",
+   "sha256": "232cd7cb157a276fe95bd6c64d89b40274817384a95295b55d570a0cda31f9a1",
    "title_len": 51
   },
   "compare/brazil/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "d240a9dbba7167ad594a76bd3e0166f9eb3ff37ffe3b4c577454199d51b5456f",
+   "sha256": "092fa7dc53c0c1deeee0049d1af9e8c92d91b20b383c5609684dbb07c084d8db",
    "title_len": 51
   },
   "compare/brazil/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "c3f698ae83b2f74a95476309facf6d29250ac8d7b1dbd426314f3f45c5aa3e0c",
+   "sha256": "e77be88be28eb33b65d4a16df6531227dfb6e70de24c098a95e185dbdd27b76f",
    "title_len": 53
   },
   "compare/brazil/index.html": {
    "cls": "country_hub",
-   "sha256": "2fedfa42fd8855362dad0989b6ee1e69c2f769cfe4013ec09c317306c1f1b83c",
+   "sha256": "cb03a0239959962cebf667cb9436bd5d2c5546a46b2486cb96f4a06d28748a76",
    "title_len": 48
+  },
+  "compare/brazil/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "9d94562edeeb68a7f15ec7c3fbdd4e0403ab4003a79b96adabe36d5dc38b7729",
+   "title_len": 51
   },
   "compare/brazil/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "7465195ed826e9ed45ce3ca7c7db4c65338d2de50d0ffe9e57b8cb0b97a846b9",
+   "sha256": "cf8e32e3290454ad128f86f3d0b4ec13ecdae7de5412c6e61c7eb9c98bc2e55a",
    "title_len": 50
   },
   "compare/brazil/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "b76800241987bde37615db06651d010244fe6964d27a708a4df3ff2e97427f36",
+   "sha256": "8189258e5a61052ae0950f6e3c891d8f6c0275acfcb77ca7a88b49410758e107",
    "title_len": 50
   },
   "compare/brazil/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "96ca15ef8fd806121933873282348ab28d869cdd5bed9f92b3ce16526f1b1199",
+   "sha256": "868b617be5db0c43a985b0141ddae0a4086e5cbd8903c2c5687730d0913b566c",
    "title_len": 51
   },
   "compare/brazil/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "d1ce439db4ad7ac90de915a9e18c47266ddf4ea09df541306dd2b548759bb602",
+   "sha256": "aac86e8cbb3799ca515dd1b8ba7dadf4c212b05731267bf872e011d89d520bd5",
    "title_len": 50
   },
   "compare/brazil/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "39979e7a7cefc65666b6e04fe989dbe0c333c4b622e280c621ec15f435643124",
+   "sha256": "3857bb9cccaca056fa275c05567d2233793c726fdf77d2ea0f2f90ce9c596464",
    "title_len": 50
   },
   "compare/brazil/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "21240805cfbb9b26ffc4520f6318036771166c3f2362cd237dc1bf0232295c85",
+   "sha256": "2bb7089130d3c35d978faa49d0069950b0e5662ccad8784e663eced27e651c18",
    "title_len": 50
   },
   "compare/canada/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "bf10a9dff75b59a817cd224972f0891723d6590527e020c8c458e7d132ba400d",
+   "sha256": "6b5ade033249a819bb377eea248b44e60293761a03e7bd9d109a6b1c6b263293",
    "title_len": 51
   },
   "compare/canada/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "fd053a39e44abe371664e12fb006b635488b1f21b8f2ba6a095e73c8b0f6e67d",
+   "sha256": "564fc93fe3c108cd18a1bcea8a94970b036f1c293cb7ff5b1d15d6ffc15fbca3",
    "title_len": 51
   },
   "compare/canada/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "6a0cf16f0ccf70f04baff08ef3afbf2dbd5383f3ce87d24006303feadacc4a35",
+   "sha256": "bae4dc45e0978032074d73f2f1c2bf5fdfedb8ad3cdb94ac991911a88f9b00d1",
    "title_len": 53
   },
   "compare/canada/index.html": {
    "cls": "country_hub",
-   "sha256": "4032fc86c302c70321c55958ad66de5aba9a6b1e1970b55dfae3f649a19bb718",
+   "sha256": "60db29decd36bc2c1d0d378b7e61184feea3963afe716ced45aeadb21aa24a80",
    "title_len": 50
+  },
+  "compare/canada/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "00349238f49728a72f51060c4f5e84bd921c97c461ab58a222e7a120a0145b3a",
+   "title_len": 51
   },
   "compare/canada/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "1d533fc12d4cad6970247a92b22f0d6b5c9cd0e635df4c5cd0b0a750928695b6",
+   "sha256": "0260d8c51f31b0bf5a642e663a7417b20bdea0b2a029b24b1a870a71bad06a57",
    "title_len": 50
   },
   "compare/canada/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "38a49b6231ebadfa34f9ce90c11b04caecf8001e6f5a19e410593584c33050c7",
+   "sha256": "4854587cbefd508983ca9f83a9c5d14b9acf2bc6ceffe185127e0472b1efcb07",
    "title_len": 50
   },
   "compare/canada/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "ccbea169bed20aca69b5f5208bc0bad65ef739725c48106869f0881f3b90ae6d",
+   "sha256": "e9a52334acbf65a78b0acea258fc1da3621cf756b5419bdb61e0ea64c8d53bad",
    "title_len": 51
   },
   "compare/canada/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "8125064b5cf79df86af4b7cfc98d51d9c2734250a46af9ba9e5e48d38fbbc620",
+   "sha256": "fab45176519d9fe266f495cbe29d94e57a1e004f9ac2df5b20e54b06d56c15aa",
    "title_len": 50
   },
   "compare/canada/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "a781ed180907b8ba7e0dc53951246a6ba9143feb9c19c9eb363fd7fdbcab60db",
+   "sha256": "5768f25c69f40717a0ad861b899fd3e5501e829d0d96b7c867b60c66a91f687b",
    "title_len": 50
   },
   "compare/canada/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "d6d2981f5fb554e56f029049ba20b687a86baf9d062e9d300c3deaf3cbc4a4e4",
+   "sha256": "59484d68a252a63740ab49cbd18fa8bb94851398bd222f1f0387430d5237c023",
    "title_len": 50
   },
   "compare/china/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "f231dc2358d4db32b62a986448de45045f888b43d2baf60a85db5b55625d0e15",
+   "sha256": "5a4da42de55801bca268e453d1b41882c2d02fb4b950e02fc1d19c1a157aa3f9",
    "title_len": 50
   },
   "compare/china/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "e43f1c1d8049aeb9fd690a3cc069b285f9f82e0d710c492f4ea678396dda09e9",
+   "sha256": "7b67f11f8492ee5ad36447d7a541961cd2782653048793adacc039ae4ba0f145",
    "title_len": 50
   },
   "compare/china/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "9b848a56dd9541c772db8ae3ca7117e5c6f880c22aa0c56ea9c9f3be70e44221",
+   "sha256": "e1a8907e26d8d073d5eb69f7a1fa9883793dc0ad1a9fb5b2012a888b32520b78",
    "title_len": 52
   },
   "compare/china/index.html": {
    "cls": "country_hub",
-   "sha256": "21174c4ff2fc80b2dc97b797d6423c9c5e285bcce2394ba028a281e05905bf21",
+   "sha256": "5ca219759ff2923cabbc067234a52a9076db5c2acf141d6a50218181b0f4ece7",
    "title_len": 49
+  },
+  "compare/china/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "6acdd2c0990a3e1d6df114c126a554130115f2494f49a2b5647f7e07f1809829",
+   "title_len": 50
   },
   "compare/china/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "ba412c94588060f3b9de1b98fec4806a57c9d1b8770e49bdbb4e3969f5717a46",
+   "sha256": "27825f4e0cfaa828d56d4245f5b8c02a5ae1a2dbc24897ec8754e59fb39b67d0",
    "title_len": 49
   },
   "compare/china/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "a9e018849119b586e88060c2d0f83c794438df45a0d9af881f7d5520da8f1df0",
+   "sha256": "bc1dedd6319be9989b316d5623d84d95e7729195c8c2fc8dbc33a69c55b95ac0",
    "title_len": 49
   },
   "compare/china/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "588d154c76e5af1a7403f9a39ff79fbfab85ac98b68b032823a72901c6a5f81f",
+   "sha256": "aa0cfa2e5462d11ff79e1db40c4ad6e1a2685b1a1be622ac0bdd3525033ce44e",
    "title_len": 50
   },
   "compare/china/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "2afbed1df909b7ceb192f497102a757fc148268779d3e49dc2d12418ea966fa7",
+   "sha256": "fddbcde5ea21115ebbfa477a798b4ed844c27e8ef0cd42f7a57906e2ee0cb3b3",
    "title_len": 49
   },
   "compare/china/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "0a766693309a529776d8cff4a1d8a4ce0d140e04ad92a929bdcd5b8b578ad8cf",
+   "sha256": "0e20678646daaf6a51af2b682c0a350cb41cd8ac282c5fe452b7bfbdcb7e1b64",
    "title_len": 49
   },
   "compare/china/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "fc5eb9c40dae818f4848aa1849a41d8cf91a722b19bc41d91f09e78f78236025",
+   "sha256": "09304c1a991808e0b71282b689a948eed0a6c0dc38d611a13455d406cdaabb2a",
    "title_len": 49
   },
   "compare/colombia/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "24a9843f2d74cf74693daa826a1e0667d95e2421b692be10134747cf31c1f5d6",
+   "sha256": "577ecbef783a482d72faaa3972f51e8a1e6bd3ccbcb9fb09501b37516fe45c75",
    "title_len": 53
   },
   "compare/colombia/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "002491998ee1b39f90f7a0ff76afe322ef0ec84428ab6bd16421c9ce5c7f1786",
+   "sha256": "ff41c2dc48c6fa9a60870f2f8b9faed40f889cd51e43ff5fe7e30c2defd7126d",
    "title_len": 53
   },
   "compare/colombia/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "593d9c8334adfdac4fc0784339f7c0142f935135ff91d3a1291d599d5798e52a",
+   "sha256": "d5415ff7453d014a6828bfb58026a3e344ea2de96a37c56f56e679b882fd9da2",
    "title_len": 48
   },
   "compare/colombia/index.html": {
    "cls": "country_hub",
-   "sha256": "dd794915a2f4394288da39935d4d7d58f039ba00680983127cf1aa80359b13d8",
+   "sha256": "5644468cf34800708079911e4d43632b39518c0ce263f597ce0dfed3ea564f80",
    "title_len": 52
+  },
+  "compare/colombia/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "c3c3c2f69f30babd901b07ed767f7f8c183c39b99fa2db0af54527d8c9b8b7fa",
+   "title_len": 53
   },
   "compare/colombia/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "a3bcf4b26f58c6d618f1145d47972b19b20b666a24d1f9b6f9e7056911bc840a",
+   "sha256": "5d8199d8577a4f9ea579e06cf07d08fa8966f0f7899c270eb6d8f19842477222",
    "title_len": 52
   },
   "compare/colombia/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "54d859ab50150f04b4b1004c95647baaee8b5fbc79bb3dde94f32fe98b34eab6",
+   "sha256": "f288d4027c219844556162f22400284dea18bcedd63aa33a753f437810664f75",
    "title_len": 52
   },
   "compare/colombia/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "88cdb63a2b837004c94eeed8e0f566f705aced3bb9852ee00f9ba951f4f46487",
+   "sha256": "a26343caf2aa3a05e091b952dea18c0f70268cbee608710bd9e19f72189a6494",
    "title_len": 53
   },
   "compare/colombia/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "446f0a63911c65e52b656b311cc95fefc95e6c4635235627ec018bc3a0e401f5",
+   "sha256": "86881f0a69c8b10ec0fd82bef8a7dae5b21828af813749061a019c039d750b5a",
    "title_len": 52
   },
   "compare/colombia/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "483c67d471eff0e2e2d9eafa7fe3220d854842657e2876081a65a57d3c64013f",
+   "sha256": "604bbeffa326b305457f28b4beb6d6bc708740b9d18b1efe1b293ba4d76b6a76",
    "title_len": 52
   },
   "compare/colombia/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "84c1d7c2746e65e5007640d44953cf95bc8a1f21570dab8c98aa59b09b8e97d8",
+   "sha256": "a97c0fbaad56c03c54eb1fa83ea81c893ce63552ccaec1ba67bb3e2c855cfb7a",
    "title_len": 52
   },
   "compare/costa-rica/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "deeb26717a4f68bf5ca64f562128e88a0e3af4cdc1dad656b9c9b03070e43e5d",
+   "sha256": "8a72c0c94101787f03d5c82886ac1f8c9712fddbb144815c47e9397353d3eb05",
    "title_len": 54
   },
   "compare/costa-rica/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "a066c8826ef7afc52c28d30c48e5e2ed866a34cf7599b12ecdde016933621390",
+   "sha256": "a2643b54cd837a76d19a889a5cba0a97971e3d64c8b2e9612cbf2df2ab4645c3",
    "title_len": 54
   },
   "compare/costa-rica/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "4b7ecfe8b65a38c5b2e5f9f67122e6a0bda081fabe7a132b87c513efc6114049",
+   "sha256": "f93102ca25df59c7f3ca8d0ead3b638645eff678c86634e1dddc2174a94b3ff1",
    "title_len": 50
   },
   "compare/costa-rica/index.html": {
    "cls": "country_hub",
-   "sha256": "10c8eed8d05f4b34c6317b8e7d562caac9553ade6a42aa333bf58ffa265e60d9",
+   "sha256": "4a19805fbe1d08ee8d0762ca6e8487986c0f15436e5e3763725c74e22aa1df80",
+   "title_len": 54
+  },
+  "compare/costa-rica/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "c2a374bdb51cb38cff1c74ddaa4e05a43fc767efd08baf5cf31597c805302971",
    "title_len": 54
   },
   "compare/costa-rica/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "5a786fb05ee40390a3871ffd232ec8670f90689950cf767435ad196d4cc59fd3",
+   "sha256": "fdaec177a4ab64e50b5b7282b30fcdefedc42fecfe0bb05604030405e27f7a17",
    "title_len": 54
   },
   "compare/costa-rica/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "f71139135a684af10d412dedf8a6dc9e1c877961c3cf55a5f13dd2589b4f5e8b",
+   "sha256": "c5fc6519b19a53676d6d2000de933827749667f85318a1f01035fc5798faf246",
    "title_len": 54
   },
   "compare/costa-rica/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "50d932c6adc9ba4a74ca5289cb4f8125f767a916a0e22649c97456ee1e22c533",
+   "sha256": "fa0a440da62aeca83f52dd2a4411f6928c368b75142741eb8558ffc9adc66502",
    "title_len": 54
   },
   "compare/costa-rica/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "27a0a82bbd5b76d771446c1f128ec3732de4fdb957c4819b7dbaa82ec23b8c8f",
+   "sha256": "b9c06c01bdcd2d2ed91f9de208ace37a85aa73c13b569a054248c735f12ffcbb",
    "title_len": 54
   },
   "compare/costa-rica/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "fedf5849bf0c653209fe76d78c1557222186d2a3cbe730e267a7527a32528c73",
+   "sha256": "187c2dafbbc295698d99b280d930fcb7577acefaa87ede3ccdb12d102636f2e1",
    "title_len": 54
   },
   "compare/costa-rica/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "84764e31c3c999bae75ba187a7773ebc8368656c9085646b797558949fe1e4fa",
+   "sha256": "c2442a5b0905a2f1b53e9ed566427f70e6d89e73f36b52790b8714285e29a02e",
    "title_len": 54
   },
   "compare/croatia/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "c86da0945d54205d9c521d8d85919525b9369294b9df578d96eb74a14d0e29cf",
+   "sha256": "c6d5ed9d9895da8a3eee43c317198a2d089b4260b7c9e2090dac999f4626ba92",
    "title_len": 52
   },
   "compare/croatia/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "b272f30dba8a76e7c25e5955e32183c08e35da93faf788f465ed4c48a93d8e5e",
+   "sha256": "0583e2e5db4a48d107313f3cdbea0f63b41c63ba0b0c0dca81e91d77303bb08c",
    "title_len": 52
   },
   "compare/croatia/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "66b480b2e9c00d7bb6635f07d322e8ae8f7be355399b22cbe1877eab420129f2",
+   "sha256": "ab914ea180c70a4e4141fd7e2c157ab26ffed1c0b320f2a5c63165eef97eb206",
    "title_len": 54
   },
   "compare/croatia/index.html": {
    "cls": "country_hub",
-   "sha256": "1dc1dbce33979a343d38795f7ffe9344b973648da86a8db6bbafc900b490c0d8",
+   "sha256": "94c484833fd622a07014a57ab31365d0b73d28ff0af4b93a988f9bf0f07a0cd7",
    "title_len": 51
+  },
+  "compare/croatia/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "d5e4d452337a644a452c9e334a2709e3145a3c0424e0c5234a134c536a741ddf",
+   "title_len": 52
   },
   "compare/croatia/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "565865ed76b8a9b4da55d1c184c5fb2c3677510820ec0f628b888b6ed7fcda58",
+   "sha256": "275e4614729afc461c1c195dd06a0b325aead3fc8e3222173b8c4971cf70dac1",
    "title_len": 51
   },
   "compare/croatia/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "e47bf087087757d00feacdef4188027a542f4eb825ed78646a5e867798f43354",
+   "sha256": "6fefab34fcf01bfc33a821efa509c84b2d34b3048c987819b1036fb253882f5f",
    "title_len": 51
   },
   "compare/croatia/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "40299689c6c438d86d43cbc61ec76b5fc64dc40aba4949b32d8f387f6c1eb7d6",
+   "sha256": "929390d315af6fe57e124cf7a3b6f650816e8b439c357c4eae8cb37eba89e977",
    "title_len": 52
   },
   "compare/croatia/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "0648878010ffb20927b2bec0adb9f7fb1d6c8f3f8c54478e318ae004b4be60ff",
+   "sha256": "e1e3f18d39bcdcdebebb7c75959ef07a5e10e3e5bdcf04cb1f8759f30c358805",
    "title_len": 51
   },
   "compare/croatia/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "cef3993b6e568bb7fe2b5652751d8eedf8f06cc5c6dc280d56dd02151c55fb00",
+   "sha256": "cc9c9cbcdb11b9b9311040340de17a64e92548dd19ba24f4fa8f33559e1bbc63",
    "title_len": 51
   },
   "compare/croatia/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "e24e619b658c8fc5a2f0a9f921033bda2a32cabdcfea691e3cadb89d9593a043",
+   "sha256": "05a5f3052260a2d117e0211a3831761daf23d3a4ccf07ea0e4e6225a8b7abc23",
    "title_len": 51
   },
   "compare/czechia/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "d6d8a2f639a7b6ae1d5ec6b444c9c559917c2fe1804f1a5cb7d8d7353054a716",
+   "sha256": "57173c5e029db67a7e2d7a8844b297dbb6b0f584491b3a78f5da0e49b837949d",
    "title_len": 52
   },
   "compare/czechia/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "5691b72b7e30c64eb9bec2cd3e6bd24aeb35f596c6f2e4c7bbceb736c53e3b2c",
+   "sha256": "f89c3d8433e125f3e89eba6797c602a3e45686eb35aa52e610f50786d76825b6",
    "title_len": 52
   },
   "compare/czechia/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "8032412e4260afcddc7965479308080827bc87ed90fb250935981c0431f3f615",
+   "sha256": "a96d88b5af947753ca098e59e663ecc0bda32a9c04d24d8e878d39666a047a33",
    "title_len": 54
   },
   "compare/czechia/index.html": {
    "cls": "country_hub",
-   "sha256": "880ac18f83de58147d9ccc5f40227c43febe1f82907170802922769bf3381e92",
+   "sha256": "b2fb10ecbb45bedb049f67af0b7df9d7a9864cab34172d8c1fcb315d168858a4",
    "title_len": 51
+  },
+  "compare/czechia/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "816c5a43c1e841e0f750ef28c858d74dabae09d21f19643a4cb457c0ac390f68",
+   "title_len": 52
   },
   "compare/czechia/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "a181c743d004446b4adb49a7112b781a598b88fc77c824920929a5a08f5e74fe",
+   "sha256": "302427a4a672874354a07e9e69e7a8b9d013fbbc9a24b95a80514f595c7b65b8",
    "title_len": 51
   },
   "compare/czechia/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "18789e61a5db6fcaf34d8c971ef9355be453dc8ff32b713f5c1fe5f8add131ba",
+   "sha256": "7da681cc5e4a077e259fd51afea01edbd422e40ba1e50ea31c65ae4c73874717",
    "title_len": 51
   },
   "compare/czechia/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "b04897acedbfde083210edc13bb6fb0798488dbe2108b7987307a46063f33113",
+   "sha256": "05ef7d4ac4aca2a0f9a781bd1ccf0486aadedf6201d8f5869f6640b39439fd10",
    "title_len": 52
   },
   "compare/czechia/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "c00109f122e709d553777ba2464b6e5f356a12a81e25460b80a0221efda2d190",
+   "sha256": "6470a3c1d3c1604d6633443c4d4c2557812db02fdc910dc1d851a73008e7dd84",
    "title_len": 51
   },
   "compare/czechia/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "0aa2276afabd82893e2b74d941ef443db56b212d5d31b4204d53b638973a4245",
+   "sha256": "2325aafd96671e39b54ae44306ce26b8bd910abe4c12398e5bc3cc6b56ef4240",
    "title_len": 51
   },
   "compare/czechia/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "4659f0d73e8a91dfddd61bf265a9ddb9b94f474cebded988cadc3d155ae4dc1a",
+   "sha256": "5fd4de119cff33f601e2567a57a2038db6b3ad416decbbe5e70d5f7e699903c4",
    "title_len": 51
   },
   "compare/egypt/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "9c6d46f2d90e3a9e330f40e272fdcd5b8266325b79745afb89c720ff6e883611",
+   "sha256": "ce82b54ee8335f607c075f430b853d24282c382d8aa67769352a2b1f5be745ff",
    "title_len": 50
   },
   "compare/egypt/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "f2020073629b916e26fde6bde0d631fdd1ba402215a918848e015185a37de9ed",
+   "sha256": "1994b21f6760312dca1001f4c2a58aa9e78580a04f450ae833f727c784d7c7cc",
    "title_len": 50
   },
   "compare/egypt/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "1e4f89e9a31b2dcc81c27870f7d9aa67cabf8ab866de90a2a2a7612dd7d164ac",
+   "sha256": "d8426331c925b82bb9632d3a41ce2445a1b1c19c7e77feb6c7b968eb63c34136",
    "title_len": 52
   },
   "compare/egypt/index.html": {
    "cls": "country_hub",
-   "sha256": "9a9160520e9d3c9e670a1be3b0b05cace76e36888010b4152540d9ce78713123",
+   "sha256": "b5c4e052d4870d698c5e5a610e012c81ba83d0193617306f3d44a6bb81478de8",
    "title_len": 49
+  },
+  "compare/egypt/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "2aa9d4191c8ba42d97029bdd9d59140f33bd31173b7866dc42af08d172683f7b",
+   "title_len": 50
   },
   "compare/egypt/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "419d010e7d9c10f207b7f23c097bbf2946f8eb26f242f40903116ab7b8a0edd8",
+   "sha256": "1b7590ec85021f122ad2464b40aa2e4352434e97bb98a3df154e910712ff559c",
    "title_len": 49
   },
   "compare/egypt/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "3f85f5fb8a0864a356c378bda5bcc497be1aa94d21c494ecf4bf27acb5b42e34",
+   "sha256": "b3975b0f850c4460a187ba872a29ecf97c91e7252c403f8f9f3a45933aae81bf",
    "title_len": 49
   },
   "compare/egypt/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "feaaa3038671a194083dbd6e7fe08cc6f765a40abffe6c49be43f684d7bbd986",
+   "sha256": "92304465d4416e6035fcd18384f011739cdb0b3a5b82f688438b829bde4d5f23",
    "title_len": 50
   },
   "compare/egypt/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "c642752f535273ca40992474d3de470798bcd45474abd0b2934a5a9b45718bdf",
+   "sha256": "6f74794312ee1c7339a11716fdc3d29ae45cfcd09c0fd032786cc5be7d503d88",
    "title_len": 49
   },
   "compare/egypt/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "0a9baf7abe9f0317bbd99a424ff8b320c4f09db8678355104b9819fef9caf1d0",
+   "sha256": "a146a54f57c7919291518f22be3c65d49b37f481489ea753dfdf4da16c46b0e6",
    "title_len": 49
   },
   "compare/egypt/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "8a77d9c1005b22f0385a4286d300b9a6efc873e6819476bbba50c68ba5d4402d",
+   "sha256": "0d3c36d033d1a16774ea860f666df95c04ff97cc33458ffda301ae8be47b4f25",
    "title_len": 49
   },
   "compare/fiji/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "1a95adce21bb68b47e816b84008ea395e0615b1486a63602ad8361db8eed4269",
+   "sha256": "2fb4468e619a363a5b2a71e43ccf855b8c6368f935163700f2eae3b64af1fa22",
    "title_len": 49
   },
   "compare/fiji/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "045a630e75e057163f1f74def15c72f3b411241d6a9df75dceef327d1133d700",
+   "sha256": "0610ebe4f33e95fa4063d1bd40e223caf1fe9a9ecb063774479d94a52457dc03",
    "title_len": 49
   },
   "compare/fiji/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "5aa5155f67d3f34c7e44ca96b66e4ad89510c7ee8351cfdf9081fd73ad141edd",
+   "sha256": "899ef7d1cdf01087f7f8ecfa6ce392b28199b143d9fc54825f1ed09f0342a215",
    "title_len": 51
   },
   "compare/fiji/index.html": {
    "cls": "country_hub",
-   "sha256": "939fe74ec5efc4cf150d8a1383ae60231d4df2ce070401ae3d390841dedbdaae",
+   "sha256": "a42a45852d5016d63cc5f497730a11696661aa7bf8e797e00228a774ad625ad3",
    "title_len": 48
   },
   "compare/fiji/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "9629cc00e640c16558a638f737fe5bff5cdf45b2bd496ec83fe86339a3114bab",
+   "sha256": "ebaa6f6eebb5dc64c4f854ba473cefefd82fdac9b883f3a608c8506cac5708b7",
    "title_len": 48
   },
   "compare/fiji/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "c816a1951f851a18a2715bc5ae72c27b55f47a76074be4aa87a6098a2740aa91",
+   "sha256": "e883368a598851a84428d1ab74565a8ab6beb6b9d0d59e6e1195b4d3e89e8164",
    "title_len": 48
   },
   "compare/fiji/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "53f98702ff017b942addb7e29a303688fac166e68dd3a880f209e7bfce3cc85c",
+   "sha256": "040c6275a3905ceb6bb667ed274273bf9567172378eaafa800931115ea096961",
    "title_len": 49
   },
   "compare/fiji/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "a16b8efb851f5e9e3a5503c3c01e28ee22c07035c36a7dce7c63b5f9d509858a",
+   "sha256": "13cc669ee7ab29b6dc36723d80910ce3e406d00056607c24ab0070aa885c7dd5",
    "title_len": 48
   },
   "compare/fiji/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "8edcdfd09cb6254d208ef9ea6b8d60cb244a7c1541575d72f172f849d6050c2e",
+   "sha256": "93124f70dd1ab85ccba2cab1ffad3882fc7ab91cb4a57e7f75ee46865114c977",
    "title_len": 48
   },
   "compare/fiji/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "ea624538605c084db79566d1f28bb1c735a82aebe35827b14425c6bebe96422f",
+   "sha256": "e46ef2df26ef17256517c0938f4b9b33ff10b8288d9c20f630ab8f7b49b6edf4",
    "title_len": 48
   },
   "compare/france/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "544d21ec15c4426a0d7cfe48eab2db579096dbc091c501cb00f9422ac86f944f",
+   "sha256": "b716bd4979474db01cc1af520864e191441dc985ee721f921cfc055cc64acf06",
    "title_len": 51
   },
   "compare/france/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "8774929e777630da03548e98ff8e9d0baff538b9662a5798ff983d7b87f52dcc",
+   "sha256": "01e0c4ea2ad297e5a17881d4428dd631493002bede8ad5531cee67185007b81c",
    "title_len": 51
   },
   "compare/france/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "9f94fa052f6e59b17ca6fbfb590bdd66b47e019ac45a39d252372302f8c62e5a",
+   "sha256": "b5c84e51573c0a9991dfd312ade7f6b382637cbe300a8f9547754385e633ce09",
    "title_len": 53
   },
   "compare/france/index.html": {
    "cls": "country_hub",
-   "sha256": "88bcd5244eed82db88bc4d71c895d6f70fe2f70fa5f0b60b717e34d856613869",
+   "sha256": "36593b568bdcb7b7097c832fe241d31a19129266c65bf34b30a91fc818cf97f4",
    "title_len": 52
+  },
+  "compare/france/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "1c56d61fff94749f01135089cce17692e4ee66ade684e793099edfe7aa7efee5",
+   "title_len": 51
   },
   "compare/france/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "165fa22f565c2f929c0fd904e4250f50fa4506c57b51f213485d31fce77f3268",
+   "sha256": "ee7b3a128b3573761fb2e64ddebf3d4a07f7c442e76933ef07e60a7db8746c35",
    "title_len": 50
   },
   "compare/france/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "9c53f6694962f7cdb0b5b364f001ecd62c920d5f912a58752179c0f95bca1ba2",
+   "sha256": "e6c914c3ff2329c7078665f08cbcc497db2532502628a4b377003ab5cc87aa1d",
    "title_len": 50
   },
   "compare/france/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "413067c050f747e5c0a476691701bf295a40f4ffb03916b9dc115ac9d43fff9f",
+   "sha256": "4051c38f245b373d32c561de4b1d9adb875c240c9fe9891d5c548596eb4caff6",
    "title_len": 51
   },
   "compare/france/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "8cab0d0ad3555f40bb83d675374307c6d3ee641620f9919d003318ef4b510180",
+   "sha256": "0cc9d41733b5eb9ee57e40b9bb3bf93940011bb8d9b8ba617e9bef9f9f9f5f7a",
    "title_len": 50
   },
   "compare/france/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "01ed9d8227921066a2fbba977b2ccb9433d9700005723f6b318b474183ff7c66",
+   "sha256": "70f0b0573c9df6c00bc049356ae3e70524b5498df1615424aae8519a91513bfd",
    "title_len": 50
   },
   "compare/france/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "e2c4a61f00b062689e3097d0a12e4c9ad6c8431d25e5a0e663f016ef1b23a307",
+   "sha256": "c0f8d9c7dc039c173f7131c6e3281446969f59447b65824d40bc96bcccdf9364",
    "title_len": 50
   },
   "compare/georgia/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "577cc98f552482882e75aa4882928a725a4737cc154c40aafc38836ea4447bb7",
+   "sha256": "6c42bbf5cd2f9f4a5544bcd1394585cbd593e94a66a471ac47c2cb0dac109420",
    "title_len": 52
   },
   "compare/georgia/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "016111d1dd9c6cc55143443677fba34281421de7a982614009846038c66093eb",
+   "sha256": "899b2791b2f7aa94e537e5ed75171478cd2a3f9e08317ab7494de37c4ca26a9c",
    "title_len": 52
   },
   "compare/georgia/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "74e03d34bbb940dca7dccf65d125cec2e766589c8148894ba97f37a92913396f",
+   "sha256": "d3a7f1de97b35bb94ab4ea28932598b2c9f84e37dba94ab230422faa030b9c05",
    "title_len": 54
   },
   "compare/georgia/index.html": {
    "cls": "country_hub",
-   "sha256": "a298f8e72ea98b3f6c8dc2b6cf52da943580afefd6f07bdd7d200efa4afde82f",
+   "sha256": "f6d1e6e4e739ec51bde270c643860e7a6958faea33fa6121c9763e05789bdfcf",
    "title_len": 49
+  },
+  "compare/georgia/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "7f306557690cc59489c6eb5490bd2532be79b3c08b62990dbe6ef12e8beb4e8e",
+   "title_len": 52
   },
   "compare/georgia/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "926bb4e392c51e007388166ae1905dff1eb7951aef4a64df69cda1b7f7998add",
+   "sha256": "062ff1531c9b4494e571a5ed8b860df2cf6343f091e5027b5b4dede2f66203b2",
    "title_len": 51
   },
   "compare/georgia/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "2631f6c29e01bf11435b9b194b42a2e0655777267d0b8c20dbd66a17ff35c9c5",
+   "sha256": "6289fa7ceaf69533a8a717b636ebe4dc078569ca3418c667deb44dcfd92be7df",
    "title_len": 51
   },
   "compare/georgia/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "929bddabfde175b6e4e54bcf8477377912c1e67549fa0b4dffa997efab76a46e",
+   "sha256": "171faa7a31168e4ba62910edee2557f5cdccc66270a0a240bc847b7f3a42dc5b",
    "title_len": 52
   },
   "compare/georgia/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "a45f6a99d60cb81ec8c69859b2e4a2dda0848c978e02a0b1c543eeffb85009c8",
+   "sha256": "709d47f869ac811fa347bf5af07ec620615ac611fa4929188bb9888e1f6c1693",
    "title_len": 51
   },
   "compare/georgia/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "3b3ac82f837ea91d8456a22ac464277b3c9090fb0f070c91426c6f65b4b1d279",
+   "sha256": "7e95360aa6c91fe69330f6a3f2852f4cc4e0ed17e5d8ad94f62036b18cb52fbb",
    "title_len": 51
   },
   "compare/georgia/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "09bee36f62c2f5873b1b3eebe1732c9eb6c3d31e3aac6557627dd5ed1215aa15",
+   "sha256": "afaf1d0c68a57ec44da7a593effaa32a51e6d3d383ae2df89c9fa4630cb467c1",
    "title_len": 51
   },
   "compare/germany/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "80b9445334e662093f3b00a0358dffd95928be62890cec9bf1c6b86dad8587b9",
+   "sha256": "8678c87ee4adedf9acb5472b3d929291c72ac2f71e65485a86be74d2124b82fb",
    "title_len": 52
   },
   "compare/germany/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "ec54206d08fa76ec59af442c06b8354535cb0ec4bf912d6f01ac66d246151815",
+   "sha256": "ae094e9a2847a56a5a760696ffdba9ca8f3df22fd5256e5ffdda10d646b1fee2",
    "title_len": 52
   },
   "compare/germany/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "962b2735163aaab554526e24286e43f476fd04ca47e1ab04edc765b8fe567498",
+   "sha256": "a6f5556d7fab18ae32f573eb2a1900a7edd4393e11001b8170d15c6f1178c025",
    "title_len": 54
   },
   "compare/germany/index.html": {
    "cls": "country_hub",
-   "sha256": "e2290eac53194b701e7a4c02245d9d48a6562bd7c10b9b4d0cd22e976a1a917c",
+   "sha256": "1fed77b0443f0057f0e7faf947641f88a7df5ec67dd886b2d527a84d7e0760db",
    "title_len": 49
+  },
+  "compare/germany/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "10d386d7047d9484a9dc443545458a91d809b05c6febc0f71360858730c1a031",
+   "title_len": 52
   },
   "compare/germany/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "9558b747b20ba55cc26f0a34c09053339c9a94279a97104e19fa95d9b77e1fbf",
+   "sha256": "73db91d8613bc04f356ea4e10854f7cf88b99d0893e5573aa88f845da43fa932",
    "title_len": 51
   },
   "compare/germany/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "f0c2d8f30909636efc86c0628f47555cbefda223906a99cc3bb62d24eb99d90f",
+   "sha256": "f57e3f2c266d8b303a713c63d7ce159ef44d79fa019e2e5554287bae52656d3a",
    "title_len": 51
   },
   "compare/germany/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "d16cff4a58016857d3e694646f548b60d82c4805af542da26ec8e73a3d6ba53c",
+   "sha256": "7aa85195700ccd0c872c196d9f382e43b954d20f78e6da3710679831fbb784f6",
    "title_len": 52
   },
   "compare/germany/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "8ca6625d1878b6d43811a46df008f65471ca4842ecbc33efd42fb82628a1a431",
+   "sha256": "e99b4414e8d961ac61de373a88c0b2cf08f6dfa6d180a1af27708c36b322fc01",
    "title_len": 51
   },
   "compare/germany/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "88489d76c8c3ab238c11ec30624116db1cf1c06a14e422c1621ee41b92426d44",
+   "sha256": "2f03357a195feb918d9cc0b3f7299ccb08b6325a2b77ad219950b3f92237e8a8",
    "title_len": 51
   },
   "compare/germany/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "de42e6fef10807ab469fc125af3a08d8cfbda06952365239ff4c48e6a457e148",
+   "sha256": "335e3d88d52fea8843a6b733e69f09226fbaf9a3034c24e01f1692b9c4b33298",
    "title_len": 51
   },
   "compare/greece/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "9a73e8d6351289479a7394fa9ff8a335689612fcb078685392b091a23ee7f892",
+   "sha256": "cde3f5ab7aa4ec0f735ae3ccf84c1b6ddac7d36cc940cee837237d2352b44fba",
    "title_len": 51
   },
   "compare/greece/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "11fcb72a26b55a0eeb17cb564b21357bbe4449b2ee8a3e76ac64d2a6775fe0dc",
+   "sha256": "488dfd88f6d09f172a94ecbfc53be57da0ff609405443f91ec03ca4238fdd488",
    "title_len": 51
   },
   "compare/greece/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "568023c95476b3bc4dc7dbfd09d4d046b69aa417d4e4c6f16d2723236922e1cb",
+   "sha256": "f833bc774e3aadddbbfb064a1a71214c1c1250496686293d0b21c37b29146019",
    "title_len": 53
   },
   "compare/greece/index.html": {
    "cls": "country_hub",
-   "sha256": "12e0418a5aa241ee970f3b32003ca789c86e716a81e81e945444777962c9030a",
+   "sha256": "c4d1fc9f6f1b0a2b2d07600aecb5e80332204951076d708ea9effb8aac70d630",
    "title_len": 48
+  },
+  "compare/greece/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "e24c3aa1b79ed94be6593686d18f3697a34acfc5e3508ca95c31245ad3c66dff",
+   "title_len": 51
   },
   "compare/greece/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "023c66d3a3379acc2f5bae58234058ab9e1c390ee377f97feb6f746141118abe",
+   "sha256": "76c055617eceb967fb5395f1099d94b7fde50152d80edd181851befcc0a8e492",
    "title_len": 50
   },
   "compare/greece/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "34e60fba7d4547448768ba3a266be9ebbfa20709931c0d5518a7267072cd54dd",
+   "sha256": "1ae14f38c2520d24c18219c98d765c3f6650d061bb132d7be4b1d6c538b1b775",
    "title_len": 50
   },
   "compare/greece/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "4ff8f63c448b3833dff861f2f4bf2bcb8d999aa80f27179db4d9a2165dff67ca",
+   "sha256": "7ab9d1e54a29beb3e313d7e2a7cb11e8ba171573aee4f73597ea977cb6ab70d3",
    "title_len": 51
   },
   "compare/greece/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "b4df75dadee123f03c39dfe9d14a323ebeadb7feadc31557c9bef3b335a81af3",
+   "sha256": "93329ddaa88e3c066b623f22710e2721903a538109d28a668bd026d69cdc415e",
    "title_len": 50
   },
   "compare/greece/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "f70c90d37cec7cb501b899b7e2f0af5238527edc165e66c12ade275acb81883b",
+   "sha256": "9691a766bf137cf3f37a32f7a2768941078bdffe7c1409377eeaa235e4b46182",
    "title_len": 50
   },
   "compare/greece/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "a34efd49be4c5be26578ddb12610287518abb4e8f7d0a522e1fef7a99cf5f091",
+   "sha256": "525f0186ea2888619f8cc21045296c4bfffd6576ba47aca17159cce05d52afec",
    "title_len": 50
+  },
+  "compare/holafly-vs-jetpac/index.html": {
+   "cls": "matchup",
+   "sha256": "ce1f5e2b5f47ff1a71fb7877c5a35f6c7464b4e49ecbbbdff62e8414453280d3",
+   "title_len": 53
   },
   "compare/holafly-vs-nomad/index.html": {
    "cls": "matchup",
-   "sha256": "f54ea1efa7e68916fb8abec8aa470fcf8b0ec7c7455596e460bf5eaf942008e6",
+   "sha256": "fdd00a95ed9de2d689789141819fa2999e22dfabcdaeb5b23dec94bc8d498698",
    "title_len": 52
   },
   "compare/holafly-vs-roami/index.html": {
    "cls": "matchup",
-   "sha256": "2836bc0ce6c5408d1a66d93e807873578538dcddc97ed60239a602a47bc43bdb",
+   "sha256": "45ed2da1a741e302f8a4ed3048b65d1aa6eeed87206a2b5aa5a314d4d3448f42",
    "title_len": 52
   },
   "compare/holafly-vs-roamic/index.html": {
    "cls": "matchup",
-   "sha256": "fdeadf43cb12e514cb704149a3eda8631d46decd48c7ac40bf906436e8cd588f",
+   "sha256": "45767192beebc5984edcdaab3ac49dbd3810203b571290e84e1409473f210750",
    "title_len": 54
   },
   "compare/holafly-vs-saily/index.html": {
    "cls": "matchup",
-   "sha256": "5caf9bbfee20f48942ebf9d5f42b0b7289ab5e40db360a3fa8d15c0cb8c81e5d",
+   "sha256": "e67a0fbcea9658d82001ef73a36133dccbfc19eda4b3992084b91194d03baedf",
    "title_len": 52
   },
   "compare/holafly-vs-ubigi/index.html": {
    "cls": "matchup",
-   "sha256": "cfff500eafe5dcffb9bf180b331842764dd9cf9a99b9491d90489e8682ca896b",
+   "sha256": "d8955d7008befa1abcddf12ad8c20b49bbaf7a52170fae4fe55c001329160ae1",
    "title_len": 52
   },
   "compare/holafly-vs-yesim/index.html": {
    "cls": "matchup",
-   "sha256": "575e4abcbeca771e54169898f2533a5152fc71936cd76c25a1f428e70d255b55",
+   "sha256": "8b635162b56bf1ee0c629852586daaecfcad365379075f2cf49457af29631983",
    "title_len": 52
   },
   "compare/hong-kong/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "e5a5d84748e1a9585f0e62859edb19ecb7cbdca4a106d2a896ec669ec7d67313",
+   "sha256": "6d8efc0c0f7f11298e8dc4ef46481177e0afcab93c2cc04063858e249f76a03b",
    "title_len": 54
   },
   "compare/hong-kong/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "3734a897669090c602712fd3859e297e802432bd79843bfe7102857eac1fb183",
+   "sha256": "e065a5d47dccebe5fc1e292987fb13b70a2aa8558dc21f3f82920de776ed63d3",
    "title_len": 54
   },
   "compare/hong-kong/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "b508d9a93ca6ec82ebc973e1c9bf507fa338e019d1b7cdbc01f0fb9e983783ad",
+   "sha256": "3bcd793fc734c5aee5cc66b7f33bf38ac9d6213c71a57bb1ab846a3826340ed1",
    "title_len": 49
   },
   "compare/hong-kong/index.html": {
    "cls": "country_hub",
-   "sha256": "9ca572735afc2b6ef27dd69da536b86b444c087f1605785143de003dd1c93e6f",
+   "sha256": "54be09da996ad9f2bd7ec7196fa5a493a76edd11f7d175d6e880a127b2240712",
    "title_len": 49
+  },
+  "compare/hong-kong/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "337a2a421481937783edae1b2508b9225afc94102449d3ddce6fb3a28efbdbd4",
+   "title_len": 54
   },
   "compare/hong-kong/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "9f350b73a0ef2fec4e1ba84c75e195a2f9ac4f707cfe4a19d02256656a786e79",
+   "sha256": "5bcbd3e27f37602aa6afdf003a6ae21d0d8882e1ab87796b4e4841b4576fb9f9",
    "title_len": 53
   },
   "compare/hong-kong/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "1918a4163e4f9855fd2e108c635b2558019cd79e5648b57ce134e917690c2baa",
+   "sha256": "f829688cc1187a9bafadcf6d0a58f1c98f6c4fb2f08d608cd13aa1f0797baa99",
    "title_len": 53
   },
   "compare/hong-kong/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "55e53794a7de75d5430c3cc83903c2fa72afa694bfd0e522cac4da164ec895e6",
+   "sha256": "67a6c9c787ef11c8fc21c44954ff71206416c68990bded7567559e9597c975f7",
    "title_len": 54
   },
   "compare/hong-kong/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "7cb5b10500e377e89f8c29c801095e0fd7ed9216f45a7a57b2c6f0e381387a42",
+   "sha256": "93ff398f98ec74357304416504728c2b99e7b7209f3285acfec835db3659f762",
    "title_len": 53
   },
   "compare/hong-kong/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "67911b392ee26ebd923dd5168cb322e401cf90fa3437656d3c3774518bce2ac7",
+   "sha256": "4ad2248e7786944a0e7e558c4d0a3fa96db8e10b490ef80b246b157443a1d775",
    "title_len": 53
   },
   "compare/hong-kong/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "30fb82aa9a084145e93cd1f1506ee7e385e5d842065ba0257291b46a64ba3d4f",
+   "sha256": "1cdfb82d7ee17a394c7beea7216217911f4c8b4e7d036013dbd33a83ee014bd4",
    "title_len": 53
   },
   "compare/iceland/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "7663df9402dcdc718bc6d3d9cf324fe00d7037e84a77bb9990b9a9f3dd89e0d2",
+   "sha256": "12ed50baf3b595f0438bcea56d1ccd48310acf9037d8fb9b36cebb87741ab029",
    "title_len": 52
   },
   "compare/iceland/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "91629daa8a0d62766bfc969c8180a45672b687dd47e9d3d6263525e1fb2b35fe",
+   "sha256": "d7db1717504b763148cfe7798113d1bb7d4d979f4a4f073eba1bc0ed65facd5e",
    "title_len": 52
   },
   "compare/iceland/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "38f8a857dcfce8aef54bbbc03dda0d1cd3eb67caef67809bf0d5bbd414c4f6e1",
+   "sha256": "7551a624e188612debade7bb295c98c70c3160d0a22ce305587c45941578cf6e",
    "title_len": 54
   },
   "compare/iceland/index.html": {
    "cls": "country_hub",
-   "sha256": "b5279ec9b9a7520dac46505096b90dc561ecd6fca79e4fe3d99ef3ba5f4d87eb",
+   "sha256": "27b88d99f7543fb11ee94b6029678db903235da3fc8584f4e407dafef7c02823",
    "title_len": 51
+  },
+  "compare/iceland/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "a0b04147fd686ca6d05c25b478b9b0a05e3ccbc3fb924f1c3681ce1aca9aa270",
+   "title_len": 52
   },
   "compare/iceland/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "3aaff0a739ad1f34f681a37bd23503c87aa10250d36b7f9924c5db30a19d6ea9",
+   "sha256": "2573c086765c30211b11e3238490089c027db0da16abe42180572363e3f0ff29",
    "title_len": 51
   },
   "compare/iceland/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "17ae885c98b82712a6d694f91a29e49be98da2167a0c05bb96999d7a0907232e",
+   "sha256": "635a59f45cbc9d173e5b9e09ccdff6ef0882573b310330569aed92a1fe81e6a9",
    "title_len": 51
   },
   "compare/iceland/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "7dd4ff65e2fd28ce5839f9ad4b064c9684c407f753d523fa57acfeb2db948b77",
+   "sha256": "3bce684409c8f7f5bc15241851f2e4cd47de156b6b86cc82c749d3d55208073b",
    "title_len": 52
   },
   "compare/iceland/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "f0cb7482663c186a883335d94f3fca359b52697ec794b841bad2cf8eec16bb5e",
+   "sha256": "fccc1fb47d0f2f39341bbfddaac6ed1d5bf943f9793d8d8581dd747f51781b9a",
    "title_len": 51
   },
   "compare/iceland/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "79e43df7227a552249fc9a0202c63352d7ce90e244516a82f97c46bd0503943f",
+   "sha256": "6b3f14201a5d3d7e5c3866f388a9dc848ff5d344b88c1ef5ec7d324c513bcaec",
    "title_len": 51
   },
   "compare/iceland/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "4f776cfddeee7608e43252cf2f09a283a73c6d79ecbfbecf4f79aa1305b52f9d",
+   "sha256": "d537324b4de7f9e444798e99febe6bd9f23a3e26edbcc76e89cc608e8956a5a0",
    "title_len": 51
   },
   "compare/index.html": {
    "cls": "compare_index",
-   "sha256": "c45555c6c3a55c3ec666e218b47a3d30ba4dfdff8a777965831fa44401f00af6",
+   "sha256": "b3525529d6052bd9c107c6ce0554e0989dca89254658d07d58c4bdd07d1eb4f8",
    "title_len": 51
   },
   "compare/india/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "944011eb3f42323ad17dccf3590f5ed919385be0ff71e45f30433e6ac6421a02",
+   "sha256": "43e25abddbf5fb338f8cbab5cd2641c48bf9492a40b01c25bb5b0df7548bac50",
    "title_len": 50
   },
   "compare/india/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "ea931288b44f73d1f0aaf23acbba9ef09ef11248dfc44836d51e4907d1fd97cf",
+   "sha256": "aaa2740d87a44657f118c53e01f8d84f20cce3d79e7a00f6eaf1dd9931db9244",
    "title_len": 50
   },
   "compare/india/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "a25bb90d667aae9a31bedf5a5124549af37250964899cbad00f93dda8b2a1e59",
+   "sha256": "be72a19f71156307e638a2a38c095059d212c3f22391fc9f2b919573b7fa57cb",
    "title_len": 52
   },
   "compare/india/index.html": {
    "cls": "country_hub",
-   "sha256": "b2b9230930082c848cd558f4d814360daf1a5322c057f190b71d6cb52459f0d6",
+   "sha256": "9b2cdcec3bd625630c1d3df956f3111043a72e72cf050ce8bba2f33354182bd4",
    "title_len": 48
+  },
+  "compare/india/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "f1011b9ead940ac2291119277cc8e15535e3f96aa3cf5ed165b450e594a4b27a",
+   "title_len": 50
   },
   "compare/india/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "8c870d55aa51540fbc1bc207ca7a6a05ea8ba5aa57f31791f7ecc7915aa8f220",
+   "sha256": "7b86769a6cb40279f46733b8d8c47ca7f34f2653de831c5ce841300aeac46deb",
    "title_len": 49
   },
   "compare/india/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "3aa2628ed1715bbee0a9be291f09c36ff9e6d69c20ae506178c77452ba7b8fc3",
+   "sha256": "f1bccf24db06e2fa30662f85ba5e2c3efbc4d43e3bc9aff43899ee65a51a31ea",
    "title_len": 49
   },
   "compare/india/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "3d652530cd4addae6207faaad890d5d974551ff6bd783d67124ebdc154d107ca",
+   "sha256": "808a243efcc49df1a2dfbffa098aa884bbc7bafc6a735e42dd6581b981ccf38b",
    "title_len": 50
   },
   "compare/india/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "b5a31eabac9c037b92f7f301291508f15f0858808592cac46ad74aae9fe7a714",
+   "sha256": "dccba31d26732f251b7c74cf7b585d3e155b2207b4753450734b6e66995c0a2e",
    "title_len": 49
   },
   "compare/india/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "6c8952b9cb802ccf2c7378221d4bc22a57cb4f578fd6b3dc615b3eea6e77fcc6",
+   "sha256": "9911344b6e278149a1f04b2f67d0f6c9d55648b38104a0736dca80260b64d43f",
    "title_len": 49
   },
   "compare/india/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "b570344dced4bbc2417bceb3f68e6e48c8937f41f5f57605d50c9afa98ffe349",
+   "sha256": "952a6efb5f430f9c49e3985c6d1e9c3d771974469de66d4cae3b737df453c770",
    "title_len": 49
   },
   "compare/indonesia/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "858ec4c64993edb47519f81174fd1b62926c720a01ab8d12b835234e3443a4ce",
+   "sha256": "f1f9c5789d107f8742b4b62b47df2eddc9c37002be0d42d7c491791ca0f83c1d",
    "title_len": 54
   },
   "compare/indonesia/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "61439f72e644ceae8c17d2d18f47af25e4269ec40400c858d6ef21bf898ff00d",
+   "sha256": "663997824e7a6794db187ad6a9ffca60c743a9f5b2e7b6f1e6aeb5905f818c7d",
    "title_len": 54
   },
   "compare/indonesia/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "42a5785752ff88f2e74ac794dbda125680016016f3c4e95da839ad8b2558d587",
+   "sha256": "b867d1471fe17473a9908b9fa713842bf3770f8bd5b0365d9a43cfed7135d5ce",
    "title_len": 49
   },
   "compare/indonesia/index.html": {
    "cls": "country_hub",
-   "sha256": "3e65ecb6514740ff8dfbc582065213a8ad6dfc720c9953557124a5f37b349061",
+   "sha256": "54d43088111510794576b0c20ce7459958c919151ca5f63aac27c248764c223b",
    "title_len": 51
+  },
+  "compare/indonesia/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "950d85e03534bd40ef8540987ea08042a881deba8b001d446ad469f70521b7d7",
+   "title_len": 54
   },
   "compare/indonesia/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "6fc68f57c95408333d77adb8720f53523962c19ea96ca0067b6c2c3ba16f2256",
+   "sha256": "deef9733dd36794dfc7c114f4d950547335f5dce6a4401b9b013eaef7761e4e8",
    "title_len": 53
   },
   "compare/indonesia/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "72c98ad7a1ac8b5ab24c26d5de17ab2d0f5f64785299f64d4a041c1eec533eb0",
+   "sha256": "8dba797d309c46d75abb54f4d021f4702dea556bfaa7a67cf6c17479d68a3bc6",
    "title_len": 53
   },
   "compare/indonesia/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "31de21993ae83402817f075ad76e8eb274e8e21f2f59f78be12a3a93e8b27ad7",
+   "sha256": "c0f3c28447f741ca43eaecf3506848c19278cd1aef3dd53adc1833d6942c7a78",
    "title_len": 54
   },
   "compare/indonesia/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "a5be5cbd1ebba71d637cfb9b05e2637d88454fa769d858db869708b51169dc63",
+   "sha256": "2da2249fa3de06c0ee7ca096bf5e2f52c931f785a517cf44b0569e3a5bfd43e4",
    "title_len": 53
   },
   "compare/indonesia/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "1884c8705623577a11a332478023f2bcf995ea948a14f22d9578cc1b32cb5217",
+   "sha256": "dc76054b9fa3ae4bfb55e11246dd5ac53b4745679f9d0e63217e8e9d7dff32de",
    "title_len": 53
   },
   "compare/indonesia/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "18c51e45ad8eb2bb09fd38d6e715009580c2a7b0794e8e815c3502ca2b36c67a",
+   "sha256": "012293856c3ff0008026c85421d6c12419b9e8c1ee5ddc266be6a6b32530fa48",
    "title_len": 53
   },
   "compare/ireland/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "64dc9cc562e5f27aab11f20a9d69ff365045d5f327cf7666e4562114a5073e3c",
+   "sha256": "d5b5fe2dbe08efbdde6d6bba8b9ad44075c38ca510a564e828be13d5f1d5a043",
    "title_len": 52
   },
   "compare/ireland/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "b8c7416b02c8fcf11ee91c9d504690945601b1e86c05fc35c2701628e5c86bf3",
+   "sha256": "390dcdeb0fabb88ea00d61140e6d46f0558607c897e52a1e3c3b947534b7c65e",
    "title_len": 52
   },
   "compare/ireland/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "849ed9d827b86daa6f4e6dd4b019df402e98c34bd0f3466ebbabb3f9a2eef77e",
+   "sha256": "e9be4ad9879177886c42b24b303d022e19fa2b77c502a6e65959bba96ebeb885",
    "title_len": 54
   },
   "compare/ireland/index.html": {
    "cls": "country_hub",
-   "sha256": "712c48c4783f27cb692d920b82b5117e98beafa0bdb6d7dcb111557e41d318db",
+   "sha256": "2ece56aeb878bdf6a7d5b2aafe0280c9a60286585bac3c3be8659d13bdd9cb22",
+   "title_len": 52
+  },
+  "compare/ireland/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "57246a3531d535763867cf5f7fedffb5774eef6e9822b172ef90a0f19db68761",
    "title_len": 52
   },
   "compare/ireland/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "1d57ec506a4ca8df65747bddc135c9f4d3823b28e3d251b6c92b3e0dc03b3eca",
+   "sha256": "0c60971f9ee0206563c6cac4ba3adde2156cf1c9213a6ccdb511ad5250582b0a",
    "title_len": 51
   },
   "compare/ireland/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "cb67ca3dc013cd151d17f9d312c6bffa583cb913d8875a36963ea74209516c58",
+   "sha256": "abd697a2b11f6db0511933a4b9b89ae9ef1c3b8870ebc2404568446625d68cee",
    "title_len": 51
   },
   "compare/ireland/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "afe35c11c12e5dacf87a357ad948fc44a8500a997a78f5be5f30c41a5885472b",
+   "sha256": "ed6e51094d4eb34854c0e6362803e8d15c5b5f2b306148eb63dfff3887c144c3",
    "title_len": 52
   },
   "compare/ireland/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "4f4a7b84369b1728649c9d0c4020663a7a593a28a14f41562874c24dcb77678c",
+   "sha256": "f6c805b7863acd2f36de8346f5a374d68e02cf71e9c2520e1680e1a357475d29",
    "title_len": 51
   },
   "compare/ireland/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "48c6ec9614d1428371e2fc00417b3011d188e1abde42192c5a715ba11737bc2d",
+   "sha256": "5bdde68962d445e80df78c8d07d22a659e7a861e258748c6f26f3c20af5fbd06",
    "title_len": 51
   },
   "compare/ireland/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "fa2365b3c735fd3f48dc6d5f063d9b22fabe10c64935a7cd8f5eea15ee7e4957",
+   "sha256": "a05bbf780cce24a771924341a50f493732c77633fa99f0f5acf95fc40366a80b",
    "title_len": 51
   },
   "compare/israel/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "fb0dd83bc44ea55eb944105bf2bf5c65074294c64f52a880d3deb00809ffb514",
+   "sha256": "84b4761bfbcf8ef71de8f173e338256ec08b270a5c47b3970d806a422197801c",
    "title_len": 51
   },
   "compare/israel/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "0fabf810d6c1e4c5d026b9d3bb8b4b34d41aabc5e98904c946a10a00447d2fcf",
+   "sha256": "56f43fcc287528fa0b185954a8a7122bcf6d43a9401e497a0c0c58cfa938ce94",
    "title_len": 51
   },
   "compare/israel/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "b398876a8c64cdff31ba8d6fb06d61c64a0c4d44eb25ca6c3c5c04024597a774",
+   "sha256": "86005556aa54e8f5638b0b7d7363b351569c59dd4f5ad502a74b690385c70498",
    "title_len": 53
   },
   "compare/israel/index.html": {
    "cls": "country_hub",
-   "sha256": "1f8706ce49d2ce8f337aad76c16882daab87f9c24cfe4d5b67234a9826b1f38c",
+   "sha256": "97508ed7e9671606c0d75196f294f6144129e7648d5ae6ab646f7772a2c5e034",
    "title_len": 50
+  },
+  "compare/israel/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "e62648c8259954f766cabdeec1afac7542b41b0a46a3701ad8ef80477b97283c",
+   "title_len": 51
   },
   "compare/israel/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "f0d0babd9911b1d66fffb7c20c2064a5fa08c09a70648ac4849bdfcd4c8d8d8d",
+   "sha256": "0a6becdd55ec65acec54ad67a205f03d6ead38cee8b5a2263abdb105c63a1910",
    "title_len": 50
   },
   "compare/israel/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "c5887c56359305f714063732d13236809cf21a941efc36e88104bc7171a3fccf",
+   "sha256": "938c02ceaa8d78da187f78195e1ea63a429546a194dc532913b36ad691e67bc6",
    "title_len": 50
   },
   "compare/israel/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "5a95860291bd969d62e5929701daca8e0d9184da18fa9aff11a63e527b903eaa",
+   "sha256": "baf0f46e0f6b3a6cd9e8f37235dbc8fb9c15a7a3cb1a71c065ffa32e471dd885",
    "title_len": 51
   },
   "compare/israel/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "0f1071a02d7d9a750f8095270588bbeec235593102aecda91fae549f271bad69",
+   "sha256": "eb6acbfa2d985e0aefee7f0c8f2ae78c867fc26f575575c5d408a6e30d61c8e1",
    "title_len": 50
   },
   "compare/israel/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "d2426dccaec4791a0f29c1961530743a0e39624c01b105076906f22490fa39cd",
+   "sha256": "a3f1005b6b3802ac0620954572957d435ec977f4a52e5d44f0a933f83370fb8d",
    "title_len": 50
   },
   "compare/israel/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "f3481188513d2bdd3fd2d1adcfeac6a2875347510a61ee51c6eba1da1eca4061",
+   "sha256": "860aa041d2dd28e76de3d4c1b3446ab4d300863033d6abd14b5dee69082cb43d",
    "title_len": 50
   },
   "compare/italy/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "2cb4ff71a70ab6ad06ed0e4f1149cc65ccbbeadb9152f3fb3509c9b6d9f44c68",
+   "sha256": "c78836ddf5b87b0bccec426773f097e036f2aa2c50f6970178dddce73cc0beec",
    "title_len": 50
   },
   "compare/italy/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "5f0f6b46164c176d6908e82b58d4a81d2a27c753e879f12b25c77e013ad3162c",
+   "sha256": "0c61195a4ac7f48db4f04d778f3e376b0a173d628b1426bea807c4f5794ffd67",
    "title_len": 50
   },
   "compare/italy/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "d5d23a6c1ab297db798703036d2e718f36ba1e1abe8a5385799e62683b24e111",
+   "sha256": "bbb43fa6e412317f02355af778b9841d4c00d309323687eef626cbf44ad4d5e1",
    "title_len": 52
   },
   "compare/italy/index.html": {
    "cls": "country_hub",
-   "sha256": "627bdf537ccc88ba29a713e1cedd5f20c68504e1645f64084df86f3c00fe283d",
+   "sha256": "2669f5dbc70a464915701fa35f69f51b8f24824d34a71e257157ffe5acb8f0e5",
    "title_len": 49
+  },
+  "compare/italy/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "1dd147296f8cb7fba3ce96fee43b717897ac1d0c5c139652bcb6b331143cfaa2",
+   "title_len": 50
   },
   "compare/italy/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "ad653460ccbca628c3b2e011ee122da51a9d633192fda0d94b42138c21178648",
+   "sha256": "847e4da3530d22c7cadf0da2d15d95a7484d5e3b1151030e8b8fc3bedb24fc1b",
    "title_len": 49
   },
   "compare/italy/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "71efbe813fc7c4fd59d6c2d5671c6e55888e133f06f1bdda6fe27162625083d0",
+   "sha256": "5a6872575b710a057b63eb5622248612cff472408ae315b294979d06f55def96",
    "title_len": 49
   },
   "compare/italy/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "262ff36a09782771fd68f4f097e670b161dab0e66fb4fd792dd90da2115ef6c2",
+   "sha256": "d39f2a8807cab46790b6fd3a26baded9ebc9570c4e7150efacb154f3b11b7fc0",
    "title_len": 50
   },
   "compare/italy/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "a0ddf291757bedd5992ae7f31978e0e840040dcdece394652ebcaa8133fbbb5f",
+   "sha256": "64df1321b963baed9c85ef45c3f8360e36a10bde37606d8b70bbb1b1dc8e47a4",
    "title_len": 49
   },
   "compare/italy/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "aa28d485f2a2ebcdfb4e6a076b8bfd5a597b20cd6201153ae6be0ba2eb0de7b4",
+   "sha256": "0c64cec932fce6c7b8cd4619c771651719bc4f3774fcc5803001162757b8b888",
    "title_len": 49
   },
   "compare/italy/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "20478794abb86cd689e70ebc1ccdf01a26ba194967200f35eeacbe2a17e22c8d",
+   "sha256": "30c4d491c4eb75b8231f4eced87d096fac05d65dba00531771aa62af2357317a",
    "title_len": 49
   },
   "compare/japan/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "6882c071cd3bed7991864ebca3b07d390628a457d05a72c2a6f2a79741fa0ebf",
+   "sha256": "8b81122f5d2dee241ecc4ba7edc29b39df97bce39ad2deb3969d19c21fe76dbd",
    "title_len": 50
   },
   "compare/japan/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "b2c513816c9f1ed4e86b603d59889fd37c33b67c588afb953f4e25aac9b1e04a",
+   "sha256": "f47c41488dae308e57387432951391956bbd08559727c64fe8e4ad2cded86070",
    "title_len": 50
   },
   "compare/japan/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "c57c62c30f59b4b8971a28c9a0eaf925c46fb1a65eace4ee7894c29ee3aab91d",
+   "sha256": "5d4a36a390558dfbc0c8d95ea8e6f574dedee8ad1e985c2867dee0ee9ddab2c3",
    "title_len": 52
   },
   "compare/japan/index.html": {
    "cls": "country_hub",
-   "sha256": "654b383193a8e07506f0e29e936a9f98c46f1b408b494cf4bcc9caaea7369ced",
+   "sha256": "648a6b6b18a05daa7b67daacc3927b9d4aabef5532a980fc0715552ef8c07395",
    "title_len": 51
+  },
+  "compare/japan/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "e521fb4b0bf4ecbbe609d706e69e3250dabee8e45b8168ae7678a8ca0a8c62c8",
+   "title_len": 50
   },
   "compare/japan/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "a9beea210e7635603bf7237fa355dce355f01a73e6895cf4efd6a2e9182612d6",
+   "sha256": "0c228d2e5ac7dfb6b3f4892958a7b286bcb547a86825cdba02a963b718c72c37",
    "title_len": 49
   },
   "compare/japan/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "c476ec1d77a7c864968b48e3be15768a972235727b3e918d0e8d9734f65208bc",
+   "sha256": "067b0a8f091ab1f18cef253bd84163069da177b2f3092c352ab67f680e801184",
    "title_len": 49
   },
   "compare/japan/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "a8b7608cc0ea82b4649a919bad9a45ba348b9cbd15a92987ae6861761d9065b5",
+   "sha256": "0e40b9fc09641f86909360df60a005d511db8a036792f278afbb9a323ee604ba",
    "title_len": 50
   },
   "compare/japan/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "2596b8ab5b6b43ede8e6c1a94a794e63f92517fec1cfdf3a2e53508b4cee3dec",
+   "sha256": "6dab27b4ed362c0225bb8fdabeaddfcb95b2d10ac1b2757461194ef34ef4607b",
    "title_len": 49
   },
   "compare/japan/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "5b644010ddf338b1298ea51874c96fd13c0e42ae18829b294350db768bebe613",
+   "sha256": "210b9a87fc8175dcbdced7f34668d414cf6da3f7f7dd62aa8bf52ca3dee75bd2",
    "title_len": 49
   },
   "compare/japan/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "7892e6df98dd1bb4e0f627dfc29746e0c1500564eef7136ab1e25b1637f7830a",
+   "sha256": "8fc190291677ba0e66fec074e9db1c3e5277cdba3dc14968e752dcf7685490ca",
    "title_len": 49
+  },
+  "compare/jetpac-vs-nomad/index.html": {
+   "cls": "matchup",
+   "sha256": "2516664a736dc5742e761c07c704b1b84dae0d91f1ddd43502ade0ec976b0a60",
+   "title_len": 54
+  },
+  "compare/jetpac-vs-roami/index.html": {
+   "cls": "matchup",
+   "sha256": "bb2d08723eb245b2f681a3fca7f6257106d742523a760a0b50d07ee28f670e08",
+   "title_len": 54
+  },
+  "compare/jetpac-vs-roamic/index.html": {
+   "cls": "matchup",
+   "sha256": "dc49a473c61a70cf0d1a225eda5774bb79e700fe5c4ea0a55d42f412116fd436",
+   "title_len": 52
+  },
+  "compare/jetpac-vs-saily/index.html": {
+   "cls": "matchup",
+   "sha256": "9fc6836d0e314151961be4e6d6b9e8acdfaf185da2c5b570d3adb1922d4b6ca2",
+   "title_len": 54
+  },
+  "compare/jetpac-vs-ubigi/index.html": {
+   "cls": "matchup",
+   "sha256": "10e76bf7c951013ad87dfbf7c945ba829d0e9b81cbdc0f99f7f20e3ccacb5cea",
+   "title_len": 54
+  },
+  "compare/jetpac-vs-yesim/index.html": {
+   "cls": "matchup",
+   "sha256": "e0bf7b64ef9dcdb15d4d566044c722298097f0b4dfc0cd10ba1eb5fd2002c252",
+   "title_len": 54
   },
   "compare/kenya/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "bf6ce4bc2c34c81f2e53bba6d2b048f918eadc4e1909b4728372540c6dc1b9bb",
+   "sha256": "5e8bfd8414e120aec40d25fe67e6b518a55315677f006b0c30d8cdd9e0282df1",
    "title_len": 50
   },
   "compare/kenya/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "3d0edcc2c6b1fc421232b3d71f4beb9910a1e0d190f5424cf09e531841aa6cb0",
+   "sha256": "9aa631133aa1ed8410e672b3899f565631560b92c0c77e9e3ba61d162c000606",
    "title_len": 50
   },
   "compare/kenya/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "eeb9382607bef66afd7a175def622f94f68a6124a4e531da50261040967c945a",
+   "sha256": "0904e3266903d84f75578063fba87970431b2c66e066d1007c3ad33ab903bf59",
    "title_len": 52
   },
   "compare/kenya/index.html": {
    "cls": "country_hub",
-   "sha256": "5bb29953319dc86a8f4dc43da41cc862a7144b0b54a56540d85c14ba6aed0e96",
+   "sha256": "9e878b26ec243c8acc0929a36736770bc7932949580c797e689f93b2af4e9764",
    "title_len": 49
+  },
+  "compare/kenya/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "b2554574421e04e8a35c78d85d25a95165f2a690c6387dad52bea51c7ff71061",
+   "title_len": 50
   },
   "compare/kenya/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "2c29b63e299b3d7de76ee5b26651c5a82a262f873083540e164b6859c5c68fb2",
+   "sha256": "2fdf8eb050fcf4554f882910a9504315a8e866f11bebdc0c0b81dcc417207a76",
    "title_len": 49
   },
   "compare/kenya/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "e307a5b2d975cc4d70f7e2ed8b1cb78d56dc0f8aee73ea6fa2453fe99601f528",
+   "sha256": "7d66e43bf5cc7ebfcc729410ce6fd9ae4af8685c3c5c9427e71e02334a92e633",
    "title_len": 49
   },
   "compare/kenya/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "16d5c67f1e8b96019069fc4cdf68a453d9da18b9fe9298b2572e3c3ece44b951",
+   "sha256": "f79030fbb7a53c6da6d4c6bf9d7515c3b7237a797946121687bf2263fda62591",
    "title_len": 50
   },
   "compare/kenya/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "16b746fd45aa32484fc6b2b8f76cd0534a2d2dfe1fb43a30f6ceb6ca438f3198",
+   "sha256": "abeb3166fc6d15995a6d3a93a313303b117c34560c0e833e483c709d13547acc",
    "title_len": 49
   },
   "compare/kenya/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "7f3d5072bb3b68b5bd619a8b35039dc70fd7495e0261f02e5cedabf4d8338e82",
+   "sha256": "33d498480d76a6754c1b2ea3d2d5b43b9597c95ba528668f84d076f620c9167a",
    "title_len": 49
   },
   "compare/kenya/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "505677973ffa4fe66411bf52fc4afb80622759eb570bbac7dba2458dc33f04aa",
+   "sha256": "2d2d16f828010749c4be8155bad394777f8907210a8684956bfb4278c379ad20",
    "title_len": 49
   },
   "compare/macao/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "6cf545f8e9a97edfeedaa07dcaab3d003de9ced53e7aba741a501fdf6d005b3c",
+   "sha256": "512e67f432f28175aef4ef9aa3807923751faa686ca3738444155a4af6bd2b03",
    "title_len": 50
   },
   "compare/macao/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "1e8fd748a2f62d2be59fc17c6f38f2dbfd6d94a590de0b6447afe9ceb55587b8",
+   "sha256": "c38a8a4b7d021633751ace1c7186bdbcded3f15255c9cbb43ce5da4c3371f62e",
    "title_len": 50
   },
   "compare/macao/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "0812c943ce752e759fb7e46372cc044a6e7e754b69a6b00d0df711ca59ae1e14",
+   "sha256": "da5e9ca832c92eac5c2cbe4d71a37b4a8a8da27f07ae6a61e9d5a5d88590e00e",
    "title_len": 52
   },
   "compare/macao/index.html": {
    "cls": "country_hub",
-   "sha256": "3cbc0e00eb652cac9249632142152ea2b1f831c5f53013c4a9930a57ef902dbd",
+   "sha256": "346b9c26fe4029f325b07b522d5acf18ca974e3c4658c7d15981c76892fe7ec1",
    "title_len": 49
+  },
+  "compare/macao/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "7733139e12cc0a2414276d4f23a82cd30c1b8dec9b41b9619050ffce414a9bca",
+   "title_len": 50
   },
   "compare/macao/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "b82f2f3d2bd7ef25f6971d08375b812541fce45a74b1697935dd0258ea302693",
+   "sha256": "b8e94ea81125d4c703ef2525e0f81d1473a9b4cb2008d583c4838155bc3e4970",
    "title_len": 49
   },
   "compare/macao/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "e13515de108e1d4c349da1c57aa728abd93fedf2698de0e26eaadcea92e61ff9",
+   "sha256": "c5266eafdbff81cfd6f53f087532dd72cb122d6f8291477de3b096d327d25d20",
    "title_len": 49
   },
   "compare/macao/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "33a313a05b659b78d0a75a6bc92c14a4e6c4b472052c9ffaed4e81430fb30ebe",
+   "sha256": "105cae33508072785a0046b73b9726333130e282a8807905b1b6d28695ef9315",
    "title_len": 50
   },
   "compare/macao/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "d5dd4b92a755c7a91fa54e2aff4da30410b4a305defdd3066578e3d8c0435885",
+   "sha256": "40fa4018f992689ddd61790db79c4d95c1a510ecf770c184858c5f29a78341d1",
    "title_len": 49
   },
   "compare/macao/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "4e38ce1ba444e82ad4e266acc8fbd7721fe75fb3533c1d405f221ba6fceb8493",
+   "sha256": "870a29ba535d0a3062adcb43c6dc8c3dcd23efbd1c0516c1c31770fe3998d746",
    "title_len": 49
   },
   "compare/macao/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "94616f35a61c94367898cbfb0b96d1b45d646aaab42685635624c65d0d04c636",
+   "sha256": "c7662b04048745239d9e7ebdbebf2f4a7baf9a1062964e783343a02bc2f9ef52",
    "title_len": 49
   },
   "compare/malaysia/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "bfbc3e25912c572fa602e875e553e9874bd1122dce91b8d0f6978683d6495a66",
+   "sha256": "1b16c86f326a6dc02d8df2b960776778aa01c4d8e2b6be935ae1a49a26849ecf",
    "title_len": 53
   },
   "compare/malaysia/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "40b466830ed2b4b76a0a5e23b109a3c44f295613eba15ac80e309dc246d776fc",
+   "sha256": "c62074539daf7e375f53a33a4694869b87a67168d8ad94d1359b9770143fa1d5",
    "title_len": 53
   },
   "compare/malaysia/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "001600ae51b18d9626a575a3b297f6b0098fda0cb9e5f40af9c909cf8f3d9ac5",
+   "sha256": "cd3083bc25b3b34f2d93861ebf9b79509e5e82221d91389db7f727d4bc447cbd",
    "title_len": 48
   },
   "compare/malaysia/index.html": {
    "cls": "country_hub",
-   "sha256": "af55ff2380c89f0e8085f4a7b4a0c14b688e459001da39134a45c87ceb8f7b48",
+   "sha256": "db4e5c018e747fbad94da17a694e129135d6623b38a32ab7d0cf8bab2dfb7ed8",
    "title_len": 52
+  },
+  "compare/malaysia/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "d62f3266ce535e03e8184cdb60c8034aeaff20bc8a69a9f8a1b74bb08a8b012e",
+   "title_len": 53
   },
   "compare/malaysia/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "6f2553284c006ef5f410156cfe0b6978b3e57b8286e44b03e8b5e8bc3723dcb7",
+   "sha256": "fbbe2651ac1ecbbdc9f87b1bd7ea8576b4091bcfc773a5aa8c8488c3be14b2be",
    "title_len": 52
   },
   "compare/malaysia/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "d3bb1c3743dad3573105123c065ecc593adbcf7224a9bc5b3dd6167d4a93e6b3",
+   "sha256": "af44fe552f680b5220a586f6d55a6ecaf925490931f6f9a91b56d46e0440ed67",
    "title_len": 52
   },
   "compare/malaysia/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "4043ee3a63a1bfda1ab5787ff0f8b0a9352f68f84c0debe2aee889fb659d5259",
+   "sha256": "3cbcb8109a951abad6ecf10021f8bfd0fd48c2446947ce687d998b9599693eba",
    "title_len": 53
   },
   "compare/malaysia/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "f55a103ceb20f5a0b4b8fbe4df2c1a80c3c239ef055637c8dec6229de9fa245b",
+   "sha256": "bf01d5d5587f403581cd93ef804db95b64c0429ce1431e0b2a29b9e9ab0f1301",
    "title_len": 52
   },
   "compare/malaysia/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "b4c3251947982e1d729ec2cb29b380eca3e8f3add9d2bf20423c58b9b2452903",
+   "sha256": "e022d4367f2900aa2ef6350905cabc94942c95de6b00d173898952e7246e2fbb",
    "title_len": 52
   },
   "compare/malaysia/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "26b5a9603f4bca62bc808601ac178a95f1e83ac8e3ba97dce24ab2ce9a0db083",
+   "sha256": "547af04a4d2421a1b92bd7e7dcbbafe8a4398096c80353c0ea8e356573096efd",
    "title_len": 52
   },
   "compare/matchups/index.html": {
    "cls": "country_hub",
-   "sha256": "bdfd46499ed6f9b79e3a80f1aa69c00a17acf768fd8b8ab2efb6f4519d9a85ae",
+   "sha256": "0fe8f76f4b3e36c2de27e89d928d89075ff86bfb6b5c2291db5c1026d0819774",
    "title_len": 51
   },
   "compare/mexico/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "6b887fd0f42432bfaddf53a36e813d8f350acc151ee788c0b285cad5038e2e8d",
+   "sha256": "33e3f2ca67f9f00c5ae61e6f4d5cb372ad10823f35bc4a670cfc087ca31d45f8",
    "title_len": 51
   },
   "compare/mexico/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "bf1ac52ed46540177937d2ed65c6f576b572146d8fcc02a91a5d7316e8822d30",
+   "sha256": "fe3514e6eabf855e7080730fadcec7eeb5ea08c16d24bde0d24dd75c21b85a9b",
    "title_len": 51
   },
   "compare/mexico/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "0f47e90fe070b0d8cdd4c1c57018181bea500862e4b3d7222ca390fa9694a2cc",
+   "sha256": "27cb9a57e38c35fa1316c76cee2c225d6efe6356cb921302c63063a202808aff",
    "title_len": 53
   },
   "compare/mexico/index.html": {
    "cls": "country_hub",
-   "sha256": "49ae7f53cbd9233a3ea20df4d29929b13444a7e355587dc95c4a7010861c4b0f",
+   "sha256": "680c9831809167c7aba2ca3647515dac535711b7c4f57cb0fd2ac634dda8a57a",
    "title_len": 50
+  },
+  "compare/mexico/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "52859d7ec10c2a988ce19998fdce4cfa2862de89e45d98bca1fce796ba01b645",
+   "title_len": 51
   },
   "compare/mexico/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "5d24d890becedac4e641cbad8b41e4b3cc60a8f0f8475f05ae0dee92819785c2",
+   "sha256": "9a763f9e7bfadb44e71603574ee898b58023b8442cdb353cf2b06bef90edd776",
    "title_len": 50
   },
   "compare/mexico/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "e8f1abd0124ddd4fa4d624f0441d065da7ac16ba4670c9b0275e7734c07ce5df",
+   "sha256": "6b3f194f9fbb32e7d668ac4543c0bd9d07a56ab725b30f6c178588c7e5d7866a",
    "title_len": 50
   },
   "compare/mexico/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "1bd803af43a189e0eb2e67891bb46086f29620ccfd9c6ec89f3279904d8bf496",
+   "sha256": "a3a2e2e4440a5554a4eccab7719aee740010d17f8ec1339e8635b714eba64cd5",
    "title_len": 51
   },
   "compare/mexico/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "08e2b276b27614b4c0c3a1224c196951b188a1d1d0ab411c2b6a0dafec3180a6",
+   "sha256": "5f43c068b1c1ae3768bc987e83a71c3daac37cefc0ff4f36fb6e8bf59eaec888",
    "title_len": 50
   },
   "compare/mexico/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "dea21caa8e74258b9c89f1159450aa803f4376c6e86797d433b9537fc3a6a25c",
+   "sha256": "7a2fcdf935ba5a3f5dfaf8b18d9f7a911ad82a1c09b4ab2ffd91eb47fd48d429",
    "title_len": 50
   },
   "compare/mexico/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "c8a05c6e6d20cd5d2359e4c1cab0f0c47000804ee00d42ac5571d8f24692c279",
+   "sha256": "152d7f37b5e97253bd5626dfaa186a6d57b679b835c5d875f8762e2cadda4644",
    "title_len": 50
   },
   "compare/morocco/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "5885b76cef4293e2d8d87af6c7213557ff114972057d8e5b8b041973ae346e4a",
+   "sha256": "25c6358a9b6533cd60b7cc94cf8aa7410d593b12db3c33d3eead4bf184f8c0d5",
    "title_len": 52
   },
   "compare/morocco/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "1d0f3e881cbfa8557c437f7514fba317caad7159e265e911ae8321f5ac1bb0c9",
+   "sha256": "063299ef465e8213ea01e4138498dced7cfc7bb5407dd81b5c8003362aa9e9b7",
    "title_len": 52
   },
   "compare/morocco/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "e45ffc0eb6f08be742a892649826181f28774ca8738a7d8ae8ba9a8662cc4b41",
+   "sha256": "de477a92653b696a3bd540f58a9bfa75faa2f757b195176e64f26007434559f8",
    "title_len": 54
   },
   "compare/morocco/index.html": {
    "cls": "country_hub",
-   "sha256": "ac1239f7cbaf1d0b656c5890a6528cd54e5d37de1eb9dd5ca9e5b5f84aa35f31",
+   "sha256": "2655512baaa877da733130290df8b12e7b4fd6a6e34ff89b16e7a0d88b436764",
    "title_len": 49
+  },
+  "compare/morocco/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "ff124f57a09f613e17b1fad19c4412868e81524156f1f214a69cdbb8309d52ea",
+   "title_len": 52
   },
   "compare/morocco/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "9ebce6b896ac7d2528fd0c2e6228a03a02b9452919fc849e231f0b04c3ad7d46",
+   "sha256": "7bcb6b91559aec468ea94aaf8289e9f69fd8f3153f29e82b7f3ed48ae96d9d99",
    "title_len": 51
   },
   "compare/morocco/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "1b718f244313c22ee8f47eeab9093db917484943fc774af1d88ed133193a7ca0",
+   "sha256": "183e8d7ebe421ce6e4e95ee7cd8c3308ec42127e270770b9b4a2ffe027dacf3b",
    "title_len": 51
   },
   "compare/morocco/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "43f352d2326d502b51b3c249846f752753207a2184a257b6ed5730bf7375d4eb",
+   "sha256": "516b3dd3b962cd434979fe7b1b5b0145615f81a106ec4cb69f76d91df9babb00",
    "title_len": 52
   },
   "compare/morocco/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "a10664e6df10f31f246448452c00ffff09dbb92bacbec62fea7cb32eadf26492",
+   "sha256": "a0347b3257c9c1bb0458e0e9c04db2ecefa3d3af69727fa341129067e6331f0e",
    "title_len": 51
   },
   "compare/morocco/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "12a6526fbe640179cf706dc8ed9a558e17e35b49a847275d2abc13453ae48b35",
+   "sha256": "1a01917699c15df0ad9e5d253eea4a735a9faf0f90b97ff12eba4624666f7762",
    "title_len": 51
   },
   "compare/morocco/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "ca9a48621807ff8db3c2e9ce1e81f75c1a7f53b54f61807b02d93d5b501facfa",
+   "sha256": "5d81e879eede095a3aa969b2e459ef80de8d9e60c225a1061a378f608a340a92",
    "title_len": 51
   },
   "compare/netherlands/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "36605117da850d01271cfcf71a1bede5ed292f0e7eb60cbf98d0f0bd1fcf7a00",
+   "sha256": "307198c4596b61cae7dd1fd05bffe216794534e01645d83d0dd7ab4027cbb234",
    "title_len": 49
   },
   "compare/netherlands/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "5d8e6a0720a377ad4f64f2a14445087ea2e171d6308614c585d1e148e1f2894e",
+   "sha256": "9bc8bfd95bcf4a35cda9bd45b824bcff2f270258b5110a80cdd96303916c359b",
    "title_len": 49
   },
   "compare/netherlands/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "68b88759bc02017f04ea10d8e7be2bf92c1991e198de6dde9f736d7bfa5b34f8",
+   "sha256": "a069bbf33afe83e92c49beab6f67264c5d603e2cb422bc3a19c32a2d3fc40738",
    "title_len": 51
   },
   "compare/netherlands/index.html": {
    "cls": "country_hub",
-   "sha256": "70c578cb6cec676edc673714f46d2eba503beb7ede20c97b6fcef3e7e9349c46",
+   "sha256": "69e93d2b77b108244565b4b3b1180defe192c2460c4fae3c7da935b21d04e470",
    "title_len": 51
+  },
+  "compare/netherlands/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "11aee73171a9b0502b96805dd25a17065e25270c01aadbf044f48f7ce9a4e8a5",
+   "title_len": 49
   },
   "compare/netherlands/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "8d3951456110ef5427d87e8c2c81ae8ca3f61fc8c492d167f5c82c3a9f3703b5",
+   "sha256": "79fe30459ca5712bc8a4d262e0c318d2d7b9c05d21fa2d12b6d745ece463bc7b",
    "title_len": 54
   },
   "compare/netherlands/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "c96395b3dabd1f1a373504b1c4f27b1efb41372ea1ca385593469196107bd018",
+   "sha256": "478a8de5caf870d0f93e3634326bd1cce89eeeffd540325ca66935bee7f3fa3f",
    "title_len": 54
   },
   "compare/netherlands/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "d34b0d6be884748cbcabf5a333f0f53e9bb286a8b65143a4f55834f9e819d694",
+   "sha256": "81a02c39c279667277d85a2a81015067a87ee7623c38e44052c4dd49f892f471",
    "title_len": 49
   },
   "compare/netherlands/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "08adcf9713bed0b5dfbd98a2750f8a4538ad804b2253a1c41d85199bff711572",
+   "sha256": "cf53b9d84ab55923e51d296ad025f65c2cc87f6dfc4134067815da11a8fde8b4",
    "title_len": 54
   },
   "compare/netherlands/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "e8c3a64a574028783697f90e69e89ed6502da06b4a2b32d7a21e1f91d1d99710",
+   "sha256": "297497a88f82ecbee8b7847b29f3c32d8e2752ad60637138f8db4185f5113f22",
    "title_len": 54
   },
   "compare/netherlands/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "4bfd4a304fc8dd3e277069e3510a8ad17d2062830c65a70441c37a43094c450f",
+   "sha256": "13b38990f0645411aebda64fe865353e64bfa1d00abe8f9ca084317000794722",
    "title_len": 54
   },
   "compare/new-zealand/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "eae222a2a4df498f788356998ca07d9b58eb425812b23a2ef3f14f2c645baa4e",
+   "sha256": "de4ac5e3f9247a13497eececf4b13be3ebebcd86650f0d8ce8a54678a1436bdd",
    "title_len": 49
   },
   "compare/new-zealand/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "4f07c0da6bf0cdac346676916fee41f3ff2dc09a2df279c65155ee354a47f983",
+   "sha256": "22fa7b0ddcc15ef828a915e60a6b4b91205f6889e0e0074f694a6bb4799d76a7",
    "title_len": 49
   },
   "compare/new-zealand/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "e534a29f330371252130de57a6d6ab6a77728946caddf6f0cb7a3fc7abf31e6a",
+   "sha256": "bc53e1f72a0f9e6e6cf9e15585ccdccfc98aa67d9c46546089be669f0a289223",
    "title_len": 51
   },
   "compare/new-zealand/index.html": {
    "cls": "country_hub",
-   "sha256": "d5a99f054f2637def591d58b2a4eb60d4433fdd0b8954f23e3d5420b1115b384",
+   "sha256": "f780055422b6cb1a39ede6f5d4012edf91e7905c3f440a9c4f0178b3c8c84f93",
    "title_len": 51
+  },
+  "compare/new-zealand/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "14a2f3c722cf245e1b13f5a2e36a172779f4e00917b403c67eb5d5b6d3b36ba2",
+   "title_len": 49
   },
   "compare/new-zealand/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "585c6bb965430c93ca31df916cc3904a838aa0e906782f13d318b0262af355fb",
+   "sha256": "85bbe38135283b2094bb2ac80f290373b025dc3e24dd694115150a2979eb0d23",
    "title_len": 54
   },
   "compare/new-zealand/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "f4cba2db1716557d583169827298ef40236e5add66e18ccd7b03638da5e97759",
+   "sha256": "0fce340407e3e06dbe0b9970810e99edfa2218da1562f2d74cc0920bc1cc4b65",
    "title_len": 54
   },
   "compare/new-zealand/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "17446250106926652843d8d3ad271b9de17c9e2c4e04a5bc4e3795447f5fdb77",
+   "sha256": "981ee6e97cfbe620e76c0b291bf746d84af165a7ef6b351349f5796d1e939702",
    "title_len": 49
   },
   "compare/new-zealand/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "0c4973be4d75dce6d020d04a1ccf80a29d40f030e5ce0e1415848fe970e84993",
+   "sha256": "b06259846fecdff61291ff039023b9e66fb4ae4d182e87f44ffa7a602b0262ed",
    "title_len": 54
   },
   "compare/new-zealand/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "7a657c51df36bcb7be03de7a95539031d4c2fc7ab21e18a01efae15caec0bc62",
+   "sha256": "f14ca6958fcd3c20e9451ceb6a7c99ac2ea6695ec708479b2d86bec29e70fe7f",
    "title_len": 54
   },
   "compare/new-zealand/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "12c3126dc8030ce1a5bf9431c0672d8bd7d34c8d4201c7391eda6ec4770239a0",
+   "sha256": "0c19de054233ed57eb9491c9c17f6d821b559ffd286ffb952d9423e9b0cddadf",
    "title_len": 54
   },
   "compare/nomad-vs-roami/index.html": {
    "cls": "matchup",
-   "sha256": "0c471de247be7101f9c08a1d668cabd90f4f0023a8e520ceae2a1a49c5f75d2d",
+   "sha256": "74641470d81fc1dd0497b9b12c460236594582a45dc665893ba872378744aae8",
    "title_len": 53
   },
   "compare/nomad-vs-roamic/index.html": {
    "cls": "matchup",
-   "sha256": "2afb688037bcaaa0b0acb5cd9bd81c5e3cf5432f5c5e07b2a4d43c5abb3345eb",
+   "sha256": "e75d1b42d31dfb96399a6cf2ffced4b97e840a54b0c55a1d0c5bef6ecfe436ce",
    "title_len": 54
   },
   "compare/nomad-vs-saily/index.html": {
    "cls": "matchup",
-   "sha256": "8dac6d31365f42ffbd1396aa4eae23fa74ea19235d158e75f0382573f143d514",
+   "sha256": "a7f5c79dc053e9a202ffe0bbf9e883ad3eb4143b6c9fc93b667f433ad67070b5",
    "title_len": 53
   },
   "compare/nomad-vs-ubigi/index.html": {
    "cls": "matchup",
-   "sha256": "a5bd9887dc2f16e8f7502c3d2acb297ff321e956e8641d091c6d986011b551a5",
+   "sha256": "088324e5c531ef318a5fc4f1ffc2ef9914c76c9c1844f847e1a3e2070fb4d412",
    "title_len": 53
   },
   "compare/nomad-vs-yesim/index.html": {
    "cls": "matchup",
-   "sha256": "e848f14f9058883d303b70c12a7ca914aa1cc45002c601279072d5336f8a333a",
+   "sha256": "c30070068fe32d92adcb40d523474c4b6dcb47bdd971e261b0bb372a8dc78ec6",
    "title_len": 53
   },
   "compare/peru/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "14be079f4a89ef4de9c2473e507d9b094a150df3262acff142ed02d5a9db7088",
+   "sha256": "06beee48adc8cad0cce2654d355c0039c0d81c0329a984ec5685951ef54cd358",
    "title_len": 49
   },
   "compare/peru/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "a57590d47ec9966782c80b65b34246ff00b5ac295becb8c414528fec1eb4f3ea",
+   "sha256": "505ab6994f30421ae99b393e31bc0e9fcadadc38e8261219f18e15702c1dc7b0",
    "title_len": 49
   },
   "compare/peru/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "352d9d8adef7dc774ee3a3e6171bd69ca10ca38eac73fad3b6ea767ed5c10e9f",
+   "sha256": "9389fe25375cd1235cedcec899aaf131dc9bf5555b73507e1e7feb88c15b590d",
    "title_len": 51
   },
   "compare/peru/index.html": {
    "cls": "country_hub",
-   "sha256": "29c99fc68b7500c96eb962ce5e113ab3f63b3eb1ecc98514debefcb111c8f098",
+   "sha256": "ea191e30d6b988dcd4de68ca444e6bc27d8e239060352026d8115f226bd37aef",
    "title_len": 48
+  },
+  "compare/peru/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "8dcf27bf0d3e584adcfa23bd5ca6c70c11a90a7905d9db643a77474f1d24faeb",
+   "title_len": 49
   },
   "compare/peru/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "e98db3686c8ce2033e01449cde5c74a1e2b697dd61b17821fbfbf7eee25622b1",
+   "sha256": "782b879e3b7383d9bbc3973e9810d9aa8c334eb1a6341e13a96c7cfad04d005e",
    "title_len": 48
   },
   "compare/peru/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "3977f6f4866e202475330a3a952514866f844c66f1ef1ea50be73658336fcd1e",
+   "sha256": "6e199111e44a541329aa3a61aaba86221bb10c0ddf5f3d75135089ffd6e43586",
    "title_len": 48
   },
   "compare/peru/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "093074569b173bee022d57967e6c4b1d1e105d9330267cd532123d66344c120d",
+   "sha256": "a3fc488ed4d5b2653b99f03e619b46fb2572a2f585d7988c80f3246b033c4fb8",
    "title_len": 49
   },
   "compare/peru/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "252d8aaec869101530ed2d51890ffed75a67f3203beb747b67b01ce2546fe160",
+   "sha256": "a3560f791f48bb924b219adbc148a83389f9d4ef2c779a43684bf281ad59c5ef",
    "title_len": 48
   },
   "compare/peru/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "2fdd988c8eeb67c735b60f98325036316ce8e6cf43f0f19c736a9675e35924a1",
+   "sha256": "964e75ed79e6be7999ed307efb9cd94257df9a9244c4b07d7603ad05b022ac08",
    "title_len": 48
   },
   "compare/peru/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "44bdc0f4e82a24c313b5f4e9462df8fedb0a92c2ee4fbe4386f3790c878e5922",
+   "sha256": "2208a6bc0f4b46664fb4a0440a5bc781f56d15a311ac446d98db8db4436758a6",
    "title_len": 48
   },
   "compare/philippines/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "67cc10b4782fe698a2dc95f5ff2fcf567e020ab6d7821dcf490187f0dce6d45d",
+   "sha256": "d6556b9b834853d8e7b2f5bc13f4f01bcf07225aa0c7d77ffb33877ebfa990d3",
    "title_len": 49
   },
   "compare/philippines/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "2085dd0a9db6245ba77ddb3ee9ba6fab2e9a7db5d8aa803e0df1b3319c8bf5ea",
+   "sha256": "cd53bbbb1fcfe69f4b7f4a1476a0c6d21637a180564900830257674f2a20edc2",
    "title_len": 49
   },
   "compare/philippines/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "854dccf9b9ee41dd2fd649be031a2b4ffd9cf60b414e63379ed30e9fb66221be",
+   "sha256": "7183d2616158b284cfbfad2a07e734d13cfc58d2b331c026049ecffa78f2a3b8",
    "title_len": 51
   },
   "compare/philippines/index.html": {
    "cls": "country_hub",
-   "sha256": "67da39a857ceb86c3020576ec73c27701bb205cc7030cb28d30f1fac9b06f8f2",
+   "sha256": "c9f5503fbe96b162be1e9dee9e043f1e2737605052456677980575b51706d03a",
    "title_len": 48
+  },
+  "compare/philippines/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "b94fe54eb98d14608119fd67eb8dfbec4475f186d1223ae6c9130eab87c0a2e0",
+   "title_len": 49
   },
   "compare/philippines/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "5daa62d530399059590fa7824eaef187f6cfaaf9559eb53238e692de862a15d7",
+   "sha256": "8ee5eb23be0c8decdb03849fef1ca3c71c7c1568ac58a7330b439403756a8b53",
    "title_len": 54
   },
   "compare/philippines/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "ce02b1ce2910efba41b7f56eb2fe7a4888167690dfec48a02563f767cd1431fd",
+   "sha256": "f91dce7ad6cdce3607f53d721edb8070054fc50a3d9bda561c1e4b68dbeee297",
    "title_len": 54
   },
   "compare/philippines/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "96aa637f22347c40fa20484d2ab1b382deace98b3ec466f4960ad77a7dbf2f98",
+   "sha256": "e7f87013d291eae9b14d3c3fecf5ebcf11c37639c99e4ed216f2ba810be0fde8",
    "title_len": 49
   },
   "compare/philippines/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "cfa309282b1c6c22ed0f142b25090ec717f61a33eb2a1baf5420212910e6f8da",
+   "sha256": "95c44fdf5874837c230c856f2a70797998af0a68113572a0e17ea108dcd6488e",
    "title_len": 54
   },
   "compare/philippines/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "ce0db22e3803d45bc60463d84f35e782b46286cdf3afa27a45ccf234de8e06b5",
+   "sha256": "de7f8dc2cd050a5015e8569e8d2785a1597aed09c989d238569a052bf3329ee1",
    "title_len": 54
   },
   "compare/philippines/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "f7f301be34d8d0d01a730cddf623c8883c6734f076b0618809f94b5620299fd0",
+   "sha256": "fa1382efd0bca5abfd9b025af3c9771687c7d937af64b7e440678a28b18879a7",
    "title_len": 54
   },
   "compare/poland/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "f1e1134a8279b6237c2fbf5af5934446d60f976aa77e47ac14f709cad27efbfd",
+   "sha256": "6c23fadc48fdad3d19a7211323f519b94bbc58cd405c8542eb08c22b5f868797",
    "title_len": 51
   },
   "compare/poland/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "11dbbbdda383e5bc77ca162655842000b156143381d36fa92e7de07a79efdfff",
+   "sha256": "d435d418ed250600b4fa4a60904fd5deba1a6c82cf9398e155e35fe6d7df4ede",
    "title_len": 51
   },
   "compare/poland/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "a79f2f96495ca2896d9facdbf3ace03c3a8740931bc508ca32e11dac1fac15ba",
+   "sha256": "8f0927ac654d6d16e411c612a97bd4e36b4aca3437f0e265907d2ff1c5e4f71c",
    "title_len": 53
   },
   "compare/poland/index.html": {
    "cls": "country_hub",
-   "sha256": "0e6b634a3139773a383656cfa8a11949b14625c7f8c3b71797918d24ffe6f840",
+   "sha256": "8ff28c4dac103028b818ed3a1acd2c51ce8a390c5f10f3b3e485b74111243f32",
+   "title_len": 51
+  },
+  "compare/poland/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "a03826d91cc98cf5c7df912eb2308f5cf74e50764e244727ce96cdb4ea3bde74",
    "title_len": 51
   },
   "compare/poland/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "b3935578ac3dd2b8a80600c0292bfd0c887cccb26ff85f83432140289dc84e7c",
+   "sha256": "6a26e4b2dcf8e409daaae8813cb0daee53dd05528742befe86e1d9b752333e85",
    "title_len": 50
   },
   "compare/poland/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "587e7e34bd0c256b67c508ee0be223c1b1b8d035aa349a747334d5dba5acd400",
+   "sha256": "2903a47e7b5960b4730a4c0895b410f826baed0483caed7e2d02fa59cc1b6713",
    "title_len": 50
   },
   "compare/poland/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "28e28ca0f2189c8d58819578b00072fcf4efbcb967c34022a6bfd0462c9f9b28",
+   "sha256": "a2d02e6f53c2cd010decadcd5abaa10ccfc2918ff6b39f65f0ebdba9e88e20cd",
    "title_len": 51
   },
   "compare/poland/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "90d9871fe7c1b2002ce0b15a47b9c27e4a8e1f17fe9b4f8ee9d90351d3e12448",
+   "sha256": "e006513b7e3a0029846c58e7ee20bacfc892d927c44e266028365465fd2e888e",
    "title_len": 50
   },
   "compare/poland/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "3069379681ee78083005ac5eeaa98d3db89371afa61398a4e59c2d45f4cc1c95",
+   "sha256": "ef983e77bc41a6aa37343780d10bbf287aa8d75ea98531ae23dfb169fd57b91b",
    "title_len": 50
   },
   "compare/poland/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "34c2ea6209af15731b8d9328f80496a33e78fa5a98167e81fc836a71bfd7077d",
+   "sha256": "d3316ab3d8f5e9e72de49a3ad09abda1eeb9852b03d57c5d5dc184ff3998b83b",
    "title_len": 50
   },
   "compare/portugal/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "7524f2b1cbaddb5d319e6ef0ca12e6ac92043b659c41055ab1e4eeaca72c4b34",
+   "sha256": "20d6ab04aed9e61b1f832d96aae535b4fed8a8a269f682fc2664feb2eb62c1e7",
    "title_len": 53
   },
   "compare/portugal/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "da01989ce0a5a9696ded52b268d17c8ecfc1ce65463f9f2ee08990abb227f40e",
+   "sha256": "9116b3d74b2495692ad767c93c6614d20a778df0e6eb6780f7d49a76c68d100e",
    "title_len": 53
   },
   "compare/portugal/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "c0f04e1f270c9e236ff8b5d1c7e0d7e90a1755efbdc1193f2b353c77b7529319",
+   "sha256": "03da5add7bf9923070649b9faf4dd8d891ee953d860515570e801036b1b4a762",
    "title_len": 48
   },
   "compare/portugal/index.html": {
    "cls": "country_hub",
-   "sha256": "21a6724d54edc51088421374f34c6cf0409d17c25add9c7894a9530680c47ae9",
+   "sha256": "9c7d4bdd77cdf51603b115edfd05e04ebdba4051603a0a239bea6e1d5dc93f64",
    "title_len": 52
+  },
+  "compare/portugal/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "e25f03d174406cc1d998715fa13ea5ae015f3fbec73a1a272aa8d2ff98486151",
+   "title_len": 53
   },
   "compare/portugal/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "3afea2773fdff82e3742060902bfeb0702d2c6fc774fca098f386620aad798cf",
+   "sha256": "1a37082f431757a68b01b0ac64e6be929ff0ed62ed1920d1f6c302d68bc932b3",
    "title_len": 52
   },
   "compare/portugal/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "9761e01d9b0e8dee3a3aa12a20812d67a6a6dec7153c4d7d4efc3c04dcf139eb",
+   "sha256": "a2d309d4e64b539842c97ca2b586a3e7e692cf7eef38e7e005939d9475f646ea",
    "title_len": 52
   },
   "compare/portugal/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "7e0611a2f832408b9e5a5708ed36cd101fa162bfc2dc36e485f7a00457455f0a",
+   "sha256": "326e6c4a70d9535624340b00ba85387e394a30ad49036233b0da5ae7e8bdbfad",
    "title_len": 53
   },
   "compare/portugal/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "00bbfe768711bf8a10dbb7be92c53d83685ce0d4cd7dccb33f5ce3c065c66668",
+   "sha256": "10b4142321145cfb5025d943c00d9d7702e1d058b3959917271b3598471e2e8f",
    "title_len": 52
   },
   "compare/portugal/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "0a31fc830c2767392480ea2b5c372ea9752870477a0447417629bdd9a6435e7b",
+   "sha256": "e00bbe3f8c4c646f009ca3e08b9f8d0403dea89704d3642f719d6828bf635358",
    "title_len": 52
   },
   "compare/portugal/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "f8f05f8479392345992939b2cf92fd22fadf742aba93f1a3efac2c46c15e006f",
+   "sha256": "5dd255d50ce5d0ef2cef0b64a3658e8b75aea2ff5ef8167336da340e60cdf3a1",
    "title_len": 52
   },
   "compare/qatar/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "c0625f0fcf2e50a2a8539f7764456a34bb89c855bd3f2a14ea5a06d0fb4c317c",
+   "sha256": "296631b6311c3f8766bf2dfdc5cbb33785a7deb2784f71b571494cb039e0112e",
    "title_len": 50
   },
   "compare/qatar/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "f7c52f1d422aefd5e7055d9b5bc51a2b419eaaf6203ffcb3292cc06145585d9a",
+   "sha256": "5ea808599cf57da06f74daf05e8f05167bb27389be31b8313d39ce5015257e5c",
    "title_len": 50
   },
   "compare/qatar/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "8f57d05aa2d357e5a728ca92bd0ef2104909c0c456f0f51cf640779e2cd50cd0",
+   "sha256": "e1cd4afcd45905c602b840f91f91dd395f80b52da4a3015814c95341e9c4d618",
    "title_len": 52
   },
   "compare/qatar/index.html": {
    "cls": "country_hub",
-   "sha256": "60d5a1b509b6c053a9a9753341fdd0b0048dbc66f7ad0e55b834eb3fb8d84bbb",
+   "sha256": "3a85020d30b541bec1fccde8d8291a2d0c82ca110996ae03ffe278fce20d5b8c",
+   "title_len": 50
+  },
+  "compare/qatar/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "5bd7b78007f9a5b895813126a00c4154886c8591fead03fef2a0c4a28be0bf64",
    "title_len": 50
   },
   "compare/qatar/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "aa52e099cf880ffb9e11eeb414d3568bb433420ac8c128f2731c597f42473223",
+   "sha256": "063592accf40f453ce3fd12bb25c15bd63b46244f6622744a25a2eb763f70a4c",
    "title_len": 49
   },
   "compare/qatar/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "af305a3f40a2ea0659c4c13ba69199c431a30b6cb227ebaf1126f1fefd58e552",
+   "sha256": "0f5f9b4c7f16d61541ddacc9bf69e846b8ebaef5573c000670d3ec09befc70fd",
    "title_len": 49
   },
   "compare/qatar/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "bed94db7f93572349e92e0ed4efd11b2b547c21d1b3955ceb12463a1b7b09cfd",
+   "sha256": "0cbc23a5cb9ae0ddd105d3e42eb044bb2a683fe400b41ed8b3b2f94ca5470b2e",
    "title_len": 50
   },
   "compare/qatar/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "8e696a5433d87546c2e1e4ae4b97642ee905036749a5d0374d72b319c4ae6ac4",
+   "sha256": "8ab8ba51b02729d98880812967665d078d8638581047675aab6e5f2a9208cb20",
    "title_len": 49
   },
   "compare/qatar/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "cdcab76133fabb0200c3d6a55ac78c113c8ebc42f4829cb301db856fed1e0c83",
+   "sha256": "9a66579d9a5b8ad51da9e7c9bad9285bfac9f9803b8a3f203a0b0ace93dd2c82",
    "title_len": 49
   },
   "compare/qatar/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "acc6d6dbdffe4946c66baf06db7d9b8719e9066dd0eba38285022f33f8947c26",
+   "sha256": "2d4a5297d25eb201c829d0dc4c83b43ed7fc79cbdc86668122454f59db4fa885",
    "title_len": 49
   },
   "compare/roami-vs-roamic/index.html": {
    "cls": "matchup",
-   "sha256": "215de2091689535bda059b7301ee7d78b2678e65cf4dbbe868c95c629651aa44",
+   "sha256": "637ef3ea4175d1b600fb3014fbc62a8d22a4eba6e73459fc7b9cd018ddec39b1",
    "title_len": 51
   },
   "compare/roami-vs-saily/index.html": {
    "cls": "matchup",
-   "sha256": "7db42dbc3e01b52e91c099eb458031bf8577e8848e515fd27843ec45389e39bf",
+   "sha256": "81db3b4abd0d3188f515def210447788566e43279c2781b265d08e71121b9032",
    "title_len": 53
   },
   "compare/roami-vs-ubigi/index.html": {
    "cls": "matchup",
-   "sha256": "39fc501edb08c04d9607447235c74946e98a86af4db65c67973a38cb03a709a2",
+   "sha256": "68321cabaf22dee6056f0ab3bd40161d25abe229386b6a1155355c51ed513153",
    "title_len": 50
   },
   "compare/roami-vs-yesim/index.html": {
    "cls": "matchup",
-   "sha256": "39f176baba7a6dd032dfaa0f41d16c0622d864505aefa7292923588dad34045d",
+   "sha256": "5fdbd40d8d8bcdfb87027fde4fde458291d8a501b01bacf90eea696ad1b3de13",
    "title_len": 53
   },
   "compare/roamic-vs-saily/index.html": {
    "cls": "matchup",
-   "sha256": "8a557f373a2ea5bdfb5d527a07a6994576f0db6cea119357ff303dc69b9a5cdd",
+   "sha256": "b532d6ba799f26aba98769970f12432588de8031a8962a5bf79568a4511ae4fb",
    "title_len": 52
   },
   "compare/roamic-vs-ubigi/index.html": {
    "cls": "matchup",
-   "sha256": "290646bf613e245074dad0bd5150caa66159a1ae73fe8935a6d3b36f021d461d",
+   "sha256": "301a66f631cb3f3e2960e15f96966b4357d912d701222d9f45107dab72ac237f",
    "title_len": 51
   },
   "compare/roamic-vs-yesim/index.html": {
    "cls": "matchup",
-   "sha256": "c940611a6ba3bdfedc6e54832b18e1d6e71f2e219a664a09d459c9abf440ab68",
+   "sha256": "9905454d62995920471fbfc8bbf91531f70a129221b125d512a828725e94049b",
    "title_len": 54
   },
   "compare/saily-vs-ubigi/index.html": {
    "cls": "matchup",
-   "sha256": "574a2031b541f242f23edf9f2f79b79bd8f874cbef059369c448ed57516502ff",
+   "sha256": "30d37dd9b74ddf09cfae457b65cf6009546973e19c19410ad22154b191fcbced",
    "title_len": 51
   },
   "compare/saily-vs-yesim/index.html": {
    "cls": "matchup",
-   "sha256": "bd1dc46bb63e761a7cfe5e0478a92ec201f87753912bef76cbc490c8e398da5f",
+   "sha256": "4673930bbedbaeaa1984bfc55f7a2105951cdd2454d792cb01cf710ea5cdc576",
    "title_len": 50
   },
   "compare/saudi-arabia/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "0792044e7cd8847f087173d04120f637ed73ffd70e3566277af1e71909d980fb",
+   "sha256": "d771c6596337d025d191945a2c3b7423f58afa1da6c5c6f07b7d579bba10d698",
    "title_len": 50
   },
   "compare/saudi-arabia/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "10583af25ea63faf785dfc1e80c27466694c11f35b0a293bffe2ab76dfb287de",
+   "sha256": "b09b94999fb1d549f01516c0579ace7d20b29c29f71e5f9c578a9820bebff7f4",
    "title_len": 50
   },
   "compare/saudi-arabia/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "0c9d8131bf5deb80168beb9b0b495829e3281b4fc9f96855121cef4f95d0a2cf",
+   "sha256": "9b706eb607aa9ea84955ee4c3524c380cc0caa228f580fbaf26dd1b4a528900d",
    "title_len": 52
   },
   "compare/saudi-arabia/index.html": {
    "cls": "country_hub",
-   "sha256": "74e6a7f53157fe3776e2cd7e2cea459ef8042b0704171ee6340803b9ad346f00",
+   "sha256": "203454691f8a66a5dd63cbbdd94bae014e5794dcb077e8dc83f9609996e5f6e2",
    "title_len": 49
+  },
+  "compare/saudi-arabia/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "5dbd8ff46e19e1c79444cb8e5b16b928d32b370651bb946ac99db068950a6057",
+   "title_len": 50
   },
   "compare/saudi-arabia/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "0bd925b70369bf56d152af22dca9c5ae9b120168a3d3277e1439c0f69b595b16",
+   "sha256": "aff8d8409bb5044e716ba84871bbae319d0a5c0bf03b29dba69ce146dc591768",
    "title_len": 49
   },
   "compare/saudi-arabia/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "687832f6726c3732eb59fce5438359733a5aeed9365b7295af5e0b14133c5197",
+   "sha256": "04ccdcdd525a6c9f0830cd9c1e5d673c5adee5f96a6865c4912c885cb35feae8",
    "title_len": 49
   },
   "compare/saudi-arabia/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "f25a747c62b4e10726bf1e39c7e745cea7f6bbcbf8b514c9d8cc6f91bb888eeb",
+   "sha256": "4fd8c14e310ee20248db43624547e62408c5b736d84aca6e86dce9205528d685",
    "title_len": 50
   },
   "compare/saudi-arabia/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "5161e35c49afe7074407d9da8932d64a6747b7d6951ad73942903f9f9a50d695",
+   "sha256": "2fac8c8b7bf9022492f50defaab1d562d727c4f44fe9248e2c3a8ec1caa36a6f",
    "title_len": 49
   },
   "compare/saudi-arabia/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "41a16f27d146dc5aba4dccbc8ea823ab7f0f3d107f4a2fd2c66803cfa34ce42a",
+   "sha256": "6c1f370f1a1ccb8aa7bc4a7954fde4745ead2f6d5db52dc22108178e1f909503",
    "title_len": 49
   },
   "compare/saudi-arabia/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "ea23363decbd3f51ccf72339b315788eb29787bd8e270131971bf40ddf0b215d",
+   "sha256": "683a20d2d8b75bfdba3c75b69d02e43dd0c75d61ba45a16ecf51b7d8ada8b60a",
    "title_len": 49
   },
   "compare/singapore/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "682494d4df7291c0dce43d8a1b6b1f3afa4a76db1a3645bd68d6fca66a0db66c",
+   "sha256": "08b808290cc8d8a582ea24ecd6abc0368b684881aeadbaae81b9035ad21a4d52",
    "title_len": 54
   },
   "compare/singapore/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "6839a393eb83116c20e1f30a24ccf64038327b1a4ea770b54158c3c1a4565ae9",
+   "sha256": "daf5e9fc52f82ec8c0d638262558ad7f08cf0b1b7c1c94f31a4bb5d21b2ec41f",
    "title_len": 54
   },
   "compare/singapore/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "e11d375f81a6a37c6f57d1452b7577c80673abc1c79acc3851d8181076448390",
+   "sha256": "969c4ee22cfada4541e46bdbc7ab266b6b455fee9ace850e11c1ee1d946638a2",
    "title_len": 49
   },
   "compare/singapore/index.html": {
    "cls": "country_hub",
-   "sha256": "788fd86154b57acdc075cf7d59f505162783a1f6d6fb131a23c58c79139f024e",
+   "sha256": "e2975d178aca6044d9baff72dc86ab1138ed32dd5b6370a62f20b18a06f5ec70",
    "title_len": 51
+  },
+  "compare/singapore/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "9ce380694d40272b47779782bd50fb368c32617ea9f899bef53b4b372a350456",
+   "title_len": 54
   },
   "compare/singapore/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "835efefecd1c7db61e4c5989ce97e7ed8b81f89513ff62be9bf7f452a50bb2be",
+   "sha256": "23cc33c6689424a92a325eed6440fcbfeed3e4e3e7e7be2af608b7d15e059ec4",
    "title_len": 53
   },
   "compare/singapore/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "6e665d4718ec8d04be9f4477ca0dc441b2f0cf9df2085b1b6109bcd699851941",
+   "sha256": "3b18582067a8d8df5b45cc544f68917e65cf5e2c1118dd5fc13856aa2635447d",
    "title_len": 53
   },
   "compare/singapore/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "dc9ed680321d8b3c86b07b15da4d0dd6aee13028992979c7852c10903e079980",
+   "sha256": "05aa8e373a8c088126a455f19227ab873dbf968a04ca6e9919efb1c95a36de48",
    "title_len": 54
   },
   "compare/singapore/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "255ecfe3419b5a67dd662c81c263556085cfc913b4b2e643cc61a57a9026962f",
+   "sha256": "a9510573f37f78288e5583e647e2f80c0b968d817cc550c05f018b9d5939a3c1",
    "title_len": 53
   },
   "compare/singapore/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "127331c24046b2a1de8edc7b8220391db64c6c5d5d5d6bc5cd04196da1a9de3a",
+   "sha256": "8b9fbe2acafb494f81845b2acc5c254499ea5dd360e2d075c2f3d440743c54e4",
    "title_len": 53
   },
   "compare/singapore/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "1bc9028c7f0a0711cbdda2bc333cb9ae2927a7e1ddd8ae865e3633b8ebf54d6e",
+   "sha256": "58bb2e417bfa777776716b927066dcccfc49ade66dcf829f3f22762bf1e9cee9",
    "title_len": 53
   },
   "compare/south-africa/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "19228363cb420b402722ce2a02870e1208e2b95921fac0be124cfd0a0c83c1d8",
+   "sha256": "a876227e02a278b24728e5b688589eb2b980bcf2785ebd57b3da3985d3115a0b",
    "title_len": 50
   },
   "compare/south-africa/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "1ca462b49c8af77e3dcc6c90dd643dab239e68a14a3e84374428942d35dfcadc",
+   "sha256": "94e85362b03e295d57ba22bbc98115fd929d137b49c7074abec51be6bcb46c34",
    "title_len": 50
   },
   "compare/south-africa/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "2521650ee6df99c28a3f475987e926f9c2df8a584761d753c097489c45059c8b",
+   "sha256": "6ad62a55d57f3cdbc0afb4de005229c1983b5bc4ddcaa4f2ecf091d5b01eb739",
    "title_len": 52
   },
   "compare/south-africa/index.html": {
    "cls": "country_hub",
-   "sha256": "6cbf2462c0bf3a4b458761dcc1e9b1c424a2d675fba779a5d396866d092ecf4b",
+   "sha256": "4b20824e4e4fea49c5bf8b47eb590b80b4e48517995eef1545986121f0c743db",
    "title_len": 49
+  },
+  "compare/south-africa/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "a19223a284ed598ded4244e43b5781e16837ba7681ba633a349a9d73a0c748c3",
+   "title_len": 50
   },
   "compare/south-africa/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "bbffdb3452ace3442dad6c61746c2aca15dccb37d895e6f13025d8843ba46e6c",
+   "sha256": "bea4b1e7266de1801a708faf568a42512fb86a44c01863ab30be68009de57210",
    "title_len": 49
   },
   "compare/south-africa/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "1e42c98c79eba085d6391b5c686e9e49c50d6d985f068534bd62b17437bd5400",
+   "sha256": "845f6ae5a4239d54cbd03bb9f36cffcf75f7924e3f35055334ff12bdd1cf2113",
    "title_len": 49
   },
   "compare/south-africa/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "5b635189736c5056c97f219fe43dcded6ccaa96c348f7a709fd73f2cb3e6084f",
+   "sha256": "4261f792816921c64f8588231bad1b4a1b4f925407cd1887fac7c4bd980ee538",
    "title_len": 50
   },
   "compare/south-africa/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "17e84331314b8e1a419363c2cff6728457ab213d1b9bc804de51ccb2001835a3",
+   "sha256": "891c12945f29f05ff1c6a937d0c84f0a7c4fa5119b6b961ccb721b6bb40a38ca",
    "title_len": 49
   },
   "compare/south-africa/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "8775bdc74fc2429993a58a4b33615f27ba3d37b36078d012103737fc78f0550f",
+   "sha256": "96e9017074c8d7f948ac922652e1f768b10dceaa44c52caeaea6e445dbc4d8a3",
    "title_len": 49
   },
   "compare/south-africa/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "79fb218209b9c73ca6cafdce34d5e60a2418dec59d1df2b1999909ed41b87473",
+   "sha256": "277cc04b1f694f03771c9220f9ac3f8012fc202213b5c13e19fd7a3befb5c687",
    "title_len": 49
   },
   "compare/south-korea/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "c1bdcb6192da07b8fac08a52519203d966d220349b16e5a9060c260b9896a83f",
+   "sha256": "2cb85d2b4da40f48a18a8f0af0a76fe7bde81bac4741f1f466a624f56d7f7cbd",
    "title_len": 49
   },
   "compare/south-korea/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "0f9abd50fc3a80f8fe9d82fe74400dad8932959dfaeffa3100a6fd5a96cb8182",
+   "sha256": "384e16eda20a64962809a5ba446f90625bb9d3d18d523ca64be79c56e3c4a6f3",
    "title_len": 49
   },
   "compare/south-korea/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "8a5700ac1bba785302b55f41a4973b3dabc9004fe0b10b04284413b59b0936a6",
+   "sha256": "d575eec3f507d8c2580efe8366046fd85eb7078cd437716ff77817de1fdb3b8f",
    "title_len": 51
   },
   "compare/south-korea/index.html": {
    "cls": "country_hub",
-   "sha256": "8016a025b44bc1aaf7696d6455a20fd1a75a182be9a70505f8a54088ecc33a47",
+   "sha256": "a3c65aa78259e3d02ec9bd4a5120443d8af06c0f7abccd321a3d388faf7ef3e4",
    "title_len": 48
+  },
+  "compare/south-korea/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "470d1df06ecbdce409b972cb9ba88885efa477f8ff059bd172dd0fef3d5f1ed8",
+   "title_len": 49
   },
   "compare/south-korea/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "b36085d6623aa8fcf779744acbf8e8695dcf00c1aa99294576df6cfd920c6455",
+   "sha256": "ade90ff6b592a1451c4aa005e65121a0b0f999a29424037c66df48645da4ecde",
    "title_len": 54
   },
   "compare/south-korea/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "6ad100820476c514e32f2286c0785fab919ef22088b25ea88fdb30a2dff1a6ea",
+   "sha256": "a7ab74ee26a65b083a4907c62ba0ed75523a368e9bbd36474da31de900450261",
    "title_len": 54
   },
   "compare/south-korea/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "03632c6bff6402642bdf5d08d01e6e884f82cf808903261068ebec894c22e671",
+   "sha256": "4bcb76905b50a3bf97ba1019b7d787c221aa30684b0496e19fef6504f84246a3",
    "title_len": 49
   },
   "compare/south-korea/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "15b8e156268f9ece9d2ef4636e8d063be56c00f1ad49b1a36d69b4217b3127eb",
+   "sha256": "38682adb5060c515f3369214456e139f8a9f078aacb2e40148a0ec2c40006fd8",
    "title_len": 54
   },
   "compare/south-korea/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "647fa02da2a5c208e4c44a783ff8348904220e2b36b769a64c96e64c4b1ec827",
+   "sha256": "22f5ad8518526ca6915d088747b9e774936b9326cb182a1cde69d59554b0cdbe",
    "title_len": 54
   },
   "compare/south-korea/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "d1c7b2a16a7ef876c9080e1e7bb095143e59c5bffb071998001786457c81cacc",
+   "sha256": "4822b39ffad110695dee636eaf15e3a76d2fb5dc808379ace2773d999cb1957b",
    "title_len": 54
   },
   "compare/spain/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "e22519a632e11bc1a7066e0ce0105db7bfa1f0643bbadb61c4557d065638bce2",
+   "sha256": "93db8652788111594ca123f0735d8d2ab74945939a9a587a27f0f58923659f6f",
    "title_len": 50
   },
   "compare/spain/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "2dfd82e1ffd52b4ce8a4469eac8ad16c1e3f97912ec1968b4e6fc5f0b593172e",
+   "sha256": "bb8f6182d6b15882d7a29eb46e8c316b912e8cc138c9913b3b58f0cafda46eb3",
    "title_len": 50
   },
   "compare/spain/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "7a297f69573ef43a21fdb5ddd1a858761c194e5730d8a4b711a49ee41e80c3d2",
+   "sha256": "1d6300fafb911868e94e47c9c0e09568019de09705119717622624efae7fee30",
    "title_len": 52
   },
   "compare/spain/index.html": {
    "cls": "country_hub",
-   "sha256": "356c674e22637b4f04920a9976bab95e8440a8f2caffa05abc96e4e88267a389",
+   "sha256": "899c2f1a94ccbfc0424386489784ab52cd95abec7c294086cc9bf39b2ee7f802",
    "title_len": 49
+  },
+  "compare/spain/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "4bad75b75b4eb60032ab4667ce651dd935614b51dc41fbb9d13caf79c959e3c1",
+   "title_len": 50
   },
   "compare/spain/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "1ca85428d101f25c4e528c2b4d6184674048fbfd3136859cb3550af2be53575a",
+   "sha256": "bfe92cfd1c8f8c0bf032ceaf39505edb9c40f6bc320370adce7810d4976d174a",
    "title_len": 49
   },
   "compare/spain/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "8a95e3d70317fe6348f5d02c67b4bb8222944906fba7e0e690407bfc3b4e916c",
+   "sha256": "b3b5b227a411fe634c13d75a38cd4c25b67266917111ae10acb49cfb709f82cf",
    "title_len": 49
   },
   "compare/spain/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "d14e7164f34fe481dee43840ae859d0923774bb37b081e10a33a44cd36cfacea",
+   "sha256": "fcaa94b8727fe3cac7915c3c7ca1e5150a99bca7e6a44f919e1f06d763de0cb7",
    "title_len": 50
   },
   "compare/spain/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "0f3e6634817c2878846d616ccffba39ae91f89ac2b172efc8f84be6beef48108",
+   "sha256": "9158b80fe0e4d4db5b247da70df13bdb0a464da8513f687697bf45d2abcf1207",
    "title_len": 49
   },
   "compare/spain/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "57030d104fc056192da4755b9ebecefec82bacb6746174500802d2936bcc8ecf",
+   "sha256": "c20c804efa01571adcd4f68b6d2dd32063e7e371f3df93612c9236d62ce568f2",
    "title_len": 49
   },
   "compare/spain/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "1f0aceebb92c412760551bb6f9a9c3b57614f8ac8692ecd5e837bb42453cb0e5",
+   "sha256": "cb2da4a1b8821a8e21448240b292c8fa3329a713e91785517544d762429151cb",
    "title_len": 49
   },
   "compare/switzerland/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "15de67061de98559868a9e35611117048dfd9410010190210217e0add8d3951a",
+   "sha256": "84bc781e86b29a490736050cdd227ebd7e460a1d48758aa1c1cbfdca3cf62b25",
    "title_len": 49
   },
   "compare/switzerland/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "bc6256aacb24005e7390d28efb2c983f0ae400f9f74beb4845e21dfd9bb5386c",
+   "sha256": "079bce67480b3de2b0493889ab2dede08390d605a54ccaca62b5b3b683b1ab0d",
    "title_len": 49
   },
   "compare/switzerland/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "8e39688db75acc962d88cd38bec7454dab1863e2421529ce2bc1b03a71142216",
+   "sha256": "339fdde1a9a47e38a83d5ef13c9ec7d8a58abf64e4141ab79cdfd34238e355c9",
    "title_len": 51
   },
   "compare/switzerland/index.html": {
    "cls": "country_hub",
-   "sha256": "3e3d87d297ff6d7bab797374c55f7aee6dc15bcc115aee009c818d40ef75966f",
+   "sha256": "ca13161ede1c6087d4a35d1d9adf5a5a3f8be62353b6c5333d52fecf4c427697",
    "title_len": 53
+  },
+  "compare/switzerland/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "6af657aff8995a32d345971c2a72cd20752040302ff62238e4496849d5606165",
+   "title_len": 49
   },
   "compare/switzerland/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "4287783d3cb0d60b936f13ecc188a79bd1c04d3a685d346674b808c1b8e75820",
+   "sha256": "4d4eee333e2f10db91453f368b83362eeda796820d61d4cf529bd4b33e706e04",
    "title_len": 54
   },
   "compare/switzerland/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "932fd62eb240a9eb767115a9ad06b605f9f41c737042fbd22f3e518a682b9ad9",
+   "sha256": "a48ec7f2439965fddea8a8c8fd9bf0ff5ebc3914c9ab7fd3a130d0d310233951",
    "title_len": 54
   },
   "compare/switzerland/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "b05f5e324b0e87bc0ac739e44e065aaf637630b57687e8c68bd88df72e44a56d",
+   "sha256": "9b8349bd4b323cd3d95ad9cdbce2c1c26dbdab25ed7d1f0e2e58c6fa4610e58b",
    "title_len": 49
   },
   "compare/switzerland/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "6997412c8c03a7655011243bece96002858de8a757d9caeaf8afb3e3167cff76",
+   "sha256": "5c3b1c3f8e70d7657e42cb29662df551d98cd4194b7e8ff0ec5926fe8aa261e6",
    "title_len": 54
   },
   "compare/switzerland/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "d6432bbc5cdd1c8c3fcc7293ed740d06deb2348201d054e41a6c6251b3f01bb3",
+   "sha256": "21b866786682f7454d500781bd966869ba4eb9f9c7db5970691071f8fe142440",
    "title_len": 54
   },
   "compare/switzerland/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "185c4cbc1910806672928e0f6a12712fe11e080996ffcce73f9efbaad11bcb98",
+   "sha256": "f96a022550f1c612970a3b8d8c677dbc3420eee94ca6275c9ecda3b3c9b7e985",
    "title_len": 54
   },
   "compare/taiwan/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "6af10276ec5e19899a716d801da956c43fa771e92e1f22c1742600540fb06dc3",
+   "sha256": "854322d052f3ca23a4abfaabf154b6d22b5c4505bd943c9649176cc07ded0b32",
    "title_len": 51
   },
   "compare/taiwan/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "77504e386610ea944dc77f5ecc80f78945750938f4e765603e839c3ccb208c82",
+   "sha256": "1903ef45d787584d5af43356a914d47e06c524cccc3130e7058f92b902d48beb",
    "title_len": 51
   },
   "compare/taiwan/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "21d3dbadb4580ab50d5a56e378de2d2cec2119e1077402dcd466c61c515b22a8",
+   "sha256": "c8ebae951366d20fb4a88d70e4988335cdab1fbfb0d09bb126745d8b4eee52cb",
    "title_len": 53
   },
   "compare/taiwan/index.html": {
    "cls": "country_hub",
-   "sha256": "1066da40a6efa7badc085aafaff640abdfc55d4defdd699e495fb1b597c99551",
+   "sha256": "f6195165fe8aeb70337e9067341c7b22a9d2b7fd5238f893802a528605f41866",
    "title_len": 50
+  },
+  "compare/taiwan/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "687c8a548f91a650e607d0ded4125627d8d5c38c291b0835fd042ec2b3bac379",
+   "title_len": 51
   },
   "compare/taiwan/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "c1987de6a0152b8326f2bb56ad3e290b139766f774222729c00c78f0329e4488",
+   "sha256": "e6a20d4a024fbca5b72447b10d02b22585c89ae34f96c723d390e486b4b6f812",
    "title_len": 50
   },
   "compare/taiwan/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "7adeb7e81be2403b4cca09b358eb4977916dddb6edb64d20d9503bde70bb867f",
+   "sha256": "3d427c0ec15444cbcda5b6a0752a3ad5f349574d676afc25a0277974ed61b0ca",
    "title_len": 50
   },
   "compare/taiwan/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "cb221944b6eedfc85abd7e23ccfccca47236b00e85b481713833bbfb0356f99b",
+   "sha256": "5dab7a6e11342776d245e46b9acf0383219c671e58d39cfc28354b3fb218e5e7",
    "title_len": 51
   },
   "compare/taiwan/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "9a6d6307a4acff203fc69837c1e2e79f5a1ce3a7c56903349754ed391e55db4c",
+   "sha256": "943ebc1a788cf46a90400cfcc1cb16cfeb94fd9623a9d8b2a371d22e5bce47b4",
    "title_len": 50
   },
   "compare/taiwan/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "7cc0253ceb0b5077ed1986dea18590b3cfc46a56e230a2d94357e57c7d5cbf31",
+   "sha256": "0c97db7acb10785b73c4f98bd034e8da6bf1621b30d9b0d36d3487db3f4bba0b",
    "title_len": 50
   },
   "compare/taiwan/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "4b08a0480571c47a9ea5f520bbd0ab43c33cc5bce2783b5ea45eb1e920bc9023",
+   "sha256": "e9eebe54f7a0f65da3803dcacae625f7daf1ee5fa743e317b465c4cc29265da6",
    "title_len": 50
   },
   "compare/thailand/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "70d564d287f60c9e765becdfc440a9e5536e594c05d5542a19f7ac934a39522e",
+   "sha256": "18d416a088f0c44c4ee0179ae1affecd9664c6415e373b85ab3e53503540d3eb",
    "title_len": 53
   },
   "compare/thailand/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "ce67a66eb789f03b9b55855e49e241dfee39f429c4d8b8a80d643c6f072ffbb2",
+   "sha256": "2eaba8b2b3f459eca66a8f7f014dd8d46760a2b44f6006c5d7ae021ddccd678c",
    "title_len": 53
   },
   "compare/thailand/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "be5c35d5fdf99bf6a08b561ef150214477bd658099878e0c78fe604a1d0913e1",
+   "sha256": "7c8a7159737f81fa10c7982157e965d3772bd1f5874561ba34e6c84348699e5d",
    "title_len": 48
   },
   "compare/thailand/index.html": {
    "cls": "country_hub",
-   "sha256": "f710a5e4b90ba656be3d631bac757eb8f4451f48992591a50ac459b03671a2c0",
+   "sha256": "24d04401676c9155bf9571badcb76219128a56bcc611217727d1157b31d549d5",
    "title_len": 50
+  },
+  "compare/thailand/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "395c48113f84f34955352c2e10c27e8614df18339c3cd2691170b93d8ba8bce9",
+   "title_len": 53
   },
   "compare/thailand/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "74469c5aef385a8f1199b989328ff2c00de0b1d973dc5b7db0f53b36b36a888f",
+   "sha256": "f5862da69b089665cacef65ed23212a103be174336b545614abe5c2fa79a962a",
    "title_len": 52
   },
   "compare/thailand/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "6c5fbdd91bdfe0144eff3385f4a0999d71cc5b0309fcb51ce1331ed3e2a1ab3c",
+   "sha256": "9827972e4cbca6b65046dd14417a67730df09aa9bc2dd2e50b5f15526941d845",
    "title_len": 52
   },
   "compare/thailand/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "b9634e032b1e0d218b38ce8d3f10e753f93dab14346458acd335aedc41a4c9b1",
+   "sha256": "c227b7023eceb14dfc9233860cd89089d0812578a63bfb68fccb026f767b9626",
    "title_len": 53
   },
   "compare/thailand/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "544a91057aa9428b85ddd75ea6b73d3cc46917f1425b5edceb357d8cee61798a",
+   "sha256": "0b0dbf6771c5dd52c4f5c4524f72f6ec546684c862a6d56315b1839df44754ea",
    "title_len": 52
   },
   "compare/thailand/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "c0c009b2ba1fb8cc38e063ca25e31efb8ff28b40df4363b17566c7a50b6e8062",
+   "sha256": "d10217f0b7d6fb58079aae1889276974a73aa65935c8fc09ce2e7dab51204253",
    "title_len": 52
   },
   "compare/thailand/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "65953f2a7476f2b2c58ce71b4de37b592dc870b119517751aae1573dff8d6696",
+   "sha256": "b54f4dc06a8149bef03a64f8e549351db4daade2c564307625a7b47b0c64c3cf",
    "title_len": 52
   },
   "compare/turkiye/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "2e66c2cb29b6776c9481b4c6e42221736bf61216f12b26cfca2c295c9fa3b979",
+   "sha256": "60165629fc9afec62e6e32ceb7369df4feb5e4a71069b5a472dc68f0a1b57cce",
    "title_len": 52
   },
   "compare/turkiye/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "b989aa544fada105d72ca0acee993dfacfe4821d8a2271437acea8c1b2ec2960",
+   "sha256": "a8e8632c78b6aad0a9248f587993e18c32ba412da42bc9bec9bbb20d12160708",
    "title_len": 52
   },
   "compare/turkiye/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "98a788e0e3f35196370ef0b98d37ccf0b1efe878ddf11ceccd75ba60845f53b2",
+   "sha256": "674d30e43c2f0752a53ee76a063efc0d21057c7bf96cbbaaeca0afbd6efa20e6",
    "title_len": 54
   },
   "compare/turkiye/index.html": {
    "cls": "country_hub",
-   "sha256": "1110db68985d23004efe2e250da7b4c0785e7915c7239422d8024f154484b39c",
+   "sha256": "a39944f164fe1ed9e006b62cbec402812e99e9c9e749fd31372e9878908b4a13",
    "title_len": 51
+  },
+  "compare/turkiye/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "83e371ccdebc9d09d0140b149f710c7b9d7e4c34e76d4505b414185274e8f53b",
+   "title_len": 52
   },
   "compare/turkiye/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "c70fc23c32169a35b6a988e4c37df65a032f16b33d7959e22757eb8c38ae3510",
+   "sha256": "e158710d6eae5400a77f715720be7018513be929f7b766df00d53884a8f43941",
    "title_len": 51
   },
   "compare/turkiye/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "b717a76f76bca6b527f50ad4f14925223c02fa8f5a704ad9a8e612d7755893a0",
+   "sha256": "a4cbb18732fa3558896507fe213c9930f891b66b040483cf214abb3af7989536",
    "title_len": 51
   },
   "compare/turkiye/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "c51beb36d6786d03ce6cca9b89d610edad37aa17ba089f64393614e2324ee49f",
+   "sha256": "c53d02f4fac94cc504f63ce22e5b4e4f07e0f2eee32b5f2cd8968dd048de6106",
    "title_len": 52
   },
   "compare/turkiye/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "e5fc5b55b03361f4c4b1df59013913438027ab664906ff4974c8b0607b57030c",
+   "sha256": "e887ac7cf333b277f338f65bfce32ac25873b380dc4e89a9225c1e40e885ec63",
    "title_len": 51
   },
   "compare/turkiye/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "e3c5b6d96d7630a879bd70dea3be8f8ee167215e02eecc378b6ea26608be11ee",
+   "sha256": "c5b3be52ffb7f7efa52d535cc8385ade5d9cd5d98c8c25b6dd3b95ad23e3843d",
    "title_len": 51
   },
   "compare/turkiye/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "c31b9e68b588a601952d645df194fde6879896faf36db6041d9e2f0ff949420b",
+   "sha256": "afec2e8ddfc26f78599a2e5ed55f060f8d2dcbcb60b27d88af1b4b6feecd2f27",
    "title_len": 51
   },
   "compare/ubigi-vs-yesim/index.html": {
    "cls": "matchup",
-   "sha256": "0a5de4b956ec882646f75094628fde8ba2ccbf8748636779f43f7a07ec59e495",
+   "sha256": "255d1df11fdd0edd2940d106f37646af97f4289a51a133135a5bded46c3e4a7a",
    "title_len": 53
   },
   "compare/united-arab-emirates/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "cff00a693109a4d765db797fb006798c4ecb0231c1b58d53c359cd89430eb67d",
+   "sha256": "475a0166d9424e20e2256b668a47ac63fff6aa36d60880f48f6a797248bf70ad",
    "title_len": 49
   },
   "compare/united-arab-emirates/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "2e8f929abc39bef542d8b2698a5a62c412114f085f777d7670ccb5222c4f6bfe",
+   "sha256": "e263d80184e45b7eaff827d7a1db36c63c95c4a868018de4f17f27a2c355dadc",
    "title_len": 49
   },
   "compare/united-arab-emirates/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "4db4885981582571e31a4775bb2060b725e52f732409300999032dcec4e6a8ea",
+   "sha256": "cc007833140a6b06dfde849ae8ffabf4982642c821a3421c8b3cad46fc55615b",
    "title_len": 54
   },
   "compare/united-arab-emirates/index.html": {
    "cls": "country_hub",
-   "sha256": "27daf1219fecb41cac0e846a41f218f4b75b81df963389346aba5a24cce83918",
+   "sha256": "ab8a7472bc7c9cf6a432aee375f57c673437b551041db375767a41ba4287293d",
+   "title_len": 49
+  },
+  "compare/united-arab-emirates/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "7289a44e97fbc1fdf7186b16ef319eb05efe1ddca084e85316ea59e5ce8492c7",
    "title_len": 49
   },
   "compare/united-arab-emirates/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "0052ed075535958cb0e2259921128a34909dc8ffeff2371afb66bf29338bd6f5",
+   "sha256": "8c1cae50a0580937ebecd417061b9612a7baa2bdd944812bafc2c980cf0d83ee",
    "title_len": 48
   },
   "compare/united-arab-emirates/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "c842f28641828944b23c847e8de1f2f406883b3206eef71631485b702e6da2d6",
+   "sha256": "de06b22377d03b47e870ed6e74e8db79e9ecf8fc26f336d7c0946746fc35734f",
    "title_len": 48
   },
   "compare/united-arab-emirates/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "e50eae8fbe37417d263174c098b0c2056ba7cccadab4cdc030733214edcec0bb",
+   "sha256": "ed4ea9b7ead10aa3df003415577ce4fb323a292341e9dd5358f22bf547f234f5",
    "title_len": 49
   },
   "compare/united-arab-emirates/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "d3f7ed1809a5b51e5c92c390df2c7407326af2d6973f2f302ff669be92934c88",
+   "sha256": "deb29a6de8c733c10d57f77db5892da25d3c26c3e2b674c28498e31b44c9f1c8",
    "title_len": 48
   },
   "compare/united-arab-emirates/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "30e9dfcbc5cf8d2bfed93a2476ad6554ad39d0aca7a58e46e15e07d4bb7235d5",
+   "sha256": "907427e730422f2e136941eddd67d76f43e3058f730cf36c558af0a70b4d9956",
    "title_len": 48
   },
   "compare/united-arab-emirates/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "6fef4dd2d843a90551e06a57b0fffeaaef9a912e43a513c1c455906ab4f9309c",
+   "sha256": "570b6ffff357394b99d140802d438f7138ef98cc660fb9d652685b179e8e596f",
    "title_len": 48
   },
   "compare/united-kingdom/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "12a75de1267b8e1dbdccfffbb47b1b6b2f67dc8bfaa9c313bd303b879aaf95f8",
+   "sha256": "b9aa4da43d7262f66ed9c792573693b65366cb32010226e9fba5f3ec65471921",
    "title_len": 47
   },
   "compare/united-kingdom/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "0d39c4d9a80f73ecf26b0ae61636f256a23c3aee8fdff20bb5c35018c721fb49",
+   "sha256": "5815faa32650b6ff1cddf65ee96c2d020a790cb43ba7df56a0caa5b43ded31d3",
    "title_len": 47
   },
   "compare/united-kingdom/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "22bbaf1b01ad4159f4592acd9572c5aedaddb935c5e136e1a20b2fc51c164179",
+   "sha256": "c8e289567d6c9a3b01440c5f07d034791c2da9e57c839d3db9556b0414be6436",
    "title_len": 49
   },
   "compare/united-kingdom/index.html": {
    "cls": "country_hub",
-   "sha256": "46d24260e47ed013f4e15809ba5c0d0cee522cf86ab3b057b800c90f55898ea3",
+   "sha256": "518cd112886bf0cfbaad7dc165f9f029630fb879169f2e7b3490f1ae8a6bb81c",
    "title_len": 53
+  },
+  "compare/united-kingdom/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "00128ee16f87535c34bd51dcb148d83c0a93ce11e06e7ed7daf6c46867aeef30",
+   "title_len": 47
   },
   "compare/united-kingdom/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "283ab575f29afe2c0cc18f1365785fc12ea7e4f6a2317c2cc16e1c0fc1b6d54c",
+   "sha256": "2eeee1818e06422971f2f3d5e3be2593ffef71189f8cbd74a77f54ac4d3cf3e6",
    "title_len": 46
   },
   "compare/united-kingdom/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "a4225c667acd3b5c6b7b5b62c34c68d4250642c4f282bd6fd517616897d17361",
+   "sha256": "d8a5f04fc7ffdb3f3de8eb95afa227d5df7d75365c8eae5a1c15943f81f8d563",
    "title_len": 46
   },
   "compare/united-kingdom/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "13183bfe28e0710196e7de020698e64710d64ab6245e73e116d96fdf629a84bc",
+   "sha256": "409b8e159e00cc8dbc690d8dc5a74a13db478243e9882d7a1793479a46669fbf",
    "title_len": 47
   },
   "compare/united-kingdom/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "b04ae52b416fd76b4ceceafb487b85e614f1fbb7bad05e5008064e43e4e27603",
+   "sha256": "6549baa3d53c0e745435716fe7808c966e9ec6741bcf1b7ace76f9a09a0d1002",
    "title_len": 46
   },
   "compare/united-kingdom/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "5b098bc44ba8fa593f8a45193665fd0a95fc55bd8e146931736b4841a0c28c9b",
+   "sha256": "27596f6d9ab37c69f67642deaab89c7bc52f488e9613a9ea227f07013283d267",
    "title_len": 46
   },
   "compare/united-kingdom/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "03f04ce80719aa96fc917309d83f9f0b730f08b04f1591f9e391e109610bd6dc",
+   "sha256": "1c9535b7f2257cc6121b5991854e4838aa42c5d652248a40ce77fb417ce83b45",
    "title_len": 46
   },
   "compare/united-states/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "9a09f8317298d1a4a4f6293338bd09e10122a82a376032845737f3498513f43b",
+   "sha256": "07d3fa0dd51cecd8c4fca04bd132ba604fc47fbaf94435df2ebd7c77d202e28b",
    "title_len": 48
   },
   "compare/united-states/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "aba62d7ea12ef739618618f8f1394da1ebc108a5bd09ea3781d13c1e81e86fd8",
+   "sha256": "7f1d4cf96c593146cd97489cc7e2a0d5dbd94e4556c97cb6a3cd4cba09cfa900",
    "title_len": 48
   },
   "compare/united-states/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "d1719ad4e039e0499a77be8d0986cdc65ac5e65ba270574d08b9917bf5e1ab99",
+   "sha256": "6b8736cac66ae10a5f95d934502d614173f2fac2afd6fc42d90c1792ff313613",
    "title_len": 50
   },
   "compare/united-states/index.html": {
    "cls": "country_hub",
-   "sha256": "0f944527bfc83de004c803971adc684be9aa154da14b66f25b695786f26da3b2",
+   "sha256": "e42a562573ffa50793c4a253ed7407acbec3f154e7887d64892f622d1d1bb418",
    "title_len": 54
+  },
+  "compare/united-states/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "97ca42a065fa4ceb44f686f096b013a12d2b6a8a07d6fce8f501135607ae087d",
+   "title_len": 48
   },
   "compare/united-states/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "eedc00c4ee0926750dce86a5f198016f76f10f4da2b8d9ff4ccb985ecac1ff52",
+   "sha256": "46cef5cd7614c425fec7cc648d45d205ed94d06a64172edda7335c7d706517c3",
    "title_len": 47
   },
   "compare/united-states/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "c17837ac6dfb4a8035a29a985bb00d205e3937d6b2b5c367a1c9fda635f10283",
+   "sha256": "ec9dcdda92c39911cd7f40d2ed3090e862adc7066febd0e83ad2b28602db62c4",
    "title_len": 47
   },
   "compare/united-states/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "2bf8f55aa7fee10657980d13e7e035c7d34af91e59b01ff4e4ef93e48a0e14b2",
+   "sha256": "a201372b7b7f627d2e0943ea73d1c8b6895c0348c4170e551b01d357ffc1514b",
    "title_len": 48
   },
   "compare/united-states/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "ca9e5b177e6f9966c5adb3d5e01d7f3bf115343bca431726961d1db504d299c8",
+   "sha256": "624e9d6c67b9f956f960cdf7b2f55c4c6248fbe1a803ce52e262024c28a0b3bb",
    "title_len": 47
   },
   "compare/united-states/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "80af532e04664b684a137b8027bb304a5965c2485620acbbfa9c31475abd8a31",
+   "sha256": "25368891fe31da5d0f9794018095804ad2fd405e677cbee6743206f506a29faf",
    "title_len": 47
   },
   "compare/united-states/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "198b006f9549f5405e13a7606bb9f7dd17c3f4c9687cfe06dc2db7ef89da0e70",
+   "sha256": "a4bae5d1330e30ec263dfc813d0745805fd3ca7372e6f3d9a97b1e807abf9e2e",
    "title_len": 47
   },
   "compare/vietnam/airalo/index.html": {
    "cls": "provider_sub",
-   "sha256": "de59e664c97a19518b9a8da2852011bf01ee6552ac81978a3ea072fa674424a8",
+   "sha256": "0ee1f6eb635f4026d41fcb43164378e27391db59f41adb7e62877fa5fa216796",
    "title_len": 52
   },
   "compare/vietnam/alosim/index.html": {
    "cls": "provider_sub",
-   "sha256": "fdbfef47d329a1b4cb5862a27c99bf230c135b404dbe4873ff9bfac95a5e64a5",
+   "sha256": "b5dd4ff83cbcf1c03289a3744cd3a0bd4b2c7e3ebc2fb1e0407647495b6c48fe",
    "title_len": 52
   },
   "compare/vietnam/holafly/index.html": {
    "cls": "provider_sub",
-   "sha256": "11ee0a52fc6f841b5192db471a658860d16584340d8254d2d780a04ae29a97e8",
+   "sha256": "3d6038b7aa75e044e20771e08d02f64372b7e00fc8ad0af9bbcedd4250eba0ac",
    "title_len": 54
   },
   "compare/vietnam/index.html": {
    "cls": "country_hub",
-   "sha256": "8063103df4497c565bf2f640c02cec37b7098d89fe3514dbac61817f7008a95f",
+   "sha256": "34e6d41287e224e2104de7e19ab3aab82ae9e74e13efbd44b3b2585fc506ce53",
    "title_len": 49
+  },
+  "compare/vietnam/jetpac/index.html": {
+   "cls": "provider_sub",
+   "sha256": "2abe207ae8d02d7654d52063675f5b0625dc61bd7780f0e4a52428979a4c7ec9",
+   "title_len": 52
   },
   "compare/vietnam/nomad/index.html": {
    "cls": "provider_sub",
-   "sha256": "422719877fe350169676b2ba23fa7069a5404e3b914343af902044ba7e1b9e87",
+   "sha256": "613411a66a15217909de85784482c6eaf7ccf034913f10c3267c7487e3aafffe",
    "title_len": 51
   },
   "compare/vietnam/roami/index.html": {
    "cls": "provider_sub",
-   "sha256": "ead7ace694c9d92ffdb414d43a06a1ea794fe4ce5d5007a5323445d1416da6c9",
+   "sha256": "ad4c9cc020be44b08899d813548917e7f1fe4514a1e8c3f8cc79d05295fce263",
    "title_len": 51
   },
   "compare/vietnam/roamic/index.html": {
    "cls": "provider_sub",
-   "sha256": "7ab0f095236fc5aef58dca6e79e24e4acce1192f8b0c68302031ea1a25ef4763",
+   "sha256": "4d5ccdbfcd2e30eb7f4b539a3be7093ea8f1f518b8520c5cb542281f3e4b290c",
    "title_len": 52
   },
   "compare/vietnam/saily/index.html": {
    "cls": "provider_sub",
-   "sha256": "91199dc58a37c0b94054c2fd0f7a0d49783ad1007648fbd0f32c4c1285ad2929",
+   "sha256": "31b200b1614a093ed10b8d5dd6d8cdeed69892174e9397b447223206c6197637",
    "title_len": 51
   },
   "compare/vietnam/ubigi/index.html": {
    "cls": "provider_sub",
-   "sha256": "46fdb465b46ba2fc1cbe7f7c572fa69b3d320239f0c5640eb650a7eebad7dd6f",
+   "sha256": "cd171db494bffc8a803ca3564dcef22c0fd3752e7e1bbb98a530e7b5e515e38a",
    "title_len": 51
   },
   "compare/vietnam/yesim/index.html": {
    "cls": "provider_sub",
-   "sha256": "206dd972757b0f6ee852392b4b901fdcacd74db1aa9d61dcd173eca8730d2edd",
+   "sha256": "0d9924a2c380d180e8b206116b9f2197dd353abc3f9008c7b641abc329839e28",
    "title_len": 51
   },
   "contact/index.html": {
    "cls": "static",
-   "sha256": "8a9f9e6da9d07857cc5645088ac824410dafd254bd9488d3b75b8022e5c3ae08",
+   "sha256": "51cd1626e86a60d38cb8d3956e2a308964026fcbcca3d161423097aab7c39c91",
    "title_len": 51
   },
   "de/404.html": {
    "cls": "static",
-   "sha256": "7ac7465b935f21374cae593eb04179da6e95a1f080fd4d4c05aad60cec0ebf44",
+   "sha256": "2809f7d4c45efce836284802c5769662fa691654ada082c294145e4b9367c266",
    "title_len": 18
   },
   "de/compare/argentina/index.html": {
    "cls": "country_hub",
-   "sha256": "943a8976e67e3ea5b3fbec983aeb17c553b603a8283146969618d1950b04c2b9",
+   "sha256": "bfa70eb7bdccd36e70172598d1686e465c6d5f38c5e947d357b7fef035a5526a",
    "title_len": 53
   },
   "de/compare/australia/index.html": {
    "cls": "country_hub",
-   "sha256": "f1b309e9a03245aa8926e7cad683b4f21ea859fae7c232d17bb39d5d6dcf008a",
+   "sha256": "41819dffb91285969fbce371c8fa004fe7b32b33d64d9076f3fabebfb55cec99",
    "title_len": 53
   },
   "de/compare/austria/index.html": {
    "cls": "country_hub",
-   "sha256": "16e2ae5b06e36a316740555ab509f4ee7cb5ca8d66f5b3115298ab06d0acd647",
+   "sha256": "55790034871ec123869543a62186ea5647e59f1276a335d28a3cbb333e2c88cb",
    "title_len": 51
   },
   "de/compare/belgium/index.html": {
    "cls": "country_hub",
-   "sha256": "3326c3edceed0d49a2010293c20c49a910f263ecac9d6f550f1bcd7d0eafd218",
+   "sha256": "ec3967f5788af2dd82bee382eef8517eeb445973506ce509c2ecad9e60ee89c8",
    "title_len": 51
   },
   "de/compare/brazil/index.html": {
    "cls": "country_hub",
-   "sha256": "ec7f3199809d910353d22f9c34a2a73926277e4bbbd8c1221d4b65ab26925e2d",
+   "sha256": "9b0e679362595aa3e0b49fd3ce6780930cd156849d056e666c2e1d90bb421948",
    "title_len": 48
   },
   "de/compare/canada/index.html": {
    "cls": "country_hub",
-   "sha256": "b68b19631a68bb0162b314575c60015f9a699ad3855ec4154fdcb938d3006a31",
+   "sha256": "1f0ba819a51250578794aed30d86f65d1f1333db390027c854652befd133863c",
    "title_len": 50
   },
   "de/compare/china/index.html": {
    "cls": "country_hub",
-   "sha256": "ed40c4c9560bfe8430b21f1f43beeb2f38312f5a3d4fb2fcf6d37247d9b11f2d",
+   "sha256": "8a564402f13ae6b25c6430de7916de977d038ba5a357ea704aa4634d7006d948",
    "title_len": 49
   },
   "de/compare/colombia/index.html": {
    "cls": "country_hub",
-   "sha256": "9eb89c684a35ec70cb826b29aaf316bd1069ed79c1799ce4b9fdea4ad3ce266c",
+   "sha256": "1bc97f691de87c1a6b9d61ca5a8d6953ef4a6566dfa02127ee7978bfd02eb661",
    "title_len": 52
   },
   "de/compare/costa-rica/index.html": {
    "cls": "country_hub",
-   "sha256": "a7857e47423c082b02ce036197c47abd683a02a3f1c76be7740efe9935635636",
+   "sha256": "15c65c7ede85289a95db43ff589a95522b6a809893b9f5e93ad473056d9dadee",
    "title_len": 54
   },
   "de/compare/croatia/index.html": {
    "cls": "country_hub",
-   "sha256": "51987073df6c789200a22bf41ecc0d0a0afb03a9662d0ef28c1c5de7f8101b8f",
+   "sha256": "ad7c47a0e92f93e4463ed38edcfa5069dfaea2be94a35a2024aa82c06c39d203",
    "title_len": 51
   },
   "de/compare/czechia/index.html": {
    "cls": "country_hub",
-   "sha256": "bc970c18452180dc4b759670f7b8f208b2dcf64cc291eee3060720e428585d63",
+   "sha256": "9e9c0287aecf5a118969ebe30e79024f7aac3c6e5ff0730ec6f6a65ffd986ce6",
    "title_len": 51
   },
   "de/compare/egypt/index.html": {
    "cls": "country_hub",
-   "sha256": "dbca17708cd84398da49b20276413b05d6f9c692f279d456edc69763253e7b3a",
+   "sha256": "59d562c0326dd07719ab25e97e5e77d27bdabe55e4b7579c3d5e2f8592176f69",
    "title_len": 49
   },
   "de/compare/fiji/index.html": {
    "cls": "country_hub",
-   "sha256": "143b1b611d5c230acb9b1eb6378e13d4367fe40194a204fc97474cb3a460871d",
+   "sha256": "1f835d0bfd80482bbfa90a402d1ecb763d849559cd3b4bd0072e2f24023b77a4",
    "title_len": 48
   },
   "de/compare/france/index.html": {
    "cls": "country_hub",
-   "sha256": "5c74227077406192ca2f6209b1d4cbaffff665df05e6fdb442a4d386727f8352",
+   "sha256": "3b45f9bf960ae3710af789b4cff638d7e67e593d58bff38758d95e43d42cdf78",
    "title_len": 52
   },
   "de/compare/georgia/index.html": {
    "cls": "country_hub",
-   "sha256": "cb8926b7c8d41b5ea48e51a77bdcdc902cfed4cfb4c7412c6bccfbe28ccaa473",
+   "sha256": "0b98b833e5e33b9a2b83ba6473c6b3ecae76ac35c4cb837387af240899d4e7d2",
    "title_len": 49
   },
   "de/compare/germany/index.html": {
    "cls": "country_hub",
-   "sha256": "f74ef739ac0c48820c1e043e8617e8e368002ab44f90eebb4b05753109e68501",
+   "sha256": "ccc3248189a615b52d4b2716434b7f25b1b46784d1f59ca7de1620c39e7644f2",
    "title_len": 49
   },
   "de/compare/greece/index.html": {
    "cls": "country_hub",
-   "sha256": "1d2d1d60f3c3e2e95d09a728344a163ea0a12c8e8002ccf9a9f269acc01a795b",
+   "sha256": "3d881a79fb3b557434af2cd78cd13726974cf1007bb09fab5a0492002a75583a",
    "title_len": 48
   },
   "de/compare/hong-kong/index.html": {
    "cls": "country_hub",
-   "sha256": "656b41371bb8e53d8fbc7acd58fa14bee01d52086ef7ae86eac0929313fb44b0",
+   "sha256": "c08693276edff57fb997bc9a7cb62ddd02881f2a1b5dac30431d8c1d21ecb0a2",
    "title_len": 49
   },
   "de/compare/iceland/index.html": {
    "cls": "country_hub",
-   "sha256": "caa839ce9ecfafc88757810953536f27ec002d684f1f8e8f8a26784bc0a221fb",
+   "sha256": "8b6aa46c5f080871a2389a6a7234705315994d3d069b340244cd846eb1c55e4b",
    "title_len": 51
   },
   "de/compare/index.html": {
    "cls": "compare_index",
-   "sha256": "9d917eabf4b5f44a950fef7999dff219d408b7260c83b03d7643eea6e4bbf69d",
+   "sha256": "6cdda2931181f7c75818339d4441af8a743c6bb807ac3873b3d868b22da37690",
    "title_len": 54
   },
   "de/compare/india/index.html": {
    "cls": "country_hub",
-   "sha256": "b3d43753302b28a7c4d10655b1bff4c67d57d3d30398233813ed59b5435275a9",
+   "sha256": "52d99d92082be6144dfe7b5f4d2e066f7f9bbea2f0230f71b0051d7f0108f4a0",
    "title_len": 48
   },
   "de/compare/indonesia/index.html": {
    "cls": "country_hub",
-   "sha256": "54c3e8d5f470ba7ccd2a589201c46d376b870c0684bace1c629a32a3c8a80d37",
+   "sha256": "512293dbfc9bd069106b6cf4c3f510afb72281d6653cd1ec2a47cec32396378e",
    "title_len": 51
   },
   "de/compare/ireland/index.html": {
    "cls": "country_hub",
-   "sha256": "0558fd41289f7f6ec966ad5fffe797b7b18afbaec30a84303b18aaff0a240d9a",
+   "sha256": "66f46eb6b6cd7243e96b97f29ac90c60906b745e6c44a4345b2d126157d9c872",
    "title_len": 52
   },
   "de/compare/israel/index.html": {
    "cls": "country_hub",
-   "sha256": "834023b69b4b329076d788245d7c45bb608cb9a6df572747051dd0d4bf4f1157",
+   "sha256": "4c81c6c063e2ee7b823199996ab03f06e0e072eb852bd9f876785663d1572615",
    "title_len": 50
   },
   "de/compare/italy/index.html": {
    "cls": "country_hub",
-   "sha256": "92ef910614cc576f4b7c3f1f8e1c5aa01d0c8970f682f470c9f6cc139a6a7b9e",
+   "sha256": "252296604552fef49a4aa555ad0f893538d0ac26fdd089cb02f45adb8e0aaaad",
    "title_len": 49
   },
   "de/compare/japan/index.html": {
    "cls": "country_hub",
-   "sha256": "3212f35537e6f65e361370f4ad780c8f81160044659ffba060d1e5c79efb7853",
+   "sha256": "22470ba90052b41f2bf45f5971982ed5f7d56e8e2e96d0f9e11e9351d41d0e54",
    "title_len": 51
   },
   "de/compare/kenya/index.html": {
    "cls": "country_hub",
-   "sha256": "5ce045e497d8fee7da8f93b99b3351d416bf7b0a66eb8b82340136bd912ca829",
+   "sha256": "73f09ee78f11aae111e6b9f1bdd77dca7b9eeca876eec5e9b19a4a89da96a812",
    "title_len": 49
   },
   "de/compare/macao/index.html": {
    "cls": "country_hub",
-   "sha256": "c501e516638512e763476003eaa2d536b8d6fce332d4360e08b6bbeda925444c",
+   "sha256": "9f50c5cde820bf32a37fa5ce08d762c0d4d4824d6ea78af2f477f9a870a7045a",
    "title_len": 49
   },
   "de/compare/malaysia/index.html": {
    "cls": "country_hub",
-   "sha256": "156dd1087a44f8962b97ff9a305da8e1996de29d0f2652d86c6c3dbe270d70c6",
+   "sha256": "f014b266e906206159fd3372f71e3cce03d082f9cc6bff7c18c895c5dc466e70",
    "title_len": 52
   },
   "de/compare/mexico/index.html": {
    "cls": "country_hub",
-   "sha256": "d85c707b2350f6e4919be0abbd9c9cfb5449cfcadc454a282de44f3b8c740f62",
+   "sha256": "4b8dcc45fa59463919580889d488914c645265a78ce0b6993a48142d8f3a6915",
    "title_len": 50
   },
   "de/compare/morocco/index.html": {
    "cls": "country_hub",
-   "sha256": "54abc4dec58634a9d630877aaff37afdb6074b7661a2410423da53879ae0a790",
+   "sha256": "b71a50251618319ad282a34430da363fe9a26eb3a724aa35ded93316ce0ac9f4",
    "title_len": 49
   },
   "de/compare/netherlands/index.html": {
    "cls": "country_hub",
-   "sha256": "35f7c5e5f3aad6b5864160305edc94c21be6acd3339d260aea13bcc5e9f5d177",
+   "sha256": "d493a8c09d2a592a903446807cde3914c634c129124f7765d4d580b74ceb95d3",
    "title_len": 51
   },
   "de/compare/new-zealand/index.html": {
    "cls": "country_hub",
-   "sha256": "58998700d12878039cf5629c395dc4460e834a25ddbe242b9f19660f0d3d5d11",
+   "sha256": "b79fa852067cc23dbafa40bfe6f3b6474408189802fb9f208fb7b9d767d4f362",
    "title_len": 51
   },
   "de/compare/peru/index.html": {
    "cls": "country_hub",
-   "sha256": "7b1d64230b465e5eeba748c3a46f90e80d3c8e0c39c8dbadcfe3ba3c4f39c90c",
+   "sha256": "407fe94b3ce4fc658eaf0a58d1a74499021c0236818e6c6cec397634268c0ba0",
    "title_len": 48
   },
   "de/compare/philippines/index.html": {
    "cls": "country_hub",
-   "sha256": "38ca00e0d8d3500ee835227920d28d9b0cd71c77755a1d4f22d914cb85bd7a2f",
+   "sha256": "083da8d7b19d75dfc86358d68eb2d29db536c95ded7bdc3320e755def82c207a",
    "title_len": 48
   },
   "de/compare/poland/index.html": {
    "cls": "country_hub",
-   "sha256": "21aa987ab793be24e213dc37bbcf631060e9f947619c58021b83cd6a97930972",
+   "sha256": "7c5048b5c10ae377e0cf626fbb9f0546d6119cd0db1fd5dc73bae67961f42bb2",
    "title_len": 51
   },
   "de/compare/portugal/index.html": {
    "cls": "country_hub",
-   "sha256": "9ab175766158ae93b7aa13c3e3fea32600caddffade2a8564db1ac6e2afae07d",
+   "sha256": "195bf0387c7f27f059dac4c8b1df43129c56c6455dce11dd2dc1477a04bc2e19",
    "title_len": 52
   },
   "de/compare/qatar/index.html": {
    "cls": "country_hub",
-   "sha256": "f2674fa2354428b5e5dbc170f5bd43f0eb2e89a230d4970bfe2f08fe44a5b832",
+   "sha256": "901f1e52479247f7397270df45f79fd5d86ffeab5cd72e71b46e806c900568b2",
    "title_len": 50
   },
   "de/compare/saudi-arabia/index.html": {
    "cls": "country_hub",
-   "sha256": "000101c1a1e996473a75cd342afb9ce847d895b640906b3d0a2a351b05ed9aa7",
+   "sha256": "9d32962de668185a1d3cf33f14af6eb42817ee7e2ecea13533a4f24bd1cbbb8c",
    "title_len": 49
   },
   "de/compare/singapore/index.html": {
    "cls": "country_hub",
-   "sha256": "1f77ffb5ce543bf50211f0dfecbfd854b3399963e83c67f172b70ae56747a21e",
+   "sha256": "481d044f53c0b420e64d5c3fd1cc5a8d895dc6dbdb554da110a270abb515a467",
    "title_len": 51
   },
   "de/compare/south-africa/index.html": {
    "cls": "country_hub",
-   "sha256": "761ac1974bd8ae05e60eb701dc5633a3f3f66d73ca29e2158de613f3c141584b",
+   "sha256": "7760fe35a2b3e56a24d3bd4830134f7989b07a023335c025de7cc14823c16ba2",
    "title_len": 49
   },
   "de/compare/south-korea/index.html": {
    "cls": "country_hub",
-   "sha256": "4d75644cd95edc21b6fbd4e8d33405f16cf5b9c0217d0d39ad3edc57e7072c77",
+   "sha256": "11e6398810263165a52770402247d4c6371cf7a76ee04bc156dac966dcb1c7f0",
    "title_len": 48
   },
   "de/compare/spain/index.html": {
    "cls": "country_hub",
-   "sha256": "b01db4f974114a44ffb2ed7dee3546d9c484cee087258be1fb2be37c92aa5367",
+   "sha256": "43ff4bacebbee0e22c1ea27b3a884f8501d5f9a1da7fafc9a0d54b528c55e5ae",
    "title_len": 49
   },
   "de/compare/switzerland/index.html": {
    "cls": "country_hub",
-   "sha256": "15b956a55590b1ed0095a9cd61ef72610dacbf57fb106cdf60fe8ad63a894b3c",
+   "sha256": "3ae8f7720c987e6c57b087fb157dac2bae99e651d35092ab2cfb59d97fdeca04",
    "title_len": 53
   },
   "de/compare/taiwan/index.html": {
    "cls": "country_hub",
-   "sha256": "0b370c298556fb34e76f726cacac588372d172f21c938f64d7096e0d88069573",
+   "sha256": "21e52721c4205472a61b8a4671700dec18afd26885bb6ce50d9d04fc84ff5f87",
    "title_len": 50
   },
   "de/compare/thailand/index.html": {
    "cls": "country_hub",
-   "sha256": "95f4ed7f670e37cc1ab9d20c80de3de1a3660bdf227d11db4aad2fc6cc86d255",
+   "sha256": "62d37589ad4a1b43eb87dac9583a73119ddcd0371b62515162d4632fc0fbda53",
    "title_len": 50
   },
   "de/compare/turkiye/index.html": {
    "cls": "country_hub",
-   "sha256": "7aa191c942fc3995999eec9c1894144fe4a5c69352385be0355266e0a7964d0f",
+   "sha256": "ea7536c46fb77fb91acb8050cfaddcb2084e86000529481725b09500d321b715",
    "title_len": 51
   },
   "de/compare/united-arab-emirates/index.html": {
    "cls": "country_hub",
-   "sha256": "47b6c2ee86697e96be7174e47aad7276025604aca51ebed1d183eed6dc4f3215",
+   "sha256": "00a53d0cded981d23e7c6ca98deab1a1d4a6eeb90bbae5d8689c9feec234c7e0",
    "title_len": 49
   },
   "de/compare/united-kingdom/index.html": {
    "cls": "country_hub",
-   "sha256": "13ed4955db6bfabad22231385aac9a154631b6d79ac1d4c357c762643b5c3e47",
+   "sha256": "8f3b2c24dc99a818e68df24d96e29982d64ffeb83ded2220bfa59662563d9a13",
    "title_len": 53
   },
   "de/compare/united-states/index.html": {
    "cls": "country_hub",
-   "sha256": "ede4e628b340d24fcad51d9f91ddd24299ec6aef5d3691729ad886ccb0bfe613",
+   "sha256": "414323a95212e4aea936ef74b6e69e670c0f7912f2b861769737354e1b9bf89a",
    "title_len": 54
   },
   "de/compare/vietnam/index.html": {
    "cls": "country_hub",
-   "sha256": "511b654cdcc0ed69965a51b17ca42c2b441aeefc1a3c66340d4cb2b21c919f1a",
+   "sha256": "d8340f4d15dda406c45dec74bf48351653ffcc808d566bfd9ceb5281f252a900",
    "title_len": 49
   },
   "de/guides/index.html": {
    "cls": "guides",
-   "sha256": "4bfe691222b0d42cb051274f251196eafe454c7d022521fd810ddcb7282705f8",
+   "sha256": "a670976d67c9bf1646458e67132f3de20dcd8e1f85604c2807971c9112456fdc",
    "title_len": 46
   },
   "de/index.html": {
    "cls": "home",
-   "sha256": "d3dadcde9548e3811719a8b419a38f54da37dfe74202440d25789c9197398359",
+   "sha256": "1a55653b17acf89d50b6536e79056bbb685c64f0970acf3ed47ef9e24ce9fedb",
    "title_len": 50
   },
   "de/networks/index.html": {
    "cls": "networks",
-   "sha256": "44740167fd7751a18dad5b5676a489a3afc80f248fdebfe618130d2c6ebb701d",
+   "sha256": "68d5b1edf6dc3af6dd4b7fc30d1db39ea1cd67ee15b231820161d16b7a24657a",
    "title_len": 60
   },
   "de/research/index.html": {
    "cls": "research",
-   "sha256": "b678d76c09fdc4ffdb501b54536b13ad4820a539b097fd10f6f37c2d84935aac",
+   "sha256": "1ccc5738fe8f0863db2e5048f90aa2a70b6a13b95f23fde58204e882d7b1d8b1",
    "title_len": 51
   },
   "disclosure/index.html": {
    "cls": "static",
-   "sha256": "d79665bbe7157580dc0dc86a0e914228ec5ddbb1995b1500b820e278a1b2da48",
+   "sha256": "e1d2dd2ae4baa4d831dcfcd9cb5c530f1689382379e344fa3708cdb408b462cd",
    "title_len": 53
   },
   "en/index.html": {
@@ -3014,222 +3304,227 @@
   },
   "esim-deals/index.html": {
    "cls": "deals",
-   "sha256": "4da97ac045a9ae21a22cb820d1c232c2b30f660894e79c26e9430f9b3af8a023",
+   "sha256": "740cdfbe60be1d6112b1e27f0d21838e489946bfff2c1f93ca649c78dabe32b8",
    "title_len": 54
   },
   "esim-providers/airalo/index.html": {
    "cls": "provider_hub",
-   "sha256": "66ab2694946a0d2c82a1e15e6bf9d2a05fd76d8c1680492b2fe0d7dc110b3018",
+   "sha256": "b6e007fa8da5a74ff7047e783fbb6496f646c5d9f3907fdee71e9177d3a5b50a",
    "title_len": 53
   },
   "esim-providers/alosim/index.html": {
    "cls": "provider_hub",
-   "sha256": "1d5e661fdbb63e99b77f48d12d457bd7eb96f0b438a633a08666eeb20a332028",
+   "sha256": "4df1d630273052b7f10b39ac7fae844ab6f6206ae2dd2cc6cce439ad18b1c6ce",
    "title_len": 53
   },
   "esim-providers/holafly/index.html": {
    "cls": "provider_hub",
-   "sha256": "2345ba642c7e114237d46380435c36632589cb8bcfe8ebfb527c60f6b0929b08",
+   "sha256": "c1449021117bc83418344804578fa7f233cf58496517b106ea30585ec86f9fb4",
    "title_len": 48
   },
   "esim-providers/index.html": {
    "cls": "provider_hub",
-   "sha256": "c1dd3ba32f278c38ab33080097a0e8158e849f2edec3797fdbc5283460a4b2b0",
+   "sha256": "8633ad40d94d19fec951c01e4e93ec63e0d48e6e32fa1d9b52c9de42a99e92c9",
    "title_len": 53
+  },
+  "esim-providers/jetpac/index.html": {
+   "cls": "provider_hub",
+   "sha256": "cfcb3b08c989ae6597c8f5b4b7ea519a5ad7821abb351eb9deb05bd01c08b425",
+   "title_len": 51
   },
   "esim-providers/nomad/index.html": {
    "cls": "provider_hub",
-   "sha256": "84336a878d4f8347916d1f9dc70f0b1869b5cf0f79ec57481afb6fbeb354f46d",
+   "sha256": "e1b294a6e6359210a7da3353a594889814cacaf934f27cb9ce2ec95c25e4cd4e",
    "title_len": 50
   },
   "esim-providers/roami/index.html": {
    "cls": "provider_hub",
-   "sha256": "5a816eee3e955a8c5a97d714d1b26d68b17dd67fd2f514d96faf363ceeb3f402",
+   "sha256": "1359d5b9d9658b82d474e0b887258536d4ce52a501e17995d3160a6f58776ab8",
    "title_len": 52
   },
   "esim-providers/roamic/index.html": {
    "cls": "provider_hub",
-   "sha256": "424336a355ac5e84df021d15a8d6ea05ee6fb35f62cb36604a4f330d72f6cb02",
+   "sha256": "0e24fa29d00800bcd44ead2cd8e61c2d6e82763d3f89579f537ad02b8b418498",
    "title_len": 53
   },
   "esim-providers/saily/index.html": {
    "cls": "provider_hub",
-   "sha256": "6d1733010ddbc97404c458cb6e2dfce1a156cc7fe50d17e8a2bf505130cdbce8",
+   "sha256": "ee228e25486583c5af6665e3867b850d755e5be201cc4da73ca4ab844207db86",
    "title_len": 52
   },
   "esim-providers/ubigi/index.html": {
    "cls": "provider_hub",
-   "sha256": "972a3a5d18e33e7183b01e2c9dd38342ac7198e0dfbf9142e49b88148ca84097",
+   "sha256": "b8805dd59bc42f852df2b83199695731431cd5388f95a72a31e8a96cee8060c4",
    "title_len": 52
   },
   "esim-providers/yesim/index.html": {
    "cls": "provider_hub",
-   "sha256": "a4f3c72c14e379c55656210c45073e210fb40abba09171c8065071d7c252631c",
+   "sha256": "b04423f5bf277226bbdc9f53c4362f6bf3fc7b8cce12cd73248db56a15bc8278",
    "title_len": 52
   },
   "guides/best-africa-middle-east-esim/index.html": {
    "cls": "guides",
-   "sha256": "08c4b6c612f625810f10577f5e968e667d8b1a8cfe5ac97ac2725d04914893ab",
+   "sha256": "bdfcd0de678053ff696eef8a58ffc7b3c8f05fa9a3a833deb303f4faeca238af",
    "title_len": 57
   },
   "guides/best-americas-esim/index.html": {
    "cls": "guides",
-   "sha256": "e907641c0f510def159d9edae6adcbdc5e81393ef69854ca674785eaefe25292",
+   "sha256": "1e9962da9a5b393f31be83a2b8671db4764d69aaba278fdd860d3d9f50369b29",
    "title_len": 45
   },
   "guides/best-asia-esim/index.html": {
    "cls": "guides",
-   "sha256": "182df034e2fc8c6ac6f6be6e1c3e1e6e4115e3d11ed385e703ae5eafc47932e2",
+   "sha256": "80a885a4e601166f05e9ca5c215ed9cabee94725fddc3e4894cdaa1bcd517932",
    "title_len": 42
   },
   "guides/best-europe-esim/index.html": {
    "cls": "guides",
-   "sha256": "dffd09748a52d55acb0e521a3211001e7e591f62dd00027239657f889cd3fbb6",
+   "sha256": "6b5fc3b4c9b52fad17e1b8e4539fc7daa7910c05b317000c92f77cb7f19cbef1",
    "title_len": 44
   },
   "guides/best-oceania-esim/index.html": {
    "cls": "guides",
-   "sha256": "4fab03112d7dd97d9cadb47256501b774b888f5d47ac6b73e9714abada0349a9",
+   "sha256": "49ff54f700846cd80169965f7649321ce38b85c3a4948214653a93efade72099",
    "title_len": 44
   },
   "guides/dual-sim-and-esim/index.html": {
    "cls": "guides",
-   "sha256": "a2d018f2055904a9c884b30c25de9cfa373c5f41341b0e9f8b28b614d80ae481",
+   "sha256": "19896c5dd7ef1d928fe521e8ca0012736eb909b6fc424afc9e43942204530c36",
    "title_len": 48
   },
   "guides/esim-compatibility-check/index.html": {
    "cls": "guides",
-   "sha256": "fe0f9db931a6960276ae621afa5e9512cd0e1b1bf4f89f3555f7e87dbdb11bda",
+   "sha256": "33558fd22c7e0355079379220ab22f8444d2a84ab892a68500a10cbb514970f6",
    "title_len": 50
   },
   "guides/esim-vs-physical-sim/index.html": {
    "cls": "guides",
-   "sha256": "3217749b04d6ddfb8db3f1f963e02aff9df73e7cf416fd542298e855999ce9a7",
+   "sha256": "d951c9689c402a3433521821b3d49edce9afddd14004657d34c3dc49c95a07ea",
    "title_len": 52
   },
   "guides/how-to-install-esim/index.html": {
    "cls": "guides",
-   "sha256": "53132fbe9b179b92a0b4b9244b3e2028da243ec9c89671d3b8fbfa64299ad5b4",
+   "sha256": "45f5d4befb8b0ee9ca02bd02226a49b1466153e3f6e81ec916a47f8606840574",
    "title_len": 50
   },
   "guides/index.html": {
    "cls": "guides",
-   "sha256": "32afb3586eb138ebe283e7df8a6675ae1b181343b27746b3cdbc89093ecd83a9",
+   "sha256": "2e7ad278bd793d749f4dcade7b10b00788c19d48e04f12c61a6c22bda4ceece8",
    "title_len": 54
   },
   "guides/what-is-an-esim/index.html": {
    "cls": "guides",
-   "sha256": "be8c226e721cfce148c4fb3b1fabfb3cf5a41ab3024d7f179c4e9b6da704e558",
+   "sha256": "13be7944e0ffa86c0656842a5db3601f14ffa84c0049ed88297a86a6f6e6afde",
    "title_len": 54
   },
   "index.html": {
    "cls": "home",
-   "sha256": "44e59a57eac642b5be74c5e85bbd9e14318b53be3ab0a42b1ba1ac957ea7f6ad",
+   "sha256": "8780dcea9b02e456ea6a314ef3dced42b578a0d7ba86ba05517b7cb470596a02",
    "title_len": 46
   },
   "methodology/index.html": {
    "cls": "static",
-   "sha256": "32e2d2bc08b2ac3660ba5e34d8dd0b8a150b0fbf8cafb9fc2580a49ef77c689c",
+   "sha256": "a9db8724e62212cc08485a53542cf75c3c53100322a1b1a7d30b7c8dc2f1f274",
    "title_len": 54
   },
   "networks/canada/index.html": {
    "cls": "networks",
-   "sha256": "00bb8fb339c271ccd7814ed56e673abbb7bd5bc313e70996b15042102702f4db",
+   "sha256": "396aba094c1aca36f37304900bd0a9e50187d3de8aff17cc08c6fe71b6e6e0f1",
    "title_len": 50
   },
   "networks/china/index.html": {
    "cls": "networks",
-   "sha256": "4b9888e2387a9a817bf183ccdd68df6f3b85d40076978a02c7ac9883dd66884f",
+   "sha256": "fcfc79705eece837883f71ffabed682d43403ec62eff79517c0af4a2298cc311",
    "title_len": 53
   },
   "networks/france/index.html": {
    "cls": "networks",
-   "sha256": "158e1c1dde6894c0e86c569dc44e3f4000b84731e1c59e3cc12213d4223e25ce",
+   "sha256": "11c552f0a14bb90191e4138db92e706bf4dd5bfa020d25c0355317db1832cbd8",
    "title_len": 54
   },
   "networks/germany/index.html": {
    "cls": "networks",
-   "sha256": "3b5760babaf5676163becd8fcebab268b79032b1970859cfcc848352fc149380",
+   "sha256": "c6d2fe7aecbfaefc4a3f349771a152996f94cb0bed97c5a3f67b855428aa0401",
    "title_len": 55
   },
   "networks/index.html": {
    "cls": "networks",
-   "sha256": "7ef4116d1d663a3436286893cecaed2a5abaf73824aca5426e8f43eb5260cfd0",
+   "sha256": "4fda1011699e73e7383c04f3ea918042441b60a8a9f7320ce922531579149d9d",
    "title_len": 50
   },
   "networks/japan/index.html": {
    "cls": "networks",
-   "sha256": "2b294e525706c2fc0b78bd24039d3a5be6cae96d2bcb5a09fa535083b3c8e252",
+   "sha256": "077a0b4a74b5a4c7940d3a29c062cdffa766f5cf2dcd4dafd10795f663ab84f2",
    "title_len": 53
   },
   "networks/mexico/index.html": {
    "cls": "networks",
-   "sha256": "b2a291a54f620a5fddb2407165509913b8f699dafc6076d398ab9ae1dbf5b7e7",
+   "sha256": "bf7fc167e402a077779b4e8817853d8deb1a5a3b8879a4a6bcfab3f4fcdb3489",
    "title_len": 50
   },
   "networks/netherlands/index.html": {
    "cls": "networks",
-   "sha256": "f0285cad5b486414a531690965ee81a36c581ddead891380a14bbf1833504e2f",
+   "sha256": "38ce2944fe8609d2fea823a17b9f7297a74b477a3df7bdcc52dbc84df8b660cb",
    "title_len": 55
   },
   "networks/south-korea/index.html": {
    "cls": "networks",
-   "sha256": "96f9b8475c8e0b020f9fc6a31b977b9a85b15beb1014a1282dbb8030583dfee3",
+   "sha256": "07f1e66ac88bef4feda11927a0f9ae78071727fe335470c0790f5cd21902acec",
    "title_len": 49
   },
   "networks/spain/index.html": {
    "cls": "networks",
-   "sha256": "6082cbefc228729529dce59a1d376c09fd0dda9da027bbd0df988e54ae483e68",
+   "sha256": "635be5f579f6276adfffffdd882cbde3d2167cc4456f8e4caf18f50b50f08a47",
    "title_len": 53
   },
   "networks/thailand/index.html": {
    "cls": "networks",
-   "sha256": "833d5304d086fb9e354ac6b600c29c0b509982d32d615ad96de1d587def007ab",
+   "sha256": "85825961d123ab405ffa0cffe36c0a07b883c3ea2b3b713acb99df99c25c2e83",
    "title_len": 55
   },
   "networks/united-kingdom/index.html": {
    "cls": "networks",
-   "sha256": "d515960215c14e505bf7d3a6e0d23811042eb93fcdae9a3b50e7ef3b57ddc803",
+   "sha256": "05cd23b989435fef430e4855606a4950e26c8d05a0afe7953f208ec350fa8ab2",
    "title_len": 50
   },
   "networks/united-states/index.html": {
    "cls": "networks",
-   "sha256": "41ca62f890121b8e3a1a44ddc406db5d9796cef7e8ed1ae6b287290a3e4d7119",
+   "sha256": "01c24b3668b984685d5fb07f694c3681639adce4f96000f87c0add4a28d634f9",
    "title_len": 50
   },
   "privacy/index.html": {
    "cls": "static",
-   "sha256": "850fe764f20caf6d4000977ba435d2fce0ad173eaf404c991bf806f89fa2124a",
+   "sha256": "6c607e16f11b52b61225d048f9e16f1895f00127170e4063a8fab3a7a3947c41",
    "title_len": 53
   },
   "research/esim-price-index/index.html": {
    "cls": "research",
-   "sha256": "e0693c7e102335c6d1ef43645e6659f2a9adaf986b2f99d7e2dd612e62e2ad86",
+   "sha256": "697d65f6635157719c4088f59524cd5597e7c6753b2e930943b9f6eb1c2dd0ff",
    "title_len": 51
   },
   "research/fair-use-audit/index.html": {
    "cls": "research",
-   "sha256": "dc1f99975efa61ea8ed9ae3c2ec82c78060628197fbda6b025d4ad74e8c52940",
+   "sha256": "22c2036c46684cc8d471a85722dd40705aed34a75dba0828bf41cde7dca34690",
    "title_len": 53
   },
   "research/index.html": {
    "cls": "research",
-   "sha256": "d622ba4c39a8415aafb60b277f0d53204c7e258da504fa491457ec75904873dd",
+   "sha256": "c934576460afc161c53dbc688c6bf70e7441577576b9ad3a6ced7ffbdd4da4bb",
    "title_len": 52
   },
   "research/unlimited-esim/index.html": {
    "cls": "research",
-   "sha256": "3be370997843f94f706b2520ec108ce1f158c92c9bbac1c6f1656c265d00c041",
+   "sha256": "338701438d1d42146ecc7e90b02a17429854586b017a801b8c348d551c76b38a",
    "title_len": 52
   },
   "terms/index.html": {
    "cls": "static",
-   "sha256": "2013672013702ab0a6a456b9f656d506ccf6f235693d20e8bcc45694085a610d",
+   "sha256": "c1230152d0a67ba4f1dc8fb0e5c88d51d6a5fe73e08a80d6821671cbba6719a4",
    "title_len": 51
   },
   "tools/index.html": {
    "cls": "tools",
-   "sha256": "065bd908deb19190f48ee7055894fe523d9bfd4cc94890b207daec84ed59bec0",
+   "sha256": "b1f7b3eabd6f5d5f1b09a6282902e6e415d04e60888903751ed273ddd05e1f28",
    "title_len": 51
   }
  }

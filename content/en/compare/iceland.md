@@ -3,7 +3,7 @@ title: "Iceland eSIM"
 iso: IS
 weight: 32
 seo:
-  description: "eSIM Sift compares every Iceland eSIM: 133 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every Iceland eSIM: 148 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 There is a cheap way and an expensive way to buy data in Iceland. The floor in Iceland is yesim's 500MB / 1 Day, at $0.51. Small plans in Iceland cost 2.9 times more per gigabyte than its best plan. On cost per gigabyte roamic leads with a 50GB / 30-day plan at $0.36/GB. That is 62 unlimited plans among 123 options for Iceland from {{< count-providers >}} providers.

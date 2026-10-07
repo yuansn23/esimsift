@@ -3,7 +3,7 @@ title: "Brazil eSIM"
 iso: BR
 weight: 36
 seo:
-  description: "eSIM Sift compares every Brazil eSIM: 158 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
+  description: "eSIM Sift compares every Brazil eSIM: 180 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 Pricing across the providers tracked in Brazil splits along one line, and it is not brand. Nothing in Brazil comes in under yesim's 199MB / 1 Day at $0.51. That $0.51 buys a fraction of what it would at the $0.92/GB rate, which is nearer 570MB. By rate, ubigi sets the floor at $0.92/GB for 60GB over 365 days. {{< count-providers >}} providers list 150 plans for Brazil here, 89 of them unlimited.

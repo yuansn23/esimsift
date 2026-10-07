@@ -3,7 +3,7 @@ title: "Hong Kong eSIM"
 iso: HK
 weight: 13
 seo:
-  description: "eSIM Sift compares every Hong Kong eSIM: 161 real plans from 9 providers, cheapest Yesim from $0.57, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every Hong Kong eSIM: 185 real plans from 10 providers, cheapest Yesim from $0.57, ranked by $/GB and $/day."
 ---
 
 The market in Hong Kong looks mid-market on entry price and much better on value. Entry pricing in Hong Kong bottoms out with yesim at $0.57 for 500MB / 1 Day. Entry plans in Hong Kong run about 2.2 times the best per-gigabyte rate. Value leadership sits with roamic, whose 50GB / 30-day plan lands at $0.52/GB. Between {{< count-providers >}} providers there are 153 plans for Hong Kong on file, 88 carrying an unlimited label.

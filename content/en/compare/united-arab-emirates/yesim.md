@@ -4,5 +4,5 @@ iso: AE
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for United Arab Emirates: 37 plans from $0.51, best $1.50/GB (#5 of 9) — from our live price index."
+  description: "eSIM Sift compares Yesim eSIM plans for United Arab Emirates: 37 plans from $0.51, best $1.50/GB (#6 of 10) — from our live price index."
 ---

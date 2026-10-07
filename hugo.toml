@@ -174,6 +174,20 @@ isHTML = false
         medium = "referral"
         campaign = "partner"
 
+    [params.outbound.targets.jetpac]
+      base = "https://www.jetpacglobal.com"
+      label = "Check on Jetpac"
+      rel = "sponsored nofollow"
+      # 不加 country_path：官网逐国页形如 /product-details/{slug}-esim，但该站是 SPA
+      # —— 2026-10-07 实测：任意路径（含不存在的 slug）都返回 200，页面标题由 slug
+      # 现场拼接，价格位回落到 $1 占位。串行复测 49 国时 KE 竟回的是 "Vatican City"，
+      # 只有少数国家（如 japan）有真实页面。**状态码 200 在这里毫无证据力**，
+      # 故与 nomad 一致只走 base，不做逐国深链。
+      [params.outbound.targets.jetpac.utm]
+        source = "esimsift"
+        medium = "referral"
+        campaign = "partner"
+
 # ==========================================
 # 语言
 #   英文为默认语言，且 defaultContentLanguageInSubdir = false

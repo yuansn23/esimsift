@@ -1,9 +1,9 @@
 # eSIM Sift 项目文档（交接手册）
 
 > **用途**：隔几天回来接着干时，看这一份就能接上。写了什么、还缺什么、每个文件干嘛的、常见操作怎么做。
-> **最后更新**：2026-10-07 **日期自动盖章 + Nomad 收尾** —— 页面日期不再靠人记得跑脚本：新增 `scripts/stamp_checked.py` 按**内容指纹**维护 `checked` / `profile_checked`（数据真的改了才把日期推到当天；改注释、调格式不动），已挂进 `npm run build` 第一步，台账 `docs/checked-state.json` **必须提交**；Nomad 的 logo 归位 `static/img/providers/`、价格核对日推到当天。
-> 上一轮（同日）：FAQ 逐国去模板化（49 国的三条答案 × 三槽七片段拉丁方阵）。见 §4.3 / §5.2 / §7.1 / §14 红线 47–49
-> **上一批**：2026-10-06 **第二批品牌扩容·Nomad 试点**（8 品牌 → 9 品牌，全链路打通：plans 442 条 / 品牌档案 / 出站 target / 450 子页 / 36 对决页 / 50 国 meta + 6 条 title 重算；基线重建，见 §7 与 `docs/add-brands-plan-2026-10-06.md`。**gigsky / jetpac / bnesim 待接**）
+> **最后更新**：2026-10-07 **第二批品牌扩容 · Jetpac 接入**（9 → 10 品牌，全链路打通：plans 877 条 / 49 国（缺 Fiji）/ 品牌档案 / 出站 target / **499** 子页 / **45** 对决页 / 50 国 meta + title 重算；零回归基线重建）。同轮修掉三处基础瑕疵：`bump_checked.py` 写回丢行尾（CRLF 文件混进 49 行 LF）→ 修；`jetpac.toml` 行尾混杂 → 统一 CRLF；`verify_provider_pages.py` 第 13 项（天数按钮）从「静默跳过」→ **显式双分支**。见 §5.2 / §14 红线 51–53
+> 同日上一轮：**日期自动盖章 + Nomad 收尾** —— 页面日期不再靠人记得跑脚本：新增 `scripts/stamp_checked.py` 按**内容指纹**维护 `checked` / `profile_checked`（数据真的改了才把日期推到当天；改注释、调格式不动），已挂进 `npm run build` 第一步，台账 `docs/checked-state.json` **必须提交**；Nomad 的 logo 归位 `static/img/providers/`、价格核对日推到当天。见 §4.3 / §5.2 / §7.1 / §14 红线 47–49
+> **上一批**：2026-10-06 **第二批品牌扩容·Nomad 试点**（8 品牌 → 9 品牌，全链路打通：plans 442 条 / 品牌档案 / 出站 target / 450 子页 / 36 对决页 / 50 国 meta + 6 条 title 重算；基线重建，见 §7 与 `docs/add-brands-plan-2026-10-06.md`。**jetpac 已于 2026-10-07 完成，gigsky / bnesim 待接**）
 > 上一版：2026-10-02 批次G（guides 5 篇深度重写 + 首屏配图 / compat 设备库 UX / research 枢纽区域联赛+问答路由 / 全站去写死三层架构 + 双守卫脚本）+ **P0 host-networks 补真**（`networks` 全量 = 各国运营商，`backfill_networks_uniform.py`，见 §4.3）
 > **配套文件**：`STATUS.md`（按时间顺序的施工日志，看"当时为什么这么做"）、`docs/keyword-map.md`（关键词→URL 唯一映射表，上新页型前必查）。
 
@@ -13,19 +13,19 @@
 
 **eSIM Sift（esimsift.com）**：独立 eSIM 比价站，对标 esimdb.com / mybestsim.com。Hugo 0.159.1 + Tailwind CLI，英语站（目录已为多语言预留）。核心原则：**单一事实源** —— 所有数字只存在于 `data/*.toml`，模板层全部实时推导，改数据 = 全站数字自动刷新，永不手工改页面里的价格。
 
-**当前状态（2026-10-06 Nomad 试点上线后）**：
+**当前状态（2026-10-07 Jetpac 接入后）**：
 
 | 指标 | 数值 |
 |---|---|
-| 品牌 | **9 家**（airalo / holafly / saily / yesim / ubigi / roamic / alosim / **nomad** + 自家 roami；**roami ≠ roamic，两个不同品牌**）。2026-10-06 起规划扩到 12 家（第二批 = nomad✅ / gigsky / jetpac / bnesim） |
-| 国家 | 50 国（`data/countries.toml` 锁定） |
-| 套餐总数 | **8218 条真实数据**：airalo 985 / holafly 298（官网 PDP 直抓）/ saily 471 / yesim 1652 / ubigi 483（含 80 条订阅）/ roamic 1791 / alosim 915 / roami 1181 / **nomad 442** |
-| 构建 | **643 页，0 error**；sitemap 585 URL |
-| 页面构成 | 50 国家页 + **450** 品牌×国家子页 + **36** 品牌对决页 + **1** 对决枢纽页 /compare/matchups/ + **9** 品牌详情页 + tools/esim-deals/research×3/guides×5/about 等静态页 |
-| 数据验证 | `scripts/validate.py` 8 组检查，0 error 0 warning |
+| 品牌 | **10 家**（airalo / holafly / saily / yesim / ubigi / roamic / alosim / nomad / **jetpac** + 自家 roami；**roami ≠ roamic，两个不同品牌**）。2026-10-06 起规划扩到 12 家（第二批 = nomad✅ / **jetpac✅** / gigsky / bnesim） |
+| 国家 | 50 国（`data/countries.toml` 锁定）。**jetpac 只覆盖 49 国（缺 Fiji）** —— 所有 `#N of M` / `from N providers` 类计数一律按国实算，Fiji 页写 9 家、其余 49 国写 10 家（中德双语都验过） |
+| 套餐总数 | **9095 条真实数据**：airalo 985 / holafly 298（官网 PDP 直抓）/ saily 471 / yesim 1652 / ubigi 483（含 80 条订阅）/ roamic 1791 / alosim 915 / roami 1181 / nomad 442 / **jetpac 877** |
+| 构建 | **702 页，0 error**；sitemap 644 URL |
+| 页面构成 | 50 国家页 + **499** 品牌×国家子页（9×50 + jetpac 49）+ **45** 品牌对决页（C(10,2)）+ **1** 对决枢纽页 /compare/matchups/ + **10** 品牌详情页 + tools/esim-deals/research×3/guides×5/about 等静态页 |
+| 数据验证 | 九项校验全绿：`validate.py` 8 组 0 error 0 warning + `check_css_sync` + `check_i18n`（928→1136 key）+ `check_output`（704 文件 4028 段 JSON-LD）+ `check_headings`（17769 个 h2/h3，bad 0）+ `verify_provider_pages`（499 子页 13 项）+ `check_faq_facts` + `check_dates` + `verify_no_regression` |
 | 样式构建 | **Tailwind CLI 独立产出 `static/css/tailwind.css`（裸 `hugo` 不会重编译）**；`scripts/check_css_sync.py` 守卫模板 class 与编译产物同步（2026-10-03 加装） |
-| 增信数据 | `data/devices.toml`（14 品牌 351 机型 + 12 不支持条目，2026-10 核对）+ `data/networkreports.toml`（44 国 Opensignal + 50 国 Global Index 深链）+ **`networks` 补真**（9 品牌 × 50 国 = 各国运营商，2026-10-02 规则 + 2026-10-06 新品牌随行） |
-| 上线状态 | **已部署 esimsift.com**（手动上传 `public/`，无 CI；**本轮 Nomad 改动尚未部署**）。GA4 已换真（`hugo.toml [params] ga4 = "G-J6SXGGEN8L"`）；折扣码 9/9 全量有码（`promo_verified` 逐条记核验日）；**联盟深链仍是模式假设**（`country_path` 未逐家核实）；logo **8/9**（nomad 暂用 monogram —— 官方站取不到素材与主色，`color="#16456B"` 是占位）。**部署前纪律**：停掉所有 `hugo.exe` → `npm run build` → `grep -c localhost public/llms.txt` 必须为 0 |
+| 增信数据 | `data/devices.toml`（14 品牌 351 机型 + 12 不支持条目，2026-10 核对）+ `data/networkreports.toml`（44 国 Opensignal + 50 国 Global Index 深链）+ **`networks` 补真**（10 品牌全量 = 各国运营商；由 `backfill_networks_uniform.py` 统一回填，**该脚本是全局的**，见 §5.2） |
+| 上线状态 | **已部署 esimsift.com**（手动上传 `public/`，无 CI；**本轮 Jetpac 改动尚未部署**）。GA4 已换真（`hugo.toml [params] ga4 = "G-J6SXGGEN8L"`）；折扣码 10/10 全量有码（`promo_verified` 逐条记核验日）；**联盟深链仍是模式假设**（`country_path` 未逐家核实；**jetpac 连 `country_path` 都没有** —— 其官网是 SPA，深链对任意路径返回 200 且标题现场拼接，见 §4.6）；logo **10/10 全有**。**部署前纪律**：停掉所有 `hugo.exe` → `npm run build` → `grep -c localhost public/llms.txt` 必须为 0 |
 
 
 ---
@@ -120,7 +120,7 @@ esimsift/
 - [ ] 变体子页（cheapest/unlimited/long-stay）—— 等主站数据 ≥10 国再上，防关键词蚕食
 
 ### P-C 上线前
-- [ ] privacy/terms/disclosure 法律审校（文中已标 Todo）
+- [ ] privacy/terms/disclosure 法律审校（**2026-10-07**：原先直接渲染在正文里的 `Todo: legal review before launch.` 已移入 front matter 注释 —— 页面上不再出现待办文字；法律审校本身仍未做）
 - [x] ~~GA4 ID 替换~~ **已完成**：`hugo.toml [params] ga4 = "G-J6SXGGEN8L"`，`head.html` 取该参数（`{{ with site.Params.ga4 }}` 门控）。**遗留**：与 roamiapp.com 的跨域衡量未配
 - [ ] OG 图片（每国一张，含最低价数字）
 - [x] ~~部署~~ **已部署 esimsift.com**（手动上传 `public/`；每次改动需重新上传，见 §16）
@@ -363,7 +363,7 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `esim-providers/<key>.md` ×9 | 手写（front matter 即可） | 品牌详情页正文全部由模板聚合推导 |
 | `guides/` ×5 | 手写正文 | **1677-1955 词**（2026-10-02 深度重写，备份 `_guides_backup_20261002/` 在项目根）；front matter 带 `date` + `faq_heading` + `faqs`（7-8 条）+ `hero` + `hero_alt`（首屏图，模板渲染 figure + og:image）；内链 9-14 条/篇（短锚文本全轮换）；正文计数一律 shortcode；数据盒由 guides/single.html 按文件名注入 |
 | `research/` ×3 + `_index` | 手写 front matter | 正文由专属模板从数据推导；_index 枢纽 front matter 同 guides 带 `hero`/`faqs`（2026-10-02） |
-| `tools/` `esim-deals/` `_index/about/methodology/disclosure/privacy/terms/contact` | 手写 | privacy/terms 有法律审校 Todo 标注 |
+| `tools/` `esim-deals/` `_index/about/methodology/disclosure/privacy/terms/contact` | 手写 | privacy/terms 的法律审校待办写在 front matter 注释里（**不渲染到页面**；2026-10-07 前是正文行，被 Markdown 当斜体印出来了） |
 
 ### 4.8 `static/img/`
 `flags/<iso小写>.svg`（countries.toml flag 引用）、`countries/<slug>-01..04.webp`（每国 4 张：页面 3 张 + og:image）、`site/`（home-hero/og-default）、`esim/`、`providers/`（品牌真 logo：`<key>.png` 或 `.webp`，prov-logo 自动探测）。**logo 现状**：**8/8 全量接入**（.png ×6 + .webp ×2）。原始素材备份在 `static/img/logo/`（其中旧的 `logo.png` 是早期素材，已由 `roami.png` 取代）。
@@ -405,10 +405,10 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `scrape/scrape_esimdb.py` | `python -X utf8 -u scripts/scrape/scrape_esimdb.py <brand>... [--force]` → `scripts/scrape/raw/<brand>/`（断点续跑：已有 json 跳过；重抓删对应 json 或 --force） | 安全（只写 raw/） |
 | `scrape/scrape_holafly.py` | 同上，抓 holafly 官网 PDP（UAE 的 slug 是 `esim-dubai`，已在 VARIANTS 里） | 安全 |
 | `scrape/extract_roami.py` | 从本机 Roami 项目源数据提取 → `raw/roami/` | 安全 |
-| `scrape/toml_write.py` | `python -X utf8 scripts/scrape/toml_write.py <brand> [--dry-run] [--checked YYYY-MM-DD]` → `data/plans/<brand>.toml`。**默认 `CHECKED` 常量 = 首批抓取日 `2026-09-30`**；非首批批次（新品牌补抓）用 `--checked` 显式写真实核对日 —— ⚠ **不传就会让整批数据宣称旧日期**。--dry-run 只报 problems 不写文件 | ⚠ 覆盖该品牌 plans |
+| `scrape/toml_write.py` | `python -X utf8 scripts/scrape/toml_write.py <brand> [--dry-run] [--checked YYYY-MM-DD]` → `data/plans/<brand>.toml`。**默认 `CHECKED` 常量 = 首批抓取日 `2026-09-30`**；非首批批次用 `--checked` 显式写 **raw 的真实抓取日**（**不是"今天"** —— jetpac 的 raw 是 10-04 抓的，写成 10-07 就是文件头印假日期，2026-10-07 实测踩过）。之后再 `bump_checked --brand <b>` 把**页面声明的核对日**推到当天 —— **文件头 = 抓取日，块内 `checked` = 页面核对日，两者本来就不是同一个东西**。--dry-run 只报 problems 不写文件 | ⚠ 覆盖该品牌 plans |
 | `stamp_checked.py` | `python -X utf8 scripts/stamp_checked.py` **（2026-10-07 加，已挂在 `npm run build` 第一步）**：按**内容指纹**自动维护 `checked` / `profile_checked` —— 指纹变了就把日期盖成当天，没变就不动。首次建台账保留现值；台账已在而出现新单元（新品牌/新市场）盖当天。`--check` 只读、该盖未盖退 1；`--dry-run` 预演；`--date` 指定；`--selftest` **29 项**（含"改注释不触发""新增块盖当天""幂等"等反例）。台账 `docs/checked-state.json` **必须提交**。**它只认 `data/plans/*.toml` 与 `data/providers.toml`**，其余数据源见下方「不驱动日期的数据源」 | ⚠ 改写 plans + providers 的日期行 |
-| `bump_checked.py` | `python -X utf8 scripts/bump_checked.py --brand xyz [--countries US,PL] [--date YYYY-MM-DD] [--dry-run]`，`--show` 一览各品牌当前日期。**手工**把指定国家盖成指定日期 —— 真去官网核了一遍、价格恰好没变时用；日常刷新**不需要**它 | ⚠ 覆盖该品牌 plans 的日期行 |
-| `gen_provider_pages.py` | `python -X utf8 scripts/gen_provider_pages.py` 重建 450 子页（品牌集变更后必跑；**绝不碰 plans**） | 安全 |
+| `bump_checked.py` | `python -X utf8 scripts/bump_checked.py --brand xyz [--countries US,PL] [--date YYYY-MM-DD] [--dry-run]`，`--show` 一览各品牌当前日期（含"全站存在多个数据日期"提示 —— 多日期是**正常**的：每个品牌/国家声明自己的核对日）。**手工**把指定国家盖成指定日期 —— 真去官网核了一遍、价格恰好没变时用；日常刷新**不需要**它。**写回时保持文件原有行尾**（CRLF 文件改完还是 CRLF；丢行尾会让 hugo 因注释里的孤立 `\r` 整站构建失败，见 §14 红线 51） | ⚠ 覆盖该品牌 plans 的日期行 |
+| `gen_provider_pages.py` | `python -X utf8 scripts/gen_provider_pages.py` 重建**全部**品牌×国家子页（当前 **499** = 9×50 + jetpac 49；某品牌缺某国就自动不生成，`#N of M` 分母也按国实算）。品牌集变更后必跑；**绝不碰 plans**。会顺手删掉已不在 `providers.toml` 里的品牌子页 —— ⚠ **但它不清理对决页**（见 §14 红线 53） | 安全 |
 | `gen_vs_pages.py` | `python -X utf8 scripts/gen_vs_pages.py` **只补** `content/en/compare/{a}-vs-{b}.md` 缺失的品牌对，**绝不重写已有页**（品牌集变更后跑）。标题/描述复用两个标题族 + 字符数 48-54 / 120-140 断言 | 安全（只补缺） |
 | `check_faq_facts.py` | `python -X utf8 scripts/check_faq_facts.py` **FAQ 守卫（2026-10-07 加，须在 `hugo` 之后跑）**：**读 `public/` 产物**独立从 `data/plans` 重算真值逐条对账 —— R1 无未替换 `{token}`；R2 无 `n/a`/`$0.00` 哨兵漏出；R3 问题集合与 toml 一致；R4 可见正文与 FAQPage JSON-LD 同文；R5/R6/R7 三条答案的品牌与价格与现算一致；R8/R9 文案不变量（最便宜不是 Airalo/Holafly、最便宜档必须计量）。**必须读产物**：源文本里现在只有 `{token}`，模板写错在源文本里看不出来。**R10 例外地读源文件**（判的是句架，产物里 token 已变成各不相同的数字国名，反而看不出重复）：a) 三条答案 49 国骨架两两不同；b) 每条答案必须拆得回 `faq_frames.py` 的片段组合；c) 任意两国最多共用一个槽；d) slot6 取自库内 7 变体且无邻国的 7 国各占一个；e) slot6 必须含 `{country}`。**R11 读产物**：Q6 在各国页上必须两两不同 —— R10(e) 在源级保证它，但**源级看不见**「互称邻国的一对国家（FR/IE 都指向 UK）分到同一变体」会不会撞车，只有在产物里才暴露（这条规则就是被那个真实 bug 逼出来的，实测对修复前的产物跑会精准报出 `R11 [en] ['FR','IE']`）。`--selftest` **13 项**（`selftest()` 7 例 R1-R9 + `frame_selftest()` 6 例 R10，含"正确样本不误报"）。已挂进 `npm run check:output` | 只读 |
 | `faq_frames.py` | FAQ 答案骨架库 + 分配 + 迁移（2026-10-07 第四十二轮）。`--check` 离线校验分配不变量；默认只替换**认得的旧骨架**，其余拒绝改写（保护人工润色）；`--force` 重刷全站（覆盖人工润色）。**取代**了第四十一轮的一次性 `migrate_faq_frames.py`（已删除） | 幂等（改 faqs 文案） |
@@ -420,8 +420,12 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `check_headings.py` | `python -X utf8 scripts/check_headings.py` 渲染产物 h2/h3 标点守卫（`,` `;` `:` `—` `–` 全站 0 豁免；改模板/加内容后跑，需先 build） | 只读 |
 | `check_css_sync.py` | `python -X utf8 scripts/check_css_sync.py` **CSS 同步守卫（2026-10-03 加）**：扫 `layouts/`+`content/` 所有 `class="…"`，与 `static/css/tailwind.css` 逐类比对，缺任一即 exit 1。Tailwind JIT 对未知类静默忽略，没这道守卫时「改了模板忘重建 CSS」会静默上线（症状：HTML 结构正确、样式全无）。已挂进 `npm run validate` | 只读 |
 | `check_output.py` | `python -X utf8 scripts/check_output.py` **产物守卫（2026-10-03 加，须在 `hugo` 之后跑）**：① 全站扫 Go 格式串泄漏 `%!x(…)`（`math.Round` 返回 float64 喂 `%d`、printf 里字面 `%` 没写 `%%`、有 `%s` 不给参数/没占位符多给参数 —— 三种都会把乱码印在正文里而 `hugo` 不报错）；② 每个 JSON-LD 块必须 `json.loads` 可解析；③ `reviewRating`/`aggregateRating`/独立 `Rating` 的 `ratingValue` 必须是 JSON 数字且落在 `[worstRating‖1, bestRating‖5]`（含"量表写成字符串"这一失败模式）；④ **~~全站扫非拉丁文字~~（2026-10-03 移除）** —— 站点要上多语言，禁令会拦住 ja/ko/zh 的合法产物，按语言划豁免前缀只是把同一个问题往后推。**移除后 ① 的格式串扫描范围扩大到 `.json`**（原先 json 分支只服务于 ④，不扩范围就成了死代码）。数据入口的清洗仍归 `scripts/scrape/toml_write.py::clean_plan_name()`（详见红线 21、§18.4）。已挂进 `npm run check:output`，并在 `npm run build` 末尾 | 只读 |
+| `verify_provider_pages.py` | `python -X utf8 scripts/verify_provider_pages.py [--sample N]` **品牌×国家子页守卫（须在 `hugo` 之后跑，已挂进 `npm run check:output`）**：当前 499 个子页逐页 **13 项** —— 标题 48-54 / description 120-140 / 恰好 1 个 h1 / 逐套餐 Offer 数 = 价格表行数 / FAQPage 完整 / BreadcrumbList 4 级 / `WebPage.dateModified` / **计划数三处对账**（H2 = 表行数 = Offer 数 = 说明行）/ **天数按钮无假档位** / `data-gb` 与数据列标注一致（0=无限、<1GB 存小数；任何 `int .gb` 都会把 500MB 印成 Unlimited）。**页数与品牌集一律从 `data/` 推导、绝不写死**（写死 "400" 曾让新增品牌页漏扫而不报错）。第 13 项为**双分支**：`套餐 ≤3 且无按钮组` 计入 `chips_na` 并在报告里显式打印，`>3 且无按钮组` 才 FAIL（2026-10-07 改，见 §14 红线 52） | 只读 |
+| `check_dates.py` | `python -X utf8 scripts/check_dates.py` **产物域名 + 日期守卫**：① `public/` 全站不得含 `localhost`（手敲 `hugo server` 会把 dev 地址写进 canonical / sitemap，**已发生两次**）；② 通用组页面对页级日期、价格组对价格日期、`/guides/*` 与 `/research/*` 放宽为 `lastmod == dateModified`；③ sitemap 里每个 URL 都必须有产物。**是 localhost 污染的最后一道网**（2026-10-07 那次 664 文件的污染就是它精准报出来的） | 只读 |
+| `verify_no_regression.py` | `python -X utf8 scripts/verify_no_regression.py` **零回归边界守卫**：A 改造标记隔离（`#reality` / `#trip-calc` / `#fit` 等只许出现在该出现的页型，且品牌子页必须**确实**渲染它们）；B 全站不变量（恰好 1 个 h1 / 无 `{{` `}}` `<no value>` `%!x(...)` / 无空 h2h3 / JSON-LD 与注入 JSON 均可解析）；C `gb` 哨兵跨页型一致性（品牌子页 + 国家 Hub）。`--write-manifest` 重建基线 → `docs/regression-manifest.json`（**必须提交**）；`--diff <基线>` 列出**具体哪几个文件**变了并按页型标注「预期 / ★需确认」；`--strict-diff` 让非子页变更直接失败；`--selftest` **14 项**。**验证零回归的正确姿势**：`npm run build` 后先 `--diff` 看变更是否落在预期白名单，确认无误再 `--write-manifest` 覆盖基线 | 只读（`--write-manifest` 写基线） |
+| `check_i18n.py` | `python -X utf8 scripts/check_i18n.py` 模板层 i18n 守卫：禁新增硬编码文案 + `en`/`de` key 逐一对齐 + **模板引用的 key 必须已定义**（漏一个就整段文案变空串、`<h2></h2>` 空着上线，而 hugo 全程 exit 0）。已挂进 `npm run validate`；旧的 `check_hardcoded.py` 已并入本脚本 | 只读 |
 | `append_carrier_info.py` | 追加 [ISO.info]（幂等，**已执行过，勿再跑**——再跑也只是提示跳过） | 幂等 |
-| `backfill_networks_uniform.py` | `python -X utf8 scripts/backfill_networks_uniform.py` 一键把 9 品牌每国 `networks` 填成该国运营商（同国同运营商，幂等）。**新增品牌转完 TOML 后必跑** | 安全 |
+| `backfill_networks_uniform.py` | `python -X utf8 scripts/backfill_networks_uniform.py` 一键把**所有**品牌的每国 `networks` 填成该国运营商（同国同运营商，幂等）。⚠ **它是全局脚本，不是「只补新品牌」** —— 跑一次会把历史品牌遗留的空数组一并补上（2026-10-07 接 Jetpac 时顺手把 nomad 的 `networks = []` 补真，**影响 123 页**：国家页/对决页 59 + 德语 51 + `/networks/*` 13，品牌子页 0）。做变更面归因时要把它和新品牌接入**分开记账**。新增品牌转完 TOML 后必跑 | 安全 |
 | `gen_sample_data.py` | ☠☠☠ **永远禁止整跑** —— 会用 SAMPLE 数据覆盖全部真实抓取结果 | 禁令 |
 | `scrape/verify_airalo.py` `probe_*.py` `discover_slugs.py` | 一次性验证/探测工具（airalo 官网对照校验已通过：JP/IT/US 全档一致） | 存档 |
 
@@ -809,6 +813,15 @@ npm run build     # 内含 npm run stamp → 数据变过的品牌，日期自�
 48. **「日期 = 构建日」和「日期靠人记得跑脚本」都错，正解是「日期 = 数据最后变化日」且自动维护（第四十三轮）** —— ① 用 `now` 会让 `lastmod` 每次部署都翻新，Google 判定本站 `lastmod` 无信息量后**整体忽略**，而且当价格其实是上周抓的时，「今天核过价」本身就是不实陈述（第二十三轮试过、已撤回）。② 但反过来靠人记得跑 `bump_checked.py` 也一样错 —— 会漏：Nomad 10-06 入库、页面却一直宣称 Oct 4，直到用户发现。正解是 `scripts/stamp_checked.py` 按**内容指纹**自动盖章（已挂进 `npm run build` 第一步）。**判据：页面上每一个印出来的日期，都必须能回溯到一条自动规则，而不是某个人的记性。**
 49. **指纹的「内容面」必须与产物的「渲染面」对齐（第四十三轮）** —— 第一版 `block_hash` 把整段原始文本（含注释）算进指纹，于是改一句**行内注释**（`color = "#16456B"   # monogram 兜底色…`）就把 Nomad 的品牌档案核对日从 10-06 顶到 10-07 —— **页面一个像素没变，日期却动了，这正是我们本来要消灭的那类不实陈述**。修法：日期字段行 → 纯注释行 → 行内注释（含引号内 `#` 的转义处理）依次剥掉再算 sha。**通用判据：给「内容指纹」下定义时先问「这块内容会进产物吗」，不会进的一律不许进指纹。**
 50. **「首次遇到」的语义会分岔，别用一句代码糊过去（第四十三轮）** —— 同一句「这个单元台账里没有」在两种场景下正确行为**相反**：**首次建台账**（状态文件整个不存在）必须**保留现值**，否则全站日期集体跳到今天 = 批量不实陈述；**台账已在而冒出新的单元**（新品牌 / 新市场入库）必须**盖今天**，否则刚入库的数据顶着旧日期（正是 Nomad 那次的毛病）。**判据：凡带「首次」语义的机制，都要问清是「系统首次」还是「这个对象首次」。** 附带纪律：越权/状态类文件（`docs/checked-state.json`、`docs/regression-manifest.json`）**必须提交进版本库**，它们分别是「最后改动日」与「零回归基线」的唯一记忆。
+51. **改数据文件的脚本必须显式声明行尾，否则 CRLF 文件会被写成 `\r\r\n` 并让 Hugo 整站失败（第四十四轮）** —— `Path.write_text()` / `open(..., "w")` 在 Windows 上**默认把 `\n` 转成 `os.linesep`（CRLF）**。而 `data/plans/*.toml` **本来就是 CRLF** → 每个行尾变成 `\r\r\n` → 注释行里出现**孤立 `\r`**（TOML 注释只允许以 `\r\n` 结尾，`\r\r` 里的第一个 `\r` 非法）→ hugo 直接 `failed to load data: data\plans\x.toml:1:1 → toml: invalid character in comment` 拒绝构建。**同一写法对 `providers.toml` 却没事**（它是 LF，转完是合法 `\r\n`）—— 所以这个坑只在「本来就是 CRLF 的那批文件」上炸，测试时极易蒙混过关。**纪律三条**：① 改数据文件一律 `io.open(..., newline="")` + `write_bytes`，或读改写时明确保留原行尾；行内正则用 `[^\r\n]*` 而不是 `.*`（`.` 会连 `\r` 一起吃掉）；② `bump_checked.py` 曾把替换行的 `\r` 丢掉（`raw.rstrip("\r")` 只用于匹配、写回时没还回去），于是 `jetpac.toml` 混进 49 行 LF —— 已修，改法是把 `eol = "\r" if raw.endswith("\r") else ""` 拼回行尾；③ 批量归一化行尾用 bytes：`b.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")`。**判定行尾的唯一正确姿势**：`crlf = b.count(b"\r\n")`，`lf_only = b.count(b"\n") - crlf`，**不要**用文本模式读出来判断。
+52. **守卫里的「不适用」必须显式分账；写成 `if 找得到: 检查` 的单支就等于把检查改瞎（第四十四轮）** —— 品牌子页第 13 项「天数按钮无假档位」原写法是 `if grp:`（找到按钮组才检查），于是「页面上压根没有按钮组」**静默通过**。报告只印 `497/499`：既看不出差在哪两页，也**分不清「按设计不渲染」和「漏渲染」** —— 将来真漏了，数字变小而无人警觉。真相是模板有门槛（`{{ if gt (len $myRows) 3 }}`；斐济的 saily / ubigi 各只有 2 个套餐），属于**按设计跳过**。改成双分支后：`有按钮组 → 断言每个档位都在价格表里真实存在` ／ `无按钮组且套餐 ≤3 → 计入 chips_na 并在报告里显式打出来` ／ `无按钮组且套餐 >3 → FAIL`。**通用判据：任何检查都要能回答「这一页为什么没被检查」。** 配套纪律：改完判据必须注入反例证明它会红 —— 本次把荷兰 jetpac 页的 `id="plan-days-group"` 改名，守卫如期报 `价格表有 15 行却没有天数按钮组` + 退出码 1，随后按字节还原（sha256 一致）。自测方法已写进脚本 docstring。
+53. **删品牌时残留的对决页不是静默降级，而是构建失败；而 `gen_provider_pages.py` 只清理子页（第四十四轮）** —— 做 Jetpac 的 A/B 对照构建时，用 `ignoreFiles=['jetpac\.md$']` 排除内容，漏了另外两种命名（`airalo-vs-jetpac.md` 结尾是 `-jetpac.md`、`jetpac-vs-nomad.md` 结尾是 `-nomad.md`），hugo 立刻 `ERROR compare/vs-single: unknown provider "jetpac"` → `nil pointer evaluating interface {}.name`（`vs-single.html` 拿空的 `$pa` 去取 `.name`）→ **整站退出码 1、产物只写出 559/643 页**。两层意思：① 这是「fail loud」，比静默降级好；② 但 `gen_provider_pages.py` 的清理逻辑**只删子页**（`removed` 计数），对决页无人管 —— **真到删品牌那天会先炸构建，然后让人误以为新数据本身有问题**（待办见 §15）。附带：`ignoreFiles` 是**正则**匹配整个路径，`jetpac\.md$` 只覆盖结尾恰好是 `jetpac.md` 的，最宽也最省事的写法是直接写 `jetpac`。
+54. **「换措辞」治不了模板化，它是反向操作；而方法论披露句必须全站逐字一致（第四十六轮）** —— 用户拿第三方分析文档来问「如何优化」，文档建议「删或变量化骨架标签」。**照做有害**，三条理由：① Google 规模化内容滥用的判定原文是 *"substantially the same regardless of **minor variations**"* —— 把一句话改成 5 种说法**正是 minor variations 的定义**，页面对 Google 仍「实质相同」；② `Only plans whose validity covers the whole trip are counted here.` / `Typical speeds are our editors' reads of each operator's own coverage data.` / `Prices in USD as listed by …` 这类是**方法论披露**，**一致性本身就是 E-E-A-T 信任信号**，逐页变量化 = 扣分；③ **词法指标有地板** —— 任何「每页渲染一次」的区块（竞品卡 9 张、计算器说明、安装步骤），建多少变体都会让每种变体出现在每一页上。**只有两条正确方向**：**A 换实质不换说法**（把零信息量句子换成承载页内数据的句子）、**B 合并而非改写**（把重复的方法论 / 安装说明收拢到单一权威页，各页留一句 + 链接，**那一句必须全站逐字一致**）。**动手前先给每条重复句分类**：品牌内容（可改）／国家级事实（八品牌 ×50 国 `networks` 完全一致，改只能编造）／方法论披露（不许改）／UI 说明（不值得改）。
+55. **「跨页模块 md5 去重 = N」是必要不充分条件；同质化必须另跑一把句子级的尺子（第四十六轮）** —— 那条判据（红线见 `SKILL.md` 反同质化条）的漏洞是：区块里只要含**一个**页内专属数字，md5 就唯一 —— 「95% 的句子雷同、只换了一个价格」照样全绿。实测：奥地利 10 个品牌子页**块级去重 10/10 全唯一，句子级模板槽位却是 74%**。补尺子 `scripts/audit_boilerplate.py`（只读 `public/`，不联网）：只取 prose 标签 `p/li/blockquote/figcaption`，剔 `script/style/nav/footer/header/svg`，按 `[.!?]` 切句取 ≥25 字符，**品牌名→`@`、数字→`#` 两级归一化**，指标 = **占用的句子槽位比例**（槽位 = 全组句子总数；模板槽位 = Σ 该模板句出现的页数）。**量化口径必须写明是「按行」还是「按句子槽位」**：同一份产物按行 69%、按槽位 74%，因为按行会把 `td`/列头/徽章算进正文。**它不进 `npm run build`** —— 诊断工具不是守卫，给阈值就会变成可被「优化掉」的指标。**一次分析只允许引用一个仪器的数字**：临时脚本算 404 槽、正式工具算 604 槽，写进交付文档的数必须能用一行命令复现。
+56. **`Path.write_text()` 的 CRLF 陷阱不限于 `data/plans/*.toml` —— 改任何仓库文本文件一律用 bytes（第四十六轮）** —— 红线 51 立了「改数据文件用 bytes」的纪律，但没覆盖 `i18n/*.toml`：本轮用 `write_text` 改 4 行文案，把 `i18n/en.toml` 整份从 LF 转成 CRLF（`de.toml` 仍是 LF）。**因为 `git diff` 只显示 13 行变化**（git 自动忽略换行差异，只在警告里提一句），这个改动**极易蒙混过关**。**纪律升级**：只要不是新建文件，就不许用 `write_text` —— 一律 `read_bytes()` → `decode` → 处理 → `encode` → `write_bytes()`（或用 Edit 工具），改完立刻 `read_bytes().count(b"\r\n")` 复核。附带：Windows 下 `glob.glob('dir/*/')` 返回**反斜杠结尾**，`str(rel)` 也是反斜杠，按 `'/'` 切分解析路径会 `IndexError` 或**静默分错组**，一律改用 `pathlib.PurePath(k).parts`。
+57. **衡量「减少重复」要看绝对量，不看占比（第四十七轮）** —— `模板槽位 / 总槽位` 是**横截面**指标（适合比页型），对「删内容」**不敏感**：删掉重复块时分子分母同步下降，占比可以纹丝不动（本轮国家页把 51 遍的安装三步删掉，占比只从 49% → 47%）。**单轮改动的成效必须用绝对量报**：本轮是「每页净减 274 字符可见文本（旧 497 → 新 223），× 51 页 ≈ 14,000 字符」。同理，`--diff` 的「变更 N 页」是**归因**证据，不是**成效**证据 —— 两者要分开讲，别用一个数字冒充另一件事。
+58. **判定「某页 / 某能力缺失」前，先数它的实际引用数（第四十七轮）** —— 第四十六轮把 `/methodology/` 写成了「待建 P1」，实际它**早已存在、且被 699 个产物页链接、链接总数 1679**（`compare/single.html`、`esim-providers/single.html`、`vs-single.html`、`index.html`、`esim-deals/list.html` 都已在正确位置链出）。错因：**只核了那几句话的文本，没核链接**，于是从「一句话」反推「整页不存在」。**纪律**：断言缺失前跑 `grep -rn "<路径>" layouts/ | wc -l`，产物侧再跑一次 `grep -rl` 数页面数。**语句的存在性 ≠ 页面的存在性 ≠ 该页被链出。**
+59. **front matter 注释必须落在两个 `---` 之间，否则会被当成正文渲染成 `<h1>`；重构断言时别顺手改匹配模式（第四十九轮）** —— 为把「给编辑看的待办」移出读者视野，把 `content/en/privacy.md` / `terms.md` 正文里的 `_Todo: legal review before launch._` 改成 front matter 里的 `# …` 注释。改动方向对（原句被 Markdown 当**斜体正文**渲染，读者与爬虫都看得见），但替换时把匹配模式里的 `\r\n---\r\n` **一起删掉了**，注释于是落在 front matter **外面**：Hugo 把 3 行 `#` 当 Markdown → 页面出现 **4 个 `<h1>`** → `verify_no_regression` 的 B 类不变量当场 FAIL（`✗ privacy/index.html: 4 个 <h1>`）。两条纪律：① **改 front matter 后必须断言分隔符位置** —— `[i for i,l in enumerate(text.split("\r\n")) if l == "---"] == [0, N]`，且注释行号落在两者之间；② **断言可以改，被断言的 pattern 不许顺手改** —— 第一版脚本的断言因 NOTE 文本里含原句而误报，第二版改断言时把 pattern 一并改了（**多余重构**），直接把正确结构改坏。这个 bug 之所以能被守住，靠的正是 B 类不变量（h1 计数）——**「改了内容」和「改坏了结构」是两件事，前者该绿灯，后者必须红灯**。
 
 ## 15. 等用户决策/提供的事项（代码侧做不了的）
 
@@ -818,12 +831,13 @@ npm run build     # 内含 npm run stamp → 数据变过的品牌，日期自�
 | 事项 | 影响 |
 |---|---|
 | ~~真实折扣码~~ | ✅ 2026-10-01 完成（3 家有码 5 家无码，见 providers.toml；仅 promo_expires 需上线前复核） |
-| ~~品牌 logo~~ | ✅ 2026-10-07 全 **9 家**接入（`static/img/providers/` 下 7 png + 2 webp，含 Nomad）。★ **生效目录是 `static/img/providers/`**，素材放 `static/img/logo/` 不生效；且只认 **png/webp**（jpg 探测不到） |
+| ~~品牌 logo~~ | ✅ 2026-10-07 全 **10 家**接入（`static/img/providers/` 下 7 png + 3 webp，含 Nomad 与 Jetpac）。★ **生效目录是 `static/img/providers/`**，素材放 `static/img/logo/` 不生效；且只认 **png/webp**（jpg 探测不到） |
 | **联盟深链格式确认**（每家国家级 URL 规则） | hugo.toml country_path + countries.toml slugs；影响转化归因 |
 | **Roami 定价决策** | ⚠ 业务发现：数据算出 **Roamic 在 35/50 国比自家 Roami 便宜**（Roami 只赢 15 国）—— roami-vs-roamic 对决页如实展示了这个结论；要么调价要么接受 |
 | ~~networks 逐品牌官方数据来源确认~~ | ✅ 2026-10-02 按"同国同运营商"规则用 `countries.toml.carriers` 补全，无需逐品牌查（见 §4.3） |
 | **哪些数据源该驱动页面日期？** | 目前只有 `plans`（价格）与 `providers`（品牌档案）驱动日期。`countries.toml`（国家 hub 正文）/ `carriers.toml` / `refs.toml` / `faqs/<iso>.toml` / `titlesegments.toml` 改了**不会**动任何日期 —— 因为那些页面**现在压根没印日期**。要让它们也驱动，得先定「日期印在哪儿、印给谁看」（见 §4.3 的「不驱动日期的数据源」） |
-| **第二批品牌的 logo 归位** | 素材已在 `static/img/logo/`：`gigsky.png` ✓ / `jetpac.webp` ✓ / `bensim.jpg` ✗（BNESIM 拼写为 `bnesim`，且 **jpg 探测不到**，接入时须转 png 或 webp 并改名） |
+| **剩余品牌的 logo 归位** | 素材已在 `static/img/logo/`：`gigsky.png` ✓ / ~~`jetpac.webp`~~ ✅ 2026-10-07 已归位到 `providers/` / `bensim.jpg` ✗（BNESIM 拼写为 `bnesim`，且 **jpg 探测不到**，接入时须转 png 或 webp 并改名） |
+| **`gen_provider_pages.py` 不清理陈旧对决页** | 删品牌时残留的 `content/en/compare/*-vs-*.md` 会让 hugo **构建失败**（`ERROR compare/vs-single: unknown provider` → nil pointer），而子页会被 `removed` 计数自动清掉。修法：给生成器加一段对称的清理（或删品牌前先手工清 `*-vs-*` 里引用了该品牌的文件），见 §14 红线 53 |
 
 ---
 

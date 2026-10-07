@@ -3,7 +3,7 @@ title: "Canada eSIM"
 iso: CA
 weight: 34
 seo:
-  description: "eSIM Sift compares every Canada eSIM: 198 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
+  description: "eSIM Sift compares every Canada eSIM: 221 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 A quick sort of the board for Canada separates the value buys from the filler. 199MB / 1 Day from yesim is the cheapest buy in Canada at $0.51. Small buckets cost roughly 4.1 times the rate of the big ones here. The value crown is alosim's, at $0.64/GB for 50GB over 10 days. We track {{< count-providers >}} providers here, listing 188 plans for Canada between them, 89 of them unlimited.

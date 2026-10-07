@@ -3,7 +3,7 @@ title: "United Arab Emirates eSIM"
 iso: AE
 weight: 41
 seo:
-  description: "eSIM Sift compares every United Arab Emirates eSIM: 161 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every United Arab Emirates eSIM: 182 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 The market in the United Arab Emirates rewards a little arithmetic. The cheapest option in the United Arab Emirates is yesim 105MB / 1 Day at $0.51. The same spend in the United Arab Emirates at $1.36/GB would give you about 384MB. The best rate here is roamic's 50GB / 30 Days plan at $1.36/GB. The tracked catalogue holds 152 plans for the United Arab Emirates from {{< count-providers >}} providers, 87 of them unlimited.

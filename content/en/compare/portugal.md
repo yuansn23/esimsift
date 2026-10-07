@@ -3,7 +3,7 @@ title: "Portugal eSIM"
 iso: PT
 weight: 21
 seo:
-  description: "eSIM Sift compares every Portugal eSIM: 183 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every Portugal eSIM: 197 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 Ranking eSIMs for Portugal by entry price gets the order wrong. The entry point for Portugal is yesim 500MB / 1 Day, at $0.51. The same spend in Portugal at $0.36/GB would give you about 1.4GB. The value crown is roamic's, at $0.36/GB for 50GB over 30 days. Counting everything, {{< count-providers >}} providers list 173 plans for Portugal, of which 87 are unlimited.

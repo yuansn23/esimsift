@@ -17,6 +17,18 @@
 用法（先 hugo 再跑）：
     python -X utf8 scripts/verify_provider_pages.py
     python -X utf8 scripts/verify_provider_pages.py --sample 12   # 附带打印若干样本
+
+第 13 项（天数按钮）为什么要显式分两支：模板只在**套餐数 > 3** 时渲染按钮组
+（`layouts/compare/provider.html` 的 `{{ if gt (len $myRows) 3 }}`）。写成单支
+`if grp:` 的话，「页面上压根没有按钮组」会被静默放过 —— 报告只显示 497/499，
+既看不出差在哪两页，也分不清「不适用」和「漏渲染」。现在两支分开：
+底部 `套餐 ≤3 按设计不渲染` 是**显式的**，所以「有按钮组的页」分母必须全绿。
+
+改动本项时的自测（2026-10-07 实测通过）：把任一**套餐数 >3** 的页面的
+`id="plan-days-group"` 改成别的字符串，重跑守卫 —— 必须报
+    ✗ compare/<国>/<品牌>/index.html: 价格表有 N 行却没有天数按钮组
+且退出码 1；随后把该文件按字节还原（或重跑 npm run build）再跑一次应回到全绿。
+只改检查不加这条自测，等于把检查改瞎。
 """
 from __future__ import annotations
 
@@ -133,7 +145,7 @@ def main() -> int:
         "faq_ok": 0, "crumb_ok": 0, "webpage_ok": 0, "offers_total": 0,
         "trip_rows": 0, "unverified_pages": 0,
         "unlimited_rows": 0, "subgb_rows": 0,
-        "plancount_ok": 0, "chips_ok": 0,
+        "plancount_ok": 0, "chips_ok": 0, "chips_na": 0,
     }
     title_lengths: list[int] = []
     samples: list[str] = []
@@ -386,7 +398,16 @@ def main() -> int:
                         stats["plancount_ok"] += 1
 
         # 13. 天数按钮不得出现表里没有的有效期
+        #     模板只在**套餐数 > 3** 时渲染按钮组（layouts/compare/provider.html:347
+        #     的 `{{ if gt (len $myRows) 3 }}`）—— 表太短时筛选器没有意义。
+        #     所以这里必须**显式分两支**，不能写成 `if grp:` 单支：
+        #       有按钮组 → 断言每个档位都在价格表里真实存在
+        #       无按钮组 → 套餐 ≤3 才算「按设计跳过」；>3 就是漏渲染，必须 FAIL
+        #     2026-10-07 之前是单支静默跳过，报告只写 "497/499"：既看不出差在
+        #     哪两页（斐济的 saily / ubigi，各 2 个套餐），也分不清「不适用」
+        #     和「漏渲染」—— 将来真漏了，数字变小而无人警觉。
         table_days = set(re.findall(r'<tr data-price="[^"]*"[^>]*data-days="(\d+)"', raw))
+        tbl_rows = len(ROW_RE.findall(raw))
         grp = re.search(r'id="plan-days-group".*?</div>', raw, re.S)
         if grp:
             btns = set(re.findall(r'data-days="(\d+)"', grp.group(0)))
@@ -398,6 +419,12 @@ def main() -> int:
                 errors.append(f"{rel}: 天数按钮组是空的")
             else:
                 stats["chips_ok"] += 1
+        elif tbl_rows <= 3:
+            stats["chips_na"] += 1
+        else:
+            errors.append(
+                f"{rel}: 价格表有 {tbl_rows} 行却没有天数按钮组"
+                f"（模板门槛是 >3 行才渲染，疑为条件失效）")
 
         if len(samples) < args.sample:
             samples.append(
@@ -418,7 +445,9 @@ def main() -> int:
     print(f"  行程对比表累计 {stats['trip_rows']} 行")
     print(f"  计划数三处对账 {stats['plancount_ok']}/{total}"
           f"（H2 = 价格表行数 = Offer 数 = 说明行）")
-    print(f"  天数按钮无假档位 {stats['chips_ok']}/{total}")
+    print(f"  天数按钮无假档位 {stats['chips_ok']}"
+          f"/{stats['chips_ok'] + stats['chips_na']}"
+          f"（另 {stats['chips_na']} 页套餐 ≤3，按设计不渲染筛选器）")
     print(f"  套餐行标注一致：无限 {stats['unlimited_rows']} 行 /"
           f" 小于 1GB 的计量档 {stats['subgb_rows']} 行")
     print(f"  仍显示「尚未核实」政策的页面 {stats['unverified_pages']}"

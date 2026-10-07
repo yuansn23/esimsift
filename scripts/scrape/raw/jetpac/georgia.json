@@ -1,0 +1,130 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n12"
+ },
+ "plans": [
+  {
+   "name": "Georgia 1GB",
+   "data": "1GB",
+   "validity": "4 Days",
+   "price": "$7.00",
+   "badges": [
+    "New Users Only"
+   ]
+  },
+  {
+   "name": "Georgia - Unlimited 1 Day",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$8.50",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Georgia 3GB",
+   "data": "3GB",
+   "validity": "7 Days",
+   "price": "$9.00",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Georgia 10GB",
+   "data": "10GB",
+   "validity": "30 Days",
+   "price": "$24.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Georgia - Unlimited 3 Days",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$25.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Georgia 15GB",
+   "data": "15GB",
+   "validity": "30 Days",
+   "price": "$27.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Georgia 30GB",
+   "data": "30GB",
+   "validity": "30 Days",
+   "price": "$34.50",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Georgia 40GB",
+   "data": "40GB",
+   "validity": "30 Days",
+   "price": "$37.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Georgia - Unlimited 7 Days",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$57.50",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Georgia - Unlimited 14 Days",
+   "data": "3GB/day",
+   "validity": "14 Days",
+   "price": "$115.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Georgia - Unlimited 21 Days",
+   "data": "3GB/day",
+   "validity": "21 Days",
+   "price": "$172.50",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Georgia - Unlimited 30 Days",
+   "data": "3GB/day",
+   "validity": "30 Days",
+   "price": "$246.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Jetpac Travel eSIM for Georgia | Data Plans & Reviews",
+  "h1": "Jetpac eSIM Data Plans for Georgia",
+  "networks": null
+ },
+ "slug": "georgia",
+ "url": "https://esimdb.com/georgia/jetpac",
+ "status": 200
+}

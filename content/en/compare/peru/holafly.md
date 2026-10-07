@@ -4,5 +4,5 @@ iso: PE
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for Peru: 6 daily plans from $2.66/day, fair-use caps decoded — 122 Peru eSIMs tracked."
+  description: "eSIM Sift compares Holafly unlimited eSIMs for Peru: 6 daily plans from $2.66/day, fair-use caps decoded — 135 Peru eSIMs tracked."
 ---

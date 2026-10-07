@@ -1,9 +1,10 @@
 ---
 title: "Privacy Policy: Data, Cookies and Analytics Explained"
 description: "How eSIM Sift handles personal data, cookies and analytics — what we collect, what we never collect, and the choices you have."
+# TODO(launch): legal review not yet completed. This reminder used to be a body line
+# (the italic underscore-wrapped "Todo" sentence) that Markdown rendered as visible
+# text to readers and crawlers; moved into front matter 2026-10-07. Delete once reviewed.
 ---
-
-_Todo: legal review before launch._
 
 ## What we collect
 

@@ -408,7 +408,7 @@ refund = "aloSIM offers a 30-day money-back guarantee: a full refund if you can'
 destinations = 200
 
 [nomad]
-profile_checked = "2026-10-06"   # 品牌档案核对日（2026-10-06 在官方页逐条核验：首页 / about / terms-and-conditions）
+profile_checked = "2026-10-07"   # 品牌档案核对日（2026-10-06 在官方页逐条核验：首页 / about / terms-and-conditions）
 name = "Nomad"
 founded = 2020
 tagline = "LotusFlare's travel eSIM with per-country local plans"
@@ -454,6 +454,52 @@ support = "24/7 live chat (website and in-app) and email"
 support_email = "hello-cs@getnomad.app"
 response_time = ""
 refund = "Nomad lets you ask for a refund or a change before the eSIM is installed or activated; after activation it refunds only when the fault is a technical problem originating from Nomad. Whether a given plan qualifies is stated in that plan's own description, so check it before buying. Complaints go through the Help Center in the app or website, or by email to hello-cs@getnomad.app."
+destinations = 200
+
+[jetpac]
+profile_checked = "2026-10-07"   # 品牌档案核对日（2026-10-07 核验：jetpacglobal.com 首页 / contact-us / esim101 / Terms & Conditions PDF）
+name = "Jetpac"
+founded = 2022
+tagline = "Singapore travel eSIM with unrestricted hotspot sharing"
+type = "app"
+color = "#3C249C"   # monogram 兜底色（真 logo 已就位 static/img/providers/jetpac.webp；此色从 logo 采样，非官方色值）
+initials = "Je"
+strengths = ["Hotspot sharing with no data limit and no restriction, stated on Jetpac's own product page", "Buy the eSIM once and reuse it on later trips by topping up in the app", "Operated by Jetpac (Circles Global) Pte. Ltd. in Singapore, with 200+ destinations", "24/7 support over live chat, WhatsApp and email"]
+weaknesses = ["Unlimited plans throttle to 1 Mbps once you pass 3 GB in a day", "Rarely the cheapest metered option - its best $/GB ranks sixth or lower in 24 of the 49 markets we track", "Voice calling is not part of the data eSIM - Jetpac Voice is a separate paid add-on"]
+sponsored = true
+# 折扣码：ESIM15 / Teresa20（2026-10-04 在 jetpacglobal.com 站内 JSON payload 实测原文，
+# 研究底稿 docs/promos/jetpac.json；另有首购码 FYESIM15 来自第三方聚合站，标注 reported）
+promo_rank = 10
+promo_code = "ESIM15"
+promo_label = "15% off eSIM plans"
+promo_pct = 15
+promo_audience = "all"
+promo_scope = "eSIM plans on the website and in the app"
+promo_min_spend = ""
+promo_expires = ""
+promo_verified = "2026-10-04"
+# ── 参数总表字段（全部可追溯到 docs/promos/jetpac.json）──
+promo_source = "official"
+promo_source_label = "jetpacglobal.com"
+promo_coverage = "All plans, 200+ destinations"
+promo_constraints = ["No published end date - Jetpac states no expiry", "ESIM15 and the Teresa20 ambassador code are alternatives, not advertised as stackable"]
+promo_bestfor = "Anyone buying a single plan: ESIM15 is the code Jetpac publishes across its own site and app, and it carries no minimum spend"
+promo_terms = "Jetpac's own site payload carries two coupon codes: ESIM15 takes 15% off eSIM plans, and Teresa20 takes 20% as an ambassador code. Neither has a published end date, and Jetpac does not say whether they stack, so treat them as alternatives. A separate 15% first-purchase code (FYESIM15) circulates on third-party coupon sites and is reported rather than verified by us."
+promo_alts = [{ code = "Teresa20", label = "20% off eSIM plans (ambassador code)", audience = "all", pct = 20 }, { code = "FYESIM15", label = "15% off your first purchase", audience = "new", pct = 15 }]
+
+# 公司档案（官方页面核验 2026-10-07：首页 / contact-us / esim101 · Terms & Conditions PDF）
+[jetpac.info]
+hq = "Singapore"
+legal = "Jetpac (Circles Global) Pte. Ltd."
+website = "https://www.jetpacglobal.com"
+# trustpilot：只存档案链接不存分数（与全站口径一致，见本文件顶部说明）。
+trustpilot = "https://www.trustpilot.com/review/jetpacglobal.com"
+app_android = "https://play.google.com/store/apps/details?id=com.jetpaclabs.jetpac"
+app_ios = "https://apps.apple.com/sg/app/jetpac-global/id6464374463"
+support = "24/7 live chat, WhatsApp and email"
+support_email = "support@jetpacglobal.com"
+response_time = ""
+refund = "Jetpac's Terms & Conditions treat an installed eSIM as used: once it is installed, no refund is offered. The exception is a technical fault that stops the eSIM installing or working - then you can ask for a refund or a replacement, and the request must be made within 30 days of purchase. Unused data left when a plan's validity period ends is not refunded or compensated."
 destinations = 200
 
 # ============================================================
@@ -581,4 +627,16 @@ fup_drop = "1 Mbps"
 fup_note = "Every one of the 150 Nomad unlimited plans we track states the same threshold: 2 GB at full speed per day, then unlimited at 1 Mbps. Nomad publishes no brand-wide fair-use figure - its destination pages point you at the individual plan's details, and that is where this number comes from."
 topup = true
 topup_note = "Extra data is sold as an add-on and activates automatically on the existing eSIM when the original plan expires, so there is no new QR code to install."
+voice = "data-only"
+
+# 2026-10-07 核验：jetpacglobal.com 首页（Hotspot Sharing 区块）· contact-us · esim101 · Terms & Conditions PDF
+[jetpac.policy]
+hotspot = "allowed"
+hotspot_allowance = "Shared with your plan data"
+hotspot_note = "Jetpac's own product page advertises hotspot sharing as standard - \"Share your internet freely, no data limits, no restrictions\" - so tethering traffic comes out of the same plan data rather than a separate allowance."
+fup_allowance = "3 GB/day on unlimited plans"
+fup_drop = "1 Mbps"
+fup_note = "All 325 Jetpac unlimited plans we track state the same threshold: 3 GB at full speed per day, then unlimited at 1 Mbps. Jetpac publishes no brand-wide fair-use figure - its Terms & Conditions carry a Fair Usage Policy section but no GB number, so this figure comes from the individual plan listings."
+topup = true
+topup_note = "Jetpac sells the eSIM as a one-time setup: you keep it and top up from the app for later trips instead of installing a new eSIM for every plan."
 voice = "data-only"

@@ -84,6 +84,11 @@ def clean_plan_name(raw: str, where: str) -> str:
     out = re.sub(r"\s{2,}", " ", out)
     out = re.sub(r"^[^0-9A-Za-z\u00C0-\u024F]+", "", out)  # stray leading quotes/punct
     out = re.sub(r"\s+([-–—/])", r" \1", out).strip()
+    # Capacity units -> uppercase, no space after the number ("UK 1gb" -> "UK 1GB").
+    # The upstream listings occasionally lowercase the unit while every other row
+    # on the site writes "3GB"; leaving it mixed reads like a typo on the page.
+    # Mode is lowercase-only on purpose, so an already-correct "1 GB" is untouched.
+    out = re.sub(r"(\d)\s*(gb|mb)\b", lambda m: f"{m.group(1)}{m.group(2).upper()}", out)
     if out and out != raw.strip():
         normalized.append(f"{where}: {raw.strip()!r} -> {out!r}")
         return out

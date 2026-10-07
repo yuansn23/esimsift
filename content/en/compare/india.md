@@ -3,7 +3,7 @@ title: "India eSIM"
 iso: IN
 weight: 19
 seo:
-  description: "eSIM Sift compares every India eSIM: 162 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
+  description: "eSIM Sift compares every India eSIM: 186 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
 ---
 
 Ranking eSIMs for India by entry price gets the order wrong. The cheapest plan in India is yesim 300MB / 1 Day at $0.51. That gap is the story in India in one line: 3.1 times the rate for the smallest bucket. Per-gigabyte pricing is set by ubigi at $0.57 for 60GB over 365 days. Counting everything, {{< count-providers >}} providers list 154 plans for India, of which 89 are unlimited.

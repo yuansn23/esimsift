@@ -4,5 +4,5 @@ iso: PL
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Poland: 25 plans from $1.99, best $0.55/GB (#3 of 9) — ranked against 163 Poland plans."
+  description: "eSIM Sift compares Roami eSIM plans for Poland: 25 plans from $1.99, best $0.55/GB (#3 of 10) — ranked against 178 Poland plans."
 ---

@@ -3,7 +3,7 @@ title: "Egypt eSIM"
 iso: EG
 weight: 45
 seo:
-  description: "eSIM Sift compares every Egypt eSIM: 151 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
+  description: "eSIM Sift compares every Egypt eSIM: 165 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
 ---
 
 Sort the table for Egypt by cost per gigabyte and the order changes. Entry in Egypt starts at $0.51 with yesim 399MB / 1 Day. In Egypt, the same $0.51 reaches about 590MB at the $0.88/GB rate. Best value per gigabyte goes to yesim, where 50GB over 30 days works out to $0.88 a gigabyte. Counting everything, {{< count-providers >}} providers list 142 plans for Egypt, of which 84 are unlimited.

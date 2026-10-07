@@ -4,5 +4,5 @@ iso: IS
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift compares Roamic eSIM plans for Iceland: 36 plans from $1.00, best $0.36/GB (#1 of 9) — ranked against 133 Iceland plans."
+  description: "eSIM Sift compares Roamic eSIM plans for Iceland: 36 plans from $1.00, best $0.36/GB (#1 of 10) — ranked against 148 Iceland plans."
 ---

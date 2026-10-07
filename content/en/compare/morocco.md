@@ -3,7 +3,7 @@ title: "Morocco eSIM"
 iso: MA
 weight: 46
 seo:
-  description: "eSIM Sift compares every Morocco eSIM: 147 real plans from 9 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIM Sift compares every Morocco eSIM: 160 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 The price list for Morocco is not flat, and its shape decides what you pay. The lowest sticker price belongs to yesim, whose 104MB / 1 Day costs $0.51. Small plans in Morocco cost 5.2 times more per gigabyte than its best plan. Per-gigabyte pricing is set by roamic at $0.96 for 50GB over 30 days. We track {{< count-providers >}} providers here, listing 137 plans for Morocco between them, 76 of them unlimited.

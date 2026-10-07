@@ -4,5 +4,5 @@ iso: IT
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for Italy: 6 daily plans from $2.15/day, fair-use caps decoded — 187 Italy eSIMs tracked."
+  description: "eSIM Sift compares Holafly unlimited eSIMs for Italy: 6 daily plans from $2.15/day, fair-use caps decoded — 204 Italy eSIMs tracked."
 ---

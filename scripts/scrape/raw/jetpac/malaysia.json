@@ -1,0 +1,147 @@
+{
+ "tab": {
+  "clicked": true,
+  "label": "Single-country\n14"
+ },
+ "plans": [
+  {
+   "name": "Malaysia 1GB",
+   "data": "1GB",
+   "validity": "1 Day",
+   "price": "$2.00",
+   "badges": [
+    "New Users Only"
+   ]
+  },
+  {
+   "name": "Malaysia Unlimited - 1 Day",
+   "data": "3GB",
+   "validity": "1 Day",
+   "price": "$3.50",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Malaysia 5GB",
+   "data": "5GB",
+   "validity": "3 Days",
+   "price": "$6.50",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Malaysia 8GB",
+   "data": "8GB",
+   "validity": "3 Days",
+   "price": "$7.50",
+   "badges": [
+    "$4 OFF"
+   ]
+  },
+  {
+   "name": "Malaysia Unlimited - 3 Days",
+   "data": "3GB/day",
+   "validity": "3 Days",
+   "price": "$11.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Malaysia 10GB",
+   "data": "10GB",
+   "validity": "7 Days",
+   "price": "$14.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Malaysia 15GB",
+   "data": "15GB",
+   "validity": "7 Days",
+   "price": "$16.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Malaysia Unlimited - 7 Days",
+   "data": "3GB/day",
+   "validity": "7 Days",
+   "price": "$25.00",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Malaysia 15GB",
+   "data": "15GB",
+   "validity": "14 Days",
+   "price": "$26.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Malaysia 20GB",
+   "data": "20GB",
+   "validity": "14 Days",
+   "price": "$30.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Malaysia 20GB",
+   "data": "20GB",
+   "validity": "21 Days",
+   "price": "$39.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Malaysia 30GB",
+   "data": "30GB",
+   "validity": "21 Days",
+   "price": "$45.00",
+   "badges": [
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Malaysia Unlimited - 14 Days",
+   "data": "3GB/day",
+   "validity": "14 Days",
+   "price": "$51.50",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  },
+  {
+   "name": "Malaysia Unlimited - 21 Days",
+   "data": "3GB/day",
+   "validity": "21 Days",
+   "price": "$84.50",
+   "badges": [
+    "+ ∞ at 1Mbps",
+    "15% OFF"
+   ]
+  }
+ ],
+ "meta": {
+  "title": "Jetpac Travel eSIM for Malaysia | Data Plans & Reviews",
+  "h1": "Jetpac eSIM Data Plans for Malaysia",
+  "networks": null
+ },
+ "slug": "malaysia",
+ "url": "https://esimdb.com/malaysia/jetpac",
+ "status": 200
+}
