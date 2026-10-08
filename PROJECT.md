@@ -1,7 +1,9 @@
 # eSIM Sift 项目文档（交接手册）
 
 > **用途**：隔几天回来接着干时，看这一份就能接上。写了什么、还缺什么、每个文件干嘛的、常见操作怎么做。
-> **最后更新**：2026-10-07 **第二批品牌扩容 · Jetpac 接入**（9 → 10 品牌，全链路打通：plans 877 条 / 49 国（缺 Fiji）/ 品牌档案 / 出站 target / **499** 子页 / **45** 对决页 / 50 国 meta + title 重算；零回归基线重建）。同轮修掉三处基础瑕疵：`bump_checked.py` 写回丢行尾（CRLF 文件混进 49 行 LF）→ 修；`jetpac.toml` 行尾混杂 → 统一 CRLF；`verify_provider_pages.py` 第 13 项（天数按钮）从「静默跳过」→ **显式双分支**。见 §5.2 / §14 红线 51–53
+> **最后更新**：2026-10-08 **去同质化方案批判性审核 + 3 项执行**（用户拿自己整理的 `esimsift-compare-dehomogenize-prompt.md` 来问「是否可借鉴」）。结论：诊断对、三处判断错、处方大部分不采纳。执行 ① **hreflang 真实缺陷**（`head.html` 只守目标侧没守来源侧 → 54 个 noindex 德语页向外发单向标注，GSC 报 *No return tags*）+ 新增 `scripts/check_hreflang.py`（`--selftest` 7 例，进 `check:output`）；② `#reality` 空泛开场句 → 来源披露；③ `#localnotes` 删零信息尾句。新增诚实口径仪器 `scripts/audit_dup_raw.py`。见 §5.2 / §14 红线 62–63
+> **上一轮**：2026-10-08 **反同质化 P0/P0'/P1/P2 四项整改 + 同尺复算**（站点已全量上线，本轮是线上内容迭代）。① 品牌子页新增 `#localnotes` 区块，逐条渲染该国 `countries.toml` 的 `quirks`（此前 **400 页一条都没有**）；② `vs` 对决页 `#more` 从「每页 44 句 `X starts cheaper in N of M countries.`」改为**堆叠比例条 + 分数**；③ 品牌子页 `fup_note` 同页 3 处复述收敛为 1 处（`#fup` 页脚删除 + FAQ 两条改为结构化字段重组 + 区块内链）；④ 品牌 hub `Q9/Q11/#alternatives` 三处同源重复消除。**`vs` 占比 87%→72%、页内重复 1890→0；品牌子页页内重复 3953→1979；hub 236→133；新增真实内容 +2872 句槽**。基线重建 702 文件。见 §5.1 / §5.2 / §14 红线 60–61
+> **上一轮**：2026-10-07 **第二批品牌扩容 · Jetpac 接入**（9 → 10 品牌，全链路打通：plans 877 条 / 49 国（缺 Fiji）/ 品牌档案 / 出站 target / **499** 子页 / **45** 对决页 / 50 国 meta + title 重算；零回归基线重建）。同轮修掉三处基础瑕疵：`bump_checked.py` 写回丢行尾（CRLF 文件混进 49 行 LF）→ 修；`jetpac.toml` 行尾混杂 → 统一 CRLF；`verify_provider_pages.py` 第 13 项（天数按钮）从「静默跳过」→ **显式双分支**。见 §5.2 / §14 红线 51–53
 > 同日上一轮：**日期自动盖章 + Nomad 收尾** —— 页面日期不再靠人记得跑脚本：新增 `scripts/stamp_checked.py` 按**内容指纹**维护 `checked` / `profile_checked`（数据真的改了才把日期推到当天；改注释、调格式不动），已挂进 `npm run build` 第一步，台账 `docs/checked-state.json` **必须提交**；Nomad 的 logo 归位 `static/img/providers/`、价格核对日推到当天。见 §4.3 / §5.2 / §7.1 / §14 红线 47–49
 > **上一批**：2026-10-06 **第二批品牌扩容·Nomad 试点**（8 品牌 → 9 品牌，全链路打通：plans 442 条 / 品牌档案 / 出站 target / 450 子页 / 36 对决页 / 50 国 meta + 6 条 title 重算；基线重建，见 §7 与 `docs/add-brands-plan-2026-10-06.md`。**jetpac 已于 2026-10-07 完成，gigsky / bnesim 待接**）
 > 上一版：2026-10-02 批次G（guides 5 篇深度重写 + 首屏配图 / compat 设备库 UX / research 枢纽区域联赛+问答路由 / 全站去写死三层架构 + 双守卫脚本）+ **P0 host-networks 补真**（`networks` 全量 = 各国运营商，`backfill_networks_uniform.py`，见 §4.3）
@@ -26,6 +28,8 @@
 | 样式构建 | **Tailwind CLI 独立产出 `static/css/tailwind.css`（裸 `hugo` 不会重编译）**；`scripts/check_css_sync.py` 守卫模板 class 与编译产物同步（2026-10-03 加装） |
 | 增信数据 | `data/devices.toml`（14 品牌 351 机型 + 12 不支持条目，2026-10 核对）+ `data/networkreports.toml`（44 国 Opensignal + 50 国 Global Index 深链）+ **`networks` 补真**（10 品牌全量 = 各国运营商；由 `backfill_networks_uniform.py` 统一回填，**该脚本是全局的**，见 §5.2） |
 | 上线状态 | **已部署 esimsift.com**（手动上传 `public/`，无 CI；**本轮 Jetpac 改动尚未部署**）。GA4 已换真（`hugo.toml [params] ga4 = "G-J6SXGGEN8L"`）；折扣码 10/10 全量有码（`promo_verified` 逐条记核验日）；**联盟深链仍是模式假设**（`country_path` 未逐家核实；**jetpac 连 `country_path` 都没有** —— 其官网是 SPA，深链对任意路径返回 200 且标题现场拼接，见 §4.6）；logo **10/10 全有**。**部署前纪律**：停掉所有 `hugo.exe` → `npm run build` → `grep -c localhost public/llms.txt` 必须为 0 |
+| 反同质化 | **诚实口径（`audit_dup_raw.py`，不做归一化）**：品牌子页**逐字重复 ≈ 37–52%**（holafly 51.5% 最高 / saily 36.5% 最低）；残余 **18 种句型全是**「品牌级政策 + 方法论披露 + UI 说明」三类 —— **逐字一致是正确行为**。**归一化口径（`audit_boilerplate.py`）**：`vs` 72%、`provider_sub` 63%、`country` 64%、`provider_hub` 69%、`networks` 19%、`guides` 0% —— 该尺子把「带本页数字的句子」也算成模板，**只适合横向比页型，不能回答「Google 看到的重复有多少」**（见 §14 红线 63） |
+| hreflang | **en + de 双语，hreflang 必需**；`en-us` / `de-de`（连字符，非下划线）。**2026-10-08 修正来源侧守卫**：页面自身 noindex 或 404 时**一条都不发**（原先 54 个 noindex 德语页向外发单向标注）；目标侧只指向可索引译文。产物现状：**647 条 / 645 页**（`/` 与 `/de/` 各 2 条且互惠，其余为英文页自引用）。守卫 `scripts/check_hreflang.py` |
 
 
 ---
@@ -379,11 +383,11 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | 文件 | 作用 |
 |---|---|
 | `compare/single.html` | 国家页（13 模块 + 表格筛选 JS：品牌 chips/Unlimited 开关/排序/有效期） |
-| `compare/provider.html` | 品牌×国家子页（450 页共用） |
-| `compare/vs-single.html` | 对决页（36 页共用） |
+| `compare/provider.html` | 品牌×国家子页（499 页共用）。**2026-10-08 第五十二轮**：新增 `#localnotes` 区块（渲染该国 `countries.toml.quirks`，导语如实标注「国家级事实，非品牌卖点」）；删除 `#fup` 表格页脚（`#reality` 政策卡已给同一段）；`faq_a_unlimited` / `faq_a_hotspot` 改为结构化字段（`fup_allowance` / `hotspot_allowance`）重组 + 区块内链（`#fup` / `#reality`），不再逐字复述 note，但答案保持自包含 |
+| `compare/vs-single.html` | 对决页（45 页共用）。**2026-10-08**：`#more` 区块 45 张卡从「`X starts cheaper in N of M countries.`」（全站 1980 条 / 骨架 2 种 / 同页 44 遍）改为**堆叠比例条（品牌色=第一家胜、灰=平手、余下=第二家胜）+ `aWins/countries` 分数**；口径说明上移区块导语（`compare_vs_single__bar_split_legend`，每页只说一次）；数据条 `aria-hidden`，链接可访问名称由 `A vs B` + `See the verdict` 提供 |
 | `compare/matchups.html` | 对决枢纽页 /compare/matchups/（36 卡 + 计算瓦片） |
 | `compare/list.html` | /compare/ 枢纽（国家网格 + #matchups 对决网格） |
-| `esim-providers/single.html` | 品牌详情页（含无数据降级简壳） |
+| `esim-providers/single.html` | 品牌详情页（含无数据降级简壳）。**2026-10-08**：Q9 退款不再整段复制 `info.refund` →「链回 `#support` 卡片 + 讲时间窗口的实操」；Q11 热点不再内嵌 `hotspot_note` → 用 `hotspot_allowance` 重组；`#alternatives` 9 张竞品卡从 `Cheapest in N of M countries.`（数字撞车时同页逐字重复）改为**比例条 + 分数** |
 | `networks/list.html` | /networks/ 网络地图枢纽（目的地卡 + 跨网分组 + 右栏） |
 | `networks/single.html` | 单国运营商深度页 /networks/{country}/（数据驱动；版式对齐 guides） |
 | `guides/single.html` | 指南页（**版式基线**：窄阅读列 + 首屏配图 + 逐篇数据盒 + FAQ schema + 内链闭环；compatibility 篇注入设备库交互块） |
@@ -393,6 +397,7 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `partials/provider-agg.html` / `vs-agg.html` | 品牌级 / 对决级聚合 |
 | `partials/cta-out.html` | ★ 全站唯一出站点（rel/UTM/深链全在这） |
 | `partials/prov-logo.html` | logo 自动切换（fileExists 先探 .png 再探 .webp，都没有 → monogram） |
+| `partials/head.html` | `<head>` 全量（title/desc/OG/canonical/hreflang/字体/CSS/GA4）。**hreflang 两侧都要守（2026-10-08）**：目标侧只指向可索引译文；**来源侧 —— 页面自身 noindex 或 404 时一条都不发**。⚠ 该文件的模板注释**必须单行**（多行注释里的换行会变成输出文本，全站每页多一行空白，`--diff` 归因失效，见 §14 红线 62）。守卫 `scripts/check_hreflang.py` |
 | `partials/schema.html` | BreadcrumbList（全站）+ Article（**自动**：`.IsPage` 且 Section∈guides/research 的 5+3 篇，date/author/hero 全取 front matter）—— **jsonify 必须 `| safeJS`**（Hugo 0.146+ 否则二次编码） |
 | `partials/schema-org.html` | Organization + WebSite JSON-LD（全站实体锚点，AI 搜索识别品牌；sameAs 留空待官方 profile） |
 | `index.llms.txt`（模板） | llms.txt 自动枚举 |
@@ -413,6 +418,10 @@ campaign = "partner"                # 页面级 campaign 自动覆盖：compare-
 | `check_faq_facts.py` | `python -X utf8 scripts/check_faq_facts.py` **FAQ 守卫（2026-10-07 加，须在 `hugo` 之后跑）**：**读 `public/` 产物**独立从 `data/plans` 重算真值逐条对账 —— R1 无未替换 `{token}`；R2 无 `n/a`/`$0.00` 哨兵漏出；R3 问题集合与 toml 一致；R4 可见正文与 FAQPage JSON-LD 同文；R5/R6/R7 三条答案的品牌与价格与现算一致；R8/R9 文案不变量（最便宜不是 Airalo/Holafly、最便宜档必须计量）。**必须读产物**：源文本里现在只有 `{token}`，模板写错在源文本里看不出来。**R10 例外地读源文件**（判的是句架，产物里 token 已变成各不相同的数字国名，反而看不出重复）：a) 三条答案 49 国骨架两两不同；b) 每条答案必须拆得回 `faq_frames.py` 的片段组合；c) 任意两国最多共用一个槽；d) slot6 取自库内 7 变体且无邻国的 7 国各占一个；e) slot6 必须含 `{country}`。**R11 读产物**：Q6 在各国页上必须两两不同 —— R10(e) 在源级保证它，但**源级看不见**「互称邻国的一对国家（FR/IE 都指向 UK）分到同一变体」会不会撞车，只有在产物里才暴露（这条规则就是被那个真实 bug 逼出来的，实测对修复前的产物跑会精准报出 `R11 [en] ['FR','IE']`）。`--selftest` **13 项**（`selftest()` 7 例 R1-R9 + `frame_selftest()` 6 例 R10，含"正确样本不误报"）。已挂进 `npm run check:output` | 只读 |
 | `faq_frames.py` | FAQ 答案骨架库 + 分配 + 迁移（2026-10-07 第四十二轮）。`--check` 离线校验分配不变量；默认只替换**认得的旧骨架**，其余拒绝改写（保护人工润色）；`--force` 重刷全站（覆盖人工润色）。**取代**了第四十一轮的一次性 `migrate_faq_frames.py`（已删除） | 幂等（改 faqs 文案） |
 | `validate.py` | `python -X utf8 scripts/validate.py` 8 组检查（国家/品牌键/套餐字段/join key/对决页规则/运营商画像） | 只读 |
+| `audit_dup_raw.py` | `python -X utf8 scripts/audit_dup_raw.py` **诚实口径重复度量（2026-10-08 第五十三轮加）**：**不做任何归一化**，把产物里的 prose 句子逐字比 —— 输出「逐字重复槽位占比」+「其中不含任何数字/国名/品牌名的纯模板句清单」。**与 `audit_boilerplate.py` 的分工**：后者把数字→`#`、名字→`@` 再比骨架（适合**横向比页型**），前者回答**「Google 看到的重复有多少」**。⚠ 一把尺子回答一个问题，别混用（见 §14 红线 63）。**不进 `npm run build`** | 只读 |
+| `check_hreflang.py` | `python -X utf8 scripts/check_hreflang.py` **hreflang 守卫（2026-10-08 第五十三轮加，已挂进 `check:output`）**：读产物判四条 —— A 页面自身 noindex 却发了 hreflang（Google 不处理，且会造成单向标注）／B hreflang 指向的产物必须真实存在／C 必须**互惠**（P 指向 U 则 U 必须回指 P，否则 GSC 报 *No return tags* 并整体忽略）／D 目标不得是 noindex。`--selftest` **7 例**（干净互惠对不误报 / 站外 href 不误判 / A·B·C·D 各一反例）。**新增守卫必须双向验证**：先对改前旧产物跑（实测 `54 problem(s)`，正是 54 个 noindex 德语页），再对修完的产物跑 | 只读 |
+| `audit_boilerplate.py` | `python -X utf8 scripts/audit_boilerplate.py [--type <页型>] [--group-by brand\|country] [--show N] [--limit N]` **反同质化诊断（2026-10-07 第四十六轮加）**：只读 `public/`，取 prose 标签（`p/li/blockquote/figcaption`）按 `[.!?]` 切句取 ≥25 字符，**品牌名与国名→`@`、数字→`#`** 两级归一化，输出 = **占用的句子槽位比例**（槽位=全组句子总数；模板槽位=Σ 该模板句出现的页数）+ 页内重复槽位。⚠ **不进 `npm run build`** —— 诊断工具不是守卫，给阈值就会被「优化掉」。⚠ **归一化使它高估重复**（「带本页数字的句子」也被算成模板）→ 报数必须写明口径 | 只读 |
+| `_verify_round52.py` | `python -X utf8 scripts/_verify_round52.py` **第五十二轮四项改动的产物断言**：① `japan/roamic` quirks 条目数 + `localnotes` 锚点；② 全站 vs 页比例条数 = 45 且 `starts cheaper in` 残留 = 0；③ 抽样页页内重复句 = 0；④ hub 页 `Cheapest in` 残留（应为 1，**且只能是表头**）。**幂等**（i18n key 已存在则跳过），可反复跑 | 只读 |
 | `audit_meta.py` | `python -X utf8 scripts/audit_meta.py [--limit N]` 扫 public/ 渲染产物（2026-10-02 规范 v3）：标题 48-54 内页禁品牌（首页唯一豁免）/ 描述 120-140 必含品牌 / 重复 / 分页型统计（改 meta 后必跑） | 只读 |
 | `regen_meta_fixes.py` | 2026-10-01 批次E 一次性修复脚本（已被批次F regen_meta_brand.py 取代，勿重跑） | ⚠ 一次性 |
 | `regen_meta_brand.py` | 2026-10-02 批次F meta 品牌规范脚本（幂等可重跑，--dry-run 先行）：50 国 desc 品牌版 / 28 VS 标题+desc（3 家族轮换）/ 29 手写页 map | 可重跑 |
@@ -822,6 +831,19 @@ npm run build     # 内含 npm run stamp → 数据变过的品牌，日期自�
 57. **衡量「减少重复」要看绝对量，不看占比（第四十七轮）** —— `模板槽位 / 总槽位` 是**横截面**指标（适合比页型），对「删内容」**不敏感**：删掉重复块时分子分母同步下降，占比可以纹丝不动（本轮国家页把 51 遍的安装三步删掉，占比只从 49% → 47%）。**单轮改动的成效必须用绝对量报**：本轮是「每页净减 274 字符可见文本（旧 497 → 新 223），× 51 页 ≈ 14,000 字符」。同理，`--diff` 的「变更 N 页」是**归因**证据，不是**成效**证据 —— 两者要分开讲，别用一个数字冒充另一件事。
 58. **判定「某页 / 某能力缺失」前，先数它的实际引用数（第四十七轮）** —— 第四十六轮把 `/methodology/` 写成了「待建 P1」，实际它**早已存在、且被 699 个产物页链接、链接总数 1679**（`compare/single.html`、`esim-providers/single.html`、`vs-single.html`、`index.html`、`esim-deals/list.html` 都已在正确位置链出）。错因：**只核了那几句话的文本，没核链接**，于是从「一句话」反推「整页不存在」。**纪律**：断言缺失前跑 `grep -rn "<路径>" layouts/ | wc -l`，产物侧再跑一次 `grep -rl` 数页面数。**语句的存在性 ≠ 页面的存在性 ≠ 该页被链出。**
 59. **front matter 注释必须落在两个 `---` 之间，否则会被当成正文渲染成 `<h1>`；重构断言时别顺手改匹配模式（第四十九轮）** —— 为把「给编辑看的待办」移出读者视野，把 `content/en/privacy.md` / `terms.md` 正文里的 `_Todo: legal review before launch._` 改成 front matter 里的 `# …` 注释。改动方向对（原句被 Markdown 当**斜体正文**渲染，读者与爬虫都看得见），但替换时把匹配模式里的 `\r\n---\r\n` **一起删掉了**，注释于是落在 front matter **外面**：Hugo 把 3 行 `#` 当 Markdown → 页面出现 **4 个 `<h1>`** → `verify_no_regression` 的 B 类不变量当场 FAIL（`✗ privacy/index.html: 4 个 <h1>`）。两条纪律：① **改 front matter 后必须断言分隔符位置** —— `[i for i,l in enumerate(text.split("\r\n")) if l == "---"] == [0, N]`，且注释行号落在两者之间；② **断言可以改，被断言的 pattern 不许顺手改** —— 第一版脚本的断言因 NOTE 文本里含原句而误报，第二版改断言时把 pattern 一并改了（**多余重构**），直接把正确结构改坏。这个 bug 之所以能被守住，靠的正是 B 类不变量（h1 计数）——**「改了内容」和「改坏了结构」是两件事，前者该绿灯，后者必须红灯**。
+
+60. **Python `bytes` 字面量不能含非 ASCII；而「断言」极易撞上自己刚写的注释（第五十二轮）** —— 两个都是同一批一次性补丁脚本上踩到的：
+    - `b'...中文注释...'` 直接 `SyntaxError: bytes can only contain ASCII literal characters`。写字节一律 `'...'.encode("utf-8")`（源文件已 `# -*- coding: utf-8 -*-`，字符串字面量本身可以有中文，**只有 `b''` 前缀不行**）。
+    - `assert b"starts cheaper in" not in nb` 被**我自己在替换文本里写的注释**命中；`assert b.count(b"fup_note") == 1` 被注释里的 `policy.fup_note` 命中 —— **断言看起来在验代码，实际在验我自己的注释**。
+    - **纪律**：① 断言要**只数代码引用**（`{{ .fup_note }}` 这种带模板语法的形态），不要数裸标识符；② 补丁脚本必须**幂等**（目标 key 已存在就 `continue`），否则重跑会二次插入或把断言带偏；③ 改完先 `read_bytes()` 复核（行尾计数 + 目标/残留串计数），别只信脚本自己打的 OK。
+61. **零回归基线会「陈旧」—— `--diff` 报出的额外变更要先做「HEAD 对照实验」，别直接当成本轮引入的回归（第五十二轮）** —— 本轮只改了 matchup / provider_hub / provider_sub 三类模板，`--diff` 却报「变更 566 页」，多出 **`networks` 12 页**（该页型全站**总共只有 12 页**，全部变了 → 指向全局因素）。排查顺序：① 产物**确定性**（重跑 `hugo`，抽样文件 sha 是否稳定）；② 变更页里**有无本轮特征串**（本轮四个新句子逐页 grep，`networks` 全为 0 → 排除内容渗透）；③ 模板**是否共享**（`networks/single.html` 不 include 本轮改动的任何模板）；④ **决定性实验** —— 把本轮改动的文件临时换回 `HEAD` 版本重建，看这些页 sha 是否**仍 ≠ 基线**（是 → 基线陈旧，与本轮无关）。结论是：基线生成于 `2026-10-07T10:20:58Z`，而用户在 `2026-10-07 18:55` 提交的 `data/plans/{jetpac,nomad}.toml` 落在基线之后 —— **`--diff` 的基线只在「与数据现状同时生成」的前提下才有归因力**。修法是**重建基线**（`--write-manifest`），并**改数据 / 提品牌后顺手重建**。⚠ 做这个对照实验必须保证工作区**逐字节还原**（`finally` 块 + 还原后 sha256 校验），别为了取证把仓库改坏。
+
+62. **模板里的多行注释会把换行写进产物 —— 全站每页多一行空白，`--diff` 归因当场失效（2026-10-08 第五十三轮，自己踩的）** —— 给 `head.html` 的 hreflang 加守卫时把说明写成 6 行 `{{/* … */}}`。Hugo 把注释**内容连同其中的换行**一起输出（注释文本被丢掉，但换行留下来了）→ 702 页里 **701 页**的 HTML 各多一个 `\n`。预期变更是 `555`（499 文案 + 56 丢 hreflang），实测 `701`，多出的 146 页**全是纯空白差异**。**纪律**：① 会进产物的模板（`layouts/**`）里，`{{/* … */}}` 一律写成**单行**；要写多行说明就放到模板外的文档或 `{{- /* … */ -}}`（后者会吃掉两侧空白，但仍要确认产物字节）；② **归因数字对不上时，先怀疑自己的改动引入了空白/行尾漂移**，再怀疑逻辑 —— 本项目在红线 38（CRLF/LF）上踩过同一个坑。
+63. **两把尺子量的是两件事，混用就会得出与事实相反的结论（2026-10-08 第五十三轮）** ——
+    - `audit_boilerplate.py`：**归一化**（数字→`#`、国名与品牌名→`@`）后比骨架 → 品牌子页「同品牌跨国家」得 **84–88%**。它把「`Entry price is $2.00 against the country floor of $0.51`」和「`$2.10 / $0.95`」算成同一句。
+    - `audit_dup_raw.py`：**不归一化**，逐字比渲染文本 → 同一批页得 **37–52%**。
+    **Google 看的是渲染后的文本**，所以回答「重复严重不严重」要用**后者**；横向比页型、看趋势用**前者**。用户拿来的第三方分析报「92%」也是归一化口径（且比 `#`/`@` 更狠，连网络名都抹了）——
+    **引用任何同质化百分比，都要先问「分母是什么、抹掉了什么」**。判据：模型给出的重复率若高于 `audit_dup_raw.py` 的结果，要能说清多出来的那部分是怎么算的。
 
 ## 15. 等用户决策/提供的事项（代码侧做不了的）
 

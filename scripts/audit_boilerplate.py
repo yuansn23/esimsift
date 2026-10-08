@@ -97,9 +97,46 @@ def sentences(html: str) -> list[str]:
     return out
 
 
+def _names() -> list[str]:
+    """归一化用的名字表：全部国家名 + 全部品牌名。
+
+    ★ 2026-10-08 修订：此前只归一化「该页自己的品牌名」，国家名**完全不归一化**。
+    后果 —— 同品牌跨国家的分组里，「...in Japan」与「...in Croatia」原文不同、
+    被误判为「各页独立」，把 50 个国家页的共享率压到 54.5%（实际 86.8%）。
+    同时，同组内若只有部分国名被硬编码归一化，各国口径还不一致
+    （austria 独占 6 句 vs netherlands 独占 38 句），数字根本不可比。
+    国名必须全量归一化。
+    """
+    ns: set[str] = set()
+    cp = ROOT / "data" / "countries.toml"
+    if cp.exists():
+        try:
+            import tomllib
+            C = tomllib.loads(cp.read_text(encoding="utf-8"))
+            for v in C.values():
+                if not isinstance(v, dict):
+                    continue
+                if v.get("name"):
+                    ns.add(str(v["name"]))
+                sl = v.get("slug")
+                if sl:
+                    ns.add(str(sl))
+                    ns.add(str(sl).replace("-", " ").title())
+        except Exception:
+            pass
+    for f in (ROOT / "data" / "plans").glob("*.toml"):
+        ns.add(f.stem)
+        ns.add(f.stem.capitalize())
+    return sorted((n for n in ns if len(n) > 2), key=len, reverse=True)
+
+
+NAME_RE = re.compile("|".join(re.escape(n) for n in _names()), re.I)
+
+
 def norm(s: str, brand: str) -> str:
     if brand:
         s = re.sub(r"(?i)" + re.escape(brand), "@", s)
+    s = NAME_RE.sub("@", s)
     return NUM_RE.sub("#", s)
 
 
@@ -128,21 +165,37 @@ def collect(ptype: str, group_by: str):
 
 
 def analyse(pages: dict[str, list[str]]):
+    """★ 2026-10-08 修订：模板槽位改为「按出现次数」计（原为「按出现页数」计）。
+
+    旧口径分子分母不对等：分母 slots 数的是**含页内重复**的句子总数，
+    分子却把「出现在 N 页的某句」只记 N 次 —— 于是同一句话在一页里出现 3 次时，
+    分母 +3、分子只 +1，**系统性低估**。
+    实测 roamic 50 国子页：旧口径 73%，严格口径 86.8%（差 13.8 个点，
+    全部来自 #reality / #fup / #faq 三区块的页内复述）。
+
+    现改为自洽的「槽位视角」：分母 = Σ每页句子数，
+    分子 = Σ每页中模板句的出现次数。
+    另单独返回 dup_slots（同页内重复的句子数）——
+    页内重复是独立问题，不混进跨页指标。
+    """
+    from collections import Counter as _C
     freq: dict[str, set[str]] = defaultdict(set)
+    per_page: dict[str, _C] = {}
     slots = 0
     for slug, ss in pages.items():
-        seen = set()
-        for s in ss:
-            slots += 1
-            if s not in seen:
-                seen.add(s)
-                freq[s].add(slug)
+        c = _C(ss)
+        per_page[slug] = c
+        slots += len(ss)
+        for s in c:
+            freq[s].add(slug)
     n = len(pages)
     thr = max(2, int(n * 0.8 + 0.5))
     boiler = {k: v for k, v in freq.items() if len(v) >= thr}
-    bslots = sum(len(v) for v in boiler.values())
+    bslots = sum(per_page[slug][k] for k, slugs in boiler.items() for slug in slugs)
+    dup_slots = sum(len(ss) - len(per_page[slug]) for slug, ss in pages.items())
     pct = 100 * bslots / slots if slots else 0.0
-    return dict(pages=n, slots=slots, thr=thr, boiler=boiler, bslots=bslots, pct=pct)
+    return dict(pages=n, slots=slots, thr=thr, boiler=boiler, bslots=bslots,
+                pct=pct, dup_slots=dup_slots)
 
 
 def main() -> int:
@@ -160,7 +213,8 @@ def main() -> int:
             print(f"\n### {t}: public 下无产物（先 npm run build）")
             continue
         print(f"\n### {t}   分组 = {args.group_by}")
-        print(f"{'分组':18} {'页数':>5} {'槽位':>7} {'模板槽位':>9} {'占比':>7}  判读")
+        print(f"{'分组':18} {'页数':>5} {'槽位':>7} {'模板槽位':>9} "
+              f"{'占比':>7} {'页内重复':>8}  判读")
         for g, pages in sorted(groups.items()):
             if len(pages) < args.min_pages:
                 continue
@@ -169,7 +223,7 @@ def main() -> int:
                        else "⚠ 偏模板" if r["pct"] <= 40
                        else "❌ 需动手")
             print(f"{g:18} {r['pages']:>5} {r['slots']:>7} {r['bslots']:>9} "
-                  f"{r['pct']:>6.0f}%  {verdict}")
+                  f"{r['pct']:>6.0f}% {r['dup_slots']:>8}  {verdict}")
             if args.show:
                 top = sorted(r["boiler"].items(), key=lambda kv: -len(kv[1]))[:args.show]
                 for k, v in top:

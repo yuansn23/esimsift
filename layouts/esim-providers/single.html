@@ -324,7 +324,10 @@
       {{- $q9 := printf "Can I get a refund on a %s eSIM?" $p.name -}}
       {{- if eq $v 1 -}}{{- $q9 = printf "What is %s's refund policy?" $p.name -}}
       {{- else if eq $v 2 -}}{{- $q9 = printf "Does %s give money back if the eSIM fails?" $p.name -}}{{- end -}}
-      {{- $faqList = $faqList | append (dict "q" $q9 "a" (printf "%s Practical tip: buy a day or two before departure and install at home — if anything fails you still have time to claim. (Summarised from %s's published policy; always check their own terms before buying.)" . $p.name)) -}}
+      {{- /* 2026-10-08：此前答案把 info.refund 原文整段印进来，而 #support 的
+           「refund in short」卡片已经印过同一段 —— 同页读两遍。改为只给
+           行动建议并链回卡片，answers 仍自包含（含可执行的判断依据）。 */ -}}
+      {{- $faqList = $faqList | append (dict "q" $q9 "a" (i18n "esim_providers_single__faq_a_refund" (dict "brand" $p.name))) -}}
     {{- end -}}
   {{- end -}}
 
@@ -338,8 +341,10 @@
   {{- /* Q11 热点（用户直接点名：页面完全没提是否支持热点分享）。
          八品牌的 hotspot 都是**品牌级**政策，所以这里可以给一个确定的答案。 */ -}}
   {{- with $pol -}}
-    {{- with .hotspot_note -}}
-      {{- $faqList = $faqList | append (dict "q" (printf "Does %s support hotspot sharing?" $p.name) "a" (printf "%s sets its hotspot rules globally rather than country by country, so this single answer covers every market we track. %s In short: <strong>%s</strong>. Tethering traffic is drawn from the same data allowance as your phone unless that note says otherwise, so a laptop session drains a metered plan noticeably faster — size the plan for the devices you are actually bringing." $p.name . $pol.hotspot_allowance)) -}}
+    {{- with .hotspot_allowance -}}
+      {{- /* 2026-10-08：答案里嵌了 hotspot_note 原文，与 #reality 的政策卡逐字重复。
+           改用结构化字段 hotspot_allowance（短标签）重组，note 只在 #reality 出现一次。 */ -}}
+      {{- $faqList = $faqList | append (dict "q" (printf "Does %s support hotspot sharing?" $p.name) "a" (i18n "esim_providers_single__faq_a_hotspot" (dict "brand" $p.name "allowance" $pol.hotspot_allowance))) -}}
     {{- end -}}
   {{- end -}}
 
@@ -908,6 +913,7 @@
   <section class="mt-12" aria-labelledby="alternatives">
     <p class="eyebrow">{{ i18n "esim_providers_single__alternatives" | safeHTML }}</p>
     <h2 id="alternatives" class="mt-2 text-2xl font-bold md:text-3xl">{{ $p.name }} vs the field</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "esim_providers_single__alternatives_legend" (dict "n" $a.countries) | safeHTML }}</p>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {{ range $k, $v := $agg }}
         {{ if ne $k $key }}
@@ -921,7 +927,16 @@
                 {{ if gt $v.minPrice 0.0 }}<p class="text-xs text-ink-400 tnum">from ${{ printf "%.2f" $v.minPrice }}</p>{{ end }}
               </div>
             </a>
-            <p class="mt-3 text-xs leading-relaxed text-ink-500">{{ i18n "g_cheapest_in" | safeHTML }} <strong class="text-ink-700 tnum">{{ $v.cheapest }}</strong> of {{ $v.countries }} countries.</p>
+            {{/* 2026-10-08：原先每张卡印一句 "Cheapest in N of M countries."，9 张卡骨架完全相同，
+                 数字撞车时（多为 0 与 1）在同一页逐字重复。改成比例条 + 分数：同一信息、
+                 更适合扫视；口径说明上移到区块导语，全页只说一次。 */}}
+            {{ $pct := 0.0 }}{{ if gt $v.countries 0 }}{{ $pct = mul (div (float $v.cheapest) (float $v.countries)) 100.0 }}{{ end }}
+            <div class="mt-3 flex items-center gap-2" aria-hidden="true">
+              <span class="h-1.5 flex-1 overflow-hidden rounded-full bg-ink-100">
+                <span class="block h-full bg-ink-300" style="width:{{ printf "%.1f" $pct }}%"></span>
+              </span>
+              <span class="shrink-0 text-[11px] font-semibold text-ink-400 tnum">{{ $v.cheapest }}/{{ $v.countries }}</span>
+            </div>
             <div class="mt-3 flex items-center justify-between gap-2">
               <a href="{{ printf "/compare/%s-vs-%s/" (index $vsPair 0) (index $vsPair 1) }}" class="text-xs font-semibold text-brand-700 hover:underline">{{ $p.name }} vs {{ $op.name }} →</a>
               <a href="{{ printf "/esim-providers/%s/" $k }}" class="text-xs font-medium text-ink-400 transition-colors hover:text-ink-700">{{ $op.name }} review</a>

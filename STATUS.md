@@ -1747,6 +1747,141 @@ tagline 参数保留仍喂 `<title>`/og）；en 换新定位文案
 - `--diff`：**变更 12 = provider_hub 10 + static 2（privacy / terms）**，新增 0、删除 0 —— 完全归因
 - 基线重建 **702 文件**
 
+## 已完成（去同质化方案批判性审核 + 3 项执行，2026-10-08 第五十三轮）
+
+**用户请求**：审核 `esimsift-compare-dehomogenize-prompt.md`（自己整理的批量改写提示词），
+**站在 Google SEO 角度用批判思维**判断，对的才执行。
+
+**结论**：诊断方向对（加真正属于该国的实质内容），但**三处关键判断错、处方大部分不该执行**。
+采纳并执行 **3 项** —— 其中 1 项是**文件没看出来的真实缺陷**。
+
+### 执行项
+
+| 项 | 内容 |
+|:--|:--|
+| **① hreflang 真实缺陷（★ 本轮最大发现）** | `head.html` 只守了 hreflang 的**目标侧**（不指向 noindex 页），没守**来源侧** → **54 个德语页在 noindex 状态下向外发 `en-us`**，而英文侧因译文 noindex 而不回指 → **单向标注**，GSC 报 *No return tags* 并整体忽略。改：`{{ if and (not .Params.noindex) (ne .Kind "404") }}` 并纳入译文 range；`404` 也退出分组 |
+| **② `#reality` 导语** | `Price is only half of the decision.`（499 页 × 50 国逐字重复的**空泛总评**）→ 换成**来源披露** `Quoted from {brand}'s own published policy rather than paraphrased —` |
+| **③ `#localnotes` 导语** | 删掉零信息尾句 `They are here because they decide which plan shape actually makes sense.` |
+
+### 新增工具与守卫
+
+- **`scripts/check_hreflang.py`**（进 `check:output`）：四条判据读产物 —— A 自身 noindex 不得发标签 ／ B 目标产物必须存在 ／ C 必须**互惠** ／ D 目标不得 noindex。**`--selftest` 7 例**。
+  **双向验证**：对**改前旧产物**跑 → `ERROR: 54 problem(s)`（正是那 54 个德语页）；`--selftest` 全过；改后跑 → `OK: 702 pages, 647 tags on 645 pages`。
+- **`scripts/audit_dup_raw.py`**（常驻诊断，**不进 build**）：诚实口径的重复度量 —— **不做任何归一化**，直接比渲染后的文本。
+  动机：`audit_boilerplate.py` 会把数字→`#`、国名/品牌名→`@` 再比骨架，于是「带本页数字的句子」也被算成模板。
+  **它适合横向比页型，不适合回答「Google 看到的重复有多少」。**
+
+### 关键数据（诚实口径）
+
+| 品牌 | 逐字重复槽位占比 | 品牌 | 逐字重复槽位占比 |
+|:--|--:|:--|--:|
+| holafly | 51.5% | alosim | 40.2% |
+| airalo | 44.3% | nomad | 40.0% |
+| roamic | 43.2% | ubigi | 37.7% |
+| roami | 42.4% | saily | 36.5% |
+| yesim | 41.4% | jetpac | 41.2%（49 页） |
+
+**逐字重复 ≈ 37–52%**（用户文件的 92%、我那把尺子的 84–88% 都不是这个问题的正确答案 —— 两者都把「带本页数据的句子」算成了模板）。
+残余 **18 种句型全部落进「不可能改」三类**：品牌级政策（该品牌全球只有一份政策）／方法论与来源披露（一致性 = E-E-A-T）／UI 与计算器说明。
+
+### 明确不采纳（附理由）
+
+| 文件建议 | 不采纳理由 |
+|:--|:--|
+| 400 页叙事文案每国重写 | 与**单一事实源**架构正面冲突；产出 4000 段**会静默过期、无法核对**的散文（本项目已有前例：FAQ 手写数字 → 99 条断言过期） |
+| 「独特叙事 ≥ 40%」硬指标 | 该指标**只能用文件自己禁止的行为（同义改写）达成**；Google 判定原文是 *substantially the same regardless of **minor variations*** —— 换说法正是 minor variations |
+| 4 个 H2 / Title / H1 按国重写 | 现 H2 已含`品牌+国家`直接匹配长尾查询，改写成国别措辞**反丢匹配**；无排名收益；破坏右栏目录镜像与标题硬规则 |
+| 「单语站应移除 hreflang / 改 `en`」 | **前提错误** —— 本站是 en+de 双语，hreflang 必需；`en-us` 在美式拼写 + USD 计价下是准确的 |
+| FAQ 每国换 1–2 个特有问题 | **没有对应数据源** → 只能是编造；且国家页 FAQ（50 国 × 6 问）已是逐国问答层，再编一套会重复并稀释 |
+
+### 「方向对但要做成数据驱动」的部分（核查后：已在站上）
+
+文件 §3 的三步框架（网络现实 → 旅行者画像 → 意图角度）**方向完全正确**，但实现不该是手写散文。
+逐项核对后，**它要的数据已存在且已上屏**：`carriers.toml` 154 条逐国逐运营商 `note`（已渲染在 499 页 `#hostnetwork` 卡片）、
+`countries.toml` 101 条 `quirks`（第五十二轮已落 `#localnotes`）、`#tripcost` 逐页现算、`#tradeoffs` 按该国实时排名算出。
+**它缺的不是内容，是对现状的正确读数。**
+
+### 验收
+
+- `npm run build` **EXIT=0**，九项 + 新增 hreflang 守卫全绿
+- `--diff` 归因吻合：**变更 555 = provider_sub 499（两处文案）+ 56 页（丢掉错误 hreflang：50 德语国家页 + de/compare + de/guides + de/networks + de/research + de/404 + 404）**，新增 0、删除 0
+- 产物断言：旧句残留 **0 / 0**；德语页 hreflang **0 条**；`/` 与 `/de/` 各 2 条且互惠；`404` **0 条**
+- 基线重建 702 文件 → `--diff` **变更 0 / 新增 0 / 删除 0**
+- 报告：`esimsift-去同质化方案审核-回应与执行-2026-10-08.md`
+
+**⚠️ 本轮新增两条纪律**：
+1. **模板注释必须写成单行** —— 多行 `{{/* … */}}` 里的换行会被当成**输出文本**，全站每页多一行空白，
+   `--diff` 当场报「变更 701」（预期 555），**归因直接失效**。第一版就是这么写的，已改单行重建。
+2. **两把尺子量的是两件事，别混用** —— `audit_boilerplate.py`（归一化骨架）用于**横向比页型**；
+   `audit_dup_raw.py`（原始文本）用于回答**「Google 看到的重复有多少」**。引用同质化数字必须写明用哪把尺子。
+
+## 已完成（反同质化 P0/P0'/P1/P2 四项整改 + 同尺复算，2026-10-08 第五十二轮）
+
+**用户请求**：站点已全量上线，按我的思路把上一轮（第五十轮）报告里自己提出的 P0 / P0' / P1 / P2 **全部优化**，
+完成后**再次审核**，再**迭代**。
+
+**改动前提**：只动模板与 i18n，**不动任何数据集**；全部改动只影响英文站（德语站无 vs 页 / 品牌子页 / 品牌 hub）。
+
+### 四项改动
+
+| 项 | 落点 | 做法 |
+|:--|:--|:--|
+| **P0** | `layouts/compare/provider.html` | 新增 `#localnotes` 区块，逐条渲染该国 `countries.toml` 的 `quirks`（此前 **400 个品牌子页一条都没有**） |
+| **P0'** | `layouts/compare/vs-single.html` | `#more` 区块 44 张卡各印一句 `X starts cheaper in N of M countries.`（全站 1980 条、骨架仅 2 种、同页重复 44 遍）→ **堆叠比例条 + 分数**，口径说明上移区块导语 |
+| **P1** | `layouts/compare/provider.html` | `policy.fup_note` 同页出现 3 次（`#reality` 卡 / `#fup` 页脚 / `#faq` 答案）→ 删 `#fup` 页脚；FAQ 两条改写为**结构化字段重组 + 区块内链**（`fup_allowance` / `hotspot_allowance`），答案保持自包含 |
+| **P2** | `layouts/esim-providers/single.html` | Q9 退款整段复制 `info.refund` → 「链回卡片 + 讲时间窗口」；Q11 热点内嵌 `hotspot_note` → 用 `hotspot_allowance` 重组；`#alternatives` 9 张卡 `Cheapest in N of M countries.` → 比例条 + 分数 |
+
+`i18n/{en,de}.toml`：新增 9 条 key（en 1174→1178 行 / de 1179→1183 行）+ **改写** 2 条
+（`compare_provider__faq_a_unlimited` / `__faq_a_hotspot`，原值是 `"{{ .detail }}"` 直通）。
+
+### 同尺复算（`scripts/audit_boilerplate.py` 全量前后对照）
+
+| 页型 | 页数 | 槽位 前→后 | 模板槽 前→后 | 占比 前→后 | 页内重复 前→后 |
+|:--|--:|:--|:--|:--|:--|
+| guides | 10 | 819→819 | 0→0 | 0%→0% | 5→5 |
+| networks | 12 | 1501→1501 | 279→279 | 19%→19% | 22→22 |
+| country | 51 | 6768→6768 | 4364→4364 | 64%→64% | 687→687 |
+| **provider_hub** | 10 | 1453→1356 | 996→936 | 69%→69% | **236→133** |
+| **provider_sub** | 499 | 40735→**43607** | 23990→**27357** | 59%→**63%** | **3953→1979** |
+| **vs** | 45 | 3375→**1485** | 2952→**1062** | **87%→72%** | **1890→0** |
+
+**同品牌跨国家分组 10/10 全面下降**（airalo 87→85 / holafly 90→88 / saily 86→82 / nomad·roamic 86→84 …），
+页内重复全部腰斩。**同国跨品牌分组上升 3–5 点**（argentina 74→77 / brazil 74→80 / canada 75→80），
+原因是 quirks 属**国家级事实** —— 同国 10 个品牌子页必然共享，分子分母同增但共享部分增得更多。
+
+**为什么这个上升不是问题**：P0 往 400 页**塞进了此前完全不存在的内容**（**+2872 句槽**，其中 101 条完全独立文本）。
+消除的重复绝对量为 vs **−1890**、provider_sub **−1974**、provider_hub **−103** ——
+**内容变厚而非变薄**；只看占比会得出「改差了」的错误结论（占比对新增内容不敏感）。
+
+**`country` 页 64% 不再动**：22 个模板槽逐条落进「不许改写」类别 —— 方法论披露（`Badges are literal sort positions, not editorial picks`）、
+UI 引导（`Try the eSIM trip cost calculator`）、`#bytrip` 的 5 个场景**标签**（tab 标题非句子）。
+687 槽「页内重复」经查是**套餐名与运营商名**（数据，非套话）。
+
+### 一个未解释项已结案
+
+`--diff` 报「变更 566 页」时多出 **`networks=12`**（本轮只改了 matchup / provider_hub / provider_sub 三类）。
+排查：产物确定性 ✓、networks 页内无本轮任何特征串 ✓、模板不共享 ✓ →
+**决定性实验**：把 5 个改动文件临时换回 `HEAD` 版本重建 → networks 页 sha **与本轮改动后完全相同、且都 ≠ 基线**。
+**结论**：与本轮无关，是**基线陈旧** —— 基线生成于 `2026-10-07T10:20:58Z`，
+用户在 `2026-10-07 18:55` 提交的 `data/plans/{jetpac,nomad}.toml` 落在基线之后。重建基线即覆盖。
+
+### 验收
+
+- `npm run build` **EXIT=0** 九项全绿（704 files / 702 pages / 4028 JSON-LD / 527 layout classes / R10·R11 / A·B·C）
+- 产物断言（`scripts/_verify_round52.py`）：`japan/roamic` 的 quirks 1 条 + `localnotes` 锚点存在、
+  vs 页 45/45 全部有比例条且 `starts cheaper in` 残留 **0**、四页抽样页内重复 **0**、
+  hub 页 `Cheapest in` 残留 1 处（**是表头，不是句子**）✓
+- `--diff`：归因吻合（`vs` + `provider_sub` + `provider_hub` 三类），新增 0、删除 0；**基线重建 702 文件**，
+  重建后 `--diff` = **变更 0 / 新增 0 / 删除 0**（702 页逐字节相同）
+- 交付报告：`esimsift-同质化优化-P0P1P2-2026-10-08.md`；审计原始日志 `docs/audit/{baseline,after}-{all,brand,country}.log`
+
+**⚠️ 本轮新增两条纪律**：
+1. **`bytes` 字面量不能含非 ASCII** —— `b'...中文注释...'` 直接 SyntaxError（`bytes can only contain ASCII literal characters`），
+   一律 `'...'.encode("utf-8")`。
+2. **断言不许撞上自己新写的注释** —— `assert b"starts cheaper in" not in nb` 会被我自己写的替换注释命中；
+   `assert b.count(b"fup_note") == 1` 会被注释里的 `policy.fup_note` 命中。
+   **断言要只数代码引用**（`{{ .fup_note }}`），并让脚本**幂等**（i18n key 已存在则 `continue`）。
+
 ## 待办（按优先级）
 
 ### P-2 蓝图 Phase 2（等 P-A 真实数据后；见 docs/keyword-map.md 预留槽位）
@@ -1769,6 +1904,20 @@ tagline 参数保留仍喂 `<title>`/og）；en 换新定位文案
 - [ ] 49 国 3 段分析的人工润色（生成器已产出可读初稿，japan.md / jp.toml 为手写样板；数字全部由数据计算而来，改数据重跑生成器即可刷新）
 - [x] ~~**49 国 6 条 FAQ**~~ 已数据化 + 去模板化：三条带数字的答案走构建期 token 现算（第四十一轮），句架走 `faq_frames.py` 拉丁方阵分配 ⇒ 任意两页最多共用一句（第四十二轮）。**接品牌 / 刷价之后不需要再动 FAQ**。遗留：slot4「ID 规定」14 国同句（缺外部来源，不编）
 - [ ] 变体子页（cheapest/unlimited/long-stay）— 等主站数据 ≥10 国再上，防关键词蚕食
+
+### 第五十二轮登记（反同质化下一批候选，均需用户点头）
+
+- [ ] **减少「国家级事实」的复述次数**（唯一站得住的方向）：`provider_sub` 同国分组仍 73–80%，
+      剩余共享逐条归因后**可改 0 条**（国家级事实 + 品牌级政策 + 我方披露 + UI）。
+      要再降只能把运营商 / 覆盖 / 测速那几块**链出**到 `/networks/<country>/` 或国家页，
+      **代价是牺牲页面信息完整性** → 不做句式变体（那是 Google 明文的 *minor variations*，反向操作）。
+- [ ] **`fup_allowance` 拆成 `fup_allowance_gb`（数值，可空）+ `fup_allowance_text`（展示）** ——
+      现字段**同时供展示层（`#reality` 直接印）与判据层（`#tradeoffs` 用正则抠数字）使用**，很脆弱
+      （`"1.5 - 2 GB/day"` 抠到的是上限）。判据只读数值字段。
+- [ ] **存量硬编码英文**（`vs` 页 h1/h2/FAQ ≈20 条、hub 页 ≈12 条、国家页 quirks 标题 2 条）——
+      **德语站没有这些页型，不构成德语站缺陷**，属工程规范问题，优先级低。
+- [ ] **德语站 i18n 完整性**：`i18n/de.toml` 的 `compare_single__*` / `esim_providers_single__*` 一族存英文原文（≈上百条）。
+- [ ] 面板外遗留：`/networks/*` 的 `Updated` 徽章取 `now`（见下条 P-A）。
 
 ### 第四十八轮（2026-10-07）：两组定向审核（用户点名 4 个 URL）
 

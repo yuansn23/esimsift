@@ -103,9 +103,9 @@
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:image" content="{{ $ogimage | absURL }}">
 <meta name="twitter:card" content="summary_large_image">
-{{ if gt (len hugo.Sites) 1 }}{{/* hreflang 只发给「可索引」的译文 —— 指向 noindex 页会被 GSC 判为 hreflang 错误 */}}{{ if not .Params.noindex }}<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
-{{ end }}{{ range .Translations }}{{ if not .Params.noindex }}<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
-{{ end }}{{ end }}<meta property="og:locale" content="{{ partial "og-locale.html" .Language.LanguageCode }}">
+{{ if gt (len hugo.Sites) 1 }}{{/* hreflang 的两侧都要守（2026-10-08 改正）：① 目标侧 —— 只指向「可索引」的译文（指向 noindex 页会被 GSC 判为 hreflang 错误）；② 来源侧 —— 页面自身 noindex 或 404 时**一条都不发**。Google 不处理 noindex 页上的 hreflang 标注，而且那会形成单向标注（en 侧因译文 noindex 而不回指）→ GSC 报 "No return tags" 并整体忽略。修前 54 个德语页在 noindex 状态下向外发 en-us，就是这个错误。守卫：scripts/check_hreflang.py（不进 hugo，进 check:output）。 ⚠ 这段注释必须写成**单行** —— 注释放进模板后，多行注释里的换行会被当作输出文本，导致全站 HTML 各多一行空白、`--diff` 无法归因。 */}}{{ if and (not .Params.noindex) (ne .Kind "404") }}<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
+{{ range .Translations }}{{ if not .Params.noindex }}<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
+{{ end }}{{ end }}{{ end }}<meta property="og:locale" content="{{ partial "og-locale.html" .Language.LanguageCode }}">
 {{ range .Translations }}<meta property="og:locale:alternate" content="{{ partial "og-locale.html" .Language.LanguageCode }}">
 {{ end }}{{ end }}
 {{/* ── Styles（Tailwind 预编译产物，npm run build:css 生成）── */}}
