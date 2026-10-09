@@ -14,8 +14,8 @@ q = "Airalo or Holafly for Kenya?"
 a = "They sell different things, so the answer depends on how you use data. For {country}, Airalo's cheapest rate per gigabyte is ${ah_airalo_pergb} ({ah_airalo_plan}, ${ah_airalo_price}). Holafly's floor price for {country} is ${ah_holafly_price} over {ah_holafly_days} days (${ah_holafly_perday}/day), with no data counter to watch."
 
 [[faq]]
-q = "Do I need ID verification for a Kenya eSIM?"
-a = "Yes. Local law requires passport-linked registration even for travel eSIMs, but the big providers verify in-app in a couple of minutes."
+q = "Do I need ID verification for an eSIM in Kenya?"
+a = "Yes. Registering a local Kenyan SIM means presenting a passport in person, while a travel eSIM provider runs the same check digitally during purchase. That is the whole difference, no trip to a Safaricom shop, and coverage still follows whichever network the plan rides."
 
 [[faq]]
 q = "Which networks do Kenya eSIMs use?"
@@ -26,3 +26,19 @@ a = "Plans on this page run on Safaricom, Airtel Kenya, Telkom Kenya. Difference
 # 否则只剩「Can one eSIM cover Kenya?」这种同义反复的问法（2026-10-07 第四十二轮修）。
 q = "Can one eSIM cover Kenya and the rest of Africa?"
 a = "Yes, but only through a multi-country plan, because nothing in our {country} tables covers a second country. Look for a regional package that includes {neighbor} and compare its $/GB with two single-country plans."
+
+[[faq]]
+q = "Can I use an eSIM in Kenya?"
+a = "Yes - {country} is on the standard travel-eSIM map, with {brand_count} providers selling plans for it. What varies is price rather than access - {plan_count} plans from {brand_count} providers, all on the same national networks. The device check takes thirty seconds, and the plans above are all priced on one scale."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Kenya?"
+a = "If your phone supports eSIM and is carrier-unlocked it works in {country} - the destination has no say in it. A phone bought in a different market from the one it was made for is the usual culprit, and that has nothing to do with {country} itself. Confirm the EID appears, then compare the plans above."
+
+[[faq]]
+q = "Do I need a local number in Kenya?"
+a = "Not for a normal trip - a travel eSIM for {country} is a data product rather than a phone line. Travel eSIMs are priced as data, so buying one for voice is paying for the wrong product. Use the eSIM for data and the home line for anything that needs the number."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Kenya?"
+a = "We do not aggregate reviews, so the honest answer here is about method rather than ratings. The published terms are the part nobody reviews and everybody should read, so that is what we quote. The measured comparison is above, and the opinions are best read where they were posted."

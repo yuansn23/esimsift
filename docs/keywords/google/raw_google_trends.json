@@ -1,0 +1,3868 @@
+{
+ "generated": "2026-10-08T21:03:36",
+ "channel": "google_trends",
+ "geo": "US",
+ "timeframe": "today 12-m",
+ "proxy": "http://127.0.0.1:7890",
+ "seeds_total": 61,
+ "this_run_ok": 61,
+ "seeds_ok": 181,
+ "seeds_failed": 0,
+ "merged_from_previous": 120,
+ "failed_seeds": [],
+ "related": {
+  "yesim esim prices": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "ubigi esim price": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "can esim be used internationally": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "cheap esim data plans": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "cheapest esim data plan": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "cheapest international esim": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "can i get an esim": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "does esim work on international roaming": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim international number": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "esim iphone how many": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "esim size": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim phone plans": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "how to apply for an esim": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim vs sim card": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "is esim available in portugal": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "which is the best esim": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "yesim esim review": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim cheapest plan": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "can i use data from esim": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "ubigi esim plans": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "esim explained": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "does esim work internationally": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "esim price": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim providers in europe": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim requirements": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "how does airalo esim work": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim vs sim iphone": {
+   "top": [],
+   "rising": [],
+   "retries": 2
+  },
+  "is there an esim in the philippines": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "which network has esim": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "is esim available in philippines": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "is esim available in egypt": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "is esim available in kenya": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "will esim work in roaming": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "is esim available in saudi arabia": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "does esim work in china": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "does telcel offer esim": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim cheap plans": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "is esim available in australia": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "which provider has esim": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "is esim available in south africa": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim card vs sim card": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim prepaid plans": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "why esim is better": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "does esim work in mexico": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "is esim available in canada": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "is esim available in uae": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "is esim available in singapore": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "how much is an esim plan": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "is esim available in ireland": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "is esim available in new zealand": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "is esim available in turkey": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "is esim dual sim": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "cheapest esim canada": {
+   "top": [],
+   "rising": [],
+   "retries": 2
+  },
+  "airalo esim not working": {
+   "top": [
+    {
+     "query": "why is my airalo esim not working",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "is esim available in malaysia": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim country list": {
+   "top": [],
+   "rising": [],
+   "retries": 2
+  },
+  "what is esim card": {
+   "top": [
+    {
+     "query": "what is esim card in iphone",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 2
+  },
+  "esim vs normal sim": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim price usa": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "alosim esim": {
+   "top": [],
+   "rising": [],
+   "retries": 2
+  },
+  "esim review": {
+   "top": [
+    {
+     "query": "saily esim review",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim review",
+     "value": 41,
+     "formatted": "41",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim review",
+     "value": 28,
+     "formatted": "28",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim review",
+     "value": 21,
+     "formatted": "21",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "saily esim review",
+     "value": 90,
+     "formatted": "+90%",
+     "hasData": true
+    }
+   ],
+   "retries": 5
+  },
+  "esim for japan": {
+   "top": [
+    {
+     "query": "best esim for japan",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "esim for japan travel",
+     "value": 52,
+     "formatted": "52",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim",
+     "value": 30,
+     "formatted": "30",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 29,
+     "formatted": "29",
+     "hasData": true
+    },
+    {
+     "query": "ubigi",
+     "value": 29,
+     "formatted": "29",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim usa": {
+   "top": [
+    {
+     "query": "best esim usa",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "saily esim",
+     "value": 57,
+     "formatted": "57",
+     "hasData": true
+    },
+    {
+     "query": "saily esim usa",
+     "value": 56,
+     "formatted": "56",
+     "hasData": true
+    },
+    {
+     "query": "esim usa travel",
+     "value": 56,
+     "formatted": "56",
+     "hasData": true
+    },
+    {
+     "query": "best esim for usa",
+     "value": 54,
+     "formatted": "54",
+     "hasData": true
+    },
+    {
+     "query": "buy esim usa",
+     "value": 46,
+     "formatted": "46",
+     "hasData": true
+    },
+    {
+     "query": "esim usa unlimited data",
+     "value": 39,
+     "formatted": "39",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 38,
+     "formatted": "38",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim usa",
+     "value": 38,
+     "formatted": "38",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 37,
+     "formatted": "37",
+     "hasData": true
+    },
+    {
+     "query": "prepaid esim usa",
+     "value": 36,
+     "formatted": "36",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 35,
+     "formatted": "35",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim usa",
+     "value": 34,
+     "formatted": "34",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim",
+     "value": 34,
+     "formatted": "34",
+     "hasData": true
+    },
+    {
+     "query": "esim for usa travel",
+     "value": 33,
+     "formatted": "33",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 17,
+     "formatted": "17",
+     "hasData": true
+    },
+    {
+     "query": "verizon esim",
+     "value": 13,
+     "formatted": "13",
+     "hasData": true
+    },
+    {
+     "query": "t mobile esim usa",
+     "value": 10,
+     "formatted": "10",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "saily esim usa",
+     "value": 350,
+     "formatted": "+350%",
+     "hasData": true
+    },
+    {
+     "query": "saily esim",
+     "value": 300,
+     "formatted": "+300%",
+     "hasData": true
+    },
+    {
+     "query": "esim usa unlimited data",
+     "value": 170,
+     "formatted": "+170%",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 110,
+     "formatted": "+110%",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 110,
+     "formatted": "+110%",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim usa",
+     "value": 110,
+     "formatted": "+110%",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 100,
+     "formatted": "+100%",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    },
+    {
+     "query": "esim for usa travel",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim usa",
+     "value": 40,
+     "formatted": "+40%",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim",
+     "value": 40,
+     "formatted": "+40%",
+     "hasData": true
+    }
+   ],
+   "retries": 0
+  },
+  "esim for usa": {
+   "top": [
+    {
+     "query": "best esim for usa",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "travel esim usa",
+     "value": 61,
+     "formatted": "61",
+     "hasData": true
+    },
+    {
+     "query": "best esim for usa travel",
+     "value": 23,
+     "formatted": "23",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim uk": {
+   "top": [
+    {
+     "query": "best esim uk",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 20,
+     "formatted": "20",
+     "hasData": true
+    },
+    {
+     "query": "esim uk and europe",
+     "value": 16,
+     "formatted": "16",
+     "hasData": true
+    },
+    {
+     "query": "vodafone esim uk",
+     "value": 16,
+     "formatted": "16",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "holafly",
+     "value": 100,
+     "formatted": "+100%",
+     "hasData": true
+    }
+   ],
+   "retries": 0
+  },
+  "esim japan": {
+   "top": [
+    {
+     "query": "esim for japan",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "esim in japan",
+     "value": 74,
+     "formatted": "74",
+     "hasData": true
+    },
+    {
+     "query": "best esim japan",
+     "value": 53,
+     "formatted": "53",
+     "hasData": true
+    },
+    {
+     "query": "best esim for japan",
+     "value": 32,
+     "formatted": "32",
+     "hasData": true
+    },
+    {
+     "query": "saily",
+     "value": 27,
+     "formatted": "27",
+     "hasData": true
+    },
+    {
+     "query": "ubigi esim japan",
+     "value": 22,
+     "formatted": "22",
+     "hasData": true
+    },
+    {
+     "query": "ubigi esim",
+     "value": 22,
+     "formatted": "22",
+     "hasData": true
+    },
+    {
+     "query": "ubigi",
+     "value": 22,
+     "formatted": "22",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim japan",
+     "value": 21,
+     "formatted": "21",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 21,
+     "formatted": "21",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim",
+     "value": 20,
+     "formatted": "20",
+     "hasData": true
+    },
+    {
+     "query": "esim for japan travel",
+     "value": 18,
+     "formatted": "18",
+     "hasData": true
+    },
+    {
+     "query": "esim card japan",
+     "value": 18,
+     "formatted": "18",
+     "hasData": true
+    },
+    {
+     "query": "japan esim unlimited data",
+     "value": 12,
+     "formatted": "12",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 11,
+     "formatted": "11",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 11,
+     "formatted": "11",
+     "hasData": true
+    },
+    {
+     "query": "japan esim reddit",
+     "value": 11,
+     "formatted": "11",
+     "hasData": true
+    },
+    {
+     "query": "medvi",
+     "value": 6,
+     "formatted": "6",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 6,
+     "formatted": "6",
+     "hasData": true
+    },
+    {
+     "query": "saily review",
+     "value": 5,
+     "formatted": "5",
+     "hasData": true
+    },
+    {
+     "query": "saily esim review",
+     "value": 5,
+     "formatted": "5",
+     "hasData": true
+    },
+    {
+     "query": "klook esim japan",
+     "value": 4,
+     "formatted": "4",
+     "hasData": true
+    },
+    {
+     "query": "embody",
+     "value": 4,
+     "formatted": "4",
+     "hasData": true
+    },
+    {
+     "query": "saily login",
+     "value": 4,
+     "formatted": "4",
+     "hasData": true
+    },
+    {
+     "query": "usd to yen",
+     "value": 4,
+     "formatted": "4",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "medvi",
+     "value": 266900,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "embody",
+     "value": 183450,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "saily login",
+     "value": 154950,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "quad ed",
+     "value": 144500,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "medvi quad",
+     "value": 128900,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "medvi reviews",
+     "value": 98000,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "embody reviews",
+     "value": 91300,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "shoplc",
+     "value": 70800,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "medvi weight loss",
+     "value": 53450,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "nordvpn code",
+     "value": 49850,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "shop lc live",
+     "value": 49800,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "shoplc com",
+     "value": 47300,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "embody tirzepatide",
+     "value": 46100,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "nordvpn discount",
+     "value": 39900,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "saily esim review",
+     "value": 700,
+     "formatted": "+700%",
+     "hasData": true
+    },
+    {
+     "query": "saily",
+     "value": 300,
+     "formatted": "+300%",
+     "hasData": true
+    },
+    {
+     "query": "saily review",
+     "value": 300,
+     "formatted": "+300%",
+     "hasData": true
+    },
+    {
+     "query": "japan esim unlimited data",
+     "value": 150,
+     "formatted": "+150%",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 110,
+     "formatted": "+110%",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 110,
+     "formatted": "+110%",
+     "hasData": true
+    },
+    {
+     "query": "esim for japan travel",
+     "value": 40,
+     "formatted": "+40%",
+     "hasData": true
+    }
+   ],
+   "retries": 1
+  },
+  "esim for uk": {
+   "top": [
+    {
+     "query": "best esim for uk",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim france": {
+   "top": [
+    {
+     "query": "orange esim france",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for france": {
+   "top": [
+    {
+     "query": "best esim for france",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim italy": {
+   "top": [
+    {
+     "query": "best esim italy",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "esim italy unlimited data",
+     "value": 24,
+     "formatted": "24",
+     "hasData": true
+    },
+    {
+     "query": "vodafone esim italy",
+     "value": 18,
+     "formatted": "18",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "esim italy unlimited data",
+     "value": 80,
+     "formatted": "+80%",
+     "hasData": true
+    }
+   ],
+   "retries": 0
+  },
+  "esim for italy": {
+   "top": [
+    {
+     "query": "best esim for italy",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for thailand": {
+   "top": [
+    {
+     "query": "best esim for thailand",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim korea": {
+   "top": [
+    {
+     "query": "south korea esim",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "best esim for korea",
+     "value": 52,
+     "formatted": "52",
+     "hasData": true
+    },
+    {
+     "query": "japan esim",
+     "value": 49,
+     "formatted": "49",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim",
+     "value": 31,
+     "formatted": "31",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 31,
+     "formatted": "31",
+     "hasData": true
+    },
+    {
+     "query": "esim card korea",
+     "value": 30,
+     "formatted": "30",
+     "hasData": true
+    },
+    {
+     "query": "esim for japan",
+     "value": 24,
+     "formatted": "24",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 17,
+     "formatted": "17",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 17,
+     "formatted": "17",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "holafly esim",
+     "value": 160,
+     "formatted": "+160%",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 130,
+     "formatted": "+130%",
+     "hasData": true
+    }
+   ],
+   "retries": 1
+  },
+  "esim thailand": {
+   "top": [
+    {
+     "query": "saily esim thailand",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "saily esim",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "best esim for thailand",
+     "value": 42,
+     "formatted": "42",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 25,
+     "formatted": "25",
+     "hasData": true
+    },
+    {
+     "query": "ais esim thailand",
+     "value": 22,
+     "formatted": "22",
+     "hasData": true
+    },
+    {
+     "query": "esim thailand 30 days",
+     "value": 12,
+     "formatted": "12",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "saily esim",
+     "value": 1200,
+     "formatted": "+1,200%",
+     "hasData": true
+    },
+    {
+     "query": "saily esim thailand",
+     "value": 1100,
+     "formatted": "+1,100%",
+     "hasData": true
+    },
+    {
+     "query": "esim thailand 30 days",
+     "value": 250,
+     "formatted": "+250%",
+     "hasData": true
+    }
+   ],
+   "retries": 2
+  },
+  "esim singapore": {
+   "top": [
+    {
+     "query": "best esim singapore",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "esim singapore tourist",
+     "value": 24,
+     "formatted": "24",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for singapore": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for korea": {
+   "top": [
+    {
+     "query": "best esim for korea",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 1
+  },
+  "esim spain": {
+   "top": [
+    {
+     "query": "orange esim spain",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "vodafone esim spain",
+     "value": 82,
+     "formatted": "82",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim germany": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for spain": {
+   "top": [
+    {
+     "query": "best esim for spain",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim australia": {
+   "top": [
+    {
+     "query": "best esim australia",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "travel esim australia",
+     "value": 52,
+     "formatted": "52",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 33,
+     "formatted": "33",
+     "hasData": true
+    },
+    {
+     "query": "esim australia prepaid",
+     "value": 32,
+     "formatted": "32",
+     "hasData": true
+    },
+    {
+     "query": "telstra esim australia",
+     "value": 16,
+     "formatted": "16",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "travel esim australia",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    }
+   ],
+   "retries": 0
+  },
+  "esim for australia": {
+   "top": [
+    {
+     "query": "best esim for australia",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim taiwan": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for taiwan": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim hong kong": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for germany": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim macao": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "esim for hong kong": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "esim for macao": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim malaysia": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim vietnam": {
+   "top": [
+    {
+     "query": "best esim vietnam",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for vietnam": {
+   "top": [
+    {
+     "query": "best esim for vietnam",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 1
+  },
+  "esim indonesia": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for indonesia": {
+   "top": [
+    {
+     "query": "best esim for indonesia",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim philippines": {
+   "top": [
+    {
+     "query": "best esim philippines",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "best esim philippines",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    }
+   ],
+   "retries": 0
+  },
+  "esim for philippines": {
+   "top": [
+    {
+     "query": "best esim for philippines",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim india": {
+   "top": [
+    {
+     "query": "airtel esim india",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 72,
+     "formatted": "72",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "holafly",
+     "value": 120,
+     "formatted": "+120%",
+     "hasData": true
+    }
+   ],
+   "retries": 0
+  },
+  "esim for india": {
+   "top": [
+    {
+     "query": "best esim for india",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "esim for india travel",
+     "value": 52,
+     "formatted": "52",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim china": {
+   "top": [
+    {
+     "query": "esim for china",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "esim in china",
+     "value": 96,
+     "formatted": "96",
+     "hasData": true
+    },
+    {
+     "query": "best esim for china",
+     "value": 31,
+     "formatted": "31",
+     "hasData": true
+    },
+    {
+     "query": "travel esim",
+     "value": 29,
+     "formatted": "29",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 22,
+     "formatted": "22",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim",
+     "value": 22,
+     "formatted": "22",
+     "hasData": true
+    },
+    {
+     "query": "china mobile",
+     "value": 21,
+     "formatted": "21",
+     "hasData": true
+    },
+    {
+     "query": "china mobile esim",
+     "value": 21,
+     "formatted": "21",
+     "hasData": true
+    },
+    {
+     "query": "esim card",
+     "value": 20,
+     "formatted": "20",
+     "hasData": true
+    },
+    {
+     "query": "china vpn",
+     "value": 18,
+     "formatted": "18",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 17,
+     "formatted": "17",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 17,
+     "formatted": "17",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim china",
+     "value": 15,
+     "formatted": "15",
+     "hasData": true
+    },
+    {
+     "query": "nomad",
+     "value": 15,
+     "formatted": "15",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 15,
+     "formatted": "15",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "holafly esim",
+     "value": 60,
+     "formatted": "+60%",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    }
+   ],
+   "retries": 0
+  },
+  "esim for china": {
+   "top": [
+    {
+     "query": "best esim for china",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim portugal": {
+   "top": [
+    {
+     "query": "buy esim portugal",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "buy esim portugal",
+     "value": 40,
+     "formatted": "+40%",
+     "hasData": true
+    }
+   ],
+   "retries": 0
+  },
+  "esim for portugal": {
+   "top": [
+    {
+     "query": "best esim for portugal",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim netherlands": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for netherlands": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim belgium": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for belgium": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim switzerland": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for malaysia": {
+   "top": [
+    {
+     "query": "best esim for malaysia",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 3
+  },
+  "esim austria": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for switzerland": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim greece": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for greece": {
+   "top": [
+    {
+     "query": "best esim for greece",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 1
+  },
+  "esim for austria": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "esim for turkey": {
+   "top": [
+    {
+     "query": "best esim for turkey",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim ireland": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for ireland": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim poland": {
+   "top": [],
+   "rising": [],
+   "retries": 2
+  },
+  "esim for poland": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim turkey": {
+   "top": [
+    {
+     "query": "holafly",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "holafly",
+     "value": 90,
+     "formatted": "+90%",
+     "hasData": true
+    }
+   ],
+   "retries": 4
+  },
+  "esim for czech republic": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim croatia": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim czech republic": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim iceland": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for iceland": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim georgia": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for croatia": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim canada": {
+   "top": [
+    {
+     "query": "saily esim canada",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "saily esim canada",
+     "value": 550,
+     "formatted": "+550%",
+     "hasData": true
+    }
+   ],
+   "retries": 0
+  },
+  "esim for canada": {
+   "top": [
+    {
+     "query": "best esim for canada",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim mexico": {
+   "top": [
+    {
+     "query": "best esim mexico",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for mexico": {
+   "top": [
+    {
+     "query": "best esim for mexico",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 24,
+     "formatted": "24",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "holafly",
+     "value": 90,
+     "formatted": "+90%",
+     "hasData": true
+    }
+   ],
+   "retries": 0
+  },
+  "esim brazil": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for brazil": {
+   "top": [
+    {
+     "query": "best esim for brazil",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for georgia": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "esim for argentina": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "esim argentina": {
+   "top": [],
+   "rising": [],
+   "retries": 4
+  },
+  "esim for colombia": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim colombia": {
+   "top": [],
+   "rising": [],
+   "retries": 2
+  },
+  "esim for peru": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "esim costa rica": {
+   "top": [
+    {
+     "query": "kolbi esim costa rica",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "claro esim costa rica",
+     "value": 92,
+     "formatted": "92",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for costa rica": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim uae": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for uae": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "esim saudi arabia": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for saudi arabia": {
+   "top": [
+    {
+     "query": "best esim for saudi arabia",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim qatar": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for qatar": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim israel": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for israel": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim peru": {
+   "top": [
+    {
+     "query": "claro esim peru",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 2
+  },
+  "esim for egypt": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim egypt": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "esim morocco": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for morocco": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim south africa": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for south africa": {
+   "top": [
+    {
+     "query": "best esim for south africa",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim kenya": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for kenya": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim new zealand": {
+   "top": [
+    {
+     "query": "spark esim new zealand",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for new zealand": {
+   "top": [
+    {
+     "query": "best esim for new zealand",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "esim fiji": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "roami esim": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "airalo esim": {
+   "top": [
+    {
+     "query": "holafly",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 99,
+     "formatted": "99",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 73,
+     "formatted": "73",
+     "hasData": true
+    },
+    {
+     "query": "nomad",
+     "value": 72,
+     "formatted": "72",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim review",
+     "value": 60,
+     "formatted": "60",
+     "hasData": true
+    },
+    {
+     "query": "airalo review",
+     "value": 60,
+     "formatted": "60",
+     "hasData": true
+    },
+    {
+     "query": "esim iphone",
+     "value": 52,
+     "formatted": "52",
+     "hasData": true
+    },
+    {
+     "query": "esim japan",
+     "value": 52,
+     "formatted": "52",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim japan",
+     "value": 52,
+     "formatted": "52",
+     "hasData": true
+    },
+    {
+     "query": "airalo japan esim",
+     "value": 52,
+     "formatted": "52",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim europe",
+     "value": 48,
+     "formatted": "48",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim reviews",
+     "value": 41,
+     "formatted": "41",
+     "hasData": true
+    },
+    {
+     "query": "esim usa",
+     "value": 41,
+     "formatted": "41",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim usa",
+     "value": 41,
+     "formatted": "41",
+     "hasData": true
+    },
+    {
+     "query": "international esim",
+     "value": 40,
+     "formatted": "40",
+     "hasData": true
+    },
+    {
+     "query": "saily",
+     "value": 40,
+     "formatted": "40",
+     "hasData": true
+    },
+    {
+     "query": "ubigi",
+     "value": 40,
+     "formatted": "40",
+     "hasData": true
+    },
+    {
+     "query": "ubigi esim",
+     "value": 40,
+     "formatted": "40",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim reddit",
+     "value": 28,
+     "formatted": "28",
+     "hasData": true
+    },
+    {
+     "query": "esim for japan",
+     "value": 26,
+     "formatted": "26",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "nomad",
+     "value": 190,
+     "formatted": "+190%",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 180,
+     "formatted": "+180%",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 170,
+     "formatted": "+170%",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 160,
+     "formatted": "+160%",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim reviews",
+     "value": 60,
+     "formatted": "+60%",
+     "hasData": true
+    },
+    {
+     "query": "airalo review",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    },
+    {
+     "query": "esim usa",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim review",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim usa",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    }
+   ],
+   "retries": 0
+  },
+  "esim for fiji": {
+   "top": [],
+   "rising": [],
+   "retries": 1
+  },
+  "saily esim": {
+   "top": [
+    {
+     "query": "saily review",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "saily esim review",
+     "value": 92,
+     "formatted": "92",
+     "hasData": true
+    },
+    {
+     "query": "saily app",
+     "value": 61,
+     "formatted": "61",
+     "hasData": true
+    },
+    {
+     "query": "saily discount code",
+     "value": 45,
+     "formatted": "45",
+     "hasData": true
+    },
+    {
+     "query": "embody",
+     "value": 44,
+     "formatted": "44",
+     "hasData": true
+    },
+    {
+     "query": "saily esim usa",
+     "value": 43,
+     "formatted": "43",
+     "hasData": true
+    },
+    {
+     "query": "saily esim canada",
+     "value": 41,
+     "formatted": "41",
+     "hasData": true
+    },
+    {
+     "query": "saily esim thailand",
+     "value": 36,
+     "formatted": "36",
+     "hasData": true
+    },
+    {
+     "query": "shop lc",
+     "value": 35,
+     "formatted": "35",
+     "hasData": true
+    },
+    {
+     "query": "quad ed",
+     "value": 34,
+     "formatted": "34",
+     "hasData": true
+    },
+    {
+     "query": "quad medvi",
+     "value": 34,
+     "formatted": "34",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 26,
+     "formatted": "26",
+     "hasData": true
+    },
+    {
+     "query": "embody reviews",
+     "value": 24,
+     "formatted": "24",
+     "hasData": true
+    },
+    {
+     "query": "shoplc",
+     "value": 22,
+     "formatted": "22",
+     "hasData": true
+    },
+    {
+     "query": "axel arigato",
+     "value": 19,
+     "formatted": "19",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 18,
+     "formatted": "18",
+     "hasData": true
+    },
+    {
+     "query": "saily sim",
+     "value": 16,
+     "formatted": "16",
+     "hasData": true
+    },
+    {
+     "query": "shoplc com",
+     "value": 15,
+     "formatted": "15",
+     "hasData": true
+    },
+    {
+     "query": "quad for ed",
+     "value": 15,
+     "formatted": "15",
+     "hasData": true
+    },
+    {
+     "query": "joinem",
+     "value": 14,
+     "formatted": "14",
+     "hasData": true
+    },
+    {
+     "query": "em glp 1",
+     "value": 12,
+     "formatted": "12",
+     "hasData": true
+    },
+    {
+     "query": "embody glp1",
+     "value": 11,
+     "formatted": "11",
+     "hasData": true
+    },
+    {
+     "query": "embody glp-1",
+     "value": 11,
+     "formatted": "11",
+     "hasData": true
+    },
+    {
+     "query": "lc jewelry",
+     "value": 10,
+     "formatted": "10",
+     "hasData": true
+    },
+    {
+     "query": "medvi health",
+     "value": 9,
+     "formatted": "9",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "embody",
+     "value": 991250,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "quad medvi",
+     "value": 751750,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "embody reviews",
+     "value": 529750,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "shoplc",
+     "value": 497550,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "shoplc com",
+     "value": 343500,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "quad for ed",
+     "value": 340100,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "joinem",
+     "value": 319800,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "em glp 1",
+     "value": 261050,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "embody glp1",
+     "value": 243350,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "embody glp-1",
+     "value": 242800,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "lc jewelry",
+     "value": 220900,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "medvi health",
+     "value": 201300,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "hostinger discount",
+     "value": 196150,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "em weight loss",
+     "value": 185150,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "shop lc",
+     "value": 15400,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "quad ed",
+     "value": 5650,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "axel arigato",
+     "value": 2350,
+     "formatted": "+2,350%",
+     "hasData": true
+    },
+    {
+     "query": "saily esim thailand",
+     "value": 1450,
+     "formatted": "+1,450%",
+     "hasData": true
+    },
+    {
+     "query": "saily discount code",
+     "value": 750,
+     "formatted": "+750%",
+     "hasData": true
+    },
+    {
+     "query": "saily esim canada",
+     "value": 750,
+     "formatted": "+750%",
+     "hasData": true
+    },
+    {
+     "query": "saily app",
+     "value": 250,
+     "formatted": "+250%",
+     "hasData": true
+    },
+    {
+     "query": "saily esim usa",
+     "value": 140,
+     "formatted": "+140%",
+     "hasData": true
+    },
+    {
+     "query": "saily review",
+     "value": 130,
+     "formatted": "+130%",
+     "hasData": true
+    },
+    {
+     "query": "saily esim review",
+     "value": 110,
+     "formatted": "+110%",
+     "hasData": true
+    }
+   ],
+   "retries": 1
+  },
+  "yesim esim": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "holafly esim": {
+   "top": [
+    {
+     "query": "airalo esim",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 95,
+     "formatted": "95",
+     "hasData": true
+    },
+    {
+     "query": "best esim",
+     "value": 94,
+     "formatted": "94",
+     "hasData": true
+    },
+    {
+     "query": "nomad",
+     "value": 46,
+     "formatted": "46",
+     "hasData": true
+    },
+    {
+     "query": "esim europe",
+     "value": 46,
+     "formatted": "46",
+     "hasData": true
+    },
+    {
+     "query": "travel esim",
+     "value": 45,
+     "formatted": "45",
+     "hasData": true
+    },
+    {
+     "query": "esim usa",
+     "value": 43,
+     "formatted": "43",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim review",
+     "value": 40,
+     "formatted": "40",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim reviews",
+     "value": 28,
+     "formatted": "28",
+     "hasData": true
+    },
+    {
+     "query": "esim japan",
+     "value": 28,
+     "formatted": "28",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim japan",
+     "value": 28,
+     "formatted": "28",
+     "hasData": true
+    },
+    {
+     "query": "saily",
+     "value": 26,
+     "formatted": "26",
+     "hasData": true
+    },
+    {
+     "query": "saily esim",
+     "value": 26,
+     "formatted": "26",
+     "hasData": true
+    },
+    {
+     "query": "international esim",
+     "value": 25,
+     "formatted": "25",
+     "hasData": true
+    },
+    {
+     "query": "ubigi",
+     "value": 20,
+     "formatted": "20",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "nomad",
+     "value": 180,
+     "formatted": "+180%",
+     "hasData": true
+    },
+    {
+     "query": "ubigi",
+     "value": 130,
+     "formatted": "+130%",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim",
+     "value": 90,
+     "formatted": "+90%",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 80,
+     "formatted": "+80%",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim japan",
+     "value": 70,
+     "formatted": "+70%",
+     "hasData": true
+    },
+    {
+     "query": "esim japan",
+     "value": 60,
+     "formatted": "+60%",
+     "hasData": true
+    },
+    {
+     "query": "best esim",
+     "value": 60,
+     "formatted": "+60%",
+     "hasData": true
+    },
+    {
+     "query": "travel esim",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    },
+    {
+     "query": "esim usa",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim review",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    }
+   ],
+   "retries": 3
+  },
+  "roamic esim": {
+   "top": [
+    {
+     "query": "roamic esim reviews",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  },
+  "ubigi esim": {
+   "top": [
+    {
+     "query": "japan esim",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 72,
+     "formatted": "72",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim",
+     "value": 72,
+     "formatted": "72",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 38,
+     "formatted": "38",
+     "hasData": true
+    },
+    {
+     "query": "ubigi esim review",
+     "value": 33,
+     "formatted": "33",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 32,
+     "formatted": "32",
+     "hasData": true
+    },
+    {
+     "query": "airalo japan",
+     "value": 29,
+     "formatted": "29",
+     "hasData": true
+    },
+    {
+     "query": "saily",
+     "value": 21,
+     "formatted": "21",
+     "hasData": true
+    },
+    {
+     "query": "yesim",
+     "value": 2,
+     "formatted": "2",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "nomad esim",
+     "value": 250,
+     "formatted": "+250%",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 200,
+     "formatted": "+200%",
+     "hasData": true
+    },
+    {
+     "query": "yesim",
+     "value": 150,
+     "formatted": "+150%",
+     "hasData": true
+    },
+    {
+     "query": "ubigi esim review",
+     "value": 80,
+     "formatted": "+80%",
+     "hasData": true
+    },
+    {
+     "query": "saily",
+     "value": 60,
+     "formatted": "+60%",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 40,
+     "formatted": "+40%",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim",
+     "value": 40,
+     "formatted": "+40%",
+     "hasData": true
+    }
+   ],
+   "retries": 5
+  },
+  "nomad esim": {
+   "top": [
+    {
+     "query": "airalo esim",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 74,
+     "formatted": "74",
+     "hasData": true
+    },
+    {
+     "query": "best esim",
+     "value": 61,
+     "formatted": "61",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 50,
+     "formatted": "50",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim review",
+     "value": 32,
+     "formatted": "32",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim europe",
+     "value": 25,
+     "formatted": "25",
+     "hasData": true
+    },
+    {
+     "query": "china esim",
+     "value": 25,
+     "formatted": "25",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim china",
+     "value": 24,
+     "formatted": "24",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim reviews",
+     "value": 21,
+     "formatted": "21",
+     "hasData": true
+    },
+    {
+     "query": "saily",
+     "value": 21,
+     "formatted": "21",
+     "hasData": true
+    },
+    {
+     "query": "saily esim",
+     "value": 21,
+     "formatted": "21",
+     "hasData": true
+    },
+    {
+     "query": "esim usa",
+     "value": 20,
+     "formatted": "20",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim usa",
+     "value": 20,
+     "formatted": "20",
+     "hasData": true
+    },
+    {
+     "query": "ubigi esim",
+     "value": 19,
+     "formatted": "19",
+     "hasData": true
+    },
+    {
+     "query": "ubigi",
+     "value": 19,
+     "formatted": "19",
+     "hasData": true
+    },
+    {
+     "query": "nomad app",
+     "value": 18,
+     "formatted": "18",
+     "hasData": true
+    },
+    {
+     "query": "nomad sim",
+     "value": 11,
+     "formatted": "11",
+     "hasData": true
+    },
+    {
+     "query": "gigsky",
+     "value": 5,
+     "formatted": "5",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "holafly",
+     "value": 250,
+     "formatted": "+250%",
+     "hasData": true
+    },
+    {
+     "query": "gigsky",
+     "value": 250,
+     "formatted": "+250%",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim",
+     "value": 200,
+     "formatted": "+200%",
+     "hasData": true
+    },
+    {
+     "query": "ubigi esim",
+     "value": 200,
+     "formatted": "+200%",
+     "hasData": true
+    },
+    {
+     "query": "ubigi",
+     "value": 180,
+     "formatted": "+180%",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 140,
+     "formatted": "+140%",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim reviews",
+     "value": 120,
+     "formatted": "+120%",
+     "hasData": true
+    },
+    {
+     "query": "esim usa",
+     "value": 100,
+     "formatted": "+100%",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim review",
+     "value": 100,
+     "formatted": "+100%",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim usa",
+     "value": 100,
+     "formatted": "+100%",
+     "hasData": true
+    },
+    {
+     "query": "best esim",
+     "value": 90,
+     "formatted": "+90%",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim europe",
+     "value": 80,
+     "formatted": "+80%",
+     "hasData": true
+    },
+    {
+     "query": "nomad app",
+     "value": 80,
+     "formatted": "+80%",
+     "hasData": true
+    },
+    {
+     "query": "china esim",
+     "value": 70,
+     "formatted": "+70%",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim china",
+     "value": 70,
+     "formatted": "+70%",
+     "hasData": true
+    },
+    {
+     "query": "saily esim",
+     "value": 70,
+     "formatted": "+70%",
+     "hasData": true
+    },
+    {
+     "query": "saily",
+     "value": 60,
+     "formatted": "+60%",
+     "hasData": true
+    }
+   ],
+   "retries": 0
+  },
+  "jetpac esim": {
+   "top": [
+    {
+     "query": "jetpac esim review",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 97,
+     "formatted": "97",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "nomad esim",
+     "value": 150,
+     "formatted": "+150%",
+     "hasData": true
+    }
+   ],
+   "retries": 0
+  },
+  "esim": {
+   "top": [
+    {
+     "query": "esim iphone",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "best esim",
+     "value": 51,
+     "formatted": "51",
+     "hasData": true
+    },
+    {
+     "query": "esim data",
+     "value": 47,
+     "formatted": "47",
+     "hasData": true
+    },
+    {
+     "query": "esim card",
+     "value": 40,
+     "formatted": "40",
+     "hasData": true
+    },
+    {
+     "query": "what is esim",
+     "value": 35,
+     "formatted": "35",
+     "hasData": true
+    },
+    {
+     "query": "free esim",
+     "value": 29,
+     "formatted": "29",
+     "hasData": true
+    },
+    {
+     "query": "usa esim",
+     "value": 25,
+     "formatted": "25",
+     "hasData": true
+    },
+    {
+     "query": "esim saily",
+     "value": 23,
+     "formatted": "23",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 23,
+     "formatted": "23",
+     "hasData": true
+    },
+    {
+     "query": "saily",
+     "value": 23,
+     "formatted": "23",
+     "hasData": true
+    },
+    {
+     "query": "esim airalo",
+     "value": 22,
+     "formatted": "22",
+     "hasData": true
+    },
+    {
+     "query": "esim japan",
+     "value": 20,
+     "formatted": "20",
+     "hasData": true
+    },
+    {
+     "query": "verizon esim",
+     "value": 19,
+     "formatted": "19",
+     "hasData": true
+    },
+    {
+     "query": "verizon",
+     "value": 19,
+     "formatted": "19",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 15,
+     "formatted": "15",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 15,
+     "formatted": "15",
+     "hasData": true
+    },
+    {
+     "query": "what is a esim",
+     "value": 14,
+     "formatted": "14",
+     "hasData": true
+    },
+    {
+     "query": "esim europe",
+     "value": 14,
+     "formatted": "14",
+     "hasData": true
+    },
+    {
+     "query": "esim trial",
+     "value": 13,
+     "formatted": "13",
+     "hasData": true
+    },
+    {
+     "query": "att esim",
+     "value": 12,
+     "formatted": "12",
+     "hasData": true
+    },
+    {
+     "query": "tmobile",
+     "value": 12,
+     "formatted": "12",
+     "hasData": true
+    },
+    {
+     "query": "tmobile esim",
+     "value": 12,
+     "formatted": "12",
+     "hasData": true
+    },
+    {
+     "query": "at&t esim",
+     "value": 10,
+     "formatted": "10",
+     "hasData": true
+    },
+    {
+     "query": "t mobile",
+     "value": 10,
+     "formatted": "10",
+     "hasData": true
+    },
+    {
+     "query": "t mobile esim",
+     "value": 10,
+     "formatted": "10",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "shop lc",
+     "value": 39100,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "medvi reviews",
+     "value": 28550,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "embody reviews",
+     "value": 26150,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "medvi",
+     "value": 20550,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "shop lc live",
+     "value": 17300,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "quad for ed",
+     "value": 17200,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "joinem",
+     "value": 16400,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "embody tirzepatide",
+     "value": 13000,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "em glp 1",
+     "value": 12950,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "embody glp-1",
+     "value": 11950,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "embody semaglutide",
+     "value": 7900,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "shoplc com",
+     "value": 6400,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "saily",
+     "value": 190,
+     "formatted": "+190%",
+     "hasData": true
+    },
+    {
+     "query": "esim saily",
+     "value": 190,
+     "formatted": "+190%",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 110,
+     "formatted": "+110%",
+     "hasData": true
+    },
+    {
+     "query": "esim data",
+     "value": 90,
+     "formatted": "+90%",
+     "hasData": true
+    },
+    {
+     "query": "esim for japan",
+     "value": 80,
+     "formatted": "+80%",
+     "hasData": true
+    },
+    {
+     "query": "what is a esim",
+     "value": 80,
+     "formatted": "+80%",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 70,
+     "formatted": "+70%",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 70,
+     "formatted": "+70%",
+     "hasData": true
+    },
+    {
+     "query": "best esim",
+     "value": 70,
+     "formatted": "+70%",
+     "hasData": true
+    },
+    {
+     "query": "usa esim",
+     "value": 60,
+     "formatted": "+60%",
+     "hasData": true
+    },
+    {
+     "query": "esim japan",
+     "value": 60,
+     "formatted": "+60%",
+     "hasData": true
+    },
+    {
+     "query": "free esim",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    },
+    {
+     "query": "what is esim",
+     "value": 50,
+     "formatted": "+50%",
+     "hasData": true
+    }
+   ],
+   "retries": 2
+  },
+  "cheapest esim": {
+   "top": [
+    {
+     "query": "cheapest esim phone",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "cheapest esim plan",
+     "value": 70,
+     "formatted": "70",
+     "hasData": true
+    },
+    {
+     "query": "cheapest esim europe",
+     "value": 23,
+     "formatted": "23",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 2
+  },
+  "unlimited esim": {
+   "top": [],
+   "rising": [],
+   "retries": 2
+  },
+  "travel esim": {
+   "top": [
+    {
+     "query": "esim for travel",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "best esim",
+     "value": 51,
+     "formatted": "51",
+     "hasData": true
+    },
+    {
+     "query": "best travel esim",
+     "value": 49,
+     "formatted": "49",
+     "hasData": true
+    },
+    {
+     "query": "best esim for travel",
+     "value": 34,
+     "formatted": "34",
+     "hasData": true
+    },
+    {
+     "query": "international esim",
+     "value": 30,
+     "formatted": "30",
+     "hasData": true
+    },
+    {
+     "query": "esim iphone",
+     "value": 26,
+     "formatted": "26",
+     "hasData": true
+    },
+    {
+     "query": "what is esim",
+     "value": 25,
+     "formatted": "25",
+     "hasData": true
+    },
+    {
+     "query": "esim for international travel",
+     "value": 21,
+     "formatted": "21",
+     "hasData": true
+    },
+    {
+     "query": "esim card",
+     "value": 19,
+     "formatted": "19",
+     "hasData": true
+    },
+    {
+     "query": "esim japan",
+     "value": 19,
+     "formatted": "19",
+     "hasData": true
+    },
+    {
+     "query": "japan travel esim",
+     "value": 18,
+     "formatted": "18",
+     "hasData": true
+    },
+    {
+     "query": "travel esim europe",
+     "value": 18,
+     "formatted": "18",
+     "hasData": true
+    },
+    {
+     "query": "esim europe",
+     "value": 18,
+     "formatted": "18",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim",
+     "value": 17,
+     "formatted": "17",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 16,
+     "formatted": "16",
+     "hasData": true
+    },
+    {
+     "query": "travel esim usa",
+     "value": 15,
+     "formatted": "15",
+     "hasData": true
+    },
+    {
+     "query": "esim usa",
+     "value": 15,
+     "formatted": "15",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 11,
+     "formatted": "11",
+     "hasData": true
+    },
+    {
+     "query": "esim for europe",
+     "value": 11,
+     "formatted": "11",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 10,
+     "formatted": "10",
+     "hasData": true
+    },
+    {
+     "query": "esim for japan travel",
+     "value": 10,
+     "formatted": "10",
+     "hasData": true
+    },
+    {
+     "query": "esim china travel",
+     "value": 10,
+     "formatted": "10",
+     "hasData": true
+    },
+    {
+     "query": "esim for usa travel",
+     "value": 9,
+     "formatted": "9",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 8,
+     "formatted": "8",
+     "hasData": true
+    },
+    {
+     "query": "nomad",
+     "value": 8,
+     "formatted": "8",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "vegetables",
+     "value": 19850,
+     "formatted": "Breakout",
+     "hasData": true
+    },
+    {
+     "query": "esim china travel",
+     "value": 90,
+     "formatted": "+90%",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 80,
+     "formatted": "+80%",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 80,
+     "formatted": "+80%",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 80,
+     "formatted": "+80%",
+     "hasData": true
+    },
+    {
+     "query": "nomad",
+     "value": 80,
+     "formatted": "+80%",
+     "hasData": true
+    },
+    {
+     "query": "what is esim",
+     "value": 70,
+     "formatted": "+70%",
+     "hasData": true
+    }
+   ],
+   "retries": 0
+  },
+  "best esim": {
+   "top": [
+    {
+     "query": "best esim for travel",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "esim japan",
+     "value": 93,
+     "formatted": "93",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 91,
+     "formatted": "91",
+     "hasData": true
+    },
+    {
+     "query": "best esim app",
+     "value": 84,
+     "formatted": "84",
+     "hasData": true
+    },
+    {
+     "query": "best esim usa",
+     "value": 80,
+     "formatted": "80",
+     "hasData": true
+    },
+    {
+     "query": "esim usa",
+     "value": 77,
+     "formatted": "77",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 62,
+     "formatted": "62",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 61,
+     "formatted": "61",
+     "hasData": true
+    },
+    {
+     "query": "best esim for japan",
+     "value": 52,
+     "formatted": "52",
+     "hasData": true
+    },
+    {
+     "query": "best esim for usa",
+     "value": 42,
+     "formatted": "42",
+     "hasData": true
+    },
+    {
+     "query": "best esim for europe",
+     "value": 41,
+     "formatted": "41",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 37,
+     "formatted": "37",
+     "hasData": true
+    },
+    {
+     "query": "best esim for india",
+     "value": 37,
+     "formatted": "37",
+     "hasData": true
+    },
+    {
+     "query": "best esim for uk",
+     "value": 34,
+     "formatted": "34",
+     "hasData": true
+    },
+    {
+     "query": "best esim for china",
+     "value": 30,
+     "formatted": "30",
+     "hasData": true
+    },
+    {
+     "query": "best esim for canada",
+     "value": 27,
+     "formatted": "27",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "best esim for canada",
+     "value": 100,
+     "formatted": "+100%",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 90,
+     "formatted": "+90%",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 90,
+     "formatted": "+90%",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 80,
+     "formatted": "+80%",
+     "hasData": true
+    },
+    {
+     "query": "best esim for china",
+     "value": 60,
+     "formatted": "+60%",
+     "hasData": true
+    },
+    {
+     "query": "best esim for india",
+     "value": 40,
+     "formatted": "+40%",
+     "hasData": true
+    }
+   ],
+   "retries": 4
+  },
+  "esim europe": {
+   "top": [
+    {
+     "query": "esim for europe",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    },
+    {
+     "query": "best esim for europe",
+     "value": 30,
+     "formatted": "30",
+     "hasData": true
+    },
+    {
+     "query": "airalo",
+     "value": 23,
+     "formatted": "23",
+     "hasData": true
+    },
+    {
+     "query": "airalo esim",
+     "value": 23,
+     "formatted": "23",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 22,
+     "formatted": "22",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim europe",
+     "value": 22,
+     "formatted": "22",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 22,
+     "formatted": "22",
+     "hasData": true
+    },
+    {
+     "query": "esim for europe travel",
+     "value": 22,
+     "formatted": "22",
+     "hasData": true
+    },
+    {
+     "query": "esim iphone",
+     "value": 21,
+     "formatted": "21",
+     "hasData": true
+    },
+    {
+     "query": "esim europe unlimited data",
+     "value": 18,
+     "formatted": "18",
+     "hasData": true
+    },
+    {
+     "query": "esim card europe",
+     "value": 17,
+     "formatted": "17",
+     "hasData": true
+    },
+    {
+     "query": "orange esim",
+     "value": 13,
+     "formatted": "13",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 11,
+     "formatted": "11",
+     "hasData": true
+    },
+    {
+     "query": "saily esim",
+     "value": 8,
+     "formatted": "8",
+     "hasData": true
+    },
+    {
+     "query": "saily esim europe",
+     "value": 8,
+     "formatted": "8",
+     "hasData": true
+    },
+    {
+     "query": "saily",
+     "value": 8,
+     "formatted": "8",
+     "hasData": true
+    }
+   ],
+   "rising": [
+    {
+     "query": "esim europe unlimited data",
+     "value": 170,
+     "formatted": "+170%",
+     "hasData": true
+    },
+    {
+     "query": "nomad esim",
+     "value": 120,
+     "formatted": "+120%",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim",
+     "value": 100,
+     "formatted": "+100%",
+     "hasData": true
+    },
+    {
+     "query": "holafly esim europe",
+     "value": 100,
+     "formatted": "+100%",
+     "hasData": true
+    },
+    {
+     "query": "holafly",
+     "value": 100,
+     "formatted": "+100%",
+     "hasData": true
+    }
+   ],
+   "retries": 1
+  },
+  "esim japan and korea": {
+   "top": [],
+   "rising": [],
+   "retries": 3
+  },
+  "esim asia": {
+   "top": [],
+   "rising": [],
+   "retries": 4
+  },
+  "esim hong kong and china": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "esim for europe and usa": {
+   "top": [],
+   "rising": [],
+   "retries": 0
+  },
+  "global esim": {
+   "top": [
+    {
+     "query": "best global esim",
+     "value": 100,
+     "formatted": "100",
+     "hasData": true
+    }
+   ],
+   "rising": [],
+   "retries": 0
+  }
+ }
+}

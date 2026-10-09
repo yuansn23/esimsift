@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Hong Kong?"
 a = "The honest answer is that these two are not interchangeable. On Airalo's side the best value is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - priced per gigabyte rather than per day. Holafly's model is daily unlimited, starting at {ah_holafly_days} days for ${ah_holafly_price} - ${ah_holafly_perday}/day - so heavy use costs the same as light use."
 
 [[faq]]
-q = "Do I need ID verification for a Hong Kong eSIM?"
+q = "Do I need ID verification for an eSIM in Hong Kong?"
 a = "No. Hong Kong does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on CSL, 3HK, SmarTone. Differences matter mostly out
 [[faq]]
 q = "Can one eSIM cover Hong Kong and Taiwan?"
 a = "Only via a regional plan, because the {country} tables here are scoped to one market. Crossing into {neighbor} means either a regional package or a second plan, and the per-gigabyte rate is what tells them apart."
+
+[[faq]]
+q = "Can I use an eSIM in Hong Kong?"
+a = "Yes - the only things that can stop an eSIM in {country} are on your side rather than the country's. {brand_count} providers sell {plan_count} separate {country} plans on this page, which is a market too large for availability to be the constraint. Run the compatibility check, then compare the plans above on $/GB and $/day."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Hong Kong?"
+a = "Yes, provided the phone has eSIM hardware and carries no carrier lock. Published compatibility lists lag behind new releases, so the dialer test on your own unit beats any list, ours included. Check for an EID number and a no-restrictions carrier lock first."
+
+[[faq]]
+q = "Do I need a local number in Hong Kong?"
+a = "No number is issued with a travel eSIM for {country}. Two-factor codes are the usual reason people ask, and those arrive on the home line as long as it stays active. Plan on data from the eSIM and your existing number from the home line."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Hong Kong?"
+a = "We answer the review question with measurement rather than sentiment. Price, allowance and the fair-use threshold are checkable facts, and they are what the tables above put side by side. Use the tables above for the facts and the provider's own channels for sentiment."

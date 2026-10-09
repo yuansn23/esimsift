@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Belgium?"
 a = "Pick by usage pattern, because the two brands do not price the same way at all. Airalo's best {country} rate is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - and that is a fixed bucket rather than a daily allowance. Holafly's floor price for {country} is ${ah_holafly_price} over {ah_holafly_days} days (${ah_holafly_perday}/day), with no data counter to watch."
 
 [[faq]]
-q = "Do I need ID verification for a Belgium eSIM?"
+q = "Do I need ID verification for an eSIM in Belgium?"
 a = "No. Belgium does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on Proximus, Orange, Base. Differences matter mostly
 [[faq]]
 q = "Can one eSIM cover Belgium and France?"
 a = "Yes, but only through a multi-country plan, because nothing in our {country} tables covers a second country. Look for a regional package that includes {neighbor} and compare its $/GB with two single-country plans."
+
+[[faq]]
+q = "Can I use an eSIM in Belgium?"
+a = "{plan_count} plans across {brand_count} providers are listed for {country} on this page, and every one of them is usable. All {plan_count} plans in our {country} table register on the domestic networks rather than roaming, so there is no coverage gate to clear. The device check takes thirty seconds, and the plans above are all priced on one scale."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Belgium?"
+a = "An eSIM-capable unlocked phone works in {country} without any extra step. Regional variants are the trap worth checking: the same model name can ship with or without the eSIM chip depending on the market it was sold in. Confirm the EID appears, then compare the plans above."
+
+[[faq]]
+q = "Do I need a local number in Belgium?"
+a = "Only if local calls matter to you, because the {plan_count} plans listed for {country} are data products. Voice is generally not part of the deal, and any calling happens through an app rather than the mobile network. Use the eSIM for data and the home line for anything that needs the number."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Belgium?"
+a = "The reviews themselves live on the providers' own sites and app stores. The reason is that the same brand scores differently depending on the region the reviewer sits in, so quoting one figure as the truth would mislead. The measured comparison is above, and the opinions are best read where they were posted."

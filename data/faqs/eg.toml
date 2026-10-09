@@ -14,8 +14,8 @@ q = "Airalo or Holafly for Egypt?"
 a = "The honest answer is that these two are not interchangeable. Airalo sells buckets: its sharpest {country} rate is ${ah_airalo_pergb}/GB ({ah_airalo_plan}, ${ah_airalo_price}). Holafly sells unlimited days instead, its smallest {country} package being {ah_holafly_days} days for ${ah_holafly_price} (${ah_holafly_perday}/day)."
 
 [[faq]]
-q = "Do I need ID verification for a Egypt eSIM?"
-a = "Yes. Local law requires passport-linked registration even for travel eSIMs, but the big providers verify in-app in a couple of minutes."
+q = "Do I need ID verification for an eSIM in Egypt?"
+a = "Yes, and the eSIM route is the one that avoids the paperwork. Registering a local Egyptian SIM means passport photos at an official store, while a travel eSIM is registered by the provider at checkout, with nothing to bring and no office to find."
 
 [[faq]]
 q = "Which networks do Egypt eSIMs use?"
@@ -24,3 +24,19 @@ a = "Plans on this page run on Vodafone Egypt, Orange Egypt, Etisalat Misr. Diff
 [[faq]]
 q = "Can one eSIM cover Egypt and Saudi Arabia?"
 a = "Only via a regional plan, because the {country} tables here are scoped to one market. Crossing into {neighbor} means either a regional package or a second plan, and the per-gigabyte rate is what tells them apart."
+
+[[faq]]
+q = "Can I use an eSIM in Egypt?"
+a = "Yes - the only things that can stop an eSIM in {country} are on your side rather than the country's. The choice here is about price and allowance rather than availability: {plan_count} plans from {brand_count} providers. Check your handset first, then pick the plan that matches your trip length."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Egypt?"
+a = "Yes, provided the phone has eSIM hardware and carries no carrier lock. The two checks that matter are hardware and lock status - the {plan_count} plans here install on a phone that passes both, and fail on one that does not. Run the *#06# test before you buy a plan."
+
+[[faq]]
+q = "Do I need a local number in Egypt?"
+a = "No number is issued with a travel eSIM for {country}. Keeping the home line in the physical slot is the usual arrangement, and it is what lets verification texts keep arriving. Keep your home SIM active for calls and codes, and let the eSIM carry data."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Egypt?"
+a = "We answer the review question with measurement rather than sentiment. Fair-use terms, hotspot rules and refund windows are where the real differences hide, and those are documented rather than voted on. Read the numbers above first, then check the provider's own reviews for the human side."

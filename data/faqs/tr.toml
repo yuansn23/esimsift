@@ -14,8 +14,8 @@ q = "Airalo or Holafly for Turkiye?"
 a = "Neither is the cheapest plan on this page, and the two are not competing on the same terms either. Airalo's strongest {country} offer is ${ah_airalo_pergb}/GB, sold as {ah_airalo_plan} for ${ah_airalo_price}. Holafly's model is daily unlimited, starting at {ah_holafly_days} days for ${ah_holafly_price} - ${ah_holafly_perday}/day - so heavy use costs the same as light use."
 
 [[faq]]
-q = "Do I need ID verification for a Turkiye eSIM?"
-a = "Yes. Local law requires passport-linked registration even for travel eSIMs, but the big providers verify in-app in a couple of minutes."
+q = "Do I need ID verification for an eSIM in Turkiye?"
+a = "Yes - Turkish SIM rules tie registration to a passport, and the sellers we track collect the details during checkout instead of over a counter. That is the practical difference from a Turkcell tourist package: no airport desk, no queue, and the profile is already on your phone when you land."
 
 [[faq]]
 q = "Which networks do Turkiye eSIMs use?"
@@ -24,3 +24,19 @@ a = "Plans on this page run on Turkcell, Vodafone, Turk Telekom. Differences mat
 [[faq]]
 q = "Can one eSIM cover Turkiye and Greece?"
 a = "Not with a country plan alone, because {country} plans stop at the border. Adding {neighbor} means a regional bundle or a second plan, and the two-country arithmetic is worth doing before you buy."
+
+[[faq]]
+q = "Can I use an eSIM in Turkiye?"
+a = "It does work here. No country-level restriction stands between a travel eSIM and the networks in {country}. Every one of the {brand_count} providers here sells into {country}, which is itself the answer to whether eSIMs work there. Run the compatibility check, then compare the plans above on $/GB and $/day."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Turkiye?"
+a = "It depends on the device rather than the country, because every plan on this page is a standard eSIM profile. None of the {brand_count} providers here requires a particular handset, only that the device has the chip and is unlocked. Check for an EID number and a no-restrictions carrier lock first."
+
+[[faq]]
+q = "Do I need a local number in Turkiye?"
+a = "No, unless you specifically need to make calls on a local number. The practical split is data on the eSIM and the existing number on the physical SIM, with roaming switched off on the home line. Plan on data from the eSIM and your existing number from the home line."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Turkiye?"
+a = "Rather than a star rating, this page answers the same question with numbers. The comparison above puts all {plan_count} {country} plans from {brand_count} providers through one formula, which no review site can claim. Use the tables above for the facts and the provider's own channels for sentiment."

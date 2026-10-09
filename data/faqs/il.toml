@@ -14,8 +14,8 @@ q = "Airalo or Holafly for Israel?"
 a = "It comes down to shape - buckets of data against unlimited days. Airalo's {ah_airalo_plan} works out at ${ah_airalo_pergb}/GB for ${ah_airalo_price}, and what you buy is what you get. Where Holafly wins is predictability, from ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and where Airalo wins is a short, light trip."
 
 [[faq]]
-q = "Do I need ID verification for a Israel eSIM?"
-a = "Yes. Local law requires passport-linked registration even for travel eSIMs, but the big providers verify in-app in a couple of minutes."
+q = "Do I need ID verification for an eSIM in Israel?"
+a = "Yes - Israeli law requires ID for every SIM line and travel eSIMs are not exempt. The provider collects it during purchase, so the question that actually decides an Israel purchase is which network the plan rides, not how the registration works."
 
 [[faq]]
 q = "Which networks do Israel eSIMs use?"
@@ -26,3 +26,19 @@ a = "Plans on this page run on Cellcom, Partner, Pelephone. Differences matter m
 # 否则只剩「Can one eSIM cover Israel?」这种同义反复的问法（2026-10-07 第四十二轮修）。
 q = "Can one eSIM cover Israel and the rest of the Middle East?"
 a = "Not with a country plan alone, because {country} plans stop at the border. Adding {neighbor} means a regional bundle or a second plan, and the two-country arithmetic is worth doing before you buy."
+
+[[faq]]
+q = "Can I use an eSIM in Israel?"
+a = "Yes, and {country} is unremarkable in that respect - no local registration or permission is required. Of the {plan_count} {country} plans listed here, none is limited to a particular region of the country. Fix the handset question before you buy, and compare the rest on price."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Israel?"
+a = "Same test as anywhere: dial *#06# and look for an EID number. The eSIM chip is fixed at manufacture, so a handset built without one cannot gain it later, however many {country} plans we list. Run the two checks and come back to the table above."
+
+[[faq]]
+q = "Do I need a local number in Israel?"
+a = "For messaging and maps you do not need one. Where voice exists it is app-based rather than a real local number, which is what most travellers actually need. Keep both lines in the phone and set data to the eSIM."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Israel?"
+a = "We keep no rating for {country} eSIMs, and that is a decision rather than an omission. A five-star average and a one-star average usually describe different trips rather than different products. Treat the tables above as the checkable half and read reviews for the rest."

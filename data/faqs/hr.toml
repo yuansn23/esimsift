@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Croatia?"
 a = "They sell different things, so the answer depends on how you use data. Airalo's {ah_airalo_plan} works out at ${ah_airalo_pergb}/GB for ${ah_airalo_price}, and what you buy is what you get. Take Holafly if you would rather not count gigabytes, since its {country} packages start at ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and take Airalo for a light, short trip."
 
 [[faq]]
-q = "Do I need ID verification for a Croatia eSIM?"
+q = "Do I need ID verification for an eSIM in Croatia?"
 a = "No. Croatia does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -26,3 +26,19 @@ a = "Plans on this page run on Hrvatski Telekom, A1 Hrvatska. Differences matter
 # 否则只剩「Can one eSIM cover Croatia?」这种同义反复的问法（2026-10-07 第四十二轮修）。
 q = "Can one eSIM cover Croatia and the rest of Europe?"
 a = "Only with a regional package, because the country plans on this page do not cross borders. The markets around {country} all have their own tables here - {neighbors_all} among them - so price a regional bundle against two single-country plans."
+
+[[faq]]
+q = "Can I use an eSIM in Croatia?"
+a = "Yes - {country} is on the standard travel-eSIM map, with {brand_count} providers selling plans for it. Of the {plan_count} {country} plans listed here, none is limited to a particular region of the country. Confirm the device supports eSIM and is unlocked, then choose from the table above."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Croatia?"
+a = "If your phone supports eSIM and is carrier-unlocked it works in {country} - the destination has no say in it. The eSIM chip is fixed at manufacture, so a handset built without one cannot gain it later, however many {country} plans we list. Test the handset now and choosing a plan becomes a price question rather than a compatibility one."
+
+[[faq]]
+q = "Do I need a local number in Croatia?"
+a = "Not for a normal trip - a travel eSIM for {country} is a data product rather than a phone line. Where voice exists it is app-based rather than a real local number, which is what most travellers actually need. Leave the home line in the phone and switch its data off."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Croatia?"
+a = "We do not aggregate reviews, so the honest answer here is about method rather than ratings. A five-star average and a one-star average usually describe different trips rather than different products. Take the figures above as the baseline and verify the return policy at the source."

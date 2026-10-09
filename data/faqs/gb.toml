@@ -14,7 +14,7 @@ q = "Airalo or Holafly for the UK?"
 a = "It comes down to shape - buckets of data against unlimited days. On Airalo's side the best value is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - priced per gigabyte rather than per day. The flat-rate option is Holafly, at {ah_holafly_days} days from ${ah_holafly_price} - ${ah_holafly_perday}/day whatever you use."
 
 [[faq]]
-q = "Do I need ID verification for a UK eSIM?"
+q = "Do I need ID verification for an eSIM in UK?"
 a = "No. The UK does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on EE, Vodafone, O2, Three. Differences matter mostl
 [[faq]]
 q = "Can one eSIM cover the UK and France?"
 a = "Not on a single-country plan. If the itinerary continues from {country} into {neighbor}, compare a regional package with two separate plans, since the tables here price each market on its own."
+
+[[faq]]
+q = "Can I use an eSIM in UK?"
+a = "Yes, and {country} is unremarkable in that respect - no local registration or permission is required. {brand_count} providers sell {plan_count} separate {country} plans on this page, which is a market too large for availability to be the constraint. Verify your phone, then let the $/GB column decide between the plans above."
+
+[[faq]]
+q = "Will my phone work with an eSIM in UK?"
+a = "Same test as anywhere: dial *#06# and look for an EID number. Published compatibility lists lag behind new releases, so the dialer test on your own unit beats any list, ours included. Verify the device first, because the plans above only help if it passes."
+
+[[faq]]
+q = "Do I need a local number in UK?"
+a = "For messaging and maps you do not need one. Two-factor codes are the usual reason people ask, and those arrive on the home line as long as it stays active. Only add a local SIM on top if local calls are a real requirement."
+
+[[faq]]
+q = "What do travellers say about eSIMs in UK?"
+a = "We keep no rating for {country} eSIMs, and that is a decision rather than an omission. Price, allowance and the fair-use threshold are checkable facts, and they are what the tables above put side by side. Check the provider's fair-use and refund pages directly before you commit."

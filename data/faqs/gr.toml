@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Greece?"
 a = "Airalo and Holafly solve different problems, so compare the models before the prices. On Airalo's side the best value is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - priced per gigabyte rather than per day. Holafly sells unlimited days instead, its smallest {country} package being {ah_holafly_days} days for ${ah_holafly_price} (${ah_holafly_perday}/day)."
 
 [[faq]]
-q = "Do I need ID verification for a Greece eSIM?"
+q = "Do I need ID verification for an eSIM in Greece?"
 a = "No. Greece does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -23,4 +23,20 @@ a = "Plans on this page run on Cosmote, Vodafone, Wind. Differences matter mostl
 
 [[faq]]
 q = "Can one eSIM cover Greece and Turkiye?"
-a = "One country per plan, so a {country} eSIM stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."
+a = "One country per plan, so an eSIM bought for {country} stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."
+
+[[faq]]
+q = "Can I use an eSIM in Greece?"
+a = "Travel eSIMs are sold for {country} by every provider we track, and none of them needs a local address. {brand_count} providers sell {plan_count} separate {country} plans on this page, which is a market too large for availability to be the constraint. Check your handset first, then pick the plan that matches your trip length."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Greece?"
+a = "Compatibility is entirely about your device, and {country} adds no requirement of its own. Published compatibility lists lag behind new releases, so the dialer test on your own unit beats any list, ours included. Run the *#06# test before you buy a plan."
+
+[[faq]]
+q = "Do I need a local number in Greece?"
+a = "Not for a visitor. A {country} eSIM gives you connectivity, and the number stays with your home line. Two-factor codes are the usual reason people ask, and those arrive on the home line as long as it stays active. Keep your home SIM active for calls and codes, and let the eSIM carry data."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Greece?"
+a = "No aggregate score from us. What this page offers instead is the arithmetic. Price, allowance and the fair-use threshold are checkable facts, and they are what the tables above put side by side. Read the numbers above first, then check the provider's own reviews for the human side."

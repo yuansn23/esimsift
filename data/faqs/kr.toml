@@ -14,7 +14,7 @@ q = "Airalo or Holafly for South Korea?"
 a = "Different products: Airalo sells fixed data buckets, Holafly sells unlimited days. For {country}, Airalo's cheapest rate per gigabyte is ${ah_airalo_pergb} ({ah_airalo_plan}, ${ah_airalo_price}). The flat-rate option is Holafly, at {ah_holafly_days} days from ${ah_holafly_price} - ${ah_holafly_perday}/day whatever you use."
 
 [[faq]]
-q = "Do I need ID verification for a South Korea eSIM?"
+q = "Do I need ID verification for an eSIM in South Korea?"
 a = "No. South Korea does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on SK Telecom, KT, LG U+. Differences matter mostly 
 [[faq]]
 q = "Can one eSIM cover South Korea and Japan?"
 a = "Only with a regional package, because the country plans on this page do not cross borders. The markets around {country} all have their own tables here - {neighbors_all} among them - so price a regional bundle against two single-country plans."
+
+[[faq]]
+q = "Can I use an eSIM in South Korea?"
+a = "An eSIM works in {country}, and nothing about the destination blocks it. What varies is price rather than access - {plan_count} plans from {brand_count} providers, all on the same national networks. Verify your phone, then let the $/GB column decide between the plans above."
+
+[[faq]]
+q = "Will my phone work with an eSIM in South Korea?"
+a = "Your handset is the deciding factor here, not {country}. A phone bought in a different market from the one it was made for is the usual culprit, and that has nothing to do with {country} itself. Verify the device first, because the plans above only help if it passes."
+
+[[faq]]
+q = "Do I need a local number in South Korea?"
+a = "A local number is not required to use an eSIM in {country}. Travel eSIMs are priced as data, so buying one for voice is paying for the wrong product. Only add a local SIM on top if local calls are a real requirement."
+
+[[faq]]
+q = "What do travellers say about eSIMs in South Korea?"
+a = "Review scores are the one thing we deliberately leave out, because a single number hides the variation behind it. The published terms are the part nobody reviews and everybody should read, so that is what we quote. Check the provider's fair-use and refund pages directly before you commit."

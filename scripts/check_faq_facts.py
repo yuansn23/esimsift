@@ -28,7 +28,7 @@ partial 逻辑反了）在源文本里完全看不出来；只有在 HTML 里才
   R7 「Airalo-Holafly」那条：两家的报价必须与现算一致
   R8 不变量：最便宜的品牌不得是 Airalo / Holafly（jp 文案写了「neither is the cheapest」）
   R9 不变量：最便宜的档必须是计量档（Q1 文案直接印 $/GB，无限档会印出哨兵值）
-  R10 骨架不重复（★ 源级，唯一的例外，见下）—— 五条：
+  R10 骨架不重复（★ 源级，唯一的例外，见下）—— 六条：
       a) 第 1-3 条答案在 50 国上「把 token 与数字都抹掉」后必须两两不同（无重复骨架）
       b) 每条答案必须拆得回 scripts/faq_frames.py 的 (open, body, close) 片段组合
          —— 拆不回说明有人手改了答案却没同步片段库，那是比重复更危险的状态
@@ -36,9 +36,17 @@ partial 逻辑反了）在源文本里完全看不出来；只有在 HTML 里才
       d) 第 6 条必须取自库里的 7 个变体，且 7 个没有邻国的国家（只有兜底短语、没有国名
          可区分）必须各占一个变体
       e) 第 6 条答案必须含 {country}
+      f) 第 4、5 条（ID 核验 / 网络）也必须在 50 国上骨架两两不同 —— 这两条不是方阵
+         生成的、是手写的，所以没有片段库可拆（b/c 不适用），只能判骨架唯一性。
+         2026-10-08 从「只报数」升为「判失败」：此前第 4 条有 14 个实名国共用同一句
+         套话（且句子里没有国名），产物级 md5 去重只有 37/50。已逐国按各国真实登记
+         规定重写，现为 50/50，本判定用来锁住它。
   R11 邻国问答不重复（产物级）：Q6 在各国页上必须两两不同 —— R10(e) 在源级保证它，
       但源级**看不见**互称邻国的一对国家（FR 与 IE 都指向 UK）会不会撞车，只有在
       产物里才暴露。这条规则是被那个真实 bug 逼出来的（见函数注释）。
+      ⚠ 注意尺子：R10(f) 用的 `skeleton()` 会抹掉国名，所以 Q6 用这套尺子永远只有
+      8/50「唯一」—— 那是**尺子的问题不是数据的问题**（邻国问答本来就靠国名区分）。
+      Q6 的判据一律是**产物级 md5**（R11），不要拿骨架尺子去judge它。
 
 多条并列最优时按**候选集合**判定：只要页面上的取值属于并列最优解之一就算通过 ——
 所以判定的是「事实对不对」，不是「Hugo 与 Python 谁先挑到并列项」。
@@ -355,16 +363,24 @@ def frame_errors(faqs: dict, countries: dict) -> tuple[list[str], list[str]]:
         else:
             info.append(f"slot6: 无邻国的 {len(no_nb)} 国各占一个变体 / 库内 {len(mod.Q6)} 个变体")
 
-    # ── 其余槽位只报数（slot4 的「ID 规定」有 14 国共用同一句，是历史遗留，见 PROJECT.md），不判失败 ──
+    # ── slot 4、5：手写问答（不走片段库），只判「50 国骨架两两不同」（R10(f)）──
+    # 为什么必须判：2026-10-08 审计发现 slot4 有 14 个实名国共用同一句套话，
+    # 产物级 md5 去重仅 37/50。逐国重写后为 50/50；这条判定就是防止退回去。
+    # ⚠ 不能用这套尺子判 slot6（邻国问答）：skeleton() 抹掉国名，它必然只剩 8/50，
+    #   那是尺子失真 —— slot6 的判据是产物级 R11。
     other: dict[int, dict[str, str]] = collections.defaultdict(dict)
     for iso, doc in sorted(faqs.items()):
         for i, item in enumerate(doc.get("faq", [])):
             if i in (3, 4):
                 other[i][iso] = item["a"]
     for i in sorted(other):
-        vals = {skeleton(a) for a in other[i].values()}
-        flag = "" if len(vals) == len(other[i]) else " ← 有历史重复"
-        info.append(f"slot{i+1}: {len(vals)} 种骨架 / {len(other[i])} 页{flag}")
+        vals: dict[str, list[str]] = collections.defaultdict(list)
+        for iso, a in other[i].items():
+            vals[skeleton(a)].append(iso)
+        dup = {k: v for k, v in vals.items() if len(v) > 1}
+        info.append(f"slot{i+1}: {len(vals)} 种骨架 / {len(other[i])} 页")
+        for k, who in dup.items():
+            errs.append(f"R10 slot{i+1} 有 {len(who)} 页共用同一副骨架 -> {sorted(who)[:8]}")
     return errs, info
 
 
@@ -485,7 +501,7 @@ def selftest() -> int:
 
 
 def frame_selftest() -> int:
-    """R10 的构造样本：真实数据不报错，三种「句架重复」各注入一次必须报红。"""
+    """R10 的构造样本：真实数据不报错，四种「句架重复」各注入一次必须报红。"""
     _, _, countries, faqs = load()
     mod = load_frames()
 
@@ -506,6 +522,9 @@ def frame_selftest() -> int:
     d5["DE"]["faq"][0]["a"] = "Hand-written by an editor, with no tokens at all."
     d6 = clone()
     d6["DE"]["faq"][5]["a"] = "Only via a regional plan, because each country plan here is scoped to one market."
+    # 手写槽（第 4 条 ID 核验）跨国撞车 —— 2026-10-08 从「只报数」升级为「判失败」的反例
+    d7 = clone()
+    d7["DE"]["faq"][3]["a"] = d7["FR"]["faq"][3]["a"]
 
     cases = [
         ("真实数据（应无报错）", d1, 0, ""),
@@ -514,6 +533,7 @@ def frame_selftest() -> int:
         ("无邻国兜底撞车", d4, None, "slot6"),
         ("答案偏离片段库", d5, None, "拆不回片段库"),
         ("Q6 缺 {country}", d6, None, "缺 {country}"),
+        ("手写槽（ID）撞车", d7, None, "slot4"),
     ]
     failed = 0
     for name, data, want, needle in cases:

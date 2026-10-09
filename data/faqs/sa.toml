@@ -14,8 +14,8 @@ q = "Airalo or Holafly for Saudi Arabia?"
 a = "The honest answer is that these two are not interchangeable. Airalo's way into {country} is a data bucket - {ah_airalo_plan} at ${ah_airalo_price}, or ${ah_airalo_pergb}/GB at its sharpest. Holafly's floor price for {country} is ${ah_holafly_price} over {ah_holafly_days} days (${ah_holafly_perday}/day), with no data counter to watch."
 
 [[faq]]
-q = "Do I need ID verification for a Saudi Arabia eSIM?"
-a = "Yes. Local law requires passport-linked registration even for travel eSIMs, but the big providers verify in-app in a couple of minutes."
+q = "Do I need ID verification for an eSIM in Saudi Arabia?"
+a = "Yes. Saudi tourist eSIMs require passport details, and the providers we track verify them in-app within a few minutes. There is no local sponsor or address step involved, so registration is not what should be slowing a purchase down."
 
 [[faq]]
 q = "Which networks do Saudi Arabia eSIMs use?"
@@ -24,3 +24,19 @@ a = "Plans on this page run on STC, Mobily, Zain. Differences matter mostly outs
 [[faq]]
 q = "Can one eSIM cover Saudi Arabia and United Arab Emirates?"
 a = "Only via a regional plan, because the {country} tables here are scoped to one market. Crossing into {neighbor} means either a regional package or a second plan, and the per-gigabyte rate is what tells them apart."
+
+[[faq]]
+q = "Can I use an eSIM in Saudi Arabia?"
+a = "Yes - the only things that can stop an eSIM in {country} are on your side rather than the country's. Availability is already settled by the {plan_count} plans listed above, so the open questions are duration and gigabytes. The device check takes thirty seconds, and the plans above are all priced on one scale."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Saudi Arabia?"
+a = "Yes, provided the phone has eSIM hardware and carries no carrier lock. Of the {plan_count} {country} plans on this page, none needs anything beyond a standard eSIM profile. Confirm the EID appears, then compare the plans above."
+
+[[faq]]
+q = "Do I need a local number in Saudi Arabia?"
+a = "No number is issued with a travel eSIM for {country}. If a local number is genuinely required that means a local SIM purchase, and usually a registration step at a store. Use the eSIM for data and the home line for anything that needs the number."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Saudi Arabia?"
+a = "We answer the review question with measurement rather than sentiment. Where a provider publishes its own support and refund policy we link it directly, so you can read the source rather than a summary. The measured comparison is above, and the opinions are best read where they were posted."

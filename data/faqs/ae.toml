@@ -14,8 +14,8 @@ q = "Airalo or Holafly for United Arab Emirates?"
 a = "They sell different things, so the answer depends on how you use data. Airalo's best {country} rate is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - and that is a fixed bucket rather than a daily allowance. Holafly sells unlimited days instead, its smallest {country} package being {ah_holafly_days} days for ${ah_holafly_price} (${ah_holafly_perday}/day)."
 
 [[faq]]
-q = "Do I need ID verification for a United Arab Emirates eSIM?"
-a = "Yes. Local law requires passport-linked registration even for travel eSIMs, but the big providers verify in-app in a couple of minutes."
+q = "Do I need ID verification for an eSIM in United Arab Emirates?"
+a = "Yes - a UAE tourist SIM needs a passport scan when it is bought, and the eSIM providers we track keep that same step inside their app or checkout. No Emirates ID is involved, which is what makes the eSIM the quick route for a short stop."
 
 [[faq]]
 q = "Which networks do United Arab Emirates eSIMs use?"
@@ -24,3 +24,19 @@ a = "Plans on this page run on Etisalat, du. Differences matter mostly outside t
 [[faq]]
 q = "Can one eSIM cover United Arab Emirates and Saudi Arabia?"
 a = "Not with a single-country plan. Everything in our {country} tables is scoped to {country} alone, so a trip that also takes in {neighbor} needs either a second country plan or a regional bundle."
+
+[[faq]]
+q = "Can I use an eSIM in United Arab Emirates?"
+a = "Yes - {country} is on the standard travel-eSIM map, with {brand_count} providers selling plans for it. All {plan_count} plans in our {country} table register on the domestic networks rather than roaming, so there is no coverage gate to clear. Check your handset first, then pick the plan that matches your trip length."
+
+[[faq]]
+q = "Will my phone work with an eSIM in United Arab Emirates?"
+a = "If your phone supports eSIM and is carrier-unlocked it works in {country} - the destination has no say in it. Regional variants are the trap worth checking: the same model name can ship with or without the eSIM chip depending on the market it was sold in. Run the *#06# test before you buy a plan."
+
+[[faq]]
+q = "Do I need a local number in United Arab Emirates?"
+a = "Not for a normal trip - a travel eSIM for {country} is a data product rather than a phone line. Voice is generally not part of the deal, and any calling happens through an app rather than the mobile network. Keep your home SIM active for calls and codes, and let the eSIM carry data."
+
+[[faq]]
+q = "What do travellers say about eSIMs in United Arab Emirates?"
+a = "We do not aggregate reviews, so the honest answer here is about method rather than ratings. The reason is that the same brand scores differently depending on the region the reviewer sits in, so quoting one figure as the truth would mislead. Read the numbers above first, then check the provider's own reviews for the human side."

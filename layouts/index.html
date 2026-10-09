@@ -201,6 +201,7 @@
 {{ $faqList = $faqList | append (dict "q" (i18n "home__faq_q4") "a" (i18n "home__faq_a4" (dict "europe" "/guides/best-europe-esim/"))) }}
 {{ $faqList = $faqList | append (dict "q" (i18n "home__faq_q5") "a" (i18n "home__faq_a5")) }}
 {{ $faqList = $faqList | append (dict "q" (i18n "home__faq_q6") "a" (i18n "home__faq_a6")) }}
+{{ $faqList = $faqList | append (dict "q" (i18n "home__faq_q7") "a" (i18n "home__faq_a7" (dict "price" (printf "%.2f" $minGlobal)))) }}
 {{ $faqEntities := slice }}
 {{ range $faqList }}{{ $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) }}{{ end }}
 <script type="application/ld+json">

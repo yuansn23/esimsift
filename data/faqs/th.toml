@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Thailand?"
 a = "Different products: Airalo sells fixed data buckets, Holafly sells unlimited days. Airalo's strongest {country} offer is ${ah_airalo_pergb}/GB, sold as {ah_airalo_plan} for ${ah_airalo_price}. Holafly sells unlimited days instead, its smallest {country} package being {ah_holafly_days} days for ${ah_holafly_price} (${ah_holafly_perday}/day)."
 
 [[faq]]
-q = "Do I need ID verification for a Thailand eSIM?"
+q = "Do I need ID verification for an eSIM in Thailand?"
 a = "No. Thailand does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on AIS, True Move, DTAC. Differences matter mostly o
 [[faq]]
 q = "Can one eSIM cover Thailand and Malaysia?"
 a = "Only with a regional package, because the country plans on this page do not cross borders. The markets around {country} all have their own tables here - {neighbors_all} among them - so price a regional bundle against two single-country plans."
+
+[[faq]]
+q = "Can I use an eSIM in Thailand?"
+a = "An eSIM works in {country}, and nothing about the destination blocks it. Every one of the {brand_count} providers here sells into {country}, which is itself the answer to whether eSIMs work there. Check your handset first, then pick the plan that matches your trip length."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Thailand?"
+a = "Your handset is the deciding factor here, not {country}. None of the {brand_count} providers here requires a particular handset, only that the device has the chip and is unlocked. Run the *#06# test before you buy a plan."
+
+[[faq]]
+q = "Do I need a local number in Thailand?"
+a = "A local number is not required to use an eSIM in {country}. The practical split is data on the eSIM and the existing number on the physical SIM, with roaming switched off on the home line. Keep your home SIM active for calls and codes, and let the eSIM carry data."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Thailand?"
+a = "Review scores are the one thing we deliberately leave out, because a single number hides the variation behind it. The comparison above puts all {plan_count} {country} plans from {brand_count} providers through one formula, which no review site can claim. Read the numbers above first, then check the provider's own reviews for the human side."

@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Brazil?"
 a = "Airalo and Holafly solve different problems, so compare the models before the prices. Airalo's best {country} rate is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - and that is a fixed bucket rather than a daily allowance. The flat-rate option is Holafly, at {ah_holafly_days} days from ${ah_holafly_price} - ${ah_holafly_perday}/day whatever you use."
 
 [[faq]]
-q = "Do I need ID verification for a Brazil eSIM?"
+q = "Do I need ID verification for an eSIM in Brazil?"
 a = "No. Brazil does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -23,4 +23,20 @@ a = "Plans on this page run on Vivo, Claro, TIM. Differences matter mostly outsi
 
 [[faq]]
 q = "Can one eSIM cover Brazil and Argentina?"
-a = "One country per plan, so a {country} eSIM stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."
+a = "One country per plan, so an eSIM bought for {country} stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."
+
+[[faq]]
+q = "Can I use an eSIM in Brazil?"
+a = "Travel eSIMs are sold for {country} by every provider we track, and none of them needs a local address. All {plan_count} plans in our {country} table register on the domestic networks rather than roaming, so there is no coverage gate to clear. Verify your phone, then let the $/GB column decide between the plans above."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Brazil?"
+a = "Compatibility is entirely about your device, and {country} adds no requirement of its own. Regional variants are the trap worth checking: the same model name can ship with or without the eSIM chip depending on the market it was sold in. Verify the device first, because the plans above only help if it passes."
+
+[[faq]]
+q = "Do I need a local number in Brazil?"
+a = "Not for a visitor. A {country} eSIM gives you connectivity, and the number stays with your home line. Voice is generally not part of the deal, and any calling happens through an app rather than the mobile network. Only add a local SIM on top if local calls are a real requirement."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Brazil?"
+a = "No aggregate score from us. What this page offers instead is the arithmetic. The reason is that the same brand scores differently depending on the region the reviewer sits in, so quoting one figure as the truth would mislead. Check the provider's fair-use and refund pages directly before you commit."

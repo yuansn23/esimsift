@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Switzerland?"
 a = "They sell different things, so the answer depends on how you use data. Airalo sells buckets: its sharpest {country} rate is ${ah_airalo_pergb}/GB ({ah_airalo_plan}, ${ah_airalo_price}). Holafly's model is daily unlimited, starting at {ah_holafly_days} days for ${ah_holafly_price} - ${ah_holafly_perday}/day - so heavy use costs the same as light use."
 
 [[faq]]
-q = "Do I need ID verification for a Switzerland eSIM?"
+q = "Do I need ID verification for an eSIM in Switzerland?"
 a = "No. Switzerland does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on Swisscom, Sunrise, Salt. Differences matter mostl
 [[faq]]
 q = "Can one eSIM cover Switzerland and France?"
 a = "Not with a single-country plan. Everything in our {country} tables is scoped to {country} alone, so a trip that also takes in {neighbor} needs either a second country plan or a regional bundle."
+
+[[faq]]
+q = "Can I use an eSIM in Switzerland?"
+a = "Yes - {country} is on the standard travel-eSIM map, with {brand_count} providers selling plans for it. The choice here is about price and allowance rather than availability: {plan_count} plans from {brand_count} providers. Run the compatibility check, then compare the plans above on $/GB and $/day."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Switzerland?"
+a = "If your phone supports eSIM and is carrier-unlocked it works in {country} - the destination has no say in it. The two checks that matter are hardware and lock status - the {plan_count} plans here install on a phone that passes both, and fail on one that does not. Check for an EID number and a no-restrictions carrier lock first."
+
+[[faq]]
+q = "Do I need a local number in Switzerland?"
+a = "Not for a normal trip - a travel eSIM for {country} is a data product rather than a phone line. Keeping the home line in the physical slot is the usual arrangement, and it is what lets verification texts keep arriving. Plan on data from the eSIM and your existing number from the home line."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Switzerland?"
+a = "We do not aggregate reviews, so the honest answer here is about method rather than ratings. Fair-use terms, hotspot rules and refund windows are where the real differences hide, and those are documented rather than voted on. Use the tables above for the facts and the provider's own channels for sentiment."

@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Canada?"
 a = "The honest answer is that these two are not interchangeable. Airalo's best {country} rate is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - and that is a fixed bucket rather than a daily allowance. Where Holafly wins is predictability, from ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and where Airalo wins is a short, light trip."
 
 [[faq]]
-q = "Do I need ID verification for a Canada eSIM?"
+q = "Do I need ID verification for an eSIM in Canada?"
 a = "No. Canada does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on Bell, Rogers, Telus. Differences matter mostly ou
 [[faq]]
 q = "Can one eSIM cover Canada and the USA?"
 a = "Only via a regional plan, because the {country} tables here are scoped to one market. Crossing into {neighbor} means either a regional package or a second plan, and the per-gigabyte rate is what tells them apart."
+
+[[faq]]
+q = "Can I use an eSIM in Canada?"
+a = "Yes - the only things that can stop an eSIM in {country} are on your side rather than the country's. All {plan_count} plans in our {country} table register on the domestic networks rather than roaming, so there is no coverage gate to clear. Fix the handset question before you buy, and compare the rest on price."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Canada?"
+a = "Yes, provided the phone has eSIM hardware and carries no carrier lock. Regional variants are the trap worth checking: the same model name can ship with or without the eSIM chip depending on the market it was sold in. Run the two checks and come back to the table above."
+
+[[faq]]
+q = "Do I need a local number in Canada?"
+a = "No number is issued with a travel eSIM for {country}. Voice is generally not part of the deal, and any calling happens through an app rather than the mobile network. Keep both lines in the phone and set data to the eSIM."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Canada?"
+a = "We answer the review question with measurement rather than sentiment. The reason is that the same brand scores differently depending on the region the reviewer sits in, so quoting one figure as the truth would mislead. Treat the tables above as the checkable half and read reviews for the rest."

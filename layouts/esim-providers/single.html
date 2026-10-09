@@ -239,7 +239,7 @@
 
   {{- /* Q1 覆盖 */ -}}
   {{- $q1 := printf "How many countries does %s cover?" $p.name -}}
-  {{- if eq $v 1 -}}{{- $q1 = printf "Where can I use a %s eSIM?" $p.name -}}
+  {{- if eq $v 1 -}}{{- $q1 = printf "Where can I use an eSIM from %s?" $p.name -}}
   {{- else if eq $v 2 -}}{{- $q1 = printf "Which countries does the %s eSIM work in?" $p.name -}}{{- end -}}
   {{- $a1 := printf "%s sells eSIMs for %d of the %d destinations this site tracks, all priced from the same dated snapshot." $p.name $a.countries (len $d.countries) -}}
   {{- with $p.info -}}{{- with .destinations -}}{{- $a1 = printf "%s Its own catalogue lists %d+ destinations in total — we track the %d where demand is highest." $a1 . (len $d.countries) -}}{{- end -}}{{- end -}}
@@ -274,18 +274,18 @@
     {{- end -}}
     {{- $faqList = $faqList | append (dict "q" (printf "Do I need the %s app to use its eSIMs?" $p.name) "a" (printf "Yes — %s is app-first: you browse, buy and install plans inside the app (available on %s), and the eSIM sits alongside your physical SIM rather than replacing it. Buy and install before you fly; on landing, enable data roaming for the eSIM line and it connects by itself." $p.name $stores)) -}}
   {{- else -}}
-    {{- $faqList = $faqList | append (dict "q" (printf "Can I buy a %s eSIM without installing an app?" $p.name) "a" (printf "Yes — %s is a web marketplace: pick your destination, check out on the website, and the eSIM QR code arrives by email within minutes. No app is required. Install the profile at home on Wi-Fi before departure so you land connected." $p.name)) -}}
+    {{- $faqList = $faqList | append (dict "q" (printf "Can I buy an eSIM from %s without installing an app?" $p.name) "a" (printf "Yes — %s is a web marketplace: pick your destination, check out on the website, and the eSIM QR code arrives by email within minutes. No app is required. Install the profile at home on Wi-Fi before departure so you land connected." $p.name)) -}}
   {{- end -}}
 
   {{- /* Q5 折扣码（仅官方有公开码的品牌出现此题） */ -}}
   {{- with $p.promo_code -}}
     {{- $terms := "" -}}{{- with $p.promo_terms -}}{{- $terms = printf ", %s" . -}}{{- end -}}
-    {{- $faqList = $faqList | append (dict "q" (printf "Is there a %s discount code?" $p.name) "a" (printf "Yes — code <strong>%s</strong> gives %s (%d%% off%s). Copy it on our <a href=\"/esim-deals/\">eSIM deals page</a>, which also calculates whether the discounted price still loses to a cheaper rival in each country." . $p.promo_label $p.promo_pct $terms)) -}}
+    {{- $faqList = $faqList | append (dict "q" (printf "Is there a discount code for %s?" $p.name) "a" (printf "Yes — code <strong>%s</strong> gives %s (%d%% off%s). Copy it on our <a href=\"/esim-deals/\">eSIM deals page</a>, which also calculates whether the discounted price still loses to a cheaper rival in each country." . $p.promo_label $p.promo_pct $terms)) -}}
   {{- end -}}
 
   {{- /* Q6 入门价 */ -}}
   {{- $q6 := printf "What is %s's cheapest eSIM plan?" $p.name -}}
-  {{- if eq $v 1 -}}{{- $q6 = printf "How much does a %s eSIM cost?" $p.name -}}
+  {{- if eq $v 1 -}}{{- $q6 = printf "How much does an eSIM from %s cost?" $p.name -}}
   {{- else if eq $v 2 -}}{{- $q6 = printf "What is the entry price for %s?" $p.name -}}{{- end -}}
   {{- $faqList = $faqList | append (dict "q" $q6 "a" (printf "The entry price in our database is <strong>$%.2f</strong> — the smallest bucket in the cheapest destination, not necessarily the right plan for your trip. Sort by $/GB on your <a href=\"/compare/\">destination's page</a> before choosing; prices exclude promo codes and taxes." $a.minPrice)) -}}
 
@@ -309,7 +309,7 @@
     {{- with .support -}}
       {{- $q8 := printf "How do I contact %s support?" $p.name -}}
       {{- if eq $v 1 -}}{{- $q8 = printf "What if my %s eSIM doesn't connect?" $p.name -}}
-      {{- else if eq $v 2 -}}{{- $q8 = printf "Where do I get help with a %s eSIM?" $p.name -}}{{- end -}}
+      {{- else if eq $v 2 -}}{{- $q8 = printf "Where do I get help with an eSIM from %s?" $p.name -}}{{- end -}}
       {{- $a8 := printf "%s offers %s." $p.name . -}}
       {{- with $p.info.support_email -}}{{- $a8 = printf "%s Email: <a href=\"mailto:%s\">%s</a>." $a8 . . -}}{{- end -}}
       {{- with $p.info.response_time -}}{{- $a8 = printf "%s %s." $a8 . -}}{{- end -}}
@@ -321,7 +321,7 @@
   {{- /* Q9 退款（info.refund 存在时，含行动建议） */ -}}
   {{- with $p.info -}}
     {{- with .refund -}}
-      {{- $q9 := printf "Can I get a refund on a %s eSIM?" $p.name -}}
+      {{- $q9 := printf "Can I get a refund on an eSIM from %s?" $p.name -}}
       {{- if eq $v 1 -}}{{- $q9 = printf "What is %s's refund policy?" $p.name -}}
       {{- else if eq $v 2 -}}{{- $q9 = printf "Does %s give money back if the eSIM fails?" $p.name -}}{{- end -}}
       {{- /* 2026-10-08：此前答案把 info.refund 原文整段印进来，而 #support 的
@@ -351,7 +351,7 @@
   {{- /* Q12 5G（用户点名「Airalo 5G coverage countries」；答案按宿主网络的实况给，
          绝不按品牌编 —— data 层的 networks 是国家级事实）。 */ -}}
   {{- $q12 := printf "Does %s support 5G?" $p.name -}}
-  {{- if eq $v 1 -}}{{- $q12 = printf "Will I get 5G on a %s eSIM?" $p.name -}}
+  {{- if eq $v 1 -}}{{- $q12 = printf "Will I get 5G on an eSIM from %s?" $p.name -}}
   {{- else if eq $v 2 -}}{{- $q12 = printf "Is 5G included with %s?" $p.name -}}{{- end -}}
   {{- $a12 := printf "An eSIM cannot invent a network the destination does not have. 5G is live on the host networks in %d of the %d markets where %s sells, so whether you get 5G is decided by where you fly, not by which brand you bought." $mk5g $mkTotal $p.name -}}
   {{- if gt (len $mk4g) 0 -}}
@@ -539,6 +539,42 @@
         <p class="mt-2 text-sm leading-relaxed text-accent-700">{{ i18n "esim_providers_single__reality_4g_note" (dict "list" (delimit $mk4gNames ", ")) | safeHTML }}</p>
         {{ end }}
         <p class="mt-2 text-xs leading-relaxed text-ink-400">{{ i18n "esim_providers_single__reality_5g_link" | safeHTML }} <a href="{{ partial "lang-href.html" "/networks/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_network_map" | safeHTML }}</a> · <a href="{{ partial "lang-href.html" "/research/fair-use-audit/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "esim_providers_single__fair_use_audit" | safeHTML }}</a></p>
+      </div>
+    </div>
+  </section>
+
+  {{/* ── ③a #reviews：口碑去哪读、怎么读（第五十六轮批 6）──────────────────────
+       为什么单开一节：`{brand} esim review` / `{brand} esim reddit` 这一族的词
+       在品牌 Hub 上原本**只有页尾 #reading 第三列一个 H3 落点**，标题里连
+       "review" 都没有 —— 位置太深、字面不含词，等于没承接。
+       现在提升为独立 H2（字面含 "reviews"）放在 #reality 之后，并补一张
+       「怎么读别人的评价」卡：**给方法，不给分数**。
+       ⚠ 纪律不变：只给档案链接、绝不印分 —— 同一品牌在 Trustpilot 不同地区
+         域名下聚合成 3.9/4.0/4.1（按语言/地区分片），印单一分数就是编造。
+       ⚠ 原来 #reading 里那张「口碑卡」已随内容整体搬到本节（**复用同一批
+         i18n key**，不新增同义文案），保证同一段口径在页面上只出现一次。 */}}
+  <section class="mt-12" aria-labelledby="reviews">
+    <p class="eyebrow">{{ i18n "esim_providers_single__reviews_eyebrow" | safeHTML }}</p>
+    <h2 id="reviews" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "esim_providers_single__reviews_h2" (dict "brand" $p.name) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "esim_providers_single__reviews_lead" (dict "brand" $p.name "plans" $totalPlans "countries" $a.countries "date" $priceDate) | safeHTML }}</p>
+    <div class="mt-6 grid items-start gap-4 lg:grid-cols-[1.5fr_1fr]">
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "esim_providers_single__reviews_h3_how" (dict "brand" $p.name) | safeHTML }}</h3>
+        <ul class="mt-4 space-y-2 text-sm text-ink-600">
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ i18n "esim_providers_single__reviews_check_failure" | safeHTML }}</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ i18n "esim_providers_single__reviews_check_destination" (dict "brand" $p.name) | safeHTML }}</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ i18n "esim_providers_single__reviews_check_date" | safeHTML }}</li>
+        </ul>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "esim_providers_single__reading_reviews_h3" (dict "brand" $p.name) | safeHTML }}</h3>
+        {{ if $reviewURL }}
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__reading_reviews_note" (dict "brand" $p.name) | safeHTML }}</p>
+        <a href="{{ $reviewURL }}" target="_blank" rel="noopener nofollow" class="mt-3 inline-block text-sm font-semibold text-brand-700 hover:underline">{{ i18n "esim_providers_single__reading_reviews_link" (dict "brand" $p.name) | safeHTML }}</a>
+        {{ else }}
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__reading_reviews_none" (dict "brand" $p.name) | safeHTML }}</p>
+        {{ end }}
+        <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "esim_providers_single__reviews_forums" | safeHTML }}</p>
       </div>
     </div>
   </section>
@@ -1077,7 +1113,7 @@
   <section class="mt-12" aria-labelledby="faq">
     <p class="eyebrow">FAQ</p>
     {{- $faqH2 := printf "Is %s the right eSIM for your trip" $p.name -}}
-    {{- if eq $v 1 -}}{{- $faqH2 = printf "What should you know before buying a %s eSIM" $p.name -}}
+    {{- if eq $v 1 -}}{{- $faqH2 = printf "What should you know before buying an eSIM from %s" $p.name -}}
     {{- else if eq $v 2 -}}{{- $faqH2 = printf "What do travelers ask about the %s eSIM" $p.name -}}{{- end -}}
     <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">{{ $faqH2 }}</h2>
     <div class="mt-5 space-y-3">
@@ -1107,16 +1143,7 @@
   <section class="mt-12" aria-labelledby="reading">
     <p class="eyebrow">{{ i18n "esim_providers_single__reading_eyebrow" | safeHTML }}</p>
     <h2 id="reading" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "esim_providers_single__reading_h2" (dict "brand" $p.name) | safeHTML }}</h2>
-    <div class="mt-6 grid gap-4 lg:grid-cols-3">
-      <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "esim_providers_single__reading_reviews_h3" (dict "brand" $p.name) | safeHTML }}</h3>
-        {{ if $reviewURL }}
-        <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__reading_reviews_note" (dict "brand" $p.name) | safeHTML }}</p>
-        <a href="{{ $reviewURL }}" target="_blank" rel="noopener nofollow" class="mt-3 inline-block text-sm font-semibold text-brand-700 hover:underline">{{ i18n "esim_providers_single__reading_reviews_link" (dict "brand" $p.name) | safeHTML }}</a>
-        {{ else }}
-        <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ i18n "esim_providers_single__reading_reviews_none" (dict "brand" $p.name) | safeHTML }}</p>
-        {{ end }}
-      </div>
+    <div class="mt-6 grid gap-4 lg:grid-cols-2">
       <div class="card p-6">
         <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "esim_providers_single__reading_guides_h3" | safeHTML }}</h3>
         <ul class="mt-3 space-y-2 text-sm">

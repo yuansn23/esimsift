@@ -173,14 +173,155 @@ Q6 = [
     "Not with a country plan alone, because {country} plans stop at the border. Adding {neighbor} means a regional bundle or a second plan, and the two-country arithmetic is worth doing before you buy.",
     "Not on a single-country plan. If the itinerary continues from {country} into {neighbor}, compare a regional package with two separate plans, since the tables here price each market on its own.",
     "Yes, but only through a multi-country plan, because nothing in our {country} tables covers a second country. Look for a regional package that includes {neighbor} and compare its $/GB with two single-country plans.",
-    "One country per plan, so a {country} eSIM stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two.",
+    "One country per plan, so an eSIM bought for {country} stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two.",
     "Only via a regional plan, because the {country} tables here are scoped to one market. Crossing into {neighbor} means either a regional package or a second plan, and the per-gigabyte rate is what tells them apart.",
 ]
 
+# ══════════════════════════════════════════════════════════════════════════════
+# Q7-Q10（第五十六轮，2026-10-08）：承接 Google 官方通道采集里国家页剩下的四簇词 ——
+#   可用性问答 84 词 / 口碑 374 词 / 设备 241 词 / 号码与通话 111 词。
+# 依据 docs/keywords/google/kw-placement-plan-2026-10-08.md。
+#
+# 全部沿用与 Q1-Q3 相同的 (a, b, c) 拉丁方阵 → 任意两国最多共用一句，49 国两两不同。
+#
+# ⚠ 只用**已注册**的 token：{country} / {plan_count} / {brand_count}。
+#   用新 token 必须先在 layouts/partials/faq-live-tokens.html 里定义并给初值，
+#   否则 check_faq_facts.py 的 R1（产物里残留 {token}）会直接拦下。
+# ⚠ 答案里一律不带 HTML：国家页 FAQ 的答案经过 `replace` 后是 string，
+#   `{{ .a }}` 会做 HTML 转义 —— 写 `<a>` 会原样印成文本。
+# ⚠ 问题模板刻意避开「a/an + 国名」（"a Argentina eSIM" 会错，而 "an" 对
+#   USA / UK / Turkiye 又是错的）。所以 Q8 用 "with eSIM in"，不带冠词。
+# ⚠ Q7-Q10 不重复 Q1-Q3 已经负责的断言（最便宜 / 无限 / Airalo-Holafly），
+#   避免同一页两处讲同一件事而互相打架。
+# ══════════════════════════════════════════════════════════════════════════════
+Q7 = {  # 这国能用 eSIM 吗
+    "open": [
+        "Yes - {country} is on the standard travel-eSIM map, with {brand_count} providers selling plans for it.",
+        "An eSIM works in {country}, and nothing about the destination blocks it.",
+        "It does work here. No country-level restriction stands between a travel eSIM and the networks in {country}.",
+        "Yes, and {country} is unremarkable in that respect - no local registration or permission is required.",
+        "{plan_count} plans across {brand_count} providers are listed for {country} on this page, and every one of them is usable.",
+        "Travel eSIMs are sold for {country} by every provider we track, and none of them needs a local address.",
+        "Yes - the only things that can stop an eSIM in {country} are on your side rather than the country's.",
+    ],
+    "body": [
+        "All {plan_count} plans in our {country} table register on the domestic networks rather than roaming, so there is no coverage gate to clear.",
+        "The choice here is about price and allowance rather than availability: {plan_count} plans from {brand_count} providers.",
+        "{brand_count} providers sell {plan_count} separate {country} plans on this page, which is a market too large for availability to be the constraint.",
+        "Of the {plan_count} {country} plans listed here, none is limited to a particular region of the country.",
+        "What varies is price rather than access - {plan_count} plans from {brand_count} providers, all on the same national networks.",
+        "Availability is already settled by the {plan_count} plans listed above, so the open questions are duration and gigabytes.",
+        "Every one of the {brand_count} providers here sells into {country}, which is itself the answer to whether eSIMs work there.",
+    ],
+    "close": [
+        "Check your handset first, then pick the plan that matches your trip length.",
+        "Run the compatibility check, then compare the plans above on $/GB and $/day.",
+        "Settle the phone question and the comparison above does the rest.",
+        "Confirm the device supports eSIM and is unlocked, then choose from the table above.",
+        "The device check takes thirty seconds, and the plans above are all priced on one scale.",
+        "Verify your phone, then let the $/GB column decide between the plans above.",
+        "Fix the handset question before you buy, and compare the rest on price.",
+    ],
+}
+
+Q8 = {  # 我的手机行不行
+    "open": [
+        "If your phone supports eSIM and is carrier-unlocked it works in {country} - the destination has no say in it.",
+        "Your handset is the deciding factor here, not {country}.",
+        "It depends on the device rather than the country, because every plan on this page is a standard eSIM profile.",
+        "Same test as anywhere: dial *#06# and look for an EID number.",
+        "An eSIM-capable unlocked phone works in {country} without any extra step.",
+        "Compatibility is entirely about your device, and {country} adds no requirement of its own.",
+        "Yes, provided the phone has eSIM hardware and carries no carrier lock.",
+    ],
+    "body": [
+        "Regional variants are the trap worth checking: the same model name can ship with or without the eSIM chip depending on the market it was sold in.",
+        "The two checks that matter are hardware and lock status - the {plan_count} plans here install on a phone that passes both, and fail on one that does not.",
+        "Published compatibility lists lag behind new releases, so the dialer test on your own unit beats any list, ours included.",
+        "The eSIM chip is fixed at manufacture, so a handset built without one cannot gain it later, however many {country} plans we list.",
+        "A phone bought in a different market from the one it was made for is the usual culprit, and that has nothing to do with {country} itself.",
+        "Of the {plan_count} {country} plans on this page, none needs anything beyond a standard eSIM profile.",
+        "None of the {brand_count} providers here requires a particular handset, only that the device has the chip and is unlocked.",
+    ],
+    "close": [
+        "Run the *#06# test before you buy a plan.",
+        "Check for an EID number and a no-restrictions carrier lock first.",
+        "Settle both checks at home on Wi-Fi rather than at the airport.",
+        "Test the handset now and choosing a plan becomes a price question rather than a compatibility one.",
+        "Confirm the EID appears, then compare the plans above.",
+        "Verify the device first, because the plans above only help if it passes.",
+        "Run the two checks and come back to the table above.",
+    ],
+}
+
+Q9 = {  # 要不要本地号码
+    "open": [
+        "Not for a normal trip - a travel eSIM for {country} is a data product rather than a phone line.",
+        "A local number is not required to use an eSIM in {country}.",
+        "No, unless you specifically need to make calls on a local number.",
+        "For messaging and maps you do not need one.",
+        "Only if local calls matter to you, because the {plan_count} plans listed for {country} are data products.",
+        "Not for a visitor. A {country} eSIM gives you connectivity, and the number stays with your home line.",
+        "No number is issued with a travel eSIM for {country}.",
+    ],
+    "body": [
+        "Voice is generally not part of the deal, and any calling happens through an app rather than the mobile network.",
+        "Keeping the home line in the physical slot is the usual arrangement, and it is what lets verification texts keep arriving.",
+        "Two-factor codes are the usual reason people ask, and those arrive on the home line as long as it stays active.",
+        "Where voice exists it is app-based rather than a real local number, which is what most travellers actually need.",
+        "Travel eSIMs are priced as data, so buying one for voice is paying for the wrong product.",
+        "If a local number is genuinely required that means a local SIM purchase, and usually a registration step at a store.",
+        "The practical split is data on the eSIM and the existing number on the physical SIM, with roaming switched off on the home line.",
+    ],
+    "close": [
+        "Keep your home SIM active for calls and codes, and let the eSIM carry data.",
+        "Plan on data from the eSIM and your existing number from the home line.",
+        "Decide whether you truly need a local number before adding a second purchase.",
+        "Leave the home line in the phone and switch its data off.",
+        "Use the eSIM for data and the home line for anything that needs the number.",
+        "Only add a local SIM on top if local calls are a real requirement.",
+        "Keep both lines in the phone and set data to the eSIM.",
+    ],
+}
+
+Q10 = {  # 口碑 / 评价（不出评分，只讲核验口径 + 可核验的数字 + 入口）
+    "open": [
+        "We do not aggregate reviews, so the honest answer here is about method rather than ratings.",
+        "Review scores are the one thing we deliberately leave out, because a single number hides the variation behind it.",
+        "Rather than a star rating, this page answers the same question with numbers.",
+        "We keep no rating for {country} eSIMs, and that is a decision rather than an omission.",
+        "The reviews themselves live on the providers' own sites and app stores.",
+        "No aggregate score from us. What this page offers instead is the arithmetic.",
+        "We answer the review question with measurement rather than sentiment.",
+    ],
+    "body": [
+        "The reason is that the same brand scores differently depending on the region the reviewer sits in, so quoting one figure as the truth would mislead.",
+        "Fair-use terms, hotspot rules and refund windows are where the real differences hide, and those are documented rather than voted on.",
+        "Price, allowance and the fair-use threshold are checkable facts, and they are what the tables above put side by side.",
+        "A five-star average and a one-star average usually describe different trips rather than different products.",
+        "The published terms are the part nobody reviews and everybody should read, so that is what we quote.",
+        "Where a provider publishes its own support and refund policy we link it directly, so you can read the source rather than a summary.",
+        "The comparison above puts all {plan_count} {country} plans from {brand_count} providers through one formula, which no review site can claim.",
+    ],
+    "close": [
+        "Read the numbers above first, then check the provider's own reviews for the human side.",
+        "Use the tables above for the facts and the provider's own channels for sentiment.",
+        "Compare the plans above on price, then read the provider's terms before buying.",
+        "Take the figures above as the baseline and verify the return policy at the source.",
+        "The measured comparison is above, and the opinions are best read where they were posted.",
+        "Check the provider's fair-use and refund pages directly before you commit.",
+        "Treat the tables above as the checkable half and read reviews for the rest.",
+    ],
+}
+
 SLOTS = [
-    ("What is the cheapest eSIM for", Q1),
-    ("Is unlimited eSIM data in", Q2),
-    ("Airalo or Holafly for", Q3),
+    ("What is the cheapest eSIM for", Q1, "q1"),
+    ("Is unlimited eSIM data in", Q2, "q2"),
+    ("Airalo or Holafly for", Q3, "q3"),
+    ("Can I use an eSIM in", Q7, "q7"),
+    ("Will my phone work with an eSIM in", Q8, "q8"),
+    ("Do I need a local number in", Q9, "q9"),
+    ("What do travellers say about eSIMs in", Q10, "q10"),
 ]
 
 # ── 旧文本识别：只替换认得的，其余拒绝（保护人工润色）────────────────────────
@@ -204,10 +345,17 @@ JP_Q5_NEW = "Every provider we track - {brands_list} -"
 
 
 # ── 数据 ──────────────────────────────────────────────────────────────────────
+# 问题文本里用**英文国名**（与既有 6 条的写法一致：data/faqs 是英文源，
+# 德语页也用同一份；只有 answer 里的 {country} token 会按语言本地化）。
+COUNTRY_NAME: dict[str, str] = {}
+
+
 def load():
     countries = tomllib.loads((ROOT / "data" / "countries.toml").read_text(encoding="utf-8"))
-    known = {k for k, v in countries.items() if isinstance(v, dict) and v.get("name")}
-    return countries, known
+    COUNTRY_NAME.clear()
+    COUNTRY_NAME.update({k: v["name"] for k, v in countries.items()
+                         if isinstance(v, dict) and v.get("name")})
+    return countries, set(COUNTRY_NAME)
 
 
 def order(countries) -> list[str]:
@@ -217,7 +365,7 @@ def order(countries) -> list[str]:
 
 
 def assigned(countries) -> dict[str, dict]:
-    """回传 {iso: {"q1": (...), "q2": (...), "q3": (...), "q6": int}}。"""
+    """回传 {iso: {"q1": (...), "q2": (...), "q3": (...), "q7".."q10": (...), "q6": int}}。"""
     isos = order(countries)
     out: dict[str, dict] = {}
     no_nb = [i for i in isos if not countries[i].get("neighbors")]
@@ -225,6 +373,7 @@ def assigned(countries) -> dict[str, dict]:
         a, b = i % POOL, i // POOL
         c = (a + b) % POOL
         out[iso] = {"q1": (a, b, c), "q2": (a, b, c), "q3": (a, b, c),
+                    "q7": (a, b, c), "q8": (a, b, c), "q9": (a, b, c), "q10": (a, b, c),
                     "q6": i % POOL, "_i": i}
     # 无邻国的 7 国各分到**不同**的 Q6 变体：它们的兜底短语按 region 生成，
     # 同 region（HR/IS 都是 Europe）撞同一变体会渲染出逐字相同的一段话。
@@ -245,7 +394,7 @@ def verify(countries) -> list[str]:
     isos = order(countries)
     if len(isos) != 49:
         errs.append(f"参与分配的国家数应为 49，实际 {len(isos)}")
-    for key in ("q1", "q2", "q3"):
+    for key in ("q1", "q2", "q3", "q7", "q8", "q9", "q10"):
         tri = [a[i][key] for i in isos]
         if len(set(tri)) != len(tri):
             errs.append(f"{key}: 三元组有重复 —— 会有两页逐字同文")
@@ -255,7 +404,7 @@ def verify(countries) -> list[str]:
             if dup:
                 errs.append(f"{key}: 第 {x}/{y} 槽有 {dup} 对重复 —— 两国会共用两句")
     # 池子大小必须 ≥ 7（否则上面的不变量数学上不可能成立）
-    for pre, pools in SLOTS:
+    for pre, pools, _key in SLOTS:
         for k in ("open", "body", "close"):
             if len(pools[k]) != POOL:
                 errs.append(f"{pre}: {k} 片段数 {len(pools[k])} != {POOL}")
@@ -270,7 +419,7 @@ def verify(countries) -> list[str]:
             errs.append(f"Q6 V{i} 缺 {{country}} —— 互称邻国的两国会渲染成同一段: {f[:70]}")
     # 片段里不得混入真实数字（必须走 token）
     import re
-    for pre, pools in SLOTS:
+    for pre, pools, _key in SLOTS:
         for k, frags in pools.items():
             for f in frags:
                 if re.search(r"\$\d", f):
@@ -303,17 +452,20 @@ def rewrite(iso: str, plan: dict | None, dry: bool, stats: dict, force: bool = F
 
     want: list[tuple[str, str, tuple[str, ...]]] = []
     if plan is not None:
-        for (pre, pools), key in zip(SLOTS, ("q1", "q2", "q3")):
-            want.append((pre, answer(pools, plan[key]), LEGACY[pre]))
+        for pre, pools, key in SLOTS:
+            want.append((pre, answer(pools, plan[key]), LEGACY.get(pre, ())))
         want.append(("Can one eSIM cover", Q6[plan["q6"]], LEGACY_Q6))
 
     changes: list[str] = []
     pending: tuple[str, str, tuple[str, ...]] | None = None
+    seen: set[str] = set()
     for i, line in enumerate(lines):
         s = line.strip()
         if s.startswith("q = "):
             q = json.loads(s[4:].strip())
             pending = next((w for w in want if q.startswith(w[0])), None)
+            if pending is not None:
+                seen.add(pending[0])
             continue
         if s.startswith("a = ") and pending:
             old = json.loads(s[4:].strip())
@@ -337,6 +489,26 @@ def rewrite(iso: str, plan: dict | None, dry: bool, stats: dict, force: bool = F
             changes.append("  [JP] 品牌枚举 -> {brands_list}")
     if changes and not dry:
         path.write_bytes(nl.join(lines).encode("utf-8"))
+
+    # ── 追加缺失的问答 ────────────────────────────────────────────────────────
+    # 第五十六轮新增的 Q7-Q10 在既有 50 个文件里**都不存在**，所以迁移器要能追加，
+    # 而不是只会替换。幂等：`seen` 命中的 pre 不再追加，第二次跑零改动。
+    # 只追加、不动既有条目 —— 这是「内容源不是构建产物」的底线。
+    if plan is not None:
+        missing = [w for w in want if w[0] not in seen]
+        if missing:
+            sep = nl + nl
+            blocks = []
+            for pre, new, _legacy in missing:
+                q = f"{pre} {COUNTRY_NAME[iso]}?"
+                blocks.append(f"[[faq]]{nl}q = {json.dumps(q, ensure_ascii=False)}"
+                              f"{nl}a = {json.dumps(new, ensure_ascii=False)}")
+            text = nl.join(lines).rstrip("\r\n") + sep + sep.join(blocks) + nl
+            if not dry:
+                path.write_bytes(text.encode("utf-8"))
+            stats["added"] = stats.get("added", 0) + len(missing)
+            changes.append(f"  [{iso}] 追加 {len(missing)} 条问答："
+                           + ", ".join(w[0][:22] for w in missing))
     return changes
 
 
@@ -356,7 +528,7 @@ def main() -> int:
     dry = mode == "--dry"
     force = "--force" in sys.argv
     plan = assigned(countries)
-    stats = {"done": 0, "skip": 0, "refuse": 0}
+    stats = {"done": 0, "skip": 0, "refuse": 0, "added": 0}
     all_changes: list[str] = []
     for iso in sorted(plan):
         all_changes += rewrite(iso, plan[iso], dry, stats, force)
@@ -364,7 +536,7 @@ def main() -> int:
     for c in all_changes:
         print(c)
     print(f"\n{'[dry-run] ' if dry else ''}改写 {stats['done']} 处 / 已是目标 {stats['skip']} 处 / "
-          f"拒绝 {stats['refuse']} 处（{len(plan)} 国 + jp 附加规则）")
+          f"追加 {stats['added']} 条 / 拒绝 {stats['refuse']} 处（{len(plan)} 国 + jp 附加规则）")
     return 1 if stats["refuse"] else 0
 
 

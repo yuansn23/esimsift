@@ -65,6 +65,142 @@ layouts/partials/country-stats.html  ← 全站唯一聚合入口
    `.workbuddy/`（内部 py 脚本 + 日志 + memory md）被原样拷进 `public/`，线上 HTTP 200 可直接下载。
    **备份/草稿/临时产物一律放项目根，`static/` 只放页面真正引用的资源**
 
+## 已完成（关键词采集换 Google 官方通道，2026-10-08 第五十四轮）
+
+**起因**：用户要求「关键词必须从谷歌搜索获取」—— 上一版（同日早）用的是 Bing 补全。
+
+### 通道（本机网络事实，实测）
+- 直连 `google.*` 全超时（`nslookup www.google.com` → `31.13.92.37`，**DNS 污染**）
+- 环境变量 `https_proxy=http://127.0.0.1:62216` 是**沙箱代理，不通 Google**，而 curl / urllib
+  **默认读它** → 所有请求静默失败（现象是空响应，不是报错，极易误判成「Google 没补全」）
+- **`127.0.0.1:7890`（本机 Clash 混合端口）可通 Google** —— 脚本必须显式指定代理
+- 两条 Google 官方通道：**Suggest 补全**（`suggestqueries.google.com/complete/search`，
+  `client=firefox`，种子回显在第 0 位需剔除）+ **Trends**
+  （`relatedQueries` 给相关查询；`multiline` 批内比较 + **锚词归一**给跨词可比热度）
+- Trends **429 极频繁**（约每 2-3 个请求一次）→ 必须**指数退避 6/12/24/48s**
+
+### 数据规模
+| 项 | 值 |
+|---|---|
+| Suggest 种子 | 6,977（成功 6,976，**100% 覆盖**）× 5 市场（en-US / en-GB / en-SG / en-AU / de-DE） |
+| 唯一补全词 | **11,573** |
+| 含 esim/sim 的词（主交付物） | **11,454** |
+| 站内已覆盖 / 缺口 | 9,564 / **1,890** |
+| Trends 种子 | 181（120 基础 + 61 补充） |
+| 带 Trends 指数的词 | 69 |
+| 跨词可比热度（批量比较） | 90 词 / 23 批，**只有 10 个词测到非零热度** |
+
+### 关键发现
+1. **★ 补全证据 ≠ 真实热度，而且 `综合分` 会把词排反**（本轮最重要发现）：
+   - `is esim available in portugal`：`sources` **51**、综合分 **88.8**（全站仅 17 词 ≥88.8）→ 实测相对热度 **0.0000**
+   - `best esim for japan`：`sources` **1**、综合分 **69.5** → 实测相对热度 **0.0054**
+   - 逐条查原始补全数据：前者的 51 个来源种子**横跨葡萄牙/克罗地亚/西班牙/土耳其/巴西** —— 它是补全引擎
+     给一大批国家种子都挂上的**通用问句模板**；后者只由 **1 个种子**（`best esim`）带出 ——
+     **若当初没撒这个种子，日本页最有价值的词根本不会出现在数据集里**。
+   - → **`sources` 低不是「没人搜」，是「没撒对种子」；`sources` 高也可能只是「句式通用」。**
+     发现词靠补全，排优先级靠批量比较热度。**抽样 90 词里 80 词（89%）低于 Trends 分辨率**。
+2. **最热的不是国家词**：`esim price`(0.0619) / `esim size`(0.0182) / `esim requirements`(0.0145)
+   —— 三者归的都是首页 `/`。国家类里测到热度的只有 `best esim for {国家}` / `esim price {国家}` 句式。
+3. **两版交集只 9.3%**（Bing 4,579 ∩ Google 11,454 = 1,060）→ **任何单通道采集都是不完整的视角**。
+4. **更正上一轮的错误论断**：上一轮写「Bing 会往所有 eSIM 查询注入同一段通用热门块」——**是错的**。
+   实测（`scripts/kw_engine_compare.py`）：两引擎的两两 Jaccard 重叠率**都是 0.000**，
+   被 ≥3 个互不相关种子共同带出的词**两边都是 0 个**。真相是**地理簇内共享** ——
+   `buy esim for dubai` 的 57 个来源种子**全部是中东种子**（saudi arabia / UAE / qatar / israel）。
+   → 正确结论仍是「`sources` 在种子密集的语境里会饱和」，但这是一切补全引擎的共性，换 Google 也治不了。
+5. **锚词归一验证通过**：`esim` 在 23 个批里的批内均值稳定在 **76.55–76.57** —— 证明跨批可比
+   （若锚词在各批漂移很大，批量比较结果作废）。
+6. **Trends breakout 含无关暴涨词**（`saily esim` 的 rising 是 medvi / shop lc / embody），
+   且**只用「与种子共享词元」过滤会误杀**（`esim japan` 的 top 里有 `saily`）。
+   → 判据必须是「命中 eSIM 强领域词白名单（esim/sim + 品牌名 + 国名与别名 + 地区名，实测 141 词）**或**与种子共享实词」。
+7. **报告阈值必须现算**：首版写死「综合分 ≥ 60」，得出「城市词 965 个里 **0 个**高需求」的**反向结论** ——
+   查分布才知全站中位 35.1 / 前 10% 46.4 / 前 1% 54.8，`≥60` 只有 95 词（0.8%）。现改为分位数现算并标注来源。
+8. **顺手修掉一处产物卫生问题**：`kw_report_google.py` 原用 `OUT.write_text()` 且未传 `newline`，
+   在 Windows 下把报告写成了 **658 处 CRLF**（红线 38 的同一个坑）。改为 `open(..., newline="")` + 写后断言无 `\r\n`。
+
+### 新增脚本
+`kw_harvest_google.py`（Suggest）· `kw_trends.py`（relatedQueries，含 `--from-scored` / `--merge`）
+· `kw_trends_compare.py`（批量比较 + 锚词归一）· `kw_score_google.py`（三路证据打分）
+· `kw_classify_google.py`（**动态 import `kw_classify.py` 复用分类规则，不复制**）
+· `kw_report_google.py`（报告，数字全现算）· `kw_engine_compare.py`（两引擎对照实验）
+
+### 新增产物（`docs/keywords/google/`）
+`kw-google-collected.csv`（11,454 词 × 21 列，主交付物）· `kw-gaps-google-2026-10-08.md`（报告）
+· `kw-trends-index.csv`（跨词可比热度）· `kw-google-scored.csv` · `raw_google_suggest.json`
+· `raw_google_trends.json` · `engine-compare.json`
+
+## 已完成（关键词植入七批全量执行 + 冠词守卫 + FAQ 同质化收口，2026-10-08 第五十六轮）
+
+**起因**：用户指令「就按你的思路开始全部优化执行，执行完成继续审核，审核如果有问题，继续优化迭代」——
+即把第五十五轮交付的 `docs/keywords/google/kw-placement-plan-2026-10-08.md` 里 **7 个批次全部执行**，
+每批执行完立即审核（构建 11 项闸门 + 零回归 diff + 反同质化自证），审核发现问题继续迭代。
+
+### 七批执行结果
+
+| 批次 | 动作 | 落地 | 变更面 |
+|---|---|---|---|
+| 1 | 首页 FAQ Q1 含 `eSIM price`；`#price-floor` 小标题含 `eSIM price`；新增免费/预付一问；三步流程补「先查手机」 | `i18n/{en,de}.toml`（4 key 改写 + 2 新增）、`layouts/index.html` | home 2 页 |
+| 2 | 兼容性指南加「eSIM 没有尺寸」「eSIM 需要什么才能用」两段；`what-is-an-esim` 加「不需要什么」 | `content/en/guides/esim-compatibility-check.md`、`what-is-an-esim.md` | 指南 6 页（含 4 页因列出被改页 description 而变） |
+| 3 | 品牌子页 FAQ 追加 Q6–Q9（口碑 / 可用性 / 激活 / VPN·本地号） | `layouts/compare/provider.html` + 10 个 i18n key | **provider_sub 499** |
+| 4 | 50 国 `data/faqs/*.toml` 各追加 4 问（可用性 / 设备 / 号码 / 口碑）→ **6 条变 10 条** | `scripts/faq_frames.py`（SLOTS 2→3 tuple、7 槽、4 个新片段池、追加模式）、196 条模板池 + `jp.toml` 手写 4 条 | country_hub 100 |
+| 5 | `#verdict` 句式 → `What is the best eSIM for {country}?` | `layouts/compare/single.html` | country_hub（同上） |
+| 6 | 品牌 Hub 新增 `#reviews` 区块（H2 含 `eSIM reviews` + 读法三条 + 论坛段），原页尾 `#reading` 的口碑卡**整体上移**（复用同一批 i18n key，`#reading` 由 3 卡变 2 卡） | `layouts/esim-providers/single.html` + 8 个 i18n key | provider_hub 10 |
+| 7 | 区域词并入 5 篇区域指南（Q2 答案补真实双国配对 + 新增 providers / 全区包两问）；城市词并入国家页 `#quirks` 场景段（城市清单取自 `data/carriers.toml` 的 `info.cities`，50/50 国有值且逐国不同） | `content/en/guides/best-*-esim.md`、`layouts/compare/single.html` + 1 个 i18n key | guides 5 + country_hub（同上） |
+
+### ★ 本轮新增第 11 项构建闸门：`check_article_agreement.py`（冠词一致性）
+
+同一个坑**踩了两次**（第二十四轮 `whether a {{ .brand }} plan` → "a Airalo"；本轮 `Does a {{ .brand }} eSIM` → "a Airalo"），
+所以改成机器拦。**两道**：
+
+1. **产物级** —— 扫 `public/**/*.html`，剥标签后匹配 `a/an + 名词`，命中品牌名/国名比对期望冠词。
+   - `BRANDS_AN = {airalo, alosim}`；`COUNTRIES_AN = {argentina, australia, austria, egypt, ethiopia, iceland, india, indonesia, ireland, israel, italy}`
+   - ⚠ **`PRONOUNCED_CONSONANT = {ubigi, united*, uae, ukraine, uganda, uruguay}`** —— 字母是元音但**发音是辅音 /j/**，
+     必须配 "a"。用「首字母是不是元音字母」做判据会在这里**误报**（`a Ubigi plan` 是对的）。
+2. **源码级** —— 禁止「冠词紧邻专有名词占位符」：`a %s eSIM` / `a {{ .brand }}` / `a {country}` / i18n 里的 `a {{ .brand }}`。
+   - **为什么必须有第二道**：产物级只看得到**当前真的渲染出来**的组合。实测品牌 Hub 里 7 个 printf 问句都写成 `a %s eSIM`，
+     只有 3 个在当前品牌分层（`$v 1`/`$v 2`）下渲染，另外 4 个 + `networks/single.html` 那句**全绿通过** ——
+     等哪天来个元音开头的品牌或国家才暴雷。
+   - 禁令**窄化到专有名词占位符**，放过 `a {{ .days }}-day trip` 这类数值（否则满屏误报）。
+   - `--selftest` **18 项**（产物级 7 + 源码级 11），双向验证：既证明会抓住，也证明放过合法写法。
+
+**实测战绩**：首跑抓出 **47 处**存量（20 个元音开头国名 × en/de）；修完当轮，守卫又抓出**我新写的 2 处**
+（`a {{ .brand }} review`）—— 守卫在同一个回合里拦住了写它的人。
+
+### ★ 审核迭代：Q4「ID 核验」14 国同质化
+
+自证脚本（产物级逐问 md5）跑出：Q1–Q3、Q5–Q10 都是 **50/50 唯一**，只有 **Q4 = 37/50** ——
+`kyc_required = true` 的 14 国（vn id ph in cn tr mx ar ae sa il eg ma ke）共用了同一句套话，
+而那句话里**既没有国名、也没有该国具体规定**。
+
+而 `data/countries.toml` 的 `quirks` 里其实躺着 14 国各自的真实登记事实。
+→ 逐国按各自规定重写（越南身份证上传 / 印尼护照上传 / 菲律宾 ID 自拍 / 印度护照绑定 /
+中国反向（走香港网关、无需登记）/ 土耳其护照 / 墨西哥 CURP / 阿根廷 DNI / 阿联酋护照扫描 /
+沙特护照 / 以色列 ID / 埃及线下证件照 / 摩洛哥护照 / 肯尼亚线下护照）。
+**修完 10 个槽位全部 50/50 唯一。**
+
+同时把 `check_faq_facts.py` 的 R10 从「五条」扩到「**六条**」：新增 **R10(f) —— 第 4、5 条（手写问答，
+不走片段库）也必须在 50 国上骨架两两不同**，并加了一条自测反例（`手写槽（ID）撞车` → `slot4`）。
+⚠ 并在脚本文档里写明**尺子不能混用**：R10(f) 用的 `skeleton()` 会抹掉国名，所以拿它判 Q6（邻国问答）
+永远只有 8/50「唯一」—— 那是**尺子失真不是数据重复**，Q6 的判据一律是产物级 R11。
+
+### 验收（全部走产物文本抽取，**不做截图**）
+
+- `npm run build` **EXIT=0**，11 项闸门全绿（含新守卫 `产物级 0 / 源码级 0`）
+- **零回归 `--diff`**：批次 1–7 累计 **634 处**变更，逐页型可解释 ——
+  `provider_sub 499`（批 3）+ `country_hub 100`（批 4/5/7）+ `guides 11`（批 1/2/7）+ `networks 12`（冠词修复）+
+  `provider_hub 10`（批 6）+ `home 2`（批 1），**零未解释**；迭代那轮再变 28 处 = 14 实名国 × en/de。
+  两次确认后均已 `--write-manifest` 覆盖基线。
+- `scripts/_verify_round56.py`（新增，**130 项断言全通过**）：H2 句式、城市句真实城市、FAQ 10 问无残留 token、
+  品牌 Hub `#reviews` + `#reading` 2 卡、区域指南 6 问、以及三条反同质化自证
+  （`#reviews` 10 页唯一 / 城市句 50 页唯一 / 新增区域问答 5 篇互不相同）
+- **逐问 md5 去重（用户定的判据）**：10 个槽位 **全部 50/50 唯一**
+
+### 已知缺口（本轮未做，登记在案）
+
+- **德语国家页的 H2 仍是英文硬编码**（如 `What is the best eSIM for Italien?` —— 句子英文、国名德语）。
+  与该页其余 12 个 H2 同源，是既有的「德语站 i18n 完整性」欠账，**不是本轮引入**。
+- `data/faqs/jp.toml` 顶部禁令（激活/安装类问题归 Roami 站）仍在执行：国家页只加可用性/设备/号码/口碑四类。
+- 第五十二～五十六轮改动**全部未 commit、未部署**。
+
 ## 已完成（本轮）
 
 - ✅ 设计系统全面升级：自定义 ink/brand/accent 色板 + Sora/Inter 字体 + 组件层（btn/card/badge/chip/table-pro/faq-item/figure），重写全部布局（首页 hero-mesh + 区域筛选 + 3 步引导 / compare 列表 / 13 模块国家 hub / providers 品牌头像 / header 下拉 / footer / 404）

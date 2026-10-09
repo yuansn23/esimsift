@@ -14,8 +14,8 @@ q = "Airalo or Holafly for Vietnam?"
 a = "Airalo and Holafly solve different problems, so compare the models before the prices. Airalo's strongest {country} offer is ${ah_airalo_pergb}/GB, sold as {ah_airalo_plan} for ${ah_airalo_price}. Holafly's floor price for {country} is ${ah_holafly_price} over {ah_holafly_days} days (${ah_holafly_perday}/day), with no data counter to watch."
 
 [[faq]]
-q = "Do I need ID verification for a Vietnam eSIM?"
-a = "Yes. Local law requires passport-linked registration even for travel eSIMs, but the big providers verify in-app in a couple of minutes."
+q = "Do I need ID verification for an eSIM in Vietnam?"
+a = "Yes, Vietnam registers every SIM against a passport and travel eSIMs are no exception, so expect a quick ID upload while you buy. It happens inside the provider's checkout rather than at a counter, and no Vietnamese address is needed. Viettel is the network most travel plans default to, which is also why they hold up on the Ha Long Bay and northern mountain routes."
 
 [[faq]]
 q = "Which networks do Vietnam eSIMs use?"
@@ -23,4 +23,20 @@ a = "Plans on this page run on Viettel, Vinaphone, Mobifone. Differences matter 
 
 [[faq]]
 q = "Can one eSIM cover Vietnam and Thailand?"
-a = "One country per plan, so a {country} eSIM stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."
+a = "One country per plan, so an eSIM bought for {country} stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."
+
+[[faq]]
+q = "Can I use an eSIM in Vietnam?"
+a = "Travel eSIMs are sold for {country} by every provider we track, and none of them needs a local address. Every one of the {brand_count} providers here sells into {country}, which is itself the answer to whether eSIMs work there. The device check takes thirty seconds, and the plans above are all priced on one scale."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Vietnam?"
+a = "Compatibility is entirely about your device, and {country} adds no requirement of its own. None of the {brand_count} providers here requires a particular handset, only that the device has the chip and is unlocked. Confirm the EID appears, then compare the plans above."
+
+[[faq]]
+q = "Do I need a local number in Vietnam?"
+a = "Not for a visitor. A {country} eSIM gives you connectivity, and the number stays with your home line. The practical split is data on the eSIM and the existing number on the physical SIM, with roaming switched off on the home line. Use the eSIM for data and the home line for anything that needs the number."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Vietnam?"
+a = "No aggregate score from us. What this page offers instead is the arithmetic. The comparison above puts all {plan_count} {country} plans from {brand_count} providers through one formula, which no review site can claim. The measured comparison is above, and the opinions are best read where they were posted."

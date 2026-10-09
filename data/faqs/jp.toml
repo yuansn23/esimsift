@@ -25,3 +25,19 @@ a = "All of them. Every provider we track - {brands_list} - connects to the same
 [[faq]]
 q = "Can one eSIM cover Japan and South Korea on the same trip?"
 a = "Yes - several providers sell Asia regional plans that bundle Japan with Korea, Taiwan and Hong Kong. If you are visiting two or more countries, a regional plan usually beats buying separate country eSIMs. Check our regional comparison before buying two single-country plans."
+
+[[faq]]
+q = "Can I use an eSIM in Japan?"
+a = "An eSIM works in Japan the same way it works anywhere else: the profile registers on a Japanese network when you land, and nothing about the country blocks it. All {brand_count} providers we track sell Japan plans, and the {plan_count} packages listed above connect to the same three national networks. What decides success is your handset rather than the destination."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Japan?"
+a = "Japan adds no handset requirement of its own, so any eSIM-capable and carrier-unlocked phone works with the plans on this page. The trap is the phone rather than the country: the same model name can ship with or without an eSIM chip depending on the market it was sold in, and a handset bought in mainland China has no chip at all. Dial *#06# before you buy, and a Japan plan will install if an EID number appears."
+
+[[faq]]
+q = "Do I need a local number in Japan?"
+a = "A Japanese phone number is not required for a travel eSIM, and the plans on this page are data-only. Local voice SIMs in Japan come with identity checks that travel eSIMs skip entirely, which is why the number people reach you on stays your own. Keep the physical SIM active for calls and verification codes, and let the eSIM carry data."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Japan?"
+a = "Rather than a star rating, this page answers the review question with measurements - the {plan_count} Japan plans from {brand_count} providers, ranked on one $/GB and $/day formula. Review scores for the same brand differ by the region the reviewer sits in, so a single figure would mislead. Read the numbers above for the verifiable half, and the provider's own channels for sentiment."

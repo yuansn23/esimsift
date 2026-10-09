@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Peru?"
 a = "Different products: Airalo sells fixed data buckets, Holafly sells unlimited days. Airalo's way into {country} is a data bucket - {ah_airalo_plan} at ${ah_airalo_price}, or ${ah_airalo_pergb}/GB at its sharpest. Where Holafly wins is predictability, from ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and where Airalo wins is a short, light trip."
 
 [[faq]]
-q = "Do I need ID verification for a Peru eSIM?"
+q = "Do I need ID verification for an eSIM in Peru?"
 a = "No. Peru does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on Claro, Movistar, Entel. Differences matter mostly
 [[faq]]
 q = "Can one eSIM cover Peru and Colombia?"
 a = "Only with a regional package, because the country plans on this page do not cross borders. The markets around {country} all have their own tables here - {neighbors_all} among them - so price a regional bundle against two single-country plans."
+
+[[faq]]
+q = "Can I use an eSIM in Peru?"
+a = "An eSIM works in {country}, and nothing about the destination blocks it. Availability is already settled by the {plan_count} plans listed above, so the open questions are duration and gigabytes. Fix the handset question before you buy, and compare the rest on price."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Peru?"
+a = "Your handset is the deciding factor here, not {country}. Of the {plan_count} {country} plans on this page, none needs anything beyond a standard eSIM profile. Run the two checks and come back to the table above."
+
+[[faq]]
+q = "Do I need a local number in Peru?"
+a = "A local number is not required to use an eSIM in {country}. If a local number is genuinely required that means a local SIM purchase, and usually a registration step at a store. Keep both lines in the phone and set data to the eSIM."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Peru?"
+a = "Review scores are the one thing we deliberately leave out, because a single number hides the variation behind it. Where a provider publishes its own support and refund policy we link it directly, so you can read the source rather than a summary. Treat the tables above as the checkable half and read reviews for the rest."

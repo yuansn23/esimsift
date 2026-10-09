@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Qatar?"
 a = "Airalo and Holafly solve different problems, so compare the models before the prices. Airalo's way into {country} is a data bucket - {ah_airalo_plan} at ${ah_airalo_price}, or ${ah_airalo_pergb}/GB at its sharpest. Take Holafly if you would rather not count gigabytes, since its {country} packages start at ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and take Airalo for a light, short trip."
 
 [[faq]]
-q = "Do I need ID verification for a Qatar eSIM?"
+q = "Do I need ID verification for an eSIM in Qatar?"
 a = "No. Qatar does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -23,4 +23,20 @@ a = "Plans on this page run on Ooredoo, Vodafone Qatar. Differences matter mostl
 
 [[faq]]
 q = "Can one eSIM cover Qatar and United Arab Emirates?"
-a = "One country per plan, so a {country} eSIM stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."
+a = "One country per plan, so an eSIM bought for {country} stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."
+
+[[faq]]
+q = "Can I use an eSIM in Qatar?"
+a = "Travel eSIMs are sold for {country} by every provider we track, and none of them needs a local address. Availability is already settled by the {plan_count} plans listed above, so the open questions are duration and gigabytes. Confirm the device supports eSIM and is unlocked, then choose from the table above."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Qatar?"
+a = "Compatibility is entirely about your device, and {country} adds no requirement of its own. Of the {plan_count} {country} plans on this page, none needs anything beyond a standard eSIM profile. Test the handset now and choosing a plan becomes a price question rather than a compatibility one."
+
+[[faq]]
+q = "Do I need a local number in Qatar?"
+a = "Not for a visitor. A {country} eSIM gives you connectivity, and the number stays with your home line. If a local number is genuinely required that means a local SIM purchase, and usually a registration step at a store. Leave the home line in the phone and switch its data off."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Qatar?"
+a = "No aggregate score from us. What this page offers instead is the arithmetic. Where a provider publishes its own support and refund policy we link it directly, so you can read the source rather than a summary. Take the figures above as the baseline and verify the return policy at the source."

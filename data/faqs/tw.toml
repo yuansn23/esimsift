@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Taiwan?"
 a = "It comes down to shape - buckets of data against unlimited days. Airalo's strongest {country} offer is ${ah_airalo_pergb}/GB, sold as {ah_airalo_plan} for ${ah_airalo_price}. Holafly only sells unlimited by the day: {ah_holafly_days} days for ${ah_holafly_price}, or ${ah_holafly_perday} a day."
 
 [[faq]]
-q = "Do I need ID verification for a Taiwan eSIM?"
+q = "Do I need ID verification for an eSIM in Taiwan?"
 a = "No. Taiwan does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on Chunghwa Telecom, Taiwan Mobile, FarEasTone. Diff
 [[faq]]
 q = "Can one eSIM cover Taiwan and Japan?"
 a = "Not on a single-country plan. If the itinerary continues from {country} into {neighbor}, compare a regional package with two separate plans, since the tables here price each market on its own."
+
+[[faq]]
+q = "Can I use an eSIM in Taiwan?"
+a = "Yes, and {country} is unremarkable in that respect - no local registration or permission is required. Every one of the {brand_count} providers here sells into {country}, which is itself the answer to whether eSIMs work there. Settle the phone question and the comparison above does the rest."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Taiwan?"
+a = "Same test as anywhere: dial *#06# and look for an EID number. None of the {brand_count} providers here requires a particular handset, only that the device has the chip and is unlocked. Settle both checks at home on Wi-Fi rather than at the airport."
+
+[[faq]]
+q = "Do I need a local number in Taiwan?"
+a = "For messaging and maps you do not need one. The practical split is data on the eSIM and the existing number on the physical SIM, with roaming switched off on the home line. Decide whether you truly need a local number before adding a second purchase."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Taiwan?"
+a = "We keep no rating for {country} eSIMs, and that is a decision rather than an omission. The comparison above puts all {plan_count} {country} plans from {brand_count} providers through one formula, which no review site can claim. Compare the plans above on price, then read the provider's terms before buying."

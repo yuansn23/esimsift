@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Ireland?"
 a = "Neither is the cheapest plan on this page, and the two are not competing on the same terms either. Airalo's {ah_airalo_plan} works out at ${ah_airalo_pergb}/GB for ${ah_airalo_price}, and what you buy is what you get. The flat-rate option is Holafly, at {ah_holafly_days} days from ${ah_holafly_price} - ${ah_holafly_perday}/day whatever you use."
 
 [[faq]]
-q = "Do I need ID verification for a Ireland eSIM?"
+q = "Do I need ID verification for an eSIM in Ireland?"
 a = "No. Ireland does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on Vodafone, Three, Eir. Differences matter mostly o
 [[faq]]
 q = "Can one eSIM cover Ireland and the UK?"
 a = "Not with a country plan alone, because {country} plans stop at the border. Adding {neighbor} means a regional bundle or a second plan, and the two-country arithmetic is worth doing before you buy."
+
+[[faq]]
+q = "Can I use an eSIM in Ireland?"
+a = "It does work here. No country-level restriction stands between a travel eSIM and the networks in {country}. Of the {plan_count} {country} plans listed here, none is limited to a particular region of the country. Verify your phone, then let the $/GB column decide between the plans above."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Ireland?"
+a = "It depends on the device rather than the country, because every plan on this page is a standard eSIM profile. The eSIM chip is fixed at manufacture, so a handset built without one cannot gain it later, however many {country} plans we list. Verify the device first, because the plans above only help if it passes."
+
+[[faq]]
+q = "Do I need a local number in Ireland?"
+a = "No, unless you specifically need to make calls on a local number. Where voice exists it is app-based rather than a real local number, which is what most travellers actually need. Only add a local SIM on top if local calls are a real requirement."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Ireland?"
+a = "Rather than a star rating, this page answers the same question with numbers. A five-star average and a one-star average usually describe different trips rather than different products. Check the provider's fair-use and refund pages directly before you commit."

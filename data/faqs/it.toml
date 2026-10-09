@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Italy?"
 a = "The honest answer is that these two are not interchangeable. Airalo's {ah_airalo_plan} works out at ${ah_airalo_pergb}/GB for ${ah_airalo_price}, and what you buy is what you get. Holafly only sells unlimited by the day: {ah_holafly_days} days for ${ah_holafly_price}, or ${ah_holafly_perday} a day."
 
 [[faq]]
-q = "Do I need ID verification for a Italy eSIM?"
+q = "Do I need ID verification for an eSIM in Italy?"
 a = "No. Italy does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on TIM, Vodafone, WindTre. Differences matter mostly
 [[faq]]
 q = "Can one eSIM cover Italy and France?"
 a = "Only via a regional plan, because the {country} tables here are scoped to one market. Crossing into {neighbor} means either a regional package or a second plan, and the per-gigabyte rate is what tells them apart."
+
+[[faq]]
+q = "Can I use an eSIM in Italy?"
+a = "Yes - the only things that can stop an eSIM in {country} are on your side rather than the country's. Of the {plan_count} {country} plans listed here, none is limited to a particular region of the country. Settle the phone question and the comparison above does the rest."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Italy?"
+a = "Yes, provided the phone has eSIM hardware and carries no carrier lock. The eSIM chip is fixed at manufacture, so a handset built without one cannot gain it later, however many {country} plans we list. Settle both checks at home on Wi-Fi rather than at the airport."
+
+[[faq]]
+q = "Do I need a local number in Italy?"
+a = "No number is issued with a travel eSIM for {country}. Where voice exists it is app-based rather than a real local number, which is what most travellers actually need. Decide whether you truly need a local number before adding a second purchase."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Italy?"
+a = "We answer the review question with measurement rather than sentiment. A five-star average and a one-star average usually describe different trips rather than different products. Compare the plans above on price, then read the provider's terms before buying."

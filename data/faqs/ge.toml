@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Georgia?"
 a = "Pick by usage pattern, because the two brands do not price the same way at all. On Airalo's side the best value is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - priced per gigabyte rather than per day. Where Holafly wins is predictability, from ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and where Airalo wins is a short, light trip."
 
 [[faq]]
-q = "Do I need ID verification for a Georgia eSIM?"
+q = "Do I need ID verification for an eSIM in Georgia?"
 a = "No. Georgia does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on Magti, Silknet, Beeline. Differences matter mostl
 [[faq]]
 q = "Can one eSIM cover Georgia and Turkiye?"
 a = "Yes, but only through a multi-country plan, because nothing in our {country} tables covers a second country. Look for a regional package that includes {neighbor} and compare its $/GB with two single-country plans."
+
+[[faq]]
+q = "Can I use an eSIM in Georgia?"
+a = "{plan_count} plans across {brand_count} providers are listed for {country} on this page, and every one of them is usable. {brand_count} providers sell {plan_count} separate {country} plans on this page, which is a market too large for availability to be the constraint. Fix the handset question before you buy, and compare the rest on price."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Georgia?"
+a = "An eSIM-capable unlocked phone works in {country} without any extra step. Published compatibility lists lag behind new releases, so the dialer test on your own unit beats any list, ours included. Run the two checks and come back to the table above."
+
+[[faq]]
+q = "Do I need a local number in Georgia?"
+a = "Only if local calls matter to you, because the {plan_count} plans listed for {country} are data products. Two-factor codes are the usual reason people ask, and those arrive on the home line as long as it stays active. Keep both lines in the phone and set data to the eSIM."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Georgia?"
+a = "The reviews themselves live on the providers' own sites and app stores. Price, allowance and the fair-use threshold are checkable facts, and they are what the tables above put side by side. Treat the tables above as the checkable half and read reviews for the rest."

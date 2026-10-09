@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Portugal?"
 a = "Pick by usage pattern, because the two brands do not price the same way at all. Airalo's way into {country} is a data bucket - {ah_airalo_plan} at ${ah_airalo_price}, or ${ah_airalo_pergb}/GB at its sharpest. Holafly only sells unlimited by the day: {ah_holafly_days} days for ${ah_holafly_price}, or ${ah_holafly_perday} a day."
 
 [[faq]]
-q = "Do I need ID verification for a Portugal eSIM?"
+q = "Do I need ID verification for an eSIM in Portugal?"
 a = "No. Portugal does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on MEO, NOS, Vodafone. Differences matter mostly out
 [[faq]]
 q = "Can one eSIM cover Portugal and Spain?"
 a = "Yes, but only through a multi-country plan, because nothing in our {country} tables covers a second country. Look for a regional package that includes {neighbor} and compare its $/GB with two single-country plans."
+
+[[faq]]
+q = "Can I use an eSIM in Portugal?"
+a = "{plan_count} plans across {brand_count} providers are listed for {country} on this page, and every one of them is usable. Availability is already settled by the {plan_count} plans listed above, so the open questions are duration and gigabytes. Settle the phone question and the comparison above does the rest."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Portugal?"
+a = "An eSIM-capable unlocked phone works in {country} without any extra step. Of the {plan_count} {country} plans on this page, none needs anything beyond a standard eSIM profile. Settle both checks at home on Wi-Fi rather than at the airport."
+
+[[faq]]
+q = "Do I need a local number in Portugal?"
+a = "Only if local calls matter to you, because the {plan_count} plans listed for {country} are data products. If a local number is genuinely required that means a local SIM purchase, and usually a registration step at a store. Decide whether you truly need a local number before adding a second purchase."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Portugal?"
+a = "The reviews themselves live on the providers' own sites and app stores. Where a provider publishes its own support and refund policy we link it directly, so you can read the source rather than a summary. Compare the plans above on price, then read the provider's terms before buying."

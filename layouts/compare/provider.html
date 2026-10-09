@@ -1170,6 +1170,43 @@
     "q" (i18n "compare_provider__faq_q_rival" (dict "brand" $p.name "rival" (index $d.providers .).name "country" $country.name) | safeHTML)
     "a" (i18n "compare_provider__faq_a_rival" (dict "brand" $p.name "rival" (index $d.providers .).name "country" $country.name "mine" (printf "%.2f" $myMin) "rivalprice" (printf "%.2f" $rivalMin) "rivaldata" (index $provPick .) "compare" $compareURL) | safeHTML)) }}
   {{ end }}
+  {{/* ── 第五十六轮（2026-10-08）追加 Q6-Q9：承接 Google 采集里品牌子页最大的三簇词 ──
+       Q6 口碑（验证·评价 529 词）/ Q7 真的能用吗（验证·可用性 235 词）/
+       Q8 怎么开通（激活）/ Q9 受限网络（仅 CN / HK）。
+       ⚠ 答案里的数字全部来自**本页**已核验数据（$n 本页档位数 / $myMin 本页最低价 /
+         $netNames 宿主网络 / $stats.planCount 该国总档位）。
+         **不得**换成 providers.toml 的 tagline / strengths 这类全局字段 ——
+         那会让 499 页抽文本 md5 去重后远小于 499（反同质化红线）。 */}}
+  {{/* Q6 口碑：如实交代我们不出评分，并给出可核验的替代数据 + 原始评价入口 */}}
+  {{ $reviewURL := "" }}
+  {{ with $p.info }}{{ with .trustpilot }}{{ $reviewURL = . }}{{ end }}{{ end }}
+  {{ $reviewsAns := i18n "compare_provider__faq_a_reviews_alt" (dict "brand" $p.name "country" $country.name "n" ($myRows | len) "from" (printf "%.2f" $myMin)) }}
+  {{ if $reviewURL }}
+    {{ $reviewsAns = i18n "compare_provider__faq_a_reviews" (dict "brand" $p.name "country" $country.name "n" ($myRows | len) "from" (printf "%.2f" $myMin) "profile" $reviewURL) }}
+  {{ end }}
+  {{ $faqList = $faqList | append (dict
+    "q" (i18n "compare_provider__faq_q_reviews" (dict "brand" $p.name "country" $country.name) | safeHTML)
+    "a" $reviewsAns) }}
+  {{/* Q7 真的能用吗：宿主网络事实 + 三个最常见的失败原因（可在家修） */}}
+  {{ if $netNames }}
+  {{ $faqList = $faqList | append (dict
+    "q" (i18n "compare_provider__faq_q_works" (dict "brand" $p.name "country" $country.name) | safeHTML)
+    "a" (i18n "compare_provider__faq_a_works" (dict "brand" $p.name "country" $country.name "carriers" (delimit $netNames ", ") "plans" $stats.planCount "n" ($myRows | len) "from" (printf "%.2f" $myMin)) | safeHTML)) }}
+  {{ end }}
+  {{/* Q8 怎么开通：通用步骤在指南页，本页只讲品牌特定要点 + 匹配行程的档位 */}}
+  {{ $faqList = $faqList | append (dict
+    "q" (i18n "compare_provider__faq_q_activate" (dict "brand" $p.name "country" $country.name) | safeHTML)
+    "a" (i18n "compare_provider__faq_a_activate" (dict "brand" $p.name "country" $country.name "n" ($myRows | len) "from" (printf "%.2f" $myMin) "install" (partial "lang-href.html" "/guides/how-to-install-esim/")) | safeHTML)) }}
+  {{/* Q9 受限市场专属：CN 问 VPN（eSIM 走香港网关），HK 问本地 SIM 与 eSIM 的取舍 */}}
+  {{ if eq $iso "CN" }}
+  {{ $faqList = $faqList | append (dict
+    "q" (i18n "compare_provider__faq_q_vpn" (dict "brand" $p.name) | safeHTML)
+    "a" (i18n "compare_provider__faq_a_vpn" (dict "brand" $p.name "carriers" (delimit $netNames ", ") "from" (printf "%.2f" $myMin) "n" ($myRows | len)) | safeHTML)) }}
+  {{ else if eq $iso "HK" }}
+  {{ $faqList = $faqList | append (dict
+    "q" (i18n "compare_provider__faq_q_localsim" (dict) | safeHTML)
+    "a" (i18n "compare_provider__faq_a_localsim" (dict "brand" $p.name "from" (printf "%.2f" $myMin) "n" ($myRows | len) "carriers" (delimit $netNames ", ")) | safeHTML)) }}
+  {{ end }}
   {{ with $faqList }}
   <section class="mt-14" aria-labelledby="faq">
     <p class="eyebrow">{{ i18n "compare_provider__faq_eyebrow" | safeHTML }}</p>

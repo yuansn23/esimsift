@@ -38,7 +38,7 @@
    模板生成的 5 个 H2 与 3 段导语若全站同一句，12 页会构成模板化重复内容。
    每篇 md 在 front matter 里给出本国版本；缺省兜底刻意写短，把「篇幅」让给每页独有的正文。
    纪律：覆盖文案里必须自然带上 {国家} eSIM / {国家} network 这类目标词，且 H2 不得含 , ; : — – */}}
-{{ $h2Carriers := .Params.h2_carriers | default (printf "The carrier networks behind a %s eSIM" $country.name) }}
+{{ $h2Carriers := .Params.h2_carriers | default (printf "The carrier networks behind an eSIM for %s" $country.name) }}
 {{ $h2Score    := .Params.h2_scoreboard | default (printf "Independent test results for %s networks" $country.name) }}
 {{ $h2Brands   := .Params.h2_brands | default (printf "%s host networks by eSIM brand" $country.name) }}
 {{ $h2Cities   := .Params.h2_cities | default (printf "Where every %s network works" $country.name) }}
@@ -387,7 +387,7 @@
         <div class="mt-5 grid gap-3 sm:grid-cols-2">
           <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $country.slug) }}" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">Compare {{ $country.name }} eSIM plans</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">{{ $s.planCount }} plans from {{ $s.providerCount }} brands ranked by $/GB and $/day.</p></a>
           <a href="{{ partial "lang-href.html" "/networks/" }}" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_esim_network_map" | safeHTML }}</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">See how {{ $country.name }} compares with the other destinations we track.</p></a>
-          <a href="{{ partial "lang-href.html" "/tools/" }}" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_esim_trip_cost_calculator" | safeHTML }}</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">Size a {{ $country.name }} data allowance by app, then match it to a real plan.</p></a>
+          <a href="{{ partial "lang-href.html" "/tools/" }}" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_esim_trip_cost_calculator" | safeHTML }}</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">Size the data allowance for {{ $country.name }} by app, then match it to a real plan.</p></a>
           <a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="card card-hover group p-4"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "networks_single__current_esim_deals" | safeHTML }}</p><p class="mt-1.5 text-xs leading-relaxed text-ink-500">Live discounts and promo codes on {{ $country.name }} plans.</p></a>
         </div>
         {{ with $country.neighbors }}

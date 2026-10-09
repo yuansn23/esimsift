@@ -14,7 +14,7 @@ q = "Airalo or Holafly for South Africa?"
 a = "The honest answer is that these two are not interchangeable. Airalo's strongest {country} offer is ${ah_airalo_pergb}/GB, sold as {ah_airalo_plan} for ${ah_airalo_price}. The flat-rate option is Holafly, at {ah_holafly_days} days from ${ah_holafly_price} - ${ah_holafly_perday}/day whatever you use."
 
 [[faq]]
-q = "Do I need ID verification for a South Africa eSIM?"
+q = "Do I need ID verification for an eSIM in South Africa?"
 a = "No. South Africa does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -26,3 +26,19 @@ a = "Plans on this page run on Vodacom, MTN, Telkom. Differences matter mostly o
 # 否则只剩「Can one eSIM cover South Africa?」这种同义反复的问法（2026-10-07 第四十二轮修）。
 q = "Can one eSIM cover South Africa and the rest of Africa?"
 a = "Only via a regional plan, because the {country} tables here are scoped to one market. Crossing into {neighbor} means either a regional package or a second plan, and the per-gigabyte rate is what tells them apart."
+
+[[faq]]
+q = "Can I use an eSIM in South Africa?"
+a = "Yes - the only things that can stop an eSIM in {country} are on your side rather than the country's. Every one of the {brand_count} providers here sells into {country}, which is itself the answer to whether eSIMs work there. Verify your phone, then let the $/GB column decide between the plans above."
+
+[[faq]]
+q = "Will my phone work with an eSIM in South Africa?"
+a = "Yes, provided the phone has eSIM hardware and carries no carrier lock. None of the {brand_count} providers here requires a particular handset, only that the device has the chip and is unlocked. Verify the device first, because the plans above only help if it passes."
+
+[[faq]]
+q = "Do I need a local number in South Africa?"
+a = "No number is issued with a travel eSIM for {country}. The practical split is data on the eSIM and the existing number on the physical SIM, with roaming switched off on the home line. Only add a local SIM on top if local calls are a real requirement."
+
+[[faq]]
+q = "What do travellers say about eSIMs in South Africa?"
+a = "We answer the review question with measurement rather than sentiment. The comparison above puts all {plan_count} {country} plans from {brand_count} providers through one formula, which no review site can claim. Check the provider's fair-use and refund pages directly before you commit."

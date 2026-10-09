@@ -14,7 +14,7 @@ q = "Airalo or Holafly for France?"
 a = "Neither is the cheapest plan on this page, and the two are not competing on the same terms either. On Airalo's side the best value is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - priced per gigabyte rather than per day. Holafly's floor price for {country} is ${ah_holafly_price} over {ah_holafly_days} days (${ah_holafly_perday}/day), with no data counter to watch."
 
 [[faq]]
-q = "Do I need ID verification for a France eSIM?"
+q = "Do I need ID verification for an eSIM in France?"
 a = "No. France does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on Orange, SFR, Bouygues. Differences matter mostly 
 [[faq]]
 q = "Can one eSIM cover France and the UK?"
 a = "Not with a country plan alone, because {country} plans stop at the border. Adding {neighbor} means a regional bundle or a second plan, and the two-country arithmetic is worth doing before you buy."
+
+[[faq]]
+q = "Can I use an eSIM in France?"
+a = "It does work here. No country-level restriction stands between a travel eSIM and the networks in {country}. {brand_count} providers sell {plan_count} separate {country} plans on this page, which is a market too large for availability to be the constraint. The device check takes thirty seconds, and the plans above are all priced on one scale."
+
+[[faq]]
+q = "Will my phone work with an eSIM in France?"
+a = "It depends on the device rather than the country, because every plan on this page is a standard eSIM profile. Published compatibility lists lag behind new releases, so the dialer test on your own unit beats any list, ours included. Confirm the EID appears, then compare the plans above."
+
+[[faq]]
+q = "Do I need a local number in France?"
+a = "No, unless you specifically need to make calls on a local number. Two-factor codes are the usual reason people ask, and those arrive on the home line as long as it stays active. Use the eSIM for data and the home line for anything that needs the number."
+
+[[faq]]
+q = "What do travellers say about eSIMs in France?"
+a = "Rather than a star rating, this page answers the same question with numbers. Price, allowance and the fair-use threshold are checkable facts, and they are what the tables above put side by side. The measured comparison is above, and the opinions are best read where they were posted."

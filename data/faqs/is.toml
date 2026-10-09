@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Iceland?"
 a = "Airalo and Holafly solve different problems, so compare the models before the prices. Airalo's {ah_airalo_plan} works out at ${ah_airalo_pergb}/GB for ${ah_airalo_price}, and what you buy is what you get. Holafly's model is daily unlimited, starting at {ah_holafly_days} days for ${ah_holafly_price} - ${ah_holafly_perday}/day - so heavy use costs the same as light use."
 
 [[faq]]
-q = "Do I need ID verification for a Iceland eSIM?"
+q = "Do I need ID verification for an eSIM in Iceland?"
 a = "No. Iceland does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -26,3 +26,19 @@ a = "Plans on this page run on Siminn, Vodafone, Noa. Differences matter mostly 
 # 否则只剩「Can one eSIM cover Iceland?」这种同义反复的问法（2026-10-07 第四十二轮修）。
 q = "Can one eSIM cover Iceland and the rest of Europe?"
 a = "Not on a single-country plan. If the itinerary continues from {country} into {neighbor}, compare a regional package with two separate plans, since the tables here price each market on its own."
+
+[[faq]]
+q = "Can I use an eSIM in Iceland?"
+a = "Travel eSIMs are sold for {country} by every provider we track, and none of them needs a local address. Of the {plan_count} {country} plans listed here, none is limited to a particular region of the country. Run the compatibility check, then compare the plans above on $/GB and $/day."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Iceland?"
+a = "Compatibility is entirely about your device, and {country} adds no requirement of its own. The eSIM chip is fixed at manufacture, so a handset built without one cannot gain it later, however many {country} plans we list. Check for an EID number and a no-restrictions carrier lock first."
+
+[[faq]]
+q = "Do I need a local number in Iceland?"
+a = "Not for a visitor. A {country} eSIM gives you connectivity, and the number stays with your home line. Where voice exists it is app-based rather than a real local number, which is what most travellers actually need. Plan on data from the eSIM and your existing number from the home line."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Iceland?"
+a = "No aggregate score from us. What this page offers instead is the arithmetic. A five-star average and a one-star average usually describe different trips rather than different products. Use the tables above for the facts and the provider's own channels for sentiment."

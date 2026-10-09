@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Australia?"
 a = "It comes down to shape - buckets of data against unlimited days. Airalo's best {country} rate is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - and that is a fixed bucket rather than a daily allowance. Take Holafly if you would rather not count gigabytes, since its {country} packages start at ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and take Airalo for a light, short trip."
 
 [[faq]]
-q = "Do I need ID verification for a Australia eSIM?"
+q = "Do I need ID verification for an eSIM in Australia?"
 a = "No. Australia does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on Telstra, Optus, Vodafone. Differences matter most
 [[faq]]
 q = "Can one eSIM cover Australia and New Zealand?"
 a = "Not on a single-country plan. If the itinerary continues from {country} into {neighbor}, compare a regional package with two separate plans, since the tables here price each market on its own."
+
+[[faq]]
+q = "Can I use an eSIM in Australia?"
+a = "Yes, and {country} is unremarkable in that respect - no local registration or permission is required. All {plan_count} plans in our {country} table register on the domestic networks rather than roaming, so there is no coverage gate to clear. Confirm the device supports eSIM and is unlocked, then choose from the table above."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Australia?"
+a = "Same test as anywhere: dial *#06# and look for an EID number. Regional variants are the trap worth checking: the same model name can ship with or without the eSIM chip depending on the market it was sold in. Test the handset now and choosing a plan becomes a price question rather than a compatibility one."
+
+[[faq]]
+q = "Do I need a local number in Australia?"
+a = "For messaging and maps you do not need one. Voice is generally not part of the deal, and any calling happens through an app rather than the mobile network. Leave the home line in the phone and switch its data off."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Australia?"
+a = "We keep no rating for {country} eSIMs, and that is a decision rather than an omission. The reason is that the same brand scores differently depending on the region the reviewer sits in, so quoting one figure as the truth would mislead. Take the figures above as the baseline and verify the return policy at the source."

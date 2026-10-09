@@ -14,11 +14,15 @@ faqs:
   - q: "Which eSIM is cheapest for Africa and the Middle East?"
     a: "Africa and the Middle East have no single cheapest provider. The cheapest plan changes by country — use the league table above to see the cheapest $/GB and cheapest entry plan in each of the 8 destinations, and the verdict table for which provider is cheapest in the most countries this month."
   - q: "Do I need a different eSIM for each country in the region?"
-    a: "A single-country eSIM covers one country only. When a route through Africa or the Middle East crosses a border, either buy one single-country plan per destination or check a multi-country plan that covers several countries at once."
+    a: "A single-country eSIM covers one country only. When a route through Africa or the Middle East crosses a border, either buy one single-country plan per destination or check a multi-country plan that covers several countries at once. The pairings that come up most often here are the UAE with Qatar, the UAE with Saudi Arabia and Egypt with Israel — add the two cheapest single-country plans from the league table above and compare that total with a regional plan."
   - q: "Is a regional plan better than single-country eSIMs here?"
     a: "Whether a regional plan for Africa and the Middle East wins depends on how many countries you visit. For one country a single-country plan is usually the cheapest. For three or more, add up the cheapest single-country plans for your Africa and Middle East route and compare that total against the regional plan before you commit."
   - q: "Do I need to register or verify my ID for these eSIMs?"
     a: "Some countries in this region require a passport step or local registration before activation. Check each country page for the local rule — the requirement is listed there rather than assumed."
+  - q: "Which providers sell eSIMs for Africa and the Middle East?"
+    a: "Ten brands sell into the eight destinations in this table, and the cheapest one changes from country to country. The league table above names the cheapest provider in each destination and the winner table shows which brand is cheapest in the most of them this month."
+  - q: "Is there one plan that covers Africa and the Middle East together?"
+    a: "The two halves are usually sold as separate bundles, and the destinations here split across them — the UAE, Saudi Arabia, Qatar and Israel on the Middle East side, Morocco, Egypt, Kenya and South Africa on the African one. Check that the bundle names every country on your route, because a plan sold as Middle East does not include Kenya or South Africa."
 ---
 
 Eight destinations from the UAE to South Africa. KYC and registration rules differ sharply here, and some countries require a passport step before activation — check each country page for the local rule. Check the per-country prices first.

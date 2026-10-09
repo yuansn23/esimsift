@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Colombia?"
 a = "Neither is the cheapest plan on this page, and the two are not competing on the same terms either. Airalo sells buckets: its sharpest {country} rate is ${ah_airalo_pergb}/GB ({ah_airalo_plan}, ${ah_airalo_price}). Take Holafly if you would rather not count gigabytes, since its {country} packages start at ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and take Airalo for a light, short trip."
 
 [[faq]]
-q = "Do I need ID verification for a Colombia eSIM?"
+q = "Do I need ID verification for an eSIM in Colombia?"
 a = "No. Colombia does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on Claro, Movistar, Tigo. Differences matter mostly 
 [[faq]]
 q = "Can one eSIM cover Colombia and Peru?"
 a = "Not with a country plan alone, because {country} plans stop at the border. Adding {neighbor} means a regional bundle or a second plan, and the two-country arithmetic is worth doing before you buy."
+
+[[faq]]
+q = "Can I use an eSIM in Colombia?"
+a = "It does work here. No country-level restriction stands between a travel eSIM and the networks in {country}. The choice here is about price and allowance rather than availability: {plan_count} plans from {brand_count} providers. Confirm the device supports eSIM and is unlocked, then choose from the table above."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Colombia?"
+a = "It depends on the device rather than the country, because every plan on this page is a standard eSIM profile. The two checks that matter are hardware and lock status - the {plan_count} plans here install on a phone that passes both, and fail on one that does not. Test the handset now and choosing a plan becomes a price question rather than a compatibility one."
+
+[[faq]]
+q = "Do I need a local number in Colombia?"
+a = "No, unless you specifically need to make calls on a local number. Keeping the home line in the physical slot is the usual arrangement, and it is what lets verification texts keep arriving. Leave the home line in the phone and switch its data off."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Colombia?"
+a = "Rather than a star rating, this page answers the same question with numbers. Fair-use terms, hotspot rules and refund windows are where the real differences hide, and those are documented rather than voted on. Take the figures above as the baseline and verify the return policy at the source."

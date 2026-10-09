@@ -14,8 +14,8 @@ q = "Airalo or Holafly for Argentina?"
 a = "Different products: Airalo sells fixed data buckets, Holafly sells unlimited days. Airalo's best {country} rate is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - and that is a fixed bucket rather than a daily allowance. Holafly's model is daily unlimited, starting at {ah_holafly_days} days for ${ah_holafly_price} - ${ah_holafly_perday}/day - so heavy use costs the same as light use."
 
 [[faq]]
-q = "Do I need ID verification for a Argentina eSIM?"
-a = "Yes. Local law requires passport-linked registration even for travel eSIMs, but the big providers verify in-app in a couple of minutes."
+q = "Do I need ID verification for an eSIM in Argentina?"
+a = "Yes, and it costs you nothing. Local SIM registration needs a DNI from residents and a passport walkthrough from visitors, whereas a travel eSIM for Argentina is registered by the seller at purchase. Buy ahead and the rule never touches your itinerary."
 
 [[faq]]
 q = "Which networks do Argentina eSIMs use?"
@@ -24,3 +24,19 @@ a = "Plans on this page run on Personal, Claro, Movistar. Differences matter mos
 [[faq]]
 q = "Can one eSIM cover Argentina and Brazil?"
 a = "Only with a regional package, because the country plans on this page do not cross borders. The markets around {country} all have their own tables here - {neighbors_all} among them - so price a regional bundle against two single-country plans."
+
+[[faq]]
+q = "Can I use an eSIM in Argentina?"
+a = "An eSIM works in {country}, and nothing about the destination blocks it. All {plan_count} plans in our {country} table register on the domestic networks rather than roaming, so there is no coverage gate to clear. Run the compatibility check, then compare the plans above on $/GB and $/day."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Argentina?"
+a = "Your handset is the deciding factor here, not {country}. Regional variants are the trap worth checking: the same model name can ship with or without the eSIM chip depending on the market it was sold in. Check for an EID number and a no-restrictions carrier lock first."
+
+[[faq]]
+q = "Do I need a local number in Argentina?"
+a = "A local number is not required to use an eSIM in {country}. Voice is generally not part of the deal, and any calling happens through an app rather than the mobile network. Plan on data from the eSIM and your existing number from the home line."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Argentina?"
+a = "Review scores are the one thing we deliberately leave out, because a single number hides the variation behind it. The reason is that the same brand scores differently depending on the region the reviewer sits in, so quoting one figure as the truth would mislead. Use the tables above for the facts and the provider's own channels for sentiment."

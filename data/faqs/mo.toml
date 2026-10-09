@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Macao?"
 a = "It comes down to shape - buckets of data against unlimited days. For {country}, Airalo's cheapest rate per gigabyte is ${ah_airalo_pergb} ({ah_airalo_plan}, ${ah_airalo_price}). Holafly sells unlimited days instead, its smallest {country} package being {ah_holafly_days} days for ${ah_holafly_price} (${ah_holafly_perday}/day)."
 
 [[faq]]
-q = "Do I need ID verification for a Macao eSIM?"
+q = "Do I need ID verification for an eSIM in Macao?"
 a = "No. Macao does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on CTM, 3 Macau, China Telecom. Differences matter m
 [[faq]]
 q = "Can one eSIM cover Macao and Hong Kong?"
 a = "Not on a single-country plan. If the itinerary continues from {country} into {neighbor}, compare a regional package with two separate plans, since the tables here price each market on its own."
+
+[[faq]]
+q = "Can I use an eSIM in Macao?"
+a = "Yes, and {country} is unremarkable in that respect - no local registration or permission is required. What varies is price rather than access - {plan_count} plans from {brand_count} providers, all on the same national networks. Check your handset first, then pick the plan that matches your trip length."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Macao?"
+a = "Same test as anywhere: dial *#06# and look for an EID number. A phone bought in a different market from the one it was made for is the usual culprit, and that has nothing to do with {country} itself. Run the *#06# test before you buy a plan."
+
+[[faq]]
+q = "Do I need a local number in Macao?"
+a = "For messaging and maps you do not need one. Travel eSIMs are priced as data, so buying one for voice is paying for the wrong product. Keep your home SIM active for calls and codes, and let the eSIM carry data."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Macao?"
+a = "We keep no rating for {country} eSIMs, and that is a decision rather than an omission. The published terms are the part nobody reviews and everybody should read, so that is what we quote. Read the numbers above first, then check the provider's own reviews for the human side."

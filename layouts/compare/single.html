@@ -229,8 +229,14 @@
   {{/* ── ② TL;DR 快速结论 ── */}}
   <section class="mt-14" aria-labelledby="verdict">
     <p class="eyebrow">{{ i18n "compare_single__quick_verdict" | safeHTML }}</p>
-    <h2 id="verdict" class="mt-2 text-2xl font-bold md:text-3xl">Which {{ $country.name }} eSIM is best for your trip?</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">The best {{ $country.name }} eSIM depends on how you travel. Three picks computed from all {{ $stats.planCount }} plans we track — prices checked {{ $stats.checkedDate }}.</p>
+    {{/* 句式按关键词矩阵定稿（docs/keywords/google/kw-placement-plan-2026-10-08.md §4.2）：
+         `best esim for {country}` 是**唯一测到热度的国家类句式**（japan 0.0054 / usa 0.0030 /
+         uk 0.0012 —— 图里唯一进非零名单的三个），H2 保持疑问句形态把字面完整吃进去。
+         原句式 `Which {country} eSIM is best for your trip?` 里的 `{country} eSIM is best`
+         与真实搜索词序不符，等于把最热的三个词丢掉了。
+         下一句刻意**不重复**同一串字面（H2 已承接），改为直接回答「取决于什么」。 */}}
+    <h2 id="verdict" class="mt-2 text-2xl font-bold md:text-3xl">What is the best eSIM for {{ $country.name }}?</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">It depends on how you travel and on how much data you actually use. Three picks computed from all {{ $stats.planCount }} plans we track — prices checked {{ $stats.checkedDate }}.</p>
     <div class="mt-6 grid gap-4 md:grid-cols-3">
       <div class="card card-hover relative overflow-hidden p-6 pt-7">
         <span class="absolute inset-x-0 top-0 h-1.5 bg-emerald-400" aria-hidden="true"></span>
@@ -684,7 +690,7 @@
     <div class="grid items-start gap-8 lg:grid-cols-[1.4fr_1fr]">
       <div class="card p-7">
         <p class="eyebrow">{{ i18n "g_before_you_buy" | safeHTML }}</p>
-        <h2 id="quirks" class="mt-2 text-2xl font-bold">Things to know before buying a {{ $country.name }} eSIM</h2>
+        <h2 id="quirks" class="mt-2 text-2xl font-bold">Things to know before buying an eSIM for {{ $country.name }}</h2>
         <ol class="mt-5 space-y-4">
           {{ range . }}
           <li class="flex gap-3.5 text-ink-700">
@@ -693,6 +699,16 @@
           </li>
           {{ end }}
         </ol>
+        {{/* 城市词与机场词（第五十六轮批 7，965 词）：
+             城市族**不开城市页**（docs/keyword-map.md 的禁令），改为在国家页 #quirks
+             的场景段承接 —— 这里本来就是回答「落地之后怎么办」的地方。
+             城市清单取自 data/carriers.toml 的 info.cities（50/50 国都有值，且逐国不同，
+             所以这一句不会造成跨页同质化）。实测该族最高频的两个句式是
+             `{city} airport esim` 与 `esim {city}` —— 「机场」必须出现在句子里，
+             只列城市名承不住「落地即用」这层意图。 */}}
+        {{ with $carrierInfo.cities }}
+        <p class="mt-4 border-t border-ink-100 pt-3 text-sm leading-relaxed text-ink-600">{{ i18n "compare_single__city_price_note" (dict "country" $country.name "cities" (delimit . ", ")) | safeHTML }}</p>
+        {{ end }}
       </div>
       {{ if gt (len $imgs) 1 }}
       <figure class="figure lg:sticky lg:top-24">
@@ -897,7 +913,7 @@
     <div class="grid items-start gap-8 lg:grid-cols-[1.4fr_1fr]">
       <div>
         <p class="eyebrow">FAQ</p>
-        <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">What should I know before buying a {{ $country.name }} eSIM</h2>
+        <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">What should I know before buying an eSIM for {{ $country.name }}</h2>
         <div class="mt-5 space-y-3">
           {{ range . }}
           <details class="faq-item">

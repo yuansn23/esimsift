@@ -14,8 +14,8 @@ q = "Airalo or Holafly for China?"
 a = "Different products: Airalo sells fixed data buckets, Holafly sells unlimited days. Airalo sells buckets: its sharpest {country} rate is ${ah_airalo_pergb}/GB ({ah_airalo_plan}, ${ah_airalo_price}). Holafly only sells unlimited by the day: {ah_holafly_days} days for ${ah_holafly_price}, or ${ah_holafly_perday} a day."
 
 [[faq]]
-q = "Do I need ID verification for a China eSIM?"
-a = "Yes. Local law requires passport-linked registration even for travel eSIMs, but the big providers verify in-app in a couple of minutes."
+q = "Do I need ID verification for an eSIM in China?"
+a = "This is the one destination where the question points the wrong way. A travel eSIM for mainland China asks no ID step of you, because registration happens outside the country, and that is also why it reaches Google and WhatsApp without a VPN when a local SIM cannot."
 
 [[faq]]
 q = "Which networks do China eSIMs use?"
@@ -24,3 +24,19 @@ a = "Plans on this page run on China Mobile, China Unicom, China Telecom. Differ
 [[faq]]
 q = "Can one eSIM cover China and Japan?"
 a = "Only with a regional package, because the country plans on this page do not cross borders. The markets around {country} all have their own tables here - {neighbors_all} among them - so price a regional bundle against two single-country plans."
+
+[[faq]]
+q = "Can I use an eSIM in China?"
+a = "An eSIM works in {country}, and nothing about the destination blocks it. The choice here is about price and allowance rather than availability: {plan_count} plans from {brand_count} providers. Settle the phone question and the comparison above does the rest."
+
+[[faq]]
+q = "Will my phone work with an eSIM in China?"
+a = "Your handset is the deciding factor here, not {country}. The two checks that matter are hardware and lock status - the {plan_count} plans here install on a phone that passes both, and fail on one that does not. Settle both checks at home on Wi-Fi rather than at the airport."
+
+[[faq]]
+q = "Do I need a local number in China?"
+a = "A local number is not required to use an eSIM in {country}. Keeping the home line in the physical slot is the usual arrangement, and it is what lets verification texts keep arriving. Decide whether you truly need a local number before adding a second purchase."
+
+[[faq]]
+q = "What do travellers say about eSIMs in China?"
+a = "Review scores are the one thing we deliberately leave out, because a single number hides the variation behind it. Fair-use terms, hotspot rules and refund windows are where the real differences hide, and those are documented rather than voted on. Compare the plans above on price, then read the provider's terms before buying."

@@ -59,6 +59,16 @@ A **profile** is the software half of the pair, one carrier's credential stored 
 
 This split is why a phone can hold several eSIMs at once, why deleting a used plan damages nothing, and why an eSIM can't be handed to another phone the way a plastic card can — the keycards live in one specific safe.
 
+## What an eSIM does not need
+
+Three things travelers assume an eSIM requires, and does not:
+
+- **A different card format.** There is no eSIM equivalent of nano, micro or standard — the chip is embedded, so there is nothing to measure, trim or adapt. If you have been looking for the eSIM size your phone takes, the question does not apply.
+- **A trip to a store.** The whole install happens over the phone, from a QR code or the provider's app, on Wi-Fi at home.
+- **Your home number to change.** The eSIM takes over data while the physical SIM keeps its number and its SMS, which is what the [dual SIM guide](/guides/dual-sim-and-esim/) is about.
+
+What it does need is a compatible, carrier-unlocked device — the [compatibility check](/guides/esim-compatibility-check/) settles that in thirty seconds.
+
 ## What an eSIM profile actually contains
 
 ### What a profile actually holds

@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Singapore?"
 a = "They sell different things, so the answer depends on how you use data. Airalo's strongest {country} offer is ${ah_airalo_pergb}/GB, sold as {ah_airalo_plan} for ${ah_airalo_price}. Where Holafly wins is predictability, from ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and where Airalo wins is a short, light trip."
 
 [[faq]]
-q = "Do I need ID verification for a Singapore eSIM?"
+q = "Do I need ID verification for an eSIM in Singapore?"
 a = "No. Singapore does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on Singtel, StarHub, M1. Differences matter mostly o
 [[faq]]
 q = "Can one eSIM cover Singapore and Malaysia?"
 a = "Not with a single-country plan. Everything in our {country} tables is scoped to {country} alone, so a trip that also takes in {neighbor} needs either a second country plan or a regional bundle."
+
+[[faq]]
+q = "Can I use an eSIM in Singapore?"
+a = "Yes - {country} is on the standard travel-eSIM map, with {brand_count} providers selling plans for it. Every one of the {brand_count} providers here sells into {country}, which is itself the answer to whether eSIMs work there. Fix the handset question before you buy, and compare the rest on price."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Singapore?"
+a = "If your phone supports eSIM and is carrier-unlocked it works in {country} - the destination has no say in it. None of the {brand_count} providers here requires a particular handset, only that the device has the chip and is unlocked. Run the two checks and come back to the table above."
+
+[[faq]]
+q = "Do I need a local number in Singapore?"
+a = "Not for a normal trip - a travel eSIM for {country} is a data product rather than a phone line. The practical split is data on the eSIM and the existing number on the physical SIM, with roaming switched off on the home line. Keep both lines in the phone and set data to the eSIM."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Singapore?"
+a = "We do not aggregate reviews, so the honest answer here is about method rather than ratings. The comparison above puts all {plan_count} {country} plans from {brand_count} providers through one formula, which no review site can claim. Treat the tables above as the checkable half and read reviews for the rest."

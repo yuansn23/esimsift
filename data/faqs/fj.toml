@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Fiji?"
 a = "Different products: Airalo sells fixed data buckets, Holafly sells unlimited days. On Airalo's side the best value is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - priced per gigabyte rather than per day. Take Holafly if you would rather not count gigabytes, since its {country} packages start at ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and take Airalo for a light, short trip."
 
 [[faq]]
-q = "Do I need ID verification for a Fiji eSIM?"
+q = "Do I need ID verification for an eSIM in Fiji?"
 a = "No. Fiji does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on Vodafone Fiji, Digicel Fiji. Differences matter m
 [[faq]]
 q = "Can one eSIM cover Fiji and Australia?"
 a = "Only with a regional package, because the country plans on this page do not cross borders. The markets around {country} all have their own tables here - {neighbors_all} among them - so price a regional bundle against two single-country plans."
+
+[[faq]]
+q = "Can I use an eSIM in Fiji?"
+a = "An eSIM works in {country}, and nothing about the destination blocks it. {brand_count} providers sell {plan_count} separate {country} plans on this page, which is a market too large for availability to be the constraint. Confirm the device supports eSIM and is unlocked, then choose from the table above."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Fiji?"
+a = "Your handset is the deciding factor here, not {country}. Published compatibility lists lag behind new releases, so the dialer test on your own unit beats any list, ours included. Test the handset now and choosing a plan becomes a price question rather than a compatibility one."
+
+[[faq]]
+q = "Do I need a local number in Fiji?"
+a = "A local number is not required to use an eSIM in {country}. Two-factor codes are the usual reason people ask, and those arrive on the home line as long as it stays active. Leave the home line in the phone and switch its data off."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Fiji?"
+a = "Review scores are the one thing we deliberately leave out, because a single number hides the variation behind it. Price, allowance and the fair-use threshold are checkable facts, and they are what the tables above put side by side. Take the figures above as the baseline and verify the return policy at the source."

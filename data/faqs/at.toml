@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Austria?"
 a = "Neither is the cheapest plan on this page, and the two are not competing on the same terms either. Airalo's best {country} rate is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - and that is a fixed bucket rather than a daily allowance. Holafly only sells unlimited by the day: {ah_holafly_days} days for ${ah_holafly_price}, or ${ah_holafly_perday} a day."
 
 [[faq]]
-q = "Do I need ID verification for a Austria eSIM?"
+q = "Do I need ID verification for an eSIM in Austria?"
 a = "No. Austria does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on A1, Magenta, Drei. Differences matter mostly outs
 [[faq]]
 q = "Can one eSIM cover Austria and Italy?"
 a = "Not with a country plan alone, because {country} plans stop at the border. Adding {neighbor} means a regional bundle or a second plan, and the two-country arithmetic is worth doing before you buy."
+
+[[faq]]
+q = "Can I use an eSIM in Austria?"
+a = "It does work here. No country-level restriction stands between a travel eSIM and the networks in {country}. All {plan_count} plans in our {country} table register on the domestic networks rather than roaming, so there is no coverage gate to clear. Settle the phone question and the comparison above does the rest."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Austria?"
+a = "It depends on the device rather than the country, because every plan on this page is a standard eSIM profile. Regional variants are the trap worth checking: the same model name can ship with or without the eSIM chip depending on the market it was sold in. Settle both checks at home on Wi-Fi rather than at the airport."
+
+[[faq]]
+q = "Do I need a local number in Austria?"
+a = "No, unless you specifically need to make calls on a local number. Voice is generally not part of the deal, and any calling happens through an app rather than the mobile network. Decide whether you truly need a local number before adding a second purchase."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Austria?"
+a = "Rather than a star rating, this page answers the same question with numbers. The reason is that the same brand scores differently depending on the region the reviewer sits in, so quoting one figure as the truth would mislead. Compare the plans above on price, then read the provider's terms before buying."

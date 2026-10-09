@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Netherlands?"
 a = "The honest answer is that these two are not interchangeable. For {country}, Airalo's cheapest rate per gigabyte is ${ah_airalo_pergb} ({ah_airalo_plan}, ${ah_airalo_price}). Take Holafly if you would rather not count gigabytes, since its {country} packages start at ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and take Airalo for a light, short trip."
 
 [[faq]]
-q = "Do I need ID verification for a Netherlands eSIM?"
+q = "Do I need ID verification for an eSIM in Netherlands?"
 a = "No. Netherlands does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on KPN, Vodafone, Odido. Differences matter mostly o
 [[faq]]
 q = "Can one eSIM cover Netherlands and Germany?"
 a = "Only via a regional plan, because the {country} tables here are scoped to one market. Crossing into {neighbor} means either a regional package or a second plan, and the per-gigabyte rate is what tells them apart."
+
+[[faq]]
+q = "Can I use an eSIM in Netherlands?"
+a = "Yes - the only things that can stop an eSIM in {country} are on your side rather than the country's. What varies is price rather than access - {plan_count} plans from {brand_count} providers, all on the same national networks. Confirm the device supports eSIM and is unlocked, then choose from the table above."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Netherlands?"
+a = "Yes, provided the phone has eSIM hardware and carries no carrier lock. A phone bought in a different market from the one it was made for is the usual culprit, and that has nothing to do with {country} itself. Test the handset now and choosing a plan becomes a price question rather than a compatibility one."
+
+[[faq]]
+q = "Do I need a local number in Netherlands?"
+a = "No number is issued with a travel eSIM for {country}. Travel eSIMs are priced as data, so buying one for voice is paying for the wrong product. Leave the home line in the phone and switch its data off."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Netherlands?"
+a = "We answer the review question with measurement rather than sentiment. The published terms are the part nobody reviews and everybody should read, so that is what we quote. Take the figures above as the baseline and verify the return policy at the source."

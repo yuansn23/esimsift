@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Poland?"
 a = "It comes down to shape - buckets of data against unlimited days. Airalo's way into {country} is a data bucket - {ah_airalo_plan} at ${ah_airalo_price}, or ${ah_airalo_pergb}/GB at its sharpest. Holafly's model is daily unlimited, starting at {ah_holafly_days} days for ${ah_holafly_price} - ${ah_holafly_perday}/day - so heavy use costs the same as light use."
 
 [[faq]]
-q = "Do I need ID verification for a Poland eSIM?"
+q = "Do I need ID verification for an eSIM in Poland?"
 a = "No. Poland does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on Orange, Play, Plus, T-Mobile. Differences matter 
 [[faq]]
 q = "Can one eSIM cover Poland and Germany?"
 a = "Not on a single-country plan. If the itinerary continues from {country} into {neighbor}, compare a regional package with two separate plans, since the tables here price each market on its own."
+
+[[faq]]
+q = "Can I use an eSIM in Poland?"
+a = "Yes, and {country} is unremarkable in that respect - no local registration or permission is required. Availability is already settled by the {plan_count} plans listed above, so the open questions are duration and gigabytes. Run the compatibility check, then compare the plans above on $/GB and $/day."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Poland?"
+a = "Same test as anywhere: dial *#06# and look for an EID number. Of the {plan_count} {country} plans on this page, none needs anything beyond a standard eSIM profile. Check for an EID number and a no-restrictions carrier lock first."
+
+[[faq]]
+q = "Do I need a local number in Poland?"
+a = "For messaging and maps you do not need one. If a local number is genuinely required that means a local SIM purchase, and usually a registration step at a store. Plan on data from the eSIM and your existing number from the home line."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Poland?"
+a = "We keep no rating for {country} eSIMs, and that is a decision rather than an omission. Where a provider publishes its own support and refund policy we link it directly, so you can read the source rather than a summary. Use the tables above for the facts and the provider's own channels for sentiment."

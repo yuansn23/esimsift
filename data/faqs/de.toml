@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Germany?"
 a = "Airalo and Holafly solve different problems, so compare the models before the prices. Airalo sells buckets: its sharpest {country} rate is ${ah_airalo_pergb}/GB ({ah_airalo_plan}, ${ah_airalo_price}). Where Holafly wins is predictability, from ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and where Airalo wins is a short, light trip."
 
 [[faq]]
-q = "Do I need ID verification for a Germany eSIM?"
+q = "Do I need ID verification for an eSIM in Germany?"
 a = "No. Germany does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -23,4 +23,20 @@ a = "Plans on this page run on Telekom, Vodafone, O2. Differences matter mostly 
 
 [[faq]]
 q = "Can one eSIM cover Germany and France?"
-a = "One country per plan, so a {country} eSIM stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."
+a = "One country per plan, so an eSIM bought for {country} stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."
+
+[[faq]]
+q = "Can I use an eSIM in Germany?"
+a = "Travel eSIMs are sold for {country} by every provider we track, and none of them needs a local address. The choice here is about price and allowance rather than availability: {plan_count} plans from {brand_count} providers. Fix the handset question before you buy, and compare the rest on price."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Germany?"
+a = "Compatibility is entirely about your device, and {country} adds no requirement of its own. The two checks that matter are hardware and lock status - the {plan_count} plans here install on a phone that passes both, and fail on one that does not. Run the two checks and come back to the table above."
+
+[[faq]]
+q = "Do I need a local number in Germany?"
+a = "Not for a visitor. A {country} eSIM gives you connectivity, and the number stays with your home line. Keeping the home line in the physical slot is the usual arrangement, and it is what lets verification texts keep arriving. Keep both lines in the phone and set data to the eSIM."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Germany?"
+a = "No aggregate score from us. What this page offers instead is the arithmetic. Fair-use terms, hotspot rules and refund windows are where the real differences hide, and those are documented rather than voted on. Treat the tables above as the checkable half and read reviews for the rest."

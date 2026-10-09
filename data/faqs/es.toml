@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Spain?"
 a = "They sell different things, so the answer depends on how you use data. On Airalo's side the best value is ${ah_airalo_pergb}/GB - {ah_airalo_plan} at ${ah_airalo_price} - priced per gigabyte rather than per day. Holafly only sells unlimited by the day: {ah_holafly_days} days for ${ah_holafly_price}, or ${ah_holafly_perday} a day."
 
 [[faq]]
-q = "Do I need ID verification for a Spain eSIM?"
+q = "Do I need ID verification for an eSIM in Spain?"
 a = "No. Spain does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -24,3 +24,19 @@ a = "Plans on this page run on Movistar, Vodafone, Orange, Yoigo. Differences ma
 [[faq]]
 q = "Can one eSIM cover Spain and France?"
 a = "Not with a single-country plan. Everything in our {country} tables is scoped to {country} alone, so a trip that also takes in {neighbor} needs either a second country plan or a regional bundle."
+
+[[faq]]
+q = "Can I use an eSIM in Spain?"
+a = "Yes - {country} is on the standard travel-eSIM map, with {brand_count} providers selling plans for it. {brand_count} providers sell {plan_count} separate {country} plans on this page, which is a market too large for availability to be the constraint. Settle the phone question and the comparison above does the rest."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Spain?"
+a = "If your phone supports eSIM and is carrier-unlocked it works in {country} - the destination has no say in it. Published compatibility lists lag behind new releases, so the dialer test on your own unit beats any list, ours included. Settle both checks at home on Wi-Fi rather than at the airport."
+
+[[faq]]
+q = "Do I need a local number in Spain?"
+a = "Not for a normal trip - a travel eSIM for {country} is a data product rather than a phone line. Two-factor codes are the usual reason people ask, and those arrive on the home line as long as it stays active. Decide whether you truly need a local number before adding a second purchase."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Spain?"
+a = "We do not aggregate reviews, so the honest answer here is about method rather than ratings. Price, allowance and the fair-use threshold are checkable facts, and they are what the tables above put side by side. Compare the plans above on price, then read the provider's terms before buying."

@@ -1,6 +1,6 @@
 ---
 title: "Is Your Phone eSIM Compatible? The 30-Second Check"
-description: "Check eSIM compatibility in 30 seconds: the *#06# EID test, supported iPhones and Androids, and eSIM Sift's searchable phone list."
+description: "Check eSIM compatibility in 30 seconds: the *#06# EID test, what an eSIM requires, why there is no eSIM size to measure, and the verified phone list."
 hero: "travel-esim-illustration-012.webp"
 hero_alt: "A magnifying glass over a smartphone checking whether the device supports eSIM"
 date: 2026-10-01
@@ -19,6 +19,8 @@ facts:
     value: "Cellular models usually support eSIM, Wi-Fi-only models do not"
   - label: "Used phones"
     value: "Run the EID test before you buy"
+  - label: "eSIM card size"
+    value: "None — the chip is embedded, so there is no standard, micro or nano format to match"
 h2_next: "Check the rest before you buy"
 faqs:
   - q: "How do I know if my phone is carrier locked?"
@@ -37,9 +39,19 @@ faqs:
     a: "An older phone cannot gain eSIM support later. The eSIM chip is physical hardware fixed at manufacture — no software update, carrier visit, or repair adds it to a phone that left the factory without one. If *#06# shows no EID, that unit will never take an eSIM profile."
   - q: "Do cellular iPads work with travel eSIMs?"
     a: "Often yes — cellular iPads follow the same profile flow as iPhones (buy, scan, install), and many travelers use them as data-only devices abroad. Two cautions — only Wi-Fi + Cellular models have a modem at all, and some travel providers scope plans to phones only, so check the provider's supported-devices page before buying."
+  - q: "Do eSIMs come in different sizes?"
+    a: "No — an eSIM has no card and therefore no size. Physical SIMs are cut to standard, micro and nano dimensions, which is why moving an old SIM into a newer phone used to need an adapter or a punch tool. The eSIM chip is embedded in the device, so there is nothing to measure and nothing to match. Compatibility turns on whether your model carries the chip and is carrier-unlocked, and the *#06# dialer test settles both."
+  - q: "What does an eSIM require to work?"
+    a: "Four things, and only the first is hardware. An eSIM-capable device, a carrier-unlocked handset, an EID the provider can bind the profile to, and an install route your phone can run — QR-code and web installs need nothing beyond a camera and a connection, while app-route providers add a minimum OS version and an account signup. Miss any one of the four and the install fails, usually with a vague activation error rather than a clear reason."
 ---
 
 Thirty seconds decides whether any of this site's comparisons apply to you: either your phone has eSIM hardware or it doesn't, and either it's carrier-unlocked or it isn't. Both checks happen on the device itself — no spec-sheet hunting required. But two more traps hide behind that dialer test, and they sink more trips than missing hardware ever does: regional variants (the same model name sold with different internals per market) and provider install routes that quietly add their own requirements. This guide covers all four, and the searchable list of verified models eSIM Sift maintains below the article settles the rest.
+
+## Does an eSIM have a size
+
+No. The question comes from the physical-SIM era, when the card itself was cut to one of three sizes — standard, micro and nano — and changing phones meant checking which one the new handset took, or punching a smaller card out of a larger one. An eSIM has no card to measure, no tray to match and no adapter to buy: the chip sits inside the device and never leaves it, so an eSIM physically fits every eSIM phone by definition.
+
+If the size you had in mind was the data allowance rather than the card, that is measured in gigabytes and listed for every plan on each [country page](/compare/). Either way, the compatibility question is not about size — it is whether your model carries the chip at all, which the EID test below settles in seconds.
 
 ## How to check if your phone supports eSIM
 
@@ -96,6 +108,17 @@ The honest caveat: travel eSIM providers design and price their plans for phones
 ## Does a carrier-locked phone block eSIMs
 
 A carrier-locked phone cannot install an eSIM at all. It accepts profiles only from the carrier it is locked to; every travel eSIM install will fail, usually with a vague "cannot activate" error rather than a clear lock message. On iOS 14+, check *Settings → General → About → Carrier Lock*: it must read **No SIM restrictions**. Paid off your device? The unlock is normally a free carrier request — do it a week before departure, not at the gate. And note the cruel detail: a locked phone *passes* the EID dialer test, because the chip exists. Lock is a software gate on top of hardware, which is why the two checks are separate steps.
+
+## What an eSIM requires before it works
+
+Four requirements decide whether a travel eSIM installs and connects, and only the first is about hardware:
+
+1. **An eSIM-capable device** — a phone, tablet or laptop with the embedded chip. The `*#06#` dialer test answers this in seconds, and the variant table below covers the regional traps.
+2. **A carrier-unlocked handset** — the chip can be present and still refuse every third-party profile. On iOS 14+, *Settings → General → About → Carrier Lock* must read **No SIM restrictions**.
+3. **An EID the provider can bind to** — the profile is issued against your device's EID, which is why the same QR code will not install twice.
+4. **An install route your phone can run** — QR-code and web installs need nothing but a camera and a connection, while app-route providers add a minimum OS version and an account signup.
+
+Miss any one of the four and the install fails, usually with a vague activation error rather than a clear reason. That is why installing at home on Wi-Fi, days before departure, is the habit worth keeping — a failure at the departure gate has no fix.
 
 ## Half of compatibility is the provider's install route
 

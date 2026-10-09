@@ -14,7 +14,7 @@ q = "Airalo or Holafly for Malaysia?"
 a = "Airalo and Holafly solve different problems, so compare the models before the prices. For {country}, Airalo's cheapest rate per gigabyte is ${ah_airalo_pergb} ({ah_airalo_plan}, ${ah_airalo_price}). Holafly only sells unlimited by the day: {ah_holafly_days} days for ${ah_holafly_price}, or ${ah_holafly_perday} a day."
 
 [[faq]]
-q = "Do I need ID verification for a Malaysia eSIM?"
+q = "Do I need ID verification for an eSIM in Malaysia?"
 a = "No. Malaysia does not force ID checks on travel eSIMs - local SIM rules differ, but the plans on this page ship pre-registered."
 
 [[faq]]
@@ -23,4 +23,20 @@ a = "Plans on this page run on Maxis, Celcom, DiGi. Differences matter mostly ou
 
 [[faq]]
 q = "Can one eSIM cover Malaysia and Thailand?"
-a = "One country per plan, so a {country} eSIM stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."
+a = "One country per plan, so an eSIM bought for {country} stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."
+
+[[faq]]
+q = "Can I use an eSIM in Malaysia?"
+a = "Travel eSIMs are sold for {country} by every provider we track, and none of them needs a local address. What varies is price rather than access - {plan_count} plans from {brand_count} providers, all on the same national networks. Settle the phone question and the comparison above does the rest."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Malaysia?"
+a = "Compatibility is entirely about your device, and {country} adds no requirement of its own. A phone bought in a different market from the one it was made for is the usual culprit, and that has nothing to do with {country} itself. Settle both checks at home on Wi-Fi rather than at the airport."
+
+[[faq]]
+q = "Do I need a local number in Malaysia?"
+a = "Not for a visitor. A {country} eSIM gives you connectivity, and the number stays with your home line. Travel eSIMs are priced as data, so buying one for voice is paying for the wrong product. Decide whether you truly need a local number before adding a second purchase."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Malaysia?"
+a = "No aggregate score from us. What this page offers instead is the arithmetic. The published terms are the part nobody reviews and everybody should read, so that is what we quote. Compare the plans above on price, then read the provider's terms before buying."

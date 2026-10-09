@@ -14,8 +14,8 @@ q = "Airalo or Holafly for Morocco?"
 a = "Neither is the cheapest plan on this page, and the two are not competing on the same terms either. For {country}, Airalo's cheapest rate per gigabyte is ${ah_airalo_pergb} ({ah_airalo_plan}, ${ah_airalo_price}). Where Holafly wins is predictability, from ${ah_holafly_price} for {ah_holafly_days} days (${ah_holafly_perday}/day), and where Airalo wins is a short, light trip."
 
 [[faq]]
-q = "Do I need ID verification for a Morocco eSIM?"
-a = "Yes. Local law requires passport-linked registration even for travel eSIMs, but the big providers verify in-app in a couple of minutes."
+q = "Do I need ID verification for an eSIM in Morocco?"
+a = "Yes - Moroccan SIMs are registered against a passport, and the sellers we track collect it during the eSIM purchase rather than at a Maroc Telecom counter. Once you are there, old-city signal is the bigger obstacle: the medina alleys in Fes defeat every network, so carry offline maps."
 
 [[faq]]
 q = "Which networks do Morocco eSIMs use?"
@@ -25,4 +25,20 @@ a = "Plans on this page run on Maroc Telecom, Orange Maroc, Inwi. Differences ma
 # Q6：国家没有 countries.toml `neighbors`（无邻国 7 国之一），所以问题点名 **region** 而不是邻国 ——
 # 否则只剩「Can one eSIM cover Morocco?」这种同义反复的问法（2026-10-07 第四十二轮修）。
 q = "Can one eSIM cover Morocco and the rest of Africa?"
-a = "One country per plan, so a {country} eSIM stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."
+a = "One country per plan, so an eSIM bought for {country} stops working at the border. A regional bundle or a second plan is the way to add {neighbor}, and both are worth pricing against simply buying two."
+
+[[faq]]
+q = "Can I use an eSIM in Morocco?"
+a = "It does work here. No country-level restriction stands between a travel eSIM and the networks in {country}. What varies is price rather than access - {plan_count} plans from {brand_count} providers, all on the same national networks. Fix the handset question before you buy, and compare the rest on price."
+
+[[faq]]
+q = "Will my phone work with an eSIM in Morocco?"
+a = "It depends on the device rather than the country, because every plan on this page is a standard eSIM profile. A phone bought in a different market from the one it was made for is the usual culprit, and that has nothing to do with {country} itself. Run the two checks and come back to the table above."
+
+[[faq]]
+q = "Do I need a local number in Morocco?"
+a = "No, unless you specifically need to make calls on a local number. Travel eSIMs are priced as data, so buying one for voice is paying for the wrong product. Keep both lines in the phone and set data to the eSIM."
+
+[[faq]]
+q = "What do travellers say about eSIMs in Morocco?"
+a = "Rather than a star rating, this page answers the same question with numbers. The published terms are the part nobody reviews and everybody should read, so that is what we quote. Treat the tables above as the checkable half and read reviews for the rest."
