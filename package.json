@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "validate": "python scripts/validate.py && python -X utf8 scripts/check_css_sync.py && python -X utf8 scripts/check_i18n.py",
-    "check:output": "python -X utf8 scripts/check_output.py && python -X utf8 scripts/check_headings.py && python -X utf8 scripts/verify_provider_pages.py && python -X utf8 scripts/check_faq_facts.py && python -X utf8 scripts/check_dates.py && python -X utf8 scripts/check_hreflang.py && python -X utf8 scripts/check_article_agreement.py && python -X utf8 scripts/verify_no_regression.py",
+    "validate": "python scripts/validate.py && python -X utf8 scripts/check_css_sync.py && python -X utf8 scripts/check_i18n.py && python -X utf8 scripts/check_printf_arity.py && python -X utf8 scripts/check_headings_source.py",
+    "check:output": "python -X utf8 scripts/check_output.py && python -X utf8 scripts/check_headings.py && python -X utf8 scripts/verify_provider_pages.py && python -X utf8 scripts/check_faq_facts.py && python -X utf8 scripts/check_dates.py && python -X utf8 scripts/check_hreflang.py && python -X utf8 scripts/check_article_agreement.py && python -X utf8 scripts/verify_de_text.py && python -X utf8 scripts/verify_de_data.py && python -X utf8 scripts/verify_no_regression.py && python -X utf8 scripts/_de_schema_audit.py && python -X utf8 scripts/_de_link_leak_audit.py",
     "build:css": "tailwindcss -i assets/css/main.css -o static/css/tailwind.css --minify",
     "watch:css": "tailwindcss -i assets/css/main.css -o static/css/tailwind.css --watch",
     "stamp": "python -X utf8 scripts/stamp_checked.py",

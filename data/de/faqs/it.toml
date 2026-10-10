@@ -1,0 +1,42 @@
+# IT FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Italien?"
+a = "Für ${cheap_price} ist {cheap_plan} von {cheap_brand} der günstigste Weg ins Netz in {country_dat}. Preis und Gegenwert sind zwei verschiedene Messungen, und pro Gigabyte gewinnt {value_plan} von {value_brand} mit ${value_pergb}/GB. Kleine Pakete passen zu Städtereisen, bei längeren Aufenthalten ist ein größerer Tarif pro Gigabyte meist günstiger."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Italien wirklich unbegrenzt?"
+a = "Behandle sie als gedeckelt: {unl_count} unbegrenzte Tarife für {country_acc} nennen jeweils ein Tagesvolumen und eine Rückfallgeschwindigkeit. {unl_brand} ist pro Tag am günstigsten mit ${unl_perday}, und die volle Spanne reicht hier über {unl_perday_range}. Zwei Werte entscheiden, ob ein gedeckelter Tarif zu dir passt, und {unl_brand} nennt beide: {unl_allowance}, dann {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Italien?"
+a = "Die ehrliche Antwort ist, dass diese beiden nicht austauschbar sind. {ah_airalo_plan} von Airalo ergibt ${ah_airalo_pergb}/GB für ${ah_airalo_price}, und was du kaufst, ist was du bekommst. Holafly verkauft nur tageweise unbegrenzt: {ah_holafly_days} Tage für ${ah_holafly_price}, oder ${ah_holafly_perday} pro Tag."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Italien?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Italien?"
+a = "Die Tarife auf dieser Seite laufen über TIM, Vodafone, WindTre. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Italien und Frankreich abdecken?"
+a = "Nur über einen regionalen Tarif, denn die Tabellen für {country_acc} gelten für einen Markt. Um {neighbor} mitzunehmen, brauchst du ein regionales Paket oder einen zweiten Tarif – der Preis pro Gigabyte unterscheidet sie."
+
+[[faq]]
+q = "Kann ich eine eSIM in Italien nutzen?"
+a = "Ja – was eine eSIM in {country_dat} stoppen kann, liegt auf deiner Seite und nicht am Land. Von den {plan_count} hier gelisteten Tarifen für {country_acc} ist keiner auf eine bestimmte Region des Landes begrenzt. Kläre die Handy-Frage, den Rest erledigt der Vergleich oben."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Italien?"
+a = "Ja, sofern das Handy eSIM-Hardware hat und keinen Netlock trägt. Der eSIM-Chip ist bei der Fertigung festgelegt, ein ohne ihn gebautes Handy kann ihn später nicht erhalten, egal wie viele Tarife für {country_acc} wir listen. Kläre beide Prüfungen zu Hause im WLAN statt am Flughafen."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Italien?"
+a = "Mit einer Reise-eSIM für {country_acc} wird keine Nummer ausgegeben. Wo Sprache existiert, ist sie app-basiert statt eine echte lokale Nummer – was die meisten Reisenden tatsächlich brauchen. Entscheide, ob du wirklich eine lokale Nummer brauchst, bevor du einen zweiten Kauf machst."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Italien?"
+a = "Wir beantworten die Bewertungsfrage mit Messung statt mit Gefühl. Ein Fünf-Sterne-Schnitt und ein Ein-Stern-Schnitt beschreiben meist verschiedene Reisen statt verschiedene Produkte. Vergleiche die Tarife oben nach Preis und lies dann die Bedingungen des Anbieters vor dem Kauf."

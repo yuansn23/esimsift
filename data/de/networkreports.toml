@@ -1,0 +1,532 @@
+# 德语第三方测速报告覆盖 —— 覆盖会上德语页的**三类**文本：
+#   opensignal_facts （数组 → 整段重写）· ookla_note （标量）· opensignal_date （月名本地化）
+# opensignal_title / url / ookla_slug / ookla_mobile 全部保持原文
+#   （报告标题是官方专有名称，其余是机器字段）→ 故意不写，原样继承。
+#
+# ★ `opensignal_date` / `accessed` 为什么**要**覆盖：它们不是机器字段，是可见文案 ——
+#   compare/single.html 印成 eyebrow `Opensignal · {date}`、正文印 `accessed`，
+#   networks/list.html 印进来源行。原样继承会让德语站印出英文月名
+#   （2026-10-07 实测 51 文件 / 232 处）。44 个 ISO **一律覆盖**，好让守卫做
+#   「EN 有 date ⟺ DE 有 date」的 1:1 断言 —— 新增国家漏译会直接变红。
+#   ⚠ April / August / September / November 德英同形，覆盖值与原值相同不是冗余，
+#     是让上面那条 1:1 断言成立。
+#
+# 由 scripts/_gen_de_data.py 生成（其译料 .buildlog/de_out_all.json 已不存在 →
+# 现状不可再生）；日期字段由 scripts/_loc_de_dates.py 施加并守卫。
+
+accessed = "Oktober 2026"
+
+[HK]
+opensignal_date = "Mai 2026"
+opensignal_facts = [
+  "CMHK (China Mobile HK) gewann die Download-Geschwindigkeit allein mit 88,7 Mbit/s und die 5G-Download-Geschwindigkeit mit 171,7 Mbit/s, auf dem Weg zur größten Ausbeute des Zyklus — 7 Alleinsiege plus 5 geteilte Awards.",
+  "CMHK gewann außerdem die 5G-Abdeckungserfahrung und teilte sich die Gesamtabdeckung mit CSL (8,97 vs 8,95 von 10).",
+  "Die Zeit im Netz (Time on Network) ist fast überall nahezu universell: 3 Hong Kong 99,5%, CSL und SmarTone 99,3% — ein statistisches Unentschieden.",
+]
+
+[CN]
+ookla_note = "Ooklas Speedtest Global Index setzte den mittleren mobilen Download des chinesischen Festlands im August 2026 auf 221,77 Mbit/s, an 21. Stelle der von ihm bewerteten Märkte. Es gibt keinen Opensignal Mobile Network Experience Report für das chinesische Festland, sodass kein auf Crowdsourcing basierendes Ranking je Netzbetreiber existiert, das daneben gestellt werden könnte."
+
+[GB]
+opensignal_date = "Januar 2026"
+opensignal_facts = [
+  "EE war der stärkste Teilnehmer mit 11 Alleinauszeichnungen, darunter die Download-Geschwindigkeit bei 53,2 Mbit/s.",
+  "O2 gewann die Auszeichnung Abdeckungserfahrung (Coverage Experience) allein mit 9,0 von 10; Three holte die 5G-Download-Geschwindigkeit mit 187 Mbit/s.",
+]
+ookla_note = "Ooklas RootMetrics-Fahrtests verliehen EE zum 26. Mal in Folge jede UK-weite RootScore-Auszeichnung, mit einem UK-weiten mittleren Download von 130,3 Mbit/s — mehr als das Doppelte des nächstbesten Ergebnisses."
+
+[DE]
+opensignal_date = "November 2025"
+opensignal_facts = [
+  "Telekom gewann 11 von 14 Auszeichnungen allein, darunter die Download-Geschwindigkeit bei 68,9 Mbit/s vor Vodafone (56,3) und O2 (47,4).",
+  "Opensignal erkennt Telekom als Deutschlands bestes Netz für zuverlässige Verbindungen und gleichbleibende Qualität an.",
+]
+ookla_note = "Ookla nannte Telekom das schnellste Mobilfunknetz in Deutschland für Q1–Q2 2026, mit einem Speed Score von 77,9 vor Vodafones 56,1."
+
+[FR]
+opensignal_date = "November 2025"
+opensignal_facts = [
+  "Orange gewann sowohl die Download-Geschwindigkeitserfahrung (Download Speed Experience, 83,8 Mbit/s) als auch die 5G-Download-Geschwindigkeit allein.",
+  "Bouygues Telecom sammelte weiterhin 12 von 17 Auszeichnungen, darunter Gleichbleibende Qualität (Consistent Quality) und Zuverlässigkeit (Reliability), und teilte sich die Zuverlässigkeit (Reliability) mit Orange bei statistisch gleichauf liegenden 925 Punkten.",
+]
+ookla_note = "Orange war der schnellste Mobilfunkanbieter in Frankreich im 2H 2024, mit einem mittleren Download von 122,77 Mbit/s und einem mittleren 5G-Download von 281,3 Mbit/s."
+
+[ES]
+opensignal_date = "April 2026"
+opensignal_facts = [
+  "Movistar war der am häufigsten ausgezeichnete Anbieter (10 allein, 3 geteilt) und gewann die Auszeichnung Bestes Netz.",
+  "Movistar gewann die Download-Geschwindigkeit allein mit 96,7 Mbit/s, 30 Mbit/s vor Orange (66,8); DIGI holte beide 5G-Geschwindigkeitsauszeichnungen mit 260,4 Mbit/s beim 5G-Download.",
+]
+ookla_note = "Movistar war Spaniens bestes Mobilfunknetz und bestes 5G-Netz in Ooklas Speedtest Connectivity Report für H1 2025, mit einem mittleren Download von 102,94 Mbit/s und einem mittleren 5G-Download von 191,62 Mbit/s."
+
+[IT]
+opensignal_date = "Dezember 2025"
+opensignal_facts = [
+  "Vodafone führte die Download-Geschwindigkeitserfahrung (Download Speed Experience) mit 63,8 Mbit/s an und gewann drei von vier Geschwindigkeitsauszeichnungen allein, während es sich die vierte teilte.",
+  "TIM führte bei den Maßen für gleichbleibende Qualität an.",
+]
+
+[US]
+opensignal_date = "Juli 2026"
+opensignal_facts = [
+  "T-Mobile gewann 12 von möglichen 16 Auszeichnungen, darunter die Download-Geschwindigkeit allein bei 192,5 Mbit/s — fast 97 Mbit/s vor dem zweitplatzierten AT&T.",
+  "T-Mobile gewann außerdem die Zuverlässigkeit (Reliability) mit 942 Punkten (AT&T 939, Verizon 932); AT&T führte bei der Zeit im Netz (Time on Network) mit 99,6% an.",
+]
+ookla_note = "Ookla nannte T-Mobile das schnellste Mobilfunknetz in den USA für H1 2026 und verzeichnete einen mittleren Download von 275,6 Mbit/s gegenüber AT&Ts 159,3."
+
+[CA]
+opensignal_date = "August 2026"
+opensignal_facts = [
+  "Telus gewann Bestes Netz und die Download-Geschwindigkeit allein mit 91,8 Mbit/s.",
+  "Rogers holte die meisten Auszeichnungen (insgesamt 9); Bell behielt die Führung beim 5G-Download bei 173,6 Mbit/s.",
+]
+ookla_note = "Bell war der beste und schnellste 5G-Anbieter in Kanada im 2H 2025, mit einem mittleren 5G-Download von 171,17 Mbit/s; Ookla fand keinen statistischen Gewinner für das beste Mobilfunknetz insgesamt."
+
+[MX]
+opensignal_date = "Oktober 2025"
+opensignal_facts = [
+  "Telcel behielt die Auszeichnung Zuverlässigkeitserfahrung (Reliability Experience) mit 863 Punkten auf einer Skala von 100-1000, 96 Punkte vor AT&T.",
+  "Telcels 5G-Download lag im Durchschnitt bei 180,7 Mbit/s — mehr als das Dreifache der Konkurrenz —, während AT&T die Auszeichnung Verfügbarkeit gewann.",
+]
+ookla_note = "Telcel war das beste Mobilfunknetz in Mexiko für H2 2025, mit einem Speedtest Connectivity Score von 73,1 und einem mittleren 5G-Download von 212,68 Mbit/s."
+
+[BR]
+opensignal_date = "Januar 2026"
+opensignal_facts = [
+  "Vivo gewann die Gesamt-Download-Geschwindigkeit und die 5G-Download-Geschwindigkeit, mit einem Vorsprung von fast 14 Mbit/s vor dem zweitplatzierten Claro.",
+  "TIM führte Gleichbleibende Qualität (Consistent Quality) und Zuverlässigkeit (Reliability) zum vierten Bericht in Folge an.",
+]
+
+[CO]
+opensignal_date = "April 2026"
+opensignal_facts = [
+  "Movistar gewann die meisten Auszeichnungen (insgesamt 9), darunter die 5G-Download-Geschwindigkeit mit 248,0 Mbit/s, Zeit im Netz (Time on Network, 98,8%) und Zuverlässigkeit (Reliability, 797).",
+  "Claro behielt die Download-Geschwindigkeit allein bei 32,7 Mbit/s — 9 Mbit/s vor Movistar — und gewann die Abdeckungserfahrung (Coverage Experience) allein bei 8,3 von 10.",
+]
+
+[PE]
+opensignal_date = "Februar 2026"
+opensignal_facts = [
+  "Entel räumte die meisten Auszeichnungen ab: Download-Geschwindigkeit (13,0 Mbit/s), Abdeckung (6,6 von 10), Zeit im Netz (Time on Network, 99,1%), Gleichbleibende Qualität (Consistent Quality, 70,4%) und Zuverlässigkeit (Reliability, 894).",
+  "Movistar gewann die 5G-Download-Geschwindigkeit mit 90,0 Mbit/s; Claro holte die Videoerfahrung (Video Experience) allein.",
+]
+
+[CR]
+opensignal_date = "April 2026"
+opensignal_facts = [
+  "Claro gewann alle bis auf zwei Auszeichnungen allein, darunter Gleichbleibende Qualität (Consistent Quality), Zuverlässigkeit (Reliability), Videoerfahrung (Video Experience, 61,8) und alle fünf Gesamterfahrungs-Auszeichnungen.",
+  "Kolbi gewann die verbleibenden zwei — Abdeckungserfahrung (Coverage Experience, 8,2 von 10) und 5G-Abdeckungserfahrung — mit der stärksten Reichweite in abgelegene Gebiete.",
+]
+
+[IE]
+opensignal_date = "Januar 2026"
+opensignal_facts = [
+  "Three wurde als Bestes Netz ausgezeichnet und gewann fünf Auszeichnungen allein, darunter Download-Geschwindigkeit (60,9 Mbit/s), 5G-Download-Geschwindigkeit (198,9 Mbit/s) und Zuverlässigkeit (Reliability, 935).",
+  "eir belegte den ersten Platz bei der 5G-Abdeckungserfahrung und der 5G-Verfügbarkeit; die Gesamtabdeckung war ein statistisches Unentschieden zwischen Three und Vodafone bei 8,35 von 10.",
+]
+
+[PT]
+opensignal_date = "Juli 2023"
+opensignal_facts = [
+  "NOS hatte das schnellste Gesamterlebnis in Portugal und führte die Download-Geschwindigkeitserfahrung (Download Speed Experience) vor dem zweitplatzierten MEO an; MEO gewann die 5G-Download-Geschwindigkeit allein.",
+  "Diese Ausgabe vom Juli 2023 ist weiterhin der aktuellste Länderbericht für Portugal, den Opensignal listet (Stand Oktober 2026) — behandeln Sie die Aufteilung als richtungsweisend, nicht als aktuell.",
+]
+
+[PL]
+opensignal_date = "Mai 2026"
+opensignal_facts = [
+  "T-Mobile gewann die Download-Geschwindigkeit allein mit 90 Mbit/s (Orange Zweiter mit 81,3, Play Dritter mit 53,6) und war der am häufigsten ausgezeichnete Anbieter mit 9 Auszeichnungen.",
+  "Orange überholte T-Mobile und gewann Gleichbleibende Qualität (Consistent Quality) und Zuverlässigkeit (Reliability).",
+]
+
+[CZ]
+opensignal_date = "September 2026"
+opensignal_facts = [
+  "T-Mobile wurde als Tschechiens bestes Netz anerkannt und gewann die meisten Auszeichnungen (12), darunter Download-Geschwindigkeit, Gleichbleibende Qualität (Consistent Quality) und Abdeckung.",
+  "O2 führt bei der Zeit in 5G (Time on 5G) an, während T-Mobile die 5G-Abdeckung übernimmt.",
+]
+
+[GR]
+opensignal_date = "September 2026"
+opensignal_facts = [
+  "Cosmote wurde als Bestes Netz ausgezeichnet und gewann die Download-Geschwindigkeit mit 72,0 Mbit/s — 17 Mbit/s vor Vodafone — plus die 5G-Download-Geschwindigkeit mit 177,6 Mbit/s.",
+  "Cosmote gewann außerdem die Abdeckung (8,4 von 10) und die 5G-Abdeckung; Vodafone übernahm die Zeit im Netz (Time on Network, 98,2%) und die 5G-Verfügbarkeit (92,7%).",
+]
+
+[TR]
+opensignal_date = "Juni 2025"
+opensignal_facts = [
+  "Turkcell gewann Download-Geschwindigkeit, Upload-Geschwindigkeit, Videoerfahrung (Video Experience, 68,5 Punkte) und 4G-Abdeckungserfahrung (4G Coverage Experience) allein und hält die Geschwindigkeits- und Abdeckungsauszeichnungen in Opensignal-Berichten für die Türkei seit 2022.",
+  "Die Türkei startete kommerzielles 5G am 1. April 2026 — dieser Bericht vom Juni 2025 deckt die Ära vor 5G ab, sodass sich das Ranking in kommenden Berichten verschieben kann.",
+]
+
+[AT]
+opensignal_date = "April 2026"
+opensignal_facts = [
+  "A1 war das am häufigsten ausgezeichnete Netz, behielt die Abdeckungserfahrung (Coverage Experience) und gewann die Videoerfahrung (Video Experience) allein.",
+  "Magenta holte die 5G-Download- und 5G-Upload-Auszeichnungen allein und führte die Konsistenzkriterien mit einem Mobile Network Experience Score von 75,7 an, gegenüber 73,8 im Jahr 2025.",
+]
+
+[CH]
+opensignal_date = "April 2026"
+opensignal_facts = [
+  "Swisscom errang den Titel Bestes Netz und gewann Abdeckung (9,4 von 10), 5G-Abdeckung, Zeit im Netz (Time on Network, 99,1%), Gleichbleibende Qualität (Consistent Quality, 89,7%), Zuverlässigkeit (Reliability, 954) und 5G-Download-Geschwindigkeit (209,1 Mbit/s).",
+  "Sunrise gewann die Zeit in 5G (Time on 5G, 43,7%); Salt holte die 5G-Upload-Geschwindigkeit (36,4 Mbit/s).",
+]
+
+[NL]
+opensignal_date = "März 2026"
+opensignal_facts = [
+  "Odido gewann Bestes Netz, die Download-Geschwindigkeit allein (146,4 Mbit/s) und die 5G-Download-Geschwindigkeit (279,9 Mbit/s) — nachdem es in der Ausgabe vom März 2025 alle 14 Kategorien abgeräumt hatte.",
+  "KPN gewann die Abdeckungserfahrung (Coverage Experience, 9,4 von 10) und die 5G-Abdeckungserfahrung (8,3); die Zeit im Netz (Time on Network) war ein statistisches Unentschieden bei 99,3% vs 99,1%.",
+]
+ookla_note = "Ooklas Speedtest Connectivity Report für die Niederlande (1H 2025) machte Odido zum schnellsten Mobilfunkanbieter über alle Technologien hinweg, mit einem mittleren Download von 216,3 Mbit/s."
+
+[BE]
+opensignal_date = "März 2026"
+opensignal_facts = [
+  "Proximus wurde zum besten Mobilfunknetz in Belgien ernannt und gewann 12 von 15 Kategorien, darunter Abdeckung (9,4 von 10), 5G-Download-Geschwindigkeit (239,9 Mbit/s) und Gleichbleibende Qualität (Consistent Quality, 85,6%).",
+  "Orange gewann die Zeit im Netz (Time on Network, 97,9%) und teilte sich die Videoerfahrung (Video Experience) mit Proximus.",
+]
+
+[HR]
+opensignal_date = "September 2026"
+opensignal_facts = [
+  "Hrvatski Telekom gewann die Download-Geschwindigkeit (108,2 Mbit/s), die Upload-Geschwindigkeit (22,0 Mbit/s), die 5G-Upload-Geschwindigkeit (34,9 Mbit/s), die Abdeckung (8,7 von 10) und die 5G-Abdeckung.",
+  "Telemach antwortete mit Gleichbleibender Qualität (Consistent Quality, 85,7%) und Zeit in 5G (Time on 5G, 30,6%); die Zuverlässigkeit (Reliability) wurde zwischen A1 und Telemach geteilt.",
+]
+
+[VN]
+opensignal_date = "August 2026"
+opensignal_facts = [
+  "Viettel gewann Download-Geschwindigkeit (56,7 Mbit/s), Abdeckung (8,4 von 10) und Gleichbleibende Qualität (Consistent Quality, 78,8%).",
+  "Vinaphone gewann die 5G-Download-Geschwindigkeit mit 339,2 Mbit/s; MobiFone holte Upload-Geschwindigkeit, Zeit im Netz (Time on Network, 98,9%) und Videoerfahrung (Video Experience).",
+]
+
+[SA]
+opensignal_date = "Februar 2026"
+opensignal_facts = [
+  "stc gewann die Download-Geschwindigkeit allein mit 69,3 Mbit/s (9 Mbit/s vor Mobily) plus 5G-Download-Geschwindigkeit (260,2 Mbit/s), Abdeckung (8,4 von 10) und 5G-Abdeckung.",
+  "Mobily antwortete mit Videoerfahrung (Video Experience, 64,5), Zeit im Netz (Time on Network, 98,1%), Gleichbleibender Qualität (Consistent Quality, 64,7%) und Zuverlässigkeit (Reliability, 839).",
+]
+
+[QA]
+opensignal_date = "November 2025"
+opensignal_facts = [
+  "Ooredoo führt die nationale Auszeichnungszahl mit 8 Alleinsiegen über die 13 verglichenen Metriken an; Vodafone holte die verbleibenden vier.",
+  "Ooredoo und Vodafone teilten sich die Auszeichnung Zuverlässigkeit (Reliability) mit statistisch gleichauf liegenden Werten von 858-864.",
+]
+
+[IL]
+opensignal_date = "Dezember 2025"
+opensignal_facts = [
+  "Partner gewann die Download-Geschwindigkeitserfahrung (Download Speed Experience, 58,7 Mbit/s) und die 5G-Download-Geschwindigkeit (329,7 Mbit/s).",
+  "Cellcom gewann die Abdeckungserfahrung (Coverage Experience, 8,7 von 10) und die Gleichbleibende Qualität (Consistent Quality, 71,8%); Pelephone übernahm die 5G-Abdeckung und die 5G-Verfügbarkeit.",
+]
+
+[EG]
+opensignal_date = "Februar 2026"
+opensignal_facts = [
+  "WE gewann die Auszeichnung Bestes Netz und war der am häufigsten ausgezeichnete Anbieter mit 7 Alleinsiegen, darunter die Download-Geschwindigkeit bei 25,5 Mbit/s.",
+  "Vodafone behielt die 5G-Abdeckung und gewann die Zeit in 5G (Time on 5G, 9,6%) und die 5G-Verfügbarkeit (37,5%); e& Egypt holte die 5G-Download-Geschwindigkeit (75,8 Mbit/s).",
+]
+
+[MA]
+opensignal_date = "April 2026"
+opensignal_facts = [
+  "Maroc Telecom wurde als Bestes Netz ausgezeichnet mit 7 Alleinsiegen und führte die Gesamtauszeichnungen für Download- und Upload-Geschwindigkeit, Abdeckung, 5G-Abdeckung und Gleichbleibende Qualität (Consistent Quality) an.",
+]
+
+[ZA]
+opensignal_date = "August 2025"
+opensignal_facts = [
+  "MTN gewann erneut die Download-Geschwindigkeit allein mit 60,1 Mbit/s — 18 Mbit/s Vorsprung vor dem zweitplatzierten Vodacom — und holte 11 von 15 Auszeichnungen.",
+  "Vodacom holte die zweitmeisten Auszeichnungen mit 5, in einem Markt mit fünf Anbietern, der auch Cell C, Rain und Telkom umfasst.",
+]
+
+[NZ]
+opensignal_date = "Oktober 2025"
+opensignal_facts = [
+  "Spark behielt die breiteste Abdeckung, wobei sein Abdeckungserfahrungs-Score (Coverage Experience) von 9,0 auf 9,1 von 10 stieg.",
+  "One NZ verringerte die Abdeckungslücke durch eigene Verbesserungen.",
+]
+
+[AR]
+opensignal_date = "November 2023"
+opensignal_facts = [
+  "Personal gewann die Download-Geschwindigkeitserfahrung (Download Speed Experience) mit 27,3 Mbit/s, 30,8% schneller als der zweitplatzierte Claro.",
+  "Diese Ausgabe vom November 2023 ist der aktuellste gefundene Länderbericht für Argentinien — behandeln Sie die Aufteilung als richtungsweisend, nicht als aktuell.",
+]
+
+[JP]
+opensignal_date = "April 2026"
+opensignal_facts = [
+  "SoftBank gewann die Download-Geschwindigkeit allein mit 65,1 Mbit/s; NTT docomo gewann die Abdeckung (9,0 von 10) und die 5G-Download-Geschwindigkeit (159,1 Mbit/s).",
+  "au führte die nationale Auszeichnungszahl mit 10 Alleinsiegen und 1 geteilten Sieg an.",
+]
+ookla_note = "Ookla nannte SoftBank das schnellste Mobilfunknetz in Japan für H1 2026, mit einem mittleren Download von 73,8 Mbit/s vor au bei 67,9 — und einem mittleren 5G-Download von 153,6 Mbit/s vor Rakuten Mobile."
+
+[TH]
+opensignal_date = "August 2026"
+opensignal_facts = [
+  "AIS ist der am häufigsten ausgezeichnete Anbieter in Thailand mit 7 Alleinsiegen und 3 geteilten, und hält die Gleichbleibende Qualität (Consistent Quality) bei 75,1% und die Upload-Geschwindigkeit bei 15 Mbit/s.",
+  "DTAC und True teilten sich gemeinsam die Auszeichnung Bestes Netz, während DTAC die Zuverlässigkeit (Reliability) allein bei 907 Punkten und die schnellsten Downloads bei 41,1 Mbit/s gewann; TrueMove H gewann die 5G-Verfügbarkeit bei 90,2%.",
+]
+ookla_note = "Ookla nannte AIS das schnellste Mobilfunknetz in Thailand für Q1–Q2 2026, mit einem Speed Score von 70,6 gegenüber True dtacs 66,4."
+
+[KR]
+opensignal_date = "Dezember 2025"
+opensignal_facts = [
+  "SK Telecom gewann die Download-Geschwindigkeit allein mit 189,3 Mbit/s, 35 Mbit/s vor KT (154,3), plus Abdeckung (9,4 von 10) und 5G-Abdeckung (7,3).",
+  "KT gewann die 5G-Download-Geschwindigkeit mit 486,2 Mbit/s; LG U+ gewann die 5G-Verfügbarkeit mit 90,3%.",
+]
+ookla_note = "Ooklas RootMetrics-Kontrolltests im Markt Seoul-Incheon in H2 2025 setzten LG U+ an die Spitze mit einem Overall RootScore von 993 von 1000 und der höchsten mittleren Download-Geschwindigkeit von 853,37 Mbit/s; alle drei Netzbetreiber erzielten Werte zwischen 982 und 993."
+
+[SG]
+opensignal_date = "Juli 2026"
+opensignal_facts = [
+  "Singtel gewann die Auszeichnung Bestes Netz, plus Zuverlässigkeit (Reliability, 927) und 5G-Abdeckungserfahrung (9,5 von 10).",
+  "StarHub gewann die Download-Geschwindigkeit allein mit 172,7 Mbit/s, 8 Mbit/s vor Singtel; M1 und StarHub lagen bei der 5G-Download-Geschwindigkeit mit 302,4-305,5 Mbit/s gleichauf.",
+]
+
+[AU]
+opensignal_date = "Mai 2026"
+opensignal_facts = [
+  "Optus führte mit acht Auszeichnungen an und behielt die 5G-Download-Geschwindigkeit allein bei 199,9 Mbit/s (Telstra 171,7, Vodafone 161,8).",
+  "Telstra behielt die Abdeckungserfahrung (Coverage Experience, 9,6 von 10) und die 5G-Abdeckungserfahrung (8,0).",
+]
+
+[IN]
+opensignal_date = "Februar 2026"
+opensignal_facts = [
+  "Jio gewann die Download-Geschwindigkeit allein mit 107,3 Mbit/s — fast das Doppelte von Airtels 58,2 — plus die 5G-Download-Geschwindigkeit mit 198,9 Mbit/s.",
+  "Jio gewann außerdem die Abdeckung (9,1 von 10 vs 7,5 von Airtel) und die Zeit im Netz (Time on Network) bei 99,4%.",
+]
+
+[TW]
+opensignal_date = "Juli 2026"
+opensignal_facts = [
+  "Chunghwa Telecom dominierte mit 9 Alleinsiegen und 3 geteilten Siegen und räumte alle vier Geschwindigkeitsauszeichnungen und beide Abdeckungsauszeichnungen ab.",
+  "Chunghwa gewann die Download-Geschwindigkeit mit 106,1 Mbit/s und die 5G-Download-Geschwindigkeit mit 268,1 Mbit/s — 47% schneller als FarEasTone bei 5G.",
+]
+
+[MY]
+opensignal_date = "Juli 2026"
+opensignal_facts = [
+  "U Mobile gewann die Download-Geschwindigkeit allein mit 107,1 Mbit/s, etwa 24 Mbit/s vor den Rivalen, und war beim 5G-Download mit 280,4 Mbit/s am schnellsten (Unifi 235,2, Maxis 208,2).",
+  "CelcomDigi gewann die 5G-Upload-Geschwindigkeit mit 32,9 Mbit/s.",
+]
+
+[ID]
+opensignal_date = "Juli 2026"
+opensignal_facts = [
+  "XL gewann die Download-Geschwindigkeit allein mit etwa 40,9 Mbit/s, 43,5% schneller als im vorherigen Bericht.",
+  "XLs 5G-Download sprang nach der Fusion mit Smartfren von 48,2 auf 135,4 Mbit/s, und seine Auszeichnungszahl stieg deutlich.",
+]
+
+[PH]
+opensignal_date = "Juli 2026"
+opensignal_facts = [
+  "DITO gewann die Auszeichnung Bestes Netz zum zweiten Mal in Folge mit insgesamt acht Auszeichnungen, darunter die Download-Geschwindigkeit allein bei 43,1 Mbit/s.",
+  "Smart dominierte die Erfahrungsauszeichnungen; Globe verwandelte die Gleichbleibende Qualität (Consistent Quality) in einen Alleinsieg.",
+]
+
+[AE]
+opensignal_date = "März 2026"
+opensignal_facts = [
+  "e& UAE (früher Etisalat) gewann 12 der 13 Auszeichnungen, darunter Bestes Netz.",
+  "Der einzige Sieg von du war die Zeit im Netz (Time on Network) bei 99,3%, nur 0,3 Punkte voraus — die Abdeckung ist schlicht kein Unterscheidungsmerkmal zwischen den beiden Netzbetreibern der VAE.",
+]
+ookla_note = "Die VAE belegten Platz 1 weltweit für die mittlere mobile Download-Geschwindigkeit in Ooklas Speedtest Global Index (Juni 2026) — der schnellste Mobilfunkmarkt der Erde."
+
+
+# ── 记分板（awards）德语覆盖 —— layouts/networks/single.html ⑭b 块
+# `awards` 是数组，Hugo 深合并下「整体替换」：这里不写就整表回退英文（不报错）。
+# 术语取自本文件既有的 opensignal_facts / ookla_note 德译；
+# `carrier` 为专有名词，逐字继承英语侧（模板按它建 carrier→award 映射）。
+
+[[GB.awards]]
+carrier = "EE"
+opensignal = "11 Alleinauszeichnungen, darunter die Download-Geschwindigkeit bei 53,2 Mbit/s"
+ookla = "Gewann oder teilte zum 26. Mal in Folge jede UK-weite RootScore — 130,3 Mbit/s mittlerer Download, H1 2026"
+best = "Beste Geschwindigkeiten, Zuverlässigkeit und Abdeckung im ländlichen Raum"
+[[GB.awards]]
+carrier = "Vodafone"
+opensignal = ""
+ookla = ""
+best = "Mittelklasse-Option mit besser werdender Abdeckung in Ballungsräumen"
+[[GB.awards]]
+carrier = "O2"
+opensignal = "Gewann die Abdeckungserfahrung (Coverage Experience) allein mit 9,0 von 10"
+ookla = ""
+best = "Breiteste landesweite Abdeckung"
+[[GB.awards]]
+carrier = "Three"
+opensignal = "Gewann die 5G-Download-Geschwindigkeit mit 187 Mbit/s"
+ookla = ""
+best = "Schnellste 5G-Geschwindigkeiten"
+
+[[DE.awards]]
+carrier = "Telekom"
+opensignal = "11 von 14 Auszeichnungen allein, darunter die Download-Geschwindigkeit bei 68,9 Mbit/s — als Deutschlands bestes Netz benannt"
+ookla = "Bestes und schnellstes Mobilfunknetz, Q1-Q2 2026 — Speed Score 77,9"
+best = "Schnellstes Netz und die beste Abdeckung im ländlichen Raum"
+[[DE.awards]]
+carrier = "Vodafone"
+opensignal = "Zweiter bei der Download-Geschwindigkeit hinter Telekom mit 56,3 Mbit/s"
+ookla = "Speed Score 56,1, Zweiter im selben Test Q1-Q2 2026"
+best = "Starkes Stadt-5G zum Mittelklasse-Preis"
+[[DE.awards]]
+carrier = "O2"
+opensignal = "Dritter bei der Download-Geschwindigkeit mit 47,4 Mbit/s"
+ookla = ""
+best = "Preistipp mit breiter 4G-Reichweite"
+
+[[FR.awards]]
+carrier = "Orange"
+opensignal = "Gewann die Download-Geschwindigkeitserfahrung (Download Speed Experience) mit 83,8 Mbit/s und die 5G-Download-Geschwindigkeit allein"
+ookla = "Schnellstes Mobilfunknetz, 2H 2024 — 122,77 Mbit/s mittlerer Download"
+best = "Abdeckung rundum und die besten Geschwindigkeiten"
+[[FR.awards]]
+carrier = "SFR"
+opensignal = ""
+ookla = ""
+best = "Solides Stadtnetz neben Orange und Bouygues"
+[[FR.awards]]
+carrier = "Bouygues"
+opensignal = "Holte 12 von 17 Auszeichnungen, darunter Gleichbleibende Qualität (Consistent Quality), und teilte die Zuverlässigkeit (Reliability) mit Orange bei 925 Punkten"
+ookla = ""
+best = "Gleichbleibende Qualität und starke geteilte Abdeckung"
+
+[[ES.awards]]
+carrier = "Movistar"
+opensignal = "Meistausgezeichneter Anbieter (10 allein, 3 geteilt) und Sieger beim Besten Netz, mit Download-Geschwindigkeit bei 96,7 Mbit/s"
+ookla = "Bestes Mobilfunknetz und bestes 5G-Netz, H1 2025"
+best = "Insgesamt bestes Netz — schnellstes und zuverlässigstes"
+[[ES.awards]]
+carrier = "Vodafone"
+opensignal = ""
+ookla = ""
+best = "Abdeckung mit Schwerpunkt Stadt, einen Schritt hinter der Spitze"
+[[ES.awards]]
+carrier = "Orange"
+opensignal = "Zweiter bei der Download-Geschwindigkeit hinter Movistar mit 66,8 Mbit/s"
+ookla = ""
+best = "Starke Stadtgeschwindigkeiten innerhalb der MasOrange-Gruppe"
+[[ES.awards]]
+carrier = "Yoigo"
+opensignal = ""
+ookla = ""
+best = "Günstige Stadtoption in derselben Gruppe wie Orange"
+
+[[US.awards]]
+carrier = "T-Mobile"
+opensignal = "12 von 16 Auszeichnungen allein, darunter die Download-Geschwindigkeit bei 192,5 Mbit/s und die Zuverlässigkeit (Reliability) bei 942/1000"
+ookla = "Schnellstes Mobilfunknetz, H1 2026 — 275,6 Mbit/s mittlerer Download"
+best = "Schnellste Geschwindigkeiten und das gleichbleibendste Erlebnis landesweit"
+[[US.awards]]
+carrier = "AT&T"
+opensignal = "Gewann die Zeit im Netz (Time on Network) mit 99,6%, vor Verizon (99,5) und T-Mobile (99,2)"
+ookla = "159,3 Mbit/s mittlerer Download, Zweiter hinter T-Mobile im selben Test H1 2026"
+best = "Verbindung halten in vollen Hallen und Stadien"
+[[US.awards]]
+carrier = "Verizon"
+opensignal = ""
+ookla = ""
+best = "Breiteste Abdeckung außerhalb der Städte"
+
+[[CA.awards]]
+carrier = "Bell"
+opensignal = "Verteidigte die 5G-Download-Führung mit 173,6 Mbit/s"
+ookla = "Bestes und schnellstes 5G-Netz, 2H 2025 — 171,17 Mbit/s mittlerer 5G-Download"
+best = "Schnellstes 5G in den großen Städten"
+[[CA.awards]]
+carrier = "Rogers"
+opensignal = "Holt die meisten Auszeichnungen (9 insgesamt), führt bei der Anwendungserfahrung (Application Experience) und teilt die Zuverlässigkeit (Reliability) mit Telus"
+ookla = ""
+best = "Streaming und das 5G-Signal am längsten halten"
+[[CA.awards]]
+carrier = "Telus"
+opensignal = "Gewann Bestes Netz und die Download-Geschwindigkeit allein mit 91,8 Mbit/s"
+ookla = ""
+best = "Insgesamt bestes Netz, mit den schnellsten typischen Downloads"
+
+[[MX.awards]]
+carrier = "Telcel"
+opensignal = "Hielt die Zuverlässigkeit (Reliability) bei 863/1000, 96 Punkte vor AT&T, und erreichte im Schnitt 180,7 Mbit/s im 5G"
+ookla = "Bestes Mobilfunknetz, H2 2025 — Speedtest Connectivity Score 73,1"
+best = "Beste Abdeckung und Geschwindigkeit landesweit"
+[[MX.awards]]
+carrier = "AT&T Mexico"
+opensignal = "Gewann die Auszeichnung Verfügbarkeit (Availability)"
+ookla = ""
+best = "Bleibt in den Städten verfügbar"
+[[MX.awards]]
+carrier = "Movistar"
+opensignal = ""
+ookla = ""
+best = "Günstigster Einstieg in den Städten"
+
+[[NL.awards]]
+carrier = "KPN"
+opensignal = "Gewann die Abdeckungserfahrung (Coverage Experience) mit 9,4/10 und die 5G-Abdeckungserfahrung (5G Coverage Experience) mit 8,3"
+ookla = ""
+best = "Breiteste Abdeckung und die beste Sprachqualität"
+[[NL.awards]]
+carrier = "Vodafone"
+opensignal = ""
+ookla = ""
+best = "Solide Stadtleistung, einen Schritt hinter Odido und KPN"
+[[NL.awards]]
+carrier = "Odido"
+opensignal = "Gewann Bestes Netz, die Download-Geschwindigkeit allein mit 146,4 Mbit/s und die 5G-Download-Geschwindigkeit mit 279,9 Mbit/s"
+ookla = "Schnellstes Mobilfunknetz, 1H 2025 — 216,3 Mbit/s mittlerer Download"
+best = "Schnellstes Netz und die meisten Auszeichnungen"
+
+[[JP.awards]]
+carrier = "NTT Docomo"
+opensignal = "Abdeckung 9,0/10 und 5G-Download 159,1 Mbit/s"
+ookla = ""
+best = "Ländliche Strecken, Bergpässe und die kleineren Inseln"
+[[JP.awards]]
+carrier = "SoftBank"
+opensignal = "Sieger bei der Download-Geschwindigkeit mit 65,1 Mbit/s"
+ookla = "Schnellstes Mobilfunknetz in Japan, H1 2026 — 73,8 Mbit/s mittlerer Download"
+best = "Stadt-5G und die Korridore rund um die großen Bahnhöfe"
+[[JP.awards]]
+carrier = "KDDI"
+opensignal = "Meistausgezeichneter Anbieter — 10 Alleinsiege und 1 geteilter Sieg"
+ookla = "Zweiter hinter SoftBank im selben Test H1 2026"
+best = "Westjapan und die Küstenstrecken"
+
+[[TH.awards]]
+carrier = "AIS"
+opensignal = "Meistausgezeichneter Anbieter — 7 Alleinsiege und 3 geteilte, darunter Gleichbleibende Qualität (Consistent Quality) mit 75,1% und die Upload-Geschwindigkeit mit 15 Mbit/s"
+ookla = "Schnellstes Mobilfunknetz, Q1-Q2 2026 — Speed Score 70,6"
+best = "Bestes Netz rundum und die breiteste Abdeckung"
+[[TH.awards]]
+carrier = "True Move"
+opensignal = "Teilte die Auszeichnung Bestes Netz und gewann die 5G-Verfügbarkeit allein mit 90,2%"
+ookla = ""
+best = "Beste 5G-Signalverfügbarkeit"
+[[TH.awards]]
+carrier = "DTAC"
+opensignal = "Teilte die Auszeichnung Bestes Netz und gewann die Zuverlässigkeit (Reliability) allein mit 907/1000, dazu die schnellsten Downloads mit 41,1 Mbit/s und den 5G-Download mit 102,7 Mbit/s"
+ookla = ""
+best = "Zuverlässigstes Netz mit den schnellsten Downloads"
+
+[[KR.awards]]
+carrier = "SK Telecom"
+opensignal = "Gewann die Download-Geschwindigkeit allein mit 189,3 Mbit/s, dazu die Abdeckung (9,4/10) und die 5G-Abdeckung (7,3)"
+ookla = ""
+best = "Bestes Netz insgesamt und die breiteste Abdeckung"
+[[KR.awards]]
+carrier = "KT"
+opensignal = "Gewann die 5G-Download-Geschwindigkeit mit 486,2 Mbit/s, 35 Mbit/s vor dem nächsten Anbieter bei der Gesamtgeschwindigkeit"
+ookla = ""
+best = "Schnellste 5G-Downloads"
+[[KR.awards]]
+carrier = "LG U+"
+opensignal = "Gewann die 5G-Verfügbarkeit mit 90,3%"
+ookla = "Bester Overall RootScore in Seoul-Incheon, 2H 2025 — 993/1000, bei einem mittleren Download von 853,37 Mbit/s"
+best = "Beste 5G-Verfügbarkeit und die schnellsten Stadtgeschwindigkeiten"

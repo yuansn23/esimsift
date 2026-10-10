@@ -25,6 +25,7 @@ Checks
      (defaults 1 and 5 when omitted, per Google's documentation)
   4. no unrendered template residue (`{{` / `<no value>`) in public/**/*.html
      and *.json — outside <style>/<script> blocks
+  5. no external URL that went through `relURL` (`href="/https:/…"`)
 
 为什么第 4 条要单列（2026-10-04 实际发生）：
   content/de/ 下 54 个占位页把开发者备注写成 `{{/* TODO(de)：… */}}` 放在
@@ -61,6 +62,17 @@ TEMPLATE_OPEN = re.compile(r"\{\{")
 NO_VALUE = re.compile(r"<no value>")
 # 屏蔽行内样式 / 脚本块（含 JSON-LD 自身），避免 CSS/JS 里的花括号造假阳性
 STYLE_SCRIPT = re.compile(r"<(style|script)\b[^>]*>.*?</\1>", re.S | re.I)
+
+# --------------------------------------------------------------------------- 第 5 条
+# 外链被套上相对路径通道 -> `href="/https:/www.speedtest.net/…"`。
+#
+# 为什么单列（2026-10-07 实际发生）：`partials/lang-href.html` 的第三层兜底是
+# `relURL(原路径)`，它把**站外绝对 URL** 当站内路径处理，Hugo 的 relURL 会把
+# `https://x/y` 归一化成 `/https:/x/y`（第二个斜杠被吞）。当时 102 个产物文件
+# 中招（50 英文国家页 + 50 德文 + 2 个 networks 列表页），而 `hugo` 退出码 0、
+# 当时的十项校验全绿 —— 因为**没有任何一条守卫读产物里的 href**。
+# 现在两层设防：源码级 `check_i18n.external_lang_href` + 这里的产物级兜底。
+BAD_URL_PREFIX = re.compile(r"""(?:href|src)=["']/(?:https?|mailto|tel):""", re.I)
 
 # 允许例外（默认空）：相对 public 的路径 -> 理由。给「指南里贴 Hugo 模板示例」这类
 # 合法场景留一道口子，但必须写明理由，避免变成静默豁免。
@@ -159,6 +171,13 @@ def scan_text(text: str, rel: str, is_html: bool) -> list[str]:
             ctx = visible[max(0, m.start() - 45):m.end() + 25].replace("\n", " ")
             out.append(
                 f"{rel}:{line}: unrendered template residue -> {ctx.strip()!r}")
+
+    # 5. 外链走了相对路径通道（relURL 会产出 /https:/…）
+    for m in BAD_URL_PREFIX.finditer(text):
+        line = text.count("\n", 0, m.start()) + 1
+        ctx = text[m.start():m.end() + 60].replace("\n", " ")
+        out.append(
+            f"{rel}:{line}: external URL through relURL -> {ctx.strip()!r}")
     return out
 
 
@@ -170,6 +189,17 @@ def selftest() -> int:
         ("fmt leak", "<p>%!d(float64=84)%</p>", True, 1, "%!d"),
         ("json clean", '{"a": 1}', False, 0, ""),
         ("json tmpl leak", '{"a": "{{ .x }}"}', False, 1, "{{"),
+        # 第 5 条：外链被 relURL 吞掉一个斜杠
+        ("relURL ext bad", '<a href="/https:/www.speedtest.net/global-index">x</a>',
+         True, 1, "/https:"),
+        ("relURL ext good", '<a href="https://www.speedtest.net/global-index">x</a>',
+         True, 0, ""),
+        # 站内相对链接与 mailto: 正常写法都必须放过
+        ("relURL local ok", '<a href="/compare/germany/">x</a><img src="/img/a.png">',
+         True, 0, ""),
+        ("relURL mailto ok", '<a href="mailto:hi@esimsift.com">x</a>', True, 0, ""),
+        # 相对的 mailto/tel 才是坏的（会 404）
+        ("relURL mailto bad", '<a href="/mailto:hi@esimsift.com">x</a>', True, 1, "/mailto:"),
     ]
     failed = 0
     for name, body, is_html, want, needle in cases:

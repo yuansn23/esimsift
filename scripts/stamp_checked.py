@@ -25,8 +25,11 @@
 
 日期单元（只有这两类会驱动页面日期）
     plans.<brand>.<ISO>   data/plans/<brand>.toml 的 [ISO] 块   → 价格核对日
-    profile.<brand>       data/providers.toml 的 [<brand>] 段（含 .info/.policy
-                          子表）                                → 品牌档案核对日
+    profile.<brand>       data/providers.toml 的 [<brand>] 段**连同它的**
+                          [<brand>.info] / [<brand>.policy] 子表 → 品牌档案核对日
+                          ★ 段按**品牌名**切，不按行位置切 —— 末尾那 10 张
+                          `[<brand>.policy]` 是隔着别家堆在一起的，按行位置切会
+                          把它们全算到最后一家头上（2026-10-09 实测事故）。
 
 已知缺口（这些数据源目前**不**驱动任何页面日期；改了它们，页面日期不动）
     data/countries.toml        国家 Hub 正文（quirks / region / neighbors …）
@@ -42,6 +45,7 @@
     python -X utf8 scripts/stamp_checked.py --dry-run   # 只报不写
     python -X utf8 scripts/stamp_checked.py --check     # 只读；该盖未盖退 1
     python -X utf8 scripts/stamp_checked.py --date 2026-10-07
+    python -X utf8 scripts/stamp_checked.py --resync    # 口径变更后的一次性迁移
     python -X utf8 scripts/stamp_checked.py --selftest
 
 已挂进 `npm run build` 的**第一步**（hugo 之前），所以「改完数据直接构建」就会
@@ -69,8 +73,10 @@ PLANS_DIR = ROOT / "data" / "plans"
 PROVIDERS = ROOT / "data" / "providers.toml"
 STATE_PATH = ROOT / "docs" / "checked-state.json"
 
-# providers.toml 的顶层品牌段（`[nomad]`）；含点的子表 `[nomad.info]` 不算新段。
-RE_TOP = re.compile(r"^\[([a-z0-9_]+)\]\s*$")
+# providers.toml 的品牌段头：`[nomad]` 与子表 `[nomad.info]` / `[nomad.policy]`
+# 都算同一品牌。★ 只认不带点的表头会让末尾那 10 张 `[<brand>.policy]` 全部落进
+# 最后一个品牌（jetpac）的段里 —— 详见 bump_checked.RE_PROV_HEADER 的说明。
+RE_TOP = bc.RE_PROV_HEADER
 RE_PROFILE_CHECKED = re.compile(r'^\s*profile_checked\s*=\s*"([^"]*)"')
 RE_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 # 写回用：`键 = "值"` → 保留缩进与行尾注释
@@ -112,14 +118,18 @@ def block_hash(lines: list[str], b: bc.Block) -> str:
     **只算「会进产物的数据」**，所以：改注释 / 调格式 / 加空行都不触发日期前移，
     改一个价格 / 加减一条套餐 / 改一个档位描述必然触发。
     （把整块数据注释掉也算变化 —— 数据行消失了。）
+
+    段体可能分成多个不连续区间（见 bc.Block.ranges）—— 品牌的
+    `[x]` / `[x.info]` / `[x.policy]` 三张表允许隔着别家。
     """
     body = []
-    for i in range(b.start + 1, b.end):
-        if i == b.date_idx:
-            continue
-        s = strip_inline_comment(lines[i])
-        if s.strip():
-            body.append(s)
+    for lo, hi in (b.ranges or [(b.start, b.end)]):
+        for i in range(lo + 1, hi):
+            if i == b.date_idx:
+                continue
+            s = strip_inline_comment(lines[i])
+            if s.strip():
+                body.append(s)
     return hashlib.sha256("\n".join(body).encode("utf-8")).hexdigest()[:16]
 
 
@@ -136,7 +146,7 @@ def collect(plans_dir: pathlib.Path = PLANS_DIR,
                           block_hash(lines, b), b.date, p, b.date_idx))
     if providers.exists():
         lines = bc.read_lines(providers)
-        for b in bc.parse_blocks(lines, RE_TOP, RE_PROFILE_CHECKED, 1):
+        for b in bc.parse_prov_blocks(lines, RE_PROFILE_CHECKED, 1):
             units.append((f"profile.{b.key}",
                           block_hash(lines, b), b.date, providers, b.date_idx))
     return units
@@ -313,15 +323,51 @@ def selftest() -> int:
           block_hash(c1, bc.Block("AR", 0, len(c1), 1, "2026-09-30"))
           == block_hash(c2, bc.Block("AR", 0, len(c2), 1, "2026-09-30")), True)
 
-    # ⑦ 真实数据：450 个价格单元 + 9 个档案单元，全部有日期
+    # ⑦ 真实数据：单元数**现算**，不许写死 ——
+    #    （2026-10-09 实测：这两行曾写死「450 / 9」，接完 nomad、jetpac 后实际是
+    #     499 / 10，自测早已 FAIL 却没人跑。写死的品牌数就是会烂在这里。）
     real = collect()
     n_plans = sum(1 for u in real if u[0].startswith("plans."))
     n_prof = sum(1 for u in real if u[0].startswith("profile."))
-    check("⑦ 价格单元 450", n_plans, 450)
-    check("⑦ 档案单元 9", n_prof, 9)
+    # 独立口径：直接数源文件里的字面量块头（不走 collect 的解析路径）
+    want_plans = sum(len(re.findall(r"(?m)^\[[A-Z]{2}\]$", p.read_text(encoding="utf-8")))
+                     for p in sorted(PLANS_DIR.glob("*.toml")))
+    want_prof = len(re.findall(r"(?m)^\[[a-z0-9_]+\]$",
+                               PROVIDERS.read_text(encoding="utf-8")))
+    check("⑦ 价格单元数 == 各品牌计划文件的国家块总和", n_plans, want_plans)
+    check("⑦ 档案单元数 == providers.toml 的品牌数", n_prof, want_prof)
     check("⑦ 全部有日期字段", all(u[4] >= 0 for u in real), True)
     check("⑦ 单元键唯一（品牌×国家不重）", len({u[0] for u in real}), len(real))
     check("⑦ 指纹无碰撞", len({u[1] for u in real}), len(real))
+
+    # ⑦b 段边界按**品牌**切：每家的段必须含**自己的**政策表、不含别家的。
+    #     修复前：末尾 10 张 `[<brand>.policy]` 全被算进最后一家（jetpac）。
+    prov_lines = bc.read_lines(PROVIDERS)
+    pbs = bc.parse_prov_blocks(prov_lines, RE_PROFILE_CHECKED, 1)
+    pbu = {b.key: b for b in pbs}
+    check("⑦b 品牌数 == 顶层段头数", len(pbs), want_prof)
+    check("⑦b 段体区间都已归位（无重叠/乱序）",
+          all(all(lo < hi for lo, hi in b.ranges)
+              and all(b.ranges[i][1] <= b.ranges[i + 1][0]
+                      for i in range(len(b.ranges) - 1))
+              for b in pbs), True)
+    heads = {b.key: {prov_lines[lo].strip() for lo, _ in b.ranges} for b in pbs}
+    check("⑦b 每家的段都含自己的 .policy 表",
+          [k for k in pbu if f"[{k}.policy]" not in heads[k]], [])
+    check("⑦b jetpac 的段不含 holafly 的政策表",
+          "[holafly.policy]" in heads["jetpac"], False)
+
+    # ⑦c 行为反例：改 holafly 的一行政策 → holafly 指纹变、jetpac 指纹**不动**
+    #     （修复前正好相反：只有 jetpac 会动，holafly 纹丝不动。）
+    base = {k: block_hash(prov_lines, b) for k, b in pbu.items()}
+    j = next(i for i, s in enumerate(prov_lines)
+             if s.startswith('fup_allowance = "No GB figure published"'))
+    mutated = list(prov_lines)
+    mutated[j] = 'fup_allowance = "1 GB/day"'
+    pbu2 = {b.key: b for b in bc.parse_prov_blocks(mutated, RE_PROFILE_CHECKED, 1)}
+    now = {k: block_hash(mutated, b) for k, b in pbu2.items()}
+    changed = {k for k in base if base[k] != now[k]}
+    check("⑦c 改 holafly 政策 → 只有 holafly 的指纹变", sorted(changed), ["holafly"])
 
     # ⑧ 端到端（临时目录真写盘）：bootstrap → 改数据 → 只动那一个单元 → 幂等
     with tempfile.TemporaryDirectory() as td:
@@ -380,6 +426,28 @@ def selftest() -> int:
         check("⑧ 新增国家块→盖今天", [(o[4], o[3]) for o in ops5], [("plans.aaa.DE", today)])
         check("⑧ 新单元计入 added", (len(boot5), len(added5)), (0, 1))
 
+        # ★ 政策表堆在文件末尾、且与自家段隔着别家 —— 归属必须仍按**品牌名**切。
+        #   修复前：末尾所有 `.policy` 表都算进最后一家（真实数据里是 jetpac）。
+        pvf = tdp / "providers.toml"
+        pvf.write_text(
+            '[aaa]\nprofile_checked = "2026-09-30"\nstrengths = ["x"]\n'
+            '\n[zzz]\nprofile_checked = "2026-09-30"\nstrengths = ["x"]\n'
+            '\n[aaa.policy]\nhotspot = "allowed"\n',
+            encoding="utf-8", newline="\n")
+        _, st6, _, _, _ = decide(units(), st2, today)          # 登记两家 + aaa 的政策
+        pvf.write_text(pvf.read_text(encoding="utf-8")
+                       .replace('hotspot = "allowed"', 'hotspot = "none"'),
+                       encoding="utf-8", newline="\n")
+        ops6, st7, _, _, _ = decide(units(), st6, today)
+        check("⑧ 末尾政策表归属本家（改它只动 aaa）", [o[4] for o in ops6], ["profile.aaa"])
+        # 反向：改**最后一家**的档案，不该带上别家
+        pvf.write_text(pvf.read_text(encoding="utf-8")
+                       .replace('strengths = ["x"]\n\n[aaa.policy]',
+                                'strengths = ["Z"]\n\n[aaa.policy]'),
+                       encoding="utf-8", newline="\n")
+        ops7, _, _, _, _ = decide(units(), st7, today)
+        check("⑧ 改末家档案只动末家", [o[4] for o in ops7], ["profile.zzz"])
+
     print("\n  " + ("自测全部通过" if ok else "★ 自测存在 FAIL"))
     return 0 if ok else 1
 
@@ -392,6 +460,9 @@ def main() -> int:
     ap.add_argument("--date", help="盖章日期 YYYY-MM-DD，默认系统今天")
     ap.add_argument("--dry-run", action="store_true", help="只显示会改什么，不写文件")
     ap.add_argument("--check", action="store_true", help="只读；有该盖未盖的则退 1")
+    ap.add_argument("--resync", action="store_true",
+                    help="指纹口径变更后的迁移：重算全部指纹、**保留现值日期**，"
+                         "不改任何 toml（跑一次即可，之后照常构建）")
     ap.add_argument("--state", help=f"状态文件（默认 {STATE_PATH.name}）")
     ap.add_argument("--quiet", action="store_true", help="只在有改动时输出")
     ap.add_argument("--selftest", action="store_true", help="跑内建自测")
@@ -408,10 +479,37 @@ def main() -> int:
     state_existed = state_path.exists()
     units = collect()
     state = load_state(state_path)
-    ops, new_state, boot, added, manual = decide(units, state, today, state_existed)
 
     n_plans = sum(1 for u in units if u[0].startswith("plans."))
     n_prof = len(units) - n_plans
+
+    # ── --resync：指纹**口径**变更后的一次性迁移
+    #    指纹本身重算了，但每个单元一律**保留现值日期**——因为内容没变，
+    #    变的只是「指纹算哪几行」这个定义。跑完必须肉眼过一遍列出的 hash 变更。
+    if args.resync:
+        changed, new_state = [], {}
+        for key, fp, cur, path, idx in units:
+            rec = state.get(key) or {}
+            if rec.get("hash") != fp:
+                changed.append((key, rec.get("hash") or "(新单元)", fp,
+                                rec.get("date") or "(无)", cur))
+            new_state[key] = {"hash": fp, "date": cur or rec.get("date", "")}
+        print("resync —— 重算指纹、保留现值日期（一次性迁移）")
+        print(f"  单元 {n_plans} 个价格 + {n_prof} 个档案；指纹变更 {len(changed)} 处")
+        for key, old, new, olddate, cur in changed[:20]:
+            print(f"    {key:<26} {str(old):<18} → {new:<18}  日期保留 {cur or olddate}")
+        if len(changed) > 20:
+            print(f"    … 另有 {len(changed) - 20} 处")
+        if args.dry_run:
+            print("\n  预演结束，未写入任何文件。")
+            return 0
+        print(f"\n  状态已{'写' if save_state(state_path, new_state) else '无需改动（内容相同）'}"
+              f" {state_path.name}")
+        print("  注意：本命令**不改任何 toml 里的日期**。迁移前请先手工核对"
+              "被误动的日期是否已复原。")
+        return 0
+
+    ops, new_state, boot, added, manual = decide(units, state, today, state_existed)
 
     # ── --check：只读守门
     if args.check:

@@ -1,0 +1,42 @@
+# IN FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Indien?"
+a = "Günstigster Tarif für {country_acc}: {cheap_plan} von {cheap_brand}, ${cheap_price}. Preis und Gegenwert sind zwei verschiedene Messungen, und pro Gigabyte gewinnt {value_plan} von {value_brand} mit ${value_pergb}/GB. Richte den Tarif nach deiner Reisedauer statt nach der niedrigsten Zahl."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Indien wirklich unbegrenzt?"
+a = "Nur innerhalb der Grenzen. Die {unl_count} unbegrenzten Tarife für {country_acc} fallen nach einem festgelegten Tagesvolumen auf eine veröffentlichte Geschwindigkeit zurück. {unl_brand} ist pro Tag am günstigsten mit ${unl_perday}, und die volle Spanne reicht hier über {unl_perday_range}. Was {unl_brand} veröffentlicht: {unl_allowance}; danach {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Indien?"
+a = "Wähle nach Nutzungsmuster, denn die beiden Marken bepreisen ganz unterschiedlich. {ah_airalo_plan} von Airalo ergibt ${ah_airalo_pergb}/GB für ${ah_airalo_price}, und was du kaufst, ist was du bekommst. Holafly verkauft stattdessen unbegrenzte Tage, das kleinste Paket für {country_acc} umfasst {ah_holafly_days} Tage für ${ah_holafly_price} (${ah_holafly_perday}/Tag)."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Indien?"
+a = "Ja. Indische Regeln binden die Registrierung auch bei Reise-eSIMs an einen Pass, und die Anbieter, die wir führen, schließen diese Prüfung in etwa zwei Minuten in der App ab. Erledige sie im Heim-WLAN: Die Prüfung ist schnell, aber sie nach der Landung zu machen kostet dich die erste Stunde der Reise."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Indien?"
+a = "Die Tarife auf dieser Seite laufen über Jio, Airtel. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Indien und Thailand abdecken?"
+a = "Ja, aber nur über einen Multi-Land-Tarif, denn nichts in unseren Tabellen für {country_acc} deckt ein zweites Land ab. Suche ein regionales Paket, das {neighbor} einschließt, und vergleiche dessen $/GB mit zwei Einzeltarifen."
+
+[[faq]]
+q = "Kann ich eine eSIM in Indien nutzen?"
+a = "Für {country_acc} sind {plan_count} Tarife von {brand_count} Anbietern gelistet, und jeder davon ist nutzbar. Von den {plan_count} hier gelisteten Tarifen für {country_acc} ist keiner auf eine bestimmte Region des Landes begrenzt. Prüfe zuerst dein Handy und wähle dann den Tarif, der zu deiner Reisedauer passt."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Indien?"
+a = "Ein eSIM-fähiges, entsperrtes Handy funktioniert in {country_dat} ohne zusätzlichen Schritt. Der eSIM-Chip ist bei der Fertigung festgelegt, ein ohne ihn gebautes Handy kann ihn später nicht erhalten, egal wie viele Tarife für {country_acc} wir listen. Mach den *#06#-Test vor dem Tarifkauf."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Indien?"
+a = "Nur wenn lokale Anrufe für dich zählen, denn die {plan_count} hier gelisteten Tarife für {country_acc} sind Datenprodukte. Wo Sprache existiert, ist sie app-basiert statt eine echte lokale Nummer – was die meisten Reisenden tatsächlich brauchen. Lass deine Heim-SIM für Anrufe und Codes aktiv und lass die eSIM die Daten tragen."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Indien?"
+a = "Die Bewertungen selbst stehen auf den Seiten der Anbieter und in den App-Stores. Ein Fünf-Sterne-Schnitt und ein Ein-Stern-Schnitt beschreiben meist verschiedene Reisen statt verschiedene Produkte. Lies zuerst die Zahlen oben und prüfe dann die eigenen Bewertungen des Anbieters für die menschliche Seite."

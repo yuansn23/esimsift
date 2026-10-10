@@ -1,0 +1,42 @@
+# MX FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Mexiko?"
+a = "Günstigster Tarif für {country_acc}: {cheap_plan} von {cheap_brand}, ${cheap_price}. Das sind ${cheap_perday} pro Tag, was eher zu einem kurzen Aufenthalt passt als zu einem langen. Lege zuerst Tage und ungefähren Datenbedarf fest und wähle dann den Tarif, der zu beidem passt."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Mexiko wirklich unbegrenzt?"
+a = "Nur innerhalb der Grenzen. Die {unl_count} unbegrenzten Tarife für {country_acc} fallen nach einem festgelegten Tagesvolumen auf eine veröffentlichte Geschwindigkeit zurück. Die Laufzeit bewegt den Satz ebenso wie die Grenze: {unl_perday_range} pro Tag über die Auswahl, mit {unl_brand} am niedrigsten bei ${unl_perday} für {unl_days} Tage. Was viele übersehen, ist das, was nach der Grenze passiert: {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Mexiko?"
+a = "Wähle nach Nutzungsmuster, denn die beiden Marken bepreisen ganz unterschiedlich. Für {country_acc} ist Airalos günstigste Rate pro Gigabyte ${ah_airalo_pergb} ({ah_airalo_plan}, ${ah_airalo_price}). Holaflys Modell ist täglich unbegrenzt, ab {ah_holafly_days} Tagen für ${ah_holafly_price} – ${ah_holafly_perday}/Tag – schwere Nutzung kostet also dasselbe wie leichte."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Mexiko?"
+a = "Ja, aber nicht über denselben Weg wie eine lokale Leitung. Die mexikanische Registrierung einer lokalen SIM läuft über eine CURP oder eine persönliche Ausweisprüfung, während eine Reise-eSIM vom Anbieter beim Kauf registriert wird – die Reise selbst ändert sich nur darin, dass du den Schalter überspringst."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Mexiko?"
+a = "Die Tarife auf dieser Seite laufen über Telcel, AT&T Mexico, Movistar. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Mexiko und die USA abdecken?"
+a = "Ja, aber nur über einen Multi-Land-Tarif, denn nichts in unseren Tabellen für {country_acc} deckt ein zweites Land ab. Suche ein regionales Paket, das {neighbor} einschließt, und vergleiche dessen $/GB mit zwei Einzeltarifen."
+
+[[faq]]
+q = "Kann ich eine eSIM in Mexiko nutzen?"
+a = "Für {country_acc} sind {plan_count} Tarife von {brand_count} Anbietern gelistet, und jeder davon ist nutzbar. Was variiert, ist der Preis und nicht der Zugang – {plan_count} Tarife von {brand_count} Anbietern, alle in denselben nationalen Netzen. Mach den Kompatibilitätstest und vergleiche die Tarife oben nach $/GB und $/Tag."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Mexiko?"
+a = "Ein eSIM-fähiges, entsperrtes Handy funktioniert in {country_dat} ohne zusätzlichen Schritt. Ein in einem anderen Markt gekauftes Gerät ist der übliche Auslöser, und das hat nichts mit {country_dat} selbst zu tun. Prüfe zuerst auf eine EID-Nummer und einen Netlock ohne Einschränkungen."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Mexiko?"
+a = "Nur wenn lokale Anrufe für dich zählen, denn die {plan_count} hier gelisteten Tarife für {country_acc} sind Datenprodukte. Reise-eSIMs werden als Daten verkauft, wer eine für Sprache kauft, zahlt für das falsche Produkt. Plane Daten von der eSIM und deine bestehende Nummer von der Heimleitung."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Mexiko?"
+a = "Die Bewertungen selbst stehen auf den Seiten der Anbieter und in den App-Stores. Die veröffentlichten Bedingungen sind der Teil, den niemand bewertet und jeder lesen sollte, deshalb zitieren wir sie. Nutze die Tabellen oben für die Fakten und die eigenen Kanäle des Anbieters für die Stimmung."

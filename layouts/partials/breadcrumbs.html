@@ -1,6 +1,6 @@
 <nav aria-label="{{ i18n "g_breadcrumb" | safeHTML }}" class="text-sm text-ink-400">
   <ol class="flex flex-wrap items-center gap-1.5">
-    <li><a href="{{ .Site.BaseURL }}" class="transition-colors hover:text-ink-700">{{ i18n "g_home" | safeHTML }}</a></li>
+    <li><a href="{{ .Site.Home.Permalink }}" class="transition-colors hover:text-ink-700">{{ i18n "g_home" | safeHTML }}</a></li>
     {{ range .Ancestors.Reverse }}
       {{ if not .IsHome }}
         <li aria-hidden="true">/</li>

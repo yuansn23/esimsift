@@ -1,0 +1,42 @@
+# IS FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Island?"
+a = "Starte mit {cheap_brand}: {cheap_plan} ist mit ${cheap_price} der günstigste Tarif für {country_acc}. Preis und Gegenwert sind zwei verschiedene Messungen, und pro Gigabyte gewinnt {value_plan} von {value_brand} mit ${value_pergb}/GB. Lege zuerst Tage und ungefähren Datenbedarf fest und wähle dann den Tarif, der zu beidem passt."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Island wirklich unbegrenzt?"
+a = "Unbegrenzt heißt hier unbegrenztes Datenvolumen und nicht unbegrenzte Geschwindigkeit: {unl_count} Tarife für {country_acc} setzen Fair-Use-Grenzen. {unl_brand} ist pro Tag am günstigsten mit ${unl_perday}, und die volle Spanne reicht hier über {unl_perday_range}. Was viele übersehen, ist das, was nach der Grenze passiert: {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Island?"
+a = "Airalo und Holafly lösen verschiedene Probleme, vergleiche also die Modelle vor den Preisen. {ah_airalo_plan} von Airalo ergibt ${ah_airalo_pergb}/GB für ${ah_airalo_price}, und was du kaufst, ist was du bekommst. Holaflys Modell ist täglich unbegrenzt, ab {ah_holafly_days} Tagen für ${ah_holafly_price} – ${ah_holafly_perday}/Tag – schwere Nutzung kostet also dasselbe wie leichte."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Island?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Island?"
+a = "Die Tarife auf dieser Seite laufen über Siminn, Vodafone, Noa. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Island und weitere Länder der Region abdecken?"
+a = "Nicht mit einem Ein-Land-Tarif. Führt die Reise von {country_dat} weiter, und {neighbor} soll dabei sein, vergleiche ein regionales Paket mit zwei separaten Tarifen, denn die Tabellen hier bepreisen jeden Markt für sich."
+
+[[faq]]
+q = "Kann ich eine eSIM in Island nutzen?"
+a = "Reise-eSIMs für {country_acc} werden von jedem Anbieter verkauft, den wir führen, und keiner braucht eine lokale Adresse. Von den {plan_count} hier gelisteten Tarifen für {country_acc} ist keiner auf eine bestimmte Region des Landes begrenzt. Mach den Kompatibilitätstest und vergleiche die Tarife oben nach $/GB und $/Tag."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Island?"
+a = "Kompatibilität ist reine Gerätesache, und das Reiseziel stellt keine eigene Anforderung. Der eSIM-Chip ist bei der Fertigung festgelegt, ein ohne ihn gebautes Handy kann ihn später nicht erhalten, egal wie viele Tarife für {country_acc} wir listen. Prüfe zuerst auf eine EID-Nummer und einen Netlock ohne Einschränkungen."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Island?"
+a = "Für Besucher nicht. Eine eSIM für {country_acc} gibt dir Konnektivität, die Nummer bleibt bei deiner Heimleitung. Wo Sprache existiert, ist sie app-basiert statt eine echte lokale Nummer – was die meisten Reisenden tatsächlich brauchen. Plane Daten von der eSIM und deine bestehende Nummer von der Heimleitung."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Island?"
+a = "Kein aggregierter Wert von uns. Was diese Seite stattdessen bietet, ist die Rechnung. Ein Fünf-Sterne-Schnitt und ein Ein-Stern-Schnitt beschreiben meist verschiedene Reisen statt verschiedene Produkte. Nutze die Tabellen oben für die Fakten und die eigenen Kanäle des Anbieters für die Stimmung."

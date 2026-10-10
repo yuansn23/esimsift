@@ -1,0 +1,42 @@
+# CA FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Kanada?"
+a = "Für ${cheap_price} ist {cheap_plan} von {cheap_brand} der günstigste Weg ins Netz in {country_dat}. Das ergibt ${cheap_perday} pro Tag über die Laufzeit des Tarifs. Kaufe für die Reise, die du wirklich machst, und nicht für die niedrigste Zahl auf der Seite."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Kanada wirklich unbegrenzt?"
+a = "Behandle sie als gedeckelt: {unl_count} unbegrenzte Tarife für {country_acc} nennen jeweils ein Tagesvolumen und eine Rückfallgeschwindigkeit. Die Tagessätze liegen zwischen {unl_perday_range}, und der günstigste ist {unl_brand} mit ${unl_perday}/Tag – ${unl_price} für {unl_days} Tage. Vergleiche die Grenzen der Anbieter vor dem Kauf, denn die gedrosselte Geschwindigkeit ist der entscheidende Wert, und bei {unl_brand} ist sie {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Kanada?"
+a = "Die ehrliche Antwort ist, dass diese beiden nicht austauschbar sind. Die beste Rate von Airalo für {country_acc} ist ${ah_airalo_pergb}/GB – {ah_airalo_plan} für ${ah_airalo_price} – und das ist ein festes Paket statt eines Tagesvolumens. Wo Holafly gewinnt, ist die Planbarkeit, ab ${ah_holafly_price} für {ah_holafly_days} Tage (${ah_holafly_perday}/Tag), und wo Airalo gewinnt, ist eine kurze, leichte Reise."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Kanada?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Kanada?"
+a = "Die Tarife auf dieser Seite laufen über Bell, Rogers, Telus. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Kanada und die USA abdecken?"
+a = "Nur über einen regionalen Tarif, denn die Tabellen für {country_acc} gelten für einen Markt. Um {neighbor} mitzunehmen, brauchst du ein regionales Paket oder einen zweiten Tarif – der Preis pro Gigabyte unterscheidet sie."
+
+[[faq]]
+q = "Kann ich eine eSIM in Kanada nutzen?"
+a = "Ja – was eine eSIM in {country_dat} stoppen kann, liegt auf deiner Seite und nicht am Land. Alle {plan_count} Tarife in unserer Tabelle für {country_acc} registrieren sich in den heimischen Netzen statt im Roaming, es gibt also keine Abdeckungshürde. Kläre die Handy-Frage vor dem Kauf und vergleiche den Rest über den Preis."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Kanada?"
+a = "Ja, sofern das Handy eSIM-Hardware hat und keinen Netlock trägt. Regionale Varianten sind die Falle, die es zu prüfen gilt: Dasselbe Modell kann je nach Verkaufsmarkt mit oder ohne eSIM-Chip ausgeliefert werden. Mach die zwei Prüfungen und komm zur Tabelle oben zurück."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Kanada?"
+a = "Mit einer Reise-eSIM für {country_acc} wird keine Nummer ausgegeben. Sprache ist meist nicht Teil des Angebots, und Anrufe laufen über eine App statt über das Mobilfunknetz. Lass beide Leitungen im Handy und stelle Daten auf die eSIM."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Kanada?"
+a = "Wir beantworten die Bewertungsfrage mit Messung statt mit Gefühl. Der Grund: Dieselbe Marke schneidet je nach Region des Bewerters anders ab, eine einzelne Zahl als Wahrheit zu zitieren wäre irreführend. Nimm die Tabellen oben als die prüfbare Hälfte und lies Bewertungen für den Rest."

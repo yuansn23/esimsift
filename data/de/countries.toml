@@ -1,17 +1,28 @@
-# 德语国家名覆盖 —— 只写 name
+# 德语国家名覆盖 —— name / name_acc / name_dat
 # 其余字段（slug / flag / region / images / quirks / carriers / neighbors …）
 # 由 layouts/partials/i18n-data.html 从 data/countries.toml 深合并继承。
 # ⚠ 数组字段（quirks / carriers / neighbors / images）是「整体替换」不是逐条合并，
 #   要翻就得整段重写；只写 name 时它们原样保留。
+#
+# ★ 三个「名」字段的用法（2026-10-09 加，德语冠词/格问题）：
+#   name      —— 裸名，不带冠词。用于标题、复合词（{{ .country }}-eSIM）、清单、alt。
+#   name_acc  —— 宾格（für / über / durch 后面）。需要冠词的国家才写，如「die Türkei」。
+#   name_dat  —— 与格（in / von / bei 后面）。如「in der Türkei」「in den USA」。
+#   其余 43 国不带冠词 → 模板一律 `$country.name_acc | default $country.name` 回退，
+#   所以本文件只需为带冠词的 7 国写这两行。
 
 [JP]
 name = "Japan"
 
 [US]
 name = "Vereinigte Staaten"
+name_acc = "die USA"
+name_dat = "den USA"
 
 [GB]
 name = "Vereinigtes Königreich"
+name_acc = "das Vereinigte Königreich"
+name_dat = "dem Vereinigten Königreich"
 
 [FR]
 name = "Frankreich"
@@ -57,6 +68,8 @@ name = "Indonesien"
 
 [PH]
 name = "Philippinen"
+name_acc = "die Philippinen"
+name_dat = "den Philippinen"
 
 [IN]
 name = "Indien"
@@ -69,12 +82,16 @@ name = "Portugal"
 
 [NL]
 name = "Niederlande"
+name_acc = "die Niederlande"
+name_dat = "den Niederlanden"
 
 [BE]
 name = "Belgien"
 
 [CH]
 name = "Schweiz"
+name_acc = "die Schweiz"
+name_dat = "der Schweiz"
 
 [AT]
 name = "Österreich"
@@ -84,6 +101,8 @@ name = "Griechenland"
 
 [TR]
 name = "Türkei"
+name_acc = "die Türkei"
+name_dat = "der Türkei"
 
 [IE]
 name = "Irland"
@@ -126,6 +145,8 @@ name = "Costa Rica"
 
 [AE]
 name = "Vereinigte Arabische Emirate"
+name_acc = "die Vereinigten Arabischen Emirate"
+name_dat = "den Vereinigten Arabischen Emiraten"
 
 [SA]
 name = "Saudi-Arabien"

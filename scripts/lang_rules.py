@@ -61,6 +61,19 @@ def dash_ok_prefixes() -> set[str]:
     return _prefixes(lambda l: l in DASH_OK)
 
 
+def non_default_prefixes() -> set[str]:
+    """public/ 下**非默认语言**的目录前缀。
+
+    默认语言（英语）不落子目录 ⇒ output_prefix 为空串、被排除，
+    所以本集合里的每个前缀都非空，可安全配合 under_any() 用来判定
+    「这是非英语产物」。用途：把**英语专属**的规则（冠词 a/an、
+    未来可能有的英文拼写规则）挡在译文页之外 —— 译文页的英文残留
+    由 verify_de_text.py 的禁词表负责，两套判据职责不重叠。
+    """
+    _langs, default = enabled_langs()
+    return _prefixes(lambda l: l != default)
+
+
 def under_any(path: str, prefixes: set[str]) -> bool:
     """path 是否落在任一前缀下。空前缀 '' 表示全站命中。"""
     return any(path.startswith(p) for p in prefixes)

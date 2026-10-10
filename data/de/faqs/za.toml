@@ -1,0 +1,42 @@
+# ZA FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Südafrika?"
+a = "Für ${cheap_price} ist {cheap_plan} von {cheap_brand} der günstigste Weg ins Netz in {country_dat}. {runner_brand} folgt mit ${runner_price}, und die stärkste Rate pro Gigabyte kommt von {value_plan} von {value_brand} mit ${value_pergb}/GB. Die Tabelle oben sortiert jede Option, vergleiche also auch die Form eines Tarifs und nicht nur den Preis."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Südafrika wirklich unbegrenzt?"
+a = "Behandle sie als gedeckelt: {unl_count} unbegrenzte Tarife für {country_acc} nennen jeweils ein Tagesvolumen und eine Rückfallgeschwindigkeit. Die Preise liegen je nach Laufzeit bei {unl_perday_range} pro Tag, und {unl_brand} ist mit ${unl_perday}/Tag am günstigsten. Drosselung statt Abschaltung ist der Kompromiss, mit Geschwindigkeiten bis hinunter zu {unl_drop}, sobald das Volumen aufgebraucht ist."
+
+[[faq]]
+q = "Airalo oder Holafly für Südafrika?"
+a = "Die ehrliche Antwort ist, dass diese beiden nicht austauschbar sind. Airalos stärkstes Angebot für {country_acc} ist ${ah_airalo_pergb}/GB, verkauft als {ah_airalo_plan} für ${ah_airalo_price}. Die Flatrate-Option ist Holafly, mit {ah_holafly_days} Tagen ab ${ah_holafly_price} – ${ah_holafly_perday}/Tag, egal wie viel du nutzt."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Südafrika?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Südafrika?"
+a = "Die Tarife auf dieser Seite laufen über Vodacom, MTN, Telkom. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Südafrika und weitere Länder der Region abdecken?"
+a = "Nur über einen regionalen Tarif, denn die Tabellen für {country_acc} gelten für einen Markt. Um {neighbor} mitzunehmen, brauchst du ein regionales Paket oder einen zweiten Tarif – der Preis pro Gigabyte unterscheidet sie."
+
+[[faq]]
+q = "Kann ich eine eSIM in Südafrika nutzen?"
+a = "Ja – was eine eSIM in {country_dat} stoppen kann, liegt auf deiner Seite und nicht am Land. Jeder der {brand_count} Anbieter hier verkauft Tarife für {country_acc} – das beantwortet die Frage, ob eSIMs dort funktionieren, bereits. Prüfe dein Handy und lass dann die $/GB-Spalte zwischen den Tarifen oben entscheiden."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Südafrika?"
+a = "Ja, sofern das Handy eSIM-Hardware hat und keinen Netlock trägt. Keiner der {brand_count} Anbieter hier verlangt ein bestimmtes Handy, nur dass das Gerät den Chip hat und entsperrt ist. Prüfe zuerst das Gerät, denn die Tarife oben helfen nur, wenn es besteht."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Südafrika?"
+a = "Mit einer Reise-eSIM für {country_acc} wird keine Nummer ausgegeben. Die praktische Aufteilung ist Daten auf der eSIM und die bestehende Nummer auf der physischen SIM, mit ausgeschaltetem Roaming auf der Heimleitung. Füge nur dann eine lokale SIM hinzu, wenn lokale Anrufe eine echte Anforderung sind."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Südafrika?"
+a = "Wir beantworten die Bewertungsfrage mit Messung statt mit Gefühl. Der Vergleich oben schickt alle {plan_count} Tarife für {country_acc} von {brand_count} Anbietern durch eine Formel – was keine Bewertungsseite behaupten kann. Prüfe die Fair-Use- und Rückerstattungsseiten des Anbieters direkt, bevor du dich festlegst."

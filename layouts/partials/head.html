@@ -38,21 +38,21 @@
     {{- $cands := slice -}}
     {{- if eq (len $met) 0 -}}
       {{- $cands = slice
-        (printf "%s %s eSIM Review %d: Unlimited Data Plans" $p.name $c.name $y)
-        (printf "%s %s eSIM %d: Unlimited Data Plans" $p.name $c.name $y)
-        (printf "%s %s eSIM %d: Unlimited Plans Compared" $p.name $c.name $y)
-        (printf "%s %s eSIM Review %d: Unlimited Plans" $p.name $c.name $y)
-        (printf "%s %s eSIM %d: Unlimited Data" $p.name $c.name $y)
-        (printf "%s %s eSIM %d: Unlimited Plans" $p.name $c.name $y)
+        (printf (i18n "partials_head__title_unl_1") $p.name $c.name $y)
+        (printf (i18n "partials_head__title_unl_2") $p.name $c.name $y)
+        (printf (i18n "partials_head__title_unl_3") $p.name $c.name $y)
+        (printf (i18n "partials_head__title_unl_4") $p.name $c.name $y)
+        (printf (i18n "partials_head__title_unl_5") $p.name $c.name $y)
+        (printf (i18n "partials_head__title_unl_6") $p.name $c.name $y)
       -}}
     {{- else -}}
       {{- $cands = slice
-        (printf "%s %s eSIM Review %d: Data Plans Compared" $p.name $c.name $y)
-        (printf "%s %s eSIM %d: Cheap Data Plans Compared" $p.name $c.name $y)
-        (printf "%s %s eSIM %d: Data Plans Compared" $p.name $c.name $y)
-        (printf "%s %s eSIM Review %d: Plans and Prices" $p.name $c.name $y)
-        (printf "%s %s eSIM %d: Prepaid Data Plans" $p.name $c.name $y)
-        (printf "%s %s eSIM %d: Data Plans" $p.name $c.name $y)
+        (printf (i18n "partials_head__title_met_1") $p.name $c.name $y)
+        (printf (i18n "partials_head__title_met_2") $p.name $c.name $y)
+        (printf (i18n "partials_head__title_met_3") $p.name $c.name $y)
+        (printf (i18n "partials_head__s_s_esim_review_d_plans_and_prices") $p.name $c.name $y)
+        (printf (i18n "partials_head__title_met_4") $p.name $c.name $y)
+        (printf (i18n "partials_head__title_met_5") $p.name $c.name $y)
       -}}
     {{- end -}}
     {{- $title = index $cands (sub (len $cands) 1) -}}
@@ -90,10 +90,13 @@
      删掉该 front matter 即恢复收录。
      注意：上面 {{- if }} 的左侧裁剪不能省 —— 写成 {{ if }} 会给每一页多输出一个空行。
      这段紧贴 canonical 且不留独立空行，是为了让英文页产物逐字节不变（改动前此处是空行）。 */}}
-{{/* ── 字体预连接（Sora + Inter）── */}}
+{{/* ── 字体预连接（Sora + Inter）；hero 预加载只给首页 —— 那张图只有首页正文用，
+      其余 1289 页白预加载会抢首屏带宽（见 scripts/_perf_audit.py 判据 H1）。── */}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{- if .IsHome }}
 <link rel="preload" as="image" href="/img/site/home-hero.webp">
+{{- end }}
 
 {{/* ── Open Graph ── */}}
 <meta property="og:site_name" content="{{ .Site.Params.brand }}">
@@ -103,9 +106,10 @@
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:image" content="{{ $ogimage | absURL }}">
 <meta name="twitter:card" content="summary_large_image">
-{{ if gt (len hugo.Sites) 1 }}{{/* hreflang 的两侧都要守（2026-10-08 改正）：① 目标侧 —— 只指向「可索引」的译文（指向 noindex 页会被 GSC 判为 hreflang 错误）；② 来源侧 —— 页面自身 noindex 或 404 时**一条都不发**。Google 不处理 noindex 页上的 hreflang 标注，而且那会形成单向标注（en 侧因译文 noindex 而不回指）→ GSC 报 "No return tags" 并整体忽略。修前 54 个德语页在 noindex 状态下向外发 en-us，就是这个错误。守卫：scripts/check_hreflang.py（不进 hugo，进 check:output）。 ⚠ 这段注释必须写成**单行** —— 注释放进模板后，多行注释里的换行会被当作输出文本，导致全站 HTML 各多一行空白、`--diff` 无法归因。 */}}{{ if and (not .Params.noindex) (ne .Kind "404") }}<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
+{{ if gt (len hugo.Sites) 1 }}{{/* hreflang 的两侧都要守（2026-10-08 改正）：① 目标侧 —— 只指向「可索引」的译文（指向 noindex 页会被 GSC 判为 hreflang 错误）；② 来源侧 —— 页面自身 noindex 或 404 时**一条都不发**。Google 不处理 noindex 页上的 hreflang 标注，而且那会形成单向标注（en 侧因译文 noindex 而不回指）→ GSC 报 "No return tags" 并整体忽略。修前 54 个德语页在 noindex 状态下向外发 en-us，就是这个错误。守卫：scripts/check_hreflang.py（不进 hugo，进 check:output）。 ⚠ 这段注释必须写成**单行** —— 注释放进模板后，多行注释里的换行会被当作输出文本，导致全站 HTML 各多一行空白、`--diff` 无法归因。 ★ D9（2026-10-10）起在 hreflang 组里补 x-default：指向**默认语言（en）**版本；en 页指向自身；无译文组的页不发（避免孤立 x-default）。位置在组尾、`<meta property="og:locale">` 之前。 */}}{{ if and (not .Params.noindex) (ne .Kind "404") }}<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
 {{ range .Translations }}{{ if not .Params.noindex }}<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
-{{ end }}{{ end }}{{ end }}<meta property="og:locale" content="{{ partial "og-locale.html" .Language.LanguageCode }}">
+{{ end }}{{ end }}{{ $xdef := "" }}{{ if eq .Language.Lang "en" }}{{ if gt (len .Translations) 0 }}{{ $xdef = .Permalink }}{{ end }}{{ else }}{{ range .Translations }}{{ if eq .Language.Lang "en" }}{{ $xdef = .Permalink }}{{ end }}{{ end }}{{ end }}{{ with $xdef }}<link rel="alternate" hreflang="x-default" href="{{ . }}">
+{{ end }}{{ end }}<meta property="og:locale" content="{{ partial "og-locale.html" .Language.LanguageCode }}">
 {{ range .Translations }}<meta property="og:locale:alternate" content="{{ partial "og-locale.html" .Language.LanguageCode }}">
 {{ end }}{{ end }}
 {{/* ── Styles（Tailwind 预编译产物，npm run build:css 生成）── */}}

@@ -1,0 +1,42 @@
+# GR FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Griechenland?"
+a = "Starte mit {cheap_brand}: {cheap_plan} ist mit ${cheap_price} der günstigste Tarif für {country_acc}. Der nächstgünstigere Anbieter ist {runner_brand} mit ${runner_price}. Richte den Tarif nach deiner Reisedauer statt nach der niedrigsten Zahl."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Griechenland wirklich unbegrenzt?"
+a = "Unbegrenzt heißt hier unbegrenztes Datenvolumen und nicht unbegrenzte Geschwindigkeit: {unl_count} Tarife für {country_acc} setzen Fair-Use-Grenzen. Die Spanne ist weit – {unl_perday_range} pro Tag – und {unl_brand} liegt mit ${unl_perday}/Tag über {unl_days} Tage am unteren Ende. Was {unl_brand} veröffentlicht: {unl_allowance}; danach {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Griechenland?"
+a = "Airalo und Holafly lösen verschiedene Probleme, vergleiche also die Modelle vor den Preisen. Auf Airalos Seite ist der beste Wert ${ah_airalo_pergb}/GB – {ah_airalo_plan} für ${ah_airalo_price} – pro Gigabyte bepreist statt pro Tag. Holafly verkauft stattdessen unbegrenzte Tage, das kleinste Paket für {country_acc} umfasst {ah_holafly_days} Tage für ${ah_holafly_price} (${ah_holafly_perday}/Tag)."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Griechenland?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Griechenland?"
+a = "Die Tarife auf dieser Seite laufen über Cosmote, Vodafone, Wind. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Griechenland und die Türkei abdecken?"
+a = "Ein Land pro Tarif, eine für {country_acc} gekaufte eSIM endet also an der Grenze. Ein regionales Paket oder ein zweiter Tarif bringt {neighbor} dazu, und beide lohnen den Vergleich mit zwei Einzelkäufen."
+
+[[faq]]
+q = "Kann ich eine eSIM in Griechenland nutzen?"
+a = "Reise-eSIMs für {country_acc} werden von jedem Anbieter verkauft, den wir führen, und keiner braucht eine lokale Adresse. {brand_count} Anbieter verkaufen {plan_count} separate Tarife für {country_acc} auf dieser Seite – ein Markt zu groß, als dass Verfügbarkeit die Einschränkung wäre. Prüfe zuerst dein Handy und wähle dann den Tarif, der zu deiner Reisedauer passt."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Griechenland?"
+a = "Kompatibilität ist reine Gerätesache, und das Reiseziel stellt keine eigene Anforderung. Veröffentlichte Kompatibilitätslisten hinken neuen Modellen hinterher, der Test im Wählfeld an deinem eigenen Gerät schlägt also jede Liste, auch unsere. Mach den *#06#-Test vor dem Tarifkauf."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Griechenland?"
+a = "Für Besucher nicht. Eine eSIM für {country_acc} gibt dir Konnektivität, die Nummer bleibt bei deiner Heimleitung. Zwei-Faktor-Codes sind der übliche Grund für die Frage, und die kommen über die Heimleitung an, solange sie aktiv bleibt. Lass deine Heim-SIM für Anrufe und Codes aktiv und lass die eSIM die Daten tragen."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Griechenland?"
+a = "Kein aggregierter Wert von uns. Was diese Seite stattdessen bietet, ist die Rechnung. Preis, Volumen und die Fair-Use-Schwelle sind prüfbare Fakten, und genau die stellen die Tabellen oben nebeneinander. Lies zuerst die Zahlen oben und prüfe dann die eigenen Bewertungen des Anbieters für die menschliche Seite."

@@ -1,0 +1,42 @@
+# AR FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Argentinien?"
+a = "Beim Einstiegspreis liegt {cheap_brand} für {country_acc} vorn: {cheap_plan} für ${cheap_price}. Das ergibt ${cheap_perday} pro Tag über die Laufzeit des Tarifs. Lege zuerst Tage und ungefähren Datenbedarf fest und wähle dann den Tarif, der zu beidem passt."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Argentinien wirklich unbegrenzt?"
+a = "Nein. Jeder der {unl_count} unbegrenzten Tarife für {country_acc} deckelt sein Tagesvolumen bei voller Geschwindigkeit. Die Tagessätze liegen zwischen {unl_perday_range}, und der günstigste ist {unl_brand} mit ${unl_perday}/Tag – ${unl_price} für {unl_days} Tage. Was viele übersehen, ist das, was nach der Grenze passiert: {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Argentinien?"
+a = "Verschiedene Produkte: Airalo verkauft feste Datenpakete, Holafly verkauft unbegrenzte Tage. Die beste Rate von Airalo für {country_acc} ist ${ah_airalo_pergb}/GB – {ah_airalo_plan} für ${ah_airalo_price} – und das ist ein festes Paket statt eines Tagesvolumens. Holaflys Modell ist täglich unbegrenzt, ab {ah_holafly_days} Tagen für ${ah_holafly_price} – ${ah_holafly_perday}/Tag – schwere Nutzung kostet also dasselbe wie leichte."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Argentinien?"
+a = "Ja, und es kostet dich nichts. Die Registrierung einer lokalen SIM verlangt von Einwohnern eine DNI und von Besuchern einen Pass-Durchlauf, während eine Reise-eSIM für Argentinien vom Verkäufer beim Kauf registriert wird. Kauf vorab, und die Regel berührt deine Reise nie."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Argentinien?"
+a = "Die Tarife auf dieser Seite laufen über Personal, Claro, Movistar. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Argentinien und Brasilien abdecken?"
+a = "Nur mit einem regionalen Paket, denn die Landestarife auf dieser Seite überschreiten keine Grenzen. Die Märkte rund um {country_acc} haben hier eigene Tabellen – {neighbors_all} gehören dazu – rechne ein regionales Paket also gegen zwei Einzeltarife."
+
+[[faq]]
+q = "Kann ich eine eSIM in Argentinien nutzen?"
+a = "Eine eSIM funktioniert in {country_dat}, und nichts am Reiseziel verhindert das. Alle {plan_count} Tarife in unserer Tabelle für {country_acc} registrieren sich in den heimischen Netzen statt im Roaming, es gibt also keine Abdeckungshürde. Mach den Kompatibilitätstest und vergleiche die Tarife oben nach $/GB und $/Tag."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Argentinien?"
+a = "Dein Gerät entscheidet hier, nicht das Reiseziel. Regionale Varianten sind die Falle, die es zu prüfen gilt: Dasselbe Modell kann je nach Verkaufsmarkt mit oder ohne eSIM-Chip ausgeliefert werden. Prüfe zuerst auf eine EID-Nummer und einen Netlock ohne Einschränkungen."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Argentinien?"
+a = "Eine lokale Nummer ist nicht nötig, um in {country_dat} eine eSIM zu nutzen. Sprache ist meist nicht Teil des Angebots, und Anrufe laufen über eine App statt über das Mobilfunknetz. Plane Daten von der eSIM und deine bestehende Nummer von der Heimleitung."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Argentinien?"
+a = "Bewertungsnoten lassen wir bewusst weg, weil eine einzelne Zahl die Streuung dahinter verbirgt. Der Grund: Dieselbe Marke schneidet je nach Region des Bewerters anders ab, eine einzelne Zahl als Wahrheit zu zitieren wäre irreführend. Nutze die Tabellen oben für die Fakten und die eigenen Kanäle des Anbieters für die Stimmung."

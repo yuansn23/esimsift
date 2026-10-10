@@ -1,0 +1,42 @@
+# KR FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Südkorea?"
+a = "Beim Einstiegspreis liegt {cheap_brand} für {country_acc} vorn: {cheap_plan} für ${cheap_price}. Das sind ${cheap_perday} pro Tag, was eher zu einem kurzen Aufenthalt passt als zu einem langen. Die Tabelle oben sortiert jede Option, vergleiche also auch die Form eines Tarifs und nicht nur den Preis."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Südkorea wirklich unbegrenzt?"
+a = "Nein. Jeder der {unl_count} unbegrenzten Tarife für {country_acc} deckelt sein Tagesvolumen bei voller Geschwindigkeit. Die Laufzeit bewegt den Satz ebenso wie die Grenze: {unl_perday_range} pro Tag über die Auswahl, mit {unl_brand} am niedrigsten bei ${unl_perday} für {unl_days} Tage. Drosselung statt Abschaltung ist der Kompromiss, mit Geschwindigkeiten bis hinunter zu {unl_drop}, sobald das Volumen aufgebraucht ist."
+
+[[faq]]
+q = "Airalo oder Holafly für Südkorea?"
+a = "Verschiedene Produkte: Airalo verkauft feste Datenpakete, Holafly verkauft unbegrenzte Tage. Für {country_acc} ist Airalos günstigste Rate pro Gigabyte ${ah_airalo_pergb} ({ah_airalo_plan}, ${ah_airalo_price}). Die Flatrate-Option ist Holafly, mit {ah_holafly_days} Tagen ab ${ah_holafly_price} – ${ah_holafly_perday}/Tag, egal wie viel du nutzt."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Südkorea?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Südkorea?"
+a = "Die Tarife auf dieser Seite laufen über SK Telecom, KT, LG U+. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Südkorea und Japan abdecken?"
+a = "Nur mit einem regionalen Paket, denn die Landestarife auf dieser Seite überschreiten keine Grenzen. Die Märkte rund um {country_acc} haben hier eigene Tabellen – {neighbors_all} gehören dazu – rechne ein regionales Paket also gegen zwei Einzeltarife."
+
+[[faq]]
+q = "Kann ich eine eSIM in Südkorea nutzen?"
+a = "Eine eSIM funktioniert in {country_dat}, und nichts am Reiseziel verhindert das. Was variiert, ist der Preis und nicht der Zugang – {plan_count} Tarife von {brand_count} Anbietern, alle in denselben nationalen Netzen. Prüfe dein Handy und lass dann die $/GB-Spalte zwischen den Tarifen oben entscheiden."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Südkorea?"
+a = "Dein Gerät entscheidet hier, nicht das Reiseziel. Ein in einem anderen Markt gekauftes Gerät ist der übliche Auslöser, und das hat nichts mit {country_dat} selbst zu tun. Prüfe zuerst das Gerät, denn die Tarife oben helfen nur, wenn es besteht."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Südkorea?"
+a = "Eine lokale Nummer ist nicht nötig, um in {country_dat} eine eSIM zu nutzen. Reise-eSIMs werden als Daten verkauft, wer eine für Sprache kauft, zahlt für das falsche Produkt. Füge nur dann eine lokale SIM hinzu, wenn lokale Anrufe eine echte Anforderung sind."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Südkorea?"
+a = "Bewertungsnoten lassen wir bewusst weg, weil eine einzelne Zahl die Streuung dahinter verbirgt. Die veröffentlichten Bedingungen sind der Teil, den niemand bewertet und jeder lesen sollte, deshalb zitieren wir sie. Prüfe die Fair-Use- und Rückerstattungsseiten des Anbieters direkt, bevor du dich festlegst."

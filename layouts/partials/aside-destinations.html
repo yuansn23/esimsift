@@ -12,8 +12,19 @@
         但同一页每次构建结果完全一致 —— 可 diff、可复现、可缓存
    ④ 整段服务端渲染，爬虫直接可见，不依赖 JS（JS 随机爬虫抓不到）
 
-   调用：{{ partial "aside-destinations.html" . }}
+   调用：partial "aside-destinations.html" .（示例里**不写花括号**，见文末 ⚠）
    注意：调用方需自行包 <aside class="… lg:sticky lg:top-24">；本 partial 只渲染卡片
+   ⑤ 末尾的「全部目的地」链接**复用** header 的 `partials_header__all_destinations`
+      （值 = `All <n> destinations →`，德语 = `Alle <n> Reiseziele →`）——
+      同一句话只允许一份定义，partial 里再抄一遍就是第二处会漂移的地方。
+      2026-10-09 第六十三轮：此前那行是写死的英文，`/de/networks/` 上直接印出
+      `All 50 destinations →`。
+   ⚠ 两条改本文件的禁忌（都实测踩过）：
+      ① **新增独立的注释动作块会改变产物字节** —— 注释本身不输出，但它前后的
+         换行与缩进是字面文本。说明一律并进本注释块。
+      ② **本注释块里不许出现「成对的花括号」**（模板动作的外形）——
+         `scripts/i18n_extract.py` 的扫描器把注释内的那种写法当作动作边界，
+         紧跟其后的文字会被误判成模板层硬编码文案，`check_i18n.py` 直接报 ERROR。
    ───────────────────────────────────────────────────────────── */ -}}
 {{- $pool := slice "US" "GB" "CN" "JP" "DE" "FR" "ES" "IT" "AU" "CA" "HK" -}}
 {{- $cur := .Params.iso | default "" -}}
@@ -42,5 +53,5 @@
     </li>
     {{- end }}
   </ul>
-  <p class="mt-3 border-t border-ink-100 pt-3 text-[11px] leading-relaxed text-ink-400">{{ i18n "partials_aside_destinations__cheapest_plan_we_track_in_each_destination_usually_a_100" | safeHTML }} <a href="{{ partial "lang-href.html" "/compare/" }}" class="font-semibold text-brand-700 hover:underline">All {{ len $d.countries }} destinations →</a></p>
+  <p class="mt-3 border-t border-ink-100 pt-3 text-[11px] leading-relaxed text-ink-400">{{ i18n "partials_aside_destinations__cheapest_plan_we_track_in_each_destination_usually_a_100" | safeHTML }} <a href="{{ partial "lang-href.html" "/compare/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "partials_header__all_destinations" (dict "n" (len $d.countries)) | safeHTML }}</a></p>
 </div>

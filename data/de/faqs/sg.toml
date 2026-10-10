@@ -1,0 +1,42 @@
+# SG FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Singapur?"
+a = "{cheap_plan} von {cheap_brand} ist der günstigste Tarif für {country_acc} – ${cheap_price}. {runner_brand} folgt mit ${runner_price}, und die stärkste Rate pro Gigabyte kommt von {value_plan} von {value_brand} mit ${value_pergb}/GB. Kaufe für die Reise, die du wirklich machst, und nicht für die niedrigste Zahl auf der Seite."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Singapur wirklich unbegrenzt?"
+a = "Nicht ganz – alle {unl_count} unbegrenzten Tarife für {country_acc} haben eine Fair-Use-Regel. Die Preise liegen je nach Laufzeit bei {unl_perday_range} pro Tag, und {unl_brand} ist mit ${unl_perday}/Tag am günstigsten. Vergleiche die Grenzen der Anbieter vor dem Kauf, denn die gedrosselte Geschwindigkeit ist der entscheidende Wert, und bei {unl_brand} ist sie {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Singapur?"
+a = "Sie verkaufen verschiedene Dinge, die Antwort hängt also davon ab, wie du Daten nutzt. Airalos stärkstes Angebot für {country_acc} ist ${ah_airalo_pergb}/GB, verkauft als {ah_airalo_plan} für ${ah_airalo_price}. Wo Holafly gewinnt, ist die Planbarkeit, ab ${ah_holafly_price} für {ah_holafly_days} Tage (${ah_holafly_perday}/Tag), und wo Airalo gewinnt, ist eine kurze, leichte Reise."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Singapur?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Singapur?"
+a = "Die Tarife auf dieser Seite laufen über Singtel, StarHub, M1. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Singapur und Malaysia abdecken?"
+a = "Nicht mit einem Ein-Land-Tarif. Alles in unseren Tabellen gilt nur für {country_acc}, eine Reise, die auch {neighbor} einschließt, braucht also einen zweiten Landestarif oder ein regionales Paket."
+
+[[faq]]
+q = "Kann ich eine eSIM in Singapur nutzen?"
+a = "Ja – {brand_count} Anbieter verkaufen Tarife für {country_acc}; das Land gehört zur üblichen Reise-eSIM-Landkarte. Jeder der {brand_count} Anbieter hier verkauft Tarife für {country_acc} – das beantwortet die Frage, ob eSIMs dort funktionieren, bereits. Kläre die Handy-Frage vor dem Kauf und vergleiche den Rest über den Preis."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Singapur?"
+a = "Wenn dein Handy eSIM unterstützt und keinen Netlock hat, funktioniert es in {country_dat} – das Reiseziel hat darauf keinen Einfluss. Keiner der {brand_count} Anbieter hier verlangt ein bestimmtes Handy, nur dass das Gerät den Chip hat und entsperrt ist. Mach die zwei Prüfungen und komm zur Tabelle oben zurück."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Singapur?"
+a = "Für eine normale Reise nicht – eine Reise-eSIM für {country_acc} ist ein Datenprodukt und keine Telefonleitung. Die praktische Aufteilung ist Daten auf der eSIM und die bestehende Nummer auf der physischen SIM, mit ausgeschaltetem Roaming auf der Heimleitung. Lass beide Leitungen im Handy und stelle Daten auf die eSIM."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Singapur?"
+a = "Wir bündeln keine Bewertungen, die ehrliche Antwort hier betrifft also die Methode und nicht die Noten. Der Vergleich oben schickt alle {plan_count} Tarife für {country_acc} von {brand_count} Anbietern durch eine Formel – was keine Bewertungsseite behaupten kann. Nimm die Tabellen oben als die prüfbare Hälfte und lies Bewertungen für den Rest."

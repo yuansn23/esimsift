@@ -1,0 +1,42 @@
+# TR FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für die Türkei?"
+a = "Der niedrigste Preis auf dieser Seite: {cheap_plan} von {cheap_brand} für ${cheap_price}. {runner_brand} folgt mit ${runner_price}, und die stärkste Rate pro Gigabyte kommt von {value_plan} von {value_brand} mit ${value_pergb}/GB. Lege zuerst Tage und ungefähren Datenbedarf fest und wähle dann den Tarif, der zu beidem passt."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in der Türkei wirklich unbegrenzt?"
+a = "Groß statt grenzenlos: {unl_count} unbegrenzte Tarife für {country_acc} unterliegen Fair-Use-Regeln. Die Preise liegen je nach Laufzeit bei {unl_perday_range} pro Tag, und {unl_brand} ist mit ${unl_perday}/Tag am günstigsten. Was viele übersehen, ist das, was nach der Grenze passiert: {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für die Türkei?"
+a = "Keiner von beiden ist der günstigste Tarif auf dieser Seite, und sie konkurrieren auch nicht zu denselben Bedingungen. Airalos stärkstes Angebot für {country_acc} ist ${ah_airalo_pergb}/GB, verkauft als {ah_airalo_plan} für ${ah_airalo_price}. Holaflys Modell ist täglich unbegrenzt, ab {ah_holafly_days} Tagen für ${ah_holafly_price} – ${ah_holafly_perday}/Tag – schwere Nutzung kostet also dasselbe wie leichte."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in der Türkei?"
+a = "Ja – türkische SIM-Regeln binden die Registrierung an einen Pass, und die Verkäufer, die wir führen, sammeln die Daten beim Checkout ein statt über einen Schalter. Das ist der praktische Unterschied zu einem Turkcell-Touristenpaket: kein Flughafenschalter, keine Schlange, und das Profil ist schon auf deinem Handy, wenn du landest."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in der Türkei?"
+a = "Die Tarife auf dieser Seite laufen über Turkcell, Vodafone, Turk Telekom. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM die Türkei und Griechenland abdecken?"
+a = "Nicht mit einem Landestarif allein, weil Tarife für {country_acc} an der Grenze enden. {neighbor} dazu bedeutet ein regionales Paket oder einen zweiten Tarif, und diese Rechnung lohnt sich vor dem Kauf."
+
+[[faq]]
+q = "Kann ich eine eSIM in der Türkei nutzen?"
+a = "Ja, es funktioniert. Keine länderspezifische Sperre steht zwischen einer Reise-eSIM und den Netzen in {country_dat}. Jeder der {brand_count} Anbieter hier verkauft Tarife für {country_acc} – das beantwortet die Frage, ob eSIMs dort funktionieren, bereits. Mach den Kompatibilitätstest und vergleiche die Tarife oben nach $/GB und $/Tag."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in der Türkei?"
+a = "Es hängt vom Gerät ab und nicht vom Land, denn jeder Tarif auf dieser Seite ist ein Standard-eSIM-Profil. Keiner der {brand_count} Anbieter hier verlangt ein bestimmtes Handy, nur dass das Gerät den Chip hat und entsperrt ist. Prüfe zuerst auf eine EID-Nummer und einen Netlock ohne Einschränkungen."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in der Türkei?"
+a = "Nein, außer du brauchst ausdrücklich Anrufe über eine lokale Nummer. Die praktische Aufteilung ist Daten auf der eSIM und die bestehende Nummer auf der physischen SIM, mit ausgeschaltetem Roaming auf der Heimleitung. Plane Daten von der eSIM und deine bestehende Nummer von der Heimleitung."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in der Türkei?"
+a = "Statt einer Sternebewertung beantwortet diese Seite die Frage mit Zahlen. Der Vergleich oben schickt alle {plan_count} Tarife für {country_acc} von {brand_count} Anbietern durch eine Formel – was keine Bewertungsseite behaupten kann. Nutze die Tabellen oben für die Fakten und die eigenen Kanäle des Anbieters für die Stimmung."

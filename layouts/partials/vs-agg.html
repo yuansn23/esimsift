@@ -3,7 +3,10 @@ VS 配对聚合 —— 单一数据入口。传入 dict (a, b)：两个品牌 ke
 对两国均有套餐的每个国家计算各自最低价 / 最优 $/GB / 是否有 unlimited，
 逐国判定 entry-price 胜者与 $/GB 胜者，并汇总 win 计数。
 被 vs/single.html / vs/list.html / 品牌页 vs 模块复用。返回：
-  countries rows(name/slug/flag/iso/aMin/bMin/aPerGB/bPerGB/aUnlim/bUnlim/pW/vW)
+  countries rows(name/slug/flag/iso/aMin/bMin/aMinGB/bMinGB/aPerGB/bPerGB/aUnlim/bUnlim/pW/vW)
+    ★ aMinGB/bMinGB = 产生 aMin/bMin 的**同一条套餐**的数据量（0 = 无限档）。
+      判定分支与 aMin/bMin 完全同步地赋值 ⇒ 不可能出现「价格取自这条、数据量取自那条」。
+      用途：vs 页显示「$4.50 · 3 GB」并做数据量区间过滤。
   aWinsPrice bWinsPrice aWinsValue bWinsValue aTies
   aUnlimCountries bUnlimCountries aGlobalMin bGlobalMin aUnlimitedOnly bUnlimitedOnly
   checkedDate
@@ -20,12 +23,12 @@ VS 配对聚合 —— 单一数据入口。传入 dict (a, b)：两个品牌 ke
 {{- $checkedDates := slice -}}
 {{- range $iso, $c := $d.countries -}}
   {{- /* 每品牌在该国的 minPrice / minPerGB / hasUnlimited */ -}}
-  {{- $minA := 0.0 -}}{{- $pgA := 0.0 -}}{{- $unA := false -}}
-  {{- $minB := 0.0 -}}{{- $pgB := 0.0 -}}{{- $unB := false -}}
+  {{- $minA := 0.0 -}}{{- $pgA := 0.0 -}}{{- $unA := false -}}{{- $minGbA := 0.0 -}}
+  {{- $minB := 0.0 -}}{{- $pgB := 0.0 -}}{{- $unB := false -}}{{- $minGbB := 0.0 -}}
   {{- with index (index $plans $a) $iso -}}
     {{- $checkedDates = $checkedDates | append .checked -}}
     {{- range .plans -}}
-      {{- if or (eq $minA 0.0) (lt (float .price) $minA) }}{{- $minA = float .price -}}{{- end -}}
+      {{- if or (eq $minA 0.0) (lt (float .price) $minA) }}{{- $minA = float .price -}}{{- $minGbA = float .gb -}}{{- end -}}
       {{- if gt (float .gb) 0.0 -}}
         {{- $g := div (float .price) (float .gb) -}}
         {{- if or (eq $pgA 0.0) (lt $g $pgA) }}{{- $pgA = $g -}}{{- end -}}
@@ -36,7 +39,7 @@ VS 配对聚合 —— 单一数据入口。传入 dict (a, b)：两个品牌 ke
   {{- with index (index $plans $b) $iso -}}
     {{- $checkedDates = $checkedDates | append .checked -}}
     {{- range .plans -}}
-      {{- if or (eq $minB 0.0) (lt (float .price) $minB) }}{{- $minB = float .price -}}{{- end -}}
+      {{- if or (eq $minB 0.0) (lt (float .price) $minB) }}{{- $minB = float .price -}}{{- $minGbB = float .gb -}}{{- end -}}
       {{- if gt (float .gb) 0.0 -}}
         {{- $g := div (float .price) (float .gb) -}}
         {{- if or (eq $pgB 0.0) (lt $g $pgB) }}{{- $pgB = $g -}}{{- end -}}
@@ -63,6 +66,7 @@ VS 配对聚合 —— 单一数据入口。传入 dict (a, b)：两个品牌 ke
     {{- $rows = $rows | append (dict
       "iso" $iso "name" $c.name "slug" $c.slug "flag" $c.flag
       "aMin" $minA "bMin" $minB "aPerGB" $pgA "bPerGB" $pgB
+      "aMinGB" $minGbA "bMinGB" $minGbB
       "aUnlim" $unA "bUnlim" $unB "pW" $pW "vW" $vW
     ) -}}
   {{- end -}}

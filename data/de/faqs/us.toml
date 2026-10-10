@@ -1,0 +1,42 @@
+# US FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für die USA?"
+a = "Günstigster Tarif für {country_acc}: {cheap_plan} von {cheap_brand}, ${cheap_price}. {runner_brand} folgt mit ${runner_price}, und die stärkste Rate pro Gigabyte kommt von {value_plan} von {value_brand} mit ${value_pergb}/GB. Wenn du nur Karten und Nachrichten brauchst, reicht der Einstiegspreis, und wer streamt, sollte nach $/GB wählen."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in den USA wirklich unbegrenzt?"
+a = "Nur innerhalb der Grenzen. Die {unl_count} unbegrenzten Tarife für {country_acc} fallen nach einem festgelegten Tagesvolumen auf eine veröffentlichte Geschwindigkeit zurück. Die Preise liegen je nach Laufzeit bei {unl_perday_range} pro Tag, und {unl_brand} ist mit ${unl_perday}/Tag am günstigsten. Prüfe die Rückfallgeschwindigkeit vor dem Kauf, denn das ist das, was du nach dem Tagesvolumen bekommst: {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für die USA?"
+a = "Wähle nach Nutzungsmuster, denn die beiden Marken bepreisen ganz unterschiedlich. Airalos stärkstes Angebot für {country_acc} ist ${ah_airalo_pergb}/GB, verkauft als {ah_airalo_plan} für ${ah_airalo_price}. Nimm Holafly, wenn du lieber keine Gigabyte zählst, denn seine Pakete für {country_acc} beginnen bei ${ah_holafly_price} für {ah_holafly_days} Tage (${ah_holafly_perday}/Tag); nimm Airalo für eine leichte, kurze Reise."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in den USA?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in den USA?"
+a = "Die Tarife auf dieser Seite laufen über T-Mobile, AT&T, Verizon. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM die USA und Kanada abdecken?"
+a = "Ja, aber nur über einen Multi-Land-Tarif, denn nichts in unseren Tabellen für {country_acc} deckt ein zweites Land ab. Suche ein regionales Paket, das {neighbor} einschließt, und vergleiche dessen $/GB mit zwei Einzeltarifen."
+
+[[faq]]
+q = "Kann ich eine eSIM in den USA nutzen?"
+a = "Für {country_acc} sind {plan_count} Tarife von {brand_count} Anbietern gelistet, und jeder davon ist nutzbar. Jeder der {brand_count} Anbieter hier verkauft Tarife für {country_acc} – das beantwortet die Frage, ob eSIMs dort funktionieren, bereits. Bestätige, dass das Gerät eSIM unterstützt und entsperrt ist, und wähle dann aus der Tabelle oben."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in den USA?"
+a = "Ein eSIM-fähiges, entsperrtes Handy funktioniert in {country_dat} ohne zusätzlichen Schritt. Keiner der {brand_count} Anbieter hier verlangt ein bestimmtes Handy, nur dass das Gerät den Chip hat und entsperrt ist. Teste das Handy jetzt, dann wird die Tarifwahl eine Preisfrage statt einer Kompatibilitätsfrage."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in den USA?"
+a = "Nur wenn lokale Anrufe für dich zählen, denn die {plan_count} hier gelisteten Tarife für {country_acc} sind Datenprodukte. Die praktische Aufteilung ist Daten auf der eSIM und die bestehende Nummer auf der physischen SIM, mit ausgeschaltetem Roaming auf der Heimleitung. Lass die Heimleitung im Handy und schalte ihre Daten ab."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in den USA?"
+a = "Die Bewertungen selbst stehen auf den Seiten der Anbieter und in den App-Stores. Der Vergleich oben schickt alle {plan_count} Tarife für {country_acc} von {brand_count} Anbietern durch eine Formel – was keine Bewertungsseite behaupten kann. Nimm die Zahlen oben als Grundlage und prüfe die Rückgaberichtlinie an der Quelle."

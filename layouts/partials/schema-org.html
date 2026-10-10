@@ -2,7 +2,8 @@
    AI 引擎（Google AI Overviews / ChatGPT / Perplexity / Gemini）据此把「eSIM Sift」
    识别为同一实体，引用时归因一致。sameAs 取 hugo.toml [[params.social]] 的官方
    profile（单一事实源，与 footer 图标同源；无配置则整个键不出现，不造假）。
-   logo 用品牌图标 apple-touch-icon.png（180×180）；publishingPrinciples 指向方法论页。 */ -}}
+   logo 用品牌图标 apple-touch-icon.png（180×180）；publishingPrinciples 指向方法论页 ——
+   **必须走 lang-href**（德语站要给 /de/methodology/，否则德语页把读者送去英语页）。 */ -}}
 {{- $same := slice -}}
 {{- range site.Params.social }}{{ with .url }}{{ $same = $same | append . }}{{ end }}{{ end -}}
 {{- $org := dict
@@ -12,7 +13,7 @@
   "url" .Site.BaseURL
   "logo" ("apple-touch-icon.png" | absURL)
   "description" .Site.Params.description
-  "publishingPrinciples" ("methodology/" | absURL)
+  "publishingPrinciples" ((partial "lang-href.html" "/methodology/") | absURL)
 -}}
 {{- if $same }}{{ $org = merge $org (dict "sameAs" $same) }}{{ end -}}
 <script type="application/ld+json">

@@ -1,0 +1,42 @@
+# CH FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für die Schweiz?"
+a = "{cheap_plan} von {cheap_brand} ist der günstigste Tarif für {country_acc} – ${cheap_price}. Über die {plan_count} Tarife für {country_acc} von {brand_count} Anbietern auf dieser Seite liegt der beste Preis pro Gigabyte bei {value_plan} von {value_brand} mit ${value_pergb}/GB. Lege zuerst Tage und ungefähren Datenbedarf fest und wähle dann den Tarif, der zu beidem passt."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in der Schweiz wirklich unbegrenzt?"
+a = "Nicht ganz – alle {unl_count} unbegrenzten Tarife für {country_acc} haben eine Fair-Use-Regel. {unl_brand} bietet den besten Tagessatz mit ${unl_perday} ({unl_days} Tage für ${unl_price}), gegenüber einer Marktspanne von {unl_perday_range}. Was viele übersehen, ist das, was nach der Grenze passiert: {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für die Schweiz?"
+a = "Sie verkaufen verschiedene Dinge, die Antwort hängt also davon ab, wie du Daten nutzt. Airalo verkauft Pakete: Die schärfste Rate für {country_acc} ist ${ah_airalo_pergb}/GB ({ah_airalo_plan}, ${ah_airalo_price}). Holaflys Modell ist täglich unbegrenzt, ab {ah_holafly_days} Tagen für ${ah_holafly_price} – ${ah_holafly_perday}/Tag – schwere Nutzung kostet also dasselbe wie leichte."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in der Schweiz?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in der Schweiz?"
+a = "Die Tarife auf dieser Seite laufen über Swisscom, Sunrise, Salt. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM die Schweiz und Frankreich abdecken?"
+a = "Nicht mit einem Ein-Land-Tarif. Alles in unseren Tabellen gilt nur für {country_acc}, eine Reise, die auch {neighbor} einschließt, braucht also einen zweiten Landestarif oder ein regionales Paket."
+
+[[faq]]
+q = "Kann ich eine eSIM in der Schweiz nutzen?"
+a = "Ja – {brand_count} Anbieter verkaufen Tarife für {country_acc}; das Land gehört zur üblichen Reise-eSIM-Landkarte. Die Wahl dreht sich hier um Preis und Volumen und nicht um Verfügbarkeit: {plan_count} Tarife von {brand_count} Anbietern. Mach den Kompatibilitätstest und vergleiche die Tarife oben nach $/GB und $/Tag."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in der Schweiz?"
+a = "Wenn dein Handy eSIM unterstützt und keinen Netlock hat, funktioniert es in {country_dat} – das Reiseziel hat darauf keinen Einfluss. Die zwei entscheidenden Prüfungen sind Hardware und Sperrstatus – die {plan_count} Tarife hier installieren auf einem Handy, das beide besteht, und scheitern an einem, das eine nicht besteht. Prüfe zuerst auf eine EID-Nummer und einen Netlock ohne Einschränkungen."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in der Schweiz?"
+a = "Für eine normale Reise nicht – eine Reise-eSIM für {country_acc} ist ein Datenprodukt und keine Telefonleitung. Die Heimleitung im physischen Slot zu lassen ist die übliche Lösung, und nur so kommen Verifizierungscodes weiterhin an. Plane Daten von der eSIM und deine bestehende Nummer von der Heimleitung."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in der Schweiz?"
+a = "Wir bündeln keine Bewertungen, die ehrliche Antwort hier betrifft also die Methode und nicht die Noten. Fair-Use-Bedingungen, Hotspot-Regeln und Rückerstattungsfristen sind die Stellen, an denen die echten Unterschiede liegen, und die sind dokumentiert statt gewählt. Nutze die Tabellen oben für die Fakten und die eigenen Kanäle des Anbieters für die Stimmung."

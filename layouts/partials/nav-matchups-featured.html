@@ -1,0 +1,28 @@
+{{- /* 导航「Versus」下拉里只列 **编辑精选** 的组合（用户指定 6 组，全部以 airalo 为基准）。
+       一事实一真源：候选清单只此一份 —— 展示与否在这里决定，品牌 key 仍从 providers 推导。
+       全量 45 组留在 partials/nav-matchups.html：页脚上下文推荐 + /compare/matchups/ 枢纽页
+       仍列全量 ⇒ 未被选中那 39 组不会变成孤岛。
+       返回 []dict{url,ka,kb,na,nb}，与 nav-matchups.html **同构** ⇒ 调用方渲染逻辑一字不改。
+       仍走 partialCached —— header 每页都渲染，不能在页面里重复算。
+
+       ★ picks 必须写**页面 slug 全形**（含 `-vs-`，即 /compare/<slug>/ 的最后一段）。
+         2026-10-10 踩过：写成 `airalo-holafly` 而比对串是 printf "%s-vs-%s" 的
+         `airalo-vs-holafly` ⇒ 6 组全不匹配、$vsItems 为空、Versus 菜单**静默降级成单链接**，
+         Hugo 一声不响。故下面补 errorf：匹配数 ≠ picks 数 ⇒ 直接炸构建。 */ -}}
+{{- $all := partialCached "nav-matchups.html" . site.Language.Lang -}}
+{{- $picks := slice
+  "airalo-vs-holafly" "airalo-vs-yesim" "airalo-vs-nomad"
+  "airalo-vs-saily" "airalo-vs-jetpac" "airalo-vs-roamic" -}}
+{{- $items := slice -}}
+{{- range $picks -}}
+  {{- $slug := . -}}
+  {{- range $all -}}
+    {{- if eq (printf "%s-vs-%s" .ka .kb) $slug -}}
+      {{- $items = $items | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if ne (len $items) (len $picks) -}}
+  {{- errorf "nav-matchups-featured: picks %d 组，只匹配到 %d 组 —— picks 写的是页面 slug 全形吗？缺的组合页面是否已建？" (len $picks) (len $items) -}}
+{{- end -}}
+{{- return $items -}}

@@ -2,9 +2,9 @@
 # {{ .Site.Title }}
 
 > {{ .Site.Params.description }}
-> Every plan is a listed, purchasable plan at check time; verification dates are shown per page. Derived metrics ($/GB, $/day) are computed with identical formulas for every provider — see the methodology page for the rules.
+> {{ i18n "llms__intro_note" | safeHTML }}
 
-## Country comparisons
+{{ i18n "llms__h_country_comparisons" | safeHTML }}
 
 {{ $compare := site.GetPage "/compare" -}}
 {{ $countries := where (where (where $compare.Pages "Params.provider" nil) "Params.providers" nil) "Params.nolist" nil -}}
@@ -13,23 +13,23 @@
 {{ with $p.Params.iso -}}
 {{ $c := index $d.countries . -}}
 {{ $s := partial "country-stats.html" . -}}
-- [{{ $c.name }} eSIM comparison — {{ $s.providerCount }} providers, {{ $s.planCount }} plans, from ${{ printf "%.2f" $s.minPrice }}]({{ $p.Permalink }}): cheapest ${{ printf "%.2f" $s.minPrice }}{{ if lt $s.minPerGB 999999.0 }}, best value ${{ printf "%.2f" $s.minPerGB }}/GB{{ end }}{{ if gt $s.maxGB 0 }}, largest cap {{ $s.maxGB }}GB{{ end }}{{ if gt $s.unlimitedCount 0 }}, {{ $s.unlimitedCount }} unlimited plans{{ end }}{{ with $s.checked }}, prices checked {{ . }}{{ end }}
+{{ i18n "llms__country_head" (dict "name" $c.name "providers" $s.providerCount "plans" $s.planCount "min" (printf "%.2f" $s.minPrice) "url" $p.Permalink) | safeHTML }}{{ if lt $s.minPerGB 999999.0 }}{{ i18n "llms__country_best_gb" (dict "rate" (printf "%.2f" $s.minPerGB)) | safeHTML }}{{ end }}{{ if gt $s.maxGB 0 }}{{ i18n "llms__country_largest_cap" (dict "gb" $s.maxGB) | safeHTML }}{{ end }}{{ if gt $s.unlimitedCount 0 }}{{ i18n "llms__country_unlimited" (dict "n" $s.unlimitedCount) | safeHTML }}{{ end }}{{ with $s.checked }}{{ i18n "llms__country_checked" (dict "date" .) | safeHTML }}{{ end }}
 {{ end -}}
 {{ end -}}
 
-## Brand × country pages
+{{ i18n "llms__h_brand_country" | safeHTML }}
 
-Each country has one page per provider ({{ mul (len $countries) (len $d.providers) }} pages, e.g. `/compare/japan/airalo/`) with that provider's full plan table, its computed rank among all providers on best $/GB, fair-use caps, and an honest strengths/weaknesses verdict.
+{{ i18n "llms__brand_country_note" (dict "pages" (mul (len $countries) (len $d.providers))) | safeHTML }}
 
-## Providers
+{{ i18n "llms__h_providers" | safeHTML }}
 
 {{ range $key, $p := $d.providers -}}
-- [{{ $p.name }}]({{ absURL (printf "esim-providers/%s/" $key) }}): {{ $p.tagline }}{{ with $p.promo_code }} — promo code `{{ . }}` ({{ $p.promo_label }}, expires {{ $p.promo_expires }}){{ end }}
+{{ i18n "llms__provider_line" (dict "name" $p.name "url" (absLangURL (printf "esim-providers/%s/" $key)) "tagline" $p.tagline) | safeHTML }}{{ with $p.promo_code }}{{ if $p.promo_expires }}{{ i18n "llms__provider_promo" (dict "code" . "label" (partial "de-text.html" $p.promo_label) "expires" $p.promo_expires) | safeHTML }}{{ else }}{{ i18n "llms__provider_promo_no_expiry" (dict "code" . "label" (partial "de-text.html" $p.promo_label)) | safeHTML }}{{ end }}{{ end }}
 {{ end -}}
 
-## Provider matchups
+{{ i18n "llms__h_matchups" | safeHTML }}
 
-One page per pair, one URL per matchup (slug alphabetical; reversed queries land on the same page). Full index at [All provider matchups]({{ absURL "compare/matchups/" }}). Each verdict is computed across the countries both providers cover:
+{{ i18n "llms__matchups_note" (dict "label" (i18n "llms__matchups_index_label") "url" (absLangURL "compare/matchups/")) | safeHTML }}
 
 {{ $keys := slice -}}
 {{ range $k, $v := $d.providers }}{{ $keys = $keys | append $k }}{{ end -}}
@@ -39,54 +39,54 @@ One page per pair, one URL per matchup (slug alphabetical; reversed queries land
 {{ $agg := partial "vs-agg.html" (dict "a" $ka "b" $kb) -}}
 {{ $pa := index $d.providers $ka -}}
 {{ $pb := index $d.providers $kb -}}
-- [{{ $pa.name }} vs {{ $pb.name }} eSIM]({{ absURL (printf "compare/%s-vs-%s/" $ka $kb) }}): {{ $pa.name }} cheaper entry in {{ $agg.aWinsPrice }} of {{ $agg.countries }} shared countries, {{ $pb.name }} in {{ $agg.bWinsPrice }}{{ if gt $agg.ties 0 }}, {{ $agg.ties }} exact ties{{ end }}{{ if gt $agg.aUnlimCountries 0 }}; unlimited plans: {{ $pa.name }} in {{ $agg.aUnlimCountries }} countries{{ end }}{{ if gt $agg.bUnlimCountries 0 }}, {{ $pb.name }} in {{ $agg.bUnlimCountries }}{{ end }}
+{{ i18n "llms__matchup_head" (dict "a" $pa.name "b" $pb.name "url" (absLangURL (printf "compare/%s-vs-%s/" $ka $kb)) "aWins" $agg.aWinsPrice "countries" $agg.countries "bWins" $agg.bWinsPrice) | safeHTML }}{{ if gt $agg.ties 0 }}{{ i18n "llms__matchup_ties" (dict "n" $agg.ties) | safeHTML }}{{ end }}{{ if gt $agg.aUnlimCountries 0 }}{{ i18n "llms__matchup_unlim_a" (dict "a" $pa.name "n" $agg.aUnlimCountries) | safeHTML }}{{ end }}{{ if gt $agg.bUnlimCountries 0 }}{{ i18n "llms__matchup_unlim_b" (dict "b" $pb.name "n" $agg.bUnlimCountries) | safeHTML }}{{ end }}
 {{ end -}}
 {{ end -}}
 
-## Data & research
+{{ i18n "llms__h_data_research" | safeHTML }}
 
-Original analysis computed from the same plan database as the comparison pages:
+{{ i18n "llms__data_research_note" | safeHTML }}
 
 {{ $research := site.GetPage "/research" -}}
 {{ range $research.Pages -}}
-- [{{ htmlUnescape .Title }}]({{ .Permalink }}): {{ htmlUnescape .Params.description }}
+{{ i18n "llms__entry_line" (dict "title" (htmlUnescape .Title) "url" .Permalink "description" (htmlUnescape .Params.description)) | safeHTML }}
 {{ end -}}
 
-## Guides
+{{ i18n "llms__h_guides" | safeHTML }}
 
 {{ $guides := site.GetPage "/guides" -}}
 {{ range $guides.Pages -}}
-- [{{ htmlUnescape .Title }}]({{ .Permalink }}): {{ htmlUnescape .Params.description }}
+{{ i18n "llms__entry_line" (dict "title" (htmlUnescape .Title) "url" .Permalink "description" (htmlUnescape .Params.description)) | safeHTML }}
 {{ end -}}
 
-## eSIM network map
+{{ i18n "llms__h_network_map" | safeHTML }}
 
-Every travel eSIM rides a local host carrier; at the current check the providers we track use identical hosts in each destination. The map names the host networks per destination, isolates the carrier groups that cross borders (the lever a regional plan pulls), quotes independent Opensignal and Ookla verdicts for each destination with links to the originals, and defines the network vocabulary:
+{{ i18n "llms__network_note" | safeHTML }}
 
-- [eSIM network map]({{ absURL "networks/" }}): host carriers for every destination we track, the cross-border carrier groups, cited Opensignal and Ookla verdicts per destination, and a glossary of eSIM network terms
+{{ i18n "llms__entry_line" (dict "title" (i18n "llms__network_map_label") "url" (absLangURL "networks/") "description" (i18n "llms__network_map_desc")) | safeHTML }}
 
 {{ $networkPages := site.GetPage "/networks" -}}
 {{ with $networkPages -}}
-Per-destination carrier breakdowns, one page per country. Each page answers which local networks a travel eSIM can ride, how those networks score in independent Opensignal and Ookla testing, which brands ride which host, and what the local registration and identity rules mean for visitors:
+{{ i18n "llms__network_pages_note" | safeHTML }}
 
 {{ range .Pages -}}
-- [{{ htmlUnescape .Title }}]({{ .Permalink }}): {{ htmlUnescape .Params.description }}
+{{ i18n "llms__entry_line" (dict "title" (htmlUnescape .Title) "url" .Permalink "description" (htmlUnescape .Params.description)) | safeHTML }}
 {{ end -}}
 {{ end -}}
 
-## How we compare
+{{ i18n "llms__h_how_we_compare" | safeHTML }}
 
-- [Methodology]({{ absURL "methodology/" }}): data collection schedule, derived-metric formulas, badge rules
-- [Disclosure]({{ absURL "disclosure/" }}): ownership and how the site makes money
-- [Machine-readable price database]({{ absURL "catalog.json" }}): full plan list as JSON
+{{ i18n "llms__entry_line" (dict "title" (i18n "llms__sec_methodology") "url" (absLangURL "methodology/") "description" (i18n "llms__methodology_desc")) | safeHTML }}
+{{ i18n "llms__entry_line" (dict "title" (i18n "llms__sec_disclosure") "url" (absLangURL "disclosure/") "description" (i18n "llms__disclosure_desc")) | safeHTML }}
+{{ i18n "llms__entry_line" (dict "title" (i18n "llms__sec_catalog") "url" (absLangURL "catalog.json") "description" (i18n "llms__catalog_desc")) | safeHTML }}
 
-## Site sections
+{{ i18n "llms__h_site_sections" | safeHTML }}
 
-- [All country comparisons]({{ absURL "compare/" }})
-- [Provider matchups index]({{ absURL "compare/matchups/" }})
-- [eSIM providers]({{ absURL "esim-providers/" }})
-- [eSIM network map]({{ absURL "networks/" }})
-- [eSIM deals & promo codes]({{ absURL "esim-deals/" }})
-- [Guides]({{ absURL "guides/" }})
-- [Data & research]({{ absURL "research/" }})
-- [Tools]({{ absURL "tools/" }})
+{{ i18n "llms__link_line" (dict "label" (i18n "llms__sec_countries") "url" (absLangURL "compare/")) | safeHTML }}
+{{ i18n "llms__link_line" (dict "label" (i18n "llms__sec_matchups") "url" (absLangURL "compare/matchups/")) | safeHTML }}
+{{ i18n "llms__link_line" (dict "label" (i18n "llms__sec_providers") "url" (absLangURL "esim-providers/")) | safeHTML }}
+{{ i18n "llms__link_line" (dict "label" (i18n "llms__network_map_label") "url" (absLangURL "networks/")) | safeHTML }}
+{{ i18n "llms__link_line" (dict "label" (i18n "llms__sec_deals") "url" (absLangURL "esim-deals/")) | safeHTML }}
+{{ i18n "llms__link_line" (dict "label" (i18n "llms__sec_guides") "url" (absLangURL "guides/")) | safeHTML }}
+{{ i18n "llms__link_line" (dict "label" (i18n "llms__sec_research") "url" (absLangURL "research/")) | safeHTML }}
+{{ i18n "llms__link_line" (dict "label" (i18n "llms__sec_tools") "url" (absLangURL "tools/")) | safeHTML }}

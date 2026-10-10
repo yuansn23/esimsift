@@ -1,0 +1,42 @@
+# CR FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Costa Rica?"
+a = "{cheap_brand} hält für {country_acc} die Bestmarke: {cheap_plan} für ${cheap_price}. Über die {plan_count} Tarife für {country_acc} von {brand_count} Anbietern auf dieser Seite liegt der beste Preis pro Gigabyte bei {value_plan} von {value_brand} mit ${value_pergb}/GB. Prüfe neben dem Preis auch die Gültigkeitsdauer, denn ein billiger Tarif, der früh abläuft, ist nicht billig."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Costa Rica wirklich unbegrenzt?"
+a = "Gedeckelt statt unbegrenzt – die {unl_count} unbegrenzten Tarife für {country_acc} drosseln, sobald das Tagesvolumen aufgebraucht ist. {unl_brand} bietet den besten Tagessatz mit ${unl_perday} ({unl_days} Tage für ${unl_price}), gegenüber einer Marktspanne von {unl_perday_range}. Nimm die veröffentlichten Bedingungen als echte Grenze: {unl_allowance}, dann {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Costa Rica?"
+a = "Es kommt auf die Form an – Datenpakete gegen unbegrenzte Tage. Airalo verkauft Pakete: Die schärfste Rate für {country_acc} ist ${ah_airalo_pergb}/GB ({ah_airalo_plan}, ${ah_airalo_price}). Holaflys Einstiegspreis für {country_acc} ist ${ah_holafly_price} über {ah_holafly_days} Tage (${ah_holafly_perday}/Tag), ohne Datenzähler zum Beobachten."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Costa Rica?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Costa Rica?"
+a = "Die Tarife auf dieser Seite laufen über Kolbi, Claro, Movistar. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Costa Rica und weitere Länder der Region abdecken?"
+a = "Nicht mit einem Ein-Land-Tarif. Alles in unseren Tabellen gilt nur für {country_acc}, eine Reise, die auch {neighbor} einschließt, braucht also einen zweiten Landestarif oder ein regionales Paket."
+
+[[faq]]
+q = "Kann ich eine eSIM in Costa Rica nutzen?"
+a = "Ja, und in dieser Hinsicht gibt es keine Besonderheit – keine lokale Registrierung und keine Genehmigung nötig. Die Wahl dreht sich hier um Preis und Volumen und nicht um Verfügbarkeit: {plan_count} Tarife von {brand_count} Anbietern. Der Gerätecheck dauert dreißig Sekunden, und die Tarife oben sind alle auf einer Skala bepreist."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Costa Rica?"
+a = "Derselbe Test wie überall: Wähle *#06# und suche eine EID-Nummer. Die zwei entscheidenden Prüfungen sind Hardware und Sperrstatus – die {plan_count} Tarife hier installieren auf einem Handy, das beide besteht, und scheitern an einem, das eine nicht besteht. Bestätige, dass die EID erscheint, und vergleiche dann die Tarife oben."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Costa Rica?"
+a = "Für Nachrichten und Karten brauchst du keine. Die Heimleitung im physischen Slot zu lassen ist die übliche Lösung, und nur so kommen Verifizierungscodes weiterhin an. Nutze die eSIM für Daten und die Heimleitung für alles, was die Nummer braucht."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Costa Rica?"
+a = "Wir führen keine Bewertung für eSIMs in {country_dat}, und das ist eine Entscheidung und kein Versehen. Fair-Use-Bedingungen, Hotspot-Regeln und Rückerstattungsfristen sind die Stellen, an denen die echten Unterschiede liegen, und die sind dokumentiert statt gewählt. Der gemessene Vergleich steht oben, und Meinungen liest man am besten dort, wo sie gepostet wurden."

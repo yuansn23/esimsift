@@ -42,6 +42,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+# 「无限」标签的语言无关判据（与 verify_no_regression.py 共用一份，别抄第二份）
+from unlimited_labels import is_unlimited_label  # noqa: E402
+
 
 def _ax_country_names() -> tuple[dict[str, str], dict[str, str]]:
     """slug -> 显示名 / slug -> 英文全称（data/countries.toml）。
@@ -347,7 +351,7 @@ def main() -> int:
                 continue
             cells = TD_RE.findall(body)
             data_cell = text_of(cells[1]) if len(cells) > 1 else ""
-            says_unlimited = "unlimited" in data_cell.lower()
+            says_unlimited = is_unlimited_label(data_cell)
             if gb == 0.0 and not says_unlimited:
                 errors.append(f"{rel}: data-gb=0（无限）但数据列显示 {data_cell!r}")
             elif gb != 0.0 and says_unlimited:

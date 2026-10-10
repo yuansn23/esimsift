@@ -1,0 +1,42 @@
+# ID FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Indonesien?"
+a = "Beim Einstiegspreis liegt {cheap_brand} für {country_acc} vorn: {cheap_plan} für ${cheap_price}. Preis und Gegenwert sind zwei verschiedene Messungen, und pro Gigabyte gewinnt {value_plan} von {value_brand} mit ${value_pergb}/GB. Prüfe neben dem Preis auch die Gültigkeitsdauer, denn ein billiger Tarif, der früh abläuft, ist nicht billig."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Indonesien wirklich unbegrenzt?"
+a = "Nein. Jeder der {unl_count} unbegrenzten Tarife für {country_acc} deckelt sein Tagesvolumen bei voller Geschwindigkeit. {unl_brand} ist pro Tag am günstigsten mit ${unl_perday}, und die volle Spanne reicht hier über {unl_perday_range}. Nimm die veröffentlichten Bedingungen als echte Grenze: {unl_allowance}, dann {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Indonesien?"
+a = "Verschiedene Produkte: Airalo verkauft feste Datenpakete, Holafly verkauft unbegrenzte Tage. {ah_airalo_plan} von Airalo ergibt ${ah_airalo_pergb}/GB für ${ah_airalo_price}, und was du kaufst, ist was du bekommst. Holaflys Einstiegspreis für {country_acc} ist ${ah_holafly_price} über {ah_holafly_days} Tage (${ah_holafly_perday}/Tag), ohne Datenzähler zum Beobachten."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Indonesien?"
+a = "Ja – indonesisches Recht verlangt einen Pass-Upload, wenn eine eSIM registriert wird, und die Anbieter sammeln ihn beim Kauf ein. Das vor dem Flug zu erledigen lohnt sich hier, weil der Archipel sein gutes Signal ungleich verteilt: Telkomsel hält außerhalb von Java und Bali durch, wo günstigere Tarife auf Indosat-Basis es nicht tun."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Indonesien?"
+a = "Die Tarife auf dieser Seite laufen über Telkomsel, Indosat, XL Axiata. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Indonesien und Singapur abdecken?"
+a = "Nur mit einem regionalen Paket, denn die Landestarife auf dieser Seite überschreiten keine Grenzen. Die Märkte rund um {country_acc} haben hier eigene Tabellen – {neighbors_all} gehören dazu – rechne ein regionales Paket also gegen zwei Einzeltarife."
+
+[[faq]]
+q = "Kann ich eine eSIM in Indonesien nutzen?"
+a = "Eine eSIM funktioniert in {country_dat}, und nichts am Reiseziel verhindert das. Von den {plan_count} hier gelisteten Tarifen für {country_acc} ist keiner auf eine bestimmte Region des Landes begrenzt. Der Gerätecheck dauert dreißig Sekunden, und die Tarife oben sind alle auf einer Skala bepreist."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Indonesien?"
+a = "Dein Gerät entscheidet hier, nicht das Reiseziel. Der eSIM-Chip ist bei der Fertigung festgelegt, ein ohne ihn gebautes Handy kann ihn später nicht erhalten, egal wie viele Tarife für {country_acc} wir listen. Bestätige, dass die EID erscheint, und vergleiche dann die Tarife oben."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Indonesien?"
+a = "Eine lokale Nummer ist nicht nötig, um in {country_dat} eine eSIM zu nutzen. Wo Sprache existiert, ist sie app-basiert statt eine echte lokale Nummer – was die meisten Reisenden tatsächlich brauchen. Nutze die eSIM für Daten und die Heimleitung für alles, was die Nummer braucht."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Indonesien?"
+a = "Bewertungsnoten lassen wir bewusst weg, weil eine einzelne Zahl die Streuung dahinter verbirgt. Ein Fünf-Sterne-Schnitt und ein Ein-Stern-Schnitt beschreiben meist verschiedene Reisen statt verschiedene Produkte. Der gemessene Vergleich steht oben, und Meinungen liest man am besten dort, wo sie gepostet wurden."

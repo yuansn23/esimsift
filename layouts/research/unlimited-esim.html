@@ -16,9 +16,9 @@
     {{ range $urows }}{{ if not (in $ukeys .key) }}{{ $ukeys = $ukeys | append .key }}{{ end }}{{ end }}
     {{ $list = $list | append (dict
       "name" $c.name "slug" $c.slug "flag" $c.flag "region" $c.region
-      "cheapestPrice" $cheapestU.price "cheapestDays" $cheapestU.days "cheapestProv" $cheapestU.provider "cheapestKey" $cheapestU.key "cheapestName" $cheapestU.name
+      "cheapestPrice" $cheapestU.price "cheapestDays" $cheapestU.days "cheapestProv" $cheapestU.provider "cheapestKey" $cheapestU.key "cheapestName" (partial "plan-name.html" (dict "name" $cheapestU.name "iso" $iso))
       "bestDaily" $bestDaily.perDay "bestDailyProv" $bestDaily.provider "bestDailyKey" $bestDaily.key
-      "bestDailyName" $bestDaily.name "fup" $bestDaily.fup
+      "bestDailyName" (partial "plan-name.html" (dict "name" $bestDaily.name "iso" $iso)) "fup" $bestDaily.fup
       "minPerGB" $s.minPerGB
       "provCount" (len $ukeys)
     ) }}
@@ -64,8 +64,8 @@
   <header>
     <div class="flex flex-wrap items-center gap-3">
       <span class="badge bg-brand-50 text-brand-700">{{ i18n "g_original_research" | safeHTML }}</span>
-      <span class="badge bg-ink-50 text-ink-500">{{ $n }} countries with unlimited</span>
-      {{ with $checked }}<span class="badge bg-ink-50 text-ink-500">prices checked {{ time.Format ":date_medium" (time .) }}</span>{{ end }}
+      <span class="badge bg-ink-50 text-ink-500">{{ i18n "research_unlimited_esim__n_countries_with_unlimited" (dict "n" $n) | safeHTML }}</span>
+      {{ with $checked }}<span class="badge bg-ink-50 text-ink-500">{{ i18n "g_prices_checked_date" (dict "date" (time.Format ":date_medium" (time .))) | safeHTML }}</span>{{ end }}
     </div>
     <h1 class="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ .Title }}</h1>
     <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">{{ i18n "research_unlimited_esim__unlimited_esims_are_priced_per_day_so_the_only_fair_rank" | safeHTML }}</p>
@@ -78,7 +78,7 @@
 
   {{/* ── 首屏指标：全宽三卡（不挤 hero 左栏） ── */}}
   <div class="mt-8 grid gap-4 sm:grid-cols-3">
-    {{ with index $ranked 0 }}<div class="card p-6"><span class="stat-num text-lg">{{ .name }}</span><span class="stat-label">cheapest unlimited, ${{ printf "%.2f" .bestDaily }}/day</span></div>{{ end }}
+    {{ with index $ranked 0 }}<div class="card p-6"><span class="stat-num text-lg">{{ .name }}</span><span class="stat-label">{{ i18n "research_unlimited_esim__cheapest_unlimited_price_per_day" (dict "price" (printf "%.2f" .bestDaily)) | safeHTML }}</span></div>{{ end }}
     <div class="card p-6"><span class="stat-num tnum">{{ $n }}</span><span class="stat-label">{{ i18n "research_unlimited_esim__countries_with_unlimited_plans" | safeHTML }}</span></div>
     {{ with $beMedian }}<div class="card p-6"><span class="stat-num tnum">{{ printf "%.1f" . }} GB</span><span class="stat-label">{{ i18n "research_unlimited_esim__median_break_even_per_day" | safeHTML }}</span></div>{{ end }}
   </div>
@@ -124,19 +124,19 @@
     <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "research_unlimited_esim__divide_a_country_s_best_unlimited_daily_rate_by_its_best" | safeHTML }}</p>
     <div class="mt-6 grid gap-4 md:grid-cols-3">
       <div class="card p-6">
-        <p class="font-display text-3xl font-extrabold text-brand-700 tnum">{{ printf "%.1f" $beLow.be }} GB/day</p>
+        <p class="font-display text-3xl font-extrabold text-brand-700 tnum">{{ i18n "research_unlimited_esim__n_gb_per_day" (dict "n" (printf "%.1f" $beLow.be)) | safeHTML }}</p>
         <h3 class="mt-2 font-display text-base font-bold text-ink-950">{{ i18n "research_unlimited_esim__the_easiest_win_is" | safeHTML }} <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $beLow.slug) }}" class="text-brand-700 hover:underline">{{ $beLow.name }}</a></h3>
-        <p class="mt-3 text-sm leading-relaxed text-ink-600">Unlimited at ${{ printf "%.2f" $beLow.bestDaily }}/day against ${{ printf "%.2f" $beLow.minPerGB }}/GB metered: stream a couple of hours a day and unlimited already pays. A heavy user's dream market.</p>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "research_unlimited_esim__unlimited_at_n_per_day_against_m_per_gb" (dict "p1" (printf "%.2f" $beLow.bestDaily) "p2" (printf "%.2f" $beLow.minPerGB)) | safeHTML }}</p>
       </div>
       <div class="card p-6">
-        <p class="font-display text-3xl font-extrabold text-brand-700 tnum">{{ printf "%.1f" $beMedian }} GB/day</p>
+        <p class="font-display text-3xl font-extrabold text-brand-700 tnum">{{ i18n "research_unlimited_esim__n_gb_per_day" (dict "n" (printf "%.1f" $beMedian)) | safeHTML }}</p>
         <h3 class="mt-2 font-display text-base font-bold text-ink-950">{{ i18n "research_unlimited_esim__the_median_country" | safeHTML }}</h3>
-        <p class="mt-3 text-sm leading-relaxed text-ink-600">Across the {{ $beN }} countries we computed, the typical break-even sits at {{ printf "%.1f" $beMedian }} GB/day. Rough rule: if you burn through more than {{ printf "%.1f" $beMedian }} GB on a normal travel day (maps + music + an evening of video), unlimited is likely the cheaper side.</p>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "research_unlimited_esim__across_the_n_countries_we_computed" (dict "n" $beN "be" (printf "%.1f" $beMedian)) | safeHTML }}</p>
       </div>
       <div class="card p-6">
-        <p class="font-display text-3xl font-extrabold text-accent-700 tnum">{{ printf "%.1f" $beHigh.be }} GB/day</p>
+        <p class="font-display text-3xl font-extrabold text-accent-700 tnum">{{ i18n "research_unlimited_esim__n_gb_per_day" (dict "n" (printf "%.1f" $beHigh.be)) | safeHTML }}</p>
         <h3 class="mt-2 font-display text-base font-bold text-ink-950">{{ i18n "research_unlimited_esim__the_hardest_win_is" | safeHTML }} <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $beHigh.slug) }}" class="text-brand-700 hover:underline">{{ $beHigh.name }}</a></h3>
-        <p class="mt-3 text-sm leading-relaxed text-ink-600">Cheap metered data (${{ printf "%.2f" $beHigh.minPerGB }}/GB) meets a pricier unlimited rate (${{ printf "%.2f" $beHigh.bestDaily }}/day): you would need {{ printf "%.1f" $beHigh.be }} GB every single day before unlimited wins. Buy a big bucket here instead.</p>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "research_unlimited_esim__cheap_metered_data_meets_a_pricier_unlimited_rate" (dict "p1" (printf "%.2f" $beHigh.minPerGB) "p2" (printf "%.2f" $beHigh.bestDaily) "n" (printf "%.1f" $beHigh.be)) | safeHTML }}</p>
       </div>
     </div>
     <p class="mt-3 text-xs text-ink-400">{{ i18n "research_unlimited_esim__break_even_best_unlimited_day_best_metered_gb_in_the_sam" | safeHTML }} <a href="{{ partial "lang-href.html" "/research/fair-use-audit/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_fair_use_audit_2" | safeHTML }}</a> {{ i18n "research_unlimited_esim__before_betting_a_heavy_streaming_trip_on_one" | safeHTML }}</p>
@@ -159,9 +159,9 @@
             <tr>
               <td class="tnum text-ink-400">{{ add $i 1 }}</td>
               <td><a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="flex items-center gap-2 font-medium text-ink-800 transition-colors hover:text-brand-700"><img src="{{ .flag | relURL }}" alt="" class="h-3.5 w-5 shrink-0 rounded-sm object-cover" loading="lazy" width="20" height="14">{{ .name }}</a></td>
-              <td class="font-display font-bold text-brand-700 tnum">${{ printf "%.2f" .bestDaily }}/day <span class="font-sans text-xs font-medium">· <a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug .bestDailyKey) }}" class="text-ink-500 underline decoration-ink-200 underline-offset-2 transition-colors hover:text-brand-700">{{ .bestDailyProv }}</a></span></td>
-              <td class="text-sm"><a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug .cheapestKey) }}" class="font-medium text-brand-700 hover:underline">{{ .cheapestName | truncate 26 }}</a><span class="block text-xs text-ink-400 tnum">${{ printf "%.2f" .cheapestPrice }} / {{ .cheapestDays }} days · <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" .cheapestKey) }}" class="text-ink-500 transition-colors hover:text-brand-700">{{ .cheapestProv }}</a></span></td>
-              <td class="max-w-xs text-xs text-ink-500">{{ with .fup }}{{ . | truncate 90 }}{{ else }}<span class="text-ink-300">{{ i18n "research_unlimited_esim__not_stated" | safeHTML }}</span>{{ end }}</td>
+              <td class="font-display font-bold text-brand-700 tnum">{{ i18n "research_unlimited_esim__price_per_day" (dict "price" (printf "%.2f" .bestDaily)) | safeHTML }} <span class="font-sans text-xs font-medium">· <a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug .bestDailyKey) }}" class="text-ink-500 underline decoration-ink-200 underline-offset-2 transition-colors hover:text-brand-700">{{ .bestDailyProv }}</a></span></td>
+              <td class="text-sm"><a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug .cheapestKey) }}" class="font-medium text-brand-700 hover:underline">{{ .cheapestName | truncate 26 }}</a><span class="block text-xs text-ink-400 tnum">${{ printf "%.2f" .cheapestPrice }} / {{ i18n "research_unlimited_esim__n_days" (dict "n" .cheapestDays) | safeHTML }} · <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" .cheapestKey) }}" class="text-ink-500 transition-colors hover:text-brand-700">{{ .cheapestProv }}</a></span></td>
+              <td class="max-w-xs text-xs text-ink-500">{{ with .fup }}{{ partial "de-text.html" . | truncate 90 }}{{ else }}<span class="text-ink-300">{{ i18n "research_unlimited_esim__not_stated" | safeHTML }}</span>{{ end }}</td>
               <td><a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="btn-mini">{{ i18n "g_view_plans" | safeHTML }}</a></td>
             </tr>
             {{ end }}
@@ -175,13 +175,13 @@
   {{/* ── 数据驱动 FAQ（正文 + FAQPage schema 同源） ── */}}
   {{ $faqList := slice }}
   {{ with index $ranked 0 }}
-    {{ $faqList = $faqList | append (dict "q" "Which country has the cheapest unlimited eSIM?" "a" (printf "%s — its best unlimited rate works out to $%.2f per day (%s). The cheapest upfront unlimited listing there is %s at $%.2f for %d days. Daily rates are the only fair cross-country comparison because unlimited plans are sold by validity, not by volume." (index $ranked 0).name (index $ranked 0).bestDaily (index $ranked 0).bestDailyProv (index $ranked 0).cheapestName (index $ranked 0).cheapestPrice (index $ranked 0).cheapestDays)) }}
+    {{ $faqList = $faqList | append (dict "q" (i18n "research_unlimited_esim__which_country_has_the_cheapest_unlimited_esim") "a" (printf (i18n "research_unlimited_esim__s_its_best_unlimited_rate_works_out_to_2f_per_da") (index $ranked 0).name (index $ranked 0).bestDaily (index $ranked 0).bestDailyProv (index $ranked 0).cheapestName (index $ranked 0).cheapestPrice (index $ranked 0).cheapestDays)) }}
   {{ end }}
-  {{ $faqList = $faqList | append (dict "q" "Does unlimited eSIM mean unlimited speed?" "a" "No. Every unlimited plan we track carries a fair-use policy that can slow your connection after a threshold or under congestion. Some listings state the threshold explicitly (for example a full-speed daily allowance followed by throttled data); others state nothing at all. We quote each provider's policy verbatim in the fair-use audit — treat an unstated policy as unknown, not as unlimited speed.") }}
+  {{ $faqList = $faqList | append (dict "q" (i18n "research_unlimited_esim__does_unlimited_esim_mean_unlimited_speed") "a" (i18n "research_unlimited_esim__no_every_unlimited_plan_we_track_carries_a_fair")) }}
   {{ with $beMedian }}
-    {{ $faqList = $faqList | append (dict "q" "When is unlimited cheaper than a fixed data plan?" "a" (printf "When your daily usage clears the break-even. We compute it per country: best unlimited $/day divided by the best metered $/GB. The median across the %d countries we checked is %.1f GB per day — use more than that on a typical day (an evening of video plus maps and music) and unlimited usually wins; use less and a big metered bucket is cheaper. The three-country spread in our break-even section shows how far this moves by market." $beN $beMedian)) }}
+    {{ $faqList = $faqList | append (dict "q" (i18n "research_unlimited_esim__when_is_unlimited_cheaper_than_a_fixed_data_plan") "a" (printf (i18n "research_unlimited_esim__when_your_daily_usage_clears_the_break_even_we_c") $beN $beMedian)) }}
   {{ end }}
-  {{ $faqList = $faqList | append (dict "q" "How do you compare unlimited eSIM prices fairly?" "a" "By daily rate: total price divided by validity days, taking the cheapest unlimited plan per provider per country from the same dated snapshot. Sticker prices mislead — a 30-day plan at $69 looks pricier than a 7-day at $27.30 until you divide. The same snapshot also powers our price index, so metered and unlimited rankings never mix their numbers.") }}
+  {{ $faqList = $faqList | append (dict "q" (i18n "research_unlimited_esim__how_do_you_compare_unlimited_esim_prices_fairly") "a" (i18n "research_unlimited_esim__by_daily_rate_total_price_divided_by_validity_da")) }}
 
   {{ if gt (len $faqList) 0 }}
   <section class="mt-12" aria-labelledby="faq">
@@ -208,7 +208,7 @@
     <p class="eyebrow">{{ i18n "g_keep_reading" | safeHTML }}</p>
     <h2 id="related" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "g_related_research_amp_comparisons" | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <a href="{{ partial "lang-href.html" "/research/esim-price-index/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_esim_price_index" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">All {{ len $d.countries }} countries ranked by best $/GB, with regional averages.</p></a>
+      <a href="{{ partial "lang-href.html" "/research/esim-price-index/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_esim_price_index" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "g_price_index_card_desc" (dict "n" (len $d.countries)) | safeHTML }}</p></a>
       <a href="{{ partial "lang-href.html" "/research/fair-use-audit/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_fair_use_audit" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_unlimited_esim__what_every_unlimited_plan_s_small_print_actually_throttl" | safeHTML }}</p></a>
       <a href="{{ partial "lang-href.html" "/compare/matchups/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_provider_matchups_2" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_unlimited_esim__holafly_vs_airalo_and_every_other_head_to_head_with_comp" | safeHTML }}</p></a>
       <a href="{{ partial "lang-href.html" "/esim-providers/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_provider_reviews" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_unlimited_esim__which_providers_sell_unlimited_where_and_where_each_is_c" | safeHTML }}</p></a>

@@ -93,6 +93,15 @@ KIND_PREFIX = {
     "unlimited": ("Is unlimited eSIM data in", "Is unlimited data eSIM in"),
     "pair": ("Airalo or Holafly for", "Is Airalo or Holafly better for"),
 }
+# 德语判据表 —— **守卫必须语言感知**（2026-10-09）。
+# 起因：德语 FAQ 落地后，本品若继续用英文前缀认问题，德语页上三条带数字的问答
+# 全部 kind_of=None，R5/R6/R7 会**静默跳过**（不报错 = 不检查），守卫就成了摆设。
+KIND_PREFIX_DE = {
+    "cheapest": ("Was ist die günstigste eSIM für",),
+    "unlimited": ("Ist unbegrenztes eSIM-Datenvolumen in",),
+    "pair": ("Airalo oder Holafly für", "Ist Airalo oder Holafly besser für"),
+}
+KIND_OF_LANG = {"en": KIND_PREFIX, "de": KIND_PREFIX_DE}
 AIRALO_HOLAFLY = ("Airalo", "Holafly")
 
 
@@ -160,6 +169,27 @@ def text_of(fragment: str) -> str:
     return re.sub(r"\s+", " ", htmllib.unescape(TAG.sub(" ", fragment))).strip()
 
 
+def load_de_faqs() -> dict:
+    """德语 FAQ（data/de/faqs/*.toml）。不存在时回空 —— 那时德语页渲染的是英语 FAQ，
+    scan() 会自动退回英语 toml 对账。"""
+    out = {}
+    d = ROOT / "data" / "de" / "faqs"
+    if d.is_dir():
+        for f in sorted(glob.glob(str(d / "*.toml"))):
+            out[Path(f).stem.upper()] = tomllib.loads(Path(f).read_text(encoding="utf-8"))
+    return out
+
+
+def visible_list(html: str) -> list[tuple[str, str]]:
+    """按**文档顺序**回传 (q, a) —— Q6 定位用槽位下标，不用语言相关的前缀。"""
+    out = []
+    for block in DETAILS.findall(html):
+        mq, ma = SUMMARY.search(block), ANSWER.search(block)
+        if mq and ma:
+            out.append((text_of(mq.group(1)), text_of(ma.group(1))))
+    return out
+
+
 def visible_pairs(html: str) -> dict[str, str]:
     out = {}
     for block in DETAILS.findall(html):
@@ -186,8 +216,8 @@ def ld_pairs(html: str) -> dict[str, str]:
     return {}
 
 
-def kind_of(q: str) -> str | None:
-    for kind, prefixes in KIND_PREFIX.items():
+def kind_of(q: str, lang: str = "en") -> str | None:
+    for kind, prefixes in KIND_OF_LANG.get(lang, KIND_PREFIX).items():
         if any(q.startswith(p) for p in prefixes):
             return kind
     return None
@@ -199,7 +229,7 @@ def has_money(text: str, value: float | None) -> bool:
     return any(abs(float(v) - value) <= 0.011 for v in MONEY.findall(text))
 
 
-def check_page(label: str, html: str, toml_faq: dict, t: dict) -> list[str]:
+def check_page(label: str, html: str, toml_faq: dict, t: dict, lang: str = "en") -> list[str]:
     errs: list[str] = []
     vis = visible_pairs(html)
     ld = ld_pairs(html)
@@ -230,7 +260,7 @@ def check_page(label: str, html: str, toml_faq: dict, t: dict) -> list[str]:
             errs.append(f"{label}: R4 可见正文与 FAQPage schema 不同文 -> {q}")
 
     for q, a in vis.items():
-        kind = kind_of(q)
+        kind = kind_of(q, lang)
         if kind == "cheapest":
             if not any(b in a for b in t["cheap_brands"]):
                 errs.append(f"{label}: R5 最便宜品牌不对（页面未提到 {sorted(t['cheap_brands'])}）-> {q}")
@@ -387,6 +417,7 @@ def frame_errors(faqs: dict, countries: dict) -> tuple[list[str], list[str]]:
 # ── 主流程 ────────────────────────────────────────────────────────────────────
 def scan(public: Path) -> tuple[int, list[str]]:
     plans, providers, countries, faqs = load()
+    faqs_de = load_de_faqs()
     errs: list[str] = []
     pages = 0
     for iso, c in countries.items():
@@ -399,14 +430,17 @@ def scan(public: Path) -> tuple[int, list[str]]:
         t = truth(rows, providers)
         if not t:
             continue
-        toml_faq = {x["q"]: x["a"] for x in faqs[iso].get("faq", [])}
-        for rel in (Path("compare") / slug / "index.html",
-                    Path("de") / "compare" / slug / "index.html"):
+        toml_en = {x["q"]: x["a"] for x in faqs[iso].get("faq", [])}
+        # 德语页：有德语 FAQ 就对德语 toml，没有就退回英语（与模板的 data 合并行为一致）
+        toml_de = ({x["q"]: x["a"] for x in faqs_de[iso].get("faq", [])}
+                   if iso in faqs_de else toml_en)
+        for rel, tf, lang in ((Path("compare") / slug / "index.html", toml_en, "en"),
+                              (Path("de") / "compare" / slug / "index.html", toml_de, "de")):
             f = public / rel
             if not f.exists():
                 continue
             pages += 1
-            errs.extend(check_page(rel.as_posix(), f.read_text(encoding="utf-8"), toml_faq, t))
+            errs.extend(check_page(rel.as_posix(), f.read_text(encoding="utf-8"), tf, t, lang))
     return pages, errs
 
 
@@ -433,13 +467,41 @@ def regional_distinct(public: Path) -> tuple[int, list[str]]:
             if not f.exists():
                 continue
             pages += 1
-            vis = visible_pairs(f.read_text(encoding="utf-8"))
-            ans = next((v for q, v in vis.items() if q.startswith("Can one eSIM cover")), None)
+            vl = visible_list(f.read_text(encoding="utf-8"))
+            # Q6 恒为第 6 条（下标 5）—— 英语「Can one eSIM cover …」/ 德语
+            # 「Kann eine eSIM … abdecken?」。用下标而不是前缀：前缀判据是语言相关的。
+            ans = vl[5][1] if len(vl) > 5 else None
             if ans:
                 seen[(lang, ans)].append(iso)
     errs = [f"R11 [{lang}] {sorted(isos)} 的 Q6 答案逐字相同 -> {a[:70]!r}"
             for (lang, a), isos in seen.items() if len(isos) > 1]
     return pages, errs
+
+
+def lang_selftest() -> int:
+    """自测「判据表按语言分派」。
+
+    只证明「德语能认出来」不够 —— 还要证明**英语表不会误认德语**（否则一张语言盲的
+    表也能通过），以及英语自身仍然照旧。
+    """
+    cases = [
+        ("Ist unbegrenztes eSIM-Datenvolumen in Deutschland wirklich unbegrenzt?", "de", "unlimited", True),
+        ("Was ist die günstigste eSIM für die USA?", "de", "cheapest", True),
+        ("Airalo oder Holafly für Japan?", "de", "pair", True),
+        ("What is the cheapest eSIM for Japan?", "en", "cheapest", True),
+        ("Is unlimited eSIM data in Japan actually unlimited?", "en", "unlimited", True),
+        ("Was ist die günstigste eSIM für die USA?", "en", "cheapest", False),   # 英语表不许认德语
+        ("Ist unbegrenztes eSIM-Datenvolumen in Deutschland wirklich unbegrenzt?", "en", "unlimited", False),
+    ]
+    failed = 0
+    for q, lang, want, expect in cases:
+        got = kind_of(q, lang)
+        ok = (got == want) if expect else (got is None)
+        failed += 0 if ok else 1
+        tag = "OK  " if ok else "MISS"
+        print(f"  {tag} [{lang}] {q[:52]!r} -> {got!r}（期望 {'检出 ' + want if expect else '不检出'}）")
+    print(f"\n语言判据自测{'通过' if not failed else f'失败 {failed} 项'}")
+    return 1 if failed else 0
 
 
 def selftest() -> int:
@@ -547,7 +609,9 @@ def frame_selftest() -> int:
 
 def main() -> int:
     if "--selftest" in sys.argv[1:]:
-        rc = selftest()
+        rc = lang_selftest()
+        print("\n── R5/R6/R7 判据自测 ──")
+        rc += selftest()
         print("\n── R10 骨架自测 ──")
         rc += frame_selftest()
         print(f"\n合计{'通过' if not rc else f'失败 {rc} 项'}")

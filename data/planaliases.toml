@@ -1,0 +1,20 @@
+# 套餐产品名里的「非规范国名」别名（语言中立 —— 描述的是 data/plans/*.toml 的抓取结果）
+#
+# 为什么需要：本地化时要把产品名里的英文国名换成目标语言国名，查找串默认取
+# data/countries.toml 的规范英文名（CZ = "Czechia"、TR = "Turkiye"、IE = "Ireland"）。
+# 但供应商在部分产品名里用了**别的写法**，规范名匹配不到 → 静默漏译。
+# 这里逐 ISO 列出这些别名；scripts/verify_de_text.py（C 段）会断言
+# 「所有非规范国名用法都在这张表里」，所以下次抓数据冒出新的别名时闸门会红，
+# 而不是悄悄留着英文。
+#
+# 只在本地化语言侧生效（英文产物恒等）。匹配一律大小写不敏感，所以
+# "Turkey" 一条同时覆盖 "Turkey" 与 "turkey"。
+
+[CZ]
+aliases = ["Czech Republic"]
+
+[TR]
+aliases = ["Turkey"]
+
+[IE]
+aliases = ["Republic of Ireland"]

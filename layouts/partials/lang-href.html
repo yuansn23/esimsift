@@ -5,10 +5,11 @@
         href="{{ partial "lang-href.html" (printf "/compare/%s/" $country.slug) }}"
 
   为什么不能直接用 relLangURL：relLangURL 只加语言前缀，**不检查目标页是否存在**。
-  本站是多语言部分翻译状态（德语目前只有首页有内容），对 /methodology/ 直接
-  relLangURL 会产出 /de/methodology/ —— 一个 404。
-  （已用 2 语言 probe 实测确认：德语站 site.GetPage "/methodology" 返回 NIL，
-   而 relLangURL "methodology/" 照样产出 /de/methodology/。）
+  本站是多语言部分翻译状态（德语内容仍在陆续补齐），某页德语侧还没建时，
+  直接 relLangURL 会产出 /de/xxx/ —— 一个 404。
+  （已用 2 语言 probe 实测确认：某页德语侧不存在时 site.GetPage "/xxx" 返回 NIL，
+   而 relLangURL "xxx/" 照样产出 /de/xxx/。
+   注：2026-10-10 起 /de/methodology/ 已有内容页，该路径不再是此情形。）
 
   解析顺序（三层兜底，永不 404）：
     1. 当前语言有该页  → .RelPermalink（德语内容补上后自动切德语，无需再动模板）

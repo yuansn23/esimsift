@@ -49,14 +49,49 @@
   {{ with index (index $d.plans $b) . }}{{ $netB = delimit .networks ", " }}{{ end }}
 {{ end }}
 
+{{/* ── 过滤条用的数据量桶 ──
+     统计对象是**两个品牌各自的入门价套餐**（aMinGB / bMinGB，见 vs-agg），
+     不是国家里的全部套餐 —— 本表的每一行就是「某国的两家入门价」。
+     桶的判定与 compare/single.html 逐字同构（左开右闭 / gb=0 只进无限桶），
+     这样两页的 chip 语义完全一致，读者不用学第二套。 */}}
+{{ $szCnt := dict "u" 0 "0-1" 0 "1-3" 0 "3-5" 0 "5-10" 0 "10-20" 0 "20p" 0 }}
+{{ range $rows }}
+  {{ range (slice .aMinGB .bMinGB) }}
+    {{ $g := float . }}{{ $sz := "20p" }}
+    {{ if eq $g 0.0 }}{{ $sz = "u" }}
+    {{ else if le $g 1.0 }}{{ $sz = "0-1" }}
+    {{ else if le $g 3.0 }}{{ $sz = "1-3" }}
+    {{ else if le $g 5.0 }}{{ $sz = "3-5" }}
+    {{ else if le $g 10.0 }}{{ $sz = "5-10" }}
+    {{ else if le $g 20.0 }}{{ $sz = "10-20" }}{{ end }}
+    {{ $szCnt = merge $szCnt (dict $sz (add (index $szCnt $sz) 1)) }}
+  {{ end }}
+{{ end }}
+
+{{/* ── 价差最大的三国 ──
+     45 个对决页里「每页独有」的内容此前只有 1 句结论（实测：句子骨架去重后每页中位只有
+     1 条是别的页没有的），这是 GSC 判「已发现未编入索引」的同质化根源。
+     这里把每页的**真实价差前三名**连带国名一起印出来 —— 数字与国名每页都不同，
+     是这一页真正独占的内容；同时给出 3 条指向具体国家页的内链（决策路径 + 权重传导）。
+     除零必须显式挡住：Hugo 的 cond() 两个分支都会求值，不能拿它做守卫。 */}}
+{{ $gaps := slice }}
+{{ range $rows }}
+  {{ $hi := .aMin }}{{ $lo := .bMin }}
+  {{ if lt .aMin .bMin }}{{ $hi = .bMin }}{{ $lo = .aMin }}{{ end }}
+  {{ $gv := sub $hi $lo }}
+  {{ $gp := 0.0 }}{{ if gt $lo 0.0 }}{{ $gp = mul (div $gv $lo) 100.0 }}{{ end }}
+  {{ $gaps = $gaps | append (merge . (dict "gapv" $gv "gapPct" $gp)) }}
+{{ end }}
+{{ $topGaps := first 3 (sort $gaps "gapv" "desc") }}
+
 <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
   <nav aria-label="{{ i18n "g_breadcrumb" | safeHTML }}" class="text-sm text-ink-400">
     <ol class="flex flex-wrap items-center gap-1.5">
-      <li><a href="{{ .Site.BaseURL }}" class="transition-colors hover:text-ink-700">{{ i18n "g_home" | safeHTML }}</a></li>
+      <li><a href="{{ .Site.Home.Permalink }}" class="transition-colors hover:text-ink-700">{{ i18n "g_home" | safeHTML }}</a></li>
       <li aria-hidden="true">/</li>
       <li><a href="{{ partial "lang-href.html" "/compare/" }}" class="transition-colors hover:text-ink-700">{{ i18n "g_compare" | safeHTML }}</a></li>
       <li aria-hidden="true">/</li>
-      <li class="font-medium text-ink-700">{{ $na }} vs {{ $nb }}</li>
+      <li class="font-medium text-ink-700">{{ $na }} {{ i18n "g_vs" | safeHTML }} {{ $nb }}</li>
     </ol>
   </nav>
 
@@ -64,8 +99,8 @@
   <header class="mt-6 grid items-start gap-8 lg:grid-cols-[1.25fr_1fr]">
     <div>
       <div class="flex flex-wrap items-center gap-3">
-        <span class="badge bg-brand-50 text-brand-700">{{ $n }} countries compared</span>
-        {{ with $agg.checkedDate }}<span class="badge bg-ink-50 text-ink-500">prices checked {{ . }}</span>{{ end }}
+        <span class="badge bg-brand-50 text-brand-700">{{ i18n "compare_vs_single__n_countries_compared" (dict "n" $n) | safeHTML }}</span>
+        {{ with $agg.checkedDate }}<span class="badge bg-ink-50 text-ink-500">{{ i18n "compare_vs_single__prices_checked" (dict "date" .) | safeHTML }}</span>{{ end }}
         <span class="badge bg-ink-50 text-ink-500">{{ i18n "compare_vs_single__no_pay_to_rank" | safeHTML }}</span>
       </div>
       <div class="mt-4 flex items-center gap-4">
@@ -73,51 +108,51 @@
         <span class="font-display text-2xl font-extrabold text-ink-300">{{ i18n "g_vs" | safeHTML }}</span>
         {{ partial "prov-logo.html" (dict "p" $pb "key" $b "class" "h-14 w-14" "text" "text-lg") }}
       </div>
-      <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ $na }} vs {{ $nb }} eSIM: which is cheaper in {{ now.Year }}?</h1>
-      <p class="mt-4 max-w-xl text-lg leading-relaxed text-ink-600">Choosing between {{ $na }} and {{ $nb }} comes down to where you're going. We compared their cheapest plan in every one of the {{ $n }} countries both cover — every verdict on this page is a literal sort of our dated price database.</p>
+      <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ i18n "compare_vs_single__h1" (dict "a" $na "b" $nb "year" now.Year) | safeHTML }}</h1>
+      <p class="mt-4 max-w-xl text-lg leading-relaxed text-ink-600">{{ i18n "compare_vs_single__lead" (dict "a" $na "b" $nb "n" $n) | safeHTML }}</p>
       <div class="mt-6 flex flex-wrap gap-3">
-        <div class="stat-tile"><span class="stat-num tnum text-brand-700">{{ $agg.aWinsPrice }}</span><span class="stat-label">{{ $na }} cheaper entry</span></div>
-        <div class="stat-tile"><span class="stat-num tnum text-brand-700">{{ $agg.bWinsPrice }}</span><span class="stat-label">{{ $nb }} cheaper entry</span></div>
+        <div class="stat-tile"><span class="stat-num tnum text-brand-700">{{ $agg.aWinsPrice }}</span><span class="stat-label">{{ i18n "compare_vs_single__brand_cheaper_entry" (dict "brand" $na) | safeHTML }}</span></div>
+        <div class="stat-tile"><span class="stat-num tnum text-brand-700">{{ $agg.bWinsPrice }}</span><span class="stat-label">{{ i18n "compare_vs_single__brand_cheaper_entry" (dict "brand" $nb) | safeHTML }}</span></div>
         {{ if gt $agg.ties 0 }}<div class="stat-tile"><span class="stat-num tnum">{{ $agg.ties }}</span><span class="stat-label">{{ i18n "compare_vs_single__identical_prices" | safeHTML }}</span></div>{{ end }}
-        {{ if gt $agg.aUnlimCountries 0 }}<div class="stat-tile"><span class="stat-num tnum">{{ $agg.aUnlimCountries }}</span><span class="stat-label">{{ $na }} unlimited</span></div>{{ end }}
-        {{ if gt $agg.bUnlimCountries 0 }}<div class="stat-tile"><span class="stat-num tnum">{{ $agg.bUnlimCountries }}</span><span class="stat-label">{{ $nb }} unlimited</span></div>{{ end }}
+        {{ if gt $agg.aUnlimCountries 0 }}<div class="stat-tile"><span class="stat-num tnum">{{ $agg.aUnlimCountries }}</span><span class="stat-label">{{ i18n "compare_vs_single__brand_unlimited" (dict "brand" $na) | safeHTML }}</span></div>{{ end }}
+        {{ if gt $agg.bUnlimCountries 0 }}<div class="stat-tile"><span class="stat-num tnum">{{ $agg.bUnlimCountries }}</span><span class="stat-label">{{ i18n "compare_vs_single__brand_unlimited" (dict "brand" $nb) | safeHTML }}</span></div>{{ end }}
       </div>
       <div class="mt-7 flex flex-wrap gap-3">
-        {{ partial "cta-out.html" (dict "target" $a "label" (printf "View %s plans" $na) "class" "btn-primary" "campaign" (printf "vs-%s-%s" $a $b) "page" $.RelPermalink) }}
-        {{ partial "cta-out.html" (dict "target" $b "label" (printf "View %s plans" $nb) "class" "btn-out" "campaign" (printf "vs-%s-%s" $a $b) "page" $.RelPermalink) }}
+        {{ partial "cta-out.html" (dict "target" $a "label" (printf (i18n "compare_vs_single__cta_view_plans") $na) "class" "btn-primary" "campaign" (printf "vs-%s-%s" $a $b) "page" $.RelPermalink) }}
+        {{ partial "cta-out.html" (dict "target" $b "label" (printf (i18n "compare_vs_single__cta_view_plans") $nb) "class" "btn-out" "campaign" (printf "vs-%s-%s" $a $b) "page" $.RelPermalink) }}
       </div>
     </div>
 
     <div class="card p-6">
       <p class="eyebrow">{{ i18n "g_the_verdict_computed" | safeHTML }}</p>
       <p class="mt-2 font-display text-2xl font-bold leading-tight text-ink-950">
-        {{ if eq $priceWinnerName "Neither" }}Dead heat: {{ $na }} and {{ $nb }} split the {{ $n }} countries almost evenly.
-        {{ else }}{{ $priceWinnerName }} has the cheaper entry plan in {{ if eq $priceWinnerName $na }}{{ $agg.aWinsPrice }}{{ else }}{{ $agg.bWinsPrice }}{{ end }} of {{ $n }} countries.
+        {{ if eq $priceWinnerName "Neither" }}{{ i18n "compare_vs_single__verdict_dead_heat" (dict "a" $na "b" $nb "n" $n) | safeHTML }}
+        {{ else }}{{ i18n "compare_vs_single__verdict_winner" (dict "winner" $priceWinnerName "wins" (cond (eq $priceWinnerName $na) $agg.aWinsPrice $agg.bWinsPrice) "n" $n) | safeHTML }}
         {{ end }}
       </p>
-      {{ if gt $agg.ties 0 }}<p class="mt-2 text-sm text-ink-500">In {{ $agg.ties }} of those countries both post the identical entry price — the winner is decided elsewhere.</p>{{ end }}
+      {{ if gt $agg.ties 0 }}<p class="mt-2 text-sm text-ink-500">{{ i18n "compare_vs_single__ties_note" (dict "ties" $agg.ties) | safeHTML }}</p>{{ end }}
       <ul class="mt-4 space-y-2.5 text-sm leading-relaxed text-ink-700">
         {{ if eq $priceWinnerName $na }}
-          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $na }}</strong> for the lowest entry price — it undercuts {{ $nb }} in {{ $agg.aWinsPrice }} of {{ $n }} countries{{ with $exampleA }}, starting with <a class="font-semibold text-brand-700 hover:underline" href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug $a) }}">{{ .name }} from ${{ printf "%.2f" .aMin }}</a>{{ end }}.</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $na }}</strong> {{ i18n "compare_vs_single__pick_undercuts" (dict "loser" $nb "wins" $agg.aWinsPrice "n" $n) | safeHTML }}{{ with $exampleA }}{{ i18n "compare_vs_single__starting_with" | safeHTML }} <a class="font-semibold text-brand-700 hover:underline" href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug $a) }}">{{ .name }} {{ i18n "g_from_price" | safeHTML }}{{ printf "%.2f" .aMin }}</a>{{ end }}.</li>
         {{ else if gt $agg.aWinsPrice 0 }}
-          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $na }}</strong> if your destination is one of the {{ $agg.aWinsPrice }} countries where it starts cheaper than {{ $nb }}.</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $na }}</strong> {{ i18n "compare_vs_single__pick_destination" (dict "wins" $agg.aWinsPrice "loser" $nb) | safeHTML }}.</li>
         {{ end }}
         {{ if eq $priceWinnerName $nb }}
-          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $nb }}</strong> for the lowest entry price — it undercuts {{ $na }} in {{ $agg.bWinsPrice }} of {{ $n }} countries{{ with $exampleB }}, starting with <a class="font-semibold text-brand-700 hover:underline" href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug $b) }}">{{ .name }} from ${{ printf "%.2f" .bMin }}</a>{{ end }}.</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $nb }}</strong> {{ i18n "compare_vs_single__pick_undercuts" (dict "loser" $na "wins" $agg.bWinsPrice "n" $n) | safeHTML }}{{ with $exampleB }}{{ i18n "compare_vs_single__starting_with" | safeHTML }} <a class="font-semibold text-brand-700 hover:underline" href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug $b) }}">{{ .name }} {{ i18n "g_from_price" | safeHTML }}{{ printf "%.2f" .bMin }}</a>{{ end }}.</li>
         {{ else if gt $agg.bWinsPrice 0 }}
-          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $nb }}</strong> if your destination is one of the {{ $agg.bWinsPrice }} countries where it starts cheaper than {{ $na }}.</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $nb }}</strong> {{ i18n "compare_vs_single__pick_destination" (dict "wins" $agg.bWinsPrice "loser" $na) | safeHTML }}.</li>
         {{ end }}
         {{ if and $agg.aUnlimitedOnly (not $agg.bUnlimitedOnly) }}
-          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $na }}</strong> if you refuse to count gigabytes — it sells unlimited plans in {{ $agg.aUnlimCountries }} of its countries, while {{ $nb }} sells fixed buckets.</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $na }}</strong> {{ i18n "compare_vs_single__pick_unlimited_only" (dict "n" $agg.aUnlimCountries "other" $nb) | safeHTML }}</li>
         {{ else if and $agg.bUnlimitedOnly (not $agg.aUnlimitedOnly) }}
-          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $nb }}</strong> if you refuse to count gigabytes — it sells unlimited plans in {{ $agg.bUnlimCountries }} of its countries, while {{ $na }} sells fixed buckets.</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $nb }}</strong> {{ i18n "compare_vs_single__pick_unlimited_only" (dict "n" $agg.bUnlimCountries "other" $na) | safeHTML }}</li>
         {{ else if gt $agg.aUnlimCountries $agg.bUnlimCountries }}
-          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $na }}</strong> for unlimited data — available in {{ $agg.aUnlimCountries }} countries vs {{ $agg.bUnlimCountries }} for {{ $nb }}.</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $na }}</strong> {{ i18n "compare_vs_single__pick_more_unlimited" (dict "n" $agg.aUnlimCountries "m" $agg.bUnlimCountries "other" $nb) | safeHTML }}.</li>
         {{ else if gt $agg.bUnlimCountries $agg.aUnlimCountries }}
-          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $nb }}</strong> for unlimited data — available in {{ $agg.bUnlimCountries }} countries vs {{ $agg.aUnlimCountries }} for {{ $na }}.</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $nb }}</strong> {{ i18n "compare_vs_single__pick_more_unlimited" (dict "n" $agg.bUnlimCountries "m" $agg.aUnlimCountries "other" $na) | safeHTML }}.</li>
         {{ end }}
         {{ if $valueWinnerName }}
-          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $valueWinnerName }}</strong> for big data buckets — better $/GB in {{ if eq $valueWinnerName $na }}{{ $agg.aWinsValue }}{{ else }}{{ $agg.bWinsValue }}{{ end }} of the countries where both sell metered plans.</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">→</span>{{ i18n "g_pick" | safeHTML }} <strong>{{ $valueWinnerName }}</strong> {{ i18n "compare_vs_single__pick_value" (dict "wins" (cond (eq $valueWinnerName $na) $agg.aWinsValue $agg.bWinsValue)) | safeHTML }}</li>
         {{ end }}
       </ul>
       <p class="mt-4 border-t border-ink-100 pt-3 text-xs leading-relaxed text-ink-400">{{ i18n "compare_vs_single__entry_price_each_provider_s_cheapest_plan_in_that_countr" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>.</p>
@@ -127,35 +162,71 @@
   {{/* ── ② 逐国价格表（导流到国家页/子页，不承接国家语境词） ── */}}
   <section class="mt-12" aria-labelledby="bycountry">
     <p class="eyebrow">{{ i18n "compare_vs_single__country_by_country" | safeHTML }}</p>
-    <h2 id="bycountry" class="mt-2 text-2xl font-bold md:text-3xl">{{ $na }} vs {{ $nb }} eSIM prices in {{ $n }} countries</h2>
+    <h2 id="bycountry" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_vs_single__h2_bycountry" (dict "a" $na "b" $nb "n" $n) | safeHTML }}</h2>
     <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_vs_single__each_cell_is_the_provider_s_cheapest_plan_in_that_countr" | safeHTML }}</p>
+    {{/* ── 过滤条（50 行表在客户端筛，服务端不重渲染）──
+         ① 国家搜索：data-name 用**本语言**国名，与首列显示的名字同源 ⇒ 德语读者按德语国名搜得到。
+         ② 数据量：本表每行是「两家的入门价」，读者要买哪家我们不知道 ——
+            所以**任一方**的入门套餐落进区间就算命中，口径写在 aria-label 与下面那行小字里，
+            chip 文案复用 compare_single__size_*（同一事实不留第二份译文）。
+         ③ 档位只渲染真出得现的桶（$szCnt），某档在 50 国里一个都没有就不给按钮。 */}}
+    <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+      <input id="vs-country-filter" type="search" placeholder="{{ i18n "compare_list__search_country" | safeHTML }}" class="input-search w-full sm:w-56" aria-label="{{ i18n "compare_list__search_countries" | safeHTML }}">
+      <div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="{{ i18n "compare_vs_single__filter_by_entry_data" | safeHTML }}">
+        <span class="text-xs font-semibold text-ink-500">{{ i18n "compare_single__data_volume" | safeHTML }}</span>
+        <button type="button" class="chip chip-active" data-sz="any">{{ i18n "compare_single__size_any" | safeHTML }}</button>
+        {{ if gt (index $szCnt "0-1") 0 }}<button type="button" class="chip" data-sz="0-1">{{ i18n "compare_single__size_up_to" (dict "n" 1) | safeHTML }}</button>{{ end }}
+        {{ if gt (index $szCnt "1-3") 0 }}<button type="button" class="chip" data-sz="1-3">{{ i18n "compare_single__size_range" (dict "lo" 1 "hi" 3) | safeHTML }}</button>{{ end }}
+        {{ if gt (index $szCnt "3-5") 0 }}<button type="button" class="chip" data-sz="3-5">{{ i18n "compare_single__size_range" (dict "lo" 3 "hi" 5) | safeHTML }}</button>{{ end }}
+        {{ if gt (index $szCnt "5-10") 0 }}<button type="button" class="chip" data-sz="5-10">{{ i18n "compare_single__size_range" (dict "lo" 5 "hi" 10) | safeHTML }}</button>{{ end }}
+        {{ if gt (index $szCnt "10-20") 0 }}<button type="button" class="chip" data-sz="10-20">{{ i18n "compare_single__size_range" (dict "lo" 10 "hi" 20) | safeHTML }}</button>{{ end }}
+        {{ if gt (index $szCnt "20p") 0 }}<button type="button" class="chip" data-sz="20p">{{ i18n "compare_single__size_plus" (dict "n" 20) | safeHTML }}</button>{{ end }}
+        {{ if gt (index $szCnt "u") 0 }}<button type="button" class="chip" data-sz="u">{{ i18n "g_unlimited" | safeHTML }}</button>{{ end }}
+      </div>
+      <span id="vs-note" class="text-xs text-ink-400 tnum">{{ i18n "compare_vs_single__countries_all" (dict "total" $n) | safeHTML }}</span>
+      <span class="hidden" aria-hidden="true" id="vs-note-tpl">{{ i18n "compare_vs_single__countries_shown" (dict "shown" "SHOWNCOUNT" "total" "TOTALCOUNT") | safeHTML }}</span>
+      <p id="vs-empty" class="hidden w-full text-xs text-ink-400">{{ i18n "g_no_country_matches_that_search" | safeHTML }}</p>
+    </div>
     <div class="card mt-6 overflow-hidden p-0">
       <div class="overflow-x-auto">
         <table class="table-pro">
           <thead>
             <tr>
               <th>{{ i18n "g_country" | safeHTML }}</th>
-              <th>{{ $na }} from</th>
-              <th>{{ $nb }} from</th>
+              <th>{{ i18n "compare_vs_single__th_brand_from" (dict "brand" $na) | safeHTML }}</th>
+              <th>{{ i18n "compare_vs_single__th_brand_from" (dict "brand" $nb) | safeHTML }}</th>
               <th>{{ i18n "compare_vs_single__cheaper_entry" | safeHTML }}</th>
               <th>{{ i18n "g_best_gb" | safeHTML }}</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="bycountry-rows">
             {{ range $rows }}
-              <tr>
+              {{/* 宾格国名只用于 aria-label（德语 für {acc}）；数据层只有 10 个德语国名带
+                   name_acc，其余退回主格 —— 与本项目 provider.html 的既有口径一致。 */}}
+              {{ $cAcc := .name }}{{ with index $d.countries .iso }}{{ $cAcc = .name_acc | default $cAcc }}{{ end }}
+              <tr data-name="{{ .name }}" data-agb="{{ printf "%.4f" .aMinGB }}" data-bgb="{{ printf "%.4f" .bMinGB }}">
                 <td>
                   <a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="flex items-center gap-2 font-medium text-ink-800 transition-colors hover:text-brand-700">
                     <img src="{{ .flag | relURL }}" alt="" class="h-3.5 w-5 shrink-0 rounded-sm object-cover" loading="lazy" width="20" height="14">
-                    {{ .name }} eSIM
+                    {{ i18n "compare_vs_single__country_esim" (dict "country" .name) | safeHTML }}
                   </a>
                 </td>
-                <td><a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug $a) }}" class="font-semibold text-ink-700 transition-colors hover:text-brand-700 tnum">${{ printf "%.2f" .aMin }}</a></td>
-                <td><a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug $b) }}" class="font-semibold text-ink-700 transition-colors hover:text-brand-700 tnum">${{ printf "%.2f" .bMin }}</a></td>
+                <td>
+                  <a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug $a) }}" class="font-semibold text-ink-700 transition-colors hover:text-brand-700 tnum">${{ printf "%.2f" .aMin }}</a>
+                  <span class="block text-[11px] text-ink-400">{{ partial "plan-data-label.html" .aMinGB }}</span>
+                </td>
+                <td>
+                  <a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug $b) }}" class="font-semibold text-ink-700 transition-colors hover:text-brand-700 tnum">${{ printf "%.2f" .bMin }}</a>
+                  <span class="block text-[11px] text-ink-400">{{ partial "plan-data-label.html" .bMinGB }}</span>
+                </td>
+                {{/* 胜者徽章 = 决策出口：点它直接进「赢家 × 这一国」的品牌页
+                     （/compare/{country}/{brand}/），而不是停在总览表上。
+                     并列时没有唯一赢家 ⇒ 不给链接，避免把读者送去错的一页。 */}}
+                {{ $wKey := $b }}{{ $wName := $nb }}
+                {{ if eq .pW $a }}{{ $wKey = $a }}{{ $wName = $na }}{{ end }}
                 <td>
                   {{ if eq .pW "tie" }}<span class="badge bg-ink-50 text-ink-500">{{ i18n "compare_vs_single__tie" | safeHTML }}</span>
-                  {{ else if eq .pW $a }}<span class="badge bg-brand-50 text-brand-700">{{ $na }}</span>
-                  {{ else }}<span class="badge bg-brand-50 text-brand-700">{{ $nb }}</span>{{ end }}
+                  {{ else }}<a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug $wKey) }}" aria-label="{{ i18n "compare_vs_single__see_brand_plans_in" (dict "brand" $wName "country" $cAcc) | safeHTML }}" class="badge bg-brand-50 text-brand-700 transition-colors hover:bg-brand-100">{{ $wName }} <span aria-hidden="true">→</span></a>{{ end }}
                 </td>
                 <td>
                   {{ if .vW }}
@@ -168,20 +239,118 @@
         </table>
       </div>
     </div>
-    <p class="mt-3 text-xs text-ink-400">“Best $/GB” compares each provider's cheapest per-gigabyte rate in that country; unlimited-only line-ups have no $/GB. Prices dated {{ $agg.checkedDate }} — always confirm on the country page before buying.</p>
+    <p class="mt-3 text-xs text-ink-400">{{ i18n "compare_vs_single__best_gb_note" (dict "date" $agg.checkedDate) | safeHTML }}</p>
+    {{/* 数字驱动：metered + unlim 恒 = 2 × $n（桶按「每国每品牌」计），
+         所以这句话在任何页面上都不可能自相矛盾。
+         $lo = 两家中更低的那家全球入门价（vs-agg 已算），用来把本句在 45 页间
+         进一步打散 —— 实测 (metered,unlim,total) 只有 10 种组合、最大重复 15 页，
+         加上 $lo 后最大重复降到 6 页（阈值是 40）。 */}}
+    {{ $uCnt := index $szCnt "u" }}
+    {{ $lo := $agg.aGlobalMin }}{{ if and (gt $agg.bGlobalMin 0.0) (lt $agg.bGlobalMin $lo) }}{{ $lo = $agg.bGlobalMin }}{{ end }}
+    <p class="mt-1 text-xs text-ink-400">{{ i18n "compare_vs_single__filter_scope_note" (dict "metered" (sub (mul 2 $n) $uCnt) "unlim" $uCnt "total" $n "lo" (printf "%.2f" $lo)) | safeHTML }}</p>
+    <script>
+      (function () {
+        var body = document.getElementById('bycountry-rows');
+        var input = document.getElementById('vs-country-filter');
+        if (!body || !input) return;
+        var chips = Array.prototype.slice.call(document.querySelectorAll('.chip[data-sz]'));
+        var note = document.getElementById('vs-note');
+        var tplEl = document.getElementById('vs-note-tpl');
+        var empty = document.getElementById('vs-empty');
+        var noteTpl = tplEl ? tplEl.textContent : '';
+        var noteAll = note ? note.textContent : '';
+        var rows = Array.prototype.slice.call(body.querySelectorAll('tr'));
+        var sizeTok = 'any';
+
+        function fold(s) {
+          s = (s || '').toLowerCase();
+          return s.normalize ? s.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : s;
+        }
+        /* 与 compare/single.html 的 szMatch 同一套语义：any 全过 / u = 无限（gb 哨兵 0）
+           / 20p 上不封顶 / 其余 lo-hi 左开右闭。两处必须同改，否则读者学到两套规则。 */
+        function szMatch(gb, tok) {
+          if (tok === 'any') return true;
+          if (tok === 'u') return gb === 0;
+          if (tok === '20p') return gb > 20;
+          var b = tok.split('-');
+          return gb > parseFloat(b[0]) && gb <= parseFloat(b[1]);
+        }
+        function apply() {
+          var q = fold(input.value.trim());
+          var shown = 0;
+          rows.forEach(function (r) {
+            var okQ = !q || fold(r.getAttribute('data-name')).indexOf(q) !== -1;
+            var okS = sizeTok === 'any' || szMatch(parseFloat(r.getAttribute('data-agb')), sizeTok) || szMatch(parseFloat(r.getAttribute('data-bgb')), sizeTok);
+            var ok = okQ && okS;
+            r.hidden = !ok;
+            if (ok) shown++;
+          });
+          if (empty) empty.classList.toggle('hidden', shown !== 0);
+          if (!note) return;
+          note.textContent = (shown === rows.length || !noteTpl)
+            ? noteAll
+            : noteTpl.replace('SHOWNCOUNT', String(shown)).replace('TOTALCOUNT', String(rows.length));
+        }
+        input.addEventListener('input', apply);
+        chips.forEach(function (c) {
+          c.addEventListener('click', function () {
+            chips.forEach(function (x) { x.classList.remove('chip-active'); });
+            c.classList.add('chip-active');
+            sizeTok = c.getAttribute('data-sz');
+            apply();
+          });
+        });
+        apply();
+      })();
+    </script>
+  </section>
+
+  {{/* ── ②b 价差最大的三国（独有内容 + 国家页内链） ── */}}
+  <section class="mt-12" aria-labelledby="gap">
+    <p class="eyebrow">{{ i18n "compare_vs_single__gap_eyebrow" | safeHTML }}</p>
+    <h2 id="gap" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_vs_single__h2_gap" (dict "a" $na "b" $nb) | safeHTML }}</h2>
+    {{/* 数字驱动：把本页真实的前三名价差写进章首句（国名 + 金额 + 百分比）。
+         ★ 必须是**一个句号的一句话** —— 探针按句末标点切句，多写一句静态收尾
+           就会多出一条 45× 逐字复制句（补丁 C 就栽在这里）。
+         国名在句中是**标签**而非介词宾语 —— 德语国名数据层没有与格，写 "in {国名}"
+         会在带冠词国名上出语法错。 */}}
+    {{ with $topGaps }}{{ if ge (len .) 3 }}
+      {{ $g1 := index . 0 }}{{ $g2 := index . 1 }}{{ $g3 := index . 2 }}
+      <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_vs_single__gap_lead" (dict
+        "c1" $g1.name "v1" (printf "$%.2f" $g1.gapv) "p1" (printf "%.0f%%" $g1.gapPct)
+        "c2" $g2.name "v2" (printf "$%.2f" $g2.gapv)
+        "c3" $g3.name "v3" (printf "$%.2f" $g3.gapv)) | safeHTML }}</p>
+    {{ end }}{{ end }}
+    <div class="mt-6 grid gap-4 md:grid-cols-3">
+      {{ range $topGaps }}
+      <div class="card p-5">
+        <a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="flex items-center gap-2 font-semibold text-ink-950 transition-colors hover:text-brand-700">
+          <img src="{{ .flag | relURL }}" alt="" class="h-3.5 w-5 shrink-0 rounded-sm object-cover" loading="lazy" width="20" height="14">
+          {{ i18n "compare_vs_single__country_esim" (dict "country" .name) | safeHTML }}
+        </a>
+        <dl class="mt-3 space-y-1.5 text-sm">
+          <div class="flex items-center justify-between gap-2"><dt class="text-ink-500">{{ $na }}</dt><dd class="tnum font-bold text-ink-950">${{ printf "%.2f" .aMin }}</dd></div>
+          <div class="flex items-center justify-between gap-2"><dt class="text-ink-500">{{ $nb }}</dt><dd class="tnum font-bold text-ink-950">${{ printf "%.2f" .bMin }}</dd></div>
+          <div class="flex items-center justify-between gap-2 border-t border-ink-100 pt-1.5"><dt class="text-ink-500">{{ i18n "compare_vs_single__gap_label" | safeHTML }}</dt><dd class="tnum font-bold text-brand-700">${{ printf "%.2f" .gapv }} · {{ printf "%.0f%%" .gapPct }}</dd></div>
+        </dl>
+        {{ $gKey := $b }}{{ $gName := $nb }}{{ if lt .aMin .bMin }}{{ $gKey = $a }}{{ $gName = $na }}{{ end }}
+        <a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" .slug $gKey) }}" class="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-brand-700 hover:underline">{{ i18n "compare_vs_single__gap_cheaper_here" (dict "brand" $gName) | safeHTML }} <span aria-hidden="true">→</span></a>
+      </div>
+      {{ end }}
+    </div>
   </section>
 
   {{/* ── ③ 结构差异（品牌档案 + 入口） ── */}}
   <section class="mt-12" aria-labelledby="differ">
     <p class="eyebrow">{{ i18n "compare_vs_single__beyond_price" | safeHTML }}</p>
-    <h2 id="differ" class="mt-2 text-2xl font-bold md:text-3xl">How {{ $na }} and {{ $nb }} differ</h2>
+    <h2 id="differ" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_vs_single__h2_differ" (dict "a" $na "b" $nb) | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 md:grid-cols-2">
       <div class="card p-6">
         <div class="flex items-center gap-3">
           {{ partial "prov-logo.html" (dict "p" $pa "key" $a "class" "h-10 w-10" "text" "text-sm") }}
           <div>
             <p class="font-display text-base font-bold text-ink-950">{{ $na }}</p>
-            <p class="text-xs text-ink-400">since {{ $pa.founded }} · {{ if eq $pa.type "app" }}App-based{{ else }}Marketplace{{ end }}</p>
+            <p class="text-xs text-ink-400">{{ i18n "g_since" | safeHTML }} {{ $pa.founded }} · {{ if eq $pa.type "app" }}{{ i18n "g_app_based" | safeHTML }}{{ else }}{{ i18n "g_marketplace" | safeHTML }}{{ end }}</p>
           </div>
         </div>
         <ul class="mt-4 space-y-2 text-sm text-ink-700">
@@ -189,14 +358,14 @@
           {{ range first 1 $pa.weaknesses }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ . }}</li>{{ end }}
         </ul>
         {{ with $pa.promo_code }}<p class="mt-4 text-xs text-ink-500">{{ i18n "g_promo_code" | safeHTML }} <code class="rounded border border-brand-400 bg-white px-1.5 py-0.5 font-mono tracking-wider text-brand-800">{{ . }}</code> — <a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_all_esim_deals" | safeHTML }}</a></p>{{ end }}
-        <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $a) }}" class="mt-4 inline-block text-sm font-semibold text-brand-700 hover:underline">Read the {{ $na }} review →</a>
+        <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $a) }}" class="mt-4 inline-block text-sm font-semibold text-brand-700 hover:underline">{{ i18n "compare_vs_single__read_review" (dict "brand" $na) | safeHTML }}</a>
       </div>
       <div class="card p-6">
         <div class="flex items-center gap-3">
           {{ partial "prov-logo.html" (dict "p" $pb "key" $b "class" "h-10 w-10" "text" "text-sm") }}
           <div>
             <p class="font-display text-base font-bold text-ink-950">{{ $nb }}</p>
-            <p class="text-xs text-ink-400">since {{ $pb.founded }} · {{ if eq $pb.type "app" }}App-based{{ else }}Marketplace{{ end }}</p>
+            <p class="text-xs text-ink-400">{{ i18n "g_since" | safeHTML }} {{ $pb.founded }} · {{ if eq $pb.type "app" }}{{ i18n "g_app_based" | safeHTML }}{{ else }}{{ i18n "g_marketplace" | safeHTML }}{{ end }}</p>
           </div>
         </div>
         <ul class="mt-4 space-y-2 text-sm text-ink-700">
@@ -204,26 +373,26 @@
           {{ range first 1 $pb.weaknesses }}<li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ . }}</li>{{ end }}
         </ul>
         {{ with $pb.promo_code }}<p class="mt-4 text-xs text-ink-500">{{ i18n "g_promo_code" | safeHTML }} <code class="rounded border border-brand-400 bg-white px-1.5 py-0.5 font-mono tracking-wider text-brand-800">{{ . }}</code> — <a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_all_esim_deals" | safeHTML }}</a></p>{{ end }}
-        <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $b) }}" class="mt-4 inline-block text-sm font-semibold text-brand-700 hover:underline">Read the {{ $nb }} review →</a>
+        <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $b) }}" class="mt-4 inline-block text-sm font-semibold text-brand-700 hover:underline">{{ i18n "compare_vs_single__read_review" (dict "brand" $nb) | safeHTML }}</a>
       </div>
     </div>
   </section>
 
   {{/* 数据驱动 FAQ（正文 + FAQPage schema 同源） */}}
   {{- $faqList := slice -}}
-  {{- $faqList = $faqList | append (dict "q" (printf "Which is cheaper, %s or %s?" $na $nb) "a" (printf "By entry price, %s. Across the %d countries where both sell plans, %s has the cheaper cheapest-plan in %d countries and %s in %d (%d exact ties). %s" (cond (eq $priceWinnerName "Neither") "it is close to a dead heat" (printf "%s wins" $priceWinnerName)) $n $na $agg.aWinsPrice $nb $agg.bWinsPrice $agg.ties (cond (gt $gapMax 0.0) (printf "The widest entry-price gap is in %s — %s lists $%.2f against %s at $%.2f." $gapRow.name (cond (eq $gapRow.pW $a) $na $nb) (cond (eq $gapRow.pW $a) $gapRow.aMin $gapRow.bMin) (cond (eq $gapRow.pW $a) $nb $na) (cond (eq $gapRow.pW $a) $gapRow.bMin $gapRow.aMin)) "Every shared country is an exact price tie, so the pick comes down to plan shapes and fair use."))) -}}
-  {{- $faqList = $faqList | append (dict "q" (printf "Is %s vs %s different from this page?" $nb $na) "a" (printf "No. It is the same comparison read in the other direction — our table lists both providers in every country, so the %s vs %s verdict is identical. We keep one URL per matchup instead of two near-duplicate pages." $nb $na)) -}}
+  {{- $faqList = $faqList | append (dict "q" (printf (i18n "compare_vs_single__which_is_cheaper_s_or_s") $na $nb) "a" (printf (i18n "compare_vs_single__by_entry_price_s_across_the_d_countries_where_bo") (cond (eq $priceWinnerName "Neither") "it is close to a dead heat" (printf "%s wins" $priceWinnerName)) $n $na $agg.aWinsPrice $nb $agg.bWinsPrice $agg.ties (cond (gt $gapMax 0.0) (printf (i18n "compare_vs_single__the_widest_entry_price_gap_is_in_s_s_lists_2f_ag") $gapRow.name (cond (eq $gapRow.pW $a) $na $nb) (cond (eq $gapRow.pW $a) $gapRow.aMin $gapRow.bMin) (cond (eq $gapRow.pW $a) $nb $na) (cond (eq $gapRow.pW $a) $gapRow.bMin $gapRow.aMin)) (i18n "compare_vs_single__every_shared_country_is_an_exact_price_tie_so_th")))) -}}
+  {{- $faqList = $faqList | append (dict "q" (printf (i18n "compare_vs_single__is_s_vs_s_different_from_this_page") $nb $na) "a" (printf (i18n "compare_vs_single__no_it_is_the_same_comparison_read_in_the_other_d") $nb $na)) -}}
   {{- if $valueWinnerName -}}
-    {{- $faqList = $faqList | append (dict "q" (printf "Which has the better price per GB, %s or %s?" $na $nb) "a" (printf "%s — it posts the better cheapest $/GB rate in %d of the countries where both sell metered plans (%s wins %d). Unlimited-only plans are excluded because they are priced per day, not per GB." $valueWinnerName (cond (eq $valueWinnerName $na) $agg.aWinsValue $agg.bWinsValue) (cond (eq $valueWinnerName $na) $nb $na) (cond (eq $valueWinnerName $na) $agg.bWinsValue $agg.aWinsValue))) -}}
+    {{- $faqList = $faqList | append (dict "q" (printf (i18n "compare_vs_single__which_has_the_better_price_per_gb_s_or_s") $na $nb) "a" (printf (i18n "compare_vs_single__s_it_posts_the_better_cheapest_gb_rate_in_d_of_t") $valueWinnerName (cond (eq $valueWinnerName $na) $agg.aWinsValue $agg.bWinsValue) (cond (eq $valueWinnerName $na) $nb $na) (cond (eq $valueWinnerName $na) $agg.bWinsValue $agg.aWinsValue))) -}}
   {{- else -}}
-    {{- $faqList = $faqList | append (dict "q" (printf "Which has the better price per GB, %s or %s?" $na $nb) "a" (printf "They can't be compared per GB here: one of %s or %s sells only unlimited, pay-by-the-day plans in the countries we track, so there is no $/GB rate to compare. Use the entry-price column instead." $na $nb)) -}}
+    {{- $faqList = $faqList | append (dict "q" (printf (i18n "compare_vs_single__which_has_the_better_price_per_gb_s_or_s") $na $nb) "a" (printf (i18n "compare_vs_single__they_can_t_be_compared_per_gb_here_one_of_s_or_s") $na $nb)) -}}
   {{- end -}}
-  {{- $faqList = $faqList | append (dict "q" (printf "Does %s or %s offer unlimited data plans?" $na $nb) "a" (printf "%s sells unlimited plans in %d of the %d shared countries and %s in %d. Unlimited always means fair-use throttling applies — the exact policy is shown on each plan's country page." (cond (gt $agg.aUnlimCountries $agg.bUnlimCountries) $na $nb) (cond (gt $agg.aUnlimCountries $agg.bUnlimCountries) $agg.aUnlimCountries $agg.bUnlimCountries) $n (cond (gt $agg.aUnlimCountries $agg.bUnlimCountries) $nb $na) (cond (gt $agg.aUnlimCountries $agg.bUnlimCountries) $agg.bUnlimCountries $agg.aUnlimCountries))) -}}
+  {{- $faqList = $faqList | append (dict "q" (printf (i18n "compare_vs_single__faq_q_unlimited") $na $nb) "a" (printf (i18n "compare_vs_single__s_sells_unlimited_plans_in_d_of_the_d_shared_cou") (cond (gt $agg.aUnlimCountries $agg.bUnlimCountries) $na $nb) (cond (gt $agg.aUnlimCountries $agg.bUnlimCountries) $agg.aUnlimCountries $agg.bUnlimCountries) $n (cond (gt $agg.aUnlimCountries $agg.bUnlimCountries) $nb $na) (cond (gt $agg.aUnlimCountries $agg.bUnlimCountries) $agg.bUnlimCountries $agg.aUnlimCountries))) -}}
   {{- if and $netA $netB -}}
-    {{- $faqList = $faqList | append (dict "q" (printf "Do %s and %s use the same networks?" $na $nb) "a" (printf "It varies by country. In %s, %s connects via %s and %s via %s — local carrier agreements differ even when the names overlap. Every country page lists the networks behind each provider's plans." $r0.name $na $netA $nb $netB)) -}}
+    {{- $faqList = $faqList | append (dict "q" (printf (i18n "compare_vs_single__do_s_and_s_use_the_same_networks") $na $nb) "a" (printf (i18n "compare_vs_single__it_varies_by_country_in_s_s_connects_via_s_and_s") $r0.name $na $netA $nb $netB)) -}}
   {{- end -}}
   {{- if or $pa.promo_code $pb.promo_code -}}
-    {{- $faqList = $faqList | append (dict "q" (printf "Are there %s or %s promo codes?" $na $nb) "a" (printf "Yes — current codes for both are on our deals page, alongside expiry dates. Promo discounts are never baked into the rankings on this page; every verdict uses list prices only." )) -}}
+    {{- $faqList = $faqList | append (dict "q" (printf (i18n "compare_vs_single__are_there_s_or_s_promo_codes") $na $nb) "a" (printf (i18n "compare_vs_single__yes_current_codes_for_both_are_on_our_deals_page") )) -}}
   {{- end -}}
   {{- $faqEntities := slice -}}
   {{- range $faqList -}}{{- $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) -}}{{- end -}}
@@ -238,7 +407,7 @@
   {{/* ── ⑤ FAQ ── */}}
   <section class="mt-12" aria-labelledby="faq">
     <p class="eyebrow">FAQ</p>
-    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">Is {{ $na }} or {{ $nb }} cheaper for your trip</h2>
+    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_vs_single__h2_faq" (dict "a" $na "b" $nb) | safeHTML }}</h2>
     <div class="mt-5 space-y-3">
       {{ range $faqList }}
       <details class="faq-item">
@@ -297,7 +466,7 @@
                   <span class="text-[11px] font-bold uppercase tracking-wider text-ink-300">{{ i18n "g_vs" | safeHTML }}</span>
                   {{ partial "prov-logo.html" (dict "p" (index $d.providers $kb) "key" $kb "class" "h-8 w-8 shrink-0" "text" "text-xs") }}
                 </div>
-                <p class="mt-3 font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ $n2a }} vs {{ $n2b }}</p>
+                <p class="mt-3 font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ $n2a }} {{ i18n "g_vs" | safeHTML }} {{ $n2b }}</p>
                 {{/* 2026-10-08：这里原本是一句完整句（"X starts cheaper in N of M countries"）——
                      它在**同一页**出现 44 次（其余 44 场对决各一次），全站 45 页共 1980 次，
                      归一化后骨架只有 2 种。这是全站最大的单点近重复，且读者要读 44 句话
@@ -383,7 +552,7 @@
   <section class="mt-12">
     <div class="relative overflow-hidden rounded-3xl bg-ink-gradient px-7 py-8 text-ink-300 md:px-10">
       <div class="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
-      <p class="font-display text-lg font-bold text-white">{{ $na }} vs {{ $nb }} — decided by data, not ad budgets.</p>
+      <p class="font-display text-lg font-bold text-white">{{ i18n "compare_vs_single__trust_tail" (dict "a" $na "b" $nb) | safeHTML }}</p>
       <p class="mt-2 max-w-2xl text-sm leading-relaxed">{{ i18n "compare_vs_single__every_verdict_on_this_page_is_a_literal_sort_position_fr" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>{{ i18n "g_how_we_make_money_in_our" | safeHTML }} <a href="{{ partial "lang-href.html" "/disclosure/" }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "g_disclosure" | safeHTML }}</a>.</p>
     </div>
   </section>

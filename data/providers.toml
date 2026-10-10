@@ -515,6 +515,10 @@ destinations = 200
 #   hotspot_allowance 展示用额度串（如 "500 MB/day"）
 #   hotspot_note      一句人话解释
 #   fup_allowance     满速额度（"No GB figure published" 也是合法答案）
+#   fup_kind          ✓ 可选，none = 厂商根本没公布额度。**判据层只读这个字段**
+#                     （模板曾用 `findRE "(?i)^(no|not)" .fup_allowance` 判读英文
+#                     字面量 —— 那是语言相关的，德语页 fup_allowance 已本地化后
+#                      判据会静默失效，故改为与语言无关的枚举）
 #   fup_drop          限速后的速度档
 #   fup_note          一句人话解释
 #   topup             true | false —— 用尽能否续充
@@ -533,6 +537,7 @@ hotspot = "capped"
 hotspot_allowance = "500 MB/day"
 hotspot_note = "Holafly's own technical specs cap tethering at 500 MB/day on destination plans. Unlimited hotspot exists only on the separate Holafly Plans subscription, not on the travel plans below."
 fup_allowance = "No GB figure published"
+fup_kind = "none"
 fup_drop = "256 Kbps - 1 Mbps"
 fup_note = "Holafly publishes no daily GB threshold and says throttling is temporary, never longer than 24 hours. Independent testing in early 2026 measured the cut-off at 500 MB - 1 GB/day in most Western destinations, and host operators can also slow you after roughly 90 GB in a month."
 topup = false

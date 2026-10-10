@@ -25,4 +25,4 @@ context: dict (target, slugMap, label, class, campaign, page)
     {{- $href = printf "%s?%s" $href $q -}}
   {{- end -}}
 {{- end -}}
-<a href="{{ $href }}"{{ with $t.rel }} rel="{{ . }}"{{ end }} target="_blank" class="{{ .class | default "btn-out" }}">{{ .label | default $t.label | default "View deal" }}</a>
+<a href="{{ $href }}"{{ with $t.rel }} rel="{{ . }}"{{ end }} target="_blank" class="{{ .class | default "btn-out" }}">{{ .label | default $t.label | default (i18n "g_view_deal") }}</a>

@@ -75,6 +75,20 @@
 {{ with index site.Data.refs.carriers $iso }}{{ $carrierRefs = . }}{{ end }}
 {{ $dayOpts := slice 3 5 7 10 14 21 30 }}
 
+{{/* 数据量区间档位 —— 边界取全球通行的数据量档（1/3/5/10/20 GB），计数只为
+     「只渲染有货的桶」服务：空档位点了没结果，比没有档位更糟。`u` = 无限（gb 哨兵 0）。 */}}
+{{ $szCnt := dict "u" 0 "0-1" 0 "1-3" 0 "3-5" 0 "5-10" 0 "10-20" 0 "20p" 0 }}
+{{ range $sorted }}
+  {{ $g := float .gb }}{{ $sz := "20p" }}
+  {{ if eq $g 0.0 }}{{ $sz = "u" }}
+  {{ else if le $g 1.0 }}{{ $sz = "0-1" }}
+  {{ else if le $g 3.0 }}{{ $sz = "1-3" }}
+  {{ else if le $g 5.0 }}{{ $sz = "3-5" }}
+  {{ else if le $g 10.0 }}{{ $sz = "5-10" }}
+  {{ else if le $g 20.0 }}{{ $sz = "10-20" }}{{ end }}
+  {{ $szCnt = merge $szCnt (dict $sz (add (index $szCnt $sz) 1)) }}
+{{ end }}
+
 {{/* ── ⑧ 网络 × 运营商归属的**纯计算**（渲染在 ⑦b，见下）─────────────────────────
      为什么提到布局之前：右侧「本页导航」必须在渲染任何 section **之前**就知道
      ⑦b 到底渲不渲染（守卫条件 = $netKeys 或 $profiles 非空），否则目录会挂出死链。
@@ -150,13 +164,13 @@
   <header class="mt-6 grid items-center gap-8 lg:grid-cols-[1.25fr_1fr]">
     <div>
       <div class="flex flex-wrap items-center gap-3">
-        <img src="{{ $country.flag | relURL }}" alt="{{ $country.name }} flag" class="h-9 w-[3.25rem] rounded-lg object-cover shadow-sm ring-1 ring-ink-100">
-        <span class="badge bg-brand-50 text-brand-700">{{ $country.region }}</span>
-        {{ with $stats.checkedDate }}<span class="badge bg-ink-50 text-ink-500">✓ Prices checked {{ . }}</span>{{ end }}
+        <img src="{{ $country.flag | relURL }}" alt="{{ i18n "compare_single__flag_alt" (dict "country" ($country.name_dat | default $country.name)) | safeHTML }}" class="h-9 w-[3.25rem] rounded-lg object-cover shadow-sm ring-1 ring-ink-100">
+        <span class="badge bg-brand-50 text-brand-700">{{ partial "region-label.html" $country.region | safeHTML }}</span>
+        {{ with $stats.checkedDate }}<span class="badge bg-ink-50 text-ink-500">{{ i18n "compare_single__prices_checked_badge" (dict "date" .) | safeHTML }}</span>{{ end }}
       </div>
-      <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">Best eSIM for {{ $country.alias | default $country.name }} in {{ now.Year }}</h1>
+      <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ i18n "compare_single__hero_h1" (dict "country" ($country.name_acc | default $country.alias | default $country.name) "year" now.Year) | safeHTML }}</h1>
       <p class="mt-4 max-w-xl text-lg leading-relaxed text-ink-600">
-        Every prepaid eSIM plan for {{ $country.name }} from every major provider, ranked by the same formulas — $/GB, $/day and fair-use fine print decoded.
+        {{ i18n "compare_single__hero_lead" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}
       </p>
       <div class="mt-6 flex flex-wrap gap-3">
         <div class="stat-tile"><span class="stat-num tnum">{{ $stats.providerCount }}</span><span class="stat-label">{{ i18n "g_providers" | safeHTML }}</span></div>
@@ -165,14 +179,14 @@
         {{ if lt $stats.minPerGB 999999.0 }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" $stats.minPerGB }}</span><span class="stat-label">{{ i18n "g_best_gb" | safeHTML }}</span></div>{{ end }}
       </div>
       <div class="mt-7">
-        {{ partial "cta-out.html" (dict "target" site.Params.outbound.active "slugMap" $country.slugs "label" (printf "View %s plans on Roami" $country.name) "class" "btn-primary" "campaign" $campaign "page" $.RelPermalink) }}
+        {{ partial "cta-out.html" (dict "target" site.Params.outbound.active "slugMap" $country.slugs "label" (printf (i18n "compare_single__view_s_plans_on_roami") $country.name) "class" "btn-primary" "campaign" $campaign "page" $.RelPermalink) }}
       </div>
     </div>
 
     {{ with $imgs }}
     <figure class="figure shadow-pop">
       <img src="{{ printf "/img/countries/%s" (index . 0) }}" alt="{{ $country.name }} travel eSIM data plans comparison illustration" width="2848" height="1470" loading="eager" fetchpriority="high">
-      <figcaption>{{ $country.name }} eSIM plans — {{ $stats.planCount }} options from {{ $stats.providerCount }} providers, updated {{ $stats.checkedDate | default "monthly" }}.</figcaption>
+      <figcaption>{{ i18n "compare_single__hero_figcaption" (dict "country" $country.name "plans" $stats.planCount "providers" $stats.providerCount "date" ($stats.checkedDate | default (i18n "compare_single__date_monthly"))) | safeHTML }}</figcaption>
     </figure>
     {{ end }}
   </header>
@@ -182,8 +196,8 @@
     {{ jsonify (dict "indent" "  ") (dict
       "@context" "https://schema.org"
       "@type" "Product"
-      "name" (printf "%s eSIM plans" $country.name)
-      "description" (printf "%d prepaid eSIM plans for %s from %d providers, ranked by $/GB and $/day with fair-use limits decoded." $stats.planCount $country.name $stats.providerCount)
+      "name" (printf (i18n "compare_single__s_esim_plans") $country.name)
+      "description" (printf (i18n "compare_single__d_prepaid_esim_plans_for_s_from_d_providers_rank") $stats.planCount $country.name $stats.providerCount)
       "category" "eSIM"
       "offers" (dict
         "@type" "AggregateOffer"
@@ -203,12 +217,12 @@
        与正文所见完全一致，不另造口径。 */}}
   {{ $itemList := slice }}
   {{ range $i, $r := first 10 $sorted }}
-    {{ $u := printf "%scompare/%s/%s/" $.Site.BaseURL $country.slug $r.key }}
+    {{ $u := printf "%scompare/%s/%s/" $.Site.Home.Permalink $country.slug $r.key }}
     {{ with site.GetPage (printf "/compare/%s/%s" $country.slug $r.key) }}{{ $u = .Permalink }}{{ end }}
     {{ $itemList = $itemList | append (dict
       "@type" "ListItem"
       "position" (add $i 1)
-      "name" (printf "%s %s" $r.provider $r.name)
+      "name" (printf "%s %s" $r.provider (partial "plan-name.html" (dict "name" $r.name "iso" $iso)))
       "url" $u
     ) }}
   {{ end }}
@@ -217,8 +231,8 @@
     {{ jsonify (dict "indent" "  ") (dict
       "@context" "https://schema.org"
       "@type" "ItemList"
-      "name" (printf "Best %s eSIM plans ranked by cost per GB" $country.name)
-      "description" (printf "The first 10 rows of our %s comparison table in default sort order - best cost per GB first, unlimited plans last. All %d tracked plans are listed on the page." $country.name $stats.planCount)
+      "name" (printf (i18n "compare_single__jsonld_itemlist_name") $country.name)
+      "description" (printf (i18n "compare_single__the_first_10_rows_of_our_s_comparison_table_in_d") $country.name $stats.planCount)
       "itemListOrder" "https://schema.org/ItemListOrderAscending"
       "numberOfItems" (len $sorted)
       "itemListElement" .
@@ -235,8 +249,8 @@
          原句式 `Which {country} eSIM is best for your trip?` 里的 `{country} eSIM is best`
          与真实搜索词序不符，等于把最热的三个词丢掉了。
          下一句刻意**不重复**同一串字面（H2 已承接），改为直接回答「取决于什么」。 */}}
-    <h2 id="verdict" class="mt-2 text-2xl font-bold md:text-3xl">What is the best eSIM for {{ $country.name }}?</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">It depends on how you travel and on how much data you actually use. Three picks computed from all {{ $stats.planCount }} plans we track — prices checked {{ $stats.checkedDate }}.</p>
+    <h2 id="verdict" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_single__verdict_h2" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_single__verdict_lead" (dict "plans" $stats.planCount "date" $stats.checkedDate) | safeHTML }}</p>
     <div class="mt-6 grid gap-4 md:grid-cols-3">
       <div class="card card-hover relative overflow-hidden p-6 pt-7">
         <span class="absolute inset-x-0 top-0 h-1.5 bg-emerald-400" aria-hidden="true"></span>
@@ -245,11 +259,11 @@
           {{ with index $d.providers $budget.key }}{{ partial "prov-logo.html" (dict "p" . "key" $budget.key) }}{{ end }}
           <span class="font-display text-lg font-bold">{{ $budget.provider }}</span>
         </div>
-        <p class="mt-2 text-sm text-ink-600">{{ $budget.name }} — <strong class="text-ink-950 tnum">${{ printf "%.2f" $budget.price }}</strong> <span class="text-ink-400 tnum">(${{ printf "%.2f" $budget.perDay }}/day)</span></p>
+        <p class="mt-2 text-sm text-ink-600">{{ partial "plan-name.html" (dict "name" $budget.name "iso" $iso) }} — <strong class="text-ink-950 tnum">${{ printf "%.2f" $budget.price }}</strong> <span class="text-ink-400 tnum">(${{ printf "%.2f" $budget.perDay }}/{{ i18n "g_day_word" }})</span></p>
         {{/* 站内转化：先看品牌×国家子页（套餐表+出口 CTA 都在那），不直接跳出站 */}}
         <div class="mt-4">
           {{ with site.GetPage (printf "/compare/%s/%s" $country.slug $budget.key) }}
-          <a href="{{ .RelPermalink }}" class="btn-primary">{{ printf "View %s plans in %s" $budget.provider $country.name }}</a>
+          <a href="{{ .RelPermalink }}" class="btn-primary">{{ i18n "compare_single__view_brand_plans_in" (dict "brand" $budget.provider "country" ($country.name_acc | default $country.name)) | safeHTML }}</a>
           {{ end }}
         </div>
       </div>
@@ -260,10 +274,10 @@
           {{ with index $d.providers $value.key }}{{ partial "prov-logo.html" (dict "p" . "key" $value.key) }}{{ end }}
           <span class="font-display text-lg font-bold">{{ $value.provider }}</span>
         </div>
-        <p class="mt-2 text-sm text-ink-600">{{ $value.name }} — <strong class="text-ink-950 tnum">${{ printf "%.2f" $value.price }}</strong> <span class="text-ink-400 tnum">(${{ printf "%.2f" $value.perGB }}/GB)</span></p>
+        <p class="mt-2 text-sm text-ink-600">{{ partial "plan-name.html" (dict "name" $value.name "iso" $iso) }} — <strong class="text-ink-950 tnum">${{ printf "%.2f" $value.price }}</strong> <span class="text-ink-400 tnum">(${{ printf "%.2f" $value.perGB }}/GB)</span></p>
         <div class="mt-4">
           {{ with site.GetPage (printf "/compare/%s/%s" $country.slug $value.key) }}
-          <a href="{{ .RelPermalink }}" class="btn-primary">{{ printf "View %s plans in %s" $value.provider $country.name }}</a>
+          <a href="{{ .RelPermalink }}" class="btn-primary">{{ i18n "compare_single__view_brand_plans_in" (dict "brand" $value.provider "country" ($country.name_acc | default $country.name)) | safeHTML }}</a>
           {{ end }}
         </div>
       </div>
@@ -274,10 +288,10 @@
           {{ with index $d.providers $longPick.key }}{{ partial "prov-logo.html" (dict "p" . "key" $longPick.key) }}{{ end }}
           <span class="font-display text-lg font-bold">{{ $longPick.provider }}</span>
         </div>
-        <p class="mt-2 text-sm text-ink-600">{{ $longPick.name }} — <strong class="text-ink-950 tnum">${{ printf "%.2f" $longPick.price }}</strong> <span class="text-ink-400 tnum">(${{ printf "%.2f" $longPick.perDay }}/day)</span></p>
+        <p class="mt-2 text-sm text-ink-600">{{ partial "plan-name.html" (dict "name" $longPick.name "iso" $iso) }} — <strong class="text-ink-950 tnum">${{ printf "%.2f" $longPick.price }}</strong> <span class="text-ink-400 tnum">(${{ printf "%.2f" $longPick.perDay }}/{{ i18n "g_day_word" }})</span></p>
         <div class="mt-4">
           {{ with site.GetPage (printf "/compare/%s/%s" $country.slug $longPick.key) }}
-          <a href="{{ .RelPermalink }}" class="btn-primary">{{ printf "View %s plans in %s" $longPick.provider $country.name }}</a>
+          <a href="{{ .RelPermalink }}" class="btn-primary">{{ i18n "compare_single__view_brand_plans_in" (dict "brand" $longPick.provider "country" ($country.name_acc | default $country.name)) | safeHTML }}</a>
           {{ end }}
         </div>
       </div>
@@ -289,7 +303,7 @@
     <div class="flex flex-wrap items-end justify-between gap-3">
       <div>
         <p class="eyebrow">{{ i18n "compare_single__the_full_database" | safeHTML }}</p>
-        <h2 id="table" class="mt-2 text-2xl font-bold md:text-3xl">All {{ $country.name }} eSIM plans compared</h2>
+        <h2 id="table" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_single__table_h2" (dict "country" $country.name) | safeHTML }}</h2>
       </div>
       <span class="text-xs text-ink-400">{{ i18n "compare_single__default_sort_best_gb_unlimited_plans_listed_last" | safeHTML }}</span>
     </div>
@@ -302,6 +316,20 @@
         <button type="button" class="chip chip-active" data-days="0">{{ i18n "compare_single__any" | safeHTML }}</button>
         {{ range $dayOpts }}<button type="button" class="chip" data-days="{{ . }}">{{ i18n "compare_single__n_days" (dict "n" .) | safeHTML }}</button>{{ end }}
       </div>
+    </div>
+    {{/* 数据量过滤 —— 与上面「Reisedauer」的语义**故意不同**：天数是覆盖型需求
+         （去 3 天，30 天套餐也满足）→ 用 `≥`；数据量是预算型需求（要 3 GB 的人
+         不该看到 100 GB）→ 必须用**区间**。档位只渲染本页有货的桶（见 $szCnt）。 */}}
+    <div class="mt-3 flex flex-wrap items-center gap-1.5" role="group" aria-label="{{ i18n "compare_single__filter_by_size" | safeHTML }}">
+      <span class="text-xs font-semibold text-ink-500">{{ i18n "compare_single__data_volume" | safeHTML }}</span>
+      <button type="button" class="chip chip-active" data-sz="any">{{ i18n "compare_single__size_any" | safeHTML }}</button>
+      {{ if gt (index $szCnt "0-1") 0 }}<button type="button" class="chip" data-sz="0-1">{{ i18n "compare_single__size_up_to" (dict "n" 1) | safeHTML }}</button>{{ end }}
+      {{ if gt (index $szCnt "1-3") 0 }}<button type="button" class="chip" data-sz="1-3">{{ i18n "compare_single__size_range" (dict "lo" 1 "hi" 3) | safeHTML }}</button>{{ end }}
+      {{ if gt (index $szCnt "3-5") 0 }}<button type="button" class="chip" data-sz="3-5">{{ i18n "compare_single__size_range" (dict "lo" 3 "hi" 5) | safeHTML }}</button>{{ end }}
+      {{ if gt (index $szCnt "5-10") 0 }}<button type="button" class="chip" data-sz="5-10">{{ i18n "compare_single__size_range" (dict "lo" 5 "hi" 10) | safeHTML }}</button>{{ end }}
+      {{ if gt (index $szCnt "10-20") 0 }}<button type="button" class="chip" data-sz="10-20">{{ i18n "compare_single__size_range" (dict "lo" 10 "hi" 20) | safeHTML }}</button>{{ end }}
+      {{ if gt (index $szCnt "20p") 0 }}<button type="button" class="chip" data-sz="20p">{{ i18n "compare_single__size_plus" (dict "n" 20) | safeHTML }}</button>{{ end }}
+      {{ if gt (index $szCnt "u") 0 }}<button type="button" class="chip" data-sz="u">{{ i18n "g_unlimited" | safeHTML }}</button>{{ end }}
     </div>
     {{/* 品牌多选 + 无限流量开关（与上面同一套 data-* 过滤管线） */}}
     <div class="mt-3 flex flex-wrap items-center gap-1.5" role="group" aria-label="{{ i18n "compare_single__filter_by_provider" | safeHTML }}">
@@ -350,14 +378,14 @@
                 </span>
               </span>
             </td>
-            <td class="text-ink-700">{{ .name }}</td>
+            <td class="text-ink-700">{{ partial "plan-name.html" (dict "name" .name "iso" $iso) }}</td>
             <td>{{ if le .gb 0.0 }}<strong class="text-brand-700">{{ i18n "g_unlimited" | safeHTML }}</strong>{{ else }}<span class="font-semibold text-ink-950 tnum">{{ partial "plan-data-label.html" .gb }}</span>{{ end }}</td>
-            <td class="text-ink-600 tnum">{{ .days }} days</td>
+            <td class="text-ink-600 tnum">{{ .days }} {{ i18n "g_days" | safeHTML }}</td>
             <td class="font-bold text-ink-950 tnum">${{ printf "%.2f" .price }}</td>
             <td class="text-ink-500 tnum">${{ printf "%.2f" .perDay }}</td>
             <td class="text-ink-500 tnum">{{ if gt .gb 0 }}${{ printf "%.2f" .perGB }}{{ else }}—{{ end }}</td>
             <td class="text-xs text-ink-400">{{ with .networks }}{{ . }}{{ else }}—{{ end }}</td>
-            <td class="text-right">{{ partial "cta-out.html" (dict "target" .key "slugMap" $country.slugs "label" "View plan" "campaign" $campaign "page" $.RelPermalink) }}</td>
+            <td class="text-right">{{ partial "cta-out.html" (dict "target" .key "slugMap" $country.slugs "label" (i18n "compare_single__view_plan_cta") "campaign" $campaign "page" $.RelPermalink) }}</td>
           </tr>
           {{ end }}
         </tbody>
@@ -378,18 +406,31 @@
         var chips = Array.prototype.slice.call(document.querySelectorAll('.chip[data-days]'));
         var provChips = Array.prototype.slice.call(document.querySelectorAll('.chip[data-prov]'));
         var unlimChip = document.querySelector('.chip[data-unlim]');
+        var sizeChips = Array.prototype.slice.call(document.querySelectorAll('.chip[data-sz]'));
         var count = document.getElementById('plan-filter-count');
         var minDays = 0;
+        var sizeTok = 'any';
         var unlimOnly = false;
         var provsOff = {}; // active set = every provider NOT in this map; empty map = all on
         function activeProv(k) { return !provsOff[k]; }
         function anyProvOff() { return Object.keys(provsOff).length > 0; }
+        /* 数据量区间匹配（与上面的天数 `≥` **故意不同**）：`any` 全过 / `u` = 无限
+           （gb 哨兵 0）/ `20p` = 上不封顶 / 其余 `lo-hi` 是**左开右闭**区间 ——
+           0.4883 GB 的 500MB 档落进 0-1，正是我们要的。 */
+        function szMatch(gb, tok) {
+          if (tok === 'any') return true;
+          if (tok === 'u') return gb === 0;
+          if (tok === '20p') return gb > 20;
+          var b = tok.split('-');
+          return gb > parseFloat(b[0]) && gb <= parseFloat(b[1]);
+        }
         function apply() {
           /* 固定按服务端顺序重排：$/GB 升序、无限档最后。
              dataset 键名要当心 —— data-pergb 对应 dataset.pergb（全小写），
              写成 dataset.perGB 会取到 undefined，排序静默失效。 */
           var visible = rows.filter(function (r) {
             if (parseInt(r.dataset.days, 10) < minDays) return false;
+            if (!szMatch(parseFloat(r.dataset.gb), sizeTok)) return false;
             if (unlimOnly && parseFloat(r.dataset.gb) !== 0) return false;
             if (anyProvOff() && !activeProv(r.dataset.prov)) return false;
             return true;
@@ -435,6 +476,14 @@
           unlimChip.classList.toggle('chip-active', unlimOnly);
           apply();
         });
+        sizeChips.forEach(function (c) {
+          c.addEventListener('click', function () {
+            sizeChips.forEach(function (x) { x.classList.remove('chip-active'); });
+            c.classList.add('chip-active');
+            sizeTok = c.dataset.sz;
+            apply();
+          });
+        });
         apply();
       })();
     </script>
@@ -444,7 +493,7 @@
   {{ with .Content }}
   <section class="mt-14" aria-labelledby="analysis">
     <p class="eyebrow">{{ i18n "compare_single__what_the_numbers_mean" | safeHTML }}</p>
-    <h2 id="analysis" class="mt-2 text-2xl font-bold md:text-3xl">What {{ $country.name }} eSIM prices reveal</h2>
+    <h2 id="analysis" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_single__analysis_h2" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</h2>
     <div class="prose mt-5 max-w-none">{{ . }}</div>
   </section>
   {{ end }}
@@ -453,7 +502,7 @@
   {{ with $unlimited }}
   <section class="mt-14" aria-labelledby="fup">
     <p class="eyebrow">{{ i18n "g_fine_print_decoded" | safeHTML }}</p>
-    <h2 id="fup" class="mt-2 text-2xl font-bold md:text-3xl">Is unlimited eSIM data really unlimited in {{ $country.name }}?</h2>
+    <h2 id="fup" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_single__fup_h2" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</h2>
     <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_single__every_unlimited_plan_on_this_page_with_its_fair_use_poli" | safeHTML }}</p>
     <div class="card mt-5 overflow-x-auto">
       <table class="table-pro min-w-[720px]">
@@ -476,10 +525,10 @@
                 <span class="font-semibold text-ink-950">{{ .provider }}</span>
               </span>
             </td>
-            <td class="text-ink-700">{{ .name }}</td>
+            <td class="text-ink-700">{{ partial "plan-name.html" (dict "name" .name "iso" $iso) }}</td>
             <td class="font-bold text-ink-950 tnum">${{ printf "%.2f" .price }}</td>
             <td class="text-ink-500 tnum">${{ printf "%.2f" .perDay }}</td>
-            <td class="text-xs leading-relaxed text-ink-500">{{ .fup | default "No fair-use policy published — treat speed claims with caution" }}</td>
+            <td class="text-xs leading-relaxed text-ink-500">{{ if .fup }}{{ partial "de-text.html" .fup }}{{ else }}{{ i18n "compare_provider__no_fup_published" }}{{ end }}</td>
           </tr>
           {{ end }}
         </tbody>
@@ -493,20 +542,20 @@
   {{ $rows10 := sort (where $rows "gb" ">=" 10) "price" "asc" }}
   <section class="mt-14" aria-labelledby="choose">
     <p class="eyebrow">{{ i18n "compare_single__decision_guide" | safeHTML }}</p>
-    <h2 id="choose" class="mt-2 text-2xl font-bold md:text-3xl">How to choose your {{ $country.name }} eSIM</h2>
+    <h2 id="choose" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_single__choose_h2" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 lg:grid-cols-2">
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-ink-950">How much eSIM data do you need in {{ $country.name }}?</h3>
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "compare_single__choose_h3_data" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</h3>
         <ul class="mt-4 space-y-3 text-sm text-ink-700">
-          <li class="flex gap-3"><span class="badge bg-ink-50 text-ink-600 shrink-0">1GB</span><span>Maps, messaging and email for a city break — {{ $budget.name }} starts at <strong class="text-ink-950 tnum">${{ printf "%.2f" $budget.price }}</strong>.</span></li>
-          {{ with $rows5 }}{{ with index . 0 }}<li class="flex gap-3"><span class="badge bg-ink-50 text-ink-600 shrink-0">5GB</span><span>{{ i18n "compare_single__a_normal_week_of_maps_mail_and_social_cheapest_5gb_bucke" | safeHTML }} <strong class="text-ink-950">{{ .name }}</strong> {{ i18n "g_at" | safeHTML }} <strong class="text-ink-950 tnum">${{ printf "%.2f" .price }}</strong>.</span></li>{{ end }}{{ end }}
-          {{ with $rows10 }}{{ with index . 0 }}<li class="flex gap-3"><span class="badge bg-ink-50 text-ink-600 shrink-0">10GB+</span><span>{{ i18n "compare_single__streaming_hotspot_sharing_or_a_working_trip_cheapest_10g" | safeHTML }} <strong class="text-ink-950">{{ .name }}</strong> {{ i18n "g_at" | safeHTML }} <strong class="text-ink-950 tnum">${{ printf "%.2f" .price }}</strong>.</span></li>{{ end }}{{ end }}
-          {{ if gt $stats.unlimitedCount 0 }}<li class="flex gap-3"><span class="badge bg-brand-50 text-brand-700 shrink-0">∞</span><span>Don't want to count? {{ $stats.unlimitedCount }} unlimited plans cover {{ $country.name }} — read the fair-use caps above before picking one.</span></li>{{ end }}
+          <li class="flex gap-3"><span class="badge bg-ink-50 text-ink-600 shrink-0">1GB</span><span>{{ i18n "compare_single__city_break_1gb" | safeHTML }} {{ partial "plan-name.html" (dict "name" $budget.name "iso" $iso) }} {{ i18n "g_starts_at" | safeHTML }} <strong class="text-ink-950 tnum">${{ printf "%.2f" $budget.price }}</strong>.</span></li>
+          {{ with $rows5 }}{{ with index . 0 }}<li class="flex gap-3"><span class="badge bg-ink-50 text-ink-600 shrink-0">5GB</span><span>{{ i18n "compare_single__a_normal_week_of_maps_mail_and_social_cheapest_5gb_bucke" | safeHTML }} <strong class="text-ink-950">{{ partial "plan-name.html" (dict "name" .name "iso" $iso) }}</strong> {{ i18n "g_at" | safeHTML }} <strong class="text-ink-950 tnum">${{ printf "%.2f" .price }}</strong>.</span></li>{{ end }}{{ end }}
+          {{ with $rows10 }}{{ with index . 0 }}<li class="flex gap-3"><span class="badge bg-ink-50 text-ink-600 shrink-0">10GB+</span><span>{{ i18n "compare_single__streaming_hotspot_sharing_or_a_working_trip_cheapest_10g" | safeHTML }} <strong class="text-ink-950">{{ partial "plan-name.html" (dict "name" .name "iso" $iso) }}</strong> {{ i18n "g_at" | safeHTML }} <strong class="text-ink-950 tnum">${{ printf "%.2f" .price }}</strong>.</span></li>{{ end }}{{ end }}
+          {{ if gt $stats.unlimitedCount 0 }}<li class="flex gap-3"><span class="badge bg-brand-50 text-brand-700 shrink-0">∞</span><span>{{ i18n "compare_single__dont_want_to_count" | safeHTML }} {{ $stats.unlimitedCount }} {{ i18n "compare_single__unlimited_plans_cover" | safeHTML }} {{ $country.name }} {{ i18n "compare_single__fup_reminder" | safeHTML }}</span></li>{{ end }}
         </ul>
         <p class="mt-4 text-xs text-ink-400">{{ i18n "compare_single__want_exact_numbers_for_your_trip_try_the" | safeHTML }} <a href="{{ partial "lang-href.html" "/tools/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_trip_cost_calculator" | safeHTML }}</a>.</p>
       </div>
       <div class="card p-6">
-        <h3 class="font-display text-base font-bold text-ink-950">How to install your {{ $country.name }} eSIM</h3>
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "compare_single__choose_h3_install" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</h3>
         {{/* 三步安装说明原样重复 50 遍、且与 /guides/how-to-install-esim/ 是同一份内容：
              这里只留一句过渡 + 指向 guide 的 CTA，正文归到单一 URL，避免跨页内容重复。 */}}
         <p class="mt-4 text-sm leading-relaxed text-ink-700">{{ i18n "compare_single__install_oneshot" (dict "country" $country.name) | safeHTML }}</p>
@@ -540,19 +589,19 @@
   {{ $pRemote := dict }}{{ if gt (len $cRemote) 0 }}{{ $pRemote = index $cRemote 0 }}{{ else }}{{ $pRemote = $pMonth }}{{ end }}
 
   {{ $tiers := slice
-      (dict "label" "3–5 days" "hint" "long weekend or city break" "pick" $pShort "why" "cheapest plan with at least 3GB and 5-day validity")
-      (dict "label" "7–10 days" "hint" "the classic one-week trip" "pick" $pWeek "why" "cheapest 5GB+ bucket with validity ≥ 10 days")
-      (dict "label" "Two weeks" "hint" "longer tours and multi-city" "pick" $pTwoW "why" "cheapest 10GB+ bucket valid ≥ 15 days")
-      (dict "label" "30 days +" "hint" "long stays and slow travel" "pick" $pMonth "why" "best $/GB among 20GB+ plans valid ≥ 30 days") }}
+      (dict "label" (i18n "compare_single__tier_short_label") "hint" (i18n "compare_single__tier_short_hint") "pick" $pShort "why" (i18n "compare_single__tier_short_why"))
+      (dict "label" (i18n "compare_single__tier_week_label") "hint" (i18n "compare_single__tier_week_hint") "pick" $pWeek "why" (i18n "compare_single__tier_week_why"))
+      (dict "label" (i18n "compare_single__tier_two_weeks_label") "hint" (i18n "compare_single__tier_two_weeks_hint") "pick" $pTwoW "why" (i18n "compare_single__tier_two_weeks_why"))
+      (dict "label" (i18n "compare_single__tier_month_label") "hint" (i18n "compare_single__tier_month_hint") "pick" $pMonth "why" (i18n "compare_single__tier_month_why")) }}
   {{ $personas := slice
-      (dict "label" "Light user" "hint" "maps, messaging, email" "pick" $pLight "why" "lowest-price small bucket (1–5GB)")
-      (dict "label" "Standard tourist" "hint" "navigation plus social and browsing" "pick" $pStd "why" "best $/GB in the 5GB+ class")
-      (dict "label" "Streamer & hotspot" "hint" "video, tethering, multiple devices" "pick" $pHeavy "why" "lowest cost per day without a GB counter" )
-      (dict "label" "Remote worker" "hint" "calls, cloud work, weeks on the road" "pick" $pRemote "why" "best $/GB among 30-day+ plans with 10GB or more") }}
+      (dict "label" (i18n "compare_single__persona_light_label") "hint" (i18n "compare_single__persona_light_hint") "pick" $pLight "why" (i18n "compare_single__persona_light_why"))
+      (dict "label" (i18n "compare_single__persona_std_label") "hint" (i18n "compare_single__persona_std_hint") "pick" $pStd "why" (i18n "compare_single__persona_std_why"))
+      (dict "label" (i18n "compare_single__persona_streamer_label") "hint" (i18n "compare_single__persona_streamer_hint") "pick" $pHeavy "why" (i18n "compare_single__persona_streamer_why") )
+      (dict "label" (i18n "compare_single__persona_remote_label") "hint" (i18n "compare_single__persona_remote_hint") "pick" $pRemote "why" (i18n "compare_single__persona_remote_why")) }}
 
   <section class="mt-14" aria-labelledby="bytrip">
     <p class="eyebrow">{{ i18n "compare_single__matching_plans_to_your_trip" | safeHTML }}</p>
-    <h2 id="bytrip" class="mt-2 text-2xl font-bold md:text-3xl">{{ $country.name }} eSIM plans by trip length</h2>
+    <h2 id="bytrip" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_single__bytrip_h2" (dict "country" $country.name) | safeHTML }}</h2>
     <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_single__the_same_database_sliced_by_how_long_you_stay_and_how_yo" | safeHTML }}</p>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {{ range $t := $tiers }}
@@ -560,28 +609,28 @@
       <div class="card card-hover flex flex-col p-5">
         <p class="text-[11px] font-bold uppercase tracking-wider text-brand-600">{{ $t.label }}</p>
         <p class="mt-0.5 text-xs text-ink-400">{{ $t.hint }}</p>
-        <p class="mt-3 font-display text-sm font-bold leading-snug text-ink-950">{{ .name }}</p>
-        <p class="mt-0.5 text-xs text-ink-500">{{ .provider }} · {{ partial "plan-data-label.html" .gb }} / {{ .days }} days</p>
+        <p class="mt-3 font-display text-sm font-bold leading-snug text-ink-950">{{ partial "plan-name.html" (dict "name" .name "iso" $iso) }}</p>
+        <p class="mt-0.5 text-xs text-ink-500">{{ .provider }} · {{ partial "plan-data-label.html" .gb }} / {{ .days }} {{ i18n "g_days" | safeHTML }}</p>
         <p class="mt-2 font-display text-lg font-bold text-accent-600 tnum">${{ printf "%.2f" .price }}</p>
         <p class="mt-2 flex-1 text-xs leading-relaxed text-ink-400">{{ $t.why }}.</p>
-        <a href="{{ printf "/compare/%s/%s/" $country.slug .key }}" class="mt-3 text-xs font-semibold text-brand-700 hover:underline">See the {{ .provider }} plan →</a>
+        <a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" $country.slug .key) }}" class="mt-3 text-xs font-semibold text-brand-700 hover:underline">{{ i18n "compare_single__see_the_plan" (dict "provider" .provider) | safeHTML }}</a>
       </div>
       {{ end }}
       {{ end }}
     </div>
 
-    <h3 class="mt-10 font-display text-xl font-bold text-ink-950">Best {{ $country.name }} eSIM by traveller type</h3>
+    <h3 class="mt-10 font-display text-xl font-bold text-ink-950">{{ i18n "compare_single__bytrip_h3_personas" (dict "country" $country.name) | safeHTML }}</h3>
     <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {{ range $t := $personas }}
       {{ with $t.pick }}
       <div class="card card-hover flex flex-col p-5">
         <p class="text-[11px] font-bold uppercase tracking-wider text-brand-600">{{ $t.label }}</p>
         <p class="mt-0.5 text-xs text-ink-400">{{ $t.hint }}</p>
-        <p class="mt-3 font-display text-sm font-bold leading-snug text-ink-950">{{ .name }}</p>
-        <p class="mt-0.5 text-xs text-ink-500">{{ .provider }} · {{ partial "plan-data-label.html" .gb }} / {{ .days }} days</p>
+        <p class="mt-3 font-display text-sm font-bold leading-snug text-ink-950">{{ partial "plan-name.html" (dict "name" .name "iso" $iso) }}</p>
+        <p class="mt-0.5 text-xs text-ink-500">{{ .provider }} · {{ partial "plan-data-label.html" .gb }} / {{ .days }} {{ i18n "g_days" | safeHTML }}</p>
         <p class="mt-2 font-display text-lg font-bold text-accent-600 tnum">${{ printf "%.2f" .price }}</p>
         <p class="mt-2 flex-1 text-xs leading-relaxed text-ink-400">{{ $t.why }}.</p>
-        <a href="{{ printf "/compare/%s/%s/" $country.slug .key }}" class="mt-3 text-xs font-semibold text-brand-700 hover:underline">See the {{ .provider }} plan →</a>
+        <a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" $country.slug .key) }}" class="mt-3 text-xs font-semibold text-brand-700 hover:underline">{{ i18n "compare_single__see_the_plan" (dict "provider" .provider) | safeHTML }}</a>
       </div>
       {{ end }}
       {{ end }}
@@ -594,7 +643,7 @@
        各自的 /esim-providers/<key>/ 已经写了一份，链接就在卡片底部。 ── */}}
   <section class="mt-14" aria-labelledby="providers">
     <p class="eyebrow">{{ i18n "compare_single__the_lineup" | safeHTML }}</p>
-    <h2 id="providers" class="mt-2 text-2xl font-bold md:text-3xl">Which eSIM providers cover {{ $country.name }}</h2>
+    <h2 id="providers" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_single__providers_h2" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</h2>
     <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_single__prov_lead" (dict "n" (len $stats.providers) "country" $country.name) | safeHTML }}</p>
     <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {{ range $stats.providers }}
@@ -624,15 +673,15 @@
         <div class="card card-hover scroll-mt-24 p-6" id="{{ $pk }}">
           <div class="flex items-center justify-between gap-3">
             <div class="flex items-center gap-3">
-              <a href="{{ printf "/esim-providers/%s/" $pk }}" class="shrink-0 transition-opacity hover:opacity-80" aria-label="{{ $p.name }} review">
+              <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $pk) }}" class="shrink-0 transition-opacity hover:opacity-80" aria-label="{{ i18n "compare_single__provider_review_aria" (dict "brand" $p.name) | safeHTML }}">
                 {{ partial "prov-logo.html" (dict "p" $p "key" $pk) }}
               </a>
               <div>
-                <h3 class="font-display text-base font-bold"><a href="{{ printf "/esim-providers/%s/" $pk }}" class="text-ink-950 transition-colors hover:text-brand-700 hover:underline">{{ $p.name }}</a></h3>
-                <p class="text-xs text-ink-400">since {{ $p.founded }}</p>
+                <h3 class="font-display text-base font-bold"><a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $pk) }}" class="text-ink-950 transition-colors hover:text-brand-700 hover:underline">{{ $p.name }}</a></h3>
+                <p class="text-xs text-ink-400">{{ i18n "g_since" | safeHTML }} {{ $p.founded }}</p>
               </div>
             </div>
-            {{ if gt $min 0.0 }}<span class="badge bg-ink-50 text-ink-600 tnum">from ${{ printf "%.2f" $min }}</span>{{ end }}
+            {{ if gt $min 0.0 }}<span class="badge bg-ink-50 text-ink-600 tnum">{{ i18n "g_from_price" | safeHTML }}{{ printf "%.2f" $min }}</span>{{ end }}
           </div>
           <dl class="mt-4 border-t border-ink-100 text-sm">
             <div class="flex items-baseline justify-between gap-3 border-b border-ink-50 py-2">
@@ -667,16 +716,16 @@
           </dl>
           {{ with $tag }}<p class="mt-3 rounded-xl bg-brand-50/70 px-3 py-2 text-xs font-semibold leading-relaxed text-brand-800">{{ . }}</p>{{ end }}
           {{ with $p.promo_code }}
-            <p class="mt-3 text-xs text-ink-500">{{ i18n "g_promo_code" | safeHTML }} <code class="rounded bg-brand-50 px-1.5 py-0.5 font-mono font-bold text-brand-700">{{ . }}</code> — {{ $p.promo_label }} · <a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "compare_single__all_deals" | safeHTML }}</a></p>
+            <p class="mt-3 text-xs text-ink-500">{{ i18n "g_promo_code" | safeHTML }} <code class="rounded bg-brand-50 px-1.5 py-0.5 font-mono font-bold text-brand-700">{{ . }}</code> — {{ partial "de-text.html" $p.promo_label }} · <a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "compare_single__all_deals" | safeHTML }}</a></p>
           {{ end }}
           <div class="mt-4 flex flex-wrap items-center gap-3">
             {{ with site.GetPage (printf "/compare/%s/%s" $country.slug $pk) }}
               <a href="{{ .RelPermalink }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:underline">
-                All {{ $p.name }} plans in {{ $country.name }} <span aria-hidden="true">→</span>
+                {{ i18n "compare_single__all_brand_plans_in" (dict "brand" $p.name "country" ($country.name_dat | default $country.name)) | safeHTML }} <span aria-hidden="true">→</span>
               </a>
             {{ end }}
-            <a href="{{ printf "/esim-providers/%s/" $pk }}" class="inline-flex items-center gap-1 text-xs font-semibold text-ink-400 hover:text-brand-700">
-              {{ $p.name }} review <span aria-hidden="true">→</span>
+            <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $pk) }}" class="inline-flex items-center gap-1 text-xs font-semibold text-ink-400 hover:text-brand-700">
+              {{ i18n "compare_single__provider_review" (dict "brand" $p.name) | safeHTML }} <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
@@ -690,12 +739,12 @@
     <div class="grid items-start gap-8 lg:grid-cols-[1.4fr_1fr]">
       <div class="card p-7">
         <p class="eyebrow">{{ i18n "g_before_you_buy" | safeHTML }}</p>
-        <h2 id="quirks" class="mt-2 text-2xl font-bold">Things to know before buying an eSIM for {{ $country.name }}</h2>
+        <h2 id="quirks" class="mt-2 text-2xl font-bold">{{ i18n "compare_single__quirks_h2" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</h2>
         <ol class="mt-5 space-y-4">
           {{ range . }}
           <li class="flex gap-3.5 text-ink-700">
             <img src="{{ $country.flag | relURL }}" alt="" class="mt-1 h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy">
-            <span class="leading-relaxed">{{ . }}</span>
+            <span class="leading-relaxed">{{ partial "de-text.html" . }}</span>
           </li>
           {{ end }}
         </ol>
@@ -713,7 +762,7 @@
       {{ if gt (len $imgs) 1 }}
       <figure class="figure lg:sticky lg:top-24">
         <img src="{{ printf "/img/countries/%s" (index $imgs 1) }}" alt="{{ $country.name }} eSIM activation and coverage tips illustration" width="2848" height="1470" loading="lazy">
-        <figcaption>Buying an eSIM for {{ $country.name }}: networks, ID rules and quirks.</figcaption>
+        <figcaption>{{ i18n "compare_single__quirks_figcaption" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</figcaption>
       </figure>
       {{ end }}
     </div>
@@ -726,8 +775,8 @@
   {{ if or (gt (len $netKeys) 0) (gt (len $profiles) 0) }}
   <section class="mt-14" aria-labelledby="networks">
     <p class="eyebrow">{{ i18n "g_networks" | safeHTML }}</p>
-    <h2 id="networks" class="mt-2 text-2xl font-bold md:text-3xl">Which networks do {{ $country.name }} eSIMs run on</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_single__every_esim_connects_to_a_local_carrier_network_coverage_" | safeHTML }} <a href="{{ partial "lang-href.html" "/networks/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_network_map" | safeHTML }}</a>{{ with site.GetPage (printf "/networks/%s" $country.slug) }}, and this destination has its own <a href="{{ .RelPermalink }}" class="font-semibold text-brand-700 hover:underline">{{ $country.name }} carrier breakdown</a>{{ end }}.</p>
+    <h2 id="networks" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_single__networks_h2" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_single__every_esim_connects_to_a_local_carrier_network_coverage_" | safeHTML }} <a href="{{ partial "lang-href.html" "/networks/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_network_map" | safeHTML }}</a>{{ with site.GetPage (printf "/networks/%s" $country.slug) }}{{ i18n "compare_single__and_its_own" | safeHTML }} <a href="{{ .RelPermalink }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "compare_single__carrier_breakdown" (dict "country" ($country.name_dat | default $country.name)) | safeHTML }}</a>{{ end }}.</p>
     <div class="mt-6 grid items-start gap-6 lg:grid-cols-[1.5fr_1fr]">
       <div class="grid gap-3 sm:grid-cols-2">
         {{ if gt (len $netKeys) 0 }}
@@ -742,9 +791,9 @@
           <p class="mt-1.5 text-xs leading-relaxed text-ink-500">{{ i18n "g_plans_from" | safeHTML }} <strong class="text-ink-700">{{ delimit (sort (index $netMap .)) ", " }}</strong> {{ i18n "compare_single__connect_to_this_network" | safeHTML }}</p>
           {{ with $prof }}
           {{/* "Good for" 由 speed_min 推导（25=4K 档，10=HD 档，5=基础档），单一事实源 */}}
-          {{ $gf := "email · messaging · maps" }}
-          {{ if ge .speed_min 25 }}{{ $gf = "4K streaming · video calls · hotspot work" }}{{ else if ge .speed_min 10 }}{{ $gf = "HD streaming · video calls · navigation" }}{{ else if ge .speed_min 5 }}{{ $gf = "HD streaming · music · maps" }}{{ end }}
-          <p class="mt-2 text-xs font-semibold text-ink-700">Typical {{ .speed_min }}–{{ .speed_top }} Mbps <span class="font-normal text-ink-500">— enough for {{ $gf }}</span></p>
+          {{ $gf := i18n "compare_single__gf_basic" }}
+          {{ if ge .speed_min 25 }}{{ $gf = i18n "compare_single__gf_4k" }}{{ else if ge .speed_min 10 }}{{ $gf = i18n "compare_single__gf_hd_nav" }}{{ else if ge .speed_min 5 }}{{ $gf = i18n "compare_single__gf_hd_music" }}{{ end }}
+          <p class="mt-2 text-xs font-semibold text-ink-700">{{ i18n "compare_single__typical_speed" (dict "min" .speed_min "max" .speed_top) | safeHTML }} <span class="font-normal text-ink-500">{{ i18n "compare_single__enough_for" | safeHTML }} {{ $gf }}</span></p>
           <p class="mt-2 border-t border-ink-100 pt-2 text-xs leading-relaxed text-ink-400">{{ .note }}</p>
           {{ with $det.strong }}<p class="mt-1.5 text-xs leading-relaxed text-ink-600"><strong class="text-brand-700">{{ i18n "g_where_it_wins" | safeHTML }}</strong> {{ . }}</p>{{ end }}
           {{ with $det.weak }}<p class="mt-1 text-xs leading-relaxed text-ink-500"><strong class="text-accent-700">{{ i18n "g_where_it_lags" | safeHTML }}</strong> {{ . }}</p>{{ end }}
@@ -763,9 +812,9 @@
             {{ with $prof }}<span class="badge bg-brand-50 text-brand-700">{{ .tech }}</span>{{ end }}
           </div>
           {{ with $prof }}
-          {{ $gf := "email · messaging · maps" }}
-          {{ if ge .speed_min 25 }}{{ $gf = "4K streaming · video calls · hotspot work" }}{{ else if ge .speed_min 10 }}{{ $gf = "HD streaming · video calls · navigation" }}{{ else if ge .speed_min 5 }}{{ $gf = "HD streaming · music · maps" }}{{ end }}
-          <p class="mt-2 text-xs font-semibold text-ink-700">Typical {{ .speed_min }}–{{ .speed_top }} Mbps <span class="font-normal text-ink-500">— enough for {{ $gf }}</span></p>
+          {{ $gf := i18n "compare_single__gf_basic" }}
+          {{ if ge .speed_min 25 }}{{ $gf = i18n "compare_single__gf_4k" }}{{ else if ge .speed_min 10 }}{{ $gf = i18n "compare_single__gf_hd_nav" }}{{ else if ge .speed_min 5 }}{{ $gf = i18n "compare_single__gf_hd_music" }}{{ end }}
+          <p class="mt-2 text-xs font-semibold text-ink-700">{{ i18n "compare_single__typical_speed" (dict "min" .speed_min "max" .speed_top) | safeHTML }} <span class="font-normal text-ink-500">{{ i18n "compare_single__enough_for" | safeHTML }} {{ $gf }}</span></p>
           <p class="mt-2 border-t border-ink-100 pt-2 text-xs leading-relaxed text-ink-400">{{ .note }}</p>
           {{ with $det.strong }}<p class="mt-1.5 text-xs leading-relaxed text-ink-600"><strong class="text-brand-700">{{ i18n "g_where_it_wins" | safeHTML }}</strong> {{ . }}</p>{{ end }}
           {{ with $det.weak }}<p class="mt-1 text-xs leading-relaxed text-ink-500"><strong class="text-accent-700">{{ i18n "g_where_it_lags" | safeHTML }}</strong> {{ . }}</p>{{ end }}
@@ -779,7 +828,7 @@
       </div>
       {{ with $country.carriers }}
       <div class="card p-5">
-        <h3 class="font-display text-base font-bold text-ink-950">{{ $country.name }}'s local carrier market</h3>
+        <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "compare_single__carrier_market_h3" (dict "country" ($country.name_dat | default $country.name)) | safeHTML }}</h3>
         <ul class="mt-4 space-y-2.5">
           {{ range . }}
           <li class="flex items-center justify-between gap-2 text-sm">
@@ -789,7 +838,7 @@
           {{ end }}
         </ul>
         {{ if gt (len $netKeys) 0 }}
-        <p class="mt-4 text-xs leading-relaxed text-ink-400">Matched against the {{ $stats.planCount }} plans in the table above. Prefer plans on the carrier with the best coverage where you're going.</p>
+        <p class="mt-4 text-xs leading-relaxed text-ink-400">{{ i18n "compare_single__matched_against" (dict "n" $stats.planCount) | safeHTML }}</p>
         {{ else }}
         <p class="mt-4 text-xs leading-relaxed text-ink-400">{{ i18n "compare_single__we_re_mapping_which_esim_brands_ride_which_of_these_netw" | safeHTML }}</p>
         {{ end }}
@@ -799,7 +848,7 @@
     {{/* 主要城市覆盖条：全国性运营商在主要城市均达标，差异出现在城市之外 —— 城市名兼收长尾查询 */}}
     {{ with $carrierInfo.cities }}
     <div class="card mt-4 p-5">
-      <h3 class="font-display text-base font-bold text-ink-950">Which national networks cover {{ $country.name }}'s major cities</h3>
+      <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "compare_single__cities_h3" (dict "country" ($country.name_dat | default $country.name)) | safeHTML }}</h3>
       <div class="mt-3 flex flex-wrap gap-1.5">
         {{ range . }}<span class="badge bg-ink-50 text-ink-600">{{ . }}</span>{{ end }}
       </div>
@@ -856,8 +905,8 @@
             <p class="mt-2.5 text-xs leading-relaxed text-ink-400">{{ i18n "compare_single__trips_on_network" (dict "n" (len $names) "total" $stats.providerCount "carrier" $t.carrier) | safeHTML }}</p>
           {{ end }}
           {{ if gt (len $pick) 0 }}
-          <p class="mt-1.5 text-xs font-semibold text-ink-800">{{ i18n "compare_single__trips_fit" | safeHTML }} <span class="text-brand-700">${{ printf "%.2f" $pick.price }}</span> <span class="font-normal text-ink-500">· {{ $pick.provider }} {{ $pick.name }}</span></p>
-          <a href="{{ printf "/compare/%s/%s/" $country.slug $pick.key }}" class="mt-1.5 inline-block text-xs font-semibold text-brand-700 hover:underline">{{ i18n "compare_single__see_provider_plan" (dict "provider" $pick.provider) | safeHTML }}</a>
+          <p class="mt-1.5 text-xs font-semibold text-ink-800">{{ i18n "compare_single__trips_fit" | safeHTML }} <span class="text-brand-700">${{ printf "%.2f" $pick.price }}</span> <span class="font-normal text-ink-500">· {{ $pick.provider }} {{ partial "plan-name.html" (dict "name" $pick.name "iso" $iso) }}</span></p>
+          <a href="{{ partial "lang-href.html" (printf "/compare/%s/%s/" $country.slug $pick.key) }}" class="mt-1.5 inline-block text-xs font-semibold text-brand-700 hover:underline">{{ i18n "compare_single__see_provider_plan" (dict "provider" $pick.provider) | safeHTML }}</a>
           {{ end }}
         </div>
         {{ end }}
@@ -874,7 +923,7 @@
   {{ $ooklaMobile := true }}{{ with $nr }}{{ if eq .ookla_mobile false }}{{ $ooklaMobile = false }}{{ end }}{{ end }}
   <section class="mt-14" aria-labelledby="netdata">
     <p class="eyebrow">{{ i18n "g_independent_measurements" | safeHTML }}</p>
-    <h2 id="netdata" class="mt-2 text-2xl font-bold md:text-3xl">Independent network data for {{ $country.name }}</h2>
+    <h2 id="netdata" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_single__netdata_h2" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</h2>
     <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_single__the_network_profiles_above_are_ours_the_findings_below_c" | safeHTML }}</p>
     <div class="mt-6 grid items-start gap-4 md:grid-cols-2 lg:grid-cols-3">
       {{ with $nr }}
@@ -899,11 +948,11 @@
       {{ end }}
       <div class="card p-5">
         <p class="eyebrow">{{ i18n "compare_single__ookla_speedtest_global_index" | safeHTML }}</p>
-        <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ if $ooklaMobile }}Ookla's index tracks {{ $country.name }}'s median mobile download, upload and latency month by month — the live picture of how the whole market's networks compare.{{ else }}Ookla's index currently carries no mobile ranking for {{ $country.name }}; its fixed-broadband index still tracks the market month by month.{{ end }}</p>
-        <a href="{{ printf "https://www.speedtest.net/global-index/%s" $ooklaSlug | safeURL }}" target="_blank" rel="noopener" class="btn-mini mt-4 inline-block">Open {{ $country.name }} on the Global Index →</a>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ if $ooklaMobile }}{{ i18n "compare_single__ookla_tracks" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}{{ else }}{{ i18n "compare_single__ookla_no_mobile" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}{{ end }}</p>
+        {{/* ⚠ 外链绝不能过 lang-href（会得到 /https:/…）—— 必须是裸 printf + safeURL */}}<a href="{{ printf "https://www.speedtest.net/global-index/%s" $ooklaSlug | safeURL }}" target="_blank" rel="noopener" class="btn-mini mt-4 inline-block">{{ i18n "compare_single__open_global_index" (dict "country" $country.name) | safeHTML }}</a>
       </div>
     </div>
-    <p class="mt-3 text-xs leading-relaxed text-ink-400">Award findings are quoted from the named reports and link to the originals. Sources accessed {{ $d.networkreports.accessed }}; our own price and fair-use data follow the <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>.</p>
+    <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "compare_single__award_findings" | safeHTML }} {{ $d.networkreports.accessed }}{{ i18n "compare_single__our_data_follows" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>.</p>
   </section>
   {{ end }}
 
@@ -913,7 +962,7 @@
     <div class="grid items-start gap-8 lg:grid-cols-[1.4fr_1fr]">
       <div>
         <p class="eyebrow">FAQ</p>
-        <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">What should I know before buying an eSIM for {{ $country.name }}</h2>
+        <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_single__faq_h2" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</h2>
         <div class="mt-5 space-y-3">
           {{ range . }}
           <details class="faq-item">
@@ -931,7 +980,7 @@
       {{ if gt (len $imgs) 2 }}
       <figure class="figure lg:sticky lg:top-24">
         <img src="{{ printf "/img/countries/%s" (index $imgs 2) }}" alt="{{ $country.name }} eSIM frequently asked questions illustration" width="2848" height="1470" loading="lazy">
-        <figcaption>Common {{ $country.name }} eSIM questions — data, price and compatibility.</figcaption>
+        <figcaption>{{ i18n "compare_single__faq_figcaption" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</figcaption>
       </figure>
       {{ end }}
     </div>
@@ -1006,11 +1055,11 @@
   <section class="mt-14" aria-labelledby="next">
     <p class="eyebrow">{{ i18n "compare_single__keep_traveling" | safeHTML }}</p>
     <h2 id="next" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_single__esim_for_your_next_destination" | safeHTML }}</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">Travelers comparing {{ $country.name }} eSIMs often price these destinations next — each card opens a live plan table, checked the same day as the one above.</p>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_single__next_lead" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</p>
     <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
       {{ range $i, $l := . }}
-      {{ $anchor := printf "%s eSIM" $l.name }}
-      {{ if eq (mod $i 3) 1 }}{{ $anchor = printf "eSIM for %s" $l.name }}{{ else if eq (mod $i 3) 2 }}{{ $anchor = printf "%s eSIM prices" $l.name }}{{ end }}
+      {{ $anchor := printf "%s" (i18n "compare_single__anchor_country_esim" (dict "country" $l.name)) }}
+      {{ if eq (mod $i 3) 1 }}{{ $anchor = printf "%s" (i18n "compare_single__anchor_esim_for_country" (dict "country" $l.name)) }}{{ else if eq (mod $i 3) 2 }}{{ $anchor = printf "%s" (i18n "compare_single__anchor_country_esim_prices" (dict "country" $l.name)) }}{{ end }}
       {{/* 五列窄卡：卡片内改为竖排——横排时国旗+箭头吃掉 ~84px，文字只剩约 50px 宽会被挤成竖排，
            竖排后标题独占整卡宽度，窄断点也读得顺。 */}}
       <a href="{{ $l.url }}" class="card card-hover group flex flex-col p-4">
@@ -1019,7 +1068,7 @@
           <span class="text-ink-300 transition-colors group-hover:text-brand-600" aria-hidden="true">→</span>
         </span>
         <span class="mt-3 block text-sm font-semibold leading-snug text-ink-950 group-hover:text-brand-700">{{ $anchor }}</span>
-        {{ if gt $l.min 0.0 }}<span class="mt-1.5 block text-xs leading-relaxed text-ink-400 tnum">from ${{ printf "%.2f" $l.min }} · {{ $l.count }} brands</span>{{ end }}
+        {{ if gt $l.min 0.0 }}<span class="mt-1.5 block text-xs leading-relaxed text-ink-400 tnum">{{ i18n "g_from_price" | safeHTML }}{{ printf "%.2f" $l.min }} · {{ $l.count }} {{ i18n "compare_single__brands" | safeHTML }}</span>{{ end }}
       </a>
       {{ end }}
     </div>
@@ -1028,11 +1077,11 @@
 
   {{/* ── ⑨b 基础知识内链（guides 排名助推：50 国家页 × 5 指南，锚文本按 slug 长度轮换防同质化） ── */}}
   {{ $guideCards := slice
-    (dict "path" "/guides/what-is-an-esim" "anchors" (slice "eSIM basics" "what is an eSIM" "eSIM explained") "blurb" "What the technology actually is, minus the marketing.")
-    (dict "path" "/guides/esim-vs-physical-sim" "anchors" (slice "eSIM vs physical SIM" "eSIM or SIM card" "SIM card alternative") "blurb" "Where eSIMs win and where a physical SIM still makes sense.")
-    (dict "path" "/guides/how-to-install-esim" "anchors" (slice "install an eSIM" "eSIM installation" "activating an eSIM") "blurb" "The install walkthrough for every provider we track.")
-    (dict "path" "/guides/esim-compatibility-check" "anchors" (slice "eSIM compatibility" "check your phone" "supported phones") "blurb" "The 30-second EID test plus every compatible phone we verified.")
-    (dict "path" "/guides/dual-sim-and-esim" "anchors" (slice "dual SIM setup" "dual SIM with eSIM" "dual SIM phones") "blurb" "Keep your home number while travel data runs on eSIM.")
+    (dict "path" "/guides/what-is-an-esim" "anchors" (slice (i18n "compare_single__guide_what_is_esim_a1") (i18n "compare_single__guide_what_is_esim_a2") (i18n "compare_single__guide_what_is_esim_a3")) "blurb" (i18n "compare_single__guide_what_is_esim_blurb"))
+    (dict "path" "/guides/esim-vs-physical-sim" "anchors" (slice (i18n "compare_single__guide_vs_sim_a1") (i18n "compare_single__guide_vs_sim_a2") (i18n "compare_single__guide_vs_sim_a3")) "blurb" (i18n "compare_single__guide_vs_sim_blurb"))
+    (dict "path" "/guides/how-to-install-esim" "anchors" (slice (i18n "compare_single__guide_install_a1") (i18n "compare_single__guide_install_a2") (i18n "compare_single__guide_install_a3")) "blurb" (i18n "compare_single__guide_install_blurb"))
+    (dict "path" "/guides/esim-compatibility-check" "anchors" (slice (i18n "compare_single__guide_compat_a1") (i18n "compare_single__guide_compat_a2") (i18n "compare_single__guide_compat_a3")) "blurb" (i18n "compare_single__guide_compat_blurb"))
+    (dict "path" "/guides/dual-sim-and-esim" "anchors" (slice (i18n "compare_single__guide_dual_sim_a1") (i18n "compare_single__guide_dual_sim_a2") (i18n "compare_single__guide_dual_sim_a3")) "blurb" (i18n "compare_single__guide_dual_sim_blurb"))
   }}
   {{ $rot := mod (len $country.slug) 3 }}
   <section class="mt-14" aria-labelledby="guides">
@@ -1057,8 +1106,8 @@
       <div class="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
       <p class="font-display text-lg font-bold text-white">{{ i18n "compare_single__data_you_can_check" | safeHTML }}</p>
       <p class="mt-2 max-w-2xl text-sm leading-relaxed">
-        {{ with $stats.checkedDate }}Prices on this page were last verified {{ . }}.{{ end }}
-        Full collection rules in our <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>{{ i18n "compare_single__how_we_make_money_in_our" | safeHTML }} <a href="{{ partial "lang-href.html" "/disclosure/" }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "g_disclosure" | safeHTML }}</a>.
+        {{ with $stats.checkedDate }}{{ i18n "compare_single__trust_verified" (dict "date" .) | safeHTML }}{{ end }}
+        {{ i18n "compare_single__full_collection_rules" | safeHTML }} <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>{{ i18n "compare_single__how_we_make_money_in_our" | safeHTML }} <a href="{{ partial "lang-href.html" "/disclosure/" }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "g_disclosure" | safeHTML }}</a>.
       </p>
     </div>
   </section>

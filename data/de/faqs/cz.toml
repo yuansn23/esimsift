@@ -1,0 +1,42 @@
+# CZ FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Tschechien?"
+a = "Günstigster Tarif für {country_acc}: {cheap_plan} von {cheap_brand}, ${cheap_price}. Über die {plan_count} Tarife für {country_acc} von {brand_count} Anbietern auf dieser Seite liegt der beste Preis pro Gigabyte bei {value_plan} von {value_brand} mit ${value_pergb}/GB. Die Tabelle oben sortiert jede Option, vergleiche also auch die Form eines Tarifs und nicht nur den Preis."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Tschechien wirklich unbegrenzt?"
+a = "Nur innerhalb der Grenzen. Die {unl_count} unbegrenzten Tarife für {country_acc} fallen nach einem festgelegten Tagesvolumen auf eine veröffentlichte Geschwindigkeit zurück. {unl_brand} bietet den besten Tagessatz mit ${unl_perday} ({unl_days} Tage für ${unl_price}), gegenüber einer Marktspanne von {unl_perday_range}. Drosselung statt Abschaltung ist der Kompromiss, mit Geschwindigkeiten bis hinunter zu {unl_drop}, sobald das Volumen aufgebraucht ist."
+
+[[faq]]
+q = "Airalo oder Holafly für Tschechien?"
+a = "Wähle nach Nutzungsmuster, denn die beiden Marken bepreisen ganz unterschiedlich. Airalo verkauft Pakete: Die schärfste Rate für {country_acc} ist ${ah_airalo_pergb}/GB ({ah_airalo_plan}, ${ah_airalo_price}). Die Flatrate-Option ist Holafly, mit {ah_holafly_days} Tagen ab ${ah_holafly_price} – ${ah_holafly_perday}/Tag, egal wie viel du nutzt."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Tschechien?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Tschechien?"
+a = "Die Tarife auf dieser Seite laufen über O2, T-Mobile, Vodafone. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Tschechien und Deutschland abdecken?"
+a = "Ja, aber nur über einen Multi-Land-Tarif, denn nichts in unseren Tabellen für {country_acc} deckt ein zweites Land ab. Suche ein regionales Paket, das {neighbor} einschließt, und vergleiche dessen $/GB mit zwei Einzeltarifen."
+
+[[faq]]
+q = "Kann ich eine eSIM in Tschechien nutzen?"
+a = "Für {country_acc} sind {plan_count} Tarife von {brand_count} Anbietern gelistet, und jeder davon ist nutzbar. Die Wahl dreht sich hier um Preis und Volumen und nicht um Verfügbarkeit: {plan_count} Tarife von {brand_count} Anbietern. Prüfe dein Handy und lass dann die $/GB-Spalte zwischen den Tarifen oben entscheiden."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Tschechien?"
+a = "Ein eSIM-fähiges, entsperrtes Handy funktioniert in {country_dat} ohne zusätzlichen Schritt. Die zwei entscheidenden Prüfungen sind Hardware und Sperrstatus – die {plan_count} Tarife hier installieren auf einem Handy, das beide besteht, und scheitern an einem, das eine nicht besteht. Prüfe zuerst das Gerät, denn die Tarife oben helfen nur, wenn es besteht."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Tschechien?"
+a = "Nur wenn lokale Anrufe für dich zählen, denn die {plan_count} hier gelisteten Tarife für {country_acc} sind Datenprodukte. Die Heimleitung im physischen Slot zu lassen ist die übliche Lösung, und nur so kommen Verifizierungscodes weiterhin an. Füge nur dann eine lokale SIM hinzu, wenn lokale Anrufe eine echte Anforderung sind."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Tschechien?"
+a = "Die Bewertungen selbst stehen auf den Seiten der Anbieter und in den App-Stores. Fair-Use-Bedingungen, Hotspot-Regeln und Rückerstattungsfristen sind die Stellen, an denen die echten Unterschiede liegen, und die sind dokumentiert statt gewählt. Prüfe die Fair-Use- und Rückerstattungsseiten des Anbieters direkt, bevor du dich festlegst."

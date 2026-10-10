@@ -3,14 +3,14 @@
   其余页沿用 .Ancestors + 当前页。 */ -}}
 {{- $items := slice -}}
 {{- $pos := 1 -}}
-{{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" "Home" "item" (.Site.BaseURL | strings.TrimSuffix "/")) -}}
+{{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" (i18n "g_home") "item" (.Site.Home.Permalink | strings.TrimSuffix "/")) -}}
 {{- if .Params.provider -}}
   {{- $c := index $d.countries .Params.iso -}}
   {{- $p := index $d.providers .Params.provider -}}
   {{- $pos = add $pos 1 -}}
-  {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" "Compare countries" "item" (printf "%scompare/" .Site.BaseURL)) -}}
+  {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" (i18n "g_compare_countries") "item" (printf "%scompare/" .Site.Home.Permalink)) -}}
   {{- $pos = add $pos 1 -}}
-  {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" (printf "%s eSIM" $c.name) "item" (printf "%scompare/%s/" .Site.BaseURL $c.slug)) -}}
+  {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" (printf "%s eSIM" $c.name) "item" (printf "%scompare/%s/" .Site.Home.Permalink $c.slug)) -}}
   {{- $pos = add $pos 1 -}}
   {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" $p.name) -}}
 {{- else -}}

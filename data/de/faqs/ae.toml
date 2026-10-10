@@ -1,0 +1,42 @@
+# AE FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für die Vereinigten Arabischen Emirate?"
+a = "{cheap_plan} von {cheap_brand} ist der günstigste Tarif für {country_acc} – ${cheap_price}. Das ergibt ${cheap_perday} pro Tag über die Laufzeit des Tarifs. Richte den Tarif nach deiner Reisedauer statt nach der niedrigsten Zahl."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in den Vereinigten Arabischen Emiraten wirklich unbegrenzt?"
+a = "Nicht ganz – alle {unl_count} unbegrenzten Tarife für {country_acc} haben eine Fair-Use-Regel. Die Tagessätze liegen zwischen {unl_perday_range}, und der günstigste ist {unl_brand} mit ${unl_perday}/Tag – ${unl_price} für {unl_days} Tage. Was {unl_brand} veröffentlicht: {unl_allowance}; danach {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für die Vereinigten Arabischen Emirate?"
+a = "Sie verkaufen verschiedene Dinge, die Antwort hängt also davon ab, wie du Daten nutzt. Die beste Rate von Airalo für {country_acc} ist ${ah_airalo_pergb}/GB – {ah_airalo_plan} für ${ah_airalo_price} – und das ist ein festes Paket statt eines Tagesvolumens. Holafly verkauft stattdessen unbegrenzte Tage, das kleinste Paket für {country_acc} umfasst {ah_holafly_days} Tage für ${ah_holafly_price} (${ah_holafly_perday}/Tag)."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in den Vereinigten Arabischen Emiraten?"
+a = "Ja – eine Touristen-SIM für die VAE verlangt beim Kauf einen Passscan, und die Anbieter, die wir führen, behalten denselben Schritt in ihrer App oder im Checkout. Eine Emirates ID ist nicht nötig, was die eSIM für einen kurzen Aufenthalt zum schnellen Weg macht."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in den Vereinigten Arabischen Emiraten?"
+a = "Die Tarife auf dieser Seite laufen über Etisalat, du. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM die Vereinigten Arabischen Emirate und Saudi-Arabien abdecken?"
+a = "Nicht mit einem Ein-Land-Tarif. Alles in unseren Tabellen gilt nur für {country_acc}, eine Reise, die auch {neighbor} einschließt, braucht also einen zweiten Landestarif oder ein regionales Paket."
+
+[[faq]]
+q = "Kann ich eine eSIM in den Vereinigten Arabischen Emiraten nutzen?"
+a = "Ja – {brand_count} Anbieter verkaufen Tarife für {country_acc}; das Land gehört zur üblichen Reise-eSIM-Landkarte. Alle {plan_count} Tarife in unserer Tabelle für {country_acc} registrieren sich in den heimischen Netzen statt im Roaming, es gibt also keine Abdeckungshürde. Prüfe zuerst dein Handy und wähle dann den Tarif, der zu deiner Reisedauer passt."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in den Vereinigten Arabischen Emiraten?"
+a = "Wenn dein Handy eSIM unterstützt und keinen Netlock hat, funktioniert es in {country_dat} – das Reiseziel hat darauf keinen Einfluss. Regionale Varianten sind die Falle, die es zu prüfen gilt: Dasselbe Modell kann je nach Verkaufsmarkt mit oder ohne eSIM-Chip ausgeliefert werden. Mach den *#06#-Test vor dem Tarifkauf."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in den Vereinigten Arabischen Emiraten?"
+a = "Für eine normale Reise nicht – eine Reise-eSIM für {country_acc} ist ein Datenprodukt und keine Telefonleitung. Sprache ist meist nicht Teil des Angebots, und Anrufe laufen über eine App statt über das Mobilfunknetz. Lass deine Heim-SIM für Anrufe und Codes aktiv und lass die eSIM die Daten tragen."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in den Vereinigten Arabischen Emiraten?"
+a = "Wir bündeln keine Bewertungen, die ehrliche Antwort hier betrifft also die Methode und nicht die Noten. Der Grund: Dieselbe Marke schneidet je nach Region des Bewerters anders ab, eine einzelne Zahl als Wahrheit zu zitieren wäre irreführend. Lies zuerst die Zahlen oben und prüfe dann die eigenen Bewertungen des Anbieters für die menschliche Seite."

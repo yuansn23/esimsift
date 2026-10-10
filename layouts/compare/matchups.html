@@ -25,6 +25,25 @@
 {{ $closest := dict }}{{ if gt $total 0 }}{{ $closest = index (sort $cards "gap" "asc") 0 }}{{ end }}
 {{ $blowout := dict }}{{ if gt $total 0 }}{{ $blowout = index (sort $cards "gap" "desc") 0 }}{{ end }}
 
+{{/* ── 品牌战绩榜 ──
+     从 $cards 现算，不引第二份数据源。口径（页面上必须写清）：
+     「赢下的国家」= 该品牌在每场对决里赢下的国家数之和，**同一国家按不同对手重复计入**
+     （A 在一个国家同时赢过 3 个对手 = 3 胜）。这是配对比较的口径，不是去重国家数。
+     denominator 可能为 0（某品牌与所有对手都无共同在售国）⇒ 必须先判再除，Hugo 除零会直接失败。 */}}
+{{ $board := slice }}
+{{ range $k, $v := $d.providers }}
+  {{ $games := 0 }}{{ $wins := 0 }}{{ $losses := 0 }}{{ $ties := 0 }}
+  {{ range $cards }}
+    {{ if eq .ka $k }}
+      {{ $games = add $games 1 }}{{ $wins = add $wins .aWins }}{{ $losses = add $losses .bWins }}{{ $ties = add $ties .ties }}
+    {{ else if eq .kb $k }}
+      {{ $games = add $games 1 }}{{ $wins = add $wins .bWins }}{{ $losses = add $losses .aWins }}{{ $ties = add $ties .ties }}
+    {{ end }}
+  {{ end }}
+  {{ if gt $games 0 }}{{ $board = $board | append (dict "key" $k "p" $v "games" $games "wins" $wins "losses" $losses "ties" $ties) }}{{ end }}
+{{ end }}
+{{ $board = sort $board "wins" "desc" }}
+
 <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
   {{ partial "breadcrumbs.html" . }}
 
@@ -32,14 +51,14 @@
   <header>
     <div class="flex flex-wrap items-center gap-3">
       <span class="badge bg-brand-50 text-brand-700">{{ i18n "compare_matchups__head_to_head_index" | safeHTML }}</span>
-      <span class="badge bg-ink-50 text-ink-500 tnum">{{ $total }} matchups</span>
-      <span class="badge bg-ink-50 text-ink-500 tnum">{{ $d.providers | len }} providers</span>
+      <span class="badge bg-ink-50 text-ink-500 tnum">{{ i18n "compare_matchups__total_badge" (dict "n" $total) | safeHTML }}</span>
+      <span class="badge bg-ink-50 text-ink-500 tnum">{{ i18n "compare_matchups__providers_badge" (dict "n" (len $d.providers)) | safeHTML }}</span>
     </div>
     <h1 class="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ .Title }}</h1>
     <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">{{ i18n "compare_matchups__every_provider_pair_we_track_one_page_per_matchup_verdic" | safeHTML }}</p>
     <div class="mt-6 flex flex-wrap gap-3">
-      {{ with $closest.n }}<div class="stat-tile"><span class="stat-num text-lg">{{ $closest.na }} vs {{ $closest.nb }}</span><span class="stat-label">closest rivalry — decided in {{ $closest.n }} countries</span></div>{{ end }}
-      {{ with $blowout.n }}<div class="stat-tile"><span class="stat-num text-lg">{{ $blowout.na }} vs {{ $blowout.nb }}</span><span class="stat-label">{{ i18n "compare_matchups__most_lopsided_one_side_wins_nearly_everywhere" | safeHTML }}</span></div>{{ end }}
+      {{ with $closest.n }}<div class="stat-tile"><span class="stat-num text-lg">{{ $closest.na }} {{ i18n "g_vs" | safeHTML }} {{ $closest.nb }}</span><span class="stat-label">{{ i18n "compare_matchups__closest_rivalry" (dict "n" $closest.n) | safeHTML }}</span></div>{{ end }}
+      {{ with $blowout.n }}<div class="stat-tile"><span class="stat-num text-lg">{{ $blowout.na }} {{ i18n "g_vs" | safeHTML }} {{ $blowout.nb }}</span><span class="stat-label">{{ i18n "compare_matchups__most_lopsided_one_side_wins_nearly_everywhere" | safeHTML }}</span></div>{{ end }}
       <a href="{{ partial "lang-href.html" "/esim-providers/" }}" class="stat-tile transition-colors hover:bg-ink-50"><span class="stat-num text-base">{{ i18n "compare_matchups__provider_reviews" | safeHTML }}</span><span class="stat-label">{{ i18n "compare_matchups__each_brand_s_pricing_behavior_in_full" | safeHTML }}</span></a>
     </div>
   </header>
@@ -55,23 +74,68 @@
     <p class="eyebrow" id="all">{{ i18n "compare_matchups__all_matchups" | safeHTML }}</p>
     <h2 class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_matchups__how_every_provider_compares_head_to_head" | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {{ range $cards }}
-      <a href="{{ .url }}" class="card card-hover group p-5">
-        <div class="flex items-center gap-3">
-          {{ partial "prov-logo.html" (dict "p" (index $d.providers .ka) "key" .ka "class" "h-10 w-10") }}
-          <span class="font-display text-[11px] font-bold uppercase tracking-wider text-ink-300" aria-hidden="true">{{ i18n "g_vs" | safeHTML }}</span>
-          {{ partial "prov-logo.html" (dict "p" (index $d.providers .kb) "key" .kb "class" "h-10 w-10") }}
-          {{ if gt .aWins .bWins }}<span class="badge bg-brand-50 text-brand-700 ml-auto tnum">{{ .na }} {{ .aWins }}–{{ .bWins }}</span>
-          {{ else if gt .bWins .aWins }}<span class="badge bg-brand-50 text-brand-700 ml-auto tnum">{{ .nb }} {{ .bWins }}–{{ .aWins }}</span>
-          {{ else }}<span class="badge bg-ink-50 text-ink-500 ml-auto">{{ i18n "compare_matchups__even" | safeHTML }}</span>{{ end }}
-        </div>
-        <p class="mt-3 font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ .na }} vs {{ .nb }}</p>
-        <p class="mt-2 text-xs leading-relaxed text-ink-500">{{ if gt .aWins .bWins }}{{ .na }} starts cheaper in {{ .aWins }} of {{ .n }} countries{{ else if gt .bWins .aWins }}{{ .nb }} starts cheaper in {{ .bWins }} of {{ .n }} countries{{ else }}Nearly even across {{ .n }} countries{{ end }}{{ if gt .ties 0 }} (identical entry prices in {{ .ties }}){{ end }}.</p>
-        <p class="mt-3 text-xs font-semibold text-brand-700 opacity-0 transition-opacity group-hover:opacity-100">{{ i18n "g_see_the_verdict" | safeHTML }}</p>
+      {{ range $cards }}{{ $c := . }}
+      <a href="{{ $c.url }}" class="card card-hover group p-5">
+          <div class="flex items-center gap-3">
+            {{ partial "prov-logo.html" (dict "p" (index $d.providers $c.ka) "key" $c.ka "class" "h-10 w-10") }}
+            <span class="font-display text-[11px] font-bold uppercase tracking-wider text-ink-300" aria-hidden="true">{{ i18n "g_vs" | safeHTML }}</span>
+            {{ partial "prov-logo.html" (dict "p" (index $d.providers $c.kb) "key" $c.kb "class" "h-10 w-10") }}
+            {{ if gt $c.aWins $c.bWins }}<span class="badge bg-brand-50 text-brand-700 ml-auto tnum">{{ $c.na }} {{ $c.aWins }}–{{ $c.bWins }}</span>
+            {{ else if gt $c.bWins $c.aWins }}<span class="badge bg-brand-50 text-brand-700 ml-auto tnum">{{ $c.nb }} {{ $c.bWins }}–{{ $c.aWins }}</span>
+            {{ else }}<span class="badge bg-ink-50 text-ink-500 ml-auto">{{ i18n "compare_matchups__even" | safeHTML }}</span>{{ end }}
+          </div>
+          <p class="mt-3 font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ $c.na }} {{ i18n "g_vs" | safeHTML }} {{ $c.nb }}</p>
+          <p class="mt-2 text-xs leading-relaxed text-ink-500">{{ if gt $c.aWins $c.bWins }}{{ i18n "compare_matchups__entry_cheaper" (dict "brand" $c.na "wins" $c.aWins "n" $c.n) | safeHTML }}{{ else if gt $c.bWins $c.aWins }}{{ i18n "compare_matchups__entry_cheaper" (dict "brand" $c.nb "wins" $c.bWins "n" $c.n) | safeHTML }}{{ else }}{{ i18n "compare_matchups__nearly_even" (dict "n" $c.n) | safeHTML }}{{ end }}{{ if gt $c.ties 0 }} {{ i18n "compare_matchups__identical_prices" (dict "ties" $c.ties) | safeHTML }}{{ end }}.</p>
+          <p class="mt-3 text-xs font-semibold text-brand-700 opacity-0 transition-opacity group-hover:opacity-100">{{ i18n "g_see_the_verdict" | safeHTML }}</p>
       </a>
       {{ end }}
     </div>
     <p class="mt-3 text-xs text-ink-400">{{ i18n "compare_matchups__each_verdict_counts_the_countries_where_both_providers_s" | safeHTML }}</p>
+  </section>
+
+  {{/* ── 品牌战绩榜 ── 对「这个索引页内容太单薄」的正面回答：
+       原来 45 张卡片全是同一段骨架文案（近重复），页面上没有一个「谁更强」的答案。
+       这里把 $cards 汇总成一张 10 行的排行榜，数字全部现算，读者一眼拿到结论。
+       内链到品牌评测页（用 site.GetPage 兜底，页不存在就不给链接，不造死链）。 ── */}}
+  <section class="mt-12" aria-labelledby="scoreboard">
+    <p class="eyebrow">{{ i18n "compare_matchups__scoreboard_eyebrow" | safeHTML }}</p>
+    <h2 id="scoreboard" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_matchups__scoreboard_h2" | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_matchups__scoreboard_lead" (dict "n" (len $board) "m" $total) | safeHTML }}</p>
+    <div class="card mt-6 overflow-x-auto">
+      <table class="table-pro table-soft min-w-[620px]">
+        <thead>
+          <tr>
+            <th class="w-10"><span class="sr-only">{{ i18n "compare_list__rank" | safeHTML }}</span></th>
+            <th class="min-w-[170px]">{{ i18n "compare_matchups__col_brand" | safeHTML }}</th>
+            <th>{{ i18n "compare_matchups__col_matchups" | safeHTML }}</th>
+            <th>{{ i18n "compare_matchups__col_country_wins" | safeHTML }}</th>
+            <th>{{ i18n "compare_matchups__col_country_losses" | safeHTML }}</th>
+            <th>{{ i18n "compare_matchups__col_country_ties" | safeHTML }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range $i, $b := $board }}
+          {{ $brandURL := "" }}
+          {{ with site.GetPage (printf "/esim-providers/%s" $b.key) }}{{ $brandURL = .RelPermalink }}{{ end }}
+          <tr>
+            <td class="tnum text-ink-400">{{ add $i 1 }}</td>
+            <td class="min-w-[170px]">
+              {{ if $brandURL }}<a href="{{ $brandURL }}" class="flex items-center gap-2.5 font-semibold text-ink-950 hover:text-brand-700">{{ else }}<span class="flex items-center gap-2.5 font-semibold text-ink-950">{{ end }}
+                {{ partial "prov-logo.html" (dict "p" $b.p "key" $b.key "class" "h-6 w-6 shrink-0" "text" "text-[10px]") }}
+                {{ $b.p.name }}
+              {{ if $brandURL }}</a>{{ else }}</span>{{ end }}
+            </td>
+            <td class="tnum text-ink-600">{{ $b.games }}</td>
+            <td class="tnum font-bold text-brand-700">{{ $b.wins }}</td>
+            <td class="tnum text-ink-500">{{ $b.losses }}</td>
+            <td class="tnum text-ink-400">{{ $b.ties }}</td>
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3 text-xs text-ink-400">{{ i18n "compare_matchups__scoreboard_note" | safeHTML }}</p>
+    <p class="mt-1 text-xs text-ink-400">{{ i18n "compare_matchups__scoreboard_method" | safeHTML }}</p>
   </section>
 
   {{/* ── 相关阅读 ── */}}
@@ -79,11 +143,55 @@
     <p class="eyebrow">{{ i18n "g_keep_reading" | safeHTML }}</p>
     <h2 id="related" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "g_related_research_amp_comparisons" | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <a href="{{ partial "lang-href.html" "/compare/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "compare_matchups__compare_by_country" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">All {{ len $d.countries }} destination pages — every provider in one table.</p></a>
-      <a href="{{ partial "lang-href.html" "/research/esim-price-index/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_esim_price_index" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ len $d.countries }} countries ranked by best $/GB, with regional averages.</p></a>
+      <a href="{{ partial "lang-href.html" "/compare/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "compare_matchups__compare_by_country" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "compare_matchups__related_all_countries" (dict "n" (len $d.countries)) | safeHTML }}</p></a>
+      <a href="{{ partial "lang-href.html" "/research/esim-price-index/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_esim_price_index" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "compare_matchups__related_price_index" (dict "n" (len $d.countries)) | safeHTML }}</p></a>
       <a href="{{ partial "lang-href.html" "/research/unlimited-esim/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "compare_matchups__unlimited_daily_rates" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "compare_matchups__where_unlimited_data_is_cheapest_per_day_and_when_it_win" | safeHTML }}</p></a>
       <a href="{{ partial "lang-href.html" "/research/fair-use-audit/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_fair_use_audit" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "compare_matchups__what_every_unlimited_plan_s_small_print_really_throttles" | safeHTML }}</p></a>
     </div>
   </section>
+
+  {{/* ── 数据驱动 FAQ（正文与 FAQPage schema 同源）──
+       四个问题都问的是「这个索引本身怎么来的」，是这个页面唯一能独占的内容；
+       答案里不写任何会随价格漂移的数字，避免第二处真源。 ── */}}
+  {{- $faqList := slice -}}
+  {{- $faqList = $faqList | append (dict "q" (i18n "compare_matchups__faq_q_decided") "a" (i18n "compare_matchups__faq_a_decided")) -}}
+  {{- $faqList = $faqList | append (dict "q" (i18n "compare_matchups__faq_q_entry_price") "a" (i18n "compare_matchups__faq_a_entry_price")) -}}
+  {{- $faqList = $faqList | append (dict "q" (i18n "compare_matchups__faq_q_freshness") "a" (i18n "compare_matchups__faq_a_freshness")) -}}
+  {{- $faqList = $faqList | append (dict "q" (i18n "compare_matchups__faq_q_commission") "a" (i18n "compare_matchups__faq_a_commission")) -}}
+  {{- $faqEntities := slice -}}
+  {{- range $faqList -}}{{- $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) -}}{{- end -}}
+
+  <section class="mt-12" aria-labelledby="faq">
+    <p class="eyebrow">FAQ</p>
+    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_matchups__faq_h2" | safeHTML }}</h2>
+    <div class="mt-5 space-y-3">
+      {{ range $faqList }}
+      <details class="faq-item">
+        <summary>{{ .q }}<span class="faq-icon" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></summary>
+        <p class="faq-body">{{ .a }}</p>
+      </details>
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* ── 结构化数据：ItemList（45 组对决的可枚举清单）+ FAQPage ──
+       BreadcrumbList 由 partials/schema.html 全站统一产出，这里**不得**重复（_de_schema_audit 判据 [5]）。
+       URL 一律用 .Site.Home.Permalink 前缀拼 RelPermalink —— 该页在 /de/ 下必须产出 /de/ 前缀，
+       absURL/BaseURL 在多语言下会退回英语根（本项目已知坑）。 ── */}}
+  {{- $base := strings.TrimSuffix "/" .Site.Home.Permalink -}}
+  {{- $listItems := slice -}}
+  {{- range $i, $c := $cards -}}
+    {{- $listItems = $listItems | append (dict "@type" "ListItem" "position" (add $i 1) "name" (printf "%s %s %s" $c.na (i18n "g_vs") $c.nb) "url" (printf "%s%s" $base $c.url)) -}}
+  {{- end -}}
+  {{ with $listItems }}
+  <script type="application/ld+json">
+    {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "ItemList" "numberOfItems" $total "itemListElement" .) | safeJS }}
+  </script>
+  {{ end }}
+  {{ with $faqEntities }}
+  <script type="application/ld+json">
+    {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" .) | safeJS }}
+  </script>
+  {{ end }}
 </div>
 {{ end }}

@@ -1,0 +1,42 @@
+# PH FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für die Philippinen?"
+a = "Der niedrigste Preis auf dieser Seite: {cheap_plan} von {cheap_brand} für ${cheap_price}. Der beste Wert pro Gigabyte ist eine eigene Frage, und die Antwort lautet hier {value_plan} von {value_brand} mit ${value_pergb}/GB. Richte den Tarif nach deiner Reisedauer statt nach der niedrigsten Zahl."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in den Philippinen wirklich unbegrenzt?"
+a = "Groß statt grenzenlos: {unl_count} unbegrenzte Tarife für {country_acc} unterliegen Fair-Use-Regeln. Der beste Tagessatz gehört {unl_brand} – ${unl_perday} für ein Paket über {unl_days} Tage zu ${unl_price} – und der Markt reicht über {unl_perday_range}. Was {unl_brand} veröffentlicht: {unl_allowance}; danach {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für die Philippinen?"
+a = "Keiner von beiden ist der günstigste Tarif auf dieser Seite, und sie konkurrieren auch nicht zu denselben Bedingungen. Airalos Angebot für {country_acc} ist ein Datenpaket – {ah_airalo_plan} für ${ah_airalo_price}, oder ${ah_airalo_pergb}/GB an der schärfsten Stelle. Holafly verkauft stattdessen unbegrenzte Tage, das kleinste Paket für {country_acc} umfasst {ah_holafly_days} Tage für ${ah_holafly_price} (${ah_holafly_perday}/Tag)."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in den Philippinen?"
+a = "Ja, und es ist ein Selfie-Schritt statt eines Formulars. Die philippinische SIM-Registrierung verlangt ein Ausweis-Selfie, und ein eSIM-Kauf läuft durch dieselbe Prüfung. Einmal erledigt, funktionieren deine Daten in dem Netz, das die Insel deiner Wahl abdeckt, denn Smart und Globe ergänzen sich statt austauschbar zu sein."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in den Philippinen?"
+a = "Die Tarife auf dieser Seite laufen über Globe, Smart. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM die Philippinen und Indonesien abdecken?"
+a = "Nicht mit einem Landestarif allein, weil Tarife für {country_acc} an der Grenze enden. {neighbor} dazu bedeutet ein regionales Paket oder einen zweiten Tarif, und diese Rechnung lohnt sich vor dem Kauf."
+
+[[faq]]
+q = "Kann ich eine eSIM in den Philippinen nutzen?"
+a = "Ja, es funktioniert. Keine länderspezifische Sperre steht zwischen einer Reise-eSIM und den Netzen in {country_dat}. Die Verfügbarkeit ist mit den {plan_count} oben gelisteten Tarifen geklärt, offen sind also Dauer und Datenvolumen. Prüfe zuerst dein Handy und wähle dann den Tarif, der zu deiner Reisedauer passt."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in den Philippinen?"
+a = "Es hängt vom Gerät ab und nicht vom Land, denn jeder Tarif auf dieser Seite ist ein Standard-eSIM-Profil. Von den {plan_count} Tarifen für {country_acc} auf dieser Seite braucht keiner mehr als ein Standard-eSIM-Profil. Mach den *#06#-Test vor dem Tarifkauf."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in den Philippinen?"
+a = "Nein, außer du brauchst ausdrücklich Anrufe über eine lokale Nummer. Wenn wirklich eine lokale Nummer nötig ist, bedeutet das den Kauf einer lokalen SIM und meist eine Registrierung im Laden. Lass deine Heim-SIM für Anrufe und Codes aktiv und lass die eSIM die Daten tragen."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in den Philippinen?"
+a = "Statt einer Sternebewertung beantwortet diese Seite die Frage mit Zahlen. Wo ein Anbieter seine eigene Support- und Rückerstattungsrichtlinie veröffentlicht, verlinken wir sie direkt, damit du die Quelle liest statt einer Zusammenfassung. Lies zuerst die Zahlen oben und prüfe dann die eigenen Bewertungen des Anbieters für die menschliche Seite."

@@ -1,0 +1,42 @@
+# PL FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Polen?"
+a = "{cheap_brand} hält für {country_acc} die Bestmarke: {cheap_plan} für ${cheap_price}. Der beste Wert pro Gigabyte ist eine eigene Frage, und die Antwort lautet hier {value_plan} von {value_brand} mit ${value_pergb}/GB. Lege zuerst Tage und ungefähren Datenbedarf fest und wähle dann den Tarif, der zu beidem passt."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Polen wirklich unbegrenzt?"
+a = "Gedeckelt statt unbegrenzt – die {unl_count} unbegrenzten Tarife für {country_acc} drosseln, sobald das Tagesvolumen aufgebraucht ist. Der beste Tagessatz gehört {unl_brand} – ${unl_perday} für ein Paket über {unl_days} Tage zu ${unl_price} – und der Markt reicht über {unl_perday_range}. Was viele übersehen, ist das, was nach der Grenze passiert: {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Polen?"
+a = "Es kommt auf die Form an – Datenpakete gegen unbegrenzte Tage. Airalos Angebot für {country_acc} ist ein Datenpaket – {ah_airalo_plan} für ${ah_airalo_price}, oder ${ah_airalo_pergb}/GB an der schärfsten Stelle. Holaflys Modell ist täglich unbegrenzt, ab {ah_holafly_days} Tagen für ${ah_holafly_price} – ${ah_holafly_perday}/Tag – schwere Nutzung kostet also dasselbe wie leichte."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Polen?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Polen?"
+a = "Die Tarife auf dieser Seite laufen über Orange, Play, Plus, T-Mobile. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Polen und Deutschland abdecken?"
+a = "Nicht mit einem Ein-Land-Tarif. Führt die Reise von {country_dat} weiter, und {neighbor} soll dabei sein, vergleiche ein regionales Paket mit zwei separaten Tarifen, denn die Tabellen hier bepreisen jeden Markt für sich."
+
+[[faq]]
+q = "Kann ich eine eSIM in Polen nutzen?"
+a = "Ja, und in dieser Hinsicht gibt es keine Besonderheit – keine lokale Registrierung und keine Genehmigung nötig. Die Verfügbarkeit ist mit den {plan_count} oben gelisteten Tarifen geklärt, offen sind also Dauer und Datenvolumen. Mach den Kompatibilitätstest und vergleiche die Tarife oben nach $/GB und $/Tag."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Polen?"
+a = "Derselbe Test wie überall: Wähle *#06# und suche eine EID-Nummer. Von den {plan_count} Tarifen für {country_acc} auf dieser Seite braucht keiner mehr als ein Standard-eSIM-Profil. Prüfe zuerst auf eine EID-Nummer und einen Netlock ohne Einschränkungen."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Polen?"
+a = "Für Nachrichten und Karten brauchst du keine. Wenn wirklich eine lokale Nummer nötig ist, bedeutet das den Kauf einer lokalen SIM und meist eine Registrierung im Laden. Plane Daten von der eSIM und deine bestehende Nummer von der Heimleitung."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Polen?"
+a = "Wir führen keine Bewertung für eSIMs in {country_dat}, und das ist eine Entscheidung und kein Versehen. Wo ein Anbieter seine eigene Support- und Rückerstattungsrichtlinie veröffentlicht, verlinken wir sie direkt, damit du die Quelle liest statt einer Zusammenfassung. Nutze die Tabellen oben für die Fakten und die eigenen Kanäle des Anbieters für die Stimmung."

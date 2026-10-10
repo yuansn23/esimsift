@@ -1,0 +1,22 @@
+{{- /* 导航用「品牌两两对决」清单 —— 与 /compare/matchups/ 枢纽页**同源**：
+       同样是遍历 providers 的字母序两两组合 + site.GetPage，
+       页面不存在（未建 content/…/{a}-vs-{b}.md）就跳过 ⇒ 菜单里永不出现死链。
+       必须走 partialCached —— header 每个页面都渲染，45 次 site.GetPage
+       若不做缓存会在 1291 页上重复上万次。返回 []dict{url,ka,kb,na,nb}。 */ -}}
+{{- $d := partialCached "i18n-data.html" . site.Language.Lang -}}
+{{- $keys := slice -}}
+{{- range $k, $v := $d.providers }}{{ $keys = $keys | append $k }}{{ end -}}
+{{- $keys = sort $keys -}}
+{{- $items := slice -}}
+{{- range $i, $ka := $keys -}}
+  {{- range $kb := after (add $i 1) $keys -}}
+    {{- with site.GetPage (printf "/compare/%s-vs-%s" $ka $kb) -}}
+      {{- $items = $items | append (dict
+        "url" .RelPermalink
+        "ka" $ka "kb" $kb
+        "na" (index $d.providers $ka).name
+        "nb" (index $d.providers $kb).name) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $items -}}

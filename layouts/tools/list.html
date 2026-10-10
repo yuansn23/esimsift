@@ -19,14 +19,14 @@
 
 {{/* ── 活动码率表（MB/小时）：估算器 JS + 参考表同源；对标竞品并超越（竞品只给 GB，我们闭环到真实套餐） ── */}}
 {{ $acts := slice
-  (dict "id" "browse" "label" "Web browsing & email" "mb" 60)
-  (dict "id" "maps"   "label" "Navigation & maps" "mb" 70)
-  (dict "id" "social" "label" "Social media" "mb" 150)
-  (dict "id" "music"  "label" "Music streaming" "mb" 50)
-  (dict "id" "gaming" "label" "Online gaming" "mb" 40)
-  (dict "id" "voip"   "label" "Video calls (VoIP)" "mb" 600)
-  (dict "id" "sd"     "label" "SD video streaming" "mb" 700)
-  (dict "id" "hd"     "label" "HD video streaming" "mb" 1500)
+  (dict "id" "browse" "label" (i18n "tools_list__web_browsing_email") "mb" 60)
+  (dict "id" "maps"   "label" (i18n "tools_list__navigation_maps") "mb" 70)
+  (dict "id" "social" "label" (i18n "tools_list__social_media") "mb" 150)
+  (dict "id" "music"  "label" (i18n "tools_list__music_streaming") "mb" 50)
+  (dict "id" "gaming" "label" (i18n "tools_list__online_gaming") "mb" 40)
+  (dict "id" "voip"   "label" (i18n "tools_list__video_calls_voip") "mb" 600)
+  (dict "id" "sd"     "label" (i18n "tools_list__sd_video_streaming") "mb" 700)
+  (dict "id" "hd"     "label" (i18n "tools_list__hd_video_streaming") "mb" 1500)
 }}
 
 {{/* ── 品牌入口（计算生成）：覆盖国家数 + 全球最低价及其所在国 ── */}}
@@ -62,7 +62,7 @@
   </header>
   <figure class="figure">
     <img src="/img/esim/travel-esim-illustration-005.webp" alt="{{ i18n "tools_list__traveler_estimating_esim_data_needs_before_a_trip" | safeHTML }}" width="2848" height="1470">
-    <figcaption>From app hours to gigabytes to the cheapest real plan — computed live from {{ len $plans }} tracked listings.</figcaption>
+    <figcaption>{{ printf (i18n "tools_list__figcaption_live_from_n_tracked") (len $plans) | safeHTML }}</figcaption>
   </figure>
   </div>
 
@@ -75,7 +75,7 @@
       <div class="card p-0" id="est-rows"></div>
       <div class="card flex flex-col p-6 lg:sticky lg:top-24">
         <p class="text-xs font-bold uppercase tracking-wider text-ink-400">{{ i18n "tools_list__your_daily_usage" | safeHTML }}</p>
-        <p class="mt-2 font-display text-3xl font-extrabold text-ink-950 tnum"><span id="est-gbday">{{ i18n "g_gb_2" | safeHTML }}</span><span class="text-base font-semibold text-ink-400"> / day</span></p>
+        <p class="mt-2 font-display text-3xl font-extrabold text-ink-950 tnum"><span id="est-gbday">{{ i18n "g_gb_2" | safeHTML }}</span><span class="text-base font-semibold text-ink-400">{{ i18n "tools_list__per_day_suffix" | safeHTML }}</span></p>
         <p class="mt-5 text-xs font-bold uppercase tracking-wider text-ink-400">{{ i18n "tools_list__for_your" | safeHTML }} <span id="est-days">7</span>{{ i18n "tools_list__day_trip_rounded_up" | safeHTML }}</p>
         <p class="mt-2 font-display text-3xl font-extrabold text-brand-700 tnum" id="est-total">{{ i18n "g_gb_2" | safeHTML }}</p>
         <label class="mt-4 flex items-center gap-2 text-sm text-ink-600"><input id="est-margin" type="checkbox" class="accent-brand-600"> {{ i18n "tools_list__add_a_20_safety_margin" | safeHTML }}</label>
@@ -136,24 +136,24 @@
             {{ range $acts }}
             <tr>
               <td class="font-medium text-ink-800">{{ .label }}</td>
-              <td class="tnum text-ink-600">{{ .mb }} MB/hour</td>
-              <td class="text-sm text-ink-600 tnum">≈ {{ printf "%.1f" (div 1024.0 (float .mb)) }} hours</td>
+              <td class="tnum text-ink-600">{{ .mb }}{{ i18n "tools_list__mb_per_hour" | safeHTML }}</td>
+              <td class="text-sm text-ink-600 tnum">≈ {{ printf "%.1f" (div 1024.0 (float .mb)) }} {{ i18n "tools_list__hours" | safeHTML }}</td>
             </tr>
             {{ end }}
             <tr>
               <td class="font-medium text-ink-800">{{ i18n "tools_list__email_without_attachments" | safeHTML }}</td>
               <td class="tnum text-ink-600">{{ i18n "tools_list__5_mb_hour" | safeHTML }}</td>
-              <td class="text-sm text-ink-600 tnum">≈ {{ printf "%.0f" (div 1024.0 5.0) }} hours</td>
+              <td class="text-sm text-ink-600 tnum">≈ {{ printf "%.0f" (div 1024.0 5.0) }} {{ i18n "tools_list__hours" | safeHTML }}</td>
             </tr>
             <tr>
               <td class="font-medium text-ink-800">{{ i18n "tools_list__video_upload_1080p" | safeHTML }}</td>
               <td class="tnum text-ink-600">{{ i18n "tools_list__1_200_mb_hour" | safeHTML }}</td>
-              <td class="text-sm text-ink-600 tnum">≈ {{ printf "%.1f" (div 1024.0 1200.0) }} hours</td>
+              <td class="text-sm text-ink-600 tnum">≈ {{ printf "%.1f" (div 1024.0 1200.0) }} {{ i18n "tools_list__hours" | safeHTML }}</td>
             </tr>
             <tr>
               <td class="font-medium text-ink-800">{{ i18n "tools_list__photo_upload_to_cloud" | safeHTML }}</td>
               <td class="tnum text-ink-600">{{ i18n "tools_list__3_mb_per_photo" | safeHTML }}</td>
-              <td class="text-sm text-ink-600 tnum">≈ {{ printf "%.0f" (div 1024.0 3.0) }} photos</td>
+              <td class="text-sm text-ink-600 tnum">≈ {{ printf "%.0f" (div 1024.0 3.0) }} {{ i18n "tools_list__photos" | safeHTML }}</td>
             </tr>
           </tbody>
         </table>
@@ -176,7 +176,7 @@
       </a>
       {{ end }}
     </div>
-    <p class="mt-3 text-xs text-ink-400">“From” is the cheapest plan any provider sells in that country. All {{ len $popList }} destinations are in the <a href="{{ partial "lang-href.html" "/compare/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "tools_list__country_index" | safeHTML }}</a> {{ i18n "tools_list__and_ranked_by_gb_in_the" | safeHTML }} <a href="{{ partial "lang-href.html" "/research/esim-price-index/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_price_index" | safeHTML }}</a>.</p>
+    <p class="mt-3 text-xs text-ink-400">{{ printf (i18n "tools_list__from_is_the_cheapest_plan_any_provider_sells") (len $popList) | safeHTML }} <a href="{{ partial "lang-href.html" "/compare/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "tools_list__country_index" | safeHTML }}</a> {{ i18n "tools_list__and_ranked_by_gb_in_the" | safeHTML }} <a href="{{ partial "lang-href.html" "/research/esim-price-index/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_price_index" | safeHTML }}</a>.</p>
   </section>
 
   {{/* ── 品牌入口（计算生成） ── */}}
@@ -191,10 +191,10 @@
           {{ partial "prov-logo.html" (dict "p" (index $d.providers .key) "key" .key "class" "h-9 w-9") }}
           <div class="min-w-0">
             <p class="truncate font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ .name }}</p>
-            <p class="text-xs text-ink-400 tnum">{{ .countries }} countries covered</p>
+            <p class="text-xs text-ink-400 tnum">{{ .countries }} {{ i18n "tools_list__countries_covered" | safeHTML }}</p>
           </div>
         </div>
-        <p class="mt-3 text-xs text-ink-500">{{ i18n "tools_list__plans_from" | safeHTML }} <span class="font-display text-sm font-bold text-brand-700 tnum">${{ printf "%.2f" .min }}</span><span class="text-ink-400"> · cheapest in {{ .minCountry }}</span></p>
+        <p class="mt-3 text-xs text-ink-500">{{ i18n "tools_list__plans_from" | safeHTML }} <span class="font-display text-sm font-bold text-brand-700 tnum">${{ printf "%.2f" .min }}</span><span class="text-ink-400"> · {{ i18n "tools_list__cheapest_in" | safeHTML }} {{ .minCountry }}</span></p>
       </a>
       {{ end }}
     </div>
@@ -209,9 +209,9 @@
   {{ $rateHD := index (where $acts "id" "hd") 0 }}
   {{ $gb5 := 5120.0 }}
   {{ $faqList := slice }}
-  {{ $faqList = $faqList | append (dict "q" "How much data do I need for a week abroad?" "a" (printf "It depends on what you do online, not how long you travel. At the rates in our table, 5GB covers about %.0f hours of browsing and email or %.0f hours of social scrolling — but only %.1f hours of HD video. Rule of thumb: email-and-maps travelers fit in 1-2GB, a normal mix of browsing, social and music fits 5GB, and daily video streaming pushes past 10GB. The estimator above totals your own hours in seconds." (div $gb5 (float $rateBrowse.mb)) (div $gb5 (float $rateSocial.mb)) (div $gb5 (float $rateHD.mb)))) }}
-  {{ $faqList = $faqList | append (dict "q" "Is 5GB of eSIM data enough for my trip?" "a" (printf "If the week is mostly browsing, maps and messaging, yes — 5GB buys roughly %.0f hours of browsing or %.0f hours of navigation. If you stream video daily, no: 5GB is about %.1f hours of SD or %.1f hours of HD video, and a single travel-evening of streaming can burn half of it. Run your real hours through the estimator with the 20%% margin on, and if the total clears 2GB a day, price an unlimited plan too." (div $gb5 (float $rateBrowse.mb)) (div $gb5 (float $rateMaps.mb)) (div $gb5 (float $rateSD.mb)) (div $gb5 (float $rateHD.mb)))) }}
-  {{ $faqList = $faqList | append (dict "q" "When is an unlimited eSIM cheaper than a fixed data plan?" "a" (printf "When your daily usage clears the country's break-even — its best unlimited daily rate divided by its best metered $/GB. Heavy streamers usually cross it; email-and-maps travelers almost never do. Compare both sides on your destination's page, and before buying any 'unlimited' listing, check what its fair-use policy actually throttles in our fair-use audit — every unlimited plan's note is quoted verbatim there.")) }}
+  {{ $faqList = $faqList | append (dict "q" (i18n "tools_list__how_much_data_do_i_need_for_a_week_abroad") "a" (printf (i18n "tools_list__it_depends_on_what_you_do_online_not_how_long_yo") (div $gb5 (float $rateBrowse.mb)) (div $gb5 (float $rateSocial.mb)) (div $gb5 (float $rateHD.mb)))) }}
+  {{ $faqList = $faqList | append (dict "q" (i18n "tools_list__is_5gb_of_esim_data_enough_for_my_trip") "a" (printf (i18n "tools_list__if_the_week_is_mostly_browsing_maps_and_messagin") (div $gb5 (float $rateBrowse.mb)) (div $gb5 (float $rateMaps.mb)) (div $gb5 (float $rateSD.mb)) (div $gb5 (float $rateHD.mb)))) }}
+  {{ $faqList = $faqList | append (dict "q" (i18n "tools_list__when_is_an_unlimited_esim_cheaper_than_a_fixed_d") "a" (printf (i18n "tools_list__when_your_daily_usage_clears_the_country_s_break"))) }}
   <section class="mt-12" aria-labelledby="faq">
     <p class="eyebrow">FAQ</p>
     <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "tools_list__how_do_you_pick_the_right_esim_plan_for_your_trip" | safeHTML }}</h2>

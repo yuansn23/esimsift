@@ -1,0 +1,42 @@
+# IE FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Irland?"
+a = "Der niedrigste Preis auf dieser Seite: {cheap_plan} von {cheap_brand} für ${cheap_price}. Preis und Gegenwert sind zwei verschiedene Messungen, und pro Gigabyte gewinnt {value_plan} von {value_brand} mit ${value_pergb}/GB. Die Tabelle oben sortiert jede Option, vergleiche also auch die Form eines Tarifs und nicht nur den Preis."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Irland wirklich unbegrenzt?"
+a = "Groß statt grenzenlos: {unl_count} unbegrenzte Tarife für {country_acc} unterliegen Fair-Use-Regeln. {unl_brand} ist pro Tag am günstigsten mit ${unl_perday}, und die volle Spanne reicht hier über {unl_perday_range}. Drosselung statt Abschaltung ist der Kompromiss, mit Geschwindigkeiten bis hinunter zu {unl_drop}, sobald das Volumen aufgebraucht ist."
+
+[[faq]]
+q = "Airalo oder Holafly für Irland?"
+a = "Keiner von beiden ist der günstigste Tarif auf dieser Seite, und sie konkurrieren auch nicht zu denselben Bedingungen. {ah_airalo_plan} von Airalo ergibt ${ah_airalo_pergb}/GB für ${ah_airalo_price}, und was du kaufst, ist was du bekommst. Die Flatrate-Option ist Holafly, mit {ah_holafly_days} Tagen ab ${ah_holafly_price} – ${ah_holafly_perday}/Tag, egal wie viel du nutzt."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Irland?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Irland?"
+a = "Die Tarife auf dieser Seite laufen über Vodafone, Three, Eir. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Irland und das Vereinigte Königreich abdecken?"
+a = "Nicht mit einem Landestarif allein, weil Tarife für {country_acc} an der Grenze enden. {neighbor} dazu bedeutet ein regionales Paket oder einen zweiten Tarif, und diese Rechnung lohnt sich vor dem Kauf."
+
+[[faq]]
+q = "Kann ich eine eSIM in Irland nutzen?"
+a = "Ja, es funktioniert. Keine länderspezifische Sperre steht zwischen einer Reise-eSIM und den Netzen in {country_dat}. Von den {plan_count} hier gelisteten Tarifen für {country_acc} ist keiner auf eine bestimmte Region des Landes begrenzt. Prüfe dein Handy und lass dann die $/GB-Spalte zwischen den Tarifen oben entscheiden."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Irland?"
+a = "Es hängt vom Gerät ab und nicht vom Land, denn jeder Tarif auf dieser Seite ist ein Standard-eSIM-Profil. Der eSIM-Chip ist bei der Fertigung festgelegt, ein ohne ihn gebautes Handy kann ihn später nicht erhalten, egal wie viele Tarife für {country_acc} wir listen. Prüfe zuerst das Gerät, denn die Tarife oben helfen nur, wenn es besteht."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Irland?"
+a = "Nein, außer du brauchst ausdrücklich Anrufe über eine lokale Nummer. Wo Sprache existiert, ist sie app-basiert statt eine echte lokale Nummer – was die meisten Reisenden tatsächlich brauchen. Füge nur dann eine lokale SIM hinzu, wenn lokale Anrufe eine echte Anforderung sind."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Irland?"
+a = "Statt einer Sternebewertung beantwortet diese Seite die Frage mit Zahlen. Ein Fünf-Sterne-Schnitt und ein Ein-Stern-Schnitt beschreiben meist verschiedene Reisen statt verschiedene Produkte. Prüfe die Fair-Use- und Rückerstattungsseiten des Anbieters direkt, bevor du dich festlegst."

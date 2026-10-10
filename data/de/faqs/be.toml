@@ -1,0 +1,42 @@
+# BE FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Belgien?"
+a = "Günstigster Tarif für {country_acc}: {cheap_plan} von {cheap_brand}, ${cheap_price}. Das ergibt ${cheap_perday} pro Tag über die Laufzeit des Tarifs. Prüfe neben dem Preis auch die Gültigkeitsdauer, denn ein billiger Tarif, der früh abläuft, ist nicht billig."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Belgien wirklich unbegrenzt?"
+a = "Nur innerhalb der Grenzen. Die {unl_count} unbegrenzten Tarife für {country_acc} fallen nach einem festgelegten Tagesvolumen auf eine veröffentlichte Geschwindigkeit zurück. Die Tagessätze liegen zwischen {unl_perday_range}, und der günstigste ist {unl_brand} mit ${unl_perday}/Tag – ${unl_price} für {unl_days} Tage. Nimm die veröffentlichten Bedingungen als echte Grenze: {unl_allowance}, dann {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Belgien?"
+a = "Wähle nach Nutzungsmuster, denn die beiden Marken bepreisen ganz unterschiedlich. Die beste Rate von Airalo für {country_acc} ist ${ah_airalo_pergb}/GB – {ah_airalo_plan} für ${ah_airalo_price} – und das ist ein festes Paket statt eines Tagesvolumens. Holaflys Einstiegspreis für {country_acc} ist ${ah_holafly_price} über {ah_holafly_days} Tage (${ah_holafly_perday}/Tag), ohne Datenzähler zum Beobachten."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Belgien?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Belgien?"
+a = "Die Tarife auf dieser Seite laufen über Proximus, Orange, Base. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Belgien und Frankreich abdecken?"
+a = "Ja, aber nur über einen Multi-Land-Tarif, denn nichts in unseren Tabellen für {country_acc} deckt ein zweites Land ab. Suche ein regionales Paket, das {neighbor} einschließt, und vergleiche dessen $/GB mit zwei Einzeltarifen."
+
+[[faq]]
+q = "Kann ich eine eSIM in Belgien nutzen?"
+a = "Für {country_acc} sind {plan_count} Tarife von {brand_count} Anbietern gelistet, und jeder davon ist nutzbar. Alle {plan_count} Tarife in unserer Tabelle für {country_acc} registrieren sich in den heimischen Netzen statt im Roaming, es gibt also keine Abdeckungshürde. Der Gerätecheck dauert dreißig Sekunden, und die Tarife oben sind alle auf einer Skala bepreist."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Belgien?"
+a = "Ein eSIM-fähiges, entsperrtes Handy funktioniert in {country_dat} ohne zusätzlichen Schritt. Regionale Varianten sind die Falle, die es zu prüfen gilt: Dasselbe Modell kann je nach Verkaufsmarkt mit oder ohne eSIM-Chip ausgeliefert werden. Bestätige, dass die EID erscheint, und vergleiche dann die Tarife oben."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Belgien?"
+a = "Nur wenn lokale Anrufe für dich zählen, denn die {plan_count} hier gelisteten Tarife für {country_acc} sind Datenprodukte. Sprache ist meist nicht Teil des Angebots, und Anrufe laufen über eine App statt über das Mobilfunknetz. Nutze die eSIM für Daten und die Heimleitung für alles, was die Nummer braucht."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Belgien?"
+a = "Die Bewertungen selbst stehen auf den Seiten der Anbieter und in den App-Stores. Der Grund: Dieselbe Marke schneidet je nach Region des Bewerters anders ab, eine einzelne Zahl als Wahrheit zu zitieren wäre irreführend. Der gemessene Vergleich steht oben, und Meinungen liest man am besten dort, wo sie gepostet wurden."

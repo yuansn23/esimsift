@@ -115,8 +115,8 @@
     <div>
       <div class="flex flex-wrap items-center gap-3">
         <span class="badge bg-brand-50 text-brand-700">{{ i18n "networks_list__network_map" | safeHTML }}</span>
-        <span class="badge bg-ink-50 text-ink-500">{{ len $rows }} destinations</span>
-        <span class="badge bg-ink-50 text-ink-500">{{ $netCount }} host networks</span>
+        <span class="badge bg-ink-50 text-ink-500">{{ i18n "networks_list__badge_destinations" (dict "n" (len $rows)) | safeHTML }}</span>
+        <span class="badge bg-ink-50 text-ink-500">{{ i18n "networks_list__badge_host_networks" (dict "n" $netCount) | safeHTML }}</span>
       </div>
       <h1 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ .Title }}</h1>
       <p class="mt-4 text-lg leading-relaxed text-ink-600">{{ i18n "networks_list__your_esim_s_coverage_and_speed_follow_the_local_host_car" | safeHTML }}</p>
@@ -184,7 +184,7 @@
         </div>
         <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
           <p class="font-display text-sm font-bold text-white">{{ i18n "networks_list__do_all_brands_use_the_same_network" | safeHTML }}</p>
-          <p class="mt-1.5 text-sm leading-relaxed text-ink-200">{{ if eq $agreeCount (len $rows) }}At this check, yes — all {{ len $d.providers }} brands we track list identical hosts in all {{ len $rows }} destinations. They resell local carrier capacity, so coverage is a destination question, not a brand question.{{ else }}{{ $agreeCount }} of {{ len $rows }} destinations have identical hosts across all {{ len $d.providers }} brands we track; the rest split, and the cards show it.{{ end }}</p>
+          <p class="mt-1.5 text-sm leading-relaxed text-ink-200">{{ if eq $agreeCount (len $rows) }}{{ i18n "networks_list__brands_agree_all" (dict "brands" (len $d.providers) "dests" (len $rows)) | safeHTML }}{{ else }}{{ i18n "networks_list__brands_agree_some" (dict "agree" $agreeCount "dests" (len $rows) "brands" (len $d.providers)) | safeHTML }}{{ end }}</p>
         </div>
         <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
           <p class="font-display text-sm font-bold text-white">{{ i18n "networks_list__does_the_network_matter_more_than_the_brand" | safeHTML }}</p>
@@ -192,7 +192,7 @@
         </div>
         <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
           <p class="font-display text-sm font-bold text-white">{{ i18n "networks_list__where_do_i_see_measured_speeds" | safeHTML }}</p>
-          <p class="mt-1.5 text-sm leading-relaxed text-ink-200">In the cited verdicts: {{ $citedCount }} of {{ len $rows }} destinations carry a named Opensignal report, and every destination links to Ookla's live Global Index. We quote them rather than measure them.</p>
+          <p class="mt-1.5 text-sm leading-relaxed text-ink-200">{{ i18n "networks_list__cited_verdicts" (dict "cited" $citedCount "dests" (len $rows)) | safeHTML }}</p>
         </div>
       </div>
     </div>
@@ -206,11 +206,11 @@
     <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       <div class="card p-5">
         <p class="font-display text-sm font-bold text-ink-950">{{ i18n "networks_list__road_trips_and_rural_routes" | safeHTML }}</p>
-        <p class="mt-1.5 text-sm leading-relaxed text-ink-600">Coverage beats raw speed. {{ $ruralNets | len }} of the {{ $netCount }} host networks on this map are described in their profiles as covering rural, mountain or island areas — in those destinations, prefer plans riding them and check the country page for the per-network strengths.</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-ink-600">{{ i18n "networks_list__rural_note" (dict "rural" ($ruralNets | len) "total" $netCount) | safeHTML }}</p>
       </div>
       <div class="card p-5">
         <p class="font-display text-sm font-bold text-ink-950">{{ i18n "networks_list__4k_streaming_and_hotspot_work" | safeHTML }}</p>
-        <p class="mt-1.5 text-sm leading-relaxed text-ink-600">{{ $fourK }} of {{ $netCount }} profiled hosts sustain a typical floor of 25 Mbps or better — enough for 4K video and video calls. A further {{ $hd }} sit in the 10-25 Mbps HD band. Cities rarely differentiate; rural areas do.</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-ink-600">{{ i18n "networks_list__speed_note" (dict "fourk" $fourK "total" $netCount "hd" $hd) | safeHTML }}</p>
       </div>
       <div class="card p-5">
         <p class="font-display text-sm font-bold text-ink-950">{{ i18n "networks_list__city_breaks_on_a_budget" | safeHTML }}</p>
@@ -223,15 +223,15 @@
   <section id="hosts" class="mt-12 scroll-mt-28" aria-labelledby="hosts-h">
     <p class="eyebrow">{{ i18n "networks_list__carrier_groups" | safeHTML }}</p>
     <h2 id="hosts-h" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "networks_list__which_host_networks_cross_borders" | safeHTML }}</h2>
-    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">Of the {{ $netCount }} host networks behind the destinations on this map, {{ $multi | len }} appear in more than one country — the carrier groups whose networks keep carrying you as you cross a border. That is the lever a regional plan pulls, and the reason one plan can cover a whole trip.</p>
+    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">{{ i18n "networks_list__cross_border_note" (dict "total" $netCount "multi" ($multi | len)) | safeHTML }}</p>
     <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {{ range $multi }}
       <div class="card flex flex-col p-4">
         <div class="flex items-start justify-between gap-2">
           <p class="font-display text-sm font-bold text-ink-950">{{ .name }}</p>
-          <span class="badge shrink-0 bg-brand-50 text-brand-700">{{ .count }} destinations</span>
+          <span class="badge shrink-0 bg-brand-50 text-brand-700">{{ i18n "networks_list__badge_destinations" (dict "n" .count) | safeHTML }}</span>
         </div>
-        <p class="mt-1.5 text-xs leading-relaxed text-ink-500">{{ delimit .regionList " · " }}</p>
+        <p class="mt-1.5 text-xs leading-relaxed text-ink-500">{{ $rlLabels := slice }}{{ range .regionList }}{{ $rlLabels = $rlLabels | append (partial "region-label.html" .) }}{{ end }}{{ delimit $rlLabels " · " | safeHTML }}</p>
         <div class="mt-3 flex flex-wrap gap-1.5">
           {{ range .dests }}<a href="#net-{{ .iso }}" class="inline-flex items-center gap-1.5 rounded-md bg-ink-50 px-2 py-1 text-[11px] font-medium text-ink-600 transition-colors hover:bg-brand-50 hover:text-brand-800"><img src="{{ .flag | relURL }}" alt="" class="h-3 w-4 rounded-sm object-cover" loading="lazy">{{ .name }}</a>{{ end }}
         </div>
@@ -239,7 +239,7 @@
       {{ end }}
     </div>
     <div class="card mt-3 p-5">
-      <p class="font-display text-sm font-bold text-ink-950">And the {{ $singleCount }} single-market hosts</p>
+      <p class="font-display text-sm font-bold text-ink-950">{{ i18n "networks_list__single_market_hosts" (dict "n" $singleCount) | safeHTML }}</p>
       <p class="mt-1.5 text-sm leading-relaxed text-ink-600">{{ i18n "networks_list__the_remaining_host_networks_serve_one_destination_each_n" | safeHTML }}</p>
     </div>
   </section>
@@ -254,7 +254,7 @@
         <button class="chip chip-active" data-region="all" type="button">{{ i18n "networks_list__all_regions" | safeHTML }}</button>
         {{ range $regionOrder }}
           {{ $rgx := where $rows "region" . }}
-          {{ if gt (len $rgx) 0 }}<button class="chip whitespace-nowrap" data-region="{{ . }}" type="button">{{ . }} <span class="tnum">{{ len $rgx }}</span></button>{{ end }}
+          {{ if gt (len $rgx) 0 }}<button class="chip whitespace-nowrap" data-region="{{ . }}" type="button">{{ partial "region-label.html" . | safeHTML }} <span class="tnum">{{ len $rgx }}</span></button>{{ end }}
         {{ end }}
       </div>
       <input id="net-filter" type="search" placeholder="{{ i18n "networks_list__search_destination" | safeHTML }}" class="input-search w-full sm:w-56" aria-label="{{ i18n "g_search_destinations" | safeHTML }}">
@@ -272,13 +272,13 @@
         {{ $topHost := index $rl 0 }}
         <div class="mt-8" data-region-block="{{ $rn }}">
           <div class="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-brand-100 bg-brand-50/60 px-4 py-3">
-            <h3 class="font-display text-base font-bold text-ink-950">{{ $rn }}</h3>
-            <span class="badge bg-white text-brand-700">{{ len $rg }} destinations</span>
+            <h3 class="font-display text-base font-bold text-ink-950">{{ partial "region-label.html" $rn | safeHTML }}</h3>
+            <span class="badge bg-white text-brand-700">{{ i18n "networks_list__badge_destinations" (dict "n" (len $rg)) | safeHTML }}</span>
             <span class="text-xs leading-relaxed text-ink-600">
-              {{ if ge $topHost.count 2 }}Most-shared host <strong class="font-semibold text-ink-800">{{ $topHost.name }}</strong> in {{ $topHost.count }} of {{ len $rg }} destinations{{ else }}No host crosses borders here — each destination runs on its own national carriers{{ end }}
+              {{ if ge $topHost.count 2 }}{{ i18n "networks_list__most_shared_host" | safeHTML }} <strong class="font-semibold text-ink-800">{{ $topHost.name }}</strong> {{ i18n "networks_list__in_n_of_m_destinations" (dict "n" $topHost.count "total" (len $rg)) | safeHTML }}{{ else }}{{ i18n "networks_list__no_cross_border" | safeHTML }}{{ end }}
             </span>
             {{ $gslug := index $regionGuides $rn }}
-            {{ with site.GetPage (printf "/guides/%s" $gslug) }}<a href="{{ .RelPermalink }}" class="ml-auto whitespace-nowrap text-xs font-semibold text-brand-700 hover:underline">{{ $rn }} eSIM guide →</a>{{ end }}
+            {{ with site.GetPage (printf "/guides/%s" $gslug) }}<a href="{{ .RelPermalink }}" class="ml-auto whitespace-nowrap text-xs font-semibold text-brand-700 hover:underline">{{ i18n "networks_list__region_guide_link" (dict "region" (partial "region-label.html" $rn)) | safeHTML }}</a>{{ end }}
           </div>
 
           <div class="mt-3 grid gap-3 lg:grid-cols-2">
@@ -293,8 +293,8 @@
                 <img src="{{ $r.flag | relURL }}" alt="{{ $r.name }} flag" class="h-5 w-7 shrink-0 rounded object-cover ring-1 ring-ink-100" width="28" height="20" loading="lazy">
                 <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $r.slug) }}" class="font-display text-sm font-bold text-ink-950 transition-colors hover:text-brand-700">{{ $r.name }}</a>
                 {{ if gt $r.g5 0 }}<span class="badge bg-brand-50 text-brand-700">5G</span>{{ end }}
-                <span class="text-xs text-ink-400">{{ $r.n }} carrier networks</span>
-                <span class="ml-auto text-xs font-bold text-accent-600 tnum">from ${{ printf "%.2f" $s.minPrice }}</span>
+                <span class="text-xs text-ink-400">{{ i18n "g_n_carrier_networks" (dict "n" $r.n) | safeHTML }}</span>
+                <span class="ml-auto text-xs font-bold text-accent-600 tnum">{{ i18n "g_from_price" | safeHTML }}{{ printf "%.2f" $s.minPrice }}</span>
               </div>
 
               <div class="mt-2.5 flex flex-wrap gap-1.5">
@@ -302,7 +302,7 @@
                   {{ $p := index $netProf . }}
                   <span class="inline-flex items-center gap-1.5 rounded-lg border border-ink-100 bg-white px-2 py-1 text-[11px] leading-none">
                     <span class="font-semibold text-ink-800">{{ . }}</span>
-                    {{ with $p }}<span class="text-ink-400">{{ .tech }}</span><span class="tnum text-ink-500">{{ .speed_min }}–{{ .speed_top }} Mbps</span>{{ end }}
+                    {{ with $p }}<span class="text-ink-400">{{ .tech }}</span><span class="tnum text-ink-500">{{ i18n "networks_list__speed_band" (dict "min" .speed_min "max" .speed_top) | safeHTML }}</span>{{ end }}
                   </span>
                 {{ end }}
               </div>
@@ -324,16 +324,16 @@
                   {{ end }}
                 {{ end }}
                 {{ if not $nr }}
-                <p class="mt-2 text-xs leading-relaxed text-ink-600">No named Opensignal report covers this destination yet — Ookla's {{ if $ooklaMobile }}mobile{{ else }}fixed-broadband{{ end }} index still tracks the market month by month.</p>
+                <p class="mt-2 text-xs leading-relaxed text-ink-600">{{ if $ooklaMobile }}{{ i18n "networks_list__no_opensignal_mobile" | safeHTML }}{{ else }}{{ i18n "networks_list__no_opensignal_fixed" | safeHTML }}{{ end }}</p>
                 {{ end }}
-                <p class="mt-2.5 text-[11px]"><a href="{{ printf "https://www.speedtest.net/global-index/%s" $ooklaSlug }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">Open {{ $r.name }} on Ookla's Global Index →</a></p>
+                <p class="mt-2.5 text-[11px]">{{/* ⚠ 外链绝不能过 lang-href（会得到 /https:/…） */}}<a href="{{ printf "https://www.speedtest.net/global-index/%s" $ooklaSlug }}" target="_blank" rel="noopener" class="font-semibold text-brand-700 hover:underline">{{ i18n "networks_list__ookla_index_link" (dict "country" $r.name) | safeHTML }}</a></p>
               </div>
 
               <div class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-ink-100 pt-3">
-                <span class="text-xs leading-relaxed text-ink-500">{{ $s.planCount }} plans · {{ $s.providerCount }} brands{{ if $r.agree }} · identical hosts{{ end }}</span>
+                <span class="text-xs leading-relaxed text-ink-500">{{ i18n "networks_list__card_stats" (dict "plans" $s.planCount "brands" $s.providerCount) | safeHTML }}{{ if $r.agree }}{{ i18n "networks_list__identical_hosts_suffix" | safeHTML }}{{ end }}</span>
                 <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
                   {{ with site.GetPage (printf "/networks/%s" $r.slug) }}<a href="{{ .RelPermalink }}" class="text-xs font-semibold text-brand-700 hover:underline">{{ i18n "networks_list__carrier_breakdown" | safeHTML }}</a>{{ end }}
-                  <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $r.slug) }}" class="btn-mini">Compare {{ $r.name }} eSIM plans →</a>
+                  <a href="{{ partial "lang-href.html" (printf "/compare/%s/" $r.slug) }}" class="btn-mini">{{ i18n "networks_list__compare_plans_link" (dict "country" $r.name) | safeHTML }}</a>
                 </div>
               </div>
             </article>
@@ -429,7 +429,7 @@
   {{ $pos := 0 }}
   {{ range $rows }}
     {{ $pos = add $pos 1 }}
-    {{ $items = $items | append (dict "@type" "ListItem" "position" $pos "name" (printf "%s eSIM networks" .name) "url" (printf "%scompare/%s/" site.BaseURL .slug)) }}
+    {{ $items = $items | append (dict "@type" "ListItem" "position" $pos "name" (printf (i18n "networks_list__jsonld_itemlist_name") .name) "url" (absURL (partial "lang-href.html" (printf "/compare/%s/" .slug)))) }}
   {{ end }}
   <script type="application/ld+json">
     {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "ItemList" "name" .Title "itemListElement" $items) | safeJS }}

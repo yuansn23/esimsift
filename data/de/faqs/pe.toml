@@ -1,0 +1,42 @@
+# PE FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Peru?"
+a = "Beim Einstiegspreis liegt {cheap_brand} für {country_acc} vorn: {cheap_plan} für ${cheap_price}. Der beste Wert pro Gigabyte ist eine eigene Frage, und die Antwort lautet hier {value_plan} von {value_brand} mit ${value_pergb}/GB. Kaufe für die Reise, die du wirklich machst, und nicht für die niedrigste Zahl auf der Seite."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Peru wirklich unbegrenzt?"
+a = "Nein. Jeder der {unl_count} unbegrenzten Tarife für {country_acc} deckelt sein Tagesvolumen bei voller Geschwindigkeit. Der beste Tagessatz gehört {unl_brand} – ${unl_perday} für ein Paket über {unl_days} Tage zu ${unl_price} – und der Markt reicht über {unl_perday_range}. Vergleiche die Grenzen der Anbieter vor dem Kauf, denn die gedrosselte Geschwindigkeit ist der entscheidende Wert, und bei {unl_brand} ist sie {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Peru?"
+a = "Verschiedene Produkte: Airalo verkauft feste Datenpakete, Holafly verkauft unbegrenzte Tage. Airalos Angebot für {country_acc} ist ein Datenpaket – {ah_airalo_plan} für ${ah_airalo_price}, oder ${ah_airalo_pergb}/GB an der schärfsten Stelle. Wo Holafly gewinnt, ist die Planbarkeit, ab ${ah_holafly_price} für {ah_holafly_days} Tage (${ah_holafly_perday}/Tag), und wo Airalo gewinnt, ist eine kurze, leichte Reise."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Peru?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Peru?"
+a = "Die Tarife auf dieser Seite laufen über Claro, Movistar, Entel. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Peru und Kolumbien abdecken?"
+a = "Nur mit einem regionalen Paket, denn die Landestarife auf dieser Seite überschreiten keine Grenzen. Die Märkte rund um {country_acc} haben hier eigene Tabellen – {neighbors_all} gehören dazu – rechne ein regionales Paket also gegen zwei Einzeltarife."
+
+[[faq]]
+q = "Kann ich eine eSIM in Peru nutzen?"
+a = "Eine eSIM funktioniert in {country_dat}, und nichts am Reiseziel verhindert das. Die Verfügbarkeit ist mit den {plan_count} oben gelisteten Tarifen geklärt, offen sind also Dauer und Datenvolumen. Kläre die Handy-Frage vor dem Kauf und vergleiche den Rest über den Preis."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Peru?"
+a = "Dein Gerät entscheidet hier, nicht das Reiseziel. Von den {plan_count} Tarifen für {country_acc} auf dieser Seite braucht keiner mehr als ein Standard-eSIM-Profil. Mach die zwei Prüfungen und komm zur Tabelle oben zurück."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Peru?"
+a = "Eine lokale Nummer ist nicht nötig, um in {country_dat} eine eSIM zu nutzen. Wenn wirklich eine lokale Nummer nötig ist, bedeutet das den Kauf einer lokalen SIM und meist eine Registrierung im Laden. Lass beide Leitungen im Handy und stelle Daten auf die eSIM."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Peru?"
+a = "Bewertungsnoten lassen wir bewusst weg, weil eine einzelne Zahl die Streuung dahinter verbirgt. Wo ein Anbieter seine eigene Support- und Rückerstattungsrichtlinie veröffentlicht, verlinken wir sie direkt, damit du die Quelle liest statt einer Zusammenfassung. Nimm die Tabellen oben als die prüfbare Hälfte und lies Bewertungen für den Rest."

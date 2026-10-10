@@ -1,0 +1,18 @@
+{{- /* 数据层英文串 → 本语言（**语言覆盖层**，表在 data/<lang>/strings.toml）
+     为什么需要它：`data/plans/*.toml` 的 `fup_note`、`data/providers.toml` 的 `promo_label`、
+     `info.support/refund` 与 `countries.toml` 的 `quirks`
+     都是**数据里内建的英文句子**，不是模板文案，i18n 管不到它们 —— 德语页上曾整列印英文。
+     用法：{{ partial "de-text.html" .fup }} / {{ partial "de-text.html" $p.promo_label }}
+     ⚠ **`provider.policy` 的六个文本字段不走这里**：它们由 `data/de/providers.toml` 深度覆盖
+       （模板读 `$d.providers`，德语站拿到的本就是德语）。给它们包一层是无害的 no-op，
+       但译文**只允许存在一份** —— 见 scripts/verify_de_text.py 判据 H。
+     ⚠ `policy` 的 `hotspot` / `voice` / `fup_kind` 是**枚举**，走 i18n 出词，不要送进来。
+     语言无关：英文站没有 data/<lang>/strings.toml，`$d.strings` 为 nil ⇒ 恒等返回原串；⚠ 该表**顶层即句子键、绝不再包 `[strings]` 表**（`hugo.Data.<lang>.strings` 的值就是文件内容，包一层 ⇒ `$d.strings` = `{strings:{…}}` ⇒ 查表恒落空、静默印英文 —— 2026-10-09 第六十二轮实测）
+     （`$en == $loc` 同源思路，见 plan-name.html）。表未命中的串也原样返回 ——
+     覆盖完整性由 scripts/verify_de_text.py 的 D 段断言，不靠这里兜。 */ -}}
+{{- $s := . -}}
+{{- $d := partialCached "i18n-data.html" . site.Language.Lang -}}
+{{- with $d.strings -}}
+  {{- $s = index . $s | default $s -}}
+{{- end -}}
+{{- return $s -}}

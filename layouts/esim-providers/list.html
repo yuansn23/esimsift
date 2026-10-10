@@ -20,19 +20,19 @@
           <div class="flex items-center gap-3.5">
             {{ partial "prov-logo.html" (dict "p" $p "key" $key "class" "h-11 w-11" "text" "text-base") }}
             <div>
-              <h2 class="font-display text-lg font-bold"><a href="{{ printf "/esim-providers/%s/" $key }}" class="transition-colors hover:text-brand-700">{{ $p.name }}</a></h2>
+              <h2 class="font-display text-lg font-bold"><a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $key) }}" class="transition-colors hover:text-brand-700">{{ $p.name }}</a></h2>
               <p class="text-xs text-ink-400">{{ $p.tagline }}</p>
             </div>
           </div>
           {{ if $a }}
-            <span class="badge bg-ink-50 text-ink-600 tnum">{{ $a.countries }} {{ if eq $a.countries 1 }}country{{ else }}countries{{ end }} · from ${{ printf "%.2f" $a.minPrice }}</span>
+            <span class="badge bg-ink-50 text-ink-600 tnum">{{ i18n "esim_providers_list__n_countries_from_x" (dict "n" $a.countries "word" (cond (eq $a.countries 1) (i18n "esim_providers_list__country_lower") (i18n "esim_providers_list__countries_lower")) "p" (printf "%.2f" $a.minPrice)) | safeHTML }}</span>
           {{ end }}
         </div>
         {{ with $p.promo_code }}
           <div class="mt-4 flex flex-wrap items-center gap-2 rounded-xl border border-dashed border-brand-300 bg-brand-50/50 px-3.5 py-2.5">
             <span class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "g_code" | safeHTML }}</span>
             <code class="font-mono text-sm font-bold tracking-wider text-brand-800">{{ . }}</code>
-            <span class="text-xs text-ink-500">{{ $p.promo_label }}</span>
+            <span class="text-xs text-ink-500">{{ partial "de-text.html" $p.promo_label }}</span>
             <a href="{{ partial "lang-href.html" "/esim-deals/" }}" class="ml-auto text-xs font-semibold text-brand-700 hover:underline">{{ i18n "esim_providers_list__all_deals" | safeHTML }}</a>
           </div>
         {{ end }}
@@ -49,10 +49,10 @@
           <div class="mt-5 rounded-xl bg-ink-50/60 p-4">
             <p class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "esim_providers_list__coverage_at_a_glance" | safeHTML }}</p>
             <p class="mt-1.5 text-sm leading-relaxed text-ink-600">
-              {{ i18n "g_cheapest_in" | safeHTML }} <strong class="text-ink-950 tnum">{{ $a.cheapest }}</strong> of {{ $a.countries }} countries · best $/GB in <strong class="text-ink-950 tnum">{{ $a.bestValue }}</strong>.
+              {{ i18n "g_cheapest_in" | safeHTML }} <strong class="text-ink-950 tnum">{{ $a.cheapest }}</strong> {{ i18n "esim_providers_list__of_n_countries_best_gb_in" (dict "n" $a.countries) | safeHTML }} <strong class="text-ink-950 tnum">{{ $a.bestValue }}</strong>.
             </p>
-            <a href="{{ printf "/esim-providers/%s/" $key }}" class="mt-2.5 inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:underline">
-              Read the full {{ $p.name }} review <span aria-hidden="true">→</span>
+            <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $key) }}" class="mt-2.5 inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:underline">
+              {{ i18n "esim_providers_list__read_the_full_x_review" (dict "name" $p.name) | safeHTML }} <span aria-hidden="true">→</span>
             </a>
           </div>
         {{ end }}

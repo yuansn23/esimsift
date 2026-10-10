@@ -40,7 +40,7 @@
   <header>
     <div class="flex flex-wrap items-center gap-3">
       <span class="badge bg-brand-50 text-brand-700">{{ i18n "g_original_research" | safeHTML }}</span>
-      <span class="badge bg-ink-50 text-ink-500 tnum">{{ $totalUnlimited }} unlimited plans audited</span>
+      <span class="badge bg-ink-50 text-ink-500 tnum">{{ i18n "research_fair_use_audit__n_unlimited_plans_audited" (dict "n" $totalUnlimited) | safeHTML }}</span>
     </div>
     <h1 class="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ .Title }}</h1>
     <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">{{ i18n "research_fair_use_audit__unlimited_on_an_esim_listing_never_means_unthrottled_we_" | safeHTML }}</p>
@@ -76,7 +76,7 @@
               <td class="tnum">{{ if gt .unlimited 0 }}{{ .unlimited }}{{ else }}—{{ end }}</td>
               <td class="tnum">{{ if gt .unlimited 0 }}{{ .withNote }}/{{ .unlimited }}{{ else }}—{{ end }}</td>
               <td class="max-w-sm text-xs text-ink-600">
-                {{ if .notes }}{{ range first 2 .notes }}<p class="mb-1">“{{ . | truncate 110 }}”</p>{{ end }}{{ if gt (len .notes) 2 }}<p class="text-ink-400">+{{ sub (len .notes) 2 }} more variants</p>{{ end }}{{ else if gt .unlimited 0 }}<span class="text-ink-300">{{ i18n "research_fair_use_audit__no_note_on_any_tracked_listing" | safeHTML }}</span>{{ else }}<span class="text-ink-300">{{ i18n "research_fair_use_audit__sells_no_unlimited_plans" | safeHTML }}</span>{{ end }}
+                {{ if .notes }}{{ range first 2 .notes }}<p class="mb-1">“{{ partial "de-text.html" . | truncate 110 }}”</p>{{ end }}{{ if gt (len .notes) 2 }}<p class="text-ink-400">{{ i18n "research_fair_use_audit__n_more_variants" (dict "n" (sub (len .notes) 2)) | safeHTML }}</p>{{ end }}{{ else if gt .unlimited 0 }}<span class="text-ink-300">{{ i18n "research_fair_use_audit__no_note_on_any_tracked_listing" | safeHTML }}</span>{{ else }}<span class="text-ink-300">{{ i18n "research_fair_use_audit__sells_no_unlimited_plans" | safeHTML }}</span>{{ end }}
               </td>
               <td>
                 {{ if eq .unlimited 0 }}<span class="badge bg-ink-50 text-ink-500">{{ i18n "research_fair_use_audit__not_applicable" | safeHTML }}</span>
@@ -107,11 +107,11 @@
 
   {{/* ── 数据驱动 FAQ（正文 + FAQPage schema 同源） ── */}}
   {{ $faqList := slice }}
-  {{ $faqList = $faqList | append (dict "q" "What does fair use mean on an unlimited eSIM?" "a" (printf "Fair use is the provider's right to slow down or manage your connection — a daily full-speed allowance, a monthly threshold, or a congestion heuristic. It is how 'unlimited data' plans stay profitable. Of the %d unlimited plans we track, %d%% carry an explicit note on the listing; the rest simply do not say, which we grade as unstated rather than unlimited." $totalUnlimited $pct)) }}
+  {{ $faqList = $faqList | append (dict "q" (i18n "research_fair_use_audit__what_does_fair_use_mean_on_an_unlimited_esim") "a" (printf (i18n "research_fair_use_audit__fair_use_is_the_provider_s_right_to_slow_down_or") $totalUnlimited $pct)) }}
   {{ if or $transparentNames $partialNames }}
-    {{ $faqList = $faqList | append (dict "q" "Which eSIM providers state their fair-use limits?" "a" (printf "%s state an explicit note on every unlimited plan we track from them; %s state one on only some listings. The audit table above quotes each provider's actual wording — we never paraphrase a policy into something friendlier than it is." (cond $transparentNames (delimit $transparentNames ", " " and ") "None") (cond $partialNames (delimit $partialNames ", " " and ") "none"))) }}
+    {{ $faqList = $faqList | append (dict "q" (i18n "research_fair_use_audit__which_esim_providers_state_their_fair_use_limits") "a" (printf (i18n "research_fair_use_audit__s_state_an_explicit_note_on_every_unlimited_plan") (cond $transparentNames (delimit $transparentNames ", " (printf " %s " (i18n "g_and"))) (i18n "g_none")) (cond $partialNames (delimit $partialNames ", " (printf " %s " (i18n "g_and"))) (i18n "g_none_lower")))) }}
   {{ end }}
-  {{ $faqList = $faqList | append (dict "q" "Can I be throttled even with unlimited data?" "a" (printf "Yes — that is exactly what fair use allows. A plan can carry unlimited gigabytes and still slow you down after a threshold, on congested towers, or for tethering. Before a heavy trip, check two things on the country page: the verbatim note on each plan row, and whether a big metered bucket is simply cheaper for your usage.")) }}
+  {{ $faqList = $faqList | append (dict "q" (i18n "research_fair_use_audit__can_i_be_throttled_even_with_unlimited_data") "a" (printf (i18n "research_fair_use_audit__yes_that_is_exactly_what_fair_use_allows_a_plan"))) }}
 
   {{ if gt (len $faqList) 0 }}
   <section class="mt-12" aria-labelledby="faq">
@@ -139,7 +139,7 @@
     <h2 id="related" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "g_related_research_amp_comparisons" | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <a href="{{ partial "lang-href.html" "/research/unlimited-esim/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_unlimited_esim_daily_rates" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_fair_use_audit__every_country_s_cheapest_unlimited_rate_and_when_it_beat" | safeHTML }}</p></a>
-      <a href="{{ partial "lang-href.html" "/research/esim-price-index/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_esim_price_index" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">All {{ len $d.countries }} countries ranked by best $/GB, with regional averages.</p></a>
+      <a href="{{ partial "lang-href.html" "/research/esim-price-index/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_esim_price_index" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "g_price_index_card_desc" (dict "n" (len $d.countries)) | safeHTML }}</p></a>
       <a href="{{ partial "lang-href.html" "/compare/matchups/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_provider_matchups_2" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_fair_use_audit__every_provider_head_to_head_computed_country_by_country" | safeHTML }}</p></a>
       <a href="{{ partial "lang-href.html" "/esim-providers/" }}" class="card card-hover group p-5"><p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ i18n "g_provider_reviews" | safeHTML }}</p><p class="mt-2 text-xs leading-relaxed text-ink-500">{{ i18n "research_fair_use_audit__each_provider_s_plans_pricing_behavior_and_coverage_revi" | safeHTML }}</p></a>
     </div>

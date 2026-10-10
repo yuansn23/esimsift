@@ -18,7 +18,7 @@
   "perDay" (math.Round (mul .perDay 100))
   "perGB" (cond (gt .gb 0) (math.Round (mul .perGB 100)) 0)
   "networks" .networks
-  "fairUse" .fup
+  "fairUse" (partial "de-text.html" .fup)
 ) -}}
 {{- end -}}
 {{- $countries = $countries | append (dict
@@ -41,6 +41,6 @@
   "url" .Site.BaseURL
   "generated" (now.Format "2006-01-02")
   "currency" "USD"
-  "notes" "perDay/perGB are integer cents. gb=0 means unlimited (subject to fairUse). Prices as listed by each provider, excluding promos and taxes."
+  "notes" (i18n "catalog__notes")
   "countries" $countries
 ) -}}

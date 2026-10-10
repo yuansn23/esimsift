@@ -1,0 +1,42 @@
+# MO FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Macau?"
+a = "{cheap_brand} hält für {country_acc} die Bestmarke: {cheap_plan} für ${cheap_price}. Das sind ${cheap_perday} pro Tag, was eher zu einem kurzen Aufenthalt passt als zu einem langen. Richte den Tarif nach deiner Reisedauer statt nach der niedrigsten Zahl."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Macau wirklich unbegrenzt?"
+a = "Gedeckelt statt unbegrenzt – die {unl_count} unbegrenzten Tarife für {country_acc} drosseln, sobald das Tagesvolumen aufgebraucht ist. Die Laufzeit bewegt den Satz ebenso wie die Grenze: {unl_perday_range} pro Tag über die Auswahl, mit {unl_brand} am niedrigsten bei ${unl_perday} für {unl_days} Tage. Was {unl_brand} veröffentlicht: {unl_allowance}; danach {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Macau?"
+a = "Es kommt auf die Form an – Datenpakete gegen unbegrenzte Tage. Für {country_acc} ist Airalos günstigste Rate pro Gigabyte ${ah_airalo_pergb} ({ah_airalo_plan}, ${ah_airalo_price}). Holafly verkauft stattdessen unbegrenzte Tage, das kleinste Paket für {country_acc} umfasst {ah_holafly_days} Tage für ${ah_holafly_price} (${ah_holafly_perday}/Tag)."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Macau?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Macau?"
+a = "Die Tarife auf dieser Seite laufen über CTM, 3 Macau, China Telecom. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Macau und Hongkong abdecken?"
+a = "Nicht mit einem Ein-Land-Tarif. Führt die Reise von {country_dat} weiter, und {neighbor} soll dabei sein, vergleiche ein regionales Paket mit zwei separaten Tarifen, denn die Tabellen hier bepreisen jeden Markt für sich."
+
+[[faq]]
+q = "Kann ich eine eSIM in Macau nutzen?"
+a = "Ja, und in dieser Hinsicht gibt es keine Besonderheit – keine lokale Registrierung und keine Genehmigung nötig. Was variiert, ist der Preis und nicht der Zugang – {plan_count} Tarife von {brand_count} Anbietern, alle in denselben nationalen Netzen. Prüfe zuerst dein Handy und wähle dann den Tarif, der zu deiner Reisedauer passt."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Macau?"
+a = "Derselbe Test wie überall: Wähle *#06# und suche eine EID-Nummer. Ein in einem anderen Markt gekauftes Gerät ist der übliche Auslöser, und das hat nichts mit {country_dat} selbst zu tun. Mach den *#06#-Test vor dem Tarifkauf."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Macau?"
+a = "Für Nachrichten und Karten brauchst du keine. Reise-eSIMs werden als Daten verkauft, wer eine für Sprache kauft, zahlt für das falsche Produkt. Lass deine Heim-SIM für Anrufe und Codes aktiv und lass die eSIM die Daten tragen."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Macau?"
+a = "Wir führen keine Bewertung für eSIMs in {country_dat}, und das ist eine Entscheidung und kein Versehen. Die veröffentlichten Bedingungen sind der Teil, den niemand bewertet und jeder lesen sollte, deshalb zitieren wir sie. Lies zuerst die Zahlen oben und prüfe dann die eigenen Bewertungen des Anbieters für die menschliche Seite."

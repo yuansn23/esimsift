@@ -1,0 +1,42 @@
+# GE FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Georgien?"
+a = "Günstigster Tarif für {country_acc}: {cheap_plan} von {cheap_brand}, ${cheap_price}. Der nächstgünstigere Anbieter ist {runner_brand} mit ${runner_price}. Kaufe für die Reise, die du wirklich machst, und nicht für die niedrigste Zahl auf der Seite."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Georgien wirklich unbegrenzt?"
+a = "Nur innerhalb der Grenzen. Die {unl_count} unbegrenzten Tarife für {country_acc} fallen nach einem festgelegten Tagesvolumen auf eine veröffentlichte Geschwindigkeit zurück. Die Spanne ist weit – {unl_perday_range} pro Tag – und {unl_brand} liegt mit ${unl_perday}/Tag über {unl_days} Tage am unteren Ende. Vergleiche die Grenzen der Anbieter vor dem Kauf, denn die gedrosselte Geschwindigkeit ist der entscheidende Wert, und bei {unl_brand} ist sie {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Georgien?"
+a = "Wähle nach Nutzungsmuster, denn die beiden Marken bepreisen ganz unterschiedlich. Auf Airalos Seite ist der beste Wert ${ah_airalo_pergb}/GB – {ah_airalo_plan} für ${ah_airalo_price} – pro Gigabyte bepreist statt pro Tag. Wo Holafly gewinnt, ist die Planbarkeit, ab ${ah_holafly_price} für {ah_holafly_days} Tage (${ah_holafly_perday}/Tag), und wo Airalo gewinnt, ist eine kurze, leichte Reise."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Georgien?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Georgien?"
+a = "Die Tarife auf dieser Seite laufen über Magti, Silknet, Beeline. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Georgien und die Türkei abdecken?"
+a = "Ja, aber nur über einen Multi-Land-Tarif, denn nichts in unseren Tabellen für {country_acc} deckt ein zweites Land ab. Suche ein regionales Paket, das {neighbor} einschließt, und vergleiche dessen $/GB mit zwei Einzeltarifen."
+
+[[faq]]
+q = "Kann ich eine eSIM in Georgien nutzen?"
+a = "Für {country_acc} sind {plan_count} Tarife von {brand_count} Anbietern gelistet, und jeder davon ist nutzbar. {brand_count} Anbieter verkaufen {plan_count} separate Tarife für {country_acc} auf dieser Seite – ein Markt zu groß, als dass Verfügbarkeit die Einschränkung wäre. Kläre die Handy-Frage vor dem Kauf und vergleiche den Rest über den Preis."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Georgien?"
+a = "Ein eSIM-fähiges, entsperrtes Handy funktioniert in {country_dat} ohne zusätzlichen Schritt. Veröffentlichte Kompatibilitätslisten hinken neuen Modellen hinterher, der Test im Wählfeld an deinem eigenen Gerät schlägt also jede Liste, auch unsere. Mach die zwei Prüfungen und komm zur Tabelle oben zurück."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Georgien?"
+a = "Nur wenn lokale Anrufe für dich zählen, denn die {plan_count} hier gelisteten Tarife für {country_acc} sind Datenprodukte. Zwei-Faktor-Codes sind der übliche Grund für die Frage, und die kommen über die Heimleitung an, solange sie aktiv bleibt. Lass beide Leitungen im Handy und stelle Daten auf die eSIM."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Georgien?"
+a = "Die Bewertungen selbst stehen auf den Seiten der Anbieter und in den App-Stores. Preis, Volumen und die Fair-Use-Schwelle sind prüfbare Fakten, und genau die stellen die Tabellen oben nebeneinander. Nimm die Tabellen oben als die prüfbare Hälfte und lies Bewertungen für den Rest."

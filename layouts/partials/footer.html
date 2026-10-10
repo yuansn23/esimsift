@@ -1,7 +1,7 @@
 {{ $d := partialCached "i18n-data.html" . site.Language.Lang }}<footer class="mt-20 bg-ink-950 text-ink-300">
   <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4 lg:grid-cols-8">
     <div class="md:col-span-2">
-      <a href="{{ .Site.BaseURL }}" class="flex items-center gap-2" aria-label="{{ i18n "g_esim_sift_home" | safeHTML }}">
+      <a href="{{ .Site.Home.Permalink }}" class="flex items-center gap-2" aria-label="{{ i18n "g_esim_sift_home" | safeHTML }}">
         <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 text-white">
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M2 3h12L9.5 8v4.5L6.5 14V8L2 3Z" fill="currentColor"/>
@@ -33,20 +33,40 @@
     <div>
       <h3 class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">{{ i18n "partials_footer__popular_matchups" | safeHTML }}</h3>
       <ul class="mt-4 space-y-2.5 text-sm">
-        {{/* 编辑挑选的 6 组对打；slug 约定按字母序，page 缺失则静默跳过（validate.py 兜底） */}}
-        {{ $matchups := slice
-            (slice "airalo" "roami")
-            (slice "airalo" "holafly")
-            (slice "holafly" "roami")
-            (slice "airalo" "saily")
-            (slice "airalo" "yesim")
-            (slice "roami" "roamic")
-        }}
-        {{ range $matchups }}
-          {{ $mp := sort . }}
-          {{ with site.GetPage (printf "/compare/%s-vs-%s" (index $mp 0) (index $mp 1)) }}
-            <li><a href="{{ .RelPermalink }}" class="transition-colors hover:text-white">{{ (index $d.providers (index $mp 0)).name }} vs {{ (index $d.providers (index $mp 1)).name }}</a></li>
+        {{/* 相关对决：优先本页涉及的品牌（对决页 -> 同品牌的其他对决；品牌页/品牌×国家页 -> 该品牌的全部对决），
+             否则退回编辑精选 6 组。
+             为什么改（2026-10-10 实测）：原先写死 6 组 ⇒ 这 6 个对决页各拿 1290 条站内链接，
+             其余 39 个只有 49 条；而品牌页一个对决页都不指。同一批程序化页面的内链分配畸形，
+             是 GSC「已发现，尚未编入索引」最直接的可修因素。
+             清单来自 partials/nav-matchups.html（partialCached，全站只算两次），不新增 GetPage 开销。 */}}
+        {{ $all := partialCached "nav-matchups.html" site.Language.Lang site.Language.Lang }}
+        {{ $cur := slice }}
+        {{ with .Params.providers }}{{ range . }}{{ $cur = $cur | append . }}{{ end }}{{ end }}
+        {{ with .Params.provider }}{{ $cur = $cur | append . }}{{ end }}
+        {{ if eq (len $cur) 0 }}
+          {{/* 品牌 Hub 页没有 provider 参数 ⇒ 从路径第二段取品牌 key（剥掉可能的语言前缀）。 */}}
+          {{ $segs := split (strings.TrimPrefix "/" .RelPermalink) "/" }}
+          {{ if gt (len $segs) 1 }}
+            {{ $s0 := index $segs 0 }}
+            {{ if eq $s0 site.Language.Lang }}{{ $segs = after 1 $segs }}{{ $s0 = index $segs 0 }}{{ end }}
+            {{ if and (eq $s0 "esim-providers") (gt (len $segs) 1) }}{{ $cur = $cur | append (index $segs 1) }}{{ end }}
           {{ end }}
+        {{ end }}
+        {{ $rel := slice }}
+        {{ if gt (len $cur) 0 }}
+          {{ range $all }}
+            {{ $m := . }}
+            {{ $hit := false }}
+            {{ range $cur }}{{ if or (eq . $m.ka) (eq . $m.kb) }}{{ $hit = true }}{{ end }}{{ end }}
+            {{ if and $hit (ne $m.url $.RelPermalink) (lt (len $rel) 6) }}{{ $rel = $rel | append $m }}{{ end }}
+          {{ end }}
+        {{ end }}
+        {{ if eq (len $rel) 0 }}
+          {{ $keep := slice "airalo-vs-roami" "airalo-vs-holafly" "holafly-vs-roami" "airalo-vs-saily" "airalo-vs-yesim" "roami-vs-roamic" }}
+          {{ range $all }}{{ if in $keep (printf "%s-vs-%s" .ka .kb) }}{{ $rel = $rel | append . }}{{ end }}{{ end }}
+        {{ end }}
+        {{ range $rel }}
+          <li><a href="{{ .url }}" class="transition-colors hover:text-white">{{ .na }} {{ i18n "g_vs" | safeHTML }} {{ .nb }}</a></li>
         {{ end }}
         <li><a href="{{ partial "lang-href.html" "/compare/matchups/" }}" class="font-semibold text-brand-300 transition-colors hover:text-white">{{ i18n "g_all_matchups" | safeHTML }}</a></li>
       </ul>

@@ -50,6 +50,10 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+# 「无限」标签的语言无关判据（两个守卫共用一份，见模块 docstring）
+from unlimited_labels import is_unlimited_label  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
 MANIFEST = ROOT / "docs" / "regression-manifest.json"
@@ -238,7 +242,10 @@ def scan(root: Path) -> tuple[list[str], dict, dict, dict]:
                         f"[C] {rel}: 套餐行只有 {len(cells)} 个 td，取不到第 {idx} 格")
                     continue
                 cell = text_of(cells[idx])
-                says_unl = "unlimited" in cell.lower()
+                # ⚠️ 不能用英文判据：德语页把标签译成 `Unbegrenzt` 之后，
+                #    硬编码的 `"unlimited" in cell.lower()` 会把 50 个德语国家 Hub 页的
+                #    4602 处正常行全部判违规（守卫语言盲，2026-10-09 实测）。
+                says_unl = is_unlimited_label(cell)
                 if gb == 0.0:
                     stats["rows_unlimited"] += 1
                     if not says_unl:
@@ -353,6 +360,26 @@ def selftest() -> int:
             "compare/nowhere2/index.html",
             '<title>T</title><h1>H</h1>'
             '<tr data-price="1.00" data-gb="0.4883"><td>X</td><td>Unlimited</td></tr>',
+            "[C]"),
+        # 德语标签三连：既证明「放过正确译文」，也证明「仍抓住错译」。
+        # 只加前者等于把检查改瞎 —— 2026-10-09 的守卫语言盲事故就是反例。
+        "gb-unl-localised-ok": (
+            "de/compare/nowhere/index.html",
+            '<title>T</title><h1>H</h1>'
+            '<tr data-price="1.00" data-gb="0"><td>X</td><td>Y</td>'
+            '<td>Unbegrenzt</td></tr>',
+            None),
+        "gb-unl-localised-still-caught-when-metered": (
+            "de/compare/nowhere2/index.html",
+            '<title>T</title><h1>H</h1>'
+            '<tr data-price="1.00" data-gb="0.4883"><td>X</td><td>Y</td>'
+            '<td>Unbegrenzt</td></tr>',
+            "[C]"),
+        "gb-unl-zero-but-quantity-still-caught": (
+            "compare/nowhere3/index.html",
+            '<title>T</title><h1>H</h1>'
+            '<tr data-price="1.00" data-gb="0"><td>X</td><td>Y</td>'
+            '<td>0GB</td></tr>',
             "[C]"),
         "hub-marker-leak": (
             "guides/hubleak/index.html",

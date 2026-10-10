@@ -1,0 +1,42 @@
+# JP FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Japan?"
+a = "Unter den großen Anbietern hat {cheap_brand} derzeit den niedrigsten Einstiegspreis für {country}, nämlich ${cheap_price} für das Paket {cheap_plan}, und {runner_brand} ist mit ${runner_price} der nächste Verfolger. Wenn du nur Karten und Nachrichten brauchst, deckt jeder der beiden Tarife eine kurze Städtereise ab – aber pro GB ist {value_plan} von {value_brand} mit ${value_pergb}/GB der stärkste Wert, den wir führen."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Japan wirklich unbegrenzt?"
+a = "Nur innerhalb der Grenzen. Jeder der {unl_count} unbegrenzten Tarife, die wir für {country} führen, deckelt das Volumen bei voller Geschwindigkeit pro Tag und drosselt dann, und der Tagessatz liegt über alle hinweg zwischen {unl_perday_range}. Am günstigsten pro Tag ist {unl_brand} mit ${unl_price} für {unl_days} Tage (${unl_perday}/Tag); veröffentlicht: Volumen {unl_allowance}, danach {unl_drop}. Lies den Tagespreis und die Fair-Use-Grenze zusammen, bevor du kaufst."
+
+[[faq]]
+q = "Ist Airalo oder Holafly besser für Japan?"
+a = "Verschiedene Produkte, es hängt also davon ab, wie du Daten nutzt. Airalo verkauft feste Pakete – die beste Rate für {country} ist ${ah_airalo_pergb}/GB ({ah_airalo_plan} für ${ah_airalo_price}) – was leichte Nutzung bedient und die Fair-Use-Frage ganz umgeht. Holafly verkauft unbegrenzte Daten nur tageweise, ab ${ah_holafly_price} für {ah_holafly_days} Tage (${ah_holafly_perday}/Tag), was starke Streamer bedient, die keine Gigabyte zählen wollen. Für dieselbe Datenmenge ist keiner von beiden der günstigste auf dieser Seite: {cheap_brand} führt mit ${cheap_price}."
+
+[[faq]]
+q = "Brauche ich einen Reisepass oder Ausweis für eine eSIM in Japan?"
+a = "Nein – nicht bei Reise-eSIMs. Das japanische Recht verlangt eine Passprüfung für lokale Prepaid-SIM-Karten von SoftBank, NTT Docomo und KDDI, aber Reise-eSIMs umgehen diese Registrierung vollständig. Jede Marke, die wir für Japan führen, verkauft ohne Dokumenten-Upload: kaufen, QR-Code scannen, verbinden."
+
+[[faq]]
+q = "Welches japanische Netz nutzt welcher Anbieter?"
+a = "Alle. Jeder Anbieter, den wir führen – {brands_list} – verbindet sich mit denselben drei nationalen Netzen in Japan (NTT Docomo, SoftBank und KDDI), die Marke auf dem Voucher entscheidet also nicht über deine Abdeckung. Was sich zwischen Anbietern unterscheidet, sind Preis pro GB, Tarifformen, Hotspot-Regeln und Support. Docomo hat die weiteste Reichweite auf dem Land, was auf Bergrouten und beim Inselhüpfen zählt, aber weil jeder Japan-Tarif, den wir listen, auf alle drei Netze zurückfällt, wählt dein Handy das stärkste verfügbare Signal statt an einem Mast zu hängen."
+
+[[faq]]
+q = "Kann eine eSIM Japan und Südkorea auf derselben Reise abdecken?"
+a = "Ja – mehrere Anbieter verkaufen regionale Asien-Pakete, die Japan mit Korea, Taiwan und Hongkong bündeln. Wenn du zwei oder mehr Länder besuchst, schlägt ein regionales Paket meist den Kauf separater Landes-eSIMs. Prüfe unseren Regionalvergleich, bevor du zwei Einzeltarife kaufst."
+
+[[faq]]
+q = "Kann ich eine eSIM in Japan nutzen?"
+a = "Eine eSIM funktioniert in Japan wie überall sonst: Das Profil registriert sich bei der Landung in einem japanischen Netz, und nichts am Land blockiert es. Alle {brand_count} Anbieter, die wir führen, verkaufen Japan-Tarife, und die {plan_count} oben gelisteten Pakete verbinden sich mit denselben drei nationalen Netzen. Was über den Erfolg entscheidet, ist dein Handy und nicht das Reiseziel."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Japan?"
+a = "Japan stellt keine eigene Handy-Anforderung, ein eSIM-fähiges und entsperrtes Handy funktioniert also mit den Tarifen auf dieser Seite. Die Falle ist das Handy und nicht das Land: Dasselbe Modell kann je nach Verkaufsmarkt mit oder ohne eSIM-Chip ausgeliefert werden, und ein in Festlandchina gekauftes Gerät hat gar keinen Chip. Wähle *#06# vor dem Kauf; erscheint eine EID-Nummer, installiert sich ein Japan-Tarif."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Japan?"
+a = "Eine japanische Telefonnummer ist für eine Reise-eSIM nicht nötig, und die Tarife auf dieser Seite sind reine Datenprodukte. Lokale Sprach-SIMs in Japan gehen mit Identitätsprüfungen einher, die Reise-eSIMs ganz überspringen, weshalb die Nummer, unter der man dich erreicht, deine eigene bleibt. Lass die physische SIM für Anrufe und Verifizierungscodes aktiv und lass die eSIM die Daten tragen."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Japan?"
+a = "Statt einer Sternebewertung beantwortet diese Seite die Bewertungsfrage mit Messungen – die {plan_count} Japan-Tarife von {brand_count} Anbietern, gereiht nach einer $/GB- und $/Tag-Formel. Bewertungsnoten derselben Marke unterscheiden sich je nach Region des Bewerters, eine einzelne Zahl wäre also irreführend. Lies die Zahlen oben für die prüfbare Hälfte und die eigenen Kanäle des Anbieters für die Stimmung."

@@ -1,0 +1,42 @@
+# PT FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Portugal?"
+a = "Günstigster Tarif für {country_acc}: {cheap_plan} von {cheap_brand}, ${cheap_price}. Der beste Wert pro Gigabyte ist eine eigene Frage, und die Antwort lautet hier {value_plan} von {value_brand} mit ${value_pergb}/GB. Kleine Pakete passen zu Städtereisen, bei längeren Aufenthalten ist ein größerer Tarif pro Gigabyte meist günstiger."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Portugal wirklich unbegrenzt?"
+a = "Nur innerhalb der Grenzen. Die {unl_count} unbegrenzten Tarife für {country_acc} fallen nach einem festgelegten Tagesvolumen auf eine veröffentlichte Geschwindigkeit zurück. Der beste Tagessatz gehört {unl_brand} – ${unl_perday} für ein Paket über {unl_days} Tage zu ${unl_price} – und der Markt reicht über {unl_perday_range}. Zwei Werte entscheiden, ob ein gedeckelter Tarif zu dir passt, und {unl_brand} nennt beide: {unl_allowance}, dann {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Portugal?"
+a = "Wähle nach Nutzungsmuster, denn die beiden Marken bepreisen ganz unterschiedlich. Airalos Angebot für {country_acc} ist ein Datenpaket – {ah_airalo_plan} für ${ah_airalo_price}, oder ${ah_airalo_pergb}/GB an der schärfsten Stelle. Holafly verkauft nur tageweise unbegrenzt: {ah_holafly_days} Tage für ${ah_holafly_price}, oder ${ah_holafly_perday} pro Tag."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Portugal?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Portugal?"
+a = "Die Tarife auf dieser Seite laufen über MEO, NOS, Vodafone. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Portugal und Spanien abdecken?"
+a = "Ja, aber nur über einen Multi-Land-Tarif, denn nichts in unseren Tabellen für {country_acc} deckt ein zweites Land ab. Suche ein regionales Paket, das {neighbor} einschließt, und vergleiche dessen $/GB mit zwei Einzeltarifen."
+
+[[faq]]
+q = "Kann ich eine eSIM in Portugal nutzen?"
+a = "Für {country_acc} sind {plan_count} Tarife von {brand_count} Anbietern gelistet, und jeder davon ist nutzbar. Die Verfügbarkeit ist mit den {plan_count} oben gelisteten Tarifen geklärt, offen sind also Dauer und Datenvolumen. Kläre die Handy-Frage, den Rest erledigt der Vergleich oben."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Portugal?"
+a = "Ein eSIM-fähiges, entsperrtes Handy funktioniert in {country_dat} ohne zusätzlichen Schritt. Von den {plan_count} Tarifen für {country_acc} auf dieser Seite braucht keiner mehr als ein Standard-eSIM-Profil. Kläre beide Prüfungen zu Hause im WLAN statt am Flughafen."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Portugal?"
+a = "Nur wenn lokale Anrufe für dich zählen, denn die {plan_count} hier gelisteten Tarife für {country_acc} sind Datenprodukte. Wenn wirklich eine lokale Nummer nötig ist, bedeutet das den Kauf einer lokalen SIM und meist eine Registrierung im Laden. Entscheide, ob du wirklich eine lokale Nummer brauchst, bevor du einen zweiten Kauf machst."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Portugal?"
+a = "Die Bewertungen selbst stehen auf den Seiten der Anbieter und in den App-Stores. Wo ein Anbieter seine eigene Support- und Rückerstattungsrichtlinie veröffentlicht, verlinken wir sie direkt, damit du die Quelle liest statt einer Zusammenfassung. Vergleiche die Tarife oben nach Preis und lies dann die Bedingungen des Anbieters vor dem Kauf."

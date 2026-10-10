@@ -45,7 +45,7 @@
 {{- if eq $bn 1 -}}
   {{- $bl = index $names 0 -}}
 {{- else if gt $bn 1 -}}
-  {{- $bl = printf "%s and %s" (delimit (first (sub $bn 1) $names) ", ") (index $names (sub $bn 1)) -}}
+  {{- $bl = printf "%s %s %s" (delimit (first (sub $bn 1) $names) ", ") (i18n "faq_tokens__list_conjunction") (index $names (sub $bn 1)) -}}
 {{- else -}}
   {{- $bl = $na -}}
 {{- end -}}
@@ -57,30 +57,43 @@
        英国的问题问的是「英国和法国」，若机械取 neighbors[0] 会答成爱尔兰。
      7 国（HR/IS/CR/IL/MA/ZA/KE）没有 neighbors，必须给语法上仍成立的短语兜底。
      ⚠ 两处 `index … 0` 都必须先判长度：空切片越界会让 hugo 直接挂。
-     ⚠ 兜底短语是小写开头，**只能出现在句中**，不能让它顶着句号起句。 */ -}}
-{{- $region := $country.region | default "its region" -}}
+     ⚠ 兜底短语是小写开头，**只能出现在句中**，不能让它顶着句号起句。
+     ⚠ **语言无关**（2026-10-09 改）：定位 Q6 用**槽位下标 5**，不用英文前缀
+       `hasPrefix "Can one eSIM cover"` —— 德语 Q6 以「Kann eine eSIM」开头，
+       前缀判据会静默失配（$q6 为空 → 邻国退化成 neighbors[0]，答案与问题对不上）。
+       槽位顺序由 data/faqs 与 data/de/faqs 同时保证（各 10 条，Q6 恒在第 6 条）。
+     ⚠ 两个兜底短语走 i18n（`faq_tokens__another_country` /
+       `faq_tokens__other_region_markets`）—— 写死英文会在 7 个无邻国的德语页上
+       印出「another country」「the other Europe markets we cover」（实测 croatia 页）。 */ -}}
+{{- $region := $country.region | default "nearby" -}}
 {{- $nbsAll := slice -}}
 {{- range ($country.neighbors | default slice) -}}
   {{- with index $d.countries . -}}{{- with .name -}}{{- $nbsAll = $nbsAll | append . -}}{{- end -}}{{- end -}}
 {{- end -}}
-{{- $nbsList := printf "the other %s markets we cover" $region -}}
+{{- $nbsList := i18n "faq_tokens__other_region_markets" (dict "region" $region) }}
 {{- $nn := len $nbsAll -}}
 {{- if eq $nn 1 -}}
   {{- $nbsList = index $nbsAll 0 -}}
 {{- else if gt $nn 1 -}}
-  {{- $nbsList = printf "%s and %s" (delimit (first (sub $nn 1) $nbsAll) ", ") (index $nbsAll (sub $nn 1)) -}}
+  {{- $nbsList = printf "%s %s %s" (delimit (first (sub $nn 1) $nbsAll) ", ") (i18n "faq_tokens__list_conjunction") (index $nbsAll (sub $nn 1)) -}}
 {{- end -}}
 {{- $q6 := "" -}}
 {{- with index $d.faqs (lower $iso) -}}
-  {{- range .faq -}}{{- if hasPrefix .q "Can one eSIM cover" -}}{{- $q6 = .q -}}{{- end -}}{{- end -}}
+  {{- with index .faq 5 -}}{{- $q6 = .q -}}{{- end -}}
 {{- end -}}
 {{- $nbMain := "" -}}
 {{- range $nbsAll -}}{{- if and (eq $nbMain "") (in $q6 .) -}}{{- $nbMain = . -}}{{- end -}}{{- end -}}
 {{- if and (eq $nbMain "") (gt $nn 0) -}}{{- $nbMain = index $nbsAll 0 -}}{{- end -}}
-{{- if eq $nbMain "" -}}{{- $nbMain = "another country" -}}{{- end -}}
+{{- if eq $nbMain "" -}}{{- $nbMain = i18n "faq_tokens__another_country" -}}{{- end -}}
 
+{{- /* country / country_acc / country_dat：德语介词支配格（für→宾格、in→与格），
+     裸名会写出「für Türkei」。data/de/countries.toml 只为需要冠词的 7 国写了
+     name_acc / name_dat，其余回退裸名；英语侧没有 name_acc 字段、也不引用这两个
+     token，所以英语产物恒等。 */ -}}
 {{- $t := dict
   "country"        ($country.name | default $iso)
+  "country_acc"    ($country.name_acc | default $country.name | default $iso)
+  "country_dat"    ($country.name_dat | default $country.name | default $iso)
   "neighbor"       $nbMain
   "neighbors_all"  $nbsList
   "plan_count"     (string $stats.planCount)
@@ -135,7 +148,7 @@
   {{- $cheapKey := index $cheap "key" -}}
   {{- $t = merge $t (dict
     "cheap_brand"  (index $cheap "provider")
-    "cheap_plan"   (index $cheap "name")
+    "cheap_plan"   (partial "plan-name.html" (dict "name" (index $cheap "name") "iso" $iso))
     "cheap_price"  (printf "%.2f" (index $cheap "price"))
     "cheap_perday" (printf "%.2f" (index $cheap "perDay"))
     "cheap_pergb"  (cond (gt (index $cheap "gb") 0.0) (printf "%.2f" (index $cheap "perGB")) $na)
@@ -155,7 +168,7 @@
     {{- $value := index (sort $metered "perGB" "asc") 0 -}}
     {{- $t = merge $t (dict
       "value_brand" (index $value "provider")
-      "value_plan"  (index $value "name")
+      "value_plan"  (partial "plan-name.html" (dict "name" (index $value "name") "iso" $iso))
       "value_pergb" (printf "%.2f" (index $value "perGB"))
     ) -}}
   {{- end -}}
@@ -177,8 +190,8 @@
       "unl_days"      (string (index $cu "days"))
       "unl_price"     (printf "%.2f" (index $cu "price"))
       "unl_perday"    (printf "%.2f" (index $cu "perDay"))
-      "unl_allowance" ($pol.fup_allowance | default $na)
-      "unl_drop"      ($pol.fup_drop | default $na)
+      "unl_allowance" (partial "de-text.html" ($pol.fup_allowance | default $na))
+      "unl_drop"      (partial "de-text.html" ($pol.fup_drop | default $na))
       "unl_perday_lo" $loV
       "unl_perday_hi" $hiV
       "unl_perday_range" (cond (eq $loV $hiV) (printf "$%s" $loV) (printf "$%s to $%s" $loV $hiV))
@@ -191,7 +204,7 @@
     {{- $airalo := index (sort $aMetered "perGB" "asc") 0 -}}
     {{- $t = merge $t (dict
       "ah_airalo_pergb" (printf "%.2f" (index $airalo "perGB"))
-      "ah_airalo_plan"  (index $airalo "name")
+      "ah_airalo_plan"  (partial "plan-name.html" (dict "name" (index $airalo "name") "iso" $iso))
       "ah_airalo_price" (printf "%.2f" (index $airalo "price"))
     ) -}}
   {{- end -}}

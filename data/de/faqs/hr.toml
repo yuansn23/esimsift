@@ -1,0 +1,42 @@
+# HR FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Kroatien?"
+a = "{cheap_plan} von {cheap_brand} ist der günstigste Tarif für {country_acc} – ${cheap_price}. Preis und Gegenwert sind zwei verschiedene Messungen, und pro Gigabyte gewinnt {value_plan} von {value_brand} mit ${value_pergb}/GB. Wenn du nur Karten und Nachrichten brauchst, reicht der Einstiegspreis, und wer streamt, sollte nach $/GB wählen."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Kroatien wirklich unbegrenzt?"
+a = "Nicht ganz – alle {unl_count} unbegrenzten Tarife für {country_acc} haben eine Fair-Use-Regel. {unl_brand} ist pro Tag am günstigsten mit ${unl_perday}, und die volle Spanne reicht hier über {unl_perday_range}. Prüfe die Rückfallgeschwindigkeit vor dem Kauf, denn das ist das, was du nach dem Tagesvolumen bekommst: {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Kroatien?"
+a = "Sie verkaufen verschiedene Dinge, die Antwort hängt also davon ab, wie du Daten nutzt. {ah_airalo_plan} von Airalo ergibt ${ah_airalo_pergb}/GB für ${ah_airalo_price}, und was du kaufst, ist was du bekommst. Nimm Holafly, wenn du lieber keine Gigabyte zählst, denn seine Pakete für {country_acc} beginnen bei ${ah_holafly_price} für {ah_holafly_days} Tage (${ah_holafly_perday}/Tag); nimm Airalo für eine leichte, kurze Reise."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Kroatien?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Kroatien?"
+a = "Die Tarife auf dieser Seite laufen über Hrvatski Telekom, A1 Hrvatska. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Kroatien und weitere Länder der Region abdecken?"
+a = "Nur mit einem regionalen Paket, denn die Landestarife auf dieser Seite überschreiten keine Grenzen. Die Märkte rund um {country_acc} haben hier eigene Tabellen – {neighbors_all} gehören dazu – rechne ein regionales Paket also gegen zwei Einzeltarife."
+
+[[faq]]
+q = "Kann ich eine eSIM in Kroatien nutzen?"
+a = "Ja – {brand_count} Anbieter verkaufen Tarife für {country_acc}; das Land gehört zur üblichen Reise-eSIM-Landkarte. Von den {plan_count} hier gelisteten Tarifen für {country_acc} ist keiner auf eine bestimmte Region des Landes begrenzt. Bestätige, dass das Gerät eSIM unterstützt und entsperrt ist, und wähle dann aus der Tabelle oben."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Kroatien?"
+a = "Wenn dein Handy eSIM unterstützt und keinen Netlock hat, funktioniert es in {country_dat} – das Reiseziel hat darauf keinen Einfluss. Der eSIM-Chip ist bei der Fertigung festgelegt, ein ohne ihn gebautes Handy kann ihn später nicht erhalten, egal wie viele Tarife für {country_acc} wir listen. Teste das Handy jetzt, dann wird die Tarifwahl eine Preisfrage statt einer Kompatibilitätsfrage."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Kroatien?"
+a = "Für eine normale Reise nicht – eine Reise-eSIM für {country_acc} ist ein Datenprodukt und keine Telefonleitung. Wo Sprache existiert, ist sie app-basiert statt eine echte lokale Nummer – was die meisten Reisenden tatsächlich brauchen. Lass die Heimleitung im Handy und schalte ihre Daten ab."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Kroatien?"
+a = "Wir bündeln keine Bewertungen, die ehrliche Antwort hier betrifft also die Methode und nicht die Noten. Ein Fünf-Sterne-Schnitt und ein Ein-Stern-Schnitt beschreiben meist verschiedene Reisen statt verschiedene Produkte. Nimm die Zahlen oben als Grundlage und prüfe die Rückgaberichtlinie an der Quelle."

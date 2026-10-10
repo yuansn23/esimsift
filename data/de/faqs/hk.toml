@@ -1,0 +1,42 @@
+# HK FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Hongkong?"
+a = "Für ${cheap_price} ist {cheap_plan} von {cheap_brand} der günstigste Weg ins Netz in {country_dat}. Der nächstgünstigere Anbieter ist {runner_brand} mit ${runner_price}. Lege zuerst Tage und ungefähren Datenbedarf fest und wähle dann den Tarif, der zu beidem passt."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Hongkong wirklich unbegrenzt?"
+a = "Behandle sie als gedeckelt: {unl_count} unbegrenzte Tarife für {country_acc} nennen jeweils ein Tagesvolumen und eine Rückfallgeschwindigkeit. Die Spanne ist weit – {unl_perday_range} pro Tag – und {unl_brand} liegt mit ${unl_perday}/Tag über {unl_days} Tage am unteren Ende. Was viele übersehen, ist das, was nach der Grenze passiert: {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Hongkong?"
+a = "Die ehrliche Antwort ist, dass diese beiden nicht austauschbar sind. Auf Airalos Seite ist der beste Wert ${ah_airalo_pergb}/GB – {ah_airalo_plan} für ${ah_airalo_price} – pro Gigabyte bepreist statt pro Tag. Holaflys Modell ist täglich unbegrenzt, ab {ah_holafly_days} Tagen für ${ah_holafly_price} – ${ah_holafly_perday}/Tag – schwere Nutzung kostet also dasselbe wie leichte."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Hongkong?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Hongkong?"
+a = "Die Tarife auf dieser Seite laufen über CSL, 3HK, SmarTone. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Hongkong und Taiwan abdecken?"
+a = "Nur über einen regionalen Tarif, denn die Tabellen für {country_acc} gelten für einen Markt. Um {neighbor} mitzunehmen, brauchst du ein regionales Paket oder einen zweiten Tarif – der Preis pro Gigabyte unterscheidet sie."
+
+[[faq]]
+q = "Kann ich eine eSIM in Hongkong nutzen?"
+a = "Ja – was eine eSIM in {country_dat} stoppen kann, liegt auf deiner Seite und nicht am Land. {brand_count} Anbieter verkaufen {plan_count} separate Tarife für {country_acc} auf dieser Seite – ein Markt zu groß, als dass Verfügbarkeit die Einschränkung wäre. Mach den Kompatibilitätstest und vergleiche die Tarife oben nach $/GB und $/Tag."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Hongkong?"
+a = "Ja, sofern das Handy eSIM-Hardware hat und keinen Netlock trägt. Veröffentlichte Kompatibilitätslisten hinken neuen Modellen hinterher, der Test im Wählfeld an deinem eigenen Gerät schlägt also jede Liste, auch unsere. Prüfe zuerst auf eine EID-Nummer und einen Netlock ohne Einschränkungen."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Hongkong?"
+a = "Mit einer Reise-eSIM für {country_acc} wird keine Nummer ausgegeben. Zwei-Faktor-Codes sind der übliche Grund für die Frage, und die kommen über die Heimleitung an, solange sie aktiv bleibt. Plane Daten von der eSIM und deine bestehende Nummer von der Heimleitung."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Hongkong?"
+a = "Wir beantworten die Bewertungsfrage mit Messung statt mit Gefühl. Preis, Volumen und die Fair-Use-Schwelle sind prüfbare Fakten, und genau die stellen die Tabellen oben nebeneinander. Nutze die Tabellen oben für die Fakten und die eigenen Kanäle des Anbieters für die Stimmung."

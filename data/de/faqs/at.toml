@@ -1,0 +1,42 @@
+# AT FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Österreich?"
+a = "Der niedrigste Preis auf dieser Seite: {cheap_plan} von {cheap_brand} für ${cheap_price}. Das ergibt ${cheap_perday} pro Tag über die Laufzeit des Tarifs. Kleine Pakete passen zu Städtereisen, bei längeren Aufenthalten ist ein größerer Tarif pro Gigabyte meist günstiger."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Österreich wirklich unbegrenzt?"
+a = "Groß statt grenzenlos: {unl_count} unbegrenzte Tarife für {country_acc} unterliegen Fair-Use-Regeln. Die Tagessätze liegen zwischen {unl_perday_range}, und der günstigste ist {unl_brand} mit ${unl_perday}/Tag – ${unl_price} für {unl_days} Tage. Zwei Werte entscheiden, ob ein gedeckelter Tarif zu dir passt, und {unl_brand} nennt beide: {unl_allowance}, dann {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Österreich?"
+a = "Keiner von beiden ist der günstigste Tarif auf dieser Seite, und sie konkurrieren auch nicht zu denselben Bedingungen. Die beste Rate von Airalo für {country_acc} ist ${ah_airalo_pergb}/GB – {ah_airalo_plan} für ${ah_airalo_price} – und das ist ein festes Paket statt eines Tagesvolumens. Holafly verkauft nur tageweise unbegrenzt: {ah_holafly_days} Tage für ${ah_holafly_price}, oder ${ah_holafly_perday} pro Tag."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Österreich?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Österreich?"
+a = "Die Tarife auf dieser Seite laufen über A1, Magenta, Drei. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Österreich und Italien abdecken?"
+a = "Nicht mit einem Landestarif allein, weil Tarife für {country_acc} an der Grenze enden. {neighbor} dazu bedeutet ein regionales Paket oder einen zweiten Tarif, und diese Rechnung lohnt sich vor dem Kauf."
+
+[[faq]]
+q = "Kann ich eine eSIM in Österreich nutzen?"
+a = "Ja, es funktioniert. Keine länderspezifische Sperre steht zwischen einer Reise-eSIM und den Netzen in {country_dat}. Alle {plan_count} Tarife in unserer Tabelle für {country_acc} registrieren sich in den heimischen Netzen statt im Roaming, es gibt also keine Abdeckungshürde. Kläre die Handy-Frage, den Rest erledigt der Vergleich oben."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Österreich?"
+a = "Es hängt vom Gerät ab und nicht vom Land, denn jeder Tarif auf dieser Seite ist ein Standard-eSIM-Profil. Regionale Varianten sind die Falle, die es zu prüfen gilt: Dasselbe Modell kann je nach Verkaufsmarkt mit oder ohne eSIM-Chip ausgeliefert werden. Kläre beide Prüfungen zu Hause im WLAN statt am Flughafen."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Österreich?"
+a = "Nein, außer du brauchst ausdrücklich Anrufe über eine lokale Nummer. Sprache ist meist nicht Teil des Angebots, und Anrufe laufen über eine App statt über das Mobilfunknetz. Entscheide, ob du wirklich eine lokale Nummer brauchst, bevor du einen zweiten Kauf machst."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Österreich?"
+a = "Statt einer Sternebewertung beantwortet diese Seite die Frage mit Zahlen. Der Grund: Dieselbe Marke schneidet je nach Region des Bewerters anders ab, eine einzelne Zahl als Wahrheit zu zitieren wäre irreführend. Vergleiche die Tarife oben nach Preis und lies dann die Bedingungen des Anbieters vor dem Kauf."

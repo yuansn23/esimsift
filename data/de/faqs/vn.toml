@@ -1,0 +1,42 @@
+# VN FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Vietnam?"
+a = "Starte mit {cheap_brand}: {cheap_plan} ist mit ${cheap_price} der günstigste Tarif für {country_acc}. {runner_brand} folgt mit ${runner_price}, und die stärkste Rate pro Gigabyte kommt von {value_plan} von {value_brand} mit ${value_pergb}/GB. Prüfe neben dem Preis auch die Gültigkeitsdauer, denn ein billiger Tarif, der früh abläuft, ist nicht billig."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Vietnam wirklich unbegrenzt?"
+a = "Unbegrenzt heißt hier unbegrenztes Datenvolumen und nicht unbegrenzte Geschwindigkeit: {unl_count} Tarife für {country_acc} setzen Fair-Use-Grenzen. Die Preise liegen je nach Laufzeit bei {unl_perday_range} pro Tag, und {unl_brand} ist mit ${unl_perday}/Tag am günstigsten. Nimm die veröffentlichten Bedingungen als echte Grenze: {unl_allowance}, dann {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Vietnam?"
+a = "Airalo und Holafly lösen verschiedene Probleme, vergleiche also die Modelle vor den Preisen. Airalos stärkstes Angebot für {country_acc} ist ${ah_airalo_pergb}/GB, verkauft als {ah_airalo_plan} für ${ah_airalo_price}. Holaflys Einstiegspreis für {country_acc} ist ${ah_holafly_price} über {ah_holafly_days} Tage (${ah_holafly_perday}/Tag), ohne Datenzähler zum Beobachten."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Vietnam?"
+a = "Ja, Vietnam registriert jede SIM gegen einen Pass und Reise-eSIMs sind keine Ausnahme, rechne also mit einem schnellen Ausweis-Upload beim Kauf. Er passiert im Checkout des Anbieters statt an einem Schalter, und eine vietnamesische Adresse ist nicht nötig. Viettel ist das Netz, auf das die meisten Reisetarife zurückgreifen, weshalb sie auch auf der Halong-Bucht und den Bergrouten des Nordens durchhalten."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Vietnam?"
+a = "Die Tarife auf dieser Seite laufen über Viettel, Vinaphone, Mobifone. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Vietnam und Thailand abdecken?"
+a = "Ein Land pro Tarif, eine für {country_acc} gekaufte eSIM endet also an der Grenze. Ein regionales Paket oder ein zweiter Tarif bringt {neighbor} dazu, und beide lohnen den Vergleich mit zwei Einzelkäufen."
+
+[[faq]]
+q = "Kann ich eine eSIM in Vietnam nutzen?"
+a = "Reise-eSIMs für {country_acc} werden von jedem Anbieter verkauft, den wir führen, und keiner braucht eine lokale Adresse. Jeder der {brand_count} Anbieter hier verkauft Tarife für {country_acc} – das beantwortet die Frage, ob eSIMs dort funktionieren, bereits. Der Gerätecheck dauert dreißig Sekunden, und die Tarife oben sind alle auf einer Skala bepreist."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Vietnam?"
+a = "Kompatibilität ist reine Gerätesache, und das Reiseziel stellt keine eigene Anforderung. Keiner der {brand_count} Anbieter hier verlangt ein bestimmtes Handy, nur dass das Gerät den Chip hat und entsperrt ist. Bestätige, dass die EID erscheint, und vergleiche dann die Tarife oben."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Vietnam?"
+a = "Für Besucher nicht. Eine eSIM für {country_acc} gibt dir Konnektivität, die Nummer bleibt bei deiner Heimleitung. Die praktische Aufteilung ist Daten auf der eSIM und die bestehende Nummer auf der physischen SIM, mit ausgeschaltetem Roaming auf der Heimleitung. Nutze die eSIM für Daten und die Heimleitung für alles, was die Nummer braucht."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Vietnam?"
+a = "Kein aggregierter Wert von uns. Was diese Seite stattdessen bietet, ist die Rechnung. Der Vergleich oben schickt alle {plan_count} Tarife für {country_acc} von {brand_count} Anbietern durch eine Formel – was keine Bewertungsseite behaupten kann. Der gemessene Vergleich steht oben, und Meinungen liest man am besten dort, wo sie gepostet wurden."

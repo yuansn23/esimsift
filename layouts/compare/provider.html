@@ -153,6 +153,22 @@
 {{ range $dayOpts }}{{ if and (eq $calcDefault 0) (ge . 7) }}{{ $calcDefault = . }}{{ end }}{{ end }}
 {{ if eq $calcDefault 0 }}{{ with $dayOpts }}{{ $calcDefault = index . (sub (len .) 1) }}{{ end }}{{ end }}
 
+{{/* ── 套餐表的数据量过滤桶 ──
+     对象 = 本品牌在本国的**全部在售档**（$myRows），与 compare/single.html 的 $szCnt
+     判定逐字同构（左开右闭 / gb=0 只进无限桶 / 20GB 以上归 20p）。
+     档位不写死 —— 品牌实际卖什么就出什么，空桶不渲染（读者点不到不存在的档）。 */}}
+{{ $szCnt := dict "u" 0 "0-1" 0 "1-3" 0 "3-5" 0 "5-10" 0 "10-20" 0 "20p" 0 }}
+{{ range $myRows }}
+  {{ $g := float .gb }}{{ $sz := "20p" }}
+  {{ if eq $g 0.0 }}{{ $sz = "u" }}
+  {{ else if le $g 1.0 }}{{ $sz = "0-1" }}
+  {{ else if le $g 3.0 }}{{ $sz = "1-3" }}
+  {{ else if le $g 5.0 }}{{ $sz = "3-5" }}
+  {{ else if le $g 10.0 }}{{ $sz = "5-10" }}
+  {{ else if le $g 20.0 }}{{ $sz = "10-20" }}{{ end }}
+  {{ $szCnt = merge $szCnt (dict $sz (add (index $szCnt $sz) 1)) }}
+{{ end }}
+
 {{/* 该国的两个横向基准，供 #tradeoffs 做量化对比：
      ① 全国最便宜的无限流量 $/天；② 档位最多的品牌（说明「有人按天卖」） */}}
 {{ $cUnlPerDay := 0.0 }}
@@ -179,11 +195,11 @@
   {{/* 手动面包屑：.Ancestors 不含作为普通页的国家层，故显式渲染 4 级 */}}
   <nav aria-label="{{ i18n "g_breadcrumb" | safeHTML }}" class="text-sm text-ink-400">
     <ol class="flex flex-wrap items-center gap-1.5">
-      <li><a href="{{ .Site.BaseURL }}" class="transition-colors hover:text-ink-700">{{ i18n "g_home" | safeHTML }}</a></li>
+      <li><a href="{{ .Site.Home.Permalink }}" class="transition-colors hover:text-ink-700">{{ i18n "g_home" | safeHTML }}</a></li>
       <li aria-hidden="true">/</li>
       <li><a href="{{ partial "lang-href.html" "/compare/" }}" class="transition-colors hover:text-ink-700">{{ i18n "g_compare_countries" | safeHTML }}</a></li>
       <li aria-hidden="true">/</li>
-      <li><a href="{{ with $comparePage }}{{ .RelPermalink }}{{ else }}{{ partial "lang-href.html" (printf "/compare/%s/" $country.slug) }}{{ end }}" class="transition-colors hover:text-ink-700">{{ i18n "compare_provider__country_crumb" (dict "country" $country.name) | safeHTML }}</a></li>
+      <li><a href="{{ with $comparePage }}{{ .RelPermalink }}{{ else }}{{ partial "lang-href.html" (printf "/compare/%s/" $country.slug) }}{{ end }}" class="transition-colors hover:text-ink-700">{{ i18n "compare_provider__country_crumb" (dict "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</a></li>
       <li aria-hidden="true">/</li>
       <li class="font-medium text-ink-700">{{ $p.name }}</li>
     </ol>
@@ -193,16 +209,16 @@
   <header class="mt-6 grid items-center gap-8 lg:grid-cols-[1.25fr_1fr]">
     <div>
       <div class="flex flex-wrap items-center gap-3">
-        <img src="{{ $country.flag | relURL }}" alt="{{ i18n "compare_provider__flag_alt" (dict "country" $country.name) | safeHTML }}" class="h-9 w-[3.25rem] rounded-lg object-cover shadow-sm ring-1 ring-ink-100">
-        <span class="badge bg-brand-50 text-brand-700">{{ partial "region-label.html" $country.region }}</span>
+        <img src="{{ $country.flag | relURL }}" alt="{{ i18n "compare_provider__flag_alt" (dict "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}" class="h-9 w-[3.25rem] rounded-lg object-cover shadow-sm ring-1 ring-ink-100">
+        <span class="badge bg-brand-50 text-brand-700">{{ partial "region-label.html" $country.region | safeHTML }}</span>
         {{ with $updatedDate }}<span class="badge bg-ink-50 text-ink-500">{{ i18n "g_prices_checked" | safeHTML }} {{ . }}</span>{{ end }}
       </div>
       <div class="mt-4 flex items-center gap-4">
         {{ partial "prov-logo.html" (dict "p" $p "key" $provKey "class" "h-14 w-14" "text" "text-xl") }}
-        <h1 class="text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ i18n "compare_provider__h1" (dict "brand" $p.name "country" $country.name "year" now.Year) | safeHTML }}</h1>
+        <h1 class="text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ i18n "compare_provider__h1" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "year" now.Year) | safeHTML }}</h1>
       </div>
       <p class="mt-4 max-w-xl text-lg leading-relaxed text-ink-600">
-        {{ i18n "compare_provider__hero_lead" (dict "brand" $p.name "country" $country.name "n" ($myRows | len) "providers" $stats.providerCount "plans" $stats.planCount) | safeHTML }}
+        {{ i18n "compare_provider__hero_lead" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "n" ($myRows | len) "providers" $stats.providerCount "plans" $stats.planCount) | safeHTML }}
       </p>
       <div class="mt-6 flex flex-wrap gap-3">
         <div class="stat-tile"><span class="stat-num tnum">{{ $myRows | len }}</span><span class="stat-label">{{ i18n "g_plans" | safeHTML }}</span></div>
@@ -219,15 +235,15 @@
            品牌名走占位符 —— 写死成某一家会让另外 7 个品牌的 350 页跟着错。 */}}
       <p class="mt-3 max-w-xl text-xs leading-relaxed text-ink-400">{{ i18n "compare_provider__price_disclaimer" (dict "brand" $p.name "date" $updatedDate) | safeHTML }}</p>
       <div class="mt-7 flex flex-wrap items-center gap-4">
-        {{ partial "cta-out.html" (dict "target" $provKey "slugMap" $country.slugs "label" (i18n "compare_provider__cta_view_plans" (dict "brand" $p.name "country" $country.name) | safeHTML) "class" "btn-primary" "campaign" $campaign "page" $.RelPermalink) }}
-        <a href="{{ printf "/esim-providers/%s/" $provKey }}" class="text-sm font-semibold text-ink-500 hover:text-brand-700 hover:underline">{{ i18n "compare_provider__full_review" (dict "brand" $p.name) | safeHTML }}</a>
+        {{ partial "cta-out.html" (dict "target" $provKey "slugMap" $country.slugs "label" (i18n "compare_provider__cta_view_plans" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML) "class" "btn-primary" "campaign" $campaign "page" $.RelPermalink) }}
+        <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $provKey) }}" class="text-sm font-semibold text-ink-500 hover:text-brand-700 hover:underline">{{ i18n "compare_provider__full_review" (dict "brand" $p.name) | safeHTML }}</a>
       </div>
     </div>
 
     {{ if gt (len $imgs) 1 }}
     <figure class="figure shadow-pop">
-      <img src="{{ printf "/img/countries/%s" (index $imgs 1) }}" alt="{{ i18n "compare_provider__hero_img_alt" (dict "brand" $p.name "country" $country.name) | safeHTML }}" width="2848" height="1470" loading="eager" fetchpriority="high">
-      <figcaption>{{ i18n "compare_provider__hero_caption" (dict "brand" $p.name "country" $country.name "n" ($myRows | len) "date" $updatedDate) | safeHTML }}</figcaption>
+      <img src="{{ printf "/img/countries/%s" (index $imgs 1) }}" alt="{{ i18n "compare_provider__hero_img_alt" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}" width="2848" height="1470" loading="eager" fetchpriority="high">
+      <figcaption>{{ i18n "compare_provider__hero_caption" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "n" ($myRows | len) "date" $updatedDate) | safeHTML }}</figcaption>
     </figure>
     {{ end }}
   </header>
@@ -240,7 +256,7 @@
   {{ range $allSorted }}
     {{ $offerList = $offerList | append (dict
       "@type" "Offer"
-      "name" .name
+      "name" (partial "plan-name.html" (dict "name" .name "iso" $iso))
       "category" "eSIM data plan"
       "price" .price
       "priceCurrency" "USD"
@@ -253,9 +269,9 @@
   {{ $prodLD := dict
       "@context" "https://schema.org"
       "@type" "Product"
-      "name" (printf "%s %s eSIM plans" $p.name $country.name)
+      "name" (printf (i18n "compare_provider__jsonld_product_name") $p.name $country.name)
       "url" $.Permalink
-      "description" (printf "%d %s eSIM plans for %s, from $%.2f, benchmarked against %d providers and %d plans we track for this country." (len $myRows) $p.name $country.name $myMin $stats.providerCount $stats.planCount)
+      "description" (printf (i18n "compare_provider__d_s_esim_plans_for_s_from_2f_benchmarked_against") (len $myRows) $p.name $country.name $myMin $stats.providerCount $stats.planCount)
       "category" "eSIM"
       "brand" (dict "@type" "Brand" "name" $p.name)
       "offers" (dict
@@ -295,7 +311,7 @@
       <div class="flex flex-wrap items-center justify-between gap-4">
         <div>
           <p class="eyebrow">{{ i18n "compare_provider__promo_eyebrow" (dict "brand" $p.name) | safeHTML }}</p>
-          <p class="mt-1.5 text-lg font-bold text-ink-950">{{ i18n "compare_provider__promo_line" (dict "label" $p.promo_label) | safeHTML }}
+          <p class="mt-1.5 text-lg font-bold text-ink-950">{{ i18n "compare_provider__promo_line" (dict "label" (partial "de-text.html" $p.promo_label)) | safeHTML }}
             <code class="ml-1 rounded-lg border border-brand-400 bg-white px-2.5 py-1 font-mono text-base tracking-widest text-brand-800">{{ . }}</code>
           </p>
           {{ with $p.promo_expires }}<p class="mt-1.5 text-xs text-ink-400">{{ i18n "compare_provider__promo_expires" (dict "date" (time.Format ":date_medium" .) "brand" $p.name) | safeHTML }}</p>
@@ -311,20 +327,20 @@
   <section class="mt-10" aria-labelledby="verdict">
     <div class="card p-7">
       <p class="eyebrow">{{ i18n "g_the_verdict_computed" | safeHTML }}</p>
-      <h2 id="verdict" class="mt-2 text-2xl font-bold">{{ i18n "compare_provider__verdict_h2" (dict "brand" $p.name "country" $country.name) | safeHTML }}</h2>
+      <h2 id="verdict" class="mt-2 text-2xl font-bold">{{ i18n "compare_provider__verdict_h2" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</h2>
       {{/* 结论句拆成「冠军 / 非冠军」两条整句 —— 占位符只承载纯文本，HTML 留在 key 值里 */}}
       {{ $entryBit := i18n "compare_provider__verdict_entry_floor" (dict "floor" (printf "%.2f" $stats.minPrice)) }}
-      {{ if lt $myMin $stats.minPrice }}{{ $entryBit = i18n "compare_provider__verdict_entry_cheap" (dict "country" $country.name) }}{{ end }}
+      {{ if lt $myMin $stats.minPrice }}{{ $entryBit = i18n "compare_provider__verdict_entry_cheap" (dict "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) }}{{ end }}
       {{ if $unlimitedOnly }}
         <p class="mt-4 max-w-3xl leading-relaxed text-ink-700">
-          {{ i18n "compare_provider__verdict_unl" (dict "brand" $p.name "country" $country.name "perday" (printf "%.2f" $myBestPerDay) "bench" (printf "%.2f" $stats.minPerGB)) | safeHTML }}
+          {{ i18n "compare_provider__verdict_unl" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "perday" (printf "%.2f" $myBestPerDay) "bench" (printf "%.2f" $stats.minPerGB)) | safeHTML }}
         </p>
       {{ else }}
         <p class="mt-4 max-w-3xl leading-relaxed text-ink-700">
           {{ if eq $rank 1 }}
-            {{ i18n "compare_provider__verdict_met_top" (dict "brand" $p.name "country" $country.name "pergb" (printf "%.2f" $myBestPerGB) "total" $stats.providerCount "min" (printf "%.2f" $myMin) "entrybit" $entryBit "url" $compareURL) | safeHTML }}
+            {{ i18n "compare_provider__verdict_met_top" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "pergb" (printf "%.2f" $myBestPerGB) "total" $stats.providerCount "min" (printf "%.2f" $myMin) "entrybit" $entryBit "url" $compareURL) | safeHTML }}
           {{ else }}
-            {{ i18n "compare_provider__verdict_met_rank" (dict "brand" $p.name "country" $country.name "pergb" (printf "%.2f" $myBestPerGB) "rank" $rank "total" $stats.providerCount "benchmark" (i18n "compare_provider__the_country_benchmark_is") "bench" (printf "%.2f" $stats.minPerGB) "min" (printf "%.2f" $myMin) "entrybit" $entryBit "url" $compareURL) | safeHTML }}
+            {{ i18n "compare_provider__verdict_met_rank" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "pergb" (printf "%.2f" $myBestPerGB) "rank" $rank "total" $stats.providerCount "benchmark" (i18n "compare_provider__the_country_benchmark_is") "bench" (printf "%.2f" $stats.minPerGB) "min" (printf "%.2f" $myMin) "entrybit" $entryBit "url" $compareURL) | safeHTML }}
           {{ end }}
         </p>
       {{ end }}
@@ -335,8 +351,8 @@
   <section class="mt-14" aria-labelledby="plans">
     <div class="flex flex-wrap items-end justify-between gap-3">
       <div>
-        <p class="eyebrow">{{ i18n "compare_provider__plans_eyebrow" (dict "brand" $p.name "country" $country.name) | safeHTML }}</p>
-        <h2 id="plans" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__all_n_plans" (dict "n" ($myRows | len) "brand" $p.name "country" $country.name) | safeHTML }}</h2>
+        <p class="eyebrow">{{ i18n "compare_provider__plans_eyebrow" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</p>
+        <h2 id="plans" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__all_n_plans" (dict "n" ($myRows | len) "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</h2>
         {{/* 把 N 的来历写出来，读者才能自己核对：N 个套餐 = 该国在售的 N 个价格档，
              横跨 M 个有效期（最短 a 天、最长 b 天）。这行也是计数守卫的落点
              —— scripts/verify_provider_pages.py 会拿它和表格行数、Offer 数对账。 */}}
@@ -359,6 +375,23 @@
            （JS 拼句子会把译者的语序假设写死在代码里。） */}}
       <span class="hidden" aria-hidden="true" id="plan-note-tpl">{{ i18n "compare_provider__plan_days_count" (dict "shown" "SHOWNCOUNT" "total" "TOTALCOUNT" "n" "DAYCOUNT") | safeHTML }}</span>
     </div>
+    {{/* 数据量过滤 —— 与「按天数」是**两种不同的需求**：天数是覆盖型（去 3 天，30 天套餐
+         也满足）所以用 `≥`；数据量是预算型（只想花 3GB 的钱的人不该被推 100GB），
+         所以必须用区间。chip 文案直接复用 compare_single__size_* —— 同一事实不留第二份译文。 */}}
+    <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+      <span id="plan-size-label" class="text-xs font-bold uppercase tracking-wider text-ink-400">{{ i18n "compare_single__data_volume" | safeHTML }}</span>
+      <div id="plan-size-group" class="flex flex-wrap items-center gap-1.5" role="group" aria-labelledby="plan-size-label">
+        <button type="button" class="chip chip-active" data-sz="any">{{ i18n "compare_single__size_any" | safeHTML }}</button>
+        {{ if gt (index $szCnt "0-1") 0 }}<button type="button" class="chip" data-sz="0-1">{{ i18n "compare_single__size_up_to" (dict "n" 1) | safeHTML }}</button>{{ end }}
+        {{ if gt (index $szCnt "1-3") 0 }}<button type="button" class="chip" data-sz="1-3">{{ i18n "compare_single__size_range" (dict "lo" 1 "hi" 3) | safeHTML }}</button>{{ end }}
+        {{ if gt (index $szCnt "3-5") 0 }}<button type="button" class="chip" data-sz="3-5">{{ i18n "compare_single__size_range" (dict "lo" 3 "hi" 5) | safeHTML }}</button>{{ end }}
+        {{ if gt (index $szCnt "5-10") 0 }}<button type="button" class="chip" data-sz="5-10">{{ i18n "compare_single__size_range" (dict "lo" 5 "hi" 10) | safeHTML }}</button>{{ end }}
+        {{ if gt (index $szCnt "10-20") 0 }}<button type="button" class="chip" data-sz="10-20">{{ i18n "compare_single__size_range" (dict "lo" 10 "hi" 20) | safeHTML }}</button>{{ end }}
+        {{ if gt (index $szCnt "20p") 0 }}<button type="button" class="chip" data-sz="20p">{{ i18n "compare_single__size_plus" (dict "n" 20) | safeHTML }}</button>{{ end }}
+        {{ if gt (index $szCnt "u") 0 }}<button type="button" class="chip" data-sz="u">{{ i18n "g_unlimited" | safeHTML }}</button>{{ end }}
+      </div>
+      <span class="hidden" aria-hidden="true" id="plan-size-tpl">{{ i18n "compare_provider__plan_size_count" (dict "shown" "SHOWNCOUNT" "total" "TOTALCOUNT") | safeHTML }}</span>
+    </div>
     {{ end }}
     <div class="card mt-5 overflow-x-auto">
       <table class="table-pro min-w-[760px]">
@@ -378,7 +411,7 @@
           <tr data-price="{{ printf "%.4f" .price }}" data-perday="{{ printf "%.4f" .perDay }}" data-gb="{{ .gb }}" data-days="{{ .days }}" data-pergb="{{ printf "%.4f" .perGB }}">
             <td>
               <span class="flex flex-col gap-1">
-                <span class="font-semibold text-ink-950">{{ .name }}</span>
+                <span class="font-semibold text-ink-950">{{ partial "plan-name.html" (dict "name" .name "iso" $iso) }}</span>
                 <span class="flex flex-wrap gap-1">
                   {{ if eq .price $stats.minPrice }}<span class="badge bg-emerald-50 text-emerald-600">{{ i18n "g_cheapest_in" | safeHTML }} {{ $country.name }}</span>{{ end }}
                   {{ if and (gt .gb 0) (eq .perGB $stats.minPerGB) }}<span class="badge bg-brand-50 text-brand-700">{{ i18n "g_best_gb" | safeHTML }}</span>{{ end }}
@@ -398,7 +431,7 @@
       </table>
     </div>
     <p class="mt-3 text-xs text-ink-400">
-      {{ i18n "compare_provider__prices_footnote" (dict "brand" $p.name "plans" $stats.planCount "country" $country.name) | safeHTML }}
+      {{ i18n "compare_provider__prices_footnote" (dict "brand" $p.name "plans" $stats.planCount "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}
       <a href="{{ partial "lang-href.html" "/methodology/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_methodology" | safeHTML }}</a>.
       {{ with $updatedDate }}{{ i18n "compare_provider__last_checked" (dict "date" .) | safeHTML }}{{ end }}
     </p>
@@ -418,12 +451,31 @@
         var tplEl = document.getElementById('plan-note-tpl');
         var noteTpl = tplEl ? tplEl.textContent : '';
         var noteDefault = note ? note.textContent : '';
+        var sizeChips = Array.prototype.slice.call(document.querySelectorAll('.chip[data-sz]'));
+        var sizeTplEl = document.getElementById('plan-size-tpl');
+        var sizeTpl = sizeTplEl ? sizeTplEl.textContent : '';
+        var sizeTok = 'any';
+        var curDays = 0;
+
+        /* 数据量区间：与 compare/single.html 的 szMatch 同一套语义
+           （any 全过 / u = 无限哨兵 0 / 20p 上不封顶 / 其余 lo-hi 左开右闭）。两处必须同改。 */
+        function szMatch(gb, tok) {
+          if (tok === 'any') return true;
+          if (tok === 'u') return gb === 0;
+          if (tok === '20p') return gb > 20;
+          var b = tok.split('-');
+          return gb > parseFloat(b[0]) && gb <= parseFloat(b[1]);
+        }
 
         function apply(n) {
-          var cover = [], short = [];
-          /* days 是整数字段，直接 parseInt 安全；gb 才是那个 0=无限、500MB=0.4883
-             的哨兵字段，本函数刻意不碰它。 */
+          var cover = [], short = [], shown = 0;
+          /* days 是整数字段，直接 parseInt 安全；gb 是 0=无限、500MB=0.4883 的哨兵字段，
+             必须走 float + szMatch，**不能 parseInt**（0.4883 会被截成 0 ⇒ 500MB 冒充无限档）。 */
           rows.forEach(function (r) {
+            var inBand = szMatch(parseFloat(r.getAttribute('data-gb')), sizeTok);
+            r.hidden = !inBand;
+            if (!inBand) return;
+            shown++;
             if (n && parseInt(r.dataset.days, 10) < n) { short.push(r); } else { cover.push(r); }
           });
           if (n) {
@@ -440,7 +492,13 @@
             cover = serverOrder.slice();
             short = [];
             rows.forEach(function (r) { r.classList.remove('opacity-40'); });
-            if (note) note.textContent = noteDefault;
+            if (note) {
+              /* 没选天数时，说明行的口径改由数据量过滤承担 ——
+                 否则「All N plans」会和被隐藏掉的行自相矛盾。 */
+              note.textContent = (sizeTok !== 'any' && sizeTpl)
+                ? sizeTpl.replace('SHOWNCOUNT', String(shown)).replace('TOTALCOUNT', String(rows.length))
+                : noteDefault;
+            }
           }
           cover.concat(short).forEach(function (r) { tbody.appendChild(r); });
         }
@@ -453,7 +511,16 @@
             });
             b.classList.add('chip-active');
             b.setAttribute('aria-pressed', 'true');
-            apply(parseInt(b.dataset.days, 10) || 0);
+            curDays = parseInt(b.dataset.days, 10) || 0;
+            apply(curDays);
+          });
+        });
+        sizeChips.forEach(function (c) {
+          c.addEventListener('click', function () {
+            sizeChips.forEach(function (x) { x.classList.remove('chip-active'); });
+            c.classList.add('chip-active');
+            sizeTok = c.getAttribute('data-sz');
+            apply(curDays);
           });
         });
         apply(0);
@@ -467,8 +534,8 @@
        「无限流量」的卖点必须能在这里被检验，否则这个页面只是横幅的延长线。 ── */}}
   <section class="mt-14" aria-labelledby="reality">
     <p class="eyebrow">{{ i18n "compare_provider__reality_eyebrow" | safeHTML }}</p>
-    <h2 id="reality" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__reality_h2" (dict "brand" $p.name "country" $country.name) | safeHTML }}</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_provider__reality_lead" (dict "brand" $p.name "country" $country.name) | safeHTML }}</p>
+    <h2 id="reality" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__reality_h2" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_provider__reality_lead" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</p>
     <div class="mt-6 grid gap-4 sm:grid-cols-2">
       {{/* 热点 */}}
       <div class="card p-6">
@@ -483,8 +550,8 @@
           {{ end }}
         </div>
         {{ with $pol }}
-        <p class="mt-2 font-display text-lg font-bold text-ink-950">{{ .hotspot_allowance }}</p>
-        <p class="mt-2 text-sm leading-relaxed text-ink-500">{{ .hotspot_note }}</p>
+        <p class="mt-2 font-display text-lg font-bold text-ink-950">{{ partial "de-text.html" .hotspot_allowance }}</p>
+        <p class="mt-2 text-sm leading-relaxed text-ink-500">{{ partial "de-text.html" .hotspot_note }}</p>
         {{ else }}
         <p class="mt-2 font-display text-lg font-bold text-ink-400">{{ i18n "compare_provider__status_unverified" | safeHTML }}</p>
         {{ end }}
@@ -501,16 +568,16 @@
         <p class="mt-2 font-display text-lg font-bold text-ink-950">{{ i18n "compare_provider__speed_mbps" (dict "min" $netMin "max" $netMax) | safeHTML }}</p>
         <p class="mt-2 text-sm leading-relaxed text-ink-500">{{ i18n "compare_provider__speed_typical" (dict "carrier" $fastestCarrier) | safeHTML }}</p>
         {{ else }}
-        <p class="mt-2 text-sm leading-relaxed text-ink-500">{{ i18n "compare_provider__speed_unprofiled" (dict "country" $country.name) | safeHTML }}</p>
+        <p class="mt-2 text-sm leading-relaxed text-ink-500">{{ i18n "compare_provider__speed_unprofiled" (dict "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</p>
         {{ end }}
       </div>
       {{/* 公平使用阈值 */}}
       <div class="card p-6">
         <h3 class="font-display text-base font-bold text-ink-950">{{ i18n "compare_provider__fair_use_threshold" | safeHTML }}</h3>
         {{ with $pol }}
-        <p class="mt-2 font-display text-lg font-bold text-ink-950">{{ .fup_allowance }}</p>
-        {{ with .fup_drop }}<p class="mt-1 text-xs font-semibold text-accent-700">{{ i18n "compare_provider__fup_drop_to" | safeHTML }} {{ . }}</p>{{ end }}
-        <p class="mt-2 text-sm leading-relaxed text-ink-500">{{ .fup_note }}</p>
+        <p class="mt-2 font-display text-lg font-bold text-ink-950">{{ partial "de-text.html" .fup_allowance }}</p>
+        {{ with .fup_drop }}<p class="mt-1 text-xs font-semibold text-accent-700">{{ i18n "compare_provider__fup_drop_to" | safeHTML }} {{ partial "de-text.html" . }}</p>{{ end }}
+        <p class="mt-2 text-sm leading-relaxed text-ink-500">{{ partial "de-text.html" .fup_note }}</p>
         {{ else }}
         <p class="mt-2 font-display text-lg font-bold text-ink-400">{{ i18n "compare_provider__status_unverified" | safeHTML }}</p>
         {{ end }}
@@ -526,14 +593,14 @@
           {{ end }}
         </div>
         {{ with $pol }}
-        <p class="mt-2 text-sm leading-relaxed text-ink-500">{{ .topup_note }}</p>
+        <p class="mt-2 text-sm leading-relaxed text-ink-500">{{ partial "de-text.html" .topup_note }}</p>
         {{ else }}
         <p class="mt-2 font-display text-lg font-bold text-ink-400">{{ i18n "compare_provider__status_unverified" | safeHTML }}</p>
         {{ end }}
       </div>
     </div>
     {{ if not $pol }}
-    <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "compare_provider__not_verified" (dict "brand" $p.name "country" $country.name) | safeHTML }}</p>
+    <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "compare_provider__not_verified" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</p>
     {{ end }}
   </section>
 
@@ -541,7 +608,7 @@
   {{ with $myUnlimited }}
   <section class="mt-14" aria-labelledby="fup">
     <p class="eyebrow">{{ i18n "g_fine_print_decoded" | safeHTML }}</p>
-    <h2 id="fup" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__fup_h2" (dict "brand" $p.name "country" $country.name) | safeHTML }}</h2>
+    <h2 id="fup" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__fup_h2" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</h2>
     <div class="card mt-5 overflow-x-auto">
       <table class="table-pro min-w-[640px]">
         <thead>
@@ -555,10 +622,10 @@
         <tbody>
           {{ range . }}
           <tr>
-            <td class="text-ink-700">{{ .name }}</td>
+            <td class="text-ink-700">{{ partial "plan-name.html" (dict "name" .name "iso" $iso) }}</td>
             <td class="font-bold text-ink-950 tnum">${{ printf "%.2f" .price }}</td>
             <td class="text-ink-500 tnum">${{ printf "%.2f" .perDay }}</td>
-            <td class="text-xs leading-relaxed text-ink-500">{{ .fup | default (i18n "compare_provider__no_fup_published" | safeHTML) }}</td>
+            <td class="text-xs leading-relaxed text-ink-500">{{ partial "de-text.html" .fup | default (i18n "compare_provider__no_fup_published" | safeHTML) }}</td>
           </tr>
           {{ end }}
         </tbody>
@@ -574,8 +641,8 @@
   {{ if $netNames }}
   <section class="mt-14" aria-labelledby="hostnetwork">
     <p class="eyebrow">{{ i18n "compare_provider__the_masts_behind_the_plan" | safeHTML }}</p>
-    <h2 id="hostnetwork" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__host_network_h2" (dict "brand" $p.name "country" $country.name) | safeHTML }}</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_provider__host_lead" (dict "brand" $p.name "country" $country.name "nets" (delimit $netNames ", ")) | safeHTML }}</p>
+    <h2 id="hostnetwork" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__host_network_h2" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_provider__host_lead" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "nets" (delimit $netNames ", ")) | safeHTML }}</p>
     {{ if gt (len $profiles) 0 }}
     <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {{ range $profiles }}
@@ -596,14 +663,14 @@
     </div>
     {{ end }}
     {{ with site.GetPage (printf "/networks/%s" $country.slug) }}
-    <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "compare_provider__network_by_network_breakdown_including_which_carriers_ev" | safeHTML }} <a href="{{ .RelPermalink }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "compare_provider__network_page_link" (dict "country" $country.name) | safeHTML }}</a></p>
+    <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "compare_provider__network_by_network_breakdown_including_which_carriers_ev" | safeHTML }} <a href="{{ .RelPermalink }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "compare_provider__network_page_link" (dict "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</a></p>
     {{ else }}
     <p class="mt-3 text-sm leading-relaxed text-ink-600">{{ i18n "compare_provider__the_destination_by_destination_breakdown_of_every_host_c" | safeHTML }} <a href="{{ partial "lang-href.html" "/networks/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "g_esim_network_map" | safeHTML }}</a>.</p>
     {{ end }}
     {{/* 第三方独立来源：本国整体测速基准。卡片上的官方链接是"运营商说"，
          这条是"独立测量说" —— 两者都要有，读者才能自己判断。 */}}
     {{ with $countrySource }}
-    <p class="mt-4 text-xs leading-relaxed text-ink-400">{{ i18n "compare_provider__network_sources" (dict "country" $country.name "url" .) | safeHTML }}</p>
+    <p class="mt-4 text-xs leading-relaxed text-ink-400">{{ i18n "compare_provider__network_sources" (dict "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "url" .) | safeHTML }}</p>
     {{ end }}
   </section>
   {{ end }}
@@ -616,13 +683,13 @@
   {{ with $country.quirks }}
   <section class="mt-14" aria-labelledby="localnotes">
     <p class="eyebrow">{{ i18n "g_before_you_buy" | safeHTML }}</p>
-    <h2 id="localnotes" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__local_notes_h2" (dict "country" $country.name) | safeHTML }}</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_provider__local_notes_lead" (dict "brand" $p.name "country" $country.name) | safeHTML }}</p>
+    <h2 id="localnotes" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__local_notes_h2" (dict "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_provider__local_notes_lead" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</p>
     <ol class="mt-5 grid gap-3 sm:grid-cols-2">
       {{ range . }}
       <li class="card flex gap-3.5 p-5 text-sm leading-relaxed text-ink-700">
         <img src="{{ $country.flag | relURL }}" alt="" class="mt-0.5 h-4 w-6 shrink-0 rounded-sm object-cover" loading="lazy" width="24" height="16">
-        <span>{{ . }}</span>
+        <span>{{ partial "de-text.html" . }}</span>
       </li>
       {{ end }}
     </ol>
@@ -728,15 +795,15 @@
   {{ if gt (len $tripRows) 1 }}
   <section class="mt-14" aria-labelledby="tripcost">
     <p class="eyebrow">{{ i18n "compare_provider__trip_eyebrow" | safeHTML }}</p>
-    <h2 id="tripcost" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__trip_h2" (dict "brand" $p.name "country" $country.name) | safeHTML }}</h2>
-    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_provider__trip_lead" (dict "brand" $p.name "country" $country.name) | safeHTML }}</p>
+    <h2 id="tripcost" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__trip_h2" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_provider__trip_lead" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</p>
     <div class="card mt-5 overflow-x-auto">
       <table class="table-pro min-w-[680px]">
         <thead>
           <tr>
             <th>{{ i18n "compare_provider__trip_col_length" | safeHTML }}</th>
             <th>{{ i18n "compare_provider__trip_this" (dict "brand" $p.name) | safeHTML }}</th>
-            <th>{{ i18n "compare_provider__trip_col_rival" (dict "country" $country.name) | safeHTML }}</th>
+            <th>{{ i18n "compare_provider__trip_col_rival" (dict "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</th>
             <th><span class="sr-only">{{ i18n "compare_provider__trip_cheaper" | safeHTML }}</span></th>
           </tr>
         </thead>
@@ -881,7 +948,7 @@
     </div>
     {{ end }}
 
-    <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "compare_provider__trip_note" (dict "brand" $p.name "country" $country.name) | safeHTML }}</p>
+    <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "compare_provider__trip_note" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</p>
     <p class="mt-4 text-sm text-ink-600">{{ i18n "compare_provider__trip_calc" | safeHTML }} <a href="{{ partial "lang-href.html" "/tools/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "compare_provider__trip_calc_link" | safeHTML }}</a>.</p>
   </section>
   {{ end }}
@@ -889,7 +956,7 @@
   {{/* ── ⑨ Buy it if / Look elsewhere if（决策引导，全部由数据推导）── */}}
   <section class="mt-14" aria-labelledby="fit">
     <p class="eyebrow">{{ i18n "compare_provider__fit_eyebrow" | safeHTML }}</p>
-    <h2 id="fit" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__fit_h2" (dict "brand" $p.name "country" $country.name) | safeHTML }}</h2>
+    <h2 id="fit" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__fit_h2" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 md:grid-cols-2">
       <div class="card p-6">
         <h3 class="font-display text-base font-bold text-brand-700">{{ i18n "compare_provider__fit_best" | safeHTML }}</h3>
@@ -900,15 +967,15 @@
           <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ i18n "compare_provider__fit_metered_lineup" (dict "n" ($myRows | len) "price" (printf "%.2f" $myMin)) | safeHTML }}</li>
           {{ end }}
           {{ with index $tripRows (sub (len $tripRows) 1) }}
-          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ i18n "compare_provider__fit_long_trip" (dict "plan" .mine.name "days" .mine.days "price" (printf "%.2f" .mine.price)) | safeHTML }}</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ i18n "compare_provider__fit_long_trip" (dict "plan" (partial "plan-name.html" (dict "name" .mine.name "iso" $iso)) "days" .mine.days "price" (printf "%.2f" .mine.price)) | safeHTML }}</li>
           {{ end }}
           {{ $short := slice }}{{ range $myRows }}{{ if le .days 10 }}{{ $short = $short | append . }}{{ end }}{{ end }}
           {{ if gt (len $short) 0 }}{{ $sp := index (sort $short "price" "asc") 0 }}
-          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ i18n "compare_provider__fit_short_trip" (dict "plan" $sp.name "days" $sp.days "price" (printf "%.2f" $sp.price)) | safeHTML }}</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ i18n "compare_provider__fit_short_trip" (dict "plan" (partial "plan-name.html" (dict "name" $sp.name "iso" $iso)) "days" $sp.days "price" (printf "%.2f" $sp.price)) | safeHTML }}</li>
           {{ end }}
           {{/* 盈亏平衡天数：由 $tripRows 实测得出，是「该不该买它」最硬的一条判据 */}}
           {{ if gt $beDays 0 }}
-          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ i18n "compare_provider__fit_breakeven" (dict "days" $beDays "country" $country.name) | safeHTML }}</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">+</span>{{ i18n "compare_provider__fit_breakeven" (dict "days" $beDays "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</li>
           {{ end }}
         </ul>
       </div>
@@ -920,14 +987,14 @@
           <li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ i18n "compare_provider__fit_too_short" (dict "days" $minDays) | safeHTML }}</li>
           {{ end }}
           {{ with $pol }}{{ if eq .hotspot "capped" }}{{ with .hotspot_allowance }}
-          <li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ i18n "compare_provider__fit_hotspot_block" (dict "allowance" .) | safeHTML }}</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ i18n "compare_provider__fit_hotspot_block" (dict "allowance" (partial "de-text.html" .)) | safeHTML }}</li>
           {{ end }}{{ end }}{{ end }}
           {{/* 数据套餐无本地号码 —— 只有核实过 voice 字段的品牌才断言，没核实就不说 */}}
           {{ with $pol }}{{ if eq .voice "data-only" }}
           <li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ i18n "compare_provider__fit_data_only" | safeHTML }}</li>
           {{ end }}{{ end }}
           {{ with $rivalKey }}
-          <li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ i18n "compare_provider__fit_rival" (dict "rival" (index $d.providers .).name "price" (printf "%.2f" $rivalMin) "data" (index $provPick .) "country" $country.name) | safeHTML }}</li>
+          <li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ i18n "compare_provider__fit_rival" (dict "rival" (index $d.providers .).name "price" (printf "%.2f" $rivalMin) "data" (index $provPick .) "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</li>
           {{ end }}
           {{ with $pol }}{{ if not .topup }}
           <li class="flex gap-2"><span class="mt-0.5 font-bold text-accent-400">–</span>{{ i18n "compare_provider__fit_no_topup" (dict "brand" $p.name) | safeHTML }}</li>
@@ -946,7 +1013,7 @@
        品牌历史与口碑仍在 /esim-providers/<brand>/，这里只留一条内链。 ── */}}
   <section class="mt-14" aria-labelledby="tradeoffs">
     <p class="eyebrow">{{ i18n "g_honest_trade_offs" | safeHTML }}</p>
-    <h2 id="tradeoffs" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__tradeoffs_h2" (dict "brand" $p.name "country" $country.name) | safeHTML }}</h2>
+    <h2 id="tradeoffs" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__tradeoffs_h2" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</h2>
     {{ $myUnlPerDay := 0.0 }}
     {{ range $myUnlimited }}{{ if or (eq $myUnlPerDay 0.0) (lt .perDay $myUnlPerDay) }}{{ $myUnlPerDay = .perDay }}{{ end }}{{ end }}
     {{ $myEntry := index (sort $myRows "price" "asc") 0 }}
@@ -961,35 +1028,35 @@
     {{ $wins := slice }}
     {{ if gt $myUnlPerDay 0.0 }}
       {{ if le $myUnlPerDay $cUnlPerDay }}
-        {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_unl_best" (dict "country" $country.name "perday" (printf "%.2f" $myUnlPerDay))) }}
+        {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_unl_best" (dict "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "perday" (printf "%.2f" $myUnlPerDay))) }}
       {{ else }}
         {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_unl" (dict "perday" (printf "%.2f" $myUnlPerDay))) }}
       {{ end }}
     {{ end }}
     {{ if and $rankable (le $myBestPerGB $stats.minPerGB) }}
-      {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_pergb" (dict "country" $country.name "pergb" (printf "%.2f" $myBestPerGB) "bench" (printf "%.2f" $stats.minPerGB))) }}
+      {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_pergb" (dict "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "pergb" (printf "%.2f" $myBestPerGB) "bench" (printf "%.2f" $stats.minPerGB))) }}
     {{ end }}
     {{ if and (gt $myMin 0.0) (le $myMin $stats.minPrice) }}
-      {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_entry" (dict "price" (printf "%.2f" $myMin) "country" $country.name)) }}
+      {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_entry" (dict "price" (printf "%.2f" $myMin) "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name))) }}
     {{ end }}
     {{ if and (gt $shortRate 0.0) (gt $longRate 0.0) (lt $longRate $shortRate) }}
       {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_curve" (dict "short" (printf "%.2f" $shortRate) "shortdays" $minDays "long" (printf "%.2f" $longRate) "longdays" $maxDays)) }}
     {{ end }}
     {{ if gt $netAll 0 }}
       {{ if eq $net5g $netAll }}
-        {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_5g_all" (dict "n" $netAll "country" $country.name)) }}
+        {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_5g_all" (dict "n" $netAll "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name))) }}
       {{ else if gt $net5g 0 }}
-        {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_5g_some" (dict "n" $net5g "country" $country.name)) }}
+        {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_5g_some" (dict "n" $net5g "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name))) }}
       {{ end }}
     {{ end }}
     {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_span" (dict "lo" $minDays "hi" $maxDays)) }}
     {{ if gt $beDays 0 }}
-      {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_breakeven" (dict "days" $beDays "country" $country.name)) }}
+      {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_breakeven" (dict "days" $beDays "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name))) }}
     {{ end }}
     {{/* 热点共享：与下面的 l_hotspot 对称 —— 允许就是优势、被限速才是缺点。
          判据只用核实过的 policy.hotspot / hotspot_allowance，没核实就不说（§3.3）。 */}}
     {{ with $pol }}{{ if and (eq .hotspot "allowed") .hotspot_allowance }}
-      {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_hotspot" (dict "allowance" .hotspot_allowance)) }}
+      {{ $wins = $wins | append (i18n "compare_provider__tradeoffs_w_hotspot" (dict "allowance" (partial "de-text.html" .hotspot_allowance))) }}
     {{ end }}{{ end }}
 
     {{ $loses := slice }}
@@ -1020,7 +1087,7 @@
     {{ end }}
     {{ with $pol }}
       {{ if and (eq .hotspot "capped") .hotspot_allowance }}
-        {{ $loses = $loses | append (i18n "compare_provider__tradeoffs_l_hotspot" (dict "allowance" .hotspot_allowance)) }}
+        {{ $loses = $loses | append (i18n "compare_provider__tradeoffs_l_hotspot" (dict "allowance" (partial "de-text.html" .hotspot_allowance))) }}
       {{ end }}
       {{ if not .topup }}
         {{ $loses = $loses | append (i18n "compare_provider__tradeoffs_l_topup") }}
@@ -1039,9 +1106,9 @@
           {{ if strings.Contains $fupLabel "MB" }}{{ $fupGB = div $fupGB 1000.0 }}{{ end }}
         {{ end }}
         {{ if and (gt $fupGB 0.0) (lt $fupGB 6.0) }}
-          {{ $loses = $loses | append (i18n "compare_provider__tradeoffs_l_fup_cap" (dict "allowance" $fupLabel "drop" .fup_drop)) }}
-        {{ else if and (le $fupGB 0.0) (findRE "(?i)^(no|not)" .fup_allowance) }}
-          {{ $loses = $loses | append (i18n "compare_provider__tradeoffs_l_fup_none" (dict "drop" .fup_drop)) }}
+          {{ $loses = $loses | append (i18n "compare_provider__tradeoffs_l_fup_cap" (dict "allowance" $fupLabel "drop" (partial "de-text.html" .fup_drop))) }}
+        {{ else if and (le $fupGB 0.0) (eq (.fup_kind | default "") "none") }}
+          {{ $loses = $loses | append (i18n "compare_provider__tradeoffs_l_fup_none" (dict "drop" (partial "de-text.html" .fup_drop))) }}
         {{ end }}
       {{ end }}
       {{ if eq .voice "data-only" }}
@@ -1071,7 +1138,7 @@
   {{/* ── 内链矩阵：该国其他品牌（每张卡带一句数据推导的差异点）── */}}
   <section class="mt-14" aria-labelledby="others">
     <p class="eyebrow">{{ i18n "compare_provider__the_other_side_by_side" | safeHTML }}</p>
-    <h2 id="others" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__others_h2" (dict "brand" $p.name "country" $country.name) | safeHTML }}</h2>
+    <h2 id="others" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__others_h2" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</h2>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {{ range $i, $pk := $stats.providers }}
         {{ if ne . $provKey }}
@@ -1099,9 +1166,9 @@
                  变体按卡序轮换 —— 同页 9 张卡都读同一句式会像机器贴的。 */}}
             <p class="mt-3 flex-1 text-xs leading-relaxed text-ink-500">
               {{- if $oUnlOnly -}}
-                {{ i18n (printf "compare_provider__op_unl_v%d" (add (mod $i 2) 1)) (dict "name" $op.name "country" $country.name) | safeHTML }}
+                {{ i18n (printf "compare_provider__op_unl_v%d" (add (mod $i 2) 1)) (dict "name" $op.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}
               {{- else -}}
-                {{ i18n (printf "compare_provider__op_market_v%d" (add (mod $i 3) 1)) (dict "name" $op.name "country" $country.name "plan" (index $provPick $pk) "rank" $orank "total" $stats.providerCount) | safeHTML }}
+                {{ i18n (printf "compare_provider__op_market_v%d" (add (mod $i 3) 1)) (dict "name" $op.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "plan" (index $provPick $pk) "rank" $orank "total" $stats.providerCount) | safeHTML }}
               {{- end -}}
             </p>
             {{/* 差异点：同一国家、同一把尺子下的相对位置，不是形容词 */}}
@@ -1135,40 +1202,40 @@
   {{ $fupAns := $unverified }}
   {{ $hotspotAns := $unverified }}
   {{ with $pol }}
-    {{ with .fup_allowance }}{{ $fupAns = i18n "compare_provider__faq_a_unlimited" (dict "brand" $p.name "country" $country.name "allowance" .) }}{{ end }}
-    {{ with .hotspot_allowance }}{{ $hotspotAns = i18n "compare_provider__faq_a_hotspot" (dict "brand" $p.name "country" $country.name "allowance" .) }}{{ end }}
+    {{ with .fup_allowance }}{{ $fupAns = i18n "compare_provider__faq_a_unlimited" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "allowance" (partial "de-text.html" .)) }}{{ end }}
+    {{ with .hotspot_allowance }}{{ $hotspotAns = i18n "compare_provider__faq_a_hotspot" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "allowance" (partial "de-text.html" .)) }}{{ end }}
   {{ end }}
   {{/* Q1 价格 */}}
   {{ if $unlimitedOnly }}
     {{ $faqList = $faqList | append (dict
-      "q" (i18n "compare_provider__faq_q_price" (dict "brand" $p.name "country" $country.name) | safeHTML)
-      "a" (i18n "compare_provider__faq_a_price_unl" (dict "brand" $p.name "n" ($myRows | len) "country" $country.name "from" (printf "%.2f" $myMin) "days" (index $myUnlimited 0).days "perday" (printf "%.2f" $myBestPerDay)) | safeHTML)) }}
+      "q" (i18n "compare_provider__faq_q_price" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML)
+      "a" (i18n "compare_provider__faq_a_price_unl" (dict "brand" $p.name "n" ($myRows | len) "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "from" (printf "%.2f" $myMin) "days" (index $myUnlimited 0).days "perday" (printf "%.2f" $myBestPerDay)) | safeHTML)) }}
   {{ else }}
     {{ $faqList = $faqList | append (dict
-      "q" (i18n "compare_provider__faq_q_price" (dict "brand" $p.name "country" $country.name) | safeHTML)
-      "a" (i18n "compare_provider__faq_a_price_met" (dict "brand" $p.name "n" ($myRows | len) "country" $country.name "from" (printf "%.2f" $myMin) "pergb" (printf "%.2f" $myBestPerGB) "rank" $rank "total" $stats.providerCount) | safeHTML)) }}
+      "q" (i18n "compare_provider__faq_q_price" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML)
+      "a" (i18n "compare_provider__faq_a_price_met" (dict "brand" $p.name "n" ($myRows | len) "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "from" (printf "%.2f" $myMin) "pergb" (printf "%.2f" $myBestPerGB) "rank" $rank "total" $stats.providerCount) | safeHTML)) }}
   {{ end }}
   {{/* Q2 无限流量是否真无限 —— 只在真的卖无限套餐时才问这个问题 */}}
   {{ if gt (len $myUnlimited) 0 }}
   {{ $faqList = $faqList | append (dict
-    "q" (i18n "compare_provider__faq_q_unlimited" (dict "brand" $p.name "country" $country.name) | safeHTML)
+    "q" (i18n "compare_provider__faq_q_unlimited" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML)
     "a" ($fupAns | safeHTML)) }}
   {{ end }}
   {{/* Q3 热点 */}}
   {{ $faqList = $faqList | append (dict
-    "q" (i18n "compare_provider__faq_q_hotspot" (dict "brand" $p.name "country" $country.name) | safeHTML)
+    "q" (i18n "compare_provider__faq_q_hotspot" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML)
     "a" ($hotspotAns | safeHTML)) }}
   {{/* Q4 网络 */}}
   {{ if $netNames }}
   {{ $faqList = $faqList | append (dict
-    "q" (i18n "compare_provider__faq_q_network" (dict "brand" $p.name "country" $country.name) | safeHTML)
-    "a" (i18n "compare_provider__faq_a_network" (dict "brand" $p.name "country" $country.name "carriers" (delimit $netNames ", ") "carrier" $fastestCarrier "min" $netMin "max" $netMax "plans" $stats.planCount) | safeHTML)) }}
+    "q" (i18n "compare_provider__faq_q_network" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML)
+    "a" (i18n "compare_provider__faq_a_network" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "carriers" (delimit $netNames ", ") "carrier" $fastestCarrier "min" $netMin "max" $netMax "plans" $stats.planCount) | safeHTML)) }}
   {{ end }}
   {{/* Q5 vs 最便宜竞品 */}}
   {{ with $rivalKey }}
   {{ $faqList = $faqList | append (dict
-    "q" (i18n "compare_provider__faq_q_rival" (dict "brand" $p.name "rival" (index $d.providers .).name "country" $country.name) | safeHTML)
-    "a" (i18n "compare_provider__faq_a_rival" (dict "brand" $p.name "rival" (index $d.providers .).name "country" $country.name "mine" (printf "%.2f" $myMin) "rivalprice" (printf "%.2f" $rivalMin) "rivaldata" (index $provPick .) "compare" $compareURL) | safeHTML)) }}
+    "q" (i18n "compare_provider__faq_q_rival" (dict "brand" $p.name "rival" (index $d.providers .).name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML)
+    "a" (i18n "compare_provider__faq_a_rival" (dict "brand" $p.name "rival" (index $d.providers .).name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "mine" (printf "%.2f" $myMin) "rivalprice" (printf "%.2f" $rivalMin) "rivaldata" (index $provPick .) "compare" $compareURL) | safeHTML)) }}
   {{ end }}
   {{/* ── 第五十六轮（2026-10-08）追加 Q6-Q9：承接 Google 采集里品牌子页最大的三簇词 ──
        Q6 口碑（验证·评价 529 词）/ Q7 真的能用吗（验证·可用性 235 词）/
@@ -1180,23 +1247,23 @@
   {{/* Q6 口碑：如实交代我们不出评分，并给出可核验的替代数据 + 原始评价入口 */}}
   {{ $reviewURL := "" }}
   {{ with $p.info }}{{ with .trustpilot }}{{ $reviewURL = . }}{{ end }}{{ end }}
-  {{ $reviewsAns := i18n "compare_provider__faq_a_reviews_alt" (dict "brand" $p.name "country" $country.name "n" ($myRows | len) "from" (printf "%.2f" $myMin)) }}
+  {{ $reviewsAns := i18n "compare_provider__faq_a_reviews_alt" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "n" ($myRows | len) "from" (printf "%.2f" $myMin)) }}
   {{ if $reviewURL }}
-    {{ $reviewsAns = i18n "compare_provider__faq_a_reviews" (dict "brand" $p.name "country" $country.name "n" ($myRows | len) "from" (printf "%.2f" $myMin) "profile" $reviewURL) }}
+    {{ $reviewsAns = i18n "compare_provider__faq_a_reviews" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "n" ($myRows | len) "from" (printf "%.2f" $myMin) "profile" $reviewURL) }}
   {{ end }}
   {{ $faqList = $faqList | append (dict
-    "q" (i18n "compare_provider__faq_q_reviews" (dict "brand" $p.name "country" $country.name) | safeHTML)
+    "q" (i18n "compare_provider__faq_q_reviews" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML)
     "a" $reviewsAns) }}
   {{/* Q7 真的能用吗：宿主网络事实 + 三个最常见的失败原因（可在家修） */}}
   {{ if $netNames }}
   {{ $faqList = $faqList | append (dict
-    "q" (i18n "compare_provider__faq_q_works" (dict "brand" $p.name "country" $country.name) | safeHTML)
-    "a" (i18n "compare_provider__faq_a_works" (dict "brand" $p.name "country" $country.name "carriers" (delimit $netNames ", ") "plans" $stats.planCount "n" ($myRows | len) "from" (printf "%.2f" $myMin)) | safeHTML)) }}
+    "q" (i18n "compare_provider__faq_q_works" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML)
+    "a" (i18n "compare_provider__faq_a_works" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "carriers" (delimit $netNames ", ") "plans" $stats.planCount "n" ($myRows | len) "from" (printf "%.2f" $myMin)) | safeHTML)) }}
   {{ end }}
   {{/* Q8 怎么开通：通用步骤在指南页，本页只讲品牌特定要点 + 匹配行程的档位 */}}
   {{ $faqList = $faqList | append (dict
-    "q" (i18n "compare_provider__faq_q_activate" (dict "brand" $p.name "country" $country.name) | safeHTML)
-    "a" (i18n "compare_provider__faq_a_activate" (dict "brand" $p.name "country" $country.name "n" ($myRows | len) "from" (printf "%.2f" $myMin) "install" (partial "lang-href.html" "/guides/how-to-install-esim/")) | safeHTML)) }}
+    "q" (i18n "compare_provider__faq_q_activate" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML)
+    "a" (i18n "compare_provider__faq_a_activate" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "n" ($myRows | len) "from" (printf "%.2f" $myMin) "install" (partial "lang-href.html" "/guides/how-to-install-esim/")) | safeHTML)) }}
   {{/* Q9 受限市场专属：CN 问 VPN（eSIM 走香港网关），HK 问本地 SIM 与 eSIM 的取舍 */}}
   {{ if eq $iso "CN" }}
   {{ $faqList = $faqList | append (dict
@@ -1210,7 +1277,7 @@
   {{ with $faqList }}
   <section class="mt-14" aria-labelledby="faq">
     <p class="eyebrow">{{ i18n "compare_provider__faq_eyebrow" | safeHTML }}</p>
-    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__faq_h2" (dict "brand" $p.name "country" $country.name) | safeHTML }}</h2>
+    <h2 id="faq" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_provider__faq_h2" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</h2>
     <div class="mt-6 grid items-start gap-8 lg:grid-cols-[1.5fr_1fr]">
       <div class="space-y-3">
         {{ range . }}
@@ -1227,8 +1294,8 @@
       </div>
       {{ if gt (len $imgs) 2 }}
       <figure class="figure lg:sticky lg:top-24">
-        <img src="{{ printf "/img/countries/%s" (index $imgs 2) }}" alt="{{ i18n "compare_provider__faq_img_alt" (dict "brand" $p.name "country" $country.name) | safeHTML }}" width="2848" height="1470" loading="lazy">
-        <figcaption>{{ i18n "compare_provider__faq_caption" (dict "brand" $p.name "country" $country.name) | safeHTML }}</figcaption>
+        <img src="{{ printf "/img/countries/%s" (index $imgs 2) }}" alt="{{ i18n "compare_provider__faq_img_alt" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}" width="2848" height="1470" loading="lazy">
+        <figcaption>{{ i18n "compare_provider__faq_caption" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</figcaption>
       </figure>
       {{ end }}
     </div>
@@ -1246,11 +1313,11 @@
   <section class="mt-14">
     <div class="relative overflow-hidden rounded-3xl bg-ink-gradient px-7 py-8 text-ink-300 md:px-10">
       <div class="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
-      <p class="font-display text-lg font-bold text-white">{{ i18n "compare_provider__trust_h" (dict "country" $country.name) | safeHTML }}</p>
+      <p class="font-display text-lg font-bold text-white">{{ i18n "compare_provider__trust_h" (dict "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</p>
       <p class="mt-2 max-w-2xl text-sm leading-relaxed">
-        {{ if $rankable }}{{ i18n "compare_provider__trust_ranked" (dict "brand" $p.name "rank" $rank "total" $stats.providerCount "country" $country.name "plans" $stats.planCount) | safeHTML }}
-        {{ else }}{{ i18n "compare_provider__trust_unlimited" (dict "brand" $p.name "country" $country.name "plans" $stats.planCount) | safeHTML }}{{ end }}
-        <a href="{{ with $comparePage }}{{ .RelPermalink }}{{ else }}{{ partial "lang-href.html" (printf "/compare/%s/" $country.slug) }}{{ end }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "compare_provider__country_comparison" (dict "country" $country.name) | safeHTML }}</a>.
+        {{ if $rankable }}{{ i18n "compare_provider__trust_ranked" (dict "brand" $p.name "rank" $rank "total" $stats.providerCount "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "plans" $stats.planCount) | safeHTML }}
+        {{ else }}{{ i18n "compare_provider__trust_unlimited" (dict "brand" $p.name "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name) "plans" $stats.planCount) | safeHTML }}{{ end }}
+        <a href="{{ with $comparePage }}{{ .RelPermalink }}{{ else }}{{ partial "lang-href.html" (printf "/compare/%s/" $country.slug) }}{{ end }}" class="font-semibold text-brand-300 hover:underline">{{ i18n "compare_provider__country_comparison" (dict "country" $country.name "country_acc" ($country.name_acc | default $country.name) "country_dat" ($country.name_dat | default $country.name)) | safeHTML }}</a>.
         {{ with $updatedDate }}{{ i18n "compare_provider__prices_verified" (dict "date" .) | safeHTML }}{{ end }}
       </p>
     </div>

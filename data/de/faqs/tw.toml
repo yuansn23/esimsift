@@ -1,0 +1,42 @@
+# TW FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Taiwan?"
+a = "{cheap_brand} hält für {country_acc} die Bestmarke: {cheap_plan} für ${cheap_price}. {runner_brand} folgt mit ${runner_price}, und die stärkste Rate pro Gigabyte kommt von {value_plan} von {value_brand} mit ${value_pergb}/GB. Kleine Pakete passen zu Städtereisen, bei längeren Aufenthalten ist ein größerer Tarif pro Gigabyte meist günstiger."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Taiwan wirklich unbegrenzt?"
+a = "Gedeckelt statt unbegrenzt – die {unl_count} unbegrenzten Tarife für {country_acc} drosseln, sobald das Tagesvolumen aufgebraucht ist. Die Preise liegen je nach Laufzeit bei {unl_perday_range} pro Tag, und {unl_brand} ist mit ${unl_perday}/Tag am günstigsten. Zwei Werte entscheiden, ob ein gedeckelter Tarif zu dir passt, und {unl_brand} nennt beide: {unl_allowance}, dann {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Taiwan?"
+a = "Es kommt auf die Form an – Datenpakete gegen unbegrenzte Tage. Airalos stärkstes Angebot für {country_acc} ist ${ah_airalo_pergb}/GB, verkauft als {ah_airalo_plan} für ${ah_airalo_price}. Holafly verkauft nur tageweise unbegrenzt: {ah_holafly_days} Tage für ${ah_holafly_price}, oder ${ah_holafly_perday} pro Tag."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Taiwan?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Taiwan?"
+a = "Die Tarife auf dieser Seite laufen über Chunghwa Telecom, Taiwan Mobile, FarEasTone. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Taiwan und Japan abdecken?"
+a = "Nicht mit einem Ein-Land-Tarif. Führt die Reise von {country_dat} weiter, und {neighbor} soll dabei sein, vergleiche ein regionales Paket mit zwei separaten Tarifen, denn die Tabellen hier bepreisen jeden Markt für sich."
+
+[[faq]]
+q = "Kann ich eine eSIM in Taiwan nutzen?"
+a = "Ja, und in dieser Hinsicht gibt es keine Besonderheit – keine lokale Registrierung und keine Genehmigung nötig. Jeder der {brand_count} Anbieter hier verkauft Tarife für {country_acc} – das beantwortet die Frage, ob eSIMs dort funktionieren, bereits. Kläre die Handy-Frage, den Rest erledigt der Vergleich oben."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Taiwan?"
+a = "Derselbe Test wie überall: Wähle *#06# und suche eine EID-Nummer. Keiner der {brand_count} Anbieter hier verlangt ein bestimmtes Handy, nur dass das Gerät den Chip hat und entsperrt ist. Kläre beide Prüfungen zu Hause im WLAN statt am Flughafen."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Taiwan?"
+a = "Für Nachrichten und Karten brauchst du keine. Die praktische Aufteilung ist Daten auf der eSIM und die bestehende Nummer auf der physischen SIM, mit ausgeschaltetem Roaming auf der Heimleitung. Entscheide, ob du wirklich eine lokale Nummer brauchst, bevor du einen zweiten Kauf machst."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Taiwan?"
+a = "Wir führen keine Bewertung für eSIMs in {country_dat}, und das ist eine Entscheidung und kein Versehen. Der Vergleich oben schickt alle {plan_count} Tarife für {country_acc} von {brand_count} Anbietern durch eine Formel – was keine Bewertungsseite behaupten kann. Vergleiche die Tarife oben nach Preis und lies dann die Bedingungen des Anbieters vor dem Kauf."

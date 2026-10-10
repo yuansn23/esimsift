@@ -1,0 +1,42 @@
+# FR FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Frankreich?"
+a = "Der niedrigste Preis auf dieser Seite: {cheap_plan} von {cheap_brand} für ${cheap_price}. Der nächstgünstigere Anbieter ist {runner_brand} mit ${runner_price}. Prüfe neben dem Preis auch die Gültigkeitsdauer, denn ein billiger Tarif, der früh abläuft, ist nicht billig."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Frankreich wirklich unbegrenzt?"
+a = "Groß statt grenzenlos: {unl_count} unbegrenzte Tarife für {country_acc} unterliegen Fair-Use-Regeln. Die Spanne ist weit – {unl_perday_range} pro Tag – und {unl_brand} liegt mit ${unl_perday}/Tag über {unl_days} Tage am unteren Ende. Nimm die veröffentlichten Bedingungen als echte Grenze: {unl_allowance}, dann {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Frankreich?"
+a = "Keiner von beiden ist der günstigste Tarif auf dieser Seite, und sie konkurrieren auch nicht zu denselben Bedingungen. Auf Airalos Seite ist der beste Wert ${ah_airalo_pergb}/GB – {ah_airalo_plan} für ${ah_airalo_price} – pro Gigabyte bepreist statt pro Tag. Holaflys Einstiegspreis für {country_acc} ist ${ah_holafly_price} über {ah_holafly_days} Tage (${ah_holafly_perday}/Tag), ohne Datenzähler zum Beobachten."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Frankreich?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Frankreich?"
+a = "Die Tarife auf dieser Seite laufen über Orange, SFR, Bouygues. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Frankreich und das Vereinigte Königreich abdecken?"
+a = "Nicht mit einem Landestarif allein, weil Tarife für {country_acc} an der Grenze enden. {neighbor} dazu bedeutet ein regionales Paket oder einen zweiten Tarif, und diese Rechnung lohnt sich vor dem Kauf."
+
+[[faq]]
+q = "Kann ich eine eSIM in Frankreich nutzen?"
+a = "Ja, es funktioniert. Keine länderspezifische Sperre steht zwischen einer Reise-eSIM und den Netzen in {country_dat}. {brand_count} Anbieter verkaufen {plan_count} separate Tarife für {country_acc} auf dieser Seite – ein Markt zu groß, als dass Verfügbarkeit die Einschränkung wäre. Der Gerätecheck dauert dreißig Sekunden, und die Tarife oben sind alle auf einer Skala bepreist."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Frankreich?"
+a = "Es hängt vom Gerät ab und nicht vom Land, denn jeder Tarif auf dieser Seite ist ein Standard-eSIM-Profil. Veröffentlichte Kompatibilitätslisten hinken neuen Modellen hinterher, der Test im Wählfeld an deinem eigenen Gerät schlägt also jede Liste, auch unsere. Bestätige, dass die EID erscheint, und vergleiche dann die Tarife oben."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Frankreich?"
+a = "Nein, außer du brauchst ausdrücklich Anrufe über eine lokale Nummer. Zwei-Faktor-Codes sind der übliche Grund für die Frage, und die kommen über die Heimleitung an, solange sie aktiv bleibt. Nutze die eSIM für Daten und die Heimleitung für alles, was die Nummer braucht."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Frankreich?"
+a = "Statt einer Sternebewertung beantwortet diese Seite die Frage mit Zahlen. Preis, Volumen und die Fair-Use-Schwelle sind prüfbare Fakten, und genau die stellen die Tabellen oben nebeneinander. Der gemessene Vergleich steht oben, und Meinungen liest man am besten dort, wo sie gepostet wurden."

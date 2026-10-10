@@ -1,7 +1,9 @@
 # eSIM Sift — 项目状态
 
 > 独立 eSIM 比价站。单一数据源（`data/*.toml`），模板层推导一切派生指标。
-> 基座：Hugo 0.159.1 + Tailwind CLI。语言：英语（目录结构已为多语言预留）。
+> 基座：Hugo 0.159.1 + Tailwind CLI。语言：**英语（根路径）+ 德语（`/de/`，2026-10-10 第七十二轮 D9 解禁，
+> 无 noindex）** —— ⚠ **工作区已是 644 页的完整德语站，但 HEAD 只有 55 个文件（54 个 noindex）⇒ 线上仍停在「德语只有首页」，见第八十轮小节**；i18n **1818 key**（en = de 逐 key 同序对齐，未定义 0）。
+> **`npm run validate` 现有 5 道源码层闸门**（2026-10-10 第七十八轮新增后两道，见对应小节）。
 
 ## 命令
 
@@ -9,7 +11,8 @@
 npm run build     # 数据日期自动盖章 → Tailwind CSS → 数据校验 + CSS 同步校验 → hugo → 产物校验（上线前的完整管线）
 npm run dev       # 同上（含盖章）+ hugo server
 npm run stamp     # 单独跑「数据变了就把核对日推到今天」（见 §4.3；台账 docs/checked-state.json 必须提交）
-npm run validate  # 单独跑校验（validate.py + check_css_sync.py）
+npm run validate  # 单独跑校验（validate.py + check_css_sync.py + check_i18n.py
+                  #   + check_printf_arity.py + check_headings_source.py）—— 5 道，秒级，构建前拦
 npm run check:output # 产物校验（格式串泄漏 / JSON-LD 可解析 / 评分区间）——必须在 hugo 之后跑
 npm run build:css # 只重建 Tailwind（改过 layouts 里的 class 后必须跑）
 ```
@@ -64,6 +67,680 @@ layouts/partials/country-stats.html  ← 全站唯一聚合入口
 11. **`static/` 下放什么就发布什么**（2026-10-03 发现）：`static/img/esim/图片_backup_20260929/` 连带里面的
    `.workbuddy/`（内部 py 脚本 + 日志 + memory md）被原样拷进 `public/`，线上 HTTP 200 可直接下载。
    **备份/草稿/临时产物一律放项目根，`static/` 只放页面真正引用的资源**
+
+## 已完成（「线上 old」≠「本地坏」：德语站从未提交 + public 被 localhost 污染，2026-10-10 第八十轮 · d55）
+
+**触发（用户四问，逐字）**：「`https://www.esimsift.com/de/sitemap.xml`  为什么这个 xml 中 德语的其他页面都没有， 搞什么
+/ 这个 robots.txt https://www.esimsift.com/robots.txt 是不是 应该加上 de/sitemap.xml
+/ 定位到 https://www.esimsift.com/de/ 后 为什么底部的菜单导航， 还有很多没有 /de/， 顶部菜单导航也没有
+/ 是否还存在其他类似问题， 请一并检查」。
+
+**结论（一句话）**：**不是模板坏了，是「提交进 Git 的德语站根本不完整」。**
+`content/de/` 在 **HEAD（= 线上正在跑的那个提交）只有 55 个文件**，其中 **54 个 `noindex: true`**；工作区 **644 个、noindex 全解禁**。
+三个现象是**同一个原因的三个投影**，只差**提交 + 部署**。
+
+**线上 = HEAD 的构建（6 条判据全部对上）**
+
+| 判据 | 线上实测 | HEAD 源码 |
+|---|---|---|
+| `/sitemap.xml` 条目 | **644** | `content/en/*.md` = 644 |
+| `/de/sitemap.xml` 条目 | **1** | 55 − 54 noindex = 1 |
+| `robots.txt` 的 `Sitemap:` 行数 | **1** | `HEAD:layouts/robots.txt` = 1 行 |
+| `/compare/matchups/` 含 `ItemList`/`FAQPage` | **0 / 0** | `HEAD:…matchups.html` = 0 / 0 |
+| `/de/` 首页 footeren 带 `/de/` 的链接 | 8 条 | 那 3 类德语页在 HEAD **存在** |
+| `/de/` 首页 footer 不带 `/de/` 的链接 | 20 条 | 那 20 类德语页在 HEAD **不存在** |
+
+**① `de/sitemap.xml` 只有 1 条**：`sitemap-urls.html:36` 的 `{{- if not .Params.noindex -}}` 会把 noindex 页排除（设计如此，避免 GSC
+报 *Submitted URL marked 'noindex'*）⇒ 55 − 54 = 1。本地工作区产物实测 **`public/de/sitemap.xml` = 644 条**、**645 个德语 HTML 里 0 个带 robots meta**。
+
+**content/de 的 HEAD vs 工作区**：`(根) 1→7` · `compare 51→596` · `guides 1→11` · `networks 1→13` · `research 1→4` ·
+`esim-providers 0→11` · `esim-deals 0→1` · `tools 0→1`。**新增未提交 589 个**（compare 545 / networks 12 / esim-providers 11 /
+guides 10 / 根 6 / research 3 / esim-deals 1 / tools 1），**改过（删 noindex）54 个**。
+`content/en` : `content/de` = **644 : 644**，页面型 **636 : 636**，零缺失。
+
+**② `robots.txt` 无 `de/sitemap.xml`**：`Sitemap: {{ .Site.BaseURL }}de/sitemap.xml` 这一行**在工作区、未提交**（HEAD 只有根那一行）。
+
+**③ footer/header 缺 `/de/`**：`lang-href.html` 是**三层兜底** —— ① 当前语言有该页 → `.RelPermalink`；② **别的语言**有该页 → **那个语言的
+`.RelPermalink`（英语 URL，没有 `/de/`）**；③ 都没有 → `relURL`。所以「德语页缺失」**不报 404，而是静默退化成英语 URL**。
+线上德语站只有首页有内容 ⇒ 30 条链接退化。**本地实测越界 = 0**（德语页里指回英语路径的站内链接 646 种 / 1290 处，**100% 是语言切换器**：
+645 × `/`（`en`）+ 每页 1 条 `English`，两者本就该指英语）。
+
+**④ 其他同类问题（已全量扫过）**：`_de_link_leak_audit.py` **[1][2][3] = 0/0/0**；`check_hreflang` **OK 1291 页 / 3864 tags / 1288 页**；
+德语页 `<html lang>` **645/645 = `de`**；`canonical` / `og:url` 路径 **645/645 带 `/de/`**。**SEO 面无非同类泄漏。**
+唯一真问题在**本地产物**：见下。
+
+**★ 另一处真问题：本地 `public/` 被 `localhost` 污染 —— 1315 个文件**（`.html` 1291 / `.xml` 19 / `.txt` 3 / `.json` 2），
+mtime **10-10 22:19–22:21**（在最后一次构建**之后**）。成因：**手敲了不带 `--renderToMemory` 的 `hugo server`**，它用
+`http://localhost:1313/` 覆盖 baseURL 并**把整站写进 `public/`**（`public/sitemap.xml` 644 个 `<loc>` 全变 localhost、
+`public/robots.txt` 写成 `Sitemap: http://localhost:1313/…`）。守卫原文已抓到：
+`[A] 1315 个产物含 localhost —— 本地 hugo server 的 baseURL 泄漏进了 public/（重新跑 npm run build 即可修复）`。
+⇒ **本轮已重跑 `npm run build` 恢复**（复核见下）。**再次重申：预览只用 `npm run dev`。**
+
+**附带发现（未擅自改）**：**563 个德语内容文件**的 front matter 里留着已过期的注释
+`# TODO(de)：… D9 解禁时统一删掉上面 noindex 行。`——而「上面那行」**早已删掉**（54 行 noindex 已全移除）。
+它只是 YAML 注释、**不进产物**、对读者与 SEO **零影响**，但会误导后来人。清理 = 563 文件各删 1 行、**产物逐字节不变**。
+
+**交付文档**：`docs/de-deployment-diagnosis-2026-10-10.md`（含「部署后 4 条复核命令」）。
+**纪律沉淀**：PROJECT.md 红线 **101**（线上现象先分「本地产物 / 已部署产物」两侧再判）/ **102**（`lang-href` 三层兜底的副作用是
+**语言泄漏而非 404** ⇒ 「德英页数 1:1」是硬不变量）。**改动仍未 `git commit`、未部署。**
+
+## 已完成（Versus 导航下拉收窄为 6 组编辑精选 + 逐字节归属证明，2026-10-10 第七十九轮 · d54）
+
+> 诉求（用户逐字）：「Versus 下的品牌对比，只需要 airalo 对 holafly / yesim / nomad / saily / jetpac / roamic，只需要这几个。」
+
+**① 落点**
+- **新建** `layouts/partials/nav-matchups-featured.html` —— 6 个**页面 slug 全形**，从
+  `partialCached "nav-matchups.html"` 的 45 组里按 `printf "%s-vs-%s" .ka .kb` 命中，返回**同构** `[]dict{url,ka,kb,na,nb}`。
+- `layouts/partials/header.html`（19715 → **20045 bytes**，纯 LF）：`w-[36rem]` → **`w-[26rem]`**、
+  `grid-cols-3` → **`grid-cols-2`**、面板计数取 `$vsItems`（= 6）、尾链「All N matchups →」取
+  **`$vsAll`**（= 45，指枢纽页里的全量）；新增变量**并进既有行**、说明**并进既有注释块**（红线 3）。
+- `nav-matchups.html` **一字未动** ⇒ 页脚上下文推荐与 `/compare/matchups/` 枢纽页仍用全量 45 组。
+  **收窄导航 ≠ 删页**。
+
+**② 产物级证据（现算）**
+- 面板对决链接：**1290 / 1290 页恒 6 条**（另 1 页 `/en/index.html` 是无 `<nav>` 的 meta-refresh 别名壳）。
+- 链接集合**全站只有 1 种**（出现 1290 次），顺序正是指定的 6 组；**语言前缀错误 0 处**。
+- 面板**可见数字恒 {6, 45}**（计数 6 + 尾链 45）。
+- 枢纽页 en/de 各仍列 **45** 组；页脚仍 **53 种**上下文组合、每页 6 条。
+- 45 组对决页全站入链 **min / 中位 / max = 98 / 300 / 1812**，**零孤岛**。
+- ⚠ **代价说清**：第七十八轮那 45 页入链 **1388–1812**（导航每页都给全部 45 组），收窄后未被精选的
+  39 组降到 **98–300**。98 条站内入链对 Google 足够，但这是收窄的必然代价 —— 若 GSC 仍报未编入索引，
+  **第一顺位是往精选清单加组，而不是改文案**。
+
+**③ 逐字节归属（不跑第二次全量渲染）** —— `.buildlog/p79_attribution.py`
+- 判据：把新产物里那段面板**还原成改动前的渲染形态**（45 组 / `w-[36rem]` / `grid-cols-3` / 计数 45），
+  整页 sha256 应等于第七十八轮基线。**结果 1291 / 1291 页全部相等** ⇒ 改动零外溢、页内其余部分零漂移。
+- 与 `verify_no_regression.py --diff` 交叉验证：变更 **1290** / 新增 **0** / 删除 **0**，未变者正是那个重定向壳。
+- 基线已刷：`generated_at` `10:57:47Z` → **`14:02:33Z`**（1291 文件，纯 LF）。
+- ★ 还原所需文案/顺序**全部从真源读**（`providers.toml` 字母序两两组合 + `i18n/*.toml`），不手抄。
+
+**④ 构建与闸门** —— `.buildlog/build_r79b.log`：**`BUILD_EXIT=0`**；hugo `Total in 198917 ms`；
+`validate` 5 道 0 error（`531 layout classes all present in compiled CSS`）；`check:output` **12 项全绿**
+（1293 files / 1291 pages，7416 JSON-LD）；`check_headings` **33248 h2/h3, bad: 0**。
+旁证 `.buildlog/p79_nav_probe.py`：**自检 7/7（含 5 条硬反例）+ 正式扫描 0 问题**。
+
+**⑤ 仓库卫生**
+- `.gitignore` 295 → **419 bytes**（补 `__pycache__/` + `*.pyc`）；`git rm -r --cached scripts/__pycache__`
+  ⇒ `scripts/` 下 pyc 跟踪数 **0**。
+- 结论（给用户问的「能否整目录排除」）：`.buildlog/` ✅ 能（已忽略、跟踪 0）；`scripts/` ❌ **不能**
+  —— `package.json` 的 build/validate/check:output/stamp/dev 共引用 **23 个**脚本，排除后新克隆跑不起来；
+  `scripts/scrape/`（519 文件 / 7.8 MB）**不是垃圾**，是数据管线的采集工具 + 原始抓取证据（PROJECT.md 明写「勿删」）。
+
+**⑥ 本节未动**：`header.html` 的其它面板、页脚、枢纽页、i18n key 数（仍 **1818 key**，本轮**没加也没删**）。
+
+## 已完成（导航 hover 对决菜单 + matchups 充实 + 对决页/品牌页过滤器 + 仓库卫生 + 「已发现未编入索引」量化归因，2026-10-10 第七十八轮 · d53）
+
+**触发**（用户点名 7 问，原文见工作日志）：① 导航 hover 出品牌对决并可点击；② 删掉 `/compare/matchups/` 的「Compare country by country」；③ matchups 页内容单薄；④ 对决页胜者徽章点击要跳到 `/compare/{国家}/{品牌}/`；⑤ 对决页要加「按国家 + 按 GB」过滤；⑥ 品牌×国家页要加「按 GB」过滤；⑦ `.buildlog` 等垃圾文件别进 GitHub；⑧ 对决页 GSC 报「已发现，尚未编入索引」，是不是同质化所致。
+**思路**：①②③④⑤⑥ 改渲染文件 + i18n + CSS；⑦ 只做 `.gitignore` + 退跟踪（**`.buildlog` 头一次被忽略**）；⑧ **先量化再动手** —— 建两支探针，实测后才知道该修什么。
+**一句话结论**：**不是逐字复制粘贴型同质化**（去重后 96.4% 的句子全站唯一）；真因是**站内可达性** —— 39/45 个对决页全站只有 49 条入链，已修到 **45 页全部 ≥ 646 条（英语侧）/ 1388–1812 条（全站 en+de，零孤岛）**。
+
+### ① 导航 hover 对决菜单（`partials/nav-matchups.html` 新建 + `header.html`）
+
+- **新真源** `partials/nav-matchups.html`：从 `i18n-data.html` 推导 10 品牌 → 45 组两两组合 → `site.GetPage` 门控后返回 `[]dict{url,ka,kb,na,nb}`；`partialCached` 缓存。**导航与页脚共用它**，不抄第二份清单。
+- VS 项从单链接改成 `group relative` + `.nav-mega w-[36rem] right-0` 三列网格：列出全部 45 组 `A VS B` + 面板尾「All N matchups →」；`group-focus-within:*` 保证**键盘可达**（移动端仍是抽屉菜单）。
+- `{{ if gt (len $vsItems) 0 }}` 门控，`{{ else }}` 退回单链接（与既有 Network map 降级逻辑同构）。
+- `header.html` 17326 → 19715 bytes（186 → 212 行）。
+
+### ② ③ matchups 页：删 `<details>`、充实内容、补结构化数据（`layouts/compare/matchups.html`）
+
+- **删**：上一轮自己加的 `<details class="matchup-more">` 整块 + `$diff` 计算 + `"top"` 字段 + 4 个 i18n 死 key + `.matchup-more` CSS 整段（`main.css` 10582 → **10001 bytes**，回到第七十七轮之前的体积）。
+- **加 §scoreboard**：10 行品牌战绩榜（名次/对战数/赢国/输国/平局），品牌名链到 `/esim-providers/{key}/`。
+- **加 §faq**：4 条 `details.faq-item`。
+- **加两段 JSON-LD**：`ItemList`（45 个 `ListItem` + `numberOfItems`）+ `FAQPage`；`_de_schema_audit` [5] 的「同页同 `@type` 不得出现两次」约束下，**不能再借 `partials/schema.html` 已产出的 `BreadcrumbList`**。
+- 卡片恢复单 `<a class="card card-hover group p-5">`（上一轮为塞 `<details>` 才拆的 wrapper 一并收敛）。
+- 10471 → 15078 bytes（125 → 197 行）。
+
+### ④ ⑤ 对决页：胜者徽章变决策出口 + 国家/GB 双过滤（`layouts/compare/vs-single.html`、`partials/vs-agg.html`）
+
+- **胜者徽章 → 链接**：唯一赢家 ⇒ `<a href="/compare/{国家}/{赢家}/">`（读者下一步真的想看的页）；**并列 ⇒ 保持无链接 `tie` 徽章**（不给错的一页发链接）；`aria-label` 服务端渲染整句，德语走 `name_acc` 宾格。
+- **新增「Cheaper entry 那一条套餐的数据量」列**：`vs-agg.html` 新增 `aMinGB`/`bMinGB`，**与 `aMin`/`bMin` 共用同一个 if 分支赋值** ⇒ 结构上不可能「价格取自这条、数据量取自那条」。
+- **过滤条**：国家搜索框（`data-name` 用**本语言**国名）+ 8 档数据量 chip + 计数（服务端渲染整句）+ 计数模板 + 空态。档位只渲染**真出得现**的桶（`$szCnt`）。
+- **新增 §gap**：本页价差最大的 3 国卡片（各自 3 条内链 → `/compare/{国家}/{赢家}/`）。
+- 30799 → 43485 bytes（391 → 542 行）。
+
+### ⑥ 品牌×国家页：数据量区间过滤（`layouts/compare/provider.html`）
+
+- 在既有「旅行时长」chip 旁加**同形**的数据量区间 chip（8 档）+ 计数行；**两个过滤器互不重置**（`curDays` 记忆）。
+- 语义：**天数 = 覆盖型需求 → `≥` 正确**；**数据量 = 预算型需求 → 区间**（左开右闭，`gb=0` 只进无限桶）。这条铁律与第七十七轮一致，两页 chip 语义完全同构。
+- `apply(n)` 改为 `hidden` 式过滤；套餐 ≤3 的页面按设计不渲染筛选器。
+- 92843 → 97681 bytes（1259 → 1326 行）。
+
+### ⑦ 仓库卫生（`.gitignore`）
+
+根因：`.buildlog/`（**实测一次累积到 258MB**）、`_competitors/`、`_net_results/`、`docs/internal/` 全在仓库目录里且**从未被忽略**。
+- `.gitignore` 176 → 295 bytes：加 `.buildlog/`、`docs/internal/`、`_competitors/`、`_net_results/`。
+- 索引 **2664 → 2041** 文件（`git rm --cached` 暂存删除 **623** 条，未 commit）；四类目录跟踪数 **全部 0**；根级只剩 **9** 个被跟踪文件。
+- **核查结论**：`??` 203 条全是真实站点资产（`content/de/**`、`data/de/**`、`scripts/**`、`nav-matchups.html`）⇒ **没有任何垃圾会进 GitHub**。
+
+### ⑧ 「已发现，尚未编入索引」量化归因（**本轮最有价值的部分**）
+
+**修复后的独立复核**（`.buildlog/p78_side_probe6.py`、`.buildlog/p78_lang_prefix_probe2.py`）：
+- 页脚对决链接已**真上下文相关**：1290 页共出现 **53 种不同组合**（改造前是写死的同 1 组）；
+  单个对决页的**页脚**入链最少 **102** 条（改造前最低 **49** 条）。
+- **45 个对决页全站入链 1388–1812 条 / 零孤岛**；导航面板 1290 页每页恒 45 条、**语言前缀错误 0**。
+- ⚠ **口径**：英语侧口径 646（正则 `href="/compare/` 紧跟，不含 `/de/`）；全站口径 1388–1812（含 en+de）。
+
+
+**先纠正口径。** 「句子骨架去重率」这个口径必然虚高：programmatic SEO 的数据驱动句抹掉变量后一定同形。Google 的 *minor variations* 指**正文文本逐字相同**。故新建双口径探针 `.buildlog/p78_vs_dup_probe.py`（正文区 `<main>`，两口径并列）：
+
+| 指标 | 改造前 | 改造后 | 变化 |
+|---|---|---|---|
+| 正文逐字句 总数 / 去重 | 1877 / 999 | 2012 / 1070 | +135 / +71 |
+| **正文逐字重复率** | 46.8% | **46.8%** | **±0（没有做坏也没做假）** |
+| **全站 ≥40 次逐字复制句** | 16 | **16** | ±0 |
+| **只出现 1 次的逐字句（真正独占）** | 963 | **1021** | **+58** |
+| 正文骨架去重（辅口径） | 124 | 185 | +61 |
+| 骨架重复率（辅口径） | 93.4% | **90.8%** | −2.6pp |
+| 只出现 1 次的骨架 | 66 | **112** | +46 |
+| 每页独有句中位 | 42 | **48** | +6 |
+| 正文词数 min/中位/max | 1912/1945/1987 | **2359/2397/2435** | 中位 +452 |
+
+**16 条逐页复制句的成分**（已逐条回查 i18n key）：**6 条是站内共用控件/披露**（对比构建器、条形图图例、方法/披露链接）—— 逐页相同**是正确的，不该改**；**10 条是说明句与 FAQ 答案** —— 可继续数据化，收益递减。
+
+**真因（内链可达性）**：
+
+| 指标 | 改造前 | 改造后 |
+|---|---|---|
+| 对决页入链页数 min / 中位 / max | 49 / 49 / **646** | **646 / 646 / 646** |
+| 属于「孤岛」（只有 49 条入链） | **39 / 45 页** | **0 / 45 页** |
+
+根因：`partials/footer.html` 里**写死的 6 组「Popular matchups」**出现在**每一页**页脚 ⇒ 那 6 个页各拿 646 条入链、其余 39 个只从兄弟页拿 49 条。sitemap 声明过（= Discovered）但站内几乎无路可达（= 优先级/信号不足）—— 与 GSC 的提示**逐字对应**。
+**修复**：页脚改为**上下文相关**（对决页 → 同品牌的其他对决；品牌页 → 该品牌的对决；其他页 → 兜底 6 组），复用与导航同一个真源 `nav-matchups.html`；`{{ .RelPermalink }}` 排除自身。
+**未动（改造前已达标）**：title 45/45 唯一、H1 45/45 唯一、self-canonical 正确、无 `robots` meta（可索引）、hreflang 3 条。
+
+### ⑨ 新增两道**构建前**闸门（本轮撞了两次「改文案 → 等 11 分钟 → 末端才报错」）
+
+一次全量构建 ≈ 11–12 分钟；按项目既有纪律「判据必须前移到源码/数据层」，把两条判据前移进 `npm run validate`（秒级）。
+
+**`scripts/check_printf_arity.py` —— i18n 调用契约**。事故：本轮在 matchups 的 FAQ 里写了 `printf (i18n "…") $total`，而该 i18n 值**一个 `%` 占位符都没有** ⇒ Go 把多余实参印成 `%!(EXTRA int=45)` **到读者页面上**（4 页）。格式串住在 `i18n/*.toml`、实参个数住在 `layouts/**` —— 这条**跨文件契约此前无人守**。
+判据：① 动词数必须等于实参数；② 值里有非格式动词的裸 `%`（如 `20% off` 被当格式串）报错；③ `i18n "K" (dict …)` 必须覆盖**该 key 各语言占位符的并集**，否则印 `<no value>`；④ **各语言占位符集合互不相同不报**（德语要 `country_acc`/`country_dat`，是刻意设计）。
+**校准教训**：第一版把「多传 dict 键」一律判为漂移 ⇒ 在 `provider.html` **误报 160 处**（全是德语格变化的按需供给）。改成「任何语言都没用到才算冗余」后降到 55 处真冗余（非阻塞 WARN）。**守卫必须先用真实仓库校准边界**。
+自检：正例 10 / 硬反例 9 / 软反例 2 = **21 项两侧都证**；正式扫描 **ERR 0 / WARN 55**。
+
+**`scripts/check_headings_source.py` —— h2/h3 标点（构建前）**。事故：本轮新加的一条**德语 H2 带逗号**，跑满一次构建才在 `check_headings.py` 报 `bad: 45`。
+判据从 `scripts/lang_rules.py` 读**同一份**语言规则（**不抄第二份正则**）：en 禁 `, ; : — –`、de 禁 `, ; :`；来源三处 —— `<h2>/<h3>` 内的 i18n key、`$xH2 = i18n "…"` 的**间接赋值形态**、`content/{lang}/**/*.md` 标题。
+**边界写进 docstring**：值里 `{{ .x }}` 代入后才出现的标点、数据层国名带进来的标点本脚本看不见 ⇒ **产物级 `check_headings.py` 必须保留**。
+自检 5 项全过；正式扫描 **0 处违规**（与产物级 `bad: 0` 一致）。
+
+### ⑩ 验收（全部现算；`.buildlog/build_r78e.log` EXIT=0、12 项产物闸门全绿）
+
+- `stamp` 报「无改动：数据没变，日期保持不动」；`build:css` OK；`validate` **0 error**；hugo `Total in 416976 ms`。
+- `check_headings`：`checked 1291 html files, 33248 h2/h3, **bad: 0**`。
+- **产物断言 `.buildlog/p78_assert.py`（10 条）：合计问题 0**，含一条**跨源对账** `Σ(赢+输+平)=4482 = 2 × 2241 行 ✓`（战绩榜 ↔ 45 张对决页行数合计）。
+- **断言自检 `--selftest`**：正例 0 误伤；**逐条反例隔离注入**（每条独立还原后重跑，避免多条反例互相掩盖）。
+- **同质度双口径** / **厚度与内链**：见上表。
+- 回归基线：`generated_at` 09:02:32Z → **10:57:47Z**；1291 文件、13 类页型**完全相同**；`--diff` → **变更 0 / 新增 0 / 删除 0**。
+
+### ⑪ 本轮踩到并已写进纪律的坑（详见 `docs/compare-ux-seo-2026-10-10.md §4`）
+
+1. **「一句话」只能有一个句号**：把段落前半句做成数字驱动、留后半句静态 ⇒ 后半句仍是一条 45× 复制句（探针按句末标点切句）。**本轮栽了两次。**
+2. **改文案前先预测分散度**，别用构建试错：`.buildlog/p78_sentence_variance.py` 从**当前产物转录**数字（不重算 vs-agg），比较候选变量集后一次改对。实测 `(metered,unlim,total)` 只 10 种组合、最大重复 15 页；加 `$lo` 后最大重复降到 6 页。
+3. **断言脚本的反例必须真注入到判据所在位置**：⑦ 删徽章删到了别的模块（MISS）、⑩ 正则缺 `(?s)` 导致反例根本未生效（靠 `assert t2 != orig` 才暴露）。
+4. **量纲不能混**：战绩榜「对战数」是场次、赢/输/平是国家数之和 ⇒ 正确不变量是「Σ赢=Σ输」「Σ平为偶」「Σ对战数=2×场次」+ 跨源对账。
+5. **Python 非 raw 字符串里的 `\$` 非法**：`SyntaxWarning` 后原样写进 TOML ⇒ `validate` 直接报「无法解析的 TOML 值」。
+6. **`@esimsift` selftest 会复制整棵产物树 + 逐条全树扫描**，别与全量构建并行（互相拖慢、快照可能不完整）。
+
+### 未动但登记在案
+
+- **改动全部留在工作区，未 `git commit`、未部署**（含 623 条已暂存的删除）。
+- `.buildlog/` 仍在仓库目录内（已忽略、跟踪数 0）；若要物理搬出仓库根，需一并改脚本相对路径。
+- `scripts/_*.py` 里约 50 个一次性补丁/对账脚本会被提交；其中 `_de_schema_audit.py`、`_de_link_leak_audit.py` 是**构建闸门不能动**，其余可归档到 `docs/internal/scratch/`。
+- 残留 10 条模板说明句 / FAQ 答案可继续数据化（收益递减）。
+- 第七十七轮遗留全部仍在：`/de/catalog.json` 的 `plan` 9095 条与英语逐字相同（O1）· 146 页 JSON-LD 缺 `inLanguage` · sitemap 无 `xhtml:link` · `de/404.html` 段落硬编码 · 全站无 RSS 自动发现 `<link>` · 国家页选中天数后只隐藏不重排。
+- **德语译文尚未经有资质审校**（本轮新增两句已避开「介词支配国名」的与格陷阱）。
+
+
+
+**触发**（用户点名 4 问）：① `/de/compare/united-states/` 的 `✓ Preise geprüft am 07.10.2026` 是否该改成当天？② `/de/networks/germany/` 同问（理由：新语言未上架）；③ 国家比较页「选 3GB 会把所有 >3GB 的都显示出来」，过滤该怎么设计、是否改渲染文件；④ `/de/compare/matchups/` 品牌对比是否该像国家页那样「鼠标放上去就展开」。
+**用户拍板**：③ → **加按 GB 选择的过滤**；④ → **`<details>` 可展开对比表**。
+**思路**：①② 只实测 + 论证，**不改任何日期**；③④ 改两个渲染文件（en/de 共用）+ i18n + CSS；另做一件必做收尾 —— 把 `--diff` 报出的 **1290 页变更**归因清楚再刷基线。
+
+### ① ② 日期口径：**不改**（页面日期 = **数据核对日**，不是构建日）
+
+`partials/country-stats.html` 取该国所有品牌 `[ISO].checked` 的**最大值**，同一日期喂三处：可见文案 / JSON-LD `dateModified` / sitemap `<lastmod>`。
+- US / DE 实测：8 家 = `2026-09-30`，**jetpac + nomad = 2026-10-07** → max = **2026-10-07** = 页面显示值。
+- `python -X utf8 scripts/stamp_checked.py --check` → **EXIT=0**「OK：日期与数据一致（499 价格单元 + 10 档案单元，今天 2026-10-10）」⇒ 07.10 是**真话**。
+- `/de/networks/germany/` 同源（`networks/single.html:34` 的 `$s.checkedDate` → 徽章 `:120` / 计数脚注 `:195` / 侧栏脚注 `:416`）；其「运营商归属」来自同一数据块 `[ISO].networks` ⇒ **自洽**。
+- **改今天的代价**：① 「今天核过价」是**不实陈述**；② `lastmod` 每次部署翻新 → Google 判无信息量 → **整体忽略**（第二十三轮试过 `now` 又撤回）；③ 一旦被判定不可信，真更新也不加分。
+- **德语层未部署 ⇒ Google 从没见过 07.10 ⇒ 不存在「陈旧」问题。** 要「看起来新」的唯一诚实路径：`python -X utf8 scripts/bump_checked.py --brand X --countries US,DE`（真重核 → 指纹变 → 自动盖当天）。
+
+### ③ 数据量区间过滤（`layouts/compare/single.html`）
+
+**先纠一个误判**：这页原本**没有 GB 过滤** —— `3+/10+` 那两组是 `Reisedauer`（**天**）。用户描述的「超集」现象**真实存在**，只是发生在天数上（US 254 行实测：`3+ Tage`→剩 241，其中**恰好 3 天的只有 17 条**；`≥3GB`→232；`≥10GB`→184）。
+**★ 设计铁律**：**天数 = 覆盖型需求 → `≥` 正确**（去 3 天，30 天套餐也满足）；**数据量 = 预算型需求 → `≥` 错误，必须区间**（用户只为 3GB 付费，不该看到 20GB）。
+- 7 档桶：`Unbegrenzt`（`gb === 0`）/ `≤1` / `1–3` / `3–5` / `5–10` / `10–20` / `20+`；边界**左开右闭**（`gb > lo && gb <= hi`），**`gb === 0` 只进 `u`、不泄漏进 `0-1`**。
+- **空桶不渲染**（`{{ if gt (index $szCnt "x") 0 }}`）—— 某国没该档位就不给按钮，避免点出空结果。
+- 桶计数由**数据推导**、文案**服务端渲染整句**（JS 只做筛选，不拼句子）；纯客户端 JS，254 行全文服务端渲染 ⇒ **对 SEO 零风险**。
+- 文件：81371 → 85087 bytes（1134 → 1183 行）。
+
+### ④ matchups `<details>`（`layouts/compare/matchups.html`）
+
+**为什么不是 hover**：① **移动端无 hover**（一半流量）；② hover 内 JS 动态插入的内容 **Google 可能读不到**；③ `<details>/<summary>` **零 JS、可键盘、可索引、移动端天然可用**。
+现状佐证：**全站 70 处 `group-hover` 全是颜色/透明度，无一处展开内容** —— 没有可抄的既有范式。
+- 卡片由 `<a class="card">` 拆成 **`<div>` wrapper + 大块可点 `<a>` + `<details>` 兄弟节点**（**interactive content 不能嵌在 `<a>` 里**）。
+- 展开内容 = 价差最大的 **5 国** `A $X vs B $Y`（取自 `partials/vs-agg.html` 已有的 `aMin/bMin`）+ 一行汇总说明；复用既有 `.faq-icon`（旋转 45° 加号）。
+- 文件：8025 → 10471 bytes（89 → 125 行）；`i18n` 各 **+10 key → 1789**（en = de 逐 key 同序，差集空）；`main.css` +581 bytes（`.matchup-more`）。
+
+### ⑤ 验收（全部现算，`npm run build` EXIT=0、**12 项闸门全绿**）
+
+- 德语 US 页新控件 en/de 对称：`Jede Größe / ≤ 1 GB / 1–3 / 3–5 / 5–10 / 10–20 / 20+ GB / Unbegrenzt` ↔ `Any size / … / 20+ GB / Unlimited`。
+- **空桶省略（真反例）**：隔离探针工程 `.buildlog/szprobe/**`（fixture `gb = 0/0.4883/2/4/8/30`，**故意让 `10–20` 空**）→ 渲染桶 `['any','0-1','1-3','3-5','5-10','20p','u']`，**`10–20` 被省、其余 7 个在** ✓
+- **全 50 国**：渲染桶集合 == 有货桶集合，**不一致页数 = 0**。
+- **JS 区间语义**（node 从模板抽 `szMatch` 真源）：**12/12 全过**；**分区性** 16 个样本各**恰好落进 1 桶**、违规 **0**（含 `gb=0`）。
+- **matchups**：`matchup-more` 只在 **en hub + de hub 2 个文件**（`layouts/compare/matchups.html` 就是 hub 模板）；DE/EN 各 **45 个 `<details>`**、每块 **5 国 × 3 列**。样例（DE）：`Land für Land vergleichen` / `Günstigster Tarif je Land: Airalo gegen aloSIM` / `Kanada | $7.00 | $3.50`。
+- 德语守卫全过：`verify_de_text`（644 页）/ `verify_de_data`（i18n **1789 值** + `data/de` 1556 串）/ `check_hreflang`（1291 pages / 3864 tags）/ `_de_schema_audit` [4] **0 处 0 页** / `_de_link_leak_audit` [1][2][3] 全 **0**。
+- **守卫只读性专项**：12 项守卫的写入**只落 `tempfile.TemporaryDirectory()` 夹具或 `docs/regression-manifest.json`（仅 `--write-manifest`）** ⇒ **无一处写 `public/`**。
+
+### ⑥ 1290 页 diff 归因（本轮最大工作量，方法论见红线 91）
+
+**现象**：`--diff` 报 **1290 / 1291 页变更**（新增 0 / 删除 0），与「上一轮英语侧 0 变更」矛盾。
+**三条排除**：CSS 无内联（`grep "<style" public --include=*.html` = **0**，产物是**外链无指纹**的 `<link rel=stylesheet>`）· 无构建日注入（`stamp` 报「无改动」、全站含 `2026-10-10` 的 HTML = 0）· **渲染确定**（`hugo -d .buildlog/_det` 与 `public/` 逐字节比对：**1889 文件 identical 1889 / differing 0**）。
+**真因**：基线写在 **14:29:19**，而 **15:15:17** 有一批改动落盘 —— `partials/{breadcrumbs,header,footer,schema}.html` + `compare/{provider,vs-single}.html` + `esim-providers/single.html` + `index.html`；**这些全局 partial 被每个页面引用 ⇒ 改一处全站皆变**。另 15:18:33 `guides/region.html`、15:35:09 `index.llms.txt` + research 两页。
+**★ 自洽锚点**：全站唯一**未变**页 = `en/index.html`（`alias_shell`，270 bytes 裸跳转壳，**无 `partial` / `<header` / `<footer` / `og:site_name`**）⇒ 结构上天然免疫。**1291 − 1 = 1290，精确等于报告数。**
+**结论：不是功能回归，是上一轮合法改动未折进基线。**
+
+### ⑦ 基线刷新
+
+`_det`（与 `public/` 逐字节相同）保留为 `.buildlog/pub_d77`（375M，供后续恒等证明；此前**从未存在** `pub_d77`，未误删）。
+`python -X utf8 scripts/verify_no_regression.py --write-manifest` → **EXIT=0**，检查 A / B / C 全过。
+`generated_at` **06:29:19Z → 09:02:32Z**；文件数 **1291 → 1291**；**`class_counts` 13 类完全相同**（仅内容更新、**结构零变化**）。
+`--diff` → **变更 0 / 新增 0 / 删除 0**、「与基线完全一致（1291 页逐字节相同）」✓
+
+### 未动但登记在案
+
+上一轮遗留全部仍在：`/de/catalog.json` 的 `plan` 9095 条与英语逐字相同（O1）· 146 页 JSON-LD 缺 `inLanguage`（两语对称）· sitemap 无 `xhtml:link`（两语对称）· `de/404.html` 段落硬编码 · **全站无 RSS 自动发现 `<link>`** · 国家页选中天数后**只隐藏不重排**（品牌页已做「可覆盖置前」，国家页未对齐 → 本轮只加 GB 过滤，未动重排）。
+**仍未 `git commit`、未部署**（工作区改动累积）。
+
+## 已完成（德语上线前第二轮：多语言内链泄漏清零 + 两条产物级守卫入闸，2026-10-10 第七十五轮 · d51）
+
+**触发**（用户点名）：「德语译文未经人工审校这条忽略；**其他的是否都是德语的？是否能正式上线德语的，以及德语技术 SEO 是否还存在问题**」。
+**思路**：不加新页型、不改数据层，只做「产物级实测 → 手术式修复 → 守卫入闸」。
+**交付文档**：`esimsift-德语上线前技术收尾-2026-10-10.md` §7–§8（数字全部现算）。
+
+### ① 根因：`.Site.BaseURL` 与 `absURL` 在多语言站都解析到「默认语言根」
+
+`hugo.toml` 是 `defaultContentLanguageInSubdir = false` + 顶层 `baseURL`、**无 per-language baseURL**
+⇒ 德语页里 `.Site.BaseURL` / `absURL "x/"` 全部产出 `https://www.esimsift.com/x/`。**4 处独立缺陷 / 13 个模板文件**：
+① JSON-LD 面包屑 `item` **1643 处 / 645 页**；② 可见面包屑「回首页」+ header/footer logo **645 页**；
+③ `/de/llms.txt` **68 处**英语根内链（`index.llms.txt` 15 处 `absURL`）；④ 德语 research 页指向
+`catalog.json` 的 **2 处**（而 `/de/catalog.json` 确实存在，3.03 MB、`notes` 已是德语）。
+★ 正解分两类：**Page 路径**用 `.Site.Home.Permalink`（英语下与 `.Site.BaseURL` 逐字节等价）或
+`partial "lang-href.html"`；**非 Page 的生成文件**（catalog.json / llms.txt / RSS）`lang-href` 兜不住
+（`site.GetPage` 找不到 ⇒ 退回 `relURL` ⇒ 仍指英语根），**必须 `absLangURL`**。
+★ **故意保留 `.Site.BaseURL` 的 10 处**（组织身份 5 / 图片资源 2 / robots 站点级 sitemap 2 / catalog url 1）。**详见红线 90**。
+
+### ② 畸形转义：`i18n/de.toml` 17 条值写成三层转义 `\\\"`
+
+产物里落成 `href=\"/methodology/\"`（带**字面反斜杠** ⇒ 链接点不动）**96 处 / 11 页**（英语侧 0 处）。
+34 处 `\\\"` → `\"`；同时给 13 处内部 href 补 `/de/` 前缀。key 数仍 **1779**（en = de 逐 key 同序对齐，0 差集），纯 LF 守恒。
+
+### ③ 两条产物级守卫**新接入** `check:output`（10 → 12 项）
+
+- `scripts/_de_schema_audit.py` —— **它第七十三轮就写出来了，但从未进流水线**（「有守卫」≠「守卫在跑」）。
+  本轮收紧判据 [4]：补 `/de`（**无尾斜杠**，面包屑首页项经 `TrimSuffix "/"`）这条**临界边界** ——
+  不补的话「模板改对了、守卫反而报 645 页假红」；加**组织身份豁免**（`Organization`/`WebSite` 的 `url`/`@id`，
+  实测 1815 处）且**只豁免身份键**（同宿主的 `publishingPrinciples` 仍须 `/de/`，防过度豁免）。
+- `scripts/_de_link_leak_audit.py`（**新建**）—— [1] HTML `<a href>` 全形态（双/单/无引号）+ 自有域名**绝对写法** +
+  语言切换器豁免 + 先挖 `<script>`/`<style>`；[2] 畸形反斜杠 href；[3] **非 HTML 产物**（`.txt`/`.json`/`.xml`）语言泄漏
+  （红线 88：首版只扫 `*.html`，`/de/llms.txt` 的 68 处整片漏掉）。
+- `--selftest`：**13/13** + **16/16**（正例、逐条反例、边界两侧都证；[3] 对**改造前产物**实测判红 2 处 + 68 处）。
+
+### ④ 验收（全部现算，`npm run build` EXIT=0、12 项闸门全绿）
+
+- **英语侧逐字节恒等**：1889 文件 **0 增 0 删**、变更 **646 条全部落在德语侧**、**英语侧变更 = 0**
+  —— 硬证 `.Site.Home.Permalink ≡ .Site.BaseURL`、`absLangURL ≡ absURL` 在默认语言下等价。
+- 德语侧泄漏 **1643 / 96 / 93 / 68 → 全部 0**；`/de/llms.txt` **143 处**自有域名 URL 全带 `/de/`。
+- 德语 SEO 面：`<html lang="de">` **645/645**、canonical 自指 **645/645**、robots `noindex` **0**、
+  `og:locale de_DE` **645/645**、`/de/sitemap.xml` **644 条全 `/de/`**、`robots.txt` 声明两个 sitemap、
+  `/de/index.xml` language `de-de` 且 **637/637** link 指 `/de/`。
+
+### ⑤ 未动但登记在案（需用户决策）
+
+`/de/catalog.json` 的 `plan` 字段 **9095 条与英语侧逐条相同**（`Unlimited` 4038 条），
+而德语 HTML 印的是 `Unbegrenzt`（265 处）— 同一事实两套渲染（O1，机器导出 vs 读者可见的口径取舍）。
+`/de/sitemap.xml` 无 `xhtml:link` alternate（英语侧同样 0，两语对称）；JSON-LD `inLanguage` 缺 **146 页**（两语对称）；
+RSS `<title>` 尾巴 `on eSIM Sift` 两语相同；`de/404.html` 段落硬编码；**全站无 RSS 自动发现 `<link rel="alternate" type="application/rss+xml">`**。
+
+## 已完成（英语 compare 正文现算口径 + 德语上线前技术收尾，2026-10-10 第七十四轮 · d49/d50）
+
+**本轮目标**（用户点名）：① 按现算口径重写英语 compare 正文数字（消掉自相矛盾）；
+② 德语上线前的技术收尾 —— `llms.txt` 德语化 / 结构化数据抽查 / 首屏性能。
+**交付文档**：`esimsift-德语上线前技术收尾-2026-10-10.md`（§0–§6，全部数字现算）。
+
+### ① 英语 compare 正文（红线 84 已修）
+
+49/50 页重写，**`japan` 逐字节未变**。真实变更 **98 行 / 305 token** = 品牌名归一 147 + 数字与计量 152 + 其它 6。
+`--verify` 0 处过期、`--dry` 幂等 0 处、`content/en/compare` **52/52 仍纯 CRLF**。
+★ 纪律：**只换槽位，绝不重写句式**（50 套独立手写句式是反同质化资产）；
+★ **`626` 是正则匹配次数不是「变化处数」**（`sub_group()` 对每个匹配 +1，含幂等命中）。
+
+### ② `/de/llms.txt` 德语化
+
+44 个 `llms__*` key + 19 条字面替换；英语字节由**结构等价证明**（`flatten()` 逐占位符回填原表达式）保证。
+`check_i18n` 拼装句碎片 **49 → 14**（该文件 35 处全消）。
+
+### ③ 结构化数据抽查 —— 4 个真缺陷已修
+
+`publishingPrinciples` 指向英语 `/methodology/`（**645 页**）；JSON-LD 面包屑硬编码 `Home`（645 页）与
+`Compare countries`（499 页）；`esim-providers/single.html` 4 条 `additionalProperty.name`（10 页）。
+判据 `scripts/_de_schema_audit.py` 五条硬判据全绿；**4 个假红源**写进 docstring（**红线 87**）。
+
+### ④ 首屏性能抽查 —— 1 个真缺陷已修
+
+首页 hero（373 KB）被**全站无条件 preload**，而它只有 `layouts/index.html:57` 一处渲染 ⇒ **1288 页白预加载**。
+改为 `{{- if .IsHome }}…{{- end }}`，用**最小 Hugo 探针站**证明「首页逐字节相同 + 子页恰好少那一行」。
+判据 `scripts/_perf_audit.py`。**P1/P2/P3 登记待决策**（`/tools/` 1.16 MB 内联脚本 /
+**1290 页无 `<head>`** / CSS `@import` 串行阻塞）。
+
+### ⑤ ★ 非 HTML 德语产物 —— 判据 G 的扫描面本身漏了一整类产物（**红线 88**）
+
+F/G/J 都只枚举 `glob("**/index.html")` ⇒ `/de/llms.txt`、`/de/catalog.json`、RSS `*.xml`、`sitemap.xml`
+**一条都扫不到**。实测抓到 3 个缺陷（**十项闸门当时全绿**）：
+
+| # | 缺陷 |
+|---|---|
+| D5 | `/de/llms.txt` **10 条 `promo_label` 是英文**（★ 本轮引入）：它在 `data/de/strings.toml`（走 `de-text`），**不在** `data/de/providers.toml` —— 同一行相邻的 `tagline` 却走深合并 |
+| D6 | `promo_expires` 为空时印 `, expires )` / `, gültig bis )`（**9/10 品牌**）；站点既有惯例是 `esim-providers/single.html:466` 的 `with/else` |
+| D7 | `/de/catalog.json` 的 `fairUse` 漏 de-text（**2271 条** `fup_note`）+ `notes` 是**两语都硬编码**的模板字面量 |
+
+**守卫改造**：① 先换实现 —— 逐串带回溯正则 **33 s → `str.find` 0.3 s**（644 个 HTML 页 **256 s → 8.3 s**），
+且**逐页比对命中集合完全一致**；② 扫描面扩到 `.txt/.json/.xml` + `_json_text()` 还原 `jsonify` 的 `\uXXXX` 转义；
+③ **先对新守卫跑改造前的旧产物**：`24 处问题 / EXIT=1`；④ 补 7 条正/反例。
+**构建提速：15m26s → 9m02s。**
+
+### ⑥ 验收（d50，`EXIT=0` 十项全绿）
+
+`I 德语单位统一（i18n **1779** 值）` · `F（644 页）` · `J（644 页）` ·
+**`G 全站德语产物无数据层英文残留（644 页 + 11 个非 HTML 文件 × 185 条，含 JSON-LD）`** ·
+`check_hreflang 3864 tags / 1288 页` · `check_output 1291 pages / 7412 JSON-LD blocks`。
+
+`--diff` 与 d49 **逐类计数完全相同**（变更 1289 / 新增 0 / 删除 0 / 非品牌子页 291）⇒ 未引入额外 HTML 变更。
+字节断言：`public/catalog.json` **逐字节不变**；`public/de/catalog.json` 只变 `notes` + 2271 条 `fairUse`；
+`public/llms.txt` 只变 9 行（全是删 `, expires )`）；`public/de/llms.txt` 促销句全德语、残留 0。
+
+### ⑦ 待决策（9 项，本轮未改）
+
+**性能**：P1 `/tools/` 1.16 MB 内联脚本 · P2 1290 页无 `<head>` · P3 CSS `@import` 串行阻塞。
+**结构化数据**：E1 146 页缺 `inLanguage` 且两语不对称 · E4 JSON-LD 与可见标签口径差。
+（E3 已在 ⑧ 顺带修好。）**其它**：O1 `/de/catalog.json` 的 `"plan"` 未过 `plan-name.html`（两语 9,095 条同形，
+而德语 HTML 显示 `Unbegrenzt`）。
+**欠账**：第五十二轮起改动**全部未 `git commit`、未部署**；德语译文**尚未经有资质审校**。
+
+### ⑧ 顺带修好的既有英语缺陷（诚实登记）
+
+45 个英语 `compare/*-vs-*` 页改字节：JSON-LD 面包屑第 2 级换成 `(i18n "g_compare_countries")`（英语值即
+`Compare countries`，本意零变化），暴露出**可见面包屑第 2 级原本用国家页 title 口径**（`All eSIM providers`）
+⇒ 原有的 JSON-LD/可见层矛盾被顺带修好。**是修复，不是回归。**
+
+### ⑨ 同轮发现的失效守卫
+
+`scripts/_llms_de_l10n.py`（**不在 build 流水线里**）的 `--selftest` 早就红着：迁移落盘后 `old == new`，
+而 `audit(old, new, env)` 两侧**共用同一个 `env`** ⇒ 反例**结构上失效**。已修（反例自带基线 + `--dry` 幂等）。
+★ **不在流水线里的守卫必须定期手跑 `--selftest`。**
+
+### ⑩ 交付后复核：英语 compare 对账器**假红 13 处**（**红线 89**）
+
+`scripts/_en_compare_stale_audit.py`（只读对账器）报 **13 处过期**（12 页 `entry_gb` + `fiji` 的 `tech`），
+而 `scripts/_en_compare_fix.py --verify` 报 **0 处** —— 两个工具对同一批 50 页结论**相反**。
+逐条把命中位置打印出上下文句子后确认 **13 处全是假红**，根因是该对账器**内联抄了第二份抽取正则**：
+
+- 抄漏 `RE_ENTRY` 的 `(?! a day)` 负断言 ⇒ 12 页的**盈亏平衡句**（`…only makes sense past about 3.6GB a day`）
+  被当成入口档位，拿去比 `entry_at_rate_mb / 1024`（且用 `re.search` 只取首个匹配，而非 `finditer`）；
+- `tech` 分支只写 `all 5G` / `mix` 两种，**缺 `{4G} → all 4G`** ⇒ `fiji` 正确的 `all 4G` 被判红
+  （而 `_en_compare_lib.py :: tech_phrase()` 的注释里**早已写下这同一个教训**）；
+- 未共用改写器的 `SKIP` 例外集 ⇒ `japan`（编辑性长文）的 `$3.90 per day flat`（日价）被当成 `entry_price`。
+
+**产物一个字没错**，错的是核对工具。已改为**委托** `_en_compare_fix.collect_stale`（单一真源，连 `SKIP` 一起），
+例外页在报告里**显式列出**，并补 `--selftest`。
+验收：`--selftest` **8 / 8**（正例 4 + 反例 2 + 边界 2，两侧都证）；隔离目录端到端注入 —— 正例 **0 判红** /
+反例（仅把入口 GB 改成 `9.9`）**恰好判 `['entry_gb']`**；改造前 → 后 **13 处假红 → 0 处**（`EXIT 1 → 0`），
+与 `--verify` 结论一致；`scripts/_en_compare_stale_audit.py` 改后仍**纯 LF**。
+
+
+## 已完成（德语 D7 页面生成 + lang-href 语言降级修复，2026-10-09 第六十五轮）
+
+**本轮目标**：把「德语站能否正式发布」从「i18n 覆盖率」推进到**产物级自洽**。
+
+### ① D7 页面批量生成（+564 个德语页）
+
+| 批 | 数量 | 做法 | 说明 |
+|:--|--:|:--|:--|
+| 品牌×国家子页 | **499** | `gen_provider_pages.py --lang de` | 改为多语言；**指标计算只有一份实现** `metrics()`，两种语言共用 |
+| A-vs-B 对决页 | **45** | `gen_vs_pages.py --lang de` | 新增德语 title 候选 7 种**按索引轮换**；英文侧永不写盘（45 页全 skip） |
+| 品牌 Hub | **10** | 手写 | 句式刻意不统一（`im Test` / `eSIM-Test 2026` / `Test: …`）|
+| 栏目页 | **3** | 手写 | `esim-providers` / `esim-deals` / `tools` 的 `_index.md` |
+| `compare/matchups.md` | **1** | 手写 | 页头与页脚都链它 |
+| 根页 | **6** | 手写（D8 提前做）| about / contact / disclosure / methodology / privacy / terms |
+
+- 换行符**显式写死**：英文侧历史文件是 CRLF、德语侧全是 LF，`write_text(newline=…)` 必须按语言分支（否则「零内容差异却全文重写」）。
+- **恒等判据**：`gen_provider_pages.py --lang en` 重跑后 499 个英文 md **逐字节不变**（sha256 0/0/0）。
+- 德语 desc 长度区间另设（品牌子页 **142–165 字符**；英语是 120–140）—— 德语词更长，硬套英文上限会全部越界。
+
+### ② ★ 发现并修掉 `href` 的**语言降级**（18 处 / 6 个模板）
+裸 `href="{{ printf "/…" }}"` 不过 `lang-href` ⇒ 德语页写出英文路径。**不 404**，所以死链检查全绿。详见 PROJECT.md 红线 77/78。判据已进 `check_i18n.py` 第 6 项（`raw_lang_href()`，正例 6 / 反例 3）。
+
+### ③ 新审计装置：产物级死链 + 语言降级
+`.buildlog/audit_de_links.py --lang de` —— **死链 0**（555 页 × 90062 条站内链接）；**语言降级按目标聚合**（排除语言切换器 `<a hreflang=…>`）→ 这是 D8 的精确待办清单。
+
+### ④ 验收
+- `npm run build` d30：**EXIT=0**，`1201 页`（en 646 + de 555），守卫 A–H 全绿；`G 全站德语页无数据层英文残留（554 页 × 144 条数据串，含 JSON-LD）`。
+- 499 个德语子页落地后**英文侧产物不变**（德语译文 noindex ⇒ `head.html` 不发 hreflang ⇒ 英文页一条都不变）。
+- 构建前判据前移：`.buildlog/audit_head_keys.py` 扩到扫 `content/de/**/*.md` **正文** h2/h3 —— 首跑抓到 1 处（`disclosure.md` 的德语从句逗号），已换句式。
+
+### ⑤ 副作用
+全量构建 **3 分钟 → 11.5 分钟**（+499 页 + 守卫扫 555 页）。
+
+### 待办（D8/D9）
+- **D8 手写长文**：`guides` 10 篇（`how-to-install-esim` 被 549 页链接）、`networks` 12、`research` 5、`tools`/`esim-deals` 正文
+- **`privacy` / `terms` 的法律审校**（英文侧 `# TODO(launch)` 仍在 —— **代码侧做不了**）
+- **D9**：解除 620 个德语页的 `noindex` + `/de/sitemap.xml` + `robots.txt` + `head.html` 的 `x-default`
+
+## 已完成（德语 D7 前置 · policy 数据链收口 + 判据 G/H，2026-10-09 第六十四轮）
+
+**目标**：D7（499 品牌子页 / 45 vs 页 / 10 品牌 Hub）**全部前置**收口 —— 页型还没建，先把「数据怎么本地化、怎么判」钉死。
+
+### 一、四条判据的分工（本轮核心产出）
+
+| 判据 | 性质 | 清单来源 | 覆盖 |
+|:--|:--|:--|:--|
+| E1–E5 | 页内 | 结构词 / 国名 / 数据串原文 / 散文 | 仅 `/de/compare/<国家>/` |
+| **F** | **黑名单** | 23 条短语 + 8 个词（人写，大小写敏感） | 全站德语页 |
+| **G** | **穷举** | `strings.toml` 里已有德语译文的英文原串 | 全站德语页 **+ JSON-LD** |
+| **H** | **契约** | `provider.policy` 文本字段 vs `data/de/providers.toml` | 数据层（德语覆盖完整性） |
+
+**G 首跑 24 处、F 全绿** —— F 的盲区实测：德语 `<title>` 的 `… Unlimited Data Plans`（清单写的是小写 `plans`）、policy 字段的 `3 GB/day on unlimited plans`（黑名单里恰好没有那些词）。修完 G → **0**（60 页 × 144 条数据串）。
+**G 防误伤**：首跑在 `/de/networks/` 报 7 条假红 —— 全是德语**小数点逗号**（`65,1 Mbps` 含子串 `1 Mbps`）→ 加左边界 `(?<![\d.,])`；自测用**注入清单**验证该边界（不依赖真实数据演变）。
+
+### 二、数据层四来源（`data/de/strings.toml`，144 条 / 36613 B / LF）
+
+| 来源 | 条数 | 渲染点 |
+|:--|--:|:--|
+| `plans/*.toml` 的 `fup_note` | 14 | `compare/provider.html` / `compare/single.html` 的 `#fup` 表 |
+| `providers.toml` 的 `promo_label` | 10 | `#providers` 促销句 |
+| `providers.toml` 的 `info.support` / `info.refund` | 19 | 品牌 Hub `#support` + FAQ 答案（**本轮新增**）|
+| `countries.toml` 的 `quirks` | 101 | `#quirks` 国家须知 |
+
+生成器 `_gen_de_strings.py` 断言：无缺 / 无死条目 / 数字守恒 / **各来源键不得相交**（输出用 `or` 串联，相交会静默取错值）。
+
+### 三、★ policy 字段：**不走 `strings.toml`**（判据 H）
+
+`provider.policy` 的六个文本字段（`fup_note` / `hotspot_note` / `topup_note` / `fup_allowance` / `fup_drop` / `hotspot_allowance`）由 **`data/de/providers.toml` 深度覆盖**提供德语（实测 **10 品牌 × 6 字段 = 60/60 全覆盖**），模板读深合并后的 `$d.providers` ⇒ 德语站本就是德语。
+
+- 本轮先误在 `strings.toml` 补了 **51 条** policy 译文，才发现覆盖层早已全覆盖 —— 两份口径**已经漂移**（`Sie`/`du`、`Mbps`/`Mbit/s`、`unbegrenzte Tarife`/`Unlimited-Tarife`）→ **删掉第二份**，改由 **判据 H** 断言覆盖完整。
+- **H 首跑抓到 6 处**真问题：`fup_drop` 的德语值与英文**一字不差**（`1 Mbps` / `512 Kbps`，英语缩写）→ 修 `_gen_de_data.py`（新增幂等 `units()`，`Mbps→Mbit/s` / `Kbps→Kbit/s`），**不放宽判据**。
+- 反之 `info.support/refund` 覆盖层**故意不写**（继承英语侧）⇒ 必须走 `de-text` + `strings.toml`。**同类字段的两半走两条链，依据是「覆盖层写不写它」。**
+
+### 四、模板接线（20 处，全部走 `partial "de-text.html"`）
+
+`compare/provider.html` 6→16 · `esim-providers/single.html` 5→12 · `faq-live-tokens.html` 0→2（`unl_allowance` / `unl_drop`，**国家页 FAQ 的 `{unl_drop}` 就靠它**）· `research/unlimited-esim.html` 0→1。
+脚本 `_wire_policy_text.py`：字段名守恒断言（改前被裸插值的字段 == 改后 de-text 的入参）+ 裸插值归零 + dict 裸值归零；`--selftest` 7 项。
+
+### 五、i18n 覆盖
+
+**1693 key / 已译 1344 = 79.4%**（+0.3 点）。剩余 349 条 = D8 页型（`esim_deals_list` 112 / `tools_list` 48 / `research_*` 109 / `guides_single` 27 / `guides_region` 16）+ `compare_single` 17 + `g_*` 真同形 10 + `esim_providers_single` 白名单 5。
+
+### 六、守卫自测
+
+`verify_de_text.py --selftest` **38 项**（本轮 +8：D 段 info 两向 / H 缺键·未译·正例·枚举隔离 / G 素材·绕过 F·可见文本·JSON-LD·正例·小数点边界）。
+
+### 待办（本轮发现，未做）
+
+- `data/de/providers.toml` 的 **`Sie`-Form 未统一为 `du`**（全站其它德语是 du）；单位已统一，人称未统一 —— 需逐句改，风险高，单独一轮。
+- 5 个**探针页**（`content/de/compare/germany/{airalo,holafly}.md`、`content/de/compare/airalo-vs-nomad.md`、`content/de/esim-providers/{airalo.md,_index.md}`）**验收完即删**。
+- `scripts/verify_plan_names.py` 的 2 处过时引用（`plan-name.html` 注释）。
+
+
+
+**触发**：本要收 D6 数据层尾账，先对**全部 55 个德语页**（不只 50 个国家页）做英文残留普查，
+发现 `verify_de_text.py` 的 E1–E5 **盲区是「页型」不是「写法」** —— 只走 `/de/compare/<国家>/`，
+德语站另外 5 类页（`/de/`、`/de/compare/` 索引、`/de/guides/`、`/de/networks/`、`/de/research/`）一条判据都没管。实测 3 页在漏。
+
+**修掉 4 类真缺口（全部在模板层）**
+
+| # | 位置 | 症状 | 修法 |
+|:--|:--|:--|:--|
+| 1 | `partials/aside-destinations.html:45` | 写死 `All {{ len $d.countries }} destinations →` → `/de/networks/` 印 `All 50 destinations →` | **复用**既有 key `partials_header__all_destinations`（同一句话只允许一份定义） |
+| 2 | `compare/list.html:115` figcaption | 整句英文 `N real plans across M destinations — one table per country…` → `/de/compare/` 索引 | 新增 `compare_list__figcaption_plans_destinations` |
+| 3 | `compare/list.html` 入门价榜 + FAQ | `$cheap*` 直接印 `plan.name` → 索引页 **11 处 `500MB / 1 Day`**，FAQ 又印一次 | 在**聚合处**过一次 `partials/plan-name.html` → 榜单与 FAQ 两处同时干净 |
+| 4 | `research/list.html` | **9 句英文**（`prices checked` / `cheapest unlimited, $x/day` / `vs priciest` / `/GB avg` / `N countries · best x at $y/GB` / `Right now …` / `N unlimited plans audited…` / `Best daily rate right now…` / `Daily-rate rankings…`）→ 当时全站最差的德语页 | 10 个 `research_list__*` key（`printf "%d …"` 那条改成 `printf (i18n …)`） |
+
+顺手把 `esim-providers/list.html` 的 3 处英文（`N countries · from $x` / `of N countries · best $/GB in` /
+`Read the full <brand> review`）也抽了 key —— `/de/esim-providers/` 还没建，属**先修模板再建页**，
+不修的话 D7 一生成就是英文页。⚠ `g_country` / `g_countries` **不可复用**（它们是 `Country` / `Countries`
+表头，做表头用），这里要小写 `country` / `countries`（英文 byte 恒等要求）→ 另立两条小写 key；
+⚠ `vs` 不新建 —— `g_vs` 早已存在（en `vs` / de `vs.`），新建就是重复定义。
+
+**新增判据 F（`scripts/verify_de_text.py`）：全站德语页硬编码英文**
+
+- 扫描面 = `public/de/**/index.html`（**新增页型自动纳入**）；清单 **23 条短语 + 8 个词**，每条在注释里
+  写明「它是谁漏出来的」，源头修好后**保留当回归网**。
+- 词表刻意与 E5 不同：**不收 `Plan`**（`Plan` 是德语词「ein Plan」，收了会造假红）。
+- 改造前对**旧产物**独立取证（自测之外的第二种证据）：`EXIT=1`，命中 **23 处 / 3 页**
+  （`de/research/` 17、`de/compare/` 索引 5、`de/networks/` 1），`May 2026` / `unlimited` / `Plan` **零误报**。
+- 改造后：`F 全站德语页无硬编码英文（55 页 × 短语 23 条 + 词 8 条）`；`--selftest` **23 → 30 项**。
+  ⚠ 自测断言只能比对「被判定的词」那一段：失败消息带 ±60 字上下文，会把相邻段落的 `May 2026`
+  卷进「不误伤」类断言造成假红（本轮踩过一次，已改成 `split("：")[0]` 再断言）。
+
+**同时修掉的日期机制缺陷（本轮开头，独立事件）**
+
+`scripts/stamp_checked.py` 的日期单元段边界按「行物理位置」切 → 10 家的 `[<brand>.policy]` 表全堆在
+文件末尾、排在最后一个顶层段 `[jetpac]` 之后 → 这 10 张表全被算进 jetpac 的段：实测给
+`[holafly.policy]` 加一行 `fup_kind = "none"`，翻的是 **jetpac** 的档案核对日（`10-07 → 10-09`），
+holafly 自己反而不翻。已改为 `parse_prov_blocks`（按品牌名归组、**段体允许多个不连续区间**）
++ `--resync` 迁移模式（重算全部指纹、**保留每个单元的现值日期**、不动任何 toml）；
+`--selftest` 里写死的「450 价格单元 / 9 档案单元」随品牌接入腐烂已久 → 改**现算**（41 项全过）。
+已复原 jetpac 的 `2026-10-07`。
+
+**量化（全部现算）**
+
+| 德语页型 | 本轮前 | 本轮后 |
+|:--|--:|--:|
+| `/de/compare/` 索引 | 94.9% | **100.0%**（德 276 / 英 0） |
+| `/de/research/` | 73.7% | **98.3%**（英 31 → 2） |
+| `/de/networks/` | 99.1% | **99.2%**（英 9 → 8） |
+| `/de/` · `/de/guides/` · `/de/compare/*` 50 国 | 100% · 100% · 98.5% | 不变（本轮未动） |
+
+全站剩余英文只剩三类，**都不是缺口**：`unlimited` 借词（995 处，统一策略仍未定）·
+Opensignal 引文里的 `May 2026`（6 处，报告官方标识）· `Plan`（1 处，德语词本身）。
+模板层拼装句碎片 **136 → 100**；`i18n` key **1649 → 1671**。
+
+**恒等判据**：`--diff` = **变更 3 且全是德语页**（`de/compare/index.html` / `de/networks/index.html` /
+`de/research/index.html`），**英文侧 0 变更**；刷新基线（702 个文件）后复验 `变更 0 / 新增 0 / 删除 0`、
+**702 页逐字节相同**。
+
+**本轮三条坑（都关于「产物字节」，全部实测；详见 `docs/de-l10n-plan.md` §10.17）**
+
+1. **新增一个「独立的注释动作块」会改变产物字节** —— 注释本身不输出，但它前后的**换行与缩进是字面文本**。
+   首轮构建 `--diff` 报 **22 处（含 18 个英文页！）**，全是纯空白差异 → 说明一律**并进既有注释块**。
+2. **模板头部（第一个输出型标签之前）多插一行 = 多一个换行** —— `compare/list.html` 聚合层在页头
+   `<div>` 之前，加一行 `{{ $iso := . }}` 就让**英文**索引页变了一个字节 → 能用作用域里的 `.` 就别新开变量。
+3. **注释块里不许出现「成对花括号」** —— `i18n_extract.scan()` 只把 `<!-- -->` 当注释，`{{/* */}}` 不是；
+   注释里写 `{{ partial … }}` 会被当**动作边界**，紧随其后的说明文字被判成「模板层硬编码文案」，
+   `check_i18n.py` 直接报 **ERROR**、构建 exit 1（与「模板注释里的 i18n 调用会被渲染」同源，这次是**守卫**侧的表现）。
+
+**★ 本轮最重要的结论：D7/D8 的真正前置不是页面，而是 `i18n/de.toml`**
+
+`scripts/i18n_coverage.py de` 现算：**1671 key，已译 1054 = 63.1%，仍有 617 条英文占位**。
+未译量按前缀分布（即「哪些页型还不存在」）：`esim_providers_single` 124 · `compare_provider` **112** ·
+`esim_deals_list` 112 · `tools_list` 48 · `research_*` 109 · `guides_single`/`guides_region` 27/16 ·
+`compare_single` 17 · `compare_vs_single`/`compare_matchups` 17/15 · `g_*` 10 ·
+`esim_providers_list` 7 · `networks_list` 2。
+
+→ **先翻 D7 那几组（≈268 条），再跑 `content/de/` 生成脚本**；反过来的话，生成出来的
+499 + 45 + 10 张德语页会是「德语 URL + 英文正文」。
+→ 且 `layouts/compare/provider.html` 的**可见套餐名**（第 379 / 558 行）与 **JSON-LD `Offer.name`**（第 243 行）
+仍是裸 `plan.name`，`.fup` / `.fup_note` / `$country.quirks` 也还没接 `de-text.html` ——
+**这些必须在 D7 生成页面前补上**，否则 499 页立刻是英文。
+
+**下一批（按依赖顺序）**
+
+1. 翻 `compare_provider` / `compare_vs_single` / `compare_matchups` / `esim_providers_single` /
+   `esim_providers_list`（≈268 条），验收 = `i18n_coverage.py de` 对应前缀未译归零 + `check_i18n.py` 全绿。
+2. 补 `layouts/compare/provider.html` 四处本地化接线（套餐名 / `Offer.name` / `.fup` / `.quirks`）。
+3. D7 生成 → D8 手写长文（`privacy` / `terms` 优先）→ D9 解 noindex + sitemap + robots + `x-default`。
+
+## 已完成（德语 D6 数据层 · 三类英文句子全量本地化，2026-10-09 第六十二轮）
+
+**背景**：第六十一轮把套餐名本地化后，`/de/compare/<country>/` 仍残留 **1,193 处**英文。排查发现成因是**两个互不相干**的问题。
+
+**① 根因：`data/de/strings.toml` 多套了一层 `[strings]` 表头（静默失效）**
+- `de-text.html` 读 `$d.strings`，而 `index hugo.Data "de"` 的 `strings` 键的值**就是该文件的内容本身** → 文件里再写 `[strings]` ⇒ `$d.strings` = `{strings:{…}}` ⇒ `index . $s` 永远落空 ⇒ **静默返回英文**（套餐名走 `$d.countries`，顶层本就是 ISO 键，所以那一批是好的）。
+- 诊断：把 `i18n-data.html` + `de-text.html` + 数据原样拷进**多语言最小站**，探针打印 `hugo.Data` / `index hugo.Data "de"` / `$d.strings` 的键 → 150s 构建换成 50ms 迭代。
+- 修法：`data/de/strings.toml` **顶层直接放句子键**；`_gen_de_strings.py` 的文件头警告 + `verify_de_text.py` 的读法同步。
+
+**② 模板硬编码：相关国家卡片的锚文本（`layouts/compare/single.html:1012-1013`）**
+- 三个轮换变体 `{Land} eSIM` / `eSIM for {Land}` / `{Land} eSIM prices` 是 `printf` 拼出来的英文片段（国名已德语、片段没有）。
+- 修法：新增 3 个 i18n key（`compare_single__anchor_*`；de 用 `eSIM für {{ .country }}` / `eSIM-Preise`，基准取自既有 `compare_list__regions_head`），模板改整句 i18n，并用 `printf "%s"` 包一层**保持与原 `printf` 完全一致的 HTML 转义路径**。
+
+**③ 数据层第三类：`quirks` 国家须知（101 条 / 50 国）**
+- 接进同一张 `data/de/strings.toml`（一张「英文原串 → 德文」表覆盖三类），`single.html:698` 改 `{{ partial "de-text.html" . }}`。
+- 生成器**不手抄英文键**：按 ISO 分组 + 组内同序 + 条数断言 + `set(德语数字) ⊆ set(英文数字)` → 一次跑出零错配。
+
+**量化（现算；代理指标 = 德语独有词 /（德 + 英独有词））**
+
+| 德语页型 | 占比 |
+|:--|--:|
+| `/de/`、`/de/guides/` | **100.0%** |
+| `/de/compare/*` 50 国 | **97.1%**（125 条英文数据串残留 = **0**） |
+| `/de/compare/` 索引 | 94.9% |
+| `/de/research/` | 73.7% |
+| `/de/networks/` | 60.9% |
+
+**恒等**：`--diff` 变更 **50，全部是 `de/compare/*`**；新增 0 / 删除 0 → **英文侧逐字节未变**；基线刷新后复验 0/0/0，702 页逐字节相同。
+
+**守卫**：`verify_de_text.py` D 段覆盖 125 条（fup 14 + promo 10 + quirks 101），`--selftest` **20 项**（新增 `D 德语映射命中（quirks）` 与 `反例：quirks 缺德语条目被抓住`）。
+
+**D6 仍剩**：`data/networkreports.toml` 的 Ookla/Opensignal **归属引用**（`/de/networks/` 60.9%、`/de/research/` 73.7%）与 `data/carriers.toml` 的 `info.detail`（146 条）—— 约 300+ 条句子，属纯翻译工程，建议与德语审校一起排。详见 `docs/de-l10n-plan.md` §12.13。
+
+## 已完成（德语 D6 数据层 · 套餐名本地化，2026-10-09 第六十一轮）
+
+**背景**：上一批（第六十轮）把德语 i18n 面收口到「可执行项 = 0」，量出 `/de/compare/<country>/`
+剩余英文的第二大块是套餐表里的 `data/plans/*.toml` 的 `name`（供应商原始产品名）。
+
+**做了什么**：新增 `layouts/partials/plan-name.html`，**11 个渲染位点**（主表 ×2、FUP 表、TL;DR 三卡、
+`#choose` 三条、`#bytrip` 两处、`#networks` 拟合句、JSON-LD ItemList）全部改走它。三层替换：
+
+| 层 | 事实来源 |
+|:--|:--|
+| 目的地国名 | `data/countries.toml[iso].name` → `data/de/countries.toml[iso].name` |
+| 非规范国名别名 | 新数据文件 `data/planaliases.toml`（CZ `Czech Republic` / TR `Turkey` / IE `Republic of Ireland`） |
+| 结构词 | `i18n` 新增 `plan_name__*` **8 个 key**（`Unlimited Data` / `Unlimited` / `UNLIMITED` / `unlimited` / `Days` / `days` / `Day` / `Local`） |
+
+**恒等**：`--diff` 变更 **50 = 全部 `de/compare/*`**，新增 0 / 删除 0 —— **英文侧零变更**。
+
+**成效（绝对量）**：德语国家页套餐名单元格 **13,697** 个，本地化前 **11,820（86.3%）** 含英文结构词 → **0**；
+全页德语功能词占比 **61.6% → 83.0%**（50 页汇总）。
+
+**新守卫**：`scripts/verify_de_text.py`（A/B/C 源级 + E1–E6 产物级），`--selftest` 41 项；
+（⚠ 订正：本条曾写作 `scripts/verify_plan_names.py` —— **该文件从来不存在**，引用前先 `ls`。）
+对改造前的旧产物跑报 **17,780 处问题**（英语侧 0 误报），对修完的跑 **14,197 + 14,197** 个单元格零告警。
+
+**零回归基线**：已刷为 **702 文件**，复验「0 变更、逐字节相同」。
+
+⚠ **德语仍不能正式发布**：`/de/` 只有首页可索引，其余 54 页仍 `noindex, follow`；
+`content/de/` 只有 55 个 index（**499 品牌子页 + 45 对决页 + 12 networks + 12 guides + 5 research 无德语内容**）。
+**一旦解禁 noindex 就会暴露这些缺失** → 提交前必须先跑完 D9（解除 noindex + 德语 sitemap 入站）与 D7/D8（内容本地化），
+或维持「只有 `/de/` 首页可索引」的分层发布状态。
 
 ## 已完成（关键词采集换 Google 官方通道，2026-10-08 第五十四轮）
 
@@ -2017,6 +2694,136 @@ UI 引导（`Try the eSIM trip cost calculator`）、`#bytrip` 的 5 个场景**
 2. **断言不许撞上自己新写的注释** —— `assert b"starts cheaper in" not in nb` 会被我自己写的替换注释命中；
    `assert b.count(b"fup_note") == 1` 会被注释里的 `policy.fup_note` 命中。
    **断言要只数代码引用**（`{{ .fup_note }}`），并让脚本**幂等**（i18n key 已存在则 `continue`）。
+
+## 已完成（德语正文批 C/D/E + awards 缺陷 + 术语归一 + D9 解禁 —— 德语正式发布那一轮，2026-10-10 第六十九～七十二轮）
+
+**用户逐字请求**：
+> `批 C：5 篇 guides 德语正文 ← 现在就可以开始` / `批 D：12 篇 networks 德语正文` /
+> `批 E：51 页 compare 正文（50 国家 + 1 hub）` /
+> `D9：68 页补完后，单独一轮解禁 noindex + 补 /de/sitemap.xml + x-default + 重刷基线。`
+> `全部优化执行，不要每次问我，你自己全部执行完毕，执行后，记得给我审核，在优化`
+
+**前提约束（用户明示）**：`这些德语的页面因为必须达到能正式发布到线上才行，一旦提交就是正式发布。`
+⇒ 全程**未 `git commit`**，改动全部留在工作区。
+
+### 四步与体量
+
+| 步 | 内容 | 产物体量 | 轮次 |
+|---|---|---|---|
+| 批 C | 5 篇 guides 德语正文 | — | 第六十九轮 |
+| 批 D | 12 篇 networks 德语正文 | 179,716 bytes | 第七十轮 |
+| 批 E | 51 页 compare 正文（50 国家 + hub） | 88,018 bytes | 第七十一轮 |
+| awards + 术语 + D9 | 两处真缺陷修复 + 全站解禁 | 见下 | 第七十二轮 |
+
+### ★ d44 `EXIT=1` —— `awards` 数组从未本地化（F 只报 12 条，真实泄漏 77 个字段）
+
+- **现象**：批 D + 批 E 首次合体构建 `EXIT=1`，F 判据 12 条，**全部在 `/de/networks/*`**，而正文里根本没这些串。
+- **根因**：`data/networkreports.toml` 的 `[[XX.awards]]`（记分板表格，`layouts/networks/single.html:244`）
+  在 `data/de/networkreports.toml` 里**零覆盖**（英语 35 组 / 德语 0 组）。Hugo data 深合并是
+  「map 递归、**数组整体替换**」⇒ 整表静默回退英文，**构建 exit 0、check_output 全绿**。
+- **为什么此前一直绿**：`awards` 只在 networks 页渲染，而这 11 国的德语 networks 页是**批 D 才建出来的**
+  （`check_output` 1279 → 1291 页）。**页集一变，绿灯作废。**
+- **F 是黑名单，永远是下限**：只抓到含 `and`/`every` 的 12 条；真实是 **35 组 × 3 字段中 77 个非空字段全英文** ⇒ **低估 6.4 倍**。
+- **修法三段**：① `scripts/_patch_awards_de.py` 写 11 国 35 组德语
+  （`carrier` 逐字继承 —— 模板按它建映射；数字用德语逗号小数；单位 `Mbit/s`；括注**取自本文件既有 facts 德译**，不发明）；
+  ② `verify_de_data.py::check_reports()` 补 `awards` 判据（整国缺失 / 组数不符 / carrier 被改 / 字段未译 / 数字不符 / 死条目），自测 **31 → 34**；
+  ③ 新增产物级 `check_award_products()` —— **双向**断言（英语串不在 **且** 德语串在）；
+  只证「英文不在」会被 `{{ if $awards }}` 的 else 分支骗过去（假绿）。
+- **取证**：新守卫跑**改造前**产物 = **154 处 = 77 字段 × 2**（英文在 + 德语缺），核对 11 国；d45 `EXIT=0` 十项全绿。
+
+### ★ 术语归一 —— `Tempo` 方言并回 `Geschwindigkeit`
+
+- `/de/networks/{land}/` 的正文（`single.html:213`）与记分板（`:244`）**同页渲染**：正文 `Download-Tempo` vs 数据层 `Download-Geschwindigkeit`。
+- 实测：`Geschwindigkeit` 家族 **215**（i18n 28 / data/de 119 / 其余）vs `Tempo` **76**（**全部**在 `content/de/networks/*.md`）⇒ `Tempo` 是批 D **局部方言**，向西对齐。
+- `scripts/_patch_networks_tempo.py`：**75 处正文 + 80 处生成源字面量**一起归并；
+  ⚠ `Tempo` 中性 / `Geschwindigkeit` 阴性 ⇒ 14 条**变格表**逐条手写；
+  ⚠ 变格自查须带**右边界**（`ein Geschwindigkeitstest` 是合法复合词，裸子串匹配会假红）。
+- **未改（有据）**：`Durchsatz`（22 处）保留 —— 英语原文是 `Throughput`（与 `Speed` 不同的词）。
+- **复核**：6 个批 D 生成脚本 `--dry` 全部 `断言全过` / `已应用 0 / 已存在跳过 12` ⇒ 字面量与落盘内容逐字一致。
+
+### ★ D9 —— 德语分层发布解禁（正式发布闸门）
+
+| 动作 | 前 → 后 |
+|---|---|
+| `noindex: true` | `content/de/**` **643 → 0**（A 成对 79 页 + B 单行 564 页） |
+| `/de/sitemap.xml` | **1 条 → 644 条**（`partials/sitemap-urls.html` 以 `.Params.noindex` 过滤，删净即自动补全） |
+| `layouts/robots.txt` | 新增 `Sitemap: …/de/sitemap.xml` |
+| `layouts/partials/head.html` | 新增 **x-default**（指向 en 版；en 页指自身；**无译文组不发**） |
+| 全站 hreflang | **647 tags / 645 页 → 3864 tags / 1288 页**（= 1288 × 3：self + 译文 + x-default） |
+| 回归基线 | 重刷（1291 文件）；`--diff` 复核 **逐字节相同** |
+
+**归属闭合**：`d47 → d48` 变更 **1290 = 644 德语 HTML + 644 英语 HTML + de/sitemap.xml + robots.txt**
+—— 变更集合**恰好等于「全部 hreflang 页 + 两个声明文件」**，无任何意外变更。
+
+**已知副作用（如实登记）**：`check_i18n` 的「拼装句碎片」**48 → 49**，新增 1 处是 robots.txt 的 `Sitemap:` 行
+（机器指令非文案；已用 `i18n_extract.collect()` 定位该文件 frags 2 → 3）。脚本仍 `EXIT=0`。
+
+### 验收（全部产物文本断言，按约定不做截图）
+
+- **d47 / d48 两次 `npm run build` 均 `EXIT=0`，十项闸门全绿。**
+- 德语判据：`F 无硬编码英文（644 页）` · `J 无裸印英文区域名（644 页）` ·
+  `G 无数据层英文残留（644 页 × 185 条数据串）` · `I 单位统一（i18n 1730 值 + data/de 1556 字符串）` ·
+  `H policy 覆盖完整` · 产物级 `城市名 38 处 / 记分板 77 字段` 双向核对。
+- `check_output`：1291 pages / 7412 JSON-LD / 499 品牌子页 499 全过 / R10·R11 骨架不重复。
+- `check_hreflang`：1291 页扫描，3864 tags / 1288 页，**no tag on noindex/404，all targets exist, all groups reciprocal**。
+- 德语完成度终检：`content/{en,de}` md **644 = 644 缺口 0**；i18n **en = de = 1730 key，已译 1706**，
+  完全相同 24 条**全部**是公式/专有名词/德英同形词 ⇒ **无实质漏译**。
+
+### ⚠️ 唯一未闭合的能力缺口
+
+**德语译文尚未经有资质的人工审校。** 机器判据能证明「无英文残留 / 单位统一 / 术语自洽 / 结构对齐」，
+**不能替代母语审校** —— 这是上线前唯一需要外部资源的事项。
+
+---
+
+## 已完成（研究栏目德语本地化收口：#125 + 3 子页 + 索引正文，2026-10-10 第六十八轮）
+
+**用户逐字请求**：#125（research 模板里的英文硬编码 → 带占位符的整句，保英文侧逐字节恒等）
++ 3 篇 research 子页 + research 索引正文，「做完这一个栏目就整体收口」。
+
+### 三批改动
+
+| 批 | 内容 | 脚本 |
+|:--|:--|:--|
+| B-1 | `layouts/research/*` 三个模板 **28 处**英文硬编码 → 「带占位符的整句 + `safeHTML`」；**+25 / −2** i18n key | `scripts/_patch_research_i18n.py` |
+| B-2 | 107 条德语译文（PI 30 / FU 40 / UE 37） | `scripts/_patch_research_de_keys.py` |
+| B-3 | 3 张德语子页 + 索引 `hero`/`faq_heading`/6 条 `faqs`/3 段正文 | `scripts/_patch_research_de_pages.py` |
+
+### 构建轨迹（三次构建，每次差异都做逐字节归属）
+
+- **d39**：B-1 完成，`EXIT=0` 十项全绿 → **英文侧逐字节恒等成立**（d38→d39 只差 `catalog.json` 的构建日戳）
+- **d40**：B-2 + B-3 后构建 **`EXIT=1`** —— `verify_de_text.py` 报 12 处，全部落在本轮新建的 3 张德语 research 页
+- **d41**：修完复建 **`EXIT=0` 十项全绿**；差异 **变更 3 / 新增 0 / 消失 0**，精确命中那 3 张德语页（英文侧零变更）
+
+### d40 抓到的 12 处 = 三类缺陷（详见 §14 红线 79 / 80）
+
+1. **plan.name 未过 `plan-name.html`**（F：`Days` / `Local` / `Day`）—— 3 处 dict 构造点
+2. **`fup_note` 未过 `de-text.html`**（G：8 条英文 fup 原文）—— 1 处渲染点
+3. **`delimit … " and "` + `cond … "None"` 硬编码英文**（F：`and`）—— 1 行两处
+
+修法：`scripts/_patch_research_de_leak.py`（6 处模板编辑 + 新增 `g_none` / `g_none_lower`）。
+模板**行数不变**（256 / 227 / 157），全文在行内完成 —— 守「模板改动只许改字符序列、不许改行的条数」。
+
+### 验收（全部产物文本断言，按约定不做截图）
+
+| 项 | 结果 |
+|:--|:--|
+| `npm run build`（d41） | **EXIT=0**，十项闸门 + 数据层守卫全绿 |
+| 页面数 | `EN 658 / DE 639`（+3）、`1276 files (1274 pages)`、`7322 JSON-LD blocks` |
+| 标题 | `bad: 0`（32520 个 h2/h3） |
+| `sitemap` / `hreflang` | `644` / `647 tag(s) on 645 page(s)` —— 与 d40 **逐字不变**（新页 `noindex`） |
+| F / G 判据 | `627 页 × 短语 23 条 + 词 8 条` / `627 页 × 144 条数据串（含 JSON-LD）` —— **均由红转绿** |
+| 独立探针 `.buildlog/probe_de_research.py` | **OK**：4 张德语 research 页零残留英文；正向断言 `Tage` 99 / `Tag` 140 / `Lokal` 8 / `Unbegrenzt` 18 / `und` 58 |
+| 英文侧恒等 | d40→d41 **变更 3 / 新增 0 / 消失 0**，仅那 3 张德语页 |
+
+### 本轮新增/修正的仪器与纪律
+
+- `check_i18n.py` **第 6 条**：`dict "q" "…"` / `dict "a" "…"` 字面量文案（`docs/` 盲区）→ 25288 bytes，`--selftest` 正例 6 / 反例 3 双向自证
+- `.buildlog/pub_manifest.py`：`public/` 文本产物指纹（口径 = `.html/.json/.xml/.txt`，与 d36/d38 基线一致）+ `--diff` 三分类
+- 修掉 `_patch_research_de_pages.py` 里 `{{{{< count-countries >}}}}` 四花括号（无 `.format()` 却按 format 转义写 → 会原样落盘）
+- 修掉 `_patch_research_de_keys.py` 的幂等断言：`pending == mine` 只在首次成立；并显式排除 `research_price_index__region`（德语正确译文就是 `Region`，`de == en` 恒成立 → 判据假阳性）
+
+**下一个栏目**：批 C（5 篇教程）→ 批 D（12 篇 networks）→ 批 E（50 个国家页正文）→ D9 解禁 + 刷基线。
 
 ## 待办（按优先级）
 

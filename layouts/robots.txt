@@ -43,3 +43,4 @@ User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: {{ .Site.BaseURL }}sitemap.xml
+Sitemap: {{ .Site.BaseURL }}de/sitemap.xml

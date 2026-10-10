@@ -1,0 +1,103 @@
+# 德语国家页 <title> —— 由 scripts/_solve_titles_de.py 生成，不要手改。
+# 价格锚点从 data/titlesegments.toml（英语侧）转录：同一数字只有一份来源。
+
+[AE]
+title = "VAE-eSIM 2026: 5G-Reisedaten-Tarife"
+[AR]
+title = "Argentinien-eSIM 2026: 5G-Internet ab $1.30/GB"
+[AT]
+title = "Österreich-eSIM 2026: Ohne Roaming ab $0.36/GB"
+[AU]
+title = "Australien-eSIM 2026: Für Touristen ab $0.64/GB"
+[BE]
+title = "Belgien-eSIM 2026: 5G-Daten günstig ab $0.40/GB"
+[BR]
+title = "Brasilien-eSIM 2026: Daten unbegrenzt ab $5.67"
+[CA]
+title = "Kanada-eSIM 2026: Prepaid 5G-Daten ab $0.64/GB"
+[CH]
+title = "Schweiz-eSIM 2026: 5G-Daten preiswert ab $0.55/GB"
+[CN]
+title = "China-eSIM 2026: 5G für Touristen ab $0.48/GB"
+[CO]
+title = "Kolumbien-eSIM 2026: 5G-Datentarif ab $0.98/GB"
+[CR]
+title = "Costa Rica-eSIM 2026: Prepaid-Daten ab $1.06/GB"
+[CZ]
+title = "Tschechien-eSIM 2026: 5G ohne Roaming ab $0.55/GB"
+[DE]
+title = "Deutschland-eSIM 2026: Günstige 5G-Daten ab $0.50/GB"
+[EG]
+title = "Ägypten-eSIM 2026: Preiswerte 5G-Daten ab $0.88/GB"
+[ES]
+title = "Spanien-eSIM 2026: 5G-Datenvolumen ab $0.45/GB"
+[FJ]
+title = "Fidschi-eSIM 2026: Tarife vergleichen ab $3.00"
+[FR]
+title = "Frankreich-eSIM 2026: Prepaid-5G-Tarif ab $0.30/GB"
+[GB]
+title = "Großbritannien-eSIM 2026: Billigste 5G-Daten ab $0.44/GB"
+[GE]
+title = "Georgien-eSIM 2026: Unbegrenzte Daten ab $3.97"
+[GR]
+title = "Griechenland-eSIM 2026: 5G zum kleinen Preis ab $0.36/GB"
+[HK]
+title = "Hongkong-eSIM 2026: 5G-Tarife vergleichen ab $0.57"
+[HR]
+title = "Kroatien-eSIM 2026: eSIM-Tarife vergleichen ab $0.51"
+[ID]
+title = "Indonesien-eSIM 2026: Unbegrenzt-Datentarif ab $3.00"
+[IE]
+title = "Irland-eSIM 2026: 5G-Daten ohne Roaming ab $0.36/GB"
+[IL]
+title = "Israel-eSIM 2026: Tarife vergleichen ab $0.57"
+[IN]
+title = "Indien-eSIM 2026: 5G-Daten für Touristen ab $0.57/GB"
+[IS]
+title = "Island-eSIM 2026: Datenvolumen 5G ab $0.36/GB"
+[IT]
+title = "Italien-eSIM 2026: Günstiger 5G-Tarif ab $0.32/GB"
+[JP]
+title = "Japan-eSIM 2026: 5G-Tarif ohne Roaming ab $0.55/GB"
+[KE]
+title = "Kenia-eSIM 2026: 5G-Tarife vergleichen ab $5.00"
+[KR]
+title = "Südkorea-eSIM 2026: 5G-Reisedaten"
+[MA]
+title = "Marokko-eSIM 2026: Unbegrenztes Datenvolumen ab $4.00"
+[MO]
+title = "Macau-eSIM 2026: 5G-Tarif für Touristen ab $0.54/GB"
+[MX]
+title = "Mexiko-eSIM 2026: Günstigste 5G-Daten ab $0.90/GB"
+[MY]
+title = "Malaysia-eSIM 2026: Günstigste 5G-Tarife ab $0.42/GB"
+[NL]
+title = "Niederlande-eSIM 2026: Unbegrenzt 5G ab $3.00"
+[NZ]
+title = "Neuseeland-eSIM 2026: eSIM-Tarife vergleichen ab $0.51"
+[PE]
+title = "Peru-eSIM 2026: Günstige 5G-Reisedaten"
+[PH]
+title = "Philippinen-eSIM 2026: Für Touristen"
+[PL]
+title = "Polen-eSIM 2026: Unbegrenzt-Datentarif ab $3.00"
+[PT]
+title = "Portugal-eSIM 2026: Prepaid-Daten ab $0.36/GB"
+[QA]
+title = "Katar-eSIM 2026: Unbegrenztes Datenvolumen ab $4.50"
+[SA]
+title = "Saudi-Arabien-eSIM 2026: 5G-Reisedaten für Touristen"
+[SG]
+title = "Singapur-eSIM 2026: 5G-Daten preiswert ab $0.40/GB"
+[TH]
+title = "Thailand-eSIM 2026: Für Touristen ab $0.24/GB"
+[TR]
+title = "Türkei-eSIM 2026: Günstiges 5G-Datenvolumen ab $0.46/GB"
+[TW]
+title = "Taiwan-eSIM 2026: 5G ohne Roaming ab $0.56/GB"
+[US]
+title = "USA-eSIM 2026: Preiswerte 5G-Daten ab $0.60/GB"
+[VN]
+title = "Vietnam-eSIM 2026: 5G-Datenvolumen ab $0.60/GB"
+[ZA]
+title = "Südafrika-eSIM 2026: Günstige 5G-Daten für Touristen"

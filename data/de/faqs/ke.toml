@@ -1,0 +1,42 @@
+# KE FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Kenia?"
+a = "{cheap_plan} von {cheap_brand} ist der günstigste Tarif für {country_acc} – ${cheap_price}. Das sind ${cheap_perday} pro Tag, was eher zu einem kurzen Aufenthalt passt als zu einem langen. Prüfe neben dem Preis auch die Gültigkeitsdauer, denn ein billiger Tarif, der früh abläuft, ist nicht billig."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Kenia wirklich unbegrenzt?"
+a = "Nicht ganz – alle {unl_count} unbegrenzten Tarife für {country_acc} haben eine Fair-Use-Regel. Die Laufzeit bewegt den Satz ebenso wie die Grenze: {unl_perday_range} pro Tag über die Auswahl, mit {unl_brand} am niedrigsten bei ${unl_perday} für {unl_days} Tage. Nimm die veröffentlichten Bedingungen als echte Grenze: {unl_allowance}, dann {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Kenia?"
+a = "Sie verkaufen verschiedene Dinge, die Antwort hängt also davon ab, wie du Daten nutzt. Für {country_acc} ist Airalos günstigste Rate pro Gigabyte ${ah_airalo_pergb} ({ah_airalo_plan}, ${ah_airalo_price}). Holaflys Einstiegspreis für {country_acc} ist ${ah_holafly_price} über {ah_holafly_days} Tage (${ah_holafly_perday}/Tag), ohne Datenzähler zum Beobachten."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Kenia?"
+a = "Ja. Eine lokale kenianische SIM zu registrieren bedeutet, einen Pass persönlich vorzulegen, während ein Reise-eSIM-Anbieter dieselbe Prüfung digital beim Kauf durchführt. Das ist der ganze Unterschied – kein Gang zu einem Safaricom-Laden – und die Abdeckung folgt trotzdem dem Netz, über das der Tarif läuft."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Kenia?"
+a = "Die Tarife auf dieser Seite laufen über Safaricom, Airtel Kenya, Telkom Kenya. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Kenia und weitere Länder der Region abdecken?"
+a = "Ja, aber nur über einen Multi-Land-Tarif, denn nichts in unseren Tabellen für {country_acc} deckt ein zweites Land ab. Suche ein regionales Paket, das {neighbor} einschließt, und vergleiche dessen $/GB mit zwei Einzeltarifen."
+
+[[faq]]
+q = "Kann ich eine eSIM in Kenia nutzen?"
+a = "Ja – {brand_count} Anbieter verkaufen Tarife für {country_acc}; das Land gehört zur üblichen Reise-eSIM-Landkarte. Was variiert, ist der Preis und nicht der Zugang – {plan_count} Tarife von {brand_count} Anbietern, alle in denselben nationalen Netzen. Der Gerätecheck dauert dreißig Sekunden, und die Tarife oben sind alle auf einer Skala bepreist."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Kenia?"
+a = "Wenn dein Handy eSIM unterstützt und keinen Netlock hat, funktioniert es in {country_dat} – das Reiseziel hat darauf keinen Einfluss. Ein in einem anderen Markt gekauftes Gerät ist der übliche Auslöser, und das hat nichts mit {country_dat} selbst zu tun. Bestätige, dass die EID erscheint, und vergleiche dann die Tarife oben."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Kenia?"
+a = "Für eine normale Reise nicht – eine Reise-eSIM für {country_acc} ist ein Datenprodukt und keine Telefonleitung. Reise-eSIMs werden als Daten verkauft, wer eine für Sprache kauft, zahlt für das falsche Produkt. Nutze die eSIM für Daten und die Heimleitung für alles, was die Nummer braucht."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Kenia?"
+a = "Wir bündeln keine Bewertungen, die ehrliche Antwort hier betrifft also die Methode und nicht die Noten. Die veröffentlichten Bedingungen sind der Teil, den niemand bewertet und jeder lesen sollte, deshalb zitieren wir sie. Der gemessene Vergleich steht oben, und Meinungen liest man am besten dort, wo sie gepostet wurden."

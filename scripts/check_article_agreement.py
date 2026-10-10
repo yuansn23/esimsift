@@ -33,6 +33,12 @@ check_faq_facts.py 必须读产物是同一个道理。只有 HTML 里才有真�
 不存在「必须紧邻」的正当理由。窄化到专有名词占位符，避免误报数字
 （`a {days}-day trip` 合法，`a {country} eSIM` 不合法）。
 
+── 适用范围（第六十三轮补）──────────────────────────────────────────────
+  产物级**只扫英语页**（`should_scan()`），源码级**仍然全语言**。
+  理由：冠词是英语语法。德语 `Sieh dir das gesamte Bild für Deutschland an` 的 `an`
+  是可分动词前缀，与下一句品牌名连排后会被误读成 "an Holafly"（实测 1 处误报）。
+  译文页的英文残留由 verify_de_text.py 的 C 段负责，判据不重叠。
+
 用法：
     python -X utf8 scripts/check_article_agreement.py
     python -X utf8 scripts/check_article_agreement.py --selftest   # 注入反例，证明会报红
@@ -48,6 +54,22 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from lang_rules import non_default_prefixes, under_any  # noqa: E402
+
+# 英语专属规则的适用边界：**只扫英语产物**。
+# 为什么（第六十三轮实测）：德语 `Sieh dir das gesamte Bild für Deutschland an` 里
+# `an` 是**可分动词 ansehen 的句末前缀**，德语完全正确；但产物与下一句品牌名连排成
+# `…für Deutschland an Holafly verkauft…`，本规则按英语读成 "an Holafly" ⇒ 误报。
+# 冠词是英语语法；译文页的英文残留由 verify_de_text.py 的 C 段（43 条禁词表）负责，
+# 源码级检查（scan_sources）仍是**全语言**的，所以「a {{ .brand }}」这类写法照样拦得住。
+_NON_EN = non_default_prefixes()
+
+
+def should_scan(rel: str) -> bool:
+    """该产物路径是否属于英语页（= 需要跑冠词检查）。"""
+    return not under_any(rel, _NON_EN)
+
 
 # 元音**发音**开头的品牌 → 必须用 "an"
 BRANDS_AN = {"airalo", "alosim"}
@@ -195,6 +217,14 @@ def selftest() -> int:
         bad += 0 if ok else 1
         print(f"  [{'OK' if ok else 'FAIL'}] 产物级 期望 {want} 报错 / 实得 {got}  -> {text!r}")
     bad += selftest_sources()
+
+    # 语言隔离（第六十三轮）：英语专属规则不得扫译文页 ——
+    # 只证明「抓得住」不够，还要证明「不该看的没看」。
+    iso = should_scan("compare/argentina/index.html") and not should_scan("de/compare/argentina/index.html")
+    bad += 0 if iso else 1
+    print(f"  [{'OK' if iso else 'FAIL'}] 语言隔离：英语页要扫 / 德语页跳过"
+          f"（非默认前缀 {sorted(_NON_EN)}）")
+
     print(f"selftest: {'全部通过' if not bad else f'{bad} 项不符合预期'}")
     return 1 if bad else 0
 
@@ -206,13 +236,18 @@ def main() -> int:
     nouns = load_nouns()
     files = sorted(glob.glob(str(PUBLIC / "**" / "*.html"), recursive=True))
     errs: list[str] = []
+    skipped = 0
     for f in files:
         p = Path(f)
         rel = p.relative_to(PUBLIC).as_posix()
+        if not should_scan(rel):
+            skipped += 1
+            continue
         errs += scan_text(rel, visible(p.read_text(encoding="utf-8")), nouns)
 
     src_errs = scan_sources()
-    print(f"  产物级：扫描 {len(files)} 个 HTML，{len(errs)} 处冠词不一致")
+    print(f"  产物级：扫描 {len(files) - skipped} 个英语 HTML（跳过 {skipped} 个译文页，"
+          f"冠词是英语语法），{len(errs)} 处冠词不一致")
     print(f"  源码级：layouts/i18n/faq_frames 中冠词紧邻占位符 {len(src_errs)} 处")
 
     if errs or src_errs:

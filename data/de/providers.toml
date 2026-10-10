@@ -1,0 +1,376 @@
+# 德语品牌档案覆盖 —— 覆盖会渲染到德语页的全部品牌散文。
+#
+# 机制：i18n-data.html 把本文件深合并到 data/providers.toml 之上。
+#   · 标量（tagline / promo_*）与 map（policy）→ 逐键覆盖，未写的键继承英语侧
+#   · 数组（strengths / weaknesses / promo_constraints / promo_uncond_points /
+#     promo_alts）→ **整体替换**，所以要翻就得整段重写（含 code / pct 等机器字段）
+#   · 其余机器字段（founded / type / color / promo_code / info.*）**故意不写** → 继承
+#   · promo_label **不在这里**（它在 data/de/strings.toml，渲染处走 de-text）
+#
+# 由 scripts/_gen_de_data.py 生成，不要手改。
+
+[roami]
+tagline = "App-zentrierte Reise-eSIM mit 24/7-Aktivierung"
+strengths = [
+  "Aggressive Preisgestaltung in ganz Asien",
+  "Keine Identitätsprüfung bei Reisetarifen",
+  "24/7-Aktivierung und persönlicher Support",
+  "Automatischer Wechsel zwischen allen drei japanischen Netzen",
+]
+weaknesses = [
+  "Jüngere Marke mit weniger Bewertungen Dritter",
+  "Die größten Rabatte konzentrieren sich auf 3-30-Tage-Tarife",
+]
+promo_scope = "Jeder Tarif in 200+ Reisezielen — Einzelland, regional oder unbegrenzt"
+promo_coverage = "Jeder Tariftyp — Land, regional oder unbegrenzt"
+promo_bestfor = "Alle — der höchste Rabatt, den wir erfassen, ohne Mindestbestellwert, ohne Kundenlimits und ohne Tarifbeschränkungen"
+promo_uncond_short = "Kein Mindestbestellwert · keine Neukunden-Regel · keine Tarifbeschränkungen · jede Bestellung zählt"
+promo_terms = "Von Roami selbst veröffentlicht (Startseiten-Banner und jede Reisezielseite): im Checkout anwenden für 20% Rabatt auf die gesamte Bestellung. Kein Mindestbestellwert, keine Neukunden-Beschränkung, keine Tariftyp-Beschränkung. Bonus: 100MB kostenlose Daten beim Herunterladen der Roami-App."
+[[roami.promo_uncond_points]]
+head = "Kein Mindestbestellwert"
+sub = "Jeder Bestellwert zählt — es gibt keinen Mindestbestellwert."
+[[roami.promo_uncond_points]]
+head = "Keine Neukunden-Beschränkung"
+sub = "Neu- und Bestandskunden erhalten dieselben 20%."
+[[roami.promo_uncond_points]]
+head = "Keine Tariftyp-Beschränkung"
+sub = "Alle Einzelland-, Regional- und unbegrenzten Tarife zählen."
+[[roami.promo_uncond_points]]
+head = "Jede Bestellung zählt"
+sub = "Der Code gilt im Checkout bei jedem Kauf, nicht nur einmal."
+[roami.policy]
+hotspot_allowance = "Bis zu 5 Geräte"
+hotspot_note = "Roami bewirbt kostenlose Hotspot-Freigabe bei jedem Tarif für bis zu fünf Geräte, wobei Tethering-Verkehr auf das Tarifkontingent angerechnet wird statt auf ein separates Hotspot-Budget."
+fup_allowance = "30 GB/Tag"
+fup_drop = "Reduzierte Geschwindigkeit"
+fup_note = "Roamis Zielland-Seiten geben an, dass die Geschwindigkeit nach 30 GB an einem einzigen Tag sinken kann, doch die USA-Seite nennt gar keine Fair-Use-Drosselung, und der UK-Leitfaden verweist stattdessen auf 2 GB/Tag in der unbegrenzten Stufe. Betrachten Sie die Schwelle als ziellandabhängig, und lesen Sie die Tarifseite für das Land, das Sie kaufen."
+topup_note = "Nachkäufe werden in der Roami-App erworben und aktivieren sich innerhalb von Sekunden auf der bestehenden eSIM, ohne neuen QR-Code zum Installieren."
+
+[airalo]
+tagline = "Der ursprüngliche eSIM-Marktplatz"
+strengths = [
+  "Breiteste Länderabdeckung der Branche",
+  "Etabliertes Vertrauen und hohe Markenbekanntheit",
+  "Regionaltarife (Asien, Europa) für Reisen durch mehrere Länder",
+]
+weaknesses = [
+  "Nicht mehr die günstigste in den meisten einzelnen Ländern",
+  "Kleinere Datenvolumen in den Einstiegspreisklassen",
+]
+promo_scope = "Jede eSIM — lokal, regional, global oder unbegrenzt — in 200+ Reisezielen"
+promo_coverage = "Jede eSIM, 200+ Reiseziele"
+promo_bestfor = "Neue Airalo-Kunden — Bestandskunden sollten AIRALOESIM10 verwenden"
+promo_terms = "Eine Einlösung pro Kunde, bis zu einem maximalen Rabatt von 100 USD. Nicht mit anderen Aktionen oder Airmoney-Guthaben kombinierbar. Die Aktion kann vorzeitig enden, wenn die Einlösegrenze erreicht ist."
+promo_constraints = [
+  "Nur für Neukunden",
+  "Eine Einlösung pro Kunde",
+  "Maximaler Rabatt $100",
+  "Nicht mit anderen Aktionen oder Airmoney-Guthaben kombinierbar",
+]
+[[airalo.promo_alts]]
+code = "AIRALOESIM10"
+label = "10% Rabatt auf jede eSIM ab 10 USD"
+audience = "existing"
+pct = 10
+[airalo.policy]
+hotspot_allowance = "Keine separate Obergrenze"
+hotspot_note = "Tethering ist erlaubt und wird auf das Datenvolumen Ihres Tarifs angerechnet, ohne separates Hotspot-Limit und ohne Begrenzung der verbundenen Geräte."
+fup_allowance = "3 GB/Tag bei unbegrenzten Tarifen"
+fup_drop = "1 Mbit/s"
+fup_note = "Airalo veröffentlicht eine einzige Fair-Use-Regel für alle unbegrenzten Tarife: Überschreiten Sie 3 GB an einem Tag, sinkt die Geschwindigkeit für den Rest des Tages auf 1 Mbit/s und wird 24 Stunden nach der Aktivierung zurückgesetzt. Volumenbasierte Tarife werden nie gedrosselt – sie enden einfach, wenn das Datenvolumen verbraucht ist."
+topup_note = "Nachkäufe sind in der Airalo-App verfügbar, sodass ein knappes Datenvolumen unterwegs ein paar Dollar kostet statt einer neuen eSIM."
+
+[holafly]
+tagline = "Unbegrenzte Daten, tageweise bezahlt"
+strengths = [
+  "Tarife mit unbegrenzten Daten in 190+ Zielen",
+  "Einfachheit mit einem Tarif pro Land",
+  "Beliebig viele Tage buchen – Sie zahlen nur für die Tage, an denen Sie reisen",
+]
+weaknesses = [
+  "Hotspot-Freigabe bei Zielland-Tarifen auf 500 MB/Tag begrenzt",
+  "Pauschale Tagespreise werden auf langen Reisen teuer",
+  "Keine Nachkäufe – ein verbrauchter Tarif wird ersetzt, nicht aufgefüllt",
+]
+promo_scope = "Alle Reiseziel-eSIM-Tarife in 190+ Reisezielen"
+promo_coverage = "Alle Reiseziel-Tarife"
+promo_bestfor = "Eine ehrliche Ausgangsbasis — Holafly hat keinen höheren dauerhaft gültigen Code; größere Rabatte gibt es nur bei Saisonaktionen oder Holafly Plans-Abos"
+promo_terms = "Holaflys einziger offizieller dauerhaft gültiger Gutschein beträgt 5%. Partner-Codes bringen zusätzlich 10% auf Holafly Plans-Abos (monatlich oder jährlich), und Saisonaktionen können 30-50% erreichen — doch kein dauerhaft gültiger Code übertrifft 5% bei Reiseziel-eSIMs."
+[[holafly.promo_alts]]
+code = "TRAVELESIMEXPERT"
+label = "5% Rabatt auf eSIMs · 10% Rabatt auf Plans-Abos"
+audience = "all"
+pct = 5
+[holafly.policy]
+hotspot_allowance = "500 MB/Tag"
+hotspot_note = "Die eigenen technischen Spezifikationen von Holafly begrenzen Tethering bei Zielland-Tarifen auf 500 MB/Tag. Unbegrenzten Hotspot gibt es nur im separaten Abo Holafly Plans, nicht bei den untenstehenden Reisetarifen."
+fup_allowance = "Keine GB-Angabe veröffentlicht"
+fup_drop = "256 Kbit/s – 1 Mbit/s"
+fup_note = "Holafly veröffentlicht keine tägliche GB-Schwelle und erklärt, die Drosselung sei vorübergehend und nie länger als 24 Stunden. Unabhängige Tests Anfang 2026 maßen die Grenze bei 500 MB – 1 GB/Tag in den meisten westlichen Zielländern, und die lokalen Netzbetreiber können Sie zudem nach etwa 90 GB in einem Monat verlangsamen."
+topup_note = "Holafly bietet keine Nachkäufe. Wenn ein Tarif verbraucht ist, kaufen Sie eine neue eSIM, statt Daten zum bestehenden Tarif hinzuzufügen."
+
+[saily]
+tagline = "Die No-Logs-eSIM vom NordVPN-Team"
+strengths = [
+  "Wettbewerbsfähige Preise pro GB",
+  "Entwickelt vom Nord-Security-Team",
+  "Flexible Nachkäufe in der App",
+]
+weaknesses = [
+  "Neuerer Dienst mit kürzerer Erfolgsbilanz",
+  "Zielliste wächst weiter",
+]
+promo_scope = "Alle Saily eSIMs in 200+ Reisezielen, angewendet über den offiziellen Partnerlink"
+promo_coverage = "Alle Tarife, 200+ Reiseziele"
+promo_bestfor = "Der höchste beworbene Prozentsatz, den wir erfassen — prüfen Sie, ob der Rabatt vor der Zahlung angekommen ist"
+promo_terms = "Exklusive 25%-Partneraktion, veröffentlicht auf saily.com/veepee. Der offizielle Link wendet den Gutschein automatisch an (?coupon=VEEPEE25); der Code kann auch im App-Checkout eingegeben werden. Wird er abgelehnt, ist die Aktion möglicherweise beendet — die unten stehenden dauerhaft gültigen 10%-Codes sind die Ausweichcodes. Saily unterhält außerdem eine offizielle Gutscheinseite (saily.com/coupon/)."
+promo_constraints = [
+  "Über den Saily x Veepee Partnerlink einlösen — der reine Code kann im Checkout abgelehnt werden",
+]
+[[saily.promo_alts]]
+code = "ESIMD"
+label = "10% Rabatt auf alle Tarife, inkl. unbegrenzt"
+audience = "all"
+pct = 10
+[[saily.promo_alts]]
+code = "ESIMDUDE"
+label = "10% Rabatt auf Standard-, Regional-, Global- und unbegrenzte Tarife"
+audience = "all"
+pct = 10
+[saily.policy]
+hotspot_allowance = "Keine separate Obergrenze"
+hotspot_note = "Saily bewirbt uneingeschränkte Hotspot-Freigabe; Tethering-Daten stammen aus demselben Tarifkontingent wie die Ihres Telefons."
+fup_allowance = "5 GB/Tag bei unbegrenzten Tarifen"
+fup_drop = "1 Mbit/s"
+fup_note = "Saily nennt seine tägliche Obergrenze offen: 5 GB mit voller Geschwindigkeit pro 24-Stunden-Zyklus, danach etwa 1 Mbit/s. Das ist die großzügigste veröffentlichte Schwelle unter den von uns erfassten unbegrenzten Reisetarifen."
+topup_note = "Nachkäufe in der App, sodass ein Engpass mit zwei Taps behoben ist."
+
+[yesim]
+tagline = "eSIM aus der Schweiz mit Pay-as-you-go-Daten"
+strengths = [
+  "2019 in der Schweiz gegründet",
+  "Internationale eSIM mit nutzungsbasierter Abrechnung in 140+ Ländern",
+  "Selbstbedienungs-Business-Plattform für Teams",
+  "Unbegrenzte und feste Tarife in den meisten Zielländern",
+]
+weaknesses = [
+  "Geringere Markenbekanntheit außerhalb Europas",
+  "Internationaler Tarif mit Abrechnung pro MB erfordert zum Vergleich genaues Lesen",
+]
+promo_scope = "Alle Yesim eSIM-Tarife in 200+ Reisezielen"
+promo_coverage = "Alle Tarife, 200+ Reiseziele"
+promo_bestfor = "Alle Nutzer — 20% ohne Erstkauf-Beschränkung; neue Nutzer können alternativ den offiziellen 15%-Willkommenscode nutzen"
+promo_terms = "Yesims eigenes Treueprogramm bietet außerdem WELCOMETOYESIM (15% Rabatt auf einen Erstkauf, offiziell) sowie 5% Cashback und eine Empfehlungsstaffel von euro 5 + euro 5 — der Willkommenscode ist der offizielle Ausweichcode, falls DREWDEAL abgelehnt wird."
+promo_constraints = [
+  "Nicht von Yesim selbst veröffentlicht — stammt aus einem Deal-Blog eines Drittanbieters",
+  "Unabhängig getestet am 2026-09-10; seither nicht erneut bestätigt",
+]
+[[yesim.promo_alts]]
+code = "WELCOMETOYESIM"
+label = "15% Rabatt auf Ihren ersten eSIM-Kauf"
+audience = "new"
+pct = 15
+[[yesim.promo_alts]]
+code = "MYBESTSIM20"
+label = "20% Rabatt auf unbegrenzte Datentarife"
+audience = "all"
+pct = 20
+[yesim.policy]
+hotspot_allowance = "Aus dem Tarifkontingent"
+hotspot_note = "Die Hotspot-Nutzung ist erlaubt und wird normalerweise aus dem eigenen Datenpool des Tarifs entnommen statt aus einem separaten Tethering-Kontingent."
+fup_allowance = "500 MB – 2 GB/Tag, vor dem Kauf angegeben"
+fup_drop = "Reduzierte Geschwindigkeit bis zum nächsten Zyklus"
+fup_note = "Yesim gibt sein tägliches Volumen mit voller Geschwindigkeit auf der Tarifseite an, bevor Sie kaufen – mehr als die meisten Konkurrenten tun. Die Schwellen liegen je nach Zielland zwischen 500 MB und 2 GB/Tag, und seine volumenbasierten Tarife werden nicht gedrosselt."
+topup_note = "Nachkäufe werden in der Yesim-App abgewickelt."
+
+[ubigi]
+tagline = "Globale 4G/5G-eSIM von Transatel, einem NTT-Unternehmen"
+strengths = [
+  "Betrieben von Transatel (NTT Group) seit dem eSIM-Start 2017",
+  "Abdeckung in 200+ Zielen",
+  "Konnektivitäts-Erfahrung aus dem Automobil- und Laptop-Bereich",
+  "5G, sofern die lokalen Netze es anbieten",
+]
+weaknesses = [
+  "Kontoeinrichtung vor dem Kauf erforderlich",
+  "Einstiegspreise über denen der Budget-Marken",
+]
+promo_scope = "Nur unbegrenzte Datentarife (z. B. Vietnam, UAE unbegrenzt) — monatliche Tarife ausgeschlossen"
+promo_coverage = "Nur unbegrenzte Datentarife"
+promo_bestfor = "Käufer von unbegrenzten Tarifen — für einen Erstkauf eines regulären (volumenbasierten) Tarifs stattdessen WELCOME10 verwenden"
+promo_terms = "Wird über die eigene Promo-Leiste von Ubigi auf den Tarifseiten eingeblendet; zeitlich begrenzte Aktion ohne veröffentlichtes Enddatum. Erstkäufer, die volumenbasierte Tarife kaufen, erhalten 10% Rabatt mit WELCOME10."
+promo_expiry_note = "Zeitlich begrenzt — Countdown auf den Ubigi-Tarifseiten"
+promo_constraints = [
+  "Nur unbegrenzte Datentarife — monatliche Tarife ausgeschlossen",
+  "Zeitlich begrenzte Aktion mit Countdown, kein veröffentlichtes Enddatum",
+]
+[[ubigi.promo_alts]]
+code = "WELCOME10"
+label = "10% Rabatt auf Ihren ersten Datentarif-Kauf"
+audience = "new"
+pct = 10
+[[ubigi.promo_alts]]
+code = "MYBESTSIM10"
+label = "10% Rabatt auf jeden Tarif und jedes Reiseziel"
+audience = "all"
+pct = 10
+[ubigi.policy]
+hotspot_allowance = "Keine separate Obergrenze"
+hotspot_note = "Datenweitergabe ist ausdrücklich erlaubt, und Hotspot-Verkehr wird auf das eigene Kontingent des Tarifs angerechnet statt auf ein separates Tethering-Budget."
+fup_allowance = "Variiert je nach Tarif – auf der jeweiligen Tarifseite angegeben"
+fup_drop = "1 – 2 Mbit/s"
+fup_note = "Ubigi veröffentlicht bei jedem unbegrenzten Tarif eine andere Schwelle, und die Spanne ist groß – zwei Tarife zum selben Preis boten einmal insgesamt 15 GB gegenüber 5 GB/Tag. Lesen Sie die Fair-Use-Zeile auf der genauen Tarifseite, bei der Sie kaufen."
+topup_note = "Nachkäufe werden im Ubigi-Konto-Dashboard unterstützt."
+
+[roamic]
+tagline = "Europäische eSIM-Marke mit unbegrenzten Optionen"
+strengths = [
+  "Seit 2021 unterstützt von Byte Travel aus Spanien",
+  "170+ Länder und Regionen",
+  "Optionen mit unbegrenzten Daten in vielen Zielländern",
+  "Wholesale-/API-Reseller-Plattform hinter der Verbrauchermarke",
+]
+weaknesses = [
+  "Jüngere Marke mit dünnerer Bewertungsbilanz",
+  "Unbegrenzte Tarife unterliegen Fair-Use-Grenzen",
+]
+promo_scope = "Alle Tarife — Einzelland, regional und unbegrenzt"
+promo_coverage = "Alle Tarife"
+promo_bestfor = "Alle Nutzer; TRAVELDEALZ10 ist der gleichwertige Ausweichcode bei denselben 10%"
+promo_terms = "Wird im letzten Bestellschritt eingegeben. Roamic hat keine offizielle Gutscheinseite — alle erfassten Codes sind Partner-Codes von Drittanbietern; falls einer abgelehnt wird, den Ausweichcode versuchen."
+promo_constraints = [
+  "Code eines Drittanbieters — Roamic hat keine offizielle Gutscheinseite; falls einer abgelehnt wird, einen anderen versuchen",
+]
+[[roamic.promo_alts]]
+code = "TRAVELDEALZ10"
+label = "10% Rabatt auf alle Pakete"
+audience = "all"
+pct = 10
+[[roamic.promo_alts]]
+code = "ESIMP5"
+label = "5% Rabatt auf berechtigte Tarife"
+audience = "all"
+pct = 5
+[roamic.policy]
+hotspot_allowance = "Für die persönliche Nutzung erlaubt"
+hotspot_note = "Roamics Produktseiten führen Hotspot als unterstützt auf. Die Fair-Use-Seite erlaubt normales persönliches Tethering, verbietet jedoch die Weitergabe der Verbindung an viele Geräte oder deren Weiterverkauf, sodass eine Familie, die einen Laptop und zwei Tablets per Hotspot verbindet, außerhalb der Bedingungen liegt."
+fup_allowance = "3 GB/Tag"
+fup_drop = "1 Mbit/s"
+fup_note = "Roamic nennt überall dieselbe Zahl: 3 GB mit voller Geschwindigkeit in jedem 24-Stunden-Zeitraum, danach 1 Mbit/s bis zum Zurücksetzen des Zyklus. Kein Aufpreis, und die Verbindung wird nie getrennt. Dies ist die klarste veröffentlichte Schwelle aller von uns erfassten unbegrenzten Anbieter."
+topup_note = "Roamic verkauft Nachkäufe online, sodass ein knapp gewordener Tarif ohne Installation einer neuen eSIM verlängert werden kann."
+
+[alosim]
+tagline = "Günstige eSIM-App von AffinityClick aus Kanada"
+strengths = [
+  "Entwickelt von AffinityClick, einem Telekommunikationsunternehmen aus Ottawa",
+  "Günstige Länderpakete in 175+ Ländern",
+  "Kostenlose eSIM-App mit flexiblen Nachkäufen",
+]
+weaknesses = [
+  "Weniger unbegrenzte Optionen als die Konkurrenz",
+  "Support erfolgt zuerst als Selbstbedienung",
+]
+promo_scope = "Jeder Tariftyp — Land, regional, global und täglich unbegrenzt"
+promo_coverage = "Jeder Tariftyp"
+promo_bestfor = "Alle Nutzer — aloSIMs dauerhaft gültige Codes liegen bei 15%, und dieser hat den breitesten Geltungsbereich"
+promo_terms = "Die dauerhaft gültigen Partner-Codes von aloSIM (ESIMTWEAKS / TRAVELESIMEXPERT / ESIMD) liegen alle bei 15%. Wird einer abgelehnt, sind die anderen ein direkter Ersatz und keine Verschlechterung."
+promo_constraints = [
+  "Partner-Code eines Drittanbieters — nicht von aloSIM selbst veröffentlicht",
+  "Lässt sich nicht mit aloCASH-Wallet-Zahlungen oder Gutscheinen kombinieren",
+]
+[[alosim.promo_alts]]
+code = "TRAVELESIMEXPERT"
+label = "15% Rabatt auf alle Tarife"
+audience = "all"
+pct = 15
+[[alosim.promo_alts]]
+code = "ESIMD"
+label = "15% Rabatt auf Ihre erste eSIM"
+audience = "new"
+pct = 15
+[alosim.policy]
+hotspot_allowance = "Aus dem Tarifkontingent"
+hotspot_note = "Tethering ist zulässig und nutzt denselben Datenpool wie das Telefon, ohne separate Hotspot-Stufe."
+fup_allowance = "1,5 – 2 GB/Tag bei unbegrenzten Tarifen"
+fup_drop = "512 Kbit/s"
+fup_note = "aloSIMs unbegrenzte Stufen verlangsamen sich auf etwa 512 Kbit/s, sobald das tägliche Volumen mit voller Geschwindigkeit aufgebraucht ist. Seine volumenbasierten Pakete verhalten sich wie hart begrenzte Daten und werden nicht gedrosselt."
+topup_note = "Flexible Nachkäufe über die kostenlose aloSIM-App."
+
+[nomad]
+tagline = "LotusFlares Reise-eSIM mit lokalen Tarifen pro Land"
+strengths = [
+  "Betrieben von LotusFlare und 2020 gestartet",
+  "Standardmäßig mehr als ein lokales Netz in jedem Land",
+  "Zusatzdaten aktivieren sich auf derselben eSIM, ohne neuen QR-Code",
+  "200+ Ziele und 3M+ registrierte Nutzer",
+]
+weaknesses = [
+  "Unbegrenzte Tarife fallen nach 2 GB an einem Tag auf 1 Mbit/s",
+  "Keine einzelne veröffentlichte Fair-Use-Angabe – die Obergrenze steht in den Details des jeweiligen Tarifs",
+  "Einige Tarife erfordern laut Nomads eigenen Zielland-Seiten weiterhin eine manuelle Aktivierung",
+]
+promo_scope = "Ausgewählte Tarife in der Herbstkampagne 'Beyond the Usual'"
+promo_coverage = "Ausgewählte Tarife in der Herbstaktion"
+promo_bestfor = "Käufer eines einzelnen Tarifs in diesem Herbst - wenn Sie zwei eSIMs in einer Bestellung kaufen, ist FALL30 mit 30% klar besser"
+promo_terms = "Wird während der Herbstkampagne 'Beyond the Usual' im eigenen Startseiten-Banner von Nomad angezeigt: BEYOND20 gibt 20% Rabatt auf ausgewählte Tarife, FALL30 gibt 30% Rabatt auf einen Warenkorb mit zwei oder mehr eSIMs. Keiner hat ein veröffentlichtes Enddatum. Da FALL30 einen Warenkorb mit mehreren eSIMs erfordert, sollte ein Käufer eines einzelnen Tarifs BEYOND20 verwenden."
+promo_constraints = [
+  "Nur ausgewählte Tarife - nicht der gesamte Katalog",
+  "Saisonale Herbstaktion ohne veröffentlichtes Enddatum",
+]
+[[nomad.promo_alts]]
+code = "FALL30"
+label = "30% Rabatt auf Bestellungen mit 2 oder mehr eSIMs"
+audience = "conditional"
+pct = 30
+[[nomad.promo_alts]]
+code = "ESIMDNOMAD20"
+label = "20% Rabatt auf berechtigte Tarife"
+audience = "all"
+pct = 20
+[nomad.policy]
+hotspot_allowance = "Geteilt mit Ihrem Tarifdatenvolumen"
+hotspot_note = "Nomad bewirbt die gemeinsame Nutzung Ihrer Daten über mehrere Geräte statt eines separaten Tethering-Kontingents, sodass Hotspot-Verkehr aus denselben Tarifdaten stammt."
+fup_allowance = "2 GB/Tag bei unbegrenzten Tarifen"
+fup_drop = "1 Mbit/s"
+fup_note = "Jeder der 150 von uns erfassten unbegrenzten Nomad-Tarife nennt dieselbe Schwelle: 2 GB mit voller Geschwindigkeit pro Tag, danach unbegrenzt mit 1 Mbit/s. Nomad veröffentlicht keine markenweite Fair-Use-Angabe – die Zielland-Seiten verweisen auf die Details des jeweiligen Tarifs, und daher stammt diese Zahl."
+topup_note = "Zusätzliche Daten werden als Add-on verkauft und aktivieren sich automatisch auf der bestehenden eSIM, wenn der ursprüngliche Tarif abläuft, sodass kein neuer QR-Code installiert werden muss."
+
+[jetpac]
+tagline = "Reise-eSIM aus Singapur mit uneingeschränkter Hotspot-Freigabe"
+strengths = [
+  "Hotspot-Freigabe ohne Datenlimit und ohne Einschränkung, angegeben auf Jetpacs eigener Produktseite",
+  "Kaufen Sie die eSIM einmal und nutzen Sie sie auf späteren Reisen erneut, indem Sie in der App nachkaufen",
+  "Betrieben von Jetpac (Circles Global) Pte. Ltd. in Singapur, mit 200+ Zielen",
+  "24/7-Support per Live-Chat, WhatsApp und E-Mail",
+]
+weaknesses = [
+  "Unbegrenzte Tarife werden auf 1 Mbit/s gedrosselt, sobald Sie 3 GB an einem Tag überschreiten",
+  "Selten die günstigste volumenbasierte Option – sein bestes $/GB liegt in 24 der 49 von uns erfassten Märkte auf Rang sechs oder darunter",
+  "Sprachanrufe sind nicht Teil der Daten-eSIM – Jetpac Voice ist ein separates kostenpflichtiges Add-on",
+]
+promo_scope = "eSIM-Tarife auf der Website und in der App"
+promo_coverage = "Alle Tarife, 200+ Reiseziele"
+promo_bestfor = "Für alle, die einen einzelnen Tarif kaufen: ESIM15 ist der Code, den Jetpac auf der eigenen Website und in der App veröffentlicht, und es gibt keinen Mindestbestellwert"
+promo_terms = "Jetpacs eigene Website enthält zwei Gutscheincodes: Mit ESIM15 gibt es 15% Rabatt auf eSIM-Tarife, und Teresa20 gibt 20% als Botschafter-Code. Keiner hat ein veröffentlichtes Enddatum, und Jetpac sagt nicht, ob sie kombinierbar sind, daher als Alternativen behandeln. Ein separater 15%-Erstkaufcode (FYESIM15) kursiert auf Gutscheinseiten von Drittanbietern und wird uns nur gemeldet, nicht von uns verifiziert."
+promo_constraints = [
+  "Kein veröffentlichtes Enddatum - Jetpac gibt kein Ablaufdatum an",
+  "ESIM15 und der Botschafter-Code Teresa20 sind Alternativen und werden nicht als kombinierbar beworben",
+]
+[[jetpac.promo_alts]]
+code = "Teresa20"
+label = "20% Rabatt auf eSIM-Tarife (Botschafter-Code)"
+audience = "all"
+pct = 20
+[[jetpac.promo_alts]]
+code = "FYESIM15"
+label = "15% Rabatt auf Ihren ersten Kauf"
+audience = "new"
+pct = 15
+[jetpac.policy]
+hotspot_allowance = "Geteilt mit Ihrem Tarifdatenvolumen"
+hotspot_note = "Jetpacs eigene Produktseite bewirbt die Hotspot-Freigabe als Standard – Share your internet freely, no data limits, no restrictions –, sodass Tethering-Verkehr aus denselben Tarifdaten stammt statt aus einem separaten Kontingent."
+fup_allowance = "3 GB/Tag bei unbegrenzten Tarifen"
+fup_drop = "1 Mbit/s"
+fup_note = "Alle 325 von uns erfassten unbegrenzten Jetpac-Tarife nennen dieselbe Schwelle: 3 GB mit voller Geschwindigkeit pro Tag, danach unbegrenzt mit 1 Mbit/s. Jetpac veröffentlicht keine markenweite Fair-Use-Angabe – die Allgemeinen Geschäftsbedingungen enthalten zwar einen Abschnitt zur Fair-Usage-Policy, aber keine GB-Zahl, daher stammt diese Angabe aus den einzelnen Tarifbeschreibungen."
+topup_note = "Jetpac verkauft die eSIM als einmalige Einrichtung: Sie behalten sie und kaufen für spätere Reisen in der App nach, statt für jeden Tarif eine neue eSIM zu installieren."
+

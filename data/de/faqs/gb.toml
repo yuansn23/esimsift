@@ -1,0 +1,42 @@
+# GB FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für das Vereinigte Königreich?"
+a = "{cheap_brand} hält für {country_acc} die Bestmarke: {cheap_plan} für ${cheap_price}. Der nächstgünstigere Anbieter ist {runner_brand} mit ${runner_price}. Die Tabelle oben sortiert jede Option, vergleiche also auch die Form eines Tarifs und nicht nur den Preis."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in dem Vereinigten Königreich wirklich unbegrenzt?"
+a = "Gedeckelt statt unbegrenzt – die {unl_count} unbegrenzten Tarife für {country_acc} drosseln, sobald das Tagesvolumen aufgebraucht ist. Die Spanne ist weit – {unl_perday_range} pro Tag – und {unl_brand} liegt mit ${unl_perday}/Tag über {unl_days} Tage am unteren Ende. Drosselung statt Abschaltung ist der Kompromiss, mit Geschwindigkeiten bis hinunter zu {unl_drop}, sobald das Volumen aufgebraucht ist."
+
+[[faq]]
+q = "Airalo oder Holafly für das Vereinigte Königreich?"
+a = "Es kommt auf die Form an – Datenpakete gegen unbegrenzte Tage. Auf Airalos Seite ist der beste Wert ${ah_airalo_pergb}/GB – {ah_airalo_plan} für ${ah_airalo_price} – pro Gigabyte bepreist statt pro Tag. Die Flatrate-Option ist Holafly, mit {ah_holafly_days} Tagen ab ${ah_holafly_price} – ${ah_holafly_perday}/Tag, egal wie viel du nutzt."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in dem Vereinigten Königreich?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in dem Vereinigten Königreich?"
+a = "Die Tarife auf dieser Seite laufen über EE, Vodafone, O2, Three. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM das Vereinigte Königreich und Frankreich abdecken?"
+a = "Nicht mit einem Ein-Land-Tarif. Führt die Reise von {country_dat} weiter, und {neighbor} soll dabei sein, vergleiche ein regionales Paket mit zwei separaten Tarifen, denn die Tabellen hier bepreisen jeden Markt für sich."
+
+[[faq]]
+q = "Kann ich eine eSIM in dem Vereinigten Königreich nutzen?"
+a = "Ja, und in dieser Hinsicht gibt es keine Besonderheit – keine lokale Registrierung und keine Genehmigung nötig. {brand_count} Anbieter verkaufen {plan_count} separate Tarife für {country_acc} auf dieser Seite – ein Markt zu groß, als dass Verfügbarkeit die Einschränkung wäre. Prüfe dein Handy und lass dann die $/GB-Spalte zwischen den Tarifen oben entscheiden."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in dem Vereinigten Königreich?"
+a = "Derselbe Test wie überall: Wähle *#06# und suche eine EID-Nummer. Veröffentlichte Kompatibilitätslisten hinken neuen Modellen hinterher, der Test im Wählfeld an deinem eigenen Gerät schlägt also jede Liste, auch unsere. Prüfe zuerst das Gerät, denn die Tarife oben helfen nur, wenn es besteht."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in dem Vereinigten Königreich?"
+a = "Für Nachrichten und Karten brauchst du keine. Zwei-Faktor-Codes sind der übliche Grund für die Frage, und die kommen über die Heimleitung an, solange sie aktiv bleibt. Füge nur dann eine lokale SIM hinzu, wenn lokale Anrufe eine echte Anforderung sind."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in dem Vereinigten Königreich?"
+a = "Wir führen keine Bewertung für eSIMs in {country_dat}, und das ist eine Entscheidung und kein Versehen. Preis, Volumen und die Fair-Use-Schwelle sind prüfbare Fakten, und genau die stellen die Tabellen oben nebeneinander. Prüfe die Fair-Use- und Rückerstattungsseiten des Anbieters direkt, bevor du dich festlegst."

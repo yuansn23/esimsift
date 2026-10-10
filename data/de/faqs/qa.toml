@@ -1,0 +1,42 @@
+# QA FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Katar?"
+a = "Starte mit {cheap_brand}: {cheap_plan} ist mit ${cheap_price} der günstigste Tarif für {country_acc}. Der beste Wert pro Gigabyte ist eine eigene Frage, und die Antwort lautet hier {value_plan} von {value_brand} mit ${value_pergb}/GB. Wenn du nur Karten und Nachrichten brauchst, reicht der Einstiegspreis, und wer streamt, sollte nach $/GB wählen."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Katar wirklich unbegrenzt?"
+a = "Unbegrenzt heißt hier unbegrenztes Datenvolumen und nicht unbegrenzte Geschwindigkeit: {unl_count} Tarife für {country_acc} setzen Fair-Use-Grenzen. Der beste Tagessatz gehört {unl_brand} – ${unl_perday} für ein Paket über {unl_days} Tage zu ${unl_price} – und der Markt reicht über {unl_perday_range}. Prüfe die Rückfallgeschwindigkeit vor dem Kauf, denn das ist das, was du nach dem Tagesvolumen bekommst: {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Katar?"
+a = "Airalo und Holafly lösen verschiedene Probleme, vergleiche also die Modelle vor den Preisen. Airalos Angebot für {country_acc} ist ein Datenpaket – {ah_airalo_plan} für ${ah_airalo_price}, oder ${ah_airalo_pergb}/GB an der schärfsten Stelle. Nimm Holafly, wenn du lieber keine Gigabyte zählst, denn seine Pakete für {country_acc} beginnen bei ${ah_holafly_price} für {ah_holafly_days} Tage (${ah_holafly_perday}/Tag); nimm Airalo für eine leichte, kurze Reise."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Katar?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Katar?"
+a = "Die Tarife auf dieser Seite laufen über Ooredoo, Vodafone Qatar. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Katar und die Vereinigten Arabischen Emirate abdecken?"
+a = "Ein Land pro Tarif, eine für {country_acc} gekaufte eSIM endet also an der Grenze. Ein regionales Paket oder ein zweiter Tarif bringt {neighbor} dazu, und beide lohnen den Vergleich mit zwei Einzelkäufen."
+
+[[faq]]
+q = "Kann ich eine eSIM in Katar nutzen?"
+a = "Reise-eSIMs für {country_acc} werden von jedem Anbieter verkauft, den wir führen, und keiner braucht eine lokale Adresse. Die Verfügbarkeit ist mit den {plan_count} oben gelisteten Tarifen geklärt, offen sind also Dauer und Datenvolumen. Bestätige, dass das Gerät eSIM unterstützt und entsperrt ist, und wähle dann aus der Tabelle oben."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Katar?"
+a = "Kompatibilität ist reine Gerätesache, und das Reiseziel stellt keine eigene Anforderung. Von den {plan_count} Tarifen für {country_acc} auf dieser Seite braucht keiner mehr als ein Standard-eSIM-Profil. Teste das Handy jetzt, dann wird die Tarifwahl eine Preisfrage statt einer Kompatibilitätsfrage."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Katar?"
+a = "Für Besucher nicht. Eine eSIM für {country_acc} gibt dir Konnektivität, die Nummer bleibt bei deiner Heimleitung. Wenn wirklich eine lokale Nummer nötig ist, bedeutet das den Kauf einer lokalen SIM und meist eine Registrierung im Laden. Lass die Heimleitung im Handy und schalte ihre Daten ab."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Katar?"
+a = "Kein aggregierter Wert von uns. Was diese Seite stattdessen bietet, ist die Rechnung. Wo ein Anbieter seine eigene Support- und Rückerstattungsrichtlinie veröffentlicht, verlinken wir sie direkt, damit du die Quelle liest statt einer Zusammenfassung. Nimm die Zahlen oben als Grundlage und prüfe die Rückgaberichtlinie an der Quelle."

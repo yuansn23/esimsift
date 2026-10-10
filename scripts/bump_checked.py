@@ -40,6 +40,18 @@ PLANS_DIR = ROOT / "data" / "plans"
 
 # 国家块头：文件里形如 `[AR]`（顶层、两字母 ISO）。`[[AR.plans]]` 不会被匹配。
 RE_ISO_HEADER = re.compile(r"^\[([A-Z]{2})\]\s*$")
+
+# providers.toml 的品牌表头：`[jetpac]` 与带点的子表 `[jetpac.info]` / `[jetpac.policy]`
+# 都算**同一个品牌**的段头。
+#
+# ★ 为什么必须认带点的子表（2026-10-09 第六十三轮，实测事故）：
+#   全站 10 家的 `[<brand>.policy]` 表**全部堆在文件末尾**，排在最后一个顶层段
+#   `[jetpac]` 之后。旧定义（`^\[(\w+)\]$`，只认不带点的表头）于是把这 10 张
+#   子表**全部算进 jetpac 的段范围** —— 实测：给 `[holafly.policy]` 加一行
+#   `fup_kind = "none"`，翻的是 **jetpac** 的档案核对日（10-07 → 10-09，一句
+#   不实陈述）；而 holafly 自己的政策表挨不到 `[holafly]` 的段，改它**不翻**
+#   holafly 的日期。一句话：段的边界必须按**品牌**切，不能按「行物理上排在哪」切。
+RE_PROV_HEADER = re.compile(r"^\[([a-z0-9_]+)(?:\.[a-z0-9_]+)?\]\s*$")
 RE_CHECKED = re.compile(r"^(\s*)checked\s*=\s*\"([^\"]*)\"(.*)$")
 RE_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
@@ -61,15 +73,19 @@ class Block:
     「哪个字段是日期」必须只有一份定义，就在本文件里。
     """
 
-    __slots__ = ("key", "start", "end", "date_idx", "date")
+    __slots__ = ("key", "start", "end", "date_idx", "date", "ranges")
 
     def __init__(self, key: str, start: int, end: int,
-                 date_idx: int = -1, date: str = ""):
+                 date_idx: int = -1, date: str = "", ranges=None):
         self.key = key
         self.start = start        # 段头行下标（含）
         self.end = end            # 段尾行下标（不含）
         self.date_idx = date_idx  # 日期字段所在行；同段出现多个时**只认第一个**
         self.date = date
+        # 段体可以**不连续**：providers.toml 的 `[x]` / `[x.info]` / `[x.policy]`
+        # 三张表允许隔着别的品牌。None = 「就是 [start, end) 这一整段」。
+        # 只有 parse_prov_blocks 会给出多区间；parse_blocks 一律 None。
+        self.ranges = ranges
 
 
 def read_lines(path: pathlib.Path) -> list[str]:
@@ -98,6 +114,52 @@ def parse_blocks(lines: list[str], header_re, date_re, val_group: int) -> list[B
     if cur is not None:
         cur.end = len(lines)
         out.append(cur)
+    return out
+
+
+def parse_prov_blocks(lines: list[str], date_re, val_group: int) -> list[Block]:
+    """按**品牌**切 providers.toml：`[x]` / `[x.info]` / `[x.policy]` 归为同一段，
+    不论它们在文件里隔着多远。返回顺序 = 品牌首次出现的顺序。
+
+    与 parse_blocks 的区别：parse_blocks 只按行位置切，段体必然连续 —— 对
+    `data/plans/*.toml`（每个 `[ISO]` 紧跟自己的 `[[ISO.plans]]`）是对的；对
+    providers.toml 末尾那一堆 `[<brand>.policy]` 就是错的（见 RE_PROV_HEADER）。
+    """
+    order: list[str] = []
+    spans: dict[str, list[list[int]]] = {}
+    # ① 先按**所有**表头把文件切满：每张表占据「本表头 → 下一个表头（任意品牌）」。
+    #    只把相邻表头并成一段是错的 —— 那样 `[roami]` 的区间只剩它自己那一行，
+    #    中间几十行字段落在任何区间之外（实测：10 个品牌段体全空、指纹全相同）。
+    hits: list[tuple[int, str]] = []
+    for i, s in enumerate(lines):
+        m = RE_PROV_HEADER.match(s)
+        if m:
+            hits.append((i, m.group(1)))
+    # ② 再按品牌归组：`[x]` / `[x.info]` / `[x.policy]` 合成同一段的多区间。
+    for n, (i, key) in enumerate(hits):
+        end = hits[n + 1][0] if n + 1 < len(hits) else len(lines)
+        if key not in spans:
+            order.append(key)
+            spans[key] = []
+        sp = spans[key]
+        if sp and sp[-1][1] == i:      # 与上一区间相接 → 并起来
+            sp[-1][1] = end
+        else:
+            sp.append([i, end])
+    out: list[Block] = []
+    for key in order:
+        sp = spans[key]
+        b = Block(key, sp[0][0], sp[-1][1], ranges=[(lo, hi) for lo, hi in sp])
+        for lo, hi in b.ranges:
+            if b.date_idx >= 0:
+                break
+            for i in range(lo + 1, hi):
+                m2 = date_re.match(lines[i])
+                if m2:
+                    b.date_idx = i
+                    b.date = m2.group(val_group)
+                    break
+        out.append(b)
     return out
 
 

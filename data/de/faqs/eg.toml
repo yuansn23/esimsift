@@ -1,0 +1,42 @@
+# EG FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Ägypten?"
+a = "Für ${cheap_price} ist {cheap_plan} von {cheap_brand} der günstigste Weg ins Netz in {country_dat}. Über die {plan_count} Tarife für {country_acc} von {brand_count} Anbietern auf dieser Seite liegt der beste Preis pro Gigabyte bei {value_plan} von {value_brand} mit ${value_pergb}/GB. Richte den Tarif nach deiner Reisedauer statt nach der niedrigsten Zahl."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Ägypten wirklich unbegrenzt?"
+a = "Behandle sie als gedeckelt: {unl_count} unbegrenzte Tarife für {country_acc} nennen jeweils ein Tagesvolumen und eine Rückfallgeschwindigkeit. {unl_brand} bietet den besten Tagessatz mit ${unl_perday} ({unl_days} Tage für ${unl_price}), gegenüber einer Marktspanne von {unl_perday_range}. Was {unl_brand} veröffentlicht: {unl_allowance}; danach {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Ägypten?"
+a = "Die ehrliche Antwort ist, dass diese beiden nicht austauschbar sind. Airalo verkauft Pakete: Die schärfste Rate für {country_acc} ist ${ah_airalo_pergb}/GB ({ah_airalo_plan}, ${ah_airalo_price}). Holafly verkauft stattdessen unbegrenzte Tage, das kleinste Paket für {country_acc} umfasst {ah_holafly_days} Tage für ${ah_holafly_price} (${ah_holafly_perday}/Tag)."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Ägypten?"
+a = "Ja, und der Weg über die eSIM ist der, der den Papierkram vermeidet. Eine lokale ägyptische SIM zu registrieren bedeutet Passfotos in einem offiziellen Laden, während eine Reise-eSIM vom Anbieter im Checkout registriert wird – nichts mitzubringen und kein Büro zu finden."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Ägypten?"
+a = "Die Tarife auf dieser Seite laufen über Vodafone Egypt, Orange Egypt, Etisalat Misr. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Ägypten und Saudi-Arabien abdecken?"
+a = "Nur über einen regionalen Tarif, denn die Tabellen für {country_acc} gelten für einen Markt. Um {neighbor} mitzunehmen, brauchst du ein regionales Paket oder einen zweiten Tarif – der Preis pro Gigabyte unterscheidet sie."
+
+[[faq]]
+q = "Kann ich eine eSIM in Ägypten nutzen?"
+a = "Ja – was eine eSIM in {country_dat} stoppen kann, liegt auf deiner Seite und nicht am Land. Die Wahl dreht sich hier um Preis und Volumen und nicht um Verfügbarkeit: {plan_count} Tarife von {brand_count} Anbietern. Prüfe zuerst dein Handy und wähle dann den Tarif, der zu deiner Reisedauer passt."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Ägypten?"
+a = "Ja, sofern das Handy eSIM-Hardware hat und keinen Netlock trägt. Die zwei entscheidenden Prüfungen sind Hardware und Sperrstatus – die {plan_count} Tarife hier installieren auf einem Handy, das beide besteht, und scheitern an einem, das eine nicht besteht. Mach den *#06#-Test vor dem Tarifkauf."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Ägypten?"
+a = "Mit einer Reise-eSIM für {country_acc} wird keine Nummer ausgegeben. Die Heimleitung im physischen Slot zu lassen ist die übliche Lösung, und nur so kommen Verifizierungscodes weiterhin an. Lass deine Heim-SIM für Anrufe und Codes aktiv und lass die eSIM die Daten tragen."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Ägypten?"
+a = "Wir beantworten die Bewertungsfrage mit Messung statt mit Gefühl. Fair-Use-Bedingungen, Hotspot-Regeln und Rückerstattungsfristen sind die Stellen, an denen die echten Unterschiede liegen, und die sind dokumentiert statt gewählt. Lies zuerst die Zahlen oben und prüfe dann die eigenen Bewertungen des Anbieters für die menschliche Seite."

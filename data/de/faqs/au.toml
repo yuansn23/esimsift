@@ -1,0 +1,42 @@
+# AU FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Australien?"
+a = "{cheap_brand} hält für {country_acc} die Bestmarke: {cheap_plan} für ${cheap_price}. Das ergibt ${cheap_perday} pro Tag über die Laufzeit des Tarifs. Wenn du nur Karten und Nachrichten brauchst, reicht der Einstiegspreis, und wer streamt, sollte nach $/GB wählen."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Australien wirklich unbegrenzt?"
+a = "Gedeckelt statt unbegrenzt – die {unl_count} unbegrenzten Tarife für {country_acc} drosseln, sobald das Tagesvolumen aufgebraucht ist. Die Tagessätze liegen zwischen {unl_perday_range}, und der günstigste ist {unl_brand} mit ${unl_perday}/Tag – ${unl_price} für {unl_days} Tage. Prüfe die Rückfallgeschwindigkeit vor dem Kauf, denn das ist das, was du nach dem Tagesvolumen bekommst: {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Australien?"
+a = "Es kommt auf die Form an – Datenpakete gegen unbegrenzte Tage. Die beste Rate von Airalo für {country_acc} ist ${ah_airalo_pergb}/GB – {ah_airalo_plan} für ${ah_airalo_price} – und das ist ein festes Paket statt eines Tagesvolumens. Nimm Holafly, wenn du lieber keine Gigabyte zählst, denn seine Pakete für {country_acc} beginnen bei ${ah_holafly_price} für {ah_holafly_days} Tage (${ah_holafly_perday}/Tag); nimm Airalo für eine leichte, kurze Reise."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Australien?"
+a = "Nein – für Reise-eSIMs in {country_dat} ist kein Identitätsnachweis nötig. Die Regeln für lokale SIM-Karten unterscheiden sich, aber die Tarife auf dieser Seite kommen vorregistriert."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Australien?"
+a = "Die Tarife auf dieser Seite laufen über Telstra, Optus, Vodafone. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Australien und Neuseeland abdecken?"
+a = "Nicht mit einem Ein-Land-Tarif. Führt die Reise von {country_dat} weiter, und {neighbor} soll dabei sein, vergleiche ein regionales Paket mit zwei separaten Tarifen, denn die Tabellen hier bepreisen jeden Markt für sich."
+
+[[faq]]
+q = "Kann ich eine eSIM in Australien nutzen?"
+a = "Ja, und in dieser Hinsicht gibt es keine Besonderheit – keine lokale Registrierung und keine Genehmigung nötig. Alle {plan_count} Tarife in unserer Tabelle für {country_acc} registrieren sich in den heimischen Netzen statt im Roaming, es gibt also keine Abdeckungshürde. Bestätige, dass das Gerät eSIM unterstützt und entsperrt ist, und wähle dann aus der Tabelle oben."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Australien?"
+a = "Derselbe Test wie überall: Wähle *#06# und suche eine EID-Nummer. Regionale Varianten sind die Falle, die es zu prüfen gilt: Dasselbe Modell kann je nach Verkaufsmarkt mit oder ohne eSIM-Chip ausgeliefert werden. Teste das Handy jetzt, dann wird die Tarifwahl eine Preisfrage statt einer Kompatibilitätsfrage."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Australien?"
+a = "Für Nachrichten und Karten brauchst du keine. Sprache ist meist nicht Teil des Angebots, und Anrufe laufen über eine App statt über das Mobilfunknetz. Lass die Heimleitung im Handy und schalte ihre Daten ab."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Australien?"
+a = "Wir führen keine Bewertung für eSIMs in {country_dat}, und das ist eine Entscheidung und kein Versehen. Der Grund: Dieselbe Marke schneidet je nach Region des Bewerters anders ab, eine einzelne Zahl als Wahrheit zu zitieren wäre irreführend. Nimm die Zahlen oben als Grundlage und prüfe die Rückgaberichtlinie an der Quelle."

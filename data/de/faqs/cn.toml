@@ -1,0 +1,42 @@
+# CN FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für China?"
+a = "Beim Einstiegspreis liegt {cheap_brand} für {country_acc} vorn: {cheap_plan} für ${cheap_price}. Über die {plan_count} Tarife für {country_acc} von {brand_count} Anbietern auf dieser Seite liegt der beste Preis pro Gigabyte bei {value_plan} von {value_brand} mit ${value_pergb}/GB. Kleine Pakete passen zu Städtereisen, bei längeren Aufenthalten ist ein größerer Tarif pro Gigabyte meist günstiger."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in China wirklich unbegrenzt?"
+a = "Nein. Jeder der {unl_count} unbegrenzten Tarife für {country_acc} deckelt sein Tagesvolumen bei voller Geschwindigkeit. {unl_brand} bietet den besten Tagessatz mit ${unl_perday} ({unl_days} Tage für ${unl_price}), gegenüber einer Marktspanne von {unl_perday_range}. Zwei Werte entscheiden, ob ein gedeckelter Tarif zu dir passt, und {unl_brand} nennt beide: {unl_allowance}, dann {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für China?"
+a = "Verschiedene Produkte: Airalo verkauft feste Datenpakete, Holafly verkauft unbegrenzte Tage. Airalo verkauft Pakete: Die schärfste Rate für {country_acc} ist ${ah_airalo_pergb}/GB ({ah_airalo_plan}, ${ah_airalo_price}). Holafly verkauft nur tageweise unbegrenzt: {ah_holafly_days} Tage für ${ah_holafly_price}, oder ${ah_holafly_perday} pro Tag."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in China?"
+a = "Das ist das eine Reiseziel, bei dem die Frage in die falsche Richtung zeigt. Eine Reise-eSIM für das Festland von China verlangt von dir keinen Identitätsschritt, weil die Registrierung außerhalb des Landes passiert – und genau deshalb erreicht sie Google und WhatsApp ohne VPN, was eine lokale SIM nicht kann."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in China?"
+a = "Die Tarife auf dieser Seite laufen über China Mobile, China Unicom, China Telecom. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM China und Japan abdecken?"
+a = "Nur mit einem regionalen Paket, denn die Landestarife auf dieser Seite überschreiten keine Grenzen. Die Märkte rund um {country_acc} haben hier eigene Tabellen – {neighbors_all} gehören dazu – rechne ein regionales Paket also gegen zwei Einzeltarife."
+
+[[faq]]
+q = "Kann ich eine eSIM in China nutzen?"
+a = "Eine eSIM funktioniert in {country_dat}, und nichts am Reiseziel verhindert das. Die Wahl dreht sich hier um Preis und Volumen und nicht um Verfügbarkeit: {plan_count} Tarife von {brand_count} Anbietern. Kläre die Handy-Frage, den Rest erledigt der Vergleich oben."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in China?"
+a = "Dein Gerät entscheidet hier, nicht das Reiseziel. Die zwei entscheidenden Prüfungen sind Hardware und Sperrstatus – die {plan_count} Tarife hier installieren auf einem Handy, das beide besteht, und scheitern an einem, das eine nicht besteht. Kläre beide Prüfungen zu Hause im WLAN statt am Flughafen."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in China?"
+a = "Eine lokale Nummer ist nicht nötig, um in {country_dat} eine eSIM zu nutzen. Die Heimleitung im physischen Slot zu lassen ist die übliche Lösung, und nur so kommen Verifizierungscodes weiterhin an. Entscheide, ob du wirklich eine lokale Nummer brauchst, bevor du einen zweiten Kauf machst."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in China?"
+a = "Bewertungsnoten lassen wir bewusst weg, weil eine einzelne Zahl die Streuung dahinter verbirgt. Fair-Use-Bedingungen, Hotspot-Regeln und Rückerstattungsfristen sind die Stellen, an denen die echten Unterschiede liegen, und die sind dokumentiert statt gewählt. Vergleiche die Tarife oben nach Preis und lies dann die Bedingungen des Anbieters vor dem Kauf."

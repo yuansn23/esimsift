@@ -1,0 +1,42 @@
+# MA FAQ (Deutsch) – erzeugt von scripts/faq_frames_de.py, nicht von Hand ändern.
+# Zahlen und Markennamen laufen über {token}; Werte berechnet layouts/partials/faq-live-tokens.html zur Build-Zeit.
+
+[[faq]]
+q = "Was ist die günstigste eSIM für Marokko?"
+a = "Der niedrigste Preis auf dieser Seite: {cheap_plan} von {cheap_brand} für ${cheap_price}. Das sind ${cheap_perday} pro Tag, was eher zu einem kurzen Aufenthalt passt als zu einem langen. Kaufe für die Reise, die du wirklich machst, und nicht für die niedrigste Zahl auf der Seite."
+
+[[faq]]
+q = "Ist unbegrenztes eSIM-Datenvolumen in Marokko wirklich unbegrenzt?"
+a = "Groß statt grenzenlos: {unl_count} unbegrenzte Tarife für {country_acc} unterliegen Fair-Use-Regeln. Die Laufzeit bewegt den Satz ebenso wie die Grenze: {unl_perday_range} pro Tag über die Auswahl, mit {unl_brand} am niedrigsten bei ${unl_perday} für {unl_days} Tage. Vergleiche die Grenzen der Anbieter vor dem Kauf, denn die gedrosselte Geschwindigkeit ist der entscheidende Wert, und bei {unl_brand} ist sie {unl_drop}."
+
+[[faq]]
+q = "Airalo oder Holafly für Marokko?"
+a = "Keiner von beiden ist der günstigste Tarif auf dieser Seite, und sie konkurrieren auch nicht zu denselben Bedingungen. Für {country_acc} ist Airalos günstigste Rate pro Gigabyte ${ah_airalo_pergb} ({ah_airalo_plan}, ${ah_airalo_price}). Wo Holafly gewinnt, ist die Planbarkeit, ab ${ah_holafly_price} für {ah_holafly_days} Tage (${ah_holafly_perday}/Tag), und wo Airalo gewinnt, ist eine kurze, leichte Reise."
+
+[[faq]]
+q = "Brauche ich einen Identitätsnachweis für eine eSIM in Marokko?"
+a = "Ja – marokkanische SIMs werden gegen einen Pass registriert, und die Verkäufer, die wir führen, sammeln ihn beim eSIM-Kauf ein statt an einem Maroc-Telecom-Schalter. Vor Ort ist das Signal in der Altstadt das größere Hindernis: Die Gassen der Medina in Fes überfordern jedes Netz, nimm also Offline-Karten mit."
+
+[[faq]]
+q = "Welche Netze nutzen eSIMs in Marokko?"
+a = "Die Tarife auf dieser Seite laufen über Maroc Telecom, Orange Maroc, Inwi. Unterschiede zeigen sich vor allem außerhalb der großen Städte – die Netz-Spalte in der Haupttabelle zeigt, über welches Netz jeder Tarif läuft."
+
+[[faq]]
+q = "Kann eine eSIM Marokko und weitere Länder der Region abdecken?"
+a = "Ein Land pro Tarif, eine für {country_acc} gekaufte eSIM endet also an der Grenze. Ein regionales Paket oder ein zweiter Tarif bringt {neighbor} dazu, und beide lohnen den Vergleich mit zwei Einzelkäufen."
+
+[[faq]]
+q = "Kann ich eine eSIM in Marokko nutzen?"
+a = "Ja, es funktioniert. Keine länderspezifische Sperre steht zwischen einer Reise-eSIM und den Netzen in {country_dat}. Was variiert, ist der Preis und nicht der Zugang – {plan_count} Tarife von {brand_count} Anbietern, alle in denselben nationalen Netzen. Kläre die Handy-Frage vor dem Kauf und vergleiche den Rest über den Preis."
+
+[[faq]]
+q = "Funktioniert mein Handy mit einer eSIM in Marokko?"
+a = "Es hängt vom Gerät ab und nicht vom Land, denn jeder Tarif auf dieser Seite ist ein Standard-eSIM-Profil. Ein in einem anderen Markt gekauftes Gerät ist der übliche Auslöser, und das hat nichts mit {country_dat} selbst zu tun. Mach die zwei Prüfungen und komm zur Tabelle oben zurück."
+
+[[faq]]
+q = "Brauche ich eine lokale Nummer in Marokko?"
+a = "Nein, außer du brauchst ausdrücklich Anrufe über eine lokale Nummer. Reise-eSIMs werden als Daten verkauft, wer eine für Sprache kauft, zahlt für das falsche Produkt. Lass beide Leitungen im Handy und stelle Daten auf die eSIM."
+
+[[faq]]
+q = "Was sagen Reisende über eSIMs in Marokko?"
+a = "Statt einer Sternebewertung beantwortet diese Seite die Frage mit Zahlen. Die veröffentlichten Bedingungen sind der Teil, den niemand bewertet und jeder lesen sollte, deshalb zitieren wir sie. Nimm die Tabellen oben als die prüfbare Hälfte und lies Bewertungen für den Rest."

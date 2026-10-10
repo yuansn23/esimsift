@@ -1,0 +1,51 @@
+{{- /* 套餐名本地化：data/plans/*.toml 的 `name` 是**供应商原始产品名**，同一张表里
+     既有品牌名（"Abrazo!"、"Belganet"、"Uki Mobile"）又有结构词（"50GB / 30 Days"）。
+     非英语页只替换**结构词**与**本页目的地的国名**，品牌名原样保留（那是商标，不译）。
+
+     两层替换：
+       ① 国名 —— 本页目的地的英文名 → data/de/countries.toml 的本地化名。
+          已验证：9,095 个套餐名里**没有一条**含别的国家的名字，全部就是本页目的地
+          （`scripts/verify_de_text.py` 的 B 段逐年断言），所以只按 ISO 取一个目标即可。
+       ② 结构词 —— Unlimited Data / Unlimited / UNLIMITED / unlimited / Day Plan / Days /
+          days / Day / Local（词表在 i18n 的 plan_name__* 组；英文侧的值就是源词本身）。
+
+     两个例外，都由数据而非约定兜住：
+       · `Canada Mobile` / `Macao Mobile` 里 `Canada`/`Macao` 是**品牌名不是国名** ——
+         国名后面紧跟 ` Mobile` 时整条跳过（这是数据里唯一一种「国名长在品牌名里」的形态，
+         verify_de_text.py 的 B 段会断言这份清单没有新增）。
+       · 供应商在少数产品名里用**非规范国名**（"Czech Republic" / "Turkey" / "Republic of Ireland"），
+         与 countries.toml 的规范名（Czechia / Turkiye / Ireland）匹配不上 → 别名单独列在
+         data/planaliases.toml，并由同一个脚本断言「非规范用法一条不漏」。
+
+     语言无关：上面两个数据源在英文侧与源数据**完全相同**（$en == $loc；词表值 == 源词），
+     `ne $en $loc` 为假 → 直接落到恒等的结构词替换（值即原词）→ 英文产物逐字节不变。
+     用法：partial "plan-name.html" (dict "name" .name "iso" $iso) —— 模板块内联调用。
+     ⚠ **凡渲染 plan.name 的地方都必须走本 partial**（表格 / 卡片 / prose / FAQ token）。
+     漏一处就是一处英文残留，而守卫若只扫表格单元格就看不见它 —— 见 verify_de_text.py。 */ -}}
+{{- $n := .name -}}
+{{- $iso := .iso -}}
+{{- $en := "" -}}
+{{- $loc := "" -}}
+{{- with index site.Data.countries $iso -}}{{- $en = .name -}}{{- end -}}
+{{- $d := partialCached "i18n-data.html" . site.Language.Lang -}}
+{{- with index $d.countries $iso -}}{{- $loc = .name -}}{{- end -}}
+{{- $al := slice -}}
+{{- with index site.Data.planaliases $iso -}}{{- $al = .aliases | default slice -}}{{- end -}}
+{{- if and $en (ne $en $loc) -}}
+  {{- if not (findRE (printf "\\b%s\\b\\s+Mobile" $en) $n) -}}
+    {{- range $al -}}{{- $n = replaceRE (printf "(?i)\\b%s\\b" .) $loc $n -}}{{- end -}}
+    {{- $n = replaceRE (printf "(?i)\\b%s\\b" $en) $loc $n -}}
+  {{- end -}}
+{{- end -}}
+{{- $n = replaceRE "\\bUnlimited Data\\b" (i18n "plan_name__unlimited_data") $n -}}
+{{- $n = replaceRE "\\bUnlimited\\b" (i18n "plan_name__unlimited") $n -}}
+{{- $n = replaceRE "\\bUNLIMITED\\b" (i18n "plan_name__unlimited_caps") $n -}}
+{{- $n = replaceRE "\\bunlimited\\b" (i18n "plan_name__unlimited_lower") $n -}}
+{{- /* 长串必须排在短串前：`Day Plan` 是 Nomad 的产品线名（"Day Plan -South Korea
+     -2GB/Day -3 Days"），若让 `\bDay\b` 先跑会得到「Tag Plan」这种半译混合。 */ -}}
+{{- $n = replaceRE "\\bDay Plan\\b" (i18n "plan_name__day_plan") $n -}}
+{{- $n = replaceRE "\\bDays\\b" (i18n "plan_name__days") $n -}}
+{{- $n = replaceRE "\\bdays\\b" (i18n "plan_name__days_lower") $n -}}
+{{- $n = replaceRE "\\bDay\\b" (i18n "plan_name__day") $n -}}
+{{- $n = replaceRE "\\bLocal\\b" (i18n "plan_name__local") $n -}}
+{{- return $n -}}

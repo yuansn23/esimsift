@@ -38,7 +38,7 @@
   {{ if lt .minPrice $cheapEntry }}{{ $cheapEntry = .minPrice }}{{ $cheapCountryName = .name }}{{ end }}
 {{ end }}
 {{ $avgGB := 0.0 }}{{ if gt $gcount 0 }}{{ $avgGB = div $sum (float $gcount) }}{{ end }}
-{{ $checked := "" }}{{ if gt (len $checkedDates) 0 }}{{ $checked = index (sort $checkedDates) (sub (len $checkedDates) 1) }}{{ end }}
+{{ $checked := "" }}{{ if gt (len $checkedDates) 0 }}{{ $checked = index (sort $checkedDates) (sub (len $checkedDates) 1) }}{{ end }}{{/* 区域显示名：字典键与 data-region 必须保持英文，只做显示层转换 */}}{{ $rl := partial "region-label.html" .Params.region }}
 
 <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
   {{ partial "breadcrumbs.html" . }}
@@ -47,32 +47,32 @@
     <header>
       <div class="flex flex-wrap items-center gap-3">
         <span class="badge bg-brand-50 text-brand-700">{{ i18n "guides_region__region_guide" | safeHTML }}</span>
-        <span class="badge bg-ink-50 text-ink-500">{{ $n }} countries</span>
-        {{ with $checked }}<span class="badge bg-ink-50 text-ink-500">prices checked {{ time.Format ":date_medium" (time .) }}</span>{{ end }}
+        <span class="badge bg-ink-50 text-ink-500">{{ i18n "guides_region__countries_badge" (dict "n" $n) | safeHTML }}</span>
+        {{ with $checked }}<span class="badge bg-ink-50 text-ink-500">{{ i18n "guides_region__prices_checked_on" (dict "date" (time.Format ":date_medium" (time .))) | safeHTML }}</span>{{ end }}
       </div>
       <h1 class="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.15]">{{ .Title }}</h1>
-      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">Every country we track in {{ .Params.region }}, ranked by the cheapest per-gigabyte rate across all {{ len $d.providers }} providers — so you can see which destinations are cheap to stay connected in, and which provider wins the region on price.</p>
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">{{ i18n "guides_region__hero_lead" (dict "region" $rl "providers" (len $d.providers)) | safeHTML }}</p>
       <div class="mt-6 flex flex-wrap gap-3">
-        {{ with index $regionCountries 0 }}<div class="stat-tile"><span class="stat-num text-lg">{{ .name }}</span><span class="stat-label">cheapest at ${{ printf "%.2f" .minPerGB }}/GB</span></div>{{ end }}
-        {{ if lt $cheapEntry 999999.0 }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" $cheapEntry }}</span><span class="stat-label">cheapest entry plan in {{ $cheapCountryName }}</span></div>{{ end }}
+        {{ with index $regionCountries 0 }}<div class="stat-tile"><span class="stat-num text-lg">{{ .name }}</span><span class="stat-label">{{ i18n "guides_region__cheapest_at_price" (dict "price" (printf "%.2f" .minPerGB)) | safeHTML }}</span></div>{{ end }}
+        {{ if lt $cheapEntry 999999.0 }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" $cheapEntry }}</span><span class="stat-label">{{ i18n "guides_region__cheapest_entry_in" (dict "country" $cheapCountryName) | safeHTML }}</span></div>{{ end }}
         {{ if gt $avgGB 0.0 }}<div class="stat-tile"><span class="stat-num tnum">${{ printf "%.2f" $avgGB }}</span><span class="stat-label">{{ i18n "guides_region__regional_average_gb" | safeHTML }}</span></div>{{ end }}
-        {{ with $bestProv }}<div class="stat-tile"><span class="stat-num text-lg">{{ $bestProv }}</span><span class="stat-label">cheapest in {{ $bestWins }} of {{ $n }} countries</span></div>{{ end }}
+        {{ with $bestProv }}<div class="stat-tile"><span class="stat-num text-lg">{{ $bestProv }}</span><span class="stat-label">{{ i18n "guides_region__cheapest_in_n_of_m" (dict "n" $bestWins "total" $n) | safeHTML }}</span></div>{{ end }}
       </div>
     </header>
     <figure class="figure">
       {{ $hero := "travel-esim-illustration-001.webp" }}
       {{ with .Params.hero }}{{ $hero = . }}{{ end }}
       {{ $ic := imageConfig (printf "static/img/esim/%s" $hero) }}
-      <img src="/img/esim/{{ $hero }}" alt="{{ with .Params.hero_alt }}{{ . }}{{ else }}Phone comparing eSIM data prices across {{ $.Params.region }}{{ end }}" width="{{ $ic.Width }}" height="{{ $ic.Height }}">
-      <figcaption>{{ .Params.region }} eSIM prices — every $/GB rate computed from the same dated snapshot.</figcaption>
+      <img src="/img/esim/{{ $hero }}" alt="{{ with .Params.hero_alt }}{{ . }}{{ else }}{{ i18n "guides_region__hero_alt" (dict "region" $rl) }}{{ end }}" width="{{ $ic.Width }}" height="{{ $ic.Height }}">
+      <figcaption>{{ i18n "guides_region__figcaption" (dict "region" $rl) | safeHTML }}</figcaption>
     </figure>
   </div>
 
   {{/* ── GEO 结构层（与 networks/single.html 同源）：短答块 + 关键事实栅格 + Country 实体 ItemList ──
        AI 引擎按块检索，区域页原先只有表格，没有可被单独引用的直答句与实体清单。
        事实值全部构建期推导（$n / $regionCountries / $bestProv / $avgGB / $checked），零写死。 */}}
-  {{ $h2Answer := .Params.h2_answer | default (printf "%s eSIM prices at a glance" .Params.region) }}
-  {{ $h2Facts  := .Params.h2_facts  | default (printf "%s eSIM price facts" .Params.region) }}
+  {{ $h2Answer := .Params.h2_answer | default (i18n "guides_region__h2_answer" (dict "region" $rl)) }}
+  {{ $h2Facts  := .Params.h2_facts  | default (i18n "guides_region__h2_facts" (dict "region" $rl)) }}
 
   {{ with .Params.prompt_answer }}
   <section class="mt-10" aria-labelledby="short-answer">
@@ -93,8 +93,8 @@
       </div>
       {{ with index $regionCountries 0 }}
       <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">Cheapest $/GB in {{ $.Params.region }}</dt>
-        <dd class="mt-1 text-sm font-medium text-ink-800">{{ .name }} at ${{ printf "%.2f" .minPerGB }}</dd>
+        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "guides_region__cheapest_gb_in" (dict "region" $rl) | safeHTML }}</dt>
+        <dd class="mt-1 text-sm font-medium text-ink-800">{{ i18n "guides_region__name_at_price" (dict "country" .name "price" (printf "%.2f" .minPerGB)) | safeHTML }}</dd>
       </div>
       {{ end }}
       {{ if gt $avgGB 0.0 }}
@@ -106,13 +106,13 @@
       {{ if lt $cheapEntry 999999.0 }}
       <div class="rounded-xl bg-ink-50/60 px-4 py-3">
         <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "guides_region__cheapest_entry_plan" | safeHTML }}</dt>
-        <dd class="mt-1 text-sm font-medium text-ink-800">${{ printf "%.2f" $cheapEntry }} in {{ $cheapCountryName }}</dd>
+        <dd class="mt-1 text-sm font-medium text-ink-800">{{ i18n "guides_region__price_in_country" (dict "price" (printf "%.2f" $cheapEntry) "country" $cheapCountryName) | safeHTML }}</dd>
       </div>
       {{ end }}
       {{ with $bestProv }}
       <div class="rounded-xl bg-ink-50/60 px-4 py-3">
         <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "guides_region__cheapest_in_the_most_countries" | safeHTML }}</dt>
-        <dd class="mt-1 text-sm font-medium text-ink-800">{{ . }} — {{ $bestWins }} of {{ $n }}</dd>
+        <dd class="mt-1 text-sm font-medium text-ink-800">{{ i18n "guides_region__provider_wins" (dict "provider" . "n" $bestWins "total" $n) | safeHTML }}</dd>
       </div>
       {{ end }}
       <div class="rounded-xl bg-ink-50/60 px-4 py-3">
@@ -131,10 +131,10 @@
   {{/* ── Country 实体 ItemList（让 AI 拿到「这个区域包含哪些目的地」的实体清单） ── */}}
   {{ $countryItems := slice }}
   {{ range $i, $rc := $regionCountries }}
-    {{ $countryItems = $countryItems | append (dict "@type" "ListItem" "position" (add $i 1) "item" (dict "@type" "Country" "name" $rc.name "url" (printf "%scompare/%s/" site.BaseURL $rc.slug))) }}
+    {{ $countryItems = $countryItems | append (dict "@type" "ListItem" "position" (add $i 1) "item" (dict "@type" "Country" "name" $rc.name "url" (printf "%scompare/%s/" site.Home.Permalink $rc.slug))) }}
   {{ end }}
   {{ with $countryItems }}<script type="application/ld+json">
-  {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "ItemList" "name" (printf "%s destinations ranked by eSIM price" $.Params.region) "itemListElement" .) | safeJS }}
+  {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "ItemList" "name" (i18n "guides_region__itemlist_name" (dict "region" ($rl | htmlUnescape))) "itemListElement" .) | safeJS }}
   </script>{{ end }}
 
   {{ .Content }}
@@ -142,8 +142,8 @@
   {{/* ── 逐国联赛表（按 $/GB 升序） ── */}}
   <section class="mt-10" aria-labelledby="league">
     <p class="eyebrow">{{ i18n "guides_region__the_numbers" | safeHTML }}</p>
-    <h2 id="league" class="text-2xl font-bold">Cheapest eSIM data in {{ .Params.region }}</h2>
-    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">Sorted by the best per-gigabyte rate any provider posts in each of the {{ $n }} {{ .Params.region }} destinations. Click a country for the full side-by-side provider and plan comparison.</p>
+    <h2 id="league" class="text-2xl font-bold">{{ i18n "guides_region__league_h2" (dict "region" $rl) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">{{ i18n "guides_region__league_lead" (dict "n" $n "region" $rl) | safeHTML }}</p>
     <div class="card mt-5 overflow-hidden p-0">
       <div class="overflow-x-auto">
         <table class="table-pro">
@@ -167,8 +167,8 @@
   {{/* ── 区域冠军（最低价夺冠次数） ── */}}
   <section class="mt-10" aria-labelledby="winner">
     <p class="eyebrow">{{ i18n "guides_region__the_verdict" | safeHTML }}</p>
-    <h2 id="winner" class="text-2xl font-bold">Which provider is cheapest in {{ .Params.region }}</h2>
-    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">{{ .Params.region }} has {{ $n }} tracked destinations, each with its own cheapest plan, and counting the wins shows which provider is the region's best price default — not a coverage verdict, just where the numbers land today.</p>
+    <h2 id="winner" class="text-2xl font-bold">{{ i18n "guides_region__winner_h2" (dict "region" $rl) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">{{ i18n "guides_region__winner_lead" (dict "region" $rl "n" $n) | safeHTML }}</p>
     <div class="card mt-5 overflow-hidden p-0">
       <div class="overflow-x-auto">
         <table class="table-pro">
@@ -178,37 +178,37 @@
               {{ $c := 0 }}{{ range $wins }}{{ if eq . $pk }}{{ $c = add $c 1 }}{{ end }}{{ end }}
               <tr>
                 <td><a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $pk) }}" class="font-medium text-ink-900 transition-colors hover:text-brand-700">{{ $pv.name }}</a></td>
-                <td class="tnum">{{ $c }}<span class="ml-1 text-xs text-ink-400">of {{ $n }}</span></td>
+                <td class="tnum">{{ $c }}<span class="ml-1 text-xs text-ink-400">{{ i18n "guides_region__of_n" (dict "n" $n) | safeHTML }}</span></td>
               </tr>
             {{ end }}
           </tbody>
         </table>
       </div>
     </div>
-    {{ with $bestKey }}<p class="mt-3 text-xs text-ink-400">The cheapest {{ $.Params.region }} provider changes by destination, so this is a region summary — check the country table above before you buy. Full provider profiles on the <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $bestKey) }}" class="font-semibold text-brand-700 hover:underline">{{ $bestProv }} page</a>.</p>{{ end }}
+    {{ with $bestKey }}<p class="mt-3 text-xs text-ink-400">{{ i18n "guides_region__winner_note" (dict "region" $rl) | safeHTML }} <a href="{{ partial "lang-href.html" (printf "/esim-providers/%s/" $bestKey) }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "guides_region__provider_page_link" (dict "provider" $bestProv) | safeHTML }}</a>.</p>{{ end }}
   </section>
 
   {{/* ── 区域 eSIM vs 单国 eSIM（定性洞察，不编造区域套餐价格） ── */}}
   <section class="mt-10" aria-labelledby="regional">
     <p class="eyebrow">{{ i18n "g_before_you_buy" | safeHTML }}</p>
-    <h2 id="regional" class="text-2xl font-bold">One {{ .Params.region }} plan or several single country plans</h2>
-    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">The {{ .Params.region }} table compares single-country plans, because that is what the country pages show and what can be verified line by line. Regional and multi-country eSIMs exist and can be cheaper when a trip crosses several borders — but their prices are not listed the same way, so they never enter the league table above. The rule of thumb: for one country, buy that country's cheapest single-country plan; for three or more countries, check whether a regional plan beats the sum of its single-country parts.</p>
+    <h2 id="regional" class="text-2xl font-bold">{{ i18n "guides_region__regional_h2" (dict "region" $rl) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">{{ i18n "guides_region__regional_lead" (dict "region" $rl) | safeHTML }}</p>
     <div class="mt-5 grid gap-3 sm:grid-cols-2">
-      <div class="card p-5"><p class="font-display text-sm font-bold text-ink-950">{{ i18n "guides_region__one_destination" | safeHTML }}</p><p class="mt-1.5 text-sm leading-relaxed text-ink-600">Buy the single-country plan that tops the {{ .Params.region }} table for that country. The cheapest provider there is visible in the country page's own league table.</p></div>
-      <div class="card p-5"><p class="font-display text-sm font-bold text-ink-950">{{ i18n "guides_region__several_destinations" | safeHTML }}</p><p class="mt-1.5 text-sm leading-relaxed text-ink-600">Sum the cheapest single-country plans for your {{ .Params.region }} route first, then compare that total against any regional plan before committing.</p></div>
+      <div class="card p-5"><p class="font-display text-sm font-bold text-ink-950">{{ i18n "guides_region__one_destination" | safeHTML }}</p><p class="mt-1.5 text-sm leading-relaxed text-ink-600">{{ i18n "guides_region__one_country_card" (dict "region" $rl) | safeHTML }}</p></div>
+      <div class="card p-5"><p class="font-display text-sm font-bold text-ink-950">{{ i18n "guides_region__several_destinations" | safeHTML }}</p><p class="mt-1.5 text-sm leading-relaxed text-ink-600">{{ i18n "guides_region__several_countries_card" (dict "region" $rl) | safeHTML }}</p></div>
     </div>
   </section>
 
   {{/* ── 全部国家内链（区域 → 国家闭环） ── */}}
   <section class="mt-10" aria-labelledby="countries">
     <p class="eyebrow">{{ i18n "guides_region__explore" | safeHTML }}</p>
-    <h2 id="countries" class="text-2xl font-bold">Every {{ .Params.region }} country we track</h2>
+    <h2 id="countries" class="text-2xl font-bold">{{ i18n "guides_region__all_countries_h2" (dict "region" $rl) | safeHTML }}</h2>
     <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {{ range $regionCountries }}
       <a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="card card-hover group flex items-center gap-3 p-4">
         <img src="{{ .flag | relURL }}" alt="" class="h-6 w-9 shrink-0 rounded-md object-cover" loading="lazy">
         <span class="flex-1 text-sm font-semibold text-ink-900 group-hover:text-brand-700">{{ .name }}</span>
-        <span class="tnum text-xs font-bold text-accent-600">from ${{ printf "%.2f" .minPrice }}</span>
+        <span class="tnum text-xs font-bold text-accent-600">{{ i18n "g_from_price" | safeHTML }}{{ printf "%.2f" .minPrice }}</span>
       </a>
       {{ end }}
     </div>
@@ -219,7 +219,7 @@
   {{ if gt (len $sibs) 1 }}
   <section class="mt-10" aria-labelledby="other-regions">
     <p class="eyebrow">{{ i18n "g_keep_exploring" | safeHTML }}</p>
-    <h2 id="other-regions" class="text-2xl font-bold">Other regions ranked the same way as {{ .Params.region }}</h2>
+    <h2 id="other-regions" class="text-2xl font-bold">{{ i18n "guides_region__other_regions_h2" (dict "region" $rl) | safeHTML }}</h2>
     <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {{ range sort $sibs "Weight" "asc" }}
       {{ if ne .RelPermalink $.RelPermalink }}
@@ -227,8 +227,8 @@
       {{ $cnt := 0 }}
       {{ range $iso, $c := $d.countries }}{{ if eq $c.region $rc }}{{ $cnt = add $cnt 1 }}{{ end }}{{ end }}
       <a href="{{ .RelPermalink }}" class="card card-hover group flex items-center gap-3 p-4">
-        <span class="flex-1 text-sm font-semibold text-ink-900 group-hover:text-brand-700">Best {{ $rc }} eSIM</span>
-        <span class="tnum text-xs font-bold text-accent-600">{{ $cnt }} countries</span>
+        <span class="flex-1 text-sm font-semibold text-ink-900 group-hover:text-brand-700">{{ i18n "guides_region__best_region_esim" (dict "region" (partial "region-label.html" $rc)) | safeHTML }}</span>
+        <span class="tnum text-xs font-bold text-accent-600">{{ i18n "guides_region__countries_badge" (dict "n" $cnt) | safeHTML }}</span>
       </a>
       {{ end }}
       {{ end }}
@@ -240,7 +240,7 @@
   {{ with .Params.faqs }}
   <section class="mt-10" aria-labelledby="faq">
     <p class="eyebrow">FAQ</p>
-    <h2 id="faq" class="text-2xl font-bold">Which {{ $.Params.region }} eSIM should you buy</h2>
+    <h2 id="faq" class="text-2xl font-bold">{{ i18n "guides_region__faq_h2" (dict "region" $rl) | safeHTML }}</h2>
     <div class="mt-6 space-y-3">
       {{ range . }}
       <details class="card group p-0">
