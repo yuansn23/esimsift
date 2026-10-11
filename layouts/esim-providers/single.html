@@ -401,7 +401,7 @@
     {{- $cm := where $cs.rows "key" $key -}}
     {{- if gt (len $cm) 0 -}}
       {{- $c1 := index (sort $cm "price" "asc") 0 -}}
-      {{- $cmin = float $c1.price -}}{{- $cname = $c1.name -}}{{- $cgb = float $c1.gb -}}{{- $cdays = int $c1.days -}}
+      {{- $cmin = float $c1.price -}}{{- $cname = partial "plan-name.html" (dict "name" $c1.name "iso" .iso) -}}{{- $cgb = float $c1.gb -}}{{- $cdays = int $c1.days -}}
       {{- $offerList = $offerList | append (dict
             "@type" "Offer"
             "name" (printf "%s %s eSIM" $p.name $cname)

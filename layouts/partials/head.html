@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#1A7E6B">
 
 {{- /* ── Title/Description：compare hub 由数据层推导，其余页用 front matter ── */ -}}
-{{- $title := .Title -}}
+{{- $title := cond (eq .Kind "404") (i18n "404__page_not_found") .Title -}}
 {{- $desc := .Site.Params.description -}}
 {{- with .Params.description }}{{ $desc = . }}{{ end -}}
 {{- $lockedTitle := false -}}

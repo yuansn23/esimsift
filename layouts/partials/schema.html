@@ -21,7 +21,7 @@
     {{- end -}}
   {{- end -}}
   {{- $pos = add $pos 1 -}}
-  {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" .LinkTitle "item" .Permalink) -}}
+  {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "name" (cond (eq .Kind "404") (i18n "404__page_not_found") .LinkTitle) "item" .Permalink) -}}
 {{- end -}}
 {{- if gt (len $items) 1 -}}
 <script type="application/ld+json">

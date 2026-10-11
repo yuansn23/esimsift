@@ -2,8 +2,9 @@
 
 > 独立 eSIM 比价站。单一数据源（`data/*.toml`），模板层推导一切派生指标。
 > 基座：Hugo 0.159.1 + Tailwind CLI。语言：**英语（根路径）+ 德语（`/de/`，2026-10-10 第七十二轮 D9 解禁，
-> 无 noindex）** —— ⚠ **工作区已是 644 页的完整德语站，但 HEAD 只有 55 个文件（54 个 noindex）⇒ 线上仍停在「德语只有首页」，见第八十轮小节**；i18n **1818 key**（en = de 逐 key 同序对齐，未定义 0）。
-> **`npm run validate` 现有 5 道源码层闸门**（2026-10-10 第七十八轮新增后两道，见对应小节）。
+> 无 noindex）** —— ⚠ **工作区已是 644 页的完整德语站，但 HEAD 只有 55 个文件（54 个 noindex）⇒ 线上仍停在「德语只有首页」，见第八十轮小节**；i18n **1832 key**（en = de 逐 key 同序对齐，未定义 0）。
+> **`npm run validate` 现有 5 道源码层闸门**（2026-10-10 第七十八轮新增后两道，见对应小节）；
+> **`npm run check:output` 现有 13 道产物闸门**（第十三项 `check_inline_copy.py` = 2026-10-11 第八十一轮新增）。
 
 ## 命令
 
@@ -67,6 +68,115 @@ layouts/partials/country-stats.html  ← 全站唯一聚合入口
 11. **`static/` 下放什么就发布什么**（2026-10-03 发现）：`static/img/esim/图片_backup_20260929/` 连带里面的
    `.workbuddy/`（内部 py 脚本 + 日志 + memory md）被原样拷进 `public/`，线上 HTTP 200 可直接下载。
    **备份/草稿/临时产物一律放项目根，`static/` 只放页面真正引用的资源**
+
+## 已完成（德语 JS 文案漏译 **已修复** + 新增第 13 道产物闸门；逐字节归属法证明零外溢，2026-10-11 第八十一轮续跑）
+
+**触发（用户逐字）**：「A 修这 3 个模板（约 20 处，会变产物字节，需逐字节归属法证明零外溢）；B 只建那条缺失的守卫 `check_inline_copy.py`（防下次再漏，不动产物）；C 先修 A 里的「跳英语站」3 处硬编码路径（影响转化，收益最高）  这些全部优化」。
+
+### B · 新守卫 `scripts/check_inline_copy.py`（23348 B，进 `check:output` 第 13 项）
+
+三条判据，全部 **ERROR**：`[1]` 脚本体英文残留 · `[2]` 站内路径字面量 · `[3]` head 元数据（`title`/`og:*`/`twitter:*`/`description`/`ld+json` 全部字符串值）。
+- 扫 **`public/**/*.html` 全量**，不只 `*/index.html` —— `public/<lang>/404.html` 不是 index.html，这是红线 88 的**第二形态**（本仓原有产物守卫只 glob index）。
+- 用**英语封闭词类密度**判据，不用黑名单（`verify_de_text.py` 的 F 段自承「清单永远追不上数据」）。
+- **`--selftest` 11 项**（含 `bad-path-dup` 反例）；**新判据必须先对旧产物跑出红** —— 已加 `--root DIR` 参数专为此。
+- 实测：`--root .buildlog/pub_r81_pre` = **FAIL 26 条 / 324 处**（exit 1）→ `public/` = **0 / 0 / 0**。两条独立路径互相印证。
+
+### A + C · 改了 5 个模板 + 14 个 i18n key
+
+| 文件 | 改动 |
+|---|---|
+| `layouts/compare/vs-single.html` | 45 对决页 × 2 语言：5 处 JS 文案改 `{{ i18n \| jsonify \| safeJS }}` + `T()` `%s` 顺序替换；**`'/compare/'` → `{{ relLangURL "compare/" }}`（C：勾选两品牌后不再跳英语站）** |
+| `layouts/tools/list.html` | `/de/tools/`：11 处 JS 文案 + **3 处硬编码路径（C）** + 国家下拉 `<optgroup label>` 改本地化（`REGIONS` 数据岛）+ **套餐名过 `plan-name.html`**（原本裸 `.name`） |
+| `layouts/partials/head.html` | `<title>`：`cond (eq .Kind "404") (i18n "404__page_not_found") .Title` |
+| `layouts/partials/schema.html` | BreadcrumbList 当前页 `name` 同上 |
+| `layouts/esim-providers/single.html` | **新守卫当场揪出的第 4 处病灶**：JSON-LD `Offer.name` 裸 `$c1.name` → 过 `plan-name.html`（德语品牌 Hub 曾印 `aloSIM republic of ireland eSIM`） |
+| `i18n/{en,de}.toml` | 各 +14 key（197641→198512 / 213989→214945），**1832 : 1832 且顺序逐 key 一致** |
+| `scripts/check_i18n.py` | 判据 4 **WARN → ERROR**（红线 104：能发现用户可见缺陷的判据必须 ERROR） |
+| `package.json` | `check:output` 12 → **13 道** |
+
+**判据 4 转 ERROR 的前置条件已满足**：`validate` 报「内联脚本文案 5 处 → **0 处**」。
+
+### 逐字节归属法（`scripts/_r81_attrib.py`，用户点名要求）
+
+`npm run build` **三次**（修 2 轮自坑后重跑），末次 `BUILD_EXIT=0`、13 道产物闸门全绿。
+
+| 层 | 断言 | 结果 |
+|---|---|---|
+| L1 | 未变更页 sha256 与改造前相同 | **1188 / 1188** |
+| L2 | 90 对决页共用同一差异块、逐字节还原；剥掉脚本体后**非脚本区不变** | **90 / 90** |
+| L3 | tools 2 页：差异**全在 `<script>` 内**（服务端渲染的可见 HTML 一个字节不动）；404 页 3 处全为 head 元数据 | ✓ |
+| L4 | 品牌 Hub 10 页：行数不变，**107 处变更全为 JSON-LD `"name"` 值**，前后缀字节不变 | ✓ |
+
+**变更集合恰为 103 页 = 45 `vs_en` + 45 `vs_de` + 10 `hub_de` + `tools_en` + `tools_de` + `404_de`**，无 `ADDED`/`DELETED`。
+
+### ★ 归属法当场揪出 3 处**我自己引入**的漂移（都已修）
+
+1. **`' GB'` → `"GB"` 丢空格**（EN/DE 同时 `5.00 GB` → `5.00GB`）。`GB` 既不是英语词也不是路径 ⇒ **非受迫改动**，已回原为 `' ' + {{ i18n "g_unit_gb" }}`。
+2. **`&amp;` 漏退实体**：`REGIONS` 数据岛直接吃 `partial "region-label.html"` 的 HTML 值，`og.label`（**DOM 属性，不解析 HTML**）会印出 `Afrika &amp; Nahost`。`layouts/index.html` L243 的注释**逐字写明了这个坑**（+ `| htmlUnescape`）—— 我引用了真源却漏抄。已补 + 注释。
+3. **2 个换行被吃掉**：新增的 `{{- /* … */ -}} … {{- end -}}` 纯逻辑块两端 dash 吃掉了 HEAD 本就存在的空白 ⇒ `tools/index.html` 少 2 字节。修法：尾部 `{{- end }}` **故意不写 dash**。
+
+**唯一保留的 EN 排版变化（受迫，非缺陷）**：`$2.50/day` → `$2.50 / day` —— 德语必须显示 `/ Tag`，而全站唯一的 `/day` 后缀真源是既有 key `tools_list__per_day_suffix`（值 `" / day"`），复用它就把同页服务端渲染的 `— GB / day` 统一了；另建 key 会违反红线 8。
+
+**顺手修正的守卫缺陷**：`de/tools/index.html` 的 `subUrl`/`countryUrl` 去转义后都是 `/compare/` ⇒ 46 页被报成 47 页。加 `_uniq`，按「**页**」计数，并补 `bad-path-dup` 反例进自测。
+
+### 交付与状态
+
+- 新守卫 `scripts/check_inline_copy.py`、归属法骨架 `scripts/_r81_attrib.py`、对照快照 `.buildlog/pub_r81_pre/`（改造前 1291 页，已证与已提交基线逐字节相同）
+- 改动同步 `PROJECT.md`（红线 103 补「已建 + `@graph` 是容器 + 只 glob index 两形态」；**新增 105/106**）、`STATUS.md`（本节）、`docs/de-audit-2026-10-11.md` §6
+- ⚠ **回归基线 `docs/regression-manifest.json` 尚未刷新**（见下方待办）；**未 `git commit`、未部署**
+
+## 已完成（德语站审核：SEO 合格；静态文案 100% 德语化，**JS 运行时文案 47 页漏译**，2026-10-11 第八十一轮 · 仅审核、零改动）
+
+**触发（用户两问，逐字）**：「你在德语的 确定每个页面，每个功能都翻译成德语了吗， 以及每个页面的技术 seo是否符合要求，在审核下」。
+
+**结论（一句话）**：**SEO 合格；翻译的静态层 100% 完成，但「JS 运行时生成的交互文案」漏译 47 个页面** ——
+根因是**全站所有德语文案守卫都会先挖掉 `<script>` 再判**（正确做法），于是写在 `<script>` 里的用户可见文案**没有任何一条守卫看得见**。
+
+**② 技术 SEO：德语 644 页逐页实测，13 类判据 0 违规**（`lang` / `title` / `description` / `canonical` 自指 /
+`hreflang` + `x-default` / `noindex` / OG / `twitter:card` / `viewport` / `H1==1` / JSON-LD 合法 / `<img alt>` 0 缺 /
+内链语言 0 泄漏）。158526 张图**无一张缺 alt**。唯一命中页是 `public/en/index.html`（Hugo `alias` 壳，按设计无 SEO 元素）。
+软性优化项：`title` >65 字符 **2 页**、`description` >160 字符 **77 页**（全在 `compare/<country>/[holafly/]`）。
+
+**① 翻译：分层现算**
+
+| 层 | 结果 |
+|---|---|
+| i18n | en 1818 : de 1818 key，集合差集 **0**；de 空值 **0**；`de 值 == en 值` 仅 **31** 条且全天然不可译（`GB`/`eSIM`/`FAQ`/`Code`/`App Store ↗`/占位符模板） |
+| 内容 | `content/en` 644 : `content/de` 644 md，差集 **0**；与英语逐字节相同的德语正文 **0** 篇；555 篇「正文为空」是**设计**（vs 页 / 子页正文由模板+数据渲染） |
+| 静态可见文本 | 644 页，用**不依赖黑名单**的「英语特有词密度」判据 → **0 页含英文** |
+| 属性层 | `alt` / `aria-label` / `placeholder` / `title=` → **0 处英文** |
+| 标题摘要 | 644 页的 `title`/`description`/`og:title`/`og:description`/`H1` → **0 页含英文** |
+| **JS 运行时文案** | ❌ **47 页有英文**（见下） |
+
+**★ 缺口：47 / 645 个德语 HTML（3 个模板，全部绕过 `layouts/index.html` 已验证的正确范式
+`{{ i18n "…" }}` + `{{ relLangURL "…" }}` 服务端注入 JS）**
+
+1. **`layouts/compare/vs-single.html` → 德语 45/45 对决页全中**：L517-526 六句 JS 文案全英文
+   （`'Compare ' + … + ' →'` / `'Pick two providers'` / `'Tick exactly two — …'` / `'One more pick — …'` /
+   `'Opening the computed … head-to-head.'`）；**且 L516 `href = '/compare/' + …` 硬编码 → 勾选两个品牌后按钮跳英语站**。
+2. **`layouts/tools/list.html` → `/de/tools/`，程度最重（四类）**：
+   (a) 11 句 JS 文案英文（`'Our pick'` / `'Other matching plans'` / `'No plan matches — … (unlimited …).'` /
+   `'See '` / `'Read '` / `'Compare all '` / `' days'` / `'/day'` / `'Your estimate · '`）；
+   (b) **国家下拉 `<optgroup label>` = 英文区域名**（L252-254 `og.label = r`，`r` 是英文区域键）；
+   (c) **结果卡片显示供应商原始英文产品名**（L12 用 `.name` 原文、**未过 `partials/plan-name.html`**）→ 产物现算 **7884 处**英文
+   （3400 种，例 `'Unlimited / 7 Days'`×182、`'United Arab Emirates (UAE)'`×37、`'republic of ireland'`×32）；
+   (d) 3 处硬编码站内路径（L281-283 `/compare/`、`/esim-providers/`）→ 三个按钮跳英语站。
+3. **`/de/404.html`**：`<title>` / `og:title` / JSON-LD BreadcrumbList `name` = `404 Page not found`（模板正文本身是德语）。
+
+**为什么 5 道守卫全绿却漏了**（判据盲区，写进 PROJECT.md 红线）：
+`verify_de_text` **E1–E5** 扫可见文本但**先挖 `<script>`**；**F** 是黑名单（23 短语 + 8 词，`Pick two providers` 不在内）；
+**G** 的清单来自「已进 `strings.toml` 的数据串」，JS 硬编码文案不是数据层字符串；
+`check_i18n` 的内联脚本判据 ① 只 `warns.append`（**WARN 不失败构建**）② 正则要求字面量 ≥14 字符 → `'Compare '`（8 字符）**静默漏报**；
+`_de_link_leak_audit` **[1]** 读产物 `<a href>`，而 JS 运行时赋值的 href 不在其中。
+
+**附带发现**：审核开始时 `public/` 有 **1315 个文件**被 `hugo server` 污染（baseURL = `http://localhost:1313`，
+`check_output` **EXIT=1**、sitemap 全 localhost）→ 已重跑 `npm run build` 修复（**BUILD_EXIT=0**，hugo **287.9s**，sitemap 644 条域名正确）。
+另：两个 sitemap **均无 `xhtml:link` hreflang 注解**、根 sitemap 无 `sitemapindex`（只有 644 条英语 loc）—— **不影响发现**
+（`robots.txt` 已声明 2 行 Sitemap、页面级 3864 个 hreflang tag 互指 OK）。
+
+**交付**：`docs/de-audit-2026-10-11.md`（完整报告：逐处证据 + 判据盲区表 + 修复方案 + 复现命令）；
+探针 3 个（均带 `--selftest`）：`.buildlog/p81_page_audit.py`（SEO 13 判据）、`.buildlog/p81_js_audit.py`、`.buildlog/p81_de_text_audit.py`。
+**本轮未改任何源码/数据/产物，未 commit、未部署。**
 
 ## 已完成（「线上 old」≠「本地坏」：德语站从未提交 + public 被 localhost 污染，2026-10-10 第八十轮 · d55）
 

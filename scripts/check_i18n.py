@@ -9,7 +9,14 @@
   1. [ERROR]  layouts/ 中还有「纯静态英文文本节点 / 可翻译属性值」没走 i18n
   2. [ERROR]  i18n/<lang>.toml 与 i18n/en.toml 的 key 不对齐（漏译或多余 key）
   3. [WARN]   紧跟 {{ }} 的「拼装句碎片」—— 数量已知，需人工重写成带占位符的整句
-  4. [WARN]   模板内联 <script> 里的用户可见英文（JS 上下文不能用 i18n，须改 data-* 注入）
+  4. [ERROR]  模板内联 <script> 里的用户可见英文（JS 上下文不能用 i18n，须改 data-* 或
+              `{{ i18n "…" | jsonify | safeJS }}` 服务端注入）
+              ★ 2026-10-11 第八十一轮起**从 WARN 升为 ERROR**：只判 WARN = 等于没判
+                （构建照绿）。当时实测德语 47 页在 `<script>` 里印英文而 5 道闸门全绿。
+              ⚠️ 本判据的**已知边界**：正则要求字面量 ≥14 字符，`'Compare '`（8 字符、
+                被 `+` 拼成整句）漏报 —— 该缺口由 `scripts/check_inline_copy.py` 用
+                「英语封闭词类密度」判据补齐（它扫**产物**且不限长度）。本判据保留
+                长度下限是做**源码级**的粗网，不追求召回。
   5. [ERROR]  `printf "…"` 格式串里的英文文案 —— 含 JSON-LD 的 `"name" (printf "…")`
               与 head.html 的 <title> 候选串（第六十三轮新增；实测 53 个德语页曾印英文而守卫全绿）
   6. [ERROR]  `dict "q" "…"` / `dict "a" "…"` 等**文案键的字面量值** ——
@@ -507,8 +514,12 @@ def main() -> int:
 
     if frags:
         warns.append(f"{len(frags)} 处拼装句碎片待人工重写为带占位符的整句（例：{frags[0][0]} -> {frags[0][1][:50]!r}）")
-    if scripts:
-        warns.append(f"{len(scripts)} 处内联 <script> 用户文案需改为 data-* 注入（例：{scripts[0][0]} -> {scripts[0][1][:50]!r}）")
+    # 进阶：内联 <script> 文案 = **ERROR**（2026-10-11 第八十一轮）。
+    # 只判 WARN 时它不阻塞构建，实测德语 47 页在 JS 里印英文而 5 道闸门全绿。
+    for v in scripts[:15]:
+        errors.append("内联 <script> 用户文案未抽 i18n（德语/译文站会印英文）-> " + f"{v[0]} : {v[1][:60]!r}")
+    if len(scripts) > 15:
+        errors.append(f"... 另有 {len(scripts) - 15} 处内联脚本文案")
 
     for w in warns:
         print(f"  WARN  {w}")

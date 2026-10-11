@@ -504,6 +504,11 @@
     var hint = document.getElementById('vsHint');
     if (!go || !hint || boxes.length === 0) return;
     var order = [];
+    // 服务端注入的文案模板用 %s 占位（译者在 i18n 里控制语序），这里只做顺序替换。
+    function T(s) {
+      var a = arguments, i = 1;
+      return String(s).replace(/%s/g, function () { return a[i++]; });
+    }
     function nameOf(k) {
       for (var i = 0; i < boxes.length; i++) {
         if (boxes[i].getAttribute('data-key') === k) return boxes[i].getAttribute('data-name');
@@ -513,17 +518,17 @@
     function refresh() {
       if (order.length === 2) {
         var s = order.slice().sort();
-        go.setAttribute('href', '/compare/' + s[0] + '-vs-' + s[1] + '/');
-        go.textContent = 'Compare ' + nameOf(s[0]) + ' vs ' + nameOf(s[1]) + ' →';
+        go.setAttribute('href', '{{ relLangURL "compare/" }}' + s[0] + '-vs-' + s[1] + '/');
+        go.textContent = T({{ i18n "compare_vs_single__compare_s_vs_s" | jsonify | safeJS }}, nameOf(s[0]), nameOf(s[1]));
         go.classList.remove('pointer-events-none', 'opacity-50');
         go.setAttribute('aria-disabled', 'false');
-        hint.textContent = 'Opening the computed ' + nameOf(s[0]) + ' vs ' + nameOf(s[1]) + ' head-to-head.';
+        hint.textContent = T({{ i18n "compare_vs_single__opening_the_computed_s_vs_s_head_to_head" | jsonify | safeJS }}, nameOf(s[0]), nameOf(s[1]));
       } else {
         go.setAttribute('href', '#more');
-        go.textContent = 'Pick two providers';
+        go.textContent = {{ i18n "compare_vs_single__pick_two_providers" | jsonify | safeJS }};
         go.classList.add('pointer-events-none', 'opacity-50');
         go.setAttribute('aria-disabled', 'true');
-        hint.textContent = order.length === 0 ? 'Tick exactly two — the button opens the computed head-to-head.' : 'One more pick — a third tick replaces the oldest.';
+        hint.textContent = order.length === 0 ? {{ i18n "compare_vs_single__tick_exactly_two_the_button_opens_the_computed_head_to_h" | jsonify | safeJS }} : {{ i18n "compare_vs_single__one_more_pick_a_third_tick_replaces_the_oldest" | jsonify | safeJS }};
       }
     }
     boxes.forEach(function (b) {

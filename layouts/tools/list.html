@@ -9,7 +9,7 @@
   {{ range $pk, $pdata := $d.plans }}
     {{ with index $pdata $iso }}
       {{ range .plans }}
-        {{ $plans = $plans | append (dict "iso" $iso "provider" $pk "name" .name "gb" (float .gb) "days" (int .days) "label" (partial "plan-data-label.html" .gb) "type" .type "price" (float .price)) }}
+        {{ $plans = $plans | append (dict "iso" $iso "provider" $pk "name" (partial "plan-name.html" (dict "name" .name "iso" $iso)) "gb" (float .gb) "days" (int .days) "label" (partial "plan-data-label.html" .gb) "type" .type "price" (float .price)) }}
       {{ end }}
     {{ end }}
   {{ end }}
@@ -48,6 +48,21 @@
   {{ $popList = $popList | append (dict "name" $c.name "slug" $c.slug "flag" $c.flag "min" $s.minPrice "provs" $s.providerCount "rank" (printf "%02d|%s" (sub 100 $s.providerCount) $c.name)) }}
 {{ end }}
 {{ $popRanked := sort $popList "rank" "asc" }}
+{{- /* 区域名 → 本地化标签（喂前端国家下拉的 <optgroup>）：键**保持英文**（与 data-region 同源，
+      见 partials/region-label.html 的说明），只有显示值走 region-label.html。
+      对照 layouts/index.html 的 country-index 生成 —— 同一事实只允许一份真源。
+      ⚠ 必须跟 index.html 一样接 `htmlUnescape`：i18n 值里 "&" 写作 "&amp;"（HTML 上下文
+      用），这里是 **JS 数据岛**；不退实体就会被 jsonify 转成 \u0026amp;，前端 `og.label =`
+      赋值的是 DOM 属性（不解析 HTML），读者看到字面量 "Afrika &amp; Nahost"。
+      ⚠ 本段整体**零输出**，但 `{{- end }}` 的尾部**故意不写 dash** —— 它的换行 + 下一空行
+      正是 HEAD 产物里 `{{ $popRanked }}` 之后的那 2 个换行（红线 3：空白也是字节）。
+      改成 `{{- end -}}` 会让 `tools/index.html` 少 2 字节，`verify_no_regression` 会变红。 */ -}}
+{{- $regionLabels := dict -}}
+{{- $regionKeys := slice -}}
+{{- range $d.countries }}{{ $regionKeys = $regionKeys | append .region }}{{ end -}}
+{{- range uniq $regionKeys -}}
+  {{- $regionLabels = merge $regionLabels (dict . (partial "region-label.html" . | htmlUnescape)) -}}
+{{- end }}
 
 <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6">
   {{ partial "breadcrumbs.html" . }}
@@ -241,7 +256,13 @@
   var PLANS = {{ $plans | jsonify | safeJS }};
   var PROVIDERS = {{ $provs | jsonify | safeJS }};
   var ACTS = {{ $acts | jsonify | safeJS }};
+  var REGIONS = {{ $regionLabels | jsonify | safeJS }};
   var needGb = 1;
+  // 服务端注入的文案模板用 %s 占位（译者在 i18n 里控制语序），这里只做顺序替换。
+  function T(s) {
+    var a = arguments, i = 1;
+    return String(s).replace(/%s/g, function () { return a[i++]; });
+  }
 
   var nameOf = {}, slugOf = {};
   COUNTRIES.forEach(function (c) { nameOf[c.iso] = c.name; slugOf[c.iso] = c.slug; });
@@ -251,7 +272,7 @@
   COUNTRIES.forEach(function (c) { (regions[c.region] = regions[c.region] || []).push(c); });
   Object.keys(regions).forEach(function (r) {
     var og = document.createElement('optgroup');
-    og.label = r;
+    og.label = REGIONS[r] || r;
     regions[r].forEach(function (c) {
       var o = document.createElement('option');
       o.value = c.iso; o.textContent = c.name;
@@ -272,44 +293,44 @@
     cands.sort(function (a, b) { return a.price - b.price; });
 
     if (!cands.length) {
-      out.innerHTML = '<div class="card p-6 text-sm text-ink-500">No plan matches — try a shorter trip or a smaller data need (unlimited plans have daily fair-use caps).</div>';
+      out.innerHTML = '<div class="card p-6 text-sm text-ink-500">' + {{ i18n "tools_list__no_plan_matches_try_a_shorter_trip_or_a_smaller_da" | jsonify | safeJS }} + '</div>';
       return;
     }
     var pick = cands[0];
     var cname = nameOf[pick.iso], slug = slugOf[pick.iso];
     var pname = PROVIDERS[pick.provider] || pick.provider;
-    var subUrl = '/compare/' + slug + '/' + pick.provider + '/';
-    var countryUrl = '/compare/' + slug + '/';
-    var provUrl = '/esim-providers/' + pick.provider + '/';
+    var subUrl = '{{ relLangURL "compare/" }}' + slug + '/' + pick.provider + '/';
+    var countryUrl = '{{ relLangURL "compare/" }}' + slug + '/';
+    var provUrl = '{{ relLangURL "esim-providers/" }}' + pick.provider + '/';
 
     var html = '<div class="card relative overflow-hidden border-2 border-brand-600 p-6">'
-      + '<span class="badge bg-brand-600 text-white">Our pick</span>'
+      + '<span class="badge bg-brand-600 text-white">' + {{ i18n "tools_list__our_pick" | jsonify | safeJS }} + '</span>'
       + '<p class="mt-3 font-display text-lg font-bold text-ink-950">' + pick.name + '</p>'
-      + '<p class="mt-1 text-sm text-ink-600"><span class="font-semibold text-ink-900">' + pname + '</span> · ' + pick.label + ' · ' + pick.days + ' days · ' + cname + '</p>'
-      + '<p class="mt-3 text-3xl font-extrabold text-ink-950 tnum">' + money(pick.price) + ' <span class="text-base font-semibold text-ink-400">' + money(pick.price / days) + '/day</span></p>'
+      + '<p class="mt-1 text-sm text-ink-600"><span class="font-semibold text-ink-900">' + pname + '</span> · ' + pick.label + ' · ' + T({{ i18n "tools_list__s_days" | jsonify | safeJS }}, pick.days) + ' · ' + cname + '</p>'
+      + '<p class="mt-3 text-3xl font-extrabold text-ink-950 tnum">' + money(pick.price) + ' <span class="text-base font-semibold text-ink-400">' + money(pick.price / days) + {{ i18n "tools_list__per_day_suffix" | jsonify | safeJS }} + '</span></p>'
       + '<div class="mt-5 flex flex-wrap gap-3">'
-      + '<a href="' + subUrl + '" class="btn-primary">See ' + pname + ' ' + cname + ' plans</a>'
-      + '<a href="' + provUrl + '" class="btn-out">Read ' + pname + ' review</a>'
+      + '<a href="' + subUrl + '" class="btn-primary">' + T({{ i18n "tools_list__see_s_s_plans" | jsonify | safeJS }}, pname, cname) + '</a>'
+      + '<a href="' + provUrl + '" class="btn-out">' + T({{ i18n "tools_list__read_s_review" | jsonify | safeJS }}, pname) + '</a>'
       + '</div>'
       + '</div>';
 
     var rest = cands.slice(1, 4);
-    html += '<div class="mt-6 flex items-center justify-between"><p class="text-xs font-bold uppercase tracking-wider text-ink-400">Other matching plans</p></div>';
+    html += '<div class="mt-6 flex items-center justify-between"><p class="text-xs font-bold uppercase tracking-wider text-ink-400">' + {{ i18n "tools_list__other_matching_plans" | jsonify | safeJS }} + '</p></div>';
     rest.forEach(function (p) {
       html += '<div class="card card-hover flex items-center justify-between gap-3 p-4">'
         + '<div><p class="font-semibold text-ink-950">' + p.name + '</p>'
-        + '<p class="text-xs text-ink-400">' + (PROVIDERS[p.provider] || p.provider) + ' · ' + p.days + ' days' + '</p></div>'
+        + '<p class="text-xs text-ink-400">' + (PROVIDERS[p.provider] || p.provider) + ' · ' + T({{ i18n "tools_list__s_days" | jsonify | safeJS }}, p.days) + '</p></div>'
         + '<div class="text-right"><p class="font-bold text-ink-950 tnum">' + money(p.price) + '</p></div></div>';
     });
     html += '<a href="' + countryUrl + '" class="card card-hover mt-3 flex items-center justify-between gap-3 p-4 group">'
-      + '<span class="text-sm font-semibold text-brand-700 group-hover:underline">Compare all ' + cands.length + ' ' + cname + ' plans</span>'
+      + '<span class="text-sm font-semibold text-brand-700 group-hover:underline">' + T({{ i18n "tools_list__compare_all_s_s_plans" | jsonify | safeJS }}, cands.length, cname) + '</span>'
       + '<span class="text-ink-300 group-hover:text-brand-600" aria-hidden="true">→</span></a>';
 
     out.innerHTML = html;
   }
 
   document.getElementById('calc-days').addEventListener('input', function () {
-    document.getElementById('calc-days-val').textContent = this.value + ' days';
+    document.getElementById('calc-days-val').textContent = T({{ i18n "tools_list__s_days" | jsonify | safeJS }}, this.value);
     render();
     renderEst();
   });
@@ -330,7 +351,7 @@
 
   function fmtH(h) {
     var v = Math.round(h * 2) / 2;
-    return (v % 1 === 0 ? String(v) : v.toFixed(1)) + ' h';
+    return (v % 1 === 0 ? String(v) : v.toFixed(1)) + {{ i18n "tools_list__h_suffix" | jsonify | safeJS }};
   }
 
   function renderEstRows() {
@@ -338,11 +359,11 @@
     ACTS.forEach(function (a) {
       html += '<div class="flex items-center justify-between gap-3 border-b border-ink-100 px-5 py-3 last:border-b-0">'
         + '<div><p class="text-sm font-semibold text-ink-900">' + a.label + '</p>'
-        + '<p class="text-xs text-ink-400 tnum">' + a.mb + ' MB/hour</p></div>'
+        + '<p class="text-xs text-ink-400 tnum">' + a.mb + {{ i18n "tools_list__mb_per_hour" | jsonify | safeJS }} + '</p></div>'
         + '<div class="flex items-center gap-2">'
-        + '<button type="button" class="est-step h-8 w-8 rounded-lg bg-ink-50 font-bold text-ink-600 hover:bg-ink-100" data-id="' + a.id + '" data-d="-0.5" aria-label="Less ' + a.label + '">&minus;</button>'
+        + '<button type="button" class="est-step h-8 w-8 rounded-lg bg-ink-50 font-bold text-ink-600 hover:bg-ink-100" data-id="' + a.id + '" data-d="-0.5" aria-label="' + T({{ i18n "tools_list__less_s" | jsonify | safeJS }}, a.label) + '">&minus;</button>'
         + '<span class="w-14 text-center font-display text-sm font-bold text-ink-950 tnum" id="est-h-' + a.id + '">' + fmtH(hours[a.id]) + '</span>'
-        + '<button type="button" class="est-step h-8 w-8 rounded-lg bg-ink-50 font-bold text-ink-600 hover:bg-ink-100" data-id="' + a.id + '" data-d="0.5" aria-label="More ' + a.label + '">+</button>'
+        + '<button type="button" class="est-step h-8 w-8 rounded-lg bg-ink-50 font-bold text-ink-600 hover:bg-ink-100" data-id="' + a.id + '" data-d="0.5" aria-label="' + T({{ i18n "tools_list__more_s" | jsonify | safeJS }}, a.label) + '">+</button>'
         + '</div></div>';
     });
     var box = document.getElementById('est-rows');
@@ -365,9 +386,9 @@
     var days = parseInt(document.getElementById('calc-days').value, 10) || 1;
     var margin = document.getElementById('est-margin').checked ? 1.2 : 1;
     var rec = Math.max(1, Math.ceil(gbDay * days * margin));
-    document.getElementById('est-gbday').textContent = gbDay.toFixed(2) + ' GB';
+    document.getElementById('est-gbday').textContent = gbDay.toFixed(2) + ' ' + {{ i18n "g_unit_gb" | jsonify | safeJS }};
     document.getElementById('est-days').textContent = days;
-    document.getElementById('est-total').textContent = rec + ' GB';
+    document.getElementById('est-total').textContent = rec + ' ' + {{ i18n "g_unit_gb" | jsonify | safeJS }};
     return rec;
   }
 
@@ -379,7 +400,7 @@
     var rec = renderEst();
     var chip = document.getElementById('calc-need-custom');
     chip.dataset.gb = String(rec);
-    chip.textContent = 'Your estimate · ' + rec + 'GB';
+    chip.textContent = {{ i18n "tools_list__your_estimate" | jsonify | safeJS }} + ' · ' + rec + {{ i18n "g_unit_gb" | jsonify | safeJS }};
     chip.classList.remove('hidden');
     chip.click();
     document.getElementById('calc').scrollIntoView({ behavior: 'smooth', block: 'start' });
