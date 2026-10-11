@@ -108,6 +108,12 @@ MARKER_ALLOWED: dict[str, set[str]] = {
     # 品牌 Hub 本轮也加了一个**只算本品牌**的 #calc，并被 JSON-LD 的 url
     # `%s#calc` 引用。id 是页内作用域，两者互不冲突，故登记为共享。
     'id="calc"':        {"provider_hub", "tools"},
+    # 国家页 /compare/<国>/ 的「本国价差最紧的 6 对」入口（2026-10-11 第八十二轮）。
+    # ★ 它**故意不叫** #headtohead —— 那个 id 已被登记为品牌 Hub 专属。本轮一开始
+    #   复用了同名 id，构建当场报 100 处「出现了只属于 ['provider_hub'] 的区块」。
+    #   两者是不同物：品牌 Hub 列该品牌的**全部**对手，本区块列该国相邻名次里价差
+    #   最小的 6 对。故新开专属 id 而不是放宽 headtohead 的白名单。
+    'id="closestmatchups"': {"country_hub"},
 }
 # 品牌详情页本轮新增的互动区块（同样只允许出现在品牌 Hub）。
 # 不计入 MARKER_REQUIRED —— 它们依赖 $cov 非空，降级壳页没有覆盖数据。

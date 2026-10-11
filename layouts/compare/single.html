@@ -69,6 +69,76 @@
   {{ $provAgg = merge $provAgg (dict .key $a) }}
 {{ end }}
 
+{{/* ── ⑤b 「该国相邻名次对决」入口（2026-10-11 第八十二轮）────────────────────
+     目的：@GSC「已发现 – 尚未编入索引」的对决页缺一条**来自高抓取页型的上下文入口**。
+     对决页此前的入站主要是「其他对决页」（互链双方都没被爬过 = 抓取死锁）。
+
+     ★ 口径怎么选的（可复跑：`python -X utf8 .buildlog/r82_pick_modes.py`，同一把尺子
+       量「不同组合集数 / 最高重复次数」，50 国 / 10 品牌）：
+         A 价差最大（绝对）   38 / 5
+         B 价差最大（相对）   42 / 4
+         C 最便宜 4 强两两     24 / 9
+         D 冠军 vs 其后 5 名   38 / 5
+         E 6 强内部固定 6 对   24 / 9
+         F 相邻名次取前 6      38 / 5
+         F2 相邻名次里价差最小的 6 组  ← 采用   47 / 2
+       F2 = 「先只允许相邻名次（1-2, 2-3 …），再按本国价差升序取 6 组」。
+       它同时赢在两件事上：① 分散度最高（47/50 种组合集，没有任何一集被 2 国以上复用）；
+       ② 与 H2 的文案**字面一致** —— H2 说 "closest matchups"，被选中的就真的这国
+       价差最紧的 6 对（而不是「排名前 6 相邻对」这种需要额外解释的取样）。
+       对照组里 C/E 只有 24 种组合集、同一集被复用 9 国 ⇒ 等于用新模块再制造一次
+       同质化；A/B/D 也都劣于 F2。
+
+     ★ 排序必须完全确定：两级复合键。排名键 `"%09.4f|%s"`（价格零填充 + 品牌 key），
+       配对键 `"%012.6f|%s-vs-%s"`（价差零填充 + slug）—— 价差并列时由 slug 兜底。
+       杜绝非稳定排序或 map 迭代顺序导致的构建不可复现
+       （本项目要求两次构建逐字节相同 —— 见 docs/regression-manifest.json）。
+       $h2hRank 已按价格升序，故 $nx.min ≥ $row.min 恒成立，`sub` 不会出现负价差。
+       $provAgg 只含「在该国在售」的品牌，其 minPrice 恒 > 0，无除零风险。
+
+     ★ 独立复算：`.buildlog/r82_recompute_h2h.py` 直接从 data/plans/*.toml 重算每国
+       应有的 6 组（不经模板），产物 `.buildlog/r82_out/h2h_expected.json` 用于与
+       构建产物逐条对账 —— 避免「用模板输出证明模板正确」。
+
+     ★ TOC 登记行**必须并进既有行**（现挂在 `providers` 那一行尾），不许自己占一行：
+       该处 11 行 `{{ $toc = … append … }}` 每行都会往产物吐 1 个 `\n`，
+       独立成行 = 国家页产物多 1 个空行（本轮实测：`<div class="mx-auto max-w-7xl…"`
+       之前多出 1 行空白）。并进既有行后产物 delta = 0，见 PROJECT.md 红线 106。
+
+     ★ 目标页存在性：slug 空间是**闭合**的 —— scripts/gen_vs_pages.py 生成的是完整
+       C(n,2) 组合（10 品牌 = 45 对），content/<lang>/compare/ 下 45 个 vs 页全在，
+       且文件名规则同为「按 key 字母序 a<b」。故动态 slug 不会产出死链。 */}}
+{{- $h2hKeys := slice -}}
+{{- range $k, $v := $provAgg }}{{ $h2hKeys = $h2hKeys | append $k }}{{ end -}}
+{{- $h2hKeys = sort $h2hKeys -}}
+{{- $h2hRank := slice -}}
+{{- range $h2hKeys -}}
+  {{- $pv := index $provAgg . -}}
+  {{- $h2hRank = $h2hRank | append (dict
+    "key" . "name" (index $d.providers .).name
+    "min" (float $pv.minPrice) "gb" (float $pv.minGB)
+    "sk" (printf "%09.4f|%s" (float $pv.minPrice) .)) -}}
+{{- end -}}
+{{- $h2hRank = sort $h2hRank "sk" "asc" -}}
+{{- $h2hPairs := slice -}}
+{{- range $i, $row := $h2hRank -}}
+  {{- $j := add $i 1 -}}
+  {{- if lt $j (len $h2hRank) -}}
+    {{- $nx := index $h2hRank $j -}}
+    {{- $g := sub (float $nx.min) (float $row.min) -}}
+    {{- $first := $row.key -}}{{- $second := $nx.key -}}
+    {{- if gt $row.key $nx.key }}{{ $first = $nx.key }}{{ $second = $row.key }}{{ end -}}
+    {{- $h2hPairs = $h2hPairs | append (dict
+      "slug" (printf "%s-vs-%s" $first $second)
+      "na" $row.name "nb" $nx.name
+      "pa" $row.min "pb" $nx.min
+      "gap" (printf "$%.2f" $g)
+      "sk" (printf "%012.6f|%s-vs-%s" $g $first $second)) -}}
+  {{- end -}}
+{{- end -}}
+{{- $h2hPairs = sort $h2hPairs "sk" "asc" -}}
+{{- $h2hPairs = first 6 $h2hPairs -}}
+
 {{/* 与 compare/provider.html 共用两件事：运营商官方站点（佐证来源）与行程天数选项。
      同一组值/同一份来源只在一处定义，两个页型必须给出相同的答案。 */}}
 {{ $carrierRefs := dict }}
@@ -129,7 +199,7 @@
 {{ if $unlimited }}{{ $toc = $toc | append (dict "id" "fup" "label" (i18n "compare_single__toc_fup")) }}{{ end }}
 {{ $toc = $toc | append (dict "id" "choose" "label" (i18n "compare_single__toc_choose")) }}
 {{ $toc = $toc | append (dict "id" "bytrip" "label" (i18n "compare_single__toc_bytrip")) }}
-{{ $toc = $toc | append (dict "id" "providers" "label" (i18n "compare_single__toc_providers")) }}
+{{ $toc = $toc | append (dict "id" "providers" "label" (i18n "compare_single__toc_providers")) }}{{ if gt (len $h2hPairs) 0 }}{{ $toc = $toc | append (dict "id" "closestmatchups" "label" (i18n "compare_single__toc_closestmatchups")) }}{{ end }}
 {{ if $country.quirks }}{{ $toc = $toc | append (dict "id" "quirks" "label" (i18n "compare_single__toc_quirks")) }}{{ end }}
 {{ if or (gt (len $netKeys) 0) (gt (len $profiles) 0) }}{{ $toc = $toc | append (dict "id" "networks" "label" (i18n "compare_single__toc_networks")) }}{{ end }}
 {{ $toc = $toc | append (dict "id" "netdata" "label" (i18n "compare_single__toc_netdata")) }}
@@ -732,6 +802,29 @@
       {{ end }}
     </div>
   </section>
+
+  {{/* ── ⑤b 该国「相邻名次对决」入口（计算见文件上部；口径理由同处）──
+       ⚠ 区块 id 故意**不复用**品牌 Hub 的同名 `#headtohead`：
+       scripts/verify_no_regression.py 的检查 A 把每个区块 id 登记成「只属于某几个页型」，
+       复用会当场报「出现了只属于 ['provider_hub'] 的区块 id="headtohead"」（本轮实测 100 处）。
+       两者内容也确实不同（品牌 Hub = 该品牌的全部对手；本页 = 本国价差最紧的 6 对），
+       故新开专属 id `closestmatchups`，并在该守卫里登记为 {"country_hub"}。 */}}
+  {{ if gt (len $h2hPairs) 0 }}
+  <section class="mt-14" aria-labelledby="closestmatchups">
+    <p class="eyebrow">{{ i18n "compare_single__h2h_eyebrow" | safeHTML }}</p>
+    <h2 id="closestmatchups" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_single__h2h_h2" (dict "country" ($country.name_acc | default $country.name)) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n "compare_single__h2h_lead" (dict "country" ($country.name_acc | default $country.name) "n" (len $h2hPairs)) | safeHTML }}</p>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {{ range $h2hPairs }}
+      <a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="card card-hover group p-5">
+        <p class="font-display text-sm font-bold text-ink-950 group-hover:text-brand-700">{{ .na }} {{ i18n "g_vs" | safeHTML }} {{ .nb }}</p>
+        <p class="mt-2 text-xs leading-relaxed text-ink-500 tnum">{{ i18n "compare_single__h2h_prices" (dict "a" .na "pa" (printf "$%.2f" .pa) "b" .nb "pb" (printf "$%.2f" .pb) "gap" .gap) | safeHTML }}</p>
+        <p class="mt-3 text-xs font-semibold text-brand-700 opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100">{{ i18n "g_see_the_verdict" | safeHTML }}</p>
+      </a>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
 
   {{/* ── ⑦ 国家特定须知（反同质化护城河）── */}}
   {{ with $country.quirks }}

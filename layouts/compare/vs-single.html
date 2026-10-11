@@ -340,6 +340,32 @@
     </div>
   </section>
 
+  {{/* ── ②c 按行程类型怎么选（2026-10-11 第八十二轮）────────────────────────────
+       GSC「已发现 – 尚未编入索引」的成因之一是「每页真正独有的内容太少」。
+       本段把两国**轻量档（≤ {{ .lo }} GB）/ 重载档（> {{ .hi }} GB）**各自的各国最低入门价
+       逐国比较后汇总（计算在 partials/vs-agg.html，档位边界也由它单点返回），
+       得出只属于这一对品牌的建议 —— 同一句话在别的对决页上数字必然不同。
+
+       ★ 两条硬约束（都踩过）：
+         ① 每个数字句只能有**一个句号** —— 探针按句末标点切句，多写一句静态收尾
+            就会多出一条 45× 逐字复制句（同 #gap 的注释，补丁 C 栽在这里）。
+         ② 句中**不出现国名** —— 德语国名数据层没有与格，国名只能当标签用（同 #gap）。
+         ③ N 只统计「两国都有该档位套餐」的国家；一方没有时那不是同一个选择。 */}}
+  {{ if or (gt $agg.lightN 0) (gt $agg.heavyN 0) }}
+  <section class="mt-12" aria-labelledby="fityour">
+    <p class="eyebrow">{{ i18n "compare_vs_single__fit_eyebrow" | safeHTML }}</p>
+    <h2 id="fityour" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n "compare_vs_single__h2_fit" (dict "a" $na "b" $nb) | safeHTML }}</h2>
+    <ul class="mt-5 space-y-2.5 text-ink-700">
+      {{ if gt $agg.lightN 0 }}
+      <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">·</span><span>{{ i18n "compare_vs_single__fit_light" (dict "lo" (printf "%.0f" $agg.lightGb) "n" $agg.lightN "a" $na "wa" $agg.aLightWins "b" $nb "wb" $agg.bLightWins "ties" $agg.lightTies) | safeHTML }}</span></li>
+      {{ end }}
+      {{ if gt $agg.heavyN 0 }}
+      <li class="flex gap-2"><span class="mt-0.5 font-bold text-brand-500">·</span><span>{{ i18n "compare_vs_single__fit_heavy" (dict "hi" (printf "%.0f" $agg.heavyGb) "n" $agg.heavyN "a" $na "wa" $agg.aHeavyWins "b" $nb "wb" $agg.bHeavyWins "ties" $agg.heavyTies) | safeHTML }}</span></li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
   {{/* ── ③ 结构差异（品牌档案 + 入口） ── */}}
   <section class="mt-12" aria-labelledby="differ">
     <p class="eyebrow">{{ i18n "compare_vs_single__beyond_price" | safeHTML }}</p>

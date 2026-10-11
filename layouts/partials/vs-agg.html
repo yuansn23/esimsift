@@ -9,41 +9,68 @@ VS 配对聚合 —— 单一数据入口。传入 dict (a, b)：两个品牌 ke
       用途：vs 页显示「$4.50 · 3 GB」并做数据量区间过滤。
   aWinsPrice bWinsPrice aWinsValue bWinsValue aTies
   aUnlimCountries bUnlimCountries aGlobalMin bGlobalMin aUnlimitedOnly bUnlimitedOnly
+  ── 2026-10-11 新增（供「按行程类型怎么选」段；旧消费方不受影响，纯新增键）──
+  aLightWins bLightWins lightTies lightN   —— 轻量档：0 < GB ≤ 5
+  aHeavyWins bHeavyWins heavyTies heavyN   —— 重载档：GB > 10
+     ★ 档位边界与 compare/single.html 的 $szCnt 逐字同构；gb=0（无限档）两档都不收。
+     ★ N = 两国在该档位**都**有套餐的国家数（一方没有就不是同一个选择，不计入）。
   checkedDate
 */ -}}
 {{- $a := .a -}}
 {{- $b := .b -}}
 {{- $plans := $d.plans -}}
+{{- /* 档位边界唯一定义处：文案里的 "under {lo} GB / above {hi} GB" 由本文件的返回值
+       注入（vs-single 不写第二遍数字），避免「代码改了、文案没改」的漂移（红线 8）。 */ -}}
+{{- $lightGb := 5.0 -}}
+{{- $heavyGb := 10.0 -}}
 {{- $rows := slice -}}
 {{- $aWinsPrice := 0 -}}{{- $bWinsPrice := 0 -}}{{- $ties := 0 -}}
 {{- $aWinsValue := 0 -}}{{- $bWinsValue := 0 -}}
+{{- $aLightWins := 0 -}}{{- $bLightWins := 0 -}}{{- $lightTies := 0 -}}{{- $lightN := 0 -}}
+{{- $aHeavyWins := 0 -}}{{- $bHeavyWins := 0 -}}{{- $heavyTies := 0 -}}{{- $heavyN := 0 -}}
 {{- $aUnlimCountries := 0 -}}{{- $bUnlimCountries := 0 -}}
 {{- $aGlobalMin := 0.0 -}}{{- $bGlobalMin := 0.0 -}}
 {{- $aMetered := false -}}{{- $bMetered := false -}}
 {{- $checkedDates := slice -}}
 {{- range $iso, $c := $d.countries -}}
-  {{- /* 每品牌在该国的 minPrice / minPerGB / hasUnlimited */ -}}
+  {{- /* 每品牌在该国的 minPrice / minPerGB / hasUnlimited
+         + 轻量档（0 < GB ≤ 5）与重载档（GB > 10）的最低入门价 —— 供「按行程类型怎么选」用。
+         档位边界与 compare/single.html 的 $szCnt 逐字同构（左开右闭；gb=0 是无限档，
+         两个档位都不得收录它，否则无限档会顶掉轻量档的最低价）。 */ -}}
   {{- $minA := 0.0 -}}{{- $pgA := 0.0 -}}{{- $unA := false -}}{{- $minGbA := 0.0 -}}
   {{- $minB := 0.0 -}}{{- $pgB := 0.0 -}}{{- $unB := false -}}{{- $minGbB := 0.0 -}}
+  {{- $lightA := 0.0 -}}{{- $heavyA := 0.0 -}}{{- $lightB := 0.0 -}}{{- $heavyB := 0.0 -}}
   {{- with index (index $plans $a) $iso -}}
     {{- $checkedDates = $checkedDates | append .checked -}}
     {{- range .plans -}}
-      {{- if or (eq $minA 0.0) (lt (float .price) $minA) }}{{- $minA = float .price -}}{{- $minGbA = float .gb -}}{{- end -}}
-      {{- if gt (float .gb) 0.0 -}}
-        {{- $g := div (float .price) (float .gb) -}}
+      {{- $pa := float .price -}}{{- $ga := float .gb -}}
+      {{- if or (eq $minA 0.0) (lt $pa $minA) }}{{- $minA = $pa -}}{{- $minGbA = $ga -}}{{- end -}}
+      {{- if gt $ga 0.0 -}}
+        {{- $g := div $pa $ga -}}
         {{- if or (eq $pgA 0.0) (lt $g $pgA) }}{{- $pgA = $g -}}{{- end -}}
         {{- $aMetered = true -}}
+        {{- if le $ga $lightGb -}}
+          {{- if or (eq $lightA 0.0) (lt $pa $lightA) }}{{- $lightA = $pa -}}{{- end -}}
+        {{- else if gt $ga $heavyGb -}}
+          {{- if or (eq $heavyA 0.0) (lt $pa $heavyA) }}{{- $heavyA = $pa -}}{{- end -}}
+        {{- end -}}
       {{- else -}}{{- $unA = true -}}{{- end -}}
     {{- end -}}
   {{- end -}}
   {{- with index (index $plans $b) $iso -}}
     {{- $checkedDates = $checkedDates | append .checked -}}
     {{- range .plans -}}
-      {{- if or (eq $minB 0.0) (lt (float .price) $minB) }}{{- $minB = float .price -}}{{- $minGbB = float .gb -}}{{- end -}}
-      {{- if gt (float .gb) 0.0 -}}
-        {{- $g := div (float .price) (float .gb) -}}
+      {{- $pb := float .price -}}{{- $gb2 := float .gb -}}
+      {{- if or (eq $minB 0.0) (lt $pb $minB) }}{{- $minB = $pb -}}{{- $minGbB = $gb2 -}}{{- end -}}
+      {{- if gt $gb2 0.0 -}}
+        {{- $g := div $pb $gb2 -}}
         {{- if or (eq $pgB 0.0) (lt $g $pgB) }}{{- $pgB = $g -}}{{- end -}}
         {{- $bMetered = true -}}
+        {{- if le $gb2 $lightGb -}}
+          {{- if or (eq $lightB 0.0) (lt $pb $lightB) }}{{- $lightB = $pb -}}{{- end -}}
+        {{- else if gt $gb2 $heavyGb -}}
+          {{- if or (eq $heavyB 0.0) (lt $pb $heavyB) }}{{- $heavyB = $pb -}}{{- end -}}
+        {{- end -}}
       {{- else -}}{{- $unB = true -}}{{- end -}}
     {{- end -}}
   {{- end -}}
@@ -61,6 +88,20 @@ VS 配对聚合 —— 单一数据入口。传入 dict (a, b)：两个品牌 ke
     {{- end -}}
     {{- if $unA }}{{- $aUnlimCountries = add $aUnlimCountries 1 -}}{{- end -}}
     {{- if $unB }}{{- $bUnlimCountries = add $bUnlimCountries 1 -}}{{- end -}}
+    {{- /* 轻量档 / 重载档：只在两国**都**有该档位套餐的国家上比较 ——
+           一方没有对应档位时那不是「同一个选择」，比出来的胜负对读者没有意义。 */ -}}
+    {{- if and (gt $lightA 0.0) (gt $lightB 0.0) -}}
+      {{- $lightN = add $lightN 1 -}}
+      {{- if lt $lightA $lightB }}{{- $aLightWins = add $aLightWins 1 -}}
+      {{- else if lt $lightB $lightA }}{{- $bLightWins = add $bLightWins 1 -}}
+      {{- else }}{{- $lightTies = add $lightTies 1 -}}{{- end -}}
+    {{- end -}}
+    {{- if and (gt $heavyA 0.0) (gt $heavyB 0.0) -}}
+      {{- $heavyN = add $heavyN 1 -}}
+      {{- if lt $heavyA $heavyB }}{{- $aHeavyWins = add $aHeavyWins 1 -}}
+      {{- else if lt $heavyB $heavyA }}{{- $bHeavyWins = add $bHeavyWins 1 -}}
+      {{- else }}{{- $heavyTies = add $heavyTies 1 -}}{{- end -}}
+    {{- end -}}
     {{- if or (eq $aGlobalMin 0.0) (lt $minA $aGlobalMin) }}{{- $aGlobalMin = $minA -}}{{- end -}}
     {{- if or (eq $bGlobalMin 0.0) (lt $minB $bGlobalMin) }}{{- $bGlobalMin = $minB -}}{{- end -}}
     {{- $rows = $rows | append (dict
@@ -86,6 +127,16 @@ VS 配对聚合 —— 单一数据入口。传入 dict (a, b)：两个品牌 ke
   "ties" $ties
   "aWinsValue" $aWinsValue
   "bWinsValue" $bWinsValue
+  "aLightWins" $aLightWins
+  "bLightWins" $bLightWins
+  "lightTies" $lightTies
+  "lightN" $lightN
+  "aHeavyWins" $aHeavyWins
+  "bHeavyWins" $bHeavyWins
+  "heavyTies" $heavyTies
+  "heavyN" $heavyN
+  "lightGb" $lightGb
+  "heavyGb" $heavyGb
   "aUnlimCountries" $aUnlimCountries
   "bUnlimCountries" $bUnlimCountries
   "aGlobalMin" $aGlobalMin
