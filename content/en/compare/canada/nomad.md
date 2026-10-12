@@ -4,5 +4,6 @@ iso: CA
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Canada: 10 plans from $7.00, best $1.38/GB (#5 of 10) — ranked against 221 Canada plans."
+  title: "Nomad Canada eSIM: 10 Plans, 3-30 Days, From $7.00"
+  description: "All 10 Nomad plans for Canada in one table: 3-30 days from $7.00, $1.38/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

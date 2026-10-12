@@ -4,5 +4,6 @@ iso: QA
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift compares Roamic eSIM plans for Qatar: 35 plans from $3.00, best $1.25/GB (#3 of 10) — ranked against 160 Qatar plans."
+  title: "Roamic Qatar eSIM: 35 Plans, 1-30 Days, From $3.00"
+  description: "All 35 Roamic plans for Qatar in one table: 1-30 days from $3.00, $1.25/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

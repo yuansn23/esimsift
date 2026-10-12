@@ -4,5 +4,6 @@ iso: AR
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift compares Roamic eSIM plans for Argentina: 35 plans from $3.00, best $1.90/GB (#4 of 10) — ranked against 154 Argentina plans."
+  title: "Roamic Argentina eSIM: 35 Plans, 1-30 Days, From $3.00"
+  description: "All 35 Roamic plans for Argentina in one table: 1-30 days from $3.00, $1.90/GB cheapest. eSIM Sift prices every option in one table."
 ---

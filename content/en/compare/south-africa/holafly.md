@@ -4,5 +4,6 @@ iso: ZA
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for South Africa: 6 daily plans from $3.73/day, fair-use caps decoded — live prices."
+  title: "Holafly South Africa eSIM: 6 Unlimited Plans"
+  description: "All 6 Holafly plans for South Africa in one table: 3-30 days from $3.73/day, fair-use capped. eSIM Sift prices every option in one table."
 ---

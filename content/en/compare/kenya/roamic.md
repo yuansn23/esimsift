@@ -4,5 +4,6 @@ iso: KE
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift compares Roamic eSIM plans for Kenya: 35 plans from $5.00, best $3.50/GB (#5 of 10) — ranked against 139 Kenya plans."
+  title: "Roamic Kenya eSIM: 35 Plans, 1-30 Days, From $5.00"
+  description: "All 35 Roamic plans for Kenya in one table: 1-30 days from $5.00, $3.50/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

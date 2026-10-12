@@ -4,5 +4,6 @@ iso: IS
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Iceland: 5 plans from $6.00, best $0.78/GB (#3 of 10) — ranked against 148 Iceland plans."
+  title: "Ubigi Iceland eSIM: 5 Plans, 7-30 Days, From $6.00"
+  description: "All 5 Ubigi plans for Iceland in one table: 7, 15 or 30 days from $6.00, $0.78/GB cheapest. eSIM Sift prices every option in one table."
 ---

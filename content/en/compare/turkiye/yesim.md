@@ -4,5 +4,6 @@ iso: TR
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for Turkiye: 40 plans from $0.57, best $0.82/GB (#7 of 10) — ranked against 202 Turkiye plans."
+  title: "Yesim Turkiye eSIM: 40 Plans, 1-30 Days, From $0.57"
+  description: "All 40 Yesim plans for Turkiye in one table: 1-30 days from $0.57, $0.82/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: QA
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Qatar: 12 plans from $4.50, best $2.25/GB (#8 of 10) — ranked against 160 Qatar plans."
+  title: "aloSIM Qatar eSIM: 12 Plans, 3-30 Days, From $4.50"
+  description: "All 12 aloSIM plans for Qatar in one table: 3-30 days from $4.50, $2.25/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

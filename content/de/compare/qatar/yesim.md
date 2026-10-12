@@ -4,6 +4,6 @@ iso: QA
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Yesim-Tarife für Katar: 37 Tarife ab $0.57, bester Preis $1.17/GB (#2 von 10) — gemessen an allen 160 erfassten Katar-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Yesim Katar eSIM: 37 Tarife, 1-30 Tage, ab $0.57"
+  description: "Alle 37 Yesim-Tarife für Katar in einer Tabelle: 1-30 Tage ab $0.57, $1.17/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

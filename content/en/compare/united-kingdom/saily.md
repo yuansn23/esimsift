@@ -4,5 +4,6 @@ iso: GB
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for UK: 11 plans from $4.49, best $1.55/GB (#9 of 10) — benchmarked against all 230 UK eSIMs we track."
+  title: "Saily UK eSIM: 11 Plans, 7-30 Days, From $4.49"
+  description: "All 11 Saily plans for UK in one table: 7-30 days from $4.49, $1.55/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

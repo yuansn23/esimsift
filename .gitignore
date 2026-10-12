@@ -15,5 +15,3 @@ _net_results/
 # Python 字节码缓存：构建链是 python，跑一次就生成；无内容价值，别随仓库走
 __pycache__/
 *.pyc
-".buildlog/" 
-"scripts/" 

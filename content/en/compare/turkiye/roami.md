@@ -4,5 +4,6 @@ iso: TR
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Turkiye: 25 plans from $1.99, best $0.68/GB (#4 of 10) — ranked against 202 Turkiye plans."
+  title: "Roami Turkiye eSIM: 25 Plans, 3-180 Days, From $1.99"
+  description: "All 25 Roami plans for Turkiye in one table: 3-180 days from $1.99, $0.68/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: CH
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for Switzerland: 18 plans from $4.00, best $0.90/GB (#6 of 10) — ranked against 181 Switzerland plans."
+  title: "Airalo Switzerland eSIM 2026: 18 Plans, 3-30 Days"
+  description: "All 18 Airalo plans for Switzerland in one table: 3-30 days from $4.00, $0.90/GB cheapest. eSIM Sift prices every option in one table."
 ---

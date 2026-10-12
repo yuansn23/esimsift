@@ -4,5 +4,6 @@ iso: PE
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Peru: 12 plans from $4.50, best $2.15/GB (#8 of 10) — ranked against 135 Peru plans."
+  title: "aloSIM Peru eSIM: 12 Plans, 3-30 Days, From $4.50"
+  description: "All 12 aloSIM plans for Peru in one table: 3-30 days from $4.50, $2.15/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

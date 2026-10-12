@@ -4,5 +4,6 @@ iso: QA
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for Qatar: 14 plans from $4.50, best $1.29/GB (#4 of 10) — ranked against 160 Qatar plans."
+  title: "Jetpac Qatar eSIM: 14 Plans, 1-30 Days, From $4.50"
+  description: "All 14 Jetpac plans for Qatar in one table: 1-30 days from $4.50, $1.29/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

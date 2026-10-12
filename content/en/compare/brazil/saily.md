@@ -4,5 +4,6 @@ iso: BR
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Brazil: 11 plans from $3.99, best $2.00/GB (#7 of 10) — ranked against 180 Brazil plans."
+  title: "Saily Brazil eSIM: 11 Plans, 5-30 Days, From $3.99"
+  description: "All 11 Saily plans for Brazil in one table: 5-30 days from $3.99, $2.00/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

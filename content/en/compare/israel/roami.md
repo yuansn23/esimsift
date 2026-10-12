@@ -4,5 +4,6 @@ iso: IL
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Israel: 23 plans from $2.99, best $0.70/GB (#2 of 10) — ranked against 179 Israel plans."
+  title: "Roami Israel eSIM: 23 Plans, 3-30 Days, From $2.99"
+  description: "All 23 Roami plans for Israel in one table: 3-30 days from $2.99, $0.70/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

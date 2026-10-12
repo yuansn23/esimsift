@@ -4,5 +4,6 @@ iso: SA
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for Saudi Arabia: 18 plans from $4.50, best $1.96/GB (#6 of 10) — from our live price index."
+  title: "Airalo Saudi Arabia eSIM 2026: 18 Plans, 3-45 Days"
+  description: "All 18 Airalo plans for Saudi Arabia in one table: 3-45 days from $4.50, $1.96/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: PH
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Philippines: 11 plans from $3.99, best $1.50/GB (#9 of 10) — ranked against 195 Philippines plans."
+  title: "Saily Philippines eSIM 2026: 11 Plans, 5-30 Days"
+  description: "All 11 Saily plans for Philippines in one table: 5-30 days from $3.99, $1.50/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: TR
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for Turkiye: 16 plans from $3.50, best $0.81/GB (#6 of 10) — ranked against 202 Turkiye plans."
+  title: "Jetpac Turkiye eSIM: 16 Plans, 1-30 Days, From $3.50"
+  description: "All 16 Jetpac plans for Turkiye in one table: 1-30 days from $3.50, $0.81/GB cheapest. eSIM Sift prices every option in one table."
 ---

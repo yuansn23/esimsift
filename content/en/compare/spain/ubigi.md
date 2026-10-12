@@ -4,5 +4,6 @@ iso: ES
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Spain: 12 plans from $4.00, best $0.45/GB (#1 of 10) — ranked against 202 Spain plans."
+  title: "Ubigi Spain eSIM: 12 Plans, 8-365 Days, From $4.00"
+  description: "All 12 Ubigi plans for Spain in one table: 8-365 days from $4.00, $0.45/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

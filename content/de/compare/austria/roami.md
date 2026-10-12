@@ -4,6 +4,6 @@ iso: AT
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Roami-Tarife für Österreich: 26 Tarife ab $1.99, bester Preis $0.55/GB (#2 von 10) — gemessen an allen 182 erfassten Österreich-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Roami Österreich eSIM: 26 Tarife, 3-30 Tage, ab $1.99"
+  description: "Alle 26 Roami-Tarife für Österreich in einer Tabelle: 3-30 Tage ab $1.99, $0.55/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

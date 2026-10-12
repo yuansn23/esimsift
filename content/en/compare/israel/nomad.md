@@ -4,5 +4,6 @@ iso: IL
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Israel: 6 plans from $4.50, best $0.78/GB (#4 of 10) — ranked against 179 Israel plans."
+  title: "Nomad Israel eSIM: 6 Plans, 7-30 Days, From $4.50"
+  description: "All 6 Nomad plans for Israel in one table: 7 or 30 days from $4.50, $0.78/GB cheapest. eSIM Sift prices every option in one table."
 ---

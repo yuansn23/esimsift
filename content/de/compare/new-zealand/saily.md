@@ -4,6 +4,6 @@ iso: NZ
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Saily-Tarife für Neuseeland: 11 Tarife ab $3.99, bester Preis $1.90/GB (#8 von 10) — gemessen an allen 174 erfassten Neuseeland-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Saily Neuseeland eSIM: 11 Tarife, 5-30 Tage, ab $3.99"
+  description: "Alle 11 Saily-Tarife für Neuseeland in einer Tabelle: 5-30 Tage ab $3.99, $1.90/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

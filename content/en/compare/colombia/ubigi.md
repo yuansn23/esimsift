@@ -4,5 +4,6 @@ iso: CO
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Colombia: 6 plans from $6.00, best $1.45/GB (#2 of 10) — ranked against 161 Colombia plans."
+  title: "Ubigi Colombia eSIM: 6 Plans, 7-30 Days, From $6.00"
+  description: "All 6 Ubigi plans for Colombia in one table: 7, 15 or 30 days from $6.00, $1.45/GB cheapest. eSIM Sift prices every option in one table."
 ---

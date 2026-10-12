@@ -4,6 +4,6 @@ iso: DE
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Ubigi-Tarife für Deutschland: 14 Tarife ab $6.00, bester Preis $0.65/GB (#5 von 10) — gemessen an allen 202 erfassten Deutschland-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Ubigi Deutschland eSIM 2026: 14 Tarife, 1-365 Tage"
+  description: "Alle 14 Ubigi-Tarife für Deutschland in einer Tabelle: 1-365 Tage ab $6.00, $0.65/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

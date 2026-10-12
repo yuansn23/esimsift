@@ -4,5 +4,6 @@ iso: CR
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for Costa Rica: 35 plans from $4.88, best $1.79/GB (#5 of 10) — ranked against 170 Costa Rica plans."
+  title: "Yesim Costa Rica eSIM: 35 Plans, 1-30 Days, From $4.88"
+  description: "All 35 Yesim plans for Costa Rica in one table: 1-30 days from $4.88, $1.79/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: IL
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Israel: 12 plans from $4.50, best $0.85/GB (#7 of 10) — ranked against 179 Israel plans."
+  title: "aloSIM Israel eSIM: 12 Plans, 3-30 Days, From $4.50"
+  description: "All 12 aloSIM plans for Israel in one table: 3-30 days from $4.50, $0.85/GB cheapest. eSIM Sift prices every option in one table."
 ---

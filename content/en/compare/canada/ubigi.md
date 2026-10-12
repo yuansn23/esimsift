@@ -4,5 +4,6 @@ iso: CA
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Canada: 12 plans from $5.00, best $1.05/GB (#2 of 10) — ranked against 221 Canada plans."
+  title: "Ubigi Canada eSIM: 12 Plans, 7-365 Days, From $5.00"
+  description: "All 12 Ubigi plans for Canada in one table: 7-365 days from $5.00, $1.05/GB cheapest. eSIM Sift prices every option in one table."
 ---

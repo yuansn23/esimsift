@@ -4,6 +4,6 @@ iso: SG
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht aloSIM-Tarife für Singapur: 12 Tarife ab $4.50, bester Preis $1.15/GB (#9 von 10) — gemessen an allen 217 erfassten Singapur-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "aloSIM Singapur eSIM: 12 Tarife, 3-30 Tage, ab $4.50"
+  description: "Alle 12 aloSIM-Tarife für Singapur in einer Tabelle: 3-30 Tage ab $4.50, $1.15/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

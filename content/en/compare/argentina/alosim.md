@@ -4,5 +4,6 @@ iso: AR
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Argentina: 12 plans from $5.50, best $2.30/GB (#7 of 10) — ranked against 154 Argentina plans."
+  title: "aloSIM Argentina eSIM: 12 Plans, 3-30 Days, From $5.50"
+  description: "All 12 aloSIM plans for Argentina in one table: 3-30 days from $5.50, $2.30/GB cheapest. eSIM Sift prices every option in one table."
 ---

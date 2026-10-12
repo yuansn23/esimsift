@@ -4,5 +4,6 @@ iso: NL
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Netherlands: 25 plans from $1.99, best $0.55/GB (#3 of 10) — ranked against 209 Netherlands plans."
+  title: "Roami Netherlands eSIM 2026: 25 Plans, 3-30 Days"
+  description: "All 25 Roami plans for Netherlands in one table: 3-30 days from $1.99, $0.55/GB cheapest. eSIM Sift prices every option in one table."
 ---

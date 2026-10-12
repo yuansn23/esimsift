@@ -4,5 +4,6 @@ iso: TW
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Taiwan: 23 plans from $1.99, best $0.70/GB (#2 of 10) — ranked against 161 Taiwan plans."
+  title: "Roami Taiwan eSIM: 23 Plans, 3-30 Days, From $1.99"
+  description: "All 23 Roami plans for Taiwan in one table: 3-30 days from $1.99, $0.70/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

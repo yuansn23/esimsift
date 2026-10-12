@@ -4,5 +4,6 @@ iso: GE
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for Georgia: 12 plans from $7.00, best $0.93/GB (#1 of 10) — ranked against 152 Georgia plans."
+  title: "Jetpac Georgia eSIM: 12 Plans, 1-30 Days, From $7.00"
+  description: "All 12 Jetpac plans for Georgia in one table: 1-30 days from $7.00, $0.93/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: NZ
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for New Zealand: 7 plans from $7.00, best $1.08/GB (#6 of 10) — ranked against 174 New Zealand plans."
+  title: "Ubigi New Zealand eSIM: 7 Plans, 7-30 Days, From $7.00"
+  description: "All 7 Ubigi plans for New Zealand in one table: 7, 15 or 30 days from $7.00, $1.08/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: GE
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Georgia: 6 plans from $4.50, best $1.82/GB (#8 of 10) — ranked against 152 Georgia plans."
+  title: "aloSIM Georgia eSIM: 6 Plans, 7-30 Days, From $4.50"
+  description: "All 6 aloSIM plans for Georgia in one table: 7, 15 or 30 days from $4.50, $1.82/GB cheapest. eSIM Sift prices every option in one table."
 ---

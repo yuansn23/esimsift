@@ -4,5 +4,6 @@ iso: EG
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Egypt: 22 plans from $2.99, best $1.90/GB (#6 of 10) — ranked against 165 Egypt plans."
+  title: "Roami Egypt eSIM: 22 Plans, 3-30 Days, From $2.99"
+  description: "All 22 Roami plans for Egypt in one table: 3-30 days from $2.99, $1.90/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

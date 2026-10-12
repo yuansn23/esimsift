@@ -4,5 +4,6 @@ iso: IL
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Israel: 7 plans from $6.00, best $0.78/GB (#5 of 10) — ranked against 179 Israel plans."
+  title: "Ubigi Israel eSIM: 7 Plans, 7-30 Days, From $6.00"
+  description: "All 7 Ubigi plans for Israel in one table: 7, 15 or 30 days from $6.00, $0.78/GB cheapest. eSIM Sift prices every option in one table."
 ---

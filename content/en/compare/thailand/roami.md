@@ -4,5 +4,6 @@ iso: TH
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Thailand: 24 plans from $1.99, best $0.74/GB (#5 of 10) — ranked against 188 Thailand plans."
+  title: "Roami Thailand eSIM: 24 Plans, 3-30 Days, From $1.99"
+  description: "All 24 Roami plans for Thailand in one table: 3-30 days from $1.99, $0.74/GB cheapest. eSIM Sift prices every option in one table."
 ---

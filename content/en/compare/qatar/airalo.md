@@ -4,5 +4,6 @@ iso: QA
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for Qatar: 17 plans from $4.50, best $2.15/GB (#7 of 10) — ranked against 160 Qatar plans."
+  title: "Airalo Qatar eSIM: 17 Plans, 3-30 Days, From $4.50"
+  description: "All 17 Airalo plans for Qatar in one table: 3-30 days from $4.50, $2.15/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: KR
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for South Korea: 24 plans from $6.50, best $0.95/GB (#5 of 10) — ranked against 185 South Korea plans."
+  title: "Jetpac South Korea eSIM 2026: 24 Plans, 1-30 Days"
+  description: "All 24 Jetpac plans for South Korea in one table: 1-30 days from $6.50, $0.95/GB cheapest. eSIM Sift prices every option in one table."
 ---

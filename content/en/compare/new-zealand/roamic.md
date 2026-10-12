@@ -4,5 +4,6 @@ iso: NZ
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift compares Roamic eSIM plans for New Zealand: 36 plans from $2.00, best $0.76/GB (#1 of 10) — ranked against 174 New Zealand plans."
+  title: "Roamic New Zealand eSIM 2026: 36 Plans, 1-30 Days"
+  description: "All 36 Roamic plans for New Zealand in one table: 1-30 days from $2.00, $0.76/GB cheapest. eSIM Sift prices every option in one table."
 ---

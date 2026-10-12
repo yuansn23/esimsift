@@ -4,5 +4,6 @@ iso: PH
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Philippines: 32 plans from $3.50, best $0.69/GB (#2 of 10) — ranked against 195 Philippines plans."
+  title: "aloSIM Philippines eSIM 2026: 32 Plans, 1-30 Days"
+  description: "All 32 aloSIM plans for Philippines in one table: 1-30 days from $3.50, $0.69/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: GB
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for UK: 14 plans from $4.50, best $0.78/GB (#7 of 10) — benchmarked against all 230 UK eSIMs we track."
+  title: "Nomad UK eSIM: 14 Plans, 3-30 Days, From $4.50"
+  description: "All 14 Nomad plans for UK in one table: 3-30 days from $4.50, $0.78/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

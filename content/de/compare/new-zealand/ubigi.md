@@ -4,6 +4,6 @@ iso: NZ
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Ubigi-Tarife für Neuseeland: 7 Tarife ab $7.00, bester Preis $1.08/GB (#6 von 10) — gemessen an allen 174 erfassten Neuseeland-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Ubigi Neuseeland eSIM: 7 Tarife, 7-30 Tage, ab $7.00"
+  description: "Alle 7 Ubigi-Tarife für Neuseeland in einer Tabelle: 7, 15 oder 30 Tage ab $7.00. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

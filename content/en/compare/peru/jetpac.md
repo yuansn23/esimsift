@@ -4,5 +4,6 @@ iso: PE
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for Peru: 13 plans from $7.00, best $1.83/GB (#5 of 10) — ranked against 135 Peru plans."
+  title: "Jetpac Peru eSIM: 13 Plans, 1-30 Days, From $7.00"
+  description: "All 13 Jetpac plans for Peru in one table: 1-30 days from $7.00, $1.83/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

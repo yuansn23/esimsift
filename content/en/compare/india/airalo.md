@@ -4,5 +4,6 @@ iso: IN
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for India: 17 plans from $4.00, best $1.82/GB (#7 of 10) — ranked against 186 India plans."
+  title: "Airalo India eSIM: 17 Plans, 3-30 Days, From $4.00"
+  description: "All 17 Airalo plans for India in one table: 3-30 days from $4.00, $1.82/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

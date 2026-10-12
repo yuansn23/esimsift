@@ -4,5 +4,6 @@ iso: DE
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Germany: 14 plans from $6.00, best $0.65/GB (#5 of 10) — ranked against 202 Germany plans."
+  title: "Ubigi Germany eSIM: 14 Plans, 1-365 Days, From $6.00"
+  description: "All 14 Ubigi plans for Germany in one table: 1-365 days from $6.00, $0.65/GB cheapest. eSIM Sift prices every option in one table."
 ---

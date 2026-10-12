@@ -4,5 +4,6 @@ iso: CH
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Switzerland: 12 plans from $4.50, best $1.80/GB (#8 of 10) — ranked against 181 Switzerland plans."
+  title: "aloSIM Switzerland eSIM 2026: 12 Plans, 3-30 Days"
+  description: "All 12 aloSIM plans for Switzerland in one table: 3-30 days from $4.50, $1.80/GB cheapest. eSIM Sift prices every option in one table."
 ---

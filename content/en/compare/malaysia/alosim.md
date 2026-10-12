@@ -4,5 +4,6 @@ iso: MY
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Malaysia: 12 plans from $4.50, best $1.80/GB (#9 of 10) — ranked against 172 Malaysia plans."
+  title: "aloSIM Malaysia eSIM: 12 Plans, 3-30 Days, From $4.50"
+  description: "All 12 aloSIM plans for Malaysia in one table: 3-30 days from $4.50, $1.80/GB cheapest. eSIM Sift prices every option in one table."
 ---

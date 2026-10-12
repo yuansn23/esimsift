@@ -4,5 +4,6 @@ iso: PH
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for Philippines: 37 plans from $0.51, best $1.04/GB (#7 of 10) — ranked against 195 Philippines plans."
+  title: "Yesim Philippines eSIM 2026: 37 Plans, 1-30 Days"
+  description: "All 37 Yesim plans for Philippines in one table: 1-30 days from $0.51, $1.04/GB cheapest. eSIM Sift prices every option in one table."
 ---

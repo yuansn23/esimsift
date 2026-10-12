@@ -4,6 +4,6 @@ iso: GE
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht aloSIM-Tarife für Georgien: 6 Tarife ab $4.50, bester Preis $1.82/GB (#8 von 10) — gemessen an allen 152 erfassten Georgien-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "aloSIM Georgien eSIM: 6 Tarife, 7-30 Tage, ab $4.50"
+  description: "Alle 6 aloSIM-Tarife für Georgien in einer Tabelle: 7, 15 oder 30 Tage ab $4.50. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

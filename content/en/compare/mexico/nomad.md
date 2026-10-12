@@ -4,5 +4,6 @@ iso: MX
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Mexico: 9 plans from $5.00, best $1.38/GB (#4 of 10) — ranked against 189 Mexico plans."
+  title: "Nomad Mexico eSIM: 9 Plans, 3-30 Days, From $5.00"
+  description: "All 9 Nomad plans for Mexico in one table: 3-30 days from $5.00, $1.38/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

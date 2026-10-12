@@ -4,5 +4,6 @@ iso: ZA
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for South Africa: 7 plans from $4.00, best $1.45/GB (#5 of 10) — ranked against 155 South Africa plans."
+  title: "Nomad South Africa eSIM 2026: 7 Plans, 5-30 Days"
+  description: "All 7 Nomad plans for South Africa in one table: 5-30 days from $4.00, $1.45/GB cheapest. eSIM Sift prices every option in one table."
 ---

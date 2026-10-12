@@ -4,5 +4,6 @@ iso: CA
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for Canada: 6 daily plans from $3.20/day, fair-use caps decoded — 221 Canada eSIMs tracked."
+  title: "Holafly Canada eSIM: 6 Unlimited Plans, 3-30 Days"
+  description: "All 6 Holafly plans for Canada in one table: 3-30 days from $3.20/day, fair-use caps decoded. eSIM Sift prices every option in one table."
 ---

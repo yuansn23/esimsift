@@ -4,5 +4,6 @@ iso: AE
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for United Arab Emirates: 12 plans from $4.50, best $1.70/GB (#9 of 10) — from our live price index."
+  title: "aloSIM United Arab Emirates eSIM: 12 Plans, 3-30 Days"
+  description: "All 12 aloSIM plans for United Arab Emirates in one table: 3-30 days from $4.50, $1.70/GB. eSIM Sift prices every option in one table."
 ---

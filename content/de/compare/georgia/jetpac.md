@@ -4,6 +4,6 @@ iso: GE
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Jetpac-Tarife für Georgien: 12 Tarife ab $7.00, bester Preis $0.93/GB (#1 von 10) — gemessen an allen 152 erfassten Georgien-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Jetpac Georgien eSIM: 12 Tarife, 1-30 Tage, ab $7.00"
+  description: "Alle 12 Jetpac-Tarife für Georgien in einer Tabelle: 1-30 Tage ab $7.00, $0.93/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

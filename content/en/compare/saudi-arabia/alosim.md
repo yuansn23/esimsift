@@ -4,5 +4,6 @@ iso: SA
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Saudi Arabia: 11 plans from $4.50, best $1.96/GB (#7 of 10) — from our live price index."
+  title: "aloSIM Saudi Arabia eSIM 2026: 11 Plans, 3-30 Days"
+  description: "All 11 aloSIM plans for Saudi Arabia in one table: 3-30 days from $4.50, $1.96/GB cheapest. eSIM Sift prices every option in one table."
 ---

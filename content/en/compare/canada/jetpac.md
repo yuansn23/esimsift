@@ -4,5 +4,6 @@ iso: CA
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for Canada: 23 plans from $4.00, best $1.25/GB (#4 of 10) — ranked against 221 Canada plans."
+  title: "Jetpac Canada eSIM: 23 Plans, 1-30 Days, From $4.00"
+  description: "All 23 Jetpac plans for Canada in one table: 1-30 days from $4.00, $1.25/GB cheapest. eSIM Sift prices every option in one table."
 ---

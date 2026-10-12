@@ -4,5 +4,6 @@ iso: EG
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Egypt: 8 plans from $5.00, best $1.56/GB (#4 of 10) — ranked against 165 Egypt plans."
+  title: "Ubigi Egypt eSIM: 8 Plans, 7-30 Days, From $5.00"
+  description: "All 8 Ubigi plans for Egypt in one table: 7-30 days from $5.00, $1.56/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: GE
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Georgia: 7 plans from $6.00, best $1.45/GB (#6 of 10) — ranked against 152 Georgia plans."
+  title: "Ubigi Georgia eSIM: 7 Plans, 7-30 Days, From $6.00"
+  description: "All 7 Ubigi plans for Georgia in one table: 7, 15 or 30 days from $6.00, $1.45/GB cheapest. eSIM Sift prices every option in one table."
 ---

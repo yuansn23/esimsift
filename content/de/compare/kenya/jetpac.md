@@ -4,6 +4,6 @@ iso: KE
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Jetpac-Tarife für Kenia: 11 Tarife ab $9.00, bester Preis $5.00/GB (#8 von 10) — gemessen an allen 139 erfassten Kenia-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Jetpac Kenia eSIM: 11 Tarife, 1-30 Tage, ab $9.00"
+  description: "Alle 11 Jetpac-Tarife für Kenia in einer Tabelle: 1-30 Tage ab $9.00, $5.00/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

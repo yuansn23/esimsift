@@ -4,5 +4,6 @@ iso: AR
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Argentina: 20 plans from $3.99, best $2.00/GB (#5 of 10) — ranked against 154 Argentina plans."
+  title: "Roami Argentina eSIM: 20 Plans, 3-30 Days, From $3.99"
+  description: "All 20 Roami plans for Argentina in one table: 3-30 days from $3.99, $2.00/GB cheapest. eSIM Sift prices every option in one table."
 ---

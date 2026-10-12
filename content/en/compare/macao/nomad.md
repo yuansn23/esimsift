@@ -4,5 +4,6 @@ iso: MO
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Macao: 6 plans from $4.00, best $0.90/GB (#4 of 10) — ranked against 127 Macao plans."
+  title: "Nomad Macao eSIM: 6 Plans, 7-45 Days, From $4.00"
+  description: "All 6 Nomad plans for Macao in one table: 7, 30 or 45 days from $4.00, $0.90/GB cheapest. eSIM Sift prices every option in one table."
 ---

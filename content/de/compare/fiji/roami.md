@@ -4,6 +4,6 @@ iso: FJ
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Roami-Tarife für Fidschi: 21 Tarife ab $6.99, bester Preis $1.90/GB (#2 von 9) — gemessen an allen 103 erfassten Fidschi-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Roami Fidschi eSIM: 21 Tarife, 3-30 Tage, ab $6.99"
+  description: "Alle 21 Roami-Tarife für Fidschi in einer Tabelle: 3-30 Tage ab $6.99, $1.90/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

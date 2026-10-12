@@ -4,5 +4,6 @@ iso: US
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for USA: 30 plans from $4.00, best $0.84/GB (#6 of 10) — ranked against 254 USA plans."
+  title: "Airalo USA eSIM: 30 Plans, 3-30 Days, From $4.00"
+  description: "All 30 Airalo plans for USA in one table: 3-30 days from $4.00, $0.84/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

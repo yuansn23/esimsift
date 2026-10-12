@@ -4,5 +4,6 @@ iso: AE
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for United Arab Emirates: 23 plans from $3.99, best $1.45/GB (#3 of 10) — from our live price index."
+  title: "Roami United Arab Emirates eSIM: 23 Plans, 3-30 Days"
+  description: "All 23 Roami plans for United Arab Emirates in one table: 3-30 days from $3.99, $1.45/GB. eSIM Sift prices every option in one table."
 ---

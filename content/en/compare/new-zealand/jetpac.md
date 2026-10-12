@@ -4,5 +4,6 @@ iso: NZ
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for New Zealand: 16 plans from $3.50, best $0.98/GB (#4 of 10) — ranked against 174 New Zealand plans."
+  title: "Jetpac New Zealand eSIM 2026: 16 Plans, 1-30 Days"
+  description: "All 16 Jetpac plans for New Zealand in one table: 1-30 days from $3.50, $0.98/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: AE
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for United Arab Emirates: 5 daily plans from $3.37/day, fair-use caps decoded — live prices."
+  title: "Holafly United Arab Emirates eSIM: 5 Unlimited Plans"
+  description: "All 5 Holafly plans for United Arab Emirates in one table: 3-15 days from $3.37/day. eSIM Sift prices every option in one table."
 ---

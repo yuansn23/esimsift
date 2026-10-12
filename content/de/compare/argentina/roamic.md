@@ -4,6 +4,6 @@ iso: AR
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Roamic-Tarife für Argentinien: 35 Tarife ab $3.00, bester Preis $1.90/GB (#4 von 10) — gemessen an allen 154 erfassten Argentinien-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Roamic Argentinien eSIM 2026: 35 Tarife, 1-30 Tage"
+  description: "Alle 35 Roamic-Tarife für Argentinien in einer Tabelle: 1-30 Tage ab $3.00, $1.90/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

@@ -4,5 +4,6 @@ iso: GE
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Georgia: 21 plans from $3.99, best $1.55/GB (#7 of 10) — ranked against 152 Georgia plans."
+  title: "Roami Georgia eSIM: 21 Plans, 3-30 Days, From $3.99"
+  description: "All 21 Roami plans for Georgia in one table: 3-30 days from $3.99, $1.55/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: ID
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Indonesia: 8 plans from $4.00, best $0.98/GB (#5 of 10) — ranked against 185 Indonesia plans."
+  title: "Ubigi Indonesia eSIM: 8 Plans, 7-30 Days, From $4.00"
+  description: "All 8 Ubigi plans for Indonesia in one table: 7, 15 or 30 days from $4.00, $0.98/GB cheapest. eSIM Sift prices every option in one table."
 ---

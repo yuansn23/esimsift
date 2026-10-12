@@ -4,5 +4,6 @@ iso: CA
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for Canada: 30 plans from $7.00, best $1.68/GB (#7 of 10) — ranked against 221 Canada plans."
+  title: "Airalo Canada eSIM: 30 Plans, 3-30 Days, From $7.00"
+  description: "All 30 Airalo plans for Canada in one table: 3-30 days from $7.00, $1.68/GB cheapest. eSIM Sift prices every option in one table."
 ---

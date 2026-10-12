@@ -4,6 +4,6 @@ iso: ES
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Ubigi-Tarife für Spanien: 12 Tarife ab $4.00, bester Preis $0.45/GB (#1 von 10) — gemessen an allen 202 erfassten Spanien-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Ubigi Spanien eSIM: 12 Tarife, 8-365 Tage, ab $4.00"
+  description: "Alle 12 Ubigi-Tarife für Spanien in einer Tabelle: 8-365 Tage ab $4.00, $0.45/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

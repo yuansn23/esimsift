@@ -4,6 +4,6 @@ iso: SA
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht aloSIM-Tarife für Saudi-Arabien: 11 Tarife ab $4.50, bester Preis $1.96/GB (#7 von 10) — gemessen an allen 169 erfassten Saudi-Arabien-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "aloSIM Saudi-Arabien eSIM 2026: 11 Tarife, 3-30 Tage"
+  description: "Alle 11 aloSIM-Tarife für Saudi-Arabien in einer Tabelle: 3-30 Tage ab $4.50, $1.96/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

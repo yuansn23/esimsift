@@ -4,6 +4,6 @@ iso: HR
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht aloSIM-Tarife für Kroatien: 32 Tarife ab $3.50, bester Preis $0.50/GB (#2 von 10) — gemessen an allen 195 erfassten Kroatien-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "aloSIM Kroatien eSIM: 32 Tarife, 1-30 Tage, ab $3.50"
+  description: "Alle 32 aloSIM-Tarife für Kroatien in einer Tabelle: 1-30 Tage ab $3.50, $0.50/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

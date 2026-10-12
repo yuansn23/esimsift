@@ -4,6 +4,6 @@ iso: PT
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Jetpac-Tarife für Portugal: 14 Tarife ab $6.00, bester Preis $0.75/GB (#6 von 10) — gemessen an allen 197 erfassten Portugal-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Jetpac Portugal eSIM: 14 Tarife, 3-30 Tage, ab $6.00"
+  description: "Alle 14 Jetpac-Tarife für Portugal in einer Tabelle: 3-30 Tage ab $6.00, $0.75/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

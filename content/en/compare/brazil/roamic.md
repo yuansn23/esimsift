@@ -4,5 +4,6 @@ iso: BR
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift compares Roamic eSIM plans for Brazil: 36 plans from $3.00, best $1.48/GB (#4 of 10) — ranked against 180 Brazil plans."
+  title: "Roamic Brazil eSIM: 36 Plans, 1-30 Days, From $3.00"
+  description: "All 36 Roamic plans for Brazil in one table: 1-30 days from $3.00, $1.48/GB cheapest. eSIM Sift prices every option in one table."
 ---

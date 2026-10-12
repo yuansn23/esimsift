@@ -4,5 +4,6 @@ iso: KE
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Kenya: 4 plans from $8.00, best $6.40/GB (#9 of 10) — ranked against 139 Kenya plans."
+  title: "aloSIM Kenya eSIM: 4 Plans, 7-30 Days, From $8.00"
+  description: "All 4 aloSIM plans for Kenya in one table: 7, 15 or 30 days from $8.00, $6.40/GB cheapest. eSIM Sift prices every option in one table."
 ---

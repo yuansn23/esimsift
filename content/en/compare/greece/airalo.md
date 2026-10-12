@@ -4,5 +4,6 @@ iso: GR
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for Greece: 18 plans from $4.00, best $0.84/GB (#7 of 10) — ranked against 197 Greece plans."
+  title: "Airalo Greece eSIM: 18 Plans, 3-30 Days, From $4.00"
+  description: "All 18 Airalo plans for Greece in one table: 3-30 days from $4.00, $0.84/GB cheapest. eSIM Sift prices every option in one table."
 ---

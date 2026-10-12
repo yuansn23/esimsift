@@ -4,5 +4,6 @@ iso: HK
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Hong Kong: 10 plans from $7.00, best $0.92/GB (#4 of 10) — ranked against 185 Hong Kong plans."
+  title: "Ubigi Hong Kong eSIM: 10 Plans, 7-365 Days, From $7.00"
+  description: "All 10 Ubigi plans for Hong Kong in one table: 7-365 days from $7.00, $0.92/GB cheapest. eSIM Sift prices every option in one table."
 ---

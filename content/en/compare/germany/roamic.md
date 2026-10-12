@@ -4,5 +4,6 @@ iso: DE
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift compares Roamic eSIM plans for Germany: 36 plans from $1.00, best $0.55/GB (#3 of 10) — ranked against 202 Germany plans."
+  title: "Roamic Germany eSIM: 36 Plans, 1-30 Days, From $1.00"
+  description: "All 36 Roamic plans for Germany in one table: 1-30 days from $1.00, $0.55/GB cheapest. eSIM Sift prices every option in one table."
 ---

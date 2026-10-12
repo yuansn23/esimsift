@@ -4,5 +4,6 @@ iso: TR
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for Turkiye: 18 plans from $4.00, best $0.69/GB (#5 of 10) — ranked against 202 Turkiye plans."
+  title: "Airalo Turkiye eSIM: 18 Plans, 3-30 Days, From $4.00"
+  description: "All 18 Airalo plans for Turkiye in one table: 3-30 days from $4.00, $0.69/GB cheapest. eSIM Sift prices every option in one table."
 ---

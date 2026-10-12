@@ -4,5 +4,6 @@ iso: IT
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Italy: 13 plans from $4.00, best $0.32/GB (#1 of 10) — ranked against 204 Italy plans."
+  title: "Ubigi Italy eSIM: 13 Plans, 8-365 Days, From $4.00"
+  description: "All 13 Ubigi plans for Italy in one table: 8-365 days from $4.00, $0.32/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

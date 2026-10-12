@@ -4,5 +4,6 @@ iso: NL
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Netherlands: 8 plans from $6.00, best $0.66/GB (#4 of 10) — ranked against 209 Netherlands plans."
+  title: "Ubigi Netherlands eSIM: 8 Plans, 7-30 Days, From $6.00"
+  description: "All 8 Ubigi plans for Netherlands in one table: 7, 15 or 30 days from $6.00, $0.66/GB cheapest. eSIM Sift prices every option in one table."
 ---

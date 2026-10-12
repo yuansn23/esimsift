@@ -4,6 +4,6 @@ iso: AR
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Jetpac-Tarife für Argentinien: 13 Tarife ab $7.00, bester Preis $1.67/GB (#2 von 10) — gemessen an allen 154 erfassten Argentinien-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Jetpac Argentinien eSIM 2026: 13 Tarife, 1-30 Tage"
+  description: "Alle 13 Jetpac-Tarife für Argentinien in einer Tabelle: 1-30 Tage ab $7.00, $1.67/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

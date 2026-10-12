@@ -10,7 +10,7 @@
   · i18n key 写错 → 整段文案变成空串，`<h2></h2>` 空着上线
   · JSON-LD 里某个字段取到 nil → 生成 `"offers": null`，结构化数据静默失效
   · `range` 绑定变量写错 → 循环体整块不输出
-  · 标题候选串全都不符合长度要求 → 落到最后一档（可能既含价格又含套餐数）
+  · 标题候选串全都不符合长度要求 → 落到最后一档（长度仍会被第 1 项当场拦住）
 
 所以标题规则、JSON-LD 完整性、空标题、模板残留、内部一致性——都得从**产物**里读。
 
@@ -86,19 +86,20 @@ PLAN_ROW_RE = re.compile(
     r'<tr data-price="[^"]*"[^>]*data-gb="([^"]*)"[^>]*>(.*?)</tr>', re.S)
 TD_RE = re.compile(r"<td[^>]*>(.*?)</td>", re.S)
 
-# 用户 2026-10-04 定的标题规则：48–54 字符、必含品牌词与国家名、
-# **不放套餐数量、不放价格**（价格锚点交给 description）。
+# 标题规则：44–54 字符、必含国名（第 1 项）。
 # 2026-10-05 放宽下限到 44：显示名统一为简称（USA / UK）后，
 #   "Saily UK eSIM Review 2026: Data Plans Compared" 只有 46 字符 ——
 #   长度下限本来是「把 SERP 宽度用满」的代理指标，不是硬性 SEO 门槛，
 #   为迁就一个字数下限去给标题注水（加 Cheap/Prepaid 之类）得不偿失。
+# ★ 2026-10-12（第八十五轮，用户指令）**废除** TITLE_BANNED：
+#   原规则禁标题含 `$` 与「N plans」（2026-10-04 用户定，价格锚点交给
+#   description）。GSC 7 天数据显示：位置 10–20 的 20 个页面拿 707 展示却
+#   **0 点击**，而排列页承担全站 40% 的展示 —— 标题里带「套餐数 / 时长档 /
+#   起价」能直接回应用户的比价意图，权衡后由用户拍板放行。
+#   代价（已知并接受）：标题由构建期现算，**每次数据变动都会改标题**。
+#   这条取舍是刻意的，复现时不要当成回归。
 TITLE_MIN, TITLE_MAX = 44, 54
 DESC_MIN, DESC_MAX = 120, 140
-TITLE_BANNED = [
-    (re.compile(r"\$"), "含价格符号 $"),
-    (re.compile(r"\b\d+\s+plans?\b", re.I), "含套餐数量"),
-    (re.compile(r"\bplans?\s*:\s*\d+", re.I), "含套餐数量"),
-]
 
 errors: list[str] = []
 
@@ -174,9 +175,6 @@ def main() -> int:
             title_lengths.append(len(title))
             if not (TITLE_MIN <= len(title) <= TITLE_MAX):
                 errors.append(f"{rel}: 标题 {len(title)} 字符，要求 {TITLE_MIN}-{TITLE_MAX} -> {title!r}")
-            for rx, why in TITLE_BANNED:
-                if rx.search(title):
-                    errors.append(f"{rel}: 标题{why} -> {title!r}")
             # 品牌词 + 国家名（rel = compare/<country>/<provider>/index.html）
             # 2026-10-05：显示名统一为简称（USA / UK）后，标题里出现的是 countries.toml
             # 的 name 而不是 slug 派生串，所以这里按「slug / name / full」三选一命中即可。

@@ -4,5 +4,6 @@ iso: CR
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Costa Rica: 7 plans from $8.00, best $1.55/GB (#4 of 10) — ranked against 170 Costa Rica plans."
+  title: "Nomad Costa Rica eSIM: 7 Plans, 5-30 Days, From $8.00"
+  description: "All 7 Nomad plans for Costa Rica in one table: 5-30 days from $8.00, $1.55/GB cheapest. eSIM Sift prices every option in one table."
 ---

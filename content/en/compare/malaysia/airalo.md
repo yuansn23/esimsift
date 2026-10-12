@@ -4,5 +4,6 @@ iso: MY
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for Malaysia: 18 plans from $4.00, best $0.98/GB (#5 of 10) — ranked against 172 Malaysia plans."
+  title: "Airalo Malaysia eSIM: 18 Plans, 3-30 Days, From $4.00"
+  description: "All 18 Airalo plans for Malaysia in one table: 3-30 days from $4.00, $0.98/GB cheapest. eSIM Sift prices every option in one table."
 ---

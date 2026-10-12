@@ -4,5 +4,6 @@ iso: KR
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for South Korea: 34 plans from $2.84, best $1.10/GB (#7 of 10) — ranked against 185 South Korea plans."
+  title: "Yesim South Korea eSIM 2026: 34 Plans, 1-30 Days"
+  description: "All 34 Yesim plans for South Korea in one table: 1-30 days from $2.84, $1.10/GB cheapest. eSIM Sift prices every option in one table."
 ---

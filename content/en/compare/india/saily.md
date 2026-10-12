@@ -4,5 +4,6 @@ iso: IN
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for India: 11 plans from $3.99, best $1.95/GB (#9 of 10) — ranked against 186 India plans."
+  title: "Saily India eSIM: 11 Plans, 5-30 Days, From $3.99"
+  description: "All 11 Saily plans for India in one table: 5-30 days from $3.99, $1.95/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

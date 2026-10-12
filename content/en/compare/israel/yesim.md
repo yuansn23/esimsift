@@ -4,5 +4,6 @@ iso: IL
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for Israel: 36 plans from $0.57, best $1.12/GB (#9 of 10) — ranked against 179 Israel plans."
+  title: "Yesim Israel eSIM: 36 Plans, 1-30 Days, From $0.57"
+  description: "All 36 Yesim plans for Israel in one table: 1-30 days from $0.57, $1.12/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

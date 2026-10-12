@@ -4,6 +4,6 @@ iso: TR
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Roamic-Tarife für Türkei: 36 Tarife ab $1.00, bester Preis $0.46/GB (#1 von 10) — gemessen an allen 202 erfassten Türkei-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Roamic Türkei eSIM: 36 Tarife, 1-30 Tage, ab $1.00"
+  description: "Alle 36 Roamic-Tarife für Türkei in einer Tabelle: 1-30 Tage ab $1.00, $0.46/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

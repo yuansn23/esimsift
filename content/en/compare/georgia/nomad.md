@@ -4,5 +4,6 @@ iso: GE
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Georgia: 10 plans from $5.00, best $1.10/GB (#5 of 10) — ranked against 152 Georgia plans."
+  title: "Nomad Georgia eSIM: 10 Plans, 3-30 Days, From $5.00"
+  description: "All 10 Nomad plans for Georgia in one table: 3-30 days from $5.00, $1.10/GB cheapest. eSIM Sift prices every option in one table."
 ---

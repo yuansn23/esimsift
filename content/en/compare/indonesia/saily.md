@@ -4,5 +4,6 @@ iso: ID
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Indonesia: 11 plans from $4.79, best $1.80/GB (#9 of 10) — ranked against 185 Indonesia plans."
+  title: "Saily Indonesia eSIM: 11 Plans, 5-30 Days, From $4.79"
+  description: "All 11 Saily plans for Indonesia in one table: 5-30 days from $4.79, $1.80/GB cheapest. eSIM Sift prices every option in one table."
 ---

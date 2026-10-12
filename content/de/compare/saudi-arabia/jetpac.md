@@ -4,6 +4,6 @@ iso: SA
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Jetpac-Tarife für Saudi-Arabien: 14 Tarife ab $5.50, bester Preis $1.50/GB (#4 von 10) — gemessen an allen 169 erfassten Saudi-Arabien-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Jetpac Saudi-Arabien eSIM 2026: 14 Tarife, 1-30 Tage"
+  description: "Alle 14 Jetpac-Tarife für Saudi-Arabien in einer Tabelle: 1-30 Tage ab $5.50, $1.50/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

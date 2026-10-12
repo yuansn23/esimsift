@@ -4,5 +4,6 @@ iso: CO
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Colombia: 21 plans from $4.99, best $1.55/GB (#3 of 10) — ranked against 161 Colombia plans."
+  title: "Roami Colombia eSIM: 21 Plans, 3-30 Days, From $4.99"
+  description: "All 21 Roami plans for Colombia in one table: 3-30 days from $4.99, $1.55/GB cheapest. eSIM Sift prices every option in one table."
 ---

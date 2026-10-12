@@ -4,5 +4,6 @@ iso: MX
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Mexico: 11 plans from $4.99, best $2.30/GB (#8 of 10) — ranked against 189 Mexico plans."
+  title: "Saily Mexico eSIM: 11 Plans, 5-30 Days, From $4.99"
+  description: "All 11 Saily plans for Mexico in one table: 5-30 days from $4.99, $2.30/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

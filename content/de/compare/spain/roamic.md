@@ -4,6 +4,6 @@ iso: ES
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Roamic-Tarife für Spanien: 36 Tarife ab $1.00, bester Preis $0.52/GB (#3 von 10) — gemessen an allen 202 erfassten Spanien-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Roamic Spanien eSIM: 36 Tarife, 1-30 Tage, ab $1.00"
+  description: "Alle 36 Roamic-Tarife für Spanien in einer Tabelle: 1-30 Tage ab $1.00, $0.52/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

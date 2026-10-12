@@ -4,5 +4,6 @@ iso: PE
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Peru: 7 plans from $6.00, best $1.32/GB (#2 of 10) — ranked against 135 Peru plans."
+  title: "Ubigi Peru eSIM: 7 Plans, 7-30 Days, From $6.00"
+  description: "All 7 Ubigi plans for Peru in one table: 7, 15 or 30 days from $6.00, $1.32/GB cheapest. eSIM Sift prices every option in one table."
 ---

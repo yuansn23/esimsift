@@ -4,6 +4,6 @@ iso: PT
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Yesim-Tarife für Portugal: 36 Tarife ab $0.51, bester Preis $1.04/GB (#8 von 10) — gemessen an allen 197 erfassten Portugal-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Yesim Portugal eSIM: 36 Tarife, 1-30 Tage, ab $0.51"
+  description: "Alle 36 Yesim-Tarife für Portugal in einer Tabelle: 1-30 Tage ab $0.51, $1.04/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

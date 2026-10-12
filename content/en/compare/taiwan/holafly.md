@@ -4,5 +4,6 @@ iso: TW
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for Taiwan: 6 daily plans from $2.46/day, fair-use caps decoded — 161 Taiwan eSIMs tracked."
+  title: "Holafly Taiwan eSIM: 6 Unlimited Plans, 3-30 Days"
+  description: "All 6 Holafly plans for Taiwan in one table: 3-30 days from $2.46/day, fair-use caps decoded. eSIM Sift prices every option in one table."
 ---

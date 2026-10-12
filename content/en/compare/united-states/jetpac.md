@@ -4,5 +4,6 @@ iso: US
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for USA: 23 plans from $6.00, best $0.87/GB (#7 of 10) — ranked against 254 USA plans."
+  title: "Jetpac USA eSIM: 23 Plans, 1-30 Days, From $6.00"
+  description: "All 23 Jetpac plans for USA in one table: 1-30 days from $6.00, $0.87/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

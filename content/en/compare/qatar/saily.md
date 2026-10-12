@@ -4,5 +4,6 @@ iso: QA
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Qatar: 5 plans from $4.99, best $2.45/GB (#9 of 10) — ranked against 160 Qatar plans."
+  title: "Saily Qatar eSIM: 5 Plans, 7-30 Days, From $4.99"
+  description: "All 5 Saily plans for Qatar in one table: 7 or 30 days from $4.99, $2.45/GB cheapest. eSIM Sift prices every option in one table."
 ---

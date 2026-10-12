@@ -4,5 +4,6 @@ iso: KR
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for South Korea: 24 plans from $1.99, best $0.55/GB (#1 of 10) — ranked against 185 South Korea plans."
+  title: "Roami South Korea eSIM 2026: 24 Plans, 3-30 Days"
+  description: "All 24 Roami plans for South Korea in one table: 3-30 days from $1.99, $0.55/GB cheapest. eSIM Sift prices every option in one table."
 ---

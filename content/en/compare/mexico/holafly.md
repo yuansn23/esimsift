@@ -4,5 +4,6 @@ iso: MX
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for Mexico: 6 daily plans from $2.16/day, fair-use caps decoded — 189 Mexico eSIMs tracked."
+  title: "Holafly Mexico eSIM: 6 Unlimited Plans, 3-30 Days"
+  description: "All 6 Holafly plans for Mexico in one table: 3-30 days from $2.16/day, fair-use caps decoded. eSIM Sift prices every option in one table."
 ---

@@ -4,6 +4,6 @@ iso: QA
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Saily-Tarife für Katar: 5 Tarife ab $4.99, bester Preis $2.45/GB (#9 von 10) — gemessen an allen 160 erfassten Katar-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Saily Katar eSIM: 5 Tarife, 7-30 Tage, ab $4.99"
+  description: "Alle 5 Saily-Tarife für Katar in einer Tabelle: 7 oder 30 Tage ab $4.99, $2.45/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

@@ -4,5 +4,6 @@ iso: KR
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift compares Roamic eSIM plans for South Korea: 36 plans from $1.00, best $0.58/GB (#2 of 10) — ranked against 185 South Korea plans."
+  title: "Roamic South Korea eSIM 2026: 36 Plans, 1-30 Days"
+  description: "All 36 Roamic plans for South Korea in one table: 1-30 days from $1.00, $0.58/GB cheapest. eSIM Sift prices every option in one table."
 ---

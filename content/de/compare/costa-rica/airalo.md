@@ -4,6 +4,6 @@ iso: CR
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Airalo-Tarife für Costa Rica: 28 Tarife ab $7.50, bester Preis $1.93/GB (#6 von 10) — gemessen an allen 170 erfassten Costa Rica-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Airalo Costa Rica eSIM: 28 Tarife, 3-30 Tage, ab $7.50"
+  description: "Alle 28 Airalo-Tarife für Costa Rica in einer Tabelle: 3-30 Tage ab $7.50, $1.93/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

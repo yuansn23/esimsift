@@ -4,5 +4,6 @@ iso: CO
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift compares Roamic eSIM plans for Colombia: 35 plans from $4.00, best $2.30/GB (#7 of 10) — ranked against 161 Colombia plans."
+  title: "Roamic Colombia eSIM: 35 Plans, 1-30 Days, From $4.00"
+  description: "All 35 Roamic plans for Colombia in one table: 1-30 days from $4.00, $2.30/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -38,6 +38,9 @@ C. 半截产物
      （必须与 vs-agg.checkedDate 完全同口径，否则一个品牌刷新会带跑 28 张 vs 页）
   国家 Hub /compare/<国>/
      三者 = 该国全部品牌的最大 checked
+  对决总目录 /compare/matchups/
+     只查 lastmod == dateModified。它**不是**国家页 —— 2026-10-11 之前它被
+     COUNTRY_HUB 的正则（`^/compare/([^/]+)/$`）误吃，统计里虚报成国家 Hub。
   编辑页 /guides/*、/research/*
      只查 lastmod == dateModified。它们的**文章日期**与**数据快照日**本来就该不同
      （文章 10-02 写、价格 09-30 核），强行拉平会掩盖真实信息。
@@ -47,10 +50,12 @@ C. 半截产物
 from __future__ import annotations
 
 import collections
+import contextlib
 import io
 import pathlib
 import re
 import sys
+import tempfile
 
 try:
     import tomllib
@@ -86,6 +91,10 @@ RE_PRICE_DATE = re.compile(
 BRAND_HUB = re.compile(r"^/esim-providers/([^/]+)/$")
 PROV_SUB = re.compile(r"^/compare/([^/]+)/([^/]+)/$")
 VS_PAGE = re.compile(r"^/compare/([^/]+)-vs-([^/]+)/$")
+# ★ 必须写在 COUNTRY_HUB **之前**：那个正则的 `([^/]+)` 同样匹配 `matchups`，
+# 2026-10-11 实测它把 `/compare/matchups/` 当成国家 Hub ⇒ country_hub 统计 51（真实 50），
+# 且期望日期被算成空串 ⇒ 该页的日期断言被整段跳过（既不红也不绿）。
+COMPARE_MATCHUPS = re.compile(r"^/compare/matchups/$")
 COUNTRY_HUB = re.compile(r"^/compare/([^/]+)/$")
 EDIT_PAGE = re.compile(r"^/(?:guides|research)/")
 INDEX_PAGE = re.compile(r"^/(?:compare|esim-providers)/$")
@@ -229,6 +238,12 @@ def check_dates(base: str, plans, profile, net_iso) -> list[str]:
             a, b = mm.group(1), mm.group(2)
             price_exp = page_exp = newest([brand_newest(plans, a), brand_newest(plans, b)])
             kind = "vs"
+        elif COMPARE_MATCHUPS.match(url):
+            # 45 组对决的总目录（枢纽页），**不是国家页**。
+            # 按索引页口径处理：只要求自身自洽（dateModified ↔ lastmod），
+            # 不拉平到任何数据日期（它本来就没有「该国数据」）。
+            kind = "matchups_index"
+            edit = True
         elif (mm := COUNTRY_HUB.match(url)):
             iso = mm.group(1)
             price_exp = page_exp = newest(plans[k].get(iso, "") for k in plans)
@@ -273,7 +288,7 @@ def page_date_errs(url: str, kind: str, html: str, lastmod: str,
     """
     errs: list[str] = []
 
-    if kind == "edit" or kind == "networks_index":
+    if kind in ("edit", "networks_index", "matchups_index"):
         # 编辑页（guides/research）与 networks 索引页：自身有文章日期，
         # 只要求它自洽（dateModified ↔ lastmod），不拉平到数据日期。
         for dm in sorted(set(RE_DATEMOD.findall(html))):
@@ -416,6 +431,58 @@ def selftest() -> int:
         if not ok:
             bad += 1
         print(f"  {'OK ' if ok else 'FAIL'} norm_visible({raw!r}) = {got!r}（期望 {want!r}）")
+
+    # ── /compare/matchups/ 的页型归属（2026-10-11 第八十二轮补）─────────────
+    # 证法：把 PUB 指到临时目录，**喂真实的 check_dates 一条最小 sitemap**，让它自己
+    # 分派 —— 而不是在自测里另抄一份分类规则（红线 89：旁路器不许重抄主判据）。
+    B = "https://example.invalid"
+    with tempfile.TemporaryDirectory(prefix="chkdates-") as td:
+        tmp = pathlib.Path(td)
+        (tmp / "compare" / "matchups").mkdir(parents=True)
+        (tmp / "compare" / "argentina").mkdir(parents=True)
+        # 反例：matchups 页的 dateModified 与 sitemap lastmod 冲突。
+        #   修复前走 country_hub 分支 → 期望日期是空串 → 一条错都不报（既不红也不绿）；
+        #   修复后走 matchups_index 分支 → 必须报出这一条。
+        (tmp / "compare" / "matchups" / "index.html").write_text(
+            '<script type="application/ld+json">{"dateModified":"1999-01-01"}</script>',
+            encoding="utf-8")
+        # 正例控件：真国家页三处同源，必须 0 报错、且仍计为 country_hub（防误伤）。
+        (tmp / "compare" / "argentina" / "index.html").write_text(
+            "<p>Last updated Oct 7, 2026</p>"
+            '<script type="application/ld+json">{"dateModified":"2026-10-07"}</script>',
+            encoding="utf-8")
+        (tmp / "sitemap.xml").write_text(
+            '<?xml version="1.0" encoding="utf-8"?><urlset>'
+            f"<url><loc>{B}/compare/matchups/</loc><lastmod>2026-10-07T00:00:00Z</lastmod></url>"
+            f"<url><loc>{B}/compare/argentina/</loc><lastmod>2026-10-07T00:00:00Z</lastmod></url>"
+            "</urlset>", encoding="utf-8")
+        buf = io.StringIO()
+        real_pub = PUB
+        globals()["PUB"] = tmp
+        try:
+            with contextlib.redirect_stdout(buf):
+                got = check_dates(B, {"airalo": {"argentina": "2026-10-07"}}, {}, {})
+        finally:
+            globals()["PUB"] = real_pub
+        out = buf.getvalue()
+
+    st_checks = [
+        ("/compare/matchups/ 归入 matchups_index（不得被 COUNTRY_HUB 吃掉）",
+         "matchups_index=1" in out),
+        ("真国家页仍计为 country_hub（防误伤，且计数不含 matchups）",
+         "country_hub=1" in out),
+        ("matchups 页的 dateModified 冲突必须被报出",
+         len(got) == 1 and "/compare/matchups/" in got[0] and "1999-01-01" in got[0]),
+        ("真国家页三处同源不得报错",
+         not any("/compare/argentina/" in e for e in got)),
+    ]
+    for name, ok in st_checks:
+        if not ok:
+            bad += 1
+        print(f"  {'OK ' if ok else 'FAIL'} {name}")
+    if not all(ok for _, ok in st_checks):
+        print(f"        -> check_dates 返回：{got}")
+        print(f"        -> 页型行：{out.strip() or '(空)'}")
 
     if bad:
         print(f"\n自测失败：{bad} 项")

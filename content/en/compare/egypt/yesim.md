@@ -4,5 +4,6 @@ iso: EG
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for Egypt: 38 plans from $0.51, best $0.88/GB (#1 of 10) — ranked against 165 Egypt plans."
+  title: "Yesim Egypt eSIM: 38 Plans, 1-30 Days, From $0.51"
+  description: "All 38 Yesim plans for Egypt in one table: 1-30 days from $0.51, $0.88/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

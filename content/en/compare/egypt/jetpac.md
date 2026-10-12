@@ -4,5 +4,6 @@ iso: EG
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for Egypt: 14 plans from $4.00, best $1.04/GB (#3 of 10) — ranked against 165 Egypt plans."
+  title: "Jetpac Egypt eSIM: 14 Plans, 1-30 Days, From $4.00"
+  description: "All 14 Jetpac plans for Egypt in one table: 1-30 days from $4.00, $1.04/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

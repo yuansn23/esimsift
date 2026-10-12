@@ -4,6 +4,6 @@ iso: KR
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Roamic-Tarife für Südkorea: 36 Tarife ab $1.00, bester Preis $0.58/GB (#2 von 10) — gemessen an allen 185 erfassten Südkorea-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Roamic Südkorea eSIM: 36 Tarife, 1-30 Tage, ab $1.00"
+  description: "Alle 36 Roamic-Tarife für Südkorea in einer Tabelle: 1-30 Tage ab $1.00, $0.58/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

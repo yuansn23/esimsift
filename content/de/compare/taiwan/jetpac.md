@@ -4,6 +4,6 @@ iso: TW
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Jetpac-Tarife für Taiwan: 24 Tarife ab $5.00, bester Preis $0.85/GB (#6 von 10) — gemessen an allen 161 erfassten Taiwan-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Jetpac Taiwan eSIM: 24 Tarife, 1-30 Tage, ab $5.00"
+  description: "Alle 24 Jetpac-Tarife für Taiwan in einer Tabelle: 1-30 Tage ab $5.00, $0.85/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

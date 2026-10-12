@@ -4,5 +4,6 @@ iso: FJ
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Fiji: 5 plans from $7.00, best $1.95/GB (#3 of 9) — benchmarked against all 103 Fiji eSIMs we track."
+  title: "Nomad Fiji eSIM: 5 Plans, 7-30 Days, From $7.00"
+  description: "All 5 Nomad plans for Fiji in one table: 7 or 30 days from $7.00, $1.95/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

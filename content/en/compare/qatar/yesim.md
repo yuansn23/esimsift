@@ -4,5 +4,6 @@ iso: QA
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for Qatar: 37 plans from $0.57, best $1.17/GB (#2 of 10) — ranked against 160 Qatar plans."
+  title: "Yesim Qatar eSIM: 37 Plans, 1-30 Days, From $0.57"
+  description: "All 37 Yesim plans for Qatar in one table: 1-30 days from $0.57, $1.17/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

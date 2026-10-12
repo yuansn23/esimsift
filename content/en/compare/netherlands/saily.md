@@ -4,5 +4,6 @@ iso: NL
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Netherlands: 11 plans from $3.99, best $1.35/GB (#9 of 10) — ranked against 209 Netherlands plans."
+  title: "Saily Netherlands eSIM 2026: 11 Plans, 5-30 Days"
+  description: "All 11 Saily plans for Netherlands in one table: 5-30 days from $3.99, $1.35/GB cheapest. eSIM Sift prices every option in one table."
 ---

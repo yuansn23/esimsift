@@ -4,5 +4,6 @@ iso: PH
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for Philippines: 14 plans from $4.50, best $1.40/GB (#8 of 10) — ranked against 195 Philippines plans."
+  title: "Jetpac Philippines eSIM 2026: 14 Plans, 1-30 Days"
+  description: "All 14 Jetpac plans for Philippines in one table: 1-30 days from $4.50, $1.40/GB cheapest. eSIM Sift prices every option in one table."
 ---

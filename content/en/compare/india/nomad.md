@@ -4,5 +4,6 @@ iso: IN
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for India: 8 plans from $4.00, best $0.86/GB (#2 of 10) — ranked against 186 India plans."
+  title: "Nomad India eSIM: 8 Plans, 5-30 Days, From $4.00"
+  description: "All 8 Nomad plans for India in one table: 5-30 days from $4.00, $0.86/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

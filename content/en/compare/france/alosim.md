@@ -4,5 +4,6 @@ iso: FR
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for France: 32 plans from $3.50, best $0.50/GB (#3 of 10) — ranked against 203 France plans."
+  title: "aloSIM France eSIM: 32 Plans, 1-30 Days, From $3.50"
+  description: "All 32 aloSIM plans for France in one table: 1-30 days from $3.50, $0.50/GB cheapest. eSIM Sift prices every option in one table."
 ---

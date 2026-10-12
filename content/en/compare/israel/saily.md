@@ -4,5 +4,6 @@ iso: IL
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Israel: 11 plans from $3.99, best $0.85/GB (#6 of 10) — ranked against 179 Israel plans."
+  title: "Saily Israel eSIM: 11 Plans, 5-30 Days, From $3.99"
+  description: "All 11 Saily plans for Israel in one table: 5-30 days from $3.99, $0.85/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

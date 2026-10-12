@@ -4,5 +4,6 @@ iso: QA
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Qatar: 8 plans from $8.00, best $0.98/GB (#1 of 10) — ranked against 160 Qatar plans."
+  title: "Nomad Qatar eSIM: 8 Plans, 5-30 Days, From $8.00"
+  description: "All 8 Nomad plans for Qatar in one table: 5-30 days from $8.00, $0.98/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: MY
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Malaysia: 7 plans from $5.00, best $1.25/GB (#7 of 10) — ranked against 172 Malaysia plans."
+  title: "Nomad Malaysia eSIM: 7 Plans, 5-45 Days, From $5.00"
+  description: "All 7 Nomad plans for Malaysia in one table: 5-45 days from $5.00, $1.25/GB cheapest. eSIM Sift prices every option in one table."
 ---

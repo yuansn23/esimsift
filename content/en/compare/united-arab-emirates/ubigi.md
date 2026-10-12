@@ -4,5 +4,6 @@ iso: AE
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for United Arab Emirates: 11 plans from $5.00, best $1.47/GB (#5 of 10) — from our live price index."
+  title: "Ubigi United Arab Emirates eSIM: 11 Plans, 1-365 Days"
+  description: "All 11 Ubigi plans for United Arab Emirates in one table: 1-365 days from $5.00, $1.47/GB. eSIM Sift prices every option in one table."
 ---

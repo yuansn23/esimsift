@@ -4,5 +4,6 @@ iso: CH
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Switzerland: 13 plans from $5.00, best $0.57/GB (#2 of 10) — ranked against 181 Switzerland plans."
+  title: "Ubigi Switzerland eSIM 2026: 13 Plans, 7-365 Days"
+  description: "All 13 Ubigi plans for Switzerland in one table: 7-365 days from $5.00, $0.57/GB cheapest. eSIM Sift prices every option in one table."
 ---

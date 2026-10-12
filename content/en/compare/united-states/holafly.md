@@ -4,5 +4,6 @@ iso: US
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for USA: 6 daily plans from $2.46/day, fair-use caps decoded — 254 USA eSIMs tracked."
+  title: "Holafly USA eSIM: 6 Unlimited Plans, From $2.46/Day"
+  description: "All 6 Holafly plans for USA in one table: 3-30 days from $2.46/day, fair-use caps decoded. eSIM Sift prices every option in one table."
 ---

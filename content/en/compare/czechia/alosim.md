@@ -4,5 +4,6 @@ iso: CZ
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Czechia: 12 plans from $3.50, best $1.20/GB (#9 of 10) — ranked against 175 Czechia plans."
+  title: "aloSIM Czechia eSIM: 12 Plans, 3-30 Days, From $3.50"
+  description: "All 12 aloSIM plans for Czechia in one table: 3-30 days from $3.50, $1.20/GB cheapest. eSIM Sift prices every option in one table."
 ---

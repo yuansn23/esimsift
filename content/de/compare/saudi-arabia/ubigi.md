@@ -4,6 +4,6 @@ iso: SA
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Ubigi-Tarife für Saudi-Arabien: 4 Tarife ab $7.00, bester Preis $2.50/GB (#9 von 10) — gemessen an allen 169 erfassten Saudi-Arabien-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Ubigi Saudi-Arabien eSIM 2026: 4 Tarife, 7-30 Tage"
+  description: "Alle 4 Ubigi-Tarife für Saudi-Arabien in einer Tabelle: 7 oder 30 Tage ab $7.00. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

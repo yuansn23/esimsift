@@ -4,5 +4,6 @@ iso: EG
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for Egypt: 17 plans from $5.50, best $2.05/GB (#7 of 10) — ranked against 165 Egypt plans."
+  title: "Airalo Egypt eSIM: 17 Plans, 3-30 Days, From $5.50"
+  description: "All 17 Airalo plans for Egypt in one table: 3-30 days from $5.50, $2.05/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

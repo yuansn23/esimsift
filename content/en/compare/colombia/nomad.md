@@ -4,5 +4,6 @@ iso: CO
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Colombia: 5 plans from $4.00, best $1.95/GB (#4 of 10) — ranked against 161 Colombia plans."
+  title: "Nomad Colombia eSIM: 5 Plans, 7-30 Days, From $4.00"
+  description: "All 5 Nomad plans for Colombia in one table: 7 or 30 days from $4.00, $1.95/GB cheapest. eSIM Sift prices every option in one table."
 ---

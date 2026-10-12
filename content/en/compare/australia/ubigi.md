@@ -4,5 +4,6 @@ iso: AU
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Australia: 9 plans from $4.00, best $1.08/GB (#7 of 10) — ranked against 180 Australia plans."
+  title: "Ubigi Australia eSIM: 9 Plans, 7-30 Days, From $4.00"
+  description: "All 9 Ubigi plans for Australia in one table: 7, 15 or 30 days from $4.00, $1.08/GB cheapest. eSIM Sift prices every option in one table."
 ---

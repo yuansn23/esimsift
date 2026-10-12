@@ -4,5 +4,6 @@ iso: CH
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for Switzerland: 6 daily plans from $2.46/day, fair-use caps decoded — from our live price index."
+  title: "Holafly Switzerland eSIM: 6 Unlimited Plans, 3-30 Days"
+  description: "All 6 Holafly plans for Switzerland in one table: 3-30 days from $2.46/day, fair-use capped. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: NL
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for Netherlands: 15 plans from $7.00, best $0.87/GB (#6 of 10) — ranked against 209 Netherlands plans."
+  title: "Jetpac Netherlands eSIM 2026: 15 Plans, 3-30 Days"
+  description: "All 15 Jetpac plans for Netherlands in one table: 3-30 days from $7.00, $0.87/GB cheapest. eSIM Sift prices every option in one table."
 ---

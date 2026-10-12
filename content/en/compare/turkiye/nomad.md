@@ -4,5 +4,6 @@ iso: TR
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Turkiye: 8 plans from $4.00, best $0.62/GB (#3 of 10) — ranked against 202 Turkiye plans."
+  title: "Nomad Turkiye eSIM: 8 Plans, 5-30 Days, From $4.00"
+  description: "All 8 Nomad plans for Turkiye in one table: 5-30 days from $4.00, $0.62/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

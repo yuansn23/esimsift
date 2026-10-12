@@ -4,5 +4,6 @@ iso: SA
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Saudi Arabia: 11 plans from $4.49, best $2.15/GB (#8 of 10) — ranked against 169 Saudi Arabia plans."
+  title: "Saily Saudi Arabia eSIM 2026: 11 Plans, 5-30 Days"
+  description: "All 11 Saily plans for Saudi Arabia in one table: 5-30 days from $4.49, $2.15/GB cheapest. eSIM Sift prices every option in one table."
 ---

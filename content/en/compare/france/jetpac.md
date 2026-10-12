@@ -4,5 +4,6 @@ iso: FR
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for France: 15 plans from $7.00, best $0.75/GB (#7 of 10) — ranked against 203 France plans."
+  title: "Jetpac France eSIM: 15 Plans, 3-30 Days, From $7.00"
+  description: "All 15 Jetpac plans for France in one table: 3-30 days from $7.00, $0.75/GB cheapest. eSIM Sift prices every option in one table."
 ---

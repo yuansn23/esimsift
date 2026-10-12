@@ -4,5 +4,6 @@ iso: CO
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Colombia: 5 plans from $4.99, best $2.05/GB (#5 of 10) — ranked against 161 Colombia plans."
+  title: "Saily Colombia eSIM: 5 Plans, 7-30 Days, From $4.99"
+  description: "All 5 Saily plans for Colombia in one table: 7 or 30 days from $4.99, $2.05/GB cheapest. eSIM Sift prices every option in one table."
 ---

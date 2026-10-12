@@ -4,6 +4,6 @@ iso: MA
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Yesim-Tarife für Marokko: 37 Tarife ab $0.51, bester Preis $1.47/GB (#4 von 10) — gemessen an allen 160 erfassten Marokko-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Yesim Marokko eSIM: 37 Tarife, 1-30 Tage, ab $0.51"
+  description: "Alle 37 Yesim-Tarife für Marokko in einer Tabelle: 1-30 Tage ab $0.51, $1.47/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

@@ -4,5 +4,6 @@ iso: KE
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for Kenya: 35 plans from $6.80, best $2.47/GB (#3 of 10) — ranked against 139 Kenya plans."
+  title: "Yesim Kenya eSIM: 35 Plans, 1-30 Days, From $6.80"
+  description: "All 35 Yesim plans for Kenya in one table: 1-30 days from $6.80, $2.47/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

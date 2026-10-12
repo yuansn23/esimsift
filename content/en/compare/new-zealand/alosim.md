@@ -4,5 +4,6 @@ iso: NZ
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for New Zealand: 12 plans from $4.50, best $1.90/GB (#9 of 10) — ranked against 174 New Zealand plans."
+  title: "aloSIM New Zealand eSIM 2026: 12 Plans, 3-30 Days"
+  description: "All 12 aloSIM plans for New Zealand in one table: 3-30 days from $4.50, $1.90/GB cheapest. eSIM Sift prices every option in one table."
 ---

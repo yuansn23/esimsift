@@ -4,5 +4,6 @@ iso: GB
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for UK: 33 plans from $3.50, best $0.50/GB (#3 of 10) — benchmarked against all 230 UK eSIMs we track."
+  title: "aloSIM UK eSIM: 33 Plans, 1-30 Days, From $3.50"
+  description: "All 33 aloSIM plans for UK in one table: 1-30 days from $3.50, $0.50/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

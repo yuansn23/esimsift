@@ -4,5 +4,6 @@ iso: CR
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for Costa Rica: 6 daily plans from $3.20/day, fair-use caps decoded — from our live price index."
+  title: "Holafly Costa Rica eSIM: 6 Unlimited Plans, 3-30 Days"
+  description: "All 6 Holafly plans for Costa Rica in one table: 3-30 days from $3.20/day, fair-use capped. eSIM Sift prices every option in one table."
 ---

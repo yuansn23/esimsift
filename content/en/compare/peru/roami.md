@@ -4,5 +4,6 @@ iso: PE
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Peru: 21 plans from $4.99, best $1.55/GB (#3 of 10) — ranked against 135 Peru plans."
+  title: "Roami Peru eSIM: 21 Plans, 3-30 Days, From $4.99"
+  description: "All 21 Roami plans for Peru in one table: 3-30 days from $4.99, $1.55/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

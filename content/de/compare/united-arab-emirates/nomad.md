@@ -4,6 +4,6 @@ iso: AE
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Nomad-Tarife für Vereinigte Arabische Emirate: 9 Tarife ab $4.00, bester Preis $1.45/GB (#4 von 10) — aus unserem Live-Preisindex."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Nomad Vereinigte Arabische Emirate eSIM: 9 Tarife"
+  description: "Jeder Nomad-Tarif für Vereinigte Arabische Emirate in einer Tabelle: 3-30 Tage ab $4.00. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

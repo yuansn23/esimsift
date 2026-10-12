@@ -4,5 +4,6 @@ iso: PT
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Portugal: 10 plans from $3.99, best $1.40/GB (#9 of 10) — ranked against 197 Portugal plans."
+  title: "Saily Portugal eSIM: 10 Plans, 7-30 Days, From $3.99"
+  description: "All 10 Saily plans for Portugal in one table: 7-30 days from $3.99, $1.40/GB cheapest. eSIM Sift prices every option in one table."
 ---

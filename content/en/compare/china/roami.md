@@ -4,5 +4,6 @@ iso: CN
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for China: 20 plans from $1.99, best $0.80/GB (#4 of 10) — ranked against 203 China plans."
+  title: "Roami China eSIM: 20 Plans, 3-30 Days, From $1.99"
+  description: "All 20 Roami plans for China in one table: 3-30 days from $1.99, $0.80/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

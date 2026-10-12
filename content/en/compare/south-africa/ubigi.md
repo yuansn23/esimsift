@@ -4,5 +4,6 @@ iso: ZA
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for South Africa: 9 plans from $5.00, best $1.10/GB (#2 of 10) — ranked against 155 South Africa plans."
+  title: "Ubigi South Africa eSIM 2026: 9 Plans, 7-30 Days"
+  description: "All 9 Ubigi plans for South Africa in one table: 7, 15 or 30 days from $5.00, $1.10/GB cheapest. eSIM Sift prices every option in one table."
 ---

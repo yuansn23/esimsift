@@ -4,5 +4,6 @@ iso: JP
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for Japan: 17 plans from $4.00, best $1.20/GB (#7 of 10) — ranked against 211 Japan plans."
+  title: "Airalo Japan eSIM: 17 Plans, 3-30 Days, From $4.00"
+  description: "All 17 Airalo plans for Japan in one table: 3-30 days from $4.00, $1.20/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

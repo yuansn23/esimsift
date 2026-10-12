@@ -4,5 +4,6 @@ iso: KE
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Kenya: 4 plans from $7.99, best $4.80/GB (#7 of 10) — ranked against 139 Kenya plans."
+  title: "Saily Kenya eSIM: 4 Plans, 7-30 Days, From $7.99"
+  description: "All 4 Saily plans for Kenya in one table: 7 or 30 days from $7.99, $4.80/GB cheapest. eSIM Sift prices every option in one table."
 ---

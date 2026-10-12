@@ -4,5 +4,6 @@ iso: AU
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for Australia: 6 daily plans from $2.46/day, fair-use caps decoded — 180 Australia eSIMs tracked."
+  title: "Holafly Australia eSIM: 6 Unlimited Plans, 3-30 Days"
+  description: "All 6 Holafly plans for Australia in one table: 3-30 days from $2.46/day, fair-use caps decoded. eSIM Sift prices every option in one table."
 ---

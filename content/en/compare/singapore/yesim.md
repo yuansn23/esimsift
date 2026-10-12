@@ -4,5 +4,6 @@ iso: SG
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for Singapore: 36 plans from $0.51, best $1.04/GB (#6 of 10) — ranked against 217 Singapore plans."
+  title: "Yesim Singapore eSIM: 36 Plans, 1-30 Days, From $0.51"
+  description: "All 36 Yesim plans for Singapore in one table: 1-30 days from $0.51, $1.04/GB cheapest. eSIM Sift prices every option in one table."
 ---

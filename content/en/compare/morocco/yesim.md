@@ -4,5 +4,6 @@ iso: MA
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for Morocco: 37 plans from $0.51, best $1.47/GB (#4 of 10) — ranked against 160 Morocco plans."
+  title: "Yesim Morocco eSIM: 37 Plans, 1-30 Days, From $0.51"
+  description: "All 37 Yesim plans for Morocco in one table: 1-30 days from $0.51, $1.47/GB cheapest. eSIM Sift prices every option in one table."
 ---

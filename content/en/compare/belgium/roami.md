@@ -4,5 +4,6 @@ iso: BE
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Belgium: 27 plans from $1.99, best $0.55/GB (#3 of 10) — ranked against 212 Belgium plans."
+  title: "Roami Belgium eSIM: 27 Plans, 3-30 Days, From $1.99"
+  description: "All 27 Roami plans for Belgium in one table: 3-30 days from $1.99, $0.55/GB cheapest. eSIM Sift prices every option in one table."
 ---

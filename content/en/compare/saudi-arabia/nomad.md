@@ -4,5 +4,6 @@ iso: SA
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Saudi Arabia: 10 plans from $5.00, best $0.82/GB (#1 of 10) — ranked against 169 Saudi Arabia plans."
+  title: "Nomad Saudi Arabia eSIM 2026: 10 Plans, 3-30 Days"
+  description: "All 10 Nomad plans for Saudi Arabia in one table: 3-30 days from $5.00, $0.82/GB cheapest. eSIM Sift prices every option in one table."
 ---

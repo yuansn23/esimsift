@@ -4,5 +4,6 @@ iso: FJ
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Fiji: 2 plans from $7.99, best $6.66/GB (#7 of 9) — benchmarked against all 103 Fiji eSIMs we track."
+  title: "Saily Fiji eSIM: 2 Plans, 7-30 Days, From $7.99"
+  description: "All 2 Saily plans for Fiji in one table: 7 or 30 days from $7.99, $6.66/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

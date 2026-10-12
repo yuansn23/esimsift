@@ -4,5 +4,6 @@ iso: IT
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for Italy: 17 plans from $2.00, best $0.62/GB (#5 of 10) — ranked against 204 Italy plans."
+  title: "Jetpac Italy eSIM: 17 Plans, 1-30 Days, From $2.00"
+  description: "All 17 Jetpac plans for Italy in one table: 1-30 days from $2.00, $0.62/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

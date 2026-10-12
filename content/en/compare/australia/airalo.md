@@ -4,5 +4,6 @@ iso: AU
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for Australia: 18 plans from $4.00, best $0.90/GB (#5 of 10) — ranked against 180 Australia plans."
+  title: "Airalo Australia eSIM: 18 Plans, 3-30 Days, From $4.00"
+  description: "All 18 Airalo plans for Australia in one table: 3-30 days from $4.00, $0.90/GB cheapest. eSIM Sift prices every option in one table."
 ---

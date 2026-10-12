@@ -4,5 +4,6 @@ iso: CN
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for China: 9 plans from $4.00, best $0.80/GB (#5 of 10) — ranked against 203 China plans."
+  title: "Ubigi China eSIM: 9 Plans, 7-30 Days, From $4.00"
+  description: "All 9 Ubigi plans for China in one table: 7-30 days from $4.00, $0.80/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

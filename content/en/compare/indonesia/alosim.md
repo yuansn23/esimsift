@@ -4,5 +4,6 @@ iso: ID
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Indonesia: 12 plans from $4.50, best $1.75/GB (#8 of 10) — ranked against 185 Indonesia plans."
+  title: "aloSIM Indonesia eSIM: 12 Plans, 3-30 Days, From $4.50"
+  description: "All 12 aloSIM plans for Indonesia in one table: 3-30 days from $4.50, $1.75/GB cheapest. eSIM Sift prices every option in one table."
 ---

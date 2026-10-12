@@ -4,5 +4,6 @@ iso: KE
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Kenya: 21 plans from $7.99, best $2.07/GB (#2 of 10) — ranked against 139 Kenya plans."
+  title: "Roami Kenya eSIM: 21 Plans, 3-30 Days, From $7.99"
+  description: "All 21 Roami plans for Kenya in one table: 3-30 days from $7.99, $2.07/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

@@ -4,6 +4,6 @@ iso: CZ
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Saily-Tarife für Tschechien: 10 Tarife ab $2.99, bester Preis $1.20/GB (#8 von 10) — gemessen an allen 175 erfassten Tschechien-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Saily Tschechien eSIM: 10 Tarife, 7-30 Tage, ab $2.99"
+  description: "Alle 10 Saily-Tarife für Tschechien in einer Tabelle: 7-30 Tage ab $2.99, $1.20/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

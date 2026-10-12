@@ -4,5 +4,6 @@ iso: PL
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for Poland: 15 plans from $5.00, best $0.80/GB (#6 of 10) — ranked against 178 Poland plans."
+  title: "Jetpac Poland eSIM: 15 Plans, 3-30 Days, From $5.00"
+  description: "All 15 Jetpac plans for Poland in one table: 3-30 days from $5.00, $0.80/GB cheapest. eSIM Sift prices every option in one table."
 ---

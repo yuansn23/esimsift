@@ -4,5 +4,6 @@ iso: AR
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Argentina: 7 plans from $6.00, best $1.30/GB (#1 of 10) — ranked against 154 Argentina plans."
+  title: "Ubigi Argentina eSIM: 7 Plans, 7-30 Days, From $6.00"
+  description: "All 7 Ubigi plans for Argentina in one table: 7, 15 or 30 days from $6.00, $1.30/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,6 +4,6 @@ iso: ID
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Saily-Tarife für Indonesien: 11 Tarife ab $4.79, bester Preis $1.80/GB (#9 von 10) — gemessen an allen 185 erfassten Indonesien-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Saily Indonesien eSIM: 11 Tarife, 5-30 Tage, ab $4.79"
+  description: "Alle 11 Saily-Tarife für Indonesien in einer Tabelle: 5-30 Tage ab $4.79, $1.80/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

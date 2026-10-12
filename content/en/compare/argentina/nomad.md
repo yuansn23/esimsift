@@ -4,5 +4,6 @@ iso: AR
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Argentina: 5 plans from $5.00, best $2.35/GB (#9 of 10) — ranked against 154 Argentina plans."
+  title: "Nomad Argentina eSIM: 5 Plans, 7-30 Days, From $5.00"
+  description: "All 5 Nomad plans for Argentina in one table: 7 or 30 days from $5.00, $2.35/GB cheapest. eSIM Sift prices every option in one table."
 ---

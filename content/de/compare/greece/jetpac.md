@@ -4,6 +4,6 @@ iso: GR
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Jetpac-Tarife für Griechenland: 15 Tarife ab $7.00, bester Preis $0.75/GB (#6 von 10) — gemessen an allen 197 erfassten Griechenland-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Jetpac Griechenland eSIM 2026: 15 Tarife, 3-30 Tage"
+  description: "Alle 15 Jetpac-Tarife für Griechenland in einer Tabelle: 3-30 Tage ab $7.00, $0.75/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

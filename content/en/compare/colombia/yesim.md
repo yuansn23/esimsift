@@ -4,5 +4,6 @@ iso: CO
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for Colombia: 35 plans from $6.80, best $2.25/GB (#6 of 10) — ranked against 161 Colombia plans."
+  title: "Yesim Colombia eSIM: 35 Plans, 1-30 Days, From $6.80"
+  description: "All 35 Yesim plans for Colombia in one table: 1-30 days from $6.80, $2.25/GB cheapest. eSIM Sift prices every option in one table."
 ---

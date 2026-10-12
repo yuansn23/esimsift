@@ -4,6 +4,6 @@ iso: KE
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Saily-Tarife für Kenia: 4 Tarife ab $7.99, bester Preis $4.80/GB (#7 von 10) — gemessen an allen 139 erfassten Kenia-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Saily Kenia eSIM: 4 Tarife, 7-30 Tage, ab $7.99"
+  description: "Alle 4 Saily-Tarife für Kenia in einer Tabelle: 7 oder 30 Tage ab $7.99, $4.80/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

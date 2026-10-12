@@ -4,5 +4,6 @@ iso: KR
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for South Korea: 10 plans from $3.00, best $0.70/GB (#3 of 10) — ranked against 185 South Korea plans."
+  title: "Ubigi South Korea eSIM 2026: 10 Plans, 7-365 Days"
+  description: "All 10 Ubigi plans for South Korea in one table: 7-365 days from $3.00, $0.70/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: DE
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Germany: 10 plans from $4.50, best $0.64/GB (#4 of 10) — ranked against 202 Germany plans."
+  title: "Nomad Germany eSIM: 10 Plans, 3-30 Days, From $4.50"
+  description: "All 10 Nomad plans for Germany in one table: 3-30 days from $4.50, $0.64/GB cheapest. eSIM Sift prices every option in one table."
 ---

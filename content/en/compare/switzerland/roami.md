@@ -4,5 +4,6 @@ iso: CH
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Switzerland: 25 plans from $1.99, best $0.55/GB (#1 of 10) — ranked against 181 Switzerland plans."
+  title: "Roami Switzerland eSIM 2026: 25 Plans, 3-30 Days"
+  description: "All 25 Roami plans for Switzerland in one table: 3-30 days from $1.99, $0.55/GB cheapest. eSIM Sift prices every option in one table."
 ---

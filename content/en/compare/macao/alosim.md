@@ -4,5 +4,6 @@ iso: MO
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Macao: 7 plans from $4.50, best $1.15/GB (#8 of 10) — ranked against 127 Macao plans."
+  title: "aloSIM Macao eSIM: 7 Plans, 7-30 Days, From $4.50"
+  description: "All 7 aloSIM plans for Macao in one table: 7-30 days from $4.50, $1.15/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

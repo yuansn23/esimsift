@@ -4,5 +4,6 @@ iso: ID
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for Indonesia: 24 plans from $6.00, best $1.00/GB (#6 of 10) — ranked against 185 Indonesia plans."
+  title: "Jetpac Indonesia eSIM: 24 Plans, 1-30 Days, From $6.00"
+  description: "All 24 Jetpac plans for Indonesia in one table: 1-30 days from $6.00, $1.00/GB cheapest. eSIM Sift prices every option in one table."
 ---

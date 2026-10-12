@@ -4,5 +4,6 @@ iso: AT
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for Austria: 24 plans from $4.00, best $0.58/GB (#3 of 10) — ranked against 182 Austria plans."
+  title: "Airalo Austria eSIM: 24 Plans, 3-30 Days, From $4.00"
+  description: "All 24 Airalo plans for Austria in one table: 3-30 days from $4.00, $0.58/GB cheapest. eSIM Sift prices every option in one table."
 ---

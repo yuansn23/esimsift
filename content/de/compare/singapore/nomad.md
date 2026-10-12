@@ -4,6 +4,6 @@ iso: SG
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Nomad-Tarife für Singapur: 8 Tarife ab $4.00, bester Preis $0.62/GB (#3 von 10) — gemessen an allen 217 erfassten Singapur-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Nomad Singapur eSIM: 8 Tarife, 5-30 Tage, ab $4.00"
+  description: "Alle 8 Nomad-Tarife für Singapur in einer Tabelle: 5-30 Tage ab $4.00, $0.62/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

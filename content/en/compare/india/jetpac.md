@@ -4,5 +4,6 @@ iso: IN
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for India: 24 plans from $6.00, best $1.25/GB (#4 of 10) — ranked against 186 India plans."
+  title: "Jetpac India eSIM: 24 Plans, 1-30 Days, From $6.00"
+  description: "All 24 Jetpac plans for India in one table: 1-30 days from $6.00, $1.25/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

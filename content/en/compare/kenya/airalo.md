@@ -4,5 +4,6 @@ iso: KE
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for Kenya: 9 plans from $8.00, best $4.60/GB (#6 of 10) — ranked against 139 Kenya plans."
+  title: "Airalo Kenya eSIM: 9 Plans, 3-30 Days, From $8.00"
+  description: "All 9 Airalo plans for Kenya in one table: 3-30 days from $8.00, $4.60/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

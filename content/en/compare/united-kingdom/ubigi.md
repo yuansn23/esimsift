@@ -4,5 +4,6 @@ iso: GB
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for UK: 14 plans from $5.00, best $0.48/GB (#2 of 10) — benchmarked against all 230 UK eSIMs we track."
+  title: "Ubigi UK eSIM: 14 Plans, 1-365 Days, From $5.00"
+  description: "All 14 Ubigi plans for UK in one table: 1-365 days from $5.00, $0.48/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

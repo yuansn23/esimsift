@@ -4,5 +4,6 @@ iso: TH
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Thailand: 13 plans from $3.00, best $0.60/GB (#3 of 10) — ranked against 188 Thailand plans."
+  title: "Ubigi Thailand eSIM: 13 Plans, 7-365 Days, From $3.00"
+  description: "All 13 Ubigi plans for Thailand in one table: 7-365 days from $3.00, $0.60/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: MX
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Mexico: 12 plans from $5.00, best $2.30/GB (#9 of 10) — ranked against 189 Mexico plans."
+  title: "aloSIM Mexico eSIM: 12 Plans, 3-30 Days, From $5.00"
+  description: "All 12 aloSIM plans for Mexico in one table: 3-30 days from $5.00, $2.30/GB cheapest. eSIM Sift prices every option in one table."
 ---

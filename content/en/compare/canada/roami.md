@@ -4,5 +4,6 @@ iso: CA
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Canada: 25 plans from $3.99, best $1.55/GB (#6 of 10) — ranked against 221 Canada plans."
+  title: "Roami Canada eSIM: 25 Plans, 3-30 Days, From $3.99"
+  description: "All 25 Roami plans for Canada in one table: 3-30 days from $3.99, $1.55/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

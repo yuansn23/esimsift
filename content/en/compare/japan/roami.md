@@ -4,5 +4,6 @@ iso: JP
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Japan: 24 plans from $1.99, best $0.76/GB (#4 of 10) — ranked against 211 Japan plans."
+  title: "Roami Japan eSIM: 24 Plans, 3-30 Days, From $1.99"
+  description: "All 24 Roami plans for Japan in one table: 3-30 days from $1.99, $0.76/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

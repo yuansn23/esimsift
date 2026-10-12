@@ -4,5 +4,6 @@ iso: SA
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for Saudi Arabia: 14 plans from $5.50, best $1.50/GB (#4 of 10) — from our live price index."
+  title: "Jetpac Saudi Arabia eSIM 2026: 14 Plans, 1-30 Days"
+  description: "All 14 Jetpac plans for Saudi Arabia in one table: 1-30 days from $5.50, $1.50/GB cheapest. eSIM Sift prices every option in one table."
 ---

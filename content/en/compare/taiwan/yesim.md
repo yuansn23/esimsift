@@ -4,5 +4,6 @@ iso: TW
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for Taiwan: 11 plans from $0.57, best $0.76/GB (#3 of 10) — ranked against 161 Taiwan plans."
+  title: "Yesim Taiwan eSIM: 11 Plans, 1-30 Days, From $0.57"
+  description: "All 11 Yesim plans for Taiwan in one table: 1-30 days from $0.57, $0.76/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

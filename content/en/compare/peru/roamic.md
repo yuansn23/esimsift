@@ -4,5 +4,6 @@ iso: PE
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift compares Roamic eSIM plans for Peru: 36 plans from $3.00, best $1.30/GB (#1 of 10) — ranked against 135 Peru plans."
+  title: "Roamic Peru eSIM: 36 Plans, 1-30 Days, From $3.00"
+  description: "All 36 Roamic plans for Peru in one table: 1-30 days from $3.00, $1.30/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: TH
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Thailand: 12 plans from $2.99, best $1.00/GB (#9 of 10) — ranked against 188 Thailand plans."
+  title: "Saily Thailand eSIM: 12 Plans, 5-30 Days, From $2.99"
+  description: "All 12 Saily plans for Thailand in one table: 5-30 days from $2.99, $1.00/GB cheapest. eSIM Sift prices every option in one table."
 ---

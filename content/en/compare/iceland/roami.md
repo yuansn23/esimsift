@@ -4,5 +4,6 @@ iso: IS
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Iceland: 25 plans from $1.99, best $0.55/GB (#2 of 10) — ranked against 148 Iceland plans."
+  title: "Roami Iceland eSIM: 25 Plans, 3-30 Days, From $1.99"
+  description: "All 25 Roami plans for Iceland in one table: 3-30 days from $1.99, $0.55/GB cheapest. eSIM Sift prices every option in one table."
 ---

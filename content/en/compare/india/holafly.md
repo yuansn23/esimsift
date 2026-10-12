@@ -4,5 +4,6 @@ iso: IN
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for India: 6 daily plans from $3.73/day, fair-use caps decoded — 186 India eSIMs tracked."
+  title: "Holafly India eSIM: 6 Unlimited Plans, 3-30 Days"
+  description: "All 6 Holafly plans for India in one table: 3-30 days from $3.73/day, fair-use caps decoded. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: SG
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Singapore: 11 plans from $3.00, best $0.55/GB (#2 of 10) — ranked against 217 Singapore plans."
+  title: "Ubigi Singapore eSIM: 11 Plans, 2-365 Days, From $3.00"
+  description: "All 11 Ubigi plans for Singapore in one table: 2-365 days from $3.00, $0.55/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: CZ
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for Czechia: 15 plans from $7.00, best $0.87/GB (#5 of 10) — ranked against 175 Czechia plans."
+  title: "Jetpac Czechia eSIM: 15 Plans, 1-30 Days, From $7.00"
+  description: "All 15 Jetpac plans for Czechia in one table: 1-30 days from $7.00, $0.87/GB cheapest. eSIM Sift prices every option in one table."
 ---

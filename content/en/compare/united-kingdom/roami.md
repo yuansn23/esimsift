@@ -4,5 +4,6 @@ iso: GB
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for UK: 26 plans from $1.99, best $0.55/GB (#4 of 10) — benchmarked against all 230 UK eSIMs we track."
+  title: "Roami UK eSIM: 26 Plans, 3-30 Days, From $1.99"
+  description: "All 26 Roami plans for UK in one table: 3-30 days from $1.99, $0.55/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

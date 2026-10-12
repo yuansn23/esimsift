@@ -4,5 +4,6 @@ iso: CN
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for China: 11 plans from $4.49, best $2.30/GB (#9 of 10) — ranked against 203 China plans."
+  title: "Saily China eSIM: 11 Plans, 5-30 Days, From $4.49"
+  description: "All 11 Saily plans for China in one table: 5-30 days from $4.49, $2.30/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

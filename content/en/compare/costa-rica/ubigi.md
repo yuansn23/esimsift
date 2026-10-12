@@ -4,5 +4,6 @@ iso: CR
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Costa Rica: 8 plans from $4.00, best $1.15/GB (#2 of 10) — ranked against 170 Costa Rica plans."
+  title: "Ubigi Costa Rica eSIM: 8 Plans, 7-30 Days, From $4.00"
+  description: "All 8 Ubigi plans for Costa Rica in one table: 7, 15 or 30 days from $4.00, $1.15/GB cheapest. eSIM Sift prices every option in one table."
 ---

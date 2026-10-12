@@ -4,5 +4,6 @@ iso: SA
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Saudi Arabia: 22 plans from $3.99, best $1.50/GB (#3 of 10) — ranked against 169 Saudi Arabia plans."
+  title: "Roami Saudi Arabia eSIM 2026: 22 Plans, 3-30 Days"
+  description: "All 22 Roami plans for Saudi Arabia in one table: 3-30 days from $3.99, $1.50/GB cheapest. eSIM Sift prices every option in one table."
 ---

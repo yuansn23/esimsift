@@ -4,5 +4,6 @@ iso: IN
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for India: 37 plans from $0.51, best $1.46/GB (#5 of 10) — ranked against 186 India plans."
+  title: "Yesim India eSIM: 37 Plans, 1-30 Days, From $0.51"
+  description: "All 37 Yesim plans for India in one table: 1-30 days from $0.51, $1.46/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

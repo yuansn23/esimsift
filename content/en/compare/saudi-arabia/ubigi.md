@@ -4,5 +4,6 @@ iso: SA
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Saudi Arabia: 4 plans from $7.00, best $2.50/GB (#9 of 10) — ranked against 169 Saudi Arabia plans."
+  title: "Ubigi Saudi Arabia eSIM 2026: 4 Plans, 7-30 Days"
+  description: "All 4 Ubigi plans for Saudi Arabia in one table: 7 or 30 days from $7.00, $2.50/GB cheapest. eSIM Sift prices every option in one table."
 ---

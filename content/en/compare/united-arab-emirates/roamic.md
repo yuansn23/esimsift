@@ -4,5 +4,6 @@ iso: AE
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift compares Roamic eSIM plans for United Arab Emirates: 36 plans from $3.00, best $1.36/GB (#2 of 10) — from our live price index."
+  title: "Roamic United Arab Emirates eSIM: 36 Plans, 1-30 Days"
+  description: "All 36 Roamic plans for United Arab Emirates in one table: 1-30 days from $3.00, $1.36/GB. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: CO
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Colombia: 12 plans from $5.50, best $2.45/GB (#8 of 10) — ranked against 161 Colombia plans."
+  title: "aloSIM Colombia eSIM: 12 Plans, 3-30 Days, From $5.50"
+  description: "All 12 aloSIM plans for Colombia in one table: 3-30 days from $5.50, $2.45/GB cheapest. eSIM Sift prices every option in one table."
 ---

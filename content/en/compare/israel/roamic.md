@@ -4,5 +4,6 @@ iso: IL
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift compares Roamic eSIM plans for Israel: 36 plans from $2.00, best $0.50/GB (#1 of 10) — ranked against 179 Israel plans."
+  title: "Roamic Israel eSIM: 36 Plans, 1-30 Days, From $2.00"
+  description: "All 36 Roamic plans for Israel in one table: 1-30 days from $2.00, $0.50/GB cheapest. eSIM Sift prices every option in one table."
 ---

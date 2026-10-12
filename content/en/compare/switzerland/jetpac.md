@@ -4,5 +4,6 @@ iso: CH
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for Switzerland: 15 plans from $7.00, best $0.87/GB (#5 of 10) — ranked against 181 Switzerland plans."
+  title: "Jetpac Switzerland eSIM 2026: 15 Plans, 1-30 Days"
+  description: "All 15 Jetpac plans for Switzerland in one table: 1-30 days from $7.00, $0.87/GB cheapest. eSIM Sift prices every option in one table."
 ---

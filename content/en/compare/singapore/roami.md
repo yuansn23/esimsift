@@ -4,5 +4,6 @@ iso: SG
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Singapore: 24 plans from $1.99, best $0.80/GB (#4 of 10) — ranked against 217 Singapore plans."
+  title: "Roami Singapore eSIM: 24 Plans, 3-30 Days, From $1.99"
+  description: "All 24 Roami plans for Singapore in one table: 3-30 days from $1.99, $0.80/GB cheapest. eSIM Sift prices every option in one table."
 ---

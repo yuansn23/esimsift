@@ -4,6 +4,6 @@ iso: CO
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Jetpac-Tarife für Kolumbien: 14 Tarife ab $7.00, bester Preis $2.50/GB (#9 von 10) — gemessen an allen 161 erfassten Kolumbien-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Jetpac Kolumbien eSIM: 14 Tarife, 1-30 Tage, ab $7.00"
+  description: "Alle 14 Jetpac-Tarife für Kolumbien in einer Tabelle: 1-30 Tage ab $7.00, $2.50/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

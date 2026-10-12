@@ -4,5 +4,6 @@ iso: MA
 provider: holafly
 layout: provider
 seo:
-  description: "eSIM Sift compares Holafly unlimited eSIMs for Morocco: 6 daily plans from $2.83/day, fair-use caps decoded — 160 Morocco eSIMs tracked."
+  title: "Holafly Morocco eSIM: 6 Unlimited Plans, 3-30 Days"
+  description: "All 6 Holafly plans for Morocco in one table: 3-30 days from $2.83/day, fair-use caps decoded. eSIM Sift prices every option in one table."
 ---

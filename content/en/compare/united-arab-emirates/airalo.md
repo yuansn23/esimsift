@@ -4,5 +4,6 @@ iso: AE
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for United Arab Emirates: 17 plans from $4.00, best $1.65/GB (#7 of 10) — from our live price index."
+  title: "Airalo United Arab Emirates eSIM: 17 Plans, 3-30 Days"
+  description: "All 17 Airalo plans for United Arab Emirates in one table: 3-30 days from $4.00, $1.65/GB. eSIM Sift prices every option in one table."
 ---

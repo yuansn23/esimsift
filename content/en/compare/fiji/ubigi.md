@@ -4,5 +4,6 @@ iso: FJ
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Fiji: 2 plans from $18.00, best $11.33/GB (#8 of 9) — ranked against 103 Fiji plans."
+  title: "Ubigi Fiji eSIM: 2 Plans, 7-15 Days, From $18.00"
+  description: "All 2 Ubigi plans for Fiji in one table: 7 or 15 days from $18.00, $11.33/GB cheapest. eSIM Sift prices every option in one table."
 ---

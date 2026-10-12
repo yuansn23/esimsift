@@ -4,6 +4,6 @@ iso: GR
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift vergleicht Roami-Tarife für Griechenland: 25 Tarife ab $1.99, bester Preis $0.55/GB (#3 von 10) — gemessen an allen 197 erfassten Griechenland-eSIMs."
-# TODO(de)：本页由 scripts/gen_provider_pages.py 生成，正文来自 data/plans/*.toml（模板已本地化）。D9 解禁时统一删掉上面 noindex 行。
+  title: "Roami Griechenland eSIM 2026: 25 Tarife, 3-30 Tage"
+  description: "Alle 25 Roami-Tarife für Griechenland in einer Tabelle: 3-30 Tage ab $1.99, $0.55/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
 ---

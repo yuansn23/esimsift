@@ -4,5 +4,6 @@ iso: EG
 provider: nomad
 layout: provider
 seo:
-  description: "eSIM Sift compares Nomad eSIM plans for Egypt: 9 plans from $6.00, best $1.85/GB (#5 of 10) — ranked against 165 Egypt plans."
+  title: "Nomad Egypt eSIM: 9 Plans, 3-30 Days, From $6.00"
+  description: "All 9 Nomad plans for Egypt in one table: 3-30 days from $6.00, $1.85/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

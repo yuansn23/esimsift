@@ -4,5 +4,6 @@ iso: QA
 provider: ubigi
 layout: provider
 seo:
-  description: "eSIM Sift compares Ubigi eSIM plans for Qatar: 4 plans from $8.00, best $1.60/GB (#5 of 10) — ranked against 160 Qatar plans."
+  title: "Ubigi Qatar eSIM: 4 Plans, 7-30 Days, From $8.00"
+  description: "All 4 Ubigi plans for Qatar in one table: 7 or 30 days from $8.00, $1.60/GB cheapest. eSIM Sift prices every option in one table."
 ---

@@ -4,5 +4,6 @@ iso: VN
 provider: roami
 layout: provider
 seo:
-  description: "eSIM Sift compares Roami eSIM plans for Vietnam: 24 plans from $1.99, best $0.90/GB (#4 of 10) — ranked against 185 Vietnam plans."
+  title: "Roami Vietnam eSIM: 24 Plans, 3-30 Days, From $1.99"
+  description: "All 24 Roami plans for Vietnam in one table: 3-30 days from $1.99, $0.90/GB cheapest. eSIM Sift prices every option in one table."
 ---

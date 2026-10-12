@@ -4,5 +4,6 @@ iso: NL
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for Netherlands: 30 plans from $4.00, best $0.72/GB (#5 of 10) — ranked against 209 Netherlands plans."
+  title: "Airalo Netherlands eSIM 2026: 30 Plans, 3-30 Days"
+  description: "All 30 Airalo plans for Netherlands in one table: 3-30 days from $4.00, $0.72/GB cheapest. eSIM Sift prices every option in one table."
 ---

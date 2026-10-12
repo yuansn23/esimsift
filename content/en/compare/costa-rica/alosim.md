@@ -4,5 +4,6 @@ iso: CR
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Costa Rica: 12 plans from $9.50, best $2.25/GB (#7 of 10) — ranked against 170 Costa Rica plans."
+  title: "aloSIM Costa Rica eSIM 2026: 12 Plans, 3-30 Days"
+  description: "All 12 aloSIM plans for Costa Rica in one table: 3-30 days from $9.50, $2.25/GB cheapest. eSIM Sift prices every option in one table."
 ---

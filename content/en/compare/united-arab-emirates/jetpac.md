@@ -4,5 +4,6 @@ iso: AE
 provider: jetpac
 layout: provider
 seo:
-  description: "eSIM Sift compares Jetpac eSIM plans for United Arab Emirates: 21 plans from $5.50, best $1.10/GB (#1 of 10) — from our live price index."
+  title: "Jetpac United Arab Emirates eSIM: 21 Plans, 1-30 Days"
+  description: "All 21 Jetpac plans for United Arab Emirates in one table: 1-30 days from $5.50, $1.10/GB. eSIM Sift prices every option in one table."
 ---

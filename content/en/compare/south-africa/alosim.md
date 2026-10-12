@@ -4,5 +4,6 @@ iso: ZA
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for South Africa: 12 plans from $4.00, best $1.85/GB (#9 of 10) — from our live price index."
+  title: "aloSIM South Africa eSIM 2026: 12 Plans, 3-30 Days"
+  description: "All 12 aloSIM plans for South Africa in one table: 3-30 days from $4.00, $1.85/GB cheapest. eSIM Sift prices every option in one table."
 ---

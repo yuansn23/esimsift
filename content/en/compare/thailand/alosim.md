@@ -4,5 +4,6 @@ iso: TH
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Thailand: 12 plans from $3.50, best $0.97/GB (#8 of 10) — ranked against 188 Thailand plans."
+  title: "aloSIM Thailand eSIM: 12 Plans, 3-30 Days, From $3.50"
+  description: "All 12 aloSIM plans for Thailand in one table: 3-30 days from $3.50, $0.97/GB cheapest. eSIM Sift prices every option in one table."
 ---

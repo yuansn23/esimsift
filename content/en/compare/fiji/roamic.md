@@ -4,5 +4,6 @@ iso: FJ
 provider: roamic
 layout: provider
 seo:
-  description: "eSIM Sift compares Roamic eSIM plans for Fiji: 35 plans from $3.00, best $2.40/GB (#4 of 9) — ranked against 103 Fiji plans."
+  title: "Roamic Fiji eSIM: 35 Plans, 1-30 Days, From $3.00"
+  description: "All 35 Roamic plans for Fiji in one table: 1-30 days from $3.00, $2.40/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

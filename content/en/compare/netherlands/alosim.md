@@ -4,5 +4,6 @@ iso: NL
 provider: alosim
 layout: provider
 seo:
-  description: "eSIM Sift compares aloSIM eSIM plans for Netherlands: 32 plans from $3.50, best $0.50/GB (#2 of 10) — ranked against 209 Netherlands plans."
+  title: "aloSIM Netherlands eSIM 2026: 32 Plans, 1-30 Days"
+  description: "All 32 aloSIM plans for Netherlands in one table: 1-30 days from $3.50, $0.50/GB cheapest. eSIM Sift prices every option in one table."
 ---

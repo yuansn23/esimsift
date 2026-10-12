@@ -4,5 +4,6 @@ iso: BR
 provider: yesim
 layout: provider
 seo:
-  description: "eSIM Sift compares Yesim eSIM plans for Brazil: 36 plans from $0.51, best $2.04/GB (#9 of 10) — ranked against 180 Brazil plans."
+  title: "Yesim Brazil eSIM: 36 Plans, 1-30 Days, From $0.51"
+  description: "All 36 Yesim plans for Brazil in one table: 1-30 days from $0.51, $2.04/GB at the cheapest tier. eSIM Sift prices every option in one table."
 ---

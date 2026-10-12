@@ -4,5 +4,6 @@ iso: CZ
 provider: saily
 layout: provider
 seo:
-  description: "eSIM Sift compares Saily eSIM plans for Czechia: 10 plans from $2.99, best $1.20/GB (#8 of 10) — ranked against 175 Czechia plans."
+  title: "Saily Czechia eSIM: 10 Plans, 7-30 Days, From $2.99"
+  description: "All 10 Saily plans for Czechia in one table: 7-30 days from $2.99, $1.20/GB cheapest. eSIM Sift prices every option in one table."
 ---

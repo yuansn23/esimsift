@@ -4,5 +4,6 @@ iso: VN
 provider: airalo
 layout: provider
 seo:
-  description: "eSIM Sift compares Airalo eSIM plans for Vietnam: 18 plans from $4.00, best $0.98/GB (#5 of 10) — ranked against 185 Vietnam plans."
+  title: "Airalo Vietnam eSIM: 18 Plans, 3-30 Days, From $4.00"
+  description: "All 18 Airalo plans for Vietnam in one table: 3-30 days from $4.00, $0.98/GB cheapest. eSIM Sift prices every option in one table."
 ---
