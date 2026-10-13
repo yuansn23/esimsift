@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-13T04:32:54Z",
+ "generated_at": "2026-10-13T08:32:52Z",
  "note": "零回归基线。下一轮改完跑 verify_no_regression.py --diff <本文件>，即可看出哪些页发生变化；provider_sub 变更是预期的，其余需人工确认。",
  "class_counts": {
   "alias_shell": 1,
@@ -1189,7 +1189,7 @@
   },
   "compare/index.html": {
    "cls": "compare_index",
-   "sha256": "f8c996b03b3934e6a17b240af3b7305467741f52b2de59a827bedc8eb5e434cf",
+   "sha256": "069f86ffa3aae7d2cca757ee2ab1739157c6eb18c908187db826c4d4c8f1914f",
    "title_len": 51
   },
   "compare/india/airalo/index.html": {
@@ -4184,7 +4184,7 @@
   },
   "de/compare/index.html": {
    "cls": "compare_index",
-   "sha256": "d8f70fec749cb69df80efc6b98b0d8921cde5e7c37bdcdd5491abf80275021b1",
+   "sha256": "e33d3b989622f2e6fc7c406121db44d26eeb0b276d798e5ce96e68ad55a4ad22",
    "title_len": 54
   },
   "de/compare/india/airalo/index.html": {
@@ -6119,7 +6119,7 @@
   },
   "de/guides/index.html": {
    "cls": "guides",
-   "sha256": "84bbac648c6908caf467e5ad9b62f3c79b9a96e51e82d1746e5926e86ee01be4",
+   "sha256": "8638b57890a33c3346a0eaa5660dc8a38bddef456b68226c0f8d44a719c67bcf",
    "title_len": 46
   },
   "de/guides/what-is-an-esim/index.html": {
@@ -6129,12 +6129,12 @@
   },
   "de/index.html": {
    "cls": "home",
-   "sha256": "1b934ccca5df8cb916a79519883a2919db2971cee6a9826355c88fc9e0221e94",
+   "sha256": "5aaa3b951c0e540a0c0d90638a1dbc748f0cb7b39c23c7278f47fa9eb29a905a",
    "title_len": 50
   },
   "de/methodology/index.html": {
    "cls": "static",
-   "sha256": "e59b979f43929f979d321c4201cd51b47bfc5edbe940068dad4f419149791622",
+   "sha256": "4df69c09a8a9ace91fd47d7b1a2f9100be171dfeb7c4ef4b0461d7aee9aedbf5",
    "title_len": 55
   },
   "de/networks/canada/index.html": {
@@ -6409,7 +6409,7 @@
   },
   "guides/index.html": {
    "cls": "guides",
-   "sha256": "d83157215373470bf81a11e83aef764bc0fae57e8c717bb08b0dda276b502231",
+   "sha256": "051fb6a49a256df4b2df2710124830302fe9d962a360632c6abbfee38c112479",
    "title_len": 54
   },
   "guides/what-is-an-esim/index.html": {
@@ -6419,12 +6419,12 @@
   },
   "index.html": {
    "cls": "home",
-   "sha256": "c65cd1af89d677e07594ddc9754312ada45556a8914ec9e2de9c9ed6178d8476",
+   "sha256": "242780790f250b1743e6a3f636ae90e56797416d74d12841cb6b0b159e29f053",
    "title_len": 46
   },
   "methodology/index.html": {
    "cls": "static",
-   "sha256": "264e2e51ba9f166c0e37ab083d756920942cecf625443497bb2e8b11fe7dc78e",
+   "sha256": "6cbc618e8daf0b70d159a716fc2de39e9f76c67167b58c719f604b6b907cab85",
    "title_len": 54
   },
   "networks/canada/index.html": {

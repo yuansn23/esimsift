@@ -154,6 +154,123 @@ layouts/partials/country-stats.html  ← 全站唯一聚合入口
 - 改已存在文件全部 bytes 读写并复核换行；`content/en|de/compare/*.md` 998 个由生成器重写，**en 499 纯 CRLF / de 499 纯 LF，零混合**；`content/*/networks/*.md` 本目录实测**两侧全 LF**（与 `compare/` 不同，按文件不按目录猜）
 - `stamp_checked.py` 指纹只覆盖 `data/plans/**` 与 `data/providers.toml` ⇒ 本轮改 md/scripts **未误盖任何 `checked` 日期**
 
+## 已完成（四页型「新鲜度 / 可探索性」补强；用户 13 条逐条核到源码/产物级，2026-10-13 第九十轮）
+
+> 用户本轮逐字：`你帮我看看这些如何优化，能修改渲染模板是最好， 这样就不需要动数据文件，当然一定要动数据文件也可以，怎么方便怎么来 记得同时要兼容德语的`
+> （AskUserQuestion 应答）执行范围 → `全部真缺项（推荐）`
+
+### 1｜先把用户清单逐条核到源码 / 产物级 —— **3 条已成立、1 条做不到**
+
+| 用户判断 | 实测结论 |
+|---|---|
+| 首页·三步后缺交互入口 | ✅ 真缺 —— 三步之后直接跳「信任」段，大 CTA 远在页尾 |
+| 首页·无「最近更新」 | ✅ 真缺 —— 全页只有一句 `home__prices_checked` |
+| `/compare/`·无排序筛选 | ⚠️ **部分不成立** —— 区域 chip + 国家级搜索框 + 搜索索引数据岛**已有**；真缺的只有**国家网格排序** |
+| `/compare/`·缺热门目的地 | ✅ 真缺（但 `countries.toml[ISO].featured = true` 已是现成真源，**实测 12 国**，无需新数据） |
+| 国家页·缺叙述性内容 | ⚠️ **部分不成立** —— `#verdict`（3 卡结论）+ `#bytrip`（行程档位 + 4 种人物画像各带 why）已有 |
+| 国家页·底部缺指南交叉链接 | ❌ **已存在** —— `#guides` 区已有 5 张指南卡 + 轮换锚文本 + blurb（`$rot := mod (len $country.slug) 3`） |
+| 国家页·价格趋势 | ❌ **做不到（诚实告知）** —— `data/plans/*.toml` 每个 (品牌, 国家) 只存**当前价 + 核对日**，**零历史价点**；要「最近降价」必须先建历史快照层，且**只能从今天起积累、回填不了过去** |
+| 指南页·索引无预告 | ✅ 真缺 —— 原先只用 `.LinkTitle`，front matter 里现成的 `.Description` 完全没用上 |
+| 指南页·数量偏少 | 事实（guides 10 篇 + research 3 篇）—— 属**内容生产**，非模板问题 |
+| 方法论·可视化标注 | ✅ 可做 —— 但**用真实数据现场渲染**，不做截图（截图会过期，且本站没有这类资产） |
+| 方法论·数据更新日志 | ✅ 可做**真台账**（`plans/*.toml` 的 `checked` 现算；数据里只有 2 个日期，回填不了更早） |
+
+### 2｜改动点（**四个页型，纯模板层 + i18n，零新数据文件**）
+
+| 页型 | 改了什么 | 文件 |
+|---|---|---|
+| 首页 | ① 三步之后的**行动条**（三按钮；措辞与 hero 的两个按钮**故意不重复** —— 同页同一目标的锚文本重复会稀释排名信号）② `#latest-updates` **最近更新三卡**（三个数据面各自的最后核对日；脚注链 `/methodology/#updates`） | `layouts/index.html`（2 处） |
+| `/compare/` | ① `#featured-destinations` **12 国 chips**（真源 `featured`，带国旗 + 该国最低价；**刻意叫 Featured 不叫 Popular** —— 本站没有访问量数据）② `#sort-chips` **客户端排序四档** | `layouts/compare/list.html`（4 处）+ `partials/country-card.html`（新增 `data-price` / `data-count`） |
+| `/guides/` | 索引从 `.LinkTitle` 单行链接列表 → **分组卡片**（按 `layout: region` 分「区域指南 5 / 基础指南 5」；每卡 description + `min read` + `Reviewed <日期>`） | `layouts/_default/list.html`（整文件覆写） |
+| `/methodology/` | 新建专用版式：`#anatomy` 一行**真实套餐**的字段解剖（6 编号字段卡 + 7 条来源图例）+ `#updates` **数据更新日志** | `layouts/_default/methodology.html`（新建）+ `content/{en,de}/methodology.md` 加 `layout:` / `example_iso:` |
+
+i18n：**+49 key ×2**（en 201072 → 204725 B、de 217718 → 221636 B），**key 集合 1904 / 1904 完全对齐**。
+四个页型的**新区块 id 全部不在** `verify_no_regression.py` 的 `MARKER_ALLOWED` 表内 ⇒ 无需登记、也不该登记（登记 = 宣布它是「跨页型共享区块」，而它们各自只属于一个页型）。
+
+### 3｜四条设计决策（都写进代码注释，避免下一轮被「优化」掉）
+
+- **首页「最近更新」按数据面（3 个）而非按国家** —— 实测 50 国的 `max(checked)` **全部 = `2026-10-07`**，按国家做零信息量；三张卡的日期**本来就不同**，合并成一个日期就是不实陈述
+- **compare 排序首档叫 `Featured first` 不叫 `A to Z`** —— 网格默认序其实是各国 compare 页 front matter 的 `weight`（编辑序，实测首三 `united-states / united-kingdom / france`），叫 A to Z 就是假标签
+- **排序只重排 DOM、不改 display** —— 与区域 chip / 搜索过滤互不干扰；`serverOrder` 先把服务端序存下来，所以「Featured first」能原样还原（不是再排一次猜）；**无 JS 时保持服务端序，控件不生效但页面完整**
+- **指南标题不进 `<h3>`**（含冒号会触发 `check_headings.py`）+ **方法论页另开模板**（不动服务五页的 `_default/single.html`）+ **`example_iso` 走 front matter**（不把国别写死在模板里）
+
+### 4｜三次构建失败 → 三个**真缺陷**（没有一个是「配置问题」）
+
+| # | 报错 | 真因 | 修法 |
+|---|---|---|---|
+| d1 | `baseof.html:24:1: apply base template failed: template: list.html:24: comment ends before closing delimiter` | 模板注释里写 `content/**/guides/*.md`（`*` 紧跟 `/` 就是 `*/`，Go 在第一个 `*/` 处提前闭合注释） | 改 `content/&lt;lang&gt;/...`；同步修 `index.html` 的 `content/*/networks/*.md`。★ **源码层 5 道闸门全是正则式的，一条都拦不住这种错**，只有 Hugo 真解析模板才报（→ §14 红线 128） |
+| d2 | `error calling sort: desc is neither a struct field, a method nor a map element of type string` | `sort` 的 `"desc"` 只对 map / struct 切片成立；`[]string` 不支持三参形态 | 改为「升序 + 反转」；**最小站点夹具**实测（→ §14 红线 129） |
+| d3 | `check_inline_copy.py` FAIL：`1 条可疑字面量 'plans'`（`de/compare/index.html` 脚本体） | 排序键取名 `plans`，撞该守卫的单 token `EN_STRONG` 封闭词表 —— **判据对了、命名错了**（机器 token 与英语自然词同形） | 改名 `count`（`data-count` / `'count'`）；**不是**去给守卫加白名单（那等于削薄一条真捕到过缺陷的防线）。连带：注释里也不许带引号写该词（→ §14 红线 130） |
+
+### 5｜验收（全部产物文本断言，按约定**不做截图**）
+
+- **全量 `npm run build` EXIT=0**，**13 道产物闸门全绿**（`hugo` 阶段 Total in 414 s —— ★ 更正：这是 Hugo 自报的**渲染段**耗时，且同机近七次实测 233–591 s 波动由负载主导，**本轮不作「变慢」论断**；上一轮 r89 实为 483 s，此前写的「244 s」既非上一轮口径也不可比）
+- 规模：`1315 files (1313 pages)` · `7526 JSON-LD` · `34148 h2/h3 bad: 0` · 499 品牌子页全过 · `hreflang 3930 条 / 1310 页` · `sitemap 655 URL` · `i18n 1904 key en=de` · 德语 `F/G 全绿（655 页）· check_inline_copy 脚本体 0 残留`
+- 新增 `.buildlog/r90_assert.py`：**74 项产物断言全绿**（期望值全部**现算** —— 价格库日期从 `plans/*.toml` 现算、Featured 集合从 `countries.toml` 现算、网格序从 front matter `weight` 现算、更新日志行数与计数从 `checked` 现算；**不抄常量**）。★ 首跑 12 项红，**逐条查清全是我的断言路径少写一个前导斜杠**（产物正确）—— 又一次印证「验收脚本的 FAIL 先查断言，再查产物」
+- **归属（逐字节）**：`verify_no_regression.py --diff docs/regression-manifest.json` 报 **变更 8 / 新增 0 / 删除 0** —— 恰好 = 4 页型 × 2 语言（`index` / `compare/index` / `guides/index` / `methodology` 各 en+de），**与预期逐一对应，零意外变更**
+- 基线重建 **1313 文件**，复跑 `--diff` **0 / 0 / 0**（构建确定性自证）
+- **★ 高危告警（本轮已修）**：开工时实测 `public/` 有 **1337 个文件**含 `http://localhost:1313/`（`public/index.html` 的 canonical、`sitemap.xml` 的 `<loc>` 全是 localhost；时间戳 13:07–13:09，上一轮干净构建是 12:30）⇒ **裸 `hugo server` 写盘**。这份 `public/` 一旦部署 = 告诉 Google 站点搬到了 localhost。本轮全量构建已重写整个 `public/`，收工断言 `localhost` 计数 = **0**；今后**预览只用 `npm run dev`**（带 `--renderToMemory`），永不手敲 `hugo server`（→ §14 红线 131）
+- **诚实说明**：**没有字节级旧快照可做「块级替换」深证**（改动前的 `public/` 正是被污染的 dev server 产物，页页 sha 都不等于基线）⇒ 归属证据链 = 页级 sha256 三分类 diff（8/0/0）+ 74 项产物断言 + 13 道产物闸门
+
+### 6｜纪律与登记
+
+- **未 `git commit`、未部署**（改动全部留工作区）
+- 改已存在文件全部 **bytes 读写 + 复核换行**：`i18n/{en,de}.toml` 两侧**纯 LF**；`layouts/{index,_default/list,compare/list,_default/methodology,partials/country-card}.html` **纯 LF**；★ **`content/en/methodology.md` 是 CRLF、`content/de/methodology.md` 是 LF**（同目录不同格局 —— 又一次证明「按文件实测、别按目录猜」）
+- **未动但登记在案的观察项**：`layouts/_default/list.html` 的指南卡复核日已改用 **front-matter-only** 口径（`or .Params.lastmod .Params.date`），而 `layouts/guides/single.html:83` 的「Last reviewed」仍用 `.Lastmod`。两者**当前取值相同、产物零差异**（10 篇指南都只写 `date` 不写 `lastmod`），但那是「同一事实两处推导」—— 待哪天某篇两字段皆缺时会分叉（`.Lastmod` 会落回文件 mtime 而撒谎）。属独立决策，本轮**未改该文件**
+- **下一轮可选**：① 首页`#latest-updates` 的「网络实测」卡目前取的是 networks **页级发布日**的最大值（现为 `2026-10-13`）——值得确认它在读者眼里是否等价于「测速数据的新鲜度」；② `/compare/` 的排序在前端完成，若将来要 SEO 友好的排序落地页（`/compare/cheapest/` 之类）属**新页型**，需先点头；③ 指南扩篇（内容生产）
+
+## 已完成（`/guides/` 宽度修复 + 新增「页型模板容器」守卫，2026-10-13 第九十轮补记）
+
+**用户报告**：「/guides/ 这个页面是不是太宽了，和其他页面的布局不一样的，宽度不协调，宽度都跑到屏幕外了」。
+
+### 1｜取证（先量再动，`.buildlog/r90b_width_probe.py`）
+
+| 页 | `<main>` 之后第一个元素 | 有容器？ |
+|---|---|---|
+| **/guides/** | `<div class="py-4">` | ❌ **无** `mx-auto` / `max-w-*` / `px-*` |
+| /compare/ · /esim-providers/ · /esim-deals/ · /tools/ · /research/ | `mx-auto max-w-7xl px-4 py-8 sm:px-6` | ✅ |
+| /networks/ | `mx-auto max-w-7xl px-4 py-6 sm:px-6` | ✅ |
+| /about/ 等静态页 | `mx-auto max-w-3xl` | ✅（无 `px-*`） |
+
+根因：`layouts/_default/baseof.html` 只有 `<main class="flex-1">` —— **不给宽度、不给居中、不给内边距**，容器由**每个页型模板自负**；`layouts/_default/list.html`（只服务 `/guides/` 与 `/de/guides/`）是第一层就 `<div class="py-4">` 的那个**全站孤例**（22 个页型模板里唯一）。
+★ 诚实归属：`git diff` 证明 `py-4` 那行**不是第九十轮改出来的**，是长期存在；上一轮把指南卡加厚后才被用户看出来。
+★ 用户 13 条清单里的「/compare/ 无排序筛选」上一轮已核过，本轮**没有**顺手动它。
+
+### 2｜修法（手术式：同一行内替换、零新增行）
+
+`<div class="py-4">` → `<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6">`
+· 与 `/compare/` `/esim-providers/` `/esim-deals/` `/tools/` `/research/` 五个同级索引页**逐字节相同**；
+· `py-4` → `py-8` 一并归一（垂直内边距与其他索引页一致，「不一致」本身就是问题）；
+· 所有 class 都是站内已在用的 ⇒ `check_css_sync` 无新增 unsynced class。
+
+### 3｜新增守卫 `scripts/check_page_container.py`（已入 `npm run validate` 链尾，第 6 道）
+
+判据：扫 `layouts/**` 所有含 `{{ define "main" }}` 的模板，断言 main 块内**至少一个真实元素**的 class 同时含 `mx-auto` 与**页面级** `max-w-2xl…8xl`。
+· 判「**块内存在**」而非「首元素必须是」—— 让首页 / 404 的满幅 hero（`relative overflow-hidden bg-hero-mesh` + 内部容器）合法通过；
+· 注释里 / action 字符串里 / 正文文字里的 `mx-auto max-w-7xl` **都不算**（各有反例守护）；
+· `max-w-md` 这种**组件级**居中短句不算容器；
+· **WARN 不红**：有页面级 `max-w-*` 但无 `px-*`（`_default/single.html` + `_default/methodology.html` 的 `mx-auto max-w-3xl`，涉 12 个产物页）—— 属独立决策，只提示。
+★ **顺序证明**：先写守卫 → **先对改造前的真实 `layouts/` 跑** → 报 `FAIL _default/list.html:1`（恰是用户报的那一页）+ 2 条 WARN → 改完再跑 → `OK: 22 个页型模板`。**先红后绿，两侧都证**。
+★ `--selftest` 10 正例 / 10 反例：正例含 hero 满幅 / 嵌套块 / 外层裸 div / **注释里写 `{{ end }}`** / 多行 action；反例含注释、action、正文、别的 `define`、组件级宽度**五种伪容器**。
+★ 守卫第一版**被真实源码咬出假红**：`tools/list.html` 第 51–59 行的说明注释正文里写着 `` `{{- end }}` ``，括号平衡提前归零、把真容器整段切掉 ⇒ 对 21 个正常模板里的它报红。修法：**先掩注释再平衡**（等长空格掩码，偏移 / 行号 1:1 不变）。
+
+### 4｜验收
+
+- `npm run validate` **6 道全绿**（新增第 6 道 `check_page_container` → `OK: 22 个页型模板`）
+- `npm run build` **`BUILD_EXIT=0`**：`1315 files (1313 pages)` · `7526 JSON-LD` · `34148 h2/h3 bad 0` · 499 品牌子页全过 · `hreflang 3930 条 / 1310 页` · sitemap 655 URL · i18n 1904 key en=de · 德语四道守卫全绿
+- **归属：变更 2 / 新增 0 / 删除 0**，恰为 `guides/index.html` + `de/guides/index.html`（该模板只服务这两页）
+- **★ 逐字节归属深证**（比 diff 更强）：把新产物里那一段类串还原成 `py-4`，整页 sha256 **等于基线旧 sha** ——
+  `guides/index.html 839a45e4…70`（70645 → 70614 B）、`de/guides/index.html e4c7b846…77`（72373 → 72342 B）
+  ⇒ **这两页除那一处类串外，一个字节都没动**
+- 17 项产物断言全绿（`.buildlog/r90b_assert.py`）：容器逐字节同串 / 全站 `class="py-4"` 容器清零 /
+  该容器类串覆盖 12 页（6 个索引模板 × 2 语言）/ 分组区与 10 张卡与 10/10 阅读时长与复核日与 10 篇 ItemList 全部仍在 /
+  `public/` 无 `localhost` 无 `livereload`
+- 基线刷新 → **1313 文件**（`generated_at 2026-10-13T08:32:52Z`），复跑 `--diff` = **0 / 0 / 0**
+
+### 5｜登记未动项
+
+`_default/single.html` 与 `_default/methodology.html` 的容器 `mx-auto max-w-3xl` **没有 `px-*`**（窄视口正文贴边）—— 守卫只报 WARN，未改（会动 12 个产物页）。已写进 `PROJECT.md §5.1` 与 skill §3.5.1 的规格表。
+
 ## 已完成（networks 子页日期口径：新增页面按发布日，2026-10-13 第八十九轮）
 
 ### 1｜问题与口径

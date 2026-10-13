@@ -1,0 +1,138 @@
+{{ define "main" }}
+{{/* ── 方法论页专用版式（第九十轮）─────────────────────────────────────────────
+     为什么不改 _default/single.html：那 7 行模板同时服务 about / contact /
+     privacy / terms / disclosure 五页，改它 = 改五页。这里用 front matter 的
+     `layout: methodology` 走 _default/methodology.html，作用域精确到一页。
+
+     两个新区块都放在 .Content **之后**（附录位置），零侵入原正文：
+       ① #anatomy   一个真实套餐行的「字段解剖」——哪个字段、什么值、来源在哪
+       ② #updates   数据更新日志 —— 按日期分组的真实台账（首页脚注链接到这里）
+
+     ⚠ 刻意**不做截图**：截图会随数据过期，且本站没有这类资产。
+       这里全部由构建期真实数据渲染，数据一动标注跟着动。
+     ⚠ 示例国由 front matter 的 `example_iso` 给（默认 JP），不写死在模板里。 ── */}}
+{{- $d := partialCached "i18n-data.html" . site.Language.Lang -}}
+{{- $iso := .Params.example_iso | default "JP" -}}
+{{- $country := index $d.countries $iso -}}
+{{- $s := partial "country-stats.html" $iso -}}
+{{- /* 示例行 = 该国最便宜的**计量档（≥1GB）**：$/GB 与 $/天 同时有意义。
+       若该国只有无限档或只有 <1GB 档，退回全部行按价格取第 0 条，绝不空渲染。 */ -}}
+{{- $cands := slice -}}
+{{- range $s.rows }}{{ if ge (float .gb) 1.0 }}{{ $cands = $cands | append . }}{{ end }}{{ end -}}
+{{- if eq (len $cands) 0 }}{{ $cands = $s.rows }}{{ end -}}
+{{- $row := dict -}}
+{{- if gt (len $cands) 0 }}{{ $row = index (sort $cands "price" "asc") 0 }}{{ end -}}
+{{- $rowChecked := "" -}}
+{{- with $row }}{{ with index (index $d.plans .key) $iso }}{{ $rowChecked = .checked }}{{ end }}{{ end -}}
+<article class="mx-auto max-w-3xl">
+  {{ partial "breadcrumbs.html" . }}
+  <h1 class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">{{ .Title }}</h1>
+  <div class="prose prose-slate mt-6 max-w-none">{{ .Content }}</div>
+
+  {{ with $row }}
+  <section class="mt-12" aria-labelledby="anatomy">
+    <h2 id="anatomy" class="mt-2 text-2xl font-bold">{{ i18n "methodology__anatomy_h2" | safeHTML }}</h2>
+    <p class="mt-3 text-base leading-relaxed text-ink-600">{{ i18n "methodology__anatomy_lead" | safeHTML }}</p>
+    <div class="card mt-5 p-5">
+      <p class="text-[11px] font-bold uppercase tracking-wide text-ink-400">{{ i18n "methodology__anatomy_caption" | safeHTML }}{{ with $country }} · {{ .name }}{{ end }}</p>
+      <div class="mt-3 flex items-center gap-2.5">
+        <span class="badge bg-ink-50 text-ink-500">{{ .provider }}</span>
+        <span class="font-display text-sm font-bold text-ink-950">{{ partial "plan-name.html" (dict "name" .name "iso" $iso) }}</span>
+      </div>
+      <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-xl border border-ink-100 bg-ink-50/40 p-3">
+          <p class="text-[11px] font-semibold uppercase tracking-wide text-ink-400">1 · {{ i18n "methodology__f_price" | safeHTML }}</p>
+          <p class="mt-1 font-display text-lg font-bold text-ink-950 tnum">${{ printf "%.2f" .price }}</p>
+        </div>
+        <div class="rounded-xl border border-ink-100 bg-ink-50/40 p-3">
+          <p class="text-[11px] font-semibold uppercase tracking-wide text-ink-400">2 · {{ i18n "methodology__f_data" | safeHTML }}</p>
+          <p class="mt-1 font-display text-lg font-bold text-ink-950 tnum">{{ partial "plan-data-label.html" .gb }}</p>
+        </div>
+        <div class="rounded-xl border border-ink-100 bg-ink-50/40 p-3">
+          <p class="text-[11px] font-semibold uppercase tracking-wide text-ink-400">3 · {{ i18n "methodology__f_days" | safeHTML }}</p>
+          <p class="mt-1 font-display text-lg font-bold text-ink-950 tnum">{{ .days }} {{ i18n "g_days" | safeHTML }}</p>
+        </div>
+        <div class="rounded-xl border border-ink-100 bg-ink-50/40 p-3">
+          <p class="text-[11px] font-semibold uppercase tracking-wide text-ink-400">4 · {{ i18n "methodology__f_gb" | safeHTML }}</p>
+          <p class="mt-1 font-display text-lg font-bold text-ink-950 tnum">${{ printf "%.2f" .perGB }}</p>
+        </div>
+        <div class="rounded-xl border border-ink-100 bg-ink-50/40 p-3">
+          <p class="text-[11px] font-semibold uppercase tracking-wide text-ink-400">5 · {{ i18n "methodology__f_day" | safeHTML }}</p>
+          <p class="mt-1 font-display text-lg font-bold text-ink-950 tnum">${{ printf "%.2f" .perDay }}</p>
+        </div>
+        <div class="rounded-xl border border-ink-100 bg-ink-50/40 p-3">
+          <p class="text-[11px] font-semibold uppercase tracking-wide text-ink-400">6 · {{ i18n "methodology__f_checked" | safeHTML }}</p>
+          <p class="mt-1 font-display text-lg font-bold text-ink-950 tnum">{{ with $rowChecked }}{{ time.Format ":date_medium" (time .) }}{{ end }}</p>
+        </div>
+      </div>
+      <p class="mt-4 border-t border-ink-50 pt-3 text-xs text-ink-500">{{ i18n "methodology__f_plan" | safeHTML }}: <span class="font-semibold text-ink-800">{{ partial "plan-name.html" (dict "name" .name "iso" $iso) }}</span></p>
+    </div>
+    <ol class="mt-5 space-y-3 text-sm leading-relaxed text-ink-600">
+      <li><strong class="text-ink-900">1 · {{ i18n "methodology__f_price" | safeHTML }}</strong> — {{ i18n "methodology__f_price_src" | safeHTML }}</li>
+      <li><strong class="text-ink-900">2 · {{ i18n "methodology__f_data" | safeHTML }}</strong> — {{ i18n "methodology__f_data_src" | safeHTML }}</li>
+      <li><strong class="text-ink-900">3 · {{ i18n "methodology__f_days" | safeHTML }}</strong> — {{ i18n "methodology__f_days_src" | safeHTML }}</li>
+      <li><strong class="text-ink-900">4 · {{ i18n "methodology__f_gb" | safeHTML }}</strong> — {{ i18n "methodology__f_gb_src" | safeHTML }}</li>
+      <li><strong class="text-ink-900">5 · {{ i18n "methodology__f_day" | safeHTML }}</strong> — {{ i18n "methodology__f_day_src" | safeHTML }}</li>
+      <li><strong class="text-ink-900">6 · {{ i18n "methodology__f_checked" | safeHTML }}</strong> — {{ i18n "methodology__f_checked_src" | safeHTML }}</li>
+      <li><strong class="text-ink-900">{{ i18n "methodology__f_plan" | safeHTML }}</strong> — {{ i18n "methodology__f_plan_src" | safeHTML }}</li>
+    </ol>
+  </section>
+  {{ end }}
+
+  {{/* ── 数据更新日志 ──
+       真源 = data/plans/*.toml 每个 [ISO] 的 checked（由 stamp_checked.py 按内容指纹维护）。
+       一个「条目」= 一个品牌 × 一个国家。按日期分组现算，所以：改价 → 该单元日期前移 →
+       本表自动多出一行/某行计数变大。**不是手写的 changelog，是台账。**
+       ⚠ 日历上没有的内容不许编：数据里只有几个日期，就只显示这几个日期。 ── */}}
+  {{- $byDate := dict }}{{ $cntByDate := dict }}
+  {{- range $brand, $markets := $d.plans }}
+    {{- range $i, $cd := $markets }}
+      {{- with $cd.checked }}
+        {{- $cntByDate = merge $cntByDate (dict . (add (int (index $cntByDate . | default 0)) 1)) }}
+        {{- $byDate = merge $byDate (dict . ((index $byDate . | default slice) | append $brand)) }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+  {{- $asc := slice }}
+  {{- range $k, $v := $byDate }}{{ $asc = $asc | append $k }}{{ end }}
+  {{- /* 日期串按字典序排 = 按时间序排；日志惯例新的在上，故反转。
+         ★ 不能写 `sort $x "desc"`：三参形态只对「map / struct 切片」成立，
+           对 []string 会报 desc is neither a struct field, a method nor a map element of type string。
+           []string 想要降序只能「先升序、再反转」。 */ -}}
+  {{- $asc = sort $asc }}
+  {{- $last := sub (len $asc) 1 }}
+  {{- $dates := slice }}
+  {{- range $i, $d := $asc }}{{ $dates = $dates | append (index $asc (sub $last $i)) }}{{ end }}
+  {{ with $dates }}
+  <section class="mt-12" aria-labelledby="updates">
+    <h2 id="updates" class="mt-2 text-2xl font-bold">{{ i18n "methodology__update_h2" | safeHTML }}</h2>
+    <p class="mt-3 text-base leading-relaxed text-ink-600">{{ i18n "methodology__update_lead" | safeHTML }}</p>
+    <div class="card mt-5 overflow-x-auto">
+      <table class="table-pro table-soft min-w-[560px]">
+        <thead>
+          <tr>
+            <th class="min-w-[150px]">{{ i18n "methodology__update_col_date" | safeHTML }}</th>
+            <th>{{ i18n "methodology__update_col_units" | safeHTML }}</th>
+            <th class="min-w-[280px]">{{ i18n "methodology__update_col_brands" | safeHTML }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range $dt := . }}
+          <tr>
+            <td class="font-semibold text-ink-900 tnum">{{ time.Format ":date_medium" (time $dt) }}</td>
+            <td class="tnum">{{ index $cntByDate $dt }}</td>
+            <td class="text-sm text-ink-600">
+              {{ $names := slice }}
+              {{ range $b := uniq (index $byDate $dt) }}{{ with index $d.providers $b }}{{ $names = $names | append .name }}{{ end }}{{ end }}
+              {{ delimit (sort $names) ", " }}
+            </td>
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "methodology__update_note" | safeHTML }}</p>
+  </section>
+  {{ end }}
+</article>
+{{ end }}

@@ -1,5 +1,5 @@
 {{ define "main" }}
-<div class="py-4">
+<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6">
   {{ partial "breadcrumbs.html" . }}
   <header class="mt-4">
     <h1 class="text-3xl font-extrabold tracking-tight md:text-4xl">{{ .Title }}</h1>
@@ -20,12 +20,70 @@
   {{ end }}
 
   {{ with .Content }}<div class="prose prose-slate mt-4 max-w-none">{{ . }}</div>{{ end }}
+
+  {{/* ── 指南卡片（第九十轮）─────────────────────────────────────────────────
+       原先这里只是一个 <ul>，每项只有 .LinkTitle —— 读者点进去才知道这篇讲什么，
+       front matter 里现成的 description 完全没用上，也没有任何「这篇多长 / 什么时候
+       复核过」的信号。改成卡片：标题 + description + 阅读时长 + 最后复核日。
+
+       分组不新增数据字段：**靠已有的 `layout: region` 分**（5 篇区域指南 vs 5 篇基础指南），
+       所以 content/&lt;lang&gt;/guides/*.md 一个字节都不用动。
+
+       ⚠ 标题**不能**放进 <h3>：指南标题含冒号
+         （`Best Asia eSIM 2026: 13 Countries Compared`），
+         而 check_headings.py 对 h2/h3 禁 `, ; : — –` —— 放进去构建当场失败。
+         所以与 /compare/<国>/ 的指南卡同款：用 font-display 的 <span>，不是标题元素。
+       ⚠ 复核日只读 front matter（lastmod → date），**不用 .Lastmod**：
+         后者末段兜底是文件 mtime，日期会跟着 checkout 走 —— 与 /networks/ 页
+         同一条红线（一份事实一份真源，且日期必须与内容挂钩）。无则整条不渲染。 ── */}}
+  {{- $regional := slice }}{{ $basics := slice }}
+  {{- range .Pages }}
+    {{- if eq .Params.layout "region" }}{{ $regional = $regional | append . }}{{ else }}{{ $basics = $basics | append . }}{{ end }}
+  {{- end }}
+  {{ with $regional }}
+  <section class="mt-10" aria-labelledby="guide-regional">
+    <h2 id="guide-regional" class="mt-2 text-2xl font-bold">{{ i18n "default_list__group_regional" | safeHTML }}</h2>
+    <p class="mt-1.5 text-sm text-ink-500">{{ i18n "default_list__n_guides" (dict "n" (len .)) | safeHTML }}</p>
+    <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+      {{ range . }}
+      <li>
+        <a href="{{ .RelPermalink }}" class="card card-hover group flex h-full flex-col p-5">
+          <span class="font-display text-base font-bold text-ink-950 group-hover:text-brand-700">{{ .LinkTitle }}</span>
+          <span class="mt-1.5 flex-1 text-sm leading-relaxed text-ink-500">{{ .Description }}</span>
+          <span class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-ink-50 pt-2 text-xs text-ink-400">
+            <span>{{ i18n "default_list__min_read" (dict "n" .ReadingTime) | safeHTML }}</span>
+            {{ with or .Params.lastmod .Params.date }}<span>{{ i18n "default_list__last_reviewed" (dict "date" (time.Format ":date_medium" .)) | safeHTML }}</span>{{ end }}
+          </span>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+  {{ with $basics }}
+  <section class="mt-10" aria-labelledby="guide-basics">
+    <h2 id="guide-basics" class="mt-2 text-2xl font-bold">{{ i18n "default_list__group_basics" | safeHTML }}</h2>
+    <p class="mt-1.5 text-sm text-ink-500">{{ i18n "default_list__n_guides" (dict "n" (len .)) | safeHTML }}</p>
+    <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+      {{ range . }}
+      <li>
+        <a href="{{ .RelPermalink }}" class="card card-hover group flex h-full flex-col p-5">
+          <span class="font-display text-base font-bold text-ink-950 group-hover:text-brand-700">{{ .LinkTitle }}</span>
+          <span class="mt-1.5 flex-1 text-sm leading-relaxed text-ink-500">{{ .Description }}</span>
+          <span class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-ink-50 pt-2 text-xs text-ink-400">
+            <span>{{ i18n "default_list__min_read" (dict "n" .ReadingTime) | safeHTML }}</span>
+            {{ with or .Params.lastmod .Params.date }}<span>{{ i18n "default_list__last_reviewed" (dict "date" (time.Format ":date_medium" .)) | safeHTML }}</span>{{ end }}
+          </span>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{/* ItemList 保持原口径：仍是**全部**子页、仍按 .Pages 原序，
+       分组只改视觉与内部链接组织，不改交给搜索引擎的实体清单。 ── */}}
   {{ with .Pages }}
-  <ul class="mt-8 grid gap-3 sm:grid-cols-2">
-    {{ range . }}
-    <li><a href="{{ .RelPermalink }}" class="card block p-4 font-semibold transition hover:border-indigo-300">{{ .LinkTitle }}</a></li>
-    {{ end }}
-  </ul>
   {{ $items := slice }}
   {{ range $i, $p := . }}
     {{ $items = $items | append (dict "@type" "ListItem" "position" (add $i 1) "item" (dict "@type" "Article" "name" $p.Title "url" $p.Permalink "description" $p.Description)) }}

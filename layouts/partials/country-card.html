@@ -4,8 +4,13 @@
 {{- $s := partial "country-stats.html" $p.Params.iso -}}
 {{- /* data-name 是前端过滤/搜索的 haystack：显示名（可能是简称 USA/UK）+ 英文全称。
        两者都进 haystack，用户打 "usa"、"uk"、"united states"、甚至只打 "united" 都能命中；
-       卡片上显示的始终只有 $c.name。 */ -}}
-<a href="{{ $p.RelPermalink }}" data-name="{{ lower $c.name }}{{ with $c.full }} {{ lower . }}{{ end }}" data-region="{{ $c.region }}" class="card card-hover group flex items-center gap-4 p-4">
+       卡片上显示的始终只有 $c.name。
+       data-price / data-count 供 /compare/ 索引页的排序控件读取（第九十轮新增）。
+       键名刻意取 count 而非 plans：机器 token 与英语自然词同形会撞
+       check_inline_copy.py 的封闭词类判据（见该脚本 EN_STRONG）。
+       ⚠ 本 partial 只有 layouts/index.html 与 layouts/compare/list.html 两处调用，
+         加属性会同时改这两页的产物 —— 两个页型都在本轮改动范围内，属预期。 */ -}}
+<a href="{{ $p.RelPermalink }}" data-name="{{ lower $c.name }}{{ with $c.full }} {{ lower . }}{{ end }}" data-region="{{ $c.region }}" data-price="{{ $s.minPrice }}" data-count="{{ $s.planCount }}" class="card card-hover group flex items-center gap-4 p-4">
   <img src="{{ $c.flag | relURL }}" alt="{{ i18n "home__flag_alt" (dict "name" $c.name) | safeHTML }}" class="h-10 w-[3.75rem] rounded-lg object-cover shadow-sm ring-1 ring-ink-100" loading="lazy">
   <div class="min-w-0 flex-1">
     <div class="flex items-center gap-2">

@@ -123,6 +123,37 @@
   </figure>
   </div>
 
+  {{/* ── 推荐目的地（第九十轮新增）──
+       50 张卡片的网格对「我该去哪」没有帮助。这里给出编辑精选的 12 个入口。
+       数据源 = data/countries.toml 的 featured = true —— 与页头导航下拉**同一真源**
+       （layouts/partials/header.html 也用 $c.featured），零新数据、零硬编码国名。
+       ⚠ 刻意叫「Featured」而不是「Popular」：本站没有任何访问量/搜索量数据，
+         说 popular 就是不实陈述；而「编辑精选」是可以直说的。
+       ⚠ $featuredDests 必须在本区块之前算完（Hugo 变量不提升）。 ── */}}
+  {{- $featuredDests := slice }}
+  {{- range $countries }}
+    {{- with .Params.iso }}
+      {{- $c := index $d.countries . }}
+      {{- if $c.featured }}
+        {{- $fs := partialCached "country-stats.html" . . }}
+        {{- $featuredDests = $featuredDests | append (dict "name" $c.name "slug" $c.slug "flag" $c.flag "price" $fs.minPrice) }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+  <section class="mt-10" aria-labelledby="featured-destinations">
+    <p class="eyebrow" id="featured-destinations">{{ i18n "compare_list__featured_destinations" | safeHTML }}</p>
+    <p class="mt-2 max-w-2xl text-sm leading-relaxed text-ink-600">{{ i18n "compare_list__featured_lead" | safeHTML }}</p>
+    <div class="mt-4 flex flex-wrap gap-2">
+      {{ range $featuredDests }}
+      <a href="{{ partial "lang-href.html" (printf "/compare/%s/" .slug) }}" class="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white py-1.5 pl-1.5 pr-3.5 text-xs font-semibold text-ink-700 transition-all hover:border-brand-300 hover:text-brand-700">
+        <img src="{{ .flag | relURL }}" alt="" class="h-5 w-7 rounded object-cover ring-1 ring-ink-100" loading="lazy">
+        {{ .name }}
+        {{ if gt .price 0.0 }}<span class="tnum font-bold text-accent-600">${{ printf "%.2f" .price }}</span>{{ end }}
+      </a>
+      {{ end }}
+    </div>
+  </section>
+
   <section class="mt-10" id="all-destinations">
     <div class="flex flex-wrap items-center justify-between gap-3">
       <div id="region-chips" class="nav-scroll flex gap-2 overflow-x-auto pb-1">
@@ -134,6 +165,21 @@
         <button class="chip" data-region="Oceania" type="button">{{ i18n "g_oceania" | safeHTML }}</button>
       </div>
       <input id="country-filter" type="search" placeholder="{{ i18n "compare_list__search_country" | safeHTML }}" class="input-search w-full sm:w-56" aria-label="{{ i18n "compare_list__search_countries" | safeHTML }}">
+    </div>
+    {{/* ── 排序控件（第九十轮新增）──
+         网格默认序 = 各国 compare 页 front matter 的 `weight`（编辑排序：代表目的地在前），
+         所以第一个 chip 如实叫「Featured first」而不是「A to Z」—— 默认视图本来就不是字母序。
+         排序在前端完成（重排 DOM），无 JS 时保持服务端顺序、控件不生效但页面完整。
+         ⚠ chip 的值域是**固定三档**（不像天数按钮要从数据推导），因为排序键由 data-* 决定，
+           不依赖某国是否有某个档位。 */}}
+    <div class="mt-3 flex flex-wrap items-center gap-2">
+      <span class="text-xs font-medium text-ink-400">{{ i18n "compare_list__sort_label" | safeHTML }}</span>
+      <div id="sort-chips" class="flex flex-wrap gap-2">
+        <button class="chip chip-active" data-sort="featured" type="button">{{ i18n "compare_list__sort_featured" | safeHTML }}</button>
+        <button class="chip" data-sort="az" type="button">{{ i18n "compare_list__sort_az" | safeHTML }}</button>
+        <button class="chip" data-sort="price" type="button">{{ i18n "compare_list__sort_cheap" | safeHTML }}</button>
+        <button class="chip" data-sort="count" type="button">{{ i18n "compare_list__sort_plans" | safeHTML }}</button>
+      </div>
     </div>
     <div id="country-grid" class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {{ range $countries }}{{ partial "country-card.html" . }}{{ end }}
@@ -387,6 +433,15 @@
     var chips = document.querySelectorAll('#region-chips .chip');
     var empty = document.getElementById('no-results');
     var region = 'all';
+    var sortChips = document.querySelectorAll('#sort-chips .chip');
+    var sortKey = 'featured';
+    /* 服务端顺序先存下来：「Featured first」要能原样还原，不能靠再排一次猜。
+       ⚠ 字段名一律小写（dataset.price / dataset.count）—— 写成 dataset.perGB
+         会取到 undefined，比较函数返回 NaN，Array.sort 静默保持原顺序，
+         而原顺序恰好又是对的，所以这种 bug 在页面上根本看不出来（见 PROJECT.md 坑清单）。
+       ⚠ 排序键刻意取名 count 而非英语自然词：check_inline_copy.py 的封闭词类判据
+         会把单 token 字面量与 EN_STRONG 表比对，机器 token 与自然词同形就是假红。 */
+    var serverOrder = grid ? Array.prototype.slice.call(grid.children) : [];
     /* 搜索 haystack 由 country-card.html 写入 data-name（显示名 + 英文全称），
        所以 "usa"/"uk"/"united states" 都能命中；这里只做大小写与首尾空格归一。 */
     function apply() {
@@ -399,6 +454,21 @@
       });
       if (empty) empty.classList.toggle('hidden', visible > 0);
     }
+    /* 排序：只重排 DOM，不改显示状态，所以与区域/搜索过滤互不干扰。 */
+    function resort() {
+      if (!grid) return;
+      var items = serverOrder.slice();
+      var key = function (n, k) { return n.dataset[k] || ''; };
+      if (sortKey === 'az') {
+        items.sort(function (a, b) { var x = key(a, 'name'), y = key(b, 'name'); return x < y ? -1 : (x > y ? 1 : 0); });
+      } else if (sortKey === 'price') {
+        items.sort(function (a, b) { return parseFloat(key(a, 'price') || 0) - parseFloat(key(b, 'price') || 0); });
+      } else if (sortKey === 'count') {
+        items.sort(function (a, b) { return parseInt(key(b, 'count') || 0, 10) - parseInt(key(a, 'count') || 0, 10); });
+      }
+      items.forEach(function (n) { grid.appendChild(n); });
+    }
+
     if (input) input.addEventListener('input', apply);
     chips.forEach(function (c) {
       c.addEventListener('click', function () {
@@ -406,6 +476,14 @@
         c.classList.add('chip-active');
         region = c.dataset.region;
         apply();
+      });
+    });
+    sortChips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        sortChips.forEach(function (x) { x.classList.remove('chip-active'); });
+        c.classList.add('chip-active');
+        sortKey = c.dataset.sort;
+        resort();
       });
     });
   })();

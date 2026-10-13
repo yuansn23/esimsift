@@ -1,6 +1,8 @@
 ---
 title: "Our Methodology: How We Collect and Verify eSIM Prices"
 description: "How eSIM Sift collects, verifies and derives its eSIM price data - collection cadence, metric formulas, and correction policy."
+layout: methodology
+example_iso: "JP"
 ---
 
 ## How the data is collected
