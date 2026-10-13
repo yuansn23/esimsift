@@ -226,6 +226,18 @@ best $2.20/GB (#9 of 10) — ranked against 221 Canada plans.
 > ③ 产物含 `of 10` 的页 = en `compare` **511** + de `compare` **540**（另 networks / esim-providers / esim-deals / guides 若干）。
 > **Google 会从正文抽摘要 ⇒ 只改 meta 的修复是半残的**，建议紧随其后单独一轮处理。
 
+> ### ✅ P0 补完 —— 正文三处自我否定清零（2026-10-12 第八十六～八十七轮，用户指令 `A,BC 全部完成即可`）
+>
+> | 项 | 结果 |
+> |---|---|
+> | 改的 i18n key | `compare_provider__verdict_met_rank`（verdict **非冠军**分支）· `compare_provider__faq_a_price_met`（FAQ 答案 **+ 同源 JSON-LD**）· `compare_provider__trust_ranked`（Trust 段）—— en/de 各 3 处，共 6 行 |
+> | **刻意保留的 2 处** | `compare_provider__of_n_on_gb`（stat tile `#9` + `of 10 on $/GB`：这是**品牌自身名次**的事实面板）· `compare_provider__op_market_v1/v2/v3`（**对手向**竞品卡 `Airalo ranks 7 of 10`，且不带 `#`）。**判据是主语不是形状**：主语是本页品牌 = 自曝短板；主语是对手 = 决策依据 |
+> | 量化（改造前后各跑一次 `.buildlog/r87_assert_C.py`） | EN 品牌子页 499 张：**可见文本**含 `#N of M` **449 → 0**；DE 对称。旧侧「干净」的 50 张**全是 Holafly**（纯不限量走 `verdict_unl`/`faq_a_price_unl`/`trust_unlimited`，本来就没这个说法） |
+> | stat tile / 对手卡 | **499 / 499 原样保留**（回归保护） |
+> | 归因行数 | 归属法判定「去 `#N of M`」的变更行 **1746 × 2 语言 = 3492**，与上一轮独立测得的 1746 **完全吻合** |
+>
+> **★ 改完自检抓到我自己的指代漂移**：产物成了 `… $0.64/GB — the lowest rate among the 10 providers we track.` —— 「the lowest rate」紧贴主语 brand ⇒ 读者会读成「Saily 是 10 家里最低价」，而 Saily 在加拿大是 **#9**（$2.20 vs $0.64）⇒ **为了消灭自我否定，反而写出了一句自相矛盾的假话**。修法：让限定语留在它修饰的从句里 ⇒ `…$0.64/GB</strong> among the {{ .total }} providers we track.`（de 对称 `… unter den {{ .total }} Anbietern, die wir erfassen.`）；并加**歧义句黑名单**产物断言，双侧为 0。**只 diff md/i18n 看不出来**（逐字节都「正确」）—— 必须回读产物文本按语法找主语。
+
 ### P1 · 放大已验证的赢家：networks 从 12 → 50 国
 
 - 现在 12 个子页，中位位置 **15.2**；`/networks/` 枢纽 105 展示 @4.43
@@ -262,6 +274,21 @@ best $2.20/GB (#9 of 10) — ranked against 221 Canada plans.
 >
 > **⚠ 新增的一条成本事实**：`/networks/<slug>/` 一旦存在，模板会**自动**把该国 `compare/` 页指向 `/networks/` 索引的说明句升级为指向该页的内链 ⇒ **每新增 1 国 = 全站 1297 页导航重生成 + 该国 22 个 compare 页内链升级**（见 `PROJECT.md` 红线 115）。
 
+> ### ✅ P1 剩余 7 国完成（2026-10-12 第八十六～八十七轮）
+>
+> **完成国家**：EG · TW · VN · MA · PL · CH · SA（en + de = **14 篇**，每篇 13.5–16.6KB）。
+> **networks 子页 15 → 22（每语言）**，页型总数 **32 → 46**；总页 **1297 → 1311**。
+>
+> | 项 | 结果 |
+> |---|---|
+> | 事实源 | 站内 `opensignal_facts`（en+de）全部摘自 `data/networkreports.toml`；SIM 实名制 / 机场柜台 / 5G 细节**逐国 WebSearch 核实**（EG 反恐法护照登记 + 指纹；TW 实名制、机场仅需护照；VN Decree 49/2017 护照原件 + 活体自拍、`5G150T` 150,000 VND/5GB/天；MA 所有 SIM 强制护照登记、5G 2025-11-10 三网同日商用；PL 反恐法每张 SIM 强制登记；CH BÜPF 强制护照登记、Swisscom 含 Jungfraujoch 3454 m；SA 生物识别（指纹+照片）强制、2017 起 VoIP 解禁） |
+> | 源码级预检 12 条 | `.buildlog/r87_preflight.py` **全绿** —— 首跑抓到 **4 处德语 H2 逗号**当场修；另自查出 3 处语病 |
+> | 构建 | `BUILD_EXIT=0`（9m23s）· 13 道产物闸门全绿 · `check_headings` **34038 h2/h3 `bad: 0`** · `verify_provider_pages` 499/499 |
+> | 归属法 v3.3 | 新增 **14**（全 networks，en/de 成对）/ 删除 **0** / 共有 1895；HTML 变化 974 = 未变 339 之外**全部可归因**（`E3-compare-brand 912` + `E4-hub-de 41` + `E2-networks-de 12` + `E4-hub-en 7` + `E2-networks-list 2`）；**无法解释的变化行 0**；全局唯一外溢 = header「Network map」菜单计数 **15 → 22** |
+> | 基线 | `--write-manifest` → **1311 文件 / networks 46**；随后 `--diff` 自证 **0 / 0 / 0** |
+>
+> **⛔ 仍然阻塞 2 国**：**Georgia** 与 **Kenya** —— `data/networkreports.toml` 连英语报告都没有 ⇒ 缺「独立实测」事实源，**不能编**。要么先找到可核实的来源补英文条目，要么改「无报告」变体版式（后者属**版式变更，需用户点头**）。
+
 ### P2 · 开「多品牌对比」页型
 
 - 证据：`compare saily, nomad et yesim` @7.17 · `compare saily vs nomad vs yesim` @8 · `saily vs alosim` @8.89 —— 用户已经在用这种写法，而且我们能排
@@ -274,6 +301,20 @@ best $2.20/GB (#9 of 10) — ranked against 221 Canada plans.
 - 证据：`saily coupon code` @9.5 · `holafly discount code` @8 · `saily free` @10.5 · `saily pricing` @26 · `airalo prices` @6 · `ubigi price` @7 · `yesim cost` @6 · `esim pris`(SV) @9
 - 动作：品牌 hub 加「价格档位表」+ `Offer` / `PriceSpecification` 结构化数据；可考虑「eSIM 折扣码」聚合页
 - ⚠️ 合规：只写可核实的官方价，不编造折扣码
+
+> ### ✅ P3 第一件执行结果（2026-10-13 第八十八轮，用户指令 `P3 的第一件：品牌 hub 加价格档位表`）
+>
+> **做了什么**：`layouts/esim-providers/single.html` 新增区块 ⑤c `id="pricing"`（**静态**价格档位表，补 `#calc` 段「服务端只吐空容器、爬虫抓不到价格」的缺口）+ JSON-LD 的 `Product.priceSpecification`（`UnitPriceSpecification` × N，`referenceQuantity` 用 UN/CEFACT `E34`）。**20 页 = 10 品牌 × en·de**，i18n +14 key ×2 语言（1841 → **1855**：12 个档位表 key + 2 个「只有无限量表」变体 key）。
+>
+> **口径（不藏）**：`MIN_DEST = 10` 覆盖门槛（只留 ≥10 个目的地在售的档位，滤掉单国长尾档），门槛数写在脚注；并列取一个名字并在脚注声明；`$/GB` 与最低价**可以来自不同国家**，两格各带来源国标签。
+>
+> **与既有区块的分工**：`#spread` 比的是**同一档位在不同国家**的入场价高低；`#pricing` 比的是**同一国家不同档位**的 `$/GB` —— 正交两问，故新开 id 而非并入 `spread`。
+>
+> **验收**：`BUILD_EXIT=0`（1313 页）；`.buildlog/r88_pricing_verify.py` **独立复算 20 页 / FAIL 0**（档位标签 / 目的地数 / 最低价 / 最低 $/GB / priceSpecification / 脚注门槛 全部与 `data/plans` 独立重算一致）；`.buildlog/r88_attrib.py` 归属法 **L1 1266 页除 header 外逐字节相同 + L2 44/44 全归因 + L3 空白预算为常数**。
+>
+> **P3 第二件（「eSIM 折扣码」聚合页）仍未动** —— 属**新页型**，需你点头。合规口径不变：只写可核实的官方价，不编造折扣码。
+
+> **补（同日第八十八轮续）：holafly 页「文案描述不存在的表」已修** —— `id="pricing"` 段的 H2 与导语原为**无条件**渲染，而 `holafly`（站内唯一纯无限量品牌）只出无限量表 ⇒ 页面上印着 `at each data tier` 与 `the cost per gigabyte … the two columns`，**两者都不存在**。已按 `$tierRows` 切换变体（**零新增行**）；归属判据证明**只有 holafly 的 en/de 两页变化**（变更 2 / 新增 0 / 删除 0），`.buildlog/r88b_verify.py` **断言 122 条 / FAIL 0**。
 
 ### P4 · 德语站真正上线（纯增量）
 
@@ -333,3 +374,13 @@ best $2.20/GB (#9 of 10) — ranked against 221 Canada plans.
 
 **做了**：只读复算脚本 `.buildlog/r84_gsc_analysis.py` + 本文件。
 **没做**：没有改任何源码、数据、模板；没有动 `checked` 日期；没有提交。
+
+> **⏱ 后续进度（截至 2026-10-12 第八十七轮）**
+>
+> - **P0 全量完成**：meta（998 页，第八十五轮）+ **正文三处**（第八十七轮，`verdict_met_rank` / `faq_a_price_met` / `trust_ranked`）⇒ 见本文档 P0 的两段 ✅ 执行结果
+> - **P1 完成 10 / 12 国**：Colombia · Croatia · South Africa（第八十五轮）+ Egypt · Taiwan · Vietnam · Morocco · Poland · Switzerland · Saudi Arabia（第八十七轮）；**networks 12 → 22 国**（页型 32 → 46）
+> - **P1 阻塞 2 国**：Georgia · Kenya（缺英语网络报告，不能编）
+> - **本轮（第八十八轮）完成**：**P3 第一件**（品牌 hub 价格档位表 + `UnitPriceSpecification`，20 页）· **GE networks 建页**（照 CN 路线，en+de；networks **22 → 23 国**，页型 46 → 48）⇒ 见本文档 P3 段
+- **仍未动**：P2（三品牌组合页，**开新页型需用户点头**）· P3 第二件（「eSIM 折扣码」聚合页，**新页型**）· P4（德语站已上线，属历史项）· P5（不投清单）
+> - **上线状态**：全部改动**未 `git commit`、未部署**（用户明令「一旦提交就是正式发布」）
+

@@ -31,7 +31,7 @@
   {{ end }}
 {{ end }}
 {{ $nr := index $d.networkreports $iso }}
-{{ $s := partial "country-stats.html" $iso }}{{/* 快照日期带尾随空格：i18n 值以 {{ .date }} 直接接 snapshot，缺日期分支才不多空格 */}}{{ $snapDate := "" }}{{ with $s.checkedDate }}{{ $snapDate = printf "%s " . }}{{ end }}
+{{ $s := partial "country-stats.html" $iso }}{{/* 这一行住两个日期，别混：① $snapDate = 数据快照日（两处脚注的 "at the <d> snapshot" 用它；带尾随空格，缺日期分支才不多空格）；② $effDate = 徽章的「最后更新」= max(数据核对日, 页面自身的发布日) —— 新增页面首次发布时 lastmod 必须等于发布日，不能顶着它所引数据的上一次核对日。只读 front matter 的 lastmod/date，**不取 .Lastmod 兜底**：后者末段是文件 mtime，会让日期跟着 checkout 走，正是本机制要消灭的「日期与内容脱钩」。 */}}{{ $snapDate := "" }}{{ with $s.checkedDate }}{{ $snapDate = printf "%s " . }}{{ end }}{{ $pageISO := "" }}{{ with .Params.lastmod }}{{ $pageISO = time.Format "2006-01-02" . }}{{ else }}{{ with .Params.date }}{{ $pageISO = time.Format "2006-01-02" . }}{{ end }}{{ end }}{{ $effISO := $s.checked }}{{ if and $pageISO $effISO (gt (time $pageISO) (time $effISO)) }}{{ $effISO = $pageISO }}{{ end }}{{ $effDate := $s.checkedDate }}{{ if and $effISO (ne $effISO $s.checked) }}{{ $effDate = time.Format ":date_medium" (time $effISO) }}{{ end }}
 {{ $nets := $country.carriers | default slice }}
 
 {{/* ── 逐国 H2 / 导语覆盖（front matter 可选） ──
@@ -113,11 +113,11 @@
       <div class="mt-4 flex flex-wrap items-center gap-2">
         <span class="badge bg-brand-50 text-brand-700">{{ i18n "g_n_carrier_networks" (dict "n" (len $nets)) | safeHTML }}</span>
         <span class="badge bg-ink-50 text-ink-500">{{ i18n "networks_single__plans_tracked_badge" (dict "n" $s.planCount) | safeHTML }}</span>
-        {{/* 「最后更新」= 数据核对日（2026-10-09 修，原为构建日 now）：
-             ① 用 now 会让同页出现两个矛盾日期（徽章=构建日 / sitemap=数据日）；
-             ② 每次部署都翻新 12 个 /networks/ 页，Google 会判定 lastmod 无信息量并整体忽略。
-             三处同源：徽章 / sitemap lastmod / 正文脚注，都取 $s.checkedDate。 */}}
-        <span class="badge bg-ink-50 text-ink-500">{{ i18n "networks_single__updated_badge" (dict "date" ($s.checkedDate | default (i18n "compare_single__date_monthly"))) | safeHTML }}</span>
+        {{/* 「最后更新」徽章 = $effDate = max(数据核对日, 页面发布日)（2026-10-13 扩口径；2026-10-09 先修掉
+             构建日 now）：① 用 now 会让同页出现两个矛盾日期，且每次部署都翻新全部 /networks/ 页，
+             Google 判定 lastmod 无信息量后整体忽略；② 但纯数据核对日会让**新增页**顶着它诞生之前的日期，
+             故取两者较大者。与 sitemap lastmod 同源；脚注的 snapshot 日期是数据快照日，另一件事，不动。 */}}
+        <span class="badge bg-ink-50 text-ink-500">{{ i18n "networks_single__updated_badge" (dict "date" ($effDate | default (i18n "compare_single__date_monthly"))) | safeHTML }}</span>
       </div>
 
       {{ with .Params.kicker }}<p class="mt-5 text-lg leading-relaxed text-ink-600">{{ . }}</p>{{ end }}

@@ -67,6 +67,14 @@
       {{- with $s.checked }}{{ $lm = . }}{{ end -}}
     {{- end -}}
   {{- end -}}
+  {{- /* ②b /networks/<slug>/：新增页面的发布日若晚于该国数据核对日就取发布日 —— 与页面徽章同源。
+       「新增页首次发布」是唯一能让页级日期领先数据日的合法理由；仍只读 front matter 的
+       lastmod/date，不取 .Lastmod（其末段兜底是文件 mtime，会让日期跟着 checkout 走）。 */ -}}
+  {{- if and $lm (eq .Section "networks") -}}
+    {{- $pd := "" -}}
+    {{- with .Params.lastmod }}{{ $pd = time.Format "2006-01-02" . }}{{ else }}{{ with .Params.date }}{{ $pd = time.Format "2006-01-02" . }}{{ end }}{{ end -}}
+    {{- if and $pd (gt (time $pd) (time $lm)) }}{{ $lm = $pd }}{{ end -}}
+  {{- end -}}
   {{- if not $lm }}{{ with .Lastmod }}{{ if not .IsZero }}{{ $lm = .Format "2006-01-02T15:04:05Z07:00" }}{{ end }}{{ end }}{{ end -}}
   {{- if not $lm }}{{ $lm = $fresh }}{{ end -}}
   {{- if $lm }}

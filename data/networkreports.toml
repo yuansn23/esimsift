@@ -703,3 +703,12 @@ opensignal_facts = [
   "e& UAE (formerly Etisalat) won 12 of the 13 awards, including Best Network.",
   "du's sole win was Time on Network at 99.3%, just 0.3 points ahead — coverage is simply not a differentiator between the UAE's two operators."
 ]
+
+[GE]
+# 2026-10-13 第八十八轮新增。与文件头「无近期 Opensignal 国家报告（只出 Global Index 链接）：IS GE KE MO CN」一致：
+# Opensignal 的 insights.opensignal.com/reports/georgia/ 返回 Page not found，站内 47 国清单亦不含 GE。
+# 数字交叉验证：Ookla Global Index 主榜 August 2026 中 Georgia 第 19 位 / 229.03 Mbps，前后为 Estonia(236.52) 与 New Zealand(225.90)；
+# 同一份主榜 China = 21 / 221.77，与既有 [CN] 条目逐字吻合，确认口径一致。
+ookla_note = "Ookla's Speedtest Global Index put Georgia's median mobile download at 229.03 Mbps in August 2026, 19th of the markets it ranks. There is no Opensignal Mobile Network Experience report for Georgia, so no crowdsourced per-carrier ranking exists to sit beside it."
+ookla_url = "https://www.speedtest.net/global-index/georgia"
+ookla_date = "2026-08"

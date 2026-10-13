@@ -185,27 +185,17 @@ if city_bad:
 #   本段只负责生成，不复制那张表 —— 抄一份就是第二处会错的地方。
 import sys as _sys
 _sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from _loc_de_dates import de_month  # noqa: E402
+from _loc_de_dates import HEADER as _NR_HEADER, de_month  # noqa: E402
 
 src = load(DATA / "networkreports.toml")
 buf = io.StringIO()
-buf.write("""# 德语第三方测速报告覆盖 —— 覆盖会上德语页的**三类**文本：
-#   opensignal_facts （数组 → 整段重写）· ookla_note （标量）· opensignal_date （月名本地化）
-# opensignal_title / url / ookla_slug / ookla_mobile 全部保持原文
-#   （报告标题是官方专有名称，其余是机器字段）→ 故意不写，原样继承。
-#
-# ★ `opensignal_date` / `accessed` 为什么**要**覆盖：它们不是机器字段，是可见文案 ——
-#   compare/single.html 印成 eyebrow `Opensignal · {date}`、正文印 `accessed`，
-#   networks/list.html 印进来源行。原样继承会让德语站印出英文月名
-#   （2026-10-07 实测 51 文件 / 232 处）。44 个 ISO **一律覆盖**，好让守卫做
-#   「EN 有 date ⟺ DE 有 date」的 1:1 断言 —— 新增国家漏译会直接变红。
-#   ⚠ April / August / September / November 德英同形，覆盖值与原值相同不是冗余，
-#     是让上面那条 1:1 断言成立。
-#
-# 由 scripts/_gen_de_data.py 生成（其译料 .buildlog/de_out_all.json 已不存在 →
-# 现状不可再生）；日期字段由 scripts/_loc_de_dates.py 施加并守卫。
-
-""")
+# ★ HEADER **只有一份真源**：`_loc_de_dates.py` 的 HEADER（本脚本不抄第二份 ——
+#   2026-10-12 第八十六轮发现这里曾是第二份，说的还是「title 保持原文」的旧口径）。
+#   本脚本历史遗留、**现状不可复现**（译料 .buildlog/de_out_all.json 已不存在）。
+#   它只写 facts / note / date；`opensignal_title` 的德语覆盖由 _loc_de_dates.py 施加 ——
+#   若将来恢复译料重跑本脚本，**必须紧接**跑 `scripts/_loc_de_dates.py`，
+#   否则 `verify_de_data.py` 判据 H 会报「44 国缺 opensignal_title」。
+buf.write(_NR_HEADER + "\n\n")
 _acc = de_month(src.get("accessed"))
 if _acc is None:
     raise SystemExit(f"networkreports.accessed 无法本地化: {src.get('accessed')!r}")

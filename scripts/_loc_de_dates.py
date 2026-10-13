@@ -1,41 +1,62 @@
 # -*- coding: utf-8 -*-
-"""把 `data/de/networkreports.toml` 继承来的**英文月名**本地化成德语。
+"""把 `data/de/networkreports.toml` 继承来的**英文散文**本地化成德语。
 
-为什么必须做（2026-10-07 实测）：
-  `_gen_de_data.py` 当年刻意只覆盖 `opensignal_facts` / `ookla_note`，注释写的是
+覆盖两类字段（都是模板直接渲染给读者的可见文案）：
+  ① `opensignal_date`  —— 月名本地化（`May 2026` → `Mai 2026`）
+  ② `opensignal_title` —— 报告标题里的**国名 + 月名**本地化
+                          （`Colombia, April 2026, Mobile Network Experience Report`
+                           → `Kolumbien, April 2026, Mobile Network Experience Report`）
+  `opensignal_facts` / `ookla_note` 由 `_gen_de_data.py` 整段覆盖，本脚本不碰。
+
+为什么必须做：
+  2026-10-07（日期）：`_gen_de_data.py` 当年刻意只覆盖 facts / note，注释写的是
   「opensignal_title / url / date / ookla_slug / ookla_mobile 全部保持原文（报告标题是
-  官方专有名称，其余是**机器字段**）」。前四个确实该保持：标题是官方报告名，url/slug 是
-  链接标识。但 `date` **不是机器字段** —— 它有六处渲染落点，全是读者可见文案：
+  官方专有名称，其余是**机器字段**）」→ 德语站在线页面直接印英文月名
+  **51 文件 / 232 处**（`October 2026` ×50、`April 2026` ×30 …），
+  而 hugo 退出码 0、当轮十项校验全绿 —— **没有任何守卫读这两个字段**。
 
-      layouts/compare/single.html:883   eyebrow `Opensignal · {{ $nr.opensignal_date }}`
-      layouts/compare/single.html:896   `…, {{ $nr.ookla_date }}.`
-      layouts/compare/single.html:906   `{{ $d.networkreports.accessed }}`
-      layouts/networks/list.html:319    `{{ $nr.opensignal_title }}, {{ $nr.opensignal_date }}.`
-      layouts/networks/single.html:190/255/274  （该页型德语侧尚未建立）
+  2026-10-12（标题，第八十六轮）：同一句话漏掉的还有 `opensignal_title` ——
+  它不是机器字段，是**内链锚文本**。德语侧 15 个 networks 产物页 + compare 页
+  把 `Colombia, April 2026, Mobile Network Experience Report` 原样印出。
 
-  于是一句「其余是机器字段」让德语站在线页面直接印出英文：
-      **51 个德语产物文件 / 232 处**（`October 2026` ×50、`April 2026` ×30、
-      `July 2026` ×24 …）—— `hugo` 退出码 0、当时的十项校验全绿，因为
-      **没有任何一条守卫读「日期字段是否本地化」**。月份名是单个词，
-      `.buildlog/audit_de_lang.py` 的「英语独占功能词」词表也扫不到它。
+  渲染落点（模板实证）：
+      layouts/compare/single.html:1025   eyebrow `Opensignal · {{ $nr.opensignal_date }}`
+      layouts/compare/single.html:1031   `…{{ $nr.opensignal_title }}…`（锚文本）
+      layouts/networks/list.html:319     `{{ $nr.opensignal_title }}, {{ $nr.opensignal_date }}.`
+      layouts/networks/single.html:190 / 255 / 289
+
+  ⚠ 为什么 `verify_de_text.py` 没抓到标题：它的「英语国名黑名单」判据只覆盖
+    「源级 C」与 `/de/compare/` 的 E 段，**networks 产物不在覆盖范围**。
 
 修法选择（为什么不走模板层）：
   `{{ time.Format "January 2006" (time.Parse "January 2006" …) }}` 看起来更优雅
   （一处改动自动覆盖未来所有日期），但它依赖 Hugo 内置 de locale —— locale 缺失时
-  **静默回退成英文**，属于本仓库最忌讳的「失败无声」。改成数据层覆盖后，「EN 有 date
-  ⟺ DE 有 date」是一条可断言的 1:1 不变式，新增国家漏译会直接把守卫打红。
+  **静默回退成英文**，属于本仓库最忌讳的「失败无声」。改成数据层覆盖后，「EN 有 X
+  ⟺ DE 有 X」是一条可断言的 1:1 不变式，新增国家漏译会直接把守卫打红。
+
+  ★ 标题尾部的 `Mobile Network Experience Report` **故意保留英文**：它是 Opensignal
+    的官方报告产品名，且这段文字是**指向该报告的内链锚文本** —— 译掉会让锚文本与
+    目标页标题不符。同判例：`ookla_note` 里的 `RootMetrics` / `RootScore` /
+    `Speedtest Global Index` 一律保留。国名与月名是**句法成分**（读者当句子读），
+    必须本地化 —— 这条界线就是本脚本的职责边界。
+  ★ `ookla_date` **不本地化**：取值是机器格式 `2026-08`（全量 13 条 / 5 种取值实测），
+    不含月名、德语读者可读；`de_month()` 对它返回 None 会直接报错，
+    这道防线本身也证明「它不是散文」。
 
 为什么用脚本改而不是跑生成器：
   `_gen_de_data.py` 依赖译料 `.buildlog/de_out_all.json`，该文件已不存在 →
-  生成器**现状不可复现**。因此本次改动直接施加在数据文件上，并同步修正
-  `_gen_de_data.py` 的注释与输出逻辑（保证它若将来恢复可跑，不会把这里改回去）。
+  生成器**现状不可复现**。因此改动直接施加在数据文件上，并同步修正
+  `_gen_de_data.py` 的注释，保证它将来若恢复可跑不会把这里改回去。
 
-行尾纪律：目标文件是**全 CRLF**（286 行）。一律 bytes 读写 + 逐行拼接，
-写完断言「无裸 LF」。
+行尾纪律：
+  · 目标 `data/de/networkreports.toml` 是**全 CRLF**
+  · 本脚本自身是**全 LF**（与 `verify_de_data.py` 的 CRLF 不同）
+  ★ 按**文件**实测，别按目录猜 —— 本目录三种行尾都出现过。
+  一律 bytes 读写 + 逐行拼接，写完断言「无裸 LF」。
 
 用法：
-  python -X utf8 scripts/_loc_de_dates.py --dry       # 只报告不写盘
-  python -X utf8 scripts/_loc_de_dates.py             # 执行
+  python -X utf8 scripts/_loc_de_dates.py --dry        # 只报告不写盘
+  python -X utf8 scripts/_loc_de_dates.py              # 执行
   python -X utf8 scripts/_loc_de_dates.py --selftest   # 用构造样本证明检查会红
 """
 from __future__ import annotations
@@ -49,6 +70,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EN_FILE = ROOT / "data" / "networkreports.toml"
 DE_FILE = ROOT / "data" / "de" / "networkreports.toml"
+EN_COUNTRIES = ROOT / "data" / "countries.toml"
+DE_COUNTRIES = ROOT / "data" / "de" / "countries.toml"
 
 # 德语月名。注意 **April / August / September / November 四个月德英同形** ——
 # 这是本脚本最容易写错的地方：若守卫拿「全部 12 个月名」当黑名单，
@@ -64,27 +87,82 @@ EN_ONLY_MONTH = [m for m, de in EN_MONTH.items() if m != de]
 
 MONTH_YEAR = re.compile(r"^(%s) ([0-9]{4})$" % "|".join(EN_MONTH))
 
-HEADER = """# 德语第三方测速报告覆盖 —— 覆盖会上德语页的**三类**文本：
-#   opensignal_facts （数组 → 整段重写）· ookla_note （标量）· opensignal_date （月名本地化）
-# opensignal_title / url / ookla_slug / ookla_mobile 全部保持原文
-#   （报告标题是官方专有名称，其余是机器字段）→ 故意不写，原样继承。
+# `opensignal_title` 的国名段与 `data/countries.toml[ISO].name` 之间的**已登记**差异。
+# ★ 只有这 3 处（2026-10-12 全量 44 条实测）：报告标题用正式国名拼写，
+#   countries.toml 用站内展示名（UK / USA 走缩写，Turkiye 走无变音符形式）。
+#   本表是**白名单**：出现第 4 处就直接报错，逼人回来看是真漂移还是新例外。
+COUNTRY_ALIASES = {
+    "GB": {"United Kingdom"},
+    "US": {"United States"},
+    "TR": {"Türkiye"},
+}
+
+HEADER = """# 德语第三方测速报告覆盖 —— 覆盖会上德语页的**四类**文本：
+#   opensignal_facts （数组 → 整段重写）· ookla_note （标量）
+#   opensignal_date （月名本地化）· opensignal_title （标题里的国名 + 月名本地化）
+# opensignal_url / ookla_slug / ookla_mobile / ookla_url / ookla_date 全部保持原文
+#   （链接标识与机器字段）→ 故意不写，原样继承。
 #
-# ★ `opensignal_date` / `accessed` 为什么**要**覆盖：它们不是机器字段，是可见文案 ——
-#   compare/single.html 印成 eyebrow `Opensignal · {date}`、正文印 `accessed`，
-#   networks/list.html 印进来源行。原样继承会让德语站印出英文月名
-#   （2026-10-07 实测 51 文件 / 232 处）。44 个 ISO **一律覆盖**，好让守卫做
-#   「EN 有 date ⟺ DE 有 date」的 1:1 断言 —— 新增国家漏译会直接变红。
+# ★ `opensignal_date` / `opensignal_title` / `accessed` 为什么**要**覆盖：
+#   它们不是机器字段，是可见文案 ——
+#     compare/single.html 印成 eyebrow `Opensignal · {date}` 与锚文本 `{title}`，
+#     networks/list.html / networks/single.html 印进来源行与表格表头。
+#   原样继承会让德语站印出英文（2026-10-07 实测 51 文件 / 232 处英文月名；
+#   2026-10-12 实测 15 个 networks 产物页的英文报告标题）。
+#   44 个 ISO **一律覆盖**，好让守卫做「EN 有 X ⟺ DE 有 X」的 1:1 断言 ——
+#   新增国家漏译会直接变红。
 #   ⚠ April / August / September / November 德英同形，覆盖值与原值相同不是冗余，
 #     是让上面那条 1:1 断言成立。
+#   ⚠ 德语国名取自 data/de/countries.toml 的 name（唯一真源，本文件不抄第二份）；
+#     title 尾部的 `Mobile Network Experience Report` 保留英文（官方产品名 + 锚文本）。
 #
 # 由 scripts/_gen_de_data.py 生成（其译料 .buildlog/de_out_all.json 已不存在 →
-# 现状不可再生）；日期字段由 scripts/_loc_de_dates.py 施加并守卫。"""
+# 现状不可再生）；日期与标题字段由 scripts/_loc_de_dates.py 施加并守卫。"""
 
 
 def de_month(s: str) -> str | None:
     """`May 2026` → `Mai 2026`。无法识别的形态返回 None（例如机器格式 `2026-08`）。"""
     m = MONTH_YEAR.match(s)
     return None if m is None else f"{EN_MONTH[m.group(1)]} {m.group(2)}"
+
+
+def load_names(p: Path) -> dict[str, str]:
+    """`data[/de]/countries.toml` → {ISO: name}。**国名的唯一真源**，本脚本读它、不抄它。"""
+    d = tomllib.loads(p.read_text(encoding="utf-8"))
+    return {k: v["name"] for k, v in d.items()
+            if isinstance(v, dict) and isinstance(v.get("name"), str)}
+
+
+def forbidden_country_names(en_names: dict, de_names: dict) -> set[str]:
+    """英文名与德语名不同的国家 → 德语 title 里不该再出现这些英文名。"""
+    return {en for iso, en in en_names.items()
+            if en and de_names.get(iso) and de_names[iso] != en}
+
+
+def de_title(en_title: str, iso: str, en_names: dict, de_names: dict) -> str | None:
+    """`Colombia, April 2026, Mobile Network Experience Report`
+       → `Kolumbien, April 2026, Mobile Network Experience Report`
+
+    只替换**国名段**与**月年段**；尾部产品名原样保留（见文件头 ★）。
+    任何结构不符一律返回 None —— 宁可不写，也不猜：
+      · 段数 < 3
+      · 国名段既不是 `countries.toml[ISO].name` 也不在 `COUNTRY_ALIASES[ISO]`
+      · 月年段无法本地化（`de_month` 返回 None）
+      · 该 ISO 在 countries.toml 里没有名字
+    """
+    parts = en_title.split(", ")
+    if len(parts) < 3:
+        return None
+    country, month_year, tail = parts[0], ", ".join(parts[1:-1]), parts[-1]
+    en_n, de_n = en_names.get(iso), de_names.get(iso)
+    if not en_n or not de_n:
+        return None
+    if country != en_n and country not in COUNTRY_ALIASES.get(iso, set()):
+        return None
+    loc_my = de_month(month_year)
+    if loc_my is None:
+        return None
+    return f"{de_n}, {loc_my}, {tail}"
 
 
 def read_de() -> str:
@@ -100,6 +178,8 @@ def build(en: dict, text: str) -> tuple[str, list[str]]:
     不做「检测已存在就跳过」——那种写法在「值变了解析规则」时会留下旧值。
     """
     notes: list[str] = []
+    en_names = load_names(EN_COUNTRIES)
+    de_names = load_names(DE_COUNTRIES)
     lines = text.split("\r\n")
 
     # ---- ① 分离「表头区」与「表体」：表体从第一个 `[ISO]` 段头开始 ----
@@ -110,12 +190,13 @@ def build(en: dict, text: str) -> tuple[str, list[str]]:
     head_region, body = lines[:first], lines[first:]
 
     # ---- ② 幂等：剥掉上一轮生成的字段 ----
+    GEN_FIELDS = ("opensignal_date = ", 'opensignal_title = "')
     dropped_head = sum(1 for l in head_region
-                       if l.startswith('accessed = "') or l.startswith("opensignal_date = "))
+                       if l.startswith('accessed = "') or l.startswith(GEN_FIELDS))
     head_region = [l for l in head_region
-                   if not (l.startswith('accessed = "') or l.startswith("opensignal_date = "))]
-    dropped_body = sum(1 for l in body if l.startswith("opensignal_date = "))
-    body = [l for l in body if not l.startswith("opensignal_date = ")]
+                   if not (l.startswith('accessed = "') or l.startswith(GEN_FIELDS))]
+    dropped_body = sum(1 for l in body if l.startswith(GEN_FIELDS))
+    body = [l for l in body if not l.startswith(GEN_FIELDS)]
     stray = [l for l in head_region if l.strip() and not l.startswith("#")]
     if stray:
         raise SystemExit(f"表头区出现非注释内容，拒绝改写: {stray[:3]}")
@@ -131,28 +212,49 @@ def build(en: dict, text: str) -> tuple[str, list[str]]:
              + body)
     notes.append(f"表头 + accessed：剥旧字段 {dropped_head} 行，写入 accessed={want_acc!r}")
 
-    # ---- ④ 每个 [ISO] 段插 opensignal_date ----
-    want = {iso: de_month(v["opensignal_date"])
-            for iso, v in en.items()
-            if isinstance(v, dict) and isinstance(v.get("opensignal_date"), str)}
-    unknown = [iso for iso, v in want.items() if v is None]
-    if unknown:
-        raise SystemExit(f"以下 ISO 的 opensignal_date 无法解析: {unknown}")
+    # ---- ④ 每个 [ISO] 段插 opensignal_title（如有）+ opensignal_date ----
+    want_date = {iso: de_month(v["opensignal_date"])
+                 for iso, v in en.items()
+                 if isinstance(v, dict) and isinstance(v.get("opensignal_date"), str)}
+    unknown_d = [iso for iso, v in want_date.items() if v is None]
+    if unknown_d:
+        raise SystemExit(f"以下 ISO 的 opensignal_date 无法解析: {unknown_d}")
+
+    want_title: dict[str, str] = {}
+    for iso, v in en.items():
+        if not isinstance(v, dict):
+            continue
+        t = v.get("opensignal_title")
+        if not isinstance(t, str) or not t:
+            continue
+        got = de_title(t, iso, en_names, de_names)
+        if got is None:
+            raise SystemExit(f"[{iso}] opensignal_title 无法本地化: {t!r}")
+        want_title[iso] = got
 
     out: list[str] = []
-    seen: set[str] = set()
+    seen_d: set[str] = set()
+    seen_t: set[str] = set()
     for ln in lines:
         out.append(ln)
         m = head_hdr.match(ln)
-        if m and m.group(1) in want:
-            iso = m.group(1)
-            seen.add(iso)
-            out.append(f'opensignal_date = "{want[iso]}"')
+        if not m:
+            continue
+        iso = m.group(1)
+        if iso in want_title:
+            out.append(f'opensignal_title = "{want_title[iso]}"')
+            seen_t.add(iso)
+        if iso in want_date:
+            out.append(f'opensignal_date = "{want_date[iso]}"')
+            seen_d.add(iso)
     lines = out
-    missing = sorted(set(want) - seen)
-    if missing:
-        raise SystemExit(f"数据文件里找不到这些 [ISO] 段: {missing}")
-    notes.append(f"opensignal_date: {len(want)} 个 ISO（剥旧 {dropped_body} 行）")
+    for label, want, seen in (("opensignal_title", want_title, seen_t),
+                              ("opensignal_date", want_date, seen_d)):
+        missing = sorted(set(want) - seen)
+        if missing:
+            raise SystemExit(f"数据文件里找不到这些 [{label}] 段: {missing}")
+    notes.append(f"opensignal_title: {len(want_title)} 个 ISO")
+    notes.append(f"opensignal_date: {len(want_date)} 个 ISO（共剥旧 {dropped_body} 行）")
 
     return "\r\n".join(lines), notes
 
@@ -163,6 +265,8 @@ def invariants(en: dict, before: str, after: str) -> None:
     assert after.count("\r\n") == after.count("\n"), "出现裸 LF"
     assert "\n" not in after.replace("\r\n", ""), "出现裸 LF"
 
+    en_names = load_names(EN_COUNTRIES)
+    de_names = load_names(DE_COUNTRIES)
     old, new = tomllib.loads(before), tomllib.loads(after)
 
     # 2. 1:1 —— EN 有 date 的每个 ISO，DE 都必须有，且值等于本地化结果
@@ -171,7 +275,10 @@ def invariants(en: dict, before: str, after: str) -> None:
             if isinstance(v, dict) and isinstance(v.get("opensignal_date"), str)}
     got = {iso: v["opensignal_date"] for iso, v in new.items()
            if isinstance(v, dict) and "opensignal_date" in v}
-    assert got == want, f"date 覆盖不一致，多={sorted(set(got) - set(want))} 缺={sorted(set(want) - set(got))} 值异={[k for k in got if k in want and got[k] != want[k]]}"
+    assert got == want, (
+        f"date 覆盖不一致，多={sorted(set(got) - set(want))} "
+        f"缺={sorted(set(want) - set(got))} "
+        f"值异={[k for k in got if k in want and got[k] != want[k]]}")
 
     # 3. accessed
     assert new.get("accessed") == de_month(en["accessed"]), new.get("accessed")
@@ -183,7 +290,53 @@ def invariants(en: dict, before: str, after: str) -> None:
     assert not re.search(r"(?<![A-Za-z])(" + "|".join(EN_ONLY_MONTH) + r")(?![A-Za-z])",
                          new["accessed"]), new["accessed"]
 
-    # 5. **其它一切原封不动**（除本次新增/改写的两类字段）
+    # 5. 标题：1:1 + 值精确等于「英文 title 的国名/月名替换结果」
+    want_t = {}
+    for iso, v in en.items():
+        if not isinstance(v, dict):
+            continue
+        t = v.get("opensignal_title")
+        if not isinstance(t, str) or not t:
+            continue
+        r = de_title(t, iso, en_names, de_names)
+        assert r is not None, f"[{iso}] 英文 opensignal_title 结构无法本地化: {t!r}"
+        want_t[iso] = r
+    got_t = {iso: v["opensignal_title"] for iso, v in new.items()
+             if isinstance(v, dict) and "opensignal_title" in v}
+    assert got_t == want_t, (
+        f"title 覆盖不一致，多={sorted(set(got_t) - set(want_t))} "
+        f"缺={sorted(set(want_t) - set(got_t))} "
+        f"值异={[k for k in got_t if k in want_t and got_t[k] != want_t[k]]}")
+
+    # 6. 德语标题里不得残留**形变**英文月名
+    badm = [(k, v) for k, v in got_t.items() if re.search(
+        r"(?<![A-Za-z])(" + "|".join(EN_ONLY_MONTH) + r")(?![A-Za-z])", v)]
+    assert not badm, f"标题仍含英文月名: {badm}"
+
+    # 7. 德语标题里不得残留英文国名（en/de 名不同的国家）
+    forb = forbidden_country_names(en_names, de_names)
+    leak = []
+    for iso, v in got_t.items():
+        for tok in forb:
+            if re.search(r"(?i)\b%s\b" % re.escape(tok), v):
+                leak.append((iso, tok, v))
+                break
+    assert not leak, f"标题残留英文国名: {leak}"
+
+    # 8. 英文 title 的国名段必须 ∈ {countries.name} ∪ COUNTRY_ALIASES（白名单不得扩张）
+    for iso, v in en.items():
+        if not isinstance(v, dict):
+            continue
+        t = v.get("opensignal_title")
+        if not isinstance(t, str) or not t:
+            continue
+        head = t.split(", ")[0]
+        en_n = en_names.get(iso)
+        assert head == en_n or head in COUNTRY_ALIASES.get(iso, set()), (
+            f"[{iso}] 英文 title 国名段 {head!r} 既不是 countries.toml 的 {en_n!r} "
+            f"也不在 COUNTRY_ALIASES 里 —— 白名单需要人工确认")
+
+    # 9. **其它一切原封不动**（除本次新增/改写的两类字段）
     for k, v in old.items():
         if k == "accessed":
             continue
@@ -193,10 +346,11 @@ def invariants(en: dict, before: str, after: str) -> None:
         nv = new.get(k)
         assert isinstance(nv, dict), f"[{k}] 丢失"
         for kk, vv in v.items():
-            if kk == "opensignal_date":
+            if kk in ("opensignal_date", "opensignal_title"):
                 continue
             assert nv.get(kk) == vv, f"[{k}].{kk} 被改"
-        assert set(nv) - set(v) <= {"opensignal_date"}, f"[{k}] 多出键 {set(nv) - set(v)}"
+        assert set(nv) - set(v) <= {"opensignal_date", "opensignal_title"}, (
+            f"[{k}] 多出键 {set(nv) - set(v)}")
 
 
 def selftest() -> int:
@@ -233,7 +387,57 @@ def selftest() -> int:
     failed += 0 if ok2 else 1
     print(f"  {'OK  ' if ok2 else 'MISS'} 黑名单含形变月（{probe2} 被抓）    实际 {bool(pat.search(probe2))}")
 
-    print(f"\n自测{'通过' if not failed else f'失败 {failed} 项'}（{len(cases) + 2} 项）")
+    # ---- de_title 正例 / 反例（构造样本，不依赖真实数据） ----
+    EN_N = {"CO": "Colombia", "GB": "UK", "US": "USA", "TR": "Turkiye",
+            "CR": "Costa Rica", "PT": "Portugal"}
+    DE_N = {"CO": "Kolumbien", "GB": "Vereinigtes Königreich",
+            "US": "Vereinigte Staaten", "TR": "Türkei",
+            "CR": "Costa Rica", "PT": "Portugal"}
+    tcases: list[tuple[str, object, object]] = [
+        ("国名 + 月名都形变",
+         de_title("Colombia, April 2026, Mobile Network Experience Report", "CO", EN_N, DE_N),
+         "Kolumbien, April 2026, Mobile Network Experience Report"),
+        ("只月名形变",
+         de_title("Portugal, July 2023, Mobile Network Experience", "PT", EN_N, DE_N),
+         "Portugal, Juli 2023, Mobile Network Experience"),
+        ("德英全同形（Costa Rica + April）→ 值不变但必须存在",
+         de_title("Costa Rica, April 2026, Mobile Network Experience Report", "CR", EN_N, DE_N),
+         "Costa Rica, April 2026, Mobile Network Experience Report"),
+        ("已登记别名 UK → Vereinigtes Königreich",
+         de_title("United Kingdom, January 2026, Mobile Network Experience Report", "GB", EN_N, DE_N),
+         "Vereinigtes Königreich, Januar 2026, Mobile Network Experience Report"),
+        ("已登记别名 USA → Vereinigte Staaten",
+         de_title("United States, July 2026, Mobile Network Experience Report", "US", EN_N, DE_N),
+         "Vereinigte Staaten, Juli 2026, Mobile Network Experience Report"),
+        # 反例：结构不符 / 未登记别名 / 机器日期 一律 None（宁可不写）
+        ("反例 段数不足 → None",
+         de_title("Colombia, Mobile Network Experience Report", "CO", EN_N, DE_N), None),
+        ("反例 未登记别名 → None",
+         de_title("Columbia, April 2026, Mobile Network Experience Report", "CO", EN_N, DE_N), None),
+        ("反例 月名为机器格式 → None",
+         de_title("Colombia, 2026-04, Mobile Network Experience Report", "CO", EN_N, DE_N), None),
+        ("反例 countries.toml 无此 ISO → None",
+         de_title("Nowhere, April 2026, Mobile Network Experience Report", "ZZ", EN_N, DE_N), None),
+    ]
+    for name, got, want in tcases:
+        ok = got == want
+        failed += 0 if ok else 1
+        print(f"  {'OK  ' if ok else 'MISS'} {name:34s} 期望 {want!r} 实际 {got!r}")
+
+    # ---- 反例：英文国名残留判据必须能抓（两侧都证） ----
+    forb = forbidden_country_names(EN_N, DE_N)
+    ok_forb = "Colombia" in forb and "Costa Rica" not in forb
+    failed += 0 if ok_forb else 1
+    print(f"  {'OK  ' if ok_forb else 'MISS'} 英文国名黑名单：含 Colombia、不含同形 Costa Rica  实际 "
+          f"Colombia={'Colombia' in forb} CostaRica={'Costa Rica' in forb}")
+    bad_hit = bool(re.search(r"(?i)\b%s\b" % re.escape("Colombia"),
+                             "Colombia, April 2026, Mobile Network Experience Report"))
+    ok_hit = bad_hit is True
+    failed += 0 if ok_hit else 1
+    print(f"  {'OK  ' if ok_hit else 'MISS'} 残留英文国名会被抓（反例命中）  实际 {bad_hit}")
+
+    total = len(cases) + len(tcases) + 4
+    print(f"\n自测{'通过' if not failed else f'失败 {failed} 项'}（{total} 项）")
     return 1 if failed else 0
 
 

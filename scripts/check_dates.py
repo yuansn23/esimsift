@@ -38,6 +38,12 @@ C. 半截产物
      （必须与 vs-agg.checkedDate 完全同口径，否则一个品牌刷新会带跑 28 张 vs 页）
   国家 Hub /compare/<国>/
      三者 = 该国全部品牌的最大 checked
+  networks 子页 /networks/<国>/
+     徽章   = max(该国数据核对日, 页面自身的发布日 front matter lastmod/date)
+     脚注   = 数据核对日（"at the <d> snapshot"，与徽章是两件事）
+     页面上只允许出现这两个日期。**新增页首次发布时徽章必须等于发布日**（2026-10-13 扩，
+     此前只允许数据核对日 ⇒ 一个今天刚建的页会顶着它诞生之前的日期）；
+     放宽之后仍然拦得住 now 回归：构建日既不等于数据核对日、也不等于页面发布日。
   对决总目录 /compare/matchups/
      只查 lastmod == dateModified。它**不是**国家页 —— 2026-10-11 之前它被
      COUNTRY_HUB 的正则（`^/compare/([^/]+)/$`）误吃，统计里虚报成国家 Hub。
@@ -150,6 +156,25 @@ def load_networks_iso() -> dict[str, str]:
     return out
 
 
+def load_networks_page_dates() -> dict[str, str]:
+    """→ {slug: "YYYY-MM-DD"}：/networks/<slug>/ 页面**自身的发布日**。
+
+    取 front matter 的 `lastmod`（缺则 `date`）。**不取 mtime / 不取 `.Lastmod` 的兜底** ——
+    那个兜底的末段是文件 mtime，会让日期跟着 checkout 走，正是日期机制要消灭的
+    「日期与内容脱钩」。与 layouts/networks/single.html 的 $pageISO 同一份口径。
+    """
+    out: dict[str, str] = {}
+    for p in sorted((ROOT / "content" / "en" / "networks").glob("*.md")):
+        if p.stem.startswith("_"):
+            continue
+        txt = io.open(p, encoding="utf-8", errors="ignore").read()
+        m = (re.search(r"^lastmod:\s*(\d{4}-\d{2}-\d{2})", txt, re.M)
+             or re.search(r"^date:\s*(\d{4}-\d{2}-\d{2})", txt, re.M))
+        if m:
+            out[p.stem] = m.group(1)
+    return out
+
+
 def newest(values) -> str:
     vals = [v for v in values if v]
     return max(vals) if vals else ""
@@ -203,7 +228,7 @@ def check_host(base: str) -> list[str]:
     return errs
 
 
-def check_dates(base: str, plans, profile, net_iso) -> list[str]:
+def check_dates(base: str, plans, profile, net_iso, net_pdate=None) -> list[str]:
     sm = PUB / "sitemap.xml"
     if not sm.exists():
         return ["[B] public/sitemap.xml 不存在 —— 先跑 hugo"]
@@ -222,7 +247,7 @@ def check_dates(base: str, plans, profile, net_iso) -> list[str]:
 
         # ── 归类 + 算期望值 ──────────────────────────────────────────
         edit = bool(EDIT_PAGE.match(url))
-        page_exp = price_exp = ""
+        page_exp = price_exp = data_exp = ""
         if (mm := BRAND_HUB.match(url)):
             key = mm.group(1)
             price_exp = brand_newest(plans, key)
@@ -252,11 +277,18 @@ def check_dates(base: str, plans, profile, net_iso) -> list[str]:
             price_exp = page_exp = fresh
             kind = "index"
         elif (mm := NETWORKS_SUB.match(url)):
-            # /networks/<slug>/ —— 与 country_hub 同一口径（同一批数据、同一个 country-stats）。
-            iso = net_iso.get(mm.group(1), "")
+            # /networks/<slug>/ —— 数据核对日与 country_hub 同口径（同一批数据、同一个
+            # country-stats）；但**页级日期**还要与「页面自身的发布日」取较大者：
+            # 新增页首次发布时徽章必须等于发布日，不能顶着所引数据的旧核对日。
+            # 脚注的 snapshot 日期仍是数据核对日，故二者都进允许集合。
+            slug = mm.group(1)
+            iso = net_iso.get(slug, "")
             if not iso:
                 continue          # 认不出 ISO 就不断言（新增页漏写 iso 由别处发现）
-            price_exp = page_exp = newest(plans[k].get(iso, "") for k in plans)
+            data_exp = newest(plans[k].get(iso, "") for k in plans)
+            pdate = (net_pdate or {}).get(slug, "")
+            page_exp = max(data_exp, pdate) if (data_exp and pdate) else (data_exp or pdate)
+            price_exp = data_exp
             kind = "networks_sub"
         elif NETWORKS_INDEX.match(url):
             # /networks/ —— 正文含一句示例日期（不是数据日期），只查 dateModified ↔ lastmod。
@@ -272,14 +304,14 @@ def check_dates(base: str, plans, profile, net_iso) -> list[str]:
         if not page_file.exists():
             continue  # 交给断言 C
         html = io.open(page_file, encoding="utf-8", errors="ignore").read()
-        errs += page_date_errs(url, kind, html, lastmod, page_exp, price_exp)
+        errs += page_date_errs(url, kind, html, lastmod, page_exp, price_exp, data_exp)
 
     print("  页型：" + "、".join(f"{k}={stats[k]}" for k in sorted(stats)))
     return errs
 
 
 def page_date_errs(url: str, kind: str, html: str, lastmod: str,
-                   page_exp: str, price_exp: str) -> list[str]:
+                   page_exp: str, price_exp: str, data_exp: str = "") -> list[str]:
     """单页的日期一致性断言（断言 B 的内核）。
 
     抽成独立函数只有一个理由：**让 `--selftest` 能直接打它**。
@@ -313,16 +345,20 @@ def page_date_errs(url: str, kind: str, html: str, lastmod: str,
     for v in sorted(pr):
         if price_exp and v != price_exp:
             errs.append(f"[B] {url} 页面可见「价格核对日」={v} ≠ 期望价格日期={price_exp}")
-    # networks 子页：页面上出现的**每一个**日期都必须是数据核对日。
-    # 这条比上面两条严 —— 不靠标签识别，直接扫全部日期形态。理由是
-    # /networks/<国>/ 页面上只存在一种日期（数据核对日，实测 12 页各 1 个），
-    # 所以「出现第二个日期」本身就是异常，不需要先猜它贴着什么标签。
-    # 2026-10-09 的 now 回归（徽章印构建日）正是被这条抓住的。
+    # networks 子页：不靠标签识别，直接扫全部日期形态 —— 只允许这两个：
+    #   · data_exp —— 数据核对日，两处脚注的 "at the <d> snapshot" 用它
+    #   · page_exp —— 页级日期 = max(数据核对日, 页面自身发布日)，徽章的「最后更新」用它
+    # 旧口径是「只允许数据核对日」，2026-10-13 起放宽：新增页首次发布时徽章必须等于
+    # 发布日（否则一个今天刚建的页会顶着它诞生之前的日期）。放宽后仍拦得住 now 回归 ——
+    # 构建日既不等于数据核对日、也不等于页面发布日，照样红。
+    # 2026-10-09 的 now 回归（徽章印构建日）正是被这条抓到的。
     if kind == "networks_sub":
+        allowed = {v for v in (page_exp, data_exp) if v}
         for v in sorted({norm_visible(x) for x in RE_ANY_DATE.findall(html)} - {None}):
-            if page_exp and v != page_exp:
-                errs.append(f"[B] {url} 页面可见日期={v} ≠ 期望数据核对日={page_exp}"
-                            "（/networks/ 子页只应出现数据核对日；印出构建日即为 now 回归）")
+            if allowed and v not in allowed:
+                errs.append(f"[B] {url} 页面可见日期={v} 既不是数据核对日={data_exp or '(未知)'} "
+                            f"也不是页级日期={page_exp or '(未知)'}"
+                            "（/networks/ 子页只允许这两个日期；印出构建日即为 now 回归）")
     return errs
 
 
@@ -368,34 +404,44 @@ def selftest() -> int:
     """
     OFF = '<span class="kicker">Canada</span><p>Sources: Canada, August 2026, ' \
           'Mobile Network Experience Report</p>'
+    # 每条 = (名称, url, kind, html, lastmod, page_exp, price_exp, data_exp, want_err)
+    SNIP = '<p>Counts are derived from our own plan database at the Oct 7, 2026 snapshot.</p>'
     cases = [
         # ── 反例：必须报错 ────────────────────────────────────────────
         ("networks 子页徽章印构建日（2026-10-09 now 回归）", "/networks/canada/",
          "networks_sub", '<span class="badge">Updated Oct 9, 2026</span>',
-         "2026-10-07", "2026-10-07", "2026-10-07", True),
+         "2026-10-07", "2026-10-07", "2026-10-07", "2026-10-07", True),
         ("networks 子页 sitemap lastmod 与数据脱钩", "/networks/canada/",
          "networks_sub", '<span class="badge">Updated Oct 7, 2026</span>',
-         "2026-10-03", "2026-10-07", "2026-10-07", True),
+         "2026-10-03", "2026-10-07", "2026-10-07", "2026-10-07", True),
         ("networks 子页德语徽章印错误日期（D9 后德语页进 sitemap 时会走这条）", "/de/networks/canada/",
          "networks_sub", '<span class="badge">Aktualisiert am 09.10.2026</span>',
-         "2026-10-07", "2026-10-07", "2026-10-07", True),
+         "2026-10-07", "2026-10-07", "2026-10-07", "2026-10-07", True),
+        # 2026-10-13 放宽口径后**必须仍红**：构建日既不等于数据核对日、也不等于页面发布日。
+        ("networks 新增页徽章印构建日（口径放宽后 Oct 14 仍必须红）", "/networks/georgia/",
+         "networks_sub", '<span class="badge">Updated Oct 14, 2026</span>' + SNIP,
+         "2026-10-13", "2026-10-13", "2026-10-07", "2026-10-07", True),
         ("prov_sub 价格文案日期不符（回归：重构后既有断言仍有效）", "/compare/canada/airalo/",
          "prov_sub", '<p>Prices verified Oct 4, 2026</p>',
-         "2026-10-07", "2026-09-30", "2026-09-30", True),
+         "2026-10-07", "2026-09-30", "2026-09-30", "", True),
         # ── 正例：必须不报错 ──────────────────────────────────────────
         ("networks 子页三处同源（正确产物）", "/networks/canada/",
          "networks_sub",
          '<span class="badge">Updated Oct 7, 2026</span>'
          '<p>at the Oct 7, 2026 snapshot. The lowest price…</p>' + OFF,
-         "2026-10-07", "2026-10-07", "2026-10-07", False),
+         "2026-10-07", "2026-10-07", "2026-10-07", "2026-10-07", False),
         ("networks 子页德语形态（07.10.2026）被正确识别", "/de/networks/canada/",
          "networks_sub", '<span class="badge">Aktualisiert am 07.10.2026</span>',
-         "2026-10-07", "2026-10-07", "2026-10-07", False),
+         "2026-10-07", "2026-10-07", "2026-10-07", "2026-10-07", False),
+        # 2026-10-13 新口径的正例：徽章=发布日（10-13）+ 脚注=数据核对日（10-07）是**正确产物**。
+        ("networks 新增页徽章=发布日 且 脚注=数据核对日（新口径正例）", "/networks/georgia/",
+         "networks_sub", '<span class="badge">Updated Oct 13, 2026</span>' + SNIP,
+         "2026-10-13", "2026-10-13", "2026-10-07", "2026-10-07", False),
         ("networks 索引页的散文日期（April 1, 2026）不被误判", "/networks/",
          "networks_index", '<p>An April 1, 2026 booking would…</p>',
-         "2026-10-03", "", "", False),
+         "2026-10-03", "", "", "", False),
         ("正例控件：本机真实产物 /networks/canada/ 应为 0 报错", "/networks/canada/",
-         "networks_sub", None, "2026-10-07", "2026-10-07", "2026-10-07", False),
+         "networks_sub", None, "2026-10-07", "2026-10-07", "2026-10-07", "2026-10-07", False),
     ]
 
     # 真实产物锚点：直接读 public/ 里那一页，证明「真实产物在真检查下也是 0 报错」
@@ -404,12 +450,12 @@ def selftest() -> int:
         if real_file.exists() else ""
 
     bad = 0
-    for name, url, kind, html, lastmod, page_exp, price_exp, want_err in cases:
+    for name, url, kind, html, lastmod, page_exp, price_exp, data_exp, want_err in cases:
         body = real_html if html is None else html
         if html is None and not real_html:
             print(f"  跳过 {name}（public/networks/canada/index.html 不存在，先跑构建）")
             continue
-        got = page_date_errs(url, kind, body, lastmod, page_exp, price_exp)
+        got = page_date_errs(url, kind, body, lastmod, page_exp, price_exp, data_exp)
         ok = bool(got) == want_err
         if not ok:
             bad += 1
@@ -451,17 +497,33 @@ def selftest() -> int:
             "<p>Last updated Oct 7, 2026</p>"
             '<script type="application/ld+json">{"dateModified":"2026-10-07"}</script>',
             encoding="utf-8")
+        # 正例控件（2026-10-13）：新增 networks 页的页级日期 = max(数据核对日, 页面发布日)。
+        #   徽章 10-13 / 脚注 10-07 / sitemap lastmod 10-13 —— 必须 0 报错。
+        #   同时是**分派**的证明：若 check_dates 拿不到 net_pdate，page_exp 会退回 10-07，
+        #   徽章那个 10-13 就会被判成「既不是数据核对日也不是页级日期」而红。
+        (tmp / "networks" / "georgia").mkdir(parents=True)
+        (tmp / "networks" / "georgia" / "index.html").write_text(
+            '<span class="badge">Updated Oct 13, 2026</span>'
+            '<p>at the Oct 7, 2026 snapshot</p>',
+            encoding="utf-8")
         (tmp / "sitemap.xml").write_text(
             '<?xml version="1.0" encoding="utf-8"?><urlset>'
             f"<url><loc>{B}/compare/matchups/</loc><lastmod>2026-10-07T00:00:00Z</lastmod></url>"
             f"<url><loc>{B}/compare/argentina/</loc><lastmod>2026-10-07T00:00:00Z</lastmod></url>"
+            f"<url><loc>{B}/networks/georgia/</loc><lastmod>2026-10-13T00:00:00Z</lastmod></url>"
             "</urlset>", encoding="utf-8")
         buf = io.StringIO()
         real_pub = PUB
         globals()["PUB"] = tmp
         try:
             with contextlib.redirect_stdout(buf):
-                got = check_dates(B, {"airalo": {"argentina": "2026-10-07"}}, {}, {})
+                # ⚠ plans 是**按 ISO 键**的（不是 slug）：networks 分支用
+                #   `net_iso[slug] → iso` 再查 `plans[brand][iso]`。写成 slug 会让
+                #   data_exp 退化成空串，夹具自己就把断言喂空了（本行是修过的）。
+                got = check_dates(
+                    B,
+                    {"airalo": {"argentina": "2026-10-07", "GE": "2026-10-07"}},
+                    {}, {"georgia": "GE"}, {"georgia": "2026-10-13"})
         finally:
             globals()["PUB"] = real_pub
         out = buf.getvalue()
@@ -475,6 +537,8 @@ def selftest() -> int:
          len(got) == 1 and "/compare/matchups/" in got[0] and "1999-01-01" in got[0]),
         ("真国家页三处同源不得报错",
          not any("/compare/argentina/" in e for e in got)),
+        ("新增 networks 页的发布日被认作页级日期（分派走 networks_sub 且 0 报错）",
+         "networks_sub=1" in out and not any("/networks/georgia/" in e for e in got)),
     ]
     for name, ok in st_checks:
         if not ok:
@@ -498,8 +562,9 @@ def main() -> int:
     print(f"baseURL = {base}")
     plans, profile = load_data()
     net_iso = load_networks_iso()
+    net_pdate = load_networks_page_dates()
     errs = check_host(base)
-    errs += check_dates(base, plans, profile, net_iso)
+    errs += check_dates(base, plans, profile, net_iso, net_pdate)
     errs += check_completeness(base)
 
     if not errs:

@@ -1,22 +1,29 @@
-# 德语第三方测速报告覆盖 —— 覆盖会上德语页的**三类**文本：
-#   opensignal_facts （数组 → 整段重写）· ookla_note （标量）· opensignal_date （月名本地化）
-# opensignal_title / url / ookla_slug / ookla_mobile 全部保持原文
-#   （报告标题是官方专有名称，其余是机器字段）→ 故意不写，原样继承。
+# 德语第三方测速报告覆盖 —— 覆盖会上德语页的**四类**文本：
+#   opensignal_facts （数组 → 整段重写）· ookla_note （标量）
+#   opensignal_date （月名本地化）· opensignal_title （标题里的国名 + 月名本地化）
+# opensignal_url / ookla_slug / ookla_mobile / ookla_url / ookla_date 全部保持原文
+#   （链接标识与机器字段）→ 故意不写，原样继承。
 #
-# ★ `opensignal_date` / `accessed` 为什么**要**覆盖：它们不是机器字段，是可见文案 ——
-#   compare/single.html 印成 eyebrow `Opensignal · {date}`、正文印 `accessed`，
-#   networks/list.html 印进来源行。原样继承会让德语站印出英文月名
-#   （2026-10-07 实测 51 文件 / 232 处）。44 个 ISO **一律覆盖**，好让守卫做
-#   「EN 有 date ⟺ DE 有 date」的 1:1 断言 —— 新增国家漏译会直接变红。
+# ★ `opensignal_date` / `opensignal_title` / `accessed` 为什么**要**覆盖：
+#   它们不是机器字段，是可见文案 ——
+#     compare/single.html 印成 eyebrow `Opensignal · {date}` 与锚文本 `{title}`，
+#     networks/list.html / networks/single.html 印进来源行与表格表头。
+#   原样继承会让德语站印出英文（2026-10-07 实测 51 文件 / 232 处英文月名；
+#   2026-10-12 实测 15 个 networks 产物页的英文报告标题）。
+#   44 个 ISO **一律覆盖**，好让守卫做「EN 有 X ⟺ DE 有 X」的 1:1 断言 ——
+#   新增国家漏译会直接变红。
 #   ⚠ April / August / September / November 德英同形，覆盖值与原值相同不是冗余，
 #     是让上面那条 1:1 断言成立。
+#   ⚠ 德语国名取自 data/de/countries.toml 的 name（唯一真源，本文件不抄第二份）；
+#     title 尾部的 `Mobile Network Experience Report` 保留英文（官方产品名 + 锚文本）。
 #
 # 由 scripts/_gen_de_data.py 生成（其译料 .buildlog/de_out_all.json 已不存在 →
-# 现状不可再生）；日期字段由 scripts/_loc_de_dates.py 施加并守卫。
+# 现状不可再生）；日期与标题字段由 scripts/_loc_de_dates.py 施加并守卫。
 
 accessed = "Oktober 2026"
 
 [HK]
+opensignal_title = "Hongkong, Mai 2026, Mobile Network Experience Report"
 opensignal_date = "Mai 2026"
 opensignal_facts = [
   "CMHK (China Mobile HK) gewann die Download-Geschwindigkeit allein mit 88,7 Mbit/s und die 5G-Download-Geschwindigkeit mit 171,7 Mbit/s, auf dem Weg zur größten Ausbeute des Zyklus — 7 Alleinsiege plus 5 geteilte Awards.",
@@ -28,6 +35,7 @@ opensignal_facts = [
 ookla_note = "Ooklas Speedtest Global Index setzte den mittleren mobilen Download des chinesischen Festlands im August 2026 auf 221,77 Mbit/s, an 21. Stelle der von ihm bewerteten Märkte. Es gibt keinen Opensignal Mobile Network Experience Report für das chinesische Festland, sodass kein auf Crowdsourcing basierendes Ranking je Netzbetreiber existiert, das daneben gestellt werden könnte."
 
 [GB]
+opensignal_title = "Vereinigtes Königreich, Januar 2026, Mobile Network Experience Report"
 opensignal_date = "Januar 2026"
 opensignal_facts = [
   "EE war der stärkste Teilnehmer mit 11 Alleinauszeichnungen, darunter die Download-Geschwindigkeit bei 53,2 Mbit/s.",
@@ -36,6 +44,7 @@ opensignal_facts = [
 ookla_note = "Ooklas RootMetrics-Fahrtests verliehen EE zum 26. Mal in Folge jede UK-weite RootScore-Auszeichnung, mit einem UK-weiten mittleren Download von 130,3 Mbit/s — mehr als das Doppelte des nächstbesten Ergebnisses."
 
 [DE]
+opensignal_title = "Deutschland, November 2025, Mobile Network Experience Report"
 opensignal_date = "November 2025"
 opensignal_facts = [
   "Telekom gewann 11 von 14 Auszeichnungen allein, darunter die Download-Geschwindigkeit bei 68,9 Mbit/s vor Vodafone (56,3) und O2 (47,4).",
@@ -44,6 +53,7 @@ opensignal_facts = [
 ookla_note = "Ookla nannte Telekom das schnellste Mobilfunknetz in Deutschland für Q1–Q2 2026, mit einem Speed Score von 77,9 vor Vodafones 56,1."
 
 [FR]
+opensignal_title = "Frankreich, November 2025, Mobile Network Experience Report"
 opensignal_date = "November 2025"
 opensignal_facts = [
   "Orange gewann sowohl die Download-Geschwindigkeitserfahrung (Download Speed Experience, 83,8 Mbit/s) als auch die 5G-Download-Geschwindigkeit allein.",
@@ -52,6 +62,7 @@ opensignal_facts = [
 ookla_note = "Orange war der schnellste Mobilfunkanbieter in Frankreich im 2H 2024, mit einem mittleren Download von 122,77 Mbit/s und einem mittleren 5G-Download von 281,3 Mbit/s."
 
 [ES]
+opensignal_title = "Spanien, April 2026, Mobile Network Experience Report"
 opensignal_date = "April 2026"
 opensignal_facts = [
   "Movistar war der am häufigsten ausgezeichnete Anbieter (10 allein, 3 geteilt) und gewann die Auszeichnung Bestes Netz.",
@@ -60,6 +71,7 @@ opensignal_facts = [
 ookla_note = "Movistar war Spaniens bestes Mobilfunknetz und bestes 5G-Netz in Ooklas Speedtest Connectivity Report für H1 2025, mit einem mittleren Download von 102,94 Mbit/s und einem mittleren 5G-Download von 191,62 Mbit/s."
 
 [IT]
+opensignal_title = "Italien, Dezember 2025, Mobile Network Experience Report"
 opensignal_date = "Dezember 2025"
 opensignal_facts = [
   "Vodafone führte die Download-Geschwindigkeitserfahrung (Download Speed Experience) mit 63,8 Mbit/s an und gewann drei von vier Geschwindigkeitsauszeichnungen allein, während es sich die vierte teilte.",
@@ -67,6 +79,7 @@ opensignal_facts = [
 ]
 
 [US]
+opensignal_title = "Vereinigte Staaten, Juli 2026, Mobile Network Experience Report"
 opensignal_date = "Juli 2026"
 opensignal_facts = [
   "T-Mobile gewann 12 von möglichen 16 Auszeichnungen, darunter die Download-Geschwindigkeit allein bei 192,5 Mbit/s — fast 97 Mbit/s vor dem zweitplatzierten AT&T.",
@@ -75,6 +88,7 @@ opensignal_facts = [
 ookla_note = "Ookla nannte T-Mobile das schnellste Mobilfunknetz in den USA für H1 2026 und verzeichnete einen mittleren Download von 275,6 Mbit/s gegenüber AT&Ts 159,3."
 
 [CA]
+opensignal_title = "Kanada, August 2026, Mobile Network Experience Report"
 opensignal_date = "August 2026"
 opensignal_facts = [
   "Telus gewann Bestes Netz und die Download-Geschwindigkeit allein mit 91,8 Mbit/s.",
@@ -83,6 +97,7 @@ opensignal_facts = [
 ookla_note = "Bell war der beste und schnellste 5G-Anbieter in Kanada im 2H 2025, mit einem mittleren 5G-Download von 171,17 Mbit/s; Ookla fand keinen statistischen Gewinner für das beste Mobilfunknetz insgesamt."
 
 [MX]
+opensignal_title = "Mexiko, Oktober 2025, Mobile Network Experience Report"
 opensignal_date = "Oktober 2025"
 opensignal_facts = [
   "Telcel behielt die Auszeichnung Zuverlässigkeitserfahrung (Reliability Experience) mit 863 Punkten auf einer Skala von 100-1000, 96 Punkte vor AT&T.",
@@ -91,6 +106,7 @@ opensignal_facts = [
 ookla_note = "Telcel war das beste Mobilfunknetz in Mexiko für H2 2025, mit einem Speedtest Connectivity Score von 73,1 und einem mittleren 5G-Download von 212,68 Mbit/s."
 
 [BR]
+opensignal_title = "Brasilien, Januar 2026, Mobile Network Experience Report"
 opensignal_date = "Januar 2026"
 opensignal_facts = [
   "Vivo gewann die Gesamt-Download-Geschwindigkeit und die 5G-Download-Geschwindigkeit, mit einem Vorsprung von fast 14 Mbit/s vor dem zweitplatzierten Claro.",
@@ -98,6 +114,7 @@ opensignal_facts = [
 ]
 
 [CO]
+opensignal_title = "Kolumbien, April 2026, Mobile Network Experience Report"
 opensignal_date = "April 2026"
 opensignal_facts = [
   "Movistar gewann die meisten Auszeichnungen (insgesamt 9), darunter die 5G-Download-Geschwindigkeit mit 248,0 Mbit/s, Zeit im Netz (Time on Network, 98,8%) und Zuverlässigkeit (Reliability, 797).",
@@ -105,6 +122,7 @@ opensignal_facts = [
 ]
 
 [PE]
+opensignal_title = "Peru, Februar 2026, Mobile Network Experience Report"
 opensignal_date = "Februar 2026"
 opensignal_facts = [
   "Entel räumte die meisten Auszeichnungen ab: Download-Geschwindigkeit (13,0 Mbit/s), Abdeckung (6,6 von 10), Zeit im Netz (Time on Network, 99,1%), Gleichbleibende Qualität (Consistent Quality, 70,4%) und Zuverlässigkeit (Reliability, 894).",
@@ -112,6 +130,7 @@ opensignal_facts = [
 ]
 
 [CR]
+opensignal_title = "Costa Rica, April 2026, Mobile Network Experience Report"
 opensignal_date = "April 2026"
 opensignal_facts = [
   "Claro gewann alle bis auf zwei Auszeichnungen allein, darunter Gleichbleibende Qualität (Consistent Quality), Zuverlässigkeit (Reliability), Videoerfahrung (Video Experience, 61,8) und alle fünf Gesamterfahrungs-Auszeichnungen.",
@@ -119,6 +138,7 @@ opensignal_facts = [
 ]
 
 [IE]
+opensignal_title = "Irland, Januar 2026, Mobile Network Experience Report"
 opensignal_date = "Januar 2026"
 opensignal_facts = [
   "Three wurde als Bestes Netz ausgezeichnet und gewann fünf Auszeichnungen allein, darunter Download-Geschwindigkeit (60,9 Mbit/s), 5G-Download-Geschwindigkeit (198,9 Mbit/s) und Zuverlässigkeit (Reliability, 935).",
@@ -126,6 +146,7 @@ opensignal_facts = [
 ]
 
 [PT]
+opensignal_title = "Portugal, Juli 2023, Mobile Network Experience"
 opensignal_date = "Juli 2023"
 opensignal_facts = [
   "NOS hatte das schnellste Gesamterlebnis in Portugal und führte die Download-Geschwindigkeitserfahrung (Download Speed Experience) vor dem zweitplatzierten MEO an; MEO gewann die 5G-Download-Geschwindigkeit allein.",
@@ -133,6 +154,7 @@ opensignal_facts = [
 ]
 
 [PL]
+opensignal_title = "Polen, Mai 2026, Mobile Network Experience Report"
 opensignal_date = "Mai 2026"
 opensignal_facts = [
   "T-Mobile gewann die Download-Geschwindigkeit allein mit 90 Mbit/s (Orange Zweiter mit 81,3, Play Dritter mit 53,6) und war der am häufigsten ausgezeichnete Anbieter mit 9 Auszeichnungen.",
@@ -140,6 +162,7 @@ opensignal_facts = [
 ]
 
 [CZ]
+opensignal_title = "Tschechien, September 2026, Mobile Network Experience Report"
 opensignal_date = "September 2026"
 opensignal_facts = [
   "T-Mobile wurde als Tschechiens bestes Netz anerkannt und gewann die meisten Auszeichnungen (12), darunter Download-Geschwindigkeit, Gleichbleibende Qualität (Consistent Quality) und Abdeckung.",
@@ -147,6 +170,7 @@ opensignal_facts = [
 ]
 
 [GR]
+opensignal_title = "Griechenland, September 2026, Mobile Network Experience Report"
 opensignal_date = "September 2026"
 opensignal_facts = [
   "Cosmote wurde als Bestes Netz ausgezeichnet und gewann die Download-Geschwindigkeit mit 72,0 Mbit/s — 17 Mbit/s vor Vodafone — plus die 5G-Download-Geschwindigkeit mit 177,6 Mbit/s.",
@@ -154,6 +178,7 @@ opensignal_facts = [
 ]
 
 [TR]
+opensignal_title = "Türkei, Juni 2025, Mobile Network Experience Report"
 opensignal_date = "Juni 2025"
 opensignal_facts = [
   "Turkcell gewann Download-Geschwindigkeit, Upload-Geschwindigkeit, Videoerfahrung (Video Experience, 68,5 Punkte) und 4G-Abdeckungserfahrung (4G Coverage Experience) allein und hält die Geschwindigkeits- und Abdeckungsauszeichnungen in Opensignal-Berichten für die Türkei seit 2022.",
@@ -161,6 +186,7 @@ opensignal_facts = [
 ]
 
 [AT]
+opensignal_title = "Österreich, April 2026, Mobile Network Experience Report"
 opensignal_date = "April 2026"
 opensignal_facts = [
   "A1 war das am häufigsten ausgezeichnete Netz, behielt die Abdeckungserfahrung (Coverage Experience) und gewann die Videoerfahrung (Video Experience) allein.",
@@ -168,6 +194,7 @@ opensignal_facts = [
 ]
 
 [CH]
+opensignal_title = "Schweiz, April 2026, Mobile Network Experience Report"
 opensignal_date = "April 2026"
 opensignal_facts = [
   "Swisscom errang den Titel Bestes Netz und gewann Abdeckung (9,4 von 10), 5G-Abdeckung, Zeit im Netz (Time on Network, 99,1%), Gleichbleibende Qualität (Consistent Quality, 89,7%), Zuverlässigkeit (Reliability, 954) und 5G-Download-Geschwindigkeit (209,1 Mbit/s).",
@@ -175,6 +202,7 @@ opensignal_facts = [
 ]
 
 [NL]
+opensignal_title = "Niederlande, März 2026, Mobile Network Experience Report"
 opensignal_date = "März 2026"
 opensignal_facts = [
   "Odido gewann Bestes Netz, die Download-Geschwindigkeit allein (146,4 Mbit/s) und die 5G-Download-Geschwindigkeit (279,9 Mbit/s) — nachdem es in der Ausgabe vom März 2025 alle 14 Kategorien abgeräumt hatte.",
@@ -183,6 +211,7 @@ opensignal_facts = [
 ookla_note = "Ooklas Speedtest Connectivity Report für die Niederlande (1H 2025) machte Odido zum schnellsten Mobilfunkanbieter über alle Technologien hinweg, mit einem mittleren Download von 216,3 Mbit/s."
 
 [BE]
+opensignal_title = "Belgien, März 2026, Mobile Network Experience Report"
 opensignal_date = "März 2026"
 opensignal_facts = [
   "Proximus wurde zum besten Mobilfunknetz in Belgien ernannt und gewann 12 von 15 Kategorien, darunter Abdeckung (9,4 von 10), 5G-Download-Geschwindigkeit (239,9 Mbit/s) und Gleichbleibende Qualität (Consistent Quality, 85,6%).",
@@ -190,6 +219,7 @@ opensignal_facts = [
 ]
 
 [HR]
+opensignal_title = "Kroatien, September 2026, Mobile Network Experience Report"
 opensignal_date = "September 2026"
 opensignal_facts = [
   "Hrvatski Telekom gewann die Download-Geschwindigkeit (108,2 Mbit/s), die Upload-Geschwindigkeit (22,0 Mbit/s), die 5G-Upload-Geschwindigkeit (34,9 Mbit/s), die Abdeckung (8,7 von 10) und die 5G-Abdeckung.",
@@ -197,6 +227,7 @@ opensignal_facts = [
 ]
 
 [VN]
+opensignal_title = "Vietnam, August 2026, Mobile Network Experience Report"
 opensignal_date = "August 2026"
 opensignal_facts = [
   "Viettel gewann Download-Geschwindigkeit (56,7 Mbit/s), Abdeckung (8,4 von 10) und Gleichbleibende Qualität (Consistent Quality, 78,8%).",
@@ -204,6 +235,7 @@ opensignal_facts = [
 ]
 
 [SA]
+opensignal_title = "Saudi-Arabien, Februar 2026, Mobile Network Experience Report"
 opensignal_date = "Februar 2026"
 opensignal_facts = [
   "stc gewann die Download-Geschwindigkeit allein mit 69,3 Mbit/s (9 Mbit/s vor Mobily) plus 5G-Download-Geschwindigkeit (260,2 Mbit/s), Abdeckung (8,4 von 10) und 5G-Abdeckung.",
@@ -211,6 +243,7 @@ opensignal_facts = [
 ]
 
 [QA]
+opensignal_title = "Katar, November 2025, Mobile Network Experience Report"
 opensignal_date = "November 2025"
 opensignal_facts = [
   "Ooredoo führt die nationale Auszeichnungszahl mit 8 Alleinsiegen über die 13 verglichenen Metriken an; Vodafone holte die verbleibenden vier.",
@@ -218,6 +251,7 @@ opensignal_facts = [
 ]
 
 [IL]
+opensignal_title = "Israel, Dezember 2025, Mobile Network Experience Report"
 opensignal_date = "Dezember 2025"
 opensignal_facts = [
   "Partner gewann die Download-Geschwindigkeitserfahrung (Download Speed Experience, 58,7 Mbit/s) und die 5G-Download-Geschwindigkeit (329,7 Mbit/s).",
@@ -225,6 +259,7 @@ opensignal_facts = [
 ]
 
 [EG]
+opensignal_title = "Ägypten, Februar 2026, Mobile Network Experience Report"
 opensignal_date = "Februar 2026"
 opensignal_facts = [
   "WE gewann die Auszeichnung Bestes Netz und war der am häufigsten ausgezeichnete Anbieter mit 7 Alleinsiegen, darunter die Download-Geschwindigkeit bei 25,5 Mbit/s.",
@@ -232,12 +267,14 @@ opensignal_facts = [
 ]
 
 [MA]
+opensignal_title = "Marokko, April 2026, Mobile Network Experience Report"
 opensignal_date = "April 2026"
 opensignal_facts = [
   "Maroc Telecom wurde als Bestes Netz ausgezeichnet mit 7 Alleinsiegen und führte die Gesamtauszeichnungen für Download- und Upload-Geschwindigkeit, Abdeckung, 5G-Abdeckung und Gleichbleibende Qualität (Consistent Quality) an.",
 ]
 
 [ZA]
+opensignal_title = "Südafrika, August 2025, Mobile Network Experience Report"
 opensignal_date = "August 2025"
 opensignal_facts = [
   "MTN gewann erneut die Download-Geschwindigkeit allein mit 60,1 Mbit/s — 18 Mbit/s Vorsprung vor dem zweitplatzierten Vodacom — und holte 11 von 15 Auszeichnungen.",
@@ -245,6 +282,7 @@ opensignal_facts = [
 ]
 
 [NZ]
+opensignal_title = "Neuseeland, Oktober 2025, Mobile Network Experience Report"
 opensignal_date = "Oktober 2025"
 opensignal_facts = [
   "Spark behielt die breiteste Abdeckung, wobei sein Abdeckungserfahrungs-Score (Coverage Experience) von 9,0 auf 9,1 von 10 stieg.",
@@ -252,6 +290,7 @@ opensignal_facts = [
 ]
 
 [AR]
+opensignal_title = "Argentinien, November 2023, Mobile Network Experience Report"
 opensignal_date = "November 2023"
 opensignal_facts = [
   "Personal gewann die Download-Geschwindigkeitserfahrung (Download Speed Experience) mit 27,3 Mbit/s, 30,8% schneller als der zweitplatzierte Claro.",
@@ -259,6 +298,7 @@ opensignal_facts = [
 ]
 
 [JP]
+opensignal_title = "Japan, April 2026, Mobile Network Experience Report"
 opensignal_date = "April 2026"
 opensignal_facts = [
   "SoftBank gewann die Download-Geschwindigkeit allein mit 65,1 Mbit/s; NTT docomo gewann die Abdeckung (9,0 von 10) und die 5G-Download-Geschwindigkeit (159,1 Mbit/s).",
@@ -267,6 +307,7 @@ opensignal_facts = [
 ookla_note = "Ookla nannte SoftBank das schnellste Mobilfunknetz in Japan für H1 2026, mit einem mittleren Download von 73,8 Mbit/s vor au bei 67,9 — und einem mittleren 5G-Download von 153,6 Mbit/s vor Rakuten Mobile."
 
 [TH]
+opensignal_title = "Thailand, August 2026, Mobile Network Experience Report"
 opensignal_date = "August 2026"
 opensignal_facts = [
   "AIS ist der am häufigsten ausgezeichnete Anbieter in Thailand mit 7 Alleinsiegen und 3 geteilten, und hält die Gleichbleibende Qualität (Consistent Quality) bei 75,1% und die Upload-Geschwindigkeit bei 15 Mbit/s.",
@@ -275,6 +316,7 @@ opensignal_facts = [
 ookla_note = "Ookla nannte AIS das schnellste Mobilfunknetz in Thailand für Q1–Q2 2026, mit einem Speed Score von 70,6 gegenüber True dtacs 66,4."
 
 [KR]
+opensignal_title = "Südkorea, Dezember 2025, Mobile Network Experience Report"
 opensignal_date = "Dezember 2025"
 opensignal_facts = [
   "SK Telecom gewann die Download-Geschwindigkeit allein mit 189,3 Mbit/s, 35 Mbit/s vor KT (154,3), plus Abdeckung (9,4 von 10) und 5G-Abdeckung (7,3).",
@@ -283,6 +325,7 @@ opensignal_facts = [
 ookla_note = "Ooklas RootMetrics-Kontrolltests im Markt Seoul-Incheon in H2 2025 setzten LG U+ an die Spitze mit einem Overall RootScore von 993 von 1000 und der höchsten mittleren Download-Geschwindigkeit von 853,37 Mbit/s; alle drei Netzbetreiber erzielten Werte zwischen 982 und 993."
 
 [SG]
+opensignal_title = "Singapur, Juli 2026, Mobile Network Experience Report"
 opensignal_date = "Juli 2026"
 opensignal_facts = [
   "Singtel gewann die Auszeichnung Bestes Netz, plus Zuverlässigkeit (Reliability, 927) und 5G-Abdeckungserfahrung (9,5 von 10).",
@@ -290,6 +333,7 @@ opensignal_facts = [
 ]
 
 [AU]
+opensignal_title = "Australien, Mai 2026, Mobile Network Experience Report"
 opensignal_date = "Mai 2026"
 opensignal_facts = [
   "Optus führte mit acht Auszeichnungen an und behielt die 5G-Download-Geschwindigkeit allein bei 199,9 Mbit/s (Telstra 171,7, Vodafone 161,8).",
@@ -297,6 +341,7 @@ opensignal_facts = [
 ]
 
 [IN]
+opensignal_title = "Indien, Februar 2026, Mobile Network Experience Report"
 opensignal_date = "Februar 2026"
 opensignal_facts = [
   "Jio gewann die Download-Geschwindigkeit allein mit 107,3 Mbit/s — fast das Doppelte von Airtels 58,2 — plus die 5G-Download-Geschwindigkeit mit 198,9 Mbit/s.",
@@ -304,6 +349,7 @@ opensignal_facts = [
 ]
 
 [TW]
+opensignal_title = "Taiwan, Juli 2026, Mobile Network Experience Report"
 opensignal_date = "Juli 2026"
 opensignal_facts = [
   "Chunghwa Telecom dominierte mit 9 Alleinsiegen und 3 geteilten Siegen und räumte alle vier Geschwindigkeitsauszeichnungen und beide Abdeckungsauszeichnungen ab.",
@@ -311,6 +357,7 @@ opensignal_facts = [
 ]
 
 [MY]
+opensignal_title = "Malaysia, Juli 2026, Mobile Network Experience Report"
 opensignal_date = "Juli 2026"
 opensignal_facts = [
   "U Mobile gewann die Download-Geschwindigkeit allein mit 107,1 Mbit/s, etwa 24 Mbit/s vor den Rivalen, und war beim 5G-Download mit 280,4 Mbit/s am schnellsten (Unifi 235,2, Maxis 208,2).",
@@ -318,6 +365,7 @@ opensignal_facts = [
 ]
 
 [ID]
+opensignal_title = "Indonesien, Juli 2026, Mobile Network Experience Report"
 opensignal_date = "Juli 2026"
 opensignal_facts = [
   "XL gewann die Download-Geschwindigkeit allein mit etwa 40,9 Mbit/s, 43,5% schneller als im vorherigen Bericht.",
@@ -325,6 +373,7 @@ opensignal_facts = [
 ]
 
 [PH]
+opensignal_title = "Philippinen, Juli 2026, Mobile Network Experience Report"
 opensignal_date = "Juli 2026"
 opensignal_facts = [
   "DITO gewann die Auszeichnung Bestes Netz zum zweiten Mal in Folge mit insgesamt acht Auszeichnungen, darunter die Download-Geschwindigkeit allein bei 43,1 Mbit/s.",
@@ -332,6 +381,7 @@ opensignal_facts = [
 ]
 
 [AE]
+opensignal_title = "Vereinigte Arabische Emirate, März 2026, Mobile Network Experience Report"
 opensignal_date = "März 2026"
 opensignal_facts = [
   "e& UAE (früher Etisalat) gewann 12 der 13 Auszeichnungen, darunter Bestes Netz.",
@@ -530,3 +580,8 @@ carrier = "LG U+"
 opensignal = "Gewann die 5G-Verfügbarkeit mit 90,3%"
 ookla = "Bester Overall RootScore in Seoul-Incheon, 2H 2025 — 993/1000, bei einem mittleren Download von 853,37 Mbit/s"
 best = "Beste 5G-Verfügbarkeit und die schnellsten Stadtgeschwindigkeiten"
+
+[GE]
+# 只覆盖读者可见文案；ookla_url / ookla_date 为语言无关的机器字段，留在 en 层由深合并继承。
+# 德语数字用小数逗号 229,03、单位 Mbit/s（与全站德语口径一致，勿写成 229.03 / Mbps）。
+ookla_note = "Ooklas Speedtest Global Index setzte den mittleren mobilen Download Georgiens im August 2026 auf 229,03 Mbit/s, an 19. Stelle der von ihm bewerteten Märkte. Es gibt keinen Opensignal Mobile Network Experience Report für Georgien, sodass kein auf Crowdsourcing basierendes Ranking je Netzbetreiber existiert, das daneben gestellt werden könnte."

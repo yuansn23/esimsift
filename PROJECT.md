@@ -255,6 +255,15 @@ fup_note = "…"           # 可选：限速说明/日额说明/订阅性质（f
 ⚠️ 口径**不是**「构建日」：用 `now` 会让 `lastmod` 每次部署都翻新，Google 判定本站
 `lastmod` 无信息量后**整体忽略**（第二十三轮试过、已撤回）。只有跟着数据走的日期才值得抓取预算。
 
+**networks 子页还要再往上取一格（2026-10-13 第八十九轮，用户点名）**：页级日期 =
+`max(该国数据核对日, 页面自身的发布日)`。数据核对日回答「这份数据什么时候核的」，**页面发布日**回答
+「这一页什么时候发布的」—— 一个今天刚建的页顶着它所引数据的上一次核对日，是**不实的时间线**。
+取值只读 front matter 的 `lastmod`/`date`，**不用 `.Lastmod` 兜底**（其末段是文件 mtime，会让日期跟着
+checkout 走）。⚠️ 两处脚注的 `at the <d> snapshot` 是**数据快照日**，另一件事，仍取数据核对日 ——
+所以同一页上**允许并存两个日期**（实测 GE：徽章 `Oct 13, 2026` / 脚注 `Oct 7, 2026`）。
+守卫 `check_dates.py` 的 `networks_sub` 判据随之从「只允许数据核对日」放宽为「只允许这两个日期」；
+放宽后仍拦得住 `now` 回归（构建日两个都不是）。
+
 **目前「不」驱动任何页面日期的数据源**（改了它们，页面日期不动）：
 `data/countries.toml`（国家 hub 正文：quirks / region / neighbors …）· `data/de/countries.toml`（德语国名覆盖）·
 `data/carriers.toml`（运营商卡 `#hostnetwork`）· `data/refs.toml`（运营商官方外链）·
@@ -1014,6 +1023,42 @@ npm run build     # 内含 npm run stamp → 数据变过的品牌，日期自�
 115. **★ 归属法必须吃掉「数据驱动导航」与「新页触发的内链升级」两类变化（2026-10-12 第八十五轮，连挂三次才立住）** —— 本站导航（`<div class="nav-mega">`）是**从 content 推导**的：它列出全部 `/networks/<slug>/` 并带计数。⇒ 新增 3 国 networks 页 = **全站 1297 页重生成**（计数 12→15；其余计数 13/18/8/8/3/6 **纹丝不动**），且 Hugo 模板循环留下的**空白行数**也随条目数变化。第二类变化是模板逻辑：**某国一旦有了 `/networks/<slug>/`，`compare/<国家>/` 页里那条指向 `/networks/` 索引的说明句会自动升级为指向该页的内链**（该国 22 个 compare 页；实测 3 国 × 2 语言 = 66 页）。⇒ 归属判据必须分三层：① **规范化比对**（删 `mega-link` 锚点整段 + 占位计数 `tnum …>N<` + 折叠连续空白行，反复折叠至稳定）② 计数增量必须**恰好一处 +3** ③ 变化页必须全部落在「新国前缀 ∪ `/networks/` 索引」且**差异行 100% 含 networks 内链**。★ 实测三次失败：**v1 白名单写窄 → 报 1290「越界」（真因：没想到导航是数据驱动的）**；**v2 只 mask 第一个 `nav-mega` → 仍报 1290（导航分布在桌面 mega menu / 移动菜单 / footer 多处）**；**v3 才全过**。★ 最终数字（可复跑 `.buildlog/r85_p1_attrib3.py`）：新增 6 / 删除 0 / 共有 1291 = **1223 页逐字节不变 + 68 页可归因化**、越界 **0**；998 个排列页 = 938 不变 + 60（全为新国）内链升级 ⇒ **零误伤**。★ 纪律：**别再拿「逐字节 sha 相等」当归属法的唯一判据** —— 在数据驱动导航的站上它永远报「全站都变了」，等于没有判据。
 
 116. **☠ 归属/诊断脚本的三个性能与编码地雷（2026-10-12 第八十五轮，全部实测踩到）** —— ① **跨行非贪婪正则灾难性回溯**：`<a\s[^>]*class="mega-link"[^>]*>[\s\S]*?</a>` 在 55KB 页 × 1291 上直接超时（`SIGTERM`，两次跑满 300s/400s）。⇒ mega-link 结构固定为 4 行，改**逐行扫描**（找含 `class="mega-link"` 的行 → 向下找 `</a>` → 整段跳过）：单页 2ms。② **`difflib.SequenceMatcher(..., autojunk=False)` 在 1430 行 × 1290 页上 O(n²) 卡死**。⇒ 用默认 `autojunk=True`，并且**只在前 N 个越界页上跑**（本次限 20）。③ **bash heredoc / `-c` 内联脚本会吞掉反斜杠**：`re.compile(r'^title:\s*"(.*)"')` 落盘成 `^title:/s*"(.*)/"`，脚本静默解析 0 页（本轮踩第 3 次，前两次在 `r85_net_inv.py` / `r85_attrib.py`）。⇒ **`.buildlog/` 下的一切脚本一律用 Write 工具落盘**；确实要内联时用字符类（`[ ]`、`[0-9]`）替代 `\s`、`\d`，或用 `lambda` 替代 `\1` 反向引用。
+
+117. **☠ 「基线过期」是**假警报**的真形态：`public/` 被 dev server 污染会让你误判整条回归链（2026-10-12 第八十七轮，实测更正）** —— 上一轮我据 `verify_no_regression.py --diff` 报「变更 1297 / 1297 全需确认」断定 `docs/regression-manifest.json` **已过期**。**这个结论是错的。** 真因：当时的 `public/` 是**手敲 `hugo server` 留下的 dev 产物** —— 实测 **1296/1297 个 HTML 页含 `<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>`**（插在 `<meta charset>` 之前），于是**每一页都变了**。⇒ 在断言「基线过期」之前必须先跑**判别性**判据：① 数 `public/**/*.html` 里含 `livereload` 的页数（应为 **0**）；② 从 `git HEAD` 重建旧侧，与 manifest 逐文件 sha256 比对 —— 本轮实测 **1297/1297 全等**，证明**基线健康、是我的产物被污染**。★ 巧合正是线索：**「变更页数 1296」与「含 livereload 的页数 1296」完全重合**。★ 纪律：`npm run build` **不会**清掉 dev server 写进 `public/` 的注入（`--cleanDestinationDir` 已被刻意撤销，见 `hugo.toml` 注释）⇒ 手敲过一次 `hugo server` 之后，复位 = 完整跑一次 `npm run build` + **用脚本断言 `livereload` 计数 = 0**。
+
+118. **★ 旧侧重建必须同时覆盖 `contentDir` / `dataDir` / `i18nDir`（红线 111 的补丁，2026-10-12 第八十七轮）** —— 红线 111 只说了 `contentDir`。本轮改造面跨三层：`content/**`（14 个新 md）+ `data/de/networkreports.toml`（A）+ `i18n/{en,de}.toml`（C）。**只覆盖 `contentDir` 会拿「新 data + 新 i18n」当旧侧** ⇒ 归属法必然报「全站都变了」（因为 i18n 一改，998 个页的正文就变了）。正解：配置覆盖文件写 `contentDir` / `dataDir` / `i18nDir` 三行 + 两个 `[languages.X] contentDir`，命令
+`hugo --config hugo.toml,.buildlog/r87_oldcfg.toml -d .buildlog/pub_r87_head`
+（**裸 `hugo` 本轮可以**：`layouts/` 未改 ⇒ CSS 与 `static/` 逐字节相同；**改了 layouts 就必须 `npm run build`**）。★ 开工判据：旧侧 vs `docs/regression-manifest.json` **逐文件 sha256 全等** 才许继续。★ 另：`.hugo_build.lock` 会被上一次构建留下，Windows 上偶发「拒绝访问」⇒ 重试 `mv` 到 `.buildlog/`（**别 `rm`**，会被沙箱 trash 层 fail-closed 拦下，红线 105 同族）。
+
+119. **☠ 「守卫枚举了什么，就只保护那些」的第 N 次同构：`verify_de_text.py` 的 F 段是**词表**，国名不在表里 ⇒ networks 产物整类不在覆盖范围（2026-10-12 第八十七轮，修复并两侧取证）** —— A 的病根不是「忘了写判据」，而是**判据的作用域**：F 段扫「全站德语页可见文本」，但黑名单只有 23 条短语 + 8 个词；G 段的清单来自「已进 `strings.toml` 的数据串」；而 `data/networkreports.toml` 的 `opensignal_title` 既不进 `strings.toml`、也不含黑名单词。⇒ 德语 networks 页把英文报告标题 `Germany, November 2025, Mobile Network Experience Report` **直接印给读者**，而**构建 8 项闸门全绿**。★ 与红线 88（页型枚举不全）/ 103（标签枚举不全）同构，本条是**词表枚举不全**。★ 收口一条不落（照 `opensignal_date` 先例）：① 把 `opensignal_title` **移出**「机器字段」清单 ② 德语侧逐国补标题（真源 `data/countries.toml[ISO].name` + 月名映射；施加器 `scripts/_loc_de_dates.py`，`--selftest 25/25`；数据 `data/de/networkreports.toml` 44 国）③ 新增 `verify_de_data.py` 判据 **H `check_report_titles`**（`--selftest 40/40`）④ **两侧都证**：改造前产物 **13 页印英文标题（红）** → 改造后 **0**。★ 纪律：**「加了守卫」不等于「盖住了」** —— 新判据必须先在**改造前产物**上跑出红，否则只是加了一条恒真的规则。
+
+120. **★ `#N of M` 的落点共 5 处（不是 3 处），其中 2 处必须刻意保留（红线 113 的补全，2026-10-12 第八十七轮）** —— 红线 113 记了 3 处，全量如下：
+
+| # | i18n key | 形态 | 处置 |
+|---|---|---|---|
+| ① | `compare_provider__of_n_on_gb` | stat tile 数据面板 `#9` + `of 10 on $/GB` | **刻意保留**（读的是「你正在看的这家」的名次，是事实面板不是否定） |
+| ② | `compare_provider__verdict_met_rank` | verdict 段**非冠军**分支 `… — rank #9 of 10; …` | 已改 |
+| ③ | `compare_provider__faq_a_price_met` | FAQ 答案 **+ 同源 JSON-LD** `… which ranks #9 of 10 …` | 已改 |
+| ④ | `compare_provider__op_market_v1/v2/v3` | 对手向竞品卡 `Airalo ranks 7 of 10 …`（**不带 `#`**） | **刻意保留**（主语是**对手**，是决策依据不是自我否定） |
+| ⑤ | `compare_provider__trust_ranked` | Trust 段 `… ranks #9 of 10 on best $/GB in …` | 已改 |
+
+★ 量化（改造前后各跑一次 `.buildlog/r87_assert_C.py`）：EN 品牌子页 499 张，可见文本含 `#N of M` **449 → 0**（旧侧那 50 张「干净页」**全是 Holafly** —— 纯不限量品牌走 `verdict_unl` / `faq_a_price_unl` / `trust_unlimited`，本来就没这个说法）；stat tile 与对手卡 **499/499 原样保留**。★ 纪律：**「自我否定」的判据是主语，不是形状** —— 同一个 `N of M`，主语是「本页品牌」= 自曝短板；主语是「对手」= 决策依据。
+
+121. **☠ 改长句时「删掉一个子句」会改变剩余限定语的**修饰对象**（指代漂移；2026-10-12 第八十七轮，我自己制造又自己抓到）** —— 删 `#N of M` 时我把 `{{ .benchmark }}`（`; the country benchmark is`）前移，末尾接上 `— the lowest rate among the {{ .total }} providers we track`，产物成了：
+`Saily's best rate in Canada is $2.20/GB; the country benchmark is $0.64/GB — the lowest rate among the 10 providers we track.`
+—— 「the lowest rate」紧贴主语 brand，读者会读成「**Saily 是 10 家里最低价**」，而 Saily 在加拿大是 **#9**（$2.20 vs $0.64）⇒ **为了消灭自我否定，反而写出了一句自相矛盾的假话**。★ 修法：**让限定语留在它修饰的那个从句里** —— `…$0.64/GB</strong> among the {{ .total }} providers we track.`（de 对称：`… unter den {{ .total }} Anbietern, die wir erfassen.`）。★ 纪律：**改任何「一句里含两个可比数字」的文案，必须回读**产物文本**并按语法找每个限定语的主语** —— 只 diff md/i18n 看不出来（逐字节都「正确」）。★ 配套：产物级断言加一条**歧义句黑名单**（`the lowest rate among the` / `der niedrigste Wert unter den`），改造后必须为 **0**（本轮 499+499 页双侧为 0）。
+
+122. **★ 归属法的「逐行位置差异」+「双向判据」两层，比整页 sha 与纯替换法都强（2026-10-12 第八十七轮）** —— ① **行数不变时一律用位置差异**（`zip` 逐行比），O(n) 且判据收紧到「**每一处变化行**都必须被声明变换解释」；`difflib` 只在行数真的变了（RSS / 索引页）时才用，且**必须只对零星文件跑**（红线 116②）。② **双向判据**：不是「新产物里没有 `#N of M`」，而是「**旧侧可见文本里有 ⇔ 变化行里必须恰有一处被『去 #N of M』解释**」—— 单向判据对「本来就没这个说法的 50 张 Holafly 页」**恒真**，双向才能同时证明「该改的都改了」与「不该改的没动」。③ **判据里出现两种语言时，正则/词表/探针必须同时双语**：EN `#9 of 10` / DE `#9 von 10`；我用单向正则 `#\d+\s+of\s+\d+` 当「旧侧是否有」的探针，德语页**全部误报**（463 处假红），换成 `#\d+\s+(?:of|von)\s+\d+` 后归零。④ 别用 `rel.split("/")[2]` 猜 slug：品牌子页（`compare/<国>/<品牌>/`）的 `parts[2]` 是**品牌**（不是国家），hub 页（`compare/<国>/`）的 `parts[2]` 是 `index.html` ⇒ 统一走一个 `country_slug(rel)`（先剥 `de/`，再取 `parts[1]`）；索引页（`networks/index.html`）没有单一国家 ⇒ 用「7 国 × 2 语言」的**链接全集**匹配。
+
+123. **☠ 模板里的赋值 / 循环块会「逐行吐空白」，而且循环体内会被每个数据行各吐一次（2026-10-13 第八十八轮，我自己制造又自己抓到）** —— Go 模板的每个动作行都会把自己的**行尾换行与缩进原样吐进产物**。纯赋值块看上去「不产出内容」，但 30 行的赋值块就是 30 个空行，**循环体内的动作会被每个数据行乘一遍**。我的价格档位聚合块（`layouts/esim-providers/single.html`）写成普通 `{{ }}`（本文件既有风格本来都不裁白，我照抄了），结果 **airalo 页多出 12052 行空白 / +89 KB**、holafly +22 KB —— 而 `check_output` / `check_headings` / `verify_no_regression` **一条都不报**（产物合法，只是胖）。★ 修法：整段改 `{{- … -}}` 全裁白，**首行不加前裁**（否则会吃掉它上面原有的空行，反而制造第二处差异）、**末行加后裁**（连自己那行行尾一起吃掉），使整段对产物的贡献**恰好 0 字节**。★ 纪律：**判断这件事不能读模板，只能量产物字节** —— 本轮就是靠「非品牌页 +314 B vs 品牌 hub +88978 B」这个数量级落差抓到的；修后残差恒为 **+327~+336 B 且与数据行数完全无关**（985 套餐的 airalo +336 / 298 套餐的 holafly +327 / 1652 套餐的 yesim +336）。
+124. **★ 归属法升级为 L1 / L2 / L3 三层；「字符级 difflib 逐对比」在本站规模下不可用（2026-10-13 第八十八轮）** —— 旧做法在本轮失效：**字符级 difflib 逐对比较 1310 个 ~300 KB 文件是 O(n²)，跑到被系统 kill（SIGTERM）**。可用的三层是：**L1 定向替换重建**（把旧侧某一段**整块**换成新侧的，若结果与新侧**逐字节相同**即证「该段以外零变化」；O(n)，1310 页秒级）；**L2 非空白恒等式**（抽掉全部空白后断言「新侧 = 旧侧 + 声明插入」，证明**任何非空白内容都没有被增删改**，不依赖任何空白假设）；**L3 空白预算**（`len(new) - len(old)` 减去非空白插入量，余量必须是**跨页相同的常数** —— 这一层才是抓「吐空白」的那把尺子）。★ 三个实现坑：① L2 的锚点必须写成**去空白形态**（`<a href=` 这种带空格的原串在 `nows()` 之后根本不存在）；② 锚点必须**语言无关**（德语侧是 `/de/networks/georgia/`，写死 `/networks/georgia/` 会让 22 个德语页全判失败）；③ **`str.find` 的首个命中常常在 header 里**（`networks/georgia/` 的首次出现是顶栏 mega 菜单，而 header 两侧已被 L1 换成同一份，删它只会破坏对齐）⇒ 必须**遍历所有命中、取能重建出旧侧的那一个**。
+
+125. **☠ 区段里的每一句话，都只能以「该区段**实际渲染出来**的内容」为前提（2026-10-13 第八十八轮，我写出来又自己抓到的第二个缺陷）** —— `id="pricing"` 段的两张表分别由 `{{ with $tierRows }}` / `{{ with $unlRows }}` 门控，**但 H2 与导语是无条件渲染的**。`holafly` 是站内唯一**纯无限量**品牌（有量档 = 0）⇒ 它只出表二，页面上却印着 H2 `Holafly pricing at each data tier` 与导语 `…The cost per gigabyte comes from that same plan, so the two columns always describe one purchase.` —— **既没有数据档位、也没有 $/GB 列，「两列」根本不存在**。★ 一句话判据：**把条件加在表上是不够的 —— 凡以「那张表存在」为前提的句子，必须和那张表用同一个条件**。★ 附带：表二的 H3（`Unlimited plans by trip length`）也要跟 `$tierRows` 走，否则 H2 改成「按行程天数」后 H2 与 H3 会说同一件事。★ 修法必须**零新增行**（红线 123）：用行内 `cond (gt (len $tierRows) 0) "key_a" "key_b"` 在同一行内切 i18n key，H3 用同行 `{{ if }}…{{ end }}` 包住 ⇒ 条件为真时该行产物**逐字节不变**（本轮实测：18 个品牌 hub 页**零变化**，只有 holafly 的 en/de 两页变；`check_headings` 计数随之 34140 → **34138**，正好少掉 holafly 两语言各一个 H3）。
+126. **★ 「插入」型补丁的判据不能只有「锚点唯一 + 退出码 0」（2026-10-13 第八十八轮，我自己踩的）** —— patch 助手的语义是 `t.replace(old, new)`，所以**插入必须写成 `new = old + 新增`**。这次手写 `new` 时漏了回带 `old`，于是**两个原 key 被新 key 顶掉**（是覆盖，不是插入）。★ 能发现只因顺手看了两个数字：**键数没有增加**（1853 → 1853，一个换一个）与 **`lone_LF` 没有增加**（没加行）—— 而「锚点唯一 + 退出码 0」是全绿通过的。⇒ 纪律：**凡「插入」型补丁，写完必须再断言一条计数增量**（键数 / 行数 / 匹配数，至少一条），并用**独立动作**复核（本例：键数 == 1855 + 原值逐字等于改动前的读取留痕）。
+127. **★ 「新增页面的最后更新日期 = 它的发布日」，不是它所引数据的核对日（2026-10-13 第八十九轮，用户点名）** —— 原先 networks 子页的徽章无条件取 `country-stats.checkedDate`（= 该国全部品牌的最大 `checked`），于是**今天刚建的 GE 页印着上周三（Oct 7）**。口径改为页级日期 = `max(数据核对日, 页面自身的发布日)`：两个日期回答两个问题（数据什么时候核的 / 这一页什么时候发布的），**两者都要在**，所以同一页上**允许并存两个日期**（徽章 = max；脚注 `at the <d> snapshot` = 数据核对日）。★ 三个设计约束：① **只读 front matter 的 `lastmod`/`date`，绝不用 `.Lastmod` 兜底** —— 它末段是文件 mtime，会让日期跟着 checkout 走，正是日期机制要消灭的「日期与内容脱钩」；② **不要退回 `now`**（红线 48）：取值稳定，重建 / 重部署都不翻新；③ 守卫必须同步放宽并**两侧都证** —— `check_dates.py` 的 `networks_sub` 从「只允许数据核对日」改成「只允许 {数据核对日, 页级日期}」，自测加「发布日正例」与「构建日 Oct 14 仍必须红」两例，并**先对改造前产物跑了一遍**（精确报出 11 页）。★ 连带效果（同一规则的自然结果，不是额外改动）：10-12 建的那 10 个 networks 页由 10-07 前移到 10-12；10-03 建的那 12 个页不变（10-03 < 10-07，`max` 取数据日）。★ 附一条**同期发现的既有盲区**（未修，属独立决策）：`check_dates.py` 的 `COUNTRY_HUB` 分支拿 **URL slug 当 ISO**（`plans[k].get("argentina")`），而 `plans` 是**按 ISO 键**的 ⇒ 该分支 `page_exp` 恒为空串、几条断言被整段跳过（既不红也不绿）。与红线 88 / 103 / 119 同构：**「取值口径不对」会让整条判据静默失效**。
+
+
+
 
 
 

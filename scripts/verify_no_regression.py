@@ -122,6 +122,11 @@ MARKER_ALLOWED_HUB: dict[str, set[str]] = {
     'id="network"':    {"provider_hub"},
     'id="headtohead"': {"provider_hub"},
     'id="reading"':    {"provider_hub"},
+    # 价格档位表（2026-10-13 第八十八轮）。calc 段是 JS，服务端只吐空容器 ⇒ 价格内容
+    # 对搜索引擎不可见；本区块把同一批聚合结果静态渲染成表。与 #spread 的分工：
+    # spread 比的是**同一档位在不同国家**的入场价高低，pricing 比的是**同一国家不同档位**
+    # 的 $/GB —— 两者是正交的两问，故新开 id 而不是并入 spread。
+    'id="pricing"':    {"provider_hub"},
 }
 # 品牌子页必须**存在**的区块（漏渲染是回归，不是"少一块就少一块"）
 MARKER_REQUIRED = ('id="verdict"', 'id="plans"', 'id="reality"', 'id="tripcost"',
@@ -391,6 +396,17 @@ def selftest() -> int:
             "guides/hubleak/index.html",
             '<title>T</title><h1>H</h1><div id="whobeats"></div>',
             "[A:guides]"),
+        # 第八十八轮新增的 id="pricing"（品牌 Hub 价格档位表）**两侧都证**：
+        # 漏到非 Hub 页要红（否则白名单等于没加），落在品牌 Hub 要放过
+        # （否则 20 个品牌 Hub 页会集体报假失败）。
+        "pricing-marker-leak": (
+            "guides/priceleak/index.html",
+            '<title>T</title><h1>H</h1><div id="pricing"></div>',
+            "[A:guides]"),
+        "pricing-marker-ok-in-hub": (
+            "esim-providers/holafly/index.html",
+            '<title>T</title><h1>H</h1><div id="pricing"></div>',
+            None),
         # want=None → 期望**不**报错。这两条一起锁住本次修复的边界：
         # 数据块里的花括号要放过，可执行 <script> 里的真泄漏仍要抓住。
         "json-data-block-braces": (

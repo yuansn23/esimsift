@@ -84,6 +84,52 @@
   {{ range $pc.plans }}{{ $totalPlans = add $totalPlans 1 }}{{ if eq (float .gb) 0.0 }}{{ $unlim = add $unlim 1 }}{{ else }}{{ $metered = add $metered 1 }}{{ end }}{{ end }}
 {{ end }}
 
+{{/* ── 价格档位聚合（⑤c 档位表 与 Product.priceSpecification 共用同一份推导）──
+     · $MIN_DEST 是覆盖门槛：只保留在 ≥10 个目的地在售的档位。不加门槛时，单国长尾档位
+       （airalo 的 2GB、ubigi 的 200GB 之类）会把表撑长，并让「Destinations」列读起来
+       像该品牌的全部档位 —— 门槛数在脚注里对读者明说，不藏起来。
+     · 档位键取 float 的定长字符串：`gb` 在数据里 int(5) 与 float(0.4883) 并存，直接拿
+       数值当 map 键会因类型不同把同一档拆成两条。
+     · unlimited 判据与上一段（metered/unlim 计数）同款 `eq (float .gb) 0.0`，不另立口径。
+     · ★ **整段用 `{{- … -}}` 全裁白**：这一段是纯赋值，但模板里每个动作行都会把自己的行尾
+       换行与缩进吐进产物；循环体里的动作会被**每一个套餐**各吐一次 —— 实测 airalo 页因此
+       多出 12052 行空白（+89 KB）、holafly 页 +22 KB。首行**不加前裁**（保住上面那行原有的
+       空行），末行**加后裁**（连它自己的行尾一起吃掉），这样整段对产物的贡献恰好是 0 字节，
+       与本轮之前逐字节相同。 */ -}}
+{{- $MIN_DEST := 10 -}}
+{{- $tierAcc := dict -}}{{- $unlAcc := dict -}}
+{{- range $iso, $pc := index $d.plans $key -}}
+  {{- range $pc.plans -}}
+    {{- $gb := float .gb -}}
+    {{- if eq $gb 0.0 -}}
+      {{- $dk := printf "%d" .days -}}
+      {{- $cur := index $unlAcc $dk -}}
+      {{- if $cur -}}
+        {{- $u := $cur -}}{{- if lt .price $u.min -}}{{- $u = merge $u (dict "min" .price "iso" $iso) -}}{{- end -}}
+        {{- $unlAcc = merge $unlAcc (dict $dk (merge $u (dict "n" (add $cur.n 1)))) -}}
+      {{- else -}}
+        {{- $unlAcc = merge $unlAcc (dict $dk (dict "days" .days "n" 1 "min" .price "iso" $iso)) -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $tk := printf "%.4f" $gb -}}
+      {{- $pgb := div (float .price) $gb -}}
+      {{- $cur := index $tierAcc $tk -}}
+      {{- if $cur -}}
+        {{- $t := $cur -}}
+        {{- if lt .price $t.min -}}{{- $t = merge $t (dict "min" .price "iso" $iso) -}}{{- end -}}
+        {{- if or (eq $t.pergb 0.0) (lt $pgb $t.pergb) -}}{{- $t = merge $t (dict "pergb" $pgb "piso" $iso) -}}{{- end -}}
+        {{- $tierAcc = merge $tierAcc (dict $tk (merge $t (dict "n" (add $cur.n 1)))) -}}
+      {{- else -}}
+        {{- $tierAcc = merge $tierAcc (dict $tk (dict "gb" $gb "n" 1 "min" .price "iso" $iso "pergb" $pgb "piso" $iso)) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $tierRows := slice -}}{{- range $k, $t := $tierAcc -}}{{- if ge $t.n $MIN_DEST -}}{{- $tierRows = $tierRows | append $t -}}{{- end -}}{{- end -}}
+{{- $tierRows = sort $tierRows "gb" "asc" -}}
+{{- $unlRows := slice -}}{{- range $k, $u := $unlAcc -}}{{- if ge $u.n $MIN_DEST -}}{{- $unlRows = $unlRows | append $u -}}{{- end -}}{{- end -}}
+{{- $unlRows = sort $unlRows "days" "asc" -}}
+
 {{/* 最便宜命中国（首个） */}}
 {{ $cheapName := "" }}{{ $cheapMin := 0.0 }}{{ $cheapURL := "" }}
 {{ range $cov }}{{ if and .cheapest (eq $cheapName "") }}{{ $cheapName = .name }}{{ $cheapMin = .min }}{{ $cheapURL = .url }}{{ end }}{{ end }}
@@ -414,6 +460,18 @@
           ) -}}
     {{- end -}}
   {{- end -}}
+  {{- /* 价格档位规格：与 ⑤c 档位表同一份推导（$tierRows），不重算第二遍。
+         一条 = 一个数据档位的起步价 + 该档容量；容量单位用 UN/CEFACT code E34（gigabyte）。 */ -}}
+  {{- $specs := slice -}}
+  {{- range $tierRows -}}
+    {{- $specs = $specs | append (dict
+          "@type" "UnitPriceSpecification"
+          "name" (partial "plan-data-label.html" .gb)
+          "price" (div (math.Round (mul .min 100)) 100.0)
+          "priceCurrency" "USD"
+          "referenceQuantity" (dict "@type" "QuantitativeValue" "value" .gb "unitCode" "E34" "unitText" "GB")
+        ) -}}
+  {{- end -}}
   {{- $product := dict
         "@type" "Product"
         "name" (printf "%s eSIM" $p.name)
@@ -427,6 +485,7 @@
           "offers" $offerList)
         "additionalProperty" $props
   -}}
+  {{- if gt (len $specs) 0 -}}{{- $product = merge $product (dict "priceSpecification" $specs) -}}{{- end -}}
   {{- if fileExists (printf "static/img/providers/%s.png" $key) -}}
     {{- $product = merge $product (dict "image" (printf "%simg/providers/%s.png" $.Site.BaseURL $key)) -}}
   {{- else if fileExists (printf "static/img/providers/%s.webp" $key) -}}
@@ -942,6 +1001,76 @@
         </ul>
       </div>
     </div>
+  </section>
+  {{ end }}
+
+  {{/* ── ⑤c 价格档位表 ──
+       calc 段是 JS，服务端只吐空容器 ⇒ 搜索引擎与 AI 抓不到任何价格内容。这一段把同一批
+       数据以静态表渲染出来：① 有量档位（按 GB）② 无限量档位（按行程天数）。
+       两张表都过 $MIN_DEST 门槛，理由见聚合处的注释；门槛数在脚注里对读者明说。
+       ★ 导语与 H2 必须跟着表走（第八十八轮补）：`holafly` 是站内唯一**纯无限量**品牌（有量档 = 0）
+       ⇒ 它只渲染表二。若照抄表一的措辞，H2 会说「at each data tier」、导语会说「the cost per
+       gigabyte … the two columns」—— 而页面上既没有数据档位也没有 $/GB 列，**等于在描述不存在
+       的内容**。故 H2 与导语各有一个「只有无限量表」的变体，由 `$tierRows` 是否非空切换；表二的
+       H3 也只在表一存在时渲染（否则 H2 与 H3 会说同一件事）。判据：**区段里的每一句话，都必须
+       对它实际渲染的那张表成立**。 */}}
+  {{ if or (gt (len $tierRows) 0) (gt (len $unlRows) 0) }}
+  <section class="mt-12" aria-labelledby="pricing">
+    <p class="eyebrow">{{ i18n "esim_providers_single__pricing_eyebrow" | safeHTML }}</p>
+    <h2 id="pricing" class="mt-2 text-2xl font-bold md:text-3xl">{{ i18n (cond (gt (len $tierRows) 0) "esim_providers_single__h2_pricing" "esim_providers_single__h2_pricing_unl") (dict "brand" $p.name) | safeHTML }}</h2>
+    <p class="mt-3 max-w-2xl text-ink-600">{{ i18n (cond (gt (len $tierRows) 0) "esim_providers_single__pricing_lead" "esim_providers_single__pricing_lead_unl") (dict "brand" $p.name "n" $a.countries) | safeHTML }}</p>
+    {{ with $tierRows }}
+    <div class="card mt-6 overflow-hidden p-0">
+      <div class="overflow-x-auto">
+        <table class="table-pro">
+          <thead>
+            <tr>
+              <th>{{ i18n "esim_providers_single__pricing_th_tier" | safeHTML }}</th>
+              <th>{{ i18n "esim_providers_single__pricing_th_dest" | safeHTML }}</th>
+              <th>{{ i18n "esim_providers_single__pricing_th_price" | safeHTML }}</th>
+              <th>{{ i18n "esim_providers_single__pricing_th_pergb" | safeHTML }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ range . }}{{ $cp := index $d.countries .iso }}{{ $bp := index $d.countries .piso }}
+            <tr>
+              <td class="font-medium text-ink-800">{{ partial "plan-data-label.html" .gb }}</td>
+              <td class="text-ink-600 tnum">{{ .n }}</td>
+              <td class="text-ink-800 tnum">{{ i18n "esim_providers_single__pricing_price_value" (dict "price" (printf "%.2f" .min)) | safeHTML }}<span class="mt-0.5 block text-xs font-normal text-ink-400">{{ $cp.name }}</span></td>
+              <td class="text-ink-800 tnum">{{ i18n "esim_providers_single__pricing_per_gb_value" (dict "price" (printf "%.2f" .pergb)) | safeHTML }}<span class="mt-0.5 block text-xs font-normal text-ink-400">{{ $bp.name }}</span></td>
+            </tr>
+            {{ end }}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {{ end }}
+    {{ with $unlRows }}
+    {{ if $tierRows }}<h3 class="mt-8 text-lg font-bold">{{ i18n "esim_providers_single__pricing_unl_h3" | safeHTML }}</h3>{{ end }}
+    <div class="card mt-4 overflow-hidden p-0">
+      <div class="overflow-x-auto">
+        <table class="table-pro">
+          <thead>
+            <tr>
+              <th>{{ i18n "esim_providers_single__pricing_th_duration" | safeHTML }}</th>
+              <th>{{ i18n "esim_providers_single__pricing_th_dest" | safeHTML }}</th>
+              <th>{{ i18n "esim_providers_single__pricing_th_price" | safeHTML }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ range . }}{{ $uc := index $d.countries .iso }}
+            <tr>
+              <td class="font-medium text-ink-800">{{ i18n "compare_provider__plan_days_option" (dict "n" .days) | safeHTML }}</td>
+              <td class="text-ink-600 tnum">{{ .n }}</td>
+              <td class="text-ink-800 tnum">{{ i18n "esim_providers_single__pricing_price_value" (dict "price" (printf "%.2f" .min)) | safeHTML }}<span class="mt-0.5 block text-xs font-normal text-ink-400">{{ $uc.name }}</span></td>
+            </tr>
+            {{ end }}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {{ end }}
+    <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "esim_providers_single__pricing_footnote" (dict "n" $MIN_DEST) | safeHTML }}</p>
   </section>
   {{ end }}
 

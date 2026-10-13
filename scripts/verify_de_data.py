@@ -27,6 +27,18 @@
                      （同类事故：`.buildlog/audit_de_lang.py` 曾因把 unlimited/data/
                      plans 等德语借词当英语，一次性假红 1389 段）。
                    ★ 月名映射的**唯一真源**在 `scripts/_loc_de_dates.py`，本脚本 import 它。
+  H. 标题本地化  —— `opensignal_title` 是**内链锚文本**（compare/single.html:1031、
+                   networks/single.html:289、networks/list.html:319），标题里的
+                   **国名 + 月名**必须 1:1 本地化；尾部产品名
+                   `Mobile Network Experience Report` 保留英文（官方报告名，且这段就是
+                   锚文本 —— 译掉会让锚文本与目标页标题不符）。
+                   ★ 期望值由 `_loc_de_dates.de_title()` 现算、国名取自
+                     `data/de/countries.toml` —— 施加与守卫共用同一真源，不会漂移。
+                   ★ 德英**同形**国名（Costa Rica / Japan / Thailand / Vietnam 等）与
+                     同形月（April / August / September / November）覆盖值可与英文逐字
+                     相同，所以本判据**不**断言「德语值 ≠ 英语值」。
+                   ⚠ 为什么 `verify_de_text.py` 抓不到：它的英语国名黑名单只覆盖
+                     「源级 C」与 `/de/compare/` 的 E 段，**networks 产物不在覆盖范围**。
 
 用法：
   python -X utf8 scripts/verify_de_data.py            # 全量
@@ -237,9 +249,10 @@ def check_reports(en: dict, de: dict) -> None:
         elif dawards:
             fail(f"networkreports[{iso}].awards 德语侧多出（英语侧没有该数组，死条目）")
         # 机器字段不得被改写
-        # ⚠ `opensignal_date` **故意不在**这张清单里 —— 它不是机器字段，
-        #   是可见文案，由判据 G 断言必须本地化（见 check_report_dates）。
-        for k in ("opensignal_title", "opensignal_url", "ookla_slug", "ookla_mobile", "ookla_url", "ookla_date"):
+        # ⚠ `opensignal_date` / `opensignal_title` **故意不在**这张清单里 ——
+        #   它们不是机器字段，是可见文案（日期 eyebrow、标题锚文本），分别由
+        #   判据 G / H 断言必须本地化（见 check_report_dates / check_report_titles）。
+        for k in ("opensignal_url", "ookla_slug", "ookla_mobile", "ookla_url", "ookla_date"):
             if k in dv:
                 fail(f"networkreports[{iso}].{k} 德语侧不该写（机器字段应继承英语侧）")
 
@@ -248,7 +261,15 @@ def check_reports(en: dict, de: dict) -> None:
 # 月名映射的**唯一真源**在 _loc_de_dates.py（那里还有 1:1 的施加逻辑与自测）。
 # 本脚本 import 它，绝不抄第二份 —— 抄一份就是第二处会错的地方。
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from _loc_de_dates import EN_ONLY_MONTH, de_month  # noqa: E402
+from _loc_de_dates import (  # noqa: E402
+    DE_COUNTRIES,
+    EN_COUNTRIES,
+    EN_ONLY_MONTH,
+    de_month,
+    de_title,
+    forbidden_country_names,
+    load_names,
+)
 
 _MONTH_ANY = re.compile(r"(?<![A-Za-z])(" + "|".join(EN_ONLY_MONTH) + r")(?![A-Za-z])")
 
@@ -294,6 +315,70 @@ def check_report_dates(en: dict, de: dict) -> None:
     extra = [k for k, v in de.items() if not isinstance(v, dict) and k != "accessed"]
     if extra:
         fail(f"networkreports 德语侧出现非预期顶层标量: {extra}")
+
+
+def check_report_titles(en: dict, de: dict) -> None:
+    """判据 H：`opensignal_title` 的报告标题必须本地化**国名 + 月名**。
+
+    为什么单列（2026-10-12 第八十六轮）：
+      标题是**内链锚文本**，不是机器字段 —— 三处渲染落点：
+        layouts/compare/single.html:1031 · layouts/networks/single.html:289
+        layouts/networks/list.html:319
+      德语侧此前**一条都没写**（`_gen_de_data.py` 的旧注释把它归为「官方专有名称 +
+      机器字段」）。`verify_de_text.py` 的英语国名黑名单只覆盖「源级 C」与
+      `/de/compare/` 的 E 段，**networks 产物不在覆盖范围** ⇒ 15 个德语产物页
+      直接印 `Colombia, April 2026, Mobile Network Experience Report`，而构建全绿。
+
+    ★ 期望值由 `_loc_de_dates.de_title()` **现算**、国名取自 `data/de/countries.toml`
+      —— 施加与守卫共用同一函数与同一真源，逻辑漂移不可能静默。
+    ★ 德英**同形**的国名（Costa Rica / Japan / Thailand / Vietnam 等）与同形月
+      （April / August / September / November）覆盖值可与英文逐字相同 ——
+      那不是冗余，是让 1:1 断言成立的锚点，所以本判据**不**断言「德语值 ≠ 英语值」。
+    """
+    en_names = load_names(EN_COUNTRIES)
+    de_names = load_names(DE_COUNTRIES)
+    forb = sorted(forbidden_country_names(en_names, de_names))
+
+    want: dict[str, str] = {}
+    for iso, v in en.items():
+        if not isinstance(v, dict):
+            continue
+        t = v.get("opensignal_title")
+        if not isinstance(t, str) or not t:
+            continue
+        got = de_title(t, iso, en_names, de_names)
+        if got is None:
+            fail(f"networkreports[{iso}].opensignal_title 英文侧结构无法本地化"
+                 f"（解析规则需跟着改）：{t!r}")
+            continue
+        want[iso] = got
+
+    have = {iso: v["opensignal_title"] for iso, v in de.items()
+            if isinstance(v, dict) and "opensignal_title" in v}
+
+    for iso in sorted(set(want) - set(have)):
+        fail(f"networkreports[{iso}].opensignal_title 缺德语覆盖"
+             f"（德语页锚文本会印英文报告标题 "
+             f"{en[iso]['opensignal_title']!r}）")
+    for iso in sorted(set(have) - set(want)):
+        fail(f"networkreports[{iso}].opensignal_title 德语侧多出"
+             f"（英语侧没有该字段，死条目）")
+    for iso in sorted(set(want) & set(have)):
+        if have[iso] != want[iso]:
+            fail(f"networkreports[{iso}].opensignal_title 应为 {want[iso]!r}，"
+                 f"实际 {have[iso]!r}")
+
+    # 双保险：形变英文月名 / 英文国名（值不符已被上面抓住，这两条防「悄悄改解析规则」）
+    for iso, v in sorted(have.items()):
+        m = _MONTH_ANY.search(v)
+        if m:
+            fail(f"networkreports[{iso}].opensignal_title 仍含英文月名 "
+                 f"{m.group(1)!r}：{v!r}")
+        for tok in forb:
+            if re.search(r"(?i)\b%s\b" % re.escape(tok), v):
+                fail(f"networkreports[{iso}].opensignal_title 残留英文国名 "
+                     f"{tok!r}：{v!r}")
+                break
 
 
 POL_TXT = ["hotspot_allowance", "hotspot_note", "fup_note", "topup_note"]
@@ -524,7 +609,7 @@ def selftest() -> int:
         PROBLEMS = []
 
     # 正例：真实数据应全绿
-    run("正例（真实数据）", lambda: (check_carriers(c_en, c_de), check_reports(r_en, r_de), check_report_dates(r_en, r_de), check_providers(p_en, p_de)), want_red=False)
+    run("正例（真实数据）", lambda: (check_carriers(c_en, c_de), check_reports(r_en, r_de), check_report_dates(r_en, r_de), check_report_titles(r_en, r_de), check_providers(p_en, p_de)), want_red=False)
     # A 反例：整国缺失
     run("A 整国缺失", lambda: check_carriers(c_en, {k: v for k, v in c_de.items() if k != "AT"}))
     # B 反例：profiles 条数少一个
@@ -740,6 +825,42 @@ def selftest() -> int:
     gR["US"]["opensignal_date"] = "Juli 2026"
     run("G 正确德语月名不误伤", lambda: check_report_dates(r_en, gR), want_red=False)
 
+    # H 反例：缺 title 覆盖（德语页锚文本会印英文报告标题）
+    hR = {k: dict(v) for k, v in r_iso.items()}
+    hR["US"] = {k: v for k, v in hR["US"].items() if k != "opensignal_title"}
+    run("H opensignal_title 缺失", lambda: check_report_titles(r_en, hR))
+    # H 反例：title 用英文国名（值不符）
+    hR2 = {k: dict(v) for k, v in r_iso.items()}
+    hR2["US"] = dict(hR2["US"])
+    hR2["US"]["opensignal_title"] = (
+        "United States, Juli 2026, Mobile Network Experience Report")
+    run("H title 国名未本地化（值不符）", lambda: check_report_titles(r_en, hR2))
+    # H 反例：title 月名未本地化（July 残留）
+    hR3 = {k: dict(v) for k, v in r_iso.items()}
+    hR3["US"] = dict(hR3["US"])
+    hR3["US"]["opensignal_title"] = (
+        "Vereinigte Staaten, July 2026, Mobile Network Experience Report")
+    run("H title 月名未本地化", lambda: check_report_titles(r_en, hR3))
+    # H 反例：title 里塞入**黑名单命中**的英文国名（双保险那条判据单独取证）
+    hR4 = {k: dict(v) for k, v in r_iso.items()}
+    hR4["US"] = dict(hR4["US"])
+    hR4["US"]["opensignal_title"] = (
+        "Vereinigte Staaten, Juli 2026, Colombia Mobile Network Experience Report")
+    run("H title 残留英文国名（黑名单命中）", lambda: check_report_titles(r_en, hR4))
+    # H 反例：德语侧多出一条英语侧没有的国家（死条目）
+    run("H 德语侧多出 title（英语侧无此国）", lambda: check_report_titles(
+        {k: v for k, v in r_en.items() if k != "AT"}, dict(r_de)))
+    # H 正例：德英**同形**的国名 + 同形月（Costa Rica / April）覆盖值逐字等于英文
+    #         → 不许红（这正是「德语值必须 ≠ 英语值」型判据会误伤的地方）
+    run("H 同形国名/月名不误伤", lambda: check_report_titles(r_en, dict(r_de)),
+        want_red=False)
+    # H 边界：英文国名黑名单必须含形变国名、不含同形国名与站内不存在的拼写
+    _n_en, _n_de = load_names(EN_COUNTRIES), load_names(DE_COUNTRIES)
+    _forb = forbidden_country_names(_n_en, _n_de)
+    assert "Colombia" in _forb, "黑名单漏掉 Colombia"
+    assert "Costa Rica" not in _forb, "黑名单把德英同形的 Costa Rica 也算进去了"
+    assert "United States" not in _forb, "黑名单含 countries.toml 里不存在的拼写（应为 USA）"
+
     # G 边界：黑名单**只能**含形变月，否则 `August 2026` 这种正确写法会被误伤
     assert _MONTH_ANY.search("August 2026") is None, "黑名单含同形月 April/August/…"
     assert _MONTH_ANY.search("Oktober 2026") is None
@@ -771,6 +892,7 @@ def main() -> int:
     check_carriers(c_en, c_de)
     check_reports(r_en, r_de)
     check_report_dates(r_en, r_de)
+    check_report_titles(r_en, r_de)
     check_providers(p_en, p_de)
     print("源级：carriers / networkreports / providers 覆盖检查完成")
     check_products(c_en, r_en, p_en, r_de)

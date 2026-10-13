@@ -2,7 +2,7 @@
 
 > 独立 eSIM 比价站。单一数据源（`data/*.toml`），模板层推导一切派生指标。
 > 基座：Hugo 0.159.1 + Tailwind CLI。语言：**英语（根路径）+ 德语（`/de/`，2026-10-10 第七十二轮 D9 解禁，
-> 无 noindex）** —— ✅ **德语站已全量落地：`content/de` 644 个文件全部提交（2026-10-10 的 `3b0d4af`），全站 noindex = 0**（2026-10-11 第八十二轮复核实测）；i18n **1841 key**（en = de 逐 key 同序对齐，未定义 0）。
+> 无 noindex）** —— ✅ **德语站已全量落地：`content/de` 654 个文件（644 个提交于 2026-10-10 的 `3b0d4af`，其余为后续各轮的 networks 新页），全站 noindex = 0**（2026-10-11 第八十二轮复核实测）；i18n **1855 key**（en = de 逐 key 同序对齐，未定义 0）。**产物 1313 页**（2026-10-13 第八十八轮实测）。
 > **`npm run validate` 现有 5 道源码层闸门**（2026-10-10 第七十八轮新增后两道，见对应小节）；
 > **`npm run check:output` 现有 13 道产物闸门**（第十三项 `check_inline_copy.py` = 2026-10-11 第八十一轮新增）。
 
@@ -147,10 +147,208 @@ layouts/partials/country-stats.html  ← 全站唯一聚合入口
 2. **★ `opensignal_title` 是「机器字段」误判（与 `opensignal_date` 同构，后者已修）**：`verify_de_data.py` L242 明令**禁止**德语侧写 `opensignal_title`（判为机器字段应继承英文），但 `layouts/networks/single.html` 把它当**可见链接文字**渲染。产物实测：**11 个德语 networks 页全部印出英文报告标题** `… , <Month> <Year>, Mobile Network Experience Report`。**本轮产物断言实测：新增 3 个德语页各印 1 处 ⇒ 受影响 = 原有 11 + 新增 3 = 14 页**。**根因**：`verify_de_text.py` 的英语国名判据只在**源级 C 判据**与 `/de/compare/<国>/` 的 **E 段**生效，而 F 段（全站德语页）的单词表**不含国名** ⇒ **networks 产物根本不在覆盖范围**，所以「构建全绿」与「德语页印英文报告标题」可以同时成立。**修法**（照 `opensignal_date` 的先例）：把它移出机器字段清单 → 德语侧逐国补 `opensignal_title` → 守卫 `--selftest` 两侧都证。
 3. **工具坑：bash heredoc 会吞掉反斜杠转义**（实测 `\s` 落盘成 `/s`，脚本静默失效）。**`.buildlog/` 下的脚本一律用 Write 工具落盘**，或刻意不写反斜杠（用 `[ ]` 字符类、lambda 代替 `\1` 反向引用）。
 
+→ 上面第 1、2 两项**已在第八十六～八十七轮修复**（正文 `#N of M` 三处清零 + 德语报告标题逐国补齐），见下一节。
+
 ### 纪律
 - **未 `git commit`、未部署**（改动全部留工作区）
 - 改已存在文件全部 bytes 读写并复核换行；`content/en|de/compare/*.md` 998 个由生成器重写，**en 499 纯 CRLF / de 499 纯 LF，零混合**；`content/*/networks/*.md` 本目录实测**两侧全 LF**（与 `compare/` 不同，按文件不按目录猜）
 - `stamp_checked.py` 指纹只覆盖 `data/plans/**` 与 `data/providers.toml` ⇒ 本轮改 md/scripts **未误盖任何 `checked` 日期**
+
+## 已完成（networks 子页日期口径：新增页面按发布日，2026-10-13 第八十九轮）
+
+### 1｜问题与口径
+`/networks/<国>/` 的「最后更新」徽章原先无条件取 `country-stats.checkedDate`（= 该国全部品牌的最大
+`checked`）。于是本轮新建的 GE 页（10-13 发布）印着 **Oct 7** —— 一个页面顶着它诞生之前的日期。
+口径改为 **页级日期 = `max(数据核对日, 页面自身的发布日)`**：徽章与 sitemap `lastmod` 取它；
+两处脚注的 `at the <d> snapshot` 是**数据快照日**，仍取数据核对日 —— 同一页**允许并存两个日期**。
+
+### 2｜影响面（独立复算，逐页对账）
+| 组 | 页面发布日 | 数据核对日 | 生效 | 页数 |
+|---|---|---|---|---|
+| GE（本轮新增） | 10-13 | 10-07 | **10-13** | 2（en+de） |
+| 10-12 建的那批（CO·HR·EG·MA·PL·SA·ZA·CH·TW·VN） | 10-12 | 10-07 | **10-12** | 20 |
+| 10-03 建的那批（12 国） | 10-03 | 10-07 | 10-07（不变） | 24 |
+
+### 3｜改动点（模板行数不变）
+`layouts/networks/single.html`（徽章取值改 `$effDate`，**422 行不变**）·
+`layouts/partials/sitemap-urls.html`（新增 ②b 分支，全部 `{{- … -}}` 裁白）·
+`scripts/check_dates.py`（`networks_sub` 判据放宽 + 新增 `load_networks_page_dates()` + 自测 2 例）。
+
+### 4｜两侧取证（全部产物文本断言）
+- `check_dates.py --selftest` **19 项全绿**（含「发布日正例」与「构建日 Oct 14 仍必须红」）
+- 新判据**先对改造前产物跑**：精确报出 **11 页** sitemap lastmod 未跟上（GE + 10 页）⇒ 判据有牙
+- 多行注释 / 8 行新增**零字节外溢**（最小站点夹具实测：`PRE<<…>>POST` 恰一行）
+- `npm run validate` 5 道全绿 · 全量构建 13 道产物闸门全绿 · 基线 `--diff` 变更集 = 预期
+
+## 已完成（P3 第一件：品牌 hub 价格档位表 + `UnitPriceSpecification`；GE networks 建页（照 CN 路线），2026-10-13 第八十八轮）
+
+> 用户指令逐字：`P3 的第一件：品牌 hub 加价格档位表` / `GE 建页（照 CN 路线）` / `优化执行这个即可`
+
+### 1｜品牌 hub 价格档位表 + `Product.priceSpecification`（20 页 = 10 品牌 × en·de）
+
+**为什么做**：品牌 hub 的 `#calc` 段是 **JS**，服务端只吐空容器（`<p id="calc-c1-v"></p>`）⇒ **搜索引擎与 AI 抓不到任何价格内容**。P3 要接住 `saily coupon code` @9.5 · `holafly discount code` @8 · `airalo prices` @6 · `ubigi price` @7 · `yesim cost` @6 这批词，先得让价格**静态可抓**。
+
+**新增区块 ⑤c**（`layouts/esim-providers/single.html`，`id="pricing"`）：
+
+- **表一（有量档位，4 列）**：档位 / 在售目的地数 / 最低价（带来源国）/ 最低 `$/GB`（带来源国）
+- **表二（无限量档位，3 列）**：行程天数 / 在售目的地数 / 最低价（带来源国）—— 因 holafly **纯无限量**（0 个有量档），只做表一会让它整段消失
+- **`MIN_DEST = 10` 覆盖门槛**：只保留在 ≥10 个目的地在售的档位，滤掉单国长尾档（airalo 的 2GB、ubigi 的 200GB 之类）；**门槛数在脚注对读者明说**，不藏口径变化
+- **脚注还写明**：`Where several destinations tie on price the table names one of them.`（并列只取一个名字，不合成假事实）
+- **`$/GB` 与「最低价」可以来自不同国家** ⇒ 两格各自带来源国标签；导语声明 `The cost per gigabyte comes from that same plan`（一句话的事实必须来自同一次选优）
+- **与既有 `#spread` 的分工（不重复）**：`spread` 比**同一档位在不同国家**的入场价高低；`#pricing` 比**同一国家不同档位**的 `$/GB` —— 正交两问，故新开 id
+- **`priceSpecification`**：每条 = 一个档位的起步价 + 容量（`referenceQuantity` 用 UN/CEFACT `unitCode: E34`），与表**共用同一份 `$tierRows` 推导**，不重算第二遍
+- i18n **14 个新 key × 2 语言**（1841 → **1855**，en/de 逐 key 同序对齐：12 个价格档位表 key + 2 个「只有无限量表」变体 key）
+
+| 品牌 | 有量档 | 无限量档 | 品牌 | 有量档 | 无限量档 |
+|---|---:|---:|---|---:|---:|
+| airalo | 6 | 6 | roami | 8 | 4 |
+| alosim | 7 | 6 | roamic | 6 | 30 |
+| holafly | **0** | 6 | saily | 5 | 6 |
+| jetpac | 8 | 9 | ubigi | 10 | 1 |
+| nomad | 6 | 4 | yesim | 7 | 30 |
+
+### 2｜GE networks 建页（en + de）—— **照 CN 路线**（只 Ookla、无 Opensignal）
+
+**先纠正上一轮我自己的错误表述**：GE 的阻塞**不是版式问题**（`layouts/networks/single.html:276–301` 早有「无 awards → 事实列表」回退分支，文件头设计注释 12–13 行原话「缺 awards 时回退为事实列表布局，不报错」），**是事实源问题**。而替代通路**有两条**，CN 是站内活先例：
+
+| | GE 格鲁吉亚 | KE 肯尼亚 | CN（已上线先例） |
+|---|---|---|---|
+| Opensignal 报告 | ❌ | ❌ | ❌ |
+| **Ookla 移动数据** | **✅ Rank 19 / 229.03 Mbps / Aug 2026** | **❌ 列为 N/A**（只收录固网 Rank 135） | ✅ Rank 21 / 221.77 |
+| 结论 | **可做** | **真阻塞** | 已上线 |
+
+- **事实源交叉验证**：`https://insights.opensignal.com/reports/georgia/` 返回 Page not found；`data/networkreports.toml` 文件头第 11 行早已登记「无近期 Opensignal 国家报告（只出 Global Index 链接）：**IS GE KE MO CN**」；Ookla Global Index 主榜 August 2026 Georgia 第 19 / 229.03 Mbps（前 Estonia 236.52、后 New Zealand 225.90），**同榜 China = 21 / 221.77 与既有 `[CN]` 条目逐字吻合** ⇒ 口径一致
+- **数据**：`data/networkreports.toml` +`[GE]`（3 字段 `ookla_note`/`ookla_url`/`ookla_date`）、`data/de/networkreports.toml` +`[GE].ookla_note`（德语小数逗号 `229,03` + 单位 `Mbit/s`）—— **两文件均纯 CRLF**；`ookla_url`/`ookla_date` 是语言无关机器字段，留 en 层由深合并继承（与 `[CN]` 完全同构）
+- **页面**：`content/{en,de}/networks/georgia.md`，**22 个 front matter key、顺序与 `colombia.md` 逐 key 一致**（含 7 个 `h2_*` 覆盖）、正文 6 个 H2、8 条 FAQ、3 条 `cities_detail`；纯 LF
+- **不编**：开篇与 FAQ 首条都**主动写明**「Georgia has no Opensignal Mobile Network Experience report … The Ookla figure is a country-level median: it tells you the market is fast, and it does not tell you which carrier to prefer.」
+- **未链 Türkiye**（站内无该国 networks 页，避免死链）
+
+### 验收（全部产物文本断言，不做截图）
+
+| 项 | 结果 |
+|---|---|
+| `npm run build` | **`BUILD2_EXIT=0`**（17m06s，与旧侧构建并行）· **1313 页 / 1315 文件 / 7526 JSON-LD 块** |
+| 13 道产物闸门 + 德语守卫 | 全绿：`check_headings` **34140 h2/h3 `bad: 0`**；`check_hreflang` **1313 页 / 3930 标签 / 1310 页**（GE 三向互指、targets 全部存在）；`check_dates`（`networks_sub` 含 GE）；`verify_provider_pages` 499/499；`check_faq_facts` R10/R11；`verify_de_text` / `verify_de_data` / `_de_schema_audit` / `_de_link_leak_audit` / `check_inline_copy` 全部通过 |
+| **独立复算**（`.buildlog/r88_pricing_verify.py`） | **20 页 / FAIL 0** —— 档位标签、目的地数、最低价、最低 `$/GB`、`priceSpecification`（`name`/`price`/`referenceQuantity.value`/`unitCode=E34`）、脚注门槛，全部与 `data/plans/*.toml` **独立重算**一致（不读模板、不看产物结构，把表**当数据解析**） |
+| **逐字节归属法**（`.buildlog/r88_attrib.py`） | **新增 2 / 删除 0**；**L1：1266 页「除 header 外逐字节相同」**（1 页完全未变）；**L2：44/44 差异块全部被声明类别归因**（品牌 hub 20 / 说明句变体切换 20 / 从句追加 2 / 索引卡链接 2）；**L3 空白预算**全部为模板缩进 |
+| GE 页取证 | sitemap `<loc>…/networks/georgia/</loc><lastmod>2026-10-07T00:00:00Z</lastmod>`（= **数据核对日，不是构建日**）；可见日期 en `Oct 7, 2026` / de `07.10.2026`；站内链 135 条 **0 死链**；Ookla 外链在、**Opensignal 外链 0** |
+| 基线 | `--write-manifest` → **1313 文件 / `networks 48`**（`generated_at 2026-10-13T02:52:02Z`），随后 `--diff` 自证 **变更 0 / 新增 0 / 删除 0** |
+
+### ★ 本轮踩到的一个真缺陷 + 一条归属法升级（已写进 PROJECT.md 红线 123、124）
+
+1. **☠ 模板赋值块会「逐行吐空白」，而且循环体内被每个数据行各吐一次** —— 我的档位聚合块写成普通 `{{ }}`（本文件既有风格都不裁白，我照抄了），结果**每个套餐行都往产物里吐一次行尾换行 + 缩进**：airalo 页多出 **12052 行空白（+89 KB）**、holafly 页 +22 KB。`check_output` / `check_headings` / `verify_no_regression` **一条都不报**（产物合法、只是胖）。**修法**：整段改 `{{- … -}}` 全裁白，**首行不加前裁**（保住上面那行原有的空行）、**末行加后裁**，使整段对产物贡献**恰好 0 字节**。修后残差恒为 **+327~+336 B 且与套餐数完全无关**。★ 纪律：**新写赋值/循环块前先问「这段会不会被数据行乘出来」**；判断方法不是读模板，是**量产物字节**。
+2. **归属法升级为三层（L1/L2/L3）** —— v1 用**字符级** difflib 逐对比较 1310 个 ~300 KB 文件，O(n²)，**跑到被 kill**。改成 L1 定向替换重建（O(n)，秒级）/ L2 非空白恒等式 / L3 空白预算。★ 为什么 L1 要换**整块 `<header>`** 而不是只换 mega 区块：`partials/header.html` 的**数据计算块内联渲染**在 logo 与 `<nav>` 之间（第 11–43 行），其中 `{{ with site.GetPage "/networks/{slug}" }}` 首次命中会多吐 **16 个空白字符**。
+
+### 本轮的结构性影响（已登记）
+
+- **`verify_no_regression.py`**：`MARKER_ALLOWED_HUB` 新增第 5 项 `'id="pricing"': {"provider_hub"}`；`--selftest` 按纪律**两侧都证**（漏到 `guides/` 要红 + 落在品牌 hub 要放过），两项均 OK。
+- **「加一国 networks 页」的连带改动（本轮实测出精确清单）**：① 该国 `compare/<国>/` 国家页多一个从句（`, and this destination has its own [X carrier breakdown]`，`compare/single.html:872` 的 `{{ with }}`）② 该国 10 个 `compare/<国>/<品牌>/` 品牌子页的说明句**整句换变体**（`compare/provider.html:665-669` 的 `{{ if }}`/`{{ else }}`）③ `/networks/` 索引页的该国卡片多一个 `Carrier breakdown →` 链接 ④ **全站每一页**的 header 菜单计数 +1、菜单多一项、且 **+16 空白字符** ⑤ sitemap +1 URL ⑥ 全站导航重生成 ⇒ 这就是「加一国的真实构建代价」（上一轮已记，本轮给出了**逐类精确字节数**）。
+
+### 未做 / 仍阻塞
+
+- **KE（Kenya）仍真阻塞**：Ookla 把它列为 **N/A**（只收录固网 Rank 135），Opensignal 报告亦无 ⇒ **两条通路都缺**。唯一出路是换事实源类型（需要你点头）。
+- **P2（三品牌组合页）· P3 第二件（「eSIM 折扣码」聚合页）** —— 都是**新页型**，属架构变更，**未获授权、未动**。
+- 观察项：networks 页的 Ookla 来源行目前印机器字段原文 `2026-08`（形如 `Source: Ookla report , 2026-08.`），CN 页同样如此 —— 属既有形态，本轮**未擅自改**（改它会同时改到 CN 等页，超出指令范围）。
+- 全部改动**未 `git commit`、未部署**（用户明令「一旦提交就是正式发布」）。
+
+### 补｜holafly 页「文案与它渲染的表不同真」—— 自查出的第二个缺陷（同日第八十八轮续）
+
+**缺陷**：`id="pricing"` 段的 H2 与导语是**无条件**渲染的，而两张表分别由 `{{ with $tierRows }}` / `{{ with $unlRows }}` 门控。`holafly` 是站内唯一**纯无限量**品牌（有量档 = 0）⇒ 它只出表二，页面上却印着 H2 `Holafly pricing at each data tier` 与导语 `…The cost per gigabyte comes from that same plan, so the two columns always describe one purchase.` —— **既没有数据档位、也没有 $/GB 列**。
+
+**修法**（作用面 = 仅 holafly 的 en/de 两页）：H2 与导语各加一个「只有无限量表」的变体，由 `$tierRows` 是否非空切换；表二的 H3 也只在表一存在时渲染（否则 H2 与 H3 同义）。**零新增行**：行内 `cond (gt (len $tierRows) 0) "key_a" "key_b"` 切 i18n key，H3 用同行 `{{ if }}…{{ end }}` 包住 ⇒ 条件为真时该行产物逐字节不变。i18n **+2 key × 2 语言（1853 → 1855）**。
+
+| 项 | 结果 |
+|---|---|
+| `npm run validate`（源码 5 道） | **`VALIDATE_EXIT=0`**（en/de 各 **1855** key，逐 key 同序） |
+| `npm run build` | **`BUILDB_EXIT=0`**（14m52s）· **1313 页 / 1315 文件 / 7526 JSON-LD 块**；13 道产物闸门全绿，`check_headings` **34138 h2/h3 `bad: 0`**（= 上一步 34140 减去 holafly 两语言各一个 H3）、`check_hreflang` **1313 页 / 3930 标签 / 1310 页** |
+| **归属判据**（`verify_no_regression.py --diff` 对**改动前**的基线） | **变更 2 / 新增 0 / 删除 0**，且正是 `esim-providers/holafly/index.html` 与 `de/esim-providers/holafly/index.html` ⇒ 其余 18 个品牌 hub 页**逐字节未变** |
+| **文案同真验收**（`.buildlog/r88b_verify.py`） | **断言 122 条 / FAIL 0**：holafly 侧所有「有量表」措辞（`at each data tier` / `cost per gigabyte` / `Lowest cost per GB` / `Unlimited plans by trip length`）**全部消失**，「按行程天数」措辞全部到位；其余 9 品牌 × 2 语言的**原措辞逐字仍在** |
+| **独立复算**（`.buildlog/r88_pricing_verify.py`） | **FAIL 0**（表格与 JSON-LD 内容不受影响） |
+| 基线 | 刷新为 **1313 文件**，随后 `--diff` 自证 **0 / 0 / 0** |
+
+**★ 附带修掉一个我自己的工具事故**：`.buildlog/r88b_fix_lead.py` 写成 `old → new`（`new` 没回带 `old`）⇒ **把 `h2_pricing` 与 `pricing_lead` 两个原 key 顶掉了**；线索是「键数没涨、`lone_LF` 没涨」。已用 `.buildlog/r88b_restore_i18n.py` 按改动前的逐行读取留痕还原并**逐字复核原值**。⇒ 已写进 `PROJECT.md` 红线 **125 / 126**。
+
+## 已完成（A 德语报告标题守卫缺口 + B P1 剩余 7 国 networks 页 + C 正文 `#N of M` 自我否定清零，2026-10-12 第八十六～八十七轮）
+
+**触发（用户逐字）**：`A,BC 全部完成即可` —— 对上一轮给出的三个选项要求 **三个全做**：
+**A** = 先修 `opensignal_title` 守卫缺口（德语 networks 页印英文报告标题）**再**补 7 国；**B** = 直接补 P1 剩余 7 国；**C** = 补完 P0 的另一半（正文三处 `of N` 自我否定）。
+
+### A｜德语 networks 页印英文报告标题（红线 119 的收口）
+
+| 层 | 落盘 |
+|---|---|
+| 数据 | `data/de/networkreports.toml` 逐国补 `opensignal_title`（**44 国**，34175 B / 582 CRLF，德语覆盖层） |
+| 施加器 | `scripts/_loc_de_dates.py`：`de_title()` + `COUNTRY_ALIASES` + 幂等；真源 = `data/countries.toml[ISO].name` + 月名映射；`--selftest 25/25` |
+| 守卫 | `scripts/verify_de_data.py` 新增判据 **H `check_report_titles`**；`--selftest 40/40` |
+| 真源去重 | `scripts/_gen_de_data.py` 删掉 HEADER 的**第二副本**，改 `from _loc_de_dates import HEADER`（红线 8：一份事实只允许一份真源） |
+| **两侧都证** | 对**改造前产物**跑：**13 个德语页印英文标题**（红）→ 改造后 **0**（`.buildlog/r87_assert_A.py`，P1–P4 四段 + 反例注入） |
+| 全量 | 本轮构建输出「数据层德语覆盖守卫：全部通过」 |
+
+### C｜正文里三处同款「自我否定」（红线 113 的补全）
+
+改 `i18n/{en,de}.toml` 三个 key：`verdict_met_rank`（verdict **非冠军**分支）、`faq_a_price_met`（FAQ 答案 **+ 同源 JSON-LD**）、`trust_ranked`（Trust 段）。
+**刻意保留 2 处**（红线 120）：`of_n_on_gb`（stat tile `#9` + `of 10 on $/GB`）与 `op_market_v1/v2/v3`（**对手向** `Airalo ranks 7 of 10`，且不带 `#`）。
+
+| 项 | 改造前 | 改造后 |
+|---|---|---|
+| EN 品牌子页**可见文本**含 `#N of M` | **449 / 499** | **0** |
+| —（旧侧「干净」的 50 张 **全是 Holafly**：纯不限量品牌走 `verdict_unl` / `faq_a_price_unl` / `trust_unlimited`，本来就没这个说法） | | |
+| stat tile / 对手向竞品卡 | 499 / 499 | 499 / 499（**原样保留**） |
+| DE 品牌子页 | 对称 | 对称 |
+
+**★ 改完自检出我自己引入的指代漂移（红线 121）**：产物成了
+`Saily's best rate in Canada is $2.20/GB; the country benchmark is $0.64/GB — the lowest rate among the 10 providers we track.`
+—— 「the lowest rate」紧贴主语 brand ⇒ 读者会读成「**Saily 是 10 家里最低价**」，而 Saily 在加拿大是 **#9**（$2.20 vs $0.64）⇒ 为了消灭自我否定反而写出**自相矛盾的假话**。
+修法：让限定语留在它修饰的那个从句里 ⇒ `…$0.64/GB</strong> among the {{ .total }} providers we track.`（de 对称：`… unter den {{ .total }} Anbietern, die wir erfassen.`）。产物级断言加**歧义句黑名单**（`the lowest rate among the` / `der niedrigste Wert unter den`），双侧为 **0**。
+
+### B｜P1 剩余 7 国 networks 页（en + de = 14 篇）
+
+- 7 国：**EG / TW / VN / MA / PL / CH / SA**。站内 `opensignal_facts`（en+de）全部摘自 `networkreports`；外部事实 WebSearch 逐国核实（EG 反恐法护照登记 + 指纹 / TW 实名制 + 机场仅需护照 / VN Decree 49 护照原件 + 活体自拍 + `5G150T` 150,000 VND/5GB/天 / MA 所有 SIM 强制护照登记 + 5G 2025-11-10 三网同日商用 / PL 反恐法每张 SIM 登记 / CH BÜPF 强制登记 + Swisscom 含 Jungfraujoch 3454 m / SA 生物识别强制 + STC 覆盖 AlUla·NEOM）
+- 结构照 `content/en/networks/colombia.md`：**21 个 front matter key / 5 个 H2 / 8 条 FAQ / 3 条 `cities_detail`**；`.buildlog/r87c_h2_en.py` 按站内 h2 约定（骨架 + 国家置换，`h2_scoreboard` 点出该国运营商名）改写 14 行
+- **源码级预检 12 条全绿**（`.buildlog/r87_preflight.py`：纯 LF / key 集合 / 计数 shortcode 恰好 1 处 / H2 标点（en 禁 `,;:—–`、de 禁 `,;:`）/ `cities_detail` 以 name 起首 / 无整日期 / 德语禁英文国名城市名 / 德语禁 F 黑名单词 / `title`·`seo.title` 无 `$` 与 `#N of M` / 站内链接目标存在 / FAQ 恰 8 条且跨页不重复 / 德语无英文月名）—— 首跑抓到 **4 处德语 H2 逗号**，当场修；另自查出 3 处语病（`Graubunden` 隐式第四张网、挪威…实为法国地名的 Chamonix、`Russia-fast`）
+- 页数：**networks 子页 15 → 22（每语言）**（`_index.md` 不算），总页 **1297 → 1311**
+
+### 验收（构建 + 产物断言 + 归属法）
+
+| 闸门 / 断言 | 结果 |
+|---|---|
+| `npm run build` | **`BUILD_EXIT=0`**（9m23s）· **1311 页 / 1313 文件 / 7516 JSON-LD 块** |
+| 13 道产物闸门 | 全绿：`check_headings` **34038 h2/h3 `bad: 0`**；`verify_provider_pages` **499/499**（标题 44–54，均 50.5）；`check_faq_facts` 100 国页 + R10/R11 唯一性；`check_dates`（networks_sub 22）；`check_hreflang` 1311 页 / 3924 标签 / 1308 页；`verify_de_text` A–D·H·I 全绿 + F/J/G 覆盖 **654 德语页**（单元格 14197/14197）；`verify_de_data` 全过（304 数据串 / 38 城市 / 77 记分板）；`_de_schema_audit` JSON 失败 **0**；`check_inline_copy` 0 残留 |
+| 页型 | networks **32 → 46**；de 655 / en 656 |
+| **A 产物断言** | 130 个页型实例：德语页只印德语标题、英语页只印英语标题；P4 反例注入 OK |
+| **C 产物断言** | 499 + 499：`#N of M` 归零；stat tile / 对手卡 499/499 保留；verdict 冠军 50 / 非冠军 449，歧义句残留 **0** |
+| **归属法**（`.buildlog/r87_attrib.py`） | 见下表 |
+
+**★ 归属法这次先被自己的旧侧坑了两次（新增红线 117/118）**：
+
+| 版本 | 结果 | 真因 |
+|---|---|---|
+| v1 | 1895 文件**全变了** | 旧侧 `.buildlog/pub_r87_old` 是 **dev server 产物**：**1296/1297 页含 `<script src="/livereload.js…">`** |
+| v2 | 换 `git HEAD` 重建旧侧后仍报 100 未分类 + 52 标题归因失败 | 配置覆盖**只写了 `contentDir`**（漏 `dataDir`/`i18nDir`）⇒ 拿**新 data + 新 i18n** 当旧侧 |
+| **v3.3** | **全过** | 修 slug 提取（`country_slug()`）+ 双向判据 + 索引页用链接全集 + 双语正则 |
+
+**★ 顺带更正上一轮的一个错误结论（红线 117）**：上轮据 `verify_no_regression.py --diff` 报「变更 1297 / 1297 全需确认」断定 `docs/regression-manifest.json` **已过期**。**基线从未过期** —— 从 `git HEAD` 重建的旧侧 vs manifest = **1297/1297 sha256 全等**；是当时的 `public/` 被 dev server 污染了（「变更页数 1296」与「含 livereload 的 1296 页」**完全重合**，那正是线索）。
+
+最终断言：
+
+| 断言 | 结果 |
+|---|---|
+| A 集合 | 共有 **1895** 文件 · 新增 **14**（全是 networks 页，en/de 成对）· 删除 **0** |
+| B 计数 | 每页 `tnum font-semibold text-ink-300` 计数序列**恰 1 处**变化且为 **15 → 22**；无导航的别名壳 1 页（`/en/index.html`）跳过 |
+| C 分类 | 规范化比对（删 `mega-link` 锚块 + 计数占位 + 折叠空行）后：HTML **变化 974 / 未变 339**；**未分类 0** —— `E3-compare-brand 912` · `E4-hub-de 41` · `E2-networks-de 12` · `E4-hub-en 7` · `E2-networks-list 2` |
+| D 资源 | 9 个非 HTML 文本资源（`sitemap.xml`×2 / `llms.txt`×2 / `index.xml`×4 / `en/sitemap.xml`）全部白名单点名；**二进制资源变化 0** |
+| **E 归因** | **无法解释的变化行 0**；被判据归因为「去 `#N of M`」的变更行合计 **3492 = 1746 × 2 语言**（与上一轮独立测得的 1746 **完全吻合**） |
+| F C | compare 品牌子页 998 张：可见文本含 `#N of M` **449 → 0** |
+| G 反例 | 注入 `— rank #9 of 10;` 后 C 判据翻红（判据非恒真） |
+
+数学闭环：`974 变化 + 339 未变 = 1313 个文本产物`；`1311 页 = 1297 旧 + 14 新`；`46 networks = 22 × 2 子页 + 2 索引`。
+
+**基线已刷新**：`verify_no_regression.py --write-manifest` → **1311 文件 / `networks 46`**（`generated_at 2026-10-12T16:12:45Z`），随后 `--diff` 自证 **变更 0 / 新增 0 / 删除 0**；`--selftest` 通过（含 classify 正反例）。
+
+### 纪律
+- **未 `git commit`、未部署** —— 改动全部留工作区：**14 个新 md 未跟踪** + **6 个已跟踪文件修改**（`data/de/networkreports.toml`、`i18n/en.toml`、`i18n/de.toml`、`scripts/_gen_de_data.py`、`scripts/_loc_de_dates.py`、`scripts/verify_de_data.py`）
+- 改已存在文件一律 **bytes 读写** + 复核换行：`i18n/*.toml` 纯 LF（1897/1898 行，改后不变）、`data/de/networkreports.toml` 纯 CRLF（582）不变
+- `stamp_checked.py` 指纹只覆盖 `data/plans/**` 与 `data/providers.toml` ⇒ 本轮改 md/scripts/i18n **未误盖任何 `checked` 日期**
 
 ## 已完成（GSC「已发现 – 尚未编入索引」治理：国家页新增「价差最紧 6 对」对决入口 + 对决页补「按行程类型怎么选」段 + 去模板句，2026-10-11 第八十二轮）
 
