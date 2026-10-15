@@ -3,7 +3,7 @@ title: "What Is an eSIM? How It Works, in Plain English (2026)"
 hero: "travel-esim-illustration-071.webp"
 hero_alt: "A traveler holding a phone beside an oversized SIM chip and signal bars — the idea behind an embedded travel eSIM"
 date: 2026-10-01
-description: "What is an eSIM? eSIM Sift explains how a built-in SIM works, what actually gets installed, and what it means for calls and SMS abroad."
+description: "What is an eSIM? eSIMSift explains how a built-in SIM works, what actually gets installed, and what it means for calls and SMS abroad."
 faq_heading: "What should you know before your first eSIM"
 prompt_answer: "An eSIM is a digital SIM that your phone stores on a chip built into the device, so there is no plastic card to swap. For travel it means buying data for a destination before you fly, installing it on Wi-Fi, and leaving your home SIM in the phone for calls and texts."
 h2_answer: "What an eSIM means for a traveler"
@@ -146,7 +146,7 @@ Within a single destination, three mechanisms drive what you'll pay:
 - **Validity windows.** Short windows cost less but expire hard — a plan that dies on day seven is worthless on day eight. Longer windows trade a higher price for surviving the whole trip.
 - **Fair-use policies.** "Unlimited" plans throttle or pause past a daily threshold. We quote every provider's policy verbatim in the [fair-use audit](/research/fair-use-audit/), and our [unlimited eSIM research](/research/unlimited-esim/) shows where per-day pricing is actually cheapest.
 
-Every country page — [Spain eSIM](/compare/spain/) or [Italy eSIM](/compare/italy/) — then lists each plan from the {{< count-providers >}} providers eSIM Sift tracks, side by side. Not sure how many gigabytes you need? The [trip calculator](/tools/) estimates it from what you actually do online.
+Every country page — [Spain eSIM](/compare/spain/) or [Italy eSIM](/compare/italy/) — then lists each plan from the {{< count-providers >}} providers eSIMSift tracks, side by side. Not sure how many gigabytes you need? The [trip calculator](/tools/) estimates it from what you actually do online.
 
 ## Do you get a phone number with a travel eSIM
 

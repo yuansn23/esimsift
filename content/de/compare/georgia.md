@@ -3,7 +3,7 @@ title: "Georgien eSIM"
 iso: GE
 weight: 33
 seo:
-  description: "eSIM Sift vergleicht alle eSIM-Tarife für Georgien: 152 echte Tarife von 10 Anbietern, günstigster Yesim ab $0.51, sortiert nach $/GB und $/Tag."
+  description: "eSIMSift vergleicht alle eSIM-Tarife für Georgien: 152 echte Tarife von 10 Anbietern, günstigster Yesim ab $0.51, sortiert nach $/GB und $/Tag."
 ---
 
 Der Markt in Georgien belohnt ein wenig Arithmetik. Die Einstiegspreise beginnen bei $0.51, mit Yesim 300 MB / 1 Tag. Zum Tarif von $0.93/GB ausgegeben, kaufte dieselbe Summe eher 565 MB. Beim Tarif setzt Jetpac die Untergrenze mit $0.93/GB für 40 GB über 30 Tage. Der erfasste Katalog hält 152 Tarife für Georgien von {{< count-providers >}} Anbietern, 81 davon unbegrenzt.

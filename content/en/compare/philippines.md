@@ -3,7 +3,7 @@ title: "Philippines eSIM"
 iso: PH
 weight: 18
 seo:
-  description: "eSIM Sift compares every Philippines eSIM: 195 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIMSift compares every Philippines eSIM: 195 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 The market in the Philippines looks mid-market on entry price and much better on value. Entry in the Philippines starts at $0.51 with Yesim 500MB / 1 Day. In the Philippines, the same $0.51 reaches about 933MB at the $0.56/GB rate. Cheapest by the gigabyte is Roamic, with 50GB over 30 days at $0.56/GB. Between {{< count-providers >}} providers there are 195 plans for the Philippines on file, 96 carrying an unlimited label.

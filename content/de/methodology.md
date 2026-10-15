@@ -1,6 +1,6 @@
 ---
 title: "Unsere Methodik: Wie wir eSIM-Preise erheben und prüfen"
-description: "Wie eSIM Sift seine eSIM-Preisdaten erhebt, prüft und ableitet – Erhebungsrhythmus, Kennzahlen-Formeln und Korrekturverfahren."
+description: "Wie eSIMSift seine eSIM-Preisdaten erhebt, prüft und ableitet – Erhebungsrhythmus, Kennzahlen-Formeln und Korrekturverfahren."
 # TODO(de)：正文已德语化。D9 解禁时统一删掉上面 noindex 行。
 layout: methodology
 example_iso: "JP"

@@ -1,7 +1,7 @@
 ---
 title: "eSIM Fair Use Audit 2026: What Unlimited Really Means"
 date: 2026-10-01
-description: "What unlimited eSIM plans really throttle: eSIM Sift audits the fair-use policy of every provider we track, plan by plan, verbatim."
+description: "What unlimited eSIM plans really throttle: eSIMSift audits the fair-use policy of every provider we track, plan by plan, verbatim."
 layout: fair-use-audit
 ---
 

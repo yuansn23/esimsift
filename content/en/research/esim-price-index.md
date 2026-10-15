@@ -1,7 +1,7 @@
 ---
 title: "eSIM Price Index 2026: Every Country Ranked by Cost"
 date: 2026-10-01
-description: "eSIM prices by country, ranked by best $/GB across every destination in the eSIM Sift database — regional averages and league table."
+description: "eSIM prices by country, ranked by best $/GB across every destination in the eSIMSift database — regional averages and league table."
 layout: price-index
 ---
 

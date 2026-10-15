@@ -134,7 +134,7 @@ def apply_country(slug: str, paragraphs: list[str], *, dry: bool = False) -> str
         errs.append("front matter 起始异常")
 
     # ① seo.description 数字/品牌刷新
-    pat = re.compile(r'(\n  description: "eSIM Sift vergleicht alle eSIM-Tarife für [^"]*?: )'
+    pat = re.compile(r'(\n  description: "eSIMSift vergleicht alle eSIM-Tarife für [^"]*?: )'
                      r'(\d+) echte Tarife von (\d+) Anbietern, günstigster ([A-Za-z]+) ab \$([\d.]+)')
     m = pat.search(text)
     if not m:

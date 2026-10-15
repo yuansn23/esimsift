@@ -20,7 +20,7 @@ faqs:
   - q: "Wann sollte ich meine Amerika-eSIM kaufen?"
     a: "Kauf sie ein oder zwei Tage vor der Amerika-Reise, damit der QR-Code bereitliegt und du ihn im WLAN installieren kannst. Die Preise auf dieser Seite sind am angegebenen Datum geprüft, die Amerika-Tabelle spiegelt also das, was die Anbieter derzeit nennen."
   - q: "Welche Anbieter verkaufen eSIMs für Amerika?"
-    a: "Alle zehn Marken, die wir erfassen, veröffentlichen Tarife in diesen acht Reisezielen — die Verfügbarkeit ist hier also nicht die Einschränkung, der Preis ist es. Die Tabelle oben sortiert den günstigsten Tarif in jedem Land, die Siegertabelle nennt die Marke, die in diesem Monat in den meisten davon am günstigsten ist."
+    a: "Jede Marke, die wir erfassen, veröffentlicht Tarife in diesen acht Reisezielen — die Verfügbarkeit ist hier also nicht die Einschränkung, der Preis ist es. Die Tabelle oben sortiert den günstigsten Tarif in jedem Land, die Siegertabelle nennt die Marke, die in diesem Monat in den meisten davon am günstigsten ist."
   - q: "Gibt es einen Tarif für ganz Amerika?"
     a: "Regionale Tarife gibt es, sie spannen aber selten über Nord- und Südamerika zugleich. Eine Route von den USA über Mexiko bis Brasilien sind deshalb meist zwei oder drei separate Tarife statt einer. Vergleiche die Länderliste jedes Bündels mit deiner Route — und beachte, dass ein USA-Tarif nicht nach Kanada oder Mexiko hineinreicht."
 ---

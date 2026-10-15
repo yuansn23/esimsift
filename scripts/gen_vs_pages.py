@@ -14,7 +14,7 @@ Naming/format rules are the ones the live site already enforces:
   · title 48-54 chars (scripts/audit_meta.py) — candidates come from the same
     two families scripts/regen_meta_brand.py uses, so new pages read identically
     to the old ones; first candidate that fits is taken
-  · description 120-140 chars and must contain "eSIM Sift"; the family rotates by
+  · description 120-140 chars and must contain "eSIMSift"; the family rotates by
     index so the new pages do not all open with the same sentence
     (anti-homogenization — same idea as the anchor rotation in regen_meta_brand)
 
@@ -84,31 +84,31 @@ def desc_candidates(a: str, b: str, i: int) -> list[str]:
     if LANG == "de":
         fams = [
             [
-                f"eSIM Sift vergleicht {a} und {b}: Einstiegspreise, $/GB und Unlimited-Daten in jedem gemeinsamen Land — ein berechnetes Fazit.",
-                f"eSIM Sift vergleicht {a} und {b}: Einstiegspreise, $/GB und Unlimited-Daten in jedem gemeinsamen Land.",
+                f"eSIMSift vergleicht {a} und {b}: Einstiegspreise, $/GB und Unlimited-Daten in jedem gemeinsamen Land — ein berechnetes Fazit.",
+                f"eSIMSift vergleicht {a} und {b}: Einstiegspreise, $/GB und Unlimited-Daten in jedem gemeinsamen Land.",
             ],
             [
-                f"{a} oder {b} für die Reise? eSIM Sift rechnet das Fazit: günstigster Tarif je Land, bester $/GB, Unlimited-Abdeckung — Live-Preise.",
-                f"{a} oder {b} für die Reise? eSIM Sift rechnet das Fazit: günstigster Tarif je Land, bester $/GB, Unlimited-Abdeckung.",
+                f"{a} oder {b} für die Reise? eSIMSift rechnet das Fazit: günstigster Tarif je Land, bester $/GB, Unlimited-Abdeckung — Live-Preise.",
+                f"{a} oder {b} für die Reise? eSIMSift rechnet das Fazit: günstigster Tarif je Land, bester $/GB, Unlimited-Abdeckung.",
             ],
             [
-                f"Welche eSIM ist günstiger, {a} oder {b}? eSIM Sift vergleicht Einstiegspreise, $/GB und Fair-Use-Grenzen in jedem gemeinsamen Land.",
-                f"Welche eSIM ist günstiger, {a} oder {b}? eSIM Sift vergleicht Einstiegspreise, $/GB und Fair-Use-Grenzen je Land.",
+                f"Welche eSIM ist günstiger, {a} oder {b}? eSIMSift vergleicht Einstiegspreise, $/GB und Fair-Use-Grenzen in jedem gemeinsamen Land.",
+                f"Welche eSIM ist günstiger, {a} oder {b}? eSIMSift vergleicht Einstiegspreise, $/GB und Fair-Use-Grenzen je Land.",
             ],
         ]
         return fams[i % 3]
     fams = [
         [
-            f"eSIM Sift compares {a} and {b} eSIMs: entry prices, $/GB and unlimited data in every shared country — a computed verdict.",
-            f"eSIM Sift compares {a} and {b} eSIMs: entry prices, $/GB and unlimited data in every shared country.",
+            f"eSIMSift compares {a} and {b} eSIMs: entry prices, $/GB and unlimited data in every shared country — a computed verdict.",
+            f"eSIMSift compares {a} and {b} eSIMs: entry prices, $/GB and unlimited data in every shared country.",
         ],
         [
-            f"{a} or {b} for your trip? eSIM Sift computes the verdict: cheapest plan per country, best $/GB, unlimited coverage — live prices.",
-            f"{a} or {b} for your trip? eSIM Sift computes the verdict: cheapest plan per country, best $/GB, unlimited coverage.",
+            f"{a} or {b} for your trip? eSIMSift computes the verdict: cheapest plan per country, best $/GB, unlimited coverage — live prices.",
+            f"{a} or {b} for your trip? eSIMSift computes the verdict: cheapest plan per country, best $/GB, unlimited coverage.",
         ],
         [
-            f"Which eSIM is cheaper, {a} or {b}? eSIM Sift compares entry prices, $/GB and fair-use caps in every shared country — prices change.",
-            f"Which eSIM is cheaper, {a} or {b}? eSIM Sift compares entry prices, $/GB and fair-use caps in every shared country.",
+            f"Which eSIM is cheaper, {a} or {b}? eSIMSift compares entry prices, $/GB and fair-use caps in every shared country — prices change.",
+            f"Which eSIM is cheaper, {a} or {b}? eSIMSift compares entry prices, $/GB and fair-use caps in every shared country.",
         ],
     ]
     return fams[i % 3]

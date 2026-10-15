@@ -3,7 +3,7 @@ title: "Greece eSIM"
 iso: GR
 weight: 26
 seo:
-  description: "eSIM Sift compares every Greece eSIM: 197 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIMSift compares every Greece eSIM: 197 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 eSIM prices in Greece are less flat than the headline number suggests. Nothing undercuts Yesim's 500MB / 1 Day at $0.51. Small buckets cost roughly 2.9 times the rate of the big ones here. The best rate here is Roamic's 50GB / 30 Days plan at $0.36/GB. Across {{< count-providers >}} providers the board runs to 197 plans for Greece, 99 sold as unlimited.

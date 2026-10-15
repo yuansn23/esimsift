@@ -3,7 +3,7 @@ title: "Indonesia eSIM"
 iso: ID
 weight: 17
 seo:
-  description: "eSIM Sift compares every Indonesia eSIM: 185 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIMSift compares every Indonesia eSIM: 185 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 Pricing across the providers tracked in Indonesia splits along one line, and it is not brand. Budget buyers in Indonesia land on Yesim 500MB / 1 Day at $0.51. The same money inside the 50GB bucket reaches about 791MB at $0.66/GB. Roamic wins on rate, at $0.66/GB for a 50GB / 30-day bucket. {{< count-providers >}} providers list 185 plans for Indonesia here, 97 of them unlimited.

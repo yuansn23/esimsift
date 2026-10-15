@@ -517,7 +517,7 @@ python -X utf8 scripts/check_output.py --selftest
 | 品牌×国家子页总数 | 400 | **400** |
 | 标题长度合规 | 48–54 | **400/400**（48–54，均 51.1） |
 | 标题禁则（无 `$`、无 `N plans`） | 0 违规 | **0** |
-| description 长度 + 含 `eSIM Sift` | 120–140 + 必含 | **400/400** |
+| description 长度 + 含 `eSIMSift` | 120–140 + 必含 | **400/400** |
 | H1 恰好 1 个 + 含 `eSIM` + 含年份 | 400/400 | **400/400** |
 | 逐套餐 Offer 数 == 价格表行数 | 400/400 | **400/400**（Offer 合计 7776） |
 | FAQPage ≥3 组且问答非空 | 400/400 | **400/400** |
@@ -562,7 +562,7 @@ python -X utf8 scripts/check_output.py --selftest
 |:--|:---|:---|
 | 0 | 模板残留（`{{` / `}}` / `%!s(` / `%!d(`） | i18n 值少占位符、`%g` 喂了 int 都在这里露头 |
 | 1 | 标题：48–54 字符 + **禁 `$`** + **禁 `\b\d+\s+plans?\b`** + 必含国家名 | 价格与档位数会变，写进标题必然过期 |
-| 2 | description：120–140 + 必含 `eSIM Sift` | |
+| 2 | description：120–140 + 必含 `eSIMSift` | |
 | 3 | H1：恰好 1 个 + 含 `eSIM` + 含年份 | |
 | 4 | 空 `<h2></h2>` / 空 eyebrow | i18n key 漏定义的典型症状（§7 #3） |
 | 5 | `Product.offers` 必须是 `AggregateOffer`，其 `offers` 是**非空数组**、**长度 == 价格表行数**，每项 `price` 是**数字**、`priceCurrency == "USD"` | |

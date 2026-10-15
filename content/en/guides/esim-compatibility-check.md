@@ -45,7 +45,7 @@ faqs:
     a: "Four things, and only the first is hardware. An eSIM-capable device, a carrier-unlocked handset, an EID the provider can bind the profile to, and an install route your phone can run — QR-code and web installs need nothing beyond a camera and a connection, while app-route providers add a minimum OS version and an account signup. Miss any one of the four and the install fails, usually with a vague activation error rather than a clear reason."
 ---
 
-Thirty seconds decides whether any of this site's comparisons apply to you: either your phone has eSIM hardware or it doesn't, and either it's carrier-unlocked or it isn't. Both checks happen on the device itself — no spec-sheet hunting required. But two more traps hide behind that dialer test, and they sink more trips than missing hardware ever does: regional variants (the same model name sold with different internals per market) and provider install routes that quietly add their own requirements. This guide covers all four, and the searchable list of verified models eSIM Sift maintains below the article settles the rest.
+Thirty seconds decides whether any of this site's comparisons apply to you: either your phone has eSIM hardware or it doesn't, and either it's carrier-unlocked or it isn't. Both checks happen on the device itself — no spec-sheet hunting required. But two more traps hide behind that dialer test, and they sink more trips than missing hardware ever does: regional variants (the same model name sold with different internals per market) and provider install routes that quietly add their own requirements. This guide covers all four, and the searchable list of verified models eSIMSift maintains below the article settles the rest.
 
 ## Does an eSIM have a size
 

@@ -3,7 +3,7 @@
 
 A. Country pages (50): regenerate seo.description from LIVE plan data
    (old ones were stale — wrong plan counts, some mentioned retired Nomad).
-B. VS pages (28): shorten title to fit <=60 chars incl " | eSIM Sift" suffix.
+B. VS pages (28): shorten title to fit <=60 chars incl " | eSIMSift" suffix.
 C. Handwritten pages: explicit title/description map (promo-code facts fixed
    to the real verified codes: roami web20 / saily VEEPEE25 / ubigi WELCOME10).
 
@@ -165,16 +165,16 @@ FIXES: dict[str, dict[str, str]] = {
         "description": "Who we are, why we built an independent eSIM price database covering 8 providers and 50 countries, and how the site makes money.",
     },
     "contact.md": {
-        "description": "Report a price change, suggest a provider to track, or reach the eSIM Sift team — verified fixes ship with the next site build.",
+        "description": "Report a price change, suggest a provider to track, or reach the eSIMSift team — verified fixes ship with the next site build.",
     },
     "disclosure.md": {
-        "description": "How eSIM Sift earns money from referral commissions, and the disclosure rules we hold ourselves to across every page we publish.",
+        "description": "How eSIMSift earns money from referral commissions, and the disclosure rules we hold ourselves to across every page we publish.",
     },
     "privacy.md": {
-        "description": "How eSIM Sift handles personal data, cookies and analytics — what we collect, what we never collect, and the choices you have.",
+        "description": "How eSIMSift handles personal data, cookies and analytics — what we collect, what we never collect, and the choices you have.",
     },
     "terms.md": {
-        "description": "The terms of service for using eSIM Sift, including our price-data disclaimer and the limits of our editorial liability.",
+        "description": "The terms of service for using eSIMSift, including our price-data disclaimer and the limits of our editorial liability.",
     },
     "tools/_index.md": {
         "description": "Estimate how much travel data you need app by app, then get the cheapest matching eSIM plan — computed live from 8 providers across 50 countries.",

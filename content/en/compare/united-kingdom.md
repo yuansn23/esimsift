@@ -3,7 +3,7 @@ title: "UK eSIM"
 iso: GB
 weight: 3
 seo:
-  description: "eSIM Sift compares every UK eSIM: 230 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
+  description: "eSIMSift compares every UK eSIM: 230 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
 ---
 
 The cheapest plan in the UK is rarely the cheapest trip. Yesim leads on entry price in the UK with 500MB / 1 Day at $0.51. Spent at $0.44/GB instead, that same $0.51 would buy nearer 1.2GB. Value leadership sits with Roamic, whose 50GB / 30-day plan lands at $0.44/GB. The full board is 230 plans for the UK from {{< count-providers >}} providers, 102 of them unlimited.

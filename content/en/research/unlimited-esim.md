@@ -1,7 +1,7 @@
 ---
 title: "Best Unlimited eSIM Plans 2026: Daily Rates Compared"
 date: 2026-10-01
-description: "Best unlimited eSIM plans compared: eSIM Sift ranks daily rates for every country with unlimited data, plus the fair-use catches."
+description: "Best unlimited eSIM plans compared: eSIMSift ranks daily rates for every country with unlimited data, plus the fair-use catches."
 layout: unlimited-esim
 ---
 

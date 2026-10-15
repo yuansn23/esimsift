@@ -138,7 +138,7 @@
 `/compare/canada/saily/` 的 SERP 摘要（产物原文）：
 
 ```
-eSIM Sift compares Saily eSIM plans for Canada: 11 plans from $5.29,
+eSIMSift compares Saily eSIM plans for Canada: 11 plans from $5.29,
 best $2.20/GB (#9 of 10) — ranked against 221 Canada plans.
 ```
 
@@ -199,7 +199,7 @@ best $2.20/GB (#9 of 10) — ranked against 221 Canada plans.
 - **改法（三处）**：
   1. **删掉 `(#N of 10)`**，或只在该品牌真的好时才用正向表述（"2nd-cheapest of 10"）
   2. **把「时长档」写进 title** —— 数据里 `saily esim canada 15 days price` 已经排到第 6，但我们没有页面把「15 天」放进标题
-  3. **把 `eSIM Sift compares` 这种品牌自述换成读者要的信息**（计划数 / 起价 / 天数区间 / 热点规则）
+  3. **把 `eSIMSift compares` 这种品牌自述换成读者要的信息**（计划数 / 起价 / 天数区间 / 热点规则）
 - **示例**（`/compare/canada/saily/`）：
   - title：`Saily Canada eSIM: 11 Plans, 7–30 Days, From $5.29`
   - desc：`All 11 Saily plans for Canada side by side — 7, 15 and 30-day bundles from $5.29. See the cheapest Saily tier for your trip length, and how it stacks up against the other 9 providers on $/GB.`
@@ -216,7 +216,7 @@ best $2.20/GB (#9 of 10) — ranked against 221 Canada plans.
 > | `TITLE_BANNED` | **已废除**（删 3 条正则 + 检查循环）。代价已知并接受：标题由构建期现算 ⇒ **每次数据变动都会改标题** |
 > | `(#N of M)` | 998 页（en 499 + de 499）命中 **→ 0** |
 > | title（新增 `seo.title`） | en `44–54: 499/499` · de `44–54: 499/499`，**零重复**，必含国名 |
-> | description | en/de **双向 499/499 落在 120–140**，**零重复**，必含 `eSIM Sift` |
+> | description | en/de **双向 499/499 落在 120–140**，**零重复**，必含 `eSIMSift` |
 > | 模板改动 | **零**（走 `head.html` 已有的 `$lockedTitle` 锁） |
 > | 归属证明 | 旧产物 vs 基线 **1291/1291 全等**；新 vs 旧 = **998 个排列页 × 每页恰好 4 行**（`<title>`/desc/og:title/og:description），其余 **0 字节**变化 |
 > | 顺带 | 拆掉 `gen_provider_pages.py` 的 `NOINDEX = LANG != "en"`（否则下次重跑会复活 499 个德语页的 noindex）+ 清 499 个德语 md 的过期 `TODO(de)` |

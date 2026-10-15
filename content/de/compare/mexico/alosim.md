@@ -5,5 +5,5 @@ provider: alosim
 layout: provider
 seo:
   title: "aloSIM Mexiko eSIM: 12 Tarife, 3-30 Tage, ab $5.00"
-  description: "Alle 12 aloSIM-Tarife für Mexiko in einer Tabelle: 3-30 Tage ab $5.00, $2.30/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
+  description: "Alle 12 aloSIM-Tarife für Mexiko in einer Tabelle: 3-30 Tage ab $5.00, $2.30/GB. eSIMSift vergleicht jede Option in einer Tabelle."
 ---

@@ -20,7 +20,7 @@ faqs:
   - q: "When should I buy my Asia eSIM?"
     a: "Buy a day or two before an Asia trip so the QR code is ready to install on Wi-Fi. The prices on this page are checked on the date shown, so the Asia table reflects what the providers currently list."
   - q: "Which providers sell eSIMs for Asia?"
-    a: "Ten brands sell into the destinations we track here, and the cheapest one changes from country to country rather than staying with one company. The league table above names the cheapest provider in each of the 13 destinations and the winner table shows which brand is cheapest in the most of them this month."
+    a: "Every brand we track sells into the destinations here, and the cheapest one changes from country to country rather than staying with one company. The league table above names the cheapest provider in each of the 13 destinations and the winner table shows which brand is cheapest in the most of them this month."
   - q: "Is there one Asia plan that covers every country?"
     a: "No bundle covers all 13 destinations. Asian regional plans come with their own country lists, and mainland China, Hong Kong and Macao are usually listed as separate line items rather than folded into a bundle. Compare the plan's own country list against your actual route before you buy, and remember that a Japan or Thailand plan stops at the border."
 ---

@@ -1,6 +1,6 @@
 baseURL = "https://www.esimsift.com/"
 languageCode = "en-us"
-title = "eSIM Sift"
+title = "eSIMSift"
 defaultContentLanguage = "en"
 enableRobotsTXT = true
 disableKinds = ["taxonomy", "term"]
@@ -52,9 +52,9 @@ isHTML = false
 # ==========================================
 
 [params]
-  brand = "eSIM Sift"
+  brand = "eSIMSift"
   tagline = "Compare Travel eSIM Plans & Prices"
-  description = "eSIM Sift is an independent eSIM price comparison: real prepaid plans from every major travel eSIM provider, ranked by $/GB and $/day."
+  description = "eSIMSift is an independent eSIM price comparison: real prepaid plans from every major travel eSIM provider, ranked by $/GB and $/day."
   ga4 = "G-J6SXGGEN8L"
 
   # ==========================================
@@ -221,4 +221,4 @@ defaultContentLanguageInSubdir = false
 #   不覆盖的话，德语页的 <meta description> 与页脚标语会是英文
 [languages.de.params]
   tagline = "Reise-eSIM-Tarife & Preise vergleichen"
-  description = "eSIM Sift ist ein unabhängiger eSIM-Preisvergleich: echte Prepaid-Tarife aller großen Reise-eSIM-Anbieter, sortiert nach $/GB und $/Tag."
+  description = "eSIMSift ist ein unabhängiger eSIM-Preisvergleich: echte Prepaid-Tarife aller großen Reise-eSIM-Anbieter, sortiert nach $/GB und $/Tag."

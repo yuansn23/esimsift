@@ -3,10 +3,10 @@ title: "Reise-eSIM installieren auf iPhone und Android"
 hero: "travel-esim-illustration-007.webp"
 hero_alt: "Eine Reisende folgt einer Schritt-für-Schritt-Checkliste auf dem Smartphone, um eine Reise-eSIM zu installieren"
 date: 2026-10-01
-description: "So installierst du eine eSIM in fünf Minuten: eSIM Sift behandelt den Aktivierungszeitpunkt, QR- und App-Installation und die Fehler, die du vor dem Flug vermeiden solltest."
+description: "So installierst du eine eSIM in fünf Minuten: eSIMSift behandelt den Aktivierungszeitpunkt, QR- und App-Installation und die Fehler, die du vor dem Flug vermeiden solltest."
 faq_heading: "Was du vor der Installation einer eSIM wissen solltest"
 prompt_answer: "Eine Reise-eSIM zu installieren dauert im WLAN etwa zwei Minuten, und der sicherste Zeitpunkt ist vor dem Flug. Kaufe den Tarif, scanne den QR-Code des Anbieters oder füge ihn über die App des Anbieters hinzu, gib der Leitung einen Namen und lass sie ausgeschaltet, bis du landest. Bei der Ankunft schaltest du die eSIM-Leitung ein und setzt sie als Leitung für mobile Daten."
-h2_answer: "Reise-eSIM installieren kurz erklärt"
+h2_answer: "Reise-eSIM installieren Schritt für Schritt"
 h2_facts: "Fakten zur eSIM-Installation"
 facts:
   - label: "Bester Zeitpunkt"
@@ -146,4 +146,4 @@ Die praktische Regel ist einfacher. Kaufe keinen lang laufenden Tarif in derselb
 
 ## Zwei Gewohnheiten gegen 90 % der Probleme
 
-Installiere im heimischen WLAN mit geladenem Smartphone und mach einen Screenshot der Bestätigung — sie enthält den QR-Code, die SM-DP+-Adresse und den Aktivierungscode, also alles, wonach der Support fragen wird. Dann bei der Landung: Flugmodus zehn Sekunden, aus, eine Minute warten. Noch auf Tarifsuche? Der [Preisvergleich](/de/compare/) von eSIM Sift listet jeden Anbieter für dein Reiseziel — [Frankreich](/de/compare/france/) und [Griechenland](/de/compare/greece/) sind beliebte Einstiege — und der [Kostenrechner](/de/tools/) wählt den günstigsten Tarif, der deine Daten und deinen Zeitraum abdeckt.
+Installiere im heimischen WLAN mit geladenem Smartphone und mach einen Screenshot der Bestätigung — sie enthält den QR-Code, die SM-DP+-Adresse und den Aktivierungscode, also alles, wonach der Support fragen wird. Dann bei der Landung: Flugmodus zehn Sekunden, aus, eine Minute warten. Noch auf Tarifsuche? Der [Preisvergleich](/de/compare/) von eSIMSift listet jeden Anbieter für dein Reiseziel — [Frankreich](/de/compare/france/) und [Griechenland](/de/compare/greece/) sind beliebte Einstiege — und der [Kostenrechner](/de/tools/) wählt den günstigsten Tarif, der deine Daten und deinen Zeitraum abdeckt.

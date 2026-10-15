@@ -3,7 +3,7 @@ title: "Vietnam eSIM"
 iso: VN
 weight: 16
 seo:
-  description: "eSIM Sift compares every Vietnam eSIM: 185 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIMSift compares every Vietnam eSIM: 185 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 The market in Vietnam looks mid-market on entry price and much better on value. 300MB / 1 Day from Yesim is the cheapest buy in Vietnam at $0.51. In Vietnam, the same $0.51 reaches about 870MB at the $0.60/GB rate. Per-gigabyte pricing is set by Roamic at $0.60 for 50GB over 30 days. Between {{< count-providers >}} providers there are 185 plans for Vietnam on file, 97 carrying an unlimited label.

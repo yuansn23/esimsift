@@ -1,6 +1,6 @@
 ---
 title: "Terms of Service: Price Data Accuracy and Liability"
-description: "The terms of service for using eSIM Sift, including our price-data disclaimer and the limits of our editorial liability."
+description: "The terms of service for using eSIMSift, including our full price-data disclaimer and the limits of our editorial liability."
 # TODO(launch): legal review not yet completed. This reminder used to be a body line
 # (the italic underscore-wrapped "Todo" sentence) that Markdown rendered as visible
 # text to readers and crawlers; moved into front matter 2026-10-07. Delete once reviewed.
@@ -8,7 +8,7 @@ description: "The terms of service for using eSIM Sift, including our price-data
 
 ## Use of the site
 
-eSIM Sift publishes price comparisons and editorial guidance for informational purposes. Prices are checked on a published schedule but can change at any provider's discretion - always confirm the final price on the provider's own checkout page before purchasing.
+eSIMSift publishes price comparisons and editorial guidance for informational purposes. Prices are checked on a published schedule but can change at any provider's discretion - always confirm the final price on the provider's own checkout page before purchasing.
 
 ## No warranty
 
@@ -16,7 +16,7 @@ Derived metrics ($/GB, $/day, badges) are computed from listed prices at check t
 
 ## Liability
 
-To the maximum extent permitted by law, eSIM Sift is not liable for losses arising from pricing errors, plan changes or connectivity issues on any provider's network.
+To the maximum extent permitted by law, eSIMSift is not liable for losses arising from pricing errors, plan changes or connectivity issues on any provider's network.
 
 ## Contact
 

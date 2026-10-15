@@ -188,7 +188,7 @@ def selftest() -> int:
     f.write_text(CLEAN, encoding="utf-8")
     # 非 HTML 正例（[3]）：站点根 + 同标签 hreflang 交替链接都必须豁免
     NHC = {
-        "llms.txt": "# eSIM Sift\n"
+        "llms.txt": "# eSIMSift\n"
                     "- [Vergleich](https://www.esimsift.com/de/compare/): alles\n"
                     "- [Tarifdatenbank](https://www.esimsift.com/de/catalog.json): JSON\n"
                     "- [Startseite](https://www.esimsift.com/): Start\n",

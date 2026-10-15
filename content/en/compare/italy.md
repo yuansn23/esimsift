@@ -3,7 +3,7 @@ title: "Italy eSIM"
 iso: IT
 weight: 5
 seo:
-  description: "eSIM Sift compares every Italy eSIM: 204 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
+  description: "eSIMSift compares every Italy eSIM: 204 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
 ---
 
 In Italy the cheapest sticker and the best value are different plans. The cheapest way in is Yesim 500MB / 1 Day, listed at $0.51. Put $0.51 through the $0.32/GB rate in Italy and you would clear about 1.6GB. Cheapest by the gigabyte is Ubigi, with 240GB over 365 days at $0.32/GB. The full board is 204 plans for Italy from {{< count-providers >}} providers, 101 of them unlimited.

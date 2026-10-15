@@ -3,7 +3,7 @@ title: "Niederlande eSIM"
 iso: NL
 weight: 22
 seo:
-  description: "eSIM Sift vergleicht alle eSIM-Tarife für Niederlande: 209 echte Tarife von 10 Anbietern, günstigster Yesim ab $0.51, sortiert nach $/GB und $/Tag."
+  description: "eSIMSift vergleicht alle eSIM-Tarife für Niederlande: 209 echte Tarife von 10 Anbietern, günstigster Yesim ab $0.51, sortiert nach $/GB und $/Tag."
 ---
 
 Der Markt in den Niederlanden belohnt ein wenig Arithmetik. Yesim hält den Einstiegspreis mit 500 MB / 1 Tag für $0.51. Diese Lücke ist die Geschichte der Niederlande in einer Zeile: das 2,9-Fache des Tarifs für das kleinste Kontingent. Beim Tarif gewinnt Roamic, mit $0.36/GB für einen Block von 50 GB über 30 Tage. Der erfasste Katalog hält 209 Tarife für die Niederlande von {{< count-providers >}} Anbietern, 99 davon unbegrenzt.

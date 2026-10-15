@@ -1,6 +1,6 @@
 ---
 title: "eSIM-Tarife nach Land vergleichen: Bestpreise und $/GB"
-description: "Jeder Prepaid-Reise-eSIM-Tarif in einem eSIM-Sift-Index — filtere nach Land, sortiere nach Preis pro GB und vergleiche jeden Anbieter."
+description: "Jeder Prepaid-Reise-eSIM-Tarif in einem eSIMSift-Index — filtere nach Land, sortiere nach Preis pro GB und vergleiche jeden Anbieter."
 ---
 
 ## So vergleichst du Reise-eSIM-Tarife

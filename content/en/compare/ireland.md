@@ -3,7 +3,7 @@ title: "Ireland eSIM"
 iso: IE
 weight: 28
 seo:
-  description: "eSIM Sift compares every Ireland eSIM: 196 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIMSift compares every Ireland eSIM: 196 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 A quick sort of the board for Ireland separates the value buys from the filler. The cheapest plan on the board is Yesim's 500MB / 1 Day at $0.51. Put the same $0.51 through the $0.36/GB plan and you would clear about 1.4GB. Best value per gigabyte goes to Roamic, where 50GB over 30 days works out to $0.36 a gigabyte. We track {{< count-providers >}} providers here, listing 196 plans for Ireland between them, 98 of them unlimited.

@@ -24,7 +24,7 @@ title: "Was ist eine eSIM? Funktionsweise einfach erklärt (2026)"
 hero: "travel-esim-illustration-071.webp"
 hero_alt: "Eine Reisende hält ein Smartphone neben einen überdimensionalen SIM-Chip und Signalbalken — die Idee hinter einer eingebetteten Reise-eSIM"
 date: 2026-10-01
-description: "Was ist eine eSIM? eSIM Sift erklärt, wie eine fest eingebaute SIM funktioniert, was beim Installieren tatsächlich auf dem Gerät landet und was das für Anrufe und SMS im Ausland bedeutet."
+description: "Was ist eine eSIM? eSIMSift erklärt, wie eine fest eingebaute SIM funktioniert, was beim Installieren tatsächlich auf dem Gerät landet und was das für Anrufe und SMS im Ausland bedeutet."
 faq_heading: "Was du vor deiner ersten eSIM wissen solltest"
 prompt_answer: "Eine eSIM ist eine digitale SIM, die dein Smartphone auf einem fest eingebauten Chip speichert — es gibt also keine Plastikkarte zum Wechseln. Auf Reisen heißt das: Daten für ein Reiseziel vor dem Abflug kaufen, im WLAN installieren und die heimische SIM für Anrufe und SMS im Gerät lassen."
 h2_answer: "Was eine eSIM für Reisende bedeutet"
@@ -169,7 +169,7 @@ Innerhalb eines Reiseziels bestimmen drei Mechanismen, was du zahlst:
 - **Gültigkeitsfenster.** Kurze Fenster kosten weniger, laufen aber hart ab — ein Tarif, der am siebten Tag endet, ist am achten wertlos. Längere Fenster tauschen einen höheren Preis gegen das Überleben der ganzen Reise.
 - **Fair-Use-Richtlinien.** „Unlimited"-Tarife drosseln oder pausieren nach einer Tagesgrenze. Wir zitieren die Richtlinie jedes Anbieters wörtlich in der [Fair-Use-Prüfung](/de/research/fair-use-audit/), und unsere [Unlimited-eSIM-Analyse](/de/research/unlimited-esim/) zeigt, wo Tagespreise tatsächlich am günstigsten sind.
 
-Jede Länderseite — [Spanien-eSIM](/de/compare/spain/) oder [Italien-eSIM](/de/compare/italy/) — listet dann jeden Tarif der {{< count-providers >}} Anbieter, die eSIM Sift erfasst, nebeneinander. Unsicher, wie viele Gigabyte du brauchst? Der [Reisekostenrechner](/de/tools/) schätzt es aus dem, was du online tatsächlich tust.
+Jede Länderseite — [Spanien-eSIM](/de/compare/spain/) oder [Italien-eSIM](/de/compare/italy/) — listet dann jeden Tarif der {{< count-providers >}} Anbieter, die eSIMSift erfasst, nebeneinander. Unsicher, wie viele Gigabyte du brauchst? Der [Reisekostenrechner](/de/tools/) schätzt es aus dem, was du online tatsächlich tust.
 
 ## Bekommst du mit einer Reise-eSIM eine Rufnummer
 
@@ -185,7 +185,7 @@ title: "Reise-eSIM installieren auf iPhone und Android"
 hero: "travel-esim-illustration-007.webp"
 hero_alt: "Eine Reisende folgt einer Schritt-für-Schritt-Checkliste auf dem Smartphone, um eine Reise-eSIM zu installieren"
 date: 2026-10-01
-description: "So installierst du eine eSIM in fünf Minuten: eSIM Sift behandelt den Aktivierungszeitpunkt, QR- und App-Installation und die Fehler, die du vor dem Flug vermeiden solltest."
+description: "So installierst du eine eSIM in fünf Minuten: eSIMSift behandelt den Aktivierungszeitpunkt, QR- und App-Installation und die Fehler, die du vor dem Flug vermeiden solltest."
 faq_heading: "Was du vor der Installation einer eSIM wissen solltest"
 prompt_answer: "Eine Reise-eSIM zu installieren dauert im WLAN etwa zwei Minuten, und der sicherste Zeitpunkt ist vor dem Flug. Kaufe den Tarif, scanne den QR-Code des Anbieters oder füge ihn über die App des Anbieters hinzu, gib der Leitung einen Namen und lass sie ausgeschaltet, bis du landest. Bei der Ankunft schaltest du die eSIM-Leitung ein und setzt sie als Leitung für mobile Daten."
 h2_answer: "Reise-eSIM installieren kurz erklärt"
@@ -330,7 +330,7 @@ Die praktische Regel ist einfacher. Kaufe keinen lang laufenden Tarif in derselb
 
 ## Zwei Gewohnheiten gegen 90 % der Probleme
 
-Installiere im heimischen WLAN mit geladenem Smartphone und mach einen Screenshot der Bestätigung — sie enthält den QR-Code, die SM-DP+-Adresse und den Aktivierungscode, also alles, wonach der Support fragen wird. Dann bei der Landung: Flugmodus zehn Sekunden, aus, eine Minute warten. Noch auf Tarifsuche? Der [Preisvergleich](/de/compare/) von eSIM Sift listet jeden Anbieter für dein Reiseziel — [Frankreich](/de/compare/france/) und [Griechenland](/de/compare/greece/) sind beliebte Einstiege — und der [Kostenrechner](/de/tools/) wählt den günstigsten Tarif, der deine Daten und deinen Zeitraum abdeckt.
+Installiere im heimischen WLAN mit geladenem Smartphone und mach einen Screenshot der Bestätigung — sie enthält den QR-Code, die SM-DP+-Adresse und den Aktivierungscode, also alles, wonach der Support fragen wird. Dann bei der Landung: Flugmodus zehn Sekunden, aus, eine Minute warten. Noch auf Tarifsuche? Der [Preisvergleich](/de/compare/) von eSIMSift listet jeden Anbieter für dein Reiseziel — [Frankreich](/de/compare/france/) und [Griechenland](/de/compare/greece/) sind beliebte Einstiege — und der [Kostenrechner](/de/tools/) wählt den günstigsten Tarif, der deine Daten und deinen Zeitraum abdeckt.
 '''
 
 PAGES = {

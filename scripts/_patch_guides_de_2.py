@@ -20,7 +20,7 @@ title: "eSIM oder physische SIM: Was gewinnt auf Reisen 2026"
 hero: "travel-esim-illustration-058.webp"
 hero_alt: "Eine Reisende wiegt vor einer Auslandsreise eine physische SIM-Karte gegen eine eSIM ab"
 date: 2026-10-01
-description: "eSIM oder physische SIM auf Reisen? eSIM Sift vergleicht Preis, Einrichtungszeit, Nummernerhalt und Sicherheit — einschließlich der Fälle, in denen eine lokale SIM noch gewinnt."
+description: "eSIM oder physische SIM auf Reisen? eSIMSift vergleicht Preis, Einrichtungszeit, Nummernerhalt und Sicherheit — einschließlich der Fälle, in denen eine lokale SIM noch gewinnt."
 faq_heading: "Solltest du im Ausland eine eSIM oder eine physische SIM nutzen"
 prompt_answer: "Eine eSIM und eine physische SIM liefern dasselbe Netz und dieselbe Geschwindigkeit, weil beide sich beim selben Betreiber einbuchen. Was sich unterscheidet, sind Form und Zeitpunkt. Eine physische SIM ist eine Karte, die du wechselst, während eine eSIM ein Profil ist, das du vor der Reise installierst und parallel zu deiner Heimatleitung laufen lassen kannst — und eine physische SIM gewinnt weiterhin bei netzgesperrten Smartphones und dort, wo ein lokales Prepaid-Angebot jede eSIM-Marke unterbietet."
 h2_answer: "Welche Variante kurz gesagt gewinnt"
@@ -68,7 +68,7 @@ Auf jeder Destination gibt es drei Preisebenen, und wer sie verwechselt, zahlt z
 - **Offizielle Ladengeschäfte der Betreiber in der Innenstadt** — echt wettbewerbsfähig, bei großen lokalen Paketen manchmal günstiger, aber mit Zeit und Papierkram bezahlt: den Laden finden, anstehen und in vielen Ländern die SIM vor dem ersten Betrieb gegen den Pass registrieren.
 - **Online-Anbieter von eSIMs** — ausgezeichnete Preise, vergleichbar über die {{< count-providers >}} Anbieter, die wir erfassen, bevor du etwas kaufst. Die [Ländervergleiche](/de/compare/) stellen die Tarife jedes Anbieters nebeneinander, und der [Preisindex](/de/research/esim-price-index/) sortiert die {{< count-countries >}} Reiseziele, die wir erfassen, nach dem besten Preis pro Gigabyte.
 
-Die praktische Lehre ist einfach. Eine online gekaufte eSIM konkurriert mit der dritten Ebene und schlägt die erste; eine im Betreiberladen gekaufte lokale SIM konkurriert beim Preis, verliert aber bei der Zeit. Was die Preisdatenbank von eSIM Sift hinzufügt, ist die Möglichkeit, diesen Satz für deine konkrete Destination zu prüfen, bevor du dich festlegst — die Live-Tabelle auf dieser Seite zeigt die günstigsten Einstiegstarife, die wir derzeit erfassen, also die Untergrenze, die jeder physische Schalter schlagen muss.
+Die praktische Lehre ist einfach. Eine online gekaufte eSIM konkurriert mit der dritten Ebene und schlägt die erste; eine im Betreiberladen gekaufte lokale SIM konkurriert beim Preis, verliert aber bei der Zeit. Was die Preisdatenbank von eSIMSift hinzufügt, ist die Möglichkeit, diesen Satz für deine konkrete Destination zu prüfen, bevor du dich festlegst — die Live-Tabelle auf dieser Seite zeigt die günstigsten Einstiegstarife, die wir derzeit erfassen, also die Untergrenze, die jeder physische Schalter schlagen muss.
 
 ## eSIM gegen physische SIM auf einen Blick
 
@@ -160,7 +160,7 @@ title: "Dual-SIM mit eSIM: Heimatnummer im Ausland behalten"
 hero: "travel-esim-illustration-018.webp"
 hero_alt: "Eine Reisende steigt ins Flugzeug, während sie ein Smartphone nutzt, das gleichzeitig eine Heimatnummer und eine Reise-eSIM betreibt"
 date: 2026-10-01
-description: "So funktioniert Dual-SIM mit einer eSIM plus einer physischen SIM: eSIM Sift erklärt, wie du deine Heimatnummer behältst, während die eSIM Daten trägt."
+description: "So funktioniert Dual-SIM mit einer eSIM plus einer physischen SIM: eSIMSift erklärt, wie du deine Heimatnummer behältst, während die eSIM Daten trägt."
 faq_heading: "Ist Dual-SIM mit einer eSIM das Richtige für dich"
 prompt_answer: "Dual-SIM lässt ein Smartphone zwei Leitungen gleichzeitig betreiben, und die übliche Reise-Einrichtung ist eine physische SIM mit deiner Heimatnummer plus eine eSIM mit lokalen Daten. Anrufe und SMS kommen weiter auf der Heimatnummer an, während mobile Daten über die eSIM laufen — vorausgesetzt du setzt die eSIM als Datenleitung und lässt das Daten-Roaming auf der Heimatleitung aus."
 h2_answer: "Die Dual-SIM-Einrichtung fürs Ausland"
@@ -296,7 +296,7 @@ Dreißig Sekunden in den Einstellungen, einmal, vor dem Flughafen — und jedes 
 
 Zwei registrierte Leitungen kosten etwas Standby-Akku — ein paar Prozent pro Tag auf moderner Hardware, selten spürbar neben der Bildschirmzeit am Reisetag. Die Geschwindigkeit ist unberührt: Die Daten der eSIM laufen in denselben lokalen Netzen mit denselben Geschwindigkeiten, die eine lokale SIM bekommen würde, und 5G verankert sich auf den meisten Geräten an der Datenleitung, die eSIM bekommt also volle lokale Geschwindigkeiten, wo Netze sie bieten. Willst du null Verbrauch auf der Heimatleitung, schalte die heimische SIM an datenintensiven Tagen ganz aus und wieder ein, wenn du ihre SMS brauchst — nichts geht verloren und nichts wird neu installiert; es ist ein Schalter.
 
-Bereit, den eSIM-Schacht zu füllen? Die [Vergleichstabelle](/de/compare/) von eSIM Sift listet jeden Anbieter pro Destination — [Italien](/de/compare/italy/), [Japan](/de/compare/japan/) und [Spanien](/de/compare/spain/) zeigen das Layout — oder prüfe in der [Unlimited-Rangliste](/de/research/unlimited-esim/), wo unbegrenzte Daten pro Tag am günstigsten sind, ideal für diese Zwei-Leitungs-Einrichtung. Viel Streaming? Lies zuerst die [Fair-Use-Prüfung](/de/research/fair-use-audit/) — die Drosselungsregel jedes Unlimited-Tarifs wird wörtlich zitiert. Knappes Budget? Der [Preisindex](/de/research/esim-price-index/) verfolgt typische Reisekosten pro Land, und die [aktuellen Angebote](/de/esim-deals/) fassen aktive Rabatte zusammen.
+Bereit, den eSIM-Schacht zu füllen? Die [Vergleichstabelle](/de/compare/) von eSIMSift listet jeden Anbieter pro Destination — [Italien](/de/compare/italy/), [Japan](/de/compare/japan/) und [Spanien](/de/compare/spain/) zeigen das Layout — oder prüfe in der [Unlimited-Rangliste](/de/research/unlimited-esim/), wo unbegrenzte Daten pro Tag am günstigsten sind, ideal für diese Zwei-Leitungs-Einrichtung. Viel Streaming? Lies zuerst die [Fair-Use-Prüfung](/de/research/fair-use-audit/) — die Drosselungsregel jedes Unlimited-Tarifs wird wörtlich zitiert. Knappes Budget? Der [Preisindex](/de/research/esim-price-index/) verfolgt typische Reisekosten pro Land, und die [aktuellen Angebote](/de/esim-deals/) fassen aktive Rabatte zusammen.
 '''
 
 COMPAT = '''---
@@ -348,7 +348,7 @@ faqs:
     a: "Vier Dinge, und nur das erste ist Hardware. Ein eSIM-fähiges Gerät, ein netzentsperrtes Smartphone, eine EID an die der Anbieter das Profil binden kann, und einen Installationsweg, den dein Smartphone ausführen kann — QR-Code- und Web-Installationen brauchen nichts außer einer Kamera und einer Verbindung, während Anbieter mit App-Weg eine Mindest-OS-Version und eine Kontoregistrierung hinzufügen. Fehlt eines der vier, schlägt die Installation fehl, meist mit einem vagen Aktivierungsfehler statt einem klaren Grund."
 ---
 
-Dreißig Sekunden entscheiden, ob die Vergleiche dieser Seite für dich gelten: Entweder dein Smartphone hat eSIM-Hardware oder nicht, und entweder ist es netzentsperrt oder nicht. Beide Checks passieren am Gerät selbst — kein Datenblattsuchen nötig. Aber zwei weitere Fallen verstecken sich hinter diesem Wählertest, und sie versenken mehr Reisen als fehlende Hardware je tat: regionale Varianten (derselbe Modellname mit unterschiedlicher Innerei je Markt) und Installationswege der Anbieter, die still eigene Anforderungen hinzufügen. Dieser Ratgeber behandelt alle vier, und die durchsuchbare Liste verifizierter Modelle, die eSIM Sift unten pflegt, klärt den Rest.
+Dreißig Sekunden entscheiden, ob die Vergleiche dieser Seite für dich gelten: Entweder dein Smartphone hat eSIM-Hardware oder nicht, und entweder ist es netzentsperrt oder nicht. Beide Checks passieren am Gerät selbst — kein Datenblattsuchen nötig. Aber zwei weitere Fallen verstecken sich hinter diesem Wählertest, und sie versenken mehr Reisen als fehlende Hardware je tat: regionale Varianten (derselbe Modellname mit unterschiedlicher Innerei je Markt) und Installationswege der Anbieter, die still eigene Anforderungen hinzufügen. Dieser Ratgeber behandelt alle vier, und die durchsuchbare Liste verifizierter Modelle, die eSIMSift unten pflegt, klärt den Rest.
 
 ## Hat eine eSIM eine Größe
 

@@ -20,7 +20,7 @@ faqs:
   - q: "Wann sollte ich meine Asien-eSIM kaufen?"
     a: "Kauf sie ein oder zwei Tage vor der Asien-Reise, damit der QR-Code bereitliegt und du ihn im WLAN installieren kannst. Die Preise auf dieser Seite sind am angegebenen Datum geprüft, die Asien-Tabelle spiegelt also das, was die Anbieter derzeit nennen."
   - q: "Welche Anbieter verkaufen eSIMs für Asien?"
-    a: "Zehn Marken verkaufen in die Reiseziele, die wir hier erfassen, und die günstigste wechselt von Land zu Land, statt bei einem Unternehmen zu bleiben. Die Tabelle oben nennt den günstigsten Anbieter in jedem der 13 Reiseziele, die Siegertabelle zeigt, welche Marke in diesem Monat in den meisten davon am günstigsten ist."
+    a: "Jede Marke, die wir erfassen, verkauft in die Reiseziele hier, und die günstigste wechselt von Land zu Land, statt bei einem Unternehmen zu bleiben. Die Tabelle oben nennt den günstigsten Anbieter in jedem der 13 Reiseziele, die Siegertabelle zeigt, welche Marke in diesem Monat in den meisten davon am günstigsten ist."
   - q: "Gibt es einen Asien-Tarif für jedes Land?"
     a: "Kein Bündel deckt alle 13 Reiseziele ab. Regionale Asien-Tarife bringen eigene Länderlisten mit, und das chinesische Festland, Hongkong und Macau stehen meist als separate Posten statt in einem Bündel. Vergleiche die Länderliste des Tarifs mit deiner tatsächlichen Route, bevor du kaufst — und denk daran, dass ein Japan- oder Thailand-Tarif an der Grenze endet."
 ---

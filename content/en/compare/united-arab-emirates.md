@@ -3,7 +3,7 @@ title: "United Arab Emirates eSIM"
 iso: AE
 weight: 41
 seo:
-  description: "eSIM Sift compares every United Arab Emirates eSIM: 182 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIMSift compares every United Arab Emirates eSIM: 182 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 The market in the United Arab Emirates rewards a little arithmetic. The cheapest option in the United Arab Emirates is Yesim 105MB / 1 Day at $0.51. The same spend in the United Arab Emirates at $1.10/GB would give you about 475MB. The best rate here is Jetpac's 10GB plan at $1.10/GB. The tracked catalogue holds 182 plans for the United Arab Emirates from {{< count-providers >}} providers, 97 of them unlimited.

@@ -5,5 +5,5 @@ provider: roami
 layout: provider
 seo:
   title: "Roami Südafrika eSIM: 23 Tarife, 3-30 Tage, ab $3.99"
-  description: "Alle 23 Roami-Tarife für Südafrika in einer Tabelle: 3-30 Tage ab $3.99, $1.55/GB. eSIM Sift vergleicht jede Option in einer Tabelle."
+  description: "Alle 23 Roami-Tarife für Südafrika in einer Tabelle: 3-30 Tage ab $3.99, $1.55/GB. eSIMSift vergleicht jede Option in einer Tabelle."
 ---

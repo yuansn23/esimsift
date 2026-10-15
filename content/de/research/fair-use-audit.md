@@ -1,7 +1,7 @@
 ---
 title: "Fair-Use-Prüfung 2026: Was „unlimited“ wirklich bedeutet"
 date: 2026-10-01
-description: "Was unbegrenzte eSIM-Tarife wirklich drosseln: eSIM Sift prüft die Fair-Use-Richtlinie jedes erfassten Anbieters, Tarif für Tarif, wörtlich."
+description: "Was unbegrenzte eSIM-Tarife wirklich drosseln: eSIMSift prüft die Fair-Use-Richtlinie jedes erfassten Anbieters, Tarif für Tarif, wörtlich."
 layout: fair-use-audit
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Alle eSIM-Anbieter-Duelle auf echten Preisen verglichen"
-description: "Jedes eSIM-Anbieter-Duell in einem eSIM-Sift-Index — Airalo vs Holafly, Roami vs Roamic und jedes andere Paar, Land für Land berechnet."
+description: "Jedes eSIM-Anbieter-Duell in einem eSIMSift-Index — Airalo vs Holafly, Roami vs Roamic und jedes andere Paar, Land für Land berechnet."
 layout: matchups
 nolist: true
 # TODO(de)：本页由 scripts/gen_vs_pages.py 的姊妹页组成，正文短。D9 解禁时统一删掉 noindex 行。

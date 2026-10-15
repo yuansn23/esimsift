@@ -1,11 +1,11 @@
 ---
 title: "Affiliate Disclosure: Commissions and Editorial Rules"
-description: "How eSIM Sift earns referral commissions from eSIM providers, and the disclosure rules we hold ourselves to across every page we publish."
+description: "How eSIMSift earns referral commissions from eSIM providers, and the disclosure rules we hold ourselves to across every page we publish."
 ---
 
 ## Affiliate relationships
 
-eSIM Sift earns referral commissions from some of the providers listed on this site. When you click certain outbound links and buy a plan, we may receive a commission at no additional cost to you. Links that carry commission are marked with `rel="sponsored"` in this page's HTML.
+eSIMSift earns referral commissions from some of the providers listed on this site. When you click certain outbound links and buy a plan, we may receive a commission at no additional cost to you. Links that carry commission are marked with `rel="sponsored"` in this page's HTML.
 
 ## The rules that keep the comparisons honest
 

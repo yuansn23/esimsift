@@ -3,7 +3,7 @@ title: "Kanada eSIM"
 iso: CA
 weight: 34
 seo:
-  description: "eSIM Sift vergleicht alle eSIM-Tarife für Kanada: 221 echte Tarife von 10 Anbietern, günstigster Yesim ab $0.51, sortiert nach $/GB mit ausgewerteten Fair-Use-Grenzen."
+  description: "eSIMSift vergleicht alle eSIM-Tarife für Kanada: 221 echte Tarife von 10 Anbietern, günstigster Yesim ab $0.51, sortiert nach $/GB mit ausgewerteten Fair-Use-Grenzen."
 ---
 
 Eine kurze Sortierung des Angebots für Kanada trennt die guten Käufe von der Füllware. Yesim 199 MB / 1 Tag ist mit $0.51 der billigste Kauf in Kanada. Kleine Kontingente kosten hier rund das 4,1-Fache des Tarifs der großen. Die Wertungskrone gehört aloSIM, mit $0.64/GB für 50 GB über 10 Tage. Wir erfassen hier {{< count-providers >}} Anbieter, die zusammen 221 Tarife für Kanada listen, 99 davon unbegrenzt.

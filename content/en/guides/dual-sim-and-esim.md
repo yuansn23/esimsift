@@ -3,7 +3,7 @@ title: "Dual SIM With eSIM: Keep Your Home Number Abroad"
 hero: "travel-esim-illustration-018.webp"
 hero_alt: "A traveler boarding a plane while using a phone that runs a home number and a travel eSIM at once"
 date: 2026-10-01
-description: "How dual SIM works with one eSIM plus one physical SIM: eSIM Sift explains keeping your home number while the eSIM carries data."
+description: "How dual SIM works with one eSIM plus one physical SIM: eSIMSift explains keeping your home number while the eSIM carries data."
 faq_heading: "Is dual SIM with an eSIM right for you"
 prompt_answer: "Dual SIM lets one phone run two lines at once, and the standard travel setup is a physical SIM holding your home number and an eSIM carrying local data. Calls and texts keep arriving on the home number while mobile data runs on the eSIM, provided you set the eSIM as the line for data and leave data roaming switched off on the home line."
 h2_answer: "The dual SIM setup that works abroad"
@@ -137,4 +137,4 @@ Thirty seconds in settings, once, before the airport — and every scenario abov
 
 Two registered lines cost a little standby battery — a few percent a day on modern hardware, rarely noticeable next to travel-day screen time. Speed is unaffected: the eSIM's data runs on the same local networks at the same speeds a local SIM would get, and 5G anchors to the data line on most hardware, so the eSIM gets full local speeds wherever networks offer it. If you want zero home-line drain, toggle the home SIM off entirely for data-heavy days and back on when you need its SMS — nothing is lost or reinstalled; it is a switch.
 
-Ready to fill the eSIM slot? eSIM Sift's [comparison table](/compare/) lists every provider per destination — [Italy](/compare/italy/), [Japan](/compare/japan/) and [Spain](/compare/spain/) show the layout — or check where unlimited data is cheapest per day in the [unlimited league table](/research/unlimited-esim/), ideal for this two-line setup. Heavy streaming? Read the [fair-use audit](/research/fair-use-audit/) first — every unlimited plan's throttle rule is quoted verbatim. On a budget? The [price index](/research/esim-price-index/) tracks typical trip costs by country, and [current deals](/esim-deals/) rounds up active discounts.
+Ready to fill the eSIM slot? eSIMSift's [comparison table](/compare/) lists every provider per destination — [Italy](/compare/italy/), [Japan](/compare/japan/) and [Spain](/compare/spain/) show the layout — or check where unlimited data is cheapest per day in the [unlimited league table](/research/unlimited-esim/), ideal for this two-line setup. Heavy streaming? Read the [fair-use audit](/research/fair-use-audit/) first — every unlimited plan's throttle rule is quoted verbatim. On a budget? The [price index](/research/esim-price-index/) tracks typical trip costs by country, and [current deals](/esim-deals/) rounds up active discounts.

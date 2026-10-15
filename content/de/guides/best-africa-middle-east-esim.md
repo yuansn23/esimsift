@@ -20,7 +20,7 @@ faqs:
   - q: "Muss ich mich für diese eSIMs registrieren oder ausweisen?"
     a: "Einige Länder dieser Region verlangen vor der Aktivierung einen Pass-Schritt oder eine lokale Registrierung. Prüfe die jeweilige Länderseite für die lokale Regel — die Vorgabe steht dort, statt vorausgesetzt zu werden."
   - q: "Welche Anbieter verkaufen eSIMs für Afrika und Nahost?"
-    a: "Zehn Marken verkaufen in die acht Reiseziele dieser Tabelle, und die günstigste wechselt von Land zu Land. Die Tabelle oben nennt den günstigsten Anbieter in jedem Reiseziel, die Siegertabelle zeigt, welche Marke in diesem Monat in den meisten davon am günstigsten ist."
+    a: "Jede Marke, die wir erfassen, verkauft in die acht Reiseziele dieser Tabelle, und die günstigste wechselt von Land zu Land. Die Tabelle oben nennt den günstigsten Anbieter in jedem Reiseziel, die Siegertabelle zeigt, welche Marke in diesem Monat in den meisten davon am günstigsten ist."
   - q: "Gibt es einen Tarif für Afrika und Nahost zusammen?"
     a: "Die beiden Hälften werden meist als getrennte Bündel verkauft, und die Reiseziele hier verteilen sich darauf — die VAE, Saudi-Arabien, Katar und Israel auf der Nahost-Seite, Marokko, Ägypten, Kenia und Südafrika auf der afrikanischen. Prüfe, dass das Bündel jedes Land deiner Route nennt; ein als Nahost verkaufter Tarif enthält Kenia oder Südafrika nicht."
 ---

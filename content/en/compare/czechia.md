@@ -3,7 +3,7 @@ title: "Czechia eSIM"
 iso: CZ
 weight: 30
 seo:
-  description: "eSIM Sift compares every Czechia eSIM: 175 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIMSift compares every Czechia eSIM: 175 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 Providers in Czechia price the same gigabyte very differently. For Czechia, the lowest price on file is Yesim's Czech Republic at $0.51. Put the same $0.51 through the $0.55/GB plan and you would clear about 950MB. Roami wins on rate, at $0.55/GB for a 100GB / 30-day bucket. That is 98 unlimited plans among 175 options for Czechia from {{< count-providers >}} providers.

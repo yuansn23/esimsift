@@ -1,12 +1,12 @@
 ---
 title: "Affiliate-Hinweis: Provisionen und redaktionelle Regeln"
-description: "Wie eSIM Sift Empfehlungsprovisionen von eSIM-Anbietern verdient und welchen Offenlegungsregeln wir uns auf jeder Seite unterwerfen."
+description: "Wie eSIMSift Empfehlungsprovisionen von eSIM-Anbietern verdient und welchen Offenlegungsregeln wir uns auf jeder Seite unterwerfen."
 # TODO(de)：正文已德语化。D9 解禁时统一删掉上面 noindex 行。
 ---
 
 ## Affiliate-Beziehungen
 
-eSIM Sift erhält Empfehlungsprovisionen von einigen der auf dieser Seite gelisteten Anbieter. Wenn du bestimmte ausgehende Links anklickst und einen Tarif kaufst, erhalten wir möglicherweise eine Provision – ohne Mehrkosten für dich. Links mit Provision sind im HTML dieser Seite mit `rel="sponsored"` gekennzeichnet.
+eSIMSift erhält Empfehlungsprovisionen von einigen der auf dieser Seite gelisteten Anbieter. Wenn du bestimmte ausgehende Links anklickst und einen Tarif kaufst, erhalten wir möglicherweise eine Provision – ohne Mehrkosten für dich. Links mit Provision sind im HTML dieser Seite mit `rel="sponsored"` gekennzeichnet.
 
 ## Die Regeln für ehrliche Vergleiche
 

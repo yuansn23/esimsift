@@ -3,7 +3,7 @@ title: "Singapore eSIM"
 iso: SG
 weight: 8
 seo:
-  description: "eSIM Sift compares every Singapore eSIM: 217 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIMSift compares every Singapore eSIM: 217 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 Two pricing models compete in Singapore, and they suit different trips. The cheapest option in Singapore is Yesim 500MB / 1 Day at $0.51. Small buckets cost roughly 2.6 times the rate of the big ones here. On cost per gigabyte Roamic leads with a 50GB / 30-day plan at $0.40/GB. The tracked catalogue holds 217 plans for Singapore from {{< count-providers >}} providers, 110 of them unlimited.

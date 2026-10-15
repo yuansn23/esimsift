@@ -1,6 +1,6 @@
 ---
 title: "eSIM-Ratgeber: auswählen, installieren, nutzen"
-description: "Praxisnahe Reise-eSIM-Ratgeber von eSIM Sift — Tarife auswählen, Profile installieren, Probleme lösen. Für Reisende geschrieben."
+description: "Praxisnahe Reise-eSIM-Ratgeber von eSIMSift — Tarife auswählen, Profile installieren, Probleme lösen. Für Reisende geschrieben."
 prompt_answer: "Diese Ratgeber behandeln die praktische Seite von Reise-eSIMs: was eine eSIM überhaupt ist, wie du ein Profil auf iPhone und Android installierst und aktivierst, worin sie sich von einer physischen SIM unterscheidet, wie Festnetznummer und Reiseline gleichzeitig laufen, und wie du in 30 Sekunden prüfst, ob dein Smartphone eSIM unterstützt."
 h2_answer: "Was diese eSIM-Ratgeber abdecken"
 # 2026-10-09 复核：旧注释说「栏目页外壳仍走英文占位 key」已不成立 ——

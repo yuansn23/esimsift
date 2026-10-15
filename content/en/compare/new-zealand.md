@@ -3,7 +3,7 @@ title: "New Zealand eSIM"
 iso: NZ
 weight: 49
 seo:
-  description: "eSIM Sift compares every New Zealand eSIM: 174 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIMSift compares every New Zealand eSIM: 174 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 The cheapest plan in New Zealand is rarely the cheapest trip. The cheapest option in New Zealand is Yesim 500MB / 1 Day at $0.51. The same money inside the 50GB bucket reaches about 687MB at $0.76/GB. Best value per gigabyte goes to Roamic, where 50GB over 30 days works out to $0.76 a gigabyte. The full board is 174 plans for New Zealand from {{< count-providers >}} providers, 98 of them unlimited.

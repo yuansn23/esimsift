@@ -3,7 +3,7 @@ title: "Taiwan eSIM"
 iso: TW
 weight: 12
 seo:
-  description: "eSIM Sift compares every Taiwan eSIM: 161 real plans from 10 providers, cheapest Yesim from $0.57, ranked by $/GB and $/day."
+  description: "eSIMSift compares every Taiwan eSIM: 161 real plans from 10 providers, cheapest Yesim from $0.57, ranked by $/GB and $/day."
 ---
 
 Sort the table for Taiwan by cost per gigabyte and the order changes. The cheapest plan on the board is Yesim's 500MB / 1 Day at $0.57. Put the same $0.57 through the $0.56/GB plan and you would clear about 1.0GB. Roamic wins on rate, at $0.56/GB for a 50GB / 30-day bucket. Counting everything, {{< count-providers >}} providers list 161 plans for Taiwan, of which 73 are unlimited.

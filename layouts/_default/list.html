@@ -33,9 +33,17 @@
          （`Best Asia eSIM 2026: 13 Countries Compared`），
          而 check_headings.py 对 h2/h3 禁 `, ; : — –` —— 放进去构建当场失败。
          所以与 /compare/<国>/ 的指南卡同款：用 font-display 的 <span>，不是标题元素。
-       ⚠ 复核日只读 front matter（lastmod → date），**不用 .Lastmod**：
-         后者末段兜底是文件 mtime，日期会跟着 checkout 走 —— 与 /networks/ 页
-         同一条红线（一份事实一份真源，且日期必须与内容挂钩）。无则整条不渲染。 ── */}}
+         ⚠ 复核日只读 front matter（lastmod → date），**不用 .Lastmod**：
+           后者末段兜底是文件 mtime，日期会跟着 checkout 走 —— 与 /networks/ 页
+           同一条红线（一份事实一份真源，且日期必须与内容挂钩）。无则整条不渲染。
+
+       2026-10-15（第九十三轮后修订，用户定）：
+       ① 卡片**显示配图** —— 取 front matter 的 `hero`（11 篇指南 en/de 全部已有，
+          无需新增字段）；宽高走 `imageConfig` 实测值，防 CLS。全部插图统一
+          2848×1470（宽高比 1.9374），所以用 `h-auto w-full` 原生比例即可 ——
+          零裁切，且各卡高度天然一致，比硬套 aspect-[16/9] 更保真。
+       ② 栅格 **一排 3 个**（sm 2 列 / lg 3 列）；带图后 gap-3 太挤，放宽到 gap-5。
+       ⚠ 图片 alt 留空：卡片里紧随其后的就是标题文字，重复朗读是噪音。 ── */}}
   {{- $regional := slice }}{{ $basics := slice }}
   {{- range .Pages }}
     {{- if eq .Params.layout "region" }}{{ $regional = $regional | append . }}{{ else }}{{ $basics = $basics | append . }}{{ end }}
@@ -44,17 +52,23 @@
   <section class="mt-10" aria-labelledby="guide-regional">
     <h2 id="guide-regional" class="mt-2 text-2xl font-bold">{{ i18n "default_list__group_regional" | safeHTML }}</h2>
     <p class="mt-1.5 text-sm text-ink-500">{{ i18n "default_list__n_guides" (dict "n" (len .)) | safeHTML }}</p>
-    <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+    <ul class="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {{ range . }}
       <li>
-        <a href="{{ .RelPermalink }}" class="card card-hover group flex h-full flex-col p-5">
-          <span class="font-display text-base font-bold text-ink-950 group-hover:text-brand-700">{{ .LinkTitle }}</span>
-          <span class="mt-1.5 flex-1 text-sm leading-relaxed text-ink-500">{{ .Description }}</span>
-          <span class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-ink-50 pt-2 text-xs text-ink-400">
-            <span>{{ i18n "default_list__min_read" (dict "n" .ReadingTime) | safeHTML }}</span>
-            {{ with or .Params.lastmod .Params.date }}<span>{{ i18n "default_list__last_reviewed" (dict "date" (time.Format ":date_medium" .)) | safeHTML }}</span>{{ end }}
-          </span>
-        </a>
+          <a href="{{ .RelPermalink }}" class="card card-hover group flex h-full flex-col overflow-hidden">
+            {{- with .Params.hero }}
+            {{- $ic := imageConfig (printf "static/img/esim/%s" .) }}
+            <img src="/img/esim/{{ . }}" alt="" width="{{ $ic.Width }}" height="{{ $ic.Height }}" loading="lazy" decoding="async" class="h-auto w-full">
+            {{- end }}
+            <span class="flex flex-1 flex-col p-5">
+              <span class="font-display text-base font-bold text-ink-950 group-hover:text-brand-700">{{ .LinkTitle }}</span>
+              <span class="mt-1.5 flex-1 text-sm leading-relaxed text-ink-500">{{ .Description }}</span>
+              <span class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-ink-50 pt-2 text-xs text-ink-400">
+                <span>{{ i18n "default_list__min_read" (dict "n" .ReadingTime) | safeHTML }}</span>
+                {{ with or .Params.lastmod .Params.date }}<span>{{ i18n "default_list__last_reviewed" (dict "date" (time.Format ":date_medium" .)) | safeHTML }}</span>{{ end }}
+              </span>
+            </span>
+          </a>
       </li>
       {{ end }}
     </ul>
@@ -64,17 +78,23 @@
   <section class="mt-10" aria-labelledby="guide-basics">
     <h2 id="guide-basics" class="mt-2 text-2xl font-bold">{{ i18n "default_list__group_basics" | safeHTML }}</h2>
     <p class="mt-1.5 text-sm text-ink-500">{{ i18n "default_list__n_guides" (dict "n" (len .)) | safeHTML }}</p>
-    <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+    <ul class="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {{ range . }}
       <li>
-        <a href="{{ .RelPermalink }}" class="card card-hover group flex h-full flex-col p-5">
-          <span class="font-display text-base font-bold text-ink-950 group-hover:text-brand-700">{{ .LinkTitle }}</span>
-          <span class="mt-1.5 flex-1 text-sm leading-relaxed text-ink-500">{{ .Description }}</span>
-          <span class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-ink-50 pt-2 text-xs text-ink-400">
-            <span>{{ i18n "default_list__min_read" (dict "n" .ReadingTime) | safeHTML }}</span>
-            {{ with or .Params.lastmod .Params.date }}<span>{{ i18n "default_list__last_reviewed" (dict "date" (time.Format ":date_medium" .)) | safeHTML }}</span>{{ end }}
-          </span>
-        </a>
+          <a href="{{ .RelPermalink }}" class="card card-hover group flex h-full flex-col overflow-hidden">
+            {{- with .Params.hero }}
+            {{- $ic := imageConfig (printf "static/img/esim/%s" .) }}
+            <img src="/img/esim/{{ . }}" alt="" width="{{ $ic.Width }}" height="{{ $ic.Height }}" loading="lazy" decoding="async" class="h-auto w-full">
+            {{- end }}
+            <span class="flex flex-1 flex-col p-5">
+              <span class="font-display text-base font-bold text-ink-950 group-hover:text-brand-700">{{ .LinkTitle }}</span>
+              <span class="mt-1.5 flex-1 text-sm leading-relaxed text-ink-500">{{ .Description }}</span>
+              <span class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-ink-50 pt-2 text-xs text-ink-400">
+                <span>{{ i18n "default_list__min_read" (dict "n" .ReadingTime) | safeHTML }}</span>
+                {{ with or .Params.lastmod .Params.date }}<span>{{ i18n "default_list__last_reviewed" (dict "date" (time.Format ":date_medium" .)) | safeHTML }}</span>{{ end }}
+              </span>
+            </span>
+          </a>
       </li>
       {{ end }}
     </ul>

@@ -127,7 +127,7 @@ def metrics(iso: str) -> dict:
 #
 #   ① 标题 44-54 字符（`verify_provider_pages.py` 建档范围），尽量落 48-54
 #      （`audit_meta.py` 更严口径）；**必含国名**（守卫第 1 项）。
-#   ② 描述 120-140 字符、**必含 "eSIM Sift"**（守卫第 2 项）。
+#   ② 描述 120-140 字符、**必含 "eSIMSift"**（守卫第 2 项）。
 #   ③ 同一语言内 499 条标题、499 条描述**零重复**（实测 499/499 唯一）。
 #
 # 为什么删掉 `(#N of M)`：GSC 7 天里 `/compare/canada/saily/` 拿 532 展示、
@@ -242,7 +242,7 @@ def make_desc(pname, name, mx, lang, pk):
         ranks = [""]
         if not unl and mx["rank"] in ORD_EN:
             ranks = [f"{ORD_EN[mx['rank']]} $/GB of the {m} brands we track.", ""]
-        sign = "eSIM Sift prices every option in one table."
+        sign = "eSIMSift prices every option in one table."
     else:
         mids = ([", Fair-Use-Grenzen geprüft.", ", Fair-Use geprüft.", "."] if unl else
                 [f", ${mx['bpgb']:.2f}/GB im günstigsten Tarif.",
@@ -258,13 +258,13 @@ def make_desc(pname, name, mx, lang, pk):
         ranks = [""]
         if not unl and mx["rank"] in ORD_DE:
             ranks = [f"{ORD_DE[mx['rank']]} $/GB-Preis unter {m} Anbietern.", ""]
-        sign = "eSIM Sift vergleicht jede Option in einer Tabelle."
+        sign = "eSIMSift vergleicht jede Option in einer Tabelle."
     cands = []
     for o in opens:
         for mid in mids:
             for r in ranks:
                 # ★ 开场句刻意**不带句号**：句末点号由价格子句提供。
-                #   两处都带会印出 "$5.29., $2.20/GB cheapest." 与 "ab $4.00.. eSIM Sift"。
+                #   两处都带会印出 "$5.29., $2.20/GB cheapest." 与 "ab $4.00.. eSIMSift"。
                 cands.append(o + mid + (" " + r if r else "") + " " + sign)
     for c in cands:
         if 120 <= len(c) <= 140:

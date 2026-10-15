@@ -3,7 +3,7 @@ title: "Griechenland eSIM"
 iso: GR
 weight: 26
 seo:
-  description: "eSIM Sift vergleicht alle eSIM-Tarife für Griechenland: 197 echte Tarife von 10 Anbietern, günstigster Yesim ab $0.51, sortiert nach $/GB mit ausgewerteten Fair-Use-Grenzen."
+  description: "eSIMSift vergleicht alle eSIM-Tarife für Griechenland: 197 echte Tarife von 10 Anbietern, günstigster Yesim ab $0.51, sortiert nach $/GB mit ausgewerteten Fair-Use-Grenzen."
 ---
 
 Die eSIM-Preise in Griechenland sind weniger gleichförmig, als der Lockpreis vermuten lässt. Nichts unterbietet Yesim 500 MB / 1 Tag für $0.51. Kleine Kontingente kosten hier rund das 2,9-Fache des Tarifs der großen. Der beste Tarif ist Roamics Block von 50 GB über 30 Tage für $0.36/GB. Über {{< count-providers >}} Anbieter hinweg läuft das Angebot auf 197 Tarife für Griechenland, 99 davon unbegrenzt verkauft.

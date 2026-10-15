@@ -20,7 +20,7 @@ faqs:
   - q: "When should I buy my Americas eSIM?"
     a: "Buy a day or two before an Americas trip so the QR code is ready to install on Wi-Fi. The prices on this page are checked on the date shown, so the Americas table reflects what the providers currently list."
   - q: "Which providers sell eSIMs for the Americas?"
-    a: "All ten brands we track publish plans across these eight destinations, so availability is not the constraint here — price is. The league table above ranks the cheapest plan in each country and the winner table names the brand that is cheapest in the most of them this month."
+    a: "Every brand we track publishes plans across these eight destinations, so availability is not the constraint here — price is. The league table above ranks the cheapest plan in each country and the winner table names the brand that is cheapest in the most of them this month."
   - q: "Is there one plan for the whole of the Americas?"
     a: "Regional plans exist but they rarely span both North and South America, so a route from the USA down through Mexico to Brazil is usually two or three separate plans rather than one. Compare any bundle's country list against your route, and note that a USA plan does not extend into Canada or Mexico."
 ---

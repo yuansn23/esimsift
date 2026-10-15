@@ -26,7 +26,7 @@
 {{ end }}
 {{ $appRows = sort $appRows "name" "asc" }}{{ $directRows = sort $directRows "name" "asc" }}
 
-{{/* ── 双栏：正文 + 右侧吸顶（栅格断点与列宽对齐 networks/single.html） ── */}}
+{{/* ── 双栏：正文 + 右侧栏（栅格断点与列宽对齐 networks/single.html） ── */}}
 <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
 <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,720px)_300px] lg:justify-center lg:gap-10">
 <article class="min-w-0">
@@ -325,6 +325,7 @@
     {{ jsonify (dict "indent" "  ") (dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $faqEntities) | safeJS }}
   </script>
   {{ end }}
+{{- if .Params.byline }}{{ partial "author-box.html" . }}{{- end }}
 
   {{/* ── 相关阅读：其余指南 + 工具 + 比较入口（内链闭环） ── */}}
   <section class="mt-10 not-prose" aria-labelledby="more">
@@ -342,11 +343,12 @@
   </section>
 </article>
 
-{{/* ── 右侧吸顶：章节目录 + 热门目的地比价内链。
-     移动端整块落到正文之后（hidden lg:block），不遮挡阅读；
-     整栏限高并允许内部滚动，目录条目多时 sticky 仍然生效。 ── */}}
+{{/* ── 右侧栏：章节目录 + 热门目的地比价内链。
+     移动端整块落到正文之后（hidden lg:block），不遮挡阅读。
+     2026-10-15 用户定：本页这两块**不吸顶** —— 已摘除 sticky / top-24 /
+     max-h / overflow-y-auto，整栏随正文一起滚走。不要再加回来。 ── */}}
 <aside class="hidden lg:block">
-  <div class="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-1">
+  <div class="pr-1">
     <div class="space-y-4">
       <div class="card p-5">
         <p class="eyebrow">{{ i18n "g_on_this_page" | safeHTML }}</p>

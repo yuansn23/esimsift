@@ -3,7 +3,7 @@ title: "Peru eSIM"
 iso: PE
 weight: 39
 seo:
-  description: "eSIM Sift compares every Peru eSIM: 135 real plans from 10 providers, cheapest Roamic from $3.00, ranked by $/GB with fair-use caps decoded."
+  description: "eSIMSift compares every Peru eSIM: 135 real plans from 10 providers, cheapest Roamic from $3.00, ranked by $/GB with fair-use caps decoded."
 ---
 
 eSIM prices in Peru are less flat than the headline number suggests. For Peru, the lowest price on file is Roamic's 1GB / 7 Days at $3.00. Put the same $3.00 through the $1.30/GB plan and you would clear about 2.3GB. Roamic takes the per-gigabyte race with a 50GB / 30-day plan at $1.30/GB. Across {{< count-providers >}} providers the board runs to 135 plans for Peru, 63 sold as unlimited.

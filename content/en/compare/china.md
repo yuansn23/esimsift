@@ -3,7 +3,7 @@ title: "China eSIM"
 iso: CN
 weight: 20
 seo:
-  description: "eSIM Sift compares every China eSIM: 203 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
+  description: "eSIMSift compares every China eSIM: 203 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
 ---
 
 Two pricing models compete in China, and they suit different trips. In China, Yesim 100MB / 1 Day is as cheap as it gets at $0.51. Entry plans in China run about 10.9 times the best per-gigabyte rate. The best rate here is Roamic's 50GB / 30 Days plan at $0.48/GB. The tracked catalogue holds 203 plans for China from {{< count-providers >}} providers, 98 of them unlimited.

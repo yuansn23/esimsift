@@ -3,10 +3,10 @@ title: "How to Install a Travel eSIM on iPhone and Android"
 hero: "travel-esim-illustration-007.webp"
 hero_alt: "A traveler following a step-by-step checklist on a phone to install a travel eSIM"
 date: 2026-10-01
-description: "How to install an eSIM in five minutes: eSIM Sift covers activation timing, QR and app installs, and the errors to avoid before you fly."
+description: "How to install an eSIM in five minutes: eSIMSift covers activation timing, QR and app installs, and the errors to avoid before you fly."
 faq_heading: "What should you know before installing an eSIM"
 prompt_answer: "Installing a travel eSIM takes about two minutes on Wi-Fi, and the safest time is before you fly. Buy the plan, scan the provider's QR code or add it from the provider's app, give the line a name, then leave it switched off until you land. On arrival, turn the eSIM line on and set it as the line for mobile data."
-h2_answer: "Installing a travel eSIM in short"
+h2_answer: "Installing a travel eSIM step by step"
 h2_facts: "eSIM installation facts"
 facts:
   - label: "Best time to install"
@@ -146,4 +146,4 @@ The practical rule is simpler. Don't buy a long-duration plan the same week you 
 
 ## Two habits that prevent 90% of problems
 
-Install on home Wi-Fi with the phone charged, and screenshot the confirmation — it holds the QR code, the SM-DP+ address and the activation code, which is everything support will ask for. Then on landing: airplane mode for ten seconds, off, wait a minute. Still choosing a package? eSIM Sift's [price comparison](/compare/) lists every provider for your destination — [France](/compare/france/) and [Greece](/compare/greece/) are popular starts — and the [cost calculator](/tools/) picks the cheapest plan that covers your dates and data.
+Install on home Wi-Fi with the phone charged, and screenshot the confirmation — it holds the QR code, the SM-DP+ address and the activation code, which is everything support will ask for. Then on landing: airplane mode for ten seconds, off, wait a minute. Still choosing a package? eSIMSift's [price comparison](/compare/) lists every provider for your destination — [France](/compare/france/) and [Greece](/compare/greece/) are popular starts — and the [cost calculator](/tools/) picks the cheapest plan that covers your dates and data.

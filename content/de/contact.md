@@ -1,6 +1,6 @@
 ---
 title: "Kontakt: Preiskorrekturen und Anbieterwünsche"
-description: "Melde eine Preisänderung, schlage einen Anbieter vor oder erreiche das eSIM-Sift-Team — geprüfte Korrekturen erscheinen mit dem nächsten Build."
+description: "Melde eine Preisänderung, schlage einen Anbieter vor oder erreiche das eSIMSift-Team — geprüfte Korrekturen erscheinen mit dem nächsten Build."
 # TODO(de)：正文已德语化。D9 解禁时统一删掉上面 noindex 行。
 ---
 

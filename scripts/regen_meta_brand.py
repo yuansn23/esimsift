@@ -3,7 +3,7 @@
 
 Rules enforced everywhere after this run:
   - title: 48-54 chars, NO brand word (except homepage), eSIM core keyword present
-  - description: 120-140 chars, MUST contain brand "eSIM Sift"
+  - description: 120-140 chars, MUST contain brand "eSIMSift"
 
 Sections:
   A. Country pages (50): seo.description rebuilt from live plan data, brand-led.
@@ -95,7 +95,7 @@ for iso, c in countries.items():
         prov_min[pk] = min(p["price"] for p in block["plans"])
     cheapest = min(prov_min, key=prov_min.get)
     cname = providers[cheapest]["name"]
-    core = (f"eSIM Sift compares every {c['name']} eSIM: {total} real plans from "
+    core = (f"eSIMSift compares every {c['name']} eSIM: {total} real plans from "
             f"{len(prov_min)} providers, cheapest {cname} from ${prov_min[cheapest]:.2f}")
     cands = [
         core + ", ranked by $/GB with fair-use caps decoded.",
@@ -130,16 +130,16 @@ VS_SPECIAL = {
 VS_DESCS = lambda a, b, i: [
     # family rotation = anti-homogenization (same idea as anchor rotation)
     [
-        f"eSIM Sift compares {a} and {b} eSIMs: entry prices, $/GB and unlimited data in every shared country — a computed verdict.",
-        f"eSIM Sift compares {a} and {b} eSIMs: entry prices, $/GB and unlimited data in every shared country.",
+        f"eSIMSift compares {a} and {b} eSIMs: entry prices, $/GB and unlimited data in every shared country — a computed verdict.",
+        f"eSIMSift compares {a} and {b} eSIMs: entry prices, $/GB and unlimited data in every shared country.",
     ],
     [
-        f"{a} or {b} for your trip? eSIM Sift computes the verdict: cheapest plan per country, best $/GB, unlimited coverage — live prices.",
-        f"{a} or {b} for your trip? eSIM Sift computes the verdict: cheapest plan per country, best $/GB, unlimited coverage.",
+        f"{a} or {b} for your trip? eSIMSift computes the verdict: cheapest plan per country, best $/GB, unlimited coverage — live prices.",
+        f"{a} or {b} for your trip? eSIMSift computes the verdict: cheapest plan per country, best $/GB, unlimited coverage.",
     ],
     [
-        f"Which eSIM is cheaper, {a} or {b}? eSIM Sift compares entry prices, $/GB and fair-use caps in every shared country — prices change.",
-        f"Which eSIM is cheaper, {a} or {b}? eSIM Sift compares entry prices, $/GB and fair-use caps in every shared country.",
+        f"Which eSIM is cheaper, {a} or {b}? eSIMSift compares entry prices, $/GB and fair-use caps in every shared country — prices change.",
+        f"Which eSIM is cheaper, {a} or {b}? eSIMSift compares entry prices, $/GB and fair-use caps in every shared country.",
     ],
 ][i % 3]
 
@@ -176,121 +176,121 @@ MAP: dict[str, dict[str, str]] = {
     # providers
     "esim-providers/_index.md": {
         "title": "Every eSIM Provider Compared: 2026 Prices and Reviews",
-        "description": "eSIM Sift profiles every major travel eSIM provider: coverage, pricing philosophy, strengths, weaknesses, and where each one actually wins.",
+        "description": "eSIMSift profiles every major travel eSIM provider: coverage, pricing philosophy, strengths, weaknesses, and where each one actually wins.",
     },
     "esim-providers/airalo.md": {
         "title": "Airalo eSIM Review 2026: Prices, Coverage and Verdict",
-        "description": "eSIM Sift review of Airalo: countries covered, cheapest plans per destination, the app install flow, and where Airalo still wins.",
+        "description": "eSIMSift review of Airalo: countries covered, cheapest plans per destination, the app install flow, and where Airalo still wins.",
     },
     "esim-providers/alosim.md": {
         "title": "aloSIM eSIM Review 2026: Prices, Coverage and Verdict",
-        "description": "How good is aloSIM? eSIM Sift checks AffinityClick's country packs, plan prices per destination, and where aloSIM is cheapest.",
+        "description": "How good is aloSIM? eSIMSift checks AffinityClick's country packs, plan prices per destination, and where aloSIM is cheapest.",
     },
     "esim-providers/holafly.md": {
         "title": "Holafly eSIM Review: Is Unlimited Data Worth It?",
-        "description": "Is Holafly's unlimited data worth it? eSIM Sift checks daily-rate pricing against fair-use caps, country by country, before you buy.",
+        "description": "Is Holafly's unlimited data worth it? eSIMSift checks daily-rate pricing against fair-use caps, country by country, before you buy.",
     },
     "esim-providers/roami.md": {
         "title": "Roami eSIM Review 2026: Prices, Coverage and Verdict",
-        "description": "Roami review by eSIM Sift: coverage, entry prices per country, the web20 new-user code, and where Roami is actually the cheapest.",
+        "description": "Roami review by eSIMSift: coverage, entry prices per country, the web20 new-user code, and where Roami is actually the cheapest.",
     },
     "esim-providers/roamic.md": {
         "title": "Roamic eSIM Review 2026: Prices, Coverage and Verdict",
-        "description": "Roamic is Byte Travel's brand — eSIM Sift reviews its unlimited options, plan prices per country, and where Roamic is cheapest.",
+        "description": "Roamic is Byte Travel's brand — eSIMSift reviews its unlimited options, plan prices per country, and where Roamic is cheapest.",
     },
     "esim-providers/saily.md": {
         "title": "Saily eSIM Review 2026: Prices, Coverage and Verdict",
-        "description": "Saily is the NordVPN team's eSIM — eSIM Sift checks coverage, entry prices, the VEEPEE25 code, and where Saily is actually cheapest.",
+        "description": "Saily is the NordVPN team's eSIM — eSIMSift checks coverage, entry prices, the VEEPEE25 code, and where Saily is actually cheapest.",
     },
     "esim-providers/ubigi.md": {
         "title": "Ubigi eSIM Review 2026: Prices, Coverage and Verdict",
-        "description": "Ubigi from Transatel (an NTT company): eSIM Sift reviews plan prices per country, car and laptop data, and the WELCOME10 code.",
+        "description": "Ubigi from Transatel (an NTT company): eSIMSift reviews plan prices per country, car and laptop data, and the WELCOME10 code.",
     },
     "esim-providers/yesim.md": {
         "title": "Yesim eSIM Review 2026: Prices, Coverage and Verdict",
-        "description": "Yesim, the Swiss pay-as-you-go eSIM: eSIM Sift reviews plan prices per country and where Yesim is actually the cheapest pick.",
+        "description": "Yesim, the Swiss pay-as-you-go eSIM: eSIMSift reviews plan prices per country and where Yesim is actually the cheapest pick.",
     },
     # guides
     "guides/_index.md": {
         "title": "eSIM Guides: How to Pick, Install and Use Travel eSIMs",
-        "description": "Practical travel eSIM guides from eSIM Sift — choosing plans, installing profiles, and troubleshooting, written for travelers first.",
+        "description": "Practical travel eSIM guides from eSIMSift — choosing plans, installing profiles, and troubleshooting, written for travelers first.",
     },
     "guides/what-is-an-esim.md": {
         "title": "What Is an eSIM? How It Works, in Plain English (2026)",
-        "description": "What is an eSIM? eSIM Sift explains how a built-in SIM works, what actually gets installed, and what it means for calls and SMS abroad.",
+        "description": "What is an eSIM? eSIMSift explains how a built-in SIM works, what actually gets installed, and what it means for calls and SMS abroad.",
     },
     "guides/esim-vs-physical-sim.md": {
         "title": "eSIM vs Physical SIM: Which Wins for Travel in 2026?",
-        "description": "eSIM or physical SIM for travel? eSIM Sift compares price, setup time, number keeping and security — including where a local SIM still wins.",
+        "description": "eSIM or physical SIM for travel? eSIMSift compares price, setup time, number keeping and security — including where a local SIM still wins.",
     },
     "guides/how-to-install-esim.md": {
         "title": "How to Install a Travel eSIM on iPhone and Android",
-        "description": "How to install an eSIM in five minutes: eSIM Sift covers activation timing, QR and app installs, and the errors to avoid before you fly.",
+        "description": "How to install an eSIM in five minutes: eSIMSift covers activation timing, QR and app installs, and the errors to avoid before you fly.",
     },
     "guides/esim-compatibility-check.md": {
         "title": "Is Your Phone eSIM Compatible? The 30-Second Check",
-        "description": "Check eSIM compatibility in 30 seconds: the *#06# EID test, supported iPhones and Androids, and eSIM Sift's searchable phone list.",
+        "description": "Check eSIM compatibility in 30 seconds: the *#06# EID test, supported iPhones and Androids, and eSIMSift's searchable phone list.",
     },
     "guides/dual-sim-and-esim.md": {
         "title": "Dual SIM With eSIM: Keep Your Home Number Abroad",
-        "description": "How dual SIM works with one eSIM plus one physical SIM: eSIM Sift explains keeping your home number while the eSIM carries data.",
+        "description": "How dual SIM works with one eSIM plus one physical SIM: eSIMSift explains keeping your home number while the eSIM carries data.",
     },
     # research
     "research/_index.md": {
         "title": "eSIM Research: Price Index, Fair Use and Data Trends",
-        "description": "Original research from the eSIM Sift price database — price-per-GB league tables, fair-use audits, and unlimited-data analysis.",
+        "description": "Original research from the eSIMSift price database — price-per-GB league tables, fair-use audits, and unlimited-data analysis.",
     },
     "research/esim-price-index.md": {
         "title": "eSIM Price Index 2026: Every Country Ranked by Cost",
-        "description": "eSIM prices by country, ranked by best $/GB across every destination in the eSIM Sift database — regional averages and league table.",
+        "description": "eSIM prices by country, ranked by best $/GB across every destination in the eSIMSift database — regional averages and league table.",
     },
     "research/fair-use-audit.md": {
         "title": "eSIM Fair Use Audit 2026: What Unlimited Really Means",
-        "description": "What unlimited eSIM plans really throttle: eSIM Sift audits the fair-use policy of every provider we track, plan by plan, verbatim.",
+        "description": "What unlimited eSIM plans really throttle: eSIMSift audits the fair-use policy of every provider we track, plan by plan, verbatim.",
     },
     "research/unlimited-esim.md": {
         "title": "Best Unlimited eSIM Plans 2026: Daily Rates Compared",
-        "description": "Best unlimited eSIM plans compared: eSIM Sift ranks daily rates for every country with unlimited data, plus the fair-use catches.",
+        "description": "Best unlimited eSIM plans compared: eSIMSift ranks daily rates for every country with unlimited data, plus the fair-use catches.",
     },
     # hubs / tools / deals / static
     "compare/_index.md": {
         "title": "Compare eSIM Plans by Country: Best Prices and $/GB",
-        "description": "Every prepaid travel eSIM plan in one eSIM Sift index — filter by country, sort by price per GB, and compare every provider.",
+        "description": "Every prepaid travel eSIM plan in one eSIMSift index — filter by country, sort by price per GB, and compare every provider.",
     },
     "methodology.md": {
         "title": "Our Methodology: How We Collect and Verify eSIM Prices",
     },
     "compare/matchups.md": {
         "title": "Every eSIM Provider Matchup Compared on Real Prices",
-        "description": "Every eSIM provider matchup in one eSIM Sift index — Airalo vs Holafly, Roami vs Roamic and every other pair, computed country by country.",
+        "description": "Every eSIM provider matchup in one eSIMSift index — Airalo vs Holafly, Roami vs Roamic and every other pair, computed country by country.",
     },
     "tools/_index.md": {
         "title": "eSIM Tools: Trip Cost Calculator and Data Estimator",
-        "description": "Estimate how much travel data you need app by app, then get the cheapest matching eSIM — eSIM Sift computes it live from every provider.",
+        "description": "Estimate how much travel data you need app by app, then get the cheapest matching eSIM — eSIMSift computes it live from every provider.",
     },
     "esim-deals/_index.md": {
         "title": "eSIM Deals 2026: Verified Promo Codes and Real Savings",
-        "description": "Verified eSIM promo codes with expiry and terms — eSIM Sift computes what each code saves on a real plan, and when no-code still wins.",
+        "description": "Verified eSIM promo codes with expiry and terms — eSIMSift computes what each code saves on a real plan, and when no-code still wins.",
     },
     "about.md": {
         "title": "About Us: Why We Built an Independent eSIM Database",
-        "description": "Who we are, why eSIM Sift tracks an independent price database covering every major provider and destination, and how we make money.",
+        "description": "Who we are, why eSIMSift tracks an independent price database covering every major provider and destination, and how we make money.",
     },
     "contact.md": {
         "title": "Contact Us: Price Corrections and Provider Requests",
-        "description": "Report a price change, suggest a provider to track, or reach the eSIM Sift team — verified fixes ship with the next site build.",
+        "description": "Report a price change, suggest a provider to track, or reach the eSIMSift team — verified fixes ship with the next site build.",
     },
     "disclosure.md": {
         "title": "Affiliate Disclosure: Commissions and Editorial Rules",
-        "description": "How eSIM Sift earns referral commissions from eSIM providers, and the disclosure rules we hold ourselves to across every page we publish.",
+        "description": "How eSIMSift earns referral commissions from eSIM providers, and the disclosure rules we hold ourselves to across every page we publish.",
     },
     "privacy.md": {
         "title": "Privacy Policy: Data, Cookies and Analytics Explained",
-        "description": "How eSIM Sift handles personal data, cookies and analytics — what we collect, what we never collect, and the choices you have.",
+        "description": "How eSIMSift handles personal data, cookies and analytics — what we collect, what we never collect, and the choices you have.",
     },
     "terms.md": {
         "title": "Terms of Service: Price Data Accuracy and Liability",
-        "description": "The terms of service for using eSIM Sift, including our price-data disclaimer and the limits of our editorial liability.",
+        "description": "The terms of service for using eSIMSift, including our price-data disclaimer and the limits of our editorial liability.",
     },
 }
 
@@ -305,9 +305,9 @@ for rel, fields in MAP.items():
     if d:
         if not 120 <= len(d) <= 140:
             problems.append(f"desc {len(d)} out of 120-140: {rel}")
-        if "eSIM Sift" not in d:
+        if "eSIMSift" not in d:
             problems.append(f"desc missing brand: {rel}")
-    if "eSIM Sift" in t:
+    if "eSIMSift" in t:
         problems.append(f"title has brand (only home may): {rel}")
     if "eSIM" not in t and rel not in EKEY_EXEMPT:
         problems.append(f"title missing eSIM keyword: {rel}")

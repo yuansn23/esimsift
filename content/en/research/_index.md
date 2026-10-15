@@ -1,6 +1,6 @@
 ---
 title: "eSIM Research: Price Index, Fair Use and Data Trends"
-description: "Original research from the eSIM Sift price database — price-per-GB league tables, fair-use audits, and unlimited-data analysis."
+description: "Original research from the eSIMSift price database — price-per-GB league tables, fair-use audits, and unlimited-data analysis."
 hero: "travel-esim-illustration-142.webp"
 hero_alt: "A traveler reviewing eSIM price charts and data trends on a phone — independent eSIM price research"
 faq_heading: "eSIM research questions people ask"

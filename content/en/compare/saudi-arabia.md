@@ -3,7 +3,7 @@ title: "Saudi Arabia eSIM"
 iso: SA
 weight: 42
 seo:
-  description: "eSIM Sift compares every Saudi Arabia eSIM: 169 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIMSift compares every Saudi Arabia eSIM: 169 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 A quick sort of the board for Saudi Arabia separates the value buys from the filler. For the smallest outlay you get Yesim's 199MB / 1 Day at $0.51. That $0.51 buys a fraction of what it would at the $0.82/GB rate, which is nearer 637MB. Value leadership sits with Nomad, whose 50GB / 30-day plan lands at $0.82/GB. We track {{< count-providers >}} providers here, listing 169 plans for Saudi Arabia between them, 96 of them unlimited.

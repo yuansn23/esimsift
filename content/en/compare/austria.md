@@ -3,7 +3,7 @@ title: "Austria eSIM"
 iso: AT
 weight: 25
 seo:
-  description: "eSIM Sift compares every Austria eSIM: 182 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIMSift compares every Austria eSIM: 182 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 There is a cheap way and an expensive way to buy data in Austria. The cheapest option in Austria is Yesim 500MB / 1 Day at $0.51. The same spend in Austria at $0.36/GB would give you about 1.4GB. Roamic takes the per-gigabyte race with a 50GB / 30-day plan at $0.36/GB. That is 92 unlimited plans among 182 options for Austria from {{< count-providers >}} providers.

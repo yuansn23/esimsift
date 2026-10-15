@@ -3,7 +3,7 @@ title: "Costa Rica eSIM"
 iso: CR
 weight: 40
 seo:
-  description: "eSIM Sift vergleicht alle eSIM-Tarife für Costa Rica: 170 echte Tarife von 10 Anbietern, günstigster Roamic ab $3.00, sortiert nach $/GB und $/Tag."
+  description: "eSIMSift vergleicht alle eSIM-Tarife für Costa Rica: 170 echte Tarife von 10 Anbietern, günstigster Roamic ab $3.00, sortiert nach $/GB und $/Tag."
 ---
 
 Daten in Costa Rica sind bezahlbar. Die falsche Form davon zu kaufen ist es nicht. Roamic hält den Einstiegspreis mit 1 GB / 7 Tage für $3.00. Diese Lücke ist die Geschichte Costa Ricas in einer Zeile: das 2,8-Fache des Tarifs für das kleinste Kontingent. Beim Preis pro Gigabyte führt Roamic mit einem Tarif von 50 GB über 30 Tage für $1.06/GB. Bei {{< count-providers >}} Anbietern läuft das Angebot auf 170 Tarife für Costa Rica, 88 davon unbegrenzt verkauft.

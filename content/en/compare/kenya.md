@@ -3,7 +3,7 @@ title: "Kenya eSIM"
 iso: KE
 weight: 48
 seo:
-  description: "eSIM Sift compares every Kenya eSIM: 139 real plans from 10 providers, cheapest Roamic from $5.00, ranked by $/GB and $/day."
+  description: "eSIMSift compares every Kenya eSIM: 139 real plans from 10 providers, cheapest Roamic from $5.00, ranked by $/GB and $/day."
 ---
 
 Only a few dollars separate the good and bad buys in Kenya per gigabyte. Roamic leads on entry price in Kenya with 1GB / 7 Days at $5.00. Spent at $1.65/GB instead, that same $5.00 would buy nearer 3.0GB. The value crown is Ubigi's, at $1.65/GB for 60GB over 30 days. Between {{< count-providers >}} providers there are 139 plans for Kenya on file, 73 carrying an unlimited label.

@@ -43,7 +43,7 @@ Wo Sie reisen, verändert die Datenkosten stärker als die Wahl des Anbieters. D
 FAIR_USE = """---
 title: "Fair-Use-Prüfung 2026: Was „unlimited“ wirklich bedeutet"
 date: 2026-10-01
-description: "Was unbegrenzte eSIM-Tarife wirklich drosseln: eSIM Sift prüft die Fair-Use-Richtlinie jedes erfassten Anbieters, Tarif für Tarif, wörtlich."
+description: "Was unbegrenzte eSIM-Tarife wirklich drosseln: eSIMSift prüft die Fair-Use-Richtlinie jedes erfassten Anbieters, Tarif für Tarif, wörtlich."
 layout: fair-use-audit
 noindex: true
 {TODO}
@@ -55,7 +55,7 @@ Jede „unbegrenzte“ eSIM trägt eine Fair-Use-Richtlinie (FUP) — eine Schwe
 UNLIMITED = """---
 title: "Beste Unlimited-eSIM 2026: Tagespreise im Vergleich"
 date: 2026-10-01
-description: "Beste Unlimited-eSIM-Tarife im Vergleich: eSIM Sift sortiert Tagespreise für jedes Land mit unbegrenzten Daten, plus die Fair-Use-Fallen."
+description: "Beste Unlimited-eSIM-Tarife im Vergleich: eSIMSift sortiert Tagespreise für jedes Land mit unbegrenzten Daten, plus die Fair-Use-Fallen."
 layout: unlimited-esim
 noindex: true
 {TODO}
@@ -71,7 +71,7 @@ NEW_PAGES = {
 }
 
 # ── 栏目索引：把「缺 hero/faq + 空正文」的壳补成与英文侧同构 ──
-IDX_ANCHOR = 'description: "Eigene Auswertungen aus der eSIM-Sift-Preisdatenbank — Ranglisten nach Preis pro GB, Fair-Use-Analysen und Unlimited-Daten im Vergleich."\n'
+IDX_ANCHOR = 'description: "Eigene Auswertungen aus der eSIMSift-Preisdatenbank — Ranglisten nach Preis pro GB, Fair-Use-Analysen und Unlimited-Daten im Vergleich."\n'
 IDX_INSERT = IDX_ANCHOR + """hero: "travel-esim-illustration-142.webp"
 hero_alt: "Reisender prüft eSIM-Preistabellen und Datentrends auf dem Smartphone — unabhängige eSIM-Preisanalyse"
 faq_heading: "Häufige Fragen zu unseren eSIM-Analysen"

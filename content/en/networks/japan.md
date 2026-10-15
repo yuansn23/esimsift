@@ -52,11 +52,11 @@ faqs:
 
 ## Does the carrier behind your Japan eSIM change your coverage
 
-Not in Japan, and this is the most useful fact on the page. The market runs on three national carrier networks — NTT Docomo, SoftBank and KDDI — and all {{< count-providers >}} brands we track (Airalo, aloSIM, Holafly, Roami, Roamic, Saily, Ubigi and Yesim) list all three as hosts. The brand-by-brand table below shows it row after row.
+Not in Japan, and this is the most useful fact on the page. The market runs on three national carrier networks — NTT Docomo, SoftBank and KDDI — and all {{< count-providers >}} brands we track list all three as hosts. The brand-by-brand table below shows it row after row.
 
 The consequence is that no travel eSIM brand can sell you better coverage in Japan. A cheaper Japan eSIM is not a network downgrade here, and that is not true everywhere — in plenty of destinations a budget plan rides one carrier and pays for it in rural signal. In Japan that trade-off does not exist, so the variables that actually matter are price per gigabyte, the shape of the data plan, hotspot rules, validity and support.
 
-That reframes the buying question. Instead of hunting for the Japan eSIM with the best network, ask which brand sells the data plan your trip needs at the lowest price — and the answer moves with trip length, which is why our [Japan plan ranking](/compare/japan/) sorts all 177 plans by $/GB and $/day rather than by carrier.
+That reframes the buying question. Instead of hunting for the Japan eSIM with the best network, ask which brand sells the data plan your trip needs at the lowest price — and the answer moves with trip length, which is why our [Japan plan ranking](/compare/japan/) sorts every plan by $/GB and $/day rather than by carrier.
 
 ## Where each Japanese 5G network is best on speed and reach
 

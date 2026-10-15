@@ -1,9 +1,9 @@
-# eSIM Sift — 项目状态
+# eSIMSift — 项目状态
 
 > 独立 eSIM 比价站。单一数据源（`data/*.toml`），模板层推导一切派生指标。
 > 基座：Hugo 0.159.1 + Tailwind CLI。语言：**英语（根路径）+ 德语（`/de/`，2026-10-10 第七十二轮 D9 解禁，
-> 无 noindex）** —— ✅ **德语站已全量落地：`content/de` 654 个文件（644 个提交于 2026-10-10 的 `3b0d4af`，其余为后续各轮的 networks 新页），全站 noindex = 0**（2026-10-11 第八十二轮复核实测）；i18n **1855 key**（en = de 逐 key 同序对齐，未定义 0）。**产物 1313 页**（2026-10-13 第八十八轮实测）。
-> **`npm run validate` 现有 5 道源码层闸门**（2026-10-10 第七十八轮新增后两道，见对应小节）；
+> 无 noindex）** —— ✅ **德语站已全量落地：`content/de` 656 个文件（644 个提交于 2026-10-10 的 `3b0d4af`，其余为后续各轮的 networks 新页），全站 noindex = 0**（2026-10-11 第八十二轮复核实测）；i18n **1907 key**（en = de 逐 key 同序对齐，未定义 0）。**产物 1315 页**（2026-10-15 第九十三轮实测）。
+> **`npm run validate` 现有 6 道源码层闸门**（第七十八轮新增 `check_printf_arity` / `check_headings_source`，第九十轮新增 `check_page_container`，见对应小节）；
 > **`npm run check:output` 现有 13 道产物闸门**（第十三项 `check_inline_copy.py` = 2026-10-11 第八十一轮新增）。
 
 ## 命令
@@ -13,7 +13,7 @@ npm run build     # 数据日期自动盖章 → Tailwind CSS → 数据校验 +
 npm run dev       # 同上（含盖章）+ hugo server
 npm run stamp     # 单独跑「数据变了就把核对日推到今天」（见 §4.3；台账 docs/checked-state.json 必须提交）
 npm run validate  # 单独跑校验（validate.py + check_css_sync.py + check_i18n.py
-                  #   + check_printf_arity.py + check_headings_source.py）—— 5 道，秒级，构建前拦
+                  #   + check_printf_arity.py + check_headings_source.py + check_page_container.py）—— 6 道，秒级，构建前拦
 npm run check:output # 产物校验（格式串泄漏 / JSON-LD 可解析 / 评分区间）——必须在 hugo 之后跑
 npm run build:css # 只重建 Tailwind（改过 layouts 里的 class 后必须跑）
 ```
@@ -79,11 +79,11 @@ layouts/partials/country-stats.html  ← 全站唯一聚合入口
 | 项 | 结果 |
 |---|---|
 | **废除 `TITLE_BANNED`** | `verify_provider_pages.py`（22396 → 22571 B）删掉 3 条正则与检查循环，注释记录「代价：标题由构建期现算，**每次数据变动都会改标题**，是刻意取舍，复现时不要当回归」 |
-| **description 全量重写** | 删净 `(#N of M)`（命中 998 → **0**）；en/de 双向 **499/499 落在 120–140**；**零重复**；必含 `eSIM Sift` |
+| **description 全量重写** | 删净 `(#N of M)`（命中 998 → **0**）；en/de 双向 **499/499 落在 120–140**；**零重复**；必含 `eSIMSift` |
 | **SERP 标题（新增 `seo.title`）** | en `44–54: 499/499`（48–54: 478）· de `44–54: 499/499`（48–54: 480）；**零重复**；必含国名；纯不限量品牌（Holafly）丢关键词 **0** |
 | **模板零改动** | 走 `head.html` **已有的标题锁**（`$lockedTitle`）⇒ `title`（H1）与 `seo.title`（SERP）从此是**两个字段、两个面**：H1 留 `Plans & Prices`，SERP 带套餐数/天数档/起价 |
 | **顺手拆掉一颗地雷** | `gen_provider_pages.py` 的 `NOINDEX = LANG != "en"` 整体移除（否则**下次重跑生成器会把 499 个德语页的 noindex 复活**）；同时清掉 499 个德语 md 里过期的 `TODO(de)` 注释 |
-| 样例 | `Saily Canada eSIM: 11 Plans, 5-30 Days, From $5.29` / `Saily Kanada eSIM: 11 Tarife, 5-30 Tage, ab $5.29`；desc：`All 11 Saily plans for Canada in one table: 5-30 days from $5.29, $2.20/GB at the cheapest tier. eSIM Sift prices every option in one table.` |
+| 样例 | `Saily Canada eSIM: 11 Plans, 5-30 Days, From $5.29` / `Saily Kanada eSIM: 11 Tarife, 5-30 Tage, ab $5.29`；desc：`All 11 Saily plans for Canada in one table: 5-30 days from $5.29, $2.20/GB at the cheapest tier. eSIMSift prices every option in one table.` |
 
 ### 逐字节归属法（红线 99/106）—— 本轮做到「旧产物与基线全等」这一层
 
@@ -219,7 +219,284 @@ i18n：**+49 key ×2**（en 201072 → 204725 B、de 217718 → 221636 B），**
 - **未动但登记在案的观察项**：`layouts/_default/list.html` 的指南卡复核日已改用 **front-matter-only** 口径（`or .Params.lastmod .Params.date`），而 `layouts/guides/single.html:83` 的「Last reviewed」仍用 `.Lastmod`。两者**当前取值相同、产物零差异**（10 篇指南都只写 `date` 不写 `lastmod`），但那是「同一事实两处推导」—— 待哪天某篇两字段皆缺时会分叉（`.Lastmod` 会落回文件 mtime 而撒谎）。属独立决策，本轮**未改该文件**
 - **下一轮可选**：① 首页`#latest-updates` 的「网络实测」卡目前取的是 networks **页级发布日**的最大值（现为 `2026-10-13`）——值得确认它在读者眼里是否等价于「测速数据的新鲜度」；② `/compare/` 的排序在前端完成，若将来要 SEO 友好的排序落地页（`/compare/cheapest/` 之类）属**新页型**，需先点头；③ 指南扩篇（内容生产）
 
+## 已完成（品牌全站统一 `eSIMSift` + 指南索引图文卡 + 正文去吸顶 + 作者头像 + 城市长尾，2026-10-15 第九十四轮）
+
+**用户指令**（逐字，5 条）：① `eSIM Sift Data Team` 需要一个头像，可以就使用 logo；② 这个页面右侧的 2 个模块，不要搞成吸顶的效果；③ 这个 esim-new-york 的文章是植入了哪些关键词，有 usa esim 吗，以及该国家 esim 长尾词吗；④ `/guides/` 这个页面都是标题和描述的文章，需要他们对应的图片也显示出来，一排 3 个文章即可；⑤ 首页 `<title>` 里的 `eSIM Sift` 为什么要分开，不能 `eSIMSift` 吗 —— 用户只会输入 `eSIMSift`，中间不会有空格。
+
+★ 经 AskUserQuestion 由用户拍板两件：**品牌改动范围 = 全站一致**；**文章关键词 = 补城市长尾**。
+
+### 1｜品牌全站统一 `eSIM Sift` / `eSIM-Sift` → `eSIMSift`
+
+- 依据：页头字标本来就是 `{{ i18n "g_esim" }}{{ i18n "g_sift" }}` = `eSIMSift`（无空格）、与域名同形 ⇒ `<title>`／页脚／元数据写「eSIM Sift」是**站内自相不一致**
+- 规模：**1281 个文件 / 1427 处**（content 1255 / scripts 13 / docs 5 / i18n 2 / layouts 2 / hugo.toml 1 / static 1 / PROJECT.md、STATUS.md 各 1）；逐文件 **bytes** 读写，`count(b"\r\n")` **逐文件守恒**
+- 必须同步（不改就出事）：`scripts/verify_provider_pages.py:202` 是**构建闸门**（硬要求 provider 描述含品牌，不改直接挂构建）；`scripts/_de_link_leak_audit.py:191` 存着 `llms.txt` 的**期望值** `"# eSIM Sift\n"`；`gen_provider_pages.py` / `gen_vs_pages.py` / `regen_meta_*.py` 是**内容生成器**（下次一跑就覆盖回去）；`audit_meta.py:16` 的 `BRAND`
+- 排除区：`scripts/__pycache__/`（`.pyc` 是产物）、`docs/internal/`（历史归档，改了就**假造历史**）
+- **连带修复**：`content/en/terms.md` 描述因品牌短 1 字符由 **120 → 119**，回填为 **124**（`our price-data` → `our full price-data`）—— 否则违反 `audit_meta.py` 的 120–140
+- **盲替换副作用（已修）**：`STATUS.md:1669` 原写「用标准拼写，不拆成 X 两种写法」，替完全句**自相矛盾** ⇒ 改为「不拆成『带空格 / 不带空格』两种写法」
+- **未改**：`g_esim` / `g_sift`（页头**双色字标故意两段**，合并会丢设计）；`docs/internal/` 4 个历史文件
+
+### 2｜指南索引 `/guides/`：卡片加配图 + 一排 3 个
+
+- `layouts/_default/list.html`（**guides 是唯一回落该模板的 section** ⇒ 爆炸半径 = 2 页）：`sm:grid-cols-2` → `sm:grid-cols-2 lg:grid-cols-3`；`gap-3` → `gap-5`（带图后 12px 太挤）
+- 配图取 front matter **已有的 `hero`** —— 11 篇指南 en/de **全部已有**，**零内容改动**；宽高走 `imageConfig` 实测值防 CLS；全部插图统一 **2848×1470（1.9374）** ⇒ 用 `h-auto w-full` **原生比例、零裁切**，各卡高度天然一致
+- 产物实测：en/de 索引各 **11 张图**、`lg:grid-cols-3` ×2（两个分组）；11 张全带 `alt="" width="2848" height="1470" loading="lazy"`
+
+### 3｜指南正文右侧两模块去吸顶
+
+- `layouts/guides/single.html`：`<div class="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-1">` → `<div class="pr-1">`（两处注释同步改，别留假话）
+- 产物实测：24 个 guides 页里含 sticky aside 的 = **0**；用 `guides/single.html` 的 6 篇 × 2 语言 = **12 页**含 `<div class="pr-1">`（5 篇区域指南走 `guides/region.html`，本就无侧栏）
+- **未误伤**：`compare` 侧仍保留 sticky 的 **50 页**（`layouts/compare/single.html:1215` 同款类串仍在用）
+
+### 4｜作者卡头像（E-E-A-T）
+
+- `layouts/partials/author-box.html`：加 48×48 圆形头像，源文件 `/apple-touch-icon.png`（**180×180**，与页头字标、`schema-org.html` 的 Organization `logo` 是**同一份品牌资产**）；`alt=""`（紧随其后的 `<h2>` 就是同一个名字，重复朗读是噪音）
+- 产物实测：两篇 `esim-new-york`（en/de）均命中头像类串
+
+### 5｜文章补齐城市长尾（用户第 3 问的答复 + 执行）
+
+- **实测答复**：核心词 `esim new york`（正文 **13** 次 / 全文件 25 次）；**`usa esim` 正文仅 1 次** —— 这是**刻意**的，按既定防蚕食规则归 `/compare/united-states/`；城市长尾 `best/cheapest eSIM for New York` 原为 **0 次**（真实缺口）
+- 执行：在「Which eSIM to buy for a New York week」首段补 **`cheapest eSIM for New York` ×2 + `best eSIM for New York` ×1**；德语镜像 **`günstigste eSIM für New York` ×2 + `beste eSIM für New York` ×1**
+- EN 正文 **2500 词** / DE **2308 词**；**H2=9、H3=5 未变**（ItemList 只抓 `.Content` 的 H2，不受影响）；EN/DE 标题层**逐条同构 14/14**、front matter **14 键同序**
+
+### 6｜验收
+
+- `npm run build` **`BUILD_EXIT=0`**；`hugo` 段 **`Total in 209351 ms`**（口径同前：是 hugo **渲染段**，不是 `npm run build` 墙钟）
+- **13 道产物闸门全绿**：`1317 files (1315 pages)` · `7538 JSON-LD` · `34212 h2/h3 bad 0` · 499 品牌子页全过 · `hreflang 3936 条 / 1312 页` · `sitemap 656 URL` · i18n 1907 key en=de · 德语 F/G/J 全绿（656 页）· 语言泄漏 0 · **`livereload` / `localhost` 计数 0**
+- **逐字节归属**：把旧快照的 dev-server 污染与三处已知成因归一化后，**1309 / 1315 页逐字节全等**；余 **6 页全部是「本轮有意改动」**（2 篇文章 + `terms` + 2 个索引页）
+- **基线刷新 → 1315 文件**，复跑 `--diff` = **0 / 0 / 0**；`--diff` 对旧基线报 **变更 1314 / 新增 0 / 删除 0**，唯一未变的正是 `alias_shell`（270 B 裸跳转壳，本就不含品牌）
+
+### 7｜★ 本轮两次「派生量」差点被当成外溢
+
+- **自动派生锚点 slug**：`## Why eSIM Sift exists` 的 `id` 由 Hugo slugify 成 `why-esimsift-exists`（2 页：`/about/`、`/de/about/`）
+- **`.ReadingTime`**：`eSIM Sift`(2 词) → `eSIMSift`(1 词) ⇒ 正文每出现一次 **-1 词**；5 篇指南各 -1 词，只有 `how-to-install-esim` 压在 213 整数倍边界 ⇒ `10 min` → **`9 min`**；`esim-new-york` 因加长尾句 2343 → 2410 词 ⇒ `11 min` → **`12 min`**；索引卡「N min read」随之变
+- ★ 已写进 `PROJECT.md §14` **红线 140–143**
+
+### 8｜★ 旧快照是「混合态」（本轮归属的最大障碍）
+
+- 开工时 `public/` 是**裸 `hugo server`** 写盘的**第 4 次**（红线 131 与第九十轮日志已两度记载）：1314 页含 `livereload.js`、1315 页含 `localhost`
+- 更麻烦：它是**混合态** —— 用户当时浏览过 `/guides/` 与 `/guides/esim-new-york/`，这两页已被重渲染成「模板改后」，其余仍是「模板改前」（还带 sticky aside）⇒ **不能整树当基线**（B 组残差里恰好缺 `guides/esim-new-york`（en）、却含德语版，反过来印证了这一点）
+- 处理：污染归一化后逐字节比对；模板类改动改用**产物结构断言**直接证（guides sticky = 0 / `pr-1` = 12 / compare 侧 50 页仍 sticky）
+- 快照放在**仓库外** `D:\esimsift\_r94_prev_html`（1315 个 HTML / 250.8 MB）
+
+### 9｜纪律与登记
+
+- **未 `git commit`、未部署**（改动全部留工作区，HEAD 仍 `5b7bac4`）
+- 改已存在文件全部 **bytes 读写 + 复核换行**：`content/**` 1255 个（多数纯 LF；★ `content/en/terms.md` 是 **CRLF** —— 又一次「按文件实测、别按目录猜」）、`hugo.toml` / `i18n/*.toml` / `layouts/**` 纯 LF，**逐文件 CRLF 计数守恒**
+- 新增红线：**140**（改名类改动必算四件事：长度下限 / 德语连字符形态 / `.py` 生成器与闸门常量 / 对比式表述）、**141**（`public/` 归属先验证再当基线）、**142**（品牌字串与页头字标是两件事）、**143**（派生量：slug / ReadingTime / 索引卡时长）
+- **登记未动**：① `content/en/_index.md` 首页 title **46 → 45** 字符，**本就低于 `audit_meta.py` 的 48–54 带**（改名使它更远；建议加 ` 2026` → 50 字，未做，等你点头）；② **57 条 description 本来就 >140**（德语国家页 —— `audit_meta.py` 非构建闸门，所以一直没人拦）；③ `layouts/guides/single.html:83` 的 `.Lastmod` 与索引卡 front-matter-only 口径分叉；④ `check_dates.py` 的 `COUNTRY_HUB` 拿 slug 当 ISO、`/de/` 无守卫
+- **STATUS.md 结构观察（未动）**：第 222 行「第九十轮」标题与第 223 行「第九十三轮」标题相邻，第九十轮的正文（`### 3`–`### 6`，约 288–316 行）被隔在第九十三轮小节之后 —— 属上一轮插入时的错位，本轮**不重构**，仅登记
+
+## 已完成（「AI 味句式」维度举一反三 + 两个 i18n 死键 + 沙箱构建坑，2026-10-15 第九十六轮）
+
+**用户指令**（逐字）：`纽约esim文章：` / `开头的The New York eSIM answer in one paragraph` / `这个不像是正常人会这样写的标题，一看就是ai味道 ，这个改 吗` / `What 254 USA eSIM plans actually cost` / `不要出现254 以后新增套餐怎么办？数量难道以后又更新吗` / `Plans we price for the USA` / `254 across ten brands`
+
+**用户拍板两项**：① 同族句式改动范围 = **全部改**（内容层 6 处 + i18n 2 句）；② 纽约事实格两个英文标签 = **改**。
+
+### 1｜「这个改 吗」—— 全部已改（第九十五轮就做了），并回答「为什么你还能看到」
+
+| 用户贴的串 | 现状 | 现在页面上是（EN / DE） |
+|---|---|---|
+| `The New York eSIM answer in one paragraph` | ✅ 第九十五轮已改 | `What a USA eSIM changes for a New York week` / `Was eine USA-eSIM für eine Woche New York ändert` |
+| `What 254 USA eSIM plans actually cost` | ✅ 第九十五轮已改 | `What USA eSIM plans actually cost` / `Was USA-eSIM-Tarife tatsächlich kosten` |
+| `254 across ten brands` | ✅ 第九十五轮已改 | `Every prepaid plan sold into the USA` / `Jeder Prepaid-Tarif, der in den USA verkauft wird` |
+| `Plans we price for the USA` | ✅ 本轮改 | label 改成 `Plans in the USA file`（它本来就是事实格**标签**、不含数字） |
+
+- **唯一存活处 = `STATUS.md` 第九十五轮小节的「改前」对照列** —— `in one paragraph` / `What 254` / `254 across ten brands` 在**源码 0 处、产物 0 处**（`254` 全页唯一命中是图标 SVG 路径 `L1.254`）。你看的是我的报告，不是文章。
+- ★ **给这篇文章取证不能用 `git diff`**：它是第九十二轮**新建、从未提交**的**未跟踪文件**（`git status` = `??`）⇒ `git diff` 对它**输出为空**，会把「已改」误判成「没改」。同侧证据：线上 `/guides/esim-new-york/` = **HTTP 404**、线上 `/guides/` 内 `new york` 命中 **0** ⇒ 文章**未上线**。
+
+### 2｜举一反三：新维度「AI 味压缩句式」（上一轮把它判错了方向）
+
+- ★★ **红线 144 ③ 里那条「假红：各页自身的标题」是判错的** —— `eSIM vs physical SIM at a glance` 确实不属于「结构计数」判据范围，但**它不是「假红」，是「第二个独立维度」**。「假红」的语义是「本项检查本来就该忽略它」⇒ 一旦这么记，**下一轮我再也不会去看它**，直到用户点回来才发现。已把该例从 144 ③ 移除并**另立红线 146**。
+- 正则**跑了两轮**：首轮模式漏 `in short` 类 ⇒ 只抓 1 条；补 `in short|in brief|the short version|…` 才收全（与第九十五轮「先探针再定判据」同一条教训）。
+
+**最终清单（16 处替换 / 7 文件，en/de 严格 1:1）**
+
+| # | 位置 | 改前 | 改后 |
+|---|---|---|---|
+| 1 | `content/en/guides/esim-vs-physical-sim.md:9` | `Which one to choose in short` | `Which one wins for your trip` |
+| 2 | `content/en/guides/esim-vs-physical-sim.md:54`（H2） | `eSIM vs physical SIM at a glance` | `eSIM and physical SIM side by side` |
+| 3 | `content/de/guides/esim-vs-physical-sim.md:9` | `Welche Variante kurz gesagt gewinnt` | `Welche Variante für deine Reise gewinnt` |
+| 4 | `content/de/guides/esim-vs-physical-sim.md:54`（H2） | `eSIM gegen physische SIM auf einen Blick` | `eSIM und physische SIM Seite an Seite` |
+| 5 | `content/en/guides/how-to-install-esim.md:9` | `Installing a travel eSIM in short` | `Installing a travel eSIM step by step` |
+| 6 | `content/de/guides/how-to-install-esim.md:9` | `Reise-eSIM installieren kurz erklärt` | `Reise-eSIM installieren Schritt für Schritt` |
+| 7 | `i18n/en.toml:543` | `Coverage at a glance` | `Where it is cheapest` |
+| 8 | `i18n/de.toml:546` | `Abdeckung auf einen Blick` | `Wo er am günstigsten ist` |
+| 9 | `i18n/en.toml:671` | `The refund policy in short` | `How refunds work` |
+| 10 | `i18n/de.toml:674` | `Die Rückgabepolitik in Kürze` | `So funktioniert die Rückgabe` |
+| 11 | `i18n/en.toml:1368`（**死键**） | `{{ .country }} eSIM networks at a glance` | `How {{ .country }} eSIM networks compare` |
+| 12 | `i18n/de.toml:1371`（**死键**） | `eSIM-Netze in {{ .country }} auf einen Blick` | `Wie die eSIM-Netze in {{ .country }} abschneiden` |
+| 13 | `i18n/en.toml:1430`（**死键**） | `{{ .region }} eSIM prices at a glance` | `Where {{ .region }} eSIM prices land` |
+| 14 | `i18n/de.toml:1433`（**死键**） | `eSIM-Preise in {{ .region }} auf einen Blick` | `Wo die eSIM-Preise in {{ .region }} landen` |
+| 15 | `content/en/guides/esim-new-york.md` facts | `Plans we price for the USA` | `Plans in the USA file` |
+| 16 | `content/en/guides/esim-new-york.md` facts | `Networks any of them uses` | `Networks behind every plan` |
+
+**假红两处（不动）**：`content/{en,de}/esim-new-york.md` byline 的 `in this article`（自然句）；`public/de/guides/esim-vs-physical-sim/index.html` 里的 `Ka` + `uf einen Blick` + ` darauf` —— 德语习语「看一眼」，`auf einen Blick` 是**跨词切出来的假象**（★ 新坑：**朴素 grep 该短语必假红**）。
+
+### 3｜★★ 新缺陷类别：两个「永不渲染」的 i18n 死键
+
+`layouts/networks/single.html:49` 与 `layouts/guides/region.html:74` 都写作：
+
+    {{ $x := .Params.h2_answer | default (i18n "networks_single__h2_answer" …) }}
+
+实测（本轮脚本阶段 0 断言）：`content/{en,de}/networks/*.md` **除 `_index.md` 外 50 国全部**定义 `h2_answer`；`content/{en,de}/guides/best-*-esim.md` **5 篇区域指南全部**定义 ⇒ 两个 i18n 兜底值**永不渲染**（改前产物 `at a glance` 只命中 2 个文件即可反证）。
+
+★ **风险不是多一行文案，是潜伏雷**：以后**新增国家 / 区域页时漏写 `h2_answer`**，页面就会静默漏出旧句式 —— 而**所有守卫都看不见**（值在 `i18n/*.toml`，而 `check_hardcoded.py` 的 `BASES` 只含 `content/en` `content/de` `layouts` `hugo.toml`）。已顺手把兜底值改成同风格，**零渲染影响**。
+
+### 4｜★★ 本轮真踩的坑：沙箱拦 `public/` 写盘（已立红线 147）
+
+五次构建才绿，其中**三次不是内容错**：
+
+| 次 | 结果 | 真因 |
+|---|---|---|
+| 1（后台 + 越权） | `Access is denied` @ `public/compare/malaysia/alosim/index.html` | **后台越权不弹同意框 ⇒ 仍在沙箱内**；Hugo 只给裸错误，看不出是沙箱 |
+| 2（前台 + 越权，默认 120 s 超时） | SIGTERM，日志停在 `WARN deprecated: .Site.Data` | 超时被杀，**日志里没有 `Total in`** |
+| 3（后台 + 越权） | stderr 才给明话：`[sandbox] 命令被沙箱拦截：… public/de/compare/japan/alosim/index.html (file-write)` | 同上 |
+| 4（前台 + 越权 + `timeout: 600000`） | 跑到 `check:output`，报**真缺陷**（见 §5） | ✅ 姿势正确 |
+| 5 | **`BUILD5_EXIT=0`** | —— |
+
+★ **被拒文件每次不同**（`compare/malaysia/alosim` → `de/compare/japan/alosim`）⇒ **别当成「某个品牌页坏了」去改数据**。★ 诊断口诀：**先看 `Total in … ms` 有没有出现** —— 出现 = 渲染已完成、错在写盘；这几次的日志里源码 6 道闸门**全是绿的**，这就是「不是内容问题」的铁证。
+
+### 5｜★ 第 4 次构建抓到我自己的真缺陷（红线 6 的活证据）
+
+`check_article_agreement.py` 报：
+
+    ERROR i18n/en.toml:1368 冠词紧邻占位符 -> "a {{ .country"（渲染后可能是 a Argentina / a Airalo）
+
+即我给 `networks_single__h2_answer` 写的 `The networks behind a {{ .country }} eSIM` 把 `a` **直贴在占位符前** —— 正是红线 6 禁止的写法。改语序为 `How {{ .country }} eSIM networks compare` 后 `ART_EXIT=0`。★ **教训：改 i18n 兜底值时，占位符语序必须与前端冠词规则一起想**。
+
+### 6｜验收
+
+| 项 | 结果 |
+|---|---|
+| 主改动脚本 | **16 处替换 / 7 文件 / `APPLY_EXIT=0`**；落盘前 16 条旧串**逐条断言唯一命中 1**，任一不符即整体中止（★ 给记忆脚本时**真的触发过一次断言，未写半个文件**） |
+| 换行 | 7 个目标文件**实测全部纯 LF**；落盘后逐文件 `CRLF`/`LF` 计数守恒 |
+| i18n 完整性 | `tomllib` 解析 OK；`en=1907 / de=1907`，**key 集合完全一致** |
+| 构建 | **`BUILD5_EXIT=0`**；`hugo` 段 `Total in 189555 ms` |
+| 产物闸门 | 13 道全绿：`1317 files (1315 pages)` / `7538 JSON-LD` / `34212 h2h3 bad 0` / `sitemap 656` / `hreflang 3936 tags on 1312 pages` / `499 品牌子页全过（Offer 9095）` / 冠词一致 / `de 657 页` 语言泄漏 0 / `livereload` **0** / `localhost:1313` **0** |
+| 逐字节归属 | `--diff docs/regression-manifest.json` ⇒ **变更 27 / 新增 0 / 删除 0**（`guides=5`：2 篇指南 × 2 语言 + `en/esim-new-york`；`provider_hub=22`：10 品牌页 × 2 语言 + 2 个索引页）—— **与预期逐条吻合，无传播型外溢** |
+| 残留扫描 | 产物 `at a glance` **0** / `in short` **0** / `The refund policy in short` **0** / `Coverage at a glance` **0**；`auf einen Blick` **1**（= 上述跨词假象） |
+| 结构计数守卫 | `check_hardcoded.py` 仍是 `EXIT=1`，但**只有 `DEFERRED 159 处 / 86 文件`**（compare 正文存量，按用户决定先登记）；**文章类 0 处**，豁免 901 条 |
+| 基线 | 已刷至 **1315 文件**（`--write-manifest`），代表第九十六轮构建后状态 |
+
+### 7｜纪律与登记
+- **未 `git commit`、未部署**（HEAD 仍 `5b7bac4`）
+- 新增红线：**146**（「AI 味句式」是独立维度 / 把「范围外」记成「假红」= 永久屏蔽 / i18n `default` 兜底是死键高发区）、**147**（沙箱拦 `public/` 写盘；后台越权不生效；诊断先看 `Total in`）
+- 修正红线 **144 ③**：把 `eSIM vs physical SIM at a glance` 从「假红」清单移除（翻案 + 已改）
+- **沿用待办**：compare 50 国正文计数动态化（159 处 / 86 文件）；首页 EN title 45 字符；57 条 description >140；`single.html:83` 的 `.Lastmod`；`check_dates.py` 盲区
+
+## 已完成（纽约文章去 AI 味 + 全站「会过期的结构计数」清剿 + `check_hardcoded.py` 通电，2026-10-15 第九十五轮）
+
+**用户指令**（逐字）：`纽约esim文章：` / `开头的The New York eSIM answer in one paragraph` / `这个不像是正常人会这样写的标题，一看就是ai味道` / `New York eSIM facts at a glance` / `这个不要写多少品牌，多少个套餐，万一我后续新增其他品牌的美国esim咋办` / `请你举一反三` / `另外为什么h1h2的标题不能植入usa esim这个是核心词？`
+
+**用户拍板两项**：① 改动范围 = **只改文章类，compare 先登记**；② `usa esim` 的植入方式 = **H1 也植入国家词**（明知会与 `/compare/united-states/` 的 title `USA eSIM` 争词形）。
+
+### 1｜三问逐条对账
+
+| 问 | 答复 / 处置 |
+|---|---|
+| 两个 H2 太「AI 味」 | `The New York eSIM answer in one paragraph` → **`What a USA eSIM changes for a New York week`**；`New York eSIM facts at a glance` → **`New York eSIM price facts`**（德语同构：`Was eine USA-eSIM für eine Woche New York ändert` / `eSIM-Preisfakten zu New York`）。两键由 `layouts/guides/single.html` 内建渲染（`h2_answer` / `h2_facts`），**零模板改动** |
+| 事实格不许写死品牌数 / 套餐数 | 纽约文章 **16 处替换 ×2 语言**（`254 across ten brands` → `Every prepaid plan sold into the USA`；`…identical in all 254 plans` → `…identical in every one`；H2 `What 254 USA eSIM plans actually cost` → `What USA eSIM plans actually cost`；`100 of the 254 plans` → `A large share of the plans in our file`；`six tiers from 3 days to 30 days` → `running from 3 days to 30 days`…）。**理由**逐字：新增品牌后这些数字会静默变谎 |
+| 为什么 H1/H2 不能植入 `usa esim` | 查明 `content/en/compare/united-states.md` 的 front matter `title` **就是 `USA eSIM`**（`iso: US` / `weight: 2`），`layouts/compare/single.html` 用 `$lockedTitle` 取它作 H1 ⇒ 国家页独占该精确词形（两页争同一 query = 真蚕食）。**原规则「国家词只作背景、正文 ≤1 次」经用户推翻**：城市文章**应当**在 H1/H2 含国家词，只要**以城市词起头**保住主词位。已实施 `eSIM for New York: What a USA eSIM Costs in 2026`（**EN 48 / DE 48 字符**，落在 `audit_meta.py` 的 48–54 带内），`docs/keyword-map.md` 的城市文章行同步重写 |
+
+### 2｜举一反三（探针驱动：76 处 / 19 文件 → 清 44 处 / 登记 159 处）
+
+- **探针 v1**（6 类候选判据：国家数 / 品牌数 / 套餐数 / 比例计数 / 档位数 / 不限量计数）对**改造前源码**全量跑 ⇒ **34 处命中、零误伤**；**v2** 补「区域目的地数」类 ⇒ **76 处 / 19 文件**。★ v1 **漏掉** 4 篇区域指南的 `Ten brands` 与 `networks/japan` 的 `177 plans` ⇒ **先跑探针、再定判据**（顺序反了必漏）。
+- **本轮清掉（12 文件 / 44 处，`r95_apply.py` EXIT=0）**：纽约文章 ×2 语言（16+16）、4 篇区域指南 ×2 语言（各 1）、`content/{en,de}/networks/japan.md`（各 2）。
+- **`networks/japan.md:55` 同类最恶**：`{{< count-providers >}}`（渲染 **10**）后面紧跟只列 **8** 个品牌名的括号列表 ⇒ **删列表**（动态计数是唯一真源）；`:59` 的 `all 177 plans` → `every plan`。
+- **登记待办（本轮不动，用户决定）**：**compare 50 国正文 159 处 / 86 文件**（如 `content/en/compare/united-states.md:9` 的 `254 plans`；`layouts/partials/country-stats.html` 已返回 `planCount`，**动态化可做**）。
+
+### 3｜`scripts/check_hardcoded.py` 扩写为可运行判据 + 加手动入口（**本项目最严重的「写了没通电」案例**）
+
+- 实测：该守卫 docstring 早在 **2026-10-02** 就写明四条规则（`layouts` → `{{ len hugo.Data.* }}` / `content bodies` → `{{< count-countries >}}` 等短代码 / `front matter` → **number-free wording** / EXEMPT `content/en/compare/<country>.md` 的 `seo.description`），**但它从未出现在 `npm run validate` 也不在 `check:output`** ⇒ 开工一跑已经 `EXIT=1`（`content/en/compare/costa-rica/airalo.md:8` 的 `All 28`、`layouts/partials/aside-destinations.html:21` 的 `50 destinations` —— 后者其实是**注释里的历史说明**）。
+- 重写后：11 类判据 + 注释掩码（`{{/* … */}}` / 带裁剪符 `{{- /* … */ -}}` / 裸 `<!-- -->` **三形态**）+ `seo:` 块豁免 + `--selftest` **7 正例 / 7 反例全过**；违规分 **`HARDCODED TOTALS`（非 compare = 硬错）** 与 **`DEFERRED`（compare 存量 = 登记待办）**，**两者都返回 1**（让待办量永远可见、只减不增）。
+- 两条硬细节：`(?<![\d.,])\b\d{2,4}\b` 的负向后视（否则 `content/en/compare/_index.md:14` 的 `a $0.51 plan` 被判成 `51 plan`）；豁免量必须用**「剥前命中数 − 剥后命中数」求差**（掩码把注释换成等量换行，**长度已变**，拿掩码后的偏移查原串必然漂）。
+- 现成替代品（本轮复用）：`layouts/shortcodes/{count-providers,count-countries,count-app-providers,count-direct-providers}.html`；`layouts/partials/country-stats.html` 返回 `planCount` / `unlimitedCount` / `minPrice` / `minPerGB` / `maxGB` / `providerCount`。
+- **★ 本轮实测**（`npm run check:hardcoded`，`package.json` 新增的手动入口）⇒ `EXIT=1`：**文章类命中已归零**，只剩 `DEFERRED — compare 正文 159 处 / 86 文件`；豁免（`compare/*.md` 的 `seo.description`，生成器会重写）**901 条**；`--selftest` **7 正例 / 7 反例全过**。
+- **★ 诚实说明**：新入口 `npm run check:hardcoded` 只是**手动入口**，**未进 `npm run validate` / `check:output`** —— compare 159 处待办会让它**恒红**。等 compare 清完再入闸（判据本身已就绪）。**「有守卫」≠「闸门在跑」** 这条纪律本轮对自己也适用。
+
+### 4｜假红五条（全部真实出现，已逐一排除）
+
+| 假红 | 实例 | 为何不改 |
+|---|---|---|
+| 价格与价格派生量 | `$0.51 plan` 等 | 有 `checked` 复核日锚，会定期重核 |
+| 稳定地理事实 | `all three countries`（美/加/墨，4 页） | 不随品牌 / 套餐增长而变 |
+| 策展集合的规模 | `18 destinations` / `Eight Countries` | 只有主动扩区才变，非外部数据增长 |
+| 历史日志 | `public/methodology/index.html` 的 `Brands involved: Airalo, … Yesim`（8 个） | 是 **2026-09-30 的变更日志**，改了即**篡改历史** |
+| 各页自身的标题 | `eSIM vs physical SIM at a glance`（2 页） | 是**该页自己的 H2**，与纽约文章无关 |
+
+### 5｜验收（产物文本断言，**无截图**）
+
+| 项 | 结果 |
+|---|---|
+| `npm run build` | **`BUILD_EXIT=0`**；`Total in 492020 ms`（`hugo` 段，后台总耗时 15m2s） |
+| 源码 6 道闸门 | 全过 |
+| 13 道产物闸门 | 全绿：`1317 files (1315 pages)` · `7538 JSON-LD` · `34212 h2/h3 bad 0` · sitemap **656** · hreflang **3936 条 / 1312 页** · 499 品牌子页全过 · `de` 页 **657** · 语言泄漏 **0** · `livereload` **0** · `localhost:1313` **0** |
+| **逐字节归属** | `verify_no_regression.py --diff docs/regression-manifest.json` ⇒ **变更 24 / 新增 0 / 删除 0**，`EXIT=0` |
+| **确定性自证** | 第二次全量构建（`BUILD2_EXIT=0`，`Total in 265320 ms`）后拿**同一份**改造前基线复跑 ⇒ 仍 **24 / 0 / 0**、同样 `guides=22, networks=2` ⇒ 构建是确定性的、24 处变更真实；基线已刷至 **1315 文件** |
+| 残留扫描（1315 HTML） | 本轮清掉的旧文案 **全站零残留**（`ten brands` / `Zehn Marken` / `zehn Anbieter` / `177 plans` / `six tiers` / `sechs Stufen` / `100 of the`）；`254 plans` 的 26 个命中**全部落在 `compare/united-states/**`** = 已登记待办 |
+| 产物文本核对 | EN `<title>`/H1 = `eSIM for New York: What a USA eSIM Costs in 2026`（48）、description 133 含品牌；DE 48 / 130 含品牌；`public/guides/esim-new-york/index.html` 内 `ten brands\|254\|six tiers\|100 of the\|at a glance\|in one paragraph` **文案零残留**（唯一 `254` 命中是 SVG path 的 `L1.254`） |
+
+**★ 24 处变更逐条归因**：`guides` 单页 **20**（10 篇 × 2 语言）+ `guides/index.html` **×2** + `networks/japan` **×2**。其中**直接变更 10 篇**（纽约 + 4 篇区域指南）×2；**被动变更 10 篇**（`dual-sim-and-esim` / `esim-compatibility-check` / `esim-vs-physical-sim` / `how-to-install-esim` / `what-is-an-esim`）—— 探针证实这些页里纽约新标题**恰好出现 1 次**，位置是 `card card-hover` 的「更多指南卡片」⇒ **guides 单页列出全部 guides 的 title + description，单篇标题一变则同语言全栏目页全变**（红线 143③ 的推广）。
+
+### 6｜★ 基线归属（本轮最大的障碍与结论）
+
+- 开工时 `public/` 与仓库外快照 `D:\esimsift\_r94_prev_html`（1315 HTML / 250.8 MB）**都不是干净基线**：快照里 `index.html` 含 `<script src="/livereload.js?…&port=1313…">` + `canonical="http://localhost:1313/"` + 旧品牌字串 `eSIM Sift` ⇒ 是**第九十四轮开工前的 dev server 污染产物**，页页 sha 都不等于基线（与红线 141 同源）。★ 拿快照当基线前**先 grep `livereload` 与 `localhost:1313`**。
+- **真正可用的基线是 `docs/regression-manifest.json`**（17:00 改动前写入、18:2x 构建完成 —— 顺序正确）—— 但它**只存 `sha256` / `cls` / `title_len`，不含内容** ⇒ 只能做**页级三分类 diff**，**不能**做块级替换深证。
+- 归属证据链 = 页级 sha256 三分类（**24 / 0 / 0**）+ 24 条归因探针 + 全站残留扫描 + 13 道产物闸门。
+
+### 7｜纪律与登记
+
+- **未 `git commit`、未部署**（改动全部留工作区，HEAD 仍 `5b7bac4`）
+- 改已存在文件全部 **bytes 读写 + 复核换行**：本轮 14 个目标文件**实测全部纯 LF**（`content/{en,de}/guides/*.md`、`content/{en,de}/networks/japan.md`）
+- **每条字节替换落盘前先断言「旧串唯一命中数」**，不符即整体中止、不写半个文件
+- **另改 3 个非内容文件**：`scripts/check_hardcoded.py`（扩写判据）、`package.json`（**新增手动入口 `check:hardcoded`**；纯 LF、`json.loads` 合法）、`docs/keyword-map.md`（城市文章行重写）
+- 新增红线：**144**（「会过期的结构计数」缺陷类别 + 探针驱动的举一反三 + 五类假红 + **守卫写了不等于通电** + 同句两种口径）、**145**（产物基线两种形态：指纹型只能页级、内容型必须先验净）
+- **登记未动**：① compare 50 国正文 **159 处 / 86 文件**；② 首页 EN title **45** 字符（低于 `audit_meta.py` 的 48–54 带）；③ **57 条** description >140（德语国家页，既有问题）；④ `layouts/guides/single.html:83` 的 `.Lastmod` 与索引卡 front-matter-only 口径分叉；⑤ `check_dates.py` 的 `COUNTRY_HUB` 拿 slug 当 ISO、`/de/` 无守卫；⑥ 本轮新发现 `content/en/compare/costa-rica/airalo.md:8` 的 `All 28`（随 compare 批量项一起处理）
+
 ## 已完成（`/guides/` 宽度修复 + 新增「页型模板容器」守卫，2026-10-13 第九十轮补记）
+## 已完成（博客文章生产线 + 首篇国家文章 `esim-new-york`，2026-10-15 第九十三轮）
+
+**用户指令**（逐字）：「文章放 ① 进 content/en/guides/；文章开头还需要一个图片……另外如果是牵涉到运营商的信息，你可以链接到内部链接……国家和国家之前的文章内容不能重复，你写完整个文章后，就沉淀下技能或者记忆，免得以后犯错。」
+
+### 1｜交付
+
+- **新增 2 页产物**（en + de，共 **1315** 页）：`content/{en,de}/guides/esim-new-york.md`；guides 每语言 `_index.md` + **11 篇**（原 10 篇）
+- 文章 **en 2391 词 / de 2199 词**，各 **9 个 H2 + 5 个 H3**（共 14 标题）、**15 条内链**（锚文本全不同、目标页与锚点逐条实测可达）、**3 条权威外链**（Ookla / RootMetrics / Apple 支持）、**6 条 FAQ**（正文与 FAQPage schema 同源）
+- **新增共享组件**：`layouts/partials/author-box.html`（团队署名卡，**只在 front matter 有 `byline` 时渲染**）+ `layouts/guides/single.html` **1 行调用** + `i18n/{en,de}.toml` 各 **+3 key**（1904 → **1907**）
+- 作者署名按用户拍板 = **团队署名**（`eSIMSift Data Team` / `eSIMSift Datenteam`）—— 不编个人，符合 `schema.html` 既有原则「无真实团队资料时不造假个人」
+
+### 2｜防蚕食与防国间重复
+
+- 国家页已占满**八条轴**（比价 / 价格 / FUP / 流量档位 / 行程长度 / 品牌 / 网络 / FAQ）⇒ 文章**换轴**：城市词 + 到达首小时 + 与漫游/机场 SIM 对比 + 跨境延伸
+- 规则写进 `docs/keyword-map.md`（+1 行）与技能 `esimsift-country-article`（含「同系列第二篇起不得复用第一篇 H2 骨架、通用段落必须并进共享 partial、段落 md5 去重后重复数必须 0」三条判据）
+
+### 3｜验收（全部产物文本断言，**无截图**）
+
+| 项 | 结果 |
+|---|---|
+| `npm run build` | **`EXIT=0`**；`Total in 495423 ms`（`hugo` 段，落在实测区间 233–591 s 内） |
+| 13 道产物闸门 | 全绿：`1317 files (1315 pages)` · `7538 JSON-LD` · `34212 h2/h3 bad 0` · sitemap **656** URL · hreflang **3936 条 / 1312 页** · 499 品牌子页全过 · `check_faq_facts` R1–R11 · `verify_de_text` **656 页** F/G 全绿 · `check_inline_copy` 0 残留 |
+| 产物断言 `.buildlog/r93_verify.py` | **通过 40 / 失败 0**（首轮 36/4，四条 FAIL **全部定性为判据假红**并已修留痕，见 §14 红线 138） |
+| 英文自审 `.buildlog/r93_audit.py` | 通过 35 / 失败 0（SEO title **52** 字符 / description **135** 字符 / 12 个 LSI 词全命中 / 29 个数据点齐全） |
+| 德语自审 `.buildlog/r93_audit_de.py` | 通过 29 / 失败 0 |
+| 产物卫生 | `livereload` / `localhost` 计数均 **0** |
+| 零外溢 | `--diff` **变更 12 / 新增 2 / 删除 0**：12 = 2（guides 索引卡）+ 10（5 篇单页 × 2 语言的「相关阅读」），**其余 1301 页逐字节不变**（归因见 §14 红线 137） |
+| 基线 | `--write-manifest` → **1315 文件**，复跑 `--diff` **0 / 0 / 0** |
+
+### 4｜纪律与数据
+
+- **未 `git commit`、未部署**（改动全部留工作区，HEAD 仍为 `5b7bac4`）
+- 新增 / 修改文件全部 **bytes 读写 + 复核换行**：`content/{en,de}/guides/esim-new-york.md`、`docs/keyword-map.md`、`layouts/partials/author-box.html`、`layouts/guides/single.html`、`i18n/{en,de}.toml` **均纯 LF**
+- **数据全部现算**（`.buildlog/r93_us_decide.py`）：美国 **254 套餐 / 10 品牌**（154 计量 + 100 无限），网络 **100% 一致**（T-Mobile / AT&T / Verizon 各 254/254，**唯一网络组合数 = 1**），最低 **$0.51**（yesim 500MB/1d）、最佳 **$/GB $0.60**（nomad 50GB/30d $30）、倍差 **23.9**
+- **★ 写作铁律（本轮真错更正）**：「某档最低价」**必须同时卡有效期** —— 原稿写「10GB 档最低 $7.99」其实那是 **3 天有效**、撑不过一周；覆盖一周的是 **roamic 10GB/30d $8.00**（数字对、场景错）
+- **★ 旧草稿「Roami 无 FUP」是错的** —— 读 `data/providers.toml` 真源为 `30 GB/day`，且 `fup_note` 自承与自家 UK 指南的 `2 GB/day` 矛盾 ⇒ 文章改写为「publishes 30GB per day, yet its own pages disagree with each other」
+- **★ 德语首版正文漏逗号（真缺陷，已整篇重写）** —— 我把「标题层免逗号」误推广到正文；德语从句逗号是**硬语法**，缺了就是错的德语
+
+### 5｜沉淀
+
+- 技能 `~/.workbuddy/skills/esimsift-country-article/SKILL.md`（12 节：铁律 10 条 / 关键词真实性验证 / 防蚕食表 / 防国间重复三规范 / 取数模板 / front matter 契约 / 内链语言陷阱 + **EN↔DE 锚点对照表** / 自审口径 / 作者署名与 E-E-A-T / 验收交付 / 闸门口径速查）
+- `MEMORY.md` 再压缩并把「博客 / 文章生产」章节**前移**（注入预算实测 **≈9.3 KB** —— 由注入截断点反推，比原先按归档文件估的 17.4 KB **紧一倍**）
+- `PROJECT.md` §11「操作手册 E」+ §14 **新增红线 135–139**
 
 **用户报告**：「/guides/ 这个页面是不是太宽了，和其他页面的布局不一样的，宽度不协调，宽度都跑到屏幕外了」。
 
@@ -960,7 +1237,7 @@ mtime **10-10 22:19–22:21**（在最后一次构建**之后**）。成因：**
 `/de/catalog.json` 的 `plan` 字段 **9095 条与英语侧逐条相同**（`Unlimited` 4038 条），
 而德语 HTML 印的是 `Unbegrenzt`（265 处）— 同一事实两套渲染（O1，机器导出 vs 读者可见的口径取舍）。
 `/de/sitemap.xml` 无 `xhtml:link` alternate（英语侧同样 0，两语对称）；JSON-LD `inLanguage` 缺 **146 页**（两语对称）；
-RSS `<title>` 尾巴 `on eSIM Sift` 两语相同；`de/404.html` 段落硬编码；**全站无 RSS 自动发现 `<link rel="alternate" type="application/rss+xml">`**。
+RSS `<title>` 尾巴 `on eSIMSift` 两语相同；`de/404.html` 段落硬编码；**全站无 RSS 自动发现 `<link rel="alternate" type="application/rss+xml">`**。
 
 ## 已完成（英语 compare 正文现算口径 + 德语上线前技术收尾，2026-10-10 第七十四轮 · d49/d50）
 
@@ -1623,9 +1900,9 @@ Opensignal 引文里的 `May 2026`（6 处，报告官方标识）· `Plan`（1 
 
 ### 2026-10-02 批次F（meta 品牌规范 v3：标题 48-54 无品牌 / 描述 120-140 必含品牌）
 
-- ✅ **规则变更（用户定）**：标题全部收窄到 48-54 字符（原 ≤60）；**内页标题一律不带品牌词**（新站无人搜品牌，字符留给关键词；仅首页标题保留品牌）；描述收窄 120-140（原 120-158）且**每页必含品牌 "eSIM Sift"**（用站内标准拼写，不拆成 eSIMSift 两种写法）；法务/联系 4 页（privacy/terms/contact/disclosure）豁免 eSIM 关键词检查（不参与关键词竞争，仅受长度+无品牌约束）；404 页全豁免
-- ✅ **head.html**：`<title>` 尾缀 `| eSIM Sift` 移除（首页标题在 front matter 自带品牌）；国家页/子页标题改**候选串降级链**（从长到短取第一个 ≤54，审计兜底查 ≥48）：国家页 6 档（"8 Providers Compared From" → "All 8 Providers From" → "8 Providers From" → "Compared From" → "Prices From" → "From"），子页计量型 6 档 / 无限流量型 6 档（holafly 长国名自动落 "eSIM Plans From"）
-- ✅ **新 `scripts/regen_meta_brand.py`**（幂等，可重跑；dry-run 先行）：A. 50 国 desc 品牌前置版（"eSIM Sift compares every {C} eSIM: N real plans…"，数据实时计算）；B. 28 VS 页标题按原家族重建到 48-54（F1 Verdict / F2 Price Comparison / F3 Which One Is Cheaper / roami-vs-roamic 特例）+ desc **3 家族轮换**（i%3，反同质化）；C. 29 个手写页显式 map（**品牌页/枢纽页 lead-in 各不相同**——"How good is aloSIM?"、"Saily is the NordVPN team's eSIM —" 等，8 连排比是模板化信号）；/esim-providers/ 标题 "eSIM Providers A-Z"(18) → "Every eSIM Provider Compared: 2026 Prices and Reviews"(53)；compare 枢纽 + methodology 两页补入（上轮漏网）
+- ✅ **规则变更（用户定）**：标题全部收窄到 48-54 字符（原 ≤60）；**内页标题一律不带品牌词**（新站无人搜品牌，字符留给关键词；仅首页标题保留品牌）；描述收窄 120-140（原 120-158）且**每页必含品牌 "eSIMSift"**（用站内标准拼写，不拆成「带空格 / 不带空格」两种写法；2026-10-15 第九十四轮起统一为**无空格** `eSIMSift`）；法务/联系 4 页（privacy/terms/contact/disclosure）豁免 eSIM 关键词检查（不参与关键词竞争，仅受长度+无品牌约束）；404 页全豁免
+- ✅ **head.html**：`<title>` 尾缀 `| eSIMSift` 移除（首页标题在 front matter 自带品牌）；国家页/子页标题改**候选串降级链**（从长到短取第一个 ≤54，审计兜底查 ≥48）：国家页 6 档（"8 Providers Compared From" → "All 8 Providers From" → "8 Providers From" → "Compared From" → "Prices From" → "From"），子页计量型 6 档 / 无限流量型 6 档（holafly 长国名自动落 "eSIM Plans From"）
+- ✅ **新 `scripts/regen_meta_brand.py`**（幂等，可重跑；dry-run 先行）：A. 50 国 desc 品牌前置版（"eSIMSift compares every {C} eSIM: N real plans…"，数据实时计算）；B. 28 VS 页标题按原家族重建到 48-54（F1 Verdict / F2 Price Comparison / F3 Which One Is Cheaper / roami-vs-roamic 特例）+ desc **3 家族轮换**（i%3，反同质化）；C. 29 个手写页显式 map（**品牌页/枢纽页 lead-in 各不相同**——"How good is aloSIM?"、"Saily is the NordVPN team's eSIM —" 等，8 连排比是模板化信号）；/esim-providers/ 标题 "eSIM Providers A-Z"(18) → "Every eSIM Provider Compared: 2026 Prices and Reviews"(53)；compare 枢纽 + methodology 两页补入（上轮漏网）
 - ✅ **gen_provider_pages.py**：desc 模板品牌前置 + 120-140 断言（尾句 4 档自适应：benchmarked → ranked → live price index → live prices），重跑 400 子页
 - ✅ **audit_meta.py** 新规则：标题 48-54 / 描述 120-140 / desc 必含品牌 / 内页标题禁品牌 / 404 豁免
 - ✅ **research 枢纽 h3 修复**（顺手消掉上批的 3 处豁免）：卡片标题 `replaceRE "^(.+?):.*$" "$1"` 截到冒号前（"eSIM Price Index 2026"），h2/h3 硬规则全站 0 豁免 0 违规

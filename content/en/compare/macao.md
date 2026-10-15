@@ -3,7 +3,7 @@ title: "Macao eSIM"
 iso: MO
 weight: 14
 seo:
-  description: "eSIM Sift compares every Macao eSIM: 127 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
+  description: "eSIMSift compares every Macao eSIM: 127 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB with fair-use caps decoded."
 ---
 
 Providers in Macao price the same gigabyte very differently. Nothing in Macao comes in under Yesim's Macau at $0.51. That $0.51 buys a fraction of what it would at the $0.54/GB rate, which is nearer 967MB. The best rate here is Roamic's 50GB / 30 Days plan at $0.54/GB. That is 53 unlimited plans among 127 options for Macao from {{< count-providers >}} providers.

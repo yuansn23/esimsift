@@ -330,7 +330,7 @@ python -X utf8 scripts/backfill_networks_uniform.py                      # netwo
 python -X utf8 scripts/_rename_us_gb.py --dry-run && python -X utf8 scripts/_rename_us_gb.py
 # 2) providers.toml 加 <brand> 块（含 info / policy / promo_*）+ profile_checked
 # 3) hugo.toml 加 [params.outbound.targets.<brand>]
-# 4) content/en/esim-providers/<brand>.md（title 48-54 无品牌词 / description 120-140 含 "eSIM Sift"）
+# 4) content/en/esim-providers/<brand>.md（title 48-54 无品牌词 / description 120-140 含 "eSIMSift"）
 # 5) gen_provider_pages.py → gen_vs_pages.py → regen_meta_brand.py → _solve_titles.py --write
 # 6) npm run build → verify_no_regression --diff → --write-manifest
 ```

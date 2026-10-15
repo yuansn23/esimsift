@@ -2,8 +2,8 @@
 """Meta title/description audit over rendered public/ HTML.
 Usage: python -X utf8 scripts/audit_meta.py [--limit N]
 Rules (2026-10-02 user spec v3): title 48-54 chars with NO brand word
-(only home may carry "eSIM Sift"); description 120-140 chars that MUST contain
-"eSIM Sift"; duplicates; 404 exempt from all checks.
+(only home may carry "eSIMSift"); description 120-140 chars that MUST contain
+"eSIMSift"; duplicates; 404 exempt from all checks.
 Read-only; run after npm run build.
 """
 import io, os, re, sys, html, statistics, collections
@@ -13,7 +13,7 @@ TITLE_RE = re.compile(r"<title>(.*?)</title>", re.S)
 DESC_RE = re.compile(r'<meta\s+name="description"\s+content="(.*?)"', re.S)
 TITLE_MIN, TITLE_MAX = 48, 54   # user-spec target band (Google truncates ~580px)
 DESC_MIN, DESC_MAX = 120, 140
-BRAND = "eSIM Sift"
+BRAND = "eSIMSift"
 
 def classify(rel):
     parts = rel.replace("\\", "/").split("/")

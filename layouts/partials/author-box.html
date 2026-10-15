@@ -1,0 +1,35 @@
+{{- /* ─────────────────────────────────────────────────────────────
+   文章作者署名卡（front matter: byline.name / byline.role / byline.bio）。
+
+   为什么要有它（第九十三轮，2026-10-15）：
+   · E-E-A-T —— 生成式检索与 Google 的质量评估都要求内容能追溯到「谁写的、
+     凭什么写」。本站 `partials/schema.html` 的既有原则是「**无真实团队资料时
+     不造假个人**」，所以署名走**团队**（eSIMSift Data Team），背景写清方法，
+     并链到 /about/ 的披露与方法论。
+   · 只在 front matter 给出 `byline` 时渲染。未给出的页面（既有 10 篇指南）
+     产物必须**逐字节不变** —— 调用点用 `{{- if }}` 把插入行自身的空白吃掉，
+     这正是红线 3「改模板 = 改产物字节，空白也是字节」的直接应用。
+   · 刻意不写进 Article JSON-LD：schema.html 的 author 仍是站级 Organization，
+     两者指同一个实体，重复声明只会造出第二份需要维护的真源。
+
+   调用：{{ partial "author-box.html" . }}（传页面上下文）
+   ───────────────────────────────────────────────────────────── */ -}}
+{{- with .Params.byline -}}
+<section class="mt-10 not-prose" aria-labelledby="byline">
+  <div class="card p-6">
+    <p class="eyebrow">{{ i18n "guides_byline__eyebrow" | safeHTML }}</p>
+    {{/* 头像：复用品牌图标 apple-touch-icon.png（180×180）—— 与页头字标、以及
+         schema-org.html 里 Organization 的 `logo` 同一个文件，一份品牌资产一处真源。
+         alt 留空：紧随其后的 <h2> 就是同一个名字，重复朗读对读屏用户是噪音。 */}}
+    <div class="mt-3 flex items-center gap-3">
+      <img src="/apple-touch-icon.png" alt="" width="180" height="180" loading="lazy" decoding="async" class="h-12 w-12 shrink-0 rounded-full ring-1 ring-ink-100">
+      <div class="min-w-0">
+        <h2 id="byline" class="text-2xl font-bold">{{ .name }}</h2>
+        <p class="mt-0.5 text-sm font-medium text-ink-500">{{ .role }}</p>
+      </div>
+    </div>
+    <p class="mt-3 text-sm leading-relaxed text-ink-700">{{ .bio }}</p>
+    <p class="mt-3 text-xs leading-relaxed text-ink-400">{{ i18n "guides_byline__method" | safeHTML }} <a href="{{ partial "lang-href.html" "/about/" }}" class="font-semibold text-brand-700 hover:underline">{{ i18n "guides_byline__method_link" | safeHTML }}</a></p>
+  </div>
+</section>
+{{- end -}}

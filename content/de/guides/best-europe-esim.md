@@ -20,7 +20,7 @@ faqs:
   - q: "Wann sollte ich meine Europa-eSIM kaufen?"
     a: "Kauf sie ein oder zwei Tage vor der Europa-Reise, damit der QR-Code bereitliegt und du ihn im WLAN installieren kannst. Die Preise auf dieser Seite sind am angegebenen Datum geprüft, die Europa-Tabelle spiegelt also das, was die Anbieter derzeit nennen."
   - q: "Welche Anbieter verkaufen eSIMs für Europa?"
-    a: "Zehn Marken verkaufen in europäische Reiseziele, sie bieten aber nicht dieselbe Länderliste an — die brauchbare Antwort ist deshalb länderspezifisch und nicht kontinental. Die Tabelle oben nennt den günstigsten Anbieter in jedem der 18 Reiseziele, die Siegertabelle zeigt, welche Marke in diesem Monat in den meisten davon am günstigsten ist."
+    a: "Jede Marke, die wir erfassen, verkauft in europäische Reiseziele, sie bieten aber nicht dieselbe Länderliste an — die brauchbare Antwort ist deshalb länderspezifisch und nicht kontinental. Die Tabelle oben nennt den günstigsten Anbieter in jedem der 18 Reiseziele, die Siegertabelle zeigt, welche Marke in diesem Monat in den meisten davon am günstigsten ist."
   - q: "Gibt es einen Tarif für ganz Europa?"
     a: "Kein einzelner Tarif deckt alle 18 Reiseziele der Tabelle ab. Regionale Tarife werden mit eigenen Länderlisten verkauft — meist die EU, manchmal weiter. Vergleiche diese Liste mit deiner tatsächlichen Route statt mit dem Wort Europa. Bleibt die Route in der EU, ist ein Europa-Tarif die einfache Antwort; gehören Vereinigtes Königreich, Schweiz, Türkei oder Georgien dazu, prüfe, ob diese Namen in der Liste stehen."
 ---

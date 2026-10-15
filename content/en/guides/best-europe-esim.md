@@ -20,7 +20,7 @@ faqs:
   - q: "When should I buy my Europe eSIM?"
     a: "Buy a day or two before a Europe trip so the QR code is ready to install on Wi-Fi. The prices on this page are checked on the date shown, so the Europe table reflects what the providers currently list."
   - q: "Which providers sell eSIMs for Europe?"
-    a: "Ten brands sell into European destinations, but they do not offer the same list of countries, so the useful answer is per country rather than per continent. The league table above names the cheapest provider in each of the 18 destinations and the winner table shows which brand is cheapest in the most of them this month."
+    a: "Every brand we track sells into European destinations, but they do not offer the same list of countries, so the useful answer is per country rather than per continent. The league table above names the cheapest provider in each of the 18 destinations and the winner table shows which brand is cheapest in the most of them this month."
   - q: "Is there one plan that covers all of Europe?"
     a: "No single plan covers all 18 destinations in the table. Regional plans are sold with their own country lists — usually the EU, sometimes wider — so compare that list against your actual route rather than against the word Europe. If the route stays inside the EU a Europe plan is the easy answer; if it includes the UK, Switzerland, Turkiye or Georgia, check that those names appear before you buy."
 ---

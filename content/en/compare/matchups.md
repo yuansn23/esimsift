@@ -1,6 +1,6 @@
 ---
 title: "Every eSIM Provider Matchup Compared on Real Prices"
-description: "Every eSIM provider matchup in one eSIM Sift index — Airalo vs Holafly, Roami vs Roamic and every other pair, computed country by country."
+description: "Every eSIM provider matchup in one eSIMSift index — Airalo vs Holafly, Roami vs Roamic and every other pair, computed country by country."
 layout: matchups
 nolist: true
 ---

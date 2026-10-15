@@ -1,6 +1,6 @@
 ---
 title: "Contact Us: Price Corrections and Provider Requests"
-description: "Report a price change, suggest a provider to track, or reach the eSIM Sift team — verified fixes ship with the next site build."
+description: "Report a price change, suggest a provider to track, or reach the eSIMSift team — verified fixes ship with the next site build."
 ---
 
 ## Get in touch

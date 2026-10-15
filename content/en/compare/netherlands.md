@@ -3,7 +3,7 @@ title: "Netherlands eSIM"
 iso: NL
 weight: 22
 seo:
-  description: "eSIM Sift compares every Netherlands eSIM: 209 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
+  description: "eSIMSift compares every Netherlands eSIM: 209 real plans from 10 providers, cheapest Yesim from $0.51, ranked by $/GB and $/day."
 ---
 
 The market in the Netherlands rewards a little arithmetic. Yesim holds the entry price with 500MB / 1 Day at $0.51. That gap is the story in the Netherlands in one line: 2.9 times the rate for the smallest bucket. Roamic wins on rate, at $0.36/GB for a 50GB / 30-day bucket. The tracked catalogue holds 209 plans for the Netherlands from {{< count-providers >}} providers, 99 of them unlimited.

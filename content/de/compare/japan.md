@@ -2,7 +2,7 @@
 title: "Japan eSIM"
 iso: JP
 seo:
-  description: "eSIM Sift vergleicht alle eSIM-Tarife für Japan: 211 echte Tarife von 10 Anbietern, günstigster Roami ab $1.99, sortiert nach $/GB mit ausgewerteten Fair-Use-Grenzen."
+  description: "eSIMSift vergleicht alle eSIM-Tarife für Japan: 211 echte Tarife von 10 Anbietern, günstigster Roami ab $1.99, sortiert nach $/GB mit ausgewerteten Fair-Use-Grenzen."
 ---
 
 Die rohe Tabelle verbirgt eine Spaltung darin, wie japanische eSIMs bepreist werden — und wer sie versteht, spart echtes Geld. Ein Lager verkauft feste Datenkontingente: $4-8 für ein paar Gigabyte, die mit dem Gültigkeitsfenster verfallen. Das andere Lager, angeführt von Holafly, verkauft unbegrenzte Daten, tageweise abgerechnet zu rund $3.90 pro Tag. Unter etwa 5 GB erwartetem Verbrauch gewinnen feste Kontingente klar. Ab 15 GB beginnen die Tagestarife vernünftig auszusehen — aber nur, wenn du vorher das Kleingedruckte zur Fair-Use-Regel prüfst, denn „unbegrenzt“ bedeutet fast nie unbegrenzte Geschwindigkeit.

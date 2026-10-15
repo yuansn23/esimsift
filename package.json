@@ -8,6 +8,7 @@
     "build:css": "tailwindcss -i assets/css/main.css -o static/css/tailwind.css --minify",
     "watch:css": "tailwindcss -i assets/css/main.css -o static/css/tailwind.css --watch",
     "stamp": "python -X utf8 scripts/stamp_checked.py",
+    "check:hardcoded": "python -X utf8 scripts/check_hardcoded.py",
     "build": "npm run stamp && npm run build:css && npm run validate && hugo && npm run check:output",
     "dev": "npm run stamp && npm run build:css && hugo server --renderToMemory"
   },

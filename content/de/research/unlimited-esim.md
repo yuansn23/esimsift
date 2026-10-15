@@ -1,7 +1,7 @@
 ---
 title: "Beste Unlimited-eSIM 2026: Tagespreise im Vergleich"
 date: 2026-10-01
-description: "Beste Unlimited-eSIM-Tarife im Vergleich: eSIM Sift sortiert Tagespreise für jedes Land mit unbegrenzten Daten, plus die Fair-Use-Fallen."
+description: "Beste Unlimited-eSIM-Tarife im Vergleich: eSIMSift sortiert Tagespreise für jedes Land mit unbegrenzten Daten, plus die Fair-Use-Fallen."
 layout: unlimited-esim
 ---
 

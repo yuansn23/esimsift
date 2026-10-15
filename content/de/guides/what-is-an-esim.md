@@ -3,7 +3,7 @@ title: "Was ist eine eSIM? Funktionsweise einfach erklärt (2026)"
 hero: "travel-esim-illustration-071.webp"
 hero_alt: "Eine Reisende hält ein Smartphone neben einen überdimensionalen SIM-Chip und Signalbalken — die Idee hinter einer eingebetteten Reise-eSIM"
 date: 2026-10-01
-description: "Was ist eine eSIM? eSIM Sift erklärt, wie eine fest eingebaute SIM funktioniert, was beim Installieren tatsächlich auf dem Gerät landet und was das für Anrufe und SMS im Ausland bedeutet."
+description: "Was ist eine eSIM? eSIMSift erklärt, wie eine fest eingebaute SIM funktioniert, was beim Installieren tatsächlich auf dem Gerät landet und was das für Anrufe und SMS im Ausland bedeutet."
 faq_heading: "Was du vor deiner ersten eSIM wissen solltest"
 prompt_answer: "Eine eSIM ist eine digitale SIM, die dein Smartphone auf einem fest eingebauten Chip speichert — es gibt also keine Plastikkarte zum Wechseln. Auf Reisen heißt das: Daten für ein Reiseziel vor dem Abflug kaufen, im WLAN installieren und die heimische SIM für Anrufe und SMS im Gerät lassen."
 h2_answer: "Was eine eSIM für Reisende bedeutet"
@@ -146,7 +146,7 @@ Innerhalb eines Reiseziels bestimmen drei Mechanismen, was du zahlst:
 - **Gültigkeitsfenster.** Kurze Fenster kosten weniger, laufen aber hart ab — ein Tarif, der am siebten Tag endet, ist am achten wertlos. Längere Fenster tauschen einen höheren Preis gegen das Überleben der ganzen Reise.
 - **Fair-Use-Richtlinien.** „Unlimited"-Tarife drosseln oder pausieren nach einer Tagesgrenze. Wir zitieren die Richtlinie jedes Anbieters wörtlich in der [Fair-Use-Prüfung](/de/research/fair-use-audit/), und unsere [Unlimited-eSIM-Analyse](/de/research/unlimited-esim/) zeigt, wo Tagespreise tatsächlich am günstigsten sind.
 
-Jede Länderseite — [Spanien-eSIM](/de/compare/spain/) oder [Italien-eSIM](/de/compare/italy/) — listet dann jeden Tarif der {{< count-providers >}} Anbieter, die eSIM Sift erfasst, nebeneinander. Unsicher, wie viele Gigabyte du brauchst? Der [Reisekostenrechner](/de/tools/) schätzt es aus dem, was du online tatsächlich tust.
+Jede Länderseite — [Spanien-eSIM](/de/compare/spain/) oder [Italien-eSIM](/de/compare/italy/) — listet dann jeden Tarif der {{< count-providers >}} Anbieter, die eSIMSift erfasst, nebeneinander. Unsicher, wie viele Gigabyte du brauchst? Der [Reisekostenrechner](/de/tools/) schätzt es aus dem, was du online tatsächlich tust.
 
 ## Bekommst du mit einer Reise-eSIM eine Rufnummer
 

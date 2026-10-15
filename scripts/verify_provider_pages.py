@@ -199,8 +199,8 @@ def main() -> int:
             d = html.unescape(md.group(1)).strip()
             if not (DESC_MIN <= len(d) <= DESC_MAX):
                 errors.append(f"{rel}: description {len(d)} 字符，要求 {DESC_MIN}-{DESC_MAX}")
-            elif "eSIM Sift" not in d:
-                errors.append(f"{rel}: description 缺品牌署名 'eSIM Sift'")
+            elif "eSIMSift" not in d:
+                errors.append(f"{rel}: description 缺品牌署名 'eSIMSift'")
             else:
                 stats["desc_ok"] += 1
 

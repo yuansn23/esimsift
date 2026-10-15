@@ -3,7 +3,7 @@ title: "Turkiye eSIM"
 iso: TR
 weight: 27
 seo:
-  description: "eSIM Sift compares every Turkiye eSIM: 202 real plans from 10 providers, cheapest Yesim from $0.57, ranked by $/GB and $/day."
+  description: "eSIMSift compares every Turkiye eSIM: 202 real plans from 10 providers, cheapest Yesim from $0.57, ranked by $/GB and $/day."
 ---
 
 The price list for Turkiye is not flat, and its shape decides what you pay. The cheapest way in is Yesim North Cyprus, listed at $0.57. Put $0.57 through the $0.46/GB rate in Turkiye and you would clear about 1.2GB. The value crown is Roamic's, at $0.46/GB for 50GB over 30 days. We track {{< count-providers >}} providers here, listing 202 plans for Turkiye between them, 99 of them unlimited.

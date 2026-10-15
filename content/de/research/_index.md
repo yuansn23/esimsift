@@ -1,6 +1,6 @@
 ---
 title: "eSIM-Analysen: Preisindex, Fair Use und Datentrends"
-description: "Eigene Auswertungen aus der eSIM-Sift-Preisdatenbank — Ranglisten nach Preis pro GB, Fair-Use-Analysen und Unlimited-Daten im Vergleich."
+description: "Eigene Auswertungen aus der eSIMSift-Preisdatenbank — Ranglisten nach Preis pro GB, Fair-Use-Analysen und Unlimited-Daten im Vergleich."
 hero: "travel-esim-illustration-142.webp"
 hero_alt: "Reisender prüft eSIM-Preistabellen und Datentrends auf dem Smartphone — unabhängige eSIM-Preisanalyse"
 faq_heading: "Häufige Fragen zu unseren eSIM-Analysen"

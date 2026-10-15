@@ -20,7 +20,7 @@ faqs:
   - q: "Do I need to register or verify my ID for these eSIMs?"
     a: "Some countries in this region require a passport step or local registration before activation. Check each country page for the local rule — the requirement is listed there rather than assumed."
   - q: "Which providers sell eSIMs for Africa and the Middle East?"
-    a: "Ten brands sell into the eight destinations in this table, and the cheapest one changes from country to country. The league table above names the cheapest provider in each destination and the winner table shows which brand is cheapest in the most of them this month."
+    a: "Every brand we track sells into the eight destinations in this table, and the cheapest one changes from country to country. The league table above names the cheapest provider in each destination and the winner table shows which brand is cheapest in the most of them this month."
   - q: "Is there one plan that covers Africa and the Middle East together?"
     a: "The two halves are usually sold as separate bundles, and the destinations here split across them — the UAE, Saudi Arabia, Qatar and Israel on the Middle East side, Morocco, Egypt, Kenya and South Africa on the African one. Check that the bundle names every country on your route, because a plan sold as Middle East does not include Kenya or South Africa."
 ---

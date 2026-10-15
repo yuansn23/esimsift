@@ -69,7 +69,7 @@ T: dict[str, str] = {
     "esim_deals_list__data_calculator": "Datenschätzer",
     "esim_deals_list__data_calculator_2": "Datenschätzer",
     "esim_deals_list__disclosure_codes_above_are_affiliate_partner_codes_where":
-        "Offenlegung: Die Codes oben sind Affiliate-Partnercodes, wenn der Anbieter gesponserter Partner ist — ihre Nutzung kann eSIM Sift eine Provision einbringen, ohne Mehrkosten für dich. Das ändert nie die Tarifreihenfolge in unseren Vergleichen (siehe",
+        "Offenlegung: Die Codes oben sind Affiliate-Partnercodes, wenn der Anbieter gesponserter Partner ist — ihre Nutzung kann eSIMSift eine Provision einbringen, ohne Mehrkosten für dich. Das ändert nie die Tarifreihenfolge in unseren Vergleichen (siehe",
     "esim_deals_list__do_seasonal_sales_beat_the_everyday_price":
         "Schlagen Saisonaktionen den Alltagspreis",
     "esim_deals_list__esim_promo_code_questions": "Fragen zu eSIM-Rabattcodes",
@@ -237,7 +237,7 @@ T: dict[str, str] = {
         "Die Reiseziele, in denen die meisten Anbieter konkurrieren — meist dort, wo die Preise am schärfsten sind. Jede Karte öffnet die vollständige Landestabelle mit allen Tarifen nebeneinander.",
     "tools_list__the_rates": "Die Raten",
     "tools_list__this_calculator_is_powered_by_our_full_price_database_em":
-        "Dieser Rechner läuft auf unserer vollständigen Preisdatenbank — binde ihn auf deiner eigenen Reiseseite ein (verlinke zurück auf eSIM Sift, und wir halten die Daten frisch). Siehe",
+        "Dieser Rechner läuft auf unserer vollständigen Preisdatenbank — binde ihn auf deiner eigenen Reiseseite ein (verlinke zurück auf eSIMSift, und wir halten die Daten frisch). Siehe",
     "tools_list__traveler_estimating_esim_data_needs_before_a_trip":
         "Reisender schätzt den eSIM-Datenbedarf vor einer Reise",
     "tools_list__trip_length": "Reisedauer",
