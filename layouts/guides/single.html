@@ -26,12 +26,54 @@
 {{ end }}
 {{ $appRows = sort $appRows "name" "asc" }}{{ $directRows = sort $directRows "name" "asc" }}
 
-{{/* ── 双栏：正文 + 右侧栏（栅格断点与列宽对齐 networks/single.html） ── */}}
-<div class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-<div class="grid items-start gap-8 lg:grid-cols-[minmax(0,720px)_300px] lg:justify-center lg:gap-10">
+{{/* ── 三栏（xl 起）：左侧章节目录 + 正文 + 右侧热门目的地，两侧栏都吸顶。
+     ⚠ lg（1024–1279）**不能**上三栏 —— 该档内容宽只剩约 976 px，扣掉两侧栏与间距后
+       正文塌到约 450 px，阅读列就废了。所以 lg 档维持「正文 + 右下栏」，目录暂留右栏内，
+       到 xl（≥1280）才移到左侧。两档共用同一份 DOM，靠断点类切列位与显隐。
+     列宽定案（2026-10-16 第一百轮，**字体实测**而非估算）：容器上限 = 头部/页脚同款
+       `max-w-7xl` 1280 —— **绝不超过它**，否则正文区比 header 的 logo 还宽、左右边缘对不齐。
+       xl 下 1280 − px-6 48 − 左 272 − 右 272 − xl:gap-6×2 48 = 正文 ****640 px**。
+     ★ 左栏 272 是用真实字体量出来的（`.buildlog/r100_wrap.py`：Segoe UI 13px ×1.05 近似
+       Inter、贪心折行、共 140 条 H2）——
+         · 176 px 栏（旧值）⇒ 文字仅 116 px ⇒ **107/140 条折到 3 行以上、最长 6 行**，
+           这正是用户 2026-10-16 报的「一行只放得下 3 个单词」；
+         · 240 px 栏 ⇒ 文字 180 px ⇒ 仍有 23 条 3 行、最长 4 行；
+         · **272 px 栏 ⇒ 文字 212 px ⇒ 只剩 7 条 3 行、最长 3 行**（德语复合词撑的），
+           再加宽（288）只再降 2 条却要吃掉 16 px 正文 ⇒ 到此为止，边际收益已尽。
+       卡片 p-5 40 + toc-l2 的 pl-3 12 + toc-link 的 pr-2 8 = 52 px 是固定损耗，算栏宽时别忘。
+     ★ 右栏 272 同样不能收：`aside-destinations` 的 `United Kingdom` 在 256 px 就会被
+       truncate，且同一 partial 还挂在 networks/list · networks/single 的 300 px 栏里
+       （改窄 = 三处一起退）。
+     ★ 正文 640 px ≈ 92 字符/行（.prose 是 16 px；实测平均 6.96 px/字符）—— 旧值 720 px
+       是 104 字符/行，本来就偏宽，收窄到 640 是**排版上的改善**，不是牺牲。 ── */}}
+<div class="mx-auto max-w-6xl px-4 py-8 sm:px-6 xl:max-w-7xl">
+<div class="grid items-start gap-8 lg:grid-cols-[minmax(0,720px)_300px] lg:justify-center lg:gap-10 xl:grid-cols-[272px_minmax(0,1fr)_272px] xl:gap-6">
+
+{{/* ── 左侧吸顶栏（仅 xl 起渲染，lg 及以下整块不占位）：章节目录。
+     吸顶范式照 compare/single.html 既有写法：sticky + top-24 + max-h + overflow-y-auto，
+     目录过长时自己滚，不把整页撑高。 ── */}}
+<aside class="hidden xl:block xl:sticky xl:top-24 xl:max-h-[calc(100vh-7rem)] xl:overflow-y-auto">
+  <div class="card p-5">
+    <p class="eyebrow">{{ i18n "g_on_this_page" | safeHTML }}</p>
+    <div class="mt-3">{{ partial "aside-toc.html" . }}</div>
+  </div>
+</aside>
 <article class="min-w-0">
   {{ partial "breadcrumbs.html" . }}
   <h1 class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">{{ .Title }}</h1>
+
+  {{/* ── 文章元信息行：复核日 + 阅读时长，放在首屏 H1 正下方（2026-10-16 第九十八轮移入）──
+       原先这两项塞在下方「关键事实」栅格的第一、二格，被 H2 盖住、首屏看不见；
+       而「新鲜度」恰恰是读者与 AI 最先要看的东西，事实栅格则应回归纯事实。
+       ★ 日期只读 front matter（lastmod → date），与 /guides/ 索引卡（_default/list.html）、
+         sitemap <lastmod>、JSON-LD dateModified 同源；**绝不 fallback 到 now** ——
+         每次部署都翻新会让 Google 判定本站 lastmod 无信息量（红线 7 / provider-checked.html 同一原则）。 ── */}}
+  {{ $reviewed := or .Params.lastmod .Params.date }}
+  <p class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-500">
+    <span>{{ i18n "guides_single__last_reviewed" | safeHTML }} <time datetime="{{ time.Format "2006-01-02" $reviewed }}">{{ time.Format ":date_medium" $reviewed }}</time></span>
+    <span aria-hidden="true">·</span>
+    <span>{{ i18n "guides_single__reading_time_min" (dict "n" .ReadingTime) | safeHTML }}</span>
+  </p>
 
   {{/* ── 首屏配图（front matter: hero + hero_alt）：eager + fetchpriority=high 抢 LCP；显式宽高防 CLS；alt 必填走 SEO ── */}}
   {{ with .Params.hero }}
@@ -42,7 +84,7 @@
   </figure>
   {{ end }}
 
-  {{/* ── 移动端章节导航：桌面看右侧吸顶栏，手机上折叠成一条，避免长文没有跳转入口 ── */}}
+  {{/* ── 移动端章节导航：桌面（xl 起）看**左侧**吸顶目录、lg 档看右侧栏目录，手机上折叠成一条，避免长文没有跳转入口 ── */}}
   <details class="mt-6 rounded-2xl border border-ink-100 bg-ink-50/50 lg:hidden">
     <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-ink-900">
       <span>{{ i18n "g_on_this_page" | safeHTML }}</span>
@@ -73,15 +115,9 @@
 
   <section class="mt-8 not-prose" aria-labelledby="keyfacts">
     <h2 id="keyfacts" class="text-2xl font-bold">{{ $h2Facts }}</h2>
+    {{/* ⚠ 复核日与阅读时长 2026-10-16 第九十八轮已上移到 H1 下方的元信息行；
+       ★ 不要在这里再印一遍 —— 同一事实两处渲染必然有一天只改一处（红线 8 一份真源）。 */}}
     <dl class="mt-4 grid gap-3 sm:grid-cols-2">
-      <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "guides_single__reading_time" | safeHTML }}</dt>
-        <dd class="mt-1 text-sm font-medium text-ink-800">{{ i18n "guides_single__reading_time_min" (dict "n" .ReadingTime) | safeHTML }}</dd>
-      </div>
-      <div class="rounded-xl bg-ink-50/60 px-4 py-3">
-        <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ i18n "guides_single__last_reviewed" | safeHTML }}</dt>
-        <dd class="mt-1 text-sm font-medium text-ink-800">{{ time.Format ":date_medium" .Lastmod }}</dd>
-      </div>
       {{ range $facts }}
       <div class="rounded-xl bg-ink-50/60 px-4 py-3">
         <dt class="text-[11px] font-bold uppercase tracking-wider text-ink-400">{{ .label }}</dt>
@@ -343,19 +379,18 @@
   </section>
 </article>
 
-{{/* ── 右侧栏：章节目录 + 热门目的地比价内链。
-     移动端整块落到正文之后（hidden lg:block），不遮挡阅读。
-     2026-10-15 用户定：本页这两块**不吸顶** —— 已摘除 sticky / top-24 /
-     max-h / overflow-y-auto，整栏随正文一起滚走。不要再加回来。 ── */}}
-<aside class="hidden lg:block">
-  <div class="pr-1">
-    <div class="space-y-4">
-      <div class="card p-5">
-        <p class="eyebrow">{{ i18n "g_on_this_page" | safeHTML }}</p>
-        <div class="mt-3">{{ partial "aside-toc.html" . }}</div>
-      </div>
-      {{ partial "aside-destinations.html" . }}
+{{/* ── 右侧吸顶栏（lg 起渲染，移动端整块落到正文之后不遮挡阅读）：热门目的地内链。
+     ⚠ 内层 TOC 卡只服务 lg 档（xl:hidden）—— xl 起目录已移到左侧栏，这里留一份
+       是为了让 1024–1279 也有跳转入口。两份 nav data-toc 的显隐全由断点类控制，
+       目录高亮 JS 按 id 同时作用于两份（同一 id 同一属性，不冲突）。
+     2026-10-15 曾定「本页侧栏不吸顶」，2026-10-16 用户推翻：两侧栏都要吸顶。 ── */}}
+<aside class="hidden lg:block lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:pr-1">
+  <div class="space-y-4">
+    <div class="card p-5 xl:hidden">
+      <p class="eyebrow">{{ i18n "g_on_this_page" | safeHTML }}</p>
+      <div class="mt-3">{{ partial "aside-toc.html" . }}</div>
     </div>
+    {{ partial "aside-destinations.html" . }}
   </div>
 </aside>
 

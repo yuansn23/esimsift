@@ -2,7 +2,7 @@
 
 > 独立 eSIM 比价站。单一数据源（`data/*.toml`），模板层推导一切派生指标。
 > 基座：Hugo 0.159.1 + Tailwind CLI。语言：**英语（根路径）+ 德语（`/de/`，2026-10-10 第七十二轮 D9 解禁，
-> 无 noindex）** —— ✅ **德语站已全量落地：`content/de` 656 个文件（644 个提交于 2026-10-10 的 `3b0d4af`，其余为后续各轮的 networks 新页），全站 noindex = 0**（2026-10-11 第八十二轮复核实测）；i18n **1907 key**（en = de 逐 key 同序对齐，未定义 0）。**产物 1315 页**（2026-10-15 第九十三轮实测）。
+> 无 noindex）** —— ✅ **德语站已全量落地：`content/de` 656 个文件（644 个提交于 2026-10-10 的 `3b0d4af`，其余为后续各轮的 networks 新页），全站 noindex = 0**（2026-10-11 第八十二轮复核实测）；i18n **1907 key**（en = de 逐 key 同序对齐，未定义 0）。**产物 1317 页**（2026-10-16 第一百轮实测）。
 > **`npm run validate` 现有 6 道源码层闸门**（第七十八轮新增 `check_printf_arity` / `check_headings_source`，第九十轮新增 `check_page_container`，见对应小节）；
 > **`npm run check:output` 现有 13 道产物闸门**（第十三项 `check_inline_copy.py` = 2026-10-11 第八十一轮新增）。
 
@@ -285,6 +285,290 @@ i18n：**+49 key ×2**（en 201072 → 204725 B、de 217718 → 221636 B），**
 - 新增红线：**140**（改名类改动必算四件事：长度下限 / 德语连字符形态 / `.py` 生成器与闸门常量 / 对比式表述）、**141**（`public/` 归属先验证再当基线）、**142**（品牌字串与页头字标是两件事）、**143**（派生量：slug / ReadingTime / 索引卡时长）
 - **登记未动**：① `content/en/_index.md` 首页 title **46 → 45** 字符，**本就低于 `audit_meta.py` 的 48–54 带**（改名使它更远；建议加 ` 2026` → 50 字，未做，等你点头）；② **57 条 description 本来就 >140**（德语国家页 —— `audit_meta.py` 非构建闸门，所以一直没人拦）；③ `layouts/guides/single.html:83` 的 `.Lastmod` 与索引卡 front-matter-only 口径分叉；④ `check_dates.py` 的 `COUNTRY_HUB` 拿 slug 当 ISO、`/de/` 无守卫
 - **STATUS.md 结构观察（未动）**：第 222 行「第九十轮」标题与第 223 行「第九十三轮」标题相邻，第九十轮的正文（`### 3`–`### 6`，约 288–316 行）被隔在第九十三轮小节之后 —— 属上一轮插入时的错位，本轮**不重构**，仅登记
+
+## 已完成（guides 左栏 On this page 列宽：用真实字体度量 140 条 H2 定案 272 px，2026-10-16 第一百轮）
+
+**用户原话**：`这个guides/下的文章的布局如下优化 只需要修改渲染文件即可 1.左侧是文章导航On this page h2的标题显示太窄了只能容纳3个单词 然后就换行了？ 你在搞什么， 这样部美观`
+⇒ 只动 `layouts/guides/single.html` 的注释与一个栅格类（外加重跑 `build:css` 生成新任意值类），**数据层、内容层零改动**。**是我上一轮把 176 px 当"够用"定的，错在我。**
+
+### 1 根因（不是"审美"，是一个可算错的数）
+左栏 176 px 只是**栏宽**，真正放标题的空间要扣三层固定损耗：卡片 `p-5` 40 + `toc-l2` 的 `pl-3` 12 + `toc-link` 的 `pr-2` 8 = **52 px** ⇒ **只剩 116 px**。13 px 字号下 ≈ 22 字符/行，而本站 H2 普遍 **42–54 字符**（德语更长）⇒ 栏宽够不够的判据被我上一轮漏算了。
+
+### 2 ★ 方法论：把"够不够宽"从估算改成实测
+`Add-Type`（PowerShell 的 `System.Drawing` 度量）**被安全策略硬拦**（`Add-Type compiles and loads .NET code at runtime`）；托管 Python 也**不带 PIL**。改走隔离 venv：
+```
+~/.workbuddy/binaries/python/envs/default/Scripts/python.exe -m pip install pillow
+~/.workbuddy/binaries/python/envs/default/Scripts/python.exe .buildlog/r100_wrap.py   # 只读 content/，不写 public/
+```
+- 字体 `C:/Windows/Fonts/segoeui.ttf` @ **13 px**（`.toc-link` 的 `text-[13px]`；CSS px 与 PIL `size=13` 同义），站点用 Inter 而 Windows 无 Inter 本体 ⇒ 按 Inter 约宽 3~5% 取 **×1.05**
+- `font.getlength()` 拿真实 advance 宽度 + 贪心折行，覆盖 `content/{en,de}/guides/*.md` 全部 **140 条 H2**
+- **为什么不能用估算法**：英文正文在 16 px 下实测平均只有 **6.96 px/字符**（2129 字符样本）—— 按"0.5 em/字符"估会系统性高估约 15%，**正是它把 116 px 判成够用**
+
+**实测行数分布（140 条 H2）**
+| 可用文字宽 | 对应栏宽 | 1 行 | 2 行 | 3 行以上 | 最长 |
+|---|---|---|---|---|---|
+| 116 px | 176（旧值） | 0 | 33 | **107（76%）** | **6 行** |
+| 180 px | 240（第一版改动） | 12 | 105 | 23 | 4 行 |
+| **212 px** | **272（最终采用）** | 29 | 104 | **7（5%）** | **3 行** |
+| 228 px | 288 | 37 | 98 | 5 | 3 行 |
+
+⇒ 176→272：**3 行以上从 107 条降到 7 条，最长 6 行降到 3 行**；再加宽到 288 只再降 2 条却要吃掉 16 px 正文 ⇒ **边际收益已尽，定 272**。
+
+### 3 ★ 同时推翻旧约束"正文必须守 720 px"
+720 px 在 `.prose` 16 px 下实为 **104 字符/行**（6.96 px/字符），**本来就偏宽**；640 px ≈ 92 字符/行反而更合排版规范。⇒ **"与 networks 阅读列一致"不是目的，可读性才是** —— 上一轮为了对齐这个数字才把侧栏饿死，本轮改掉。
+
+### 4 最终列宽（改一个类）
+- 栅格：`xl:grid-cols-[176px_minmax(0,1fr)_272px] xl:gap-8` → **`xl:grid-cols-[272px_minmax(0,1fr)_272px] xl:gap-6`**
+- 容器 `xl:max-w-7xl` **保持不变** —— 它等于 header/footer 的 `max-w-7xl`，**绝不超过**，否则正文区比 logo 还宽、左右边缘对不齐
+- 算式：1280 − `sm:px-6` 48 − 左 272 − 右 272 − `xl:gap-6`×2 48 = **正文 640 px**
+- **左 272 / 右 272 对称**；**右栏不能收**（`aside-destinations` 的 `United Kingdom` 在 256 px 就被 `truncate`，且同一 partial 还挂在 networks 的 300 px 栏里）
+- lg（1024–1279）**未动**：仍是「正文 720 + 右栏 300」，目录文字宽 240 px（98% ≤2 行），用户未抱怨
+- `build:css` 必须重跑：任意值类 `xl:grid-cols-[272px…]` 不在 CSS 里 `check_css_sync.py` 会拦；产物 CSS 实测 `272px minmax(0,1fr) 272px` ✓、旧 `240px_minmax`/`176px` 残留 **0**
+
+### 5 验收
+| 项 | 结果 |
+|---|---|
+| 源码层 | `VALIDATE_EXIT=0`（6 道） |
+| 产物层 | **`OUTPUT_EXIT=0`**（13 道：1319 files / 1317 pages / 7550 JSON-LD / sitemap 657 / 3942 hreflang / 德语语言泄漏 0 / baseURL 正确） |
+| `hugo` 段 | `HUGO_EXIT=0`，`Total in 470567 ms`（第一次 496972 ms） |
+| 归属 | **变更 14 / 新增 0 / 删除 0** = 7 篇文章 × 2 语言；**5 篇区域指南走 `region.html` 未变** |
+| 产物断言 | 中英两页 `class="… xl:grid-cols-[272px_minmax(0,1fr)_272px] xl:gap-6"` 实测到位，`176px` 计数 **0** |
+| 卫生 | `localhost` **0** / `livereload` **0** |
+| 基线 | 刷至 1317 文件，复跑 `--diff` **归零** |
+
+★ **附带证实**：上一轮那个"`guides/index` × 2 也变了、查不出原因"的登记项，**本轮同样的改动下它没有出现** ⇒ 坐实它是一次性脏写残留（来自被中断的那次构建），不是模板缺陷。归属脚本只哈希 `.html`，故 `static/css/tailwind.css` 的字节变化不计入 14 项之内。
+
+**未 `git commit`、未部署**（HEAD 仍 `6f00c2c`）。改动文件：`layouts/guides/single.html`、`static/css/tailwind.css`（重编译产物）、`PROJECT.md`（红线 154 改写 + 新增 156）、`STATUS.md`、`docs/regression-manifest.json`。
+
+## 已完成（guides 文章页改「左目录 + 正文 + 右目的地」三栏且两侧吸顶 + 抓出 hugo 一次性写入拦截，2026-10-16 第九十九轮）
+
+**用户原话**：`这个guides/下的文章的布局如下优化 只需要修改渲染文件即可 数据驱动文件不动 渲染文件如下优化 1.左侧是文章导航On this page 2右侧是Popular destinations 而且这2个都是吸顶的方式， 明白吗`
+⇒ 只动 `layouts/guides/single.html`（外加 `assets/css/main.css` 的注释同步），**数据层、内容层零改动**。走 `single.html` 的是 7 篇文章（`dual-sim-and-esim` / `esim-compatibility-check` / `esim-in-china` / `esim-new-york` / `esim-vs-physical-sim` / `how-to-install-esim` / `what-is-an-esim`）；另 5 篇区域指南走 `layouts/guides/region.html`，**不受影响**。
+
+### 1 断点是本轮唯一的技术决策点
+「左侧 TOC + 正文 + 右侧 destinations」= **三栏**。**lg（1024–1279）放不下** —— `max-w-6xl` 容器在该档内容宽只剩约 976 px，扣掉左 176 + 右 272 + 两个 gap 后**正文只剩约 450 px**，阅读列就塌了。
+⇒ 定案：**三栏只在 xl（≥1280）启用**；lg 维持「正文 + 右下栏」（目录暂留右栏，靠 `xl:hidden` 在 xl 档隐藏）；移动端仍走 `<details>` 那一份。
+- 容器：`max-w-6xl` → 追加 `xl:max-w-7xl`
+- 栅格：`lg:grid-cols-[minmax(0,720px)_300px]` → 追加 `xl:grid-cols-[176px_minmax(0,1fr)_272px] xl:gap-8`
+- **正文列宽守住 720 px**：`xl:max-w-7xl`(1280) − `sm:px-6` 48 − 左 176 − 右 272 − `gap-8`×2 64 = **720**，与 `networks/single.html` 的阅读列**严格一致**
+
+### 2 改动清单（逐处）
+| 位置 | 改动 |
+|---|---|
+| 容器 div | 追加 `xl:max-w-7xl` |
+| 栅格 div | 追加 `xl:grid-cols-[176px_minmax(0,1fr)_272px] xl:gap-8` |
+| `<article>` **之前** | **新增**左侧吸顶 `<aside class="hidden xl:block xl:sticky xl:top-24 xl:max-h-[calc(100vh-7rem)] xl:overflow-y-auto">`，内为 TOC 卡 |
+| 右侧 `<aside>` | `hidden lg:block` → `hidden lg:block lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:pr-1`；内层 TOC 卡加 `xl:hidden`；摘掉中间层 `<div class="pr-1">`（`pr-1` 上并到 aside） |
+| `assets/css/main.css` | `.toc-link` 段落注释同步（`build:css` 带 `--minify` ⇒ 注释不进产物，**不改变 CSS 产物字节**） |
+
+★ 本轮**推翻**第九十四轮用户定的「本页这两块不吸顶」（当时摘掉 sticky / top-24 / max-h / overflow-y-auto）—— 改判与新日期已写进模板注释，避免下一轮又当成「有人违规加回来」。
+
+### 3 同一个 partial 渲染三份 TOC（有意为之）
+`aside-toc.html` 现在被渲染 **3 次**（移动端 `<details>` / 左栏 / 右栏卡），产物里 **3 条 `<nav data-toc>`**。目录高亮 JS 是 `querySelectorAll('[data-toc] a[data-toc-link]')` ⇒ 同一 id 在三份里同设 `aria-current`，用不上的那份只是不可见，**无重复 id、无冲突**。没有改用「Grid 列位搬同一份 DOM」是因为那要在 lg/xl 两个断点间切 `col-start`，脆；三份的代价只有约 1–2 KB/页。
+
+### 4 构建：撞上一次**一次性**写入拦截（已定案）
+全量 `hugo` 跑到最后（`Total in 468911 ms`、1317 pages）报
+`ERROR error building site: render: [de v1.0.0 guest] failed to render pages: open D:\esimsift\esimsift\public\de\compare\netherlands\alosim\index.html: Access is denied.`
+并被沙箱标为 `Blocked by Security Center rules`。**只读诊断三步**：
+1. 该文件权限正常（`-rw-r--r--`，非只读）；
+2. 1313 端口上的 `hugo.exe`(PID 9056) 是 `npm run dev`（父进程 `cmd /c npm run stamp && npm run build:css && hugo server --renderToMemory`）⇒ **`--renderToMemory` 不写 public，不是冲突源**；
+3. mtime 分桶（按 10 分钟）显示 **1316/1317 个产物已更新**，只剩这一个没写 —— **而它恰是全站唯一残留 dev 污染的文件**（54 处 `localhost` + 1 处 `livereload`，来自更早某次裸 `hugo server` 的产物）。
+
+**处置**：向用户摊开证据并请其定夺，用户选「重跑一次构建」⇒ **原样重跑 `HUGO_EXIT=0` 一次通过**（`Total in 474771 ms`），该文件被重写为干净版本，全站 `localhost` 0 / `livereload` 0。⇒ 判定为**一次性拦截**，不是配置或权限问题（红线 155）。
+
+### 5 验收
+| 项 | 结果 |
+|---|---|
+| 源码层 | `VALIDATE_EXIT=0`（6 道全绿：`check_css_sync` 识别到 11 个新 `xl:` 类已全部编译进 `static/css/tailwind.css`；`check_page_container` 22 个页型模板都有容器） |
+| 产物层 | **`OUTPUT_EXIT=0`**（13 道全绿：`1319 files (1317 pages)` / 7550 JSON-LD / sitemap 657 / **3942 hreflang tags on 1314 pages** / `baseURL = https://www.esimsift.com/` / 德语 657 页语言泄漏 0 / URL 语言前缀违规 0） |
+| 归属 | **变更 16 / 新增 0 / 删除 0** —— 恰为 **7 篇文章 × 2 语言 + `guides/index` × 2**，页型分布 `{'guides': 16}`；5 篇区域指南未变（走 `region.html`） |
+| 产物断言 | 三篇抽样（`esim-in-china` / `de/esim-new-york` / `what-is-an-esim`）实测：`xl:grid-cols-[176px` ×1、`xl:max-w-7xl` ×1、`xl:sticky` ×1、`lg:sticky` ×1、`xl:hidden` ×1、`data-toc` 三份齐 |
+| 基线 | 刷至 1317 文件，复跑归属 `--diff` 归零 |
+
+### 6 一处**未定位**的登记项（不是缺陷）
+`guides/index` × 2 出现在变更名单里，但**逐项核验不含本轮任何标记**（无 `xl:` 断点类、无 `data-toc`、无 sticky），且与 dev server（`--renderToMemory`）的同一页**逐行对比只差 dev 注入的 URL**（livereload script / localhost canonical / hreflang / og:url），其可辨识内容全部正确（12 篇卡片齐全、含中国新文章、双语对应、无污染）。⇒ **判定：非本轮改动引入、无内容缺陷**，无法用本轮改动解释，已随新基线归档。留作待查项，**不阻塞上线**。
+
+---
+
+
+
+**用户指令**（逐字，两条）：① `为什么标题不用 China eSIM: Paying Without a Chinese Phone Number 因为China eSIM 是核心词`；② `另外 文章的开头是否需要一个文章更新日期，这样日期就是最新的 / 你的日期是放到了h2中 / Last reviewed / Oct 15, 2026`
+
+### 1｜问题①：一半是我错了，一半要否掉
+
+规则在 `docs/keyword-map.md` 主映射表 **L27**，是**两句话**，必须同时满足：**① 不打头**（国家页 `/compare/{country}/` 的 `title` 就是 `China eSIM`，独占该精确词形）、**② 要含**（文章 H1「可以且应当含国家词」，定例 = 纽约 `eSIM for New York: What a USA eSIM Costs in 2026`）。
+
+| 我的原题 | ① 不打头 | ② 要含国家词 |
+|---|---|---|
+| `eSIM in China: Paying Without a Chinese Phone Number` | ✅ 遵守（介词形态打头） | ❌ **整条标题没有 `China eSIM` 词形 —— 真缺陷** |
+
+- 用户提的 `China eSIM: Paying Without a Chinese Phone Number`（49 字符）**打头会被①否掉**（两页争同一 query，Google 只保一个 = 真蚕食）。
+- ★ 但**「标题里根本没有 `China eSIM`」确实是我的错** ⇒ 改成 **`eSIM in China: A China eSIM Without a Local Number`**（EN **51** 字符）/ **`eSIM in China: Eine China-eSIM ohne lokale Nummer`**（DE **50** 字符，德语连字符形，与既有 H2 `Was eine China-eSIM tatsächlich löst` 一致），两版都落回 `audit_meta.py` 的 **48–54 字符**带。⇒ 立**红线 153**。
+- ★ 副产物：无城市词的国家文章（中国这类）**没有城市词可打头** ⇒ 一律用**介词形态**（`esim in china`，Trends 0.0095 独立 query）打头、后半句带国家页词形。
+
+### 2｜问题②：日期确实被埋在 H2 里 —— 已上移到首屏
+
+- **取证**：`Last reviewed / Oct 15, 2026` 原先渲染在 `layouts/guides/single.html` 的**「关键事实」`<dl>` 栅格第 2 格**（H2 = `China eSIM payment facts` 之内）⇒ 首屏看不见、且与「阅读时长」并列成两条**非事实**的元信息。用户判断准确。
+- **改法（`layouts/guides/single.html`）**：在 **H1 正下方**新增一行元信息（`Last reviewed Oct 15, 2026 · 11 min` / `Zuletzt geprüft 15.10.2026 · 11 Min.`），并把这两项从 `<dl>` **移出**（**不是复制** —— 红线 8 一份真源；`<dl>` 现在只剩 front matter 的 6 条真事实，实测 `dt` 6 个）。
+- ★ **顺手关掉一条长期登记项**：原第 83 行读 `.Lastmod`，与 `/guides/` 索引卡（`_default/list.html` 用 `or .Params.lastmod .Params.date`）**口径分叉**；现统一为 **`or .Params.lastmod .Params.date`**，**只读 front matter**，与索引卡 / sitemap `<lastmod>` / JSON-LD `dateModified` 同源；**绝不 fallback 到 `now`**（同红线 7）。实测各页各取自己的 date：`how-to-install-esim` → `Oct 1, 2026`、`esim-new-york` / `esim-in-china` → `Oct 15, 2026`。
+
+### 3｜★★ 意外收获：`public/` 已被裸 `hugo server` **全量污染**（我上轮的卫生判据漏了）
+
+- 我上轮宣布「产物干净」，依据是 `grep -rl livereload public` **且** `grep -rl "localhost:1313" public` 都为 0。**本轮实测**：`grep -oE "localhost:[0-9]+"` = **54,772 处 / 1341 文件 / 端口 `58194`** —— Hugo 在 1313 被占用时**换端口**，而我的判据**把端口写死了**。
+- **仓库本来就拦得住**：`scripts/check_dates.py` 检查 [A]「`public/` 不得含 localhost + sitemap host 必须等于 baseURL」**早在 `check:output` 链上**，单独跑一次即报 **11 条问题 / 1341 文件**（`baseURL = https://www.esimsift.com/`，却出现 `http://localhost:58194/guides/best-europe-esim/`）⇒ **是我自己的手工判据漏了，不是仓库缺守卫**。⇒ 立**红线 151**（含「手工判据要么删掉、要么与仓库守卫同源」）。
+- ★ **同轮我又踩了「守卫加管道」**：`python scripts/check_dates.py | head -20` 让 `$?` 取到 `head` 的 `0` —— **11 条问题报出来却显示 `EXIT=0`**。凡跑守卫一律 `> log 2>&1; echo "EXIT=$?"`。
+- ★ 附带确认：`npm run dev` 用的是 `hugo server --renderToMemory`（**不落盘**）⇒ 污染只可能来自**裸 `hugo server`**（红线 7 第 5 次 → **第 6 次**）。**重跑 `npm run build` 即完全复原**：重建后 `localhost` **0** / `livereload` **0**。
+
+### 4｜构建的两个真坎（都不是「配置问题」）
+
+| # | 症状 | 真因与修法 |
+|---|---|---|
+| 1 | `BUILD_EXIT=1`，`validate` 报 `ERROR 硬编码文案未抽 i18n -> layouts/guides/single.html: text '&middot;'` | 守卫抽「可见文本节点」后按**像不像英文单词**判硬编码，而**实体名 `middot` 恰好是 6 个拉丁字母**；裸 `·`（U+00B7）不含字母直接跳过。仓库既有惯例就是裸 `·`（`compare/vs-single.html:360`）⇒ 改用裸 `·`。立**红线 152**。★ `aria-hidden="true"` **不是**豁免理由（守卫不读 aria 属性） |
+| 2 | 第二次构建 **SIGTERM**（`Exit Code 1`），日志停在 `check:output` 中途 | `hugo` 段本轮 **`Total in 468806 ms`**（≈7.8 min，第九十七轮 196 s ⇒ 波动 2.4 倍），加上 `validate`+`css` 已近 500 s，撑爆 600 s 前台上限。**修法**：`hugo` 已完成（`1317 pages`）⇒ 单独补跑 `npm run check:output`（只读），`OUTPUT_EXIT=0` |
+
+### 5｜验收（全部产物文本断言，**按约定不做截图**）
+
+| 项 | 结果 |
+|---|---|
+| 源码层 | `VALIDATE_EXIT=0`；6 道全绿（`i18n en 1907 / de 1907 key`、模板引用 1872 key 未定义 0、h2/h3 标点 0 处违规、22 个页型模板容器 OK） |
+| 产物层 | **`OUTPUT_EXIT=0`**；13 道全绿：`1319 files (1317 pages) / 7550 JSON-LD` · `499 品牌子页全过（Offer 9095）` · `sitemap 657 URL` · `3942 hreflang tags on 1314 pages` · `baseURL = https://www.esimsift.com/`（**[A] localhost 0**）· 冠词一致 · de 657 页语言泄漏 0 |
+| 标题 | EN 产物 `<title>` = `<h1>` = `eSIM in China: A China eSIM Without a Local Number`（51 字符）；DE = `eSIM in China: Eine China-eSIM ohne lokale Nummer`（50 字符） |
+| 元信息行 | 位于 **`</h1>` 之后、`<figure>` 配图之前**；`Last reviewed` / `Zuletzt geprüft` **全页各出现 1 次**（无重复）；`<time datetime="2026-10-15">`；各页取自己的 front matter date |
+| 事实栅格 | `id="keyfacts"` 段内 `dt` 恰好 **6** 个（全部 front matter 事实，元信息已移出） |
+| 卫生 | `localhost` **0 文件** · `livereload` **0 文件** |
+| 逐字节归属 | **变更 16 / 新增 0 / 删除 0**，页型分布 `{'guides': 16}` = **7 篇 `single.html` 指南 × 2 语言**（`dual-sim-and-esim` / `esim-compatibility-check` / `esim-in-china` / `esim-new-york` / `esim-vs-physical-sim` / `how-to-install-esim` / `what-is-an-esim`）+ **`/guides/` 索引 × 2**（卡片标题变）—— **与开工前的预测逐条吻合**；5 篇区域指南**未变**（走 `region.html`，不渲染元信息行与相关阅读卡） |
+| 基线 | 已刷至 **1317 文件**；复跑 `--diff` ⇒ **变更 0 / 新增 0 / 删除 0** |
+
+### 6｜纪律与登记
+
+- **未 `git commit`、未部署**（改动全部留工作区；HEAD 仍 `6f00c2c`）。
+- 新增红线：**151**（手工卫生 grep 禁写死端口 + 守卫禁加管道）、**152**（装饰符用裸 `·` 不用 `&middot;`）、**153**（文章 title 必须「含」国家页词形且不得打头）。
+- **关闭登记项**：`layouts/guides/single.html:83` 的 `.Lastmod` 口径分叉 —— 已统一为 front-matter-only。
+- **沿用待办**：compare 50 国正文计数动态化（159 处 / 86 文件）；首页 EN title 45 字符；57 条 description >140；`check_dates.py` 的 `COUNTRY_HUB` 拿 slug 当 ISO 与 `/de/` 无守卫；`STATUS.md` 第 222/223 行标题错位（不重构）。
+- ⚠ **给用户的提醒**：页面「Last reviewed」的日期取 front matter 的 `date`（现 **2026-10-15**）。若你希望它显示为**发布当天**，只需改这一处字段，索引卡 / sitemap `<lastmod>` / JSON-LD `datePublished`+`dateModified` / 首屏元信息行会**一起跟着走**（不 fallback `now`，红线 7）。
+
+## 已完成（中国文章 `esim-in-china`：支付与号码轴 + 27 词 Trends 实测 + 自审判据双向校准，2026-10-15 第九十七轮）
+
+**用户指令**（逐字）：`继续帮我围绕中国esim，写文章`
+
+**用户拍板两项**：① 选题轴 = **支付与号码轴**（微信支付 / 支付宝 / 号码问题）；② 覆盖范围 = **一篇中国大陆文章 + 文内港澳提示**，**不新建** `/networks/hong-kong/`。
+
+**交付**（两份纯 LF，**零模板改动** —— `layouts/guides/single.html` 的 `hero` / `hero_alt` / `prompt_answer` / `h2_answer` / `h2_facts` / `facts` / `faqs` / `byline` / `h2_next` 机制直接可用）
+
+| 文件 | 大小 | 行 | `<h1>` | title 字符 | description 字符 |
+|---|---|---|---|---|---|
+| `content/en/guides/esim-in-china.md` | 18436 B | 149 | `eSIM in China: Paying Without a Chinese Phone Number` | 52 | 140 |
+| `content/de/guides/esim-in-china.md` | 20398 B | 149 | `eSIM in China: Zahlen ohne chinesische Rufnummer` | 48 | 132 |
+
+- 首屏图 `travel-esim-illustration-009.webp`。图池 **132 张**，本轮前已占用 **12** 个编号 ⇒ 本轮后占用 **13** / 可用 **119**（`r97_hero.py` 现算）。
+- `target_keyword: "esim in china"`（**介词形态**，见 §2）；作者署名 **`eSIMSift Data Team` / `eSIMSift Datenteam`**（团队署名，不造假个人 —— `schema.html` 明文约定）。
+- 正文引用型外链 **3 处 / 3 个不同实体**：腾讯微信帮助中心 · 腾讯官方新闻稿 · Apple eSIM 机型页；内链 **11 处**（en/de 各 11，含 `/networks/china/#carriers` 锚点）。
+
+### 1｜选题：先把证据摊开再动笔 —— 我首选的方向被自己的实测验否
+
+我最初想写「香港 + 中国大陆 双目的地」，**我自己在动笔前把它否掉了**，三条独立证据：
+
+1. **Trends 实测**：`esim hong kong and china` 相对锚词 **0.0000**（词表把它标成「缺口 / 47.8」，**补全分 ≠ 真实需求**）。
+2. **覆盖度盘点**：`/guides/best-asia-esim/` 的 L17 / L25 **已经写过**「香港 + 中国大陆」；`/compare/china/` L13 也已占住。
+3. **数据层**：10/10 品牌在港澳**各自单独成线**，**零区域套餐** ⇒ 双目的地没有产品支撑，写了就是凑字。
+
+⇒ 改用 **AskUserQuestion 把证据摊给用户**，用户选定「支付与号码轴」+「大陆为主 + 港澳提示」。
+
+**27 个候选词 / 4 批 Trends 实测**（`r97_trends_cn*.py`，锚词 `esim` 均值 **75.49**，四批同日一致；本轮收尾时**全部复跑并逐词复现**）
+
+| 轴 | 词 | 相对锚词 |
+|---|---|---|
+| 核心（国家页已占） | `esim china` / `china esim` / `esim china esim` | 0.0252 / 0.0252 / 0.0257 |
+| **★ 定案：介词形态** | **`esim in china`** | **0.0095** |
+| 邻区 | `esim hong kong` | 0.0062 |
+| 区域 | `esim asia` | 0.0052 |
+| 设备（微弱） | `esim china iphone` | 0.0035 |
+| 规格（≈0） | `esim china unlimited` / `esim hong kong china` | 0.0002 / 0.0002 |
+| 城市轴 · 全零 | `esim beijing` / `esim shanghai` / `esim shenzhen` / `esim guangzhou` | 0.0000 |
+| 政策场景轴 · 全零 | `esim china vpn` / `china esim wechat pay` / `alipay esim china` / `esim china firewall` | 0.0000 |
+| 设备落地轴 · 全零 | `china esim number` / `esim china airport` / `esim hong kong airport` | 0.0000 |
+| 来源国轴 · 全零 | `esim for china from uk` / `esim for china from usa` / `buy esim for china` | 0.0000 |
+| 其余 · 全零 | `does esim work in china` / `esim hong kong and china` / `esim for china trip` / `how to get esim for china` | 0.0000 |
+
+- ★ **`esim in china` = 0.0095 是本轮唯一可用的文章词**：它是**独立 query**（与 `esim china` / `china esim` 的 0.0252 不同），量级与既有可用城市词 `esim new york`（**0.0098**）持平 —— 已立为**红线 149**。
+- ★ **`esim china esim` 也测出 0.0257**，与 `esim china` 同值 ⇒ 佐证「词序归并」，进一步支撑 149 的「同词不同介词形态是两个独立 query」。
+- 政策场景轴（vpn / wechat pay / alipay / firewall）**四个词全零** ⇒ 用户关心的「支付」方向**在 Trends 里没有独立检索量**，文章只能**承接国家页的意图**而不是自造需求。
+
+### 2｜★ 改轴之前先做全站覆盖度盘点（红线 150 的来源）
+
+中国方向只有五条可用轴，逐条盘点**全站是否已有内容占位**：
+
+| 轴 | 全站现状 | 结论 |
+|---|---|---|
+| GFW / 路由轴 | `/networks/china/` 已写 | 已占 |
+| 「在中国买的手机」轴 | `/networks/china/` 已写 | 已占 |
+| 香港 + 中国大陆 | `/compare/china/` L13 + `/guides/best-asia-esim/` 两条 FAQ | 已占（这就是我第一版选题被否的原因） |
+| 城市 / 政策场景轴 | 无内容占位 | ★ **但 Trends 全零** ⇒ 不可写 |
+| **支付与号码轴** | **`grep -ri "wechat\|alipay" content/` = 0 命中** | ★ **唯一零覆盖且可写** |
+
+### 3｜事实取证：只写「运营方自己页面上写着的」那一组（红线 8）
+
+- **★ 核心反转论点**：eSIM 的价值**不是**给你中国号码，而是**给支付 App 供网**（「No data, no payment」—— 支付二维码是**在线生成**的，不是存在手机里的图片）。
+- **`https://cs.help.wechat.com/.../How-to-Set-Up-International-Cards-for-Weixin-Pay`**（腾讯微信帮助中心官方英文页，实测 200）：明文写着 **「Do I need a Chinese Mainland (+86) phone number? **A: No.**」**+ 单笔 6,500 元 / 月度 50,000 元 / 年度 65,000 元上限 + 200 元门槛 / 3% 费率。
+- **`https://www.tencent.com/index.php/en-us/articles/2202338.html`**（腾讯官方新闻稿，实测 200）：首次绑国际卡享**连续 90 个自然日**手续费减免（日额度 ≤1,000 元），须 **2026-12-31 前**绑定；**2026 全年**单笔 ≤200 元继续免 3%；PayPal World 互联互通**首期面向美国用户**。
+- **★ 主动砍掉的内容**：支付宝限额在第三方来源上有**三组互斥数字**（USD 5,000/50,000 · CNY 35,000/100,000/500,000 · CNY 3,000/50,000/60,000）⇒ 按红线 8「一份事实只允许一份真源」，**只写腾讯页明确的那组（Weixin Pay）**，**不写有争议的 Alipay 数字**。
+- 三条正文断言全部对上产物：`en 0.51 dollars for a 100MB` / `de 0,51 US-Dollar für 100MB` … 共 **20 组 / 两侧各 1**（`r97_audit.py` 的核心数据点断言段）。
+
+### 4｜所有数字现算（`data/plans/*.toml` + `data/providers.toml`，核对日 **2026-10-07**）
+
+- **基数与 `/compare/china/` 声称值逐条对齐**：总档 **203** ✓ / 无限 **98** ✓ / 全表最低价 **$0.51**（yesim 100MB / 1 Day）✓ / 最佳 $/GB **$0.48**（roamic 50GB / 30 Days）✓ —— **四个数与国家页完全一致**（`r97_cn_decide.py` Q1）。
+- **表格四行（天数与数据量同时满足，两个维度都卡）**：
+
+| 场景 | 最便宜匹配 | 价格 |
+|---|---|---|
+| 几天·地图与消息 | roami 1GB / 7 Days | $1.99 |
+| 正常一周 | roamic 5GB / 21 Days | $5.00 |
+| 一周含视频与热点 | roamic 10GB / 30 Days | $9.00 |
+| 重度或长住 | roamic 50GB / 30 Days | $24.00（= $0.48/GB） |
+
+- **FUP 真阈值八条**（只读 `data/providers.toml` 的 `policy`）：Saily **5GB/天** · Airalo / Jetpac / Roamic **3GB/天** · Nomad **2GB/天** · aloSIM **1.5–2GB/天→512Kbps** · Yesim **500MB–2GB/天** · Ubigi **逐 plan** · Holafly **不公布** · Roami **自称 30GB/天但自家页面互相矛盾**。
+- **同规格价差 > 3 倍**（举一反三的论据）：同为 5GB 且有效 ≥7 天，最低 **$5.00**（roamic 21 天）vs 最贵 **$16.00**（alosim 30 天）。
+- **无限值不值**：覆盖整周的最便宜无限 = **$15.00**；5GB 定量覆盖一周 = **$5.00** ⇒ **3 倍差价**，正文据此写成「无限买的是确定性，不是速度」。
+- **港澳节（数据支撑，非口头提示）**：HK **185 档 / 97 无限 / 10 品牌**，起价 **$0.57**，最佳 $/GB **$0.52**；MO **127 档 / 53 无限 / 10 品牌**，起价 **$0.51**，最佳 $/GB **$0.54**。港澳各自 carrier 组合数 = 1（HK: CSL / 3HK / SmarTone；MO: CTM / 3 Macau / China Telecom）；**10/10 品牌双覆盖、零区域套餐** ⇒ 正文「HK 3GB/3天 $2.99 + CN 5GB $5.00 ≈ $8 数据开销」。
+
+### 5｜★ 自审判据 4 条假红 —— 靠「拿已验收产物做双向校准」才抓出来（红线 148）
+
+`r97_audit.py` 首轮跑出 4 条 FAIL，**方向一致指向「改正确正文」** —— 我没有改正文，而是**加了一个 `AUDIT_FILES` 环境变量入口**，把**同一批判据拿去跑已验收的 `esim-new-york`**，于是 4 条全部翻案：
+
+| # | 判据（错） | 纽约文章的实测值 | 修法 |
+|---|---|---|---|
+| ① | `target_keyword` 精确命中 **≥8** | 纽约只有 **1** 次（且只在字段本身） | 改判「**词族**（含主题词的各种形态）≥20」 |
+| ② | `target_keyword` 必须**精确**出现在 title | 纽约 title = `eSIM for New York`，**不含**精确串 | 改判「title 含 `esim` + 主题词」 |
+| ③ | 主题词族 ≥20（**硬编码 `china`**） | 换国必失败 | 主题词从 `target_keyword` **去停用词推导** |
+| ④ | 德语内链**必须带 `/de/`** | **5 条假红**：`/css/tailwind.css` · `/favicon.ico` · `/favicon.svg` · `/apple-touch-icon.png` 是**静态资源**；`/guides/<slug>/` 是**语言切换器的 English 项 + `hreflang="en-us"` + `x-default`** | 静态资源与跨语言切换器进**豁免** |
+
+- ★ **判据 ④ 在产物层以 5 个路径的形态再出现一次**（`r97_prod.py` 首轮 `FAIL 1 条`，列出同 5 个路径）⇒ **同一个根因在两个脚本里各报一次**，修完 `prod2` 才 `PASS`。
+- ★ 这个「**自审判据必须先拿已验收的既有产物做双向校准**」已立为**红线 148**。若不做校准，本轮会把 4 条正确的正文改坏。
+
+### 6｜反同质化：段落 md5 判据（技能 §4 的硬约定）
+
+`r97_dedup.py`：EN **38 段** / DE **39 段**（≥60 字符），与**全部 12 篇既有 guides**（`_index` + 5 篇区域 + 6 篇指南）**重复 = 0**；en / de 各自**自重复 = 0**。⇒ 新文章**没有复用**第一篇（纽约）的 H2 骨架与段落。
+
+### 7｜验收（全部产物文本断言，**按约定不做截图**）
+
+| 项 | 结果 |
+|---|---|
+| 构建 | **`BUILD_EXIT=0`**；`hugo` 段 **`Total in 195937 ms`**（★ 口径 = hugo 渲染段，非 `npm run build` 墙钟） |
+| 产物闸门 | **13 道全绿**：`1319 files (1317 pages) / 7550 JSON-LD` · `499 品牌子页全过（Offer 9095）` · `100 country pages` FAQ 与数据一致 · `sitemap 657 URL` · `3942 hreflang tags on 1314 pages` · 冠词一致 · `de 657 页` 语言泄漏 **0** · 英文残留 **0** · `livereload` **0** · `localhost:1313` **0** |
+| 页面级断言 | EN 产物 **105696 B** / DE **109599 B**；`<h1>` 各 1 个；`<h2>` 各 **14** 个（8 正文 + 4 front matter + 2 版块）；JSON-LD **6 块**（`Article` / `BreadcrumbList` / `FAQPage` / `ItemList` / `Organization` / `WebSite`）；作者卡 `id="byline"` 存在；锚点链接 **9** 个且**目标 `id` 在同语言产物里存在**（`/networks/china/#carriers` 两侧均 True） |
+| 逐字节归属 | `--diff` ⇒ **变更 14 / 新增 2 / 删除 0**。变更 14 = **7 页 × 2 语言**（`esim-new-york` · `dual-sim-and-esim` · `esim-compatibility-check` · `esim-vs-physical-sim` · `how-to-install-esim` · `what-is-an-esim` · `guides/index`）；新增 2 = 两个 `esim-in-china/index.html` |
+| ★ 归属归因 | 5 篇**区域**指南（`best-africa-middle-east` / `best-americas` / `best-asia` / `best-europe` / `best-oceania`）**没变**，不是漏报 —— 它们**本来就不渲染文章卡片**（实测 `grep -l "esim-in-china" public/guides/*/index.html` 恰好命中上述 7 页，`best-europe-esim` = **0**） |
+| 结构计数守卫 | `check_hardcoded.py` 仍 `EXIT=1`，但**只有 `DEFERRED 159 处 / 86 文件`**（compare 正文存量，按用户决定先登记）；**文章类 0 处** ⇒ 「正文不写品牌数与套餐数」这条规则**机器验证通过** |
+| 部署前卫生 | `livereload` **0** · `localhost:1313` **0** · `public` 文件总数 **1915** |
+| 基线 | 已刷至 **1317 文件**（`--write-manifest`），代表第九十七轮构建后状态 |
+
+### 8｜纪律与登记
+
+- **未 `git commit`、未部署**。★ **注意 HEAD 已变**：本轮开始时 HEAD 是 **`6f00c2c`（"10-15-3"，2026-10-15 21:53:30 由用户自行提交，内容 = 第九十六轮收尾）**，不是我此前记录的 `5b7bac4`。本轮改动**全部留工作区**：`PROJECT.md`（改）、`docs/regression-manifest.json`（改）、`content/{en,de}/guides/esim-in-china.md`（未跟踪）。
+- 改已存在文件一律 **bytes 读写 + 复核换行**：`STATUS.md` **纯 LF / 3821 行 / 413571 B**（改前实测）、`PROJECT.md` **纯 LF**；两份新文章**纯 LF**、149 行、`CRLF=0`。
+- 新增红线：**148**（自审判据先拿已验收产物做双向校准）、**149**（同词不同介词形态是两个独立 query）、**150**（换轴前先做全站覆盖度盘点）。
+- **沿用待办**：compare 50 国正文计数动态化（159 处 / 86 文件）；首页 EN title 45 字符；57 条 description >140；`layouts/guides/single.html:83` 的 `.Lastmod`；`check_dates.py` 盲区（`COUNTRY_HUB` 拿 slug 当 ISO、`/de/` 无守卫）；`STATUS.md` 第 222/223 行标题错位（**本轮不重构**，仅登记）。
+- **德语译文未审校**（用户明确不作为上线阻塞）。
 
 ## 已完成（「AI 味句式」维度举一反三 + 两个 i18n 死键 + 沙箱构建坑，2026-10-15 第九十六轮）
 

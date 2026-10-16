@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-10-15T13:42:56Z",
+ "generated_at": "2026-10-16T03:22:48Z",
  "note": "零回归基线。下一轮改完跑 verify_no_regression.py --diff <本文件>，即可看出哪些页发生变化；provider_sub 变更是预期的，其余需人工确认。",
  "class_counts": {
   "alias_shell": 1,
   "compare_index": 2,
   "country_hub": 102,
   "deals": 2,
-  "guides": 24,
+  "guides": 26,
   "home": 2,
   "matchup": 90,
   "networks": 48,
@@ -6099,37 +6099,42 @@
   },
   "de/guides/dual-sim-and-esim/index.html": {
    "cls": "guides",
-   "sha256": "f115e46e4c59494696f42aa2e16e7e3bf1ee0730629e399202aa3f3b6e6206c5",
+   "sha256": "8f08afa9e7ab32d95dc09036e38dc322c70351e0394bbf7f1204764006ecea65",
    "title_len": 51
   },
   "de/guides/esim-compatibility-check/index.html": {
    "cls": "guides",
-   "sha256": "849a727f358f9edbc15f9c5f1fcc634fe95c0b7537534a12b59aa8dceacd69a9",
+   "sha256": "5426dad3439edc00f9dcc7e501ea415a66464fcb9f138b406f4bdf6c7060f6e7",
    "title_len": 53
+  },
+  "de/guides/esim-in-china/index.html": {
+   "cls": "guides",
+   "sha256": "71b39323ee4d52fc4b6a54d503146ac836764c0a22d5ea4822bd106deb3eb33b",
+   "title_len": 51
   },
   "de/guides/esim-new-york/index.html": {
    "cls": "guides",
-   "sha256": "8feed71014d026008a59346f8555289fdeac18fb5407890932bf74343d2055aa",
+   "sha256": "28f0c2b462eec08886ca98b9b2a1a32e5c2e0f60ba154abe6caa2901b93f5139",
    "title_len": 48
   },
   "de/guides/esim-vs-physical-sim/index.html": {
    "cls": "guides",
-   "sha256": "05ecc088d8af211c1493257a61f31ed9cb2c083005973433429d040a77a01ecd",
+   "sha256": "c734d408fc49f46be6e1f0df40093e61a15d29cb82dfb9088835731fb43b469f",
    "title_len": 52
   },
   "de/guides/how-to-install-esim/index.html": {
    "cls": "guides",
-   "sha256": "c4e7c93f4b38520503ae76ea9a464bdbad97ae543e1005d3677afc81b06516a4",
+   "sha256": "877b15696b12d7349f649109da0bcd722ebfe963150fc5346c2dcf5c53f4aeec",
    "title_len": 46
   },
   "de/guides/index.html": {
    "cls": "guides",
-   "sha256": "966e66247a12783912ecea200441cdb917c4abdce4abf4b566d0f67deffa13cf",
+   "sha256": "dae4fd78a97b26803ce8cf08ab7cc93aaa061320b31ea9e9462b6ceddffaeb3e",
    "title_len": 46
   },
   "de/guides/what-is-an-esim/index.html": {
    "cls": "guides",
-   "sha256": "afb9c3806fc0821933fd7ce21a898c8987881228b32f7339a332474a60407923",
+   "sha256": "9400f750440e99e21e21b0da3aa2dda3cc7e6a404d5348e0810b51a1775fb27b",
    "title_len": 56
   },
   "de/index.html": {
@@ -6394,37 +6399,42 @@
   },
   "guides/dual-sim-and-esim/index.html": {
    "cls": "guides",
-   "sha256": "ba263b82d7298b933ac74130f49a9779877e3b5701210e788635cfe5d07d936f",
+   "sha256": "7d6113813316b6040893e0e26fa4561be8085ae70e0ec89aa679e67532d9a691",
    "title_len": 48
   },
   "guides/esim-compatibility-check/index.html": {
    "cls": "guides",
-   "sha256": "f58beb53ff0fef4682fd344fcb37ee4e3b1aca5fad75ef66b7f36900b4e2c637",
+   "sha256": "b9356042dc3609fc351d0c52afe9b03ed3334ee444a4994949f31062080fe052",
    "title_len": 50
+  },
+  "guides/esim-in-china/index.html": {
+   "cls": "guides",
+   "sha256": "b41191253f06a23cf761e4d96fc1a79980fcc1d1c416a4184c1ec71acfa7ef91",
+   "title_len": 49
   },
   "guides/esim-new-york/index.html": {
    "cls": "guides",
-   "sha256": "709f7f23c8cb7a17ff13aa24d4b79b0d4eb7cfb7d3f774dd6fa0ba8fb977eac1",
+   "sha256": "78d3be93f350a239df9073317ba739a1b20b3c916c1e34854159790624509ee0",
    "title_len": 48
   },
   "guides/esim-vs-physical-sim/index.html": {
    "cls": "guides",
-   "sha256": "c838d479970337fc61ccf4253ebb3422bf69e643fd1a23c1e2961cacf8db72d8",
+   "sha256": "6c2c56d88b2e3f200cadc5016335bf7911d372af1b3cc2962723069806bc0d5f",
    "title_len": 52
   },
   "guides/how-to-install-esim/index.html": {
    "cls": "guides",
-   "sha256": "59819637f404e85d2e5b63d03593a3b7b24e324521bc4e8464f2b6302caefb38",
+   "sha256": "1ff175cde2d69004a8b1990e947cd302dc197b2e5c55f707997a7a69fc383676",
    "title_len": 50
   },
   "guides/index.html": {
    "cls": "guides",
-   "sha256": "20b2733c66b86bbc100f998479062174f58688cebdfac658e610048dd5b1fb47",
+   "sha256": "43e52038dc46be210c15297f2b5b14b78d6afb3708e8183017dcae2b7e970391",
    "title_len": 54
   },
   "guides/what-is-an-esim/index.html": {
    "cls": "guides",
-   "sha256": "17efcdbb779e899b5d08750862d53b1b9e43f128fc6bb35cb20de5b22ccf8cce",
+   "sha256": "a0e690f074c269c6779c17642225288d1a5c4652c7994e7ec5241e805b4df8a6",
    "title_len": 54
   },
   "index.html": {
